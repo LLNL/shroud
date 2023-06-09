@@ -364,7 +364,7 @@ int VEC_vector_string_count_bufferify(const char *arg,
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_vector_alloc_bufferify
+    // splicer begin function.ReturnVectorAlloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -375,7 +375,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
     SHT_rv_cdesc->size = SHC_rv->size();
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SHT_rv_cdesc->size;
-    // splicer end function.return_vector_alloc_bufferify
+    // splicer end function.ReturnVectorAlloc_bufferify
 }
 
 // ----------------------------------------
@@ -395,10 +395,10 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // Match:     c_default
 int VEC_returnDim2(int * arg, int len)
 {
-    // splicer begin function.return_dim2
+    // splicer begin function.returnDim2
     int SHC_rv = returnDim2(arg, len);
     return SHC_rv;
-    // splicer end function.return_dim2
+    // splicer end function.returnDim2
 }
 
 }  // extern "C"

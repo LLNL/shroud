@@ -114,6 +114,7 @@ class Wrapl(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = "SH_this"
+        fmt_class.LUA_name_api = node.apply_LUA_API_option(node.name_api or node.name)
         node.eval_template("LUA_userdata_type")
         node.eval_template("LUA_userdata_member")
         node.eval_template("LUA_class_reg")
@@ -219,6 +220,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         ast = node.ast
         declarator = ast.declarator
         fmt_func = node.fmtdict
+        fmt_func.LUA_name_api = node.apply_LUA_API_option(node.name)
         fmt = util.Scope(fmt_func)
         node.eval_template("LUA_name")
         node.eval_template("LUA_name_impl")

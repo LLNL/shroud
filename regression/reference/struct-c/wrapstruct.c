@@ -44,11 +44,11 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
     int SHT_outbuf_len)
 {
-    // splicer begin function.pass_struct2_bufferify
+    // splicer begin function.passStruct2_bufferify
     int SHC_rv = passStruct2(s1, outbuf);
     ShroudStrBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
-    // splicer end function.pass_struct2_bufferify
+    // splicer end function.passStruct2_bufferify
 }
 
 /**
@@ -78,11 +78,11 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
     int SHT_outbuf_len)
 {
-    // splicer begin function.return_struct_ptr2_bufferify
+    // splicer begin function.returnStructPtr2_bufferify
     Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
     ShroudStrBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
-    // splicer end function.return_struct_ptr2_bufferify
+    // splicer end function.returnStructPtr2_bufferify
 }
 
 // ----------------------------------------
@@ -93,12 +93,12 @@ Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
 {
-    // splicer begin function.create_cstruct_as_class
+    // splicer begin function.Create_Cstruct_as_class
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create_cstruct_as_class
+    // splicer end function.Create_Cstruct_as_class
 }
 // end STR_Create_Cstruct_as_class
 
@@ -119,12 +119,12 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
-    // splicer begin function.create_cstruct_as_class_args
+    // splicer begin function.Create_Cstruct_as_class_args
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create_cstruct_as_class_args
+    // splicer end function.Create_Cstruct_as_class_args
 }
 
 // ----------------------------------------
@@ -138,12 +138,12 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // Exact:     c_in_shadow_*
 int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
-    // splicer begin function.cstruct_as_class_sum
+    // splicer begin function.Cstruct_as_class_sum
     const Cstruct_as_class * SHCXX_point =
         (const Cstruct_as_class *) point->addr;
     int SHC_rv = Cstruct_as_class_sum(SHCXX_point);
     return SHC_rv;
-    // splicer end function.cstruct_as_class_sum
+    // splicer end function.Cstruct_as_class_sum
 }
 
 // ----------------------------------------
@@ -168,13 +168,13 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
-    // splicer begin function.create_cstruct_as_subclass_args
+    // splicer begin function.Create_Cstruct_as_subclass_args
     Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,
         y, z);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create_cstruct_as_subclass_args
+    // splicer end function.Create_Cstruct_as_subclass_args
 }
 
 // ----------------------------------------
@@ -190,10 +190,10 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
     Cstruct_ptr * SH_this)
 {
-    // splicer begin function.cstruct_ptr_get_const_dvalue_bufferify
+    // splicer begin function.Cstruct_ptr_get_const_dvalue_bufferify
     // skip call c_getter
     return SH_this->const_dvalue;
-    // splicer end function.cstruct_ptr_get_const_dvalue_bufferify
+    // splicer end function.Cstruct_ptr_get_const_dvalue_bufferify
 }
 
 // ----------------------------------------
@@ -212,10 +212,10 @@ const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
 void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
     const double * val)
 {
-    // splicer begin function.cstruct_ptr_set_const_dvalue
+    // splicer begin function.Cstruct_ptr_set_const_dvalue
     // skip call c_setter
     SH_this->const_dvalue = val;
-    // splicer end function.cstruct_ptr_set_const_dvalue
+    // splicer end function.Cstruct_ptr_set_const_dvalue
 }
 
 // ----------------------------------------
@@ -231,7 +231,7 @@ void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.cstruct_list_get_ivalue_bufferify
+    // splicer begin function.Cstruct_list_get_ivalue_bufferify
     // skip call c_getter
     SHT_rv_cdesc->cxx.addr  = SH_this->ivalue;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -241,7 +241,7 @@ void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->nitems+SH_this->nitems;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.cstruct_list_get_ivalue_bufferify
+    // splicer end function.Cstruct_list_get_ivalue_bufferify
 }
 
 // ----------------------------------------
@@ -259,10 +259,10 @@ void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
 // Exact:     c_setter_native_*
 void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 {
-    // splicer begin function.cstruct_list_set_ivalue
+    // splicer begin function.Cstruct_list_set_ivalue
     // skip call c_setter
     SH_this->ivalue = val;
-    // splicer end function.cstruct_list_set_ivalue
+    // splicer end function.Cstruct_list_set_ivalue
 }
 
 // ----------------------------------------
@@ -278,7 +278,7 @@ void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.cstruct_list_get_dvalue_bufferify
+    // splicer begin function.Cstruct_list_get_dvalue_bufferify
     // skip call c_getter
     SHT_rv_cdesc->cxx.addr  = SH_this->dvalue;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -288,7 +288,7 @@ void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->nitems*TWO;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.cstruct_list_get_dvalue_bufferify
+    // splicer end function.Cstruct_list_get_dvalue_bufferify
 }
 
 // ----------------------------------------
@@ -306,8 +306,8 @@ void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
 // Exact:     c_setter_native_*
 void STR_Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val)
 {
-    // splicer begin function.cstruct_list_set_dvalue
+    // splicer begin function.Cstruct_list_set_dvalue
     // skip call c_setter
     SH_this->dvalue = val;
-    // splicer end function.cstruct_list_set_dvalue
+    // splicer end function.Cstruct_list_set_dvalue
 }

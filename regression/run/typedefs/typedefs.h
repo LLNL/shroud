@@ -21,4 +21,16 @@ typedef struct s_Struct1 Struct1Rename;
 
 void typestruct(Struct1Rename *arg1);
 
+//----------------------------------------------------------------------
+
+#include <stdint.h>
+
+#if defined(USE_64BIT_INDEXTYPE)
+typedef int64_t IndexType;
+#else
+typedef int32_t IndexType;
+#endif
+
+int returnBytesForIndexType(IndexType arg);
+
 #endif // TYPEDEFS_HPP

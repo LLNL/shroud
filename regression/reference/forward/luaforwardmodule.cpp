@@ -101,7 +101,7 @@ static int l_Class2_func1(lua_State *L)
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
 // Exact:     lua_in_shadow_*
-static int l_Class2_accept_class3(lua_State *L)
+static int l_Class2_acceptClass3(lua_State *L)
 {
     // splicer begin class.Class2.method.acceptClass3
     forward::Class3 * arg = static_cast<forward::Class3 *>(
@@ -120,7 +120,7 @@ static int l_Class2_accept_class3(lua_State *L)
 static const struct luaL_Reg l_Class2_Reg [] = {
     {"__gc", l_Class2_dtor},
     {"func1", l_Class2_func1},
-    {"acceptClass3", l_Class2_accept_class3},
+    {"acceptClass3", l_Class2_acceptClass3},
     // splicer begin class.Class2.register
     // splicer end class.Class2.register
     {NULL, NULL}   /*sentinel */

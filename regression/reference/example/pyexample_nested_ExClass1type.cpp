@@ -139,7 +139,7 @@ PP_incrementCount(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.increment_count
+// splicer begin namespace.example::nested.class.ExClass1.method.incrementCount
     int incr;
     const char *SHT_kwlist[] = {
         "incr",
@@ -156,7 +156,7 @@ PP_incrementCount(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.increment_count
+// splicer end namespace.example::nested.class.ExClass1.method.incrementCount
 }
 
 // ----------------------------------------
@@ -173,7 +173,7 @@ PP_getNameErrorCheck(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
+// splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
@@ -183,7 +183,7 @@ PP_getNameErrorCheck(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
+// splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck
 }
 
 // ----------------------------------------
@@ -200,7 +200,7 @@ PP_getNameArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
+// splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getNameArg();
@@ -210,7 +210,7 @@ PP_getNameArg(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
+// splicer end namespace.example::nested.class.ExClass1.method.getNameArg
 }
 
 // ----------------------------------------
@@ -229,7 +229,7 @@ PP_getValue_from_int(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
+// splicer begin namespace.example::nested.class.ExClass1.method.getValue_from_int
     int value;
     const char *SHT_kwlist[] = {
         "value",
@@ -246,7 +246,7 @@ PP_getValue_from_int(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
+// splicer end namespace.example::nested.class.ExClass1.method.getValue_from_int
 }
 
 // ----------------------------------------
@@ -265,7 +265,7 @@ PP_getValue_1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
+// splicer begin namespace.example::nested.class.ExClass1.method.getValue_1
     long value;
     const char *SHT_kwlist[] = {
         "value",
@@ -282,7 +282,7 @@ PP_getValue_1(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_value_1
+// splicer end namespace.example::nested.class.ExClass1.method.getValue_1
 }
 
 // ----------------------------------------
@@ -305,7 +305,7 @@ PP_hasAddr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+// splicer begin namespace.example::nested.class.ExClass1.method.hasAddr
     bool in;
     PyObject * SHPy_in;
     const char *SHT_kwlist[] = {
@@ -331,7 +331,7 @@ PP_hasAddr(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end namespace.example::nested.class.ExClass1.method.has_addr
+// splicer end namespace.example::nested.class.ExClass1.method.hasAddr
 }
 
 // ----------------------------------------
@@ -348,10 +348,10 @@ PP_SplicerSpecial(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
+// splicer begin namespace.example::nested.class.ExClass1.method.SplicerSpecial
     self->obj->SplicerSpecial();
     Py_RETURN_NONE;
-// splicer end namespace.example::nested.class.ExClass1.method.splicer_special
+// splicer end namespace.example::nested.class.ExClass1.method.SplicerSpecial
 }
 
 static int
@@ -398,7 +398,7 @@ PP_getValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.class.ExClass1.method.get_value
+// splicer begin namespace.example::nested.class.ExClass1.method.getValue
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -423,7 +423,7 @@ PP_getValue(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end namespace.example::nested.class.ExClass1.method.get_value
+// splicer end namespace.example::nested.class.ExClass1.method.getValue
 }
 // splicer begin namespace.example::nested.class.ExClass1.impl.after_methods
 // splicer end namespace.example::nested.class.ExClass1.impl.after_methods

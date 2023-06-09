@@ -24,9 +24,9 @@ extern "C" {
 // Exact:     c_subroutine
 void NAM_AFunction(void)
 {
-    // splicer begin function.a_function
+    // splicer begin function.AFunction
     ignore1::ignore2::AFunction();
-    // splicer end function.a_function
+    // splicer end function.AFunction
 }
 
 }  // extern "C"

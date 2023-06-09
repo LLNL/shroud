@@ -56,8 +56,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "worker3"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -106,8 +105,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "worker"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],
@@ -162,8 +160,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "worker"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -183,9 +180,11 @@
                     "CXX_this_call": "outer::inner1::",
                     "C_header_filename": "wrapwrapped_inner1.h",
                     "C_impl_filename": "wrapwrapped_inner1.cpp",
+                    "C_name_api": "inner1",
                     "C_name_scope": "inner1_",
                     "F_impl_filename": "wrapfwrapped_inner1.f",
                     "F_module_name": "wrapped_inner1_mod",
+                    "F_name_api": "inner1",
                     "LUA_this_call": "outer::inner1::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pywrapped_inner1module.cpp",
@@ -246,8 +245,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "worker"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -267,9 +265,11 @@
                     "CXX_this_call": "outer::inner2::",
                     "C_header_filename": "wrapwrapped_inner2.h",
                     "C_impl_filename": "wrapwrapped_inner2.cpp",
+                    "C_name_api": "inner2",
                     "C_name_scope": "inner2_",
                     "F_impl_filename": "wrapfwrapped_inner2.f",
                     "F_module_name": "wrapped_inner2_mod",
+                    "F_name_api": "inner2",
                     "LUA_this_call": "outer::inner2::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pywrapped_inner2module.cpp",
@@ -330,8 +330,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "worker4"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -353,9 +352,11 @@
                     "CXX_this_call": "outer::inner4::",
                     "C_header_filename": "wrapwrapped_inner4.h",
                     "C_impl_filename": "wrapwrapped_inner4.cpp",
+                    "C_name_api": "inner4",
                     "C_name_scope": "inner4_",
                     "F_impl_filename": "wrapfwrapped_inner4.f",
                     "F_module_name": "wrapped_inner4_mod",
+                    "F_name_api": "inner4",
                     "F_name_scope": "inner4_",
                     "LUA_this_call": "outer::inner4::",
                     "PY_library_doc": "library documentation",

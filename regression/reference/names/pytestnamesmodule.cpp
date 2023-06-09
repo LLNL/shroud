@@ -59,7 +59,7 @@ PY_getName(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.get_name
+// splicer begin function.getName
     char * name;
     const char *SHT_kwlist[] = {
         "name",
@@ -76,7 +76,7 @@ PY_getName(
     SHPy_name = PyString_FromString(name);
 
     return (PyObject *) SHPy_name;
-// splicer end function.get_name
+// splicer end function.getName
 }
 
 // ----------------------------------------
@@ -265,10 +265,10 @@ PY_TestMultilineSplicer(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.test_multiline_splicer
+// splicer begin function.TestMultilineSplicer
 // py line 1
 // py line 2
-// splicer end function.test_multiline_splicer
+// splicer end function.TestMultilineSplicer
 }
 
 // ----------------------------------------
@@ -295,7 +295,7 @@ PY_name_instantiation1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu_0
+// splicer begin function.FunctionTU_0
     int arg1;
     long arg2;
     const char *SHT_kwlist[] = {
@@ -309,7 +309,7 @@ PY_name_instantiation1(
 
     FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.function_tu_0
+// splicer end function.FunctionTU_0
 }
 
 // ----------------------------------------
@@ -336,7 +336,7 @@ PY_FunctionTU_instantiation2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu_instantiation2
+// splicer begin function.FunctionTU_instantiation2
     float arg1;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -350,7 +350,7 @@ PY_FunctionTU_instantiation2(
 
     FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.function_tu_instantiation2
+// splicer end function.FunctionTU_instantiation2
 }
 
 // ----------------------------------------
@@ -372,7 +372,7 @@ PY_UseImplWorker_instantiation3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.use_impl_worker_instantiation3
+// splicer begin function.UseImplWorker_instantiation3
     PyObject * SHTPy_rv = nullptr;
 
     int ARG_rv = UseImplWorker<internal::ImplWorker1>();
@@ -381,7 +381,7 @@ PY_UseImplWorker_instantiation3(
     SHTPy_rv = PyInt_FromLong(ARG_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_impl_worker_instantiation3
+// splicer end function.UseImplWorker_instantiation3
 }
 
 // ----------------------------------------
@@ -403,7 +403,7 @@ PY_Cstruct_as_class_sum(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.cstruct_as_class_sum
+// splicer begin function.Cstruct_as_class_sum
     PY_Cstruct_as_class * SHPy_point;
     const char *SHT_kwlist[] = {
         "point",
@@ -425,7 +425,7 @@ PY_Cstruct_as_class_sum(
     SHTPy_rv = PyInt_FromLong(ARG_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.cstruct_as_class_sum
+// splicer end function.Cstruct_as_class_sum
 }
 
 static char PY_function3a__doc__[] =
@@ -476,7 +476,7 @@ PY_FunctionTU(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu
+// splicer begin function.FunctionTU
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -501,7 +501,7 @@ PY_FunctionTU(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.function_tu
+// splicer end function.FunctionTU
 }
 static PyMethodDef PY_methods[] = {
 {"getName", (PyCFunction)PY_getName, METH_VARARGS|METH_KEYWORDS,

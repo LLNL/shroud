@@ -51,14 +51,14 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Match:     c_default
 int CLA_directionFunc(int arg)
 {
-    // splicer begin function.direction_func
+    // splicer begin function.directionFunc
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
     classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
         SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
-    // splicer end function.direction_func
+    // splicer end function.directionFunc
 }
 
 /**
@@ -75,11 +75,11 @@ int CLA_directionFunc(int arg)
 // Exact:     c_in_shadow_scalar
 void CLA_passClassByValue(CLA_Class1 arg)
 {
-    // splicer begin function.pass_class_by_value
+    // splicer begin function.passClassByValue
     classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
         (arg.addr);
     classes::passClassByValue(*SHCXX_arg);
-    // splicer end function.pass_class_by_value
+    // splicer end function.passClassByValue
 }
 
 // ----------------------------------------
@@ -177,13 +177,13 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 // Exact:     c_function_shadow_&_capptr
 CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
-    // splicer begin function.get_const_class_reference
+    // splicer begin function.getConstClassReference
     const classes::Class1 & SHCXX_rv = classes::getConstClassReference(
         );
     SHC_rv->addr = const_cast<classes::Class1 *>(&SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.get_const_class_reference
+    // splicer end function.getConstClassReference
 }
 
 // ----------------------------------------
@@ -192,12 +192,12 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 // Exact:     c_function_shadow_&_capptr
 CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 {
-    // splicer begin function.get_class_reference
+    // splicer begin function.getClassReference
     classes::Class1 & SHCXX_rv = classes::getClassReference();
     SHC_rv->addr = &SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.get_class_reference
+    // splicer end function.getClassReference
 }
 
 /**
@@ -215,13 +215,13 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // Match:     c_default
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
-    // splicer begin function.get_class_copy
+    // splicer begin function.getClassCopy
     classes::Class1 * SHCXX_rv = new classes::Class1;
     *SHCXX_rv = classes::getClassCopy(flag);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 1;
     return SHC_rv;
-    // splicer end function.get_class_copy
+    // splicer end function.getClassCopy
 }
 
 // ----------------------------------------
@@ -260,11 +260,11 @@ int CLA_get_global_flag(void)
 // Match:     c_function_string_&
 const char * CLA_LastFunctionCalled(void)
 {
-    // splicer begin function.last_function_called
+    // splicer begin function.LastFunctionCalled
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.last_function_called
+    // splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
@@ -274,7 +274,7 @@ const char * CLA_LastFunctionCalled(void)
 // Match:     c_function_string_&_buf
 void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
-    // splicer begin function.last_function_called_bufferify
+    // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
@@ -282,7 +282,7 @@ void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
         ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.last_function_called_bufferify
+    // splicer end function.LastFunctionCalled_bufferify
 }
 
 }  // extern "C"

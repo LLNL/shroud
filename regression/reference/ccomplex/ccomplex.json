@@ -116,8 +116,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_float_complex_inout_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -246,8 +245,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_double_complex_inout_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -378,8 +376,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_double_complex_out_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -505,8 +502,7 @@
                     "C_name_api": "acceptDoubleComplexInoutPtrFlag",
                     "F_name_api": "accept_double_complex_inout_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
-                    "function_name": "acceptDoubleComplexInoutPtrFlag",
-                    "underscore_name": "accept_double_complex_inout_ptr_flag"
+                    "function_name": "acceptDoubleComplexInoutPtrFlag"
                 }
             },
             {
@@ -714,8 +710,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_double_complex_out_ptr_flag"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],

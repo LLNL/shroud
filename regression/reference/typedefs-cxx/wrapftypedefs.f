@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module typedefs_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_INT32_T, C_INT64_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -23,8 +23,21 @@ module typedefs_mod
 
     ! start typedef TypeID
     ! typedef TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
     ! end typedef TypeID
+
+    ! start typedef IndexType
+    ! typedef IndexType
+    ! splicer begin typedef.IndexType
+#if defined(USE_64BIT_INDEXTYPE)
+    integer, parameter :: INDEX_TYPE = C_INT64_T
+#else
+    integer, parameter :: INDEX_TYPE = C_INT32_T
+#endif
+    ! splicer end typedef.IndexType
+    ! end typedef IndexType
 
 
     ! start derived-type struct1_rename
@@ -77,6 +90,30 @@ module typedefs_mod
         end subroutine typestruct
     end interface
     ! end typestruct
+
+    ! ----------------------------------------
+    ! Function:  int returnBytesForIndexType
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  IndexType arg +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start return_bytes_for_index_type
+    interface
+        function return_bytes_for_index_type(arg) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnBytesForIndexType")
+            use iso_c_binding, only : C_INT
+            import :: index_type
+            implicit none
+            integer(index_type), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function return_bytes_for_index_type
+    end interface
+    ! end return_bytes_for_index_type
 
     interface
         ! splicer begin additional_interfaces

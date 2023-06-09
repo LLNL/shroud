@@ -634,13 +634,20 @@ class Wrapc(util.WrapperMixin):
         fmtdict = node.fmtdict
         ast = node.ast
         output = self.typedef_impl
-        decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef)
+
+        if "c" in node.splicer:
+            C_code = None
+            C_force = node.splicer["c"]
+        else:
+            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef)
+            C_code = [decl + ";"]
+            C_force = None
 
         output.append("")
         if options.literalinclude:
             output.append("// start typedef " + node.name)
         append_format(output, "// typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
-        output.append(decl + ";")
+        self._create_splicer(node.name, output, C_code, C_force)
         if options.literalinclude:
             output.append("// end typedef " + node.name)
             
@@ -1380,8 +1387,7 @@ class Wrapc(util.WrapperMixin):
             )
             impl.append("{+")
             impl.extend(setup_this)
-            #sname = fmt_func.function_name # XXX ?
-            sname = wformat("{underscore_name}{function_suffix}{template_suffix}",
+            sname = wformat("{function_name}{function_suffix}{template_suffix}",
                             fmt_func)
             self._create_splicer(sname, impl, C_code, C_force)
             impl.append("-}")

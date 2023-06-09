@@ -98,10 +98,7 @@
                     "class_scope": "Cstruct1::",
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1",
-                    "file_scope": "Cstruct1",
-                    "lower_name": "cstruct1",
-                    "underscore_name": "cstruct1",
-                    "upper_name": "CSTRUCT1"
+                    "file_scope": "Cstruct1"
                 }
             },
             {
@@ -200,10 +197,7 @@
                     "class_scope": "Cstruct_ptr::",
                     "cxx_class": "Cstruct_ptr",
                     "cxx_type": "Cstruct_ptr",
-                    "file_scope": "Cstruct_ptr",
-                    "lower_name": "cstruct_ptr",
-                    "underscore_name": "cstruct_ptr",
-                    "upper_name": "CSTRUCT_PTR"
+                    "file_scope": "Cstruct_ptr"
                 }
             },
             {
@@ -405,10 +399,7 @@
                     "class_scope": "Cstruct_list::",
                     "cxx_class": "Cstruct_list",
                     "cxx_type": "Cstruct_list",
-                    "file_scope": "Cstruct_list",
-                    "lower_name": "cstruct_list",
-                    "underscore_name": "cstruct_list",
-                    "upper_name": "CSTRUCT_LIST"
+                    "file_scope": "Cstruct_list"
                 }
             },
             {
@@ -555,10 +546,7 @@
                     "class_scope": "Cstruct_numpy::",
                     "cxx_class": "Cstruct_numpy",
                     "cxx_type": "Cstruct_numpy",
-                    "file_scope": "Cstruct_numpy",
-                    "lower_name": "cstruct_numpy",
-                    "underscore_name": "cstruct_numpy",
-                    "upper_name": "CSTRUCT_NUMPY"
+                    "file_scope": "Cstruct_numpy"
                 }
             },
             {
@@ -658,10 +646,7 @@
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
-                    "file_scope": "Arrays1",
-                    "lower_name": "arrays1",
-                    "underscore_name": "arrays1",
-                    "upper_name": "ARRAYS1"
+                    "file_scope": "Arrays1"
                 }
             },
             {
@@ -743,10 +728,7 @@
                     "class_scope": "Cstruct_as_class::",
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
-                    "file_scope": "Cstruct_as_class",
-                    "lower_name": "cstruct_as_class",
-                    "underscore_name": "cstruct_as_class",
-                    "upper_name": "CSTRUCT_AS_CLASS"
+                    "file_scope": "Cstruct_as_class"
                 }
             },
             {
@@ -853,10 +835,7 @@
                     "class_scope": "Cstruct_as_subclass::",
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
-                    "file_scope": "Cstruct_as_subclass",
-                    "lower_name": "cstruct_as_subclass",
-                    "underscore_name": "cstruct_as_subclass",
-                    "upper_name": "CSTRUCT_AS_SUBCLASS"
+                    "file_scope": "Cstruct_as_subclass"
                 }
             }
         ],
@@ -946,8 +925,7 @@
                     "C_name_api": "passStructByValue",
                     "F_name_api": "pass_struct_by_value",
                     "PY_name_impl": "PY_passStructByValue",
-                    "function_name": "passStructByValue",
-                    "underscore_name": "pass_struct_by_value"
+                    "function_name": "passStructByValue"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1047,8 +1025,7 @@
                     "C_name_api": "passStruct1",
                     "F_name_api": "pass_struct1",
                     "PY_name_impl": "PY_passStruct1",
-                    "function_name": "passStruct1",
-                    "underscore_name": "pass_struct1"
+                    "function_name": "passStruct1"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1194,8 +1171,7 @@
                     "C_name_api": "passStruct2",
                     "F_name_api": "pass_struct2",
                     "PY_name_impl": "PY_passStruct2",
-                    "function_name": "passStruct2",
-                    "underscore_name": "pass_struct2"
+                    "function_name": "passStruct2"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1295,8 +1271,7 @@
                     "C_name_api": "acceptStructInPtr",
                     "F_name_api": "accept_struct_in_ptr",
                     "PY_name_impl": "PY_acceptStructInPtr",
-                    "function_name": "acceptStructInPtr",
-                    "underscore_name": "accept_struct_in_ptr"
+                    "function_name": "acceptStructInPtr"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1472,8 +1447,7 @@
                     "C_name_api": "acceptStructOutPtr",
                     "F_name_api": "accept_struct_out_ptr",
                     "PY_name_impl": "PY_acceptStructOutPtr",
-                    "function_name": "acceptStructOutPtr",
-                    "underscore_name": "accept_struct_out_ptr"
+                    "function_name": "acceptStructOutPtr"
                 }
             },
             {
@@ -1554,8 +1528,7 @@
                     "C_name_api": "acceptStructInOutPtr",
                     "F_name_api": "accept_struct_in_out_ptr",
                     "PY_name_impl": "PY_acceptStructInOutPtr",
-                    "function_name": "acceptStructInOutPtr",
-                    "underscore_name": "accept_struct_in_out_ptr"
+                    "function_name": "acceptStructInOutPtr"
                 }
             },
             {
@@ -1662,8 +1635,7 @@
                     "C_name_api": "returnStructByValue",
                     "F_name_api": "return_struct_by_value",
                     "PY_name_impl": "PY_returnStructByValue",
-                    "function_name": "returnStructByValue",
-                    "underscore_name": "return_struct_by_value"
+                    "function_name": "returnStructByValue"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1806,8 +1778,7 @@
                     "C_name_api": "returnStructPtr1",
                     "F_name_api": "return_struct_ptr1",
                     "PY_name_impl": "PY_returnStructPtr1",
-                    "function_name": "returnStructPtr1",
-                    "underscore_name": "return_struct_ptr1"
+                    "function_name": "returnStructPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1993,8 +1964,7 @@
                     "C_name_api": "returnStructPtr2",
                     "F_name_api": "return_struct_ptr2",
                     "PY_name_impl": "PY_returnStructPtr2",
-                    "function_name": "returnStructPtr2",
-                    "underscore_name": "return_struct_ptr2"
+                    "function_name": "returnStructPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -2054,8 +2024,7 @@
                     "C_name_api": "get_global_struct_list",
                     "F_name_api": "get_global_struct_list",
                     "PY_name_impl": "PY_get_global_struct_list",
-                    "function_name": "get_global_struct_list",
-                    "underscore_name": "get_global_struct_list"
+                    "function_name": "get_global_struct_list"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -2116,8 +2085,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class",
                     "F_name_api": "create_cstruct_as_class",
-                    "function_name": "Create_Cstruct_as_class",
-                    "underscore_name": "create_cstruct_as_class"
+                    "function_name": "Create_Cstruct_as_class"
                 }
             },
             {
@@ -2186,8 +2154,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class_args",
                     "F_name_api": "create_cstruct_as_class_args",
-                    "function_name": "Create_Cstruct_as_class_args",
-                    "underscore_name": "create_cstruct_as_class_args"
+                    "function_name": "Create_Cstruct_as_class_args"
                 }
             },
             {
@@ -2244,8 +2211,7 @@
                     "C_name_api": "Cstruct_as_class_sum",
                     "F_name_api": "cstruct_as_class_sum",
                     "F_name_function": "sum",
-                    "function_name": "Cstruct_as_class_sum",
-                    "underscore_name": "cstruct_as_class_sum"
+                    "function_name": "Cstruct_as_class_sum"
                 }
             },
             {
@@ -2330,8 +2296,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",
-                    "function_name": "Create_Cstruct_as_subclass_args",
-                    "underscore_name": "create_cstruct_as_subclass_args"
+                    "function_name": "Create_Cstruct_as_subclass_args"
                 }
             }
         ],

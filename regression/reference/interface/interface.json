@@ -57,8 +57,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "function1"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -207,8 +206,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "Function2",
-                    "underscore_name": "function2"
+                    "function_name": "Function2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

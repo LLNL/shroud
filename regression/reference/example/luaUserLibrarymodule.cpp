@@ -120,7 +120,7 @@ static int l_example_nested_ExClass1_dtor(lua_State *L)
 // Argument:  int incr +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_native_scalar
-static int l_example_nested_ExClass1_increment_count(lua_State *L)
+static int l_example_nested_ExClass1_incrementCount(lua_State *L)
 {
     // splicer begin class.ExClass1.method.incrementCount
     int incr = lua_tointeger(L, 1);
@@ -137,7 +137,7 @@ static int l_example_nested_ExClass1_increment_count(lua_State *L)
 // Function:  const string & getNameErrorCheck
 // Attrs:     +deref(allocatable)+intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
+static int l_example_nested_ExClass1_getNameErrorCheck(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
@@ -153,7 +153,7 @@ static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
 // Function:  const string & getNameArg
 // Attrs:     +intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
+static int l_example_nested_ExClass1_getNameArg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
@@ -182,7 +182,7 @@ static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
 // Argument:  long value +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_native_scalar
-static int l_example_nested_ExClass1_get_value(lua_State *L)
+static int l_example_nested_ExClass1_getValue(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getValue
     int SH_nresult = 0;
@@ -227,7 +227,7 @@ static int l_example_nested_ExClass1_get_value(lua_State *L)
 // Argument:  bool in +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_bool_scalar
-static int l_example_nested_ExClass1_has_addr(lua_State *L)
+static int l_example_nested_ExClass1_hasAddr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.hasAddr
     bool in = lua_toboolean(L, 1);
@@ -244,7 +244,7 @@ static int l_example_nested_ExClass1_has_addr(lua_State *L)
 // Function:  void SplicerSpecial
 // Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
-static int l_example_nested_ExClass1_splicer_special(lua_State *L)
+static int l_example_nested_ExClass1_SplicerSpecial(lua_State *L)
 {
     // splicer begin class.ExClass1.method.SplicerSpecial
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
@@ -259,12 +259,12 @@ static int l_example_nested_ExClass1_splicer_special(lua_State *L)
 
 static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"__gc", l_example_nested_ExClass1_dtor},
-    {"incrementCount", l_example_nested_ExClass1_increment_count},
-    {"getNameErrorCheck", l_example_nested_ExClass1_get_name_error_check},
-    {"getNameArg", l_example_nested_ExClass1_get_name_arg},
-    {"getValue", l_example_nested_ExClass1_get_value},
-    {"hasAddr", l_example_nested_ExClass1_has_addr},
-    {"SplicerSpecial", l_example_nested_ExClass1_splicer_special},
+    {"incrementCount", l_example_nested_ExClass1_incrementCount},
+    {"getNameErrorCheck", l_example_nested_ExClass1_getNameErrorCheck},
+    {"getNameArg", l_example_nested_ExClass1_getNameArg},
+    {"getValue", l_example_nested_ExClass1_getValue},
+    {"hasAddr", l_example_nested_ExClass1_hasAddr},
+    {"SplicerSpecial", l_example_nested_ExClass1_SplicerSpecial},
     // splicer begin class.ExClass1.register
     // splicer end class.ExClass1.register
     {NULL, NULL}   /*sentinel */
@@ -325,7 +325,7 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(copy)+intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass2_get_name(lua_State *L)
+static int l_example_nested_ExClass2_getName(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -341,7 +341,7 @@ static int l_example_nested_ExClass2_get_name(lua_State *L)
 // Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass2_get_name2(lua_State *L)
+static int l_example_nested_ExClass2_getName2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -357,7 +357,7 @@ static int l_example_nested_ExClass2_get_name2(lua_State *L)
 // Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass2_get_name3(lua_State *L)
+static int l_example_nested_ExClass2_getName3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -373,7 +373,7 @@ static int l_example_nested_ExClass2_get_name3(lua_State *L)
 // Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(function)
 // Exact:     lua_function_string_&
-static int l_example_nested_ExClass2_get_name4(lua_State *L)
+static int l_example_nested_ExClass2_getName4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -393,7 +393,7 @@ static int l_example_nested_ExClass2_get_name4(lua_State *L)
  * \brief helper function for Fortran
  *
  */
-static int l_example_nested_ExClass2_get_name_length(lua_State *L)
+static int l_example_nested_ExClass2_GetNameLength(lua_State *L)
 {
     // splicer begin class.ExClass2.method.GetNameLength
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -511,7 +511,7 @@ static int l_example_nested_ExClass2_destroyall(lua_State *L)
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
 // Exact:     lua_function_native_scalar
-static int l_example_nested_ExClass2_get_type_id(lua_State *L)
+static int l_example_nested_ExClass2_getTypeID(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getTypeID
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -558,7 +558,7 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // Argument:  double value +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_native_scalar
-static int l_example_nested_ExClass2_set_value(lua_State *L)
+static int l_example_nested_ExClass2_setValue(lua_State *L)
 {
     // splicer begin class.ExClass2.method.setValue
     int SH_nresult = 0;
@@ -616,7 +616,7 @@ static int l_example_nested_ExClass2_set_value(lua_State *L)
 // Function:  double getValue
 // Attrs:     +intent(function)
 // Exact:     lua_function_native_scalar
-static int l_example_nested_ExClass2_get_value(lua_State *L)
+static int l_example_nested_ExClass2_getValue(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getValue
     int SH_nresult = 0;
@@ -651,17 +651,17 @@ static int l_example_nested_ExClass2_get_value(lua_State *L)
 
 static const struct luaL_Reg l_ExClass2_Reg [] = {
     {"__gc", l_example_nested_ExClass2_dtor},
-    {"getName", l_example_nested_ExClass2_get_name},
-    {"getName2", l_example_nested_ExClass2_get_name2},
-    {"getName3", l_example_nested_ExClass2_get_name3},
-    {"getName4", l_example_nested_ExClass2_get_name4},
-    {"GetNameLength", l_example_nested_ExClass2_get_name_length},
+    {"getName", l_example_nested_ExClass2_getName},
+    {"getName2", l_example_nested_ExClass2_getName2},
+    {"getName3", l_example_nested_ExClass2_getName3},
+    {"getName4", l_example_nested_ExClass2_getName4},
+    {"GetNameLength", l_example_nested_ExClass2_GetNameLength},
     {"get_class1", l_example_nested_ExClass2_get_class1},
     {"declare", l_example_nested_ExClass2_declare},
     {"destroyall", l_example_nested_ExClass2_destroyall},
-    {"getTypeID", l_example_nested_ExClass2_get_type_id},
-    {"setValue", l_example_nested_ExClass2_set_value},
-    {"getValue", l_example_nested_ExClass2_get_value},
+    {"getTypeID", l_example_nested_ExClass2_getTypeID},
+    {"setValue", l_example_nested_ExClass2_setValue},
+    {"getValue", l_example_nested_ExClass2_getValue},
     // splicer begin class.ExClass2.register
     // splicer end class.ExClass2.register
     {NULL, NULL}   /*sentinel */
@@ -689,7 +689,7 @@ static int l_example_nested_local_function1(lua_State *)
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
 // Exact:     lua_in_string_&
-static int l_example_nested_is_name_valid(lua_State *L)
+static int l_example_nested_isNameValid(lua_State *L)
 {
     // splicer begin function.isNameValid
     const char * name = lua_tostring(L, 1);
@@ -704,7 +704,7 @@ static int l_example_nested_is_name_valid(lua_State *L)
 // Function:  bool isInitialized
 // Attrs:     +intent(function)
 // Exact:     lua_function_bool_scalar
-static int l_example_nested_is_initialized(lua_State *L)
+static int l_example_nested_isInitialized(lua_State *L)
 {
     // splicer begin function.isInitialized
     bool SHCXX_rv = example::nested::isInitialized();
@@ -915,7 +915,7 @@ static int l_example_nested_testmpi(lua_State *L)
  * \brief subroutine
  *
  */
-static int l_example_nested_func_ptr1(lua_State *)
+static int l_example_nested_FuncPtr1(lua_State *)
 {
     // splicer begin function.FuncPtr1
     example::nested::FuncPtr1(get);
@@ -937,7 +937,7 @@ static int l_example_nested_func_ptr1(lua_State *)
  * \brief return a pointer
  *
  */
-static int l_example_nested_func_ptr2(lua_State *)
+static int l_example_nested_FuncPtr2(lua_State *)
 {
     // splicer begin function.FuncPtr2
     example::nested::FuncPtr2(get);
@@ -958,7 +958,7 @@ static int l_example_nested_func_ptr2(lua_State *)
  * \brief abstract argument
  *
  */
-static int l_example_nested_func_ptr3(lua_State *L)
+static int l_example_nested_FuncPtr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
     double get = lua_tonumber(L, 1);
@@ -977,7 +977,7 @@ static int l_example_nested_func_ptr3(lua_State *L)
 // Attrs:     +intent(in)
 // Requested: lua_in_void_scalar
 // Match:     lua_default
-static int l_example_nested_func_ptr5(lua_State *)
+static int l_example_nested_FuncPtr5(lua_State *)
 {
     // splicer begin function.FuncPtr5
     example::nested::FuncPtr5(get);
@@ -1167,16 +1167,16 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"ExClass1", l_example_nested_ExClass1_ctor},
     {"ExClass2", l_example_nested_ExClass2_ctor},
     {"local_function1", l_example_nested_local_function1},
-    {"isNameValid", l_example_nested_is_name_valid},
-    {"isInitialized", l_example_nested_is_initialized},
+    {"isNameValid", l_example_nested_isNameValid},
+    {"isInitialized", l_example_nested_isInitialized},
     {"test_names", l_example_nested_test_names},
     {"testoptional", l_example_nested_testoptional},
     {"test_size_t", l_example_nested_test_size_t},
     {"testmpi", l_example_nested_testmpi},
-    {"FuncPtr1", l_example_nested_func_ptr1},
-    {"FuncPtr2", l_example_nested_func_ptr2},
-    {"FuncPtr3", l_example_nested_func_ptr3},
-    {"FuncPtr5", l_example_nested_func_ptr5},
+    {"FuncPtr1", l_example_nested_FuncPtr1},
+    {"FuncPtr2", l_example_nested_FuncPtr2},
+    {"FuncPtr3", l_example_nested_FuncPtr3},
+    {"FuncPtr5", l_example_nested_FuncPtr5},
     {"verylongfunctionname1", l_example_nested_verylongfunctionname1},
     {"verylongfunctionname2", l_example_nested_verylongfunctionname2},
     {"cos_doubles", l_example_nested_cos_doubles},

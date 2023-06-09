@@ -73,7 +73,7 @@ PP_isNameValid(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.function.is_name_valid
+// splicer begin namespace.example::nested.function.isNameValid
     char * name;
     const char *SHT_kwlist[] = {
         "name",
@@ -98,7 +98,7 @@ PP_isNameValid(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end namespace.example::nested.function.is_name_valid
+// splicer end namespace.example::nested.function.isNameValid
 }
 
 // ----------------------------------------
@@ -116,7 +116,7 @@ PP_isInitialized(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.example::nested.function.is_initialized
+// splicer begin namespace.example::nested.function.isInitialized
     PyObject * SHTPy_rv = nullptr;
 
     bool SHCXX_rv = example::nested::isInitialized();
@@ -130,7 +130,7 @@ PP_isInitialized(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end namespace.example::nested.function.is_initialized
+// splicer end namespace.example::nested.function.isInitialized
 }
 
 // ----------------------------------------
@@ -361,7 +361,7 @@ PP_FuncPtr1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.function.func_ptr1
+// splicer begin namespace.example::nested.function.FuncPtr1
     void ( * get)(void);
     const char *SHT_kwlist[] = {
         "get",
@@ -373,7 +373,7 @@ PP_FuncPtr1(
 
     example::nested::FuncPtr1(get);
     Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.func_ptr1
+// splicer end namespace.example::nested.function.FuncPtr1
 }
 
 // ----------------------------------------
@@ -397,7 +397,7 @@ PP_FuncPtr2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.function.func_ptr2
+// splicer begin namespace.example::nested.function.FuncPtr2
     double * ( * get)(void);
     const char *SHT_kwlist[] = {
         "get",
@@ -409,7 +409,7 @@ PP_FuncPtr2(
 
     example::nested::FuncPtr2(get);
     Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.func_ptr2
+// splicer end namespace.example::nested.function.FuncPtr2
 }
 
 // ----------------------------------------
@@ -433,7 +433,7 @@ PP_FuncPtr3(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.function.func_ptr3
+// splicer begin namespace.example::nested.function.FuncPtr3
     double ( * get)(int i, int);
     const char *SHT_kwlist[] = {
         "get",
@@ -445,7 +445,7 @@ PP_FuncPtr3(
 
     example::nested::FuncPtr3(get);
     Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.func_ptr3
+// splicer end namespace.example::nested.function.FuncPtr3
 }
 
 // ----------------------------------------
@@ -465,7 +465,7 @@ PP_FuncPtr5(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.example::nested.function.func_ptr5
+// splicer begin namespace.example::nested.function.FuncPtr5
     void ( * get)(int verylongname1, int verylongname2,
         int verylongname3, int verylongname4, int verylongname5,
         int verylongname6, int verylongname7, int verylongname8,
@@ -480,7 +480,7 @@ PP_FuncPtr5(
 
     example::nested::FuncPtr5(get);
     Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.func_ptr5
+// splicer end namespace.example::nested.function.FuncPtr5
 }
 
 // ----------------------------------------

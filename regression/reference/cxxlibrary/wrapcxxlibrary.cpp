@@ -46,10 +46,10 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Match:     c_function
 bool CXX_defaultPtrIsNULL_0(void)
 {
-    // splicer begin function.default_ptr_is_null_0
+    // splicer begin function.defaultPtrIsNULL_0
     bool SHC_rv = defaultPtrIsNULL();
     return SHC_rv;
-    // splicer end function.default_ptr_is_null_0
+    // splicer end function.defaultPtrIsNULL_0
 }
 
 // ----------------------------------------
@@ -64,10 +64,10 @@ bool CXX_defaultPtrIsNULL_0(void)
 // Match:     c_default
 bool CXX_defaultPtrIsNULL_1(double * data)
 {
-    // splicer begin function.default_ptr_is_null_1
+    // splicer begin function.defaultPtrIsNULL_1
     bool SHC_rv = defaultPtrIsNULL(data);
     return SHC_rv;
-    // splicer end function.default_ptr_is_null_1
+    // splicer end function.defaultPtrIsNULL_1
 }
 
 // ----------------------------------------
@@ -91,9 +91,9 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // Match:     c_default
 void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 {
-    // splicer begin function.default_args_in_out_0
+    // splicer begin function.defaultArgsInOut_0
     defaultArgsInOut(in1, out1, out2);
-    // splicer end function.default_args_in_out_0
+    // splicer end function.defaultArgsInOut_0
 }
 
 // ----------------------------------------
@@ -122,9 +122,9 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // Match:     c_default
 void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
-    // splicer begin function.default_args_in_out_1
+    // splicer begin function.defaultArgsInOut_1
     defaultArgsInOut(in1, out1, out2, flag);
-    // splicer end function.default_args_in_out_1
+    // splicer end function.defaultArgsInOut_1
 }
 
 /**
@@ -143,11 +143,11 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // Match:     c_default
 const char * CXX_getGroupName(long idx)
 {
-    // splicer begin function.get_group_name
+    // splicer begin function.getGroupName
     const std::string & SHCXX_rv = getGroupName(idx);
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_group_name
+    // splicer end function.getGroupName
 }
 
 /**
@@ -167,7 +167,7 @@ const char * CXX_getGroupName(long idx)
 void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
-    // splicer begin function.get_group_name_int32_t_bufferify
+    // splicer begin function.getGroupName_int32_t_bufferify
     const std::string & SHCXX_rv = getGroupName(idx);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
@@ -175,7 +175,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
         ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_group_name_int32_t_bufferify
+    // splicer end function.getGroupName_int32_t_bufferify
 }
 
 /**
@@ -195,7 +195,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
-    // splicer begin function.get_group_name_int64_t_bufferify
+    // splicer begin function.getGroupName_int64_t_bufferify
     const std::string & SHCXX_rv = getGroupName(idx);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
@@ -203,7 +203,7 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
         ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_group_name_int64_t_bufferify
+    // splicer end function.getGroupName_int64_t_bufferify
 }
 
 }  // extern "C"

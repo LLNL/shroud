@@ -58,7 +58,7 @@ PY_acceptBothStructs(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_both_structs
+// splicer begin function.acceptBothStructs
     PY_Cstruct_as_class * SHPy_s1;
     Cstruct_as_numpy *s2;
     PyObject * SHTPy_s2 = NULL;
@@ -105,7 +105,7 @@ PY_acceptBothStructs(
 fail:
     Py_XDECREF(SHPy_s2);
     return NULL;
-// splicer end function.accept_both_structs
+// splicer end function.acceptBothStructs
 }
 static PyMethodDef PY_methods[] = {
 {"acceptBothStructs", (PyCFunction)PY_acceptBothStructs,

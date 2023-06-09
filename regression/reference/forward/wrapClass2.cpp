@@ -83,11 +83,11 @@ void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
         (self->addr);
-    // splicer begin class.Class2.method.accept_class3
+    // splicer begin class.Class2.method.acceptClass3
     forward::Class3 * SHCXX_arg = static_cast<forward::Class3 *>
         (arg->addr);
     SH_this->acceptClass3(SHCXX_arg);
-    // splicer end class.Class2.method.accept_class3
+    // splicer end class.Class2.method.acceptClass3
 }
 
 }  // extern "C"

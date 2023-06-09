@@ -153,14 +153,14 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "ctor",
+                            "LUA_name_api": "ctor",
                             "LUA_name_impl": "l_Class1_ctor",
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "ctor",
-                            "function_suffix": "_default",
-                            "underscore_name": "ctor"
+                            "function_suffix": "_default"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -373,8 +373,7 @@
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "ctor",
-                            "function_suffix": "_flag",
-                            "underscore_name": "ctor"
+                            "function_suffix": "_flag"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -489,6 +488,7 @@
                             "F_name_impl": "class1_delete",
                             "F_subprogram": "subroutine",
                             "LUA_name": "delete",
+                            "LUA_name_api": "delete",
                             "LUA_name_impl": "l_Class1_delete",
                             "c_const": "",
                             "c_deref": "*",
@@ -498,8 +498,7 @@
                             "stmt0": "f_dtor",
                             "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
-                            "stmtc1": "c_dtor",
-                            "underscore_name": "delete"
+                            "stmtc1": "c_dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -557,15 +556,15 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "Method1",
-                            "LUA_name_impl": "l_Class1_method1",
+                            "LUA_name_api": "Method1",
+                            "LUA_name_impl": "l_Class1_Method1",
                             "PY_name_impl": "PY_Method1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "Method1",
-                            "underscore_name": "method1"
+                            "function_name": "Method1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -765,8 +764,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "bool SHC_rv",
-                            "function_name": "equivalent",
-                            "underscore_name": "equivalent"
+                            "function_name": "equivalent"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -856,8 +854,7 @@
                         "zz_fmtdict": {
                             "C_name_api": "returnThis",
                             "F_name_api": "return_this",
-                            "function_name": "returnThis",
-                            "underscore_name": "return_this"
+                            "function_name": "returnThis"
                         }
                     },
                     {
@@ -921,8 +918,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "return_this"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -1088,8 +1084,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
-                            "function_name": "returnThisBuffer",
-                            "underscore_name": "return_this_buffer"
+                            "function_name": "returnThisBuffer"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1291,8 +1286,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "returnThisBuffer",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "return_this_buffer"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1385,8 +1379,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
-                            "function_name": "getclass3",
-                            "underscore_name": "getclass3"
+                            "function_name": "getclass3"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1502,15 +1495,15 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "getName",
-                            "LUA_name_impl": "l_Class1_get_name",
+                            "LUA_name_api": "getName",
+                            "LUA_name_impl": "l_Class1_getName",
                             "PY_name_impl": "PY_getName",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                            "function_name": "getName",
-                            "underscore_name": "get_name"
+                            "function_name": "getName"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1631,8 +1624,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_name"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1799,15 +1791,15 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "directionFunc",
-                            "LUA_name_impl": "l_Class1_direction_func",
+                            "LUA_name_api": "directionFunc",
+                            "LUA_name_impl": "l_Class1_directionFunc",
                             "PY_name_impl": "PY_directionFunc",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
-                            "function_name": "directionFunc",
-                            "underscore_name": "direction_func"
+                            "function_name": "directionFunc"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1931,7 +1923,6 @@
                             "field_name": "m_flag",
                             "function_name": "get_m_flag",
                             "struct_name": "Class1",
-                            "underscore_name": "get_m_flag",
                             "wrapped_name": "m_flag"
                         },
                         "zz_fmtresult": {
@@ -2025,7 +2016,6 @@
                             "field_name": "m_test",
                             "function_name": "get_test",
                             "struct_name": "Class1",
-                            "underscore_name": "get_test",
                             "wrapped_name": "test"
                         },
                         "zz_fmtresult": {
@@ -2174,7 +2164,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Class1",
-                            "underscore_name": "set_test",
                             "wrapped_name": "test"
                         }
                     },
@@ -2227,7 +2216,6 @@
                             "field_name": "m_name",
                             "function_name": "get_m_name",
                             "struct_name": "Class1",
-                            "underscore_name": "get_m_name",
                             "wrapped_name": "m_name"
                         },
                         "zz_fmtresult": {
@@ -2302,7 +2290,6 @@
                             "function_name": "get_m_name",
                             "function_suffix": "_bufferify",
                             "struct_name": "Class1",
-                            "underscore_name": "get_m_name",
                             "wrapped_name": "m_name"
                         },
                         "zz_fmtresult": {
@@ -2401,7 +2388,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Class1",
-                            "underscore_name": "set_m_name",
                             "wrapped_name": "m_name"
                         }
                     },
@@ -2512,7 +2498,6 @@
                             "stmt0": "c_setter",
                             "stmt1": "c_setter",
                             "struct_name": "Class1",
-                            "underscore_name": "set_m_name",
                             "wrapped_name": "m_name"
                         }
                     }
@@ -2645,6 +2630,7 @@
                     "LUA_class_reg": "l_Class1_Reg",
                     "LUA_ctor_name": "Class1",
                     "LUA_metadata": "Class1.metatable",
+                    "LUA_name_api": "Class1",
                     "LUA_this_call": "SH_this->self->",
                     "LUA_userdata_member": "self",
                     "LUA_userdata_type": "l_Class1_Type",
@@ -2662,10 +2648,7 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class1",
-                    "underscore_name": "class1",
-                    "upper_name": "CLASS1"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -2731,15 +2714,15 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "getName",
-                            "LUA_name_impl": "l_Class2_get_name",
+                            "LUA_name_api": "getName",
+                            "LUA_name_impl": "l_Class2_getName",
                             "PY_name_impl": "PY_getName",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                            "function_name": "getName",
-                            "underscore_name": "get_name"
+                            "function_name": "getName"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2860,8 +2843,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_name"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2917,6 +2899,7 @@
                     "LUA_class_reg": "l_Class2_Reg",
                     "LUA_ctor_name": "Class2",
                     "LUA_metadata": "Class2.metatable",
+                    "LUA_name_api": "Class2",
                     "LUA_this_call": "SH_this->self->",
                     "LUA_userdata_member": "self",
                     "LUA_userdata_type": "l_Class2_Type",
@@ -2934,10 +2917,7 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class2",
-                    "underscore_name": "class2",
-                    "upper_name": "CLASS2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -3006,8 +2986,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Singleton & SHCXX_rv",
-                            "function_name": "getReference",
-                            "underscore_name": "get_reference"
+                            "function_name": "getReference"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3109,10 +3088,7 @@
                     "cxx_type": "Singleton",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Singleton",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "singleton",
-                    "underscore_name": "singleton",
-                    "upper_name": "SINGLETON"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -3174,13 +3150,13 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "ctor",
+                            "LUA_name_api": "ctor",
                             "LUA_name_impl": "l_Shape_ctor",
                             "PY_name_impl": "PY_Shape_tp_init",
                             "PY_type_impl": "PY_Shape_tp_init",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Shape SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
+                            "function_name": "ctor"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3293,6 +3269,7 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "get_ivar",
+                            "LUA_name_api": "get_ivar",
                             "LUA_name_impl": "l_Shape_get_ivar",
                             "PY_name_impl": "PY_get_ivar",
                             "c_const": "const ",
@@ -3300,8 +3277,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "get_ivar",
-                            "underscore_name": "get_ivar"
+                            "function_name": "get_ivar"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3388,6 +3364,7 @@
                     "LUA_class_reg": "l_Shape_Reg",
                     "LUA_ctor_name": "Shape",
                     "LUA_metadata": "Shape.metatable",
+                    "LUA_name_api": "Shape",
                     "LUA_this_call": "SH_this->self->",
                     "LUA_userdata_member": "self",
                     "LUA_userdata_type": "l_Shape_Type",
@@ -3405,10 +3382,7 @@
                     "cxx_type": "Shape",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Shape",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "shape",
-                    "underscore_name": "shape",
-                    "upper_name": "SHAPE"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -3477,13 +3451,13 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "ctor",
+                            "LUA_name_api": "ctor",
                             "LUA_name_impl": "l_Circle_ctor",
                             "PY_name_impl": "PY_Circle_tp_init",
                             "PY_type_impl": "PY_Circle_tp_init",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Circle SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
+                            "function_name": "ctor"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3574,6 +3548,7 @@
                     "LUA_class_reg": "l_Circle_Reg",
                     "LUA_ctor_name": "Circle",
                     "LUA_metadata": "Circle.metatable",
+                    "LUA_name_api": "Circle",
                     "LUA_this_call": "SH_this->self->",
                     "LUA_userdata_member": "self",
                     "LUA_userdata_type": "l_Circle_Type",
@@ -3592,10 +3567,7 @@
                     "cxx_type": "Circle",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Circle",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "circle",
-                    "underscore_name": "circle",
-                    "upper_name": "CIRCLE"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -3704,8 +3676,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "allocate"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -3757,8 +3728,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "free"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -3814,8 +3784,7 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "cxx_rv_decl": "classes::Data SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
+                            "function_name": "ctor"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3904,8 +3873,7 @@
                             "stmt0": "f_dtor",
                             "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
-                            "stmtc1": "c_dtor",
-                            "underscore_name": "dtor"
+                            "stmtc1": "c_dtor"
                         }
                     },
                     {
@@ -3968,7 +3936,6 @@
                             "field_name": "nitems",
                             "function_name": "get_nitems",
                             "struct_name": "Data",
-                            "underscore_name": "get_nitems",
                             "wrapped_name": "nitems"
                         },
                         "zz_fmtresult": {
@@ -4117,7 +4084,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Data",
-                            "underscore_name": "set_nitems",
                             "wrapped_name": "nitems"
                         }
                     },
@@ -4180,7 +4146,6 @@
                             "field_name": "items",
                             "function_name": "get_items",
                             "struct_name": "Data",
-                            "underscore_name": "get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -4268,7 +4233,6 @@
                             "function_name": "get_items",
                             "function_suffix": "_bufferify",
                             "struct_name": "Data",
-                            "underscore_name": "get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -4435,7 +4399,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Data",
-                            "underscore_name": "set_items",
                             "wrapped_name": "items"
                         }
                     }
@@ -4547,10 +4510,7 @@
                     "cxx_type": "Data",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Data",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "data",
-                    "underscore_name": "data",
-                    "upper_name": "DATA"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -4702,11 +4662,11 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "LUA_name": "directionFunc",
-                    "LUA_name_impl": "l_direction_func",
+                    "LUA_name_api": "directionFunc",
+                    "LUA_name_impl": "l_directionFunc",
                     "PY_name_impl": "PY_directionFunc",
                     "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
-                    "function_name": "directionFunc",
-                    "underscore_name": "direction_func"
+                    "function_name": "directionFunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4899,8 +4859,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_class_by_value"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5032,8 +4991,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_useclass",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "useclass",
-                    "underscore_name": "useclass"
+                    "function_name": "useclass"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5143,8 +5101,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const classes::Class1 * SHCXX_rv",
-                    "function_name": "getclass2",
-                    "underscore_name": "getclass2"
+                    "function_name": "getclass2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5238,8 +5195,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getclass3",
                     "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
-                    "function_name": "getclass3",
-                    "underscore_name": "getclass3"
+                    "function_name": "getclass3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5354,8 +5310,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const classes::Class1 * SHCXX_rv",
-                    "function_name": "getclass2_void",
-                    "underscore_name": "getclass2_void"
+                    "function_name": "getclass2_void"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5447,8 +5402,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
-                    "function_name": "getclass3_void",
-                    "underscore_name": "getclass3_void"
+                    "function_name": "getclass3_void"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5538,8 +5492,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const classes::Class1 & SHCXX_rv",
-                    "function_name": "getConstClassReference",
-                    "underscore_name": "get_const_class_reference"
+                    "function_name": "getConstClassReference"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5630,8 +5583,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassReference",
                     "cxx_rv_decl": "classes::Class1 & SHCXX_rv",
-                    "function_name": "getClassReference",
-                    "underscore_name": "get_class_reference"
+                    "function_name": "getClassReference"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5793,8 +5745,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "*SHCXX_rv",
-                    "function_name": "getClassCopy",
-                    "underscore_name": "get_class_copy"
+                    "function_name": "getClassCopy"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5960,14 +5911,14 @@
                     "F_name_impl": "set_global_flag",
                     "F_subprogram": "subroutine",
                     "LUA_name": "set_global_flag",
+                    "LUA_name_api": "set_global_flag",
                     "LUA_name_impl": "l_set_global_flag",
                     "PY_name_impl": "PY_set_global_flag",
                     "function_name": "set_global_flag",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "set_global_flag"
+                    "stmtc1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -6021,11 +5972,11 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "LUA_name": "get_global_flag",
+                    "LUA_name_api": "get_global_flag",
                     "LUA_name_impl": "l_get_global_flag",
                     "PY_name_impl": "PY_get_global_flag",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "get_global_flag",
-                    "underscore_name": "get_global_flag"
+                    "function_name": "get_global_flag"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6146,11 +6097,11 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "LUA_name": "LastFunctionCalled",
-                    "LUA_name_impl": "l_last_function_called",
+                    "LUA_name_api": "LastFunctionCalled",
+                    "LUA_name_impl": "l_LastFunctionCalled",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "underscore_name": "last_function_called"
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6265,8 +6216,7 @@
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "last_function_called"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

@@ -76,18 +76,18 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // start TUT_NoReturnNoArguments
 void TUT_NoReturnNoArguments(void)
 {
-    // splicer begin function.no_return_no_arguments
+    // splicer begin function.NoReturnNoArguments
     tutorial::NoReturnNoArguments();
-    // splicer end function.no_return_no_arguments
+    // splicer end function.NoReturnNoArguments
 }
 // end TUT_NoReturnNoArguments
 
 double TUT_PassByValue(double arg1, int arg2)
 {
-    // splicer begin function.pass_by_value
+    // splicer begin function.PassByValue
     double SHC_rv = tutorial::PassByValue(arg1, arg2);
     return SHC_rv;
-    // splicer end function.pass_by_value
+    // splicer end function.PassByValue
 }
 
 /**
@@ -97,7 +97,7 @@ double TUT_PassByValue(double arg1, int arg2)
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.concatenate_strings_bufferify
+    // splicer begin function.ConcatenateStrings_bufferify
     const std::string SHCXX_arg1(arg1,
         ShroudLenTrim(arg1, SHT_arg1_len));
     const std::string SHCXX_arg2(arg2,
@@ -105,178 +105,178 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
-    // splicer end function.concatenate_strings_bufferify
+    // splicer end function.ConcatenateStrings_bufferify
 }
 
 // start TUT_UseDefaultArguments
 double TUT_UseDefaultArguments(void)
 {
-    // splicer begin function.use_default_arguments
+    // splicer begin function.UseDefaultArguments
     double SHC_rv = tutorial::UseDefaultArguments();
     return SHC_rv;
-    // splicer end function.use_default_arguments
+    // splicer end function.UseDefaultArguments
 }
 // end TUT_UseDefaultArguments
 
 // start TUT_UseDefaultArguments_arg1
 double TUT_UseDefaultArguments_arg1(double arg1)
 {
-    // splicer begin function.use_default_arguments_arg1
+    // splicer begin function.UseDefaultArguments_arg1
     double SHC_rv = tutorial::UseDefaultArguments(arg1);
     return SHC_rv;
-    // splicer end function.use_default_arguments_arg1
+    // splicer end function.UseDefaultArguments_arg1
 }
 // end TUT_UseDefaultArguments_arg1
 
 // start TUT_UseDefaultArguments_arg1_arg2
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 {
-    // splicer begin function.use_default_arguments_arg1_arg2
+    // splicer begin function.UseDefaultArguments_arg1_arg2
     double SHC_rv = tutorial::UseDefaultArguments(arg1, arg2);
     return SHC_rv;
-    // splicer end function.use_default_arguments_arg1_arg2
+    // splicer end function.UseDefaultArguments_arg1_arg2
 }
 // end TUT_UseDefaultArguments_arg1_arg2
 
 void TUT_OverloadedFunction_from_name(const char * name)
 {
-    // splicer begin function.overloaded_function_from_name
+    // splicer begin function.OverloadedFunction_from_name
     const std::string SHCXX_name(name);
     tutorial::OverloadedFunction(SHCXX_name);
-    // splicer end function.overloaded_function_from_name
+    // splicer end function.OverloadedFunction_from_name
 }
 
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
-    // splicer begin function.overloaded_function_from_name_bufferify
+    // splicer begin function.OverloadedFunction_from_name_bufferify
     const std::string SHCXX_name(name,
         ShroudLenTrim(name, SHT_name_len));
     tutorial::OverloadedFunction(SHCXX_name);
-    // splicer end function.overloaded_function_from_name_bufferify
+    // splicer end function.OverloadedFunction_from_name_bufferify
 }
 
 void TUT_OverloadedFunction_from_index(int indx)
 {
-    // splicer begin function.overloaded_function_from_index
+    // splicer begin function.OverloadedFunction_from_index
     tutorial::OverloadedFunction(indx);
-    // splicer end function.overloaded_function_from_index
+    // splicer end function.OverloadedFunction_from_index
 }
 
 void TUT_TemplateArgument_int(int arg)
 {
-    // splicer begin function.template_argument_int
+    // splicer begin function.TemplateArgument_int
     tutorial::TemplateArgument<int>(arg);
-    // splicer end function.template_argument_int
+    // splicer end function.TemplateArgument_int
 }
 
 void TUT_TemplateArgument_double(double arg)
 {
-    // splicer begin function.template_argument_double
+    // splicer begin function.TemplateArgument_double
     tutorial::TemplateArgument<double>(arg);
-    // splicer end function.template_argument_double
+    // splicer end function.TemplateArgument_double
 }
 
 int TUT_TemplateReturn_int(void)
 {
-    // splicer begin function.template_return_int
+    // splicer begin function.TemplateReturn_int
     int SHC_rv = tutorial::TemplateReturn<int>();
     return SHC_rv;
-    // splicer end function.template_return_int
+    // splicer end function.TemplateReturn_int
 }
 
 double TUT_TemplateReturn_double(void)
 {
-    // splicer begin function.template_return_double
+    // splicer begin function.TemplateReturn_double
     double SHC_rv = tutorial::TemplateReturn<double>();
     return SHC_rv;
-    // splicer end function.template_return_double
+    // splicer end function.TemplateReturn_double
 }
 
 void TUT_FortranGenericOverloaded_0(void)
 {
-    // splicer begin function.fortran_generic_overloaded_0
+    // splicer begin function.FortranGenericOverloaded_0
     tutorial::FortranGenericOverloaded();
-    // splicer end function.fortran_generic_overloaded_0
+    // splicer end function.FortranGenericOverloaded_0
 }
 
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
-    // splicer begin function.fortran_generic_overloaded_1
+    // splicer begin function.FortranGenericOverloaded_1
     const std::string SHCXX_name(name);
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    // splicer end function.fortran_generic_overloaded_1
+    // splicer end function.FortranGenericOverloaded_1
 }
 
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
-    // splicer begin function.fortran_generic_overloaded_1_float_bufferify
+    // splicer begin function.FortranGenericOverloaded_1_float_bufferify
     const std::string SHCXX_name(name,
         ShroudLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    // splicer end function.fortran_generic_overloaded_1_float_bufferify
+    // splicer end function.FortranGenericOverloaded_1_float_bufferify
 }
 
 void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
-    // splicer begin function.fortran_generic_overloaded_1_double_bufferify
+    // splicer begin function.FortranGenericOverloaded_1_double_bufferify
     const std::string SHCXX_name(name,
         ShroudLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    // splicer end function.fortran_generic_overloaded_1_double_bufferify
+    // splicer end function.FortranGenericOverloaded_1_double_bufferify
 }
 
 int TUT_UseDefaultOverload_num(int num)
 {
-    // splicer begin function.use_default_overload_num
+    // splicer begin function.UseDefaultOverload_num
     int SHC_rv = tutorial::UseDefaultOverload(num);
     return SHC_rv;
-    // splicer end function.use_default_overload_num
+    // splicer end function.UseDefaultOverload_num
 }
 
 int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
-    // splicer begin function.use_default_overload_num_offset
+    // splicer begin function.UseDefaultOverload_num_offset
     int SHC_rv = tutorial::UseDefaultOverload(num, offset);
     return SHC_rv;
-    // splicer end function.use_default_overload_num_offset
+    // splicer end function.UseDefaultOverload_num_offset
 }
 
 int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
 {
-    // splicer begin function.use_default_overload_num_offset_stride
+    // splicer begin function.UseDefaultOverload_num_offset_stride
     int SHC_rv = tutorial::UseDefaultOverload(num, offset, stride);
     return SHC_rv;
-    // splicer end function.use_default_overload_num_offset_stride
+    // splicer end function.UseDefaultOverload_num_offset_stride
 }
 
 int TUT_UseDefaultOverload_3(double type, int num)
 {
-    // splicer begin function.use_default_overload_3
+    // splicer begin function.UseDefaultOverload_3
     int SHC_rv = tutorial::UseDefaultOverload(type, num);
     return SHC_rv;
-    // splicer end function.use_default_overload_3
+    // splicer end function.UseDefaultOverload_3
 }
 
 int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
-    // splicer begin function.use_default_overload_4
+    // splicer begin function.UseDefaultOverload_4
     int SHC_rv = tutorial::UseDefaultOverload(type, num, offset);
     return SHC_rv;
-    // splicer end function.use_default_overload_4
+    // splicer end function.UseDefaultOverload_4
 }
 
 int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
 {
-    // splicer begin function.use_default_overload_5
+    // splicer begin function.UseDefaultOverload_5
     int SHC_rv = tutorial::UseDefaultOverload(type, num, offset,
         stride);
     return SHC_rv;
-    // splicer end function.use_default_overload_5
+    // splicer end function.UseDefaultOverload_5
 }
 
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
@@ -315,9 +315,9 @@ int TUT_colorfunc(int arg)
 // start TUT_getMinMax
 void TUT_getMinMax(int * min, int * max)
 {
-    // splicer begin function.get_min_max
+    // splicer begin function.getMinMax
     tutorial::getMinMax(*min, *max);
-    // splicer end function.get_min_max
+    // splicer end function.getMinMax
 }
 // end TUT_getMinMax
 
@@ -337,16 +337,16 @@ int TUT_callback1(int in, int ( * incr)(int))
 
 const char * TUT_LastFunctionCalled(void)
 {
-    // splicer begin function.last_function_called
+    // splicer begin function.LastFunctionCalled
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.last_function_called
+    // splicer end function.LastFunctionCalled
 }
 
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
-    // splicer begin function.last_function_called_bufferify
+    // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
@@ -354,7 +354,7 @@ void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
         ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.last_function_called_bufferify
+    // splicer end function.LastFunctionCalled_bufferify
 }
 
 }  // extern "C"

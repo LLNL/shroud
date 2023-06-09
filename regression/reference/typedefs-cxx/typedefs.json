@@ -96,10 +96,7 @@
                     "class_scope": "Struct1Rename::",
                     "cxx_class": "Struct1Rename",
                     "cxx_type": "Struct1Rename",
-                    "file_scope": "s_Struct1",
-                    "lower_name": "struct1rename",
-                    "underscore_name": "struct1_rename",
-                    "upper_name": "STRUCT1RENAME"
+                    "file_scope": "s_Struct1"
                 }
             }
         ],
@@ -234,8 +231,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_typefunc",
                     "cxx_rv_decl": "TypeID SHC_rv",
-                    "function_name": "typefunc",
-                    "underscore_name": "typefunc"
+                    "function_name": "typefunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -414,8 +410,144 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "typestruct"
+                    "stmtc1": "c_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "2 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "returnBytesForIndexType",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int returnBytesForIndexType(IndexType arg);",
+                "declgen": "int returnBytesForIndexType(IndexType arg +value)",
+                "name": "returnBytesForIndexType",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "TYP_IndexType",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_addr": "&",
+                            "cxx_decl": "IndexType SHCXX_arg",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
+                            "cxx_type": "IndexType",
+                            "cxx_val": "static_cast<IndexType>(arg)",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "c_var": "arg",
+                            "f_c_module_line": "--import--:index_type",
+                            "f_intent": "IN",
+                            "f_kind": "index_type",
+                            "f_type": "integer(index_type)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_arg",
+                    "C_name": "TYP_returnBytesForIndexType",
+                    "C_name_api": "returnBytesForIndexType",
+                    "C_prototype": "TYP_IndexType arg",
+                    "C_return_type": "int",
+                    "F_C_arguments": "arg",
+                    "F_C_call": "c_return_bytes_for_index_type",
+                    "F_C_name": "return_bytes_for_index_type",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_api": "return_bytes_for_index_type",
+                    "F_name_function": "return_bytes_for_index_type",
+                    "F_name_generic": "return_bytes_for_index_type",
+                    "F_name_impl": "return_bytes_for_index_type",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "returnBytesForIndexType"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function"
+                    }
                 }
             }
         ],
@@ -458,8 +590,7 @@
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
-                    "typedef_name": "TypeID",
-                    "underscore_name": "type_id"
+                    "typedef_name": "TypeID"
                 }
             },
             {
@@ -496,8 +627,48 @@
                     "F_name_api": "struct1_rename",
                     "F_name_typedef": "struct1_rename",
                     "cxx_type": "Struct1Rename",
-                    "typedef_name": "Struct1Rename",
-                    "underscore_name": "struct1_rename"
+                    "typedef_name": "Struct1Rename"
+                }
+            },
+            {
+                "<TYPEDEF>": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "IndexType",
+                        "typemap_name": "int32_t"
+                    },
+                    "specifier": [
+                        "int32_t"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "IndexType"
+                },
+                "f_kind": "C_INT32_T",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT32_T"
+                    ]
+                },
+                "name": "IndexType",
+                "options": {},
+                "user_fields": {
+                    "c_to_cxx": "static_cast<IndexType>({c_var})",
+                    "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})"
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "IndexType",
+                    "C_name_typedef": "TYP_IndexType",
+                    "F_name_api": "index_type",
+                    "F_name_typedef": "index_type",
+                    "cxx_type": "IndexType",
+                    "typedef_name": "IndexType"
                 }
             }
         ],
@@ -513,6 +684,49 @@
         "struct-s_Struct1": "s_Struct1"
     },
     "types": {
+        "IndexType": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT32",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "<stdint.h>"
+            ],
+            "c_to_cxx": "static_cast<IndexType>({c_var})",
+            "c_type": "TYP_IndexType",
+            "cfi_type": "CFI_type_int32_t",
+            "cxx_header": [
+                "<cstdint>"
+            ],
+            "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})",
+            "cxx_type": "IndexType",
+            "f_c_module": {
+                "--import--": [
+                    "index_type"
+                ]
+            },
+            "f_c_module_line": "--import--:index_type",
+            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_kind": "index_type",
+            "f_module": {
+                "typedefs_mod": [
+                    "index_type"
+                ]
+            },
+            "f_module_line": "typedefs_mod:index_type",
+            "f_type": "integer(index_type)",
+            "flat_name": "int32_t",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT32_T",
+            "typedef": "int32_t",
+            "wrap_header": [
+                "wraptypedefs.h"
+            ]
+        },
         "Struct1Rename": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",

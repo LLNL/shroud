@@ -22,3 +22,10 @@ void typestruct(Struct1Rename *arg1)
 {
     arg1->d = arg1->i;
 }
+
+//----------------------------------------------------------------------
+
+int returnBytesForIndexType(IndexType arg)
+{
+    return sizeof(arg);
+}

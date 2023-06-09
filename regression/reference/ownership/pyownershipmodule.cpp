@@ -49,7 +49,7 @@ PY_ReturnIntPtrScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_scalar
+// splicer begin function.ReturnIntPtrScalar
     PyObject * SHTPy_rv = nullptr;
 
     int * SHCXX_rv = ReturnIntPtrScalar();
@@ -58,7 +58,7 @@ PY_ReturnIntPtrScalar(
     SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr_scalar
+// splicer end function.ReturnIntPtrScalar
 }
 
 // ----------------------------------------
@@ -75,7 +75,7 @@ PY_ReturnIntPtrPointer(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_pointer
+// splicer begin function.ReturnIntPtrPointer
     PyObject * SHTPy_rv = nullptr;
 
     int * SHCXX_rv = ReturnIntPtrPointer();
@@ -89,7 +89,7 @@ PY_ReturnIntPtrPointer(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_pointer
+// splicer end function.ReturnIntPtrPointer
 }
 
 // ----------------------------------------
@@ -110,7 +110,7 @@ PY_ReturnIntPtrDimPointer(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_pointer
+// splicer begin function.ReturnIntPtrDimPointer
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -127,7 +127,7 @@ PY_ReturnIntPtrDimPointer(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_pointer
+// splicer end function.ReturnIntPtrDimPointer
 }
 
 // ----------------------------------------
@@ -148,7 +148,7 @@ PY_ReturnIntPtrDimAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_alloc
+// splicer begin function.ReturnIntPtrDimAlloc
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -165,7 +165,7 @@ PY_ReturnIntPtrDimAlloc(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_alloc
+// splicer end function.ReturnIntPtrDimAlloc
 }
 
 // ----------------------------------------
@@ -186,7 +186,7 @@ PY_ReturnIntPtrDimDefault(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_default
+// splicer begin function.ReturnIntPtrDimDefault
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -203,7 +203,7 @@ PY_ReturnIntPtrDimDefault(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_default
+// splicer end function.ReturnIntPtrDimDefault
 }
 
 // ----------------------------------------
@@ -224,7 +224,7 @@ PY_ReturnIntPtrDimPointerNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_pointer_new
+// splicer begin function.ReturnIntPtrDimPointerNew
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -241,7 +241,7 @@ PY_ReturnIntPtrDimPointerNew(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_pointer_new
+// splicer end function.ReturnIntPtrDimPointerNew
 }
 
 // ----------------------------------------
@@ -262,7 +262,7 @@ PY_ReturnIntPtrDimAllocNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_alloc_new
+// splicer begin function.ReturnIntPtrDimAllocNew
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -279,7 +279,7 @@ PY_ReturnIntPtrDimAllocNew(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_alloc_new
+// splicer end function.ReturnIntPtrDimAllocNew
 }
 
 // ----------------------------------------
@@ -300,7 +300,7 @@ PY_ReturnIntPtrDimDefaultNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_dim_default_new
+// splicer begin function.ReturnIntPtrDimDefaultNew
     int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -317,7 +317,7 @@ PY_ReturnIntPtrDimDefaultNew(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_int_ptr_dim_default_new
+// splicer end function.ReturnIntPtrDimDefaultNew
 }
 
 // ----------------------------------------
@@ -339,7 +339,7 @@ PY_createClassStatic(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.create_class_static
+// splicer begin function.createClassStatic
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
@@ -351,7 +351,7 @@ PY_createClassStatic(
 
     createClassStatic(flag);
     Py_RETURN_NONE;
-// splicer end function.create_class_static
+// splicer end function.createClassStatic
 }
 
 // ----------------------------------------
@@ -368,7 +368,7 @@ PY_getClassStatic(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_class_static
+// splicer begin function.getClassStatic
     Class1 * SHCXX_rv = getClassStatic();
 
     // post_call
@@ -376,7 +376,7 @@ PY_getClassStatic(
     SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_class_static
+// splicer end function.getClassStatic
 }
 
 // ----------------------------------------
@@ -402,7 +402,7 @@ PY_getClassNew(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.get_class_new
+// splicer begin function.getClassNew
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
@@ -419,7 +419,7 @@ PY_getClassNew(
     SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_class_new
+// splicer end function.getClassNew
 }
 static PyMethodDef PY_methods[] = {
 {"ReturnIntPtrScalar", (PyCFunction)PY_ReturnIntPtrScalar, METH_NOARGS,

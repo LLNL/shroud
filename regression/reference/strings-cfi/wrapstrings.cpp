@@ -106,9 +106,9 @@ static void ShroudStrFree(char *src)
 // Exact:     c_in_char_scalar
 void STR_passChar(char status)
 {
-    // splicer begin function.pass_char
+    // splicer begin function.passChar
     passChar(status);
-    // splicer end function.pass_char
+    // splicer end function.passChar
 }
 
 /**
@@ -125,9 +125,9 @@ void STR_passChar(char status)
 // Exact:     c_in_char_scalar
 void STR_passCharForce(char status)
 {
-    // splicer begin function.pass_char_force
+    // splicer begin function.passCharForce
     passCharForce(status);
-    // splicer end function.pass_char_force
+    // splicer end function.passCharForce
 }
 
 /**
@@ -140,9 +140,9 @@ void STR_passCharForce(char status)
 // Exact:     c_function_char_scalar
 void STR_returnChar(char *SHC_rv)
 {
-    // splicer begin function.return_char
+    // splicer begin function.returnChar
     *SHC_rv = returnChar();
-    // splicer end function.return_char
+    // splicer end function.returnChar
 }
 
 /**
@@ -169,9 +169,9 @@ void STR_returnChar(char *SHC_rv)
 // start STR_passCharPtr
 void STR_passCharPtr(char * dest, const char * src)
 {
-    // splicer begin function.pass_char_ptr
+    // splicer begin function.passCharPtr
     passCharPtr(dest, src);
-    // splicer end function.pass_char_ptr
+    // splicer end function.passCharPtr
 }
 // end STR_passCharPtr
 
@@ -198,14 +198,14 @@ void STR_passCharPtr(char * dest, const char * src)
 void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
-    // splicer begin function.pass_char_ptr_CFI
+    // splicer begin function.passCharPtr_CFI
     char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 0);
     passCharPtr(SHCXX_dest, SHCXX_src);
     ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
     ShroudStrFree(SHCXX_src);
-    // splicer end function.pass_char_ptr_CFI
+    // splicer end function.passCharPtr_CFI
 }
 // end STR_passCharPtr_CFI
 
@@ -226,9 +226,9 @@ void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Match:     c_default
 void STR_passCharPtrInOut(char * s)
 {
-    // splicer begin function.pass_char_ptr_in_out
+    // splicer begin function.passCharPtrInOut
     passCharPtrInOut(s);
-    // splicer end function.pass_char_ptr_in_out
+    // splicer end function.passCharPtrInOut
 }
 
 /**
@@ -247,13 +247,13 @@ void STR_passCharPtrInOut(char * s)
 // Exact:     c_inout_char_*_cfi
 void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 {
-    // splicer begin function.pass_char_ptr_in_out_CFI
+    // splicer begin function.passCharPtrInOut_CFI
     char *s = static_cast<char *>(SHT_s_cfi->base_addr);
     char *SHCXX_s = ShroudStrAlloc(s, SHT_s_cfi->elem_len, 0);
     passCharPtrInOut(SHCXX_s);
     ShroudStrCopy(s, SHT_s_cfi->elem_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
-    // splicer end function.pass_char_ptr_in_out_CFI
+    // splicer end function.passCharPtrInOut_CFI
 }
 
 /**
@@ -268,10 +268,10 @@ void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 // start STR_getCharPtr1
 const char * STR_getCharPtr1(void)
 {
-    // splicer begin function.get_char_ptr1
+    // splicer begin function.getCharPtr1
     const char * SHC_rv = getCharPtr1();
     return SHC_rv;
-    // splicer end function.get_char_ptr1
+    // splicer end function.getCharPtr1
 }
 // end STR_getCharPtr1
 
@@ -286,7 +286,7 @@ const char * STR_getCharPtr1(void)
 // start STR_getCharPtr1_CFI
 void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_char_ptr1_CFI
+    // splicer begin function.getCharPtr1_CFI
     const char * SHC_rv = getCharPtr1();
     if (SHC_rv != nullptr) {
         int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
@@ -296,7 +296,7 @@ void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 SHT_rv_cfi->elem_len);
         }
     }
-    // splicer end function.get_char_ptr1_CFI
+    // splicer end function.getCharPtr1_CFI
 }
 // end STR_getCharPtr1_CFI
 
@@ -312,10 +312,10 @@ void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start STR_getCharPtr2
 const char * STR_getCharPtr2(void)
 {
-    // splicer begin function.get_char_ptr2
+    // splicer begin function.getCharPtr2
     const char * SHC_rv = getCharPtr2();
     return SHC_rv;
-    // splicer end function.get_char_ptr2
+    // splicer end function.getCharPtr2
 }
 // end STR_getCharPtr2
 
@@ -331,11 +331,11 @@ const char * STR_getCharPtr2(void)
 // start STR_getCharPtr2_CFI
 void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_char_ptr2_CFI
+    // splicer begin function.getCharPtr2_CFI
     const char * SHCXX_rv = getCharPtr2();
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv, -1);
-    // splicer end function.get_char_ptr2_CFI
+    // splicer end function.getCharPtr2_CFI
 }
 // end STR_getCharPtr2_CFI
 
@@ -350,10 +350,10 @@ void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start STR_getCharPtr3
 const char * STR_getCharPtr3(void)
 {
-    // splicer begin function.get_char_ptr3
+    // splicer begin function.getCharPtr3
     const char * SHC_rv = getCharPtr3();
     return SHC_rv;
-    // splicer end function.get_char_ptr3
+    // splicer end function.getCharPtr3
 }
 // end STR_getCharPtr3
 
@@ -374,11 +374,11 @@ const char * STR_getCharPtr3(void)
 // start STR_getCharPtr3_CFI
 void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
-    // splicer begin function.get_char_ptr3_CFI
+    // splicer begin function.getCharPtr3_CFI
     const char * SHC_rv = getCharPtr3();
     char *output = static_cast<char *>(SHT_output_cfi->base_addr);
     ShroudStrCopy(output, SHT_output_cfi->elem_len, SHC_rv, -1);
-    // splicer end function.get_char_ptr3_CFI
+    // splicer end function.getCharPtr3_CFI
 }
 // end STR_getCharPtr3_CFI
 
@@ -393,10 +393,10 @@ void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi)
 // Match:     c_function_char_*
 const char * STR_getCharPtr4(void)
 {
-    // splicer begin function.get_char_ptr4
+    // splicer begin function.getCharPtr4
     const char * SHC_rv = getCharPtr4();
     return SHC_rv;
-    // splicer end function.get_char_ptr4
+    // splicer end function.getCharPtr4
 }
 
 /**
@@ -411,10 +411,10 @@ const char * STR_getCharPtr4(void)
 // Match:     c_function_char_*
 const char * STR_getCharPtr5(void)
 {
-    // splicer begin function.get_char_ptr5
+    // splicer begin function.getCharPtr5
     const char * SHC_rv = getCharPtr5();
     return SHC_rv;
-    // splicer end function.get_char_ptr5
+    // splicer end function.getCharPtr5
 }
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
@@ -429,7 +429,7 @@ const char * STR_getCharPtr5(void)
 // Exact:     c_function_char_*_cfi_pointer
 void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_char_ptr5_CFI
+    // splicer begin function.getCharPtr5_CFI
     const char * SHC_rv = getCharPtr5();
     int SHC_rv_err;
     if (SHC_rv == nullptr) {
@@ -449,7 +449,7 @@ void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 nullptr);
         }
     }
-    // splicer end function.get_char_ptr5_CFI
+    // splicer end function.getCharPtr5_CFI
 }
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
@@ -463,7 +463,7 @@ void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Exact:     c_function_string_scalar_cfi_allocatable
 void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_result_CFI
+    // splicer begin function.getConstStringResult_CFI
     const std::string SHCXX_rv = getConstStringResult();
     // C_error_pattern
     // Some error code for cfi
@@ -474,7 +474,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv.data(), 
             SHT_rv_cfi->elem_len);
     }
-    // splicer end function.get_const_string_result_CFI
+    // splicer end function.getConstStringResult_CFI
 }
 
 /**
@@ -488,7 +488,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_scalar_cfi
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_len_CFI
+    // splicer begin function.getConstStringLen_CFI
     const std::string SHCXX_rv = getConstStringLen();
     // C_error_pattern
     // Some error code for cfi
@@ -500,7 +500,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_const_string_len_CFI
+    // splicer end function.getConstStringLen_CFI
 }
 
 /**
@@ -519,7 +519,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_scalar_cfi
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
-    // splicer begin function.get_const_string_as_arg_CFI
+    // splicer begin function.getConstStringAsArg_CFI
     const std::string SHCXX_rv = getConstStringAsArg();
     // C_error_pattern
     // Some error code for cfi
@@ -531,7 +531,7 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
         ShroudStrCopy(output, SHT_output_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_const_string_as_arg_CFI
+    // splicer end function.getConstStringAsArg_CFI
 }
 
 // ----------------------------------------
@@ -540,7 +540,7 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 // Exact:     c_function_string_scalar_cfi_allocatable
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_alloc_CFI
+    // splicer begin function.getConstStringAlloc_CFI
     const std::string SHCXX_rv = getConstStringAlloc();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
@@ -548,7 +548,7 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv.data(), 
             SHT_rv_cfi->elem_len);
     }
-    // splicer end function.get_const_string_alloc_CFI
+    // splicer end function.getConstStringAlloc_CFI
 }
 
 /**
@@ -563,11 +563,11 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start STR_getConstStringRefPure
 const char * STR_getConstStringRefPure(void)
 {
-    // splicer begin function.get_const_string_ref_pure
+    // splicer begin function.getConstStringRefPure
     const std::string & SHCXX_rv = getConstStringRefPure();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ref_pure
+    // splicer end function.getConstStringRefPure
 }
 // end STR_getConstStringRefPure
 
@@ -582,7 +582,7 @@ const char * STR_getConstStringRefPure(void)
 // start STR_getConstStringRefPure_CFI
 void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ref_pure_CFI
+    // splicer begin function.getConstStringRefPure_CFI
     const std::string & SHCXX_rv = getConstStringRefPure();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
@@ -590,7 +590,7 @@ void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv.data(), 
             SHCXX_rv.length());
     }
-    // splicer end function.get_const_string_ref_pure_CFI
+    // splicer end function.getConstStringRefPure_CFI
 }
 // end STR_getConstStringRefPure_CFI
 
@@ -608,7 +608,7 @@ void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_&
 const char * STR_getConstStringRefLen(void)
 {
-    // splicer begin function.get_const_string_ref_len
+    // splicer begin function.getConstStringRefLen
     const std::string & SHCXX_rv = getConstStringRefLen();
     // C_error_pattern
     if (SHCXX_rv.empty()) {
@@ -617,7 +617,7 @@ const char * STR_getConstStringRefLen(void)
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ref_len
+    // splicer end function.getConstStringRefLen
 }
 
 /**
@@ -634,7 +634,7 @@ const char * STR_getConstStringRefLen(void)
 // Match:     c_function_string_&_cfi
 void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ref_len_CFI
+    // splicer begin function.getConstStringRefLen_CFI
     const std::string & SHCXX_rv = getConstStringRefLen();
     // C_error_pattern
     // Some error code for cfi
@@ -646,7 +646,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_const_string_ref_len_CFI
+    // splicer end function.getConstStringRefLen_CFI
 }
 
 /**
@@ -661,7 +661,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Exact:     c_function_string_&
 const char * STR_getConstStringRefAsArg(void)
 {
-    // splicer begin function.get_const_string_ref_as_arg
+    // splicer begin function.getConstStringRefAsArg
     const std::string & SHCXX_rv = getConstStringRefAsArg();
     // C_error_pattern
     if (SHCXX_rv.empty()) {
@@ -670,7 +670,7 @@ const char * STR_getConstStringRefAsArg(void)
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ref_as_arg
+    // splicer end function.getConstStringRefAsArg
 }
 
 /**
@@ -691,7 +691,7 @@ const char * STR_getConstStringRefAsArg(void)
 // Match:     c_function_string_&_cfi
 void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
-    // splicer begin function.get_const_string_ref_as_arg_CFI
+    // splicer begin function.getConstStringRefAsArg_CFI
     const std::string & SHCXX_rv = getConstStringRefAsArg();
     // C_error_pattern
     // Some error code for cfi
@@ -703,7 +703,7 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
         ShroudStrCopy(output, SHT_output_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_const_string_ref_as_arg_CFI
+    // splicer end function.getConstStringRefAsArg_CFI
 }
 
 /**
@@ -717,7 +717,7 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 // Match:     c_function_string_&
 const char * STR_getConstStringRefLenEmpty(void)
 {
-    // splicer begin function.get_const_string_ref_len_empty
+    // splicer begin function.getConstStringRefLenEmpty
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     // C_error_pattern
     if (SHCXX_rv.empty()) {
@@ -726,7 +726,7 @@ const char * STR_getConstStringRefLenEmpty(void)
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ref_len_empty
+    // splicer end function.getConstStringRefLenEmpty
 }
 
 /**
@@ -740,7 +740,7 @@ const char * STR_getConstStringRefLenEmpty(void)
 // Match:     c_function_string_&_cfi
 void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ref_len_empty_CFI
+    // splicer begin function.getConstStringRefLenEmpty_CFI
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     // C_error_pattern
     // Some error code for cfi
@@ -752,7 +752,7 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_const_string_ref_len_empty_CFI
+    // splicer end function.getConstStringRefLenEmpty_CFI
 }
 
 // ----------------------------------------
@@ -762,11 +762,11 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_&
 const char * STR_getConstStringRefAlloc(void)
 {
-    // splicer begin function.get_const_string_ref_alloc
+    // splicer begin function.getConstStringRefAlloc
     const std::string & SHCXX_rv = getConstStringRefAlloc();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ref_alloc
+    // splicer end function.getConstStringRefAlloc
 }
 
 // ----------------------------------------
@@ -775,7 +775,7 @@ const char * STR_getConstStringRefAlloc(void)
 // Exact:     c_function_string_&_cfi_allocatable
 void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ref_alloc_CFI
+    // splicer begin function.getConstStringRefAlloc_CFI
     const std::string & SHCXX_rv = getConstStringRefAlloc();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
@@ -783,7 +783,7 @@ void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv.data(), 
             SHCXX_rv.length());
     }
-    // splicer end function.get_const_string_ref_alloc_CFI
+    // splicer end function.getConstStringRefAlloc_CFI
 }
 
 /**
@@ -801,11 +801,11 @@ void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_*
 const char * STR_getConstStringPtrLen(void)
 {
-    // splicer begin function.get_const_string_ptr_len
+    // splicer begin function.getConstStringPtrLen
     const std::string * SHCXX_rv = getConstStringPtrLen();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_len
+    // splicer end function.getConstStringPtrLen
 }
 
 /**
@@ -823,7 +823,7 @@ const char * STR_getConstStringPtrLen(void)
 // Match:     c_function_string_*_cfi
 void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ptr_len_CFI
+    // splicer begin function.getConstStringPtrLen_CFI
     const std::string * SHCXX_rv = getConstStringPtrLen();
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv->empty()) {
@@ -832,7 +832,7 @@ void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv->data(),
             SHCXX_rv->size());
     }
-    // splicer end function.get_const_string_ptr_len_CFI
+    // splicer end function.getConstStringPtrLen_CFI
 }
 
 // ----------------------------------------
@@ -842,11 +842,11 @@ void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_*
 const char * STR_getConstStringPtrAlloc(void)
 {
-    // splicer begin function.get_const_string_ptr_alloc
+    // splicer begin function.getConstStringPtrAlloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_alloc
+    // splicer end function.getConstStringPtrAlloc
 }
 
 // ----------------------------------------
@@ -855,7 +855,7 @@ const char * STR_getConstStringPtrAlloc(void)
 // Exact:     c_function_string_*_cfi_allocatable
 void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ptr_alloc_CFI
+    // splicer begin function.getConstStringPtrAlloc_CFI
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv->length());
@@ -863,7 +863,7 @@ void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    // splicer end function.get_const_string_ptr_alloc_CFI
+    // splicer end function.getConstStringPtrAlloc_CFI
 }
 
 /**
@@ -880,11 +880,11 @@ void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_*
 const char * STR_getConstStringPtrOwnsAlloc(void)
 {
-    // splicer begin function.get_const_string_ptr_owns_alloc
+    // splicer begin function.getConstStringPtrOwnsAlloc
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_owns_alloc
+    // splicer end function.getConstStringPtrOwnsAlloc
 }
 
 /**
@@ -900,7 +900,7 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
 // Exact:     c_function_string_*_cfi_allocatable
 void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ptr_owns_alloc_CFI
+    // splicer begin function.getConstStringPtrOwnsAlloc_CFI
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv->length());
@@ -908,7 +908,7 @@ void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    // splicer end function.get_const_string_ptr_owns_alloc_CFI
+    // splicer end function.getConstStringPtrOwnsAlloc_CFI
 }
 
 /**
@@ -921,11 +921,11 @@ void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_*
 const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
-    // splicer begin function.get_const_string_ptr_owns_alloc_pattern
+    // splicer begin function.getConstStringPtrOwnsAllocPattern
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_owns_alloc_pattern
+    // splicer end function.getConstStringPtrOwnsAllocPattern
 }
 
 /**
@@ -937,7 +937,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
 // Exact:     c_function_string_*_cfi_allocatable
 void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ptr_owns_alloc_pattern_CFI
+    // splicer begin function.getConstStringPtrOwnsAllocPattern_CFI
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv->length());
@@ -945,7 +945,7 @@ void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
         std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    // splicer end function.get_const_string_ptr_owns_alloc_pattern_CFI
+    // splicer end function.getConstStringPtrOwnsAllocPattern_CFI
 }
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
@@ -956,11 +956,11 @@ void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Match:     c_function_string_*
 const char * STR_getConstStringPtrPointer(void)
 {
-    // splicer begin function.get_const_string_ptr_pointer
+    // splicer begin function.getConstStringPtrPointer
     const std::string * SHCXX_rv = getConstStringPtrPointer();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_pointer
+    // splicer end function.getConstStringPtrPointer
 }
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
@@ -971,7 +971,7 @@ const char * STR_getConstStringPtrPointer(void)
 // Exact:     c_function_string_*_cfi_pointer
 void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.get_const_string_ptr_pointer_CFI
+    // splicer begin function.getConstStringPtrPointer_CFI
     const std::string * SHCXX_rv = getConstStringPtrPointer();
     int SHC_rv_err;
     if (SHCXX_rv == nullptr) {
@@ -991,7 +991,7 @@ void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 nullptr);
         }
     }
-    // splicer end function.get_const_string_ptr_pointer_CFI
+    // splicer end function.getConstStringPtrPointer_CFI
 }
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
@@ -1012,10 +1012,10 @@ void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Exact:     c_in_string_&
 void STR_acceptStringConstReference(const char * arg1)
 {
-    // splicer begin function.accept_string_const_reference
+    // splicer begin function.acceptStringConstReference
     const std::string SHCXX_arg1(arg1);
     acceptStringConstReference(SHCXX_arg1);
-    // splicer end function.accept_string_const_reference
+    // splicer end function.acceptStringConstReference
 }
 
 /**
@@ -1035,12 +1035,12 @@ void STR_acceptStringConstReference(const char * arg1)
 // Exact:     c_in_string_&_cfi
 void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_const_reference_CFI
+    // splicer begin function.acceptStringConstReference_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     const std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     acceptStringConstReference(SHCXX_arg1);
-    // splicer end function.accept_string_const_reference_CFI
+    // splicer end function.acceptStringConstReference_CFI
 }
 
 /**
@@ -1060,11 +1060,11 @@ void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Exact:     c_out_string_&
 void STR_acceptStringReferenceOut(char * arg1)
 {
-    // splicer begin function.accept_string_reference_out
+    // splicer begin function.acceptStringReferenceOut
     std::string SHCXX_arg1;
     acceptStringReferenceOut(SHCXX_arg1);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.accept_string_reference_out
+    // splicer end function.acceptStringReferenceOut
 }
 
 /**
@@ -1084,13 +1084,13 @@ void STR_acceptStringReferenceOut(char * arg1)
 // Exact:     c_out_string_&_cfi
 void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_reference_out_CFI
+    // splicer begin function.acceptStringReferenceOut_CFI
     std::string SHCXX_arg1;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     acceptStringReferenceOut(SHCXX_arg1);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.accept_string_reference_out_CFI
+    // splicer end function.acceptStringReferenceOut_CFI
 }
 
 /**
@@ -1111,11 +1111,11 @@ void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // start STR_acceptStringReference
 void STR_acceptStringReference(char * arg1)
 {
-    // splicer begin function.accept_string_reference
+    // splicer begin function.acceptStringReference
     std::string SHCXX_arg1(arg1);
     acceptStringReference(SHCXX_arg1);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.accept_string_reference
+    // splicer end function.acceptStringReference
 }
 // end STR_acceptStringReference
 
@@ -1137,14 +1137,14 @@ void STR_acceptStringReference(char * arg1)
 // start STR_acceptStringReference_CFI
 void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_reference_CFI
+    // splicer begin function.acceptStringReference_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     acceptStringReference(SHCXX_arg1);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.accept_string_reference_CFI
+    // splicer end function.acceptStringReference_CFI
 }
 // end STR_acceptStringReference_CFI
 
@@ -1162,10 +1162,10 @@ void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Exact:     c_in_string_*
 void STR_acceptStringPointerConst(const char * arg1)
 {
-    // splicer begin function.accept_string_pointer_const
+    // splicer begin function.acceptStringPointerConst
     const std::string SHCXX_arg1(arg1);
     acceptStringPointerConst(&SHCXX_arg1);
-    // splicer end function.accept_string_pointer_const
+    // splicer end function.acceptStringPointerConst
 }
 
 /**
@@ -1182,12 +1182,12 @@ void STR_acceptStringPointerConst(const char * arg1)
 // Exact:     c_in_string_*_cfi
 void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_pointer_const_CFI
+    // splicer begin function.acceptStringPointerConst_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     const std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     acceptStringPointerConst(&SHCXX_arg1);
-    // splicer end function.accept_string_pointer_const_CFI
+    // splicer end function.acceptStringPointerConst_CFI
 }
 
 /**
@@ -1204,11 +1204,11 @@ void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Exact:     c_inout_string_*
 void STR_acceptStringPointer(char * arg1)
 {
-    // splicer begin function.accept_string_pointer
+    // splicer begin function.acceptStringPointer
     std::string SHCXX_arg1(arg1);
     acceptStringPointer(&SHCXX_arg1);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.accept_string_pointer
+    // splicer end function.acceptStringPointer
 }
 
 /**
@@ -1225,14 +1225,14 @@ void STR_acceptStringPointer(char * arg1)
 // Exact:     c_inout_string_*_cfi
 void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_pointer_CFI
+    // splicer begin function.acceptStringPointer_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     acceptStringPointer(&SHCXX_arg1);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.accept_string_pointer_CFI
+    // splicer end function.acceptStringPointer_CFI
 }
 
 /**
@@ -1250,11 +1250,11 @@ void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Exact:     c_out_string_*
 void STR_fetchStringPointer(char * arg1)
 {
-    // splicer begin function.fetch_string_pointer
+    // splicer begin function.fetchStringPointer
     std::string SHCXX_arg1;
     fetchStringPointer(&SHCXX_arg1);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.fetch_string_pointer
+    // splicer end function.fetchStringPointer
 }
 
 /**
@@ -1272,13 +1272,13 @@ void STR_fetchStringPointer(char * arg1)
 // Exact:     c_out_string_*_cfi
 void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.fetch_string_pointer_CFI
+    // splicer begin function.fetchStringPointer_CFI
     std::string SHCXX_arg1;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     fetchStringPointer(&SHCXX_arg1);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.fetch_string_pointer_CFI
+    // splicer end function.fetchStringPointer_CFI
 }
 
 /**
@@ -1302,11 +1302,11 @@ void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Match:     c_default
 void STR_acceptStringPointerLen(char * arg1, int * nlen)
 {
-    // splicer begin function.accept_string_pointer_len
+    // splicer begin function.acceptStringPointerLen
     std::string SHCXX_arg1(arg1);
     acceptStringPointerLen(&SHCXX_arg1, nlen);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.accept_string_pointer_len
+    // splicer end function.acceptStringPointerLen
 }
 
 /**
@@ -1331,14 +1331,14 @@ void STR_acceptStringPointerLen(char * arg1, int * nlen)
 void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen)
 {
-    // splicer begin function.accept_string_pointer_len_CFI
+    // splicer begin function.acceptStringPointerLen_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     acceptStringPointerLen(&SHCXX_arg1, nlen);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.accept_string_pointer_len_CFI
+    // splicer end function.acceptStringPointerLen_CFI
 }
 
 /**
@@ -1363,11 +1363,11 @@ void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // Match:     c_default
 void STR_fetchStringPointerLen(char * arg1, int * nlen)
 {
-    // splicer begin function.fetch_string_pointer_len
+    // splicer begin function.fetchStringPointerLen
     std::string SHCXX_arg1;
     fetchStringPointerLen(&SHCXX_arg1, nlen);
     strcpy(arg1, SHCXX_arg1.c_str());
-    // splicer end function.fetch_string_pointer_len
+    // splicer end function.fetchStringPointerLen
 }
 
 /**
@@ -1393,13 +1393,13 @@ void STR_fetchStringPointerLen(char * arg1, int * nlen)
 void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen)
 {
-    // splicer begin function.fetch_string_pointer_len_CFI
+    // splicer begin function.fetchStringPointerLen_CFI
     std::string SHCXX_arg1;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     fetchStringPointerLen(&SHCXX_arg1, nlen);
     ShroudStrCopy(arg1, SHT_arg1_cfi->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
-    // splicer end function.fetch_string_pointer_len_CFI
+    // splicer end function.fetchStringPointerLen_CFI
 }
 
 /**
@@ -1417,10 +1417,10 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // Exact:     c_in_string_scalar
 int STR_acceptStringInstance(char *arg1)
 {
-    // splicer begin function.accept_string_instance
+    // splicer begin function.acceptStringInstance
     int SHC_rv = acceptStringInstance(arg1);
     return SHC_rv;
-    // splicer end function.accept_string_instance
+    // splicer end function.acceptStringInstance
 }
 
 /**
@@ -1438,13 +1438,13 @@ int STR_acceptStringInstance(char *arg1)
 // Exact:     c_in_string_scalar_cfi
 int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
-    // splicer begin function.accept_string_instance_CFI
+    // splicer begin function.acceptStringInstance_CFI
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
     size_t SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_cfi->elem_len);
     std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
-    // splicer end function.accept_string_instance_CFI
+    // splicer end function.acceptStringInstance_CFI
 }
 
 // ----------------------------------------
@@ -1524,9 +1524,9 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 // Exact:     c_function_char_scalar
 void STR_CreturnChar(char *SHC_rv)
 {
-    // splicer begin function.creturn_char
+    // splicer begin function.CreturnChar
     *SHC_rv = CreturnChar();
-    // splicer end function.creturn_char
+    // splicer end function.CreturnChar
 }
 
 /**
@@ -1552,14 +1552,14 @@ void STR_CreturnChar(char *SHC_rv)
 void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
-    // splicer begin function.cpass_char_ptr_CFI
+    // splicer begin function.CpassCharPtr_CFI
     char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 1);
     CpassCharPtr(SHCXX_dest, SHCXX_src);
     ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
     ShroudStrFree(SHCXX_src);
-    // splicer end function.cpass_char_ptr_CFI
+    // splicer end function.CpassCharPtr_CFI
 }
 
 /**
@@ -1582,9 +1582,9 @@ void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Match:     c_default
 void STR_CpassCharPtrBlank(char * dest, const char * src)
 {
-    // splicer begin function.cpass_char_ptr_blank
+    // splicer begin function.CpassCharPtrBlank
     CpassCharPtrBlank(dest, src);
-    // splicer end function.cpass_char_ptr_blank
+    // splicer end function.CpassCharPtrBlank
 }
 
 /**
@@ -1606,14 +1606,14 @@ void STR_CpassCharPtrBlank(char * dest, const char * src)
 void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
-    // splicer begin function.cpass_char_ptr_blank_CFI
+    // splicer begin function.CpassCharPtrBlank_CFI
     char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 1);
     CpassCharPtrBlank(SHCXX_dest, SHCXX_src);
     ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
     ShroudStrFree(SHCXX_src);
-    // splicer end function.cpass_char_ptr_blank_CFI
+    // splicer end function.CpassCharPtrBlank_CFI
 }
 
 /**
@@ -1637,11 +1637,11 @@ void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Exact:     c_inout_string_&
 void STR_PostDeclare(int * count, char * name)
 {
-    // splicer begin function.post_declare
+    // splicer begin function.PostDeclare
     std::string SHCXX_name(name);
     PostDeclare(count, SHCXX_name);
     strcpy(name, SHCXX_name.c_str());
-    // splicer end function.post_declare
+    // splicer end function.PostDeclare
 }
 
 /**
@@ -1665,7 +1665,7 @@ void STR_PostDeclare(int * count, char * name)
 void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     CFI_cdesc_t *SHT_name_cfi)
 {
-    // splicer begin function.post_declare_CFI
+    // splicer begin function.PostDeclare_CFI
     int *SHCXX_count = static_cast<int *>(SHT_count_cfi->base_addr);
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     size_t SHC_name_trim = ShroudLenTrim(name, SHT_name_cfi->elem_len);
@@ -1673,7 +1673,7 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     PostDeclare(SHCXX_count, SHCXX_name);
     ShroudStrCopy(name, SHT_name_cfi->elem_len, SHCXX_name.data(),
         SHCXX_name.size());
-    // splicer end function.post_declare_CFI
+    // splicer end function.PostDeclare_CFI
 }
 
 /**
@@ -1692,10 +1692,10 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
 // Match:     c_default
 int STR_CpassCharPtrNotrim(const char * src)
 {
-    // splicer begin function.cpass_char_ptr_notrim
+    // splicer begin function.CpassCharPtrNotrim
     int SHC_rv = CpassCharPtrNotrim(src);
     return SHC_rv;
-    // splicer end function.cpass_char_ptr_notrim
+    // splicer end function.CpassCharPtrNotrim
 }
 
 /**
@@ -1713,13 +1713,13 @@ int STR_CpassCharPtrNotrim(const char * src)
 // Exact:     c_in_char_*_cfi
 int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 {
-    // splicer begin function.cpass_char_ptr_notrim_CFI
+    // splicer begin function.CpassCharPtrNotrim_CFI
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
     ShroudStrFree(SHCXX_src);
     return SHC_rv;
-    // splicer end function.cpass_char_ptr_notrim_CFI
+    // splicer end function.CpassCharPtrNotrim_CFI
 }
 
 /**
@@ -1751,10 +1751,10 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 // Match:     c_default
 int STR_CpassCharPtrCAPI(void * addr, const char * src)
 {
-    // splicer begin function.cpass_char_ptr_capi
+    // splicer begin function.CpassCharPtrCAPI
     int SHC_rv = CpassCharPtrCAPI(addr, src);
     return SHC_rv;
-    // splicer end function.cpass_char_ptr_capi
+    // splicer end function.CpassCharPtrCAPI
 }
 
 /**
@@ -1778,10 +1778,10 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
 // Match:     c_default
 int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 {
-    // splicer begin function.cpass_char_ptr_capi2
+    // splicer begin function.CpassCharPtrCAPI2
     int SHC_rv = CpassCharPtrCAPI2(in, src);
     return SHC_rv;
-    // splicer end function.cpass_char_ptr_capi2
+    // splicer end function.CpassCharPtrCAPI2
 }
 
 /**
@@ -1804,13 +1804,13 @@ int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 // Match:     c_default
 int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char * src)
 {
-    // splicer begin function.cpass_char_ptr_capi2_CFI
+    // splicer begin function.CpassCharPtrCAPI2_CFI
     char *in = static_cast<char *>(SHT_in_cfi->base_addr);
     char *SHCXX_in = ShroudStrAlloc(in, SHT_in_cfi->elem_len, 0);
     int SHC_rv = CpassCharPtrCAPI2(SHCXX_in, src);
     ShroudStrFree(SHCXX_in);
     return SHC_rv;
-    // splicer end function.cpass_char_ptr_capi2_CFI
+    // splicer end function.CpassCharPtrCAPI2_CFI
 }
 
 }  // extern "C"

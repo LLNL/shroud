@@ -57,7 +57,7 @@ PY_Cstruct_as_class_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Cstruct_as_class.method.cstruct_as_class_ctor
+// splicer begin class.Cstruct_as_class.method.Cstruct_as_class_ctor
     int x1 = 0;
     int y1 = 0;
     char *SHT_kwlist[] = {
@@ -82,7 +82,7 @@ PY_Cstruct_as_class_tp_init(
     SH_obj->y1 = y1;
 
     return 0;
-// splicer end class.Cstruct_as_class.method.cstruct_as_class_ctor
+// splicer end class.Cstruct_as_class.method.Cstruct_as_class_ctor
 }
 // splicer begin class.Cstruct_as_class.impl.after_methods
 // splicer end class.Cstruct_as_class.impl.after_methods

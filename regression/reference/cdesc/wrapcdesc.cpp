@@ -49,9 +49,9 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Match:     c_default
 void CDE_Rank2In(int * arg)
 {
-    // splicer begin function.rank2_in
+    // splicer begin function.Rank2In
     Rank2In(arg);
-    // splicer end function.rank2_in
+    // splicer end function.Rank2In
 }
 
 // ----------------------------------------
@@ -64,11 +64,11 @@ void CDE_Rank2In(int * arg)
 // Exact:     c_in_native_*_cdesc
 void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
-    // splicer begin function.rank2_in_bufferify
+    // splicer begin function.Rank2In_bufferify
     int * arg = static_cast<int *>
         (const_cast<void *>(SHT_arg_cdesc->addr.base));
     Rank2In(arg);
-    // splicer end function.rank2_in_bufferify
+    // splicer end function.Rank2In_bufferify
 }
 
 /**
@@ -98,10 +98,10 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // Match:     c_default
 void CDE_GetScalar1(char * name, void * value)
 {
-    // splicer begin function.get_scalar1
+    // splicer begin function.GetScalar1
     std::string SHCXX_name(name);
     GetScalar1(SHCXX_name, value);
-    // splicer end function.get_scalar1
+    // splicer end function.GetScalar1
 }
 
 /**
@@ -131,7 +131,7 @@ void CDE_GetScalar1(char * name, void * value)
 void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
-    // splicer begin function.get_scalar1_0_bufferify
+    // splicer begin function.GetScalar1_0_bufferify
     switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
       *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
@@ -151,7 +151,7 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     }
     // default:
     }
-    // splicer end function.get_scalar1_0_bufferify
+    // splicer end function.GetScalar1_0_bufferify
 }
 
 /**
@@ -181,7 +181,7 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
 void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
-    // splicer begin function.get_scalar1_1_bufferify
+    // splicer begin function.GetScalar1_1_bufferify
     switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
       *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
@@ -201,7 +201,7 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     }
     // default:
     }
-    // splicer end function.get_scalar1_1_bufferify
+    // splicer end function.GetScalar1_1_bufferify
 }
 
 /**
@@ -214,10 +214,10 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
 // Match:     c_function
 int CDE_getData_int(void)
 {
-    // splicer begin function.get_data_int
+    // splicer begin function.getData_int
     int SHC_rv = getData<int>();
     return SHC_rv;
-    // splicer end function.get_data_int
+    // splicer end function.getData_int
 }
 
 /**
@@ -230,10 +230,10 @@ int CDE_getData_int(void)
 // Match:     c_function
 double CDE_getData_double(void)
 {
-    // splicer begin function.get_data_double
+    // splicer begin function.getData_double
     double SHC_rv = getData<double>();
     return SHC_rv;
-    // splicer end function.get_data_double
+    // splicer end function.getData_double
 }
 
 }  // extern "C"

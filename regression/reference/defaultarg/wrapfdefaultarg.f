@@ -27,7 +27,9 @@ module defaultarg_mod
     ! splicer end module_top
 
     ! typedef TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
 
     ! ----------------------------------------
     ! Function:  void apply_generic

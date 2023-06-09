@@ -51,7 +51,7 @@ PY_directionFunc(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.direction_func
+// splicer begin function.directionFunc
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -73,7 +73,7 @@ PY_directionFunc(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.direction_func
+// splicer end function.directionFunc
 }
 
 // ----------------------------------------
@@ -98,7 +98,7 @@ PY_passClassByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_class_by_value
+// splicer begin function.passClassByValue
     PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -113,7 +113,7 @@ PY_passClassByValue(
 
     classes::passClassByValue(*arg);
     Py_RETURN_NONE;
-// splicer end function.pass_class_by_value
+// splicer end function.passClassByValue
 }
 
 // ----------------------------------------
@@ -201,7 +201,7 @@ PY_getClassReference(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_class_reference
+// splicer begin function.getClassReference
     classes::Class1 & SHCXX_rv = classes::getClassReference();
 
     // post_call
@@ -209,7 +209,7 @@ PY_getClassReference(
     SHTPy_rv->obj = &SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_class_reference
+// splicer end function.getClassReference
 }
 
 // ----------------------------------------
@@ -287,7 +287,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.last_function_called
+// splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
@@ -297,7 +297,7 @@ PY_LastFunctionCalled(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.last_function_called
+// splicer end function.LastFunctionCalled
 }
 static PyMethodDef PY_methods[] = {
 {"directionFunc", (PyCFunction)PY_directionFunc,

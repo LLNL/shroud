@@ -32,6 +32,18 @@ typemap:
     f_to_c: "{f_var}%cxxmem"
     PY_PyTypeObject: PY_Class1_Type
 
+# Add another class to the same namespace for testing.
+- type: tutorial::Class2
+  fields:
+    base: shadow
+    wrap_header:
+    - typesclasses.h
+    c_type: CLA_Class2
+    f_module_name: classes_mod
+    f_derived_type: class2
+    f_capsule_data_type: CLA_SHROUD_capsule_data
+    f_to_c: "{f_var}%cxxmem"
+
 # from struct-cxx test
 - type: Cstruct1
   fields:

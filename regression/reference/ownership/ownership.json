@@ -58,6 +58,7 @@
                             "F_name_impl": "class1_dtor",
                             "F_subprogram": "subroutine",
                             "LUA_name": "dtor",
+                            "LUA_name_api": "dtor",
                             "LUA_name_impl": "l_Class1_dtor",
                             "c_const": "",
                             "c_deref": "*",
@@ -67,8 +68,7 @@
                             "stmt0": "f_dtor",
                             "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
-                            "stmtc1": "c_dtor",
-                            "underscore_name": "dtor"
+                            "stmtc1": "c_dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -137,7 +137,6 @@
                             "field_name": "m_flag",
                             "function_name": "get_flag",
                             "struct_name": "Class1",
-                            "underscore_name": "get_flag",
                             "wrapped_name": "flag"
                         },
                         "zz_fmtresult": {
@@ -234,6 +233,7 @@
                     "LUA_class_reg": "l_Class1_Reg",
                     "LUA_ctor_name": "Class1",
                     "LUA_metadata": "Class1.metatable",
+                    "LUA_name_api": "Class1",
                     "LUA_this_call": "SH_this->self->",
                     "LUA_userdata_member": "self",
                     "LUA_userdata_type": "l_Class1_Type",
@@ -251,10 +251,7 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class1",
-                    "underscore_name": "class1",
-                    "upper_name": "CLASS1"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -317,8 +314,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_raw",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrRaw",
-                    "underscore_name": "return_int_ptr_raw"
+                    "function_name": "ReturnIntPtrRaw"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -404,8 +400,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrScalar",
-                    "underscore_name": "return_int_ptr_scalar"
+                    "function_name": "ReturnIntPtrScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -516,8 +511,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrPointer",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrPointer",
-                    "underscore_name": "return_int_ptr_pointer"
+                    "function_name": "ReturnIntPtrPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -622,8 +616,7 @@
                     "F_name_api": "return_int_ptr_pointer",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrPointer",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_pointer"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -754,8 +747,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_raw",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimRaw",
-                    "underscore_name": "return_int_ptr_dim_raw"
+                    "function_name": "ReturnIntPtrDimRaw"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -927,8 +919,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointer",
-                    "underscore_name": "return_int_ptr_dim_pointer"
+                    "function_name": "ReturnIntPtrDimPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1106,8 +1097,7 @@
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_pointer"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1286,8 +1276,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimAlloc",
-                    "underscore_name": "return_int_ptr_dim_alloc"
+                    "function_name": "ReturnIntPtrDimAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1465,8 +1454,7 @@
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1643,8 +1631,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefault",
-                    "underscore_name": "return_int_ptr_dim_default"
+                    "function_name": "ReturnIntPtrDimDefault"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1820,8 +1807,7 @@
                     "F_name_api": "return_int_ptr_dim_default",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_default"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1967,8 +1953,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_raw_new",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimRawNew",
-                    "underscore_name": "return_int_ptr_dim_raw_new"
+                    "function_name": "ReturnIntPtrDimRawNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2147,8 +2132,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointerNew",
-                    "underscore_name": "return_int_ptr_dim_pointer_new"
+                    "function_name": "ReturnIntPtrDimPointerNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2329,8 +2313,7 @@
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_pointer_new"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2499,8 +2482,7 @@
                     "F_name_api": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimAllocNew",
-                    "underscore_name": "return_int_ptr_dim_alloc_new"
+                    "function_name": "ReturnIntPtrDimAllocNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2699,8 +2681,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefaultNew",
-                    "underscore_name": "return_int_ptr_dim_default_new"
+                    "function_name": "ReturnIntPtrDimDefaultNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2880,8 +2861,7 @@
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_default_new"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2998,8 +2978,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimRaw",
                     "F_name_api": "int_ptr_dim_raw",
-                    "function_name": "IntPtrDimRaw",
-                    "underscore_name": "int_ptr_dim_raw"
+                    "function_name": "IntPtrDimRaw"
                 }
             },
             {
@@ -3087,8 +3066,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimPointer",
                     "F_name_api": "int_ptr_dim_pointer",
-                    "function_name": "IntPtrDimPointer",
-                    "underscore_name": "int_ptr_dim_pointer"
+                    "function_name": "IntPtrDimPointer"
                 }
             },
             {
@@ -3176,8 +3154,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimAlloc",
                     "F_name_api": "int_ptr_dim_alloc",
-                    "function_name": "IntPtrDimAlloc",
-                    "underscore_name": "int_ptr_dim_alloc"
+                    "function_name": "IntPtrDimAlloc"
                 }
             },
             {
@@ -3264,8 +3241,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimDefault",
                     "F_name_api": "int_ptr_dim_default",
-                    "function_name": "IntPtrDimDefault",
-                    "underscore_name": "int_ptr_dim_default"
+                    "function_name": "IntPtrDimDefault"
                 }
             },
             {
@@ -3347,8 +3323,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimRawNew",
                     "F_name_api": "int_ptr_dim_raw_new",
-                    "function_name": "IntPtrDimRawNew",
-                    "underscore_name": "int_ptr_dim_raw_new"
+                    "function_name": "IntPtrDimRawNew"
                 }
             },
             {
@@ -3436,8 +3411,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimPointerNew",
                     "F_name_api": "int_ptr_dim_pointer_new",
-                    "function_name": "IntPtrDimPointerNew",
-                    "underscore_name": "int_ptr_dim_pointer_new"
+                    "function_name": "IntPtrDimPointerNew"
                 }
             },
             {
@@ -3525,8 +3499,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimAllocNew",
                     "F_name_api": "int_ptr_dim_alloc_new",
-                    "function_name": "IntPtrDimAllocNew",
-                    "underscore_name": "int_ptr_dim_alloc_new"
+                    "function_name": "IntPtrDimAllocNew"
                 }
             },
             {
@@ -3613,8 +3586,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimDefaultNew",
                     "F_name_api": "int_ptr_dim_default_new",
-                    "function_name": "IntPtrDimDefaultNew",
-                    "underscore_name": "int_ptr_dim_default_new"
+                    "function_name": "IntPtrDimDefaultNew"
                 }
             },
             {
@@ -3738,8 +3710,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "create_class_static"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3800,8 +3771,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassStatic",
                     "cxx_rv_decl": "Class1 * SHCXX_rv",
-                    "function_name": "getClassStatic",
-                    "underscore_name": "get_class_static"
+                    "function_name": "getClassStatic"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3991,8 +3961,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassNew",
                     "cxx_rv_decl": "Class1 * SHCXX_rv",
-                    "function_name": "getClassNew",
-                    "underscore_name": "get_class_new"
+                    "function_name": "getClassNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

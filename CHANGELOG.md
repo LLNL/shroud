@@ -2,7 +2,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
@@ -58,6 +58,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Getter and setters will also be generated for struct fields which are pointers
   to native types. Option *F_struct_getter_setter* can be used to control their
   creation.
+- Added ability to add *splicer* to ``typedef`` declarations.
+  For example, to use the C preprocessor to set the type of the typedef.
+  See typedefs.yaml for an example.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml
@@ -88,11 +91,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     ``AFunction`` was ``afunction`` now ``a_function``.
 
 ### Changed
+- Changed name of C and Python function splicers to use *function_name* instead of
+  *underscore_name*.
 - Changed default name mangling for C wrapper functions. Before it used the
   *underscore_name* format field which converted ``CamelCase`` to ``camel_case``.
   Added format field *C_name_api*, which is controlled by option *C_API_case*.
   The default is now to preserve the case of the C++ library routine.
-  The previous behavior can be restored by setting ``C_API_case: underscore``.
+  The previous behavior can be restored by setting option ``C_API_case: underscore``.
+  Removed format fields *lower_name*, *upper_name* and *underscore_case*.
+- Changed default name mangling for LUA wrappers. Before it used the
+  *underscore_name* format field. Now controlled by option *LUA_API_case* which defaults
+  to *preserve* and sets *fmt.LUA_name_api*.
 - Changed default name mangling for Fortran derived type names. Before it used
   the *lower_name* format field which converted the ``CamelCase`` to ``camelcase``.
   Added format field *F_name_api*, which is controlled by option *F_API_case*.

@@ -116,8 +116,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method1"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -225,8 +224,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method2"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -254,10 +252,7 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class2",
-                    "underscore_name": "class2",
-                    "upper_name": "CLASS2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -326,8 +321,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "function1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -347,9 +341,11 @@
                             "CXX_this_call": "one::two::",
                             "C_header_filename": "wraplibrary_one_two.h",
                             "C_impl_filename": "wraplibrary_one_two.cpp",
+                            "C_name_api": "two",
                             "C_name_scope": "one_two_",
                             "F_impl_filename": "wrapflibrary_one_two.f",
                             "F_module_name": "library_one_two_mod",
+                            "F_name_api": "two",
                             "LUA_this_call": "one::two::",
                             "PY_module_init": "library_one_two",
                             "PY_module_name": "two",
@@ -374,9 +370,11 @@
                     "CXX_this_call": "one::",
                     "C_header_filename": "wraplibrary_one.h",
                     "C_impl_filename": "wraplibrary_one.cpp",
+                    "C_name_api": "one",
                     "C_name_scope": "one_",
                     "F_impl_filename": "wrapflibrary_one.f",
                     "F_module_name": "library_one_mod",
+                    "F_name_api": "one",
                     "LUA_this_call": "one::",
                     "PY_module_init": "library_one",
                     "PY_module_name": "one",
@@ -498,8 +496,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -527,10 +524,7 @@
                             "cxx_type": "Class1",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "three_Class1",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class1",
-                            "underscore_name": "class1",
-                            "upper_name": "CLASS1"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -549,9 +543,11 @@
                     "CXX_this_call": "three::",
                     "C_header_filename": "wraplibrary_three.h",
                     "C_impl_filename": "wraplibrary_three.cpp",
+                    "C_name_api": "three",
                     "C_name_scope": "three_",
                     "F_impl_filename": "wrapflibrary_three.f",
                     "F_module_name": "library_three_mod",
+                    "F_name_api": "three",
                     "LUA_this_call": "three::",
                     "PY_module_init": "library_three",
                     "PY_module_name": "three",
@@ -617,8 +613,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -646,10 +641,7 @@
                             "cxx_type": "class0",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer1_class0",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class0",
-                            "underscore_name": "class0",
-                            "upper_name": "CLASS0"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -698,8 +690,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "outer_func"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -718,9 +709,11 @@
                     "CXX_this_call": "outer1::",
                     "C_header_filename": "wraplibrary_outer1.h",
                     "C_impl_filename": "wraplibrary_outer1.cpp",
+                    "C_name_api": "outer1",
                     "C_name_scope": "outer1_",
                     "F_impl_filename": "wrapflibrary_outer1.f",
                     "F_module_name": "library_outer1_mod",
+                    "F_name_api": "outer1",
                     "LUA_this_call": "outer1::",
                     "PY_module_init": "library_outer1",
                     "PY_module_name": "outer1",
@@ -789,8 +782,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -818,10 +810,7 @@
                             "cxx_type": "class0",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer2_class0",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class0",
-                            "underscore_name": "class0",
-                            "upper_name": "CLASS0"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -870,8 +859,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "outer_func"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -890,9 +878,11 @@
                     "CXX_this_call": "outer2::",
                     "C_header_filename": "wraplibrary_outer2.h",
                     "C_impl_filename": "wraplibrary_outer2.cpp",
+                    "C_name_api": "outer2",
                     "C_name_scope": "outer2_",
                     "F_impl_filename": "wrapflibrary_outer2.f",
                     "F_module_name": "library_outer2_mod",
+                    "F_name_api": "outer2",
                     "LUA_this_call": "outer2::",
                     "PY_module_init": "library_outer2",
                     "PY_module_name": "outer2",
@@ -944,8 +934,7 @@
                     "F_name_api": "custom_type",
                     "F_name_typedef": "custom_type",
                     "cxx_type": "CustomType",
-                    "typedef_name": "CustomType",
-                    "underscore_name": "custom_type"
+                    "typedef_name": "CustomType"
                 }
             }
         ],

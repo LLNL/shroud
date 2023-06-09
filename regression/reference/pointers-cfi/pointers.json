@@ -114,8 +114,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "intargs_in"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -221,8 +220,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "intargs_inout"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -328,8 +326,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "intargs_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -540,8 +537,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "intargs"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -768,8 +764,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "cos_doubles"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1003,8 +998,7 @@
                     "function_name": "cos_doubles",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "cos_doubles"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1231,8 +1225,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "truncate_to_int"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1466,8 +1459,7 @@
                     "function_name": "truncate_to_int",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "truncate_to_int"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1641,8 +1633,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_values"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1826,8 +1817,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_values2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1992,8 +1982,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "iota_dimension"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2202,8 +2191,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "sum"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2419,8 +2407,7 @@
                     "function_name": "Sum",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "sum"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2539,8 +2526,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fill_int_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2701,8 +2687,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "increment_int_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2866,8 +2851,7 @@
                     "function_name": "incrementIntArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "increment_int_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3024,8 +3008,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fill_with_zeros"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3185,8 +3168,7 @@
                     "function_name": "fill_with_zeros",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fill_with_zeros"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3343,8 +3325,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "accumulate",
-                    "underscore_name": "accumulate"
+                    "function_name": "accumulate"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3537,8 +3518,7 @@
                     "F_name_api": "accumulate",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "accumulate",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "accumulate"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3682,8 +3662,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptCharArrayIn",
-                    "underscore_name": "accept_char_array_in"
+                    "function_name": "acceptCharArrayIn"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3835,8 +3814,7 @@
                     "F_name_api": "accept_char_array_in",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptCharArrayIn",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "accept_char_array_in"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3964,8 +3942,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "set_global_int"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4014,8 +3991,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "sumFixedArray",
-                    "underscore_name": "sum_fixed_array"
+                    "function_name": "sumFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4159,8 +4135,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_scalar"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4282,8 +4257,7 @@
                     "function_name": "getPtrToScalar",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_scalar"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4407,8 +4381,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_fixed_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4546,8 +4519,7 @@
                     "function_name": "getPtrToFixedArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_fixed_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4722,8 +4694,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_dynamic_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4912,8 +4883,7 @@
                     "function_name": "getPtrToDynamicArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_dynamic_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5038,8 +5008,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_func_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5178,8 +5147,7 @@
                     "function_name": "getPtrToFuncArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_func_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5292,8 +5260,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_const_scalar"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5416,8 +5383,7 @@
                     "function_name": "getPtrToConstScalar",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_const_scalar"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5539,8 +5505,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_fixed_const_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5676,8 +5641,7 @@
                     "function_name": "getPtrToFixedConstArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_fixed_const_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5850,8 +5814,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6038,8 +6001,7 @@
                     "function_name": "getPtrToDynamicConstArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6153,8 +6115,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_raw_ptr_to_scalar"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6271,8 +6232,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_raw_ptr_to_scalar_force"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6386,8 +6346,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_raw_ptr_to_fixed_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6504,8 +6463,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_raw_ptr_to_fixed_array_force"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6622,8 +6580,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_raw_ptr_to_int2d"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6736,8 +6693,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "checkInt2d",
-                    "underscore_name": "check_int2d"
+                    "function_name": "checkInt2d"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6894,8 +6850,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "dimension_in"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7021,8 +6976,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_alloc_to_fixed_array"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7154,8 +7108,7 @@
                     "function_name": "getAllocToFixedArray",
                     "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_alloc_to_fixed_array"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -7260,8 +7213,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "void * SHC_rv",
-                    "function_name": "returnAddress1",
-                    "underscore_name": "return_address1"
+                    "function_name": "returnAddress1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7399,8 +7351,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "void * SHC_rv",
-                    "function_name": "returnAddress2",
-                    "underscore_name": "return_address2"
+                    "function_name": "returnAddress2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7539,8 +7490,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fetch_void_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7651,8 +7601,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "update_void_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7766,8 +7715,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "VoidPtrArray",
-                    "underscore_name": "void_ptr_array"
+                    "function_name": "VoidPtrArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7910,8 +7858,7 @@
                     "F_name_api": "void_ptr_array",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "VoidPtrArray",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "void_ptr_array"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7996,8 +7943,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntPtrToScalar",
-                    "underscore_name": "return_int_ptr_to_scalar"
+                    "function_name": "returnIntPtrToScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8080,8 +8026,7 @@
                     "F_name_api": "return_int_ptr_to_scalar",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntPtrToScalar",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_ptr_to_scalar"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8187,8 +8132,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntPtrToFixedArray",
-                    "underscore_name": "return_int_ptr_to_fixed_array"
+                    "function_name": "returnIntPtrToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8283,8 +8227,7 @@
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntPtrToFixedArray",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_ptr_to_fixed_array"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8391,8 +8334,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHC_rv",
-                    "function_name": "returnIntPtrToConstScalar",
-                    "underscore_name": "return_int_ptr_to_const_scalar"
+                    "function_name": "returnIntPtrToConstScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8476,8 +8418,7 @@
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "cxx_rv_decl": "const int * SHCXX_rv",
                     "function_name": "returnIntPtrToConstScalar",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_ptr_to_const_scalar"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8584,8 +8525,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHC_rv",
-                    "function_name": "returnIntPtrToFixedConstArray",
-                    "underscore_name": "return_int_ptr_to_fixed_const_array"
+                    "function_name": "returnIntPtrToFixedConstArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8681,8 +8621,7 @@
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "cxx_rv_decl": "const int * SHCXX_rv",
                     "function_name": "returnIntPtrToFixedConstArray",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_ptr_to_fixed_const_array"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8785,8 +8724,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntScalar",
-                    "underscore_name": "return_int_scalar"
+                    "function_name": "returnIntScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8877,8 +8815,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntRaw",
-                    "underscore_name": "return_int_raw"
+                    "function_name": "returnIntRaw"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9027,8 +8964,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntRawWithArgs",
-                    "underscore_name": "return_int_raw_with_args"
+                    "function_name": "returnIntRawWithArgs"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9176,8 +9112,7 @@
                     "F_name_api": "return_int_raw_with_args",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntRawWithArgs",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_raw_with_args"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9264,8 +9199,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * * SHC_rv",
-                    "function_name": "returnRawPtrToInt2d",
-                    "underscore_name": "return_raw_ptr_to_int2d"
+                    "function_name": "returnRawPtrToInt2d"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9365,8 +9299,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntAllocToFixedArray",
-                    "underscore_name": "return_int_alloc_to_fixed_array"
+                    "function_name": "returnIntAllocToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9463,8 +9396,7 @@
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntAllocToFixedArray",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "return_int_alloc_to_fixed_array"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

@@ -44,10 +44,10 @@ PY_One(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.outer.function.one
+// splicer begin namespace.outer.function.One
     outer::One();
     Py_RETURN_NONE;
-// splicer end namespace.outer.function.one
+// splicer end namespace.outer.function.One
 }
 static PyMethodDef PY_methods[] = {
 {"One", (PyCFunction)PY_One, METH_NOARGS, PY_One__doc__},

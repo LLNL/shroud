@@ -109,7 +109,7 @@ static int l_Class1_delete(lua_State *L)
  * \brief returns the value of flag member
  *
  */
-static int l_Class1_method1(lua_State *L)
+static int l_Class1_Method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
@@ -129,7 +129,7 @@ static int l_Class1_method1(lua_State *L)
  * \brief test helper
  *
  */
-static int l_Class1_get_name(lua_State *L)
+static int l_Class1_getName(lua_State *L)
 {
     // splicer begin class.Class1.method.getName
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
@@ -149,7 +149,7 @@ static int l_Class1_get_name(lua_State *L)
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_native_scalar
-static int l_Class1_direction_func(lua_State *L)
+static int l_Class1_directionFunc(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
     classes::Class1::DIRECTION arg =
@@ -168,9 +168,9 @@ static int l_Class1_direction_func(lua_State *L)
 
 static const struct luaL_Reg l_Class1_Reg [] = {
     {"__gc", l_Class1_delete},
-    {"Method1", l_Class1_method1},
-    {"getName", l_Class1_get_name},
-    {"directionFunc", l_Class1_direction_func},
+    {"Method1", l_Class1_Method1},
+    {"getName", l_Class1_getName},
+    {"directionFunc", l_Class1_directionFunc},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register
     {NULL, NULL}   /*sentinel */
@@ -185,7 +185,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
  * \brief test helper
  *
  */
-static int l_Class2_get_name(lua_State *L)
+static int l_Class2_getName(lua_State *L)
 {
     // splicer begin class.Class2.method.getName
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
@@ -200,7 +200,7 @@ static int l_Class2_get_name(lua_State *L)
 // splicer end class.Class2.additional_functions
 
 static const struct luaL_Reg l_Class2_Reg [] = {
-    {"getName", l_Class2_get_name},
+    {"getName", l_Class2_getName},
     // splicer begin class.Class2.register
     // splicer end class.Class2.register
     {NULL, NULL}   /*sentinel */
@@ -290,7 +290,7 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
 // Exact:     lua_in_native_scalar
-static int l_direction_func(lua_State *L)
+static int l_directionFunc(lua_State *L)
 {
     // splicer begin function.directionFunc
     classes::Class1::DIRECTION arg =
@@ -338,7 +338,7 @@ static int l_get_global_flag(lua_State *L)
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
 // Exact:     lua_function_string_&
-static int l_last_function_called(lua_State *L)
+static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
@@ -354,10 +354,10 @@ static const struct luaL_Reg l_classes_Reg [] = {
     {"Class1", l_Class1_ctor},
     {"Shape", l_Shape_ctor},
     {"Circle", l_Circle_ctor},
-    {"directionFunc", l_direction_func},
+    {"directionFunc", l_directionFunc},
     {"set_global_flag", l_set_global_flag},
     {"get_global_flag", l_get_global_flag},
-    {"LastFunctionCalled", l_last_function_called},
+    {"LastFunctionCalled", l_LastFunctionCalled},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

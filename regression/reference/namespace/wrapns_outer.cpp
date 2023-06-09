@@ -26,9 +26,9 @@ extern "C" {
 // Exact:     c_subroutine
 void NS_outer_One(void)
 {
-    // splicer begin namespace.outer.function.one
+    // splicer begin namespace.outer.function.One
     outer::One();
-    // splicer end namespace.outer.function.one
+    // splicer end namespace.outer.function.One
 }
 
 }  // extern "C"

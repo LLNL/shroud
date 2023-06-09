@@ -112,7 +112,7 @@ PY_Method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.Class1.method.method1
+// splicer begin class.Class1.method.Method1
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = self->obj->Method1();
@@ -121,7 +121,7 @@ PY_Method1(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.Class1.method.method1
+// splicer end class.Class1.method.Method1
 }
 
 // ----------------------------------------
@@ -222,7 +222,7 @@ PY_getName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.Class1.method.get_name
+// splicer begin class.Class1.method.getName
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getName();
@@ -232,7 +232,7 @@ PY_getName(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.Class1.method.get_name
+// splicer end class.Class1.method.getName
 }
 
 // ----------------------------------------
@@ -255,7 +255,7 @@ PY_directionFunc(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Class1.method.direction_func
+// splicer begin class.Class1.method.directionFunc
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -277,7 +277,7 @@ PY_directionFunc(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.Class1.method.direction_func
+// splicer end class.Class1.method.directionFunc
 }
 
 static int

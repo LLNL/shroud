@@ -60,4 +60,25 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 }
 // end TYP_typestruct
 
+// ----------------------------------------
+// Function:  int returnBytesForIndexType
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  IndexType arg +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start TYP_returnBytesForIndexType
+int TYP_returnBytesForIndexType(TYP_IndexType arg)
+{
+    // splicer begin function.returnBytesForIndexType
+    IndexType SHCXX_arg = static_cast<IndexType>(arg);
+    int SHC_rv = returnBytesForIndexType(SHCXX_arg);
+    return SHC_rv;
+    // splicer end function.returnBytesForIndexType
+}
+// end TYP_returnBytesForIndexType
+
 }  // extern "C"

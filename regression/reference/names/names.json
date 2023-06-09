@@ -52,10 +52,7 @@
                     "cxx_type": "Names2",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Names2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "names2",
-                    "underscore_name": "names2",
-                    "upper_name": "NAMES2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -139,10 +136,7 @@
                     "cxx_type": "twoTs<int, long>",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_0",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "twots_0",
-                    "underscore_name": "two_ts_0",
-                    "upper_name": "TWOTS_0"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -230,10 +224,7 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_instantiation4",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "twots_instantiation4",
-                    "template_suffix": "_instantiation4",
-                    "underscore_name": "two_ts_instantiation4",
-                    "upper_name": "TWOTS_INSTANTIATION4"
+                    "template_suffix": "_instantiation4"
                 }
             },
             {
@@ -278,10 +269,7 @@
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_class",
-                    "underscore_name": "cstruct_as_class",
-                    "upper_name": "CSTRUCT_AS_CLASS"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -328,10 +316,7 @@
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_subclass",
-                    "underscore_name": "cstruct_as_subclass",
-                    "upper_name": "CSTRUCT_AS_SUBCLASS"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -534,8 +519,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_name"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -639,8 +623,7 @@
                     "function_name": "getName",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_name"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -689,8 +672,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "function1"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -744,8 +726,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "function2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -873,8 +854,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "function3a"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1002,8 +982,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "function3a"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1127,8 +1106,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_function4",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "function4",
-                    "underscore_name": "function4"
+                    "function_name": "function4"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1278,8 +1256,7 @@
                     "F_name_api": "function4",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "function4",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "function4"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1358,8 +1335,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fiveplus"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1574,8 +1550,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "test_multiline_splicer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1750,8 +1725,7 @@
                     "function_name": "TestMultilineSplicer",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "test_multiline_splicer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1869,8 +1843,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
-                    "function_name": "FunctionTU",
-                    "underscore_name": "function_tu"
+                    "function_name": "FunctionTU"
                 }
             },
             {
@@ -2120,8 +2093,7 @@
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
                     "stmtc1": "c_subroutine",
-                    "template_suffix": "_0",
-                    "underscore_name": "function_tu"
+                    "template_suffix": "_0"
                 }
             },
             {
@@ -2377,8 +2349,7 @@
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
                     "stmtc1": "c_subroutine",
-                    "template_suffix": "_instantiation2",
-                    "underscore_name": "function_tu"
+                    "template_suffix": "_instantiation2"
                 }
             },
             {
@@ -2430,8 +2401,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
-                    "function_name": "UseImplWorker",
-                    "underscore_name": "use_impl_worker"
+                    "function_name": "UseImplWorker"
                 }
             },
             {
@@ -2508,8 +2478,7 @@
                     "PY_name_impl": "PY_UseImplWorker_instantiation3",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseImplWorker",
-                    "template_suffix": "_instantiation3",
-                    "underscore_name": "use_impl_worker"
+                    "template_suffix": "_instantiation3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2693,8 +2662,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_Cstruct_as_class_sum",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "Cstruct_as_class_sum",
-                    "underscore_name": "cstruct_as_class_sum"
+                    "function_name": "Cstruct_as_class_sum"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3214,8 +3182,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "external_funcs"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],
@@ -3286,8 +3253,7 @@
                                     "PY_type_impl": "PY_Names_tp_init",
                                     "PY_type_method": "tp_init",
                                     "cxx_rv_decl": "ns0::Names ARG_rv",
-                                    "function_name": "defaultctor",
-                                    "underscore_name": "defaultctor"
+                                    "function_name": "defaultctor"
                                 },
                                 "zz_fmtresult": {
                                     "fmtc": {
@@ -3398,8 +3364,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             },
                             {
@@ -3461,15 +3426,14 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method2"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
                         "name": "Names",
                         "options": {
-                            "C_name_template": "XXX_{C_prefix}{C_name_scope}{underscore_name}{function_suffix}",
-                            "F_C_name_template": "XXX_{C_prefix}{F_name_scope}{underscore_name}{function_suffix}",
+                            "C_name_template": "XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}",
+                            "F_C_name_template": "XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}",
                             "none": "foo"
                         },
                         "parse_keyword": "class",
@@ -3508,10 +3472,7 @@
                             "cxx_type": "Names",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "ns0_Names",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "names",
-                            "underscore_name": "names",
-                            "upper_name": "NAMES"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -3536,9 +3497,11 @@
                             "CXX_this_call": "ns0::inner::",
                             "C_header_filename": "wraptestnames_ns0_inner.hh",
                             "C_impl_filename": "wraptestnames_ns0_inner.cc",
+                            "C_name_api": "inner",
                             "C_name_scope": "ns0_inner_",
                             "F_impl_filename": "wrapftestnames_ns0_inner.F",
                             "F_module_name": "testnames_ns0_inner_mod",
+                            "F_name_api": "inner",
                             "LUA_this_call": "ns0::inner::",
                             "PY_library_doc": "library documentation",
                             "PY_module_filename": "pytestnames_ns0_innermodule.cpp",
@@ -3572,9 +3535,11 @@
                     "CXX_this_call": "ns0::",
                     "C_header_filename": "foons0.h",
                     "C_impl_filename": "foons0.cpp",
+                    "C_name_api": "ns0",
                     "C_name_scope": "ns0_",
                     "F_impl_filename": "foo.f",
                     "F_module_name": "name_module",
+                    "F_name_api": "ns0",
                     "LUA_this_call": "ns0::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytestnames_ns0module.cpp",
@@ -3635,14 +3600,13 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "init_ns1"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
                 "name": "ns1",
                 "options": {
-                    "F_name_impl_template": "{library_lower}_{F_name_scope}{underscore_name}{function_suffix}"
+                    "F_name_impl_template": "{library_lower}_{F_name_scope}{F_name_api}{function_suffix}"
                 },
                 "scope": "ns1::",
                 "scope_file": [
@@ -3658,9 +3622,11 @@
                     "CXX_this_call": "ns1::",
                     "C_header_filename": "wraptestnames_ns1.hh",
                     "C_impl_filename": "wraptestnames_ns1.cc",
+                    "C_name_api": "ns1",
                     "C_name_scope": "ns1_",
                     "F_impl_filename": "wrapftestnames_ns1.F",
                     "F_module_name": "testnames_ns1_mod",
+                    "F_name_api": "ns1",
                     "LUA_this_call": "ns1::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytestnames_ns1module.cpp",
@@ -3706,10 +3672,7 @@
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
                             "file_scope": "internal_ImplWorker1",
-                            "lower_name": "implworker1",
-                            "template_suffix": "_instantiation3",
-                            "underscore_name": "impl_worker1",
-                            "upper_name": "IMPLWORKER1"
+                            "template_suffix": "_instantiation3"
                         }
                     }
                 ],
@@ -3729,9 +3692,11 @@
                     "CXX_this_call": "internal::",
                     "C_header_filename": "wraptestnames_internal.hh",
                     "C_impl_filename": "wraptestnames_internal.cc",
+                    "C_name_api": "internal",
                     "C_name_scope": "internal_",
                     "F_impl_filename": "wrapftestnames_internal.F",
                     "F_module_name": "testnames_internal_mod",
+                    "F_name_api": "internal",
                     "LUA_this_call": "internal::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytestnames_internalmodule.cpp",
@@ -3846,10 +3811,7 @@
                             "cxx_type": "vector<int>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_int",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vvv1",
-                            "underscore_name": "vvv1",
-                            "upper_name": "VVV1"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     },
                     {
@@ -3948,10 +3910,7 @@
                             "cxx_type": "vector<double>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_double",
-                            "underscore_name": "vector_double",
-                            "upper_name": "VECTOR_DOUBLE"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     },
                     {
@@ -4054,10 +4013,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation5",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_instantiation5",
-                            "template_suffix": "_instantiation5",
-                            "underscore_name": "vector_instantiation5",
-                            "upper_name": "VECTOR_INSTANTIATION5"
+                            "template_suffix": "_instantiation5"
                         }
                     },
                     {
@@ -4156,10 +4112,7 @@
                             "cxx_type": "vector<internal::ImplWorker1>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation3",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_instantiation3",
-                            "underscore_name": "vector_instantiation3",
-                            "upper_name": "VECTOR_INSTANTIATION3"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -4179,9 +4132,11 @@
                     "CXX_this_call": "std::",
                     "C_header_filename": "wraptestnames_std.hh",
                     "C_impl_filename": "wraptestnames_std.cc",
+                    "C_name_api": "std",
                     "C_name_scope": "std_",
                     "F_impl_filename": "wrapftestnames_std.F",
                     "F_module_name": "testnames_std_mod",
+                    "F_name_api": "std",
                     "LUA_this_call": "std::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytestnames_stdmodule.cpp",
@@ -4249,8 +4204,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "member1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -4278,10 +4232,7 @@
                             "cxx_type": "Class1",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "CAPI_Class1",
-                            "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class1",
-                            "underscore_name": "class1",
-                            "upper_name": "CLASS1"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -4330,8 +4281,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "worker1"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -4353,9 +4303,11 @@
                     "CXX_this_call": "CAPI::",
                     "C_header_filename": "wraptestnames_CAPI.hh",
                     "C_impl_filename": "wraptestnames_CAPI.cc",
+                    "C_name_api": "capi",
                     "C_name_scope": "capi_",
                     "F_impl_filename": "wrapftestnames_CAPI.F",
                     "F_module_name": "testnames_capi_mod",
+                    "F_name_api": "capi",
                     "LUA_this_call": "CAPI::",
                     "PY_module_init": "testnames_CAPI",
                     "PY_module_name": "CAPI",
@@ -4363,6 +4315,92 @@
                     "PY_this_call": "CAPI::",
                     "file_scope": "testnames_CAPI",
                     "namespace_scope": "CAPI::"
+                }
+            },
+            {
+                "<NAMESPACE>": "****************************************",
+                "functions": [
+                    {
+                        "<FUNCTION>": "24 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "Worker1",
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void Worker1()",
+                        "declgen": "void Worker1(void)",
+                        "name": "Worker1",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TES_CAPItwo_Worker1",
+                            "C_name_api": "Worker1",
+                            "C_prototype": "void",
+                            "C_return_type": "void",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_worker1",
+                            "F_C_name": "c_worker1",
+                            "F_C_subprogram": "subroutine",
+                            "F_arguments": "",
+                            "F_name_api": "worker1",
+                            "F_name_function": "worker1",
+                            "F_name_generic": "worker1",
+                            "F_name_impl": "worker1",
+                            "F_subprogram": "subroutine",
+                            "function_name": "Worker1",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine"
+                        }
+                    }
+                ],
+                "name": "CAPI2",
+                "options": {
+                    "wrap_python": false
+                },
+                "scope": "CAPI2::",
+                "scope_file": [
+                    "testnames",
+                    "CAPI2"
+                ],
+                "user_fmt": {
+                    "C_name_api": "CAPItwo",
+                    "F_name_api": "FAPItwo"
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "CAPI2::",
+                    "C_header_filename": "wraptestnames_CAPI2.hh",
+                    "C_impl_filename": "wraptestnames_CAPI2.cc",
+                    "C_name_api": "CAPItwo",
+                    "C_name_scope": "CAPItwo_",
+                    "F_impl_filename": "wrapftestnames_CAPI2.F",
+                    "F_module_name": "testnames_capi2_mod",
+                    "F_name_api": "FAPItwo",
+                    "LUA_this_call": "CAPI2::",
+                    "PY_module_init": "testnames_CAPI2",
+                    "PY_module_name": "CAPI2",
+                    "PY_module_scope": "testnames.CAPI2",
+                    "PY_this_call": "CAPI2::",
+                    "file_scope": "testnames_CAPI2",
+                    "namespace_scope": "CAPI2::"
                 }
             }
         ],

@@ -293,7 +293,7 @@ PY_ReturnVectorAlloc(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_vector_alloc
+// splicer begin function.ReturnVectorAlloc
     int n;
     const char *SHT_kwlist[] = {
         "n",
@@ -315,7 +315,7 @@ PY_ReturnVectorAlloc(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_vector_alloc
+// splicer end function.ReturnVectorAlloc
 }
 
 // ----------------------------------------
@@ -340,7 +340,7 @@ PY_returnDim2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_dim2
+// splicer begin function.returnDim2
     int * arg = nullptr;
     PyObject *SHTPy_arg = nullptr;
     VEC_SHROUD_converter_value SHValue_arg = {NULL, NULL, NULL, NULL, 0};
@@ -379,7 +379,7 @@ PY_returnDim2(
 fail:
     Py_XDECREF(SHValue_arg.dataobj);
     return nullptr;
-// splicer end function.return_dim2
+// splicer end function.returnDim2
 }
 static PyMethodDef PY_methods[] = {
 {"vector_sum", (PyCFunction)PY_vector_sum, METH_VARARGS|METH_KEYWORDS,

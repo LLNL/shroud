@@ -51,7 +51,7 @@ PY_getReference(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.Singleton.method.get_reference
+// splicer begin class.Singleton.method.getReference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
 
     // post_call
@@ -60,7 +60,7 @@ PY_getReference(
     SHTPy_rv->obj = &SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.Singleton.method.get_reference
+// splicer end class.Singleton.method.getReference
 }
 // splicer begin class.Singleton.impl.after_methods
 // splicer end class.Singleton.impl.after_methods

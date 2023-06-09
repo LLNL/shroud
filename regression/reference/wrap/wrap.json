@@ -49,8 +49,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "func_in_class"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -76,10 +75,7 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "WRA_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class1",
-                    "underscore_name": "class1",
-                    "upper_name": "CLASS1"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],

@@ -456,10 +456,10 @@ bool TYP_bool_func(bool arg)
 // Match:     c_default
 bool TYP_returnBoolAndOthers(int * flag)
 {
-    // splicer begin function.return_bool_and_others
+    // splicer begin function.returnBoolAndOthers
     bool SHC_rv = returnBoolAndOthers(flag);
     return SHC_rv;
-    // splicer end function.return_bool_and_others
+    // splicer end function.returnBoolAndOthers
 }
 
 }  // extern "C"

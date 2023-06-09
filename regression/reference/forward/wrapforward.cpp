@@ -32,12 +32,12 @@ extern "C" {
 // Match:     c_in_struct
 int FOR_passStruct1(const STR_cstruct1 * arg)
 {
-    // splicer begin function.pass_struct1
+    // splicer begin function.passStruct1
     const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>
         (static_cast<const void *>(arg));
     int SHC_rv = forward::passStruct1(SHCXX_arg);
     return SHC_rv;
-    // splicer end function.pass_struct1
+    // splicer end function.passStruct1
 }
 
 }  // extern "C"

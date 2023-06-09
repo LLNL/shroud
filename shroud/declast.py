@@ -2183,7 +2183,9 @@ class SymbolTable(object):
         self.scopename = self.scopename[:self.scope_len[-1]] + name + '::'
         self.scope_len.append(len(self.scopename))
 
-        node.init_symtab(self.current, self.scopename)
+        if not hasattr(node, "scope_prefix"):
+            # Only initialize once.
+            node.init_symtab(self.current, self.scopename)
         self.scope_stack.append(node)
         self.current = node
 
@@ -2227,8 +2229,8 @@ class SymbolTable(object):
             if name in ns.symbols:
                 ns = ns.symbols[name]
                 # GGG make sure it is a Namespace node
-                symtab.add_child_to_current(ns)
-                symtab.push_scope(ns)
+                self.add_child_to_current(ns)
+                self.push_scope(ns)
             else:
                 node = Namespace(name, self)
                 ns.symbols[name] = node

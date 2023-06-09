@@ -61,8 +61,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method1"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -116,8 +115,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method2"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -175,8 +173,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method3def"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -314,8 +311,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method3def"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -352,10 +348,7 @@
                     "cxx_type": "User1",
                     "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User1",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "user1",
-                    "underscore_name": "user1",
-                    "upper_name": "USER1"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -417,8 +410,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "exfunc"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -546,8 +538,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "exfunc"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -584,10 +575,7 @@
                     "cxx_type": "User2",
                     "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "user2",
-                    "underscore_name": "user2",
-                    "upper_name": "USER2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],

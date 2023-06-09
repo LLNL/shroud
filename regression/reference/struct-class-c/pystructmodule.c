@@ -53,7 +53,7 @@ PY_passStructByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct_by_value
+// splicer begin function.passStructByValue
     PY_Cstruct1 * SHPy_arg;
     char *SHT_kwlist[] = {
         "arg",
@@ -73,7 +73,7 @@ PY_passStructByValue(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_struct_by_value
+// splicer end function.passStructByValue
 }
 
 // ----------------------------------------
@@ -95,7 +95,7 @@ PY_passStruct1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct1
+// splicer begin function.passStruct1
     PY_Cstruct1 * SHPy_arg;
     char *SHT_kwlist[] = {
         "arg",
@@ -115,7 +115,7 @@ PY_passStruct1(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_struct1
+// splicer end function.passStruct1
 }
 
 // ----------------------------------------
@@ -144,7 +144,7 @@ PY_passStruct2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct2
+// splicer begin function.passStruct2
     PY_Cstruct1 * SHPy_s1;
     char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
@@ -165,7 +165,7 @@ PY_passStruct2(
     SHTPy_rv = Py_BuildValue("is", SHCXX_rv, outbuf);
 
     return SHTPy_rv;
-// splicer end function.pass_struct2
+// splicer end function.passStruct2
 }
 
 // ----------------------------------------
@@ -187,7 +187,7 @@ PY_acceptStructInPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_struct_in_ptr
+// splicer begin function.acceptStructInPtr
     PY_Cstruct1 * SHPy_arg;
     char *SHT_kwlist[] = {
         "arg",
@@ -207,7 +207,7 @@ PY_acceptStructInPtr(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.accept_struct_in_ptr
+// splicer end function.acceptStructInPtr
 }
 
 // ----------------------------------------
@@ -241,7 +241,7 @@ PY_acceptStructOutPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_struct_out_ptr
+// splicer begin function.acceptStructOutPtr
     Cstruct1 *arg = NULL;
     PyObject *SHPy_arg = NULL;
     int i;
@@ -269,7 +269,7 @@ PY_acceptStructOutPtr(
 fail:
     Py_XDECREF(SHPy_arg);
     return NULL;
-// splicer end function.accept_struct_out_ptr
+// splicer end function.acceptStructOutPtr
 }
 
 // ----------------------------------------
@@ -290,7 +290,7 @@ PY_acceptStructInOutPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_struct_in_out_ptr
+// splicer begin function.acceptStructInOutPtr
     PY_Cstruct1 * SHPy_arg;
     char *SHT_kwlist[] = {
         "arg",
@@ -306,7 +306,7 @@ PY_acceptStructInOutPtr(
 
     acceptStructInOutPtr(arg);
     return (PyObject *) SHPy_arg;
-// splicer end function.accept_struct_in_out_ptr
+// splicer end function.acceptStructInOutPtr
 }
 
 // ----------------------------------------
@@ -333,7 +333,7 @@ PY_returnStructByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_struct_by_value
+// splicer begin function.returnStructByValue
     int i;
     double d;
     char *SHT_kwlist[] = {
@@ -368,7 +368,7 @@ fail:
     }
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_struct_by_value
+// splicer end function.returnStructByValue
 }
 
 // ----------------------------------------
@@ -400,7 +400,7 @@ PY_returnStructPtr1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_struct_ptr1
+// splicer begin function.returnStructPtr1
     int i;
     double d;
     char *SHT_kwlist[] = {
@@ -424,7 +424,7 @@ PY_returnStructPtr1(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_struct_ptr1
+// splicer end function.returnStructPtr1
 }
 
 // ----------------------------------------
@@ -460,7 +460,7 @@ PY_returnStructPtr2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_struct_ptr2
+// splicer begin function.returnStructPtr2
     int i;
     double d;
     char outbuf[LENOUTBUF];  // intent(out)
@@ -487,7 +487,7 @@ PY_returnStructPtr2(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_struct_ptr2
+// splicer end function.returnStructPtr2
 }
 
 // ----------------------------------------

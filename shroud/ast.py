@@ -143,9 +143,10 @@ class AstNode(object):
         and its parents."""
         return self.ast.unqualified_lookup(name)
 
-    def apply_C_API_option(self, name):
-        """Apply option.C_API_case to name"""
-        case = self.options.C_API_case
+    def apply_API_option(self, name, case, optname):
+        """Apply case option to name
+        Used with options  C_API_case and F_API_case.
+        """
         if case == 'preserve':
             return name
         elif case == 'lower':
@@ -156,24 +157,23 @@ class AstNode(object):
             return util.un_camel(name)
         else:
             raise RuntimeError(
-                "Unexpected value of option C_API_case: {}"
-                .format(case))
+                "Unexpected value of option {}: {}"
+                .format(optname, case))
+
+    def apply_C_API_option(self, name):
+        """Apply option.C_API_case to name"""
+        case = self.options.C_API_case
+        return self.apply_API_option(name, case, "C_API_case")
 
     def apply_F_API_option(self, name):
         """Apply option.F_API_case to name"""
         case = self.options.F_API_case
-        if case == 'underscore':
-            return util.un_camel(name)
-        elif case == 'lower':
-            return name.lower()
-        elif case == 'upper':
-            return name.upper()
-        elif case == 'preserve':
-            return name
-        else:
-            raise RuntimeError(
-                "Unexpected value of option F_API_case: {}"
-                .format(case))
+        return self.apply_API_option(name, case, "F_API_case")
+
+    def apply_LUA_API_option(self, name):
+        """Apply option.LUA_API_case to name"""
+        case = self.options.LUA_API_case
+        return self.apply_API_option(name, case, "LUA_API_case")
 
     def update_names(self):
         """Update C and Fortran names.
@@ -346,7 +346,8 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, self.symtab)
 
         name = ast.declarator.user_name  # Local name.
-        node = TypedefNode(name, self, ast, fields)
+        splicer = kwargs.get("splicer", {})
+        node = TypedefNode(name, self, ast, fields, splicer)
         self.typedefs.append(node)
 
         # Add typedefs names to structs/enums.
@@ -590,6 +591,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_abstract_interface_argument_template="arg{index}",
             F_derived_name_template="{F_name_api}",
 
+            LUA_API_case="preserve",
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
                 "lua{library}module.{LUA_impl_filename_suffix}"
@@ -604,7 +606,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_metadata_template="{cxx_class}.metatable",
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
-            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
+            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{LUA_name_api}",
 
             PY_create_generic=True,
             PY_module_filename_template=(
@@ -1021,12 +1023,17 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.scope_file = self.parent.scope_file + [self.name]
 
         self.user_fmt = format
-        self.default_format(parent, format, skip)
+        self.default_format(parent, skip)
 
     #####
 
-    def default_format(self, parent, format, skip=False):
-        """Set format dictionary."""
+    def default_format(self, parent, skip=False):
+        """Set format dictionary.
+
+        Parameters
+        ----------
+        skip : Skip adding to name_scope.
+        """
 
         options = self.options
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1035,14 +1042,22 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
+        fmt_ns.C_name_api = self.apply_C_API_option(self.name)
+        fmt_ns.F_name_api = self.apply_F_API_option(self.name)
+
+        if self.user_fmt:
+            fmt_ns.update(self.user_fmt, replace=True)
+
         if not skip:
-            fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_"
-            )
-            if options.flatten_namespace or options.F_flatten_namespace:
-                fmt_ns.F_name_scope = (
-                    parent.fmtdict.F_name_scope + self.name.lower() + "_"
+            if fmt_ns.C_name_api:
+                fmt_ns.C_name_scope = (
+                    parent.fmtdict.C_name_scope + fmt_ns.C_name_api + "_"
                 )
+            if fmt_ns.F_name_api:
+                if options.flatten_namespace or options.F_flatten_namespace:
+                    fmt_ns.F_name_scope = (
+                        parent.fmtdict.F_name_scope + fmt_ns.F_name_api + "_"
+                    )
         fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
@@ -1060,9 +1075,6 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.eval_template("F_impl_filename", "_namespace")
             self.eval_template("F_module_name", "_namespace")
         fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
-
-        if format:
-            fmt_ns.update(format, replace=True)
 
         # If user changes PY_module_name, reflect change in PY_module_scope.
         if not skip:
@@ -1233,9 +1245,6 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_type=name_instantiation,
             cxx_class=name_api,
 
-            underscore_name = util.un_camel(name_api),
-            upper_name = name_api.upper(),
-            lower_name = name_api.lower(),
             C_name_api = self.apply_C_API_option(name_api),
             F_name_api = self.apply_F_API_option(name_api),
 
@@ -1243,8 +1252,6 @@ class ClassNode(AstNode, NamespaceMixin):
 #            namespace_scope=self.parent.fmtdict.namespace_scope + name_api + "::",
 
             # The scope for things in the class.
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(name_api) + "_",
-            F_name_scope=self.parent.fmtdict.F_name_scope + self.apply_F_API_option(name_api) + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
 
@@ -1264,6 +1271,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_impl_filename", "_class")
 
         self.eval_template("F_derived_name")
+
+        fmt = self.fmtdict
+        fmt.C_name_scope = self.parent.fmtdict.C_name_scope + fmt.C_name_api + "_"
+        fmt.F_name_scope = self.parent.fmtdict.F_name_scope + fmt.F_name_api + "_"
         
         # As PyArray_Descr
         if self.parse_keyword == "struct":
@@ -1601,7 +1612,6 @@ class FunctionNode(AstNode):
 
         fmt_func.update(dict(
             function_name=self.name,
-            underscore_name=util.un_camel(self.name),
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api=self.apply_F_API_option(self.name),
         ))
@@ -1782,9 +1792,18 @@ class TypedefNode(AstNode):
     Includes builtin typedefs and from declarations.
 
     type name must be in a typemap.
+
+    - decl: typedef int IndexType
+    - fields:
+        
+    - splicer:
+      c: []
+      f: []
+      py: [] ???
     """
 
     def __init__(self, name, parent, ast, fields,
+                 splicer={},
                  format={}, options=None,
                  **kwargs):
         """
@@ -1799,6 +1818,7 @@ class TypedefNode(AstNode):
         self.parent = parent
         self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
+        self.splicer = splicer
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -1831,7 +1851,6 @@ class TypedefNode(AstNode):
             parent=parent.fmtdict,
             cxx_type=self.name,
             typedef_name=self.name,
-            underscore_name = util.un_camel(self.name),
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
         )

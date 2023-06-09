@@ -67,8 +67,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -156,8 +155,7 @@
                     "F_name_api": "get_const_string_ptr_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

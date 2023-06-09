@@ -67,7 +67,7 @@ PY_Cstruct_ptr_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
+// splicer begin class.Cstruct_ptr.method.Cstruct_ptr_ctor
     STR_SHROUD_converter_value SHValue_cfield = {NULL, NULL, NULL, NULL, 0};
     SHValue_cfield.name = "cfield";
     STR_SHROUD_converter_value SHValue_const_dvalue = {NULL, NULL, NULL, NULL, 0};
@@ -99,7 +99,7 @@ PY_Cstruct_ptr_tp_init(
     self->const_dvalue_obj = SHValue_const_dvalue.obj;  // steal reference
 
     return 0;
-// splicer end class.Cstruct_ptr.method.cstruct_ptr_ctor
+// splicer end class.Cstruct_ptr.method.Cstruct_ptr_ctor
 }
 // splicer begin class.Cstruct_ptr.impl.after_methods
 // splicer end class.Cstruct_ptr.impl.after_methods

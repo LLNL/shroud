@@ -64,10 +64,7 @@
                     "class_scope": "array_info::",
                     "cxx_class": "array_info",
                     "cxx_type": "array_info",
-                    "file_scope": "array_info",
-                    "lower_name": "array_info",
-                    "underscore_name": "array_info",
-                    "upper_name": "ARRAY_INFO"
+                    "file_scope": "array_info"
                 }
             }
         ],
@@ -131,8 +128,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "no_return_no_arguments"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -323,8 +319,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_PassByValue",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "PassByValue",
-                    "underscore_name": "pass_by_value"
+                    "function_name": "PassByValue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -577,8 +572,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_by_reference"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -704,8 +698,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_PassByValueMacro",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "PassByValueMacro",
-                    "underscore_name": "pass_by_value_macro"
+                    "function_name": "PassByValueMacro"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1035,8 +1028,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "check_bool"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1239,8 +1231,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_Function4a",
                     "cxx_rv_decl": "char * SHC_rv",
-                    "function_name": "Function4a",
-                    "underscore_name": "function4a"
+                    "function_name": "Function4a"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1444,8 +1435,7 @@
                     "F_name_api": "function4a",
                     "cxx_rv_decl": "char * SHCXX_rv",
                     "function_name": "Function4a",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "function4a"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1598,8 +1588,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_name"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1730,8 +1719,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr_in_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1838,8 +1826,7 @@
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr_in_out"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1974,8 +1961,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "return_one_name"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2085,8 +2071,7 @@
                     "function_name": "returnOneName",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "return_one_name"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2291,8 +2276,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "return_two_names"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2458,8 +2442,7 @@
                     "function_name": "returnTwoNames",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "return_two_names"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2657,8 +2640,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "implied_text_len"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2814,8 +2796,7 @@
                     "function_name": "ImpliedTextLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "implied_text_len"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3074,8 +3055,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedLen",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "ImpliedLen",
-                    "underscore_name": "implied_len"
+                    "function_name": "ImpliedLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3383,8 +3363,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedLenTrim",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "ImpliedLenTrim",
-                    "underscore_name": "implied_len_trim"
+                    "function_name": "ImpliedLenTrim"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3555,8 +3534,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedBoolTrue",
                     "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "ImpliedBoolTrue",
-                    "underscore_name": "implied_bool_true"
+                    "function_name": "ImpliedBoolTrue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3728,8 +3706,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedBoolFalse",
                     "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "ImpliedBoolFalse",
-                    "underscore_name": "implied_bool_false"
+                    "function_name": "ImpliedBoolFalse"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3836,8 +3813,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "bind_c1"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3951,8 +3927,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "bind_c2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4065,8 +4040,7 @@
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "bind_c2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4235,8 +4209,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_void_star_star"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4343,8 +4316,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passAssumedType",
-                    "underscore_name": "pass_assumed_type"
+                    "function_name": "passAssumedType"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4488,8 +4460,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_assumed_type_dim"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4648,8 +4619,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passAssumedTypeBuf",
-                    "underscore_name": "pass_assumed_type_buf"
+                    "function_name": "passAssumedTypeBuf"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4839,8 +4809,7 @@
                     "F_name_api": "pass_assumed_type_buf",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeBuf",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "pass_assumed_type_buf"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5030,8 +4999,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "callback1"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5196,8 +5164,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "callback1a"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5423,8 +5390,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "callback2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5704,8 +5670,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "callback3"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5983,8 +5948,7 @@
                     "function_name": "callback3",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "callback3"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6238,8 +6202,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "callback_set_alloc"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],
@@ -6282,8 +6245,7 @@
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
-                    "typedef_name": "TypeID",
-                    "underscore_name": "type_id"
+                    "typedef_name": "TypeID"
                 }
             },
             {
@@ -6324,8 +6286,7 @@
                     "F_name_api": "enum_type_id",
                     "F_name_typedef": "enum_type_id",
                     "cxx_type": "EnumTypeID",
-                    "typedef_name": "EnumTypeID",
-                    "underscore_name": "enum_type_id"
+                    "typedef_name": "EnumTypeID"
                 }
             }
         ],

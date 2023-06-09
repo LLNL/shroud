@@ -107,10 +107,7 @@
                     "class_scope": "DataPointer::",
                     "cxx_class": "DataPointer",
                     "cxx_type": "DataPointer",
-                    "file_scope": "ns3_DataPointer",
-                    "lower_name": "datapointer",
-                    "underscore_name": "data_pointer",
-                    "upper_name": "DATAPOINTER"
+                    "file_scope": "ns3_DataPointer"
                 }
             },
             {
@@ -204,10 +201,7 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class1",
-                    "underscore_name": "class1",
-                    "upper_name": "CLASS1"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -301,10 +295,7 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class2",
-                    "underscore_name": "class2",
-                    "upper_name": "CLASS2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -589,7 +580,6 @@
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
                     "struct_name": "DataPointer",
-                    "underscore_name": "data_pointer_get_items",
                     "wrapped_name": "items"
                 },
                 "zz_fmtresult": {
@@ -730,7 +720,6 @@
                     "function_name": "DataPointer_get_items",
                     "function_suffix": "_bufferify",
                     "struct_name": "DataPointer",
-                    "underscore_name": "data_pointer_get_items",
                     "wrapped_name": "items"
                 },
                 "zz_fmtresult": {
@@ -946,7 +935,6 @@
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
                     "struct_name": "DataPointer",
-                    "underscore_name": "data_pointer_set_items",
                     "wrapped_name": "items"
                 }
             }
@@ -1054,10 +1042,7 @@
                             "class_scope": "DataPointer::",
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
-                            "file_scope": "ns1_DataPointer",
-                            "lower_name": "datapointer",
-                            "underscore_name": "data_pointer",
-                            "upper_name": "DATAPOINTER"
+                            "file_scope": "ns1_DataPointer"
                         }
                     }
                 ],
@@ -1205,7 +1190,6 @@
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -1347,7 +1331,6 @@
                             "function_name": "DataPointer_get_items",
                             "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -1563,7 +1546,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_set_items",
                             "wrapped_name": "items"
                         }
                     }
@@ -1583,9 +1565,11 @@
                     "CXX_this_call": "ns1::",
                     "C_header_filename": "wrapscope_ns1.h",
                     "C_impl_filename": "wrapscope_ns1.cpp",
+                    "C_name_api": "ns1",
                     "C_name_scope": "ns1_",
                     "F_impl_filename": "wrapfscope_ns1.f",
                     "F_module_name": "scope_ns1_mod",
+                    "F_name_api": "ns1",
                     "LUA_this_call": "ns1::",
                     "PY_module_init": "scope_ns1",
                     "PY_module_name": "ns1",
@@ -1696,10 +1680,7 @@
                             "class_scope": "DataPointer::",
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
-                            "file_scope": "ns2_DataPointer",
-                            "lower_name": "datapointer",
-                            "underscore_name": "data_pointer",
-                            "upper_name": "DATAPOINTER"
+                            "file_scope": "ns2_DataPointer"
                         }
                     }
                 ],
@@ -1847,7 +1828,6 @@
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -1989,7 +1969,6 @@
                             "function_name": "DataPointer_get_items",
                             "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_get_items",
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
@@ -2205,7 +2184,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "DataPointer",
-                            "underscore_name": "data_pointer_set_items",
                             "wrapped_name": "items"
                         }
                     }
@@ -2225,9 +2203,11 @@
                     "CXX_this_call": "ns2::",
                     "C_header_filename": "wrapscope_ns2.h",
                     "C_impl_filename": "wrapscope_ns2.cpp",
+                    "C_name_api": "ns2",
                     "C_name_scope": "ns2_",
                     "F_impl_filename": "wrapfscope_ns2.f",
                     "F_module_name": "scope_ns2_mod",
+                    "F_name_api": "ns2",
                     "LUA_this_call": "ns2::",
                     "PY_module_init": "scope_ns2",
                     "PY_module_name": "ns2",
