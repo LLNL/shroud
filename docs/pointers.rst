@@ -327,8 +327,8 @@ to avoid deallocating the memory.
 
 .. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
    :language: c++
-   :start-after: start STR_get_const_string_ptr_alloc_bufferify
-   :end-before: end STR_get_const_string_ptr_alloc_bufferify
+   :start-after: start STR_getConstStringPtrAlloc_bufferify
+   :end-before: end STR_getConstStringPtrAlloc_bufferify
 
 The Fortran wrapper uses the metadata to allocate the return argument
 to the correct length:

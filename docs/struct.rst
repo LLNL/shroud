@@ -91,8 +91,8 @@ method.
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c++
-   :start-after: start CLA_Class1_method1
-   :end-before: end CLA_Class1_method1
+   :start-after: start CLA_Class1_Method1
+   :end-before: end CLA_Class1_Method1
                 
 All constructors are very similar. They call the C++ constructor then
 saves the pointer to the instance.  The *idtor* field is the index of
@@ -292,8 +292,8 @@ The C wrapper returns ``void`` instead of a pointer to the *this* argument.
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c++
-   :start-after: start CLA_Class1_return_this
-   :end-before: end CLA_Class1_return_this
+   :start-after: start CLA_Class1_returnThis
+   :end-before: end CLA_Class1_returnThis
 
                 
 Fortran
