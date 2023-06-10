@@ -9,11 +9,6 @@
 #  make compiler=gcc version=10.3.1
 
 
-gccdir = /usr/tce/packages/gcc
-inteldir = /usr/tce/packages/intel
-pgidir = /usr/tce/packages/pgi
-ibmdir = /usr/tce/packages/xl
-craydir = /opt/cray/pe/craype
 pythondir = /usr/tce/packages/python
 
 tempdir = build/regression
@@ -34,9 +29,6 @@ makeargs += $(target)
 CMAKE = /usr/tce/packages/cmake/cmake-3.14.5/bin/cmake
 #CMAKE = /usr/tce/packages/cmake/cmake-3.18.0/bin/cmake
 
-.PHONY : all
-all : gcc intel pgi
-
 .PHONY : clean
 clean :
 	rm -rf $(tempdir)
@@ -44,9 +36,11 @@ clean :
 ######################################################################
 # gcc
 
-cc-gcc  = $(gccdir)/gcc-$(version)/bin/gcc
-cxx-gcc = $(gccdir)/gcc-$(version)/bin/g++
-fc-gcc  = $(gccdir)/gcc-$(version)/bin/gfortran
+gccdir = /usr/tce/packages/gcc/gcc-$(version)/bin
+
+cc-gcc  = $(gccdir)/gcc
+cxx-gcc = $(gccdir)/g++
+fc-gcc  = $(gccdir)/gfortran
 
 .PHONY : gcc-target
 gcc-target :
@@ -58,11 +52,11 @@ gcc-target :
 ######################################################################
 # Intel
 
-inteldir2 = $(inteldir)/intel-$(version)/compiler/$(version)/linux/bin/intel64
+inteldir = /usr/tce/packages/intel/intel-$(version)/compiler/$(version)/linux/bin/intel64
 
-cc-intel  = $(inteldir2)/icc
-cxx-intel = $(inteldir2)/icpc
-fc-intel  = $(inteldir2)/ifort
+cc-intel  = $(inteldir)/icc
+cxx-intel = $(inteldir)/icpc
+fc-intel  = $(inteldir)/ifort
 
 .PHONY : intel-target
 intel-target :
@@ -80,45 +74,34 @@ intel-target :
 # -qversion
 # xl-2021.03.31 - 16.01
 
-ibm-list = \
- xl-2021.03.31
+ibmdir = /usr/tce/packages/xl/xl-$(version)/bin
 
-$(foreach v,$(ibm-list),$(eval cc-$v=$(ibmdir)/$v/bin/xlc))
-$(foreach v,$(ibm-list),$(eval cxx-$v=$(ibmdir)/$v/bin/xlC))
-$(foreach v,$(ibm-list),$(eval fc-$v=$(ibmdir)/$v/bin/xlf2003))
+cc-ibm  = $(ibmdir)/xlc
+cxx-ibm = $(ibmdir)/xlC
+fc-ibm  = $(ibmdir)/xlf
 
-.PHONY : ibm
-ibm : $(ibm-list)
-
-.PHONY : $(ibm-list)
-$(ibm-list) : xl-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=ibm \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+ibm-target :
+	$(MAKE) $(makeargs) testdir=$(version) compiler=ibm \
+	CC=$(cc-ibm) \
+	CXX=$(cxx-ibm) \
+	FC=$(fc-ibm)
 
 ######################################################################
 # cray
 
-cray-list = \
- cray-2.7.1 \
- cray-2.7.6
+#craydir = /opt/cray/pe/craype
+ccedir = /usr/tce/packag/cce/cce-$(version)-magic/bin
 
-cray-ver = $(patsubst cray-%,%,$(cray-list))
+cc-cce  = $(ccedir)/craycc
+cxx-cce = $(ccedir)/crayCC
+fc-cce  = $(ccedir)/crayftn
 
-$(foreach v,$(cray-ver),$(eval cc-cray-$v=$(craydir)/$v/bin/cc))
-$(foreach v,$(cray-ver),$(eval cxx-cray-$v=$(craydir)/$v/bin/CC))
-$(foreach v,$(cray-ver),$(eval fc-cray-$v=$(craydir)/$v/bin/ftn))
-
-.PHONY : cray
-cray : $(cray-list)
-
-.PHONY : $(cray-list)
-$(cray-list) : cray-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=cray \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+.PHONY : cce-target
+cce-target :
+	$(MAKE) $(makeargs) testdir=cce-$(target) compiler=cray \
+	CC=$(cc-cce) \
+	CXX=$(cxx-cce) \
+	FC=$(fc-cce)
 
 ######################################################################
 # Python
@@ -152,7 +135,7 @@ $(python-list) : python-% :
 ######################################################################
 # CMake
 
-cmake-list = $(foreach v,$(gcc-list) $(intel-list) $(pgi-list),cmake-$v)
+cmake-list = $(foreach v,$(gcc-list) $(intel-list),cmake-$v)
 
 .PHONY : cmake
 cmake : $(cmake-list)
