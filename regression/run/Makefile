@@ -261,6 +261,8 @@ test-lua : $(lua-test-list)
 .PHONY : test-all
 test-all : test-c test-fortran test-python test-lua
 
+test-all-fortran-c : test-c test-fortran
+
 # test specific yaml files
 .PHONY : test-pointers
 test-pointers : \

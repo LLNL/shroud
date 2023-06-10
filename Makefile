@@ -53,12 +53,17 @@ include $(top)/regression/run/Makefile
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(PYTHON) -m venv --system-site-packages $(venv.dir)
-	$(venv.dir)/bin/pip install --upgrade pip
+	$(venv.dir)/bin/pip install --upgrade pip wheel setuptools
 virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
+pipinstall :
+	$(venv.dir)/bin/pip install .
+
 develop :
 	$(PYTHON) setup.py develop
+#	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
+#	$(venv.dir)/bin/pip install --editable .
 
 setup-sqa :
 #	$(PYTHON) -m pip install ruamel-yaml
@@ -275,7 +280,8 @@ distclean:
 #	rm -rf dist
 #	rm -rf .eggs
 
-.PHONY : virtualenv develop docs test testdirs
+.PHONY : virtualenv pipinstall develop docs test testdirs
+.PHONY : virtualenv2
 .PHONY : test-clean
 .PHONY : do-test do-test-replace print-debug
 .PHONY : distclean

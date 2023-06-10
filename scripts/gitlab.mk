@@ -81,7 +81,7 @@ cxx-ibm = $(ibmdir)/xlC
 fc-ibm  = $(ibmdir)/xlf
 
 ibm-target :
-	$(MAKE) $(makeargs) testdir=$(version) compiler=ibm \
+	$(MAKE) $(makeargs) testdir=xl-$(version) compiler=ibm \
 	CC=$(cc-ibm) \
 	CXX=$(cxx-ibm) \
 	FC=$(fc-ibm)
