@@ -80,6 +80,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
 
     # What does your project relate to?
@@ -94,7 +96,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['PyYAML>=4.2b1'],
+    install_requires=['PyYAML>=4.2b1, <=5.4.1'],  # Upper limit for Python2
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,

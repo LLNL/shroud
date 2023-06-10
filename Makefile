@@ -31,7 +31,7 @@ venv.dir := $(top)/$(tempdir)/venv
 # If venv.dir is created then use it, else depend on python in path.
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
-PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
+PYTHON := $(venv.dir)/bin/$(notdir $(PYTHONEXE))
 endif
 
 export PYTHON PYTHONEXE
