@@ -6,7 +6,7 @@
 #
 # Usage:  srun make -f scripts/lc.mk target=test-all -j
 #
-#  make compiler=gcc version=10.3.1
+#  make gcc-target version=10.3.1
 
 
 pythondir = /usr/tce/packages/python
@@ -98,7 +98,7 @@ fc-cce  = $(ccedir)/crayftn
 
 .PHONY : cce-target
 cce-target :
-	$(MAKE) $(makeargs) testdir=cce-$(target) compiler=cray \
+	$(MAKE) $(makeargs) testdir=cce-$(version) compiler=cray \
 	CC=$(cc-cce) \
 	CXX=$(cxx-cce) \
 	FC=$(fc-cce)
