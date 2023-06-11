@@ -3,13 +3,13 @@
     "library": {
         "class_map": [
             "Worker",
-            "user_int",
-            "structAsClass_int",
-            "structAsClass_double",
-            "std_vector_int",
-            "std_vector_double",
             "internal_ImplWorker1",
-            "internal_ImplWorker2"
+            "internal_ImplWorker2",
+            "std_vector_double",
+            "std_vector_int",
+            "structAsClass_double",
+            "structAsClass_int",
+            "user_int"
         ],
         "classes": [
             {

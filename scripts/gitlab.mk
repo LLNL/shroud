@@ -5,12 +5,10 @@
 # pattern rules to be used.
 #
 # Usage:  srun make -f scripts/lc.mk target=test-all -j
+#
+#  make gcc-target version=10.3.1
 
-gccdir = /usr/tce/packages/gcc
-inteldir = /usr/tce/packages/intel
-pgidir = /usr/tce/packages/pgi
-ibmdir = /usr/tce/packages/xl
-craydir = /opt/cray/pe/craype
+
 pythondir = /usr/tce/packages/python
 
 tempdir = build/regression
@@ -31,9 +29,6 @@ makeargs += $(target)
 CMAKE = /usr/tce/packages/cmake/cmake-3.14.5/bin/cmake
 #CMAKE = /usr/tce/packages/cmake/cmake-3.18.0/bin/cmake
 
-.PHONY : all
-all : gcc intel pgi
-
 .PHONY : clean
 clean :
 	rm -rf $(tempdir)
@@ -41,144 +36,72 @@ clean :
 ######################################################################
 # gcc
 
-gcc-list = \
-  gcc-4.9.3 \
-  gcc-6.1.0 \
-  gcc-7.3.0 \
-  gcc-8.3.1 \
-  gcc-9.3.1 \
-  gcc-10.2.1
+gccdir = /usr/tce/packages/gcc/gcc-$(version)/bin
 
-$(foreach v,$(gcc-list),$(eval cc-$v=$(gccdir)/$v/bin/gcc))
-$(foreach v,$(gcc-list),$(eval cxx-$v=$(gccdir)/$v/bin/g++))
-$(foreach v,$(gcc-list),$(eval fc-$v=$(gccdir)/$v/bin/gfortran))
+cc-gcc  = $(gccdir)/gcc
+cxx-gcc = $(gccdir)/g++
+fc-gcc  = $(gccdir)/gfortran
 
-.PHONY : gcc
-gcc : $(gcc-list)
-
-.PHONY : $(gcc-list)
-$(gcc-list) : gcc-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=gcc \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+.PHONY : gcc-target
+gcc-target :
+	$(MAKE) $(makeargs) testdir=gcc-$(version) compiler=gcc \
+	CC=$(cc-gcc) \
+	CXX=$(cxx-gcc) \
+	FC=$(fc-gcc)
 
 ######################################################################
 # Intel
 
-#  intel-14.0.3
-intel-list = \
-  intel-15.0.6 \
-  intel-16.0.4 \
-  intel-17.0.2 \
-  intel-18.0.2 \
-  intel-19.1.2 \
-  intel-2021.2
+inteldir = /usr/tce/packages/intel/intel-$(version)/compiler/$(version)/linux/bin/intel64
 
-# Match up gcc stdlib with intel compiler.
-gccbin-intel-14.0.3 = $(gccdir)/gcc-4.9.3/bin
-gccbin-intel-15.0.6 = $(gccdir)/gcc-4.9.3/bin
-gccbin-intel-16.0.4 = $(gccdir)/gcc-4.9.3/bin
-gccbin-intel-17.0.2 = $(gccdir)/gcc-4.9.3/bin
-gccbin-intel-18.0.2 = $(gccdir)/gcc-8.3.1/bin
-gccbin-intel-19.1.2 = $(gccdir)/gcc-8.3.1/bin
-gccbin-intel-2021.2 = $(gccdir)/gcc-8.3.1/bin
+cc-intel  = $(inteldir)/icc
+cxx-intel = $(inteldir)/icpc
+fc-intel  = $(inteldir)/ifort
 
-$(foreach v,$(intel-list),$(eval cc-$v=$(inteldir)/$v/bin/icc))
-$(foreach v,$(intel-list),$(eval cxx-$v=$(inteldir)/$v/bin/icpc))
-$(foreach v,$(intel-list),$(eval fc-$v=$(inteldir)/$v/bin/ifort))
+.PHONY : intel-target
+intel-target :
+	$(MAKE) $(makeargs) testdir=intel-$(version) compiler=intel \
+	CC=$(cc-intel) \
+	CXX=$(cxx-intel) \
+	FC=$(fc-intel)
 
-$(foreach v,$(intel-list),$(eval cflags-$v=-gcc-name=$(gccbin-$v)/gcc))
-$(foreach v,$(intel-list),$(eval cxxflags-$v=-gxx-name=$(gccbin-$v)/g++))
-$(foreach v,$(intel-list),$(eval fflags-$v=-gcc-name=$(gccbin-$v)/gcc))
-
-#intel-14.0.3-cxxflags = -std=gnu++98 -Dnullptr=NULL
-
-# Add F2003 feature.
-fflags-intel-15.0.6 += -assume realloc_lhs
-
-.PHONY : intel
-intel : $(intel-list)
-
-.PHONY : $(intel-list)
-$(intel-list) : intel-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=intel \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
-	CFLAGS="$(cflags-$@)" \
-	CXXFLAGS="$(cxxflags-$@)" \
-	FFLAGS="$(fflags-$@)"
-
-######################################################################
-# pgi
-
-#  pgi-16.9  missing -cpp flag
-pgi-list = \
- pgi-17.10 \
- pgi-18.5 \
- pgi-19.7 \
- pgi-20.1 \
- pgi-21.1 \
-
-$(foreach v,$(pgi-list),$(eval cc-$v=$(pgidir)/$v/bin/pgcc))
-$(foreach v,$(pgi-list),$(eval cxx-$v=$(pgidir)/$v/bin/pgc++))
-$(foreach v,$(pgi-list),$(eval fc-$v=$(pgidir)/$v/bin/pgf90))
-
-.PHONY : pgi
-pgi : $(pgi-list)
-
-.PHONY : $(pgi-list)
-$(pgi-list) : pgi-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=pgi \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+#CFLAGS="$(cflags-$@)" \
+#	CXXFLAGS="$(cxxflags-$@)" \
+#	FFLAGS="$(fflags-$@)"
 
 ######################################################################
 # ibm
 # -qversion
 # xl-2021.03.31 - 16.01
 
-ibm-list = \
- xl-2021.03.31
+ibmdir = /usr/tce/packages/xl/xl-$(version)/bin
 
-$(foreach v,$(ibm-list),$(eval cc-$v=$(ibmdir)/$v/bin/xlc))
-$(foreach v,$(ibm-list),$(eval cxx-$v=$(ibmdir)/$v/bin/xlC))
-$(foreach v,$(ibm-list),$(eval fc-$v=$(ibmdir)/$v/bin/xlf2003))
+cc-ibm  = $(ibmdir)/xlc
+cxx-ibm = $(ibmdir)/xlC
+fc-ibm  = $(ibmdir)/xlf
 
-.PHONY : ibm
-ibm : $(ibm-list)
-
-.PHONY : $(ibm-list)
-$(ibm-list) : xl-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=ibm \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+ibm-target :
+	$(MAKE) $(makeargs) testdir=xl-$(version) compiler=ibm \
+	CC=$(cc-ibm) \
+	CXX=$(cxx-ibm) \
+	FC=$(fc-ibm)
 
 ######################################################################
 # cray
 
-cray-list = \
- cray-2.7.1 \
- cray-2.7.6
+#craydir = /opt/cray/pe/craype
+ccedir = /usr/tce/packages/cce/cce-$(version)-magic/bin
 
-cray-ver = $(patsubst cray-%,%,$(cray-list))
+cc-cce  = $(ccedir)/craycc
+cxx-cce = $(ccedir)/crayCC
+fc-cce  = $(ccedir)/crayftn
 
-$(foreach v,$(cray-ver),$(eval cc-cray-$v=$(craydir)/$v/bin/cc))
-$(foreach v,$(cray-ver),$(eval cxx-cray-$v=$(craydir)/$v/bin/CC))
-$(foreach v,$(cray-ver),$(eval fc-cray-$v=$(craydir)/$v/bin/ftn))
-
-.PHONY : cray
-cray : $(cray-list)
-
-.PHONY : $(cray-list)
-$(cray-list) : cray-% :
-	$(MAKE) $(makeargs) testdir=$@ compiler=cray \
-	CC=$(cc-$@) \
-	CXX=$(cxx-$@) \
-	FC=$(fc-$@)
+.PHONY : cce-target
+cce-target :
+	$(MAKE) $(makeargs) testdir=cce-$(version) compiler=cray \
+	CC=$(cc-cce) \
+	CXX=$(cxx-cce) \
+	FC=$(fc-cce)
 
 ######################################################################
 # Python
@@ -212,7 +135,7 @@ $(python-list) : python-% :
 ######################################################################
 # CMake
 
-cmake-list = $(foreach v,$(gcc-list) $(intel-list) $(pgi-list),cmake-$v)
+cmake-list = $(foreach v,$(gcc-list) $(intel-list),cmake-$v)
 
 .PHONY : cmake
 cmake : $(cmake-list)
