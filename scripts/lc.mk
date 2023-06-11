@@ -22,7 +22,7 @@ makeargs = LOGOUTPUT=1
 # Location of build directory.
 makeargs += tempdir=$(tempdir)
 # Keep going if a test fails.
-makeargs += --ignore-errors
+makeargs += --keep-going
 # Run each compiler serially to avoid too many tasks
 # and to keep output in the same order.
 makeargs += -j 1

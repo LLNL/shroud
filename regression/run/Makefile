@@ -28,7 +28,7 @@ include $(top)/regression/run/defaults.mk
 # ( prefix, directory, command )
 # Save output to file and record PASS/FAIL
 ifeq ($(LOGOUTPUT),1)
-run-command = cd $2 && rm -f $1.PASS $1.FAIL ; { $3 >| $1.out 2>&1; } && touch $1.PASS || touch $1.FAIL
+run-command = cd $2 && rm -f $1.PASS $1.FAIL ; { $3 >| $1.out 2>&1; } && touch $1.PASS || ( touch $1.FAIL; false )
 else
 run-command = cd $2 && $3
 endif
@@ -258,7 +258,7 @@ $(lua-test-list) : test-lua-% : compile-lua-% | $(relrunpath)/%/lua/..
 test-lua : $(lua-test-list)
 
 ######################################################################
-.PHONY : test-all
+.PHONY : test-all test-all-fortran-c
 test-all : test-c test-fortran test-python test-lua
 
 test-all-fortran-c : test-c test-fortran
