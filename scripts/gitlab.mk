@@ -90,7 +90,7 @@ ibm-target :
 # cray
 
 #craydir = /opt/cray/pe/craype
-ccedir = /usr/tce/package/cce/cce-$(version)-magic/bin
+ccedir = /usr/tce/packages/cce/cce-$(version)-magic/bin
 
 cc-cce  = $(ccedir)/craycc
 cxx-cce = $(ccedir)/crayCC
