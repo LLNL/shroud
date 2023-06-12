@@ -30,5 +30,18 @@ module library_one_two_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void function1
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine function1()
+        call c_function1()
+    end subroutine function1
+#endif
+
 
 end module library_one_two_mod

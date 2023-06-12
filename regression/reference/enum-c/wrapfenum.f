@@ -63,6 +63,35 @@ module enum_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int convert_to_int
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  enum Color in +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function convert_to_int(in) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: in
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.convert_to_int
+        SHT_rv = c_convert_to_int(in)
+        ! splicer end function.convert_to_int
+    end function convert_to_int
+#endif
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 

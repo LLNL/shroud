@@ -109,6 +109,116 @@ module ccomplex_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void acceptFloatComplexInoutPtr
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  float complex * arg1
+    ! Attrs:     +intent(inout)
+    ! Requested: f_inout_native_*
+    ! Match:     f_default
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_native_*
+    ! Match:     c_default
+    subroutine accept_float_complex_inout_ptr(arg1)
+        use iso_c_binding, only : C_FLOAT_COMPLEX
+        complex(C_FLOAT_COMPLEX), intent(INOUT) :: arg1
+        ! splicer begin function.accept_float_complex_inout_ptr
+        call c_accept_float_complex_inout_ptr(arg1)
+        ! splicer end function.accept_float_complex_inout_ptr
+    end subroutine accept_float_complex_inout_ptr
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void acceptDoubleComplexInoutPtr
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double complex * arg1
+    ! Attrs:     +intent(inout)
+    ! Requested: f_inout_native_*
+    ! Match:     f_default
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_native_*
+    ! Match:     c_default
+    subroutine accept_double_complex_inout_ptr(arg1)
+        use iso_c_binding, only : C_DOUBLE_COMPLEX
+        complex(C_DOUBLE_COMPLEX), intent(INOUT) :: arg1
+        ! splicer begin function.accept_double_complex_inout_ptr
+        call c_accept_double_complex_inout_ptr(arg1)
+        ! splicer end function.accept_double_complex_inout_ptr
+    end subroutine accept_double_complex_inout_ptr
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void acceptDoubleComplexOutPtr
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double complex * arg1 +intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    subroutine accept_double_complex_out_ptr(arg1)
+        use iso_c_binding, only : C_DOUBLE_COMPLEX
+        complex(C_DOUBLE_COMPLEX), intent(OUT) :: arg1
+        ! splicer begin function.accept_double_complex_out_ptr
+        call c_accept_double_complex_out_ptr(arg1)
+        ! splicer end function.accept_double_complex_out_ptr
+    end subroutine accept_double_complex_out_ptr
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void acceptDoubleComplexOutPtrFlag
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double complex * arg1 +intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * flag +intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    !>
+    !! Return two values so Py_BuildValue is used.
+    !! Creates a Py_complex for intent(out)
+    !<
+    subroutine accept_double_complex_out_ptr_flag(arg1, flag)
+        use iso_c_binding, only : C_DOUBLE_COMPLEX, C_INT
+        complex(C_DOUBLE_COMPLEX), intent(OUT) :: arg1
+        integer(C_INT), intent(OUT) :: flag
+        ! splicer begin function.accept_double_complex_out_ptr_flag
+        call c_accept_double_complex_out_ptr_flag(arg1, flag)
+        ! splicer end function.accept_double_complex_out_ptr_flag
+    end subroutine accept_double_complex_out_ptr_flag
+#endif
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 

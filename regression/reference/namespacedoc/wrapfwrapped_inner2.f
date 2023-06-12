@@ -38,6 +38,21 @@ module wrapped_inner2_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void worker
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine worker()
+        ! splicer begin namespace.inner2.function.worker
+        call c_worker()
+        ! splicer end namespace.inner2.function.worker
+    end subroutine worker
+#endif
+
     ! splicer begin namespace.inner2.additional_functions
     ! splicer end namespace.inner2.additional_functions
 

@@ -145,6 +145,21 @@ contains
         ! splicer end function.last_function_called
     end function last_function_called
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void One
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine one()
+        ! splicer begin function.one
+        call c_one()
+        ! splicer end function.one
+    end subroutine one
+#endif
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 

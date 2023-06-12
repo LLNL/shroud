@@ -484,6 +484,644 @@ module types_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  short short_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  short arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function short_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), value, intent(IN) :: arg1
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.short_func
+        SHT_rv = c_short_func(arg1)
+        ! splicer end function.short_func
+    end function short_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int int_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function int_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.int_func
+        SHT_rv = c_int_func(arg1)
+        ! splicer end function.int_func
+    end function int_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  long long_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  long arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function long_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        integer(C_LONG), value, intent(IN) :: arg1
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.long_func
+        SHT_rv = c_long_func(arg1)
+        ! splicer end function.long_func
+    end function long_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  long long long_long_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  long long arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function long_long_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG_LONG
+        integer(C_LONG_LONG), value, intent(IN) :: arg1
+        integer(C_LONG_LONG) :: SHT_rv
+        ! splicer begin function.long_long_func
+        SHT_rv = c_long_long_func(arg1)
+        ! splicer end function.long_long_func
+    end function long_long_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  short int short_int_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  short int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function short_int_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), value, intent(IN) :: arg1
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.short_int_func
+        SHT_rv = c_short_int_func(arg1)
+        ! splicer end function.short_int_func
+    end function short_int_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  long int long_int_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  long int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function long_int_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        integer(C_LONG), value, intent(IN) :: arg1
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.long_int_func
+        SHT_rv = c_long_int_func(arg1)
+        ! splicer end function.long_int_func
+    end function long_int_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  long long int long_long_int_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  long long int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function long_long_int_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG_LONG
+        integer(C_LONG_LONG), value, intent(IN) :: arg1
+        integer(C_LONG_LONG) :: SHT_rv
+        ! splicer begin function.long_long_int_func
+        SHT_rv = c_long_long_int_func(arg1)
+        ! splicer end function.long_long_int_func
+    end function long_long_int_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned unsigned_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function unsigned_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.unsigned_func
+        SHT_rv = c_unsigned_func(arg1)
+        ! splicer end function.unsigned_func
+    end function unsigned_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned short ushort_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned short arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function ushort_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), value, intent(IN) :: arg1
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.ushort_func
+        SHT_rv = c_ushort_func(arg1)
+        ! splicer end function.ushort_func
+    end function ushort_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned int uint_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function uint_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.uint_func
+        SHT_rv = c_uint_func(arg1)
+        ! splicer end function.uint_func
+    end function uint_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned long ulong_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned long arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function ulong_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        integer(C_LONG), value, intent(IN) :: arg1
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.ulong_func
+        SHT_rv = c_ulong_func(arg1)
+        ! splicer end function.ulong_func
+    end function ulong_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned long long ulong_long_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned long long arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function ulong_long_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG_LONG
+        integer(C_LONG_LONG), value, intent(IN) :: arg1
+        integer(C_LONG_LONG) :: SHT_rv
+        ! splicer begin function.ulong_long_func
+        SHT_rv = c_ulong_long_func(arg1)
+        ! splicer end function.ulong_long_func
+    end function ulong_long_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  unsigned long int ulong_int_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  unsigned long int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function ulong_int_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        integer(C_LONG), value, intent(IN) :: arg1
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.ulong_int_func
+        SHT_rv = c_ulong_int_func(arg1)
+        ! splicer end function.ulong_int_func
+    end function ulong_int_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int8_t int8_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int8_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function int8_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT8_T
+        integer(C_INT8_T), value, intent(IN) :: arg1
+        integer(C_INT8_T) :: SHT_rv
+        ! splicer begin function.int8_func
+        SHT_rv = c_int8_func(arg1)
+        ! splicer end function.int8_func
+    end function int8_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int16_t int16_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int16_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function int16_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT16_T
+        integer(C_INT16_T), value, intent(IN) :: arg1
+        integer(C_INT16_T) :: SHT_rv
+        ! splicer begin function.int16_func
+        SHT_rv = c_int16_func(arg1)
+        ! splicer end function.int16_func
+    end function int16_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int32_t int32_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int32_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function int32_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT32_T
+        integer(C_INT32_T), value, intent(IN) :: arg1
+        integer(C_INT32_T) :: SHT_rv
+        ! splicer begin function.int32_func
+        SHT_rv = c_int32_func(arg1)
+        ! splicer end function.int32_func
+    end function int32_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int64_t int64_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int64_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function int64_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT64_T
+        integer(C_INT64_T), value, intent(IN) :: arg1
+        integer(C_INT64_T) :: SHT_rv
+        ! splicer begin function.int64_func
+        SHT_rv = c_int64_func(arg1)
+        ! splicer end function.int64_func
+    end function int64_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  uint8_t uint8_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  uint8_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function uint8_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT8_T
+        integer(C_INT8_T), value, intent(IN) :: arg1
+        integer(C_INT8_T) :: SHT_rv
+        ! splicer begin function.uint8_func
+        SHT_rv = c_uint8_func(arg1)
+        ! splicer end function.uint8_func
+    end function uint8_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  uint16_t uint16_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  uint16_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function uint16_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT16_T
+        integer(C_INT16_T), value, intent(IN) :: arg1
+        integer(C_INT16_T) :: SHT_rv
+        ! splicer begin function.uint16_func
+        SHT_rv = c_uint16_func(arg1)
+        ! splicer end function.uint16_func
+    end function uint16_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  uint32_t uint32_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  uint32_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function uint32_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT32_T
+        integer(C_INT32_T), value, intent(IN) :: arg1
+        integer(C_INT32_T) :: SHT_rv
+        ! splicer begin function.uint32_func
+        SHT_rv = c_uint32_func(arg1)
+        ! splicer end function.uint32_func
+    end function uint32_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  uint64_t uint64_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  uint64_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function uint64_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT64_T
+        integer(C_INT64_T), value, intent(IN) :: arg1
+        integer(C_INT64_T) :: SHT_rv
+        ! splicer begin function.uint64_func
+        SHT_rv = c_uint64_func(arg1)
+        ! splicer end function.uint64_func
+    end function uint64_func
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  size_t size_func
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  size_t arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    function size_func(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SIZE_T
+        integer(C_SIZE_T), value, intent(IN) :: arg1
+        integer(C_SIZE_T) :: SHT_rv
+        ! splicer begin function.size_func
+        SHT_rv = c_size_func(arg1)
+        ! splicer end function.size_func
+    end function size_func
+#endif
+
     ! ----------------------------------------
     ! Function:  bool bool_func
     ! Attrs:     +intent(function)
