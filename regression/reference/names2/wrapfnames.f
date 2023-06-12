@@ -38,6 +38,21 @@ module worker_names
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void AFunction
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine a_function()
+        ! splicer begin function.a_function
+        call c_a_function()
+        ! splicer end function.a_function
+    end subroutine a_function
+#endif
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 

@@ -2116,9 +2116,8 @@ rv = .false.
             
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
-        if need_wrapper:
-            impl = fileinfo.impl
-            impl.append("")
+        if need_wrapper or options.debug:
+            impl = []
             if node.cpp_if:
                 impl.append("#" + node.cpp_if)
             if options.debug:
@@ -2148,9 +2147,20 @@ rv = .false.
                 append_format(impl, "! end {F_name_impl}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif")
-        else:
+
+        if need_wrapper:
+            fileinfo.impl.append("")
+            fileinfo.impl.extend(impl)
+        else:            
             # Call the C function directly via bind(C).
             C_node.fmtdict.F_C_name = fmt_func.F_name_impl
+            if options.debug:
+                # Include wrapper which would of been generated.
+                fileinfo.impl.append("")
+                fileinfo.impl.append("#if 0")
+                fileinfo.impl.append("! Only the interface is needed")
+                fileinfo.impl.extend(impl)
+                fileinfo.impl.append("#endif")
 
     def _gather_helper_code(self, name, done, fileinfo):
         """Add code from helpers.

@@ -102,6 +102,19 @@ contains
     end function class0_associated
 
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void outer_func
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine outer_func()
+        call c_outer_func()
+    end subroutine outer_func
+#endif
+
 
     function class0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

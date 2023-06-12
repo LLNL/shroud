@@ -951,6 +951,131 @@ module clibrary_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void NoReturnNoArguments
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! start no_return_no_arguments
+    subroutine no_return_no_arguments()
+        ! splicer begin function.no_return_no_arguments
+        call c_no_return_no_arguments()
+        ! splicer end function.no_return_no_arguments
+    end subroutine no_return_no_arguments
+    ! end no_return_no_arguments
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  double PassByValue
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  double arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start pass_by_value
+    function pass_by_value(arg1, arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        real(C_DOUBLE) :: SHT_rv
+        ! splicer begin function.pass_by_value
+        SHT_rv = c_pass_by_value(arg1, arg2)
+        ! splicer end function.pass_by_value
+    end function pass_by_value
+    ! end pass_by_value
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void PassByReference
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double * arg1 +intent(in)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * arg2 +intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    ! start pass_by_reference
+    subroutine pass_by_reference(arg1, arg2)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: arg1
+        integer(C_INT), intent(OUT) :: arg2
+        ! splicer begin function.pass_by_reference
+        call c_pass_by_reference(arg1, arg2)
+        ! splicer end function.pass_by_reference
+    end subroutine pass_by_reference
+    ! end pass_by_reference
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  double PassByValueMacro
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int arg2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! PassByValueMacro is a #define macro. Force a C wrapper
+    !! to allow Fortran to have an actual function to call.
+    !<
+    function pass_by_value_macro(arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        integer(C_INT), value, intent(IN) :: arg2
+        real(C_DOUBLE) :: SHT_rv
+        ! splicer begin function.pass_by_value_macro
+        SHT_rv = c_pass_by_value_macro(arg2)
+        ! splicer end function.pass_by_value_macro
+    end function pass_by_value_macro
+#endif
+
     ! ----------------------------------------
     ! Function:  void checkBool
     ! Attrs:     +intent(subroutine)
@@ -1279,6 +1404,26 @@ contains
         ! splicer end function.implied_bool_false
     end function implied_bool_false
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void bindC1
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    !>
+    !! \brief Rename Fortran name for interface only function
+    !!
+    !! This creates only an interface.
+    !<
+    subroutine Fortran_bindC1a()
+        ! splicer begin function.bind_c1
+        call Fortran_bindC1b()
+        ! splicer end function.bind_c1
+    end subroutine Fortran_bindC1a
+#endif
+
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void bindC2
@@ -1306,6 +1451,96 @@ contains
         call c_bind_c2_bufferify(outbuf, SHT_outbuf_len)
         ! splicer end function.bind_c2
     end subroutine Fortran_bindC2a
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void passVoidStarStar
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  void * in +intent(in)+value
+    ! Attrs:     +intent(in)
+    ! Exact:     f_in_void_*
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_void_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * out +intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_void_**
+    ! Attrs:     +intent(out)
+    ! Exact:     c_out_void_**
+    !>
+    !! \brief Assign in to out.
+    !!
+    !! No bufferify function is created, only an interface.
+    !<
+    ! start pass_void_star_star
+    subroutine pass_void_star_star(in, out)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR), intent(IN) :: in
+        type(C_PTR), intent(OUT) :: out
+        ! splicer begin function.pass_void_star_star
+        call c_pass_void_star_star(in, out)
+        ! splicer end function.pass_void_star_star
+    end subroutine pass_void_star_star
+    ! end pass_void_star_star
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int passAssumedType
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    !>
+    !! \brief Test assumed-type
+    !!
+    !! No bufferify function is created, only an interface.
+    !! Should only be call with an C_INT argument, and will
+    !! return the value passed in.
+    !<
+    ! start pass_assumed_type
+    function pass_assumed_type(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(*) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.pass_assumed_type
+        SHT_rv = c_pass_assumed_type(arg)
+        ! splicer end function.pass_assumed_type
+    end function pass_assumed_type
+    ! end pass_assumed_type
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void passAssumedTypeDim
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    !>
+    !! \brief Test assumed-type with rank(1)
+    !!
+    !<
+    ! start pass_assumed_type_dim
+    subroutine pass_assumed_type_dim(arg)
+        type(*) :: arg
+        ! splicer begin function.pass_assumed_type_dim
+        call c_pass_assumed_type_dim(arg)
+        ! splicer end function.pass_assumed_type_dim
+    end subroutine pass_assumed_type_dim
+    ! end pass_assumed_type_dim
+#endif
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1461,6 +1696,46 @@ contains
             outbuf, SHT_outbuf_len)
         ! splicer end function.callback3
     end subroutine callback3
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void callback_set_alloc
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int tc +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  array_info * arr +intent(inout)
+    ! Attrs:     +intent(inout)
+    ! Requested: f_inout_struct_*
+    ! Match:     f_default
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_struct_*
+    ! Match:     c_inout_struct
+    !>
+    !! The function argument takes a struct argument
+    !! which is defined in this library.
+    !! Use IMPORT.
+    !<
+    subroutine callback_set_alloc(tc, arr, alloc)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: tc
+        type(array_info), intent(INOUT) :: arr
+        procedure(callback_set_alloc_alloc) :: alloc
+        ! splicer begin function.callback_set_alloc
+        call c_callback_set_alloc(tc, arr, alloc)
+        ! splicer end function.callback_set_alloc
+    end subroutine callback_set_alloc
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

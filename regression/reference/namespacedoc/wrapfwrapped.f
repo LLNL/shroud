@@ -58,7 +58,52 @@ module wrapped_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void worker3
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine inner3_worker3()
+        ! splicer begin function.worker3
+        call c_inner3_worker3()
+        ! splicer end function.worker3
+    end subroutine inner3_worker3
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void worker
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine worker()
+        ! splicer begin function.worker
+        call c_worker()
+        ! splicer end function.worker
+    end subroutine worker
+#endif
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void worker4
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine inner4_worker4()
+        ! splicer begin namespace.inner2.function.worker4
+        call c_inner4_worker4()
+        ! splicer end namespace.inner2.function.worker4
+    end subroutine inner4_worker4
+#endif
 
 end module wrapped_mod

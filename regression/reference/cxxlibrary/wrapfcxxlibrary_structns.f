@@ -109,6 +109,118 @@ module cxxlibrary_structns_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int passStructByReference
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  Cstruct1 & arg
+    ! Attrs:     +intent(inout)
+    ! Requested: f_inout_struct_&
+    ! Match:     f_default
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_struct_&
+    ! Match:     c_inout_struct
+    !>
+    !! Argument is modified by library, defaults to intent(inout).
+    !<
+    function pass_struct_by_reference(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(cstruct1), intent(INOUT) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin namespace.structns.function.pass_struct_by_reference
+        SHT_rv = c_pass_struct_by_reference(arg)
+        ! splicer end namespace.structns.function.pass_struct_by_reference
+    end function pass_struct_by_reference
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int passStructByReferenceIn
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const Cstruct1 & arg
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_struct_&
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_struct_&
+    ! Match:     c_in_struct
+    !>
+    !! const defaults to intent(in)
+    !<
+    function pass_struct_by_reference_in(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(cstruct1), intent(IN) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin namespace.structns.function.pass_struct_by_reference_in
+        SHT_rv = c_pass_struct_by_reference_in(arg)
+        ! splicer end namespace.structns.function.pass_struct_by_reference_in
+    end function pass_struct_by_reference_in
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void passStructByReferenceInout
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  Cstruct1 & arg +intent(inout)
+    ! Attrs:     +intent(inout)
+    ! Requested: f_inout_struct_&
+    ! Match:     f_default
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_struct_&
+    ! Match:     c_inout_struct
+    subroutine pass_struct_by_reference_inout(arg)
+        type(cstruct1), intent(INOUT) :: arg
+        ! splicer begin namespace.structns.function.pass_struct_by_reference_inout
+        call c_pass_struct_by_reference_inout(arg)
+        ! splicer end namespace.structns.function.pass_struct_by_reference_inout
+    end subroutine pass_struct_by_reference_inout
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void passStructByReferenceOut
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  Cstruct1 & arg +intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: f_out_struct_&
+    ! Match:     f_default
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_struct_&
+    ! Match:     c_out_struct
+    subroutine pass_struct_by_reference_out(arg)
+        type(cstruct1), intent(OUT) :: arg
+        ! splicer begin namespace.structns.function.pass_struct_by_reference_out
+        call c_pass_struct_by_reference_out(arg)
+        ! splicer end namespace.structns.function.pass_struct_by_reference_out
+    end subroutine pass_struct_by_reference_out
+#endif
+
     ! splicer begin namespace.structns.additional_functions
     ! splicer end namespace.structns.additional_functions
 

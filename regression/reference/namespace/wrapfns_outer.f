@@ -45,6 +45,21 @@ module ns_outer_mod
 
 contains
 
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void One
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine one()
+        ! splicer begin namespace.outer.function.one
+        call c_one()
+        ! splicer end namespace.outer.function.one
+    end subroutine one
+#endif
+
     ! splicer begin namespace.outer.additional_functions
     ! splicer end namespace.outer.additional_functions
 
