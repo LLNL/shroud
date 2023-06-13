@@ -97,13 +97,13 @@ fortran-test-list = $(fortran-test-list-std) $(fortran-test-list-cfi)
 
 # Compile a Fortran test
 fortran-% : | $(relrunpath)/%/.. sync-cxx
-	$(call run-command,build,$(relrunpath)/$*,\
+	$(call run-command,build-f,$(relrunpath)/$*,\
 	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) $*)
 
 # Run a Fortran test
 .PHONY : $(fortran-test-list)
 $(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
-	$(call run-command,test,$(relrunpath)/$*,./$*)
+	$(call run-command,test-f,$(relrunpath)/$*,./$*)
 
 # Run the Fortran tests
 .PHONY : test-fortran
@@ -134,13 +134,13 @@ c-test-list = \
 
 # Compile a C test
 c-% : | $(relrunpath)/%/.. sync-cxx
-	$(call run-command,build,$(relrunpath)/$*,\
+	$(call run-command,build-c,$(relrunpath)/$*,\
 	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) testc)
 
 # Run the C tests
 .PHONY : $(c-test-list)
 $(c-test-list) : test-c-% : c-% | $(relrunpath)/%/..
-	$(call run-command,test,$(relrunpath)/$*,./testc)
+	$(call run-command,test-c,$(relrunpath)/$*,./testc)
 
 # Compile C tests
 .PHONY : test-c
@@ -173,13 +173,13 @@ cpp-test-list = \
 
 # Compile a C++ test
 cpp-% : | $(relrunpath)/%/..
-	$(call run-command,build,$(relrunpath)/$*,\
+	$(call run-command,build-cxx,$(relrunpath)/$*,\
 	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) maincpp)
 
 # Run a C++ test
 .PHONY : $(cpp-test-list)
 $(cpp-test-list) : test-cpp-% : cpp-% | $(relrunpath)/%/..
-	$(call run-command,test,$(relrunpath)/$*,./maincpp)
+	$(call run-command,test-cxx,$(relrunpath)/$*,./maincpp)
 
 .PHONY : test-cpp
 test-cpp : $(cpp-test-list)
@@ -218,7 +218,7 @@ python-test-list = \
 
 # Compile the generated Python wrapper
 pymod-% : | $(relrunpath)/%/python/.. sync-cxx
-	$(call run-command,build,$(relrunpath)/$*/python,\
+	$(call run-command,build-py,$(relrunpath)/$*/python,\
 	$(MAKE) -f $(top)/regression/run/$*/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all)
 
@@ -226,7 +226,7 @@ pymod-% : | $(relrunpath)/%/python/.. sync-cxx
 .PHONY : $(python-test-list)
 $(python-test-list) : test-python-% : pymod-% | $(relrunpath)/%/python/..
 	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
-	$(call run-command,test,$(relrunpath)/$*/python, \
+	$(call run-command,test-py,$(relrunpath)/$*/python, \
 	$(python.exe) $(top)/regression/run/$*/python/test.py)
 
 .PHONY : test-python
@@ -243,7 +243,7 @@ lua-test-list = \
 
 # Compile the generated Lua wrapper
 compile-lua-% : | $(relrunpath)/%/lua/..
-	$(call run-command,build,$(relrunpath)/$*/lua,\
+	$(call run-command,build-lua,$(relrunpath)/$*/lua,\
 	$(MAKE) -f $(top)/regression/run/$*/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all)
 
@@ -251,7 +251,7 @@ compile-lua-% : | $(relrunpath)/%/lua/..
 .PHONY : $(lua-test-list)
 $(lua-test-list) : test-lua-% : compile-lua-% | $(relrunpath)/%/lua/..
 #	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
-	$(call run-command,test,$(relrunpath)/$*/lua, \
+	$(call run-command,test-lua,$(relrunpath)/$*/lua, \
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
 
 .PHONY : test-lua
