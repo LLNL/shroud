@@ -60,6 +60,7 @@ root
             allocatable -- c_function_string_scalar_cfi_allocatable
       struct -- c_function_struct
         * -- c_function_struct_*
+        scalar -- c_function_struct_scalar
       vector
         scalar
           cdesc
@@ -333,6 +334,7 @@ root
         *
           buf
             pointer -- f_function_struct_*_buf_pointer
+        scalar -- f_function_struct_scalar
       vector
         scalar
           cdesc -- f_function_vector_scalar_cdesc
@@ -1362,6 +1364,22 @@ c_function_struct_*:
   post_call:
   - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
     \ *>(\t{cxx_addr}{cxx_var}));"
+c_function_struct_scalar:
+  c_arg_decl:
+  - '{c_type} *{c_var}'
+  cxx_local_var: result
+  f_arg_decl:
+  - '{f_type}, intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_import:
+  - '{f_kind}'
+  intent: function
+  name: c_function_struct_scalar
+  owner: library
+  post_call:
+  - memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));
+  return_type: void
 c_function_vector_scalar_cdesc_targ_native_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3774,6 +3792,11 @@ f_function_struct_*_buf_pointer:
   name: f_function_struct_*_buf_pointer
   post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+f_function_struct_scalar:
+  arg_c_call:
+  - '{f_var}'
+  intent: function
+  name: f_function_struct_scalar
 f_function_vector_scalar_cdesc:
   c_helper: copy_array
   f_helper: copy_array_{cxx_T}
