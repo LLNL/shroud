@@ -48,8 +48,8 @@ main.o : fruit.o wrapftypemap.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wraptypemap.o typemap.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS) -lm
 
 testc.o : testc.c wraptypemap.h typemap.hpp
 testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
