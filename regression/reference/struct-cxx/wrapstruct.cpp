@@ -202,8 +202,7 @@ void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
 // Attrs:     +intent(function)
-// Requested: c_function_struct_scalar
-// Match:     c_function_struct
+// Exact:     c_function_struct_scalar
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -214,13 +213,11 @@ void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_cstruct1 STR_returnStructByValue(int i, double d)
+void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 {
     // splicer begin function.returnStructByValue
     Cstruct1 SHCXX_rv = returnStructByValue(i, d);
-    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
-        static_cast<void *>(&SHCXX_rv));
-    return *SHC_rv;
+    memcpy((void *) SHC_rv, (void *) &SHCXX_rv, sizeof(SHCXX_rv));
     // splicer end function.returnStructByValue
 }
 

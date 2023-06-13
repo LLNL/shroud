@@ -51,6 +51,28 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
     // splicer end function.passStruct2_bufferify
 }
 
+// ----------------------------------------
+// Function:  Cstruct1 returnStructByValue
+// Attrs:     +intent(function)
+// Exact:     c_function_struct_scalar
+// ----------------------------------------
+// Argument:  int i +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double d +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
+{
+    // splicer begin function.returnStructByValue
+    Cstruct1 SHCXX_rv = returnStructByValue(i, d);
+    memcpy((void *) SHC_rv, (void *) &SHCXX_rv, sizeof(SHCXX_rv));
+    // splicer end function.returnStructByValue
+}
+
 /**
  * \brief Return a pointer to a struct
  *

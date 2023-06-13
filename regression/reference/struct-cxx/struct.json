@@ -3156,14 +3156,14 @@
                     "C_call_list": "i,\t d",
                     "C_name": "STR_returnStructByValue",
                     "C_name_api": "returnStructByValue",
-                    "C_prototype": "int i,\t double d",
-                    "C_return_type": "STR_cstruct1",
-                    "F_C_arguments": "i,\t d",
+                    "C_prototype": "int i,\t double d,\t STR_cstruct1 *SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "i,\t d,\t SHT_rv",
                     "F_C_call": "c_return_struct_by_value",
-                    "F_C_name": "return_struct_by_value",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "i,\t d",
+                    "F_C_name": "c_return_struct_by_value",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "i,\t d,\t SHT_rv",
                     "F_arguments": "i,\t d",
                     "F_name_api": "return_struct_by_value",
                     "F_name_function": "return_struct_by_value",
@@ -3177,7 +3177,6 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_get_value": "*",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_struct",
@@ -3189,7 +3188,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_function_struct_scalar",
-                        "stmt1": "c_function_struct"
+                        "stmt1": "c_function_struct_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3201,9 +3200,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_function_struct_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_struct_scalar",
                         "stmtc0": "c_function_struct_scalar",
-                        "stmtc1": "c_function_struct"
+                        "stmtc1": "c_function_struct_scalar"
                     }
                 }
             },

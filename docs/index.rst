@@ -48,6 +48,7 @@ Contents
    python
    cookbook
    typemaps
+   statements
    cstatements
    fstatements
    reference

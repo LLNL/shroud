@@ -152,7 +152,7 @@ cxx_local_var
 
 If a local C++ variable is created for an argument by pre_call,
 *cxx_local_var*
-indicates if the local variable is a **pointer** or **scalar**.
+indicates if the local variable is a **pointer**, **scalar** or **result**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
 This will properly dereference the variable when passed to the
 C++ function.
@@ -178,15 +178,23 @@ c_arg_decl
 A list of declarations to append to the prototype in the C wrapper.
 Defaults to *None* which will cause Shroud to generate an argument from
 the wrapped function's argument.
+An empty list will cause no declaration to be added.
 Functions do not add arguments by default.
+
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist in a group and have the same number of names.
 
 f_arg_decl
 ^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
-interface. Used when *buf_arg* includes "arg_decl".  The variable to be
+interface. The variable to be
 declared is *c_var*.  *f_module* can be used to add ``USE`` statements
 needed by the declarations.
+An empty list will cause no declaration to be added.
+
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
 
@@ -196,6 +204,7 @@ f_c_arg_names
 Names of arguments to pass to C function.
 Used when *buf_arg* is ``arg_decl``.
 Defaults to ``{F_C_var}``.
+An empty list will cause no declaration to be added.
 
 .. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
           exist in a group and have the same number of names.
@@ -276,6 +285,10 @@ post_call
 
 Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
+You can also specify a library language version as
+**c_post_call** and **cxx_post_call** which will be used
+instead of **post_call**.
+
 
 final
 ^^^^^

@@ -68,9 +68,17 @@ A dictionary of list of ``ONLY`` names:
 need_wrapper
 ^^^^^^^^^^^^
 
-If true, the Fortran wrapper will always be created.
+Shroud tries to only create an interface for a C function to
+avoid the extra layer of a Fortran wrapper.
+However, often the Fortran wrapper needs to do some work that
+the C wrapper cannot.
+This field can be set to True to ensure the Fortran wrapper
+is created.
 This is used when an assignment is needed to do a type coercion;
 for example, with logical types.
+
+A wrapper will always be created if the **F_force_wrapper**
+option is set.
 
 .. XXX tends to call bufferify version
 
@@ -105,8 +113,13 @@ arg_c_call
 ^^^^^^^^^^
 
 List of arguments to pass to C wrapper.
-By default the arguments of the Fortran wrapper are passed to the C wrapper.
-The list can be modified to pass additional arguments or expressions.
+By default the arguments of the Fortran wrapper are passed to the C
+wrapper.  The list of arguments can be set to pass additional
+arguments or expressions.  The format field *f_var* the name of the
+argument.
+
+When used with a **f_function** statement, the argument will be added
+to the end of the call list.
 
 .. code-block:: text
 
