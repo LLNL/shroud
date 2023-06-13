@@ -29,8 +29,8 @@ ifeq ($(compiler),gcc)
 
 CC = gcc
 # -Wextra
-# -O3 generates additional warnings
-CXXWARNINGS = -O3
+# -O3 generates additional warnings, but makes it harder to debug.
+#CXXWARNINGS = -O3
 LOCAL_CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
 # silence warning in enum.yaml test
 LOCAL_CFLAGS += -Wno-enum-compare

@@ -329,18 +329,21 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
                     stmt.f_arg_decl is not None or
                     stmt.f_c_arg_names is not None):
                     err = False
-                    if stmt.c_arg_decl is None:
+                    for field in ["c_arg_decl", "f_arg_decl", "f_c_arg_names"]:
+                        fvalue = stmt.get(field)
+                        if fvalue is None:
+                            err = True
+                            print("Missing", field, "in", node["name"])
+                        elif not isinstance(fvalue, list):
+                            err = True
+                            print(field, "must be a list in", node["name"])
+                    if (stmt.c_arg_decl is None or
+                        stmt.f_arg_decl is None or
+                        stmt.f_c_arg_names is None):
+                        print("c_arg_decl, f_arg_decl and f_c_arg_names must all exist")
                         err = True
-                        print("Missing c_arg_decl in", node["name"])
-                    if stmt.f_arg_decl is None:
-                        err = True
-                        print("Missing f_arg_decl in", node["name"])
-                    if stmt.f_c_arg_names is None:
-                        err = True
-                        print("Missing f_c_arg_names in", node["name"])
                     if err:
-                        raise RuntimeError(
-                            "c_arg_decl, f_arg_decl and f_c_arg_names must all exist")
+                        raise RuntimeError("Error with fields")
                     length = len(stmt.c_arg_decl)
                     if any(len(lst) != length for lst in [stmt.f_arg_decl, stmt.f_c_arg_names]):
                         raise RuntimeError(
@@ -470,7 +473,7 @@ def lookup_stmts_tree(tree, path):
 #                Empty list is no arguments, None is default argument.
 #  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
-#  f_c_arg_names - 
+#  f_c_arg_names - Empty list is no arguments
 #  f_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
@@ -2236,6 +2239,26 @@ fc_statements = [
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
     ),
+
+    # start function_struct_scalar
+    dict(
+        name="f_function_struct_scalar",
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        name="c_function_struct_scalar",
+        c_arg_decl=["{c_type} *{c_var}"],
+        f_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
+        f_c_arg_names=["{c_var}"],
+        f_import=["{f_kind}"],
+        return_type="void",  # Convert to function.
+        cxx_local_var="result",
+        post_call=[
+            "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
+        ],
+    ),
+    # end function_struct_scalar
+    
     # Similar to c_function_native_*
     dict(
         name="c_function_struct_*",

@@ -81,7 +81,7 @@ void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d);
 
 void STR_acceptStructInOutPtr(STR_cstruct1 * arg);
 
-STR_cstruct1 STR_returnStructByValue(int i, double d);
+void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv);
 
 STR_cstruct1 * STR_returnStructPtr1(int i, double d);
 
