@@ -1183,21 +1183,6 @@ int * POI_returnIntPtrToScalar(void)
 // end POI_returnIntPtrToScalar
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*
-// start POI_returnIntPtrToScalar_bufferify
-int * POI_returnIntPtrToScalar_bufferify(void)
-{
-    // splicer begin function.returnIntPtrToScalar_bufferify
-    int * SHC_rv = returnIntPtrToScalar();
-    return SHC_rv;
-    // splicer end function.returnIntPtrToScalar_bufferify
-}
-// end POI_returnIntPtrToScalar_bufferify
-
-// ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(function)
 // Requested: c_function_native_*_pointer
@@ -1249,21 +1234,6 @@ const int * POI_returnIntPtrToConstScalar(void)
     // splicer end function.returnIntPtrToConstScalar
 }
 // end POI_returnIntPtrToConstScalar
-
-// ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*
-// start POI_returnIntPtrToConstScalar_bufferify
-const int * POI_returnIntPtrToConstScalar_bufferify(void)
-{
-    // splicer begin function.returnIntPtrToConstScalar_bufferify
-    const int * SHC_rv = returnIntPtrToConstScalar();
-    return SHC_rv;
-    // splicer end function.returnIntPtrToConstScalar_bufferify
-}
-// end POI_returnIntPtrToConstScalar_bufferify
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)

@@ -83,6 +83,9 @@ ifeq ($(compiler),ibm)
 TCE = /usr/tce/packages/xl/xl-2019.08.20
 TCE = /usr/tce/packages/xl/xl-2020.11.12
 TCE = /usr/tce/packages/xl/xl-2021.03.11
+TCE = /usr/tce/packages/xl/xl-2021.12.22
+TCE = /usr/tce/packages/xl/xl-2022.08.19
+TCE = /usr/tce/packages/xl/xl-2023.03.13
 CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
 CC = xlc
 LOCAL_CFLAGS = -g
@@ -95,7 +98,8 @@ FC = xlf2003
 FC = xlf
 LOCAL_FFLAGS = -g -qfree=f90
 LOCAL_FFLAGS += -qlanglvl=ts
-# -qlanglvl=2003std
+#LOCAL_FFLAGS += -qlanglvl=2003std
+LOCAL_FFLAGS += -qxlf2003=polymorphic
 LOCAL_FFLAGS += -qcheck=all
 # The #line directive is not permitted by the Fortran TS29113 standard.
 # -P  Inhibit generation of linemarkers 

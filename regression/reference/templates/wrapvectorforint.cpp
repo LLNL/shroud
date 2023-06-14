@@ -88,25 +88,4 @@ int * TEM_vector_int_at(TEM_vector_int * self,
     // splicer end namespace.std.class.vector.method.at
 }
 
-// ----------------------------------------
-// Function:  int & at
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_&_buf_pointer
-// Match:     c_function_native_&
-// ----------------------------------------
-// Argument:  size_type n +value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
-int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
-    TEM_vector_int_size_type n)
-{
-    std::vector<int> *SH_this = static_cast<std::vector<int> *>
-        (self->addr);
-    // splicer begin namespace.std.class.vector.method.at_bufferify
-    int & SHC_rv = SH_this->at(n);
-    return &SHC_rv;
-    // splicer end namespace.std.class.vector.method.at_bufferify
-}
-
 }  // extern "C"

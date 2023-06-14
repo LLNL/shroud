@@ -42,8 +42,7 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point);
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv);
 
-const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
-    Cstruct_ptr * SH_this);
+const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this);
 
 void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
     const double * val);

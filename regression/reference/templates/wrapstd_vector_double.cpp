@@ -89,25 +89,4 @@ double * TEM_vector_double_at(TEM_vector_double * self,
     // splicer end namespace.std.class.vector.method.at
 }
 
-// ----------------------------------------
-// Function:  double & at
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_&_buf_pointer
-// Match:     c_function_native_&
-// ----------------------------------------
-// Argument:  size_type n +value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
-double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
-    TEM_vector_double_size_type n)
-{
-    std::vector<double> *SH_this = static_cast<std::vector<double> *>
-        (self->addr);
-    // splicer begin namespace.std.class.vector.method.at_bufferify
-    double & SHC_rv = SH_this->at(n);
-    return &SHC_rv;
-    // splicer end namespace.std.class.vector.method.at_bufferify
-}
-
 }  // extern "C"

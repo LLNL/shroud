@@ -1656,7 +1656,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "30 ****************************************",
+                "<FUNCTION>": "28 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1752,7 +1752,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "29 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1861,7 +1861,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "31 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -2102,7 +2102,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "32 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -2349,7 +2349,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "30 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2416,7 +2416,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -2553,7 +2553,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -3118,10 +3118,8 @@
                             {
                                 "<FUNCTION>": "21 ****************************************",
                                 "C_generated_path": [
-                                    "cxx_template",
-                                    "arg_to_buffer"
+                                    "cxx_template"
                                 ],
-                                "_PTR_F_C_index": "22",
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -3169,6 +3167,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "python": true
                                 },
@@ -3200,7 +3199,11 @@
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
                                             "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T"
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmt0": "f_in_native_scalar",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_in_native_scalar",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -3230,7 +3233,7 @@
                                     "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
-                                    "F_C_call": "c_vector_int_at_bufferify",
+                                    "F_C_call": "c_vector_int_at",
                                     "F_C_name": "c_vector_int_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -3277,9 +3280,9 @@
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_INT",
-                                        "stmt0": "f_function_native_&_buf_pointer",
-                                        "stmt1": "f_function_native_&_buf_pointer",
-                                        "stmtc0": "c_function_native_&_buf_pointer",
+                                        "stmt0": "f_function_native_&_pointer",
+                                        "stmt1": "f_function_native_&",
+                                        "stmtc0": "c_function_native_&_pointer",
                                         "stmtc1": "c_function_native_&"
                                     },
                                     "fmtpy": {
@@ -3299,143 +3302,6 @@
                                         "stmt0": "py_function_native_&_pointer_numpy",
                                         "stmt1": "py_function_native_&_pointer_numpy",
                                         "value_var": "SHValue_rv"
-                                    }
-                                }
-                            },
-                            {
-                                "<FUNCTION>": "22 ****************************************",
-                                "_PTR_C_CXX_index": "21",
-                                "_generated": "arg_to_buffer",
-                                "ast": {
-                                    "declarator": {
-                                        "metaattrs": {
-                                            "api": "buf",
-                                            "deref": "pointer",
-                                            "intent": "function"
-                                        },
-                                        "name": "at",
-                                        "params": [
-                                            {
-                                                "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
-                                                    "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
-                                                },
-                                                "specifier": [
-                                                    "size_type"
-                                                ],
-                                                "typemap_name": "std::vector<int>::size_type"
-                                            }
-                                        ],
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "template_argument": "T",
-                                    "typemap_name": "int"
-                                },
-                                "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +value)",
-                                "have_template_args": true,
-                                "name": "at",
-                                "options": {
-                                    "F_create_generic": false
-                                },
-                                "splicer_group": "buf",
-                                "wrap": {
-                                    "c": true,
-                                    "f_c": true
-                                },
-                                "zz_fmtargs": {
-                                    "n": {
-                                        "fmtc": {
-                                            "c_addr": "&",
-                                            "c_const": "",
-                                            "c_deref": "",
-                                            "c_member": ".",
-                                            "c_type": "TEM_vector_int_size_type",
-                                            "c_var": "n",
-                                            "cfi_type": "CFI_type_size_t",
-                                            "cxx_addr": "&",
-                                            "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector<int>::size_type",
-                                            "cxx_var": "n",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "c_in_native_scalar",
-                                            "stmt1": "c_default"
-                                        },
-                                        "fmtf": {
-                                            "F_C_var": "n",
-                                            "c_var": "n",
-                                            "f_c_module_line": "--import--:vector_int_size_type",
-                                            "f_intent": "IN",
-                                            "f_kind": "vector_int_size_type",
-                                            "f_type": "integer(vector_int_size_type)",
-                                            "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "f_in_native_scalar",
-                                            "stmt1": "f_default",
-                                            "stmtc0": "c_in_native_scalar",
-                                            "stmtc1": "c_default"
-                                        }
-                                    }
-                                },
-                                "zz_fmtdict": {
-                                    "C_call_list": "n",
-                                    "C_name": "TEM_vector_int_at_bufferify",
-                                    "C_name_api": "at",
-                                    "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
-                                    "C_return_type": "int *",
-                                    "F_C_arguments": "self,\t n",
-                                    "F_C_name": "c_vector_int_at_bufferify",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "F_name_api": "at",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "self",
-                                    "cxx_rv_decl": "int & SHC_rv",
-                                    "function_name": "at",
-                                    "function_suffix": "_bufferify"
-                                },
-                                "zz_fmtresult": {
-                                    "fmtc": {
-                                        "c_const": "",
-                                        "c_get_value": "&",
-                                        "c_type": "int",
-                                        "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_int",
-                                        "cxx_addr": "&",
-                                        "cxx_member": ".",
-                                        "cxx_nonconst_ptr": "&SHC_rv",
-                                        "cxx_type": "int",
-                                        "cxx_var": "SHC_rv",
-                                        "idtor": "0",
-                                        "sh_type": "SH_TYPE_INT",
-                                        "stmt0": "c_function_native_&_buf_pointer",
-                                        "stmt1": "c_function_native_&"
-                                    },
-                                    "fmtf": {
-                                        "F_C_var": "SHT_rv",
-                                        "c_var": "SHT_rv",
-                                        "f_intent": "OUT",
-                                        "f_kind": "C_INT",
-                                        "f_type": "integer(C_INT)",
-                                        "f_var": "SHT_rv",
-                                        "sh_type": "SH_TYPE_INT"
                                     }
                                 }
                             }
@@ -3532,7 +3398,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "23 ****************************************",
+                                "<FUNCTION>": "22 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -3646,7 +3512,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "24 ****************************************",
+                                "<FUNCTION>": "23 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
@@ -3704,7 +3570,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "25 ****************************************",
+                                "<FUNCTION>": "24 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3754,7 +3620,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "27 ****************************************",
+                                "<FUNCTION>": "26 ****************************************",
                                 "C_generated_path": [
                                     "cxx_template"
                                 ],
@@ -3892,7 +3758,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "26 ****************************************",
+                                "<FUNCTION>": "25 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3942,12 +3808,10 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "28 ****************************************",
+                                "<FUNCTION>": "27 ****************************************",
                                 "C_generated_path": [
-                                    "cxx_template",
-                                    "arg_to_buffer"
+                                    "cxx_template"
                                 ],
-                                "_PTR_F_C_index": "29",
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -3995,6 +3859,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "python": true
                                 },
@@ -4026,7 +3891,11 @@
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
                                             "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T"
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmt0": "f_in_native_scalar",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_in_native_scalar",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -4056,7 +3925,7 @@
                                     "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
-                                    "F_C_call": "c_vector_double_at_bufferify",
+                                    "F_C_call": "c_vector_double_at",
                                     "F_C_name": "c_vector_double_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -4103,9 +3972,9 @@
                                         "f_type": "real(C_DOUBLE)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_DOUBLE",
-                                        "stmt0": "f_function_native_&_buf_pointer",
-                                        "stmt1": "f_function_native_&_buf_pointer",
-                                        "stmtc0": "c_function_native_&_buf_pointer",
+                                        "stmt0": "f_function_native_&_pointer",
+                                        "stmt1": "f_function_native_&",
+                                        "stmtc0": "c_function_native_&_pointer",
                                         "stmtc1": "c_function_native_&"
                                     },
                                     "fmtpy": {
@@ -4125,143 +3994,6 @@
                                         "stmt0": "py_function_native_&_pointer_numpy",
                                         "stmt1": "py_function_native_&_pointer_numpy",
                                         "value_var": "SHValue_rv"
-                                    }
-                                }
-                            },
-                            {
-                                "<FUNCTION>": "29 ****************************************",
-                                "_PTR_C_CXX_index": "28",
-                                "_generated": "arg_to_buffer",
-                                "ast": {
-                                    "declarator": {
-                                        "metaattrs": {
-                                            "api": "buf",
-                                            "deref": "pointer",
-                                            "intent": "function"
-                                        },
-                                        "name": "at",
-                                        "params": [
-                                            {
-                                                "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
-                                                    "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
-                                                },
-                                                "specifier": [
-                                                    "size_type"
-                                                ],
-                                                "typemap_name": "std::vector<double>::size_type"
-                                            }
-                                        ],
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "template_argument": "T",
-                                    "typemap_name": "double"
-                                },
-                                "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +value)",
-                                "have_template_args": true,
-                                "name": "at",
-                                "options": {
-                                    "F_create_generic": false
-                                },
-                                "splicer_group": "buf",
-                                "wrap": {
-                                    "c": true,
-                                    "f_c": true
-                                },
-                                "zz_fmtargs": {
-                                    "n": {
-                                        "fmtc": {
-                                            "c_addr": "&",
-                                            "c_const": "",
-                                            "c_deref": "",
-                                            "c_member": ".",
-                                            "c_type": "TEM_vector_double_size_type",
-                                            "c_var": "n",
-                                            "cfi_type": "CFI_type_size_t",
-                                            "cxx_addr": "&",
-                                            "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector<double>::size_type",
-                                            "cxx_var": "n",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "c_in_native_scalar",
-                                            "stmt1": "c_default"
-                                        },
-                                        "fmtf": {
-                                            "F_C_var": "n",
-                                            "c_var": "n",
-                                            "f_c_module_line": "--import--:vector_double_size_type",
-                                            "f_intent": "IN",
-                                            "f_kind": "vector_double_size_type",
-                                            "f_type": "integer(vector_double_size_type)",
-                                            "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "f_in_native_scalar",
-                                            "stmt1": "f_default",
-                                            "stmtc0": "c_in_native_scalar",
-                                            "stmtc1": "c_default"
-                                        }
-                                    }
-                                },
-                                "zz_fmtdict": {
-                                    "C_call_list": "n",
-                                    "C_name": "TEM_vector_double_at_bufferify",
-                                    "C_name_api": "at",
-                                    "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
-                                    "C_return_type": "double *",
-                                    "F_C_arguments": "self,\t n",
-                                    "F_C_name": "c_vector_double_at_bufferify",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "F_name_api": "at",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "self",
-                                    "cxx_rv_decl": "double & SHC_rv",
-                                    "function_name": "at",
-                                    "function_suffix": "_bufferify"
-                                },
-                                "zz_fmtresult": {
-                                    "fmtc": {
-                                        "c_const": "",
-                                        "c_get_value": "&",
-                                        "c_type": "double",
-                                        "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_double",
-                                        "cxx_addr": "&",
-                                        "cxx_member": ".",
-                                        "cxx_nonconst_ptr": "&SHC_rv",
-                                        "cxx_type": "double",
-                                        "cxx_var": "SHC_rv",
-                                        "idtor": "0",
-                                        "sh_type": "SH_TYPE_DOUBLE",
-                                        "stmt0": "c_function_native_&_buf_pointer",
-                                        "stmt1": "c_function_native_&"
-                                    },
-                                    "fmtf": {
-                                        "F_C_var": "SHT_rv",
-                                        "c_var": "SHT_rv",
-                                        "f_intent": "OUT",
-                                        "f_kind": "C_DOUBLE",
-                                        "f_type": "real(C_DOUBLE)",
-                                        "f_var": "SHT_rv",
-                                        "sh_type": "SH_TYPE_DOUBLE"
                                     }
                                 }
                             }

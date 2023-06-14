@@ -80,8 +80,8 @@ void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_struct_*_buf_pointer
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_struct_*_pointer
 // Match:     c_function_struct_*
 // ----------------------------------------
 // Argument:  int i +value
@@ -201,21 +201,20 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 
 // ----------------------------------------
 // Function:  const double * Cstruct_ptr_get_const_dvalue
-// Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-// Requested: c_getter_native_*_buf_pointer
+// Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
+// Requested: c_getter_native_*_pointer
 // Match:     c_getter_native_*
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_ptr)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
-    Cstruct_ptr * SH_this)
+const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 {
-    // splicer begin function.Cstruct_ptr_get_const_dvalue_bufferify
+    // splicer begin function.Cstruct_ptr_get_const_dvalue
     // skip call c_getter
     return SH_this->const_dvalue;
-    // splicer end function.Cstruct_ptr_get_const_dvalue_bufferify
+    // splicer end function.Cstruct_ptr_get_const_dvalue
 }
 
 // ----------------------------------------

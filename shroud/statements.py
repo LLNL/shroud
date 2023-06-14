@@ -1145,7 +1145,7 @@ fc_statements = [
     dict(
         # Pointer to scalar.
         # type(C_PTR) is returned instead of a cdesc argument.
-        name="f_function_native_*_buf_pointer",
+        name="f_function_native_*_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1208,11 +1208,11 @@ fc_statements = [
     
     dict(
         name="f_function_native_&",
-        base="f_function_native_*_buf_pointer",   # XXX - change base to &?
+        base="f_function_native_*_pointer",   # XXX - change base to &?
     ),
     dict(
         name="f_function_native_&_buf_pointer",
-        base="f_function_native_*_buf_pointer",   # XXX - change base to &?
+        base="f_function_native_*_pointer",   # XXX - change base to &?
         arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -2269,8 +2269,8 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        name="f_function_struct_*_buf_pointer",
-        base="f_function_native_*_buf_pointer",
+        name="f_function_struct_*_pointer",
+        base="f_function_native_*_pointer",
     ),
 
     ########################################
