@@ -1994,9 +1994,6 @@ class GenFunctions(object):
                 if meta["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)
                     need_buf_result = "cdesc"
-                else:
-                    # int *get_scalar() +deref(pointer)
-                    need_buf_result = "buf"
 
         # Functions with these results need wrappers.
         if not (need_buf_result or

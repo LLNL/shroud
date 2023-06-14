@@ -59,19 +59,6 @@ int * OWN_ReturnIntPtrPointer(void)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrPointer +deref(pointer)
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*
-int * OWN_ReturnIntPtrPointer_bufferify(void)
-{
-    // splicer begin function.ReturnIntPtrPointer_bufferify
-    int * SHC_rv = ReturnIntPtrPointer();
-    return SHC_rv;
-    // splicer end function.ReturnIntPtrPointer_bufferify
-}
-
-// ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
 // Requested: c_function_native_*_raw

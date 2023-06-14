@@ -5,7 +5,6 @@ C vector(void)  +api(capptr)+intent(ctor)
 C ~vector(void)  +intent(dtor)
 C void push_back(const int & value +intent(in))  +intent(subroutine)
 C int & at(size_type n +value)  +deref(pointer)+intent(function)
-C int & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector<double>
@@ -13,7 +12,6 @@ C vector(void)  +api(capptr)+intent(ctor)
 C ~vector(void)  +intent(dtor)
 C void push_back(const double & value +intent(in))  +intent(subroutine)
 C double & at(size_type n +value)  +deref(pointer)+intent(function)
-C double & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
 class ImplWorker1
@@ -92,7 +90,6 @@ C-interface vector(void)  +api(capptr)+intent(ctor)
 C-interface ~vector(void)  +intent(dtor)
 C-interface void push_back(const int & value +intent(in))  +intent(subroutine)
 C-interface int & at(size_type n +value)  +deref(pointer)+intent(function)
-C-interface int & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
 class vector<double>
 typedef size_type
 Fortran vector(void)  +api(capptr)+intent(ctor)
@@ -103,7 +100,6 @@ C-interface vector(void)  +api(capptr)+intent(ctor)
 C-interface ~vector(void)  +intent(dtor)
 C-interface void push_back(const double & value +intent(in))  +intent(subroutine)
 C-interface double & at(size_type n +value)  +deref(pointer)+intent(function)
-C-interface double & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f

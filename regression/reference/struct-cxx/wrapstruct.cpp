@@ -254,36 +254,6 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 /**
  * \brief Return a pointer to a struct
  *
- * Does not generate a bufferify C wrapper.
- */
-// ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_struct_*_buf_pointer
-// Match:     c_function_struct_*
-// ----------------------------------------
-// Argument:  int i +value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
-// ----------------------------------------
-// Argument:  double d +value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
-STR_cstruct1 * STR_returnStructPtr1_bufferify(int i, double d)
-{
-    // splicer begin function.returnStructPtr1_bufferify
-    Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
-    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
-    // splicer end function.returnStructPtr1_bufferify
-}
-
-/**
- * \brief Return a pointer to a struct
- *
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
@@ -323,8 +293,8 @@ STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_struct_*_buf_pointer
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_struct_*_pointer
 // Match:     c_function_struct_*
 // ----------------------------------------
 // Argument:  int i +value
@@ -365,21 +335,6 @@ STR_cstruct_list * STR_get_global_struct_list(void)
         static_cast<void *>(SHCXX_rv));
     return SHC_rv;
     // splicer end function.get_global_struct_list
-}
-
-// ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_struct_*_buf_pointer
-// Match:     c_function_struct_*
-STR_cstruct_list * STR_get_global_struct_list_bufferify(void)
-{
-    // splicer begin function.get_global_struct_list_bufferify
-    Cstruct_list * SHCXX_rv = get_global_struct_list();
-    STR_cstruct_list * SHC_rv = static_cast<STR_cstruct_list *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
-    // splicer end function.get_global_struct_list_bufferify
 }
 
 // ----------------------------------------
@@ -476,23 +431,23 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 
 // ----------------------------------------
 // Function:  const double * Cstruct_ptr_get_const_dvalue
-// Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-// Requested: c_getter_native_*_buf_pointer
+// Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
+// Requested: c_getter_native_*_pointer
 // Match:     c_getter_native_*
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_ptr)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
+const double * STR_Cstruct_ptr_get_const_dvalue(
     STR_cstruct_ptr * SH_this)
 {
-    // splicer begin function.Cstruct_ptr_get_const_dvalue_bufferify
+    // splicer begin function.Cstruct_ptr_get_const_dvalue
     Cstruct_ptr * SHCXX_SH_this = static_cast<Cstruct_ptr *>
         (static_cast<void *>(SH_this));
     // skip call c_getter
     return SHCXX_SH_this->const_dvalue;
-    // splicer end function.Cstruct_ptr_get_const_dvalue_bufferify
+    // splicer end function.Cstruct_ptr_get_const_dvalue
 }
 
 // ----------------------------------------

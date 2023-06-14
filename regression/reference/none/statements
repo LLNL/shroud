@@ -284,8 +284,6 @@ root
           buf
             pointer -- f_function_native_&_buf_pointer
         *
-          buf
-            pointer -- f_function_native_*_buf_pointer
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function/getter_native_*_cdesc_pointer
@@ -293,6 +291,7 @@ root
           cfi
             allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
+          pointer -- f_function_native_*_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
@@ -332,8 +331,7 @@ root
             pointer -- f_function_string_scalar/*/&_cfi_pointer
       struct
         *
-          buf
-            pointer -- f_function_struct_*_buf_pointer
+          pointer -- f_function_struct_*_pointer
         scalar -- f_function_struct_scalar
       vector
         scalar
@@ -3413,23 +3411,6 @@ f_function_native_**:
     - C_PTR
   intent: function
   name: f_function_native_**
-f_function_native_*_buf_pointer:
-  arg_decl:
-  - '{f_type}, pointer :: {f_var}'
-  call:
-  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {c_local_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-    - c_f_pointer
-  intent: function
-  local:
-  - ptr
-  name: f_function_native_*_buf_pointer
-  post_call:
-  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_native_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3503,6 +3484,23 @@ f_function_native_*_cfi_pointer:
   name: f_function_native_*_cfi_pointer
   pre_call:
   - nullify({f_var})
+f_function_native_*_pointer:
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}'
+  call:
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
+  declare:
+  - 'type(C_PTR) :: {c_local_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  intent: function
+  local:
+  - ptr
+  name: f_function_native_*_pointer
+  post_call:
+  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_native_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -3775,7 +3773,7 @@ f_function_string_scalar_cfi_pointer:
   intent: function
   name: f_function_string_scalar_cfi_pointer
   need_wrapper: true
-f_function_struct_*_buf_pointer:
+f_function_struct_*_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}'
   call:
@@ -3789,7 +3787,7 @@ f_function_struct_*_buf_pointer:
   intent: function
   local:
   - ptr
-  name: f_function_struct_*_buf_pointer
+  name: f_function_struct_*_pointer
   post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_struct_scalar:
