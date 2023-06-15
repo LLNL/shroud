@@ -122,7 +122,6 @@ def add_all_helpers(symtab):
     add_capsule_helper()
     for ntypemap in symtab.typemaps.values():
         if ntypemap.sgroup == "native":
-            add_copy_array_helper(fmt, ntypemap)
             add_to_PyList_helper(fmt, ntypemap)
             add_to_PyList_helper_vector(fmt, ntypemap)
 
@@ -170,7 +169,15 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     )
     
     ########################################
-    # Only used with std::vector and thus C++.
+    # XXX - Only used with std::vector and thus C++.
+    #Create Fortran interface to helper function
+    # which copies an array based on c_type.
+    # Each interface calls the same C helper.
+    # Used with sgroup="native" types.
+    #
+    # The function has C_prefix in the name since it is not file static.
+    # This allows multiple wrapped libraries to coexist.
+    
     name = "copy_array"
     fmt.hname = name
     if literalinclude:
@@ -197,6 +204,30 @@ n *= data->elem_len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}""",
+            fmt,
+        ),
+    )
+
+    fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
+    FHelpers[name] = dict(
+        # XXX when f_kind == C_SIZE_T
+        dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
+        interface=wformat(
+            """
+interface+
+! helper {hname}
+! Copy contents of context into c_var.
+subroutine {hnamefunc}(context, c_var, c_var_size) &+
+bind(C, name="{C_prefix}ShroudCopyArray")
+use iso_c_binding, only : C_PTR, C_SIZE_T
+import {F_array_type}
+type({F_array_type}), intent(IN) :: context
+type(C_PTR), intent(IN), value :: c_var
+integer(C_SIZE_T), value :: c_var_size
+-end subroutine {hnamefunc}
+-end interface""",
             fmt,
         ),
     )
@@ -706,51 +737,6 @@ integer(C_LONG) :: shape(7) = 0
     )
     FHelpers[name] = helper
 
-
-def add_copy_array_helper(fmt, ntypemap):
-    """Create Fortran interface to helper function
-    which copies an array based on c_type.
-    Each interface calls the same C helper.
-    Used with sgroup="native" types.
-
-    The function has C_prefix in the name since it is not file static.
-    This allows multiple wrapped libraries to coexist.
-
-    Args:
-        fmt      - util.Scope
-        ntypemap - typemap.Typemap
-    """
-    fmt.flat_name = ntypemap.flat_name
-    fmt.c_type = ntypemap.c_type
-    fmt.f_kind = ntypemap.f_kind
-    fmt.f_type = ntypemap.f_type
-
-    name = wformat("copy_array_{flat_name}", fmt)
-    fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
-    helper = dict(
-        # XXX when f_kind == C_SIZE_T
-        dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
-        interface=wformat(
-            """
-interface+
-! helper {hname}
-! Copy contents of context into c_var.
-subroutine {hnamefunc}(context, c_var, c_var_size) &+
-bind(C, name="{C_prefix}ShroudCopyArray")
-use iso_c_binding, only : {f_kind}, C_SIZE_T
-import {F_array_type}
-type({F_array_type}), intent(IN) :: context
-{f_type}, intent(OUT) :: c_var(*)
-integer(C_SIZE_T), value :: c_var_size
--end subroutine {hnamefunc}
--end interface""",
-            fmt,
-        ),
-    )
-    FHelpers[name] = helper
-    return name
 
 def add_to_PyList_helper(fmt, ntypemap):
     """Add helpers to work with Python lists.

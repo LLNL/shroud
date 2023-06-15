@@ -331,29 +331,16 @@ module vectors_mod
     end interface
 
     interface
-        ! helper copy_array_double
+        ! helper copy_array
         ! Copy contents of context into c_var.
-        subroutine VEC_SHROUD_copy_array_double(context, c_var, c_var_size) &
+        subroutine VEC_SHROUD_copy_array(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")
-            use iso_c_binding, only : C_DOUBLE, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import VEC_SHROUD_array
             type(VEC_SHROUD_array), intent(IN) :: context
-            real(C_DOUBLE), intent(OUT) :: c_var(*)
+            type(C_PTR), intent(IN), value :: c_var
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine VEC_SHROUD_copy_array_double
-    end interface
-
-    interface
-        ! helper copy_array_int
-        ! Copy contents of context into c_var.
-        subroutine VEC_SHROUD_copy_array_int(context, c_var, c_var_size) &
-            bind(C, name="VEC_ShroudCopyArray")
-            use iso_c_binding, only : C_INT, C_SIZE_T
-            import VEC_SHROUD_array
-            type(VEC_SHROUD_array), intent(IN) :: context
-            integer(C_INT), intent(OUT) :: c_var(*)
-            integer(C_SIZE_T), value :: c_var_size
-        end subroutine VEC_SHROUD_copy_array_int
+        end subroutine VEC_SHROUD_copy_array
     end interface
 
 contains
@@ -407,12 +394,12 @@ contains
     !<
     ! start vector_iota_out
     subroutine vector_iota_out(arg)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(OUT) :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_iota_out
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_bufferify(SHT_arg_cdesc)
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out
     end subroutine vector_iota_out
@@ -443,13 +430,13 @@ contains
     ! start vector_iota_out_with_num
     function vector_iota_out_with_num(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
-        integer(C_INT), intent(OUT) :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_iota_out_with_num
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         integer(C_LONG) :: num
         num = c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc)
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_with_num
     end function vector_iota_out_with_num
@@ -480,13 +467,13 @@ contains
     ! start vector_iota_out_with_num2
     function vector_iota_out_with_num2(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
-        integer(C_INT), intent(OUT) :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_iota_out_with_num2
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         integer(C_LONG) :: num
         call c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc)
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         num = SHT_arg_cdesc%size
         ! splicer end function.vector_iota_out_with_num2
@@ -514,13 +501,13 @@ contains
     !<
     ! start vector_iota_out_alloc
     subroutine vector_iota_out_alloc(arg)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(OUT), allocatable :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_iota_out_alloc
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc)
         allocate(arg(SHT_arg_cdesc%size))
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_alloc
     end subroutine vector_iota_out_alloc
@@ -547,15 +534,15 @@ contains
     !<
     ! start vector_iota_inout_alloc
     subroutine vector_iota_inout_alloc(arg)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(INOUT), allocatable :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), intent(INOUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_iota_inout_alloc
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_inout_alloc_bufferify(arg, &
             size(arg, kind=C_SIZE_T), SHT_arg_cdesc)
         if (allocated(arg)) deallocate(arg)
         allocate(arg(SHT_arg_cdesc%size))
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_inout_alloc
     end subroutine vector_iota_inout_alloc
@@ -577,13 +564,13 @@ contains
     ! Requested: c_inout_vector_&_cdesc_targ_native_scalar
     ! Match:     c_inout_vector_cdesc_targ_native_scalar
     subroutine vector_increment(arg)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(INOUT) :: arg(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), intent(INOUT), target :: arg(:)
         ! splicer begin function.vector_increment
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_increment_bufferify(arg, size(arg, kind=C_SIZE_T), &
             SHT_arg_cdesc)
-        call VEC_SHROUD_copy_array_int(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_increment
     end subroutine vector_increment
@@ -608,12 +595,12 @@ contains
     !!
     !<
     subroutine vector_iota_out_d(arg)
-        use iso_c_binding, only : C_DOUBLE, C_SIZE_T
-        real(C_DOUBLE), intent(OUT) :: arg(:)
+        use iso_c_binding, only : C_DOUBLE, C_LOC, C_SIZE_T
+        real(C_DOUBLE), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_iota_out_d
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_d_bufferify(SHT_arg_cdesc)
-        call VEC_SHROUD_copy_array_double(SHT_arg_cdesc, arg, &
+        call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_d
     end subroutine vector_iota_out_d
@@ -713,14 +700,14 @@ contains
     !<
     function return_vector_alloc(n) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
         integer(C_INT), value, intent(IN) :: n
-        integer(C_INT), allocatable :: SHT_rv(:)
+        integer(C_INT), allocatable, target :: SHT_rv(:)
         ! splicer begin function.return_vector_alloc
         type(VEC_SHROUD_array) :: SHT_rv_cdesc
         call c_return_vector_alloc_bufferify(n, SHT_rv_cdesc)
         allocate(SHT_rv(SHT_rv_cdesc%size))
-        call VEC_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
+        call VEC_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
             size(SHT_rv,kind=C_SIZE_T))
         ! splicer end function.return_vector_alloc
     end function return_vector_alloc

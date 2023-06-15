@@ -912,16 +912,16 @@ fc_statements = [
         name="f_out_native_**/*&_cdesc_allocatable",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_int",
+        f_helper="copy_array",
 #XXX        f_helper="copy_array_{c_type}",
         arg_decl=[
-            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1131,14 +1131,15 @@ fc_statements = [
         name="f_function_native_*_cdesc_allocatable",
         mixin=["f_mixin_function_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_type}",
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         arg_decl=[
-            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}{f_array_allocate})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1969,30 +1970,42 @@ fc_statements = [
         name="f_out_vector_cdesc_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_helper="copy_array",
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
         name="f_inout_vector_cdesc_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
         # XXX - This group is not tested
         name="f_function_vector_scalar_cdesc",
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
@@ -2000,22 +2013,31 @@ fc_statements = [
         name="f_out_vector_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
         name="f_inout_vector_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -2024,14 +2046,14 @@ fc_statements = [
         name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_function_cdesc"],
         c_helper="copy_array",
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         arg_decl=[
-            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 

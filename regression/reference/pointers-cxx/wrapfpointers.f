@@ -1331,16 +1331,16 @@ module pointers_mod
     end interface
 
     interface
-        ! helper copy_array_int
+        ! helper copy_array
         ! Copy contents of context into c_var.
-        subroutine POI_SHROUD_copy_array_int(context, c_var, c_var_size) &
+        subroutine POI_SHROUD_copy_array(context, c_var, c_var_size) &
             bind(C, name="POI_ShroudCopyArray")
-            use iso_c_binding, only : C_INT, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import POI_SHROUD_array
             type(POI_SHROUD_array), intent(IN) :: context
-            integer(C_INT), intent(OUT) :: c_var(*)
+            type(C_PTR), intent(IN), value :: c_var
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine POI_SHROUD_copy_array_int
+        end subroutine POI_SHROUD_copy_array
     end interface
 
 contains
@@ -2321,13 +2321,13 @@ contains
     !<
     ! start get_alloc_to_fixed_array
     subroutine get_alloc_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(OUT), allocatable :: count(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), intent(OUT), allocatable, target :: count(:)
         ! splicer begin function.get_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
         call c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc)
         allocate(count(SHT_count_cdesc%shape(1)))
-        call POI_SHROUD_copy_array_int(SHT_count_cdesc, count, &
+        call POI_SHROUD_copy_array(SHT_count_cdesc, C_LOC(count), &
             SHT_count_cdesc%size)
         ! splicer end function.get_alloc_to_fixed_array
     end subroutine get_alloc_to_fixed_array
@@ -2646,13 +2646,13 @@ contains
     ! start return_int_alloc_to_fixed_array
     function return_int_alloc_to_fixed_array() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), allocatable :: SHT_rv(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), allocatable, target :: SHT_rv(:)
         ! splicer begin function.return_int_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_rv_cdesc
         call c_return_int_alloc_to_fixed_array_bufferify(SHT_rv_cdesc)
         allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
-        call POI_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
+        call POI_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
             size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_int_alloc_to_fixed_array
     end function return_int_alloc_to_fixed_array
