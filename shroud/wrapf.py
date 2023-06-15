@@ -2549,6 +2549,8 @@ class ModuleInfo(object):
         f_helper = wformat(helpers, fmt)
         for i, helper in enumerate(f_helper.split()):
             self.f_helper[helper] = True
+            if helper not in whelpers.FHelpers:
+                raise RuntimeError("No such helper {}".format(helper))
             setattr(fmt, "hnamefunc" + str(i),
                     whelpers.FHelpers[helper].get("name", helper))
             

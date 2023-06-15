@@ -431,16 +431,16 @@ module ownership_mod
     end interface
 
     interface
-        ! helper copy_array_int
+        ! helper copy_array
         ! Copy contents of context into c_var.
-        subroutine OWN_SHROUD_copy_array_int(context, c_var, c_var_size) &
+        subroutine OWN_SHROUD_copy_array(context, c_var, c_var_size) &
             bind(C, name="OWN_ShroudCopyArray")
-            use iso_c_binding, only : C_INT, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import OWN_SHROUD_array
             type(OWN_SHROUD_array), intent(IN) :: context
-            integer(C_INT), intent(OUT) :: c_var(*)
+            type(C_PTR), intent(IN), value :: c_var
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine OWN_SHROUD_copy_array_int
+        end subroutine OWN_SHROUD_copy_array
     end interface
 
 contains
@@ -571,13 +571,13 @@ contains
     ! start return_int_ptr_dim_alloc
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), allocatable :: SHT_rv(:)
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        integer(C_INT), allocatable, target :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_alloc
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
         call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc)
         allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
-        call OWN_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
+        call OWN_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
             size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc

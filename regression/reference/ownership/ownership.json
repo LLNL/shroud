@@ -1224,7 +1224,7 @@
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "OWN_SHROUD_copy_array_int",
+                        "hnamefunc0": "OWN_SHROUD_copy_array",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_allocatable",

@@ -107,6 +107,7 @@ LOCAL_FFLAGS += -qpreprocess -WF,-P
 # keep preprocessor output
 #LOCAL_FFLAGS += -d
 # -qsuffix=cpp=f
+CLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared

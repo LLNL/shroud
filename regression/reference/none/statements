@@ -3415,17 +3415,21 @@ f_function_native_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
-  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_type}
+  f_helper: copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
   intent: function
   name: f_function_native_*_cdesc_allocatable
   need_wrapper: true
   post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))"
   temps:
   - cdesc
 f_function_native_*_cdesc_pointer:
@@ -3796,33 +3800,37 @@ f_function_struct_scalar:
   intent: function
   name: f_function_struct_scalar
 f_function_vector_scalar_cdesc:
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: function
   name: f_function_vector_scalar_cdesc
   post_call:
-  - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
 f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
-  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: function
   name: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
   need_wrapper: true
   post_call:
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
 f_function_void_*:
@@ -4158,19 +4166,22 @@ f_inout_vector_cdesc_allocatable_targ_native_scalar:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: inout
   name: f_inout_vector_cdesc_allocatable_targ_native_scalar
   post_call:
   - if (allocated({f_var})) deallocate({f_var})
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
 f_inout_vector_cdesc_targ_native_scalar:
@@ -4178,17 +4189,20 @@ f_inout_vector_cdesc_targ_native_scalar:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: inout
   name: f_inout_vector_cdesc_targ_native_scalar
   post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
 f_inout_void_**:
@@ -4360,19 +4374,20 @@ f_out_native_*&_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_int
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: out
   name: f_out_native_*&_cdesc_allocatable
   post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
   temps:
   - cdesc
 f_out_native_*&_cdesc_pointer:
@@ -4396,19 +4411,20 @@ f_out_native_**_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_int
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: out
   name: f_out_native_**_cdesc_allocatable
   post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
   temps:
   - cdesc
 f_out_native_**_cdesc_pointer:
@@ -4508,34 +4524,40 @@ f_out_vector_buf_targ_string_scalar:
 f_out_vector_cdesc_allocatable_targ_native_scalar:
   arg_c_call:
   - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
+    - C_LOC
     - C_SIZE_T
   intent: out
   name: f_out_vector_cdesc_allocatable_targ_native_scalar
   post_call:
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
 f_out_vector_cdesc_targ_native_scalar:
   arg_c_call:
   - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_array_{cxx_T}
+  f_helper: copy_array
   f_module:
     iso_c_binding:
     - C_SIZE_T
+    - C_LOC
   intent: out
   name: f_out_vector_cdesc_targ_native_scalar
   post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
 f_out_void_**:
