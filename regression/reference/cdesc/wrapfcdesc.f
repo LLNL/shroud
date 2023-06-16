@@ -296,7 +296,6 @@ contains
         ! SHT_value_cdesc%elem_len = C_SIZEOF()
         SHT_value_cdesc%size = 1
         SHT_value_cdesc%rank = 0
-        SHT_value_cdesc%shape(1:0) = shape(value)
         call c_get_scalar1_0_bufferify(name, SHT_name_len, &
             SHT_value_cdesc)
         ! splicer end function.get_scalar1_0
@@ -346,7 +345,6 @@ contains
         ! SHT_value_cdesc%elem_len = C_SIZEOF()
         SHT_value_cdesc%size = 1
         SHT_value_cdesc%rank = 0
-        SHT_value_cdesc%shape(1:0) = shape(value)
         call c_get_scalar1_1_bufferify(name, SHT_name_len, &
             SHT_value_cdesc)
         ! splicer end function.get_scalar1_1
