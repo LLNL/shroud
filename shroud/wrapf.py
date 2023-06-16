@@ -1600,10 +1600,14 @@ rv = .false.
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
+                if hasattr(fmt, "c_var_cdesc"):
+                    fmt.f_cdesc_shape = ""
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.f_c_dimension = "(*)"
+                if hasattr(fmt, "c_var_cdesc"):
+                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(dim)
@@ -1620,7 +1624,6 @@ rv = .false.
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
-
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.

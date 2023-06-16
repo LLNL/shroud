@@ -3936,8 +3936,7 @@ f_in_native_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_in_shadow:
@@ -4067,8 +4066,7 @@ f_in_void_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_inout_bool:
@@ -4113,8 +4111,7 @@ f_inout_native_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_inout_string_&_buf:
@@ -4231,8 +4228,7 @@ f_inout_void_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_mixin_function_cdesc:
@@ -4470,8 +4466,7 @@ f_out_native_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_out_native_*_cfi_allocatable:
@@ -4586,8 +4581,7 @@ f_out_void_*_cdesc:
   - '{c_var_cdesc}%type = {sh_type}'
   - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
   - '{c_var_cdesc}%size = {size}'
-  - '{c_var_cdesc}%rank = {rank}'
-  - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_setter:

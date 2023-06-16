@@ -1391,6 +1391,16 @@ c_var
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
 
+c_var_cdesc
+    Name of variable of type ....
+
+c_var_cdesc2
+    
+c_var_extents
+
+c_var_lower
+
+
 cxx_addr
     Syntax to take address of argument.
     ``&`` or blank.
@@ -1445,8 +1455,12 @@ default_value
 f_array_allocate
     Fortran shape expression used with ``ALLOCATE`` statement when
     *dimension* attribute is set.
+    For example, attribute  *+dimension(10)* will create ``(10)``.
 
 f_array_shape
+   Shape of array for use with ``c_f_pointer``.
+   For example, attribute *+dimension(10)* will create``,\t SHT_rv_cdesc%shape(1:1)``.
+   The leading comma is used since scalar will not add a ``SHAPE`` argument to ``c_f_pointer``.
 
 f_assumed_shape
    Set when *rank* attribute is set to the corresponding shape.

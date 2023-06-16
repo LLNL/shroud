@@ -994,9 +994,8 @@ fc_statements = [
             "! {c_var_cdesc}%elem_len = C_SIZEOF()",
 #            "{c_var_cdesc}%size = size({f_var})",
             "{c_var_cdesc}%size = {size}",
-            "{c_var_cdesc}%rank = {rank}",
-            # This also works with scalars since (1:0) is a zero length array.
-            "{c_var_cdesc}%shape(1:{rank}) = shape({f_var})",
+            # Do not set shape for scalar via f_cdesc_shape
+            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
     ),
 

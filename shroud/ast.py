@@ -800,6 +800,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
                 f_capsule_data_type="XXXf_capsule_data_type",
+                f_cdesc_shape="XXXf_cdesc_shape",
                 f_intent="XXXf_intent",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
