@@ -39,6 +39,12 @@ export LUA
 
 include $(top)/regression/run/Makefile
 
+
+info:
+	@echo PYTHON     = $(PYTHON)
+	@echo PYTHON_VER = $(PYTHON_VER)
+	@echo PLATFORM   = $(PLATFORM)
+
 ########################################################################
 # For development:
 # make virtualenv

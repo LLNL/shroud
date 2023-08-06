@@ -4262,6 +4262,7 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
+                    "hnamefunc0": "ShroudTypeDefines",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4601,6 +4602,7 @@
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d_CFI",
+                    "hnamefunc0": "ShroudTypeDefines",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4940,6 +4942,7 @@
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d_CFI",
+                    "hnamefunc0": "ShroudTypeDefines",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }

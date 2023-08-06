@@ -98,6 +98,8 @@ the conversion has failed.
 from . import typemap
 from . import util
 
+import json
+
 wformat = util.wformat
 
 # Used with literalinclude
@@ -180,10 +182,12 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     
     name = "copy_array"
     fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}ShroudCopyArray", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
+        name=fmt.hnamefunc,
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
@@ -196,7 +200,7 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 // Called from Fortran.
-void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+void {hnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.base;
 int n = c_var_size < data->size ? c_var_size : data->size;
@@ -1621,8 +1625,14 @@ integer, parameter, private :: &
 ########################################
 # Routines to dump helper routines to a file.
 
-def gather_helpers(helpers, keys):
+def gather_helpers(fp, helpers, keys):
+    """Dump helpers in human readable format.
+    Dump selected keys in a format which can be used with sphinx
+    literalinclude. Dump the other keys as JSON.
+    Use with testing.
+    """
     output = []
+    out = {}
     for name in sorted(helpers.keys()):
         helper = helpers[name]
         for key in keys:
@@ -1631,10 +1641,18 @@ def gather_helpers(helpers, keys):
                 output.append("##### start {} {}".format(name, key))
                 output.append(helper[key])
                 output.append("##### end {} {}".format(name, key))
+
+        outp1 = out.setdefault(name, {})
+        for key, value in helper.items():
+            if key not in keys:
+                outp1[key] = value
+
+    # Dump out all the other keys as json
+    json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
     return output
 
 def write_c_helpers(fp):
-    output = gather_helpers(CHelpers, ["source", "c_source", "cxx_source"])
+    output = gather_helpers(fp, CHelpers, ["source", "c_source", "cxx_source"])
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
@@ -1642,7 +1660,7 @@ def write_c_helpers(fp):
     wrapper.write_lines(fp, output)
 
 def write_f_helpers(fp):
-    output = gather_helpers(FHelpers, ["derived_type", "interface", "source"])
+    output = gather_helpers(fp, FHelpers, ["derived_type", "interface", "source"])
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0

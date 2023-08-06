@@ -1,4 +1,59 @@
-
+{
+    "ShroudTypeDefines": {},
+    "array_context": {
+        "dependent_helpers": [
+            "capsule_data_helper"
+        ],
+        "modules": {
+            "iso_c_binding": [
+                "C_NULL_PTR",
+                "C_PTR",
+                "C_SIZE_T",
+                "C_INT",
+                "C_LONG"
+            ]
+        }
+    },
+    "capsule_data_helper": {
+        "modules": {
+            "iso_c_binding": [
+                "C_PTR",
+                "C_INT",
+                "C_NULL_PTR"
+            ]
+        }
+    },
+    "capsule_dtor": {
+        "dependent_helpers": [
+            "capsule_data_helper"
+        ],
+        "name": "LIB_SHROUD_capsule_dtor"
+    },
+    "capsule_helper": {
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "capsule_dtor"
+        ]
+    },
+    "copy_array": {
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "name": "LIB_SHROUD_copy_array"
+    },
+    "copy_string": {
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "name": "LIB_SHROUD_copy_string_and_free"
+    },
+    "pointer_string": {
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "name": "LIB_SHROUD_pointer_string"
+    }
+}
 ##### start ShroudTypeDefines derived_type
 
 ! helper ShroudTypeDefines
