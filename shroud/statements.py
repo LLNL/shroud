@@ -1732,7 +1732,9 @@ fc_statements = [
     ),
     # cxx_var is always a pointer to a vector
     dict(
-        name="c_out_vector_cdesc_targ_native_scalar",
+        # c_out_vector_*_cdesc_targ_native_scalar
+        # c_out_vector_&_cdesc_targ_native_scalar
+        name="c_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=["c_mixin_out_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -1966,7 +1968,9 @@ fc_statements = [
         mixin=["f_mixin_in_array_buf"],
     ),
     dict(
-        name="f_out_vector_cdesc_targ_native_scalar",
+        # f_out_vector_*_cdesc_targ_native_scalar
+        # f_out_vector_&_cdesc_targ_native_scalar
+        name="f_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array",
@@ -2009,7 +2013,9 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_cdesc_allocatable_targ_native_scalar",
+        # f_out_vector_*_cdesc_allocatable_targ_native_scalar
+        # f_out_vector_&_cdesc_allocatable_targ_native_scalar
+        name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array",

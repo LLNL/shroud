@@ -79,8 +79,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_bufferify
     interface
         subroutine c_vector_iota_out_bufferify(SHT_arg_cdesc) &
@@ -100,8 +99,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
@@ -124,8 +122,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num2_bufferify
     interface
         subroutine c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc) &
@@ -146,7 +143,7 @@ module vectors_mod
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Match:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc) &
@@ -214,8 +211,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
@@ -383,11 +379,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -415,11 +409,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -452,11 +444,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -490,11 +480,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Match:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -585,11 +574,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!

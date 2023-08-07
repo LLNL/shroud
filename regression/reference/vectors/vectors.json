@@ -429,7 +429,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -448,9 +448,9 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
                             "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -705,7 +705,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -724,9 +724,9 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
                             "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -958,7 +958,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -977,9 +977,9 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
                             "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -1178,7 +1178,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1197,9 +1197,9 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "f_out_vector_cdesc_allocatable_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
                             "stmtc0": "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmtc1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -1820,7 +1820,7 @@
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1839,9 +1839,9 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
                             "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_cdesc_targ_native_scalar"
+                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
