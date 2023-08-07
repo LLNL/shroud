@@ -191,6 +191,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "hnamefunc0": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_cdesc_allocatable",

@@ -801,6 +801,8 @@ class Helpers(object):
         c_helper = wformat(helpers, fmt)
         for i, helper in enumerate(c_helper.split()):
             self.c_helpers[helper] = True
+            if helper not in LuaHelpers:
+                raise RuntimeError("No such helper {}".format(helper))
             setattr(fmt, "hnamefunc" + str(i),
                     LuaHelpers[helper].get("name", helper))
         

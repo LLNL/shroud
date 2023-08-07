@@ -1,4 +1,1164 @@
-
+{
+    "PY_converter_type": {
+        "c_include": [
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstddef>"
+        ],
+        "scope": "pwrap_impl"
+    },
+    "ShroudLenTrim": {},
+    "ShroudSizeCFI": {
+        "c_include": [
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstddef>"
+        ]
+    },
+    "ShroudStrAlloc": {
+        "c_include": [
+            "<string.h>",
+            "<stdlib.h>",
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "ShroudLenTrim"
+        ]
+    },
+    "ShroudStrArrayAlloc": {
+        "c_include": [
+            "<string.h>",
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "ShroudLenTrim"
+        ]
+    },
+    "ShroudStrArrayFree": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ]
+    },
+    "ShroudStrBlankFill": {
+        "c_include": [
+            "<string.h>"
+        ],
+        "cxx_include": [
+            "<cstring>"
+        ]
+    },
+    "ShroudStrCopy": {
+        "c_include": [
+            "<string.h>"
+        ],
+        "cxx_include": [
+            "<cstring>"
+        ]
+    },
+    "ShroudStrFree": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ]
+    },
+    "ShroudStrToArray": {
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
+        "dependent_helpers": [
+            "array_context"
+        ]
+    },
+    "ShroudTypeDefines": {
+        "scope": "cwrap_include"
+    },
+    "array_context": {
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "ShroudTypeDefines"
+        ],
+        "include": [
+            "<stddef.h>"
+        ],
+        "scope": "cwrap_include"
+    },
+    "capsule_data_helper": {
+        "scope": "cwrap_include"
+    },
+    "copy_array": {
+        "c_include": [
+            "<string.h>",
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "name": "LIB_ShroudCopyArray",
+        "scope": "cwrap_impl"
+    },
+    "copy_string": {
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "scope": "cwrap_impl"
+    },
+    "create_from_PyObject_vector_double": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_double\t(PyObject *obj,\t const char *name,\t std::vector<double> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_double"
+    },
+    "create_from_PyObject_vector_double_complex": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_double_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<double>> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_double_complex"
+    },
+    "create_from_PyObject_vector_float": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_float\t(PyObject *obj,\t const char *name,\t std::vector<float> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_float"
+    },
+    "create_from_PyObject_vector_float_complex": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_float_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<float>> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_float_complex"
+    },
+    "create_from_PyObject_vector_int": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_int\t(PyObject *obj,\t const char *name,\t std::vector<int> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_int"
+    },
+    "create_from_PyObject_vector_int16_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_int16_t\t(PyObject *obj,\t const char *name,\t std::vector<int16_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_int16_t"
+    },
+    "create_from_PyObject_vector_int32_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_int32_t\t(PyObject *obj,\t const char *name,\t std::vector<int32_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_int32_t"
+    },
+    "create_from_PyObject_vector_int64_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_int64_t\t(PyObject *obj,\t const char *name,\t std::vector<int64_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_int64_t"
+    },
+    "create_from_PyObject_vector_int8_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_int8_t\t(PyObject *obj,\t const char *name,\t std::vector<int8_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_int8_t"
+    },
+    "create_from_PyObject_vector_long": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_long\t(PyObject *obj,\t const char *name,\t std::vector<long> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_long"
+    },
+    "create_from_PyObject_vector_long_long": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_long_long\t(PyObject *obj,\t const char *name,\t std::vector<long long> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_long_long"
+    },
+    "create_from_PyObject_vector_short": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_short\t(PyObject *obj,\t const char *name,\t std::vector<short> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_short"
+    },
+    "create_from_PyObject_vector_size_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_size_t\t(PyObject *obj,\t const char *name,\t std::vector<size_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_size_t"
+    },
+    "create_from_PyObject_vector_uint16_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint16_t\t(PyObject *obj,\t const char *name,\t std::vector<uint16_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_uint16_t"
+    },
+    "create_from_PyObject_vector_uint32_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint32_t\t(PyObject *obj,\t const char *name,\t std::vector<uint32_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_uint32_t"
+    },
+    "create_from_PyObject_vector_uint64_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint64_t\t(PyObject *obj,\t const char *name,\t std::vector<uint64_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_uint64_t"
+    },
+    "create_from_PyObject_vector_uint8_t": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint8_t\t(PyObject *obj,\t const char *name,\t std::vector<uint8_t> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_uint8_t"
+    },
+    "create_from_PyObject_vector_unsigned_int": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_int\t(PyObject *obj,\t const char *name,\t std::vector<unsigned int> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_unsigned_int"
+    },
+    "create_from_PyObject_vector_unsigned_long": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_unsigned_long"
+    },
+    "create_from_PyObject_vector_unsigned_long_long": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long long> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_unsigned_long_long"
+    },
+    "create_from_PyObject_vector_unsigned_short": {
+        "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_short\t(PyObject *obj,\t const char *name,\t std::vector<unsigned short> & in);",
+        "name": "SHROUD_create_from_PyObject_vector_unsigned_short"
+    },
+    "fill_from_PyObject_char": {
+        "c_include": [
+            "<string.h>"
+        ],
+        "cxx_include": [
+            "<cstring>"
+        ],
+        "dependent_helpers": [
+            "get_from_object_char"
+        ],
+        "name": "SHROUD_fill_from_PyObject_char",
+        "proto": "int SHROUD_fill_from_PyObject_char\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_double_complex_list": {
+        "name": "SHROUD_fill_from_PyObject_double_complex_list",
+        "proto": "int SHROUD_fill_from_PyObject_double_complex_list\t(PyObject *obj,\t const char *name,\t double complex *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_double_complex_numpy": {
+        "name": "SHROUD_fill_from_PyObject_double_complex_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_double_complex_numpy\t(PyObject *obj,\t const char *name,\t double complex *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_double_list": {
+        "name": "SHROUD_fill_from_PyObject_double_list",
+        "proto": "int SHROUD_fill_from_PyObject_double_list\t(PyObject *obj,\t const char *name,\t double *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_double_numpy": {
+        "name": "SHROUD_fill_from_PyObject_double_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_double_numpy\t(PyObject *obj,\t const char *name,\t double *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_float_complex_list": {
+        "name": "SHROUD_fill_from_PyObject_float_complex_list",
+        "proto": "int SHROUD_fill_from_PyObject_float_complex_list\t(PyObject *obj,\t const char *name,\t float complex *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_float_complex_numpy": {
+        "name": "SHROUD_fill_from_PyObject_float_complex_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_float_complex_numpy\t(PyObject *obj,\t const char *name,\t float complex *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_float_list": {
+        "name": "SHROUD_fill_from_PyObject_float_list",
+        "proto": "int SHROUD_fill_from_PyObject_float_list\t(PyObject *obj,\t const char *name,\t float *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_float_numpy": {
+        "name": "SHROUD_fill_from_PyObject_float_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_float_numpy\t(PyObject *obj,\t const char *name,\t float *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int16_t_list": {
+        "name": "SHROUD_fill_from_PyObject_int16_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_int16_t_list\t(PyObject *obj,\t const char *name,\t int16_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int16_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_int16_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_int16_t_numpy\t(PyObject *obj,\t const char *name,\t int16_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int32_t_list": {
+        "name": "SHROUD_fill_from_PyObject_int32_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_int32_t_list\t(PyObject *obj,\t const char *name,\t int32_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int32_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_int32_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_int32_t_numpy\t(PyObject *obj,\t const char *name,\t int32_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int64_t_list": {
+        "name": "SHROUD_fill_from_PyObject_int64_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_int64_t_list\t(PyObject *obj,\t const char *name,\t int64_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int64_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_int64_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_int64_t_numpy\t(PyObject *obj,\t const char *name,\t int64_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int8_t_list": {
+        "name": "SHROUD_fill_from_PyObject_int8_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_int8_t_list\t(PyObject *obj,\t const char *name,\t int8_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int8_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_int8_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_int8_t_numpy\t(PyObject *obj,\t const char *name,\t int8_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int_list": {
+        "name": "SHROUD_fill_from_PyObject_int_list",
+        "proto": "int SHROUD_fill_from_PyObject_int_list\t(PyObject *obj,\t const char *name,\t int *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_int_numpy": {
+        "name": "SHROUD_fill_from_PyObject_int_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_int_numpy\t(PyObject *obj,\t const char *name,\t int *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_long_list": {
+        "name": "SHROUD_fill_from_PyObject_long_list",
+        "proto": "int SHROUD_fill_from_PyObject_long_list\t(PyObject *obj,\t const char *name,\t long *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_long_numpy": {
+        "name": "SHROUD_fill_from_PyObject_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_long_numpy\t(PyObject *obj,\t const char *name,\t long *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_short_list": {
+        "name": "SHROUD_fill_from_PyObject_short_list",
+        "proto": "int SHROUD_fill_from_PyObject_short_list\t(PyObject *obj,\t const char *name,\t short *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_short_numpy": {
+        "name": "SHROUD_fill_from_PyObject_short_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_short_numpy\t(PyObject *obj,\t const char *name,\t short *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint16_t_list": {
+        "name": "SHROUD_fill_from_PyObject_uint16_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_uint16_t_list\t(PyObject *obj,\t const char *name,\t uint16_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint16_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_uint16_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_uint16_t_numpy\t(PyObject *obj,\t const char *name,\t uint16_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint32_t_list": {
+        "name": "SHROUD_fill_from_PyObject_uint32_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_uint32_t_list\t(PyObject *obj,\t const char *name,\t uint32_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint32_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_uint32_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_uint32_t_numpy\t(PyObject *obj,\t const char *name,\t uint32_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint64_t_list": {
+        "name": "SHROUD_fill_from_PyObject_uint64_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_uint64_t_list\t(PyObject *obj,\t const char *name,\t uint64_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint64_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_uint64_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_uint64_t_numpy\t(PyObject *obj,\t const char *name,\t uint64_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint8_t_list": {
+        "name": "SHROUD_fill_from_PyObject_uint8_t_list",
+        "proto": "int SHROUD_fill_from_PyObject_uint8_t_list\t(PyObject *obj,\t const char *name,\t uint8_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_uint8_t_numpy": {
+        "name": "SHROUD_fill_from_PyObject_uint8_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_uint8_t_numpy\t(PyObject *obj,\t const char *name,\t uint8_t *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_int_list": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_int_list",
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_int_list\t(PyObject *obj,\t const char *name,\t unsigned int *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_int_numpy": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_int_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_int_numpy\t(PyObject *obj,\t const char *name,\t unsigned int *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_long_list": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_long_list",
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_long_list\t(PyObject *obj,\t const char *name,\t unsigned long *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_long_numpy": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_long_numpy\t(PyObject *obj,\t const char *name,\t unsigned long *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_short_list": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_short_list",
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_short_list\t(PyObject *obj,\t const char *name,\t unsigned short *in,\t Py_ssize_t insize);"
+    },
+    "fill_from_PyObject_unsigned_short_numpy": {
+        "name": "SHROUD_fill_from_PyObject_unsigned_short_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_fill_from_PyObject_unsigned_short_numpy\t(PyObject *obj,\t const char *name,\t unsigned short *in,\t Py_ssize_t insize);"
+    },
+    "get_from_object_char": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_char",
+        "proto": "int SHROUD_get_from_object_char\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_char_list": {
+        "dependent_helpers": [
+            "get_from_object_char"
+        ],
+        "name": "SHROUD_get_from_object_char"
+    },
+    "get_from_object_char_numpy": {
+        "dependent_helpers": [
+            "get_from_object_char"
+        ],
+        "name": "SHROUD_get_from_object_char"
+    },
+    "get_from_object_charptr": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "get_from_object_char"
+        ],
+        "name": "SHROUD_get_from_object_charptr",
+        "proto": "int SHROUD_get_from_object_charptr\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_charptr_list": {
+        "dependent_helpers": [
+            "get_from_object_charptr"
+        ],
+        "name": "SHROUD_get_from_object_charptr"
+    },
+    "get_from_object_charptr_numpy": {
+        "dependent_helpers": [
+            "get_from_object_charptr"
+        ],
+        "name": "SHROUD_get_from_object_charptr"
+    },
+    "get_from_object_double_complex_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_double_complex_list",
+        "proto": "int SHROUD_get_from_object_double_complex_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_double_complex_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_double_complex_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_double_complex_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_double_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_double_list",
+        "proto": "int SHROUD_get_from_object_double_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_double_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_double_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_double_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_float_complex_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_float_complex_list",
+        "proto": "int SHROUD_get_from_object_float_complex_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_float_complex_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_float_complex_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_float_complex_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_float_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_float_list",
+        "proto": "int SHROUD_get_from_object_float_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_float_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_float_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_float_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int16_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_int16_t_list",
+        "proto": "int SHROUD_get_from_object_int16_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int16_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_int16_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_int16_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int32_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_int32_t_list",
+        "proto": "int SHROUD_get_from_object_int32_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int32_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_int32_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_int32_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int64_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_int64_t_list",
+        "proto": "int SHROUD_get_from_object_int64_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int64_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_int64_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_int64_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int8_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_int8_t_list",
+        "proto": "int SHROUD_get_from_object_int8_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int8_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_int8_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_int8_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_int_list",
+        "proto": "int SHROUD_get_from_object_int_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_int_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_int_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_int_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_long_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_long_list",
+        "proto": "int SHROUD_get_from_object_long_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_long_long_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_long_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_long_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_long_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_short_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_short_list",
+        "proto": "int SHROUD_get_from_object_short_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_short_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_short_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_short_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_size_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_size_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_size_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint16_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_uint16_t_list",
+        "proto": "int SHROUD_get_from_object_uint16_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint16_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_uint16_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_uint16_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint32_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_uint32_t_list",
+        "proto": "int SHROUD_get_from_object_uint32_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint32_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_uint32_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_uint32_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint64_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_uint64_t_list",
+        "proto": "int SHROUD_get_from_object_uint64_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint64_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_uint64_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_uint64_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint8_t_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_uint8_t_list",
+        "proto": "int SHROUD_get_from_object_uint8_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_uint8_t_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_uint8_t_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_uint8_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_int_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_int_list",
+        "proto": "int SHROUD_get_from_object_unsigned_int_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_int_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_int_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_unsigned_int_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_long_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_long_list",
+        "proto": "int SHROUD_get_from_object_unsigned_long_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_long_long_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_long_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_unsigned_long_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_long_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_long_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_unsigned_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_short_list": {
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
+        "dependent_helpers": [
+            "PY_converter_type",
+            "py_capsule_dtor"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_short_list",
+        "proto": "int SHROUD_get_from_object_unsigned_short_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "get_from_object_unsigned_short_numpy": {
+        "dependent_helpers": [
+            "PY_converter_type"
+        ],
+        "name": "SHROUD_get_from_object_unsigned_short_numpy",
+        "need_numpy": true,
+        "proto": "int SHROUD_get_from_object_unsigned_short_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
+    },
+    "py_capsule_dtor": {
+        "name": "FREE_py_capsule_dtor"
+    },
+    "to_PyList_char": {
+        "name": "SHROUD_to_PyList_char",
+        "proto": "PyObject *SHROUD_to_PyList_char\t(char * *in, size_t size);"
+    },
+    "to_PyList_double": {
+        "name": "SHROUD_to_PyList_double",
+        "proto": "PyObject *SHROUD_to_PyList_double\t(const double *in, size_t size);"
+    },
+    "to_PyList_double_complex": {
+        "name": "SHROUD_to_PyList_double_complex",
+        "proto": "PyObject *SHROUD_to_PyList_double_complex\t(const double complex *in, size_t size);"
+    },
+    "to_PyList_float": {
+        "name": "SHROUD_to_PyList_float",
+        "proto": "PyObject *SHROUD_to_PyList_float\t(const float *in, size_t size);"
+    },
+    "to_PyList_float_complex": {
+        "name": "SHROUD_to_PyList_float_complex",
+        "proto": "PyObject *SHROUD_to_PyList_float_complex\t(const float complex *in, size_t size);"
+    },
+    "to_PyList_int": {
+        "name": "SHROUD_to_PyList_int",
+        "proto": "PyObject *SHROUD_to_PyList_int\t(const int *in, size_t size);"
+    },
+    "to_PyList_int16_t": {
+        "name": "SHROUD_to_PyList_int16_t",
+        "proto": "PyObject *SHROUD_to_PyList_int16_t\t(const int16_t *in, size_t size);"
+    },
+    "to_PyList_int32_t": {
+        "name": "SHROUD_to_PyList_int32_t",
+        "proto": "PyObject *SHROUD_to_PyList_int32_t\t(const int32_t *in, size_t size);"
+    },
+    "to_PyList_int64_t": {
+        "name": "SHROUD_to_PyList_int64_t",
+        "proto": "PyObject *SHROUD_to_PyList_int64_t\t(const int64_t *in, size_t size);"
+    },
+    "to_PyList_int8_t": {
+        "name": "SHROUD_to_PyList_int8_t",
+        "proto": "PyObject *SHROUD_to_PyList_int8_t\t(const int8_t *in, size_t size);"
+    },
+    "to_PyList_long": {
+        "name": "SHROUD_to_PyList_long",
+        "proto": "PyObject *SHROUD_to_PyList_long\t(const long *in, size_t size);"
+    },
+    "to_PyList_short": {
+        "name": "SHROUD_to_PyList_short",
+        "proto": "PyObject *SHROUD_to_PyList_short\t(const short *in, size_t size);"
+    },
+    "to_PyList_size_t": {
+        "name": "SHROUD_to_PyList_size_t",
+        "proto": "PyObject *SHROUD_to_PyList_size_t\t(const size_t *in, size_t size);"
+    },
+    "to_PyList_uint16_t": {
+        "name": "SHROUD_to_PyList_uint16_t",
+        "proto": "PyObject *SHROUD_to_PyList_uint16_t\t(const uint16_t *in, size_t size);"
+    },
+    "to_PyList_uint32_t": {
+        "name": "SHROUD_to_PyList_uint32_t",
+        "proto": "PyObject *SHROUD_to_PyList_uint32_t\t(const uint32_t *in, size_t size);"
+    },
+    "to_PyList_uint64_t": {
+        "name": "SHROUD_to_PyList_uint64_t",
+        "proto": "PyObject *SHROUD_to_PyList_uint64_t\t(const uint64_t *in, size_t size);"
+    },
+    "to_PyList_uint8_t": {
+        "name": "SHROUD_to_PyList_uint8_t",
+        "proto": "PyObject *SHROUD_to_PyList_uint8_t\t(const uint8_t *in, size_t size);"
+    },
+    "to_PyList_unsigned_int": {
+        "name": "SHROUD_to_PyList_unsigned_int",
+        "proto": "PyObject *SHROUD_to_PyList_unsigned_int\t(const unsigned int *in, size_t size);"
+    },
+    "to_PyList_unsigned_long": {
+        "name": "SHROUD_to_PyList_unsigned_long",
+        "proto": "PyObject *SHROUD_to_PyList_unsigned_long\t(const unsigned long *in, size_t size);"
+    },
+    "to_PyList_unsigned_short": {
+        "name": "SHROUD_to_PyList_unsigned_short",
+        "proto": "PyObject *SHROUD_to_PyList_unsigned_short\t(const unsigned short *in, size_t size);"
+    },
+    "to_PyList_vector_double": {
+        "name": "SHROUD_to_PyList_vector_double",
+        "proto": "PyObject *SHROUD_to_PyList_vector_double\t(std::vector<double> & in);"
+    },
+    "to_PyList_vector_double_complex": {
+        "name": "SHROUD_to_PyList_vector_double_complex",
+        "proto": "PyObject *SHROUD_to_PyList_vector_double_complex\t(std::vector<double complex> & in);"
+    },
+    "to_PyList_vector_float": {
+        "name": "SHROUD_to_PyList_vector_float",
+        "proto": "PyObject *SHROUD_to_PyList_vector_float\t(std::vector<float> & in);"
+    },
+    "to_PyList_vector_float_complex": {
+        "name": "SHROUD_to_PyList_vector_float_complex",
+        "proto": "PyObject *SHROUD_to_PyList_vector_float_complex\t(std::vector<float complex> & in);"
+    },
+    "to_PyList_vector_int": {
+        "name": "SHROUD_to_PyList_vector_int",
+        "proto": "PyObject *SHROUD_to_PyList_vector_int\t(std::vector<int> & in);"
+    },
+    "to_PyList_vector_int16_t": {
+        "name": "SHROUD_to_PyList_vector_int16_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_int16_t\t(std::vector<int16_t> & in);"
+    },
+    "to_PyList_vector_int32_t": {
+        "name": "SHROUD_to_PyList_vector_int32_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_int32_t\t(std::vector<int32_t> & in);"
+    },
+    "to_PyList_vector_int64_t": {
+        "name": "SHROUD_to_PyList_vector_int64_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_int64_t\t(std::vector<int64_t> & in);"
+    },
+    "to_PyList_vector_int8_t": {
+        "name": "SHROUD_to_PyList_vector_int8_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_int8_t\t(std::vector<int8_t> & in);"
+    },
+    "to_PyList_vector_long": {
+        "name": "SHROUD_to_PyList_vector_long",
+        "proto": "PyObject *SHROUD_to_PyList_vector_long\t(std::vector<long> & in);"
+    },
+    "to_PyList_vector_long_long": {
+        "name": "SHROUD_to_PyList_vector_long_long",
+        "proto": "PyObject *SHROUD_to_PyList_vector_long_long\t(std::vector<long long> & in);"
+    },
+    "to_PyList_vector_short": {
+        "name": "SHROUD_to_PyList_vector_short",
+        "proto": "PyObject *SHROUD_to_PyList_vector_short\t(std::vector<short> & in);"
+    },
+    "to_PyList_vector_size_t": {
+        "name": "SHROUD_to_PyList_vector_size_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_size_t\t(std::vector<size_t> & in);"
+    },
+    "to_PyList_vector_uint16_t": {
+        "name": "SHROUD_to_PyList_vector_uint16_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_uint16_t\t(std::vector<uint16_t> & in);"
+    },
+    "to_PyList_vector_uint32_t": {
+        "name": "SHROUD_to_PyList_vector_uint32_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_uint32_t\t(std::vector<uint32_t> & in);"
+    },
+    "to_PyList_vector_uint64_t": {
+        "name": "SHROUD_to_PyList_vector_uint64_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_uint64_t\t(std::vector<uint64_t> & in);"
+    },
+    "to_PyList_vector_uint8_t": {
+        "name": "SHROUD_to_PyList_vector_uint8_t",
+        "proto": "PyObject *SHROUD_to_PyList_vector_uint8_t\t(std::vector<uint8_t> & in);"
+    },
+    "to_PyList_vector_unsigned_int": {
+        "name": "SHROUD_to_PyList_vector_unsigned_int",
+        "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_int\t(std::vector<unsigned int> & in);"
+    },
+    "to_PyList_vector_unsigned_long": {
+        "name": "SHROUD_to_PyList_vector_unsigned_long",
+        "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_long\t(std::vector<unsigned long> & in);"
+    },
+    "to_PyList_vector_unsigned_long_long": {
+        "name": "SHROUD_to_PyList_vector_unsigned_long_long",
+        "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_long_long\t(std::vector<unsigned long long> & in);"
+    },
+    "to_PyList_vector_unsigned_short": {
+        "name": "SHROUD_to_PyList_vector_unsigned_short",
+        "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_short\t(std::vector<unsigned short> & in);"
+    },
+    "update_PyList_double": {
+        "proto": "void SHROUD_update_PyList_double\t(PyObject *out, double *in, size_t size);"
+    },
+    "update_PyList_double_complex": {
+        "proto": "void SHROUD_update_PyList_double_complex\t(PyObject *out, double complex *in, size_t size);"
+    },
+    "update_PyList_float": {
+        "proto": "void SHROUD_update_PyList_float\t(PyObject *out, float *in, size_t size);"
+    },
+    "update_PyList_float_complex": {
+        "proto": "void SHROUD_update_PyList_float_complex\t(PyObject *out, float complex *in, size_t size);"
+    },
+    "update_PyList_int": {
+        "proto": "void SHROUD_update_PyList_int\t(PyObject *out, int *in, size_t size);"
+    },
+    "update_PyList_int16_t": {
+        "proto": "void SHROUD_update_PyList_int16_t\t(PyObject *out, int16_t *in, size_t size);"
+    },
+    "update_PyList_int32_t": {
+        "proto": "void SHROUD_update_PyList_int32_t\t(PyObject *out, int32_t *in, size_t size);"
+    },
+    "update_PyList_int64_t": {
+        "proto": "void SHROUD_update_PyList_int64_t\t(PyObject *out, int64_t *in, size_t size);"
+    },
+    "update_PyList_int8_t": {
+        "proto": "void SHROUD_update_PyList_int8_t\t(PyObject *out, int8_t *in, size_t size);"
+    },
+    "update_PyList_long": {
+        "proto": "void SHROUD_update_PyList_long\t(PyObject *out, long *in, size_t size);"
+    },
+    "update_PyList_short": {
+        "proto": "void SHROUD_update_PyList_short\t(PyObject *out, short *in, size_t size);"
+    },
+    "update_PyList_size_t": {
+        "proto": "void SHROUD_update_PyList_size_t\t(PyObject *out, size_t *in, size_t size);"
+    },
+    "update_PyList_uint16_t": {
+        "proto": "void SHROUD_update_PyList_uint16_t\t(PyObject *out, uint16_t *in, size_t size);"
+    },
+    "update_PyList_uint32_t": {
+        "proto": "void SHROUD_update_PyList_uint32_t\t(PyObject *out, uint32_t *in, size_t size);"
+    },
+    "update_PyList_uint64_t": {
+        "proto": "void SHROUD_update_PyList_uint64_t\t(PyObject *out, uint64_t *in, size_t size);"
+    },
+    "update_PyList_uint8_t": {
+        "proto": "void SHROUD_update_PyList_uint8_t\t(PyObject *out, uint8_t *in, size_t size);"
+    },
+    "update_PyList_unsigned_int": {
+        "proto": "void SHROUD_update_PyList_unsigned_int\t(PyObject *out, unsigned int *in, size_t size);"
+    },
+    "update_PyList_unsigned_long": {
+        "proto": "void SHROUD_update_PyList_unsigned_long\t(PyObject *out, unsigned long *in, size_t size);"
+    },
+    "update_PyList_unsigned_short": {
+        "proto": "void SHROUD_update_PyList_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
+    },
+    "update_PyList_vector_double": {
+        "name": "SHROUD_update_PyList_vector_double",
+        "proto": "void SHROUD_update_PyList_vector_double\t(PyObject *out, double *in, size_t size);"
+    },
+    "update_PyList_vector_double_complex": {
+        "name": "SHROUD_update_PyList_vector_double_complex",
+        "proto": "void SHROUD_update_PyList_vector_double_complex\t(PyObject *out, double complex *in, size_t size);"
+    },
+    "update_PyList_vector_float": {
+        "name": "SHROUD_update_PyList_vector_float",
+        "proto": "void SHROUD_update_PyList_vector_float\t(PyObject *out, float *in, size_t size);"
+    },
+    "update_PyList_vector_float_complex": {
+        "name": "SHROUD_update_PyList_vector_float_complex",
+        "proto": "void SHROUD_update_PyList_vector_float_complex\t(PyObject *out, float complex *in, size_t size);"
+    },
+    "update_PyList_vector_int": {
+        "name": "SHROUD_update_PyList_vector_int",
+        "proto": "void SHROUD_update_PyList_vector_int\t(PyObject *out, int *in, size_t size);"
+    },
+    "update_PyList_vector_int16_t": {
+        "name": "SHROUD_update_PyList_vector_int16_t",
+        "proto": "void SHROUD_update_PyList_vector_int16_t\t(PyObject *out, int16_t *in, size_t size);"
+    },
+    "update_PyList_vector_int32_t": {
+        "name": "SHROUD_update_PyList_vector_int32_t",
+        "proto": "void SHROUD_update_PyList_vector_int32_t\t(PyObject *out, int32_t *in, size_t size);"
+    },
+    "update_PyList_vector_int64_t": {
+        "name": "SHROUD_update_PyList_vector_int64_t",
+        "proto": "void SHROUD_update_PyList_vector_int64_t\t(PyObject *out, int64_t *in, size_t size);"
+    },
+    "update_PyList_vector_int8_t": {
+        "name": "SHROUD_update_PyList_vector_int8_t",
+        "proto": "void SHROUD_update_PyList_vector_int8_t\t(PyObject *out, int8_t *in, size_t size);"
+    },
+    "update_PyList_vector_long": {
+        "name": "SHROUD_update_PyList_vector_long",
+        "proto": "void SHROUD_update_PyList_vector_long\t(PyObject *out, long *in, size_t size);"
+    },
+    "update_PyList_vector_long_long": {
+        "name": "SHROUD_update_PyList_vector_long_long",
+        "proto": "void SHROUD_update_PyList_vector_long_long\t(PyObject *out, long long *in, size_t size);"
+    },
+    "update_PyList_vector_short": {
+        "name": "SHROUD_update_PyList_vector_short",
+        "proto": "void SHROUD_update_PyList_vector_short\t(PyObject *out, short *in, size_t size);"
+    },
+    "update_PyList_vector_size_t": {
+        "name": "SHROUD_update_PyList_vector_size_t",
+        "proto": "void SHROUD_update_PyList_vector_size_t\t(PyObject *out, size_t *in, size_t size);"
+    },
+    "update_PyList_vector_uint16_t": {
+        "name": "SHROUD_update_PyList_vector_uint16_t",
+        "proto": "void SHROUD_update_PyList_vector_uint16_t\t(PyObject *out, uint16_t *in, size_t size);"
+    },
+    "update_PyList_vector_uint32_t": {
+        "name": "SHROUD_update_PyList_vector_uint32_t",
+        "proto": "void SHROUD_update_PyList_vector_uint32_t\t(PyObject *out, uint32_t *in, size_t size);"
+    },
+    "update_PyList_vector_uint64_t": {
+        "name": "SHROUD_update_PyList_vector_uint64_t",
+        "proto": "void SHROUD_update_PyList_vector_uint64_t\t(PyObject *out, uint64_t *in, size_t size);"
+    },
+    "update_PyList_vector_uint8_t": {
+        "name": "SHROUD_update_PyList_vector_uint8_t",
+        "proto": "void SHROUD_update_PyList_vector_uint8_t\t(PyObject *out, uint8_t *in, size_t size);"
+    },
+    "update_PyList_vector_unsigned_int": {
+        "name": "SHROUD_update_PyList_vector_unsigned_int",
+        "proto": "void SHROUD_update_PyList_vector_unsigned_int\t(PyObject *out, unsigned int *in, size_t size);"
+    },
+    "update_PyList_vector_unsigned_long": {
+        "name": "SHROUD_update_PyList_vector_unsigned_long",
+        "proto": "void SHROUD_update_PyList_vector_unsigned_long\t(PyObject *out, unsigned long *in, size_t size);"
+    },
+    "update_PyList_vector_unsigned_long_long": {
+        "name": "SHROUD_update_PyList_vector_unsigned_long_long",
+        "proto": "void SHROUD_update_PyList_vector_unsigned_long_long\t(PyObject *out, unsigned long long *in, size_t size);"
+    },
+    "update_PyList_vector_unsigned_short": {
+        "name": "SHROUD_update_PyList_vector_unsigned_short",
+        "proto": "void SHROUD_update_PyList_vector_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
+    }
+}
 ##### start PY_converter_type source
 
 // helper PY_converter_type

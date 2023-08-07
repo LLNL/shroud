@@ -209,8 +209,12 @@ class Wrapc(util.WrapperMixin):
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
         c_helper = wformat(helpers, fmt)
-        for helper in c_helper.split():
+        for i, helper in enumerate(c_helper.split()):
             self.c_helper[helper] = True
+            if helper not in whelpers.CHelpers:
+                raise RuntimeError("No such helper {}".format(helper))
+            setattr(fmt, "hnamefunc" + str(i),
+                    whelpers.CHelpers[helper].get("name", helper))
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
@@ -722,6 +726,9 @@ class Wrapc(util.WrapperMixin):
         self.header_impl.add_statements_headers("impl_header", intent_blk)
         self.header_iface.add_statements_headers("iface_header", intent_blk)
 
+        if intent_blk.c_helper:
+            self.add_c_helper(intent_blk.c_helper, fmt)
+
         if intent_blk.pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
@@ -733,8 +740,6 @@ class Wrapc(util.WrapperMixin):
             for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
-        if intent_blk.c_helper:
-            self.add_c_helper(intent_blk.c_helper, fmt)
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, ast, ntypemap, fmt, is_func):
