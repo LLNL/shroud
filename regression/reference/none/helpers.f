@@ -194,7 +194,7 @@ end interface
 
 ##### start pointer_string source
 
-! helper copy_string
+! helper pointer_string
 ! Assign context to an assumed-length character pointer
 subroutine LIB_SHROUD_pointer_string(context, var)
     use iso_c_binding, only : c_f_pointer, C_PTR

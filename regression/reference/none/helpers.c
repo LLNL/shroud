@@ -1157,6 +1157,20 @@
     "update_PyList_vector_unsigned_short": {
         "name": "SHROUD_update_PyList_vector_unsigned_short",
         "proto": "void SHROUD_update_PyList_vector_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
+    },
+    "vector_string_out": {
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>",
+            "<string>",
+            "<vector>"
+        ],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "name": "LIB_ShroudVectorStringOut",
+        "proto": "static void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
+        "scope": "file"
     }
 }
 ##### start PY_converter_type source
@@ -6447,3 +6461,24 @@ static void SHROUD_update_PyList_vector_unsigned_short
     }
 }
 ##### end update_PyList_vector_unsigned_short source
+
+##### start vector_string_out source
+
+// helper vector_string_out
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+static void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
+{
+    size_t nvect = std::min(outdesc->size, in.size());
+    size_t len = outdesc->elem_len;
+    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    //char *dest = static_cast<char *>(outdesc->cxx.addr);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+    //LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+
+##### end vector_string_out source

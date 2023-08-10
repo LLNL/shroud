@@ -1949,6 +1949,67 @@ fc_statements = [
         ],
         local=["i", "n", "s"],
     ),
+
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_inout_char_array_cdesc",
+        f_helper="array_context",
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+#        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
+        arg_c_call=["{c_var_cdesc}"],
+#        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        temps=["cdesc"],
+    ),
+
+    dict(
+        # Collect information about a string argument
+        name="f_mixin_str_array",
+        mixin=["f_mixin_out_array_cdesc"],
+
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_helper="ShroudTypeDefines array_context",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+        pre_call=[
+            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{c_var_cdesc}%type = SH_TYPE_CHAR",
+            "{c_var_cdesc}%elem_len = len({f_var})",
+            "{c_var_cdesc}%size = size({f_var})",
+#            "{c_var_cdesc}%size = {size}",
+            # Do not set shape for scalar via f_cdesc_shape
+            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+        ],
+        arg_c_call=["{c_var_cdesc}"],
+        temps=["cdesc"],
+    ),
+
+    dict(
+        name="f_out_vector_&_cdesc_targ_string_scalar",
+        mixin=["f_mixin_str_array"],
+    ),
+
+    dict(
+        name="c_out_vector_&_cdesc_targ_string_scalar",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="vector_string_out",
+        pre_call=[
+            "{c_const}std::vector<std::string> {cxx_var};"
+        ],
+        arg_call=["{cxx_var}"],
+        post_call=[
+            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});",
+        ],
+
+    ),
+
     #                    dict(
     #                        name="c_function_vector_buf_string",
     #                        c_helper='ShroudStrCopy',

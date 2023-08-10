@@ -55,6 +55,8 @@ int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len);
 
+void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
+
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 

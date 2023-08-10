@@ -12,6 +12,9 @@
 // typemap
 #include <vector>
 // shroud
+#include <cstddef>
+#include <cstring>
+#include <string>
 #include "wrapvectors.h"
 
 // splicer begin CXX_definitions
@@ -34,6 +37,26 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
     return i + 1;
 }
+
+
+// start helper vector_string_out
+// helper vector_string_out
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+static void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in)
+{
+    size_t nvect = std::min(outdesc->size, in.size());
+    size_t len = outdesc->elem_len;
+    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    //char *dest = static_cast<char *>(outdesc->cxx.addr);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+    //VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+// end helper vector_string_out
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -340,6 +363,29 @@ int VEC_vector_string_count_bufferify(const char *arg,
     int SHC_rv = vector_string_count(SHCXX_arg);
     return SHC_rv;
     // splicer end function.vector_string_count_bufferify
+}
+
+/**
+ * \brief Fill in arg with some animal names
+ *
+ * The C++ function returns void. But the C and Fortran wrappers return
+ * an int with the number of items added to arg.
+ */
+// ----------------------------------------
+// Function:  void vector_string_fill
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+// Attrs:     +api(cdesc)+intent(out)
+// Exact:     c_out_vector_&_cdesc_targ_string_scalar
+void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
+{
+    // splicer begin function.vector_string_fill_bufferify
+    std::vector<std::string> arg;
+    vector_string_fill(arg);
+    VEC_ShroudVectorStringOut(SHT_arg_cdesc, arg);
+    // splicer end function.vector_string_fill_bufferify
 }
 
 /**

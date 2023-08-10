@@ -234,6 +234,8 @@ root
             targ
               native
                 scalar -- c_out_vector_*/&_cdesc_targ_native_scalar
+              string
+                scalar -- c_out_vector_&_cdesc_targ_string_scalar
         *
           cdesc
             targ
@@ -438,9 +440,14 @@ root
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
+        char
+          array
+            cdesc -- f_mixin_inout_char_array_cdesc
       out
         array
           cdesc -- f_mixin_out_array_cdesc
+      str
+        array -- f_mixin_str_array
     out
       bool -- f_out_bool
       char
@@ -475,6 +482,8 @@ root
             targ
               native
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
+              string
+                scalar -- f_out_vector_&_cdesc_targ_string_scalar
         *
           cdesc
             allocatable
@@ -3085,6 +3094,27 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   temps:
   - cdesc
+c_out_vector_&_cdesc_targ_string_scalar:
+  arg_call:
+  - '{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: vector_string_out
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  f_c_arg_names:
+  - '{c_var_cdesc}'
+  f_import:
+  - '{F_array_type}'
+  intent: out
+  name: c_out_vector_&_cdesc_targ_string_scalar
+  owner: library
+  post_call:
+  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});"
+  pre_call:
+  - '{c_const}std::vector<std::string> {cxx_var};'
+  temps:
+  - cdesc
 c_out_vector_*_cdesc_targ_native_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -4373,6 +4403,16 @@ f_mixin_inout_array_cdesc:
   name: f_mixin_inout_array_cdesc
   temps:
   - cdesc
+f_mixin_inout_char_array_cdesc:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  intent: mixin
+  name: f_mixin_inout_char_array_cdesc
+  temps:
+  - cdesc
 f_mixin_out_array_cdesc:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -4381,6 +4421,27 @@ f_mixin_out_array_cdesc:
   f_helper: array_context
   intent: mixin
   name: f_mixin_out_array_cdesc
+  temps:
+  - cdesc
+f_mixin_str_array:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  intent: mixin
+  name: f_mixin_str_array
+  pre_call:
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{c_var_cdesc}%elem_len = len({f_var})'
+  - '{c_var_cdesc}%size = size({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_out_bool:
@@ -4585,6 +4646,27 @@ f_out_vector_&_cdesc_targ_native_scalar:
   name: f_out_vector_&_cdesc_targ_native_scalar
   post_call:
   - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  temps:
+  - cdesc
+f_out_vector_&_cdesc_targ_string_scalar:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  intent: out
+  name: f_out_vector_&_cdesc_targ_string_scalar
+  pre_call:
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{c_var_cdesc}%elem_len = len({f_var})'
+  - '{c_var_cdesc}%size = size({f_var})'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
   temps:
   - cdesc
 f_out_vector_*_cdesc_allocatable_targ_native_scalar:

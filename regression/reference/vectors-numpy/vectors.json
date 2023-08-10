@@ -931,8 +931,6 @@
                 },
                 "name": "vector_string_fill",
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },

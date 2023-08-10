@@ -2451,6 +2451,10 @@
             },
             {
                 "<FUNCTION>": "10 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "24",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2507,16 +2511,159 @@
                 },
                 "name": "vector_string_fill",
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {},
+                "wrap": {
+                    "fortran": true
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
+                    "F_C_call": "c_vector_string_fill_bufferify",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill",
-                    "function_name": "vector_string_fill"
+                    "F_name_function": "vector_string_fill",
+                    "F_name_generic": "vector_string_fill",
+                    "F_name_impl": "vector_string_fill",
+                    "F_subprogram": "subroutine",
+                    "function_name": "vector_string_fill",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "24 ****************************************",
+                "_PTR_C_CXX_index": "10",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_string_fill",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "api": "cdesc",
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out)+rank(1))",
+                "doxygen": {
+                    "brief": "Fill in arg with some animal names",
+                    "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+                },
+                "name": "vector_string_fill",
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg",
+                            "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "std::string",
+                            "cxx_var": "arg",
+                            "hnamefunc0": "VEC_ShroudVectorStringOut",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_out_vector_&_cdesc_targ_string_scalar",
+                            "stmt1": "c_out_vector_&_cdesc_targ_string_scalar"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "c_var": "arg",
+                            "c_var_cdesc": "SHT_arg_cdesc",
+                            "cxx_T": "std::string",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "arg",
+                            "hnamefunc0": "ShroudTypeDefines",
+                            "hnamefunc1": "array_context",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt0": "f_out_vector_&_cdesc_targ_string_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_string_scalar",
+                            "stmtc0": "c_out_vector_&_cdesc_targ_string_scalar",
+                            "stmtc1": "c_out_vector_&_cdesc_targ_string_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "VEC_vector_string_fill_bufferify",
+                    "C_name_api": "vector_string_fill",
+                    "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_name": "c_vector_string_fill_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_string_fill",
+                    "function_name": "vector_string_fill",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2593,7 +2740,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "24",
+                "_PTR_F_C_index": "25",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -2688,7 +2835,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "25 ****************************************",
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {

@@ -148,11 +148,11 @@ contains
 
     ! Fill strings into names
     names = " "
-!    irv = vector_string_fill(names)
+    call vector_string_fill(names)
 !    call assert_true(irv == 2)
-!    call assert_true( names(1) == "dog")
-!    call assert_true( names(2) == "bird")
-!    call assert_true( names(3) == " ")
+    call assert_true( names(1) == "dog", "vector_string_fill(1)")
+    call assert_true( names(2) == "bird", "vector_string_fill(2)")
+    call assert_true( names(3) == " ", "vector_string_fill(3)")
 
     ! Append -like to names.
     ! Note that strings will be truncated to len(names)

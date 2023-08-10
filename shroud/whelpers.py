@@ -16,12 +16,15 @@
                ex. SHROUD_get_from_object_char_{numpy,list}
  scope       = scope of helper.
                "file" (default) added as file static and may be in
-                  several files.
+                  several files. source may set source, c_source, or cxx_source.
+                  functions must be static since they may be included in 
+                  multiple files.
                "cwrap_include" will add to C_header_utility and shared
                   among files. These names need to be unique since they
                   are shared across wrapped libraries.
+                  Used with structure and enums.
                "cwrap_impl" - Helpers which are written in C and 
-                  called by Fortran.
+                  called by C or Fortran.
                "pwrap_impl" - Added to PY_utility_filename and shared
                   among files.
  c_include   = List of files to #include
@@ -172,7 +175,7 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     
     ########################################
     # XXX - Only used with std::vector and thus C++.
-    #Create Fortran interface to helper function
+    # Create Fortran interface to helper function
     # which copies an array based on c_type.
     # Each interface calls the same C helper.
     # Used with sgroup="native" types.
@@ -290,10 +293,81 @@ integer(C_SIZE_T), value :: c_var_size
     )
 
     ########################################
+    ########################################
+    # Only used with std::string and thus C++.
+    name = "vector_string_out"
+    fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
+    fmt.hnameproto = wformat(
+        "static void {hnamefunc}(char *out, size_t nitems, size_t len, std::vector<std::string> &in)", fmt)
+    fmt.hnameproto = wformat(
+        "static void {hnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+#        scope="cwrap_include",
+#        scope="cwrap_impl",
+        scope="file",
+        dependent_helpers=["array_context"],
+        proto=fmt.hnameproto + ";",
+        cxx_include=["<cstring>", "<cstddef>", "<string>", "<vector>"],
+        # XXX - mangle name
+        source=wformat(
+            """
+{lstart}// helper {hname}
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+{hnameproto}
+{{+
+size_t nvect = std::min(outdesc->size, in.size());
+size_t len = outdesc->elem_len;
+char *dest = const_cast<char *>(outdesc->addr.ccharp);
+//char *dest = static_cast<char *>(outdesc->cxx.addr);
+for (size_t i = 0; i < nvect; ++i) {{+
+std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+dest += outdesc->elem_len;
+-}}
+//{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+-}}{lend}
+""",
+            fmt,
+        ),
+    )
+
+    # Fortran interface for above function.
+    # Deal with allocatable character
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_vector_string_and_free", fmt)
+##-    FHelpers[name] = dict(
+##-        dependent_helpers=["array_context"],
+##-        name=fmt.hnamefunc,
+##-        interface=wformat(
+##-            """
+##-interface+
+##-! helper {hname}
+##-! Copy the char* or std::string in context into c_var.
+##-subroutine {hnamefunc}(context, c_var, c_var_size) &
+##-     bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
+##-use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+##-import {F_array_type}
+##-type({F_array_type}), intent(IN) :: context
+##-character(kind=C_CHAR), intent(OUT) :: c_var(*)
+##-integer(C_SIZE_T), value :: c_var_size
+##--end subroutine {hnamefunc}
+##--end interface""",
+##-            fmt,
+##-        ),
+##-    )
+
+    ########################################
+    ########################################
     name = "pointer_string"
     # Set Fortran POINTER to string.
     # Must be a function (or a F2008 BLOCK) since fptr must
     # be declared after the string length is known.
+    fmt.hname = name
     fmt.hnamefunc = wformat("{C_prefix}SHROUD_pointer_string", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],

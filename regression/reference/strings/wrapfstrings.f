@@ -2632,7 +2632,7 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
-    ! helper copy_string
+    ! helper pointer_string
     ! Assign context to an assumed-length character pointer
     subroutine STR_SHROUD_pointer_string(context, var)
         use iso_c_binding, only : c_f_pointer, C_PTR
