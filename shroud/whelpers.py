@@ -162,6 +162,15 @@ def add_external_helpers(symtab):
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
+    fmt.hnamefunc = fmt.C_memory_dtor_function
+    fmt.hnameproto = wformat("void {hnamefunc}\t({C_capsule_data_type} *cap)",fmt)
+    # Add the C prototype. The body is created Wrapc.write_capsule_code.
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        api="c",
+        dependent_helpers=["capsule_data_helper"],
+        proto=fmt.hnameproto + ";",
+    )
     fmt.hnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],

@@ -101,6 +101,14 @@
     "capsule_data_helper": {
         "scope": "cwrap_include"
     },
+    "capsule_dtor": {
+        "api": "c",
+        "dependent_helpers": [
+            "capsule_data_helper"
+        ],
+        "name": "LIB_SHROUD_memory_destructor",
+        "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
+    },
     "copy_array": {
         "c_include": [
             "<string.h>",

@@ -55,7 +55,6 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
-        self.shared_proto_c = []
         self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
@@ -320,13 +319,8 @@ class Wrapc(util.WrapperMixin):
         capsule_code = []
         self.write_capsule_code(capsule_code)
         if capsule_code:
-            append_format(
-                self.shared_proto_c,
-                "\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);",
-                fmt,
-            )
             self.set_capsule_headers(headers)
-            self.shared_helper["capsule_data_helper"] = True
+            self.shared_helper["capsule_dtor"] = True
 
         self.gather_helper_code(self.shared_helper)
         
@@ -406,8 +400,10 @@ class Wrapc(util.WrapperMixin):
 
         output.extend(self.helper_summary["c"]["cwrap_include"])
 
-        if self.shared_proto_c:
-            output.extend(self.shared_proto_c)
+        proto = self.helper_summary["c"]["proto"]
+        if proto:
+            output.append("")
+            output.extend(proto)
 
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}"])
