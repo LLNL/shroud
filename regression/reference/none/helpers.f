@@ -1,66 +1,7 @@
-{
-    "ShroudTypeDefines": {},
-    "array_context": {
-        "dependent_helpers": [
-            "capsule_data_helper"
-        ],
-        "modules": {
-            "iso_c_binding": [
-                "C_NULL_PTR",
-                "C_PTR",
-                "C_SIZE_T",
-                "C_INT",
-                "C_LONG"
-            ]
-        }
-    },
-    "capsule_data_helper": {
-        "modules": {
-            "iso_c_binding": [
-                "C_PTR",
-                "C_INT",
-                "C_NULL_PTR"
-            ]
-        }
-    },
-    "capsule_dtor": {
-        "dependent_helpers": [
-            "capsule_data_helper"
-        ],
-        "name": "LIB_SHROUD_capsule_dtor"
-    },
-    "capsule_helper": {
-        "dependent_helpers": [
-            "capsule_data_helper",
-            "capsule_dtor"
-        ]
-    },
-    "copy_array": {
-        "dependent_helpers": [
-            "array_context"
-        ],
-        "name": "LIB_SHROUD_copy_array"
-    },
-    "copy_string": {
-        "dependent_helpers": [
-            "array_context"
-        ],
-        "name": "LIB_SHROUD_copy_string_and_free"
-    },
-    "pointer_string": {
-        "dependent_helpers": [
-            "array_context"
-        ],
-        "name": "LIB_SHROUD_pointer_string"
-    },
-    "vector_string_allocatable": {
-        "dependent_helpers": [
-            "array_context",
-            "capsule_data_helper"
-        ],
-        "name": "LIB_SHROUD_vector_string_allocatable"
-    }
-}
+
+---------- ShroudTypeDefines ----------
+{}
+
 ##### start ShroudTypeDefines derived_type
 
 ! helper ShroudTypeDefines
@@ -97,6 +38,22 @@ integer, parameter, private :: &
     SH_TYPE_OTHER     = 32
 ##### end ShroudTypeDefines derived_type
 
+---------- array_context ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper"
+    ],
+    "modules": {
+        "iso_c_binding": [
+            "C_NULL_PTR",
+            "C_PTR",
+            "C_SIZE_T",
+            "C_INT",
+            "C_LONG"
+        ]
+    }
+}
+
 ##### start array_context derived_type
 
 ! helper array_context
@@ -117,6 +74,17 @@ type, bind(C) :: LIB_SHROUD_array
 end type LIB_SHROUD_array
 ##### end array_context derived_type
 
+---------- capsule_data_helper ----------
+{
+    "modules": {
+        "iso_c_binding": [
+            "C_PTR",
+            "C_INT",
+            "C_NULL_PTR"
+        ]
+    }
+}
+
 ##### start capsule_data_helper derived_type
 
 ! helper capsule_data_helper
@@ -125,6 +93,14 @@ type, bind(C) :: LIB_SHROUD_capsule_data
     integer(C_INT) :: idtor = 0       ! index of destructor
 end type LIB_SHROUD_capsule_data
 ##### end capsule_data_helper derived_type
+
+---------- capsule_dtor ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper"
+    ],
+    "name": "LIB_SHROUD_capsule_dtor"
+}
 
 ##### start capsule_dtor interface
 
@@ -139,6 +115,14 @@ interface
     end subroutine LIB_SHROUD_capsule_dtor
 end interface
 ##### end capsule_dtor interface
+
+---------- capsule_helper ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper",
+        "capsule_dtor"
+    ]
+}
 
 ##### start capsule_helper derived_type
 
@@ -167,6 +151,14 @@ subroutine SHROUD_capsule_delete(cap)
 end subroutine SHROUD_capsule_delete
 ##### end capsule_helper source
 
+---------- copy_array ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_copy_array"
+}
+
 ##### start copy_array interface
 
 interface
@@ -182,6 +174,14 @@ interface
     end subroutine LIB_SHROUD_copy_array
 end interface
 ##### end copy_array interface
+
+---------- copy_string ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_copy_string_and_free"
+}
 
 ##### start copy_string interface
 
@@ -199,6 +199,14 @@ interface
 end interface
 ##### end copy_string interface
 
+---------- pointer_string ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_pointer_string"
+}
+
 ##### start pointer_string source
 
 ! helper pointer_string
@@ -213,6 +221,15 @@ subroutine LIB_SHROUD_pointer_string(context, var)
     var => fptr
 end subroutine LIB_SHROUD_pointer_string
 ##### end pointer_string source
+
+---------- vector_string_allocatable ----------
+{
+    "dependent_helpers": [
+        "array_context",
+        "capsule_data_helper"
+    ],
+    "name": "LIB_SHROUD_vector_string_allocatable"
+}
 
 ##### start vector_string_allocatable interface
 

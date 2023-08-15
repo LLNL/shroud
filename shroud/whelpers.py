@@ -1809,47 +1809,45 @@ integer, parameter, private :: &
 ########################################
 # Routines to dump helper routines to a file.
 
-def gather_helpers(fp, helpers, keys):
+def gather_helpers(fp, wrapper, helpers, keys):
     """Dump helpers in human readable format.
     Dump selected keys in a format which can be used with sphinx
     literalinclude. Dump the other keys as JSON.
     Use with testing.
     """
-    output = []
-    out = {}
     for name in sorted(helpers.keys()):
         helper = helpers[name]
-        for key in keys:
-            if key in helper:
+        out = {}
+        output = []
+        for key, value in helper.items():
+            if key in keys:
                 output.append("")
                 output.append("##### start {} {}".format(name, key))
                 output.append(helper[key])
                 output.append("##### end {} {}".format(name, key))
+            else:
+                out[key] = value
 
-        outp1 = out.setdefault(name, {})
-        for key, value in helper.items():
-            if key not in keys:
-                outp1[key] = value
+        print("\n----------", name, "----------", file=fp)
+        json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
+        print("", file=fp)
+        wrapper.write_lines(fp, output)
 
-    # Dump out all the other keys as json
-    json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
-    return output
+    return
 
 def write_c_helpers(fp):
-    output = gather_helpers(fp, CHelpers, ["source", "c_source", "cxx_source"])
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = ""
-    wrapper.write_lines(fp, output)
+    output = gather_helpers(fp, wrapper, CHelpers, ["source", "c_source", "cxx_source"])
 
 def write_f_helpers(fp):
-    output = gather_helpers(fp, FHelpers, ["derived_type", "interface", "source"])
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = "&"
-    wrapper.write_lines(fp, output)
+    output = gather_helpers(fp, wrapper, FHelpers, ["derived_type", "interface", "source"])
 
 
 cmake = """
