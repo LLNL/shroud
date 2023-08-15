@@ -1166,6 +1166,16 @@
         "name": "SHROUD_update_PyList_vector_unsigned_short",
         "proto": "void SHROUD_update_PyList_vector_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
     },
+    "vector_string_allocatable": {
+        "api": "c",
+        "dependent_helpers": [
+            "array_context",
+            "vector_string_out"
+        ],
+        "name": "LIB_ShroudVectorStringAllocatable",
+        "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec);",
+        "scope": "cwrap_impl"
+    },
     "vector_string_out": {
         "api": "cxx",
         "cxx_include": [
@@ -1177,6 +1187,16 @@
         ],
         "name": "LIB_ShroudVectorStringOut",
         "proto": "void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
+        "proto_include": [
+            "<string>",
+            "<vector>"
+        ],
+        "scope": "cwrap_impl"
+    },
+    "vector_string_out_len": {
+        "api": "cxx",
+        "name": "LIB_ShroudVectorStringOutSize",
+        "proto": "size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);",
         "proto_include": [
             "<string>",
             "<vector>"
@@ -6473,6 +6493,22 @@ static void SHROUD_update_PyList_vector_unsigned_short
 }
 ##### end update_PyList_vector_unsigned_short source
 
+##### start vector_string_allocatable source
+
+// helper vector_string_allocatable
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec)
+{
+    std::vector<std::string> *cxxvec =
+        static_cast< std::vector<std::string> * >(vec->addr);
+    LIB_ShroudVectorStringOut(outdesc, *cxxvec);
+    LIB_SHROUD_memory_destructor(vec); // delete data->cxx.addr
+}
+
+##### end vector_string_allocatable source
+
 ##### start vector_string_out source
 
 // helper vector_string_out
@@ -6493,3 +6529,19 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
 }
 
 ##### end vector_string_out source
+
+##### start vector_string_out_len source
+
+// helper vector_string_out_len
+// Return the maximum string length in a std::vector<std::string>.
+size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in)
+{
+    size_t nvect = in.size();
+    size_t len = 0;
+    for (size_t i = 0; i < nvect; ++i) {
+        len = std::max(len, in[i].length());
+    }
+    return len;
+}
+
+##### end vector_string_out_len source

@@ -138,6 +138,7 @@ contains
   subroutine test_vector_string
     integer irv
     character(10) :: names(3)
+    character(:), allocatable :: anames(:)
 
     call set_case_name("test_vector_string")
 
@@ -153,6 +154,15 @@ contains
     call assert_true( names(1) == "dog", "vector_string_fill(1)")
     call assert_true( names(2) == "bird", "vector_string_fill(2)")
     call assert_true( names(3) == " ", "vector_string_fill(3)")
+
+    ! Fill strings into names
+    call assert_false(allocated(anames), "anames not allocated")
+    call vector_string_fill_allocatable(anames)
+    call assert_true(allocated(anames), "anames is allocated")
+    call assert_equals(2, size(anames), "size of anames")
+    call assert_equals(4, len(anames), "len of anames")
+    call assert_true( anames(1) == "dog", "vector_string_fill_allocatable(1)")
+    call assert_true( anames(2) == "bird", "vector_string_fill_allocatable(2)")
 
     ! Append -like to names.
     ! Note that strings will be truncated to len(names)

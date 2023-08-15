@@ -28,6 +28,7 @@ int vector_of_pointers(std::vector<const double *> &arg1, int num);
 
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
+void vector_string_fill_allocatable(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
 std::vector<int> ReturnVectorAlloc(int i);

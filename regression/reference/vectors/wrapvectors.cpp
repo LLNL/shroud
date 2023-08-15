@@ -168,8 +168,7 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-// Match:     c_out_vector_&_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -363,6 +362,28 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     vector_string_fill(arg);
     VEC_ShroudVectorStringOut(SHT_arg_cdesc, arg);
     // splicer end function.vector_string_fill_bufferify
+}
+
+// ----------------------------------------
+// Function:  void vector_string_fill_allocatable
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+void VEC_vector_string_fill_allocatable_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc,
+    VEC_SHROUD_capsule_data *SHT_arg_capsule)
+{
+    // splicer begin function.vector_string_fill_allocatable_bufferify
+    std::vector<std::string> *arg = new std::vector<std::string>;
+    vector_string_fill_allocatable(*arg);
+    SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+    SHT_arg_cdesc->size     = arg->size();
+    SHT_arg_capsule->addr   = arg;
+    SHT_arg_capsule->idtor  = 0;
+    // splicer end function.vector_string_fill_allocatable_bufferify
 }
 
 /**

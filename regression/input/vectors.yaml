@@ -154,6 +154,12 @@ declarations:
       The C++ function returns void. But the C and Fortran wrappers return
       an int with the number of items added to arg.
 
+- decl: void vector_string_fill_allocatable(
+            std::vector< std::string > &arg+intent(out)+deref(allocatable))
+  options:
+    wrap_python: False
+    wrap_lua: False
+
 - decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
   options:
     wrap_c: False

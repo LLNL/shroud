@@ -740,6 +740,25 @@ fc_statements = [
         f_import=["{F_array_type}"],
         temps=["cdesc"],
     ),
+    dict(
+        # Pass array_type to C which will fill it in.
+        # Also pass in a capsule which C wrapper will assign.
+        # Used to return a pointer to a non-fortran compatiable type
+        # such as std::vector or std::string.
+        name="c_mixin_out_array_cdesc-and-capsule",
+        c_helper="array_context capsule_data_helper",
+        c_arg_decl=[
+            "{C_array_type} *{c_var_cdesc}",
+            "{C_capsule_data_type} *{c_var_capsule}",
+        ],
+        f_c_arg_names=["{c_var_cdesc}", "{c_var_capsule}"],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
+            "type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}",
+        ],
+        f_import=["{F_array_type}", "{F_capsule_data_type}"],
+        temps=["cdesc", "capsule"],
+    ),
 
     dict(
         # Pass argument, size and len to C.
@@ -1762,6 +1781,14 @@ fc_statements = [
         ],
     ),
     dict(
+        # c_out_vector_*_cdesc_allocatable_targ_native_scalar
+        # c_out_vector_&_cdesc_allocatable_targ_native_scalar
+        name="c_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
+        # XXX - this mixin is not working as expected, nested mixings...
+#        mixin=["c_out_vector_*_cdesc_targ_native_scalar"],
+        base="c_out_vector_*_cdesc_targ_native_scalar",
+    ),
+    dict(
         name="c_inout_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_inout_array_cdesc"],
         cxx_local_var="pointer",
@@ -1964,6 +1991,7 @@ fc_statements = [
         temps=["cdesc"],
     ),
 
+    ##########
     dict(
         # Collect information about a string argument
         name="f_mixin_str_array",
@@ -2010,6 +2038,48 @@ fc_statements = [
 
     ),
 
+    ##########
+    # As above but +deref(allocatable)
+    # 
+    dict(
+        name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        arg_decl=[
+            "character(len=:), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_helper="vector_string_allocatable array_context capsule_data_helper",
+        c_helper="vector_string_allocatable",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_capsule_data_type}) :: {c_var_capsule}",
+        ],
+        post_call=[
+            "allocate(character(len={c_var_cdesc}%elem_len)::\t {f_var}({c_var_cdesc}%size))",
+            "{f_var} = ' '",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
+        ],
+        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
+        temps=["cdesc", "capsule"],
+    ),
+    dict(
+        name="c_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        mixin=["c_mixin_out_array_cdesc-and-capsule"],
+        c_helper="vector_string_out_len",
+        pre_call=[
+#            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
+            "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
+        ],
+        arg_call=["*{cxx_var}"],
+        post_call=[
+            "{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});",
+            "{c_var_cdesc}->size     = {cxx_var}->size();",
+            "{c_var_capsule}->addr   = {cxx_var};",
+            "{c_var_capsule}->idtor  = {idtor};",
+        ],
+    ),
+
+    ##########
     #                    dict(
     #                        name="c_function_vector_buf_string",
     #                        c_helper='ShroudStrCopy',

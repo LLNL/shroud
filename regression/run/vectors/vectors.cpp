@@ -154,6 +154,17 @@ void vector_string_fill(std::vector< std::string > &arg)
 }
 
 //----------------------------------------------------------------------
+// Add strings to arg.
+// arg+intent(out)+deref(allocatable)
+
+void vector_string_fill_allocatable(std::vector< std::string > &arg)
+{
+  arg.push_back("dog");
+  arg.push_back("bird");
+  return;
+}
+
+//----------------------------------------------------------------------
 // Append to strings in arg.
 // arg+intent(inout)
 

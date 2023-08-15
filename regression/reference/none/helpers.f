@@ -52,6 +52,13 @@
             "array_context"
         ],
         "name": "LIB_SHROUD_pointer_string"
+    },
+    "vector_string_allocatable": {
+        "dependent_helpers": [
+            "array_context",
+            "capsule_data_helper"
+        ],
+        "name": "LIB_SHROUD_vector_string_allocatable"
     }
 }
 ##### start ShroudTypeDefines derived_type
@@ -206,3 +213,17 @@ subroutine LIB_SHROUD_pointer_string(context, var)
     var => fptr
 end subroutine LIB_SHROUD_pointer_string
 ##### end pointer_string source
+
+##### start vector_string_allocatable interface
+
+interface
+    ! helper vector_string_allocatable
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_vector_string_allocatable(cdesc, capsule) &
+         bind(c,name="LIB_ShroudVectorStringAllocatable")
+        import LIB_SHROUD_array, LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_array), intent(IN) :: cdesc
+        type(LIB_SHROUD_capsule_data), intent(INOUT) :: capsule
+    end subroutine LIB_SHROUD_vector_string_allocatable
+end interface
+##### end vector_string_allocatable interface
