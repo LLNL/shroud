@@ -1159,18 +1159,21 @@
         "proto": "void SHROUD_update_PyList_vector_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
     },
     "vector_string_out": {
+        "api": "cxx",
         "cxx_include": [
             "<cstring>",
-            "<cstddef>",
-            "<string>",
-            "<vector>"
+            "<cstddef>"
         ],
         "dependent_helpers": [
             "array_context"
         ],
         "name": "LIB_ShroudVectorStringOut",
-        "proto": "static void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
-        "scope": "file"
+        "proto": "void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
+        "proto_include": [
+            "<string>",
+            "<vector>"
+        ],
+        "scope": "cwrap_impl"
     }
 }
 ##### start PY_converter_type source
@@ -6468,7 +6471,7 @@ static void SHROUD_update_PyList_vector_unsigned_short
 // Copy the std::vector<std::string> into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-static void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
+void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
 {
     size_t nvect = std::min(outdesc->size, in.size());
     size_t len = outdesc->elem_len;

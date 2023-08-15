@@ -74,3 +74,23 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 #ifdef __cplusplus
 }
 #endif
+
+// start helper vector_string_out
+// helper vector_string_out
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in)
+{
+    size_t nvect = std::min(outdesc->size, in.size());
+    size_t len = outdesc->elem_len;
+    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    //char *dest = static_cast<char *>(outdesc->cxx.addr);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+    //VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+// end helper vector_string_out
+

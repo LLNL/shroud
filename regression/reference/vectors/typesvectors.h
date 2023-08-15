@@ -93,6 +93,11 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }
+#include <string>
+#include <vector>
+
+// C++ implementation prototypes
+void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in);
 #endif
 
 #endif  // TYPESVECTORS_H

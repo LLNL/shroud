@@ -14,6 +14,12 @@
                to help control namespace/scope.
                Useful when to helpers create the same function.
                ex. SHROUD_get_from_object_char_{numpy,list}
+ api         = "c" or "cxx". Defaults to "c".
+               Must be set to "c" for helper functions which will be called
+               from Fortran.
+               Helpers which use types such as std::string or std::vector
+               can only be compiled with C++. Setting api to "c" will add 
+               the prototype in an 'extern "C"' block.
  scope       = scope of helper.
                "file" (default) added as file static and may be in
                   several files. source may set source, c_source, or cxx_source.
@@ -37,7 +43,9 @@
                      They will be added to the output before current helper.
  need_numpy  = If True, NumPy headers will be added.
 
- proto       = prototype for function.
+ proto       = prototype for helper function.
+               Must be in the language of api.
+ proto_include = List of files to #include before the prototype.
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
@@ -299,20 +307,18 @@ integer(C_SIZE_T), value :: c_var_size
     fmt.hname = name
     fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
     fmt.hnameproto = wformat(
-        "static void {hnamefunc}(char *out, size_t nitems, size_t len, std::vector<std::string> &in)", fmt)
-    fmt.hnameproto = wformat(
-        "static void {hnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
+        "void {hnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
-#        scope="cwrap_include",
-#        scope="cwrap_impl",
-        scope="file",
+        api="cxx",
+        scope="cwrap_impl",
         dependent_helpers=["array_context"],
+        proto_include=["<string>", "<vector>"],
         proto=fmt.hnameproto + ";",
-        cxx_include=["<cstring>", "<cstddef>", "<string>", "<vector>"],
+        cxx_include=["<cstring>", "<cstddef>"],
         # XXX - mangle name
         source=wformat(
             """

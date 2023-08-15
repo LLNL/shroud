@@ -2221,7 +2221,7 @@ rv = .false.
         Args:
             fileinfo - ModuleInfo
         """
-        done = {}  # Avoid duplicates by keeping track of what's been written.
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 

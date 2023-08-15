@@ -56,6 +56,7 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_end = " */"
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         self.shared_proto_c = []
+        self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
 
@@ -243,6 +244,9 @@ class Wrapc(util.WrapperMixin):
             lang_include = "cxx_include"
             lang_source = "cxx_source"
 
+#        api = helper_info.get("api", self.language)
+# For historical reasons, default to c
+        api = helper_info.get("api", "c")
         scope = helper_info.get("scope", "file")
         if lang_include in helper_info:
             for include in helper_info[lang_include]:
@@ -252,14 +256,23 @@ class Wrapc(util.WrapperMixin):
                 self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
-            self.helper_source[scope].append(helper_info[lang_source])
+            self.helper_summary[api][scope].append(helper_info[lang_source])
         elif "source" in helper_info:
-            self.helper_source[scope].append(helper_info["source"])
+            self.helper_summary[api][scope].append(helper_info["source"])
+
+        proto = helper_info.get("proto")
+        if proto:
+            self.helper_summary[api]["proto"].append(proto)
+
+        proto_include = helper_info.get("proto_include")
+        if proto_include:
+            for include in proto_include:
+                self.helper_summary[api]["proto_include"][include] = True
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested.
 
-        Sort into helper_source and helper_include.
+        Sort into helper_summary and helper_include.
 
         Parameters
         ----------
@@ -268,10 +281,26 @@ class Wrapc(util.WrapperMixin):
            Should be self.c_helper or self.shared_helper.
         """
         # per class
-        self.helper_source = dict(file=[], cwrap_include=[], cwrap_impl=[])
         self.helper_include = dict(file={}, cwrap_include={}, cwrap_impl={})
 
-        done = {}  # Avoid duplicates by keeping track of what's been written.
+        self.helper_summary = dict(
+            c=dict(
+                proto=[],
+                proto_include=OrderedDict(),
+                file=[],
+                cwrap_include=[],
+                cwrap_impl=[],
+            ),
+            cxx=dict(
+                proto=[],
+                proto_include=OrderedDict(),
+                file=[],
+                cwrap_include=[],
+                cwrap_impl=[],
+            ),
+        )
+        
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
@@ -311,9 +340,10 @@ class Wrapc(util.WrapperMixin):
             #                write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
 
-        if self.helper_source["cwrap_impl"]:
+        source = self.helper_summary["c"]["cwrap_impl"]
+        if source:
             write_file = True
-            output.extend(self.helper_source["cwrap_impl"])
+            output.extend(source)
 
         if capsule_code:
             write_file = True
@@ -321,6 +351,11 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+
+        source = self.helper_summary["cxx"]["cwrap_impl"]
+        if source:
+            write_file = True
+            output.extend(source)
 
         if write_file:
             self.config.cfiles.append(
@@ -369,13 +404,21 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             self._create_splicer('C_declarations', output)
 
-        output.extend(self.helper_source["cwrap_include"])
+        output.extend(self.helper_summary["c"]["cwrap_include"])
 
         if self.shared_proto_c:
             output.extend(self.shared_proto_c)
 
         if self.language == "cxx":
-            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+            output.extend(["", "#ifdef __cplusplus", "}"])
+            for header in self.helper_summary["cxx"]["proto_include"].keys():
+                output.append("#include " + header)
+            proto = self.helper_summary["cxx"]["proto"]
+            if proto:
+                output.append("")
+                output.append("// C++ implementation prototypes")
+                output.extend(proto)
+            output.append("#endif")
 
         output.extend(["", "#endif  // " + guard])
         self._pop_splicer("util")
@@ -494,12 +537,17 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             if self._create_splicer("CXX_definitions", output):
                 write_file = True
+            source = self.helper_summary["cxx"]["file"]
+            if source:
+                write_file = True
+                output.extend(source)
             output.append('\nextern "C" {')
         output.append("")
 
-        if self.helper_source["file"]:
+        source = self.helper_summary["c"]["file"]
+        if source:
             write_file = True
-            output.extend(self.helper_source["file"])
+            output.extend(source)
 
         if self._create_splicer("C_definitions", output):
             write_file = True

@@ -2304,7 +2304,7 @@ return 1;""",
         )
         self.helper_need_numpy = False
 
-        done = {}  # Avoid duplicates by keeping track of what's been written.
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
