@@ -85,11 +85,12 @@ class VerifyAttrs(object):
         for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
-            if attr not in ["name", "readonly", "dimension"]:
+            # XXX - deref on class/struct members
+            if attr not in ["name", "readonly", "dimension", "deref"]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, ast.name, node.linenumber
-                    ) + "\nonly 'name', 'readonly', and 'dimension' are allowed on variables"
+                        attr, node.name, node.linenumber
+                    ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
                 )
 
         is_ptr = declarator.is_indirect()

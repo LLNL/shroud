@@ -74,6 +74,29 @@ type, bind(C) :: LIB_SHROUD_array
 end type LIB_SHROUD_array
 ##### end array_context derived_type
 
+---------- array_string_allocatable ----------
+{
+    "dependent_helpers": [
+        "array_context",
+        "capsule_data_helper"
+    ],
+    "name": "LIB_SHROUD_array_string_allocatable"
+}
+
+##### start array_string_allocatable interface
+
+interface
+    ! helper array_string_allocatable
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_array_string_allocatable(cdesc, capsule) &
+         bind(c,name="LIB_ShroudArrayStringAllocatable")
+        import LIB_SHROUD_array, LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_array), intent(IN) :: cdesc
+        type(LIB_SHROUD_capsule_data), intent(INOUT) :: capsule
+    end subroutine LIB_SHROUD_array_string_allocatable
+end interface
+##### end array_string_allocatable interface
+
 ---------- capsule_data_helper ----------
 {
     "modules": {

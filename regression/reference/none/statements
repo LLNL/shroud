@@ -228,6 +228,9 @@ root
         * -- c_out_string_*/&
           buf -- c_out_string_*/&_buf
           cfi -- c_out_string_*/&_cfi
+        **
+          cdesc
+            allocatable -- c_out_string_**_cdesc_allocatable
       struct -- c_in/out/inout_struct
       vector
         &
@@ -483,6 +486,9 @@ root
           buf -- f_out_string_*/&_buf
         *
           buf -- f_out_string_*/&_buf
+        **
+          cdesc
+            allocatable -- f_out_string_**_cdesc_allocatable
       vector
         &
           cdesc
@@ -3044,6 +3050,36 @@ c_out_string_*:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   pre_call:
   - '{c_const}std::string {cxx_var};'
+c_out_string_**_cdesc_allocatable:
+  arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_helper: array_string_out_len
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  f_c_arg_names:
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
+  f_import:
+  - '{F_array_type}'
+  - '{F_capsule_data_type}'
+  intent: out
+  name: c_out_string_**_cdesc_allocatable
+  owner: library
+  post_call:
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size     = {c_array_size};'
+  - '{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);'
+  - '{c_var_capsule}->addr   = {cxx_var};'
+  - '{c_var_capsule}->idtor  = 0;'
+  pre_call:
+  - std::string *{cxx_var};
+  temps:
+  - cdesc
+  - capsule
 c_out_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -4711,6 +4747,30 @@ f_out_string_&_buf:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   temps:
   - len
+f_out_string_**_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
+  arg_decl:
+  - 'character(len=:), intent(out), allocatable, target :: {f_var}{f_assumed_shape}'
+  c_helper: array_string_allocatable
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {c_var_capsule}'
+  f_helper: array_string_allocatable array_context capsule_data_helper
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  intent: out
+  name: f_out_string_**_cdesc_allocatable
+  post_call:
+  - allocate({f_var}({c_var_cdesc}%size))
+  - '{f_var} = '' '''
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
+  - call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})
+  temps:
+  - cdesc
+  - capsule
 f_out_string_*_buf:
   arg_c_call:
   - '{f_var}'

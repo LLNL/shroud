@@ -92,8 +92,8 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 
 // start helper vector_string_out
 // helper vector_string_out
-// Copy the std::vector<std::string> into Fortran array.
-// Called by Fortran to deal with allocatable character.
+// Copy the std::vector<std::string> into Fortran array argument.
+// Called by C++.
 // out is already blank filled.
 void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in)
 {

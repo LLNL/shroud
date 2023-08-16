@@ -2053,13 +2053,13 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
             "type({F_capsule_data_type}) :: {c_var_capsule}",
         ],
+        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
         post_call=[
             "allocate(character(len={c_var_cdesc}%elem_len)::\t {f_var}({c_var_cdesc}%size))",
             "{f_var} = ' '",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
             "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
         ],
-        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
         temps=["cdesc", "capsule"],
     ),
     dict(
@@ -3063,6 +3063,49 @@ fc_statements = [
             "character(len=:), pointer :: {f_var}",
         ],
         arg_c_call=["{f_var}"],
+    ),
+
+    ##########
+    # Pass a cdes down to describe the memory and a capsule to hold the
+    # C++ array. Allocate in fortran, fill from C.
+    # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
+    dict(
+        name="f_out_string_**_cdesc_allocatable",
+        arg_decl=[
+            "character(len=:), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_capsule_data_type}) :: {c_var_capsule}",
+        ],
+        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
+        post_call=[
+            "allocate({f_var}({c_var_cdesc}%size))",
+            "{f_var} = ' '",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
+        ],
+        temps=["cdesc", "capsule"],
+        f_helper="array_string_allocatable array_context capsule_data_helper",
+        c_helper="array_string_allocatable",
+    ),
+    dict(
+        name="c_out_string_**_cdesc_allocatable",
+        mixin=["c_mixin_out_array_cdesc-and-capsule"],
+        c_helper="array_string_out_len",
+        pre_call=[
+            "std::string *{cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{c_var_cdesc}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_cdesc}->size     = {c_array_size};",
+            "{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);",
+            "{c_var_capsule}->addr   = {cxx_var};",
+            "{c_var_capsule}->idtor  = 0;",
+        ],
     ),
     
     ########################################
