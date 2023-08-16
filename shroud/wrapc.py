@@ -956,6 +956,7 @@ class Wrapc(util.WrapperMixin):
         is_static = False
         is_pointer = CXX_ast.declarator.is_pointer()
         is_const = declarator.func_const
+        notimplemented = False
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
@@ -1024,6 +1025,7 @@ class Wrapc(util.WrapperMixin):
         result_blk = statements.lookup_local_stmts(
             ["c", result_api], result_blk, node)
 
+        notimplemented = notimplemented or result_blk.notimplemented
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
@@ -1204,6 +1206,7 @@ class Wrapc(util.WrapperMixin):
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name
+            notimplemented = notimplemented or intent_blk.notimplemented
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
@@ -1410,20 +1413,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
-            self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
-            self.header_proto_c.append("")
-            if node.cpp_if:
-                self.header_proto_c.append("#" + node.cpp_if)
-            append_format(
-                self.header_proto_c,
-                "{C_return_type} {C_name}(\t{C_prototype});",
-                fmt_func,
-            )
-            if node.cpp_if:
-                self.header_proto_c.append("#endif")
-
-            impl = self.impl
-            impl.append("")
+            impl = []
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
@@ -1444,6 +1434,29 @@ class Wrapc(util.WrapperMixin):
                 append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
+
+            if notimplemented:
+                self.impl.append("")
+                self.impl.append("#if 0")
+                self.impl.append("! Not Implemented")
+                self.impl.extend(impl)
+                self.impl.append("#endif")
+            else:
+                self.impl.append("")
+                self.impl.extend(impl)
+
+                self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
+                self.header_proto_c.append("")
+                if node.cpp_if:
+                    self.header_proto_c.append("#" + node.cpp_if)
+                append_format(
+                    self.header_proto_c,
+                    "{C_return_type} {C_name}(\t{C_prototype});",
+                    fmt_func,
+                )
+                if node.cpp_if:
+                    self.header_proto_c.append("#endif")
+                
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.declarator.name

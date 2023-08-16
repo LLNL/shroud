@@ -506,6 +506,8 @@ CStmts = util.Scope(
     f_import=None,
     temps=None,
     local=None,
+
+    notimplemented=False,
 )
 
 # Fortran Statements.
@@ -3107,7 +3109,15 @@ fc_statements = [
             "{c_var_capsule}->idtor  = 0;",
         ],
     ),
-    
+
+    dict(
+        # std::string **arg+intent(out)+dimension(size)+deref(allocatable)
+        # Returning a pointer to a string*. However, this needs additional mapping
+        # for the C interface.  Fortran calls the +api(cdesc) variant.
+        name="c_out_string_**_allocatable",
+        notimplemented=True,
+    ),
+
     ########################################
     # native
     dict(

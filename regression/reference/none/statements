@@ -229,6 +229,7 @@ root
           buf -- c_out_string_*/&_buf
           cfi -- c_out_string_*/&_cfi
         **
+          allocatable -- c_out_string_**_allocatable
           cdesc
             allocatable -- c_out_string_**_cdesc_allocatable
       struct -- c_in/out/inout_struct
@@ -3050,6 +3051,11 @@ c_out_string_*:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   pre_call:
   - '{c_const}std::string {cxx_var};'
+c_out_string_**_allocatable:
+  intent: out
+  name: c_out_string_**_allocatable
+  notimplemented: true
+  owner: library
 c_out_string_**_cdesc_allocatable:
   arg_call:
   - '&{cxx_var}'
