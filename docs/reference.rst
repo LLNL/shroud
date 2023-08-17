@@ -1361,6 +1361,9 @@ c_array_shape
 
 c_array_size
 
+c_array_size2
+  The *dimension* attributes multiplied together.
+
 c_char_len
   The value of the *len* attribute.
   It willl be evalued in the C wrapper.

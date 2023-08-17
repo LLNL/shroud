@@ -7563,6 +7563,7 @@
                     "strs": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "nstrs",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7741,6 +7742,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
                             "c_array_size": "SHT_strs_cdesc->shape[0]",
+                            "c_array_size2": "nstrs",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

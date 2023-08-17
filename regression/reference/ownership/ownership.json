@@ -839,6 +839,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1019,6 +1020,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1198,6 +1200,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1379,6 +1382,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1556,6 +1560,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1734,6 +1739,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1880,6 +1886,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2059,6 +2066,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2242,6 +2250,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2411,6 +2420,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2610,6 +2620,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2792,6 +2803,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",

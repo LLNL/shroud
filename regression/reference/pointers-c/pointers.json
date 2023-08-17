@@ -682,6 +682,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -913,6 +914,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1117,6 +1119,7 @@
                     "values": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1264,6 +1267,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1301,6 +1305,7 @@
                     "arg2": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1466,6 +1471,7 @@
                     "values": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "nvar",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1799,6 +1805,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3129,6 +3136,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3253,6 +3261,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3399,6 +3408,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3574,6 +3584,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "ncount",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3728,6 +3739,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "getLen()",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3853,6 +3865,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = getLen();",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "getLen()",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4200,6 +4213,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4322,6 +4336,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "10",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4466,6 +4481,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4639,6 +4655,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "ncount",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5515,6 +5532,7 @@
                     "arg": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10*\t20",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5644,6 +5662,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5771,6 +5790,7 @@
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6618,6 +6638,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -6716,6 +6737,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -6901,6 +6923,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "int",
@@ -7000,6 +7023,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "10",
                         "c_const": "const ",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -7517,6 +7541,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -7619,6 +7644,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",

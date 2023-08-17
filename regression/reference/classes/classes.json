@@ -4242,6 +4242,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->nitems",
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -4340,6 +4341,7 @@
                             "val": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "SH_this->nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",

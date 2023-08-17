@@ -845,30 +845,37 @@ class Wrapc(util.WrapperMixin):
             visitor.visit(meta["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
+                fmtdim = []
+                for dim in visitor.shape:
+                    fmtdim.append(dim)
+                if fmtdim:
+                    # Multiply dimensions together to get size.
+                    fmt.c_array_size2 = "*\t".join(fmtdim)
+
                 if hasattr(fmt, "c_var_cdesc"):
                     # array_type is assumed to be c_var_cdesc.
                     # Assign each rank of dimension.
-                    fmtdim = []
+                    fmtshape = []
                     fmtsize = []
                     for i, dim in enumerate(visitor.shape):
-                        fmtdim.append("{}->shape[{}] = {};".format(
+                        fmtshape.append("{}->shape[{}] = {};".format(
                             fmt.c_var_cdesc, i, dim))
                         fmtsize.append("{}->shape[{}]".format(
                             fmt.c_var_cdesc, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                    fmt.c_array_shape = "\n" + "\n".join(fmtshape)
                     if fmtsize:
                         # Multiply extents together to get size.
                         fmt.c_array_size = "*\t".join(fmtsize)
                 if hasattr(fmt, "c_var_extents"):
                     # Used with CFI_establish
-                    fmtdim = []
+                    fmtextent = []
                     for i, dim in enumerate(visitor.shape):
-                        fmtdim.append("{}[{}] = {};\n".format(
+                        fmtextent.append("{}[{}] = {};\n".format(
                             fmt.c_var_extents, i, dim))
                     fmt.c_temp_extents_decl = (
                         "CFI_index_t {0}[{1}];\n{2}".
                         format(fmt.c_var_extents, fmt.rank,
-                               "".join(fmtdim)))
+                               "".join(fmtextent)))
                     # Used with CFI_setpointer to set lower bound to 1.
                     fmt.c_temp_lower_decl = (
                         "CFI_index_t {0}[{1}] = {{{2}}};\n".

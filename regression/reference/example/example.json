@@ -11349,6 +11349,7 @@
                                     "out": {
                                         "fmtc": {
                                             "c_addr": "",
+                                            "c_array_size2": "shape(*in)",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",

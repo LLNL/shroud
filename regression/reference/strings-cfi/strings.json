@@ -6929,6 +6929,7 @@
                     "strs": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "nstrs",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7106,6 +7107,7 @@
                     "strs": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "nstrs",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
