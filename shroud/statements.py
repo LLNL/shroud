@@ -1917,7 +1917,7 @@ fc_statements = [
     dict(
         name="c_out_vector_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
-        c_helper="ShroudLenTrim",
+        c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
         post_call=[

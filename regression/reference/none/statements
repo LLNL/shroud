@@ -3312,7 +3312,7 @@ c_out_vector_buf_targ_string_scalar:
   - const char *{c_var}
   - size_t {c_var_size}
   - int {c_var_len}
-  c_helper: ShroudLenTrim
+  c_helper: ShroudStrCopy
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
