@@ -19,6 +19,20 @@
 extern "C" {
 #endif
 
+// start helper array_string_allocatable
+// helper array_string_allocatable
+// Copy the std::string array into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *outdesc, STR_SHROUD_capsule_data *vec, size_t nlen)
+{
+    std::string *cxxvec = static_cast< std::string * >(vec->addr);
+    STR_ShroudArrayStringOut(outdesc, cxxvec);
+    STR_SHROUD_memory_destructor(vec); // delete data->cxx.addr
+}
+// end helper array_string_allocatable
+
+
 // start helper copy_string
 // helper copy_string
 // Copy the char* or std::string in context into c_var.
@@ -78,3 +92,37 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 #ifdef __cplusplus
 }
 #endif
+
+// start helper array_string_out
+// helper array_string_out
+// Copy the std::vector<std::string> into Fortran array argument.
+// Called by C++.
+// out is already blank filled.
+void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in)
+{
+    size_t nvect = outdesc->size;
+    size_t len = outdesc->elem_len;
+    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    //char *dest = static_cast<char *>(outdesc->cxx.addr);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+    //STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+// end helper array_string_out
+
+
+// start helper array_string_out_len
+// helper array_string_out_len
+// Return the maximum string length in a std::vector<std::string>.
+size_t STR_ShroudArrayStringOutSize(std::string *in, size_t nsize)
+{
+    size_t len = 0;
+    for (size_t i = 0; i < nsize; ++i) {
+        len = std::max(len, in[i].length());
+    }
+    return len;
+}
+// end helper array_string_out_len
+

@@ -20,6 +20,9 @@ options:
 
 declarations:
 
+- decl: void init_test(void)
+
+########################################
 - decl: void passChar(char status)
   doxygen:
     brief: pass a single char argument as a scalar.
@@ -285,6 +288,21 @@ declarations:
     wrap_c: false
     wrap_fortran: false
 
+##### Variations of fetching a std::string pointer
+- decl: void fetchArrayStringAlloc(
+            std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
+            int *nstrs+intent(out)+hidden);
+  doxygen:
+     description: |
+        Copy output into argument strs which must be large enough
+        to hold values.  Excess values will be truncated.
+        The nstrs argument is the length of the array.
+        It is associated with strs via the dimension(nstrs) attribute.
+        +hidden indicates that it is not part of the Fortran API.
+  options:
+    wrap_python: false
+
+#####
 - decl: char returnMany(int *arg1 +intent(out))
   doxygen:
     description: |

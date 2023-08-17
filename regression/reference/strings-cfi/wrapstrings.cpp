@@ -92,6 +92,17 @@ static void ShroudStrFree(char *src)
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// ----------------------------------------
+// Function:  void init_test
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+void STR_init_test(void)
+{
+    // splicer begin function.init_test
+    init_test();
+    // splicer end function.init_test
+}
+
 /**
  * \brief pass a single char argument as a scalar.
  *
@@ -1446,6 +1457,67 @@ int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
     return SHC_rv;
     // splicer end function.acceptStringInstance_CFI
 }
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringAlloc
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
+// Exact:     c_out_string_**_allocatable
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
+// Match:     c_default
+void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
+{
+    // splicer begin function.fetchArrayStringAlloc
+    fetchArrayStringAlloc(strs, nstrs);
+    // splicer end function.fetchArrayStringAlloc
+}
+#endif
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringAlloc
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+// Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+// Requested: c_out_string_**_cfi_allocatable
+// Match:     c_out_string_**_allocatable
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Exact:     c_out_native_*_hidden
+void STR_fetchArrayStringAlloc_CFI(char * * strs)
+{
+    // splicer begin function.fetchArrayStringAlloc_CFI
+    int nstrs;
+    fetchArrayStringAlloc(strs, &nstrs);
+    // splicer end function.fetchArrayStringAlloc_CFI
+}
+#endif
 
 // ----------------------------------------
 // Function:  void explicit1

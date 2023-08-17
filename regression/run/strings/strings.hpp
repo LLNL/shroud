@@ -13,6 +13,8 @@
 
 #include <string>
 
+void init_test(void);
+
 void passChar(char status);
 void passCharForce(char status);
 char returnChar();
@@ -66,6 +68,9 @@ void fetchStringPointerLen(std::string * arg1, int *len);
 int acceptStringInstance(std::string arg1);
 
 void returnStrings(std::string & arg1, std::string & arg2);
+
+void fetchArrayStringArg(std::string **strs, int *nstrs);
+void fetchArrayStringAlloc(std::string **strs, int *nstrs);
 
 char returnMany(int * arg1);
 

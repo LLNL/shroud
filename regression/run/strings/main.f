@@ -18,9 +18,11 @@ program tester
 
   call init_fruit
 
+  call init_test
   call test_charargs
   call test_charargs_c
   call test_functions
+  call test_string_array
   call test_explicit
   call char_functions
 
@@ -292,6 +294,23 @@ contains
 
   end subroutine test_functions
 
+  subroutine test_string_array
+    character(:), allocatable :: stralloc(:)
+
+    call set_case_name("test_string_array")
+
+    call assert_false(allocated(stralloc), "stralloc not allocated")
+    call fetch_array_string_alloc(stralloc)
+    call assert_true(allocated(stralloc), "stralloc is allocated")
+    call assert_equals(4, size(stralloc), "size of stralloc")
+    call assert_equals(6, len(stralloc), "len of stralloc")
+    call assert_true(stralloc(1) == "apple",  "fetch_array_string_alloc(1)")
+    call assert_true(stralloc(2) == "pear",   "fetch_array_string_alloc(2)")
+    call assert_true(stralloc(3) == "peach",  "fetch_array_string_alloc(3)")
+    call assert_true(stralloc(4) == "cherry", "fetch_array_string_alloc(4)")
+    
+  end subroutine test_string_array
+  
   subroutine test_explicit
     character(10) name
     call set_case_name("test_explicit")

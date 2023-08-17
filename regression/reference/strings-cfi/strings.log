@@ -3,6 +3,7 @@ Skipping std::string, unable to create C wrapper for function returning getConst
 Skipping std::string, unable to create C wrapper for function returning getConstStringLen instance (must return a pointer or reference). Bufferify version will still be created.
 Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference). Bufferify version will still be created.
 Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference). Bufferify version will still be created.
+C void init_test(void)  +intent(subroutine)
 C void passChar(char status +value)  +intent(subroutine)
 C void passCharForce(char status +value)  +intent(subroutine)
 C char returnChar(void)  +intent(function)
@@ -61,6 +62,8 @@ C void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent
 C void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))  +intent(subroutine)
 C int acceptStringInstance(std::string arg1 +value)  +intent(function)
 C int acceptStringInstance(std::string arg1 +value)  +intent(function)
+C void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))  +intent(subroutine)
+C void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))  +intent(subroutine)
 C void explicit1(char * name +intent(in)+len_trim(AAlen))  +intent(subroutine)
 C void explicit1(char * name +intent(in)+len_trim(AAlen))  +intent(subroutine)
 C void explicit2(char * name +intent(out)+len(AAtrim))  +intent(subroutine)
@@ -80,6 +83,7 @@ C int CpassCharPtrCAPI2(const char * in, const char * src +api(capi))  +intent(f
 C int CpassCharPtrCAPI2(const char * in, const char * src +api(capi))  +intent(function)
 Close wrapstrings.h
 Close wrapstrings.cpp
+Fortran void init_test(void)  +intent(subroutine)
 Fortran void passChar(char status +value)  +intent(subroutine)
 Fortran void passCharForce(char status +value)  +intent(subroutine)
 Fortran char returnChar(void)  +intent(function)
@@ -113,6 +117,7 @@ Fortran void fetchStringPointer(std::string * arg1 +intent(out))  +intent(subrou
 Fortran void acceptStringPointerLen(std::string * arg1, int * nlen +intent(out))  +intent(subroutine)
 Fortran void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))  +intent(subroutine)
 Fortran int acceptStringInstance(std::string arg1 +value)  +intent(function)
+Fortran void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))  +intent(subroutine)
 Fortran void explicit1(char * name +intent(in)+len_trim(AAlen))  +intent(subroutine)
 Fortran void explicit2(char * name +intent(out)+len(AAtrim))  +intent(subroutine)
 Fortran void CpassChar(char status +value)  +intent(subroutine)
@@ -123,6 +128,7 @@ Fortran void PostDeclare(int * count +intent(in)+rank(1), std::string & name)  +
 Fortran int CpassCharPtrNotrim(const char * src)  +intent(function)
 Fortran int CpassCharPtrCAPI(void * addr +value, const char * src +api(capi))  +intent(function)
 Fortran int CpassCharPtrCAPI2(const char * in, const char * src +api(capi))  +intent(function)
+C-interface void init_test(void)  +intent(subroutine)
 C-interface void passChar(char status +value)  +intent(subroutine)
 C-interface void passCharForce(char status +value)  +intent(subroutine)
 C-interface char returnChar(void)  +intent(function)
@@ -181,6 +187,8 @@ C-interface void fetchStringPointerLen(std::string * arg1 +intent(out), int * nl
 C-interface void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))  +intent(subroutine)
 C-interface int acceptStringInstance(std::string arg1 +value)  +intent(function)
 C-interface int acceptStringInstance(std::string arg1 +value)  +intent(function)
+C-interface void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))  +intent(subroutine)
+C-interface void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))  +intent(subroutine)
 C-interface void explicit1(char * name +intent(in)+len_trim(AAlen))  +intent(subroutine)
 C-interface void explicit1(char * name +intent(in)+len_trim(AAlen))  +intent(subroutine)
 C-interface void explicit2(char * name +intent(out)+len(AAtrim))  +intent(subroutine)

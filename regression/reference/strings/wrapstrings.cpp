@@ -113,6 +113,17 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// ----------------------------------------
+// Function:  void init_test
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+void STR_init_test(void)
+{
+    // splicer begin function.init_test
+    init_test();
+    // splicer end function.init_test
+}
+
 /**
  * \brief pass a single char argument as a scalar.
  *
@@ -1396,6 +1407,76 @@ int STR_acceptStringInstance_bufferify(char *arg1, int SHT_arg1_len)
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
     // splicer end function.acceptStringInstance_bufferify
+}
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringAlloc
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
+// Exact:     c_out_string_**_allocatable
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
+// Match:     c_default
+void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
+{
+    // splicer begin function.fetchArrayStringAlloc
+    fetchArrayStringAlloc(strs, nstrs);
+    // splicer end function.fetchArrayStringAlloc
+}
+#endif
+
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringAlloc
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Exact:     c_out_string_**_cdesc_allocatable
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Exact:     c_out_native_*_hidden
+void STR_fetchArrayStringAlloc_bufferify(
+    STR_SHROUD_array *SHT_strs_cdesc,
+    STR_SHROUD_capsule_data *SHT_strs_capsule)
+{
+    // splicer begin function.fetchArrayStringAlloc_bufferify
+    std::string *strs;
+    int nstrs;
+    fetchArrayStringAlloc(&strs, &nstrs);
+    SHT_strs_cdesc->rank = 1;
+    SHT_strs_cdesc->shape[0] = nstrs;
+    SHT_strs_cdesc->size     = SHT_strs_cdesc->shape[0];
+    if (0 > 0) {
+        SHT_strs_cdesc->elem_len = 0;
+    } else {
+        SHT_strs_cdesc->elem_len = STR_ShroudArrayStringOutSize(strs, SHT_strs_cdesc->size);
+    }
+    SHT_strs_capsule->addr   = strs;
+    SHT_strs_capsule->idtor  = 0;
+    // splicer end function.fetchArrayStringAlloc_bufferify
 }
 
 // ----------------------------------------
