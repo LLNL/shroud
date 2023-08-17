@@ -278,7 +278,18 @@ local
  variables.  This allows creating names without conflicting with
  *temps* from a *mixin* group.
 
+notimplemented
+--------------
 
+If True the statement is not implemented.
+The generated function will have ``#if 0`` surrounding the
+wrapper.
+
+This is a way to avoid generating code which will not compile when
+the notimplemented wrapper is not needed. For example, the C wrapper
+for a C++ function when only the C bufferify wrapper is needed for
+Fortran.  The statements should eventually be completed to wrap the
+function properly.
              
 How typemaps are found
 ----------------------

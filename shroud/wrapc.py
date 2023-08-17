@@ -877,6 +877,9 @@ class Wrapc(util.WrapperMixin):
                     fmt.c_temp_extents_use = fmt.c_var_extents
                     fmt.c_temp_lower_use = fmt.c_var_lower
 
+        if attrs["len"]:
+            fmt.c_char_len = attrs["len"];
+
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.
         A non-const pointer to cxx_var (which may be same as c_var).

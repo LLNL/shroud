@@ -1625,6 +1625,13 @@ rv = .false.
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
 
+        if f_attrs["len"]:
+            fmt.f_char_len = "len=%s" % f_attrs["len"];
+        elif hasattr(fmt, "c_var_cdesc"):
+            if f_attrs["deref"] == "allocatable":
+                # Use elem_len from the C wrapper.
+                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) :: ", fmt)
+
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
 

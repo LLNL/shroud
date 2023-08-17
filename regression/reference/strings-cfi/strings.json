@@ -1109,6 +1109,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": "30",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -1127,6 +1128,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "char",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1199,6 +1201,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": "30",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -1219,6 +1222,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cfi": "SHT_rv_cfi",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2001,6 +2005,7 @@
                     "fmtf": {
                         "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2068,6 +2073,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -2088,6 +2094,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cfi": "SHT_rv_cfi",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2725,6 +2732,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -2745,6 +2753,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2818,6 +2827,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -2838,6 +2848,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cfi": "SHT_rv_cfi",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3205,6 +3216,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3225,6 +3237,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3297,6 +3310,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3317,6 +3331,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cfi": "SHT_rv_cfi",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3571,6 +3586,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3591,6 +3607,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3670,6 +3687,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": 30,
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3690,6 +3708,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cfi": "SHT_rv_cfi",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -7080,6 +7099,7 @@
                     "name": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_char_len": "AAtrim",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7099,6 +7119,7 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
+                            "f_char_len": "len=AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7190,6 +7211,7 @@
                     "name": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_char_len": "AAtrim",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7212,6 +7234,7 @@
                             "F_C_var": "name",
                             "c_var": "name",
                             "c_var_cfi": "SHT_name_cfi",
+                            "f_char_len": "len=AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",

@@ -1357,6 +1357,15 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_array_shape
+
+c_array_size
+
+c_char_len
+  The value of the *len* attribute.
+  It willl be evalued in the C wrapper.
+  Defaults to 0 to indicate no length given.
+
 c_blanknull
    Used as argument to ``ShroudStrAlloc`` to determine if a
    blank string, trimmed length is 0, should be a NULL pointer
@@ -1480,6 +1489,20 @@ f_c_module_line
 f_capsule_data_type
     The name of the derived type used to share memory information with C or C++.
     *F_capsule_data_type* for the argument type.
+
+f_char_len
+    Defaults to ``:`` for defered length used with allocatable variables.
+    Used in statements as ``character({f_char_len)``.
+
+f_char_type
+    Character type used in ``ALLOCATE`` statements.
+    Based on *len* attributes.
+    Defaults to blank for ``CHARACTER`` types which have an explicit length
+    in the type declaration - ``CHARACTER(20)``..
+    Otherwise set to ``character(len={c_var_cdesc}%elem_len) :: `` which
+    uses the length computed by the C wrapper and stored in elem_len.
+    For example, find the maximum length of strings in a ``char **`` argument.
+    Used in statements as ``allocate({f_char_type}(f_var})``.
     
 f_declare_shape_prefix
 

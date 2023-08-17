@@ -822,7 +822,7 @@ fc_statements = [
         ],
         arg_c_call=["{f_var}", "{c_var_len}"],
 
-        # statements.yaml getNameErrorPattern pgi reports an error
+        # XXX - statements.yaml getNameErrorPattern pgi reports an error
         # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
         # By breaking it out as an explicit assign, the error goes away.
         # Only difference from other uses is setting
@@ -3074,7 +3074,7 @@ fc_statements = [
     dict(
         name="f_out_string_**_cdesc_allocatable",
         arg_decl=[
-            "character(len=:), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
+            "character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["C_LOC"]),
         declare=[
@@ -3083,7 +3083,7 @@ fc_statements = [
         ],
         arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
         post_call=[
-            "allocate({f_var}({c_var_cdesc}%size))",
+            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
             "{f_var} = ' '",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
             "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
@@ -3104,7 +3104,13 @@ fc_statements = [
             "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
             "{c_var_cdesc}->size     = {c_array_size};",
+            # XXX - assume a sufficiently smart compiler will only use one clause
+            #  if c_char_len is a constant.
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
             "{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);",
+            "-}}",
             "{c_var_capsule}->addr   = {cxx_var};",
             "{c_var_capsule}->idtor  = 0;",
         ],
