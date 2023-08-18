@@ -279,6 +279,12 @@ void fetchArrayStringAlloc(std::string **strs, int *nstrs)
     *nstrs = MAXSTRS;
 }
 
+void fetchArrayStringAllocLen(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
 //----------------------------------------
 
 char returnMany(int * arg1)

@@ -312,6 +312,21 @@ declarations:
         The nstrs argument is the length of the array.
         It is associated with strs via the dimension(nstrs) attribute.
         +hidden indicates that it is not part of the Fortran API.
+        The defered length is set to the maximum string length.
+  options:
+    wrap_python: false
+
+- decl: void fetchArrayStringAllocLen(
+            std::string **strs +intent(out)+len(20)+dimension(nstrs)+deref(allocatable),
+            int *nstrs+intent(out)+hidden);
+  doxygen:
+     description: |
+        Copy output into argument strs which must be large enough
+        to hold values.  Excess values will be truncated.
+        The nstrs argument is the length of the array.
+        It is associated with strs via the dimension(nstrs) attribute.
+        +hidden indicates that it is not part of the Fortran API.
+        The defered length is set to the len attribute.
   options:
     wrap_python: false
 

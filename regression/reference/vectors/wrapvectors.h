@@ -60,6 +60,9 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 void VEC_vector_string_fill_allocatable_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc);
 
+void VEC_vector_string_fill_allocatable_len_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc);
+
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 

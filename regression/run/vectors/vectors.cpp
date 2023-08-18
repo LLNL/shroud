@@ -153,11 +153,20 @@ void vector_string_fill(std::vector< std::string > &arg)
   return;
 }
 
-//----------------------------------------------------------------------
 // Add strings to arg.
 // arg+intent(out)+deref(allocatable)
 
 void vector_string_fill_allocatable(std::vector< std::string > &arg)
+{
+  arg.push_back("dog");
+  arg.push_back("bird");
+  return;
+}
+
+// Add strings to arg.
+// arg+intent(out)+len(20)+deref(allocatable)
+
+void vector_string_fill_allocatable_len(std::vector< std::string > &arg)
 {
   arg.push_back("dog");
   arg.push_back("bird");

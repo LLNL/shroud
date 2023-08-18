@@ -2047,7 +2047,7 @@ fc_statements = [
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+            "character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="vector_string_allocatable array_context capsule_data_helper",
         c_helper="vector_string_allocatable",
@@ -2060,7 +2060,7 @@ fc_statements = [
         post_call=[
             "{c_var_cdesc}%size = {c_var_out}%size;",
             "{c_var_cdesc}%elem_len = {c_var_out}%elem_len",
-            "allocate(character(len={c_var_cdesc}%elem_len)::\t {f_var}({c_var_cdesc}%size))",
+            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
             "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
             "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
@@ -2077,7 +2077,11 @@ fc_statements = [
         ],
         arg_call=["*{cxx_var}"],
         post_call=[
-            "{c_var_cdesc}->elem_len  = {hnamefunc0}(*{cxx_var});",
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});",
+            "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",

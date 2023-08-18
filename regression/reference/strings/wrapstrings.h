@@ -175,6 +175,9 @@ void STR_fetchArrayStringArg_bufferify(
 void STR_fetchArrayStringAlloc_bufferify(
     STR_SHROUD_array *SHT_strs_cdesc);
 
+void STR_fetchArrayStringAllocLen_bufferify(
+    STR_SHROUD_array *SHT_strs_cdesc);
+
 void STR_explicit1(char * name);
 
 void STR_explicit2(char * name);

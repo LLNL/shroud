@@ -378,11 +378,40 @@ void VEC_vector_string_fill_allocatable_bufferify(
     // splicer begin function.vector_string_fill_allocatable_bufferify
     std::vector<std::string> *arg = new std::vector<std::string>;
     vector_string_fill_allocatable(*arg);
-    SHT_arg_cdesc->elem_len  = VEC_ShroudVectorStringOutSize(*arg);
+    if (0 > 0) {
+        SHT_arg_cdesc->elem_len = 0;
+    } else {
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+    }
     SHT_arg_cdesc->size      = arg->size();
     SHT_arg_cdesc->cxx.addr  = arg;
     SHT_arg_cdesc->cxx.idtor = 0;
     // splicer end function.vector_string_fill_allocatable_bufferify
+}
+
+// ----------------------------------------
+// Function:  void vector_string_fill_allocatable_len
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+void VEC_vector_string_fill_allocatable_len_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc)
+{
+    // splicer begin function.vector_string_fill_allocatable_len_bufferify
+    std::vector<std::string> *arg = new std::vector<std::string>;
+    vector_string_fill_allocatable_len(*arg);
+    if (20 > 0) {
+        SHT_arg_cdesc->elem_len = 20;
+    } else {
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+    }
+    SHT_arg_cdesc->size      = arg->size();
+    SHT_arg_cdesc->cxx.addr  = arg;
+    SHT_arg_cdesc->cxx.idtor = 0;
+    // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 
 /**

@@ -1014,6 +1014,73 @@
                         "metaattrs": {
                             "intent": "subroutine"
                         },
+                        "name": "vector_string_fill_allocatable_len",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable",
+                                        "intent": "out",
+                                        "len": "20",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable",
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
+                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1))",
+                "name": "vector_string_fill_allocatable_len",
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "C_name_api": "vector_string_fill_allocatable_len",
+                    "F_name_api": "vector_string_fill_allocatable_len",
+                    "function_name": "vector_string_fill_allocatable_len"
+                }
+            },
+            {
+                "<FUNCTION>": "13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
                         "name": "vector_string_append",
                         "params": [
                             {
@@ -1077,7 +1144,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1193,7 +1260,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

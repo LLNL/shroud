@@ -71,6 +71,7 @@ void returnStrings(std::string & arg1, std::string & arg2);
 
 void fetchArrayStringArg(std::string **strs, int *nstrs);
 void fetchArrayStringAlloc(std::string **strs, int *nstrs);
+void fetchArrayStringAllocLen(std::string **strs, int *nstrs);
 
 char returnMany(int * arg1);
 

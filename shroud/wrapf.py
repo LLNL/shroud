@@ -1632,7 +1632,7 @@ rv = .false.
         elif hasattr(fmt, "c_var_cdesc"):
             if f_attrs["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
-                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) :: ", fmt)
+                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) ::\t ", fmt)
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
