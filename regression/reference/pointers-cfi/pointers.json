@@ -683,6 +683,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -920,6 +921,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1144,6 +1146,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1381,6 +1384,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "size(*in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1577,6 +1581,7 @@
                     "values": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1724,6 +1729,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1761,6 +1767,7 @@
                     "arg2": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1926,6 +1933,7 @@
                     "values": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "nvar",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2470,6 +2478,7 @@
                     "out": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4331,6 +4340,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4455,6 +4465,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_local_cdesc": "SHC_count_cdesc",
@@ -4615,6 +4626,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4790,6 +4802,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "",
                             "c_deref": "*",
                             "c_local_cdesc": "SHC_count_cdesc",
@@ -4958,6 +4971,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "getLen()",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5083,6 +5097,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "getLen()",
                             "c_const": "",
                             "c_deref": "*",
                             "c_local_cdesc": "SHC_count_cdesc",
@@ -5455,6 +5470,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5577,6 +5593,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_local_cdesc": "SHC_count_cdesc",
@@ -5735,6 +5752,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5908,6 +5926,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "ncount",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_local_cdesc": "SHC_count_cdesc",
@@ -6796,6 +6815,7 @@
                     "arg": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10*\t20",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6926,6 +6946,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7052,6 +7073,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_size2": "10",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -8138,6 +8160,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -8233,6 +8256,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_local_cdesc": "SHC_rv_cdesc",
                         "c_local_cptr": "SHC_rv_cptr",
@@ -8531,6 +8555,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "int",
@@ -8627,6 +8652,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "const ",
                         "c_local_cdesc": "SHC_rv_cdesc",
                         "c_local_cptr": "SHC_rv_cptr",
@@ -9307,6 +9333,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9404,6 +9431,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "10",
                         "c_const": "",
                         "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
                         "c_temp_extents_use": "SHT_rv_extents",

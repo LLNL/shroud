@@ -31,6 +31,8 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void STR_init_test(void);
+
 void STR_passChar(char status);
 
 void STR_passCharForce(char status);

@@ -21,6 +21,39 @@ module vectors_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper ShroudTypeDefines
+    ! Shroud type defines from helper ShroudTypeDefines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
     ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: VEC_SHROUD_capsule_data
@@ -79,8 +112,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_bufferify
     interface
         subroutine c_vector_iota_out_bufferify(SHT_arg_cdesc) &
@@ -100,8 +132,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
@@ -124,8 +155,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num2_bufferify
     interface
         subroutine c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc) &
@@ -145,8 +175,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc) &
@@ -214,8 +243,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
@@ -275,6 +303,62 @@ module vectors_mod
             integer(C_INT), intent(IN), value :: SHT_arg_len
             integer(C_INT) :: SHT_rv
         end function c_vector_string_count_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_targ_string_scalar
+    interface
+        subroutine c_vector_string_fill_bufferify(SHT_arg_cdesc) &
+                bind(C, name="VEC_vector_string_fill_bufferify")
+            import :: VEC_SHROUD_array
+            implicit none
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+        end subroutine c_vector_string_fill_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill_allocatable
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    interface
+        subroutine c_vector_string_fill_allocatable_bufferify( &
+                SHT_arg_cdesc) &
+                bind(C, name="VEC_vector_string_fill_allocatable_bufferify")
+            import :: VEC_SHROUD_array
+            implicit none
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+        end subroutine c_vector_string_fill_allocatable_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill_allocatable_len
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    interface
+        subroutine c_vector_string_fill_allocatable_len_bufferify( &
+                SHT_arg_cdesc) &
+                bind(C, name="VEC_vector_string_fill_allocatable_len_bufferify")
+            import :: VEC_SHROUD_array
+            implicit none
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+        end subroutine c_vector_string_fill_allocatable_len_bufferify
     end interface
 
     ! ----------------------------------------
@@ -343,6 +427,17 @@ module vectors_mod
         end subroutine VEC_SHROUD_copy_array
     end interface
 
+    interface
+        ! helper vector_string_allocatable
+        ! Copy the char* or std::string in context into c_var.
+        subroutine VEC_SHROUD_vector_string_allocatable(out, in) &
+             bind(c,name="VEC_ShroudVectorStringAllocatable")
+            import VEC_SHROUD_array
+            type(VEC_SHROUD_array), intent(IN) :: out
+            type(VEC_SHROUD_array), intent(IN) :: in
+        end subroutine VEC_SHROUD_vector_string_allocatable
+    end interface
+
 contains
 
     ! Generated by arg_to_buffer
@@ -383,11 +478,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -415,11 +508,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -452,11 +543,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -490,11 +579,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -585,11 +672,9 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_out_vector_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_out_vector_cdesc_targ_native_scalar
+    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -676,6 +761,100 @@ contains
             size(arg, kind=C_SIZE_T), len(arg, kind=C_INT))
         ! splicer end function.vector_string_count
     end function vector_string_count
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_vector_&_cdesc_targ_string_scalar
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_targ_string_scalar
+    !>
+    !! \brief Fill in arg with some animal names
+    !!
+    !! The C++ function returns void. But the C and Fortran wrappers return
+    !! an int with the number of items added to arg.
+    !<
+    subroutine vector_string_fill(arg)
+        use iso_c_binding, only : C_LOC
+        character(*), intent(OUT), target :: arg(:)
+        ! splicer begin function.vector_string_fill
+        type(VEC_SHROUD_array) :: SHT_arg_cdesc
+        SHT_arg_cdesc%cxx%addr = C_LOC(arg)
+        SHT_arg_cdesc%base_addr = C_LOC(arg)
+        SHT_arg_cdesc%type = SH_TYPE_CHAR
+        SHT_arg_cdesc%elem_len = len(arg)
+        SHT_arg_cdesc%size = size(arg)
+        SHT_arg_cdesc%rank = rank(arg)
+        SHT_arg_cdesc%shape(1:1) = shape(arg)
+        call c_vector_string_fill_bufferify(SHT_arg_cdesc)
+        ! splicer end function.vector_string_fill
+    end subroutine vector_string_fill
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill_allocatable
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    subroutine vector_string_fill_allocatable(arg)
+        use iso_c_binding, only : C_LOC
+        character(:), intent(OUT), allocatable, target :: arg(:)
+        ! splicer begin function.vector_string_fill_allocatable
+        type(VEC_SHROUD_array) :: SHT_arg_cdesc
+        type(VEC_SHROUD_array) :: SHT_arg_out
+        call c_vector_string_fill_allocatable_bufferify(SHT_arg_out)
+        SHT_arg_cdesc%size = SHT_arg_out%size;
+        SHT_arg_cdesc%elem_len = SHT_arg_out%elem_len
+        allocate(character(len=SHT_arg_cdesc%elem_len) :: &
+            arg(SHT_arg_cdesc%size))
+        SHT_arg_cdesc%cxx%addr = C_LOC(arg);
+        SHT_arg_cdesc%base_addr = C_LOC(arg);
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_out)
+        ! splicer end function.vector_string_fill_allocatable
+    end subroutine vector_string_fill_allocatable
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void vector_string_fill_allocatable_len
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    subroutine vector_string_fill_allocatable_len(arg)
+        use iso_c_binding, only : C_LOC
+        character(len=20), intent(OUT), allocatable, target :: arg(:)
+        ! splicer begin function.vector_string_fill_allocatable_len
+        type(VEC_SHROUD_array) :: SHT_arg_cdesc
+        type(VEC_SHROUD_array) :: SHT_arg_out
+        call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_out)
+        SHT_arg_cdesc%size = SHT_arg_out%size;
+        SHT_arg_cdesc%elem_len = SHT_arg_out%elem_len
+        allocate(arg(SHT_arg_cdesc%size))
+        SHT_arg_cdesc%cxx%addr = C_LOC(arg);
+        SHT_arg_cdesc%base_addr = C_LOC(arg);
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_out)
+        ! splicer end function.vector_string_fill_allocatable_len
+    end subroutine vector_string_fill_allocatable_len
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------

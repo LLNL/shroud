@@ -506,6 +506,8 @@ CStmts = util.Scope(
     f_import=None,
     temps=None,
     local=None,
+
+    notimplemented=False,
 )
 
 # Fortran Statements.
@@ -740,6 +742,25 @@ fc_statements = [
         f_import=["{F_array_type}"],
         temps=["cdesc"],
     ),
+    dict(
+        # cdesc - array from argument
+        # out   - filled by C wrapper.
+        # Used to return a pointer to a non-fortran compatiable type
+        # such as std::vector or std::string.
+        name="c_mixin_out_array_cdesc-and-cdesc",
+        c_helper="array_context",
+        c_arg_decl=[
+            "{C_array_type} *{c_var_cdesc}",
+            "{C_array_type} *{c_var_out}",
+        ],
+        f_c_arg_names=["{c_var_cdesc}", "{c_var_out}"],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
+            "type({F_array_type}), intent(OUT) :: {c_var_out}",
+        ],
+        f_import=["{F_array_type}"],
+        temps=["cdesc", "out"],
+    ),
 
     dict(
         # Pass argument, size and len to C.
@@ -801,7 +822,7 @@ fc_statements = [
         ],
         arg_c_call=["{f_var}", "{c_var_len}"],
 
-        # statements.yaml getNameErrorPattern pgi reports an error
+        # XXX - statements.yaml getNameErrorPattern pgi reports an error
         # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
         # By breaking it out as an explicit assign, the error goes away.
         # Only difference from other uses is setting
@@ -1732,7 +1753,9 @@ fc_statements = [
     ),
     # cxx_var is always a pointer to a vector
     dict(
-        name="c_out_vector_cdesc_targ_native_scalar",
+        # c_out_vector_*_cdesc_targ_native_scalar
+        # c_out_vector_&_cdesc_targ_native_scalar
+        name="c_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=["c_mixin_out_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -1758,6 +1781,14 @@ fc_statements = [
             " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
             "delete cxx_ptr;",
         ],
+    ),
+    dict(
+        # c_out_vector_*_cdesc_allocatable_targ_native_scalar
+        # c_out_vector_&_cdesc_allocatable_targ_native_scalar
+        name="c_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
+        # XXX - this mixin is not working as expected, nested mixings...
+#        mixin=["c_out_vector_*_cdesc_targ_native_scalar"],
+        base="c_out_vector_*_cdesc_targ_native_scalar",
     ),
     dict(
         name="c_inout_vector_cdesc_targ_native_scalar",
@@ -1886,7 +1917,7 @@ fc_statements = [
     dict(
         name="c_out_vector_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
-        c_helper="ShroudLenTrim",
+        c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
         post_call=[
@@ -1947,6 +1978,117 @@ fc_statements = [
         ],
         local=["i", "n", "s"],
     ),
+
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_inout_char_array_cdesc",
+        f_helper="array_context",
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+#        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
+        arg_c_call=["{c_var_cdesc}"],
+#        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        temps=["cdesc"],
+    ),
+
+    ##########
+    dict(
+        # Collect information about a string argument
+        name="f_mixin_str_array",
+        mixin=["f_mixin_out_array_cdesc"],
+
+        # TARGET required for argument to C_LOC.
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_helper="ShroudTypeDefines array_context",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+        pre_call=[
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var})",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{c_var_cdesc}%type = SH_TYPE_CHAR",
+            "{c_var_cdesc}%elem_len = len({f_var})",
+            "{c_var_cdesc}%size = size({f_var})",
+#            "{c_var_cdesc}%size = {size}",
+            # Do not set shape for scalar via f_cdesc_shape
+            "{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
+#            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+        ],
+        arg_c_call=["{c_var_cdesc}"],
+        temps=["cdesc"],
+    ),
+
+    dict(
+        name="f_out_vector_&_cdesc_targ_string_scalar",
+        mixin=["f_mixin_str_array"],
+    ),
+    dict(
+        name="c_out_vector_&_cdesc_targ_string_scalar",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="vector_string_out",
+        pre_call=[
+            "{c_const}std::vector<std::string> {cxx_var};"
+        ],
+        arg_call=["{cxx_var}"],
+        post_call=[
+            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});",
+        ],
+
+    ),
+
+    ##########
+    # As above but +deref(allocatable)
+    # 
+    dict(
+        name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        arg_decl=[
+            "character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_helper="vector_string_allocatable array_context capsule_data_helper",
+        c_helper="vector_string_allocatable",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {c_var_out}",
+        ],
+        arg_c_call=["{c_var_out}"],
+        post_call=[
+            "{c_var_cdesc}%size = {c_var_out}%size;",
+            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len",
+            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
+        ],
+        temps=["cdesc", "out"],
+    ),
+    dict(
+        name="c_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="vector_string_out_len",
+        pre_call=[
+#            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
+            "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
+        ],
+        arg_call=["*{cxx_var}"],
+        post_call=[
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});",
+            "-}}",
+            "{c_var_cdesc}->size      = {cxx_var}->size();",
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+        ],
+    ),
+
+    ##########
     #                    dict(
     #                        name="c_function_vector_buf_string",
     #                        c_helper='ShroudStrCopy',
@@ -1966,7 +2108,9 @@ fc_statements = [
         mixin=["f_mixin_in_array_buf"],
     ),
     dict(
-        name="f_out_vector_cdesc_targ_native_scalar",
+        # f_out_vector_*_cdesc_targ_native_scalar
+        # f_out_vector_&_cdesc_targ_native_scalar
+        name="f_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array",
@@ -2009,7 +2153,9 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_cdesc_allocatable_targ_native_scalar",
+        # f_out_vector_*_cdesc_allocatable_targ_native_scalar
+        # f_out_vector_&_cdesc_allocatable_targ_native_scalar
+        name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array",
@@ -2927,7 +3073,96 @@ fc_statements = [
         ],
         arg_c_call=["{f_var}"],
     ),
-    
+
+    ##########
+    # Pass a cdesc down to describe the memory and a capsule to hold the
+    # C++ array. Copy into Fortran argument.
+    # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
+    dict(
+        name="f_out_string_**_cdesc_copy",
+        mixin=["f_mixin_str_array"],
+    ),
+    dict(
+        name="c_out_string_**_cdesc_copy",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="array_string_out",
+        pre_call=[
+            "std::string *{cxx_var};"
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
+        ],
+
+    ),
+
+    dict(
+        # std::string **arg+intent(out)+dimension(size)
+        # Returning a pointer to a string*. However, this needs additional mapping
+        # for the C interface.  Fortran calls the +api(cdesc) variant.
+        name="c_out_string_**_copy",
+        notimplemented=True,
+    ),
+
+    ##########
+    # Pass a cdesc down to describe the memory and a capsule to hold the
+    # C++ array. Allocate in fortran, fill from C.
+    # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
+    dict(
+        name="f_out_string_**_cdesc_allocatable",
+        arg_decl=[
+            "character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {c_var_out}",
+        ],
+        arg_c_call=["{c_var_out}"],
+        post_call=[
+            "{c_var_cdesc}%size = {c_var_out}%size;",
+            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len;",
+            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
+        ],
+        temps=["cdesc", "out"],
+        f_helper="array_string_allocatable array_context",
+        c_helper="array_string_allocatable",
+    ),
+    dict(
+        name="c_out_string_**_cdesc_allocatable",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="array_string_out_len",
+        pre_call=[
+            "std::string *{cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{c_var_cdesc}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_cdesc}->size     = {c_array_size};",
+            # XXX - assume a sufficiently smart compiler will only use one clause
+            #  if c_char_len is a constant.
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);",
+            "-}}",
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership
+        ],
+    ),
+
+    dict(
+        # std::string **arg+intent(out)+dimension(size)+deref(allocatable)
+        # Returning a pointer to a string*. However, this needs additional mapping
+        # for the C interface.  Fortran calls the +api(cdesc) variant.
+        name="c_out_string_**_allocatable",
+        notimplemented=True,
+    ),
+
     ########################################
     # native
     dict(

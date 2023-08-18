@@ -61,6 +61,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added ability to add *splicer* to ``typedef`` declarations.
   For example, to use the C preprocessor to set the type of the typedef.
   See typedefs.yaml for an example.
+- Added support for out arguments which return a reference to a ``std::vector``
+  or pointer to an array of ``std::string``.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

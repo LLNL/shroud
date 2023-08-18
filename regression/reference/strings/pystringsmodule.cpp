@@ -83,6 +83,26 @@ PyObject *PY_error_obj;
 // splicer end additional_functions
 
 // ----------------------------------------
+// Function:  void init_test
+// Attrs:     +intent(subroutine)
+// Exact:     py_default
+static char PY_init_test__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_init_test(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.init_test
+    init_test();
+    Py_RETURN_NONE;
+// splicer end function.init_test
+}
+
+// ----------------------------------------
 // Function:  void passChar
 // Attrs:     +intent(subroutine)
 // Exact:     py_default
@@ -1359,6 +1379,8 @@ fail:
 // splicer end function.PostDeclare
 }
 static PyMethodDef PY_methods[] = {
+{"init_test", (PyCFunction)PY_init_test, METH_NOARGS,
+    PY_init_test__doc__},
 {"passChar", (PyCFunction)PY_passChar, METH_VARARGS|METH_KEYWORDS,
     PY_passChar__doc__},
 {"returnChar", (PyCFunction)PY_returnChar, METH_NOARGS,

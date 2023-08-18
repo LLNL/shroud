@@ -724,6 +724,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_blanknull="0",     # Argument to helper ShroudStrAlloc.
             c_array_shape="",
             c_array_size="1",
+            c_char_len="0",      # deferred length
             # Assume scalar in CFI_establish
             c_temp_extents_decl="",
             c_temp_extents_use="NULL",
@@ -735,6 +736,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_array_shape="",
             f_assumed_shape="",  # scalar
             f_c_dimension="",
+            f_char_len=":",      # deferred length
+            f_char_type="",      # allocate type - character(len=x) ::
             f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",
             f_get_shape_array="",

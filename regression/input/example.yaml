@@ -138,6 +138,7 @@ declarations:
       - decl: const string& getName() const
         # test annotating result
         fattrs:
+          # XXX - len is evalued in C code
           len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
 
     # test variations of const for result and method

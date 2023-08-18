@@ -28,6 +28,8 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void STR_init_test(void);
+
 void STR_passChar(char status);
 
 void STR_passCharForce(char status);
@@ -166,6 +168,15 @@ void STR_fetchStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
 int STR_acceptStringInstance(char *arg1);
 
 int STR_acceptStringInstance_bufferify(char *arg1, int SHT_arg1_len);
+
+void STR_fetchArrayStringArg_bufferify(
+    STR_SHROUD_array *SHT_strs_cdesc);
+
+void STR_fetchArrayStringAlloc_bufferify(
+    STR_SHROUD_array *SHT_strs_cdesc);
+
+void STR_fetchArrayStringAllocLen_bufferify(
+    STR_SHROUD_array *SHT_strs_cdesc);
 
 void STR_explicit1(char * name);
 

@@ -4159,6 +4159,7 @@
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -4242,6 +4243,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->nitems",
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -4340,6 +4342,7 @@
                             "val": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "SH_this->nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -6110,6 +6113,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": "30",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -6131,6 +6135,7 @@
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "cxx_type": "std::string",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -6225,6 +6230,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_char_len": "30",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -6245,6 +6251,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",

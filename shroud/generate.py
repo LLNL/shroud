@@ -85,11 +85,12 @@ class VerifyAttrs(object):
         for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
-            if attr not in ["name", "readonly", "dimension"]:
+            # XXX - deref on class/struct members
+            if attr not in ["name", "readonly", "dimension", "deref"]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, ast.name, node.linenumber
-                    ) + "\nonly 'name', 'readonly', and 'dimension' are allowed on variables"
+                        attr, node.name, node.linenumber
+                    ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
                 )
 
         is_ptr = declarator.is_indirect()
@@ -327,7 +328,11 @@ class VerifyAttrs(object):
             # void cannot be dereferenced.
             pass
         elif spointer in ["**", "*&"] and intent == "out":
-            meta["deref"] = "pointer"
+            if ntypemap.sgroup == "string":
+                # strings are not contiguous, so copy into argument.
+                meta["deref"] = "copy"
+            else:
+                meta["deref"] = "pointer"
             
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
@@ -1930,9 +1935,10 @@ class GenFunctions(object):
                 # User requested cdesc.
                 has_buf_arg = "cdesc"
             elif arg_typemap.sgroup == "string":
-                if meta["deref"] in ["allocatable", "pointer"]:
+                if meta["deref"] in ["allocatable", "pointer", "copy"]:
                     has_buf_arg = "cdesc"
                     # XXX - this is not tested
+                    # XXX - tested with string **arg+intent(out)+dimension(ndim)
                 else:
                     has_buf_arg = "buf"
             elif arg_typemap.sgroup == "char":

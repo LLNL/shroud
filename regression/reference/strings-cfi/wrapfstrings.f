@@ -22,6 +22,18 @@ module strings_mod
     ! splicer end module_top
 
     ! ----------------------------------------
+    ! Function:  void init_test
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    interface
+        subroutine init_test() &
+                bind(C, name="STR_init_test")
+            implicit none
+        end subroutine init_test
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void passChar
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -994,6 +1006,135 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(copy)+intent(out)
+    ! Exact:     c_out_string_**_copy
+    ! ----------------------------------------
+    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    interface
+        subroutine c_fetch_array_string_arg(strs, nstrs) &
+                bind(C, name="STR_fetchArrayStringArg")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+            integer(C_INT), intent(OUT) :: nstrs
+        end subroutine c_fetch_array_string_arg
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(out)
+    ! Requested: c_out_string_**_cfi_copy
+    ! Match:     c_out_string_**_copy
+    interface
+        subroutine fetch_array_string_arg(strs) &
+                bind(C, name="STR_fetchArrayStringArg_CFI")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+        end subroutine fetch_array_string_arg
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAlloc
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Exact:     c_out_string_**_allocatable
+    ! ----------------------------------------
+    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    interface
+        subroutine c_fetch_array_string_alloc(strs, nstrs) &
+                bind(C, name="STR_fetchArrayStringAlloc")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+            integer(C_INT), intent(OUT) :: nstrs
+        end subroutine c_fetch_array_string_alloc
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAlloc
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+    ! Requested: c_out_string_**_cfi_allocatable
+    ! Match:     c_out_string_**_allocatable
+    interface
+        subroutine fetch_array_string_alloc(strs) &
+                bind(C, name="STR_fetchArrayStringAlloc_CFI")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+        end subroutine fetch_array_string_alloc
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAllocLen
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Exact:     c_out_string_**_allocatable
+    ! ----------------------------------------
+    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    interface
+        subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
+                bind(C, name="STR_fetchArrayStringAllocLen")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+            integer(C_INT), intent(OUT) :: nstrs
+        end subroutine c_fetch_array_string_alloc_len
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAllocLen
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+    ! Requested: c_out_string_**_cfi_allocatable
+    ! Match:     c_out_string_**_allocatable
+    interface
+        subroutine fetch_array_string_alloc_len(strs) &
+                bind(C, name="STR_fetchArrayStringAllocLen_CFI")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+        end subroutine fetch_array_string_alloc_len
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void explicit1
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -1364,6 +1505,21 @@ module strings_mod
     end interface
 
 contains
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void init_test
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine init_test()
+        ! splicer begin function.init_test
+        call c_init_test()
+        ! splicer end function.init_test
+    end subroutine init_test
+#endif
 
 #if 0
     ! Only the interface is needed
@@ -2199,6 +2355,104 @@ contains
         SHT_rv = c_accept_string_instance_CFI(arg1)
         ! splicer end function.accept_string_instance
     end function accept_string_instance
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! Generated by arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(copy)+intent(out)
+    ! Requested: f_out_string_**_cfi_copy
+    ! Match:     f_default
+    ! Attrs:     +api(cfi)+deref(copy)+intent(out)
+    ! Requested: c_out_string_**_cfi_copy
+    ! Match:     c_out_string_**_copy
+    !>
+    !! Copy output into argument strs which must be large enough
+    !! to hold values.  Excess values will be truncated.
+    !! The nstrs argument is the length of the array.
+    !! It is associated with strs via the dimension(nstrs) attribute.
+    !! +hidden indicates that it is not part of the Fortran API.
+    !<
+    subroutine fetch_array_string_arg(strs)
+        character(len=*), intent(OUT) :: strs(nstrs)
+        ! splicer begin function.fetch_array_string_arg
+        call c_fetch_array_string_arg_CFI(strs)
+        ! splicer end function.fetch_array_string_arg
+    end subroutine fetch_array_string_arg
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! Generated by arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAlloc
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Requested: f_out_string_**_cfi_allocatable
+    ! Match:     f_default
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+    ! Requested: c_out_string_**_cfi_allocatable
+    ! Match:     c_out_string_**_allocatable
+    !>
+    !! Copy output into argument strs which must be large enough
+    !! to hold values.  Excess values will be truncated.
+    !! The nstrs argument is the length of the array.
+    !! It is associated with strs via the dimension(nstrs) attribute.
+    !! +hidden indicates that it is not part of the Fortran API.
+    !! The defered length is set to the maximum string length.
+    !<
+    subroutine fetch_array_string_alloc(strs)
+        character(len=:), intent(OUT), allocatable :: strs(:)
+        ! splicer begin function.fetch_array_string_alloc
+        call c_fetch_array_string_alloc_CFI(strs)
+        ! splicer end function.fetch_array_string_alloc
+    end subroutine fetch_array_string_alloc
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! Generated by arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringAllocLen
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Requested: f_out_string_**_cfi_allocatable
+    ! Match:     f_default
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+    ! Requested: c_out_string_**_cfi_allocatable
+    ! Match:     c_out_string_**_allocatable
+    !>
+    !! Copy output into argument strs which must be large enough
+    !! to hold values.  Excess values will be truncated.
+    !! The nstrs argument is the length of the array.
+    !! It is associated with strs via the dimension(nstrs) attribute.
+    !! +hidden indicates that it is not part of the Fortran API.
+    !! The defered length is set to the len attribute.
+    !<
+    subroutine fetch_array_string_alloc_len(strs)
+        character(len=:), intent(OUT), allocatable :: strs(:)
+        ! splicer begin function.fetch_array_string_alloc_len
+        call c_fetch_array_string_alloc_len_CFI(strs)
+        ! splicer end function.fetch_array_string_alloc_len
+    end subroutine fetch_array_string_alloc_len
 #endif
 
 #if 0

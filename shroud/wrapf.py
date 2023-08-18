@@ -1619,11 +1619,20 @@ rv = .false.
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "c_var_cdesc"):
                     # XXX kludge, name is assumed to be c_var_cdesc.
+                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                    # XXX - maybe avoid {rank} with: {c_var_cdes}(:rank({f_var})) = shape({f_var})
                     fmt.f_array_allocate = "(" + ",".join(
                         ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
+
+        if f_attrs["len"]:
+            fmt.f_char_len = "len=%s" % f_attrs["len"];
+        elif hasattr(fmt, "c_var_cdesc"):
+            if f_attrs["deref"] == "allocatable":
+                # Use elem_len from the C wrapper.
+                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) ::\t ", fmt)
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -2221,7 +2230,7 @@ rv = .false.
         Args:
             fileinfo - ModuleInfo
         """
-        done = {}  # Avoid duplicates by keeping track of what's been written.
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 

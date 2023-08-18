@@ -20,6 +20,20 @@ static std::string static_str = std::string("dog");
 static std::string global_str;
 static std::string static_str_empty;
 
+static const int MAXSTRS = 4;
+static std::string strs_array[MAXSTRS];
+
+//----------------------------------------
+// Initialize datastructures for test
+
+void init_test(void)
+{
+    strs_array[0] = "apple";
+    strs_array[1] = "pear";
+    strs_array[2] = "peach";
+    strs_array[3] = "cherry";
+}
+
 //----------------------------------------
 
 void passChar(char status)
@@ -250,6 +264,28 @@ void returnStrings(std::string & arg1, std::string & arg2)
     arg1 = "up";
     arg2 = "down";
 }
+
+//----------------------------------------
+
+void fetchArrayStringArg(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+void fetchArrayStringAlloc(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+void fetchArrayStringAllocLen(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+//----------------------------------------
 
 char returnMany(int * arg1)
 {

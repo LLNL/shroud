@@ -55,7 +55,7 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
-        self.shared_proto_c = []
+        self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
 
@@ -243,6 +243,9 @@ class Wrapc(util.WrapperMixin):
             lang_include = "cxx_include"
             lang_source = "cxx_source"
 
+#        api = helper_info.get("api", self.language)
+# XXX - For historical reasons, default to c
+        api = helper_info.get("api", "c")
         scope = helper_info.get("scope", "file")
         if lang_include in helper_info:
             for include in helper_info[lang_include]:
@@ -252,14 +255,23 @@ class Wrapc(util.WrapperMixin):
                 self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
-            self.helper_source[scope].append(helper_info[lang_source])
+            self.helper_summary[api][scope].append(helper_info[lang_source])
         elif "source" in helper_info:
-            self.helper_source[scope].append(helper_info["source"])
+            self.helper_summary[api][scope].append(helper_info["source"])
+
+        proto = helper_info.get("proto")
+        if proto:
+            self.helper_summary[api]["proto"].append(proto)
+
+        proto_include = helper_info.get("proto_include")
+        if proto_include:
+            for include in proto_include:
+                self.helper_summary[api]["proto_include"][include] = True
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested.
 
-        Sort into helper_source and helper_include.
+        Sort into helper_summary and helper_include.
 
         Parameters
         ----------
@@ -268,10 +280,26 @@ class Wrapc(util.WrapperMixin):
            Should be self.c_helper or self.shared_helper.
         """
         # per class
-        self.helper_source = dict(file=[], cwrap_include=[], cwrap_impl=[])
         self.helper_include = dict(file={}, cwrap_include={}, cwrap_impl={})
 
-        done = {}  # Avoid duplicates by keeping track of what's been written.
+        self.helper_summary = dict(
+            c=dict(
+                proto=[],
+                proto_include=OrderedDict(),
+                file=[],
+                cwrap_include=[],
+                cwrap_impl=[],
+            ),
+            cxx=dict(
+                proto=[],
+                proto_include=OrderedDict(),
+                file=[],
+                cwrap_include=[],
+                cwrap_impl=[],
+            ),
+        )
+        
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
@@ -291,13 +319,8 @@ class Wrapc(util.WrapperMixin):
         capsule_code = []
         self.write_capsule_code(capsule_code)
         if capsule_code:
-            append_format(
-                self.shared_proto_c,
-                "\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);",
-                fmt,
-            )
             self.set_capsule_headers(headers)
-            self.shared_helper["capsule_data_helper"] = True
+            self.shared_helper["capsule_dtor"] = True
 
         self.gather_helper_code(self.shared_helper)
         
@@ -311,9 +334,10 @@ class Wrapc(util.WrapperMixin):
             #                write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
 
-        if self.helper_source["cwrap_impl"]:
+        source = self.helper_summary["c"]["cwrap_impl"]
+        if source:
             write_file = True
-            output.extend(self.helper_source["cwrap_impl"])
+            output.extend(source)
 
         if capsule_code:
             write_file = True
@@ -321,6 +345,11 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+
+        source = self.helper_summary["cxx"]["cwrap_impl"]
+        if source:
+            write_file = True
+            output.extend(source)
 
         if write_file:
             self.config.cfiles.append(
@@ -369,13 +398,23 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             self._create_splicer('C_declarations', output)
 
-        output.extend(self.helper_source["cwrap_include"])
+        output.extend(self.helper_summary["c"]["cwrap_include"])
 
-        if self.shared_proto_c:
-            output.extend(self.shared_proto_c)
+        proto = self.helper_summary["c"]["proto"]
+        if proto:
+            output.append("")
+            output.extend(proto)
 
         if self.language == "cxx":
-            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+            output.extend(["", "#ifdef __cplusplus", "}"])
+            for header in self.helper_summary["cxx"]["proto_include"].keys():
+                output.append("#include " + header)
+            proto = self.helper_summary["cxx"]["proto"]
+            if proto:
+                output.append("")
+                output.append("// C++ implementation prototypes")
+                output.extend(proto)
+            output.append("#endif")
 
         output.extend(["", "#endif  // " + guard])
         self._pop_splicer("util")
@@ -494,12 +533,17 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             if self._create_splicer("CXX_definitions", output):
                 write_file = True
+            source = self.helper_summary["cxx"]["file"]
+            if source:
+                write_file = True
+                output.extend(source)
             output.append('\nextern "C" {')
         output.append("")
 
-        if self.helper_source["file"]:
+        source = self.helper_summary["c"]["file"]
+        if source:
             write_file = True
-            output.extend(self.helper_source["file"])
+            output.extend(source)
 
         if self._create_splicer("C_definitions", output):
             write_file = True
@@ -801,30 +845,37 @@ class Wrapc(util.WrapperMixin):
             visitor.visit(meta["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
+                fmtdim = []
+                for dim in visitor.shape:
+                    fmtdim.append(dim)
+                if fmtdim:
+                    # Multiply dimensions together to get size.
+                    fmt.c_array_size2 = "*\t".join(fmtdim)
+
                 if hasattr(fmt, "c_var_cdesc"):
                     # array_type is assumed to be c_var_cdesc.
                     # Assign each rank of dimension.
-                    fmtdim = []
+                    fmtshape = []
                     fmtsize = []
                     for i, dim in enumerate(visitor.shape):
-                        fmtdim.append("{}->shape[{}] = {};".format(
+                        fmtshape.append("{}->shape[{}] = {};".format(
                             fmt.c_var_cdesc, i, dim))
                         fmtsize.append("{}->shape[{}]".format(
                             fmt.c_var_cdesc, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                    fmt.c_array_shape = "\n" + "\n".join(fmtshape)
                     if fmtsize:
                         # Multiply extents together to get size.
                         fmt.c_array_size = "*\t".join(fmtsize)
                 if hasattr(fmt, "c_var_extents"):
                     # Used with CFI_establish
-                    fmtdim = []
+                    fmtextent = []
                     for i, dim in enumerate(visitor.shape):
-                        fmtdim.append("{}[{}] = {};\n".format(
+                        fmtextent.append("{}[{}] = {};\n".format(
                             fmt.c_var_extents, i, dim))
                     fmt.c_temp_extents_decl = (
                         "CFI_index_t {0}[{1}];\n{2}".
                         format(fmt.c_var_extents, fmt.rank,
-                               "".join(fmtdim)))
+                               "".join(fmtextent)))
                     # Used with CFI_setpointer to set lower bound to 1.
                     fmt.c_temp_lower_decl = (
                         "CFI_index_t {0}[{1}] = {{{2}}};\n".
@@ -832,6 +883,9 @@ class Wrapc(util.WrapperMixin):
                                ",".join(["1" for x in range(visitor.rank)])))
                     fmt.c_temp_extents_use = fmt.c_var_extents
                     fmt.c_temp_lower_use = fmt.c_var_lower
+
+        if attrs["len"]:
+            fmt.c_char_len = attrs["len"];
 
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.
@@ -912,6 +966,7 @@ class Wrapc(util.WrapperMixin):
         is_static = False
         is_pointer = CXX_ast.declarator.is_pointer()
         is_const = declarator.func_const
+        notimplemented = False
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
@@ -980,6 +1035,7 @@ class Wrapc(util.WrapperMixin):
         result_blk = statements.lookup_local_stmts(
             ["c", result_api], result_blk, node)
 
+        notimplemented = notimplemented or result_blk.notimplemented
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
@@ -1160,6 +1216,7 @@ class Wrapc(util.WrapperMixin):
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name
+            notimplemented = notimplemented or intent_blk.notimplemented
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
@@ -1366,20 +1423,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
-            self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
-            self.header_proto_c.append("")
-            if node.cpp_if:
-                self.header_proto_c.append("#" + node.cpp_if)
-            append_format(
-                self.header_proto_c,
-                "{C_return_type} {C_name}(\t{C_prototype});",
-                fmt_func,
-            )
-            if node.cpp_if:
-                self.header_proto_c.append("#endif")
-
-            impl = self.impl
-            impl.append("")
+            impl = []
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
@@ -1400,6 +1444,29 @@ class Wrapc(util.WrapperMixin):
                 append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
+
+            if notimplemented:
+                self.impl.append("")
+                self.impl.append("#if 0")
+                self.impl.append("! Not Implemented")
+                self.impl.extend(impl)
+                self.impl.append("#endif")
+            else:
+                self.impl.append("")
+                self.impl.extend(impl)
+
+                self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
+                self.header_proto_c.append("")
+                if node.cpp_if:
+                    self.header_proto_c.append("#" + node.cpp_if)
+                append_format(
+                    self.header_proto_c,
+                    "{C_return_type} {C_name}(\t{C_prototype});",
+                    fmt_func,
+                )
+                if node.cpp_if:
+                    self.header_proto_c.append("#endif")
+                
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.declarator.name

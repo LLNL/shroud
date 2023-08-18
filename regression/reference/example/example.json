@@ -2612,6 +2612,7 @@
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
+                                                "c_char_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
@@ -2633,6 +2634,7 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
                                                 "cxx_type": "std::string",
+                                                "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -2732,6 +2734,7 @@
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
+                                                "c_char_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "c_const": "const ",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
@@ -2752,6 +2755,7 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
+                                                "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -11345,6 +11349,7 @@
                                     "out": {
                                         "fmtc": {
                                             "c_addr": "",
+                                            "c_array_size2": "shape(*in)",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",

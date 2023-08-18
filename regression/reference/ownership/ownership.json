@@ -839,6 +839,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -863,6 +864,7 @@
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1019,6 +1021,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1198,6 +1201,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1222,6 +1226,8 @@
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                        "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1378,6 +1384,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1555,6 +1562,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1579,6 +1587,7 @@
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1733,6 +1742,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1879,6 +1889,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2058,6 +2069,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2084,6 +2096,7 @@
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2241,6 +2254,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2410,6 +2424,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2609,6 +2624,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2635,6 +2651,7 @@
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2791,6 +2808,7 @@
                     "fmtc": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "len",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",

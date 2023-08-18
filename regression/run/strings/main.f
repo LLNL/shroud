@@ -18,9 +18,11 @@ program tester
 
   call init_fruit
 
+  call init_test
   call test_charargs
   call test_charargs_c
   call test_functions
+  call test_string_array
   call test_explicit
   call char_functions
 
@@ -292,6 +294,46 @@ contains
 
   end subroutine test_functions
 
+  subroutine test_string_array
+    character(20) :: strs(5)
+    character(:), allocatable :: stralloc(:)
+    character(20), allocatable :: strlen(:)
+
+    call set_case_name("test_string_array")
+
+    ! copy into argument
+    strs = "xxx"
+    call fetch_array_string_arg(strs)
+    call assert_true(strs(1) == "apple",  "fetch_array_string_copy(1)")
+    call assert_true(strs(2) == "pear",   "fetch_array_string_copy(2)")
+    call assert_true(strs(3) == "peach",  "fetch_array_string_copy(3)")
+    call assert_true(strs(4) == "cherry", "fetch_array_string_copy(4)")
+    call assert_true(strs(5) == " ",      "fetch_array_string_copy(5)")
+
+    ! allocate the argument
+    call assert_false(allocated(stralloc), "stralloc not allocated")
+    call fetch_array_string_alloc(stralloc)
+    call assert_true(allocated(stralloc), "stralloc is allocated")
+    call assert_equals(4, size(stralloc), "size of stralloc")
+    call assert_equals(6, len(stralloc), "len of stralloc")
+    call assert_true(stralloc(1) == "apple",  "fetch_array_string_alloc(1)")
+    call assert_true(stralloc(2) == "pear",   "fetch_array_string_alloc(2)")
+    call assert_true(stralloc(3) == "peach",  "fetch_array_string_alloc(3)")
+    call assert_true(stralloc(4) == "cherry", "fetch_array_string_alloc(4)")
+    
+    ! allocate the argument with a predefined len
+    call assert_false(allocated(strlen), "strlen not allocated")
+    call fetch_array_string_alloc_len(strlen)
+    call assert_true(allocated(strlen), "strlen is allocated")
+    call assert_equals(4, size(strlen), "size of strlen")
+    call assert_equals(20, len(strlen), "len of strlen")
+    call assert_true(strlen(1) == "apple",  "fetch_array_string_alloc(1)")
+    call assert_true(strlen(2) == "pear",   "fetch_array_string_alloc(2)")
+    call assert_true(strlen(3) == "peach",  "fetch_array_string_alloc(3)")
+    call assert_true(strlen(4) == "cherry", "fetch_array_string_alloc(4)")
+    
+  end subroutine test_string_array
+  
   subroutine test_explicit
     character(10) name
     call set_case_name("test_explicit")

@@ -450,6 +450,7 @@
                     "name": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_char_len": "worklen",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -469,6 +470,7 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
+                            "f_char_len": "len=worklen",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -577,6 +579,7 @@
                     "name": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_char_len": "worklen",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -601,6 +604,7 @@
                             "F_C_var": "name",
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
+                            "f_char_len": "len=worklen",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",

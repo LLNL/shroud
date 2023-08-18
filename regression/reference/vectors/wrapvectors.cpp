@@ -69,8 +69,7 @@ int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_targ_native_scalar
-// Match:     c_out_vector_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -103,8 +102,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_targ_native_scalar
-// Match:     c_out_vector_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -139,8 +137,7 @@ long VEC_vector_iota_out_with_num_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_targ_native_scalar
-// Match:     c_out_vector_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -171,8 +168,7 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
-// Match:     c_out_vector_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -263,8 +259,7 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_targ_native_scalar
-// Match:     c_out_vector_cdesc_targ_native_scalar
+// Exact:     c_out_vector_&_cdesc_targ_native_scalar
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -344,6 +339,79 @@ int VEC_vector_string_count_bufferify(const char *arg,
     int SHC_rv = vector_string_count(SHCXX_arg);
     return SHC_rv;
     // splicer end function.vector_string_count_bufferify
+}
+
+/**
+ * \brief Fill in arg with some animal names
+ *
+ * The C++ function returns void. But the C and Fortran wrappers return
+ * an int with the number of items added to arg.
+ */
+// ----------------------------------------
+// Function:  void vector_string_fill
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+// Attrs:     +api(cdesc)+intent(out)
+// Exact:     c_out_vector_&_cdesc_targ_string_scalar
+void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
+{
+    // splicer begin function.vector_string_fill_bufferify
+    std::vector<std::string> arg;
+    vector_string_fill(arg);
+    VEC_ShroudVectorStringOut(SHT_arg_cdesc, arg);
+    // splicer end function.vector_string_fill_bufferify
+}
+
+// ----------------------------------------
+// Function:  void vector_string_fill_allocatable
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+void VEC_vector_string_fill_allocatable_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc)
+{
+    // splicer begin function.vector_string_fill_allocatable_bufferify
+    std::vector<std::string> *arg = new std::vector<std::string>;
+    vector_string_fill_allocatable(*arg);
+    if (0 > 0) {
+        SHT_arg_cdesc->elem_len = 0;
+    } else {
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+    }
+    SHT_arg_cdesc->size      = arg->size();
+    SHT_arg_cdesc->cxx.addr  = arg;
+    SHT_arg_cdesc->cxx.idtor = 0;
+    // splicer end function.vector_string_fill_allocatable_bufferify
+}
+
+// ----------------------------------------
+// Function:  void vector_string_fill_allocatable_len
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+void VEC_vector_string_fill_allocatable_len_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc)
+{
+    // splicer begin function.vector_string_fill_allocatable_len_bufferify
+    std::vector<std::string> *arg = new std::vector<std::string>;
+    vector_string_fill_allocatable_len(*arg);
+    if (20 > 0) {
+        SHT_arg_cdesc->elem_len = 20;
+    } else {
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+    }
+    SHT_arg_cdesc->size      = arg->size();
+    SHT_arg_cdesc->cxx.addr  = arg;
+    SHT_arg_cdesc->cxx.idtor = 0;
+    // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 
 /**

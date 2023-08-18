@@ -611,6 +611,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "double",
@@ -635,6 +636,7 @@
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
@@ -737,6 +739,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
@@ -844,6 +847,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "double",
@@ -868,6 +872,7 @@
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
@@ -971,6 +976,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
@@ -1077,6 +1083,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "double",
@@ -1101,6 +1108,7 @@
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
@@ -1204,6 +1212,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
@@ -1312,6 +1321,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "double",
@@ -1336,6 +1346,7 @@
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
@@ -1440,6 +1451,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
@@ -1559,6 +1571,7 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "isize",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -1780,6 +1793,7 @@
                                     "c_addr": "",
                                     "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
                                     "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -1807,6 +1821,7 @@
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
@@ -1956,6 +1971,7 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "isize",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -2177,6 +2193,7 @@
                                     "c_addr": "",
                                     "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
                                     "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -2204,6 +2221,7 @@
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
@@ -2354,6 +2372,7 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "isize",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -2576,6 +2595,7 @@
                                     "c_addr": "",
                                     "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
                                     "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -2603,6 +2623,7 @@
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
@@ -2753,6 +2774,7 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_array_size2": "isize",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -2975,6 +2997,7 @@
                                     "c_addr": "",
                                     "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
                                     "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -3002,6 +3025,7 @@
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
