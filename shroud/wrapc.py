@@ -244,7 +244,7 @@ class Wrapc(util.WrapperMixin):
             lang_source = "cxx_source"
 
 #        api = helper_info.get("api", self.language)
-# For historical reasons, default to c
+# XXX - For historical reasons, default to c
         api = helper_info.get("api", "c")
         scope = helper_info.get("scope", "file")
         if lang_include in helper_info:

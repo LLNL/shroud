@@ -645,6 +645,7 @@ def check_dimension(dim, meta, trace=False):
     else:
         meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
+
 class GenFunctions(object):
     """
     Generate Typemap from class.
