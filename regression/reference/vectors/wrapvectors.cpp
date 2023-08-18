@@ -373,16 +373,15 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc,
-    VEC_SHROUD_capsule_data *SHT_arg_capsule)
+    VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_string_fill_allocatable_bufferify
     std::vector<std::string> *arg = new std::vector<std::string>;
     vector_string_fill_allocatable(*arg);
-    SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
-    SHT_arg_cdesc->size     = arg->size();
-    SHT_arg_capsule->addr   = arg;
-    SHT_arg_capsule->idtor  = 0;
+    SHT_arg_cdesc->elem_len  = VEC_ShroudVectorStringOutSize(*arg);
+    SHT_arg_cdesc->size      = arg->size();
+    SHT_arg_cdesc->cxx.addr  = arg;
+    SHT_arg_cdesc->cxx.idtor = 0;
     // splicer end function.vector_string_fill_allocatable_bufferify
 }
 

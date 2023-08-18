@@ -462,7 +462,7 @@ typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
         "array_string_out"
     ],
     "name": "LIB_ShroudArrayStringAllocatable",
-    "proto": "void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec, size_t nlen);",
+    "proto": "void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_array *indesc);",
     "scope": "cwrap_impl"
 }
 
@@ -472,11 +472,12 @@ typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
 // Copy the std::string array into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec, size_t nlen)
+void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_array *indesc)
 {
-    std::string *cxxvec = static_cast< std::string * >(vec->addr);
-    LIB_ShroudArrayStringOut(outdesc, cxxvec);
-    LIB_SHROUD_memory_destructor(vec); // delete data->cxx.addr
+    std::string *cxxvec = static_cast< std::string * >
+        (indesc->cxx.addr);
+    LIB_ShroudArrayStringOut(outdesc, cxxvec, indesc->size);
+    LIB_SHROUD_memory_destructor(&indesc->cxx); // delete data->cxx.addr
 }
 
 ##### end array_string_allocatable source
@@ -492,7 +493,7 @@ void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_caps
         "array_context"
     ],
     "name": "LIB_ShroudArrayStringOut",
-    "proto": "void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in);",
+    "proto": "void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize);",
     "proto_include": [
         "<string>",
         "<vector>"
@@ -505,18 +506,22 @@ void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_caps
 // helper array_string_out
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-// out is already blank filled.
-void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in)
+void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize)
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
     char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    // Clear user memory
+    std::memset(dest, ' ', nvect*len);
+
+    // Copy into user memory
+    nvect = std::min(nvect, nsize);
     //char *dest = static_cast<char *>(outdesc->cxx.addr);
     for (size_t i = 0; i < nvect; ++i) {
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    //LIB_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 
 ##### end array_string_out source
@@ -6959,7 +6964,7 @@ static void SHROUD_update_PyList_vector_unsigned_short
         "vector_string_out"
     ],
     "name": "LIB_ShroudVectorStringAllocatable",
-    "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec);",
+    "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_array *indesc);",
     "scope": "cwrap_impl"
 }
 
@@ -6969,12 +6974,12 @@ static void SHROUD_update_PyList_vector_unsigned_short
 // Copy the std::vector<std::string> into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_capsule_data *vec)
+void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_array *indesc)
 {
     std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> * >(vec->addr);
+        static_cast< std::vector<std::string> * >(indesc->cxx.addr);
     LIB_ShroudVectorStringOut(outdesc, *cxxvec);
-    LIB_SHROUD_memory_destructor(vec); // delete data->cxx.addr
+    LIB_SHROUD_memory_destructor(&indesc->cxx); // delete data->cxx.addr
 }
 
 ##### end vector_string_allocatable source
@@ -7003,18 +7008,22 @@ void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *outdesc, LIB_SHROUD_cap
 // helper vector_string_out
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-// out is already blank filled.
 void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
 {
-    size_t nvect = std::min(outdesc->size, in.size());
+    size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    char *dest = static_cast<char *>(outdesc->cxx.addr);
+    // Clear user memory
+    std::memset(dest, ' ', nvect*len);
+
+    // Copy into user memory
+    nvect = std::min(nvect, in.size());
     //char *dest = static_cast<char *>(outdesc->cxx.addr);
     for (size_t i = 0; i < nvect; ++i) {
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    //LIB_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 
 ##### end vector_string_out source

@@ -40,12 +40,12 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 // Copy the std::vector<std::string> into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *outdesc, VEC_SHROUD_capsule_data *vec)
+void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *outdesc, VEC_SHROUD_array *indesc)
 {
     std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> * >(vec->addr);
+        static_cast< std::vector<std::string> * >(indesc->cxx.addr);
     VEC_ShroudVectorStringOut(outdesc, *cxxvec);
-    VEC_SHROUD_memory_destructor(vec); // delete data->cxx.addr
+    VEC_SHROUD_memory_destructor(&indesc->cxx); // delete data->cxx.addr
 }
 // end helper vector_string_allocatable
 
@@ -94,18 +94,22 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 // helper vector_string_out
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-// out is already blank filled.
 void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in)
 {
-    size_t nvect = std::min(outdesc->size, in.size());
+    size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    char *dest = static_cast<char *>(outdesc->cxx.addr);
+    // Clear user memory
+    std::memset(dest, ' ', nvect*len);
+
+    // Copy into user memory
+    nvect = std::min(nvect, in.size());
     //char *dest = static_cast<char *>(outdesc->cxx.addr);
     for (size_t i = 0; i < nvect; ++i) {
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    //VEC_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 // end helper vector_string_out
 

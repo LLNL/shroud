@@ -89,7 +89,7 @@ struct s_STR_SHROUD_array {
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 // end array_context
 
-void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *outdesc, STR_SHROUD_capsule_data *vec, size_t nlen);
+void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *outdesc, STR_SHROUD_array *indesc);
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
@@ -98,7 +98,7 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 #include <vector>
 
 // C++ implementation prototypes
-void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in);
+void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in, size_t nsize);
 size_t STR_ShroudArrayStringOutSize(std::string *in, size_t nsize);
 #endif
 

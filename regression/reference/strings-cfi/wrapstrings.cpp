@@ -1468,6 +1468,67 @@ int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
  * +hidden indicates that it is not part of the Fortran API.
  */
 // ----------------------------------------
+// Function:  void fetchArrayStringArg
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+// Attrs:     +deref(copy)+intent(out)
+// Exact:     c_out_string_**_copy
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
+// Match:     c_default
+void STR_fetchArrayStringArg(char * * strs, int * nstrs)
+{
+    // splicer begin function.fetchArrayStringArg
+    fetchArrayStringArg(strs, nstrs);
+    // splicer end function.fetchArrayStringArg
+}
+#endif
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringArg
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+// Attrs:     +api(cfi)+deref(copy)+intent(out)
+// Requested: c_out_string_**_cfi_copy
+// Match:     c_out_string_**_copy
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Exact:     c_out_native_*_hidden
+void STR_fetchArrayStringArg_CFI(char * * strs)
+{
+    // splicer begin function.fetchArrayStringArg_CFI
+    int nstrs;
+    fetchArrayStringArg(strs, &nstrs);
+    // splicer end function.fetchArrayStringArg_CFI
+}
+#endif
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
 // Function:  void fetchArrayStringAlloc
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine

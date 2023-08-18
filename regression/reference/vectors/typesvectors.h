@@ -90,7 +90,7 @@ typedef struct s_VEC_SHROUD_array VEC_SHROUD_array;
 // end array_context
 
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap);
-void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *outdesc, VEC_SHROUD_capsule_data *vec);
+void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *outdesc, VEC_SHROUD_array *indesc);
 
 #ifdef __cplusplus
 }

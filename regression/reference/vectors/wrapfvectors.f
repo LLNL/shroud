@@ -334,12 +334,11 @@ module vectors_mod
     ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable_bufferify( &
-                SHT_arg_cdesc, SHT_arg_capsule) &
+                SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_string_fill_allocatable_bufferify")
-            import :: VEC_SHROUD_array, VEC_SHROUD_capsule_data
+            import :: VEC_SHROUD_array
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
-            type(VEC_SHROUD_capsule_data), intent(OUT) :: SHT_arg_capsule
         end subroutine c_vector_string_fill_allocatable_bufferify
     end interface
 
@@ -412,11 +411,11 @@ module vectors_mod
     interface
         ! helper vector_string_allocatable
         ! Copy the char* or std::string in context into c_var.
-        subroutine VEC_SHROUD_vector_string_allocatable(cdesc, capsule) &
+        subroutine VEC_SHROUD_vector_string_allocatable(out, in) &
              bind(c,name="VEC_ShroudVectorStringAllocatable")
-            import VEC_SHROUD_array, VEC_SHROUD_capsule_data
-            type(VEC_SHROUD_array), intent(IN) :: cdesc
-            type(VEC_SHROUD_capsule_data), intent(INOUT) :: capsule
+            import VEC_SHROUD_array
+            type(VEC_SHROUD_array), intent(IN) :: out
+            type(VEC_SHROUD_array), intent(IN) :: in
         end subroutine VEC_SHROUD_vector_string_allocatable
     end interface
 
@@ -768,11 +767,12 @@ contains
         character(*), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_string_fill
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
+        SHT_arg_cdesc%cxx%addr = C_LOC(arg)
         SHT_arg_cdesc%base_addr = C_LOC(arg)
         SHT_arg_cdesc%type = SH_TYPE_CHAR
         SHT_arg_cdesc%elem_len = len(arg)
         SHT_arg_cdesc%size = size(arg)
-        SHT_arg_cdesc%rank = 1
+        SHT_arg_cdesc%rank = rank(arg)
         SHT_arg_cdesc%shape(1:1) = shape(arg)
         call c_vector_string_fill_bufferify(SHT_arg_cdesc)
         ! splicer end function.vector_string_fill
@@ -796,14 +796,15 @@ contains
         character(len=:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
-        call c_vector_string_fill_allocatable_bufferify(SHT_arg_cdesc, &
-            SHT_arg_capsule)
+        type(VEC_SHROUD_array) :: SHT_arg_out
+        call c_vector_string_fill_allocatable_bufferify(SHT_arg_out)
+        SHT_arg_cdesc%size = SHT_arg_out%size;
+        SHT_arg_cdesc%elem_len = SHT_arg_out%elem_len
         allocate(character(len=SHT_arg_cdesc%elem_len):: &
             arg(SHT_arg_cdesc%size))
-        arg = ' '
+        SHT_arg_cdesc%cxx%addr = C_LOC(arg);
         SHT_arg_cdesc%base_addr = C_LOC(arg);
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_out)
         ! splicer end function.vector_string_fill_allocatable
     end subroutine vector_string_fill_allocatable
 

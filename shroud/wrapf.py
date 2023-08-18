@@ -1619,6 +1619,8 @@ rv = .false.
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "c_var_cdesc"):
                     # XXX kludge, name is assumed to be c_var_cdesc.
+                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                    # XXX - maybe avoid {rank} with: {c_var_cdes}(:rank({f_var})) = shape({f_var})
                     fmt.f_array_allocate = "(" + ",".join(
                         ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
                          for r in range(1, rank+1)]) + ")"

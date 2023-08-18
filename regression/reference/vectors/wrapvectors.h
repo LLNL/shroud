@@ -58,8 +58,7 @@ int VEC_vector_string_count_bufferify(const char *arg,
 void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 
 void VEC_vector_string_fill_allocatable_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc,
-    VEC_SHROUD_capsule_data *SHT_arg_capsule);
+    VEC_SHROUD_array *SHT_arg_cdesc);
 
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);

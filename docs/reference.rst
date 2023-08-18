@@ -1493,6 +1493,11 @@ f_capsule_data_type
     The name of the derived type used to share memory information with C or C++.
     *F_capsule_data_type* for the argument type.
 
+f_cdesc_shape
+    Used to assign the rank of a Fortran variable to a cdesc variable.
+    It will be blank for a scalar.
+    ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
+
 f_char_len
     Defaults to ``:`` for defered length used with allocatable variables.
     Used in statements as ``character({f_char_len)``.

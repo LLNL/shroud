@@ -431,6 +431,13 @@ allocatable
 
     For Python, create a NumPy array (same as *pointer* attribute)
 
+copy
+
+    Copy results into the Fortran argument.
+    This helps reduce memory management problems since there is no dynamic memory.
+    In addition, this helps with non-contiguous C++ memory such as
+    arrays or vectors of ``char *`` or ``std::string``.
+
 pointer
 
     For *intent(in)* arguments, a ``POINTER`` Fortran attribute will be added.

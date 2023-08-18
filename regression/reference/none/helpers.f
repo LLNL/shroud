@@ -77,8 +77,7 @@ end type LIB_SHROUD_array
 ---------- array_string_allocatable ----------
 {
     "dependent_helpers": [
-        "array_context",
-        "capsule_data_helper"
+        "array_context"
     ],
     "name": "LIB_SHROUD_array_string_allocatable"
 }
@@ -88,11 +87,11 @@ end type LIB_SHROUD_array
 interface
     ! helper array_string_allocatable
     ! Copy the char* or std::string in context into c_var.
-    subroutine LIB_SHROUD_array_string_allocatable(cdesc, capsule) &
+    subroutine LIB_SHROUD_array_string_allocatable(out, in) &
          bind(c,name="LIB_ShroudArrayStringAllocatable")
         import LIB_SHROUD_array, LIB_SHROUD_capsule_data
-        type(LIB_SHROUD_array), intent(IN) :: cdesc
-        type(LIB_SHROUD_capsule_data), intent(INOUT) :: capsule
+        type(LIB_SHROUD_array), intent(IN) :: out
+        type(LIB_SHROUD_array), intent(IN) :: in
     end subroutine LIB_SHROUD_array_string_allocatable
 end interface
 ##### end array_string_allocatable interface
@@ -248,8 +247,7 @@ end subroutine LIB_SHROUD_pointer_string
 ---------- vector_string_allocatable ----------
 {
     "dependent_helpers": [
-        "array_context",
-        "capsule_data_helper"
+        "array_context"
     ],
     "name": "LIB_SHROUD_vector_string_allocatable"
 }
@@ -259,11 +257,11 @@ end subroutine LIB_SHROUD_pointer_string
 interface
     ! helper vector_string_allocatable
     ! Copy the char* or std::string in context into c_var.
-    subroutine LIB_SHROUD_vector_string_allocatable(cdesc, capsule) &
+    subroutine LIB_SHROUD_vector_string_allocatable(out, in) &
          bind(c,name="LIB_ShroudVectorStringAllocatable")
-        import LIB_SHROUD_array, LIB_SHROUD_capsule_data
-        type(LIB_SHROUD_array), intent(IN) :: cdesc
-        type(LIB_SHROUD_capsule_data), intent(INOUT) :: capsule
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: out
+        type(LIB_SHROUD_array), intent(IN) :: in
     end subroutine LIB_SHROUD_vector_string_allocatable
 end interface
 ##### end vector_string_allocatable interface

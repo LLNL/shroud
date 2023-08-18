@@ -403,7 +403,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "47",
+                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -604,7 +604,7 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
+                "<FUNCTION>": "48 ****************************************",
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -769,7 +769,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "48",
+                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -896,7 +896,7 @@
                 }
             },
             {
-                "<FUNCTION>": "48 ****************************************",
+                "<FUNCTION>": "49 ****************************************",
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1010,7 +1010,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "49",
+                "_PTR_F_C_index": "50",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1123,7 +1123,7 @@
                 }
             },
             {
-                "<FUNCTION>": "49 ****************************************",
+                "<FUNCTION>": "50 ****************************************",
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1211,7 +1211,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "50",
+                "_PTR_F_C_index": "51",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1326,7 +1326,7 @@
                 }
             },
             {
-                "<FUNCTION>": "50 ****************************************",
+                "<FUNCTION>": "51 ****************************************",
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1514,7 +1514,7 @@
                 }
             },
             {
-                "<FUNCTION>": "51 ****************************************",
+                "<FUNCTION>": "52 ****************************************",
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1640,13 +1640,13 @@
                 }
             },
             {
-                "<FUNCTION>": "52 ****************************************",
+                "<FUNCTION>": "53 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer",
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "8",
-                "_PTR_F_C_index": "51",
+                "_PTR_F_C_index": "52",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1817,7 +1817,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "53",
+                "_PTR_F_C_index": "54",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1913,7 +1913,7 @@
                 }
             },
             {
-                "<FUNCTION>": "53 ****************************************",
+                "<FUNCTION>": "54 ****************************************",
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2005,7 +2005,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "54",
+                "_PTR_F_C_index": "55",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2084,7 +2084,7 @@
                 }
             },
             {
-                "<FUNCTION>": "54 ****************************************",
+                "<FUNCTION>": "55 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
@@ -2167,7 +2167,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "55",
+                "_PTR_F_C_index": "56",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2248,7 +2248,7 @@
                 }
             },
             {
-                "<FUNCTION>": "55 ****************************************",
+                "<FUNCTION>": "56 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
@@ -2389,7 +2389,7 @@
                 }
             },
             {
-                "<FUNCTION>": "56 ****************************************",
+                "<FUNCTION>": "57 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_buffer",
@@ -2514,14 +2514,14 @@
                 }
             },
             {
-                "<FUNCTION>": "57 ****************************************",
+                "<FUNCTION>": "58 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer",
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "13",
-                "_PTR_F_C_index": "56",
+                "_PTR_F_C_index": "57",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -2597,7 +2597,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "58",
+                "_PTR_F_C_index": "59",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2673,7 +2673,7 @@
                 }
             },
             {
-                "<FUNCTION>": "58 ****************************************",
+                "<FUNCTION>": "59 ****************************************",
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2751,7 +2751,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "59",
+                "_PTR_F_C_index": "60",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2865,7 +2865,7 @@
                 }
             },
             {
-                "<FUNCTION>": "59 ****************************************",
+                "<FUNCTION>": "60 ****************************************",
                 "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2954,7 +2954,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "60",
+                "_PTR_F_C_index": "61",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3070,7 +3070,7 @@
                 }
             },
             {
-                "<FUNCTION>": "60 ****************************************",
+                "<FUNCTION>": "61 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "16",
                 "_generated": "arg_to_buffer",
@@ -3259,7 +3259,7 @@
                 }
             },
             {
-                "<FUNCTION>": "61 ****************************************",
+                "<FUNCTION>": "62 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
@@ -3385,14 +3385,14 @@
                 }
             },
             {
-                "<FUNCTION>": "62 ****************************************",
+                "<FUNCTION>": "63 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer",
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "17",
-                "_PTR_F_C_index": "61",
+                "_PTR_F_C_index": "62",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -3470,7 +3470,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "63",
+                "_PTR_F_C_index": "64",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3585,7 +3585,7 @@
                 }
             },
             {
-                "<FUNCTION>": "63 ****************************************",
+                "<FUNCTION>": "64 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
@@ -3677,7 +3677,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "64",
+                "_PTR_F_C_index": "65",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3786,7 +3786,7 @@
                 }
             },
             {
-                "<FUNCTION>": "64 ****************************************",
+                "<FUNCTION>": "65 ****************************************",
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3869,7 +3869,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "65",
+                "_PTR_F_C_index": "66",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3992,7 +3992,7 @@
                 }
             },
             {
-                "<FUNCTION>": "65 ****************************************",
+                "<FUNCTION>": "66 ****************************************",
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4091,7 +4091,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "66",
+                "_PTR_F_C_index": "67",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4203,7 +4203,7 @@
                 }
             },
             {
-                "<FUNCTION>": "66 ****************************************",
+                "<FUNCTION>": "67 ****************************************",
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4289,7 +4289,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "67",
+                "_PTR_F_C_index": "68",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4404,7 +4404,7 @@
                 }
             },
             {
-                "<FUNCTION>": "67 ****************************************",
+                "<FUNCTION>": "68 ****************************************",
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4493,7 +4493,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "68",
+                "_PTR_F_C_index": "69",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4609,7 +4609,7 @@
                 }
             },
             {
-                "<FUNCTION>": "68 ****************************************",
+                "<FUNCTION>": "69 ****************************************",
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4699,7 +4699,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "69",
+                "_PTR_F_C_index": "70",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4794,7 +4794,7 @@
                 }
             },
             {
-                "<FUNCTION>": "69 ****************************************",
+                "<FUNCTION>": "70 ****************************************",
                 "_PTR_C_CXX_index": "24",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4883,7 +4883,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "70",
+                "_PTR_F_C_index": "71",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5008,7 +5008,7 @@
                 }
             },
             {
-                "<FUNCTION>": "70 ****************************************",
+                "<FUNCTION>": "71 ****************************************",
                 "_PTR_C_CXX_index": "25",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5118,7 +5118,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "71",
+                "_PTR_F_C_index": "72",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5245,7 +5245,7 @@
                 }
             },
             {
-                "<FUNCTION>": "71 ****************************************",
+                "<FUNCTION>": "72 ****************************************",
                 "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5357,7 +5357,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "72",
+                "_PTR_F_C_index": "73",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5483,7 +5483,7 @@
                 }
             },
             {
-                "<FUNCTION>": "72 ****************************************",
+                "<FUNCTION>": "73 ****************************************",
                 "_PTR_C_CXX_index": "27",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5595,7 +5595,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "73",
+                "_PTR_F_C_index": "74",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5719,7 +5719,7 @@
                 }
             },
             {
-                "<FUNCTION>": "73 ****************************************",
+                "<FUNCTION>": "74 ****************************************",
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5828,7 +5828,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "74",
+                "_PTR_F_C_index": "75",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5951,7 +5951,7 @@
                 }
             },
             {
-                "<FUNCTION>": "74 ****************************************",
+                "<FUNCTION>": "75 ****************************************",
                 "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6060,7 +6060,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "75",
+                "_PTR_F_C_index": "76",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6187,7 +6187,7 @@
                 }
             },
             {
-                "<FUNCTION>": "75 ****************************************",
+                "<FUNCTION>": "76 ****************************************",
                 "_PTR_C_CXX_index": "30",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6299,7 +6299,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "76",
+                "_PTR_F_C_index": "77",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6493,7 +6493,7 @@
                 }
             },
             {
-                "<FUNCTION>": "76 ****************************************",
+                "<FUNCTION>": "77 ****************************************",
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6657,7 +6657,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "77",
+                "_PTR_F_C_index": "78",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6854,7 +6854,7 @@
                 }
             },
             {
-                "<FUNCTION>": "77 ****************************************",
+                "<FUNCTION>": "78 ****************************************",
                 "_PTR_C_CXX_index": "32",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -7020,7 +7020,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "78",
+                "_PTR_F_C_index": "79",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7188,7 +7188,7 @@
                 }
             },
             {
-                "<FUNCTION>": "78 ****************************************",
+                "<FUNCTION>": "79 ****************************************",
                 "_PTR_C_CXX_index": "33",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -7447,7 +7447,364 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "79",
+                "_PTR_F_C_index": "80",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "fetchArrayStringArg",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "dimension": "nstrs",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "copy",
+                                        "dimension": [
+                                            {
+                                                "name": "nstrs"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "strs",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "nstrs",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchArrayStringArg( std::string **strs +intent(out)+dimension(nstrs), int *nstrs+intent(out)+hidden);",
+                "declgen": "void fetchArrayStringArg(std::string * * strs +dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))",
+                "doxygen": {
+                    "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\n"
+                },
+                "name": "fetchArrayStringArg",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "nstrs": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "nstrs",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nstrs",
+                            "cxx_type": "int",
+                            "cxx_var": "nstrs",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nstrs",
+                            "c_var": "nstrs",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nstrs",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    },
+                    "strs": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_size2": "nstrs",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "strs",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "strs",
+                            "cxx_type": "std::string",
+                            "cxx_var": "strs",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_out_string_**_copy",
+                            "stmt1": "c_out_string_**_copy"
+                        },
+                        "fmtf": {
+                            "F_C_var": "strs",
+                            "c_var": "strs",
+                            "f_array_allocate": "(nstrs)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "strs",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "strs,\t nstrs",
+                    "C_name": "STR_fetchArrayStringArg",
+                    "C_name_api": "fetchArrayStringArg",
+                    "C_prototype": "char * * strs,\t int * nstrs",
+                    "C_return_type": "void",
+                    "F_C_arguments": "strs,\t nstrs",
+                    "F_C_call": "c_fetch_array_string_arg_bufferify",
+                    "F_C_name": "c_fetch_array_string_arg",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_strs_cdesc",
+                    "F_arguments": "strs",
+                    "F_name_api": "fetch_array_string_arg",
+                    "F_name_function": "fetch_array_string_arg",
+                    "F_name_generic": "fetch_array_string_arg",
+                    "F_name_impl": "fetch_array_string_arg",
+                    "F_subprogram": "subroutine",
+                    "function_name": "fetchArrayStringArg",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "80 ****************************************",
+                "_PTR_C_CXX_index": "35",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "fetchArrayStringArg",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "dimension": "nstrs",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "cdesc",
+                                        "deref": "copy",
+                                        "dimension": [
+                                            {
+                                                "name": "nstrs"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "strs",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "nstrs",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchArrayStringArg( std::string **strs +intent(out)+dimension(nstrs), int *nstrs+intent(out)+hidden);",
+                "declgen": "void fetchArrayStringArg(std::string * * strs +dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))",
+                "doxygen": {
+                    "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\n"
+                },
+                "name": "fetchArrayStringArg",
+                "options": {
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "nstrs": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "nstrs",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nstrs",
+                            "cxx_type": "int",
+                            "cxx_var": "nstrs",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nstrs",
+                            "c_var": "nstrs",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nstrs",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    },
+                    "strs": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
+                            "c_array_size": "SHT_strs_cdesc->shape[0]",
+                            "c_array_size2": "nstrs",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "strs",
+                            "c_var_cdesc": "SHT_strs_cdesc",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "strs",
+                            "cxx_type": "std::string",
+                            "cxx_var": "strs",
+                            "hnamefunc0": "STR_ShroudArrayStringOut",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_out_string_**_cdesc_copy",
+                            "stmt1": "c_out_string_**_cdesc_copy"
+                        },
+                        "fmtf": {
+                            "F_C_var": "strs",
+                            "c_var": "strs",
+                            "c_var_cdesc": "SHT_strs_cdesc",
+                            "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "strs",
+                            "hnamefunc0": "ShroudTypeDefines",
+                            "hnamefunc1": "array_context",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_out_string_**_cdesc_copy",
+                            "stmt1": "f_out_string_**_cdesc_copy",
+                            "stmtc0": "c_out_string_**_cdesc_copy",
+                            "stmtc1": "c_out_string_**_cdesc_copy"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "&strs,\t &nstrs",
+                    "C_name": "STR_fetchArrayStringArg_bufferify",
+                    "C_name_api": "fetchArrayStringArg",
+                    "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_name": "c_fetch_array_string_arg_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "F_name_api": "fetch_array_string_arg",
+                    "function_name": "fetchArrayStringArg",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "36 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "81",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7605,7 +7962,7 @@
                     "F_C_call": "c_fetch_array_string_alloc_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_strs_cdesc,\t SHT_strs_capsule",
+                    "F_arg_c_call": "SHT_strs_out",
                     "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc",
                     "F_name_function": "fetch_array_string_alloc",
@@ -7620,8 +7977,8 @@
                 }
             },
             {
-                "<FUNCTION>": "79 ****************************************",
-                "_PTR_C_CXX_index": "35",
+                "<FUNCTION>": "81 ****************************************",
+                "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -7748,7 +8105,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "strs",
-                            "c_var_capsule": "SHT_strs_capsule",
                             "c_var_cdesc": "SHT_strs_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
@@ -7766,11 +8122,12 @@
                         "fmtf": {
                             "F_C_var": "strs",
                             "c_var": "strs",
-                            "c_var_capsule": "SHT_strs_capsule",
                             "c_var_cdesc": "SHT_strs_cdesc",
+                            "c_var_out": "SHT_strs_out",
                             "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
                             "f_char_type": "character(len=SHT_strs_cdesc%elem_len) :: ",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -7778,7 +8135,6 @@
                             "f_var": "strs",
                             "hnamefunc0": "STR_SHROUD_array_string_allocatable",
                             "hnamefunc1": "array_context",
-                            "hnamefunc2": "capsule_data_helper",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_string_**_cdesc_allocatable",
@@ -7792,9 +8148,9 @@
                     "C_call_list": "&strs,\t &nstrs",
                     "C_name": "STR_fetchArrayStringAlloc_bufferify",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc,\t STR_SHROUD_capsule_data *SHT_strs_capsule",
+                    "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_strs_cdesc,\t SHT_strs_capsule",
+                    "F_C_arguments": "SHT_strs_cdesc",
                     "F_C_name": "c_fetch_array_string_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc",
@@ -7805,7 +8161,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7861,7 +8217,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7991,11 +8347,11 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "80",
+                "_PTR_F_C_index": "82",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8102,8 +8458,8 @@
                 }
             },
             {
-                "<FUNCTION>": "80 ****************************************",
-                "_PTR_C_CXX_index": "38",
+                "<FUNCTION>": "82 ****************************************",
+                "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -8212,7 +8568,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8340,7 +8696,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8441,11 +8797,11 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "81",
+                "_PTR_F_C_index": "83",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8607,8 +8963,8 @@
                 }
             },
             {
-                "<FUNCTION>": "81 ****************************************",
-                "_PTR_C_CXX_index": "41",
+                "<FUNCTION>": "83 ****************************************",
+                "_PTR_C_CXX_index": "42",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -8781,11 +9137,11 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "43 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "82",
+                "_PTR_F_C_index": "84",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8943,8 +9299,8 @@
                 }
             },
             {
-                "<FUNCTION>": "82 ****************************************",
-                "_PTR_C_CXX_index": "42",
+                "<FUNCTION>": "84 ****************************************",
+                "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -9113,11 +9469,11 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "44 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "83",
+                "_PTR_F_C_index": "85",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9319,8 +9675,8 @@
                 }
             },
             {
-                "<FUNCTION>": "83 ****************************************",
-                "_PTR_C_CXX_index": "43",
+                "<FUNCTION>": "85 ****************************************",
+                "_PTR_C_CXX_index": "44",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -9485,11 +9841,11 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "45 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "84",
+                "_PTR_F_C_index": "86",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9625,8 +9981,8 @@
                 }
             },
             {
-                "<FUNCTION>": "84 ****************************************",
-                "_PTR_C_CXX_index": "44",
+                "<FUNCTION>": "86 ****************************************",
+                "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -9761,7 +10117,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "46 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9959,7 +10315,7 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "47 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

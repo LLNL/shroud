@@ -319,7 +319,7 @@ integer(C_SIZE_T), value :: c_var_size
     fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringOut", fmt)
     fmt.hnamefunc_array_string_out = fmt.hnamefunc
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, std::string *in)", fmt)
+        "void {hnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
@@ -337,18 +337,22 @@ integer(C_SIZE_T), value :: c_var_size
 {lstart}// helper {hname}
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-// out is already blank filled.
 {hnameproto}
 {{+
 size_t nvect = outdesc->size;
 size_t len = outdesc->elem_len;
 char *dest = const_cast<char *>(outdesc->addr.ccharp);
+// Clear user memory
+std::memset(dest, ' ', nvect*len);
+
+// Copy into user memory
+nvect = std::min(nvect, nsize);
 //char *dest = static_cast<char *>(outdesc->cxx.addr);
 for (size_t i = 0; i < nvect; ++i) {{+
 std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
 dest += outdesc->elem_len;
 -}}
-//{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+//{C_memory_dtor_function}(&in->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -390,7 +394,7 @@ dest += outdesc->elem_len;
     fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
     fmt.chnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_capsule_data_type} *vec, size_t nlen)", fmt)
+        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
@@ -408,9 +412,9 @@ dest += outdesc->elem_len;
 // out is already blank filled.
 {hnameproto}
 {{+
-std::string *cxxvec =\t static_cast< std::string * >\t(vec->addr);
-{hnamefunc_array_string_out}(outdesc, cxxvec);
-{C_memory_dtor_function}(vec); // delete data->cxx.addr
+std::string *cxxvec =\t static_cast< std::string * >\t(indesc->cxx.addr);
+{hnamefunc_array_string_out}(outdesc, cxxvec, indesc->size);
+{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -421,18 +425,18 @@ std::string *cxxvec =\t static_cast< std::string * >\t(vec->addr);
     # Deal with allocatable character
     fmt.hnamefunc = wformat("{C_prefix}SHROUD_array_string_allocatable", fmt)
     FHelpers[name] = dict(
-        dependent_helpers=["array_context", "capsule_data_helper"],
+        dependent_helpers=["array_context"],
         name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(cdesc, capsule) &
+subroutine {hnamefunc}(out, in) &
      bind(c,name="{chnamefunc}")+
 import {F_array_type}, {F_capsule_data_type}
-type({F_array_type}), intent(IN) :: cdesc
-type({F_capsule_data_type}), intent(INOUT) :: capsule
+type({F_array_type}), intent(IN) :: out
+type({F_array_type}), intent(IN) :: in
 -end subroutine {hnamefunc}
 -end interface""",
             fmt,
@@ -504,18 +508,22 @@ return len;
 {lstart}// helper {hname}
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-// out is already blank filled.
 {hnameproto}
 {{+
-size_t nvect = std::min(outdesc->size, in.size());
+size_t nvect = outdesc->size;
 size_t len = outdesc->elem_len;
-char *dest = const_cast<char *>(outdesc->addr.ccharp);
+char *dest = static_cast<char *>(outdesc->cxx.addr);
+// Clear user memory
+std::memset(dest, ' ', nvect*len);
+
+// Copy into user memory
+nvect = std::min(nvect, in.size());
 //char *dest = static_cast<char *>(outdesc->cxx.addr);
 for (size_t i = 0; i < nvect; ++i) {{+
 std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
 dest += outdesc->elem_len;
 -}}
-//{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+//{C_memory_dtor_function}(&in->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -557,7 +565,7 @@ dest += outdesc->elem_len;
     fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
     fmt.chnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_capsule_data_type} *vec)", fmt)
+        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
@@ -575,9 +583,9 @@ dest += outdesc->elem_len;
 // out is already blank filled.
 {hnameproto}
 {{+
-std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(vec->addr);
+std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(indesc->cxx.addr);
 {hnamefunc_vector_string_out}(outdesc, *cxxvec);
-{C_memory_dtor_function}(vec); // delete data->cxx.addr
+{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -588,18 +596,18 @@ std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t
     # Deal with allocatable character
     fmt.hnamefunc = wformat("{C_prefix}SHROUD_vector_string_allocatable", fmt)
     FHelpers[name] = dict(
-        dependent_helpers=["array_context", "capsule_data_helper"],
+        dependent_helpers=["array_context"],
         name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(cdesc, capsule) &
+subroutine {hnamefunc}(out, in) &
      bind(c,name="{chnamefunc}")+
-import {F_array_type}, {F_capsule_data_type}
-type({F_array_type}), intent(IN) :: cdesc
-type({F_capsule_data_type}), intent(INOUT) :: capsule
+import {F_array_type}
+type({F_array_type}), intent(IN) :: out
+type({F_array_type}), intent(IN) :: in
 -end subroutine {hnamefunc}
 -end interface""",
             fmt,

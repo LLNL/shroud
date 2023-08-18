@@ -199,7 +199,7 @@ root
       out
         array
           cdesc -- c_mixin_out_array_cdesc
-          cdesc-and-capsule -- c_mixin_out_array_cdesc-and-capsule
+          cdesc-and-cdesc -- c_mixin_out_array_cdesc-and-cdesc
         character
           cdesc -- c_mixin_out_character_cdesc
       shadow -- c_mixin_shadow
@@ -232,6 +232,8 @@ root
           allocatable -- c_out_string_**_allocatable
           cdesc
             allocatable -- c_out_string_**_cdesc_allocatable
+            copy -- c_out_string_**_cdesc_copy
+          copy -- c_out_string_**_copy
       struct -- c_in/out/inout_struct
       vector
         &
@@ -490,6 +492,7 @@ root
         **
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
+            copy -- f_out_string_**_cdesc_copy
       vector
         &
           cdesc
@@ -2740,26 +2743,25 @@ c_mixin_out_array_cdesc:
   owner: library
   temps:
   - cdesc
-c_mixin_out_array_cdesc-and-capsule:
+c_mixin_out_array_cdesc-and-cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_helper: array_context capsule_data_helper
+  - '{C_array_type} *{c_var_out}'
+  c_helper: array_context
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_out}'
   f_c_arg_names:
   - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{c_var_out}'
   f_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
   intent: mixin
-  name: c_mixin_out_array_cdesc-and-capsule
+  name: c_mixin_out_array_cdesc-and-cdesc
   owner: library
   temps:
   - cdesc
-  - capsule
+  - out
 c_mixin_out_character_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3061,17 +3063,13 @@ c_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper: array_string_out_len
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   f_c_arg_names:
   - '{c_var_cdesc}'
-  - '{c_var_capsule}'
   f_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
   intent: out
   name: c_out_string_**_cdesc_allocatable
   owner: library
@@ -3083,13 +3081,38 @@ c_out_string_**_cdesc_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  - '{c_var_capsule}->addr   = {cxx_var};'
-  - '{c_var_capsule}->idtor  = 0;'
+  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
+  - '{c_var_cdesc}->cxx.idtor = 0;'
   pre_call:
   - std::string *{cxx_var};
   temps:
   - cdesc
-  - capsule
+c_out_string_**_cdesc_copy:
+  arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_string_out
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  f_c_arg_names:
+  - '{c_var_cdesc}'
+  f_import:
+  - '{F_array_type}'
+  intent: out
+  name: c_out_string_**_cdesc_copy
+  owner: library
+  post_call:
+  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  pre_call:
+  - std::string *{cxx_var};
+  temps:
+  - cdesc
+c_out_string_**_copy:
+  intent: out
+  name: c_out_string_**_copy
+  notimplemented: true
+  owner: library
 c_out_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -3178,30 +3201,25 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper: vector_string_out_len
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   f_c_arg_names:
   - '{c_var_cdesc}'
-  - '{c_var_capsule}'
   f_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
   intent: out
   name: c_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
   post_call:
-  - '{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});'
-  - '{c_var_cdesc}->size     = {cxx_var}->size();'
-  - '{c_var_capsule}->addr   = {cxx_var};'
-  - '{c_var_capsule}->idtor  = {idtor};'
+  - '{c_var_cdesc}->elem_len  = {hnamefunc0}(*{cxx_var});'
+  - '{c_var_cdesc}->size      = {cxx_var}->size();'
+  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   pre_call:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   temps:
   - cdesc
-  - capsule
 c_out_vector_&_cdesc_targ_native_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -4601,11 +4619,12 @@ f_mixin_str_array:
   intent: mixin
   name: f_mixin_str_array
   pre_call:
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{c_var_cdesc}%type = SH_TYPE_CHAR'
   - '{c_var_cdesc}%elem_len = len({f_var})'
   - '{c_var_cdesc}%size = size({f_var})'
-  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
   temps:
   - cdesc
 f_out_bool:
@@ -4759,28 +4778,51 @@ f_out_string_&_buf:
   - len
 f_out_string_**_cdesc_allocatable:
   arg_c_call:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{c_var_out}'
   arg_decl:
   - 'character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: array_string_allocatable
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {c_var_capsule}'
-  f_helper: array_string_allocatable array_context capsule_data_helper
+  - 'type({F_array_type}) :: {c_var_out}'
+  f_helper: array_string_allocatable array_context
   f_module:
     iso_c_binding:
     - C_LOC
   intent: out
   name: f_out_string_**_cdesc_allocatable
   post_call:
+  - '{c_var_cdesc}%size = {c_var_out}%size;'
+  - '{c_var_cdesc}%elem_len = {c_var_out}%elem_len;'
   - allocate({f_char_type}{f_var}({c_var_cdesc}%size))
-  - '{f_var} = '' '''
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var});'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})
+  - call {hnamefunc0}({c_var_cdesc}, {c_var_out})
   temps:
   - cdesc
-  - capsule
+  - out
+f_out_string_**_cdesc_copy:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  intent: out
+  name: f_out_string_**_cdesc_copy
+  pre_call:
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{c_var_cdesc}%elem_len = len({f_var})'
+  - '{c_var_cdesc}%size = size({f_var})'
+  - '{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  temps:
+  - cdesc
 f_out_string_*_buf:
   arg_c_call:
   - '{f_var}'
@@ -4819,14 +4861,13 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - cdesc
 f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   arg_c_call:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{c_var_out}'
   arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   c_helper: vector_string_allocatable
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {c_var_capsule}'
+  - 'type({F_array_type}) :: {c_var_out}'
   f_helper: vector_string_allocatable array_context capsule_data_helper
   f_module:
     iso_c_binding:
@@ -4834,13 +4875,15 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   intent: out
   name: f_out_vector_&_cdesc_allocatable_targ_string_scalar
   post_call:
+  - '{c_var_cdesc}%size = {c_var_out}%size;'
+  - '{c_var_cdesc}%elem_len = {c_var_out}%elem_len'
   - "allocate(character(len={c_var_cdesc}%elem_len)::\t {f_var}({c_var_cdesc}%size))"
-  - '{f_var} = '' '''
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var});'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})
+  - call {hnamefunc0}({c_var_cdesc}, {c_var_out})
   temps:
   - cdesc
-  - capsule
+  - out
 f_out_vector_&_cdesc_targ_native_scalar:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -4874,11 +4917,12 @@ f_out_vector_&_cdesc_targ_string_scalar:
   intent: out
   name: f_out_vector_&_cdesc_targ_string_scalar
   pre_call:
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{c_var_cdesc}%type = SH_TYPE_CHAR'
   - '{c_var_cdesc}%elem_len = len({f_var})'
   - '{c_var_cdesc}%size = size({f_var})'
-  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
   temps:
   - cdesc
 f_out_vector_*_cdesc_allocatable_targ_native_scalar:

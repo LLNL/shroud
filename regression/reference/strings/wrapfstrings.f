@@ -22,6 +22,39 @@ module strings_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper ShroudTypeDefines
+    ! Shroud type defines from helper ShroudTypeDefines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
     ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: STR_SHROUD_capsule_data
@@ -1094,6 +1127,48 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(copy)+intent(out)
+    ! Exact:     c_out_string_**_copy
+    ! ----------------------------------------
+    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    interface
+        subroutine c_fetch_array_string_arg(strs, nstrs) &
+                bind(C, name="STR_fetchArrayStringArg")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: strs
+            integer(C_INT), intent(OUT) :: nstrs
+        end subroutine c_fetch_array_string_arg
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
+    ! Exact:     c_out_string_**_cdesc_copy
+    interface
+        subroutine c_fetch_array_string_arg_bufferify(SHT_strs_cdesc) &
+                bind(C, name="STR_fetchArrayStringArg_bufferify")
+            import :: STR_SHROUD_array
+            implicit none
+            type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+        end subroutine c_fetch_array_string_arg_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void fetchArrayStringAlloc
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -1127,13 +1202,11 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     c_out_string_**_cdesc_allocatable
     interface
-        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
-                SHT_strs_capsule) &
+        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc) &
                 bind(C, name="STR_fetchArrayStringAlloc_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
+            import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_strs_capsule
         end subroutine c_fetch_array_string_alloc_bufferify
     end interface
 
@@ -1480,11 +1553,11 @@ module strings_mod
     interface
         ! helper array_string_allocatable
         ! Copy the char* or std::string in context into c_var.
-        subroutine STR_SHROUD_array_string_allocatable(cdesc, capsule) &
+        subroutine STR_SHROUD_array_string_allocatable(out, in) &
              bind(c,name="STR_ShroudArrayStringAllocatable")
             import STR_SHROUD_array, STR_SHROUD_capsule_data
-            type(STR_SHROUD_array), intent(IN) :: cdesc
-            type(STR_SHROUD_capsule_data), intent(INOUT) :: capsule
+            type(STR_SHROUD_array), intent(IN) :: out
+            type(STR_SHROUD_array), intent(IN) :: in
         end subroutine STR_SHROUD_array_string_allocatable
     end interface
 
@@ -2405,6 +2478,42 @@ contains
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
+    ! Function:  void fetchArrayStringArg
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Attrs:     +deref(copy)+intent(out)
+    ! Exact:     f_out_string_**_cdesc_copy
+    ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
+    ! Exact:     c_out_string_**_cdesc_copy
+    !>
+    !! Copy output into argument strs which must be large enough
+    !! to hold values.  Excess values will be truncated.
+    !! The nstrs argument is the length of the array.
+    !! It is associated with strs via the dimension(nstrs) attribute.
+    !! +hidden indicates that it is not part of the Fortran API.
+    !<
+    subroutine fetch_array_string_arg(strs)
+        use iso_c_binding, only : C_LOC
+        character(*), intent(OUT), target :: strs(:)
+        ! splicer begin function.fetch_array_string_arg
+        type(STR_SHROUD_array) :: SHT_strs_cdesc
+        SHT_strs_cdesc%cxx%addr = C_LOC(strs)
+        SHT_strs_cdesc%base_addr = C_LOC(strs)
+        SHT_strs_cdesc%type = SH_TYPE_CHAR
+        SHT_strs_cdesc%elem_len = len(strs)
+        SHT_strs_cdesc%size = size(strs)
+        SHT_strs_cdesc%rank = rank(strs)
+        SHT_strs_cdesc%shape(1:1) = shape(strs)
+        call c_fetch_array_string_arg_bufferify(SHT_strs_cdesc)
+        ! splicer end function.fetch_array_string_arg
+    end subroutine fetch_array_string_arg
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
     ! Function:  void fetchArrayStringAlloc
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
@@ -2428,13 +2537,14 @@ contains
         character(:), intent(out), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
-        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
-            SHT_strs_capsule)
+        type(STR_SHROUD_array) :: SHT_strs_out
+        call c_fetch_array_string_alloc_bufferify(SHT_strs_out)
+        SHT_strs_cdesc%size = SHT_strs_out%size;
+        SHT_strs_cdesc%elem_len = SHT_strs_out%elem_len;
         allocate(character(len=SHT_strs_cdesc%elem_len) :: strs(SHT_strs_cdesc%size))
-        strs = ' '
+        SHT_strs_cdesc%cxx%addr = C_LOC(strs);
         SHT_strs_cdesc%base_addr = C_LOC(strs);
-        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_out)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
 

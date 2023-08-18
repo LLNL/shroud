@@ -1419,6 +1419,65 @@ int STR_acceptStringInstance_bufferify(char *arg1, int SHT_arg1_len)
  * +hidden indicates that it is not part of the Fortran API.
  */
 // ----------------------------------------
+// Function:  void fetchArrayStringArg
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+// Attrs:     +deref(copy)+intent(out)
+// Exact:     c_out_string_**_copy
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
+// Match:     c_default
+void STR_fetchArrayStringArg(char * * strs, int * nstrs)
+{
+    // splicer begin function.fetchArrayStringArg
+    fetchArrayStringArg(strs, nstrs);
+    // splicer end function.fetchArrayStringArg
+}
+#endif
+
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
+// Function:  void fetchArrayStringArg
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+// Attrs:     +api(cdesc)+deref(copy)+intent(out)
+// Exact:     c_out_string_**_cdesc_copy
+// ----------------------------------------
+// Argument:  int * nstrs +hidden+intent(out)
+// Attrs:     +intent(out)
+// Exact:     c_out_native_*_hidden
+void STR_fetchArrayStringArg_bufferify(STR_SHROUD_array *SHT_strs_cdesc)
+{
+    // splicer begin function.fetchArrayStringArg_bufferify
+    std::string *strs;
+    int nstrs;
+    fetchArrayStringArg(&strs, &nstrs);
+    STR_ShroudArrayStringOut(SHT_strs_cdesc, strs, nstrs);
+    // splicer end function.fetchArrayStringArg_bufferify
+}
+
+#if 0
+! Not Implemented
+/**
+ * Copy output into argument strs which must be large enough
+ * to hold values.  Excess values will be truncated.
+ * The nstrs argument is the length of the array.
+ * It is associated with strs via the dimension(nstrs) attribute.
+ * +hidden indicates that it is not part of the Fortran API.
+ */
+// ----------------------------------------
 // Function:  void fetchArrayStringAlloc
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
@@ -1459,8 +1518,7 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
 void STR_fetchArrayStringAlloc_bufferify(
-    STR_SHROUD_array *SHT_strs_cdesc,
-    STR_SHROUD_capsule_data *SHT_strs_capsule)
+    STR_SHROUD_array *SHT_strs_cdesc)
 {
     // splicer begin function.fetchArrayStringAlloc_bufferify
     std::string *strs;
@@ -1474,8 +1532,8 @@ void STR_fetchArrayStringAlloc_bufferify(
     } else {
         SHT_strs_cdesc->elem_len = STR_ShroudArrayStringOutSize(strs, SHT_strs_cdesc->size);
     }
-    SHT_strs_capsule->addr   = strs;
-    SHT_strs_capsule->idtor  = 0;
+    SHT_strs_cdesc->cxx.addr  = strs;
+    SHT_strs_cdesc->cxx.idtor = 0;
     // splicer end function.fetchArrayStringAlloc_bufferify
 }
 

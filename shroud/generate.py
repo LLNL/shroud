@@ -328,7 +328,11 @@ class VerifyAttrs(object):
             # void cannot be dereferenced.
             pass
         elif spointer in ["**", "*&"] and intent == "out":
-            meta["deref"] = "pointer"
+            if ntypemap.sgroup == "string":
+                # strings are not contiguous, so copy into argument.
+                meta["deref"] = "copy"
+            else:
+                meta["deref"] = "pointer"
             
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
@@ -640,7 +644,6 @@ def check_dimension(dim, meta, trace=False):
         meta["assumed-rank"] = True
     else:
         meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
-
 
 class GenFunctions(object):
     """
@@ -1931,9 +1934,10 @@ class GenFunctions(object):
                 # User requested cdesc.
                 has_buf_arg = "cdesc"
             elif arg_typemap.sgroup == "string":
-                if meta["deref"] in ["allocatable", "pointer"]:
+                if meta["deref"] in ["allocatable", "pointer", "copy"]:
                     has_buf_arg = "cdesc"
                     # XXX - this is not tested
+                    # XXX - tested with string **arg+intent(out)+dimension(ndim)
                 else:
                     has_buf_arg = "buf"
             elif arg_typemap.sgroup == "char":

@@ -743,23 +743,23 @@ fc_statements = [
         temps=["cdesc"],
     ),
     dict(
-        # Pass array_type to C which will fill it in.
-        # Also pass in a capsule which C wrapper will assign.
+        # cdesc - array from argument
+        # out   - filled by C wrapper.
         # Used to return a pointer to a non-fortran compatiable type
         # such as std::vector or std::string.
-        name="c_mixin_out_array_cdesc-and-capsule",
-        c_helper="array_context capsule_data_helper",
+        name="c_mixin_out_array_cdesc-and-cdesc",
+        c_helper="array_context",
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
-            "{C_capsule_data_type} *{c_var_capsule}",
+            "{C_array_type} *{c_var_out}",
         ],
-        f_c_arg_names=["{c_var_cdesc}", "{c_var_capsule}"],
+        f_c_arg_names=["{c_var_cdesc}", "{c_var_out}"],
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
-            "type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}",
+            "type({F_array_type}), intent(OUT) :: {c_var_out}",
         ],
-        f_import=["{F_array_type}", "{F_capsule_data_type}"],
-        temps=["cdesc", "capsule"],
+        f_import=["{F_array_type}"],
+        temps=["cdesc", "out"],
     ),
 
     dict(
@@ -2009,13 +2009,15 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
         pre_call=[
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var})",
             "{c_var_cdesc}%base_addr = C_LOC({f_var})",
             "{c_var_cdesc}%type = SH_TYPE_CHAR",
             "{c_var_cdesc}%elem_len = len({f_var})",
             "{c_var_cdesc}%size = size({f_var})",
 #            "{c_var_cdesc}%size = {size}",
             # Do not set shape for scalar via f_cdesc_shape
-            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+            "{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
+#            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
         arg_c_call=["{c_var_cdesc}"],
         temps=["cdesc"],
@@ -2025,7 +2027,6 @@ fc_statements = [
         name="f_out_vector_&_cdesc_targ_string_scalar",
         mixin=["f_mixin_str_array"],
     ),
-
     dict(
         name="c_out_vector_&_cdesc_targ_string_scalar",
         mixin=["c_mixin_out_array_cdesc"],
@@ -2053,20 +2054,22 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_LOC"]),
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
-            "type({F_capsule_data_type}) :: {c_var_capsule}",
+            "type({F_array_type}) :: {c_var_out}",
         ],
-        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
+        arg_c_call=["{c_var_out}"],
         post_call=[
+            "{c_var_cdesc}%size = {c_var_out}%size;",
+            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len",
             "allocate(character(len={c_var_cdesc}%elem_len)::\t {f_var}({c_var_cdesc}%size))",
-            "{f_var} = ' '",
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
         ],
-        temps=["cdesc", "capsule"],
+        temps=["cdesc", "out"],
     ),
     dict(
         name="c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        mixin=["c_mixin_out_array_cdesc-and-capsule"],
+        mixin=["c_mixin_out_array_cdesc"],
         c_helper="vector_string_out_len",
         pre_call=[
 #            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
@@ -2074,10 +2077,10 @@ fc_statements = [
         ],
         arg_call=["*{cxx_var}"],
         post_call=[
-            "{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});",
-            "{c_var_cdesc}->size     = {cxx_var}->size();",
-            "{c_var_capsule}->addr   = {cxx_var};",
-            "{c_var_capsule}->idtor  = {idtor};",
+            "{c_var_cdesc}->elem_len  = {hnamefunc0}(*{cxx_var});",
+            "{c_var_cdesc}->size      = {cxx_var}->size();",
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
         ],
     ),
 
@@ -3068,7 +3071,37 @@ fc_statements = [
     ),
 
     ##########
-    # Pass a cdes down to describe the memory and a capsule to hold the
+    # Pass a cdesc down to describe the memory and a capsule to hold the
+    # C++ array. Copy into Fortran argument.
+    # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
+    dict(
+        name="f_out_string_**_cdesc_copy",
+        mixin=["f_mixin_str_array"],
+    ),
+    dict(
+        name="c_out_string_**_cdesc_copy",
+        mixin=["c_mixin_out_array_cdesc"],
+        c_helper="array_string_out",
+        pre_call=[
+            "std::string *{cxx_var};"
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
+        ],
+
+    ),
+
+    dict(
+        # std::string **arg+intent(out)+dimension(size)
+        # Returning a pointer to a string*. However, this needs additional mapping
+        # for the C interface.  Fortran calls the +api(cdesc) variant.
+        name="c_out_string_**_copy",
+        notimplemented=True,
+    ),
+
+    ##########
+    # Pass a cdesc down to describe the memory and a capsule to hold the
     # C++ array. Allocate in fortran, fill from C.
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
@@ -3079,22 +3112,24 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_LOC"]),
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
-            "type({F_capsule_data_type}) :: {c_var_capsule}",
+            "type({F_array_type}) :: {c_var_out}",
         ],
-        arg_c_call=["{c_var_cdesc}", "{c_var_capsule}"],
+        arg_c_call=["{c_var_out}"],
         post_call=[
+            "{c_var_cdesc}%size = {c_var_out}%size;",
+            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len;",
             "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
-            "{f_var} = ' '",
+            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {hnamefunc0}({c_var_cdesc}, {c_var_capsule})",
+            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
         ],
-        temps=["cdesc", "capsule"],
-        f_helper="array_string_allocatable array_context capsule_data_helper",
+        temps=["cdesc", "out"],
+        f_helper="array_string_allocatable array_context",
         c_helper="array_string_allocatable",
     ),
     dict(
         name="c_out_string_**_cdesc_allocatable",
-        mixin=["c_mixin_out_array_cdesc-and-capsule"],
+        mixin=["c_mixin_out_array_cdesc"],
         c_helper="array_string_out_len",
         pre_call=[
             "std::string *{cxx_var};",
@@ -3111,8 +3146,8 @@ fc_statements = [
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
-            "{c_var_capsule}->addr   = {cxx_var};",
-            "{c_var_capsule}->idtor  = 0;",
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership
         ],
     ),
 

@@ -295,10 +295,20 @@ contains
   end subroutine test_functions
 
   subroutine test_string_array
+    character(20) :: strs(5)
     character(:), allocatable :: stralloc(:)
 
     call set_case_name("test_string_array")
 
+    ! copy into argument
+    call fetch_array_string_arg(strs)
+    call assert_true(strs(1) == "apple",  "fetch_array_string_copy(1)")
+    call assert_true(strs(2) == "pear",   "fetch_array_string_copy(2)")
+    call assert_true(strs(3) == "peach",  "fetch_array_string_copy(3)")
+    call assert_true(strs(4) == "cherry", "fetch_array_string_copy(4)")
+    call assert_true(strs(5) == " ",      "fetch_array_string_copy(5)")
+
+    ! allocate the argument
     call assert_false(allocated(stralloc), "stralloc not allocated")
     call fetch_array_string_alloc(stralloc)
     call assert_true(allocated(stralloc), "stralloc is allocated")
