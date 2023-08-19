@@ -38,4 +38,11 @@ void apply_optional(TypeID type, IndexType num_elems, IndexType offset, IndexTyp
 {
 }
 
+//----------------------------------------------------------------------
 
+void Class1::DefaultArguments(int arg1, int arg2, int arg3)
+{
+    this->m_field1 = arg1;
+    this->m_field2 = arg2;
+    this->m_field3 = arg3;
+}

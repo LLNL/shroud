@@ -30,7 +30,8 @@ VPATH = \
 C_OBJS = \
     defaultarg.o \
     utildefaultarg.o \
-    wrapdefaultarg.o
+    wrapdefaultarg.o \
+    wrapClass1.o
 F_OBJS = \
     wrapfdefaultarg.o \
     fruit.o \
@@ -44,6 +45,7 @@ clean :
 
 defaultarg.o : defaultarg.cpp defaultarg.hpp
 wrapdefaultarg.o : wrapdefaultarg.h defaultarg.hpp
+wrapClass1.o : wrapClass1.cpp defaultarg.hpp wrapClass1.h
 main.o : fruit.o wrapfdefaultarg.o
 
 # useful to isolate load error with just C++ code

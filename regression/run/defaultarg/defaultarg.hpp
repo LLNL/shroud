@@ -40,6 +40,19 @@ void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, Index
 void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 
+//----------------------------------------------------------------------
+class Class1
+{
+public:
+    int m_field1;
+    int m_field2;
+    int m_field3;
+    Class1(int arg1, int arg2 = 1, int arg3 = 2) :
+        m_field1(arg1), m_field2(arg2), m_field3(arg3)
+    {};
+    //    ~Class1();
+    void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2);
+};
 
 #endif // DEFAULTARG_HPP
 
