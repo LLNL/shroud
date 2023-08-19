@@ -100,6 +100,25 @@ declarations:
 
 
 ######################################################################
+
+- decl: class Class1
+  declarations:
+  - decl: int m_field1 +readonly+name(field1)
+  - decl: int m_field2 +readonly+name(field2)
+  - decl: int m_field3 +readonly+name(field3)
+  - decl: Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)
+    doxygen:
+      description: |
+        Test default parameter methods with Class constructor.
+        Creates a generic interface.
+  - decl: ~Class1() +name(delete)
+  - decl: void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)
+    doxygen:
+      description: |
+        Test default parameter methods within a Class.
+        Creates a generic interface and generic type-bound methods.
+
+######################################################################
 splicer_code:
   f:
     module_top: |

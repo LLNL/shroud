@@ -50,7 +50,7 @@ endif"""
 #    Create generic interface even if only one function.
 # functions : list
 #    List of function nodes in generic interface.
-GenericFunction = collections.namedtuple("GenericTuple", ["force", "functions"])
+GenericFunction = collections.namedtuple("GenericTuple", ["force", "cls", "functions"])
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -319,7 +319,7 @@ class Wrapf(util.WrapperMixin):
         # splicer to extend generic
         #        self._push_splicer('generic')
         for key in sorted(fileinfo.f_type_generic.keys()):
-            force, methods = fileinfo.f_type_generic[key]
+            force, cls, methods = fileinfo.f_type_generic[key]
             if force or len(methods) > 1:
 
                 # Look for any cpp_if declarations
@@ -906,7 +906,7 @@ rv = .false.
         iface = fileinfo.generic_interface
         f_function_generic = fileinfo.f_function_generic
         for key in sorted(f_function_generic.keys()):
-            force, generics = f_function_generic[key]
+            force, cls, generics = f_function_generic[key]
             if force or len(generics) > 1:
                 self._push_splicer(key)
 
@@ -926,6 +926,8 @@ rv = .false.
                         break
 
                 iface.append("")
+                if cls and cls.cpp_if:
+                    iface.append("#" + cls.cpp_if)
                 if iface_cpp_if:
                     iface.append("#" + iface_cpp_if)
                 if literalinclude:
@@ -948,6 +950,8 @@ rv = .false.
                 if literalinclude:
                     iface.append("! end generic interface " + key)
                 if iface_cpp_if:
+                    iface.append("#endif")
+                if cls and cls.cpp_if:
                     iface.append("#endif")
                 self._pop_splicer(key)
         self._pop_splicer("generic")
@@ -2020,7 +2024,7 @@ rv = .false.
             clsnode = node.lookup_class(node.options.class_ctor)
             fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
             fileinfo.f_function_generic.setdefault(
-                fmt_func.F_name_generic, GenericFunction(True, [])
+                fmt_func.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
         elif options.F_create_generic:
             # if return type is templated in C++,
@@ -2030,13 +2034,13 @@ rv = .false.
                 # ctor generic do not get added as derived type generic.
                 # Always create a generic, even if only one function.
                 fileinfo.f_function_generic.setdefault(
-                    fmt_func.F_name_generic, GenericFunction(True, [])
-                ).functions.append(node)
-            elif cls:
-                fileinfo.f_type_generic.setdefault(
-                    fmt_func.F_name_generic, GenericFunction(False, [])
+                    fmt_func.F_name_generic, GenericFunction(True, cls, [])
                 ).functions.append(node)
             else:
+                if cls:
+                    fileinfo.f_type_generic.setdefault(
+                        fmt_func.F_name_generic, GenericFunction(False, cls, [])
+                    ).functions.append(node)
                 # If from a fortran_generic list, create generic interface.
                 if node._generated == "fortran_generic":
                     force = True
@@ -2044,7 +2048,7 @@ rv = .false.
                     force = False
                 fileinfo.f_function_generic.setdefault(
                     fmt_func.F_name_scope + fmt_func.F_name_generic,
-                    GenericFunction(force, [])).functions.append(node)
+                    GenericFunction(force, cls, [])).functions.append(node)
         if cls:
             # Add procedure to derived type
             type_bound_part = fileinfo.type_bound_part

@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module defaultarg_mod
-    use iso_c_binding, only : C_INT, C_INT32_T, C_INT64_T
+    use iso_c_binding, only : C_INT, C_INT32_T, C_INT64_T, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -26,10 +26,277 @@ module defaultarg_mod
 #endif
     ! splicer end module_top
 
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: DEF_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type DEF_SHROUD_capsule_data
+    ! end helper capsule_data_helper
+
     ! typedef TypeID
     ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
     ! splicer end typedef.TypeID
+
+    type class1
+        type(DEF_SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Class1.component_part
+        ! splicer end class.Class1.component_part
+    contains
+        procedure :: delete => class1_delete
+        procedure :: default_arguments_0 => class1_default_arguments_0
+        procedure :: default_arguments_1 => class1_default_arguments_1
+        procedure :: default_arguments_2 => class1_default_arguments_2
+        procedure :: get_field1 => class1_get_field1
+        procedure :: get_field2 => class1_get_field2
+        procedure :: get_field3 => class1_get_field3
+        procedure :: get_instance => class1_get_instance
+        procedure :: set_instance => class1_set_instance
+        procedure :: associated => class1_associated
+        generic :: default_arguments => default_arguments_0,  &
+            default_arguments_1, default_arguments_2
+        ! splicer begin class.Class1.type_bound_procedure_part
+        ! splicer end class.Class1.type_bound_procedure_part
+    end type class1
+
+    interface operator (.eq.)
+        module procedure class1_eq
+    end interface
+
+    interface operator (.ne.)
+        module procedure class1_ne
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        function c_class1_new_0(arg1, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="DEF_Class1_new_0")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) SHT_prv
+        end function c_class1_new_0
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        function c_class1_new_1(arg1, arg2, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="DEF_Class1_new_1")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT), value, intent(IN) :: arg2
+            type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) SHT_prv
+        end function c_class1_new_1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg3=2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        function c_class1_new_2(arg1, arg2, arg3, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="DEF_Class1_new_2")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT), value, intent(IN) :: arg2
+            integer(C_INT), value, intent(IN) :: arg3
+            type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) SHT_prv
+        end function c_class1_new_2
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  ~Class1 +name(delete)
+    ! Attrs:     +intent(dtor)
+    ! Requested: c_dtor_void_scalar
+    ! Match:     c_dtor
+    interface
+        subroutine c_class1_delete(self) &
+                bind(C, name="DEF_Class1_delete")
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_class1_delete
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_class1_default_arguments_0(self, arg1) &
+                bind(C, name="DEF_Class1_DefaultArguments_0")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: arg1
+        end subroutine c_class1_default_arguments_0
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_class1_default_arguments_1(self, arg1, arg2) &
+                bind(C, name="DEF_Class1_DefaultArguments_1")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT), value, intent(IN) :: arg2
+        end subroutine c_class1_default_arguments_1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg3=2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_class1_default_arguments_2(self, arg1, arg2, arg3) &
+                bind(C, name="DEF_Class1_DefaultArguments_2")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT), value, intent(IN) :: arg2
+            integer(C_INT), value, intent(IN) :: arg3
+        end subroutine c_class1_default_arguments_2
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int get_field1
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    interface
+        function c_class1_get_field1(self) &
+                result(SHT_rv) &
+                bind(C, name="DEF_Class1_get_field1")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_class1_get_field1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int get_field2
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    interface
+        function c_class1_get_field2(self) &
+                result(SHT_rv) &
+                bind(C, name="DEF_Class1_get_field2")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_class1_get_field2
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int get_field3
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    interface
+        function c_class1_get_field3(self) &
+                result(SHT_rv) &
+                bind(C, name="DEF_Class1_get_field3")
+            use iso_c_binding, only : C_INT
+            import :: DEF_SHROUD_capsule_data
+            implicit none
+            type(DEF_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_class1_get_field3
+    end interface
+
+    ! splicer begin class.Class1.additional_interfaces
+    ! splicer end class.Class1.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  void apply_generic
@@ -378,7 +645,338 @@ module defaultarg_mod
         module procedure apply_require_1
     end interface apply_require
 
+    interface class1
+        module procedure class1_new_0
+        module procedure class1_new_1
+        module procedure class1_new_2
+    end interface class1
+
+    interface class1_default_arguments
+        module procedure class1_default_arguments_0
+        module procedure class1_default_arguments_1
+        module procedure class1_default_arguments_2
+    end interface class1_default_arguments
+
 contains
+
+    ! Generated by has_default_arg
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods with Class constructor.
+    !! Creates a generic interface.
+    !<
+    function class1_new_0(arg1) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: arg1
+        type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
+        ! splicer begin class.Class1.method.new_0
+        SHT_prv = c_class1_new_0(arg1, SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.new_0
+    end function class1_new_0
+
+    ! Generated by has_default_arg
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods with Class constructor.
+    !! Creates a generic interface.
+    !<
+    function class1_new_1(arg1, arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
+        ! splicer begin class.Class1.method.new_1
+        SHT_prv = c_class1_new_1(arg1, arg2, SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.new_1
+    end function class1_new_1
+
+    ! ----------------------------------------
+    ! Function:  Class1 +name(new)
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg3=2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods with Class constructor.
+    !! Creates a generic interface.
+    !<
+    function class1_new_2(arg1, arg2, arg3) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        integer(C_INT), value, intent(IN) :: arg3
+        type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
+        ! splicer begin class.Class1.method.new_2
+        SHT_prv = c_class1_new_2(arg1, arg2, arg3, SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.new_2
+    end function class1_new_2
+
+    ! ----------------------------------------
+    ! Function:  ~Class1 +name(delete)
+    ! Attrs:     +intent(dtor)
+    ! Exact:     f_dtor
+    ! Attrs:     +intent(dtor)
+    ! Exact:     c_dtor
+    subroutine class1_delete(obj)
+        class(class1) :: obj
+        ! splicer begin class.Class1.method.delete
+        call c_class1_delete(obj%cxxmem)
+        ! splicer end class.Class1.method.delete
+    end subroutine class1_delete
+
+    ! Generated by has_default_arg
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods within a Class.
+    !! Creates a generic interface and generic type-bound methods.
+    !<
+    subroutine class1_default_arguments_0(obj, arg1)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT), value, intent(IN) :: arg1
+        ! splicer begin class.Class1.method.default_arguments_0
+        call c_class1_default_arguments_0(obj%cxxmem, arg1)
+        ! splicer end class.Class1.method.default_arguments_0
+    end subroutine class1_default_arguments_0
+
+    ! Generated by has_default_arg
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods within a Class.
+    !! Creates a generic interface and generic type-bound methods.
+    !<
+    subroutine class1_default_arguments_1(obj, arg1, arg2)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        ! splicer begin class.Class1.method.default_arguments_1
+        call c_class1_default_arguments_1(obj%cxxmem, arg1, arg2)
+        ! splicer end class.Class1.method.default_arguments_1
+    end subroutine class1_default_arguments_1
+
+    ! ----------------------------------------
+    ! Function:  void DefaultArguments
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg2=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int arg3=2 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    !>
+    !! Test default parameter methods within a Class.
+    !! Creates a generic interface and generic type-bound methods.
+    !<
+    subroutine class1_default_arguments_2(obj, arg1, arg2, arg3)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        integer(C_INT), value, intent(IN) :: arg3
+        ! splicer begin class.Class1.method.default_arguments_2
+        call c_class1_default_arguments_2(obj%cxxmem, arg1, arg2, arg3)
+        ! splicer end class.Class1.method.default_arguments_2
+    end subroutine class1_default_arguments_2
+
+    ! Generated by getter/setter
+    ! ----------------------------------------
+    ! Function:  int get_field1
+    ! Attrs:     +intent(getter)
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    function class1_get_field1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Class1.method.get_field1
+        SHT_rv = c_class1_get_field1(obj%cxxmem)
+        ! splicer end class.Class1.method.get_field1
+    end function class1_get_field1
+
+    ! Generated by getter/setter
+    ! ----------------------------------------
+    ! Function:  int get_field2
+    ! Attrs:     +intent(getter)
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    function class1_get_field2(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Class1.method.get_field2
+        SHT_rv = c_class1_get_field2(obj%cxxmem)
+        ! splicer end class.Class1.method.get_field2
+    end function class1_get_field2
+
+    ! Generated by getter/setter
+    ! ----------------------------------------
+    ! Function:  int get_field3
+    ! Attrs:     +intent(getter)
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    function class1_get_field3(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Class1.method.get_field3
+        SHT_rv = c_class1_get_field3(obj%cxxmem)
+        ! splicer end class.Class1.method.get_field3
+    end function class1_get_field3
+
+    ! Return pointer to C++ memory.
+    function class1_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(class1), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function class1_get_instance
+
+    subroutine class1_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class1), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine class1_set_instance
+
+    function class1_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class1), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function class1_associated
+
+    ! splicer begin class.Class1.additional_functions
+    ! splicer end class.Class1.additional_functions
 
     ! Generated by has_default_arg
     ! ----------------------------------------
@@ -803,5 +1401,27 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    function class1_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_eq
+
+    function class1_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_ne
 
 end module defaultarg_mod
