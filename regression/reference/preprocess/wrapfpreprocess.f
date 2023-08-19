@@ -205,6 +205,24 @@ module preprocess_mod
         ! splicer end additional_interfaces
     end interface
 
+#if defined(USE_THREE)
+    interface user1_method3def
+        module procedure user1_method3def_0
+        module procedure user1_method3def_1
+    end interface user1_method3def
+#endif
+
+#ifdef USE_USER2
+    interface user2_exfunc
+#ifdef USE_CLASS3_A
+        module procedure user2_exfunc_0
+#endif
+#ifndef USE_CLASS3_A
+        module procedure user2_exfunc_1
+#endif
+    end interface user2_exfunc
+#endif
+
 contains
 
     ! ----------------------------------------

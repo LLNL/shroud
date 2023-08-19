@@ -1269,9 +1269,28 @@ module userlibrary_example_nested_mod
         module procedure ex_class1_ctor_1
     end interface ex_class1
 
+    interface ex_class1_get_value
+        module procedure ex_class1_get_value_from_int
+        module procedure ex_class1_get_value_1
+    end interface ex_class1_get_value
+
     interface ex_class2
         module procedure ex_class2_ctor
     end interface ex_class2
+
+    interface ex_class2_declare
+        module procedure ex_class2_declare_0_int
+        module procedure ex_class2_declare_0_long
+        module procedure ex_class2_declare_1_int
+        module procedure ex_class2_declare_1_long
+    end interface ex_class2_declare
+
+    interface ex_class2_set_value
+        module procedure ex_class2_set_value_int
+        module procedure ex_class2_set_value_long
+        module procedure ex_class2_set_value_float
+        module procedure ex_class2_set_value_double
+    end interface ex_class2_set_value
 
     interface test_names
         module procedure test_names

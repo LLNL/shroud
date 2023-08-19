@@ -61,7 +61,10 @@ contains
     call assert_equals(42, obj%get_field3(), "get_field3  #4")
 
     ! Call generic function
-!    call class1_default_arguments(obj, 43,44,45)
+    call class1_default_arguments(obj, 43,44,45)
+    call assert_equals(43, obj%get_field1(), "get_field1  #5")
+    call assert_equals(44, obj%get_field2(), "get_field2  #5")
+    call assert_equals(45, obj%get_field3(), "get_field3  #5")
     
   end subroutine test_class
 

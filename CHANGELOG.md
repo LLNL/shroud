@@ -91,6 +91,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     ``Create_Cstruct_as_class`` was ``c_create__cstruct_as_class`` now ``c_create_cstruct_as_class``
   * Add missing underscore
     ``AFunction`` was ``afunction`` now ``a_function``.
+- Add generic interfaces for class methods.  Generic functions where only being added
+  to the type-bound procedures.  ``class_generic(obj)`` now works instead of only
+  ``obj%generic()``.
 
 ### Changed
 - Changed name of C and Python function splicers to use *function_name* instead of
