@@ -25,8 +25,8 @@ module library_one_two_mod
                 bind(C, name="LIB_one_two_function1")
             implicit none
         end subroutine function1
-
     end interface
+
 
 contains
 

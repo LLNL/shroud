@@ -79,9 +79,8 @@ module library_mod
             type(LIB_SHROUD_capsule_data), intent(IN) :: self
             type(LIB_SHROUD_capsule_data), intent(INOUT) :: c2
         end subroutine c_class2_method2
-
-
     end interface
+
 
 contains
 

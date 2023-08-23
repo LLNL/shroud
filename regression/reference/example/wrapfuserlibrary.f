@@ -32,11 +32,8 @@ module userlibrary_mod
     integer, parameter :: type_id = C_INT
     ! splicer end typedef.TypeID
 
-    interface
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

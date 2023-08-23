@@ -81,11 +81,6 @@ module memdoc_mod
     ! end c_get_const_string_ptr_alloc_bufferify
 
     interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
-    interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
         subroutine STR_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
@@ -97,6 +92,9 @@ module memdoc_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine STR_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

@@ -519,9 +519,6 @@ module classes_mod
     end interface
     ! end c_class1_set_m_name_bufferify
 
-    ! splicer begin class.Class1.additional_interfaces
-    ! splicer end class.Class1.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
@@ -553,9 +550,6 @@ module classes_mod
         end subroutine c_class2_get_name_bufferify
     end interface
 
-    ! splicer begin class.Class2.additional_interfaces
-    ! splicer end class.Class2.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
     ! Attrs:     +api(capptr)+intent(function)
@@ -573,9 +567,6 @@ module classes_mod
         end function c_singleton_get_reference
     end interface
     ! end c_singleton_get_reference
-
-    ! splicer begin class.Singleton.additional_interfaces
-    ! splicer end class.Singleton.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  Shape
@@ -610,9 +601,6 @@ module classes_mod
         end function c_shape_get_ivar
     end interface
 
-    ! splicer begin class.Shape.additional_interfaces
-    ! splicer end class.Shape.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +api(capptr)+intent(ctor)
@@ -628,9 +616,6 @@ module classes_mod
             type(C_PTR) SHT_prv
         end function c_circle_ctor
     end interface
-
-    ! splicer begin class.Circle.additional_interfaces
-    ! splicer end class.Circle.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  void allocate
@@ -783,9 +768,6 @@ module classes_mod
         end subroutine c_data_set_items
     end interface
     ! end c_data_set_items
-
-    ! splicer begin class.Data.additional_interfaces
-    ! splicer end class.Data.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
@@ -1023,11 +1005,6 @@ module classes_mod
         end subroutine c_last_function_called_bufferify
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
     interface circle
         module procedure circle_ctor
     end interface circle
@@ -1061,6 +1038,9 @@ module classes_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine CLA_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

@@ -56,10 +56,10 @@ module interface_mod
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
         end function function2
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

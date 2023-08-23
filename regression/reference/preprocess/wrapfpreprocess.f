@@ -157,9 +157,6 @@ module preprocess_mod
             integer(C_INT), value, intent(IN) :: i
         end subroutine c_user1_method3def_1
 #endif
-
-        ! splicer begin class.User1.additional_interfaces
-        ! splicer end class.User1.additional_interfaces
 #ifdef USE_USER2
 
 #ifdef USE_CLASS3_A
@@ -197,12 +194,6 @@ module preprocess_mod
         end subroutine c_user2_exfunc_1
 #endif
 #endif
-
-        ! splicer begin class.User2.additional_interfaces
-        ! splicer end class.User2.additional_interfaces
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
 #if defined(USE_THREE)
@@ -222,6 +213,9 @@ module preprocess_mod
 #endif
     end interface user2_exfunc
 #endif
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

@@ -31,10 +31,10 @@ module worker_names
                 bind(C, name="NAM_AFunction")
             implicit none
         end subroutine a_function
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

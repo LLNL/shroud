@@ -42,9 +42,6 @@ module wrapped_mod
             implicit none
         end subroutine worker
 
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-
         ! ----------------------------------------
         ! Function:  void worker4
         ! Attrs:     +intent(subroutine)
@@ -55,6 +52,9 @@ module wrapped_mod
             implicit none
         end subroutine inner4_worker4
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

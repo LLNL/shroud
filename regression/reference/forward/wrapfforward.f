@@ -66,9 +66,6 @@ module forward_mod
 
     interface
 
-        ! splicer begin class.Class3.additional_interfaces
-        ! splicer end class.Class3.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  Class2
         ! Attrs:     +api(capptr)+intent(ctor)
@@ -130,9 +127,6 @@ module forward_mod
             type(FOR_SHROUD_capsule_data), intent(IN) :: arg
         end subroutine c_class2_accept_class3
 
-        ! splicer begin class.Class2.additional_interfaces
-        ! splicer end class.Class2.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  int passStruct1
         ! Attrs:     +intent(function)
@@ -152,14 +146,14 @@ module forward_mod
             type(cstruct1), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_pass_struct1
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface class2
         module procedure class2_ctor
     end interface class2
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

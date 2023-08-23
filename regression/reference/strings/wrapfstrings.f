@@ -1589,11 +1589,6 @@ module strings_mod
     end interface
 
     interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
-    interface
         ! helper array_string_allocatable
         ! Copy the char* or std::string in context into c_var.
         subroutine STR_SHROUD_array_string_allocatable(out, in) &
@@ -1616,6 +1611,9 @@ module strings_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine STR_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

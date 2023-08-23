@@ -103,12 +103,6 @@ module ns_mod
                 bind(C, name="NS_One")
             implicit none
         end subroutine one
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-
-        ! splicer begin namespace.outer.class.ClassWork.additional_interfaces
-        ! splicer end namespace.outer.class.ClassWork.additional_interfaces
     end interface
 
     interface
@@ -123,6 +117,9 @@ module ns_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine NS_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

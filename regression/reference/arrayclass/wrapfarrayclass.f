@@ -521,17 +521,14 @@ module arrayclass_mod
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
             real(C_DOUBLE) :: SHT_rv
         end function c_ArrayWrapper_sumArray
-
-        ! splicer begin class.ArrayWrapper.additional_interfaces
-        ! splicer end class.ArrayWrapper.additional_interfaces
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface ArrayWrapper
         module procedure ArrayWrapper_ctor
     end interface ArrayWrapper
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

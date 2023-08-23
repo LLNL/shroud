@@ -128,13 +128,10 @@ class Wrapf(util.WrapperMixin):
 
         do_write = top or not node.options.F_flatten_namespace
         if do_write:
-            c_interface = fileinfo.c_interface
-            c_interface.append("")
-            if self.newlibrary.options.literalinclude2:
-                c_interface.append("interface+")
-            self._create_splicer("additional_interfaces", c_interface)
             fileinfo.impl.append("")
             self._create_splicer("additional_functions", fileinfo.impl)
+            fileinfo.user_declarations.append("")
+            self._create_splicer("additional_declarations", fileinfo.user_declarations)
 
         if top:
             # have one namespace level, then replace name each time
@@ -359,9 +356,6 @@ class Wrapf(util.WrapperMixin):
                                fmt_class.F_derived_name)
         if node.cpp_if:
             f_type_decl.append("#endif")
-
-        fileinfo.c_interface.append("")
-        self._create_splicer("additional_interfaces", fileinfo.c_interface)
 
         self._pop_splicer(fmt_class.cxx_class)
         if node.cpp_if:
@@ -2254,7 +2248,6 @@ rv = .false.
         fname = fmt_node.F_impl_filename
         module_name = fmt_node.F_module_name
 
-        fileinfo.finish()
         output = []
 
         # Added headers used with Fortran preprocessor.
@@ -2504,14 +2497,11 @@ class ModuleInfo(object):
         self.c_interface = []
         self.abstract_interface = []
         self.generic_interface = []
+        self.user_declarations = []
         self.impl = []  # implementation, after contains
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
-        if not self.newlibrary.options.literalinclude2:
-            self.c_interface.append("")
-            self.c_interface.append("interface")
-            self.c_interface.append(1)
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
 
@@ -2522,21 +2512,27 @@ class ModuleInfo(object):
         self.private_lines = []
         self.interface_lines = []
 
-    def finish(self):
-        self.c_interface.append(-1)
-        self.c_interface.append("end interface")
-
     def begin_class(self):
         self.f_type_generic = {}  # look for generic methods
         self.type_bound_part = []
 
     def write_module(self, output):
         output.extend(self.abstract_interface)
-        output.extend(self.c_interface)
+
+        if self.c_interface:
+            if not self.newlibrary.options.literalinclude2:
+                output.append("")
+                output.append("interface+")
+                output.extend(self.c_interface)
+                output.append("-end interface")
+            else:
+                output.extend(self.c_interface)
+                
         output.extend(self.generic_interface)
 
         output.extend(self.private_lines)
         output.extend(self.interface_lines)
+        output.extend(self.user_declarations)
 
         output.append(-1)
         output.append("")

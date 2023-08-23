@@ -1531,10 +1531,8 @@ module pointers_mod
     end interface
     ! end c_return_int_alloc_to_fixed_array_CFI
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

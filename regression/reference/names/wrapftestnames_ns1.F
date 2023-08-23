@@ -31,10 +31,10 @@ module testnames_ns1_mod
                 bind(C, name="TES_ns1_init_ns1")
             implicit none
         end subroutine c_init_ns1
-
-        ! splicer begin namespace.ns1.additional_interfaces
-        ! splicer end namespace.ns1.additional_interfaces
     end interface
+
+    ! splicer begin namespace.ns1.additional_declarations
+    ! splicer end namespace.ns1.additional_declarations
 
 contains
 

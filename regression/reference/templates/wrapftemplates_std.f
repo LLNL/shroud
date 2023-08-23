@@ -145,9 +145,6 @@ module templates_std_mod
             type(C_PTR) SHT_rv
         end function c_vector_int_at
 
-        ! splicer begin namespace.std.class.vector_int.additional_interfaces
-        ! splicer end namespace.std.class.vector_int.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capptr)+intent(ctor)
@@ -213,12 +210,6 @@ module templates_std_mod
             integer(vector_double_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_double_at
-
-        ! splicer begin namespace.std.class.vector_double.additional_interfaces
-        ! splicer end namespace.std.class.vector_double.additional_interfaces
-
-        ! splicer begin namespace.std.additional_interfaces
-        ! splicer end namespace.std.additional_interfaces
     end interface
 
     interface vector_double
@@ -228,6 +219,9 @@ module templates_std_mod
     interface vector_int
         module procedure vector_int_ctor
     end interface vector_int
+
+    ! splicer begin namespace.std.additional_declarations
+    ! splicer end namespace.std.additional_declarations
 
 contains
 

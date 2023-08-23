@@ -80,9 +80,6 @@ module typemap_mod
             implicit none
             real(FLOATTYPE), value, intent(IN) :: f1
         end subroutine c_pass_float
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface pass_float
@@ -99,6 +96,9 @@ module typemap_mod
         module procedure pass_index2_32
         module procedure pass_index2_64
     end interface pass_index2
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

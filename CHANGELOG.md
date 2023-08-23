@@ -94,6 +94,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add generic interfaces for class methods.  Generic functions where only being added
   to the type-bound procedures.  ``class_generic(obj)`` now works instead of only
   ``obj%generic()``.
+- Replaced the *additional_interfaces* splicer with *additional_declarations*.
+  This new splicer is outside of an interface block and can be used to add
+  add a generic interface that could not be added to *additional_interfaces*.
 
 ### Changed
 - Changed name of C and Python function splicers to use *function_name* instead of

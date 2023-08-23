@@ -944,10 +944,8 @@ module clibrary_mod
         end subroutine callback_set_alloc
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

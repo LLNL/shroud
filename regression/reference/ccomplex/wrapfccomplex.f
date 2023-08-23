@@ -102,10 +102,8 @@ module ccomplex_mod
         end subroutine accept_double_complex_out_ptr_flag
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

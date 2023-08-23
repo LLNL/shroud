@@ -103,9 +103,6 @@ module ownership_mod
             integer(C_INT) :: SHT_rv
         end function c_class1_get_flag
 
-        ! splicer begin class.Class1.additional_interfaces
-        ! splicer end class.Class1.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
@@ -414,9 +411,6 @@ module ownership_mod
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_get_class_new
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface
@@ -442,6 +436,9 @@ module ownership_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine OWN_SHROUD_copy_array
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

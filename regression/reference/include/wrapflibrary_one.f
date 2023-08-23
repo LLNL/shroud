@@ -14,9 +14,6 @@ module library_one_mod
     implicit none
 
 
-    interface
-
-    end interface
 
 contains
 

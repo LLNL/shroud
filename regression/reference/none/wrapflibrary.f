@@ -20,11 +20,8 @@ module library_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    interface
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

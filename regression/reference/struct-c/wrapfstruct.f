@@ -206,9 +206,6 @@ module struct_mod
     end interface
     ! end c_cstruct_as_class_set_y1
 
-    ! splicer begin class.Cstruct_as_class.additional_interfaces
-    ! splicer end class.Cstruct_as_class.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
@@ -328,9 +325,6 @@ module struct_mod
         end subroutine c_cstruct_as_subclass_set_z1
     end interface
     ! end c_cstruct_as_subclass_set_z1
-
-    ! splicer begin class.Cstruct_as_subclass.additional_interfaces
-    ! splicer end class.Cstruct_as_subclass.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  int passStructByValue
@@ -882,11 +876,6 @@ module struct_mod
         end subroutine cstruct_list_set_dvalue
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
     ! start generic interface cstruct_as_class
     interface cstruct_as_class
         module procedure create_cstruct_as_class
@@ -897,6 +886,9 @@ module struct_mod
     interface cstruct_as_subclass
         module procedure create_cstruct_as_subclass_args
     end interface cstruct_as_subclass
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 
