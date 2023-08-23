@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## v0.13.0 - 2023-08-23
 ### Added
 - Python hello-world-python example for a simple library in examples directory.
 - Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
@@ -122,7 +124,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   shadow type by reference. This allows the addr and idtor fields to be
   changed if necessary by the C wrapper.
 - Create C and Fortran wrappers for typedef statements.
-  Before ``typedef`` as treated as an alias.  ``typedef int TypeID`` would
+  Before ``typedef`` was treated as an alias.  ``typedef int TypeID`` would
   substitute ``integer(C_INT)`` for every use of ``TypeID`` in the Fortran wrapper.
   Now a parameter is created: ``integer, parameter :: type_id = C_INT``.
   Used as: ``integer(type_id) :: arg``.

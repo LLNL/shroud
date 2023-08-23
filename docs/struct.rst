@@ -131,8 +131,8 @@ Fortran
 .. name of derived type
 
 The Fortran wrapper uses the object-oriented features added in
-Fortran 2003.  There is one derived type for each library which is
-used for the capsule.  This derived type uses ``bind(C)`` since it is
+Fortran 2003.  There is one derived type for the library which is
+used as the capsule.  This derived type uses ``bind(C)`` since it is
 passed to the C wrapper. Each class uses the same capsule derived type
 since it is considered an implementation detail and the user should
 not access it.  Then each class creates an additional derived type as
@@ -357,11 +357,15 @@ Called from Fortran as:
     obj0 = obj0%get_reference()
 
 Note that *obj0* is not assigned a value before the function ``get_reference`` is called.
+
+.. _struct_class_inheritance:
             
 Class Inheritance
 -----------------
 
 Class inheritance is supported.
+Note that the subclass declaration uses a colon and must be quoted. Otherwise
+YAML will treat it as another mapping entry.
 
 .. code-block:: yaml
 
@@ -689,8 +693,8 @@ They are added to the same scope as the struct.
 Option *F_struct_getter_setter* can be set to *false* to avoid
 creating the getter and setter functions.
 
-.. _TypesSandC-ObjectOrientedC:
-     
+.. _struct_object_oriented_c:
+
 Object-oriented C
 -----------------
 
@@ -729,6 +733,8 @@ be much shorter.  The *pass* attribute marks this as the 'object'.
    :start-after: start Cstruct_as_class_sum
    :end-before: end Cstruct_as_class_sum
 
+Additonal options are *wrap_class_as* and *class_baseclass*.
+
 Fortran
 ^^^^^^^
 
@@ -752,6 +758,13 @@ Now the struct is treated as a class in the Fortran wrapper.
     integer(C_INT) i
     var = cstruct_as_class()       ! Create struct in C++.
     i = var%sum()
+
+
+Similar to Python, Fortran passes the object as an explicit argument.
+Unlike C++ which uses an implicit ``this`` variable.
+By default, the first argument of the function is assumed to be the object.
+However, this can be changed using the *pass* attribute. This will add the
+Fortran keyword ``PASS`` to the corresponding argument.
 
 A full example is at 
 :ref:`Struct as a Class <example_struct_as_class>`.
