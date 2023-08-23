@@ -115,10 +115,8 @@ module typedefs_mod
     end interface
     ! end return_bytes_for_index_type
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

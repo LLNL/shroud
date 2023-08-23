@@ -176,9 +176,6 @@ module cxxlibrary_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_group_name_int64_t_bufferify
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface default_args_in_out
@@ -195,6 +192,9 @@ module cxxlibrary_mod
         module procedure get_group_name_int32_t
         module procedure get_group_name_int64_t
     end interface get_group_name
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

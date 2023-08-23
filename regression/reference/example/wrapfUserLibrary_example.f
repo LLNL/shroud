@@ -21,11 +21,8 @@ module userlibrary_example_mod
     top of module namespace example splicer  2
     ! splicer end namespace.example.module_top
 
-    interface
-
-        ! splicer begin namespace.example.additional_interfaces
-        ! splicer end namespace.example.additional_interfaces
-    end interface
+    ! splicer begin namespace.example.additional_declarations
+    ! splicer end namespace.example.additional_declarations
 
 contains
 

@@ -57,9 +57,8 @@ module library_three_mod
             type(LIB_SHROUD_capsule_data), intent(IN) :: self
             integer(custom_type), value, intent(IN) :: arg1
         end subroutine c_class1_method1
-
-
     end interface
+
 
 contains
 

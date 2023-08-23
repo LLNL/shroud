@@ -100,9 +100,6 @@ module templates_mod
 
     interface
 
-        ! splicer begin class.Worker.additional_interfaces
-        ! splicer end class.Worker.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  void nested
         ! Attrs:     +intent(subroutine)
@@ -127,9 +124,6 @@ module templates_mod
             integer(C_INT), value, intent(IN) :: arg1
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_user_int_nested_double
-
-        ! splicer begin class.user_int.additional_interfaces
-        ! splicer end class.user_int.additional_interfaces
 
         ! ----------------------------------------
         ! Function:  structAsClass
@@ -213,9 +207,6 @@ module templates_mod
             integer(C_INT) :: SHT_rv
         end function c_struct_as_class_int_get_value
 
-        ! splicer begin class.structAsClass_int.additional_interfaces
-        ! splicer end class.structAsClass_int.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capptr)+intent(ctor)
@@ -297,9 +288,6 @@ module templates_mod
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
             real(C_DOUBLE) :: SHT_rv
         end function c_struct_as_class_double_get_value
-
-        ! splicer begin class.structAsClass_double.additional_interfaces
-        ! splicer end class.structAsClass_double.additional_interfaces
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
@@ -387,9 +375,6 @@ module templates_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function c_use_impl_worker_internal_ImplWorker2
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface function_tu
@@ -404,6 +389,9 @@ module templates_mod
     interface struct_as_class_int
         module procedure struct_as_class_int_ctor
     end interface struct_as_class_int
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

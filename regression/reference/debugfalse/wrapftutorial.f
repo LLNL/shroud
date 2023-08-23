@@ -413,15 +413,6 @@ module tutorial_mod
         end subroutine c_last_function_called_bufferify
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        subroutine all_test1(array)
-          implicit none
-          integer, dimension(:), allocatable :: array
-        end subroutine all_test1
-        ! splicer end additional_interfaces
-    end interface
-
     interface fortran_generic_overloaded
         module procedure fortran_generic_overloaded_0
         module procedure fortran_generic_overloaded_1_float
@@ -467,6 +458,15 @@ module tutorial_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine TUT_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin additional_declarations
+    interface
+      subroutine all_test1(array)
+        implicit none
+        integer, dimension(:), allocatable :: array
+      end subroutine all_test1
+    end interface
+    ! splicer end additional_declarations
 
 contains
 

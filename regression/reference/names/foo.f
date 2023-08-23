@@ -88,17 +88,14 @@ module name_module
             implicit none
             type(TES_SHROUD_capsule_data), intent(IN) :: self2
         end subroutine XXX_TES_names_method2
-
-        ! splicer begin namespace.ns0.class.Names.additional_interfaces
-        ! splicer end namespace.ns0.class.Names.additional_interfaces
-
-        ! splicer begin namespace.ns0.additional_interfaces
-        ! splicer end namespace.ns0.additional_interfaces
     end interface
 
     interface FNames
         module procedure names_defaultctor
     end interface FNames
+
+    ! splicer begin namespace.ns0.additional_declarations
+    ! splicer end namespace.ns0.additional_declarations
 
 contains
 

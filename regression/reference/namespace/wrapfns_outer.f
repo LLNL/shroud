@@ -38,10 +38,10 @@ module ns_outer_mod
                 bind(C, name="NS_outer_One")
             implicit none
         end subroutine one
-
-        ! splicer begin namespace.outer.additional_interfaces
-        ! splicer end namespace.outer.additional_interfaces
     end interface
+
+    ! splicer begin namespace.outer.additional_declarations
+    ! splicer end namespace.outer.additional_declarations
 
 contains
 

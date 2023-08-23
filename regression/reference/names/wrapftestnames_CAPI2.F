@@ -31,10 +31,10 @@ module testnames_capi2_mod
                 bind(C, name="TES_CAPItwo_Worker1")
             implicit none
         end subroutine c_worker1
-
-        ! splicer begin namespace.CAPI2.additional_interfaces
-        ! splicer end namespace.CAPI2.additional_interfaces
     end interface
+
+    ! splicer begin namespace.CAPI2.additional_declarations
+    ! splicer end namespace.CAPI2.additional_declarations
 
 contains
 

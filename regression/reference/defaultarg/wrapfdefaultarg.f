@@ -295,9 +295,6 @@ module defaultarg_mod
         end function c_class1_get_field3
     end interface
 
-    ! splicer begin class.Class1.additional_interfaces
-    ! splicer end class.Class1.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
@@ -613,11 +610,6 @@ module defaultarg_mod
     end interface
 #endif
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
     interface apply_generic
         module procedure apply_generic_nelems
         module procedure apply_generic_nelems_offset
@@ -656,6 +648,9 @@ module defaultarg_mod
         module procedure class1_default_arguments_1
         module procedure class1_default_arguments_2
     end interface class1_default_arguments
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

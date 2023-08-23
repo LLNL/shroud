@@ -89,23 +89,8 @@ module testnames_std_mod
         module procedure vector_instantiation3_ne
     end interface
 
-    interface
-
-        ! splicer begin namespace.std.class.Vvv1.additional_interfaces
-        ! splicer end namespace.std.class.Vvv1.additional_interfaces
-
-        ! splicer begin namespace.std.class.vector_double.additional_interfaces
-        ! splicer end namespace.std.class.vector_double.additional_interfaces
-
-        ! splicer begin namespace.std.class.vector_instantiation5.additional_interfaces
-        ! splicer end namespace.std.class.vector_instantiation5.additional_interfaces
-
-        ! splicer begin namespace.std.class.vector_instantiation3.additional_interfaces
-        ! splicer end namespace.std.class.vector_instantiation3.additional_interfaces
-
-        ! splicer begin namespace.std.additional_interfaces
-        ! splicer end namespace.std.additional_interfaces
-    end interface
+    ! splicer begin namespace.std.additional_declarations
+    ! splicer end namespace.std.additional_declarations
 
 contains
 

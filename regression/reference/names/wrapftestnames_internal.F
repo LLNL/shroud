@@ -20,11 +20,8 @@ module testnames_internal_mod
     ! splicer begin namespace.internal.module_top
     ! splicer end namespace.internal.module_top
 
-    interface
-
-        ! splicer begin namespace.internal.additional_interfaces
-        ! splicer end namespace.internal.additional_interfaces
-    end interface
+    ! splicer begin namespace.internal.additional_declarations
+    ! splicer end namespace.internal.additional_declarations
 
 contains
 

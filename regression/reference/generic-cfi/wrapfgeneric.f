@@ -86,9 +86,6 @@ module generic_mod
         module procedure struct_as_class_ne
     end interface
 
-    ! splicer begin class.StructAsClass.additional_interfaces
-    ! splicer end class.StructAsClass.additional_interfaces
-
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
     ! Attrs:     +intent(subroutine)
@@ -775,11 +772,6 @@ module generic_mod
         end function c_update_struct_as_class_long
     end interface
 
-    interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
     interface assign_values
         module procedure assign_values_scalar
         module procedure assign_values_broadcast
@@ -830,6 +822,9 @@ module generic_mod
         module procedure update_struct_as_class_int
         module procedure update_struct_as_class_long
     end interface update_struct_as_class
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

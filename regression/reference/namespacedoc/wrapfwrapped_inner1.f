@@ -31,10 +31,10 @@ module wrapped_inner1_mod
                 bind(C, name="WWW_inner1_worker")
             implicit none
         end subroutine worker
-
-        ! splicer begin namespace.inner1.additional_interfaces
-        ! splicer end namespace.inner1.additional_interfaces
     end interface
+
+    ! splicer begin namespace.inner1.additional_declarations
+    ! splicer end namespace.inner1.additional_declarations
 
 contains
 

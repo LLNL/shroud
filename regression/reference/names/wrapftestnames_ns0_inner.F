@@ -21,11 +21,8 @@ module testnames_ns0_inner_mod
     ! splicer begin namespace.ns0::inner.module_top
     ! splicer end namespace.ns0::inner.module_top
 
-    interface
-
-        ! splicer begin namespace.ns0::inner.additional_interfaces
-        ! splicer end namespace.ns0::inner.additional_interfaces
-    end interface
+    ! splicer begin namespace.ns0::inner.additional_declarations
+    ! splicer end namespace.ns0::inner.additional_declarations
 
 contains
 

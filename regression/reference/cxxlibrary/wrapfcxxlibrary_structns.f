@@ -102,10 +102,10 @@ module cxxlibrary_structns_mod
             implicit none
             type(cstruct1), intent(OUT) :: arg
         end subroutine pass_struct_by_reference_out
-
-        ! splicer begin namespace.structns.additional_interfaces
-        ! splicer end namespace.structns.additional_interfaces
     end interface
+
+    ! splicer begin namespace.structns.additional_declarations
+    ! splicer end namespace.structns.additional_declarations
 
 contains
 

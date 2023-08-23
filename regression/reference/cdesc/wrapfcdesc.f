@@ -207,9 +207,6 @@ module cdesc_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_get_data_double
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface get_scalar1
@@ -221,6 +218,9 @@ module cdesc_mod
         module procedure get_scalar2_0
         module procedure get_scalar2_1
     end interface get_scalar2
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

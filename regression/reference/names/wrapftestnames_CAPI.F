@@ -62,9 +62,6 @@ module testnames_capi_mod
             type(TES_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class1_member1
 
-        ! splicer begin namespace.CAPI.class.Class1.additional_interfaces
-        ! splicer end namespace.CAPI.class.Class1.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  void Worker1
         ! Attrs:     +intent(subroutine)
@@ -74,10 +71,10 @@ module testnames_capi_mod
                 bind(C, name="TES_capi_worker1")
             implicit none
         end subroutine c_worker1
-
-        ! splicer begin namespace.CAPI.additional_interfaces
-        ! splicer end namespace.CAPI.additional_interfaces
     end interface
+
+    ! splicer begin namespace.CAPI.additional_declarations
+    ! splicer end namespace.CAPI.additional_declarations
 
 contains
 

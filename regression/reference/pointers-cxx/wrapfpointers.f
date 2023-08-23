@@ -1326,11 +1326,6 @@ module pointers_mod
     ! end c_return_int_alloc_to_fixed_array_bufferify
 
     interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
-    interface
         ! helper copy_array
         ! Copy contents of context into c_var.
         subroutine POI_SHROUD_copy_array(context, c_var, c_var_size) &
@@ -1342,6 +1337,9 @@ module pointers_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine POI_SHROUD_copy_array
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

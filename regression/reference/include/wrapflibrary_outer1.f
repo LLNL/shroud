@@ -52,7 +52,6 @@ module library_outer1_mod
             type(LIB_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class0_method
 
-
         ! ----------------------------------------
         ! Function:  void outer_func
         ! Attrs:     +intent(subroutine)
@@ -62,8 +61,8 @@ module library_outer1_mod
                 bind(C, name="LIB_outer1_outer_func")
             implicit none
         end subroutine outer_func
-
     end interface
+
 
 contains
 

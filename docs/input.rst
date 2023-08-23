@@ -1016,10 +1016,8 @@ code for helper functions or declarations:
          ! class.{cxx_class}.type_bound_procedure_part
        end type class1
 
-       interface
-          ! additional_interfaces
-       end interface
-
+       ! additional_declarations
+       
        contains
 
        ! function.{F_name_function}

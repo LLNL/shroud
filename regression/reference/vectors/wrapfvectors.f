@@ -410,11 +410,6 @@ module vectors_mod
     end interface
 
     interface
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
-
-    interface
         ! helper copy_array
         ! Copy contents of context into c_var.
         subroutine VEC_SHROUD_copy_array(context, c_var, c_var_size) &
@@ -437,6 +432,9 @@ module vectors_mod
             type(VEC_SHROUD_array), intent(IN) :: in
         end subroutine VEC_SHROUD_vector_string_allocatable
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

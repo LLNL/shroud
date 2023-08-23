@@ -97,10 +97,10 @@ module scope_ns2_mod
             type(data_pointer), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)
         end subroutine data_pointer_set_items
-
-        ! splicer begin namespace.ns2.additional_interfaces
-        ! splicer end namespace.ns2.additional_interfaces
     end interface
+
+    ! splicer begin namespace.ns2.additional_declarations
+    ! splicer end namespace.ns2.additional_declarations
 
 contains
 

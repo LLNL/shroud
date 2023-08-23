@@ -386,9 +386,6 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_ex_class1_splicer_special
 
-        ! splicer begin namespace.example::nested.class.ExClass1.additional_interfaces
-        ! splicer end namespace.example::nested.class.ExClass1.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capptr)+intent(ctor)
@@ -760,9 +757,6 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             real(C_DOUBLE) :: SHT_rv
         end function c_ex_class2_get_value_double
-
-        ! splicer begin namespace.example::nested.class.ExClass2.additional_interfaces
-        ! splicer end namespace.example::nested.class.ExClass2.additional_interfaces
 
         ! ----------------------------------------
         ! Function:  void local_function1
@@ -1259,9 +1253,6 @@ module userlibrary_example_nested_mod
             real(C_DOUBLE), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_cos_doubles
-
-        ! splicer begin namespace.example::nested.additional_interfaces
-        ! splicer end namespace.example::nested.additional_interfaces
     end interface
 
     interface ex_class1
@@ -1324,6 +1315,9 @@ module userlibrary_example_nested_mod
             integer(C_SIZE_T), value :: c_var_size
         end subroutine AA_SHROUD_copy_string_and_free
     end interface
+
+    ! splicer begin namespace.example::nested.additional_declarations
+    ! splicer end namespace.example::nested.additional_declarations
 
 contains
 

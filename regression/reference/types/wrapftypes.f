@@ -477,10 +477,10 @@ module types_mod
             integer(C_INT), intent(OUT) :: flag
             logical(C_BOOL) :: SHT_rv
         end function c_return_bool_and_others
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

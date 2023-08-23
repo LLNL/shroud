@@ -61,10 +61,10 @@ module statement_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_name_error_pattern_bufferify
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

@@ -56,10 +56,10 @@ module enum_mod
             integer(C_INT), value, intent(IN) :: in
             integer(C_INT) :: SHT_rv
         end function convert_to_int
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

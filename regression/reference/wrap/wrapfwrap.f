@@ -48,14 +48,8 @@ module wrap_mod
         module procedure class1_ne
     end interface
 
-    interface
-
-        ! splicer begin class.Class1.additional_interfaces
-        ! splicer end class.Class1.additional_interfaces
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
-    end interface
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

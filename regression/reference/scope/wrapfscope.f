@@ -111,12 +111,6 @@ module scope_mod
 
     interface
 
-        ! splicer begin class.Class1.additional_interfaces
-        ! splicer end class.Class1.additional_interfaces
-
-        ! splicer begin class.Class2.additional_interfaces
-        ! splicer end class.Class2.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  int * DataPointer_get_items
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns3_DataPointer)
@@ -157,10 +151,10 @@ module scope_mod
             type(data_pointer), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)
         end subroutine data_pointer_set_items
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 

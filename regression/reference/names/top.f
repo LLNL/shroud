@@ -134,21 +134,6 @@ module top_module
 
     interface
 
-        ! splicer begin class.Names2.additional_interfaces
-        ! splicer end class.Names2.additional_interfaces
-
-        ! splicer begin class.twoTs_0.additional_interfaces
-        ! splicer end class.twoTs_0.additional_interfaces
-
-        ! splicer begin class.twoTs_instantiation4.additional_interfaces
-        ! splicer end class.twoTs_instantiation4.additional_interfaces
-
-        ! splicer begin class.Cstruct_as_class.additional_interfaces
-        ! splicer end class.Cstruct_as_class.additional_interfaces
-
-        ! splicer begin class.Cstruct_as_subclass.additional_interfaces
-        ! splicer end class.Cstruct_as_subclass.additional_interfaces
-
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
@@ -457,9 +442,6 @@ module top_module
             procedure(external_funcs_afree) :: afree
             procedure(external_funcs_assoc) :: assoc
         end subroutine c_external_funcs
-
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
     end interface
 
     interface function_tu
@@ -471,6 +453,9 @@ module top_module
         module procedure F_name_function3a_int
         module procedure F_name_function3a_long
     end interface generic3
+
+    ! splicer begin additional_declarations
+    ! splicer end additional_declarations
 
 contains
 
