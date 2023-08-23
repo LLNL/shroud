@@ -52,6 +52,7 @@ Contents
    cstatements
    fstatements
    reference
+   releases
    previouswork
    pypreviouswork
    futurework

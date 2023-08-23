@@ -751,7 +751,7 @@ as a class by defining option ``wrap_struct_as=class``.  Other
 functions can be associated with the class by setting option
 ``class_method`` to the name of the struct.
 
-See detail at :ref:`Object-Oriented C <TypesSandC-ObjectOrientedC>`
+See detail at :ref:`struct_object_oriented_c`
 
 rank
 ^^^^
