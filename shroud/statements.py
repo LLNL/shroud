@@ -481,7 +481,7 @@ def lookup_stmts_tree(tree, path):
 
 # C Statements.
 #  intent      - Set from name.
-#  arg_call    - List of arguments passed to C function.
+#  c_arg_call  - List of arguments passed to C/C++ library function.
 #
 #  c_arg_decl  - Add C declaration to C wrapper.
 #                Empty list is no arguments, None is default argument.
@@ -499,7 +499,7 @@ CStmts = util.Scope(
     impl_header=[],
     c_helper="", c_local_var=None,
     cxx_local_var=None,
-    arg_call=[],
+    c_arg_call=[],
     pre_call=[],
     call=[],
     post_call=[],
@@ -920,7 +920,7 @@ fc_statements = [
         pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
         post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
@@ -936,7 +936,7 @@ fc_statements = [
     dict(
         name="c_out_native_*&_cdesc",
         base="c_out_native_**_cdesc",
-        arg_call=["{cxx_var}"],
+        c_arg_call=["{cxx_var}"],
     ),
     dict(
         # deref(allocatable)
@@ -1050,7 +1050,7 @@ fc_statements = [
         pre_call=[
             "{cxx_type} {cxx_var};",
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
     ),
     dict(
         # c_out_native_&_hidden
@@ -1059,7 +1059,7 @@ fc_statements = [
         pre_call=[
             "{cxx_type} {cxx_var};",
         ],
-        arg_call=["{cxx_var}"],
+        c_arg_call=["{cxx_var}"],
     ),
     
     ########################################
@@ -2058,7 +2058,7 @@ fc_statements = [
         pre_call=[
             "{c_const}std::vector<std::string> {cxx_var};"
         ],
-        arg_call=["{cxx_var}"],
+        c_arg_call=["{cxx_var}"],
         post_call=[
             "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});",
         ],
@@ -2099,7 +2099,7 @@ fc_statements = [
 #            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
             "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
         ],
-        arg_call=["*{cxx_var}"],
+        c_arg_call=["*{cxx_var}"],
         post_call=[
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
@@ -3129,7 +3129,7 @@ fc_statements = [
         pre_call=[
             "std::string *{cxx_var};"
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
         post_call=[
             "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
         ],
@@ -3178,7 +3178,7 @@ fc_statements = [
         pre_call=[
             "std::string *{cxx_var};",
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
         post_call=[
             "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
@@ -3221,7 +3221,7 @@ fc_statements = [
         pre_call=[
             "{c_const}{c_type} * {cxx_var};",
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
     ),
     dict(
         # Set Fortran pointer to point to cxx_var
@@ -3238,7 +3238,7 @@ fc_statements = [
         pre_call=[
             "{c_const}{c_type} * {cxx_var};",
         ],
-        arg_call=["&{cxx_var}"],
+        c_arg_call=["&{cxx_var}"],
     ),
 
     dict(

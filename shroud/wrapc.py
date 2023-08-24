@@ -1243,8 +1243,8 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if intent_blk.arg_call:
-                    for arg_call in intent_blk.arg_call:
+                if intent_blk.c_arg_call:
+                    for arg_call in intent_blk.c_arg_call:
                         append_format(call_list, arg_call, fmt_arg)
                 elif cxx_local_var == "scalar":
                     if declarator.is_pointer():

@@ -2241,7 +2241,7 @@ c_inout_char_*_cfi:
   temps:
   - cfi
 c_inout_native_&_hidden:
-  arg_call:
+  c_arg_call:
   - '{cxx_var}'
   intent: inout
   name: c_inout_native_&_hidden
@@ -2292,7 +2292,7 @@ c_inout_native_*_cfi:
   - extents
   - lower
 c_inout_native_*_hidden:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   intent: inout
   name: c_inout_native_*_hidden
@@ -2904,7 +2904,7 @@ c_out_char_*_cfi:
   temps:
   - cfi
 c_out_native_&_hidden:
-  arg_call:
+  c_arg_call:
   - '{cxx_var}'
   intent: out
   name: c_out_native_&_hidden
@@ -2912,7 +2912,7 @@ c_out_native_&_hidden:
   pre_call:
   - '{cxx_type} {cxx_var};'
 c_out_native_*&_cdesc:
-  arg_call:
+  c_arg_call:
   - '{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2939,7 +2939,7 @@ c_out_native_*&_cdesc:
   temps:
   - cdesc
 c_out_native_**_cdesc:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2966,7 +2966,7 @@ c_out_native_**_cdesc:
   temps:
   - cdesc
 c_out_native_**_cfi_allocatable:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -2996,7 +2996,7 @@ c_out_native_**_cfi_allocatable:
   - extents
   - lower
 c_out_native_**_cfi_pointer:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -3057,7 +3057,7 @@ c_out_native_*_cdesc:
   temps:
   - cdesc
 c_out_native_*_hidden:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   intent: out
   name: c_out_native_*_hidden
@@ -3145,7 +3145,7 @@ c_out_string_**_allocatable:
   notimplemented: true
   owner: library
 c_out_string_**_cdesc_allocatable:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3174,7 +3174,7 @@ c_out_string_**_cdesc_allocatable:
   temps:
   - cdesc
 c_out_string_**_cdesc_copy:
-  arg_call:
+  c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3288,7 +3288,7 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   temps:
   - cdesc
 c_out_vector_&_cdesc_allocatable_targ_string_scalar:
-  arg_call:
+  c_arg_call:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3344,7 +3344,7 @@ c_out_vector_&_cdesc_targ_native_scalar:
   temps:
   - cdesc
 c_out_vector_&_cdesc_targ_string_scalar:
-  arg_call:
+  c_arg_call:
   - '{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
