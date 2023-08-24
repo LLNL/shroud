@@ -540,7 +540,7 @@ c_ctor_shadow_scalar_capptr:
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -564,7 +564,7 @@ c_ctor_shadow_scalar_capsule:
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -608,7 +608,7 @@ c_function_char_*_buf:
   - int {c_var_len}
   c_helper: ShroudStrCopy
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -630,7 +630,7 @@ c_function_char_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -655,7 +655,7 @@ c_function_char_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -673,7 +673,7 @@ c_function_char_*_cfi:
 c_function_char_*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -696,7 +696,7 @@ c_function_char_*_cfi_allocatable:
 c_function_char_*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -735,7 +735,7 @@ c_function_char_scalar:
   - char *{c_var}
   call:
   - '*{c_var} = {function_name}({C_call_list});'
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -749,7 +749,7 @@ c_function_char_scalar:
 c_function_char_scalar_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -803,7 +803,7 @@ c_function_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -827,7 +827,7 @@ c_function_native_*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -854,7 +854,7 @@ c_function_native_*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -897,7 +897,7 @@ c_function_shadow_&_capptr:
   - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -920,7 +920,7 @@ c_function_shadow_&_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -937,7 +937,7 @@ c_function_shadow_*_capptr:
   - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -960,7 +960,7 @@ c_function_shadow_*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -977,7 +977,7 @@ c_function_shadow_scalar_capptr:
   - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1004,7 +1004,7 @@ c_function_shadow_scalar_capsule:
   - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1034,7 +1034,7 @@ c_function_string_&_buf:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1060,7 +1060,7 @@ c_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1078,7 +1078,7 @@ c_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1096,7 +1096,7 @@ c_function_string_&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1119,7 +1119,7 @@ c_function_string_&_cfi:
 c_function_string_&_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1161,7 +1161,7 @@ c_function_string_*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1187,7 +1187,7 @@ c_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1205,7 +1205,7 @@ c_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1223,7 +1223,7 @@ c_function_string_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1246,7 +1246,7 @@ c_function_string_*_cfi:
 c_function_string_*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1275,7 +1275,7 @@ c_function_string_*_cfi_allocatable:
 c_function_string_*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1325,7 +1325,7 @@ c_function_string_scalar_buf:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1353,7 +1353,7 @@ c_function_string_scalar_cdesc_allocatable:
   c_helper: ShroudStrToArray
   cxx_local_var: pointer
   destructor_name: new_string
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1373,7 +1373,7 @@ c_function_string_scalar_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1397,7 +1397,7 @@ c_function_string_scalar_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   destructor_name: new_string
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1448,7 +1448,7 @@ c_function_struct_scalar:
   c_arg_decl:
   - '{c_type} *{c_var}'
   cxx_local_var: result
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1466,7 +1466,7 @@ c_function_vector_scalar_cdesc_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1509,7 +1509,7 @@ c_getter_native_*_cdesc:
   c_helper: ShroudTypeDefines array_context
   call:
   - // skip call c_getter
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1542,7 +1542,7 @@ c_getter_string_scalar_cdesc:
   - '{C_array_type} *{c_var_cdesc}'
   call:
   - // skip call c_getter
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1562,7 +1562,7 @@ c_getter_string_scalar_cdesc:
 c_in_char_**:
   c_arg_decl:
   - char **{c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type(C_PTR), intent(IN) :: {c_var}(*)'
   f_c_arg_names:
   - '{c_var}'
@@ -1579,7 +1579,7 @@ c_in_char_**_buf:
   - int {c_var_len}
   c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -1603,7 +1603,7 @@ c_in_char_**_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}(:)'
   f_c_arg_names:
   - '{c_var}'
@@ -1629,7 +1629,7 @@ c_in_char_*_buf:
   - int {c_var_len}
   c_helper: ShroudStrAlloc ShroudStrFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1653,7 +1653,7 @@ c_in_char_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrAlloc ShroudStrFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1672,7 +1672,7 @@ c_in_char_*_cfi:
 c_in_char_scalar:
   c_arg_decl:
   - char {c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), value, intent(IN) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1685,7 +1685,7 @@ c_in_char_scalar:
 c_in_native_**:
   c_arg_decl:
   - '{cxx_type} **{cxx_var}'
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type(C_PTR), intent(IN), value :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1699,7 +1699,7 @@ c_in_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -1722,7 +1722,7 @@ c_in_native_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -1742,7 +1742,7 @@ c_in_shadow_&:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1756,7 +1756,7 @@ c_in_shadow_*:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1770,7 +1770,7 @@ c_in_shadow_scalar:
   c_arg_decl:
   - '{c_type} {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1793,7 +1793,7 @@ c_in_string_&_buf:
   - int {c_var_len}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1815,7 +1815,7 @@ c_in_string_&_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1845,7 +1845,7 @@ c_in_string_*_buf:
   - int {c_var_len}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1867,7 +1867,7 @@ c_in_string_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1887,7 +1887,7 @@ c_in_string_*_cfi:
 c_in_string_scalar:
   c_arg_decl:
   - char *{c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   f_c_arg_names:
   - '{c_var}'
@@ -1904,7 +1904,7 @@ c_in_string_scalar_buf:
   call:
   - '{cxx_var}'
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -1929,7 +1929,7 @@ c_in_string_scalar_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -1965,7 +1965,7 @@ c_in_vector_&_buf_targ_native_*:
   - size_t {c_var_len}
   - size_t {c_var_size}
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
@@ -1990,7 +1990,7 @@ c_in_vector_&_buf_targ_native_scalar:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   f_c_arg_names:
@@ -2011,7 +2011,7 @@ c_in_vector_&_buf_targ_string_scalar:
   - int {c_var_len}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -2047,7 +2047,7 @@ c_in_vector_*_buf_targ_native_scalar:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   f_c_arg_names:
@@ -2068,7 +2068,7 @@ c_in_vector_*_buf_targ_string_scalar:
   - int {c_var_len}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -2104,7 +2104,7 @@ c_in_vector_scalar_buf_targ_native_scalar:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   f_c_arg_names:
@@ -2125,7 +2125,7 @@ c_in_vector_scalar_buf_targ_string_scalar:
   - int {c_var_len}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -2159,7 +2159,7 @@ c_in_vector_scalar_buf_targ_string_scalar:
 c_in_void_**:
   c_arg_decl:
   - void **{c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
   f_c_arg_names:
   - '{c_var}'
@@ -2173,7 +2173,7 @@ c_in_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2198,7 +2198,7 @@ c_inout_char_*_buf:
   - int {c_var_len}
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -2223,7 +2223,7 @@ c_inout_char_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2252,7 +2252,7 @@ c_inout_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2275,7 +2275,7 @@ c_inout_native_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -2303,7 +2303,7 @@ c_inout_shadow_&:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2317,7 +2317,7 @@ c_inout_shadow_*:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2331,7 +2331,7 @@ c_inout_shadow_scalar:
   c_arg_decl:
   - '{c_type} {c_var}'
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2361,7 +2361,7 @@ c_inout_string_&_buf:
   - int {c_var_len}
   c_helper: ShroudStrCopy ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -2385,7 +2385,7 @@ c_inout_string_&_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2425,7 +2425,7 @@ c_inout_string_*_buf:
   - int {c_var_len}
   c_helper: ShroudStrCopy ShroudLenTrim
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -2449,7 +2449,7 @@ c_inout_string_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2488,7 +2488,7 @@ c_inout_vector_buf_targ_string_scalar:
   - size_t {c_var_size}
   - int {c_var_len}
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -2539,7 +2539,7 @@ c_inout_vector_cdesc_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -2571,7 +2571,7 @@ c_inout_vector_cdesc_targ_native_scalar:
 c_inout_void_**:
   c_arg_decl:
   - void **{c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
   f_c_arg_names:
   - '{c_var}'
@@ -2585,7 +2585,7 @@ c_inout_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2608,7 +2608,7 @@ c_mixin_arg_character_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2625,7 +2625,7 @@ c_mixin_arg_native_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -2642,7 +2642,7 @@ c_mixin_arg_native_cfi:
 c_mixin_function_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2657,7 +2657,7 @@ c_mixin_function_cdesc:
 c_mixin_function_character:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2673,7 +2673,7 @@ c_mixin_in_2d_array_buf:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
@@ -2692,7 +2692,7 @@ c_mixin_in_array_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   f_c_arg_names:
@@ -2708,7 +2708,7 @@ c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -2728,7 +2728,7 @@ c_mixin_in_string_array_buf:
   - const char *{c_var}
   - size_t {c_var_size}
   - int {c_var_len}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -2749,7 +2749,7 @@ c_mixin_inout_array_cdesc:
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -2806,7 +2806,7 @@ c_mixin_out_array_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2822,7 +2822,7 @@ c_mixin_out_array_cdesc-and-cdesc:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_array_type} *{c_var_out}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   - 'type({F_array_type}), intent(OUT) :: {c_var_out}'
   f_c_arg_names:
@@ -2839,7 +2839,7 @@ c_mixin_out_array_cdesc-and-cdesc:
 c_mixin_out_character_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2853,7 +2853,7 @@ c_mixin_out_character_cdesc:
 c_mixin_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2866,7 +2866,7 @@ c_out_char_*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrBlankFill
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -2888,7 +2888,7 @@ c_out_char_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrBlankFill
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -2917,7 +2917,7 @@ c_out_native_*&_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2944,7 +2944,7 @@ c_out_native_**_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -2971,7 +2971,7 @@ c_out_native_**_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -3001,7 +3001,7 @@ c_out_native_**_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
-  f_arg_decl:
+  f_c_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
@@ -3037,7 +3037,7 @@ c_out_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3084,7 +3084,7 @@ c_out_string_&_buf:
   - int {c_var_len}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -3108,7 +3108,7 @@ c_out_string_&_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -3150,7 +3150,7 @@ c_out_string_**_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_string_out_len
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3179,7 +3179,7 @@ c_out_string_**_cdesc_copy:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_string_out
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3205,7 +3205,7 @@ c_out_string_*_buf:
   - int {c_var_len}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:
@@ -3229,7 +3229,7 @@ c_out_string_*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
@@ -3265,7 +3265,7 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3293,7 +3293,7 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: vector_string_out_len
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3321,7 +3321,7 @@ c_out_vector_&_cdesc_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3349,7 +3349,7 @@ c_out_vector_&_cdesc_targ_string_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: vector_string_out
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3370,7 +3370,7 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3398,7 +3398,7 @@ c_out_vector_*_cdesc_targ_native_scalar:
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3427,7 +3427,7 @@ c_out_vector_buf_targ_string_scalar:
   - int {c_var_len}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
   - 'integer(C_INT), intent(IN), value :: {c_var_len}'
@@ -3463,7 +3463,7 @@ c_out_vector_buf_targ_string_scalar:
 c_out_void_**:
   c_arg_decl:
   - void **{c_var}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
   f_c_arg_names:
   - '{c_var}'
@@ -3477,7 +3477,7 @@ c_out_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
-  f_arg_decl:
+  f_c_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
   - '{c_var_cdesc}'
@@ -3522,7 +3522,7 @@ c_setter_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  f_arg_decl:
+  f_c_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   f_c_arg_names:

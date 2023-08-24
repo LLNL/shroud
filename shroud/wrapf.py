@@ -1070,11 +1070,11 @@ rv = .false.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
         """
-        if stmts_blk.f_arg_decl is not None:
+        if stmts_blk.f_c_arg_decl is not None:
             # Use explicit declaration from CStmt, both must exist.
             for name in stmts_blk.f_c_arg_names:
                 append_format(arg_c_names, name, fmt)
-            for arg in stmts_blk.f_arg_decl:
+            for arg in stmts_blk.f_c_arg_decl:
                 append_format(arg_c_decl, arg, fmt)
             self.add_module_from_stmts(stmts_blk, modules, imports, fmt)
         elif stmts_blk.intent == "function":
