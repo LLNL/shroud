@@ -544,12 +544,12 @@ c_ctor_shadow_scalar_capptr:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
+  f_c_result_decl:
+  - type(C_PTR) {F_result_ptr}
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_decl:
-  - type(C_PTR) {F_result_ptr}
   f_result_var: '{F_result_ptr}'
   intent: ctor
   name: c_ctor_shadow_scalar_capptr
@@ -594,11 +594,11 @@ c_function:
   name: c_function
   owner: library
 c_function_char_*:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_char_*
   owner: library
@@ -773,29 +773,29 @@ c_function_char_scalar_cfi:
   temps:
   - cfi
 c_function_native_&:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_native_&
   owner: library
 c_function_native_*:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_native_*
   owner: library
 c_function_native_**:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_native_**
   owner: library
@@ -886,9 +886,9 @@ c_function_native_*_cfi_pointer:
   - extents
   - lower
 c_function_native_*_scalar:
-  f_module_line: iso_c_binding:{f_kind}
-  f_result_decl:
+  f_c_result_decl:
   - '{f_type} :: {c_var}'
+  f_module_line: iso_c_binding:{f_kind}
   intent: function
   name: c_function_native_*_scalar
   owner: library
@@ -901,12 +901,12 @@ c_function_shadow_&_capptr:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
+  f_c_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
   f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_&_capptr
@@ -941,12 +941,12 @@ c_function_shadow_*_capptr:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
+  f_c_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
   f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_*_capptr
@@ -981,12 +981,12 @@ c_function_shadow_scalar_capptr:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
+  f_c_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
   f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_scalar_capptr
@@ -1019,11 +1019,11 @@ c_function_shadow_scalar_capsule:
   - '{cxx_type} * {cxx_var} = new {cxx_type};'
   return_type: void
 c_function_string_&:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_&
   owner: library
@@ -1146,11 +1146,11 @@ c_function_string_&_cfi_allocatable:
   temps:
   - cfi
 c_function_string_*:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_*
   owner: library
@@ -1310,11 +1310,11 @@ c_function_string_*_cfi_pointer:
   temps:
   - cfi
 c_function_string_scalar:
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_scalar
   owner: library
@@ -1429,11 +1429,11 @@ c_function_struct:
     \ *>(\t{cxx_addr}{cxx_var}));"
 c_function_struct_*:
   c_local_var: pointer
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   f_module:
     iso_c_binding:
     - C_PTR
-  f_result_decl:
-  - type(C_PTR) {c_var}
   intent: function
   lang_cxx:
     post_call:

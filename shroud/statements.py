@@ -488,7 +488,7 @@ def lookup_stmts_tree(tree, path):
 #  f_c_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
 #  f_c_arg_names - Empty list is no arguments
-#  f_result_decl - Declaration for function result.
+#  f_c_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
 CStmts = util.Scope(
@@ -513,7 +513,7 @@ CStmts = util.Scope(
     f_c_arg_names=None,
     f_c_arg_decl=None,
 
-    f_result_decl=None,
+    f_c_result_decl=None,
     f_result_var=None,
     f_module=None,
     f_module_line=None,
@@ -1122,14 +1122,14 @@ fc_statements = [
         # c_function_native_&
         # c_function_native_**
         name="c_function_native_*/&/**",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_function_native_*_scalar",
-        f_result_decl=[
+        f_c_result_decl=[
             "{f_type} :: {c_var}",
         ],
         f_module_line="iso_c_binding:{f_kind}",
@@ -1288,7 +1288,7 @@ fc_statements = [
 #        This simpler version had to be replace for pgi and cray.
 #        See below.
 #        name="c_function_char_scalar",
-#        f_result_decl=[
+#        f_c_result_decl=[
 #            "character(kind=C_CHAR) :: {c_var}",
 #        ],
 #        f_module=dict(iso_c_binding=["C_CHAR"]),
@@ -1330,7 +1330,7 @@ fc_statements = [
     
     dict(
         name="c_function_char_*",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -1603,7 +1603,7 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -2327,7 +2327,7 @@ fc_statements = [
             "return {c_var};",
         ],
         f_result_var="{F_result_ptr}",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -2340,7 +2340,7 @@ fc_statements = [
             "return {c_var};",
         ],
         f_result_var="{F_result_ptr}",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -2384,7 +2384,7 @@ fc_statements = [
             "return {c_var};",
         ],
         f_result_var="{F_result_ptr}",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) {F_result_ptr}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -2462,7 +2462,7 @@ fc_statements = [
     dict(
         name="c_function_struct_*",
         base="c_function_struct",
-        f_result_decl=[
+        f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),

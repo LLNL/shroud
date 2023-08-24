@@ -1314,8 +1314,8 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            if c_result_blk.f_result_decl is not None:
-                for arg in c_result_blk.f_result_decl:
+            if c_result_blk.f_c_result_decl is not None:
+                for arg in c_result_blk.f_c_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
                 self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
             elif c_result_blk.return_type:
