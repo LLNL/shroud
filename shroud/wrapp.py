@@ -4556,19 +4556,19 @@ py_statements = [
             pre_call=[
                 "{c_var} = malloc(sizeof({c_type}));",
             ],
+# XXX - should this be used?
+#            dealloc_capsule=[
+#                "free(ptr);",
+#            ],
         ),
         lang_cxx=dict(
             pre_call=[
                 "{cxx_var} = new {cxx_type};",
             ],
+#            dealloc_capsule=[
+#                "delete cxx_ptr;",
+#            ],
         ),
-        # XXX - move into lang clause
-        c_dealloc_capsule=[
-            "free(ptr);",
-        ],
-        cxx_dealloc_capsule=[
-            "delete cxx_ptr;",
-        ],
         post_call=[
             "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
             "if ({py_var} == {nullptr}) goto fail;",
