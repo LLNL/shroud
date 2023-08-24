@@ -530,6 +530,8 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
+    tester1 -- f_tester1
+    tester2 -- f_tester2
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -5131,6 +5133,16 @@ f_setter_string_scalar_buf:
 f_subroutine:
   intent: subroutine
   name: f_subroutine
+f_tester1:
+  intent: tester1
+  lang_c:
+    field2:
+    - this is a test
+    - more test
+  name: f_tester1
+f_tester2:
+  intent: tester2
+  name: f_tester2
 ***** Python
 root
   base

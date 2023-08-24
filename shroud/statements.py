@@ -8,6 +8,20 @@
 """
 import yaml
 
+try:
+    # XXX - python 3.7
+    import importlib.resources
+    def read_yaml_resource(name):
+        fp = importlib.resources.open_binary('shroud', name)
+        stmts = yaml.safe_load(fp)
+        return stmts
+except ImportError:
+    from pkg_resources import resource_filename
+    def read_yaml_resource(name):
+        fp = open(resource_filename('shroud', name), 'rb')
+        stmts = yaml.safe_load(fp)
+        return stmts
+
 from . import util
 
 # The tree of c and fortran statements.
@@ -138,6 +152,9 @@ def update_statements_for_language(language):
     language : str
         "c" or "c++"
     """
+    stmts = read_yaml_resource('fc-statements.yaml')
+    fc_statements.extend(stmts)
+    
     update_for_language(fc_statements, language)
     update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
     
