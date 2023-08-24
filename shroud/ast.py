@@ -2308,6 +2308,7 @@ def add_declarations(parent, node, symtab):
 
             if "fstatements" in dct:
                 dct["fstatements"] = listify(dct["fstatements"], [
+                    "c_pre_call", "c_post_call",
                     "pre_call", "call", "post_call", "final", "ret",
                     "declare",
                     "post_parse",

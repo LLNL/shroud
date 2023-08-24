@@ -773,15 +773,15 @@ class Wrapc(util.WrapperMixin):
         if intent_blk.c_helper:
             self.add_c_helper(intent_blk.c_helper, fmt)
 
-        if intent_blk.pre_call:
+        if intent_blk.c_pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
-            for line in intent_blk.pre_call:
+            for line in intent_blk.c_pre_call:
                 append_format(pre_call, line, fmt)
 
-        if intent_blk.post_call:
+        if intent_blk.c_post_call:
             need_wrapper = True
-            for line in intent_blk.post_call:
+            for line in intent_blk.c_post_call:
                 append_format(post_call, line, fmt)
 
         return need_wrapper

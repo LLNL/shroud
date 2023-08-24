@@ -4151,7 +4151,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
-                        "pre_call": [
+                        "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
@@ -4354,7 +4354,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
-                        "pre_call": [
+                        "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
@@ -4469,7 +4469,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
-                        "pre_call": [
+                        "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
@@ -4694,7 +4694,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
-                        "pre_call": [
+                        "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
@@ -4809,7 +4809,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
-                        "pre_call": [
+                        "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
