@@ -1227,9 +1227,9 @@ rv = .false.
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        if c_result_blk.f_result_var:
+        if c_result_blk.f_c_result_var:
             fmt_func.F_result = wformat(
-                c_result_blk.f_result_var, fmt_func)
+                c_result_blk.f_c_result_var, fmt_func)
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)

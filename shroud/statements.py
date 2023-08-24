@@ -514,7 +514,7 @@ CStmts = util.Scope(
     f_c_arg_decl=None,
 
     f_c_result_decl=None,
-    f_result_var=None,
+    f_c_result_var=None,
     f_module=None,
     f_module_line=None,
     f_import=None,
@@ -2326,7 +2326,7 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        f_result_var="{F_result_ptr}",
+        f_c_result_var="{F_result_ptr}",
         f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
@@ -2339,7 +2339,7 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        f_result_var="{F_result_ptr}",
+        f_c_result_var="{F_result_ptr}",
         f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
@@ -2383,7 +2383,7 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        f_result_var="{F_result_ptr}",
+        f_c_result_var="{F_result_ptr}",
         f_c_result_decl=[
             "type(C_PTR) {F_result_ptr}",
         ],

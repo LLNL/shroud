@@ -546,11 +546,11 @@ c_ctor_shadow_scalar_capptr:
   - '{c_var}'
   f_c_result_decl:
   - type(C_PTR) {F_result_ptr}
+  f_c_result_var: '{F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_var: '{F_result_ptr}'
   intent: ctor
   name: c_ctor_shadow_scalar_capptr
   owner: caller
@@ -903,11 +903,11 @@ c_function_shadow_&_capptr:
   - '{c_var}'
   f_c_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
+  f_c_result_var: '{F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_&_capptr
   owner: library
@@ -943,11 +943,11 @@ c_function_shadow_*_capptr:
   - '{c_var}'
   f_c_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
+  f_c_result_var: '{F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_*_capptr
   owner: library
@@ -983,11 +983,11 @@ c_function_shadow_scalar_capptr:
   - '{c_var}'
   f_c_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
+  f_c_result_var: '{F_result_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
   f_module_line: '{f_c_module_line}'
-  f_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_scalar_capptr
   owner: caller
