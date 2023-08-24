@@ -515,9 +515,9 @@ CStmts = util.Scope(
 
     f_c_result_decl=None,
     f_c_result_var=None,
-    f_module=None,
-    f_module_line=None,
-    f_import=None,
+    f_c_module=None,
+    f_c_module_line=None,
+    f_c_import=None,
     temps=None,
     local=None,
 
@@ -601,7 +601,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_import=["{F_array_type}"],
+        f_c_import=["{F_array_type}"],
         return_type="void",  # Convert to function.
         temps=["cdesc"],
 ###        f_c_arg_names=["{c_var}"],
@@ -676,7 +676,7 @@ fc_statements = [
             "{f_type}, intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         temps=["size"],
     ),
     dict(
@@ -693,7 +693,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_len}",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         temps=["len", "size"],
     ),
 
@@ -727,8 +727,8 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        f_import=["{F_array_type}"],
-        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        f_c_import=["{F_array_type}"],
+        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         temps=["size", "cdesc"],
     ),
 
@@ -753,7 +753,7 @@ fc_statements = [
         f_c_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        f_import=["{F_array_type}"],
+        f_c_import=["{F_array_type}"],
         temps=["cdesc"],
     ),
     dict(
@@ -772,7 +772,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
             "type({F_array_type}), intent(OUT) :: {c_var_out}",
         ],
-        f_import=["{F_array_type}"],
+        f_c_import=["{F_array_type}"],
         temps=["cdesc", "out"],
     ),
 
@@ -801,7 +801,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
             "integer(C_INT), intent(IN), value :: {c_var_len}",
         ],
-        f_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
+        f_c_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
         temps=["size", "len"],
     ),
 
@@ -817,7 +817,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_import=["{F_array_type}"],
+        f_c_import=["{F_array_type}"],
 #        return_type="void",  # Only difference from c_mixin_function_buf
         temps=["cdesc"],
     ),
@@ -862,7 +862,7 @@ fc_statements = [
             "character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)",
             "integer(C_INT), value, intent(IN) :: {c_var_len}",
         ],
-        f_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
+        f_c_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
         temps=["len"],
     ),
 
@@ -910,7 +910,7 @@ fc_statements = [
             "type(C_PTR), intent(IN), value :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # double **count _intent(out)+dimension(ncount)
@@ -1106,7 +1106,7 @@ fc_statements = [
             "type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_in/out/inout_void_**",
@@ -1125,14 +1125,14 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_function_native_*_scalar",
         f_c_result_decl=[
             "{f_type} :: {c_var}",
         ],
-        f_module_line="iso_c_binding:{f_kind}",
+        f_c_module_line="iso_c_binding:{f_kind}",
     ),
     # Function has a result with deref(allocatable).
     #
@@ -1274,7 +1274,7 @@ fc_statements = [
             "character(kind=C_CHAR), value, intent(IN) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_CHAR"]),
+        f_c_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
         name="f_in_char_scalar",
@@ -1291,7 +1291,7 @@ fc_statements = [
 #        f_c_result_decl=[
 #            "character(kind=C_CHAR) :: {c_var}",
 #        ],
-#        f_module=dict(iso_c_binding=["C_CHAR"]),
+#        f_c_module=dict(iso_c_binding=["C_CHAR"]),
 #    ),
     dict(
         name="f_function_char_scalar",
@@ -1312,7 +1312,7 @@ fc_statements = [
             "character(kind=C_CHAR), intent(OUT) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_CHAR"]),
+        f_c_module=dict(iso_c_binding=["C_CHAR"]),
         return_type="void",  # Convert to function.
     ),
 #    dict(
@@ -1333,7 +1333,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL terminate the input string.
@@ -1442,7 +1442,7 @@ fc_statements = [
             "type(C_PTR), intent(IN) :: {c_var}(*)",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name='f_in_char_**_buf',
@@ -1606,7 +1606,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # No need to allocate a local copy since the string is copied
@@ -1658,7 +1658,7 @@ fc_statements = [
             "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module=dict(iso_c_binding=["C_CHAR"]),
+        f_c_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
         name="f_in_string_scalar_buf",
@@ -2238,7 +2238,7 @@ fc_statements = [
             "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        f_module_line="{f_c_module_line}",
+        f_c_module_line="{f_c_module_line}",
     ),
     
     dict(
@@ -2330,7 +2330,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_function_shadow_scalar_capptr",
@@ -2343,7 +2343,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     
     dict(
@@ -2387,7 +2387,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) {F_result_ptr}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_ctor_shadow_scalar_capsule",
@@ -2449,7 +2449,7 @@ fc_statements = [
         c_arg_decl=["{c_type} *{c_var}"],
         f_c_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
         f_c_arg_names=["{c_var}"],
-        f_import=["{f_kind}"],
+        f_c_import=["{f_kind}"],
         return_type="void",  # Convert to function.
         cxx_local_var="result",
         post_call=[
@@ -2465,7 +2465,7 @@ fc_statements = [
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_function_struct_*_pointer",
@@ -2650,7 +2650,7 @@ fc_statements = [
         f_c_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
         ],
-        f_module_line="iso_c_binding:{f_kind}",
+        f_c_module_line="iso_c_binding:{f_kind}",
         f_c_arg_names=["{c_var}"],
 #        pre_call=[
 #            "{c_type} *{cxx_var} = "

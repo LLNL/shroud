@@ -755,7 +755,7 @@ rv = .false.
             append_format(lst, line, fmt)
         return True
 
-    def add_module_from_stmts(self, stmt, modules, imports, fmt):
+    def add_f_module_from_stmts(self, stmt, modules, imports, fmt):
         """Add USE/IMPORT statements defined in stmt.
 
         Parameters
@@ -775,6 +775,29 @@ rv = .false.
                 modules, imports, stmt.f_module_line, fmt)
         if stmt.f_import:
             for name in stmt.f_import:
+                iname = wformat(name, fmt)
+                imports[iname] = True
+
+    def add_f_c_module_from_stmts(self, stmt, modules, imports, fmt):
+        """Add USE/IMPORT statements defined in stmt.
+
+        Parameters
+        ----------
+        stmt : Scope
+        modules : dict
+            Indexed as [module][symbol]
+        imports : dict
+            Indexed as [symbol]
+        fmt : Scope
+        """
+        if stmt.f_c_module:
+            self.update_f_module(
+                modules, imports, stmt.f_c_module)
+        if stmt.f_c_module_line:
+            self.update_f_module_line(
+                modules, imports, stmt.f_c_module_line, fmt)
+        if stmt.f_c_import:
+            for name in stmt.f_c_import:
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
@@ -1076,7 +1099,7 @@ rv = .false.
                 append_format(arg_c_names, name, fmt)
             for arg in stmts_blk.f_c_arg_decl:
                 append_format(arg_c_decl, arg, fmt)
-            self.add_module_from_stmts(stmts_blk, modules, imports, fmt)
+            self.add_f_c_module_from_stmts(stmts_blk, modules, imports, fmt)
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
@@ -1317,7 +1340,7 @@ rv = .false.
             if c_result_blk.f_c_result_decl is not None:
                 for arg in c_result_blk.f_c_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
-                self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
+                self.add_f_c_module_from_stmts(c_result_blk, modules, imports, fmt_result)
             elif c_result_blk.return_type:
                 # Return type changed by user.
                 ntypemap = self.symtab.lookup_typemap(c_result_blk.return_type)
@@ -1461,7 +1484,7 @@ rv = .false.
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.add_module_from_stmts(intent_blk, modules, imports, fmt)
+        self.add_f_module_from_stmts(intent_blk, modules, imports, fmt)
 
         if intent_blk.c_helper:
             fileinfo.add_c_helper(intent_blk.c_helper, fmt)
@@ -1901,7 +1924,7 @@ rv = .false.
                         f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
                     if not f_result_blk.arg_name:
                         arg_f_names.append(fmt_arg.f_var)
-                    self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
+                    self.add_f_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
                     # Generate declaration from argument.
                     if options.F_default_args == "optional" and c_arg.declarator.init is not None:
