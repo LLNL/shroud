@@ -540,9 +540,9 @@ FStmts = util.Scope(
     f_module_line=None,
     f_import=None,
     need_wrapper=False,
-    arg_name=None,
-    arg_decl=None,
-    arg_c_call=None,
+    f_arg_name=None,
+    f_arg_decl=None,
+    f_arg_call=None,
     declare=[], pre_call=[], call=[], post_call=[],
     result=None,  # name of result variable
     temps=None,
@@ -583,7 +583,7 @@ fc_statements = [
     ),
     dict(
         name="f_subroutine",
-        arg_c_call=[],
+        f_arg_call=[],
     ),
 
     dict(
@@ -615,7 +615,7 @@ fc_statements = [
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
+        f_arg_call=["{c_var_cdesc}"],  # Pass result as an argument.
         temps=["cdesc"],
         need_wrapper=True,
     ),
@@ -623,10 +623,10 @@ fc_statements = [
     dict(
         # Pass function result as a capsule argument from Fortran to C.
         name="f_mixin_function_shadow_capsule",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type} :: {f_var}",
         ],
-        arg_c_call=[
+        f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
         need_wrapper=True,
@@ -634,11 +634,11 @@ fc_statements = [
     dict(
         # Pass function result as a capsule argument from Fortran to C.
         name="f_mixin_function_shadow_capptr",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type} :: {f_var}",
             "type(C_PTR) :: {F_result_ptr}",
         ],
-        arg_c_call=[
+        f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -651,17 +651,17 @@ fc_statements = [
     dict(
         # Pass argument and size to C.
         name="f_mixin_in_array_buf",
-        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
+        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         need_wrapper=True,
     ),
     dict(
         # Pass argument, len and size to C.
         name="f_mixin_in_2d_array_buf",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}(:,:)",
         ],
-        arg_c_call=["{f_var}",
+        f_arg_call=["{f_var}",
                     "size({f_var}, 1, kind=C_SIZE_T)",
                     "size({f_var}, 2, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -708,7 +708,7 @@ fc_statements = [
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
+        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         temps=["cdesc"],
     ),
@@ -742,7 +742,7 @@ fc_statements = [
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{c_var_cdesc}"],
+        f_arg_call=["{c_var_cdesc}"],
         temps=["cdesc"],
     ),
     dict(
@@ -782,7 +782,7 @@ fc_statements = [
     dict(
         # Pass argument, size and len to C.
         name="f_mixin_in_string_array_buf",
-        arg_c_call=[
+        f_arg_call=[
             "{f_var}",
             "size({f_var}, kind=C_SIZE_T)",
             "len({f_var}, kind=C_INT)"
@@ -837,14 +837,14 @@ fc_statements = [
         pre_call=[
             "{c_var_len} = len({f_var}, kind=C_INT)",
         ],
-        arg_c_call=["{f_var}", "{c_var_len}"],
+        f_arg_call=["{f_var}", "{c_var_len}"],
 
         # XXX - statements.yaml getNameErrorPattern pgi reports an error
         # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
         # By breaking it out as an explicit assign, the error goes away.
         # Only difference from other uses is setting
         # function attribute +len(get_name_length())
-#        arg_c_call=[
+#        f_arg_call=[
 #            "{f_var}",
 #            "len({f_var}, kind=C_INT)",
 #        ],
@@ -897,7 +897,7 @@ fc_statements = [
     # native
     dict(
         name="f_out_native_*",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
@@ -952,7 +952,7 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array",
 #XXX        f_helper="copy_array_{c_type}",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
@@ -970,7 +970,7 @@ fc_statements = [
         # f_out_native_*&_cdesc_pointer
         name="f_out_native_**/*&_cdesc_pointer",
         mixin=["f_mixin_out_array_cdesc"],
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
@@ -981,7 +981,7 @@ fc_statements = [
     dict(
         # Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
         name="f_out_native_**_raw",
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -1025,7 +1025,7 @@ fc_statements = [
         name="f_in/out/inout_native_*_cdesc",
         mixin=["f_mixin_out_array_cdesc"],
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="ShroudTypeDefines array_context",
@@ -1070,7 +1070,7 @@ fc_statements = [
     dict(
         name="f_in_void_*",
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR), intent(IN) :: {f_var}",
         ],
     ),
@@ -1078,7 +1078,7 @@ fc_statements = [
         # return a type(C_PTR)
         name="f_function_void_*",
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
     ),
@@ -1114,7 +1114,7 @@ fc_statements = [
     dict(
         name="f_in/out/inout_void_**",
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
@@ -1174,7 +1174,7 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -1189,7 +1189,7 @@ fc_statements = [
         # type(C_PTR) is returned instead of a cdesc argument.
         name="f_function_native_*_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
         ],
         declare=[
@@ -1209,7 +1209,7 @@ fc_statements = [
         name="f_function/getter_native_*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -1222,8 +1222,8 @@ fc_statements = [
         mixin=["f_mixin_function_cdesc"],
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
-        arg_name=["{c_var_capsule}"],
-        arg_decl=[
+        f_arg_name=["{c_var_capsule}"],
+        f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
             "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
         ],
@@ -1234,7 +1234,7 @@ fc_statements = [
     ),
     dict(
         name="f_function_native_*_raw",
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
     ),
@@ -1243,7 +1243,7 @@ fc_statements = [
         # regardless of deref value.
         name="f_function_native_**",
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
     ),
@@ -1255,7 +1255,7 @@ fc_statements = [
     dict(
         name="f_function_native_&_buf_pointer",
         base="f_function_native_*_pointer",   # XXX - change base to &?
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
     ),
@@ -1282,7 +1282,7 @@ fc_statements = [
     dict(
         name="f_in_char_scalar",
         # By default the declaration is character(LEN=*).
-        arg_decl=[
+        f_arg_decl=[
             "character, value, intent(IN) :: {f_var}",
         ],
     ),
@@ -1298,7 +1298,7 @@ fc_statements = [
 #    ),
     dict(
         name="f_function_char_scalar",
-        arg_c_call=["{c_var}"],  # Pass result as an argument.
+        f_arg_call=["{c_var}"],  # Pass result as an argument.
     ),
     dict(
         # Pass result as an argument.
@@ -1430,7 +1430,7 @@ fc_statements = [
     dict(
         # char *func() +deref(raw)
         name="f_function_char_*_raw",
-        arg_decl=[
+        f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
     ),
@@ -1472,7 +1472,7 @@ fc_statements = [
         mixin=["f_mixin_function_cdesc"],
         c_helper="copy_string",
         f_helper="copy_string array_context",
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
@@ -1488,7 +1488,7 @@ fc_statements = [
         name="f_function_char/string_scalar/*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
         f_helper="pointer_string array_context",
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
@@ -1643,7 +1643,7 @@ fc_statements = [
         name="f_XXXin_string_scalar",  # pairs with c_in_string_scalar_buf
         need_wrapper=True,
         mixin=["f_mixin_in_character_buf"],
-        arg_decl=[
+        f_arg_decl=[
             # Remove VALUE added by f_default
             "character(len=*), intent(IN) :: {f_var}",
         ],
@@ -1666,7 +1666,7 @@ fc_statements = [
     dict(
         name="f_in_string_scalar_buf",
         mixin=["f_mixin_in_character_buf"],
-        arg_decl=[
+        f_arg_decl=[
             # Remove VALUE added by f_default
             "character(len=*), intent({f_intent}) :: {f_var}",
         ],
@@ -1752,7 +1752,7 @@ fc_statements = [
         mixin=["f_mixin_function_cdesc"],
         c_helper="copy_string",
         f_helper="copy_string array_context",
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
@@ -2014,8 +2014,8 @@ fc_statements = [
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
-#        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
-        arg_c_call=["{c_var_cdesc}"],
+#        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
+        f_arg_call=["{c_var_cdesc}"],
 #        f_module=dict(iso_c_binding=["C_SIZE_T"]),
         temps=["cdesc"],
     ),
@@ -2027,7 +2027,7 @@ fc_statements = [
         mixin=["f_mixin_out_array_cdesc"],
 
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="ShroudTypeDefines array_context",
@@ -2046,7 +2046,7 @@ fc_statements = [
             "{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
 #            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
-        arg_c_call=["{c_var_cdesc}"],
+        f_arg_call=["{c_var_cdesc}"],
         temps=["cdesc"],
     ),
 
@@ -2073,7 +2073,7 @@ fc_statements = [
     # 
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        arg_decl=[
+        f_arg_decl=[
             "character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="vector_string_allocatable array_context capsule_data_helper",
@@ -2083,7 +2083,7 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
             "type({F_array_type}) :: {c_var_out}",
         ],
-        arg_c_call=["{c_var_out}"],
+        f_arg_call=["{c_var_out}"],
         post_call=[
             "{c_var_cdesc}%size = {c_var_out}%size;",
             "{c_var_cdesc}%elem_len = {c_var_out}%elem_len",
@@ -2142,7 +2142,7 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array",
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
@@ -2157,7 +2157,7 @@ fc_statements = [
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -2171,7 +2171,7 @@ fc_statements = [
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -2188,7 +2188,7 @@ fc_statements = [
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -2203,7 +2203,7 @@ fc_statements = [
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         # TARGET required for argument to C_LOC.
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -2220,7 +2220,7 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
@@ -2246,10 +2246,10 @@ fc_statements = [
     
     dict(
         name="f_in_shadow",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}",
         ],
-        arg_c_call=[
+        f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
         need_wrapper=True,
@@ -2365,7 +2365,7 @@ fc_statements = [
     ),
     dict(
         name="f_dtor",
-        arg_c_call=[],
+        f_arg_call=[],
     ),
     dict(
         name="c_ctor_shadow_scalar_capsule",
@@ -2445,7 +2445,7 @@ fc_statements = [
     # start function_struct_scalar
     dict(
         name="f_function_struct_scalar",
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
     dict(
         name="c_function_struct_scalar",
@@ -2507,7 +2507,7 @@ fc_statements = [
     ),
     dict(
         name="f_setter",
-        arg_c_call=[],
+        f_arg_call=[],
     ),
 
     dict(
@@ -2521,7 +2521,7 @@ fc_statements = [
     ),
     dict(
         name="f_setter_native",
-        arg_c_call=["{c_var}"],
+        f_arg_call=["{c_var}"],
         # f_setter is intended for the function, this is for an argument.
     ),
     dict(
@@ -2593,10 +2593,10 @@ fc_statements = [
         # f_function_char_*_cfi_allocatable
         name="f_function_char_scalar/*_cfi_allocatable",
         need_wrapper=True,
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        arg_c_call=["{f_var}"],  # Pass result as an argument.
+        f_arg_call=["{f_var}"],  # Pass result as an argument.
     ),
     dict(
         # Add allocatable attribute to declaration.
@@ -2604,10 +2604,10 @@ fc_statements = [
         # f_function_char_*_cfi_allocatable
         name="f_function_char_scalar/*_cfi_pointer",
         need_wrapper=True,
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
         ],
-        arg_c_call=["{f_var}"],  # Pass result as an argument.
+        f_arg_call=["{f_var}"],  # Pass result as an argument.
     ),
     
     dict(
@@ -2786,7 +2786,7 @@ fc_statements = [
     dict(
         # Copy result into caller's buffer.
         name="f_function_char_*_cfi",
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
         need_wrapper=True,
     ),
     dict(
@@ -3085,7 +3085,7 @@ fc_statements = [
         # is returning an CHARACTER, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
         need_wrapper=True,
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
     # similar to f_char_scalar_allocatable
     dict(
@@ -3097,10 +3097,10 @@ fc_statements = [
         # is returning an allocatable, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
         need_wrapper=True,
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
     dict(
         # f_function_string_scalar_cfi_pointer
@@ -3111,10 +3111,10 @@ fc_statements = [
         # is returning an pointer, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
         need_wrapper=True,
-        arg_decl=[
+        f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
         ],
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
 
     ##########
@@ -3153,7 +3153,7 @@ fc_statements = [
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
         name="f_out_string_**_cdesc_allocatable",
-        arg_decl=[
+        f_arg_decl=[
             "character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["C_LOC"]),
@@ -3161,7 +3161,7 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
             "type({F_array_type}) :: {c_var_out}",
         ],
-        arg_c_call=["{c_var_out}"],
+        f_arg_call=["{c_var_out}"],
         post_call=[
             "{c_var_cdesc}%size = {c_var_out}%size;",
             "{c_var_cdesc}%elem_len = {c_var_out}%elem_len;",
@@ -3247,10 +3247,10 @@ fc_statements = [
     dict(
         # Pass result as an argument to C wrapper.
         name="f_function_native_*_cfi_allocatable",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
         ],
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
     dict(
         # Convert to subroutine and pass result as an argument.
@@ -3271,13 +3271,13 @@ fc_statements = [
     dict(
         # Pass result as an argument to C wrapper.
         name="f_function_native_*_cfi_pointer",
-        arg_decl=[
+        f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         pre_call=[
             "nullify({f_var})",
         ],
-        arg_c_call=["{f_var}"],
+        f_arg_call=["{f_var}"],
     ),
     dict(
         # Convert to subroutine and pass result as an argument.

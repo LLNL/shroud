@@ -735,12 +735,12 @@ rv = .false.
         Return True if arg_decl found.
         """
         found = False
-        if stmts.arg_decl:
+        if stmts.f_arg_decl:
             found = True
-            for line in stmts.arg_decl:
+            for line in stmts.f_arg_decl:
                 append_format(arg_f_decl, line, fmt)
-        if stmts.arg_name:
-            for aname in stmts.arg_name:
+        if stmts.f_arg_name:
+            for aname in stmts.f_arg_name:
                 append_format(arg_f_names, aname, fmt)
         return found
 
@@ -1429,8 +1429,8 @@ rv = .false.
         return need_wrapper
         A wrapper will be needed if there is meta data.
         """
-        if stmts_blk.arg_c_call is not None:
-            for arg in stmts_blk.arg_c_call:
+        if stmts_blk.f_arg_call is not None:
+            for arg in stmts_blk.f_arg_call:
                 append_format(arg_c_call, arg, fmt)
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
@@ -1918,11 +1918,11 @@ rv = .false.
                     # Argument is not passed into Fortran.
                     # hidden value is used in C wrapper.
                     continue
-                elif f_intent_blk.arg_decl:
+                elif f_intent_blk.f_arg_decl:
                     # Explicit declarations from fc_statements.
                     self.add_stmt_declaration(
                         f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
-                    if not f_result_blk.arg_name:
+                    if not f_result_blk.f_arg_name:
                         arg_f_names.append(fmt_arg.f_var)
                     self.add_f_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
@@ -2018,7 +2018,7 @@ rv = .false.
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        # Unless explicitly set by FStmts.arg_decl
+        # Unless explicitly set by FStmts.f_arg_decl
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
