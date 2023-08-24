@@ -149,30 +149,23 @@ def update_for_language(stmts, lang):
     stmts=[
       dict(
         name='foo_bar',
-        c_declare=[],
-        cxx_declare=[],
+        lang_c=dict(
+          declare=[],
+        ),
+        lang_cxx=dict(
+          declare=[],
+        ),
       ),
       ...
     ]
 
     For lang==c,
-      foo_bar["declare"] = foo_bar["c_declare"]
+      foo_bar.update(foo_bar["lang_c"])
     """
+    specific = "lang_" + lang
     for item in stmts:
-        for clause in [
-                "impl_header",
-                "cxx_local_var",
-                "declare",
-                "post_parse",
-                "pre_call",
-                "post_call",
-                "cleanup",
-                "fail",
-        ]:
-            specific = lang + "_" + clause
-            if specific in item:
-                # XXX - maybe make sure clause does not already exist.
-                item[clause] = item[specific]
+        if specific in item:
+            item.update(item[specific])
 
 
 def compute_stmt_permutations(out, parts):
@@ -425,6 +418,10 @@ def print_tree_statements(fp, statements, defaults):
                 continue
             if value[key]:
                 all[key] = value[key]
+        for key in ["lang_c", "lang_cxx"]:
+            val = value.get(key, None)
+            if val:
+                all[key] = val
         complete[name] = all
     yaml.safe_dump(complete, fp)
             
@@ -987,15 +984,19 @@ fc_statements = [
         ],
         
 #        c_helper="ShroudTypeDefines",
-        c_pre_call=[
-            "{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;",
-        ],
-        cxx_pre_call=[
+        lang_c=dict(
+            pre_call=[
+                "{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
 #            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
 #            "({c_var_cdesc}->addr.base);",
-            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-            "(const_cast<void *>({c_var_cdesc}->addr.base));",
-        ],
+                "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
+                "(const_cast<void *>({c_var_cdesc}->addr.base));",
+            ],
+        ),
     ),
     dict(
         # f_in_native_*_cdesc
@@ -1301,7 +1302,9 @@ fc_statements = [
 #        # Blank fill result.
 #        name="c_XXXfunction_char_scalar_buf",
 #        c_impl_header=["<string.h>"],
-#        cxx_impl_header=["<cstring>"],
+#        lang_cxx=dict(
+#            impl_header=["<cstring>"],
+#        ),
 #        post_call=[
 #            "{stdlib}memset({c_var}, ' ', {c_var_len});",
 #            "{c_var}[0] = {cxx_var};",
@@ -1491,7 +1494,9 @@ fc_statements = [
         # c_out_string_*
         # c_out_string_&
         name="c_out_string_*/&",
-        cxx_impl_header=["<cstring>"],
+        lang_cxx=dict(
+            impl_header=["<cstring>"],
+        ),
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
         # #-     ],
@@ -1506,7 +1511,9 @@ fc_statements = [
         # c_inout_string_*
         # c_inout_string_&
         name="c_inout_string_*/&",
-        cxx_impl_header=["<cstring>"],
+        lang_cxx=dict(
+            impl_header=["<cstring>"],
+        ),
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
         post_call=[
@@ -2377,8 +2384,12 @@ fc_statements = [
         # NULL in stddef.h
         name="c_dtor",
         mixin=["c_mixin_noargs"],
-        c_impl_header=["<stddef.h>"],
-        cxx_impl_header=["<cstddef>"],
+        lang_c=dict(
+            impl_header=["<stddef.h>"],
+        ),
+        lang_cxx=dict(
+            impl_header=["<cstddef>"],
+        ),
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
@@ -2393,18 +2404,22 @@ fc_statements = [
         # c_out_struct
         # c_inout_struct
         name="c_in/out/inout_struct",
-        cxx_cxx_local_var="pointer", # cxx_local_var only used with C++
-        cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-        ],
+        lang_cxx=dict(
+            cxx_local_var="pointer", # cxx_local_var only used with C++
+            pre_call=[
+                "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
+            ],
+        ),
     ),
     dict(
         name="c_function_struct",
         # C++ pointer -> void pointer -> C pointer
         c_local_var="pointer",
-        cxx_post_call=[
-            "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
-        ],
+        lang_cxx=dict(
+            post_call=[
+                "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
+            ],
+        ),
     ),
 
     # start function_struct_scalar
@@ -2733,8 +2748,12 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        c_impl_header=["<string.h>"],
-        cxx_impl_header=["<cstring>"],
+        lang_c=dict(
+            impl_header=["<string.h>"],
+        ),
+        lang_cxx=dict(
+            impl_header=["<cstring>"],
+        ),
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin        
         post_call=[
@@ -2960,8 +2979,12 @@ fc_statements = [
         ],
         return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
-        c_impl_header=["<string.h>"],
-        cxx_impl_header=["<cstring>"],
+        lang_c=dict(
+            impl_header=["<string.h>"],
+        ),
+        lang_cxx=dict(
+            impl_header=["<cstring>"],
+        ),
         post_call=[
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",

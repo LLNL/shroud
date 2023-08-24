@@ -578,6 +578,12 @@ c_dtor:
   impl_header:
   - <cstddef>
   intent: dtor
+  lang_c:
+    impl_header:
+    - <stddef.h>
+  lang_cxx:
+    impl_header:
+    - <cstddef>
   name: c_dtor
   owner: library
   return_type: void
@@ -750,6 +756,12 @@ c_function_char_scalar_cfi:
   impl_header:
   - <cstring>
   intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_function_char_scalar_cfi
   owner: library
   post_call:
@@ -1114,6 +1126,12 @@ c_function_string_&_cfi_allocatable:
   impl_header:
   - <cstring>
   intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_function_string_&_cfi_allocatable
   owner: library
   post_call:
@@ -1235,6 +1253,12 @@ c_function_string_*_cfi_allocatable:
   impl_header:
   - <cstring>
   intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_function_string_*_cfi_allocatable
   owner: library
   post_call:
@@ -1392,6 +1416,10 @@ c_function_string_scalar_cfi_allocatable:
 c_function_struct:
   c_local_var: pointer
   intent: function
+  lang_cxx:
+    post_call:
+    - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+      \ *>(\t{cxx_addr}{cxx_var}));"
   name: c_function_struct
   owner: library
   post_call:
@@ -1405,6 +1433,10 @@ c_function_struct_*:
   f_result_decl:
   - type(C_PTR) {c_var}
   intent: function
+  lang_cxx:
+    post_call:
+    - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+      \ *>(\t{cxx_addr}{cxx_var}));"
   name: c_function_struct_*
   owner: library
   post_call:
@@ -1672,6 +1704,12 @@ c_in_native_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: in
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_in_native_*_cdesc
   owner: library
   pre_call:
@@ -1909,6 +1947,11 @@ c_in_string_scalar_cfi:
 c_in_struct:
   cxx_local_var: pointer
   intent: in
+  lang_cxx:
+    cxx_local_var: pointer
+    pre_call:
+    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
+      \ *>(\t{c_addr}{c_var}));"
   name: c_in_struct
   owner: library
   pre_call:
@@ -2135,6 +2178,12 @@ c_in_void_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: in
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_in_void_*_cdesc
   owner: library
   pre_call:
@@ -2208,6 +2257,12 @@ c_inout_native_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: inout
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_inout_native_*_cdesc
   owner: library
   pre_call:
@@ -2289,6 +2344,9 @@ c_inout_string_&:
   impl_header:
   - <cstring>
   intent: inout
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_inout_string_&
   owner: library
   post_call:
@@ -2350,6 +2408,9 @@ c_inout_string_*:
   impl_header:
   - <cstring>
   intent: inout
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_inout_string_*
   owner: library
   post_call:
@@ -2409,6 +2470,11 @@ c_inout_string_*_cfi:
 c_inout_struct:
   cxx_local_var: pointer
   intent: inout
+  lang_cxx:
+    cxx_local_var: pointer
+    pre_call:
+    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
+      \ *>(\t{c_addr}{c_var}));"
   name: c_inout_struct
   owner: library
   pre_call:
@@ -2524,6 +2590,12 @@ c_inout_void_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: inout
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_inout_void_*_cdesc
   owner: library
   pre_call:
@@ -2970,6 +3042,12 @@ c_out_native_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: out
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_out_native_*_cdesc
   owner: library
   pre_call:
@@ -2989,6 +3067,9 @@ c_out_string_&:
   impl_header:
   - <cstring>
   intent: out
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_out_string_&
   owner: library
   post_call:
@@ -3047,6 +3128,9 @@ c_out_string_*:
   impl_header:
   - <cstring>
   intent: out
+  lang_cxx:
+    impl_header:
+    - <cstring>
   name: c_out_string_*
   owner: library
   post_call:
@@ -3163,6 +3247,11 @@ c_out_string_*_cfi:
 c_out_struct:
   cxx_local_var: pointer
   intent: out
+  lang_cxx:
+    cxx_local_var: pointer
+    pre_call:
+    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
+      \ *>(\t{c_addr}{c_var}));"
   name: c_out_struct
   owner: library
   pre_call:
@@ -3393,6 +3482,12 @@ c_out_void_*_cdesc:
   f_import:
   - '{F_array_type}'
   intent: out
+  lang_c:
+    pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_out_void_*_cdesc
   owner: library
   pre_call:
@@ -5626,6 +5721,12 @@ py_function_shadow_scalar:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: function
+  lang_c:
+    pre_call:
+    - '{c_var} = malloc(sizeof({c_type}));'
+  lang_cxx:
+    pre_call:
+    - '{cxx_var} = new {cxx_type};'
   name: py_function_shadow_scalar
   object_created: true
   post_call:
@@ -5828,6 +5929,12 @@ py_in_native_*_pointer_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: in
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_in_native_*_pointer_numpy
   need_numpy: true
   parse_args:
@@ -5920,6 +6027,12 @@ py_in_struct_&_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: in
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_in_struct_&_numpy
   need_numpy: true
   parse_args:
@@ -5960,6 +6073,12 @@ py_in_struct_*_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: in
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_in_struct_*_numpy
   need_numpy: true
   parse_args:
@@ -6005,6 +6124,12 @@ py_in_struct_scalar_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: in
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_in_struct_scalar_numpy
   need_numpy: true
   parse_args:
@@ -6172,6 +6297,12 @@ py_inout_native_*_pointer_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: inout
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_inout_native_*_pointer_numpy
   need_numpy: true
   object_created: true
@@ -6247,6 +6378,12 @@ py_inout_struct_&_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: inout
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_inout_struct_&_numpy
   need_numpy: true
   object_created: true
@@ -6286,6 +6423,12 @@ py_inout_struct_*_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: inout
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_inout_struct_*_numpy
   need_numpy: true
   object_created: true
@@ -6466,6 +6609,21 @@ py_out_native_*_allocatable_list:
   - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));"
+    - if ({cxx_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) *\
+      \ ({array_size})));"
+    - if ({cxx_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
   name: py_out_native_*_allocatable_list
   object_created: true
   post_call:
@@ -6486,6 +6644,12 @@ py_out_native_*_allocatable_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_out_native_*_allocatable_numpy
   need_numpy: true
   object_created: true
@@ -6519,6 +6683,21 @@ py_out_native_*_pointer_list:
   - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));"
+    - if ({cxx_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) *\
+      \ ({array_size})));"
+    - if ({cxx_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
   name: py_out_native_*_pointer_list
   object_created: true
   post_call:
@@ -6539,6 +6718,12 @@ py_out_native_*_pointer_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_out_native_*_pointer_numpy
   need_numpy: true
   object_created: true
@@ -6603,6 +6788,12 @@ py_out_struct_&_class:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = malloc(sizeof({c_type}));'
+  lang_cxx:
+    pre_call:
+    - '{cxx_var} = new {cxx_type};'
   name: py_out_struct_&_class
   object_created: true
   post_call:
@@ -6621,6 +6812,12 @@ py_out_struct_&_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_out_struct_&_numpy
   need_numpy: true
   object_created: true
@@ -6645,6 +6842,12 @@ py_out_struct_*_class:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = malloc(sizeof({c_type}));'
+  lang_cxx:
+    pre_call:
+    - '{cxx_var} = new {cxx_type};'
   name: py_out_struct_*_class
   object_created: true
   post_call:
@@ -6668,6 +6871,12 @@ py_out_struct_*_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
   name: py_out_struct_*_numpy
   need_numpy: true
   object_created: true

@@ -3863,12 +3863,16 @@ py_statements = [
             # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
             # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         arg_call=["{c_var}"],
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
@@ -3892,12 +3896,16 @@ py_statements = [
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         arg_call=["{c_var}"],
         object_created=True,
         fail=[
@@ -3920,12 +3928,16 @@ py_statements = [
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
             "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         arg_call=["{c_var}"],
         object_created=True,
         fail=[
@@ -4083,12 +4095,16 @@ py_statements = [
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
-        c_pre_call=[
-            "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
-        ] + malloc_error,
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
-        ] + malloc_error,
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
+            ] + malloc_error,
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
+            ] + malloc_error,
+        ),
         arg_call=["{c_var}"],
         post_call=[
             "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
@@ -4363,12 +4379,16 @@ py_statements = [
             "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
         ],
@@ -4398,12 +4418,16 @@ py_statements = [
             "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
@@ -4429,12 +4453,16 @@ py_statements = [
             "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
             "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
         ] + array_error,
-        c_pre_call=[
-            "{c_var} = PyArray_DATA({py_var});",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
@@ -4524,14 +4552,19 @@ py_statements = [
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
-        c_pre_call=[
-            "{c_var} = malloc(sizeof({c_type}));",
-        ],
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = malloc(sizeof({c_type}));",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = new {cxx_type};",
+            ],
+        ),
+        # XXX - move into lang clause
         c_dealloc_capsule=[
             "free(ptr);",
-        ],
-        cxx_pre_call=[
-            "{cxx_var} = new {cxx_type};",
         ],
         cxx_dealloc_capsule=[
             "delete cxx_ptr;",
