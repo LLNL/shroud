@@ -57,12 +57,12 @@ declarations:
       c_return:
       - return SHT_arg_cdesc->size;
     f:
-      result: num
+      f_result: num
       f_module:
         iso_c_binding: ["C_LONG"]
-      declare:
+      f_declare:
       -  "integer(C_LONG) :: {F_result}"
-      call:
+      f_call:
       -  "{F_result} = {F_C_call}({F_arg_c_call})"
 
 - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
@@ -78,12 +78,12 @@ declarations:
     literalinclude: True
   fstatements:
     f:
-      result: num
+      f_result: num
       f_module:
         iso_c_binding: ["C_LONG"]
-      declare:
+      f_declare:
       -  "integer(C_LONG) :: num"
-      post_call:
+      f_post_call:
       -  "num = SHT_arg_cdesc%size"
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))

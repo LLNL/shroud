@@ -1491,19 +1491,19 @@ rv = .false.
         if intent_blk.f_helper:
             fileinfo.add_f_helper(intent_blk.f_helper, fmt)
 
-        if declare is not None and intent_blk.declare:
+        if declare is not None and intent_blk.f_declare:
             need_wrapper = True
-            for line in intent_blk.declare:
+            for line in intent_blk.f_declare:
                 append_format(declare, line, fmt)
 
-        if pre_call is not None and intent_blk.pre_call:
+        if pre_call is not None and intent_blk.f_pre_call:
             need_wrapper = True
-            for line in intent_blk.pre_call:
+            for line in intent_blk.f_pre_call:
                 append_format(pre_call, line, fmt)
 
-        if post_call is not None and intent_blk.post_call:
+        if post_call is not None and intent_blk.f_post_call:
             need_wrapper = True
-            for line in intent_blk.post_call:
+            for line in intent_blk.f_post_call:
                 append_format(post_call, line, fmt)
 
         # this catches stuff like a bool to logical conversion which
@@ -1760,10 +1760,10 @@ rv = .false.
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
-        if f_result_blk.result:
+        if f_result_blk.f_result:
             # Change a subroutine into function.
             fmt_func.F_subprogram = "function"
-            fmt_func.F_result = f_result_blk.result
+            fmt_func.F_result = f_result_blk.f_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         if cls:
@@ -2098,8 +2098,8 @@ rv = .false.
         if "f" in node.splicer:
             need_wrapper = True
             F_force = node.splicer["f"]
-        elif f_result_blk.call:
-            call_list = f_result_blk.call
+        elif f_result_blk.f_call:
+            call_list = f_result_blk.f_call
         elif C_subprogram == "function":
             if f_result_blk.c_result_var:
                 fmt_result.C_result = wformat(

@@ -83,7 +83,7 @@ declarations:
     wrap_c: False
   fstatements:
     f:
-      call:
+      f_call:
       - value = c_get_data_{stype}()
   splicer:
     c_buf: |

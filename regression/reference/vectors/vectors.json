@@ -544,10 +544,10 @@
                         "c_return_type": "long"
                     },
                     "f": {
-                        "call": [
+                        "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
                         ],
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
@@ -555,7 +555,7 @@
                                 "C_LONG"
                             ]
                         },
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",
@@ -659,10 +659,10 @@
                         "c_return_type": "long"
                     },
                     "f": {
-                        "call": [
+                        "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
                         ],
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
@@ -670,7 +670,7 @@
                                 "C_LONG"
                             ]
                         },
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",
@@ -809,7 +809,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {
@@ -817,10 +817,10 @@
                                 "C_LONG"
                             ]
                         },
-                        "post_call": [
+                        "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num2",
@@ -912,7 +912,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {
@@ -920,10 +920,10 @@
                                 "C_LONG"
                             ]
                         },
-                        "post_call": [
+                        "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num2",

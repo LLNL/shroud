@@ -1632,7 +1632,7 @@
                 ],
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1728,7 +1728,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1835,7 +1835,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1967,7 +1967,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -2074,7 +2074,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
