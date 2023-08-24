@@ -1160,7 +1160,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for statement.final in fmt_result context
+                # Set cxx_var for statement.c_final in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
 
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
@@ -1285,10 +1285,10 @@ class Wrapc(util.WrapperMixin):
         )
 
         return_deref_attr = ast.declarator.metaattrs["deref"]
-        if result_blk.return_type:
+        if result_blk.c_return_type:
             # Override return type.
             fmt_func.C_return_type = wformat(
-                result_blk.return_type, fmt_result)
+                result_blk.c_return_type, fmt_result)
         elif return_deref_attr == "scalar":
             # Need a wrapper since it will dereference the return pointer.
             need_wrapper = True
@@ -1320,8 +1320,8 @@ class Wrapc(util.WrapperMixin):
                     fmt_pattern,
                 )
 
-        if result_blk.call:
-            raw_call_code = result_blk.call
+        if result_blk.c_call:
+            raw_call_code = result_blk.c_call
             need_wrapper = True
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
@@ -1348,7 +1348,7 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
-                elif result_blk.return_type == "void":
+                elif result_blk.c_return_type == "void":
                     # Do not return C++ result in C wrapper.
                     # Probably assigned to an argument.
                     pass
@@ -1381,18 +1381,18 @@ class Wrapc(util.WrapperMixin):
         for line in raw_call_code:
             append_format(call_code, line, fmt_result)
 
-        if result_blk.final:
+        if result_blk.c_final:
             need_wrapper = True
             final_code.append("{+")
             final_code.append("// final")
-            for line in result_blk.final:
+            for line in result_blk.c_final:
                 append_format(final_code, line, fmt_result)
             final_code.append("-}")
 
-        if result_blk.return_type == "void":
+        if result_blk.c_return_type == "void":
             raw_return_code = []
-        elif result_blk.ret:
-            raw_return_code = result_blk.ret
+        elif result_blk.c_return:
+            raw_return_code = result_blk.c_return
         elif return_deref_attr == "copy":
             raw_return_code = ["return {cxx_var};"]
         elif return_deref_attr == "scalar":

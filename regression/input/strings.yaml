@@ -180,7 +180,7 @@ declarations:
       because +len(30) so the contents are copied before returning.
   fstatements:
     c_buf:
-      final:
+      c_final:
       - delete {cxx_var};
 
 - decl: const std::string * getConstStringPtrAlloc() +owner(library)

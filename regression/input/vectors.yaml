@@ -49,12 +49,12 @@ declarations:
     literalinclude: True
   fstatements:
     c:
-      return_type: long
-      ret:
+      c_return_type: long
+      c_return:
       - return SHT_arg_cdesc->size;
     c_buf:
-      return_type: long
-      ret:
+      c_return_type: long
+      c_return:
       - return SHT_arg_cdesc->size;
     f:
       result: num

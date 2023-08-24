@@ -289,16 +289,16 @@
                 },
                 "fstatements": {
                     "c": {
-                        "ret": [
+                        "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "return_type": "long"
+                        "c_return_type": "long"
                     },
                     "c_buf": {
-                        "ret": [
+                        "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "return_type": "long"
+                        "c_return_type": "long"
                     },
                     "f": {
                         "call": [

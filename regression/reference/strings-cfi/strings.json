@@ -3597,7 +3597,7 @@
                 },
                 "fstatements": {
                     "c_buf": {
-                        "final": [
+                        "c_final": [
                             "delete {cxx_var};"
                         ]
                     }
@@ -3704,7 +3704,7 @@
                 },
                 "fstatements": {
                     "c_buf": {
-                        "final": [
+                        "c_final": [
                             "delete {cxx_var};"
                         ]
                     }

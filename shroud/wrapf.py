@@ -1240,12 +1240,12 @@ rv = .false.
                 c_result_blk.name)
         self.name_temp_vars(fmt_func.C_result, c_result_blk, fmt_result)
 
-        if c_result_blk.return_type == "void":
+        if c_result_blk.c_return_type == "void":
             # Change a function into a subroutine.
             fmt_func.F_C_subprogram = "subroutine"
             fmt_func.F_C_result_clause = ""
             subprogram = "subroutine"
-        elif c_result_blk.return_type:
+        elif c_result_blk.c_return_type:
             # Change a subroutine into function
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
@@ -1341,9 +1341,9 @@ rv = .false.
                 for arg in c_result_blk.f_c_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
                 self.add_f_c_module_from_stmts(c_result_blk, modules, imports, fmt_result)
-            elif c_result_blk.return_type:
+            elif c_result_blk.c_return_type:
                 # Return type changed by user.
-                ntypemap = self.symtab.lookup_typemap(c_result_blk.return_type)
+                ntypemap = self.symtab.lookup_typemap(c_result_blk.c_return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
@@ -1756,7 +1756,7 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, C_node.ast, fmt_result.stmtc0, fmt_result.stmtc1)
 
-        if c_result_blk.return_type == "void":
+        if c_result_blk.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True

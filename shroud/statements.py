@@ -485,6 +485,8 @@ def lookup_stmts_tree(tree, path):
 #
 #  c_arg_decl  - Add C declaration to C wrapper.
 #                Empty list is no arguments, None is default argument.
+#  c_call       - code to call the function.
+#                 Ex. Will be empty for getter and setter.
 #  f_c_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
 #  f_c_arg_names - Empty list is no arguments
@@ -497,17 +499,18 @@ CStmts = util.Scope(
     intent=None,
     iface_header=[],
     impl_header=[],
-    c_helper="", c_local_var=None,
+    c_helper="",
+    c_local_var=None,
     cxx_local_var=None,
     c_arg_call=[],
     c_pre_call=[],
-    call=[],
+    c_call=[],
     c_post_call=[],
-    final=[],
-    ret=[],
+    c_final=[],      # tested in strings.yaml, part of ownership
+    c_return=[],
+    c_return_type=None,
     destructor_name=None,
     owner="library",
-    return_type=None,
 
     c_arg_decl=None,
     f_c_arg_names=None,
@@ -602,7 +605,7 @@ fc_statements = [
         ],
         f_c_arg_names=["{c_var}"],
         f_c_import=["{F_array_type}"],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         temps=["cdesc"],
 ###        f_c_arg_names=["{c_var}"],
     ),
@@ -818,7 +821,7 @@ fc_statements = [
         ],
         f_c_arg_names=["{c_var}"],
         f_c_import=["{F_array_type}"],
-#        return_type="void",  # Only difference from c_mixin_function_buf
+#        c_return_type="void",  # Only difference from c_mixin_function_buf
         temps=["cdesc"],
     ),
 
@@ -1302,7 +1305,7 @@ fc_statements = [
         # pgi and cray compilers have problems with functions which
         # return a scalar char.
         name="c_function_char_scalar",
-        call=[
+        c_call=[
             "*{c_var} = {function_name}({C_call_list});",
         ],
         c_arg_decl=[
@@ -1313,7 +1316,7 @@ fc_statements = [
         ],
         f_c_arg_names=["{c_var}"],
         f_c_module=dict(iso_c_binding=["C_CHAR"]),
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
 #    dict(
 #        # Blank fill result.
@@ -1401,7 +1404,7 @@ fc_statements = [
             "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
         ],
-        return_type="void",
+        c_return_type="void",
     ),
 
     dict(
@@ -1600,7 +1603,7 @@ fc_statements = [
         name="c_function_string_scalar/*/&",
         # cxx_to_c creates a pointer from a value via c_str()
         # The default behavior will dereference the value.
-        ret=[
+        c_return=[
             "return {c_var};",
         ],
         f_c_result_decl=[
@@ -1632,7 +1635,7 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
-        return_type="void",
+        c_return_type="void",
     ),
 
     # std::string
@@ -1676,8 +1679,8 @@ fc_statements = [
             "int {c_local_trim} = ShroudLenTrim({c_var}, {c_var_len});",
             "std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
-        call=[
-            "{cxx_var}",
+        c_call=[
+            "XXX{cxx_var}",  # XXX - this seems wrong and is untested
         ],
         local=["trim"],
     ),
@@ -2293,7 +2296,7 @@ fc_statements = [
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
-        return_type="void",
+        c_return_type="void",
     ),
     dict(
         name="c_function_shadow_scalar_capsule",
@@ -2312,7 +2315,7 @@ fc_statements = [
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
-        return_type="void",
+        c_return_type="void",
     ),
     
     # Return a C_capsule_data_type.
@@ -2322,8 +2325,8 @@ fc_statements = [
         name="c_function_shadow_*/&_capptr",
         mixin=["c_mixin_shadow", "c_function_shadow_*_capsule"],
         c_local_var="pointer",
-        return_type=None,
-        ret=[
+        c_return_type=None,
+        c_return=[
             "return {c_var};",
         ],
         f_c_result_var="{F_result_ptr}",
@@ -2335,8 +2338,8 @@ fc_statements = [
     dict(
         name="c_function_shadow_scalar_capptr",
         mixin=["c_mixin_shadow", "c_function_shadow_scalar_capsule"],
-        return_type="{c_type} *",
-        ret=[
+        c_return_type="{c_type} *",
+        c_return=[
             "return {c_var};",
         ],
         f_c_result_var="{F_result_ptr}",
@@ -2368,19 +2371,19 @@ fc_statements = [
         name="c_ctor_shadow_scalar_capsule",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
-        call=[
+        c_call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};",
         ],
-        return_type="void",
+        c_return_type="void",
         owner="caller",
     ),
     dict(
         name="c_ctor_shadow_scalar_capptr",
         mixin=["c_mixin_shadow", "c_ctor_shadow_scalar_capsule"],
-        return_type=None,
-        ret=[
+        c_return_type=None,
+        c_return=[
             "return {c_var};",
         ],
         f_c_result_var="{F_result_ptr}",
@@ -2407,11 +2410,11 @@ fc_statements = [
         lang_cxx=dict(
             impl_header=["<cstddef>"],
         ),
-        call=[
+        c_call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
         ],
-        return_type="void",
+        c_return_type="void",
     ),
 
     dict(
@@ -2450,7 +2453,7 @@ fc_statements = [
         f_c_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
         f_c_arg_names=["{c_var}"],
         f_c_import=["{f_kind}"],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         cxx_local_var="result",
         c_post_call=[
             "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
@@ -2482,7 +2485,7 @@ fc_statements = [
         # Base for all getters to avoid calling function.
         name="c_getter",
         mixin=["c_mixin_noargs"],
-        call=[
+        c_call=[
             "// skip call c_getter",
         ],
     ),
@@ -2491,7 +2494,7 @@ fc_statements = [
         # Work is done by arg's setter.
         name="c_setter",
         mixin=["c_mixin_noargs"],
-        call=[
+        c_call=[
             "// skip call c_setter",
         ],
     ),
@@ -2512,7 +2515,7 @@ fc_statements = [
         # c_getter_native_*
         name="c_getter_native_scalar/*",
         base="c_getter",
-        ret=[
+        c_return=[
             "return {CXX_this}->{field_name};",
         ],
     ),
@@ -2557,7 +2560,7 @@ fc_statements = [
             "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
             "{c_var_cdesc}->rank = 0;"
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
     dict(
         # Create std::string from Fortran meta data.
@@ -2803,14 +2806,14 @@ fc_statements = [
             "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
     dict(
         name="c_function_char_*_cfi_allocatable",
         mixin=[
             "c_mixin_function_character",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
         f_c_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
@@ -2831,7 +2834,7 @@ fc_statements = [
         mixin=[
             "c_mixin_function_character",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
         f_c_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
@@ -2981,7 +2984,7 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
     # std::string * function()
     dict(
@@ -2994,7 +2997,7 @@ fc_statements = [
         f_c_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
         lang_c=dict(
             impl_header=["<string.h>"],
@@ -3018,7 +3021,7 @@ fc_statements = [
         mixin=[
             "c_mixin_function_character",
         ],
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
         f_c_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
@@ -3056,7 +3059,7 @@ fc_statements = [
         f_c_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        return_type="void",  # convert to function
+        c_return_type="void",  # convert to function
         cxx_local_var=None,  # replace mixin
         c_pre_call=[],         # replace mixin
         c_post_call=[
@@ -3262,7 +3265,7 @@ fc_statements = [
         ],
 
         cxx_local_var="result",
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
 
     dict(
@@ -3289,7 +3292,7 @@ fc_statements = [
         ],
 
         cxx_local_var="result",
-        return_type="void",  # Convert to function.
+        c_return_type="void",  # Convert to function.
     ),
     
 ]
