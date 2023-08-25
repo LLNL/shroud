@@ -1508,7 +1508,7 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        need_wrapper = need_wrapper or intent_blk.need_wrapper
+        need_wrapper = need_wrapper or intent_blk.f_need_wrapper
         return need_wrapper
 
     def set_fmt_fields_iface(self, fcn, ast, fmt, rootname,

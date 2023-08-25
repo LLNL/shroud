@@ -459,13 +459,28 @@ class WrapperMixin(object):
 
         Create stmts.temps and stmts.local variables.
         """
-        if stmts.temps is not None:
-            for name in stmts.temps:
+        names = stmts.get("c_temps", None)
+        if names is not None:
+            for name in names:
                 setattr(fmt,
                         "c_var_{}".format(name),
                         "{}{}_{}".format(fmt.c_temp, rootname, name))
-        if stmts.local is not None:
-            for name in stmts.local:
+        names = stmts.get("c_local", None)
+        if names is not None:
+            for name in names:
+                setattr(fmt,
+                        "c_local_{}".format(name),
+                        "{}{}_{}".format(fmt.C_local, rootname, name))
+
+        names = stmts.get("f_temps", None)
+        if names is not None:
+            for name in names:
+                setattr(fmt,
+                        "c_var_{}".format(name),
+                        "{}{}_{}".format(fmt.c_temp, rootname, name))
+        names = stmts.get("f_local", None)
+        if names is not None:
+            for name in names:
                 setattr(fmt,
                         "c_local_{}".format(name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))

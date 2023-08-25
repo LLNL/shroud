@@ -509,6 +509,9 @@ CStmts = util.Scope(
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
     c_return_type=None,
+    c_temps=None,
+    c_local=None,
+
     destructor_name=None,
     owner="library",
 
@@ -521,8 +524,6 @@ CStmts = util.Scope(
     f_c_module=None,
     f_c_module_line=None,
     f_c_import=None,
-    temps=None,
-    local=None,
 
     notimplemented=False,
 )
@@ -539,7 +540,7 @@ FStmts = util.Scope(
     f_module=None,
     f_module_line=None,
     f_import=None,
-    need_wrapper=False,
+    f_need_wrapper=False,
     f_arg_name=None,
     f_arg_decl=None,
     f_arg_call=None,
@@ -548,8 +549,8 @@ FStmts = util.Scope(
     f_call=[],
     f_post_call=[],
     f_result=None,  # name of result variable
-    temps=None,
-    local=None,
+    f_temps=None,
+    f_local=None,
 )
 
 # Define class for nodes in tree based on their first entry.
@@ -609,7 +610,7 @@ fc_statements = [
         f_c_arg_names=["{c_var}"],
         f_c_import=["{F_array_type}"],
         c_return_type="void",  # Convert to function.
-        temps=["cdesc"],
+        c_temps=["cdesc"],
 ###        f_c_arg_names=["{c_var}"],
     ),
     dict(
@@ -619,8 +620,8 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
         f_arg_call=["{c_var_cdesc}"],  # Pass result as an argument.
-        temps=["cdesc"],
-        need_wrapper=True,
+        f_temps=["cdesc"],
+        f_need_wrapper=True,
     ),
 
     dict(
@@ -632,7 +633,7 @@ fc_statements = [
         f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Pass function result as a capsule argument from Fortran to C.
@@ -646,7 +647,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         c_result_var="{F_result_ptr}",
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     
     ##########
@@ -656,7 +657,7 @@ fc_statements = [
         name="f_mixin_in_array_buf",
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Pass argument, len and size to C.
@@ -668,7 +669,7 @@ fc_statements = [
                     "size({f_var}, 1, kind=C_SIZE_T)",
                     "size({f_var}, 2, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Pass argument and size to C.
@@ -683,7 +684,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
         f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
-        temps=["size"],
+        c_temps=["size"],
     ),
     dict(
         # Pass argument, len and size to C.
@@ -700,7 +701,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
         f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
-        temps=["len", "size"],
+        c_temps=["len", "size"],
     ),
 
     dict(
@@ -713,7 +714,7 @@ fc_statements = [
         ],
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        temps=["cdesc"],
+        f_temps=["cdesc"],
     ),
     dict(
         # Pass argument and size to C.
@@ -735,7 +736,7 @@ fc_statements = [
         ],
         f_c_import=["{F_array_type}"],
         f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
-        temps=["size", "cdesc"],
+        c_temps=["size", "cdesc"],
     ),
 
     dict(
@@ -746,7 +747,7 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
         f_arg_call=["{c_var_cdesc}"],
-        temps=["cdesc"],
+        f_temps=["cdesc"],
     ),
     dict(
         # Pass array_type to C which will fill it in.
@@ -760,7 +761,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
         f_c_import=["{F_array_type}"],
-        temps=["cdesc"],
+        c_temps=["cdesc"],
     ),
     dict(
         # cdesc - array from argument
@@ -779,7 +780,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var_out}",
         ],
         f_c_import=["{F_array_type}"],
-        temps=["cdesc", "out"],
+        c_temps=["cdesc", "out"],
     ),
 
     dict(
@@ -791,7 +792,7 @@ fc_statements = [
             "len({f_var}, kind=C_INT)"
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_INT"]),
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Pass argument, size and len to C.
@@ -808,7 +809,7 @@ fc_statements = [
             "integer(C_INT), intent(IN), value :: {c_var_len}",
         ],
         f_c_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
-        temps=["size", "len"],
+        c_temps=["size", "len"],
     ),
 
     
@@ -825,7 +826,7 @@ fc_statements = [
         f_c_arg_names=["{c_var}"],
         f_c_import=["{F_array_type}"],
 #        c_return_type="void",  # Only difference from c_mixin_function_buf
-        temps=["cdesc"],
+        c_temps=["cdesc"],
     ),
 
     # Pass CHARACTER and LEN to C wrapper.
@@ -833,7 +834,7 @@ fc_statements = [
         name="f_mixin_in_character_buf",
         # Do not use arg_decl here since it does not understand +len(30) on functions.
 
-        temps=["len"],
+        f_temps=["len"],
         f_declare=[
             "integer(C_INT) {c_var_len}",
         ],
@@ -852,7 +853,7 @@ fc_statements = [
 #            "len({f_var}, kind=C_INT)",
 #        ],
         f_module=dict(iso_c_binding=["C_INT"]),
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Used with function which pass in character argument.
@@ -869,7 +870,7 @@ fc_statements = [
             "integer(C_INT), value, intent(IN) :: {c_var_len}",
         ],
         f_c_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
-        temps=["len"],
+        c_temps=["len"],
     ),
 
     ##########
@@ -893,7 +894,7 @@ fc_statements = [
     dict(
         name="f_function_bool",
         # The wrapper is needed to convert bool to logical
-        need_wrapper=True
+        f_need_wrapper=True
     ),
 
     ##########
@@ -1204,7 +1205,7 @@ fc_statements = [
         f_post_call=[
             "call c_f_pointer({c_local_ptr}, {F_result})",
         ],
-        local=["ptr"],
+        f_local=["ptr"],
     ),
     dict(
         # f_function_native_*_cdesc_pointer
@@ -1644,7 +1645,7 @@ fc_statements = [
     # std::string
     dict(
         name="f_XXXin_string_scalar",  # pairs with c_in_string_scalar_buf
-        need_wrapper=True,
+        f_need_wrapper=True,
         mixin=["f_mixin_in_character_buf"],
         f_arg_decl=[
             # Remove VALUE added by f_default
@@ -1685,7 +1686,7 @@ fc_statements = [
         c_call=[
             "XXX{cxx_var}",  # XXX - this seems wrong and is untested
         ],
-        local=["trim"],
+        c_local=["trim"],
     ),
     
     # Uses a two part call to copy results of std::string into a
@@ -1937,7 +1938,7 @@ fc_statements = [
             "-}}",
             "-}}",
         ],
-        local=["i", "n", "s"],
+        c_local=["i", "n", "s"],
     ),
     # XXX untested [cf]_out_vector_buf_string
     dict(
@@ -1966,7 +1967,7 @@ fc_statements = [
             "-}}",
             "-}}",
         ],
-        local=["i", "n", "s"],
+        c_local=["i", "n", "s"],
     ),
     # XXX untested [cf]_inout_vector_buf_string
     dict(
@@ -2006,7 +2007,7 @@ fc_statements = [
             "-}}",
             "-}}",
         ],
-        local=["i", "n", "s"],
+        c_local=["i", "n", "s"],
     ),
 
     dict(
@@ -2020,7 +2021,7 @@ fc_statements = [
 #        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
         f_arg_call=["{c_var_cdesc}"],
 #        f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        temps=["cdesc"],
+        f_temps=["cdesc"],
     ),
 
     ##########
@@ -2050,7 +2051,7 @@ fc_statements = [
 #            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
         f_arg_call=["{c_var_cdesc}"],
-        temps=["cdesc"],
+        f_temps=["cdesc"],
     ),
 
     dict(
@@ -2095,7 +2096,7 @@ fc_statements = [
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
             "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
         ],
-        temps=["cdesc", "out"],
+        f_temps=["cdesc", "out"],
     ),
     dict(
         name="c_out_vector_&_cdesc_allocatable_targ_string_scalar",
@@ -2255,7 +2256,7 @@ fc_statements = [
         f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # c_in_shadow_scalar
@@ -2595,7 +2596,7 @@ fc_statements = [
         # f_function_char_scalar_cfi_allocatable
         # f_function_char_*_cfi_allocatable
         name="f_function_char_scalar/*_cfi_allocatable",
-        need_wrapper=True,
+        f_need_wrapper=True,
         f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
@@ -2606,7 +2607,7 @@ fc_statements = [
         # f_function_char_scalar_cfi_allocatable
         # f_function_char_*_cfi_allocatable
         name="f_function_char_scalar/*_cfi_pointer",
-        need_wrapper=True,
+        f_need_wrapper=True,
         f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
         ],
@@ -2625,7 +2626,7 @@ fc_statements = [
             "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
         ],
         f_c_arg_names=["{c_var}"],
-        temps=["cfi"],
+        c_temps=["cfi"],
     ),
     dict(
         # Character argument which use CFI_desc_t.
@@ -2643,7 +2644,7 @@ fc_statements = [
             "char *{cxx_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
-        temps=["cfi"],
+        c_temps=["cfi"],
     ),
     dict(
         # Native argument which use CFI_desc_t.
@@ -2662,7 +2663,7 @@ fc_statements = [
 #            "{c_type} *{cxx_var} = "
 #            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
 #        ],
-        temps=["cfi", "extents", "lower"],
+        c_temps=["cfi", "extents", "lower"],
     ),
 
     dict(
@@ -2699,7 +2700,7 @@ fc_statements = [
             "-}}",
             "-}}",
         ],
-        local=["cptr", "fptr", "cdesc", "err"],
+        c_local=["cptr", "fptr", "cdesc", "err"],
     ),
     
     ########################################
@@ -2790,7 +2791,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="f_function_char_*_cfi",
         f_arg_call=["{f_var}"],
-        need_wrapper=True,
+        f_need_wrapper=True,
     ),
     dict(
         # Copy result into caller's buffer.
@@ -2869,7 +2870,7 @@ fc_statements = [
             "-}}",
             "-}}",            
         ],
-        local=["cptr", "fptr", "cdesc", "len", "err"],
+        c_local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
     
     ########################################
@@ -2890,7 +2891,7 @@ fc_statements = [
             "char **{cxx_var} = ShroudStrArrayAlloc("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
-        temps=["cfi", "len", "size"],
+        c_temps=["cfi", "len", "size"],
 
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
@@ -2918,7 +2919,7 @@ fc_statements = [
             "size_t {c_local_trim} = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
-        local=["trim"],
+        c_local=["trim"],
     ),
     dict(
         # c_out_string_*_cfi
@@ -2962,7 +2963,7 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
-        local=["trim"],
+        c_local=["trim"],
     ),
     dict(
         # c_function_string_scalar_cfi
@@ -3049,7 +3050,7 @@ fc_statements = [
             "-}}",
             "-}}",            
         ],
-        local=["cptr", "fptr", "cdesc", "len", "err"],
+        c_local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
 
     # std::string & function()
@@ -3087,7 +3088,7 @@ fc_statements = [
         # XXX - avoid calling C directly since the Fortran function
         # is returning an CHARACTER, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
-        need_wrapper=True,
+        f_need_wrapper=True,
         f_arg_call=["{f_var}"],
     ),
     # similar to f_char_scalar_allocatable
@@ -3099,7 +3100,7 @@ fc_statements = [
         # XXX - avoid calling C directly since the Fortran function
         # is returning an allocatable, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
-        need_wrapper=True,
+        f_need_wrapper=True,
         f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
@@ -3113,7 +3114,7 @@ fc_statements = [
         # XXX - avoid calling C directly since the Fortran function
         # is returning an pointer, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
-        need_wrapper=True,
+        f_need_wrapper=True,
         f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
         ],
@@ -3173,7 +3174,7 @@ fc_statements = [
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
             "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
         ],
-        temps=["cdesc", "out"],
+        f_temps=["cdesc", "out"],
         f_helper="array_string_allocatable array_context",
         c_helper="array_string_allocatable",
     ),
