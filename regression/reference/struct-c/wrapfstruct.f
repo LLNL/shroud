@@ -329,8 +329,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStructByValue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg +value
     ! Attrs:     +intent(in)
@@ -353,8 +352,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
@@ -377,8 +375,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -405,8 +402,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -433,8 +429,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -532,8 +527,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -559,8 +553,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -592,8 +585,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -626,8 +618,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     interface
         function c_get_global_struct_list() &
                 result(SHT_rv) &
@@ -687,8 +678,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)
@@ -742,8 +732,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Requested: c_getter_native_*_pointer
-    ! Match:     c_getter_native_*
+    ! Exact:     c_getter_native_*_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
@@ -789,8 +778,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int * Cstruct_list_get_ivalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
@@ -834,8 +822,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  double * Cstruct_list_get_dvalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
@@ -1131,8 +1118,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg +value
     ! Attrs:     +intent(in)
@@ -1162,8 +1148,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
@@ -1192,8 +1177,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -1232,8 +1216,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -1361,8 +1344,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -1403,8 +1385,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -1454,8 +1435,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     function get_global_struct_list() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR, c_f_pointer
@@ -1525,8 +1505,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)
@@ -1597,8 +1576,7 @@ contains
     ! Requested: f_getter_native_*_pointer
     ! Match:     f_getter
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Requested: c_getter_native_*_pointer
-    ! Match:     c_getter_native_*
+    ! Exact:     c_getter_native_*_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
@@ -1658,8 +1636,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
@@ -1721,8 +1698,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)

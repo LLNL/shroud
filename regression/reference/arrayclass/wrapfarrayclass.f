@@ -118,8 +118,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  int getSize
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         pure function c_ArrayWrapper_getSize(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getSize")
@@ -164,8 +163,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         function c_ArrayWrapper_getArray(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArray")
@@ -179,8 +177,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -192,8 +189,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         pure function c_ArrayWrapper_getArrayConst(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst")
@@ -207,8 +203,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConst_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -220,8 +215,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         function c_ArrayWrapper_getArrayC(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC")
@@ -235,8 +229,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayC_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -248,8 +241,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         pure function c_ArrayWrapper_getArrayConstC(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC")
@@ -263,8 +255,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -489,8 +480,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  bool checkPtr
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  void * array +value
         ! Attrs:     +intent(in)
@@ -510,8 +500,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double sumArray
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_ArrayWrapper_sumArray(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_sumArray")
@@ -577,8 +566,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function ArrayWrapper_getSize(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -631,8 +619,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function ArrayWrapper_getArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -652,8 +639,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayConst(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -674,8 +660,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -696,8 +681,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayConstC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -869,8 +853,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  void * array +value
     ! Attrs:     +intent(in)
@@ -895,8 +878,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function ArrayWrapper_sumArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

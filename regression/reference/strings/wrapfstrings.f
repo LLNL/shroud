@@ -238,8 +238,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: c_function_char_*_allocatable
-    ! Match:     c_function_char_*
+    ! Exact:     c_function_char_*_allocatable
     ! start c_get_char_ptr1
     interface
         function c_get_char_ptr1() &
@@ -255,8 +254,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Requested: c_function_char_*_cdesc_allocatable
-    ! Match:     c_function_char_*_cdesc
+    ! Exact:     c_function_char_*_cdesc_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(SHT_rv) &
@@ -288,8 +286,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     ! start c_get_char_ptr2_bufferify
     interface
         subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len) &
@@ -326,8 +323,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * output
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_char_*_buf_result
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_result
     ! start c_get_char_ptr3_bufferify
     interface
         subroutine c_get_char_ptr3_bufferify(output, SHT_output_len) &
@@ -343,8 +339,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr4 +deref(raw)
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_char_*_raw
-    ! Match:     c_function_char_*
+    ! Exact:     c_function_char_*_raw
     interface
         function get_char_ptr4() &
                 result(SHT_rv) &
@@ -376,8 +371,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr5 +deref(pointer)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_char_*_cdesc_pointer
-    ! Match:     c_function_char_*_cdesc
+    ! Exact:     c_function_char_*_cdesc_pointer
     interface
         subroutine c_get_char_ptr5_bufferify(SHT_rv) &
                 bind(C, name="STR_getCharPtr5_bufferify")
@@ -404,8 +398,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_scalar_buf_copy
-    ! Match:     c_function_string_scalar_buf
+    ! Exact:     c_function_string_scalar_buf_copy
     interface
         subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="STR_getConstStringLen_bufferify")
@@ -424,8 +417,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  string * output
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_string_*_buf_result
-    ! Match:     c_function_string_*_buf
+    ! Exact:     c_function_string_*_buf_result
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, &
                 SHT_output_len) &
@@ -500,8 +492,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -535,8 +526,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  string & output
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_string_&_buf_result
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_result
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 SHT_output_len) &
@@ -566,8 +556,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -625,8 +614,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_*_buf_copy
-    ! Match:     c_function_string_*_buf
+    ! Exact:     c_function_string_*_buf_copy
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -1088,8 +1076,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
@@ -1108,8 +1095,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +api(buf)+intent(in)
@@ -1495,8 +1481,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
@@ -1516,8 +1501,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(buf)+intent(in)
@@ -1537,8 +1521,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -1564,8 +1547,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +intent(in)
@@ -1768,8 +1750,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_char_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Requested: c_function_char_*_cdesc_allocatable
-    ! Match:     c_function_char_*_cdesc
+    ! Exact:     c_function_char_*_cdesc_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -1795,8 +1776,7 @@ contains
     ! Requested: f_function_char_*_buf_copy
     ! Match:     f_function_char_*_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -1827,8 +1807,7 @@ contains
     ! Requested: f_function_char_*_buf_result
     ! Match:     f_function_char_*_buf
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_char_*_buf_result
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_result
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -1852,8 +1831,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_char_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_char_*_raw
-    ! Match:     c_function_char_*
+    ! Exact:     c_function_char_*_raw
     !>
     !! \brief return a 'const char *' as type(C_PTR)
     !!
@@ -1874,8 +1852,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_char_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_char_*_cdesc_pointer
-    ! Match:     c_function_char_*_cdesc
+    ! Exact:     c_function_char_*_cdesc_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
@@ -1922,8 +1899,7 @@ contains
     ! Requested: f_function_string_scalar_buf_copy
     ! Match:     f_function_string_scalar_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_scalar_buf_copy
-    ! Match:     c_function_string_scalar_buf
+    ! Exact:     c_function_string_scalar_buf_copy
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1952,8 +1928,7 @@ contains
     ! Requested: f_function_string_*_buf_result
     ! Match:     f_function_string_*_buf
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_string_*_buf_result
-    ! Match:     c_function_string_*_buf
+    ! Exact:     c_function_string_*_buf_result
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -2019,8 +1994,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -2052,8 +2026,7 @@ contains
     ! Requested: f_function_string_&_buf_result
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_string_&_buf_result
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_result
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -2078,8 +2051,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     !>
     !! \brief Test returning empty string reference
     !!
@@ -2122,8 +2094,7 @@ contains
     ! Requested: f_function_string_*_buf_copy
     ! Match:     f_function_string_*_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_*_buf_copy
-    ! Match:     c_function_string_*_buf
+    ! Exact:     c_function_string_*_buf_copy
     !>
     !! \brief return a 'const string *' as character(30)
     !!
@@ -2493,8 +2464,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
@@ -2832,8 +2802,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
@@ -2864,8 +2833,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -2911,8 +2879,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)

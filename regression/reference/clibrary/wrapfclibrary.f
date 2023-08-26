@@ -96,8 +96,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -152,8 +151,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
@@ -233,8 +231,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
@@ -468,8 +465,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
@@ -501,8 +497,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
@@ -534,8 +529,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(true)+value
     ! Attrs:     +intent(in)
@@ -555,8 +549,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(false)+value
     ! Attrs:     +intent(in)
@@ -652,8 +645,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedType
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
@@ -695,8 +687,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
@@ -722,8 +713,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
@@ -974,8 +964,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -1049,8 +1038,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
@@ -1134,8 +1122,7 @@ contains
     ! Requested: f_function_char_*_buf_copy
     ! Match:     f_function_char_*_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -1304,8 +1291,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1333,8 +1319,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1362,8 +1347,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1385,8 +1369,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1496,8 +1479,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Test assumed-type
     !!
@@ -1547,8 +1529,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)

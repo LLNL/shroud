@@ -91,8 +91,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -145,8 +144,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! start c_use_default_arguments
     interface
         function c_use_default_arguments() &
@@ -162,8 +160,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -185,8 +182,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -309,8 +305,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int TemplateReturn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     interface
         function c_template_return_int() &
                 result(SHT_rv) &
@@ -324,8 +319,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double TemplateReturn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     interface
         function c_template_return_double() &
                 result(SHT_rv) &
@@ -427,8 +421,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -448,8 +441,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -475,8 +467,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -509,8 +500,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -536,8 +526,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -569,8 +558,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -608,8 +596,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
@@ -629,8 +616,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  EnumTypeID enumfunc
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
     ! Attrs:     +intent(in)
@@ -650,8 +636,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  Color colorfunc
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Color arg +value
     ! Attrs:     +intent(in)
@@ -698,8 +683,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int callback1
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int in +value
     ! Attrs:     +intent(in)
@@ -743,8 +727,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="TUT_LastFunctionCalled_bufferify")
@@ -837,8 +820,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -917,8 +899,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! start use_default_arguments
     function use_default_arguments() &
             result(SHT_rv)
@@ -937,8 +918,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -965,8 +945,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -1097,8 +1076,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function template_return_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1115,8 +1093,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1211,8 +1188,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1238,8 +1214,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1273,8 +1248,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1319,8 +1293,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -1355,8 +1328,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -1399,8 +1371,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -1454,8 +1425,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
@@ -1482,8 +1452,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
     ! Attrs:     +intent(in)
@@ -1510,8 +1479,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Color arg +value
     ! Attrs:     +intent(in)
@@ -1579,8 +1547,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int in +value
     ! Attrs:     +intent(in)
@@ -1614,8 +1581,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

@@ -66,8 +66,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -333,8 +332,7 @@ void POI_getAllocToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -356,8 +354,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -393,8 +390,7 @@ int POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Requested: c_function_native_*_cdesc_allocatable
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)

@@ -60,8 +60,7 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Function:  int * DataPointer_get_items
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-        ! Requested: c_getter_native_*_cdesc_pointer
-        ! Match:     c_getter_native_*_cdesc
+        ! Exact:     c_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(in)+struct(ns2_DataPointer)
@@ -110,8 +109,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)+struct(ns2_DataPointer)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this
     ! Attrs:     +intent(in)+struct(ns2_DataPointer)

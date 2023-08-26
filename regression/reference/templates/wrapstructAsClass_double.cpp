@@ -57,8 +57,7 @@ void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  int get_npts
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 {
     structAsClass<double> *SH_this =
@@ -91,8 +90,7 @@ void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  double get_value
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 double TEM_structAsClass_double_get_value(
     TEM_structAsClass_double * self)
 {

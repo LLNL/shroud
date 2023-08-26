@@ -70,8 +70,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // ----------------------------------------
 // Function:  int & at
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_&_pointer
-// Match:     c_function_native_&
+// Exact:     c_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)

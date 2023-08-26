@@ -71,8 +71,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // ----------------------------------------
 // Function:  double & at
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_&_pointer
-// Match:     c_function_native_&
+// Exact:     c_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)

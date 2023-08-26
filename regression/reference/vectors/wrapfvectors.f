@@ -84,8 +84,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -256,8 +255,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int vector_of_pointers
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -285,8 +283,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int vector_string_count
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -364,8 +361,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Requested: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_function_vector_scalar_cdesc_targ_native_scalar
+    ! Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -385,8 +381,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int returnDim2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Attrs:     +intent(in)
@@ -445,8 +440,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
@@ -695,8 +689,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -736,8 +729,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)
@@ -860,8 +852,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Requested: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_function_vector_scalar_cdesc_targ_native_scalar
+    ! Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -895,8 +886,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Attrs:     +intent(in)

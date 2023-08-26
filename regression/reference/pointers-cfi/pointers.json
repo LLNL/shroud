@@ -3351,7 +3351,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3365,7 +3365,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -3544,7 +3544,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3688,7 +3688,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3702,7 +3702,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -3842,7 +3842,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4019,7 +4019,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4033,7 +4033,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -6731,7 +6731,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6745,7 +6745,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -7254,7 +7254,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "c_function_void_*",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_void_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -7267,7 +7267,7 @@
                         "stmt0": "f_function_void_*",
                         "stmt1": "f_function_void_*",
                         "stmtc0": "c_function_void_*",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_void_*"
                     }
                 }
             },
@@ -7392,7 +7392,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "c_function_void_*",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_void_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -7405,7 +7405,7 @@
                         "stmt0": "f_function_void_*",
                         "stmt1": "f_function_void_*",
                         "stmtc0": "c_function_void_*",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_void_*"
                     }
                 }
             },
@@ -7756,7 +7756,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -7770,7 +7770,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -7899,7 +7899,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -7984,7 +7984,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8175,7 +8175,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8377,7 +8377,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8570,7 +8570,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8860,7 +8860,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8874,7 +8874,7 @@
                         "stmt0": "f_function_native_*_raw",
                         "stmt1": "f_function_native_*_raw",
                         "stmtc0": "c_function_native_*_raw",
-                        "stmtc1": "c_function_native_*"
+                        "stmtc1": "c_function_native_*_raw"
                     }
                 }
             },
@@ -9009,7 +9009,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -9023,7 +9023,7 @@
                         "stmt0": "f_function_native_*_raw",
                         "stmt1": "f_function_native_*_raw",
                         "stmtc0": "c_function_native_*_raw",
-                        "stmtc1": "c_function_native_*"
+                        "stmtc1": "c_function_native_*_raw"
                     }
                 }
             },
@@ -9159,7 +9159,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -9348,7 +9348,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_allocatable",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

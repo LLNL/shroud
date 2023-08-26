@@ -50,8 +50,7 @@ void AA_example_nested_local_function1(void)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -66,8 +65,7 @@ bool AA_example_nested_isNameValid(const char * name)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
@@ -83,8 +81,7 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 // ----------------------------------------
 // Function:  bool isInitialized
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.isInitialized
@@ -222,8 +219,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 // ----------------------------------------
 // Function:  size_t test_size_t
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
@@ -432,8 +428,7 @@ void AA_example_nested_verylongfunctionname1(int * verylongname1,
 // ----------------------------------------
 // Function:  int verylongfunctionname2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname1 +value
 // Attrs:     +intent(in)

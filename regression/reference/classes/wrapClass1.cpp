@@ -120,8 +120,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // start CLA_Class1_Method1
 int CLA_Class1_Method1(CLA_Class1 * self)
 {
@@ -141,8 +140,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  bool equivalent
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
@@ -317,8 +315,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
@@ -395,8 +392,7 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 // ----------------------------------------
 // Function:  std::string get_m_name
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-// Requested: c_getter_string_scalar_cdesc_allocatable
-// Match:     c_getter_string_scalar_cdesc
+// Exact:     c_getter_string_scalar_cdesc_allocatable
 // start CLA_Class1_get_m_name_bufferify
 void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)

@@ -25,8 +25,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         function c_default_ptr_is_null_0() &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_0")
@@ -38,8 +37,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Attrs:     +intent(in)
@@ -140,8 +138,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int32_t idx +value
         ! Attrs:     +intent(in)
@@ -160,8 +157,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int64_t idx +value
         ! Attrs:     +intent(in)
@@ -205,8 +201,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     function default_ptr_is_null_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -222,8 +217,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
     ! Attrs:     +intent(in)
@@ -337,8 +331,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int32_t idx +value
     ! Attrs:     +intent(in)
@@ -370,8 +363,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int64_t idx +value
     ! Attrs:     +intent(in)

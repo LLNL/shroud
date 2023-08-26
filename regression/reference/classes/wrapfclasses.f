@@ -224,8 +224,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int Method1
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! start c_class1_method1
     interface
         function c_class1_method1(self) &
@@ -243,8 +242,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  bool equivalent
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
@@ -399,8 +397,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -482,8 +479,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  std::string get_m_name
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-    ! Requested: c_getter_string_scalar_cdesc_allocatable
-    ! Match:     c_getter_string_scalar_cdesc
+    ! Exact:     c_getter_string_scalar_cdesc_allocatable
     ! start c_class1_get_m_name_bufferify
     interface
         subroutine c_class1_get_m_name_bufferify(self, SHT_rv) &
@@ -587,8 +583,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_ivar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     interface
         pure function c_shape_get_ivar(self) &
                 result(SHT_rv) &
@@ -733,8 +728,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int * get_items
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! start c_data_get_items_bufferify
     interface
         subroutine c_data_get_items_bufferify(self, SHT_rv) &
@@ -772,8 +766,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -811,8 +804,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int useclass
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
@@ -963,8 +955,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_global_flag
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     interface
         function get_global_flag() &
                 result(SHT_rv) &
@@ -993,8 +984,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="CLA_LastFunctionCalled_bufferify")
@@ -1110,8 +1100,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief returns the value of flag member
     !!
@@ -1134,8 +1123,7 @@ contains
     ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
@@ -1280,8 +1268,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -1374,8 +1361,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(getter)
     ! Exact:     f_getter_string_scalar_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-    ! Requested: c_getter_string_scalar_cdesc_allocatable
-    ! Match:     c_getter_string_scalar_cdesc
+    ! Exact:     c_getter_string_scalar_cdesc_allocatable
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
@@ -1536,8 +1522,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function shape_get_ivar(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1717,8 +1702,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! start data_get_items
     function data_get_items(obj) &
             result(SHT_rv)
@@ -1770,8 +1754,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -1821,8 +1804,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
@@ -2010,8 +1992,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function get_global_flag() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -2029,8 +2010,7 @@ contains
     ! Requested: f_function_string_&_buf_copy
     ! Match:     f_function_string_&_buf
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

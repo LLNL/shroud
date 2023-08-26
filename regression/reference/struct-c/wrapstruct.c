@@ -30,8 +30,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -81,8 +80,7 @@ void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_struct_*_pointer
-// Match:     c_function_struct_*
+// Exact:     c_function_struct_*_pointer
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -152,8 +150,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
@@ -202,8 +199,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 // ----------------------------------------
 // Function:  const double * Cstruct_ptr_get_const_dvalue
 // Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-// Requested: c_getter_native_*_pointer
-// Match:     c_getter_native_*
+// Exact:     c_getter_native_*_pointer
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_ptr)
@@ -242,8 +238,7 @@ void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 // ----------------------------------------
 // Function:  int * Cstruct_list_get_ivalue
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_list)
@@ -289,8 +284,7 @@ void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 // ----------------------------------------
 // Function:  double * Cstruct_list_get_dvalue
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_list)

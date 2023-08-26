@@ -21,8 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * DataPointer_get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns1_DataPointer)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  ns1::DataPointer * SH_this
 // Attrs:     +intent(in)+struct(ns1_DataPointer)

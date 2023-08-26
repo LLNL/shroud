@@ -165,8 +165,7 @@ const char * AA_example_nested_ExClass2_getName(
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Requested: c_function_string_&_buf_copy
-// Match:     c_function_string_&_buf
+// Exact:     c_function_string_&_buf_copy
 void AA_example_nested_ExClass2_getName_bufferify(
     const AA_example_nested_ExClass2 * self, char *SHC_rv,
     int SHT_rv_len)
@@ -288,8 +287,7 @@ void AA_example_nested_ExClass2_getName4_bufferify(
 // ----------------------------------------
 // Function:  int GetNameLength
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int AA_example_nested_ExClass2_GetNameLength(
     const AA_example_nested_ExClass2 * self)
 {
@@ -388,8 +386,7 @@ void AA_example_nested_ExClass2_destroyall(
 // ----------------------------------------
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 AA_TypeID AA_example_nested_ExClass2_getTypeID(
     const AA_example_nested_ExClass2 * self)
 {
@@ -481,8 +478,7 @@ void AA_example_nested_ExClass2_setValue_double(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int AA_example_nested_ExClass2_getValue_int(
     AA_example_nested_ExClass2 * self)
 {
@@ -497,8 +493,7 @@ int AA_example_nested_ExClass2_getValue_int(
 // ----------------------------------------
 // Function:  double getValue
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 double AA_example_nested_ExClass2_getValue_double(
     AA_example_nested_ExClass2 * self)
 {

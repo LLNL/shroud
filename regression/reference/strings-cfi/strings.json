@@ -987,7 +987,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_char_*_allocatable",
-                        "stmt1": "c_function_char_*"
+                        "stmt1": "c_function_char_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1184,7 +1184,7 @@
                         "stmt0": "f_function_char_*_cfi_copy",
                         "stmt1": "f_function_char_*_cfi",
                         "stmtc0": "c_function_char_*_cfi_copy",
-                        "stmtc1": "c_function_char_*_cfi"
+                        "stmtc1": "c_function_char_*_cfi_copy"
                     }
                 }
             },
@@ -1263,7 +1263,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_char_*_cfi_copy",
-                        "stmt1": "c_function_char_*_cfi"
+                        "stmt1": "c_function_char_*_cfi_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1436,7 +1436,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_function_char_*_cfi_result",
-                            "stmt1": "c_function_char_*_cfi"
+                            "stmt1": "c_function_char_*_cfi_result"
                         },
                         "fmtf": {
                             "F_C_var": "output",
@@ -1450,7 +1450,7 @@
                             "stmt0": "f_function_char_*_cfi_result",
                             "stmt1": "f_function_char_*_cfi",
                             "stmtc0": "c_function_char_*_cfi_result",
-                            "stmtc1": "c_function_char_*_cfi"
+                            "stmtc1": "c_function_char_*_cfi_result"
                         }
                     }
                 },
@@ -1641,7 +1641,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_char_*_raw",
-                        "stmt1": "c_function_char_*"
+                        "stmt1": "c_function_char_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1655,7 +1655,7 @@
                         "stmt0": "f_function_char_*_raw",
                         "stmt1": "f_function_char_*_raw",
                         "stmtc0": "c_function_char_*_raw",
-                        "stmtc1": "c_function_char_*"
+                        "stmtc1": "c_function_char_*_raw"
                     }
                 }
             },
@@ -2061,7 +2061,7 @@
                         "stmt0": "f_function_string_scalar_cfi_copy",
                         "stmt1": "f_function_string_scalar_cfi",
                         "stmtc0": "c_function_string_scalar_cfi_copy",
-                        "stmtc1": "c_function_string_scalar_cfi"
+                        "stmtc1": "c_function_string_scalar_cfi_copy"
                     }
                 }
             },
@@ -2135,7 +2135,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_scalar_cfi_copy",
-                        "stmt1": "c_function_string_scalar_cfi"
+                        "stmt1": "c_function_string_scalar_cfi_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2266,7 +2266,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_function_string_scalar_cfi_result",
-                            "stmt1": "c_function_string_scalar_cfi"
+                            "stmt1": "c_function_string_scalar_cfi_result"
                         },
                         "fmtf": {
                             "F_C_var": "output",
@@ -2280,7 +2280,7 @@
                             "stmt0": "f_function_string_*_cfi_result",
                             "stmt1": "f_function_string_*_cfi",
                             "stmtc0": "c_function_string_*_cfi_result",
-                            "stmtc1": "c_function_string_*_cfi"
+                            "stmtc1": "c_function_string_*_cfi_result"
                         }
                     }
                 },
@@ -2809,7 +2809,7 @@
                         "stmt0": "f_function_string_&_cfi_copy",
                         "stmt1": "f_function_string_&_cfi",
                         "stmtc0": "c_function_string_&_cfi_copy",
-                        "stmtc1": "c_function_string_&_cfi"
+                        "stmtc1": "c_function_string_&_cfi_copy"
                     }
                 }
             },
@@ -2889,7 +2889,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_cfi_copy",
-                        "stmt1": "c_function_string_&_cfi"
+                        "stmt1": "c_function_string_&_cfi_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3065,7 +3065,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_function_string_&_cfi_result",
-                            "stmt1": "c_function_string_&_cfi"
+                            "stmt1": "c_function_string_&_cfi_result"
                         },
                         "fmtf": {
                             "F_C_var": "output",
@@ -3079,7 +3079,7 @@
                             "stmt0": "f_function_string_&_cfi_result",
                             "stmt1": "f_function_string_&_cfi",
                             "stmtc0": "c_function_string_&_cfi_result",
-                            "stmtc1": "c_function_string_&_cfi"
+                            "stmtc1": "c_function_string_&_cfi_result"
                         }
                     }
                 },
@@ -3293,7 +3293,7 @@
                         "stmt0": "f_function_string_&_cfi_copy",
                         "stmt1": "f_function_string_&_cfi",
                         "stmtc0": "c_function_string_&_cfi_copy",
-                        "stmtc1": "c_function_string_&_cfi"
+                        "stmtc1": "c_function_string_&_cfi_copy"
                     }
                 }
             },
@@ -3372,7 +3372,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_cfi_copy",
-                        "stmt1": "c_function_string_&_cfi"
+                        "stmt1": "c_function_string_&_cfi_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3663,7 +3663,7 @@
                         "stmt0": "f_function_string_*_cfi_copy",
                         "stmt1": "f_function_string_*_cfi",
                         "stmtc0": "c_function_string_*_cfi_copy",
-                        "stmtc1": "c_function_string_*_cfi"
+                        "stmtc1": "c_function_string_*_cfi_copy"
                     }
                 }
             },
@@ -3749,7 +3749,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_*_cfi_copy",
-                        "stmt1": "c_function_string_*_cfi"
+                        "stmt1": "c_function_string_*_cfi_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6580,7 +6580,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6594,7 +6594,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -6718,7 +6718,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -9695,7 +9695,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -9709,7 +9709,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -9837,7 +9837,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10030,7 +10030,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10044,7 +10044,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -10222,7 +10222,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10236,7 +10236,7 @@
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -10419,7 +10419,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

@@ -42,8 +42,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
@@ -85,8 +84,7 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // ----------------------------------------
 // Function:  int useclass
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
@@ -243,8 +241,7 @@ void CLA_set_global_flag(int arg)
 // ----------------------------------------
 // Function:  int get_global_flag
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag
@@ -270,8 +267,7 @@ const char * CLA_LastFunctionCalled(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Requested: c_function_string_&_buf_copy
-// Match:     c_function_string_&_buf
+// Exact:     c_function_string_&_buf_copy
 void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify

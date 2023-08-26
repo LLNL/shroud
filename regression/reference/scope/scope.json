@@ -601,7 +601,7 @@
                         "stmt0": "f_getter_native_*_cdesc_pointer",
                         "stmt1": "f_getter_native_*_cdesc_pointer",
                         "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc"
+                        "stmtc1": "c_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -743,7 +743,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_getter_native_*_cdesc_pointer",
-                        "stmt1": "c_getter_native_*_cdesc"
+                        "stmt1": "c_getter_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1216,7 +1216,7 @@
                                 "stmt0": "f_getter_native_*_cdesc_pointer",
                                 "stmt1": "f_getter_native_*_cdesc_pointer",
                                 "stmtc0": "c_getter_native_*_cdesc_pointer",
-                                "stmtc1": "c_getter_native_*_cdesc"
+                                "stmtc1": "c_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -1359,7 +1359,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_getter_native_*_cdesc_pointer",
-                                "stmt1": "c_getter_native_*_cdesc"
+                                "stmt1": "c_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1859,7 +1859,7 @@
                                 "stmt0": "f_getter_native_*_cdesc_pointer",
                                 "stmt1": "f_getter_native_*_cdesc_pointer",
                                 "stmtc0": "c_getter_native_*_cdesc_pointer",
-                                "stmtc1": "c_getter_native_*_cdesc"
+                                "stmtc1": "c_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -2002,7 +2002,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_getter_native_*_cdesc_pointer",
-                                "stmt1": "c_getter_native_*_cdesc"
+                                "stmt1": "c_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",

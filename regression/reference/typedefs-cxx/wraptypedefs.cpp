@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
@@ -63,8 +62,7 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 // ----------------------------------------
 // Function:  int returnBytesForIndexType
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  IndexType arg +value
 // Attrs:     +intent(in)

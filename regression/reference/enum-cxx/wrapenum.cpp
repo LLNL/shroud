@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int convert_to_int
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in +value
 // Attrs:     +intent(in)

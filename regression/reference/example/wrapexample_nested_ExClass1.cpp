@@ -172,8 +172,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // ----------------------------------------
 // Function:  int incrementCount
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr +value
 // Attrs:     +intent(in)
@@ -247,8 +246,7 @@ const char * AA_example_nested_ExClass1_getNameArg(
 // ----------------------------------------
 // Argument:  string & name
 // Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-// Requested: c_function_string_&_buf_result
-// Match:     c_function_string_&_buf
+// Exact:     c_function_string_&_buf_result
 void AA_example_nested_ExClass1_getNameArg_bufferify(
     const AA_example_nested_ExClass1 * self, char *name,
     int SHT_name_len)
@@ -269,8 +267,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
@@ -290,8 +287,7 @@ int AA_example_nested_ExClass1_getValue_from_int(
 // ----------------------------------------
 // Function:  long getValue
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
@@ -311,8 +307,7 @@ long AA_example_nested_ExClass1_getValue_1(
 // ----------------------------------------
 // Function:  bool hasAddr
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in +value
 // Attrs:     +intent(in)

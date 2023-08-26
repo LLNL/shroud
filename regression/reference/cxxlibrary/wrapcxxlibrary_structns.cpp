@@ -26,8 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int passStructByReference
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Attrs:     +intent(inout)
@@ -49,8 +48,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Attrs:     +intent(in)

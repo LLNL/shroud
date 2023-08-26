@@ -331,7 +331,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -525,7 +525,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -540,7 +540,7 @@
                         "stmt0": "f_function_native_*_pointer",
                         "stmt1": "f_function_native_*_pointer",
                         "stmtc0": "c_function_native_*_pointer",
-                        "stmtc1": "c_function_native_*"
+                        "stmtc1": "c_function_native_*_pointer"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -680,7 +680,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -854,7 +854,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -875,7 +875,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1038,7 +1038,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1216,7 +1216,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_allocatable",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1238,7 +1238,7 @@
                         "stmt0": "f_function_native_*_cdesc_allocatable",
                         "stmt1": "f_function_native_*_cdesc_allocatable",
                         "stmtc0": "c_function_native_*_cdesc_allocatable",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1401,7 +1401,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_allocatable",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1577,7 +1577,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1598,7 +1598,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1759,7 +1759,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1905,7 +1905,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2085,7 +2085,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2107,7 +2107,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2272,7 +2272,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2439,7 +2439,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_allocatable",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2640,7 +2640,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2662,7 +2662,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2826,7 +2826,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

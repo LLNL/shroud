@@ -122,8 +122,7 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 // ----------------------------------------
 // Function:  int * get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // start CLA_Data_get_items_bufferify
 void CLA_Data_get_items_bufferify(CLA_Data * self,
     CLA_SHROUD_array *SHT_rv_cdesc)

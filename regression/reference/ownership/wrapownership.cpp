@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * ReturnIntPtrRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Requested: c_function_native_*_raw
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_raw
 int * OWN_ReturnIntPtrRaw(void)
 {
     // splicer begin function.ReturnIntPtrRaw
@@ -48,8 +47,7 @@ int OWN_ReturnIntPtrScalar(void)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 int * OWN_ReturnIntPtrPointer(void)
 {
     // splicer begin function.ReturnIntPtrPointer
@@ -61,8 +59,7 @@ int * OWN_ReturnIntPtrPointer(void)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Requested: c_function_native_*_raw
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_raw
 // ----------------------------------------
 // Argument:  int * len +intent(out)
 // Attrs:     +intent(out)
@@ -79,8 +76,7 @@ int * OWN_ReturnIntPtrDimRaw(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -99,8 +95,7 @@ int * OWN_ReturnIntPtrDimPointer(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -127,8 +122,7 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_native_*_allocatable
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_allocatable
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -147,8 +141,7 @@ int * OWN_ReturnIntPtrDimAlloc(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Requested: c_function_native_*_cdesc_allocatable
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_allocatable
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -174,8 +167,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -192,8 +184,7 @@ int * OWN_ReturnIntPtrDimDefault(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -218,8 +209,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
 // Attrs:     +capsule+deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -236,8 +226,7 @@ int * OWN_ReturnIntPtrDimRawNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Attrs:     +capsule+deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -254,8 +243,7 @@ int * OWN_ReturnIntPtrDimPointerNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -280,8 +268,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_native_*_allocatable
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_allocatable
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -298,8 +285,7 @@ int * OWN_ReturnIntPtrDimAllocNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Attrs:     +capsule+deref(pointer)+intent(function)
-// Requested: c_function_native_*_pointer
-// Match:     c_function_native_*
+// Exact:     c_function_native_*_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -316,8 +302,7 @@ int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
+// Exact:     c_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)

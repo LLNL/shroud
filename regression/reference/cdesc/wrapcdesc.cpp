@@ -210,8 +210,7 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  int getData
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int CDE_getData_int(void)
 {
     // splicer begin function.getData_int
@@ -226,8 +225,7 @@ int CDE_getData_int(void)
 // ----------------------------------------
 // Function:  double getData
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 double CDE_getData_double(void)
 {
     // splicer begin function.getData_double

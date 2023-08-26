@@ -106,8 +106,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Requested: c_function_native_*_raw
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_raw
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrRaw")
@@ -131,8 +130,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrPointer")
@@ -144,8 +142,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Requested: c_function_native_*_raw
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_raw
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
         ! Attrs:     +intent(out)
@@ -163,8 +160,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -184,8 +180,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointer_bufferify")
@@ -198,8 +193,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_native_*_allocatable
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_allocatable
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -219,8 +213,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Requested: c_function_native_*_cdesc_allocatable
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_allocatable
         ! start c_return_int_ptr_dim_alloc_bufferify
         subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimAlloc_bufferify")
@@ -233,8 +226,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -252,8 +244,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
             import :: OWN_SHROUD_array
@@ -264,8 +255,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -283,8 +273,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -302,8 +291,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointerNew_bufferify")
             import :: OWN_SHROUD_array
@@ -314,8 +302,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_native_*_allocatable
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_allocatable
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -333,8 +320,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_pointer
-        ! Match:     c_function_native_*
+        ! Exact:     c_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -352,8 +338,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_cdesc_pointer
-        ! Match:     c_function_native_*_cdesc
+        ! Exact:     c_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefaultNew_bufferify")
             import :: OWN_SHROUD_array
@@ -522,8 +507,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_pointer
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_pointer
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -541,8 +525,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     ! start return_int_ptr_dim_pointer
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -563,8 +546,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_native_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Requested: c_function_native_*_cdesc_allocatable
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_allocatable
     ! start return_int_ptr_dim_alloc
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
@@ -586,8 +568,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -606,8 +587,7 @@ contains
     ! Attrs:     +capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -628,8 +608,7 @@ contains
     ! Attrs:     +capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_cdesc_pointer
-    ! Match:     c_function_native_*_cdesc
+    ! Exact:     c_function_native_*_cdesc_pointer
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer

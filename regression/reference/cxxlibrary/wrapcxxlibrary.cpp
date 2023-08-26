@@ -42,8 +42,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 bool CXX_defaultPtrIsNULL_0(void)
 {
     // splicer begin function.defaultPtrIsNULL_0
@@ -55,8 +54,7 @@ bool CXX_defaultPtrIsNULL_0(void)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
@@ -157,8 +155,7 @@ const char * CXX_getGroupName(long idx)
 // ----------------------------------------
 // Function:  const std::string & getGroupName +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Requested: c_function_string_&_buf_copy
-// Match:     c_function_string_&_buf
+// Exact:     c_function_string_&_buf_copy
 // ----------------------------------------
 // Argument:  int32_t idx +value
 // Attrs:     +intent(in)
@@ -185,8 +182,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 // ----------------------------------------
 // Function:  const std::string & getGroupName +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Requested: c_function_string_&_buf_copy
-// Match:     c_function_string_&_buf
+// Exact:     c_function_string_&_buf_copy
 // ----------------------------------------
 // Argument:  int64_t idx +value
 // Attrs:     +intent(in)

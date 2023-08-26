@@ -161,8 +161,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_struct_as_class_int_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_npts")
@@ -195,8 +194,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_value
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_struct_as_class_int_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_value")
@@ -243,8 +241,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_struct_as_class_double_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_npts")
@@ -277,8 +274,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  double get_value
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_struct_as_class_double_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_value")
@@ -292,8 +288,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
         ! Attrs:     +api(capptr)+intent(function)
-        ! Requested: c_function_shadow_scalar_capptr_targ_native_scalar
-        ! Match:     c_function_shadow_scalar_capptr
+        ! Exact:     c_function_shadow_scalar_capptr_targ_native_scalar
         function c_return_user_type(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_returnUserType")
@@ -353,8 +348,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker1")
@@ -366,8 +360,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker2")
@@ -525,8 +518,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function struct_as_class_int_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -568,8 +560,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function struct_as_class_int_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -651,8 +642,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function struct_as_class_double_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -694,8 +684,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function struct_as_class_double_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -738,8 +727,7 @@ contains
     ! Requested: f_function_shadow_scalar_capptr_targ_native_scalar
     ! Match:     f_function_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Requested: c_function_shadow_scalar_capptr_targ_native_scalar
-    ! Match:     c_function_shadow_scalar_capptr
+    ! Exact:     c_function_shadow_scalar_capptr_targ_native_scalar
     function return_user_type() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -829,8 +817,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -851,8 +838,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!

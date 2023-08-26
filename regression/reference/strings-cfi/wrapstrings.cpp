@@ -274,8 +274,7 @@ void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 // ----------------------------------------
 // Function:  const char * getCharPtr1
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_char_*_allocatable
-// Match:     c_function_char_*
+// Exact:     c_function_char_*_allocatable
 // start STR_getCharPtr1
 const char * STR_getCharPtr1(void)
 {
@@ -337,8 +336,7 @@ const char * STR_getCharPtr2(void)
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
 // Attrs:     +api(cfi)+deref(copy)+intent(function)
-// Requested: c_function_char_*_cfi_copy
-// Match:     c_function_char_*_cfi
+// Exact:     c_function_char_*_cfi_copy
 // start STR_getCharPtr2_CFI
 void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -380,8 +378,7 @@ const char * STR_getCharPtr3(void)
 // ----------------------------------------
 // Argument:  char * output
 // Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-// Requested: c_function_char_*_cfi_result
-// Match:     c_function_char_*_cfi
+// Exact:     c_function_char_*_cfi_result
 // start STR_getCharPtr3_CFI
 void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
@@ -400,8 +397,7 @@ void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi)
 // ----------------------------------------
 // Function:  const char * getCharPtr4 +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Requested: c_function_char_*_raw
-// Match:     c_function_char_*
+// Exact:     c_function_char_*_raw
 const char * STR_getCharPtr4(void)
 {
     // splicer begin function.getCharPtr4
@@ -495,8 +491,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
 // Attrs:     +api(cfi)+deref(copy)+intent(function)
-// Requested: c_function_string_scalar_cfi_copy
-// Match:     c_function_string_scalar_cfi
+// Exact:     c_function_string_scalar_cfi_copy
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringLen_CFI
@@ -526,8 +521,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Argument:  string * output
 // Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-// Requested: c_function_string_scalar_cfi_result
-// Match:     c_function_string_scalar_cfi
+// Exact:     c_function_string_scalar_cfi_result
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
     // splicer begin function.getConstStringAsArg_CFI
@@ -641,8 +635,7 @@ const char * STR_getConstStringRefLen(void)
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
 // Attrs:     +api(cfi)+deref(copy)+intent(function)
-// Requested: c_function_string_&_cfi_copy
-// Match:     c_function_string_&_cfi
+// Exact:     c_function_string_&_cfi_copy
 void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLen_CFI
@@ -698,8 +691,7 @@ const char * STR_getConstStringRefAsArg(void)
 // ----------------------------------------
 // Argument:  string & output
 // Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-// Requested: c_function_string_&_cfi_result
-// Match:     c_function_string_&_cfi
+// Exact:     c_function_string_&_cfi_result
 void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
     // splicer begin function.getConstStringRefAsArg_CFI
@@ -747,8 +739,7 @@ const char * STR_getConstStringRefLenEmpty(void)
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
 // Attrs:     +api(cfi)+deref(copy)+intent(function)
-// Requested: c_function_string_&_cfi_copy
-// Match:     c_function_string_&_cfi
+// Exact:     c_function_string_&_cfi_copy
 void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLenEmpty_CFI
@@ -830,8 +821,7 @@ const char * STR_getConstStringPtrLen(void)
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
 // Attrs:     +api(cfi)+deref(copy)+intent(function)
-// Requested: c_function_string_*_cfi_copy
-// Match:     c_function_string_*_cfi
+// Exact:     c_function_string_*_cfi_copy
 void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrLen_CFI
@@ -1420,8 +1410,7 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // ----------------------------------------
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +intent(in)
@@ -1441,8 +1430,7 @@ int STR_acceptStringInstance(char *arg1)
 // ----------------------------------------
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +api(cfi)+intent(in)
@@ -1881,8 +1869,7 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
@@ -1903,8 +1890,7 @@ int STR_CpassCharPtrNotrim(const char * src)
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +api(cfi)+intent(in)
@@ -1935,8 +1921,7 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  void * addr +value
 // Attrs:     +intent(in)
@@ -1962,8 +1947,7 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * in
 // Attrs:     +intent(in)
@@ -1989,8 +1973,7 @@ int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * in
 // Attrs:     +api(cfi)+intent(in)

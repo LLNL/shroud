@@ -522,8 +522,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
@@ -551,8 +550,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +api(cfi)+intent(in)
@@ -579,8 +577,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -601,8 +598,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
@@ -644,8 +640,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int sumFixedArray
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! start sum_fixed_array
     interface
         function sum_fixed_array() &
@@ -1065,8 +1060,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int checkInt2d
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -1149,8 +1143,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void * returnAddress1
     ! Attrs:     +intent(function)
-    ! Requested: c_function_void_*
-    ! Match:     c_function
+    ! Exact:     c_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1172,8 +1165,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void * returnAddress2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_void_*
-    ! Match:     c_function
+    ! Exact:     c_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1235,8 +1227,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
@@ -1257,8 +1248,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +api(cfi)+intent(in)
@@ -1280,8 +1270,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_pointer
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_pointer
     ! start c_return_int_ptr_to_scalar
     interface
         function c_return_int_ptr_to_scalar() &
@@ -1312,8 +1301,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_pointer
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_pointer
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -1344,8 +1332,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_pointer
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_pointer
     ! start c_return_int_ptr_to_const_scalar
     interface
         function c_return_int_ptr_to_const_scalar() &
@@ -1376,8 +1363,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_pointer
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_pointer
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1424,8 +1410,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_native_*_raw
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_raw
     ! start return_int_raw
     interface
         function return_int_raw() &
@@ -1441,8 +1426,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_native_*_raw
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
@@ -1464,8 +1448,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_native_*_raw
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +api(cfi)+intent(in)
@@ -1502,8 +1485,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: c_function_native_*_allocatable
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_allocatable
     ! start c_return_int_alloc_to_fixed_array
     interface
         function c_return_int_alloc_to_fixed_array() &
@@ -1984,8 +1966,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
@@ -2016,8 +1997,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -2076,8 +2056,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! Used to test values global_array.
     !<
@@ -2445,8 +2424,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -2535,8 +2513,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_void_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_void_*
-    ! Match:     c_function
+    ! Exact:     c_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -2563,8 +2540,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_void_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_void_*
-    ! Match:     c_function
+    ! Exact:     c_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -2639,8 +2615,7 @@ contains
     ! Requested: f_function_native_scalar
     ! Match:     f_function
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
@@ -2764,8 +2739,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_native_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_native_*_raw
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_raw
     !>
     !! Call directly via interface.
     !<
@@ -2789,8 +2763,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_native_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Requested: c_function_native_*_raw
-    ! Match:     c_function_native_*
+    ! Exact:     c_function_native_*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)

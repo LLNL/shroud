@@ -41,8 +41,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -283,8 +282,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  int vector_of_pointers
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -314,8 +312,7 @@ int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
 // ----------------------------------------
 // Function:  int vector_string_count
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -422,8 +419,7 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Requested: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-// Match:     c_function_vector_scalar_cdesc_targ_native_scalar
+// Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
@@ -449,8 +445,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)
