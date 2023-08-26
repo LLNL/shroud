@@ -9,10 +9,10 @@ root
     dtor -- c_dtor
     function -- c_function
       bool
-        scalar -- c_function_bool_scalar
+        scalar -- c_function
       char
         * -- c_function_char_*
-          allocatable -- c_function_char_*_allocatable/raw
+          allocatable -- c_function_char_*
           buf
             copy -- c_function_char_*_buf_copy/result
             result -- c_function_char_*_buf_copy/result
@@ -24,26 +24,26 @@ root
             copy -- c_function_char_*_cfi_copy/result
             pointer -- c_function_char_*_cfi_pointer
             result -- c_function_char_*_cfi_copy/result
-          raw -- c_function_char_*_allocatable/raw
+          raw -- c_function_char_*
         scalar -- c_function_char_scalar
           cfi -- c_function_char_scalar_cfi
       native
         & -- c_function_native_*/&/**
-          pointer -- c_function_native_*/&/**_pointer
+          pointer -- c_function_native_*/&/**
         * -- c_function_native_*/&/**
-          allocatable -- c_function_native_*_allocatable/raw
+          allocatable -- c_function_native_*/&/**
           cdesc -- c_function_native_*_cdesc
-            allocatable -- c_function_native_*_cdesc_allocatable/pointer
-            pointer -- c_function_native_*_cdesc_allocatable/pointer
+            allocatable -- c_function_native_*_cdesc
+            pointer -- c_function_native_*_cdesc
           cfi
             allocatable -- c_function_native_*_cfi_allocatable
             pointer -- c_function_native_*_cfi_pointer
-          pointer -- c_function_native_*/&/**_pointer
-          raw -- c_function_native_*_allocatable/raw
+          pointer -- c_function_native_*/&/**
+          raw -- c_function_native_*/&/**
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
-          pointer -- c_function_native_*/&/**_pointer
-        scalar -- c_function_native_scalar
+          pointer -- c_function_native_*/&/**
+        scalar -- c_function
       shadow
         &
           capptr -- c_function_shadow_*/&_capptr
@@ -55,7 +55,7 @@ root
           capptr -- c_function_shadow_scalar_capptr
             targ
               native
-                scalar -- c_function_shadow_scalar_capptr_targ_native_scalar
+                scalar -- c_function_shadow_scalar_capptr
           capsule -- c_function_shadow_scalar_capsule
       string
         & -- c_function_string_scalar/*/&
@@ -103,7 +103,7 @@ root
                 native
                   scalar -- c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
       void
-        * -- c_function_void_*
+        * -- c_function
     getter -- c_getter
       native
         *

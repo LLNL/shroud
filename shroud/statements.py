@@ -215,7 +215,31 @@ def compute_stmt_permutations(out, parts):
             tmp.append(part)
     else:
         out.append(tmp)
-                
+
+
+def add_statements_to_tree(key, tree, nodes, node_stmts, node):
+    """Add statement for key.
+
+    Key can have permutations separated by a slash.
+        ex name="c_function_string_scalar/*/&_buf_copy/result"
+    """
+    steps = key.split("_")
+    substeps = []
+    for part in steps:
+        subparts = part.split("/")
+        substeps.append(subparts)
+
+    expanded = []
+    compute_stmt_permutations(expanded, substeps)
+
+    for namelst in expanded:
+        name = "_".join(namelst)
+        if name in nodes:
+            raise RuntimeError("Duplicate key in statements: {}".
+                               format(name))
+        stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
+        stmt.intent = namelst[1]
+
 
 def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     """Add node to tree.
@@ -256,6 +280,7 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     nodes[name] = scope
     node_stmts[name] = node
     return scope
+
         
 def update_stmt_tree(stmts, nodes, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
@@ -293,6 +318,12 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
       },
     }
 
+    alias=[
+        "c_function_native_*_allocatable/raw",
+        "c_function_native_*/&/**_pointer",
+    ],
+
+
     Parameters
     ----------
     stmts : dict
@@ -305,7 +336,7 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
     for key, node in defaults.items():
         default_scopes[key] = node
 
-    # Index by name to find alias, base, mixin.
+    # Index by name to find base, mixin.
     node_stmts = {} # Dict from fc_statements for 'mixin'.
     nodes.clear()   # Allow function to be called multiple times.
     for node in stmts:
@@ -315,50 +346,38 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
                                format(str(node)))
 
     for node in stmts:
-        key = node["name"]
-        steps = key.split("_")
-        substeps = []
-        for part in steps:
-            subparts = part.split("/")
-            substeps.append(subparts)
+        add_statements_to_tree(node["name"], tree, nodes, node_stmts, node)
 
-        expanded = []
-        compute_stmt_permutations(expanded, substeps)
+        if "alias" in node:
+            for alias in node["alias"]:
+                add_statements_to_tree(alias, tree, nodes, node_stmts, node)
 
-        for namelst in expanded:
-            name = "_".join(namelst)
-            if name in nodes:
-                raise RuntimeError("Duplicate key in statements: {}".
-                                   format(name))
-            stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
-            stmt.intent = namelst[1]
-
-            # check for consistency
-            if key[0] == "c":
-                if (stmt.c_arg_decl is not None or
-                    stmt.f_c_arg_decl is not None or
-                    stmt.f_c_arg_names is not None):
-                    err = False
-                    for field in ["c_arg_decl", "f_c_arg_decl", "f_c_arg_names"]:
-                        fvalue = stmt.get(field)
-                        if fvalue is None:
-                            err = True
-                            print("Missing", field, "in", node["name"])
-                        elif not isinstance(fvalue, list):
-                            err = True
-                            print(field, "must be a list in", node["name"])
-                    if (stmt.c_arg_decl is None or
-                        stmt.f_c_arg_decl is None or
-                        stmt.f_c_arg_names is None):
-                        print("c_arg_decl, f_c_arg_decl and f_c_arg_names must all exist")
+        # check for consistency
+        if key[0] == "c":
+            if (stmt.c_arg_decl is not None or
+                stmt.f_c_arg_decl is not None or
+                stmt.f_c_arg_names is not None):
+                err = False
+                for field in ["c_arg_decl", "f_c_arg_decl", "f_c_arg_names"]:
+                    fvalue = stmt.get(field)
+                    if fvalue is None:
                         err = True
-                    if err:
-                        raise RuntimeError("Error with fields")
-                    length = len(stmt.c_arg_decl)
-                    if any(len(lst) != length for lst in [stmt.f_c_arg_decl, stmt.f_c_arg_names]):
-                        raise RuntimeError(
-                            "c_arg_decl, f_c_arg_decl and f_c_arg_names "
-                            "must all be same length in {}".format(node["name"]))
+                        print("Missing", field, "in", node["name"])
+                    elif not isinstance(fvalue, list):
+                        err = True
+                        print(field, "must be a list in", node["name"])
+                if (stmt.c_arg_decl is None or
+                    stmt.f_c_arg_decl is None or
+                    stmt.f_c_arg_names is None):
+                    print("c_arg_decl, f_c_arg_decl and f_c_arg_names must all exist")
+                    err = True
+                if err:
+                    raise RuntimeError("Error with fields")
+                length = len(stmt.c_arg_decl)
+                if any(len(lst) != length for lst in [stmt.f_c_arg_decl, stmt.f_c_arg_names]):
+                    raise RuntimeError(
+                        "c_arg_decl, f_c_arg_decl and f_c_arg_names "
+                        "must all be same length in {}".format(node["name"]))
             
 
 def write_cf_tree(fp):
@@ -592,24 +611,16 @@ fc_statements = [
 
     dict(
         name="c_function",
+        alias=[
+            "c_function_bool_scalar",
+            "c_function_native_scalar",
+            "c_function_void_*",
+        ],
     ),
     dict(
         name="f_function",
     ),
 
-    dict(
-        name="c_function_bool_scalar",
-        base="c_function",
-    ),
-    dict(
-        name="c_function_native_scalar",
-        base="c_function",
-    ),
-    dict(
-        name="c_function_void_*",
-        base="c_function",
-    ),
-    
     ########## mixin ##########
     dict(
         name="c_mixin_function_cdesc",
@@ -1141,24 +1152,20 @@ fc_statements = [
         # c_function_native_*
         # c_function_native_&
         # c_function_native_**
+        # c_function_native_*_allocatable
+        # c_function_native_*_raw
+        # c_function_native_*_pointer
+        # c_function_native_&_pointer
+        # c_function_native_**_pointer
         name="c_function_native_*/&/**",
+        alias=[
+            "c_function_native_*_allocatable/raw",
+            "c_function_native_*/&/**_pointer",
+        ],
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_c_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        # c_function_native_*_allocatable
-        # c_function_native_*_raw
-        name="c_function_native_*_allocatable/raw",
-        base="c_function_native_*",
-    ),
-    dict(
-        # c_function_native_*_pointer
-        # c_function_native_&_pointer
-        # c_function_native_**_pointer
-        name="c_function_native_*/&/**_pointer",
-        base="c_function_native_*",
     ),
     dict(
         name="c_function_native_*_scalar",
@@ -1184,7 +1191,12 @@ fc_statements = [
     # Works with deref pointer and allocatable since Fortran
     # does that part.
     dict(
+        # c_function_native_*_cdesc_allocatable
+        # c_function_native_*_cdesc_pointer
         name="c_function_native_*_cdesc",
+        alias=[
+            "c_function_native_*_cdesc_allocatable/pointer",
+        ],
         mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines array_context",
         c_post_call=[
@@ -1197,12 +1209,6 @@ fc_statements = [
             "{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};",
         ],
-    ),
-    dict(
-        # c_function_native_*_cdesc_allocatable
-        # c_function_native_*_cdesc_pointer
-        name="c_function_native_*_cdesc_allocatable/pointer",
-        base="c_function_native_*_cdesc",
     ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
@@ -1368,17 +1374,16 @@ fc_statements = [
 #    ),
     
     dict(
+        # c_function_char_*_allocatable
+        # c_function_char_*_raw
         name="c_function_char_*",
+        alias=[
+            "c_function_char_*_allocatable/raw",
+        ],
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         f_c_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        # c_function_char_*_allocatable
-        # c_function_char_*_raw
-        name="c_function_char_*_allocatable/raw",
-        base="c_function_char_*",
     ),
     dict(
         # NULL terminate the input string.
@@ -2387,6 +2392,9 @@ fc_statements = [
     dict(
         name="c_function_shadow_scalar_capptr",
         mixin=["c_mixin_shadow", "c_function_shadow_scalar_capsule"],
+        alias=[
+            "c_function_shadow_scalar_capptr_targ_native_scalar",
+        ],
         c_return_type="{c_type} *",
         c_return=[
             "return {c_var};",
@@ -2396,10 +2404,6 @@ fc_statements = [
             "type(C_PTR) :: {F_result_ptr}",
         ],
         f_c_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        name="c_function_shadow_scalar_capptr_targ_native_scalar",
-        base="c_function_shadow_scalar_capptr",
     ),
     
     dict(
@@ -2851,6 +2855,8 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
+        # c_function_char_*_cfi_copy
+        # c_function_char_*_cfi_result
         name="c_function_char_*_cfi_copy/result",
         mixin=[
             "c_mixin_arg_character_cfi",
