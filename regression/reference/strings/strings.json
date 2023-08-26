@@ -2476,7 +2476,7 @@
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_function_string_*_buf_result",
-                            "stmt1": "f_function_string_*_buf",
+                            "stmt1": "f_function_string_*_buf_result",
                             "stmtc0": "c_function_string_*_buf_result",
                             "stmtc1": "c_function_string_*_buf_result"
                         }
@@ -3347,7 +3347,7 @@
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_function_string_&_buf_result",
-                            "stmt1": "f_function_string_&_buf",
+                            "stmt1": "f_function_string_&_buf_result",
                             "stmtc0": "c_function_string_&_buf_result",
                             "stmtc1": "c_function_string_&_buf_result"
                         }
@@ -10147,7 +10147,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
                             "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*",
                             "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
@@ -10619,7 +10619,7 @@
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_char_*_capi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_char_*_capi",
                             "stmtc0": "c_in_char_*_capi",
                             "stmtc1": "c_default"
                         }
@@ -10812,7 +10812,7 @@
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_char_*_capi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_char_*_capi",
                             "stmtc0": "c_in_char_*_capi",
                             "stmtc1": "c_default"
                         }

@@ -1061,8 +1061,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1125,8 +1124,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_&
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_&
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_&
     !>
@@ -1182,8 +1180,7 @@ contains
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_bool_scalar
-    ! Match:     f_in_bool
+    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_bool_scalar
     ! Match:     c_default
@@ -1269,8 +1266,7 @@ contains
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1335,8 +1331,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start class1_set_test
@@ -1581,8 +1576,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1674,8 +1668,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start data_set_nitems
@@ -1721,8 +1714,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     ! start data_set_items
@@ -1750,8 +1742,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1775,8 +1766,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_scalar
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_scalar
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_scalar
     !>
@@ -1799,8 +1789,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     function useclass(arg) &
@@ -1930,8 +1919,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1961,8 +1949,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default

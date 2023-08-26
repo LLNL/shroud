@@ -546,8 +546,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int size +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -585,8 +584,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int & size +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_&
-    ! Match:     f_default
+    ! Exact:     f_out_native_&
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_&
     ! Match:     c_default
@@ -833,8 +831,7 @@ contains
     ! ----------------------------------------
     ! Argument:  void * & array +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_void_*&
-    ! Match:     f_default
+    ! Exact:     f_out_void_*&
     ! Attrs:     +intent(out)
     ! Requested: c_out_void_*&
     ! Match:     c_default

@@ -798,7 +798,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(data)",
                             "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*",
                             "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         },
@@ -1019,7 +1019,7 @@
                             "f_var": "in1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -1256,7 +1256,7 @@
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "f_in_bool_scalar",
-                            "stmt1": "f_in_bool",
+                            "stmt1": "f_in_bool_scalar",
                             "stmtc0": "c_in_bool_scalar",
                             "stmtc1": "c_default"
                         },
@@ -1310,7 +1310,7 @@
                             "f_var": "in1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -1833,7 +1833,7 @@
                             "f_var": "idx",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -2073,7 +2073,7 @@
                             "f_var": "idx",
                             "sh_type": "SH_TYPE_INT64_T",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -2307,7 +2307,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_&",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_inout_struct_&",
                                     "stmtc0": "c_inout_struct_&",
                                     "stmtc1": "c_inout_struct"
                                 },
@@ -2489,7 +2489,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_&",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_struct_&",
                                     "stmtc0": "c_in_struct_&",
                                     "stmtc1": "c_in_struct"
                                 },
@@ -2670,7 +2670,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_&",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_inout_struct_&",
                                     "stmtc0": "c_inout_struct_&",
                                     "stmtc1": "c_inout_struct"
                                 },
@@ -2803,7 +2803,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_out_struct_&",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_out_struct_&",
                                     "stmtc0": "c_out_struct_&",
                                     "stmtc1": "c_out_struct"
                                 },

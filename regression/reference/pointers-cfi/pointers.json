@@ -87,7 +87,7 @@
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*",
                             "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
@@ -193,7 +193,7 @@
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_inout_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*",
                             "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
@@ -444,7 +444,7 @@
                             "f_var": "argin",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -477,7 +477,7 @@
                             "f_var": "arginout",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_inout_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*",
                             "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
@@ -913,7 +913,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
                             "stmt0": "f_in_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*_cfi",
                             "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
@@ -1376,7 +1376,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
                             "stmt0": "f_in_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*_cfi",
                             "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
@@ -1925,7 +1925,7 @@
                             "f_var": "nvar",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -2396,7 +2396,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(values)",
                             "stmt0": "f_in_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*_cfi",
                             "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
@@ -2811,7 +2811,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(array)",
                             "stmt0": "f_inout_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*_cfi",
                             "stmtc0": "c_inout_native_*_cfi",
                             "stmtc1": "c_inout_native_*_cfi"
                         }
@@ -3128,7 +3128,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(x)",
                             "stmt0": "f_inout_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*_cfi",
                             "stmtc0": "c_inout_native_*_cfi",
                             "stmtc1": "c_inout_native_*_cfi"
                         }
@@ -3478,7 +3478,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arr)",
                             "stmt0": "f_in_native_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*_cfi",
                             "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
@@ -3806,7 +3806,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
                             "stmt0": "f_in_char_**_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_char_**_cfi",
                             "stmtc0": "c_in_char_**_cfi",
                             "stmtc1": "c_in_char_**_cfi"
                         }
@@ -3926,7 +3926,7 @@
                             "f_var": "value",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -4249,7 +4249,7 @@
                             "f_var": "nitems",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -4513,7 +4513,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -4850,7 +4850,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -5145,7 +5145,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -5381,7 +5381,7 @@
                             "f_var": "nitems",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -5641,7 +5641,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -5974,7 +5974,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_pointer",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_pointer",
                             "stmtc0": "c_out_native_**_cfi_pointer",
                             "stmtc1": "c_out_native_**_cfi_pointer"
                         }
@@ -6574,7 +6574,7 @@
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_***",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_***",
                             "stmtc0": "c_out_native_***",
                             "stmtc1": "c_default"
                         }
@@ -6688,7 +6688,7 @@
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_**",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_**",
                             "stmtc0": "c_in_native_**",
                             "stmtc1": "c_in_native_**"
                         }
@@ -6845,7 +6845,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*",
                             "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
@@ -7113,7 +7113,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cfi_allocatable",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_**_cfi_allocatable",
                             "stmtc0": "c_out_native_**_cfi_allocatable",
                             "stmtc1": "c_out_native_**_cfi_allocatable"
                         }
@@ -7211,7 +7211,7 @@
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -7349,7 +7349,7 @@
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -7863,7 +7863,7 @@
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(addr)",
                             "stmt0": "f_in_void_**_cfi",
-                            "stmt1": "f_in_void_**",
+                            "stmt1": "f_in_void_**_cfi",
                             "stmtc0": "c_in_void_**_cfi",
                             "stmtc1": "c_in_void_**"
                         }
@@ -9123,7 +9123,7 @@
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_char_*_cfi",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_char_*_cfi",
                             "stmtc0": "c_in_char_*_cfi",
                             "stmtc1": "c_in_char_*_cfi"
                         }

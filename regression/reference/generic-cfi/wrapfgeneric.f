@@ -856,8 +856,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -878,8 +877,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -919,8 +917,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
@@ -949,8 +946,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -978,8 +974,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
@@ -987,8 +982,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
@@ -1020,16 +1014,14 @@ contains
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1062,15 +1054,13 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
     ! Attrs:     +assumed-rank+intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+assumed-rank+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1100,32 +1090,28 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * to
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1154,31 +1140,27 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1207,30 +1189,26 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1260,8 +1238,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     subroutine save_pointer_float1d(addr)
@@ -1288,8 +1265,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     subroutine save_pointer_float2d(addr)
@@ -1315,8 +1291,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     subroutine save_pointer2_float1d(addr)
@@ -1341,8 +1316,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     subroutine save_pointer2_float2d(addr)
@@ -1407,8 +1381,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     subroutine get_pointer_as_pointer_float1d(addr)
@@ -1431,8 +1404,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     subroutine get_pointer_as_pointer_float2d(addr)
@@ -1470,15 +1442,13 @@ contains
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_shadow_*
-    ! Match:     f_default
+    ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
     ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1503,15 +1473,13 @@ contains
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_shadow_*
-    ! Match:     f_default
+    ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
     ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default

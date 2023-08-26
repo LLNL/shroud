@@ -113,8 +113,7 @@ contains
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this
     ! Attrs:     +intent(in)+struct(ns2_DataPointer)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(ns2_DataPointer)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -143,16 +142,14 @@ contains
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this
     ! Attrs:     +intent(inout)+struct(ns2_DataPointer)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(ns2_DataPointer)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine data_pointer_set_items(SH_this, val)

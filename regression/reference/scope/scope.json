@@ -698,7 +698,7 @@
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_struct_*",
                             "stmtc0": "c_in_struct_*",
                             "stmtc1": "c_in_struct"
                         }
@@ -870,7 +870,7 @@
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_struct_*",
                             "stmtc0": "c_inout_struct_*",
                             "stmtc1": "c_inout_struct"
                         }
@@ -909,7 +909,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
                             "stmt0": "f_setter_native_*",
-                            "stmt1": "f_setter_native",
+                            "stmt1": "f_setter_native_*",
                             "stmtc0": "c_setter_native_*",
                             "stmtc1": "c_setter_native_*"
                         }
@@ -1314,7 +1314,7 @@
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_struct_*",
                                     "stmtc0": "c_in_struct_*",
                                     "stmtc1": "c_in_struct"
                                 }
@@ -1486,7 +1486,7 @@
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_inout_struct_*",
                                     "stmtc0": "c_inout_struct_*",
                                     "stmtc1": "c_inout_struct"
                                 }
@@ -1525,7 +1525,7 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
                                     "stmt0": "f_setter_native_*",
-                                    "stmt1": "f_setter_native",
+                                    "stmt1": "f_setter_native_*",
                                     "stmtc0": "c_setter_native_*",
                                     "stmtc1": "c_setter_native_*"
                                 }
@@ -1957,7 +1957,7 @@
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_struct_*",
                                     "stmtc0": "c_in_struct_*",
                                     "stmtc1": "c_in_struct"
                                 }
@@ -2129,7 +2129,7 @@
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_inout_struct_*",
                                     "stmtc0": "c_inout_struct_*",
                                     "stmtc1": "c_inout_struct"
                                 }
@@ -2168,7 +2168,7 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
                                     "stmt0": "f_setter_native_*",
-                                    "stmt1": "f_setter_native",
+                                    "stmt1": "f_setter_native_*",
                                     "stmtc0": "c_setter_native_*",
                                     "stmtc1": "c_setter_native_*"
                                 }

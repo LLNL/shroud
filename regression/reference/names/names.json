@@ -813,7 +813,7 @@
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -941,7 +941,7 @@
                             "f_var": "i",
                             "sh_type": "SH_TYPE_LONG",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -2002,7 +2002,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -2054,7 +2054,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -2258,7 +2258,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -2310,7 +2310,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -2621,7 +2621,7 @@
                             "f_var": "point",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_*",
-                            "stmt1": "f_in_shadow",
+                            "stmt1": "f_in_shadow_*",
                             "stmtc0": "c_in_shadow_*",
                             "stmtc1": "c_in_shadow_*"
                         },

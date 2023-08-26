@@ -118,8 +118,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_native_*
     ! Match:     c_default
@@ -143,8 +142,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_native_*
     ! Match:     c_default

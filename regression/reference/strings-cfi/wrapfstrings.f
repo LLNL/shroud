@@ -1581,15 +1581,13 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_char_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     !>
@@ -1622,8 +1620,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_char_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_char_*_cfi
     !>
@@ -2037,8 +2034,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_string_&_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_&_cfi
     !>
@@ -2068,8 +2064,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_&_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_string_&_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_&_cfi
     !>
@@ -2099,8 +2094,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_&_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_string_&_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_&_cfi
     !>
@@ -2132,8 +2126,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_string_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_*_cfi
     !>
@@ -2160,8 +2153,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_string_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_*_cfi
     !>
@@ -2188,8 +2180,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_string_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_*_cfi
     !>
@@ -2217,8 +2208,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_string_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_*_cfi
     ! ----------------------------------------
@@ -2256,8 +2246,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_string_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_*_cfi
     ! ----------------------------------------
@@ -2296,8 +2285,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_scalar_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_string_scalar_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_scalar_cfi
     !>
@@ -2327,8 +2315,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +deref(copy)+intent(out)
-    ! Requested: f_out_string_**_cfi_copy
-    ! Match:     f_default
+    ! Exact:     f_out_string_**_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(out)
     ! Requested: c_out_string_**_cfi_copy
     ! Match:     c_out_string_**_copy
@@ -2359,8 +2346,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_string_**_cfi_allocatable
-    ! Match:     f_default
+    ! Exact:     f_out_string_**_cfi_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
     ! Requested: c_out_string_**_cfi_allocatable
     ! Match:     c_out_string_**_allocatable
@@ -2392,8 +2378,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_string_**_cfi_allocatable
-    ! Match:     f_default
+    ! Exact:     f_out_string_**_cfi_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
     ! Requested: c_out_string_**_cfi_allocatable
     ! Match:     c_out_string_**_allocatable
@@ -2425,8 +2410,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     subroutine explicit1(name)
@@ -2449,8 +2433,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_char_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     subroutine explicit2(name)
@@ -2517,15 +2500,13 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_char_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     !>
@@ -2557,15 +2538,13 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_out_char_*_cfi
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     !>
@@ -2593,15 +2572,13 @@ contains
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_&_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_string_&_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_&_cfi
     !>
@@ -2632,8 +2609,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     !>
@@ -2669,8 +2645,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: f_in_char_*_capi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
     ! Requested: c_in_char_*_capi
     ! Match:     c_default
@@ -2710,15 +2685,13 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: f_in_char_*_capi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
     ! Requested: c_in_char_*_capi
     ! Match:     c_default

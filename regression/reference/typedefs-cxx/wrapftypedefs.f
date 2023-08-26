@@ -129,8 +129,7 @@ contains
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -157,8 +156,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
@@ -183,8 +181,7 @@ contains
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default

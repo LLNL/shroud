@@ -1529,8 +1529,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
@@ -1556,8 +1555,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * arg
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_native_*
     ! Match:     c_default
@@ -1612,16 +1610,14 @@ contains
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_native_*
     ! Match:     c_default
@@ -1655,8 +1651,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
@@ -1694,8 +1689,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
@@ -1817,8 +1811,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int nvar +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1851,8 +1844,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
@@ -1914,8 +1906,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
     !>
@@ -1943,8 +1934,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
     ! start fill_with_zeros
@@ -1969,8 +1959,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! start accumulate
@@ -1999,8 +1988,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_**_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_**_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_**_cfi
     !>
@@ -2030,8 +2018,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -2081,8 +2068,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     ! start get_ptr_to_scalar
@@ -2108,8 +2094,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     !>
@@ -2138,8 +2123,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     !>
@@ -2169,8 +2153,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     !>
@@ -2201,8 +2184,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     ! start get_ptr_to_const_scalar
@@ -2228,8 +2210,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     ! start get_ptr_to_fixed_const_array
@@ -2255,8 +2236,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_out_native_**_cfi_pointer
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     ! start get_ptr_to_dynamic_const_array
@@ -2394,8 +2374,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_***
-    ! Match:     f_default
+    ! Exact:     f_out_native_***
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_***
     ! Match:     c_default
@@ -2424,8 +2403,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_**
-    ! Match:     f_default
+    ! Exact:     f_in_native_**
     ! Attrs:     +intent(in)
     ! Exact:     c_in_native_**
     !>
@@ -2453,8 +2431,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
@@ -2484,8 +2461,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_native_**_cfi_allocatable
-    ! Match:     f_default
+    ! Exact:     f_out_native_**_cfi_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
     ! Exact:     c_out_native_**_cfi_allocatable
     !>
@@ -2513,8 +2489,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -2540,8 +2515,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -2614,8 +2588,7 @@ contains
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_void_**_cfi
-    ! Match:     f_in_void_**
+    ! Exact:     f_in_void_**_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Requested: c_in_void_**_cfi
     ! Match:     c_in_void_**
@@ -2762,8 +2735,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_*_cfi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     !>

@@ -908,8 +908,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_x1
@@ -952,8 +951,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_y1
@@ -999,8 +997,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_x1
@@ -1043,8 +1040,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_y1
@@ -1087,8 +1083,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_z1
@@ -1116,8 +1111,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_struct_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_scalar
     ! Match:     c_in_struct
@@ -1145,8 +1139,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1173,8 +1166,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1211,8 +1203,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1238,24 +1229,21 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_struct_*
-    ! Match:     f_default
+    ! Exact:     f_out_struct_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_struct_*
     ! Match:     c_out_struct
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1284,8 +1272,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
@@ -1306,16 +1293,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1339,16 +1324,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1380,16 +1363,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1465,16 +1446,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int y +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1499,8 +1478,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     function cstruct_as_class_sum(point) &
@@ -1522,24 +1500,21 @@ contains
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int y +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int z +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -1569,8 +1544,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1597,16 +1571,14 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
     ! ----------------------------------------
     ! Argument:  const double * val +intent(in)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_ptr_set_const_dvalue(SH_this, val)
@@ -1629,8 +1601,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1659,16 +1630,14 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_list_set_ivalue(SH_this, val)
@@ -1691,8 +1660,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
@@ -1721,16 +1689,14 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
     ! Requested: c_inout_struct_*
     ! Match:     c_inout_struct
     ! ----------------------------------------
     ! Argument:  double * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_list_set_dvalue(SH_this, val)

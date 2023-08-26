@@ -338,8 +338,9 @@ root
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
           cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
-            copy -- f_function_char_*_cfi_copy
+            copy -- f_function_char_*_cfi_copy/result
             pointer -- f_function_char_scalar/*_cfi_pointer
+            result -- f_function_char_*_cfi_copy/result
           raw -- f_function_char_*_raw
         scalar -- f_function_char_scalar
           cdesc
@@ -395,6 +396,7 @@ root
         &
           buf -- f_function_string_scalar/*/&_buf
             copy -- f_function_string_scalar/*/&_buf
+            result -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
               caller -- f_function_string_scalar/*/&_cdesc_allocatable
@@ -403,13 +405,15 @@ root
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
               caller -- f_function_string_scalar/*/&_cfi_allocatable
               library -- f_function_string_scalar/*/&_cfi_allocatable
-            copy -- f_function_string_scalar/*/&_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy/result
             pointer -- f_function_string_scalar/*/&_cfi_pointer
               caller -- f_function_string_scalar/*/&_cfi_pointer
               library -- f_function_string_scalar/*/&_cfi_pointer
+            result -- f_function_string_scalar/*/&_cfi_copy/result
         *
           buf -- f_function_string_scalar/*/&_buf
             copy -- f_function_string_scalar/*/&_buf
+            result -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
               caller -- f_function_string_scalar/*/&_cdesc_allocatable
@@ -420,13 +424,15 @@ root
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
               caller -- f_function_string_scalar/*/&_cfi_allocatable
               library -- f_function_string_scalar/*/&_cfi_allocatable
-            copy -- f_function_string_scalar/*/&_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy/result
             pointer -- f_function_string_scalar/*/&_cfi_pointer
               caller -- f_function_string_scalar/*/&_cfi_pointer
               library -- f_function_string_scalar/*/&_cfi_pointer
+            result -- f_function_string_scalar/*/&_cfi_copy/result
         scalar
           buf -- f_function_string_scalar/*/&_buf
             copy -- f_function_string_scalar/*/&_buf
+            result -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
               caller -- f_function_string_scalar/*/&_cdesc_allocatable
@@ -436,10 +442,11 @@ root
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
               caller -- f_function_string_scalar/*/&_cfi_allocatable
               library -- f_function_string_scalar/*/&_cfi_allocatable
-            copy -- f_function_string_scalar/*/&_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy/result
             pointer -- f_function_string_scalar/*/&_cfi_pointer
               caller -- f_function_string_scalar/*/&_cfi_pointer
               library -- f_function_string_scalar/*/&_cfi_pointer
+            result -- f_function_string_scalar/*/&_cfi_copy/result
       struct
         *
           pointer -- f_function_struct_*_pointer
@@ -466,58 +473,106 @@ root
             allocatable -- f_getter_string_scalar_cdesc_allocatable
     in
       bool -- f_in_bool
+        scalar -- f_in_bool
       char
         *
           buf -- f_in/out_char_*_buf
+          capi -- f_in_char_*_capi/cfi
+          cfi -- f_in_char_*_capi/cfi
         **
           buf -- f_in_char_**_buf
+          cfi -- f_in_char_**_cfi
         scalar -- f_in_char_scalar
       native
-        *
+        & -- f_in_native_scalar/*/&
+        * -- f_in_native_scalar/*/&
           cdesc -- f_in/out/inout_native_*_cdesc
+          cfi -- f_in_native_scalar/*/&
+        ** -- f_inout_native_*
+        scalar -- f_in_native_scalar/*/&
       shadow -- f_in_shadow
+        & -- f_in_shadow
+        * -- f_in_shadow
+        scalar -- f_in_shadow
       string
         &
           buf -- f_in_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
         *
           buf -- f_in_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
         scalar
           buf -- f_in_string_scalar_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+      struct
+        & -- f_inout_struct_*
+        * -- f_inout_struct_*
+        scalar -- f_inout_struct_*
+      unknown
+        scalar -- f_in_unknown_scalar
       vector
+        &
+          buf
+            targ
+              native
+                * -- f_in_vector_buf_targ_native_*
+                scalar -- f_in_vector_buf_targ_native_scalar
+              string
+                scalar -- f_in_vector_&_buf_targ_string_scalar
+          cdesc
+            targ
+              native
+                scalar -- f_in_vector_&_cdesc_targ_native_scalar
         buf
           targ
             native
               * -- f_in_vector_buf_targ_native_*
               scalar -- f_in_vector_buf_targ_native_scalar
-            string
-              scalar -- f_in_vector_buf_targ_string_scalar
       void
         * -- f_in_void_*
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_in/out/inout_void_**
+          cfi -- f_in/out/inout_void_**
     inout
       bool -- f_inout_bool
+        * -- f_inout_bool
       char
         *
           buf -- f_inout_char_*_buf
+          cfi -- f_inout/out_char_*_cfi
       native
-        *
+        * -- f_inout_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
+          cfi -- f_inout_native_*_cfi
+      shadow
+        * -- f_inout_struct_*
       string
         &
           buf -- f_inout_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
         *
           buf -- f_inout_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+        scalar
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+      struct
+        & -- f_inout_struct_*
+        * -- f_inout_struct_*
       vector
+        &
+          cdesc
+            allocatable
+              targ
+                native
+                  scalar -- f_inout_vector_&_cdesc_allocatable_targ_native_scalar
+            targ
+              native
+                scalar -- f_inout_vector_cdesc_targ_native_scalar
         buf
           targ
             string
               scalar -- f_inout_vector_buf_targ_string_scalar
         cdesc
-          allocatable
-            targ
-              native
-                scalar -- f_inout_vector_cdesc_allocatable_targ_native_scalar
           targ
             native
               scalar -- f_inout_vector_cdesc_targ_native_scalar
@@ -555,10 +610,13 @@ root
         array -- f_mixin_str_array
     out
       bool -- f_out_bool
+        * -- f_out_bool
       char
         *
           buf -- f_in/out_char_*_buf
+          cfi -- f_inout/out_char_*_cfi
       native
+        & -- f_inout_native_*
         * -- f_out_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi
@@ -571,16 +629,30 @@ root
           cdesc
             allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
+          cfi
+            allocatable -- f_out_native_**_cfi_allocatable/pointer
+            pointer -- f_out_native_**_cfi_allocatable/pointer
           raw -- f_out_native_**_raw
+        *** -- f_inout_native_*
       string
         &
           buf -- f_out_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
         *
           buf -- f_out_string_*/&_buf
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
         **
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
+          cfi
+            allocatable -- f_out_string_**_cfi_allocatable/copy
+            copy -- f_out_string_**_cfi_allocatable/copy
+        scalar
+          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+      struct
+        & -- f_inout_struct_*
+        * -- f_inout_struct_*
       vector
         &
           cdesc
@@ -611,9 +683,12 @@ root
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
+        *& -- f_out_void_*&
         ** -- f_in/out/inout_void_**
     setter -- f_setter
       native -- f_setter_native
+        * -- f_setter_native
+        scalar -- f_setter_native
       string
         scalar
           buf -- f_setter_string_scalar_buf
@@ -4144,6 +4219,12 @@ f_function_char_*_cfi_pointer:
   f_need_wrapper: true
   intent: function
   name: f_function_char_*_cfi_pointer
+f_function_char_*_cfi_result:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_char_*_cfi_result
 f_function_char_*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4581,6 +4662,22 @@ f_function_string_&_buf_copy:
   - len
   intent: function
   name: f_function_string_&_buf_copy
+f_function_string_&_buf_result:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_&_buf_result
 f_function_string_&_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4686,6 +4783,12 @@ f_function_string_&_cfi_pointer_library:
   f_need_wrapper: true
   intent: function
   name: f_function_string_&_cfi_pointer_library
+f_function_string_&_cfi_result:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_result
 f_function_string_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -4718,6 +4821,22 @@ f_function_string_*_buf_copy:
   - len
   intent: function
   name: f_function_string_*_buf_copy
+f_function_string_*_buf_result:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_*_buf_result
 f_function_string_*_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4859,6 +4978,12 @@ f_function_string_*_cfi_pointer_library:
   f_need_wrapper: true
   intent: function
   name: f_function_string_*_cfi_pointer_library
+f_function_string_*_cfi_result:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_result
 f_function_string_scalar_buf:
   f_arg_call:
   - '{f_var}'
@@ -4891,6 +5016,22 @@ f_function_string_scalar_buf_copy:
   - len
   intent: function
   name: f_function_string_scalar_buf_copy
+f_function_string_scalar_buf_result:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_scalar_buf_result
 f_function_string_scalar_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -5014,6 +5155,12 @@ f_function_string_scalar_cfi_pointer_library:
   f_need_wrapper: true
   intent: function
   name: f_function_string_scalar_cfi_pointer_library
+f_function_string_scalar_cfi_result:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_result
 f_function_struct_*_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -5128,6 +5275,12 @@ f_in_bool:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
   intent: in
   name: f_in_bool
+f_in_bool_scalar:
+  c_local_var: true
+  f_pre_call:
+  - '{c_var} = {f_var}  ! coerce to C_BOOL'
+  intent: in
+  name: f_in_bool_scalar
 f_in_char_**_buf:
   f_arg_call:
   - '{f_var}'
@@ -5140,6 +5293,9 @@ f_in_char_**_buf:
   f_need_wrapper: true
   intent: in
   name: f_in_char_**_buf
+f_in_char_**_cfi:
+  intent: in
+  name: f_in_char_**_cfi
 f_in_char_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5156,11 +5312,26 @@ f_in_char_*_buf:
   - len
   intent: in
   name: f_in_char_*_buf
+f_in_char_*_capi:
+  intent: in
+  name: f_in_char_*_capi
+f_in_char_*_cfi:
+  intent: in
+  name: f_in_char_*_cfi
 f_in_char_scalar:
   f_arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
   intent: in
   name: f_in_char_scalar
+f_in_native_&:
+  intent: in
+  name: f_in_native_&
+f_in_native_*:
+  intent: in
+  name: f_in_native_*
+f_in_native_**:
+  intent: in
+  name: f_in_native_**
 f_in_native_*_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -5182,6 +5353,12 @@ f_in_native_*_cdesc:
   - cdesc
   intent: in
   name: f_in_native_*_cdesc
+f_in_native_*_cfi:
+  intent: in
+  name: f_in_native_*_cfi
+f_in_native_scalar:
+  intent: in
+  name: f_in_native_scalar
 f_in_shadow:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -5190,6 +5367,30 @@ f_in_shadow:
   f_need_wrapper: true
   intent: in
   name: f_in_shadow
+f_in_shadow_&:
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  intent: in
+  name: f_in_shadow_&
+f_in_shadow_*:
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  intent: in
+  name: f_in_shadow_*
+f_in_shadow_scalar:
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  intent: in
+  name: f_in_shadow_scalar
 f_in_string_&_buf:
   f_arg_call:
   - '{f_var}'
@@ -5206,6 +5407,9 @@ f_in_string_&_buf:
   - len
   intent: in
   name: f_in_string_&_buf
+f_in_string_&_cfi:
+  intent: in
+  name: f_in_string_&_cfi
 f_in_string_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5222,6 +5426,9 @@ f_in_string_*_buf:
   - len
   intent: in
   name: f_in_string_*_buf
+f_in_string_*_cfi:
+  intent: in
+  name: f_in_string_*_cfi
 f_in_string_scalar_buf:
   f_arg_call:
   - '{f_var}'
@@ -5240,6 +5447,59 @@ f_in_string_scalar_buf:
   - len
   intent: in
   name: f_in_string_scalar_buf
+f_in_string_scalar_cfi:
+  intent: in
+  name: f_in_string_scalar_cfi
+f_in_struct_&:
+  intent: in
+  name: f_in_struct_&
+f_in_struct_*:
+  intent: in
+  name: f_in_struct_*
+f_in_struct_scalar:
+  intent: in
+  name: f_in_struct_scalar
+f_in_unknown_scalar:
+  intent: in
+  name: f_in_unknown_scalar
+f_in_vector_&_buf_targ_native_*:
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, 1, kind=C_SIZE_T)
+  - size({f_var}, 2, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_need_wrapper: true
+  intent: in
+  name: f_in_vector_&_buf_targ_native_*
+f_in_vector_&_buf_targ_native_scalar:
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_need_wrapper: true
+  intent: in
+  name: f_in_vector_&_buf_targ_native_scalar
+f_in_vector_&_buf_targ_string_scalar:
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  f_need_wrapper: true
+  intent: in
+  name: f_in_vector_&_buf_targ_string_scalar
+f_in_vector_&_cdesc_targ_native_scalar:
+  intent: in
+  name: f_in_vector_&_cdesc_targ_native_scalar
 f_in_vector_buf_targ_native_*:
   f_arg_call:
   - '{f_var}'
@@ -5263,18 +5523,6 @@ f_in_vector_buf_targ_native_scalar:
   f_need_wrapper: true
   intent: in
   name: f_in_vector_buf_targ_native_scalar
-f_in_vector_buf_targ_string_scalar:
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - len({f_var}, kind=C_INT)
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_INT
-  f_need_wrapper: true
-  intent: in
-  name: f_in_vector_buf_targ_string_scalar
 f_in_void_*:
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {f_var}'
@@ -5291,6 +5539,14 @@ f_in_void_**:
     - C_PTR
   intent: in
   name: f_in_void_**
+f_in_void_**_cfi:
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: in
+  name: f_in_void_**_cfi
 f_in_void_*_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -5320,6 +5576,14 @@ f_inout_bool:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
   intent: inout
   name: f_inout_bool
+f_inout_bool_*:
+  c_local_var: true
+  f_post_call:
+  - '{f_var} = {c_var}  ! coerce to logical'
+  f_pre_call:
+  - '{c_var} = {f_var}  ! coerce to C_BOOL'
+  intent: inout
+  name: f_inout_bool_*
 f_inout_char_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5336,6 +5600,12 @@ f_inout_char_*_buf:
   - len
   intent: inout
   name: f_inout_char_*_buf
+f_inout_char_*_cfi:
+  intent: inout
+  name: f_inout_char_*_cfi
+f_inout_native_*:
+  intent: inout
+  name: f_inout_native_*
 f_inout_native_*_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -5357,6 +5627,12 @@ f_inout_native_*_cdesc:
   - cdesc
   intent: inout
   name: f_inout_native_*_cdesc
+f_inout_native_*_cfi:
+  intent: inout
+  name: f_inout_native_*_cfi
+f_inout_shadow_*:
+  intent: inout
+  name: f_inout_shadow_*
 f_inout_string_&_buf:
   f_arg_call:
   - '{f_var}'
@@ -5373,6 +5649,9 @@ f_inout_string_&_buf:
   - len
   intent: inout
   name: f_inout_string_&_buf
+f_inout_string_&_cfi:
+  intent: inout
+  name: f_inout_string_&_cfi
 f_inout_string_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5389,19 +5668,19 @@ f_inout_string_*_buf:
   - len
   intent: inout
   name: f_inout_string_*_buf
-f_inout_vector_buf_targ_string_scalar:
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - len({f_var}, kind=C_INT)
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_INT
-  f_need_wrapper: true
+f_inout_string_*_cfi:
   intent: inout
-  name: f_inout_vector_buf_targ_string_scalar
-f_inout_vector_cdesc_allocatable_targ_native_scalar:
+  name: f_inout_string_*_cfi
+f_inout_string_scalar_cfi:
+  intent: inout
+  name: f_inout_string_scalar_cfi
+f_inout_struct_&:
+  intent: inout
+  name: f_inout_struct_&
+f_inout_struct_*:
+  intent: inout
+  name: f_inout_struct_*
+f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper: copy_array
   f_arg_call:
   - '{f_var}'
@@ -5423,7 +5702,40 @@ f_inout_vector_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   intent: inout
-  name: f_inout_vector_cdesc_allocatable_targ_native_scalar
+  name: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
+f_inout_vector_&_cdesc_targ_native_scalar:
+  c_helper: copy_array
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  intent: inout
+  name: f_inout_vector_&_cdesc_targ_native_scalar
+f_inout_vector_buf_targ_string_scalar:
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  f_need_wrapper: true
+  intent: inout
+  name: f_inout_vector_buf_targ_string_scalar
 f_inout_vector_cdesc_targ_native_scalar:
   c_helper: copy_array
   f_arg_call:
@@ -5620,6 +5932,12 @@ f_out_bool:
   - '{f_var} = {c_var}  ! coerce to logical'
   intent: out
   name: f_out_bool
+f_out_bool_*:
+  c_local_var: true
+  f_post_call:
+  - '{f_var} = {c_var}  ! coerce to logical'
+  intent: out
+  name: f_out_bool_*
 f_out_char_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5636,6 +5954,12 @@ f_out_char_*_buf:
   - len
   intent: out
   name: f_out_char_*_buf
+f_out_char_*_cfi:
+  intent: out
+  name: f_out_char_*_cfi
+f_out_native_&:
+  intent: out
+  name: f_out_native_&
 f_out_native_*:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
@@ -5678,6 +6002,9 @@ f_out_native_*&_cdesc_pointer:
   - cdesc
   intent: out
   name: f_out_native_*&_cdesc_pointer
+f_out_native_***:
+  intent: out
+  name: f_out_native_***
 f_out_native_**_cdesc_allocatable:
   c_helper: copy_array
   f_arg_call:
@@ -5715,6 +6042,12 @@ f_out_native_**_cdesc_pointer:
   - cdesc
   intent: out
   name: f_out_native_**_cdesc_pointer
+f_out_native_**_cfi_allocatable:
+  intent: out
+  name: f_out_native_**_cfi_allocatable
+f_out_native_**_cfi_pointer:
+  intent: out
+  name: f_out_native_**_cfi_pointer
 f_out_native_**_raw:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'
@@ -5763,6 +6096,9 @@ f_out_string_&_buf:
   - len
   intent: out
   name: f_out_string_&_buf
+f_out_string_&_cfi:
+  intent: out
+  name: f_out_string_&_cfi
 f_out_string_**_cdesc_allocatable:
   c_helper: array_string_allocatable
   f_arg_call:
@@ -5810,6 +6146,12 @@ f_out_string_**_cdesc_copy:
   - cdesc
   intent: out
   name: f_out_string_**_cdesc_copy
+f_out_string_**_cfi_allocatable:
+  intent: out
+  name: f_out_string_**_cfi_allocatable
+f_out_string_**_cfi_copy:
+  intent: out
+  name: f_out_string_**_cfi_copy
 f_out_string_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -5826,6 +6168,18 @@ f_out_string_*_buf:
   - len
   intent: out
   name: f_out_string_*_buf
+f_out_string_*_cfi:
+  intent: out
+  name: f_out_string_*_cfi
+f_out_string_scalar_cfi:
+  intent: out
+  name: f_out_string_scalar_cfi
+f_out_struct_&:
+  intent: out
+  name: f_out_struct_&
+f_out_struct_*:
+  intent: out
+  name: f_out_struct_*
 f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper: copy_array
   f_arg_call:
@@ -5963,6 +6317,9 @@ f_out_vector_buf_targ_string_scalar:
   f_need_wrapper: true
   intent: out
   name: f_out_vector_buf_targ_string_scalar
+f_out_void_*&:
+  intent: out
+  name: f_out_void_*&
 f_out_void_**:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
@@ -6000,6 +6357,16 @@ f_setter_native:
   - '{c_var}'
   intent: setter
   name: f_setter_native
+f_setter_native_*:
+  f_arg_call:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_native_*
+f_setter_native_scalar:
+  f_arg_call:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_native_scalar
 f_setter_string_scalar_buf:
   f_arg_call:
   - '{f_var}'

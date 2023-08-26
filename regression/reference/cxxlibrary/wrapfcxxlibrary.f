@@ -219,8 +219,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
@@ -244,8 +243,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int in1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -282,8 +280,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int in1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -304,8 +301,7 @@ contains
     ! ----------------------------------------
     ! Argument:  bool flag=false +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_bool_scalar
-    ! Match:     f_in_bool
+    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_bool_scalar
     ! Match:     c_default
@@ -332,8 +328,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int32_t idx +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -363,8 +358,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int64_t idx +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default

@@ -221,7 +221,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -273,7 +273,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -471,7 +471,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_*",
                             "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         },
@@ -652,7 +652,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
@@ -870,7 +870,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "f_in_bool_scalar",
-                            "stmt1": "f_in_bool",
+                            "stmt1": "f_in_bool_scalar",
                             "stmtc0": "c_in_bool_scalar",
                             "stmtc1": "c_default"
                         },
@@ -924,7 +924,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "f_out_bool_*",
-                            "stmt1": "f_out_bool",
+                            "stmt1": "f_out_bool_*",
                             "stmtc0": "c_out_bool_*",
                             "stmtc1": "c_default"
                         },
@@ -978,7 +978,7 @@
                             "f_var": "arg3",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "f_inout_bool_*",
-                            "stmt1": "f_inout_bool",
+                            "stmt1": "f_inout_bool_*",
                             "stmtc0": "c_inout_bool_*",
                             "stmtc1": "c_default"
                         },
@@ -4986,7 +4986,7 @@
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -5151,7 +5151,7 @@
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -5377,7 +5377,7 @@
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
@@ -6157,7 +6157,7 @@
                             "f_var": "arr",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_struct_*",
                             "stmtc0": "c_inout_struct_*",
                             "stmtc1": "c_inout_struct"
                         }
@@ -6190,7 +6190,7 @@
                             "f_var": "tc",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }

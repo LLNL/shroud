@@ -118,8 +118,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_&
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_struct_&
     ! Match:     c_inout_struct
@@ -148,8 +147,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_&
-    ! Match:     f_default
+    ! Exact:     f_in_struct_&
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_&
     ! Match:     c_in_struct
@@ -178,8 +176,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_&
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
     ! Requested: c_inout_struct_&
     ! Match:     c_inout_struct
@@ -202,8 +199,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_struct_&
-    ! Match:     f_default
+    ! Exact:     f_out_struct_&
     ! Attrs:     +intent(out)
     ! Requested: c_out_struct_&
     ! Match:     c_out_struct

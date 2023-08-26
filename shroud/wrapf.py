@@ -1950,6 +1950,12 @@ rv = .false.
             fmt_arg.stmtc0 = statements.compute_name(c_stmts)
             fmt_arg.stmtc1 = c_intent_blk.name
 
+            if fmt_arg.stmt0 != fmt_arg.stmt1:
+                # This check is used to find non-matching names
+                print("TTT not match wrapf arg f_stmts", node.name)
+                print("     Requested:", fmt_arg.stmt0)
+                print("         Found:", fmt_arg.stmt1)
+
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")

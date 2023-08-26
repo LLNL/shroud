@@ -220,8 +220,7 @@ contains
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     subroutine class2_func1(obj, arg)
@@ -242,8 +241,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
@@ -289,8 +287,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct

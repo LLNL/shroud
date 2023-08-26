@@ -1922,8 +1922,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string * output
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_string_*_buf_result
-    ! Match:     f_function_string_*_buf
+    ! Exact:     f_function_string_*_buf_result
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
     ! Exact:     c_function_string_*_buf_result
     !>
@@ -2019,8 +2018,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string & output
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_string_&_buf_result
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_result
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf_result
     !>
@@ -2756,8 +2754,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
@@ -2831,8 +2828,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: f_in_char_*_capi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
     ! Requested: c_in_char_*_capi
     ! Match:     c_default
@@ -2869,8 +2865,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: f_in_char_*_capi
-    ! Match:     f_default
+    ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
     ! Requested: c_in_char_*_capi
     ! Match:     c_default

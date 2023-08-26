@@ -904,16 +904,25 @@ fc_statements = [
     # bool
     dict(
         name="f_in_bool",
+        alias=[
+            "f_in_bool_scalar",
+        ],
         c_local_var=True,
         f_pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
     ),
     dict(
         name="f_out_bool",
+        alias=[
+            "f_out_bool_*",
+        ],
         c_local_var=True,
         f_post_call=["{f_var} = {c_var}  ! coerce to logical"],
     ),
     dict(
         name="f_inout_bool",
+        alias=[
+            "f_inout_bool_*",
+        ],
         c_local_var=True,
         f_pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
         f_post_call=["{f_var} = {c_var}  ! coerce to logical"],
@@ -929,6 +938,20 @@ fc_statements = [
 
     ##########
     # native
+    dict(  # f_default
+        name="f_in_native_scalar/*/&",
+        alias=[
+            "f_in_native_*_cfi",
+        ],
+    ),
+    dict(  # f_default
+        name="f_inout_native_*",
+        alias=[
+            "f_in_native_**",
+            "f_out_native_***",
+            "f_out_native_&",
+        ],
+    ),
     dict(
         name="f_out_native_*",
         f_arg_decl=[
@@ -1126,7 +1149,10 @@ fc_statements = [
     dict(
         name="f_in/out/inout_void_*_cdesc",
         base="f_in_native_*_cdesc",
-    ),    
+    ),
+    dict(  # f_default
+        name="f_out_void_*&",
+    ),
 
     ########################################
     # void **
@@ -1146,7 +1172,13 @@ fc_statements = [
         f_c_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
+        # f_in_void_**
+        # f_out_void_**
+        # f_inout_void_**
         name="f_in/out/inout_void_**",
+        alias=[
+            "f_in_void_**_cfi",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}",
@@ -1337,6 +1369,9 @@ fc_statements = [
             "character, value, intent(IN) :: {f_var}",
         ],
     ),
+    dict(  # f_default
+        name="f_in_char_*_capi/cfi",
+    ),
 
 #    dict(
 #        This simpler version had to be replace for pgi and cray.
@@ -1422,6 +1457,9 @@ fc_statements = [
         c_post_call=[
             "ShroudStrBlankFill({c_var}, {c_var_len});"
         ],
+    ),
+    dict(  # f_default
+        name="f_inout/out_char_*_cfi",
     ),
     dict(
         name="f_inout_char_*_buf",
@@ -1661,6 +1699,24 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());"
         ],
     ),
+    dict(  # f_default
+        # f_in_string_scalar_cfi
+        # f_inout_string_*_cfi
+        # f_out_string_&_cfi
+        # f_in_string_scalar_cfi
+        # f_inout_string_*_cfi
+        # f_out_string_&_cfi
+        # f_in_string_scalar_cfi
+        # f_inout_string_*_cfi
+        # f_out_string_&_cfi
+        name="f_in/inout/out_string_scalar/*/&_cfi",
+    ),
+    dict(  # f_default
+        # f_out_string_**_cfi_allocatable
+        # f_out_string_**_cfi_copy
+        name="f_out_string_**_cfi_allocatable/copy",
+    ),
+
     dict(
         # c_function_string_scalar
         # c_function_string_*
@@ -1810,11 +1866,14 @@ fc_statements = [
         # f_function_string_scalar_buf_copy
         # f_function_string_*_buf_copy
         # f_function_string_&_buf_copy
+        # f_function_string_scalar_buf_result
+        # f_function_string_*_buf_result
+        # f_function_string_&_buf_result
         # TTT - is the buf version used?
         name="f_function_string_scalar/*/&_buf",
         mixin=["f_mixin_in_character_buf"],
         alias=[
-            "f_function_string_scalar/*/&_buf_copy",
+            "f_function_string_scalar/*/&_buf_copy/result",
         ],
     ),
     
@@ -1987,14 +2046,21 @@ fc_statements = [
             "-}}"
         ],
     ),
+    dict(  # f_default
+        name="f_in_vector_&_cdesc_targ_native_scalar",
+    ),
     dict(
         name="f_in_vector_buf_targ_native_*",
         mixin=["f_mixin_in_2d_array_buf"],
+        alias=[
+            "f_in_vector_&_buf_targ_native_*",
+        ],
     ),
     
     # Specialize for std::vector<string>.
     dict(
-        name="f_in_vector_buf_targ_string_scalar",
+#TTT        name="f_in_vector_buf_targ_string_scalar",
+        name="f_in_vector_&_buf_targ_string_scalar",
         mixin=["f_mixin_in_string_array_buf"],
     ),
     dict(
@@ -2218,6 +2284,9 @@ fc_statements = [
     dict(
         name="f_in_vector_buf_targ_native_scalar",
         mixin=["f_mixin_in_array_buf"],
+        alias=[
+            "f_in_vector_&_buf_targ_native_scalar",
+        ],
     ),
     dict(
         # f_out_vector_*_cdesc_targ_native_scalar
@@ -2238,6 +2307,9 @@ fc_statements = [
     dict(
         name="f_inout_vector_cdesc_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
+        alias=[
+            "f_inout_vector_&_cdesc_targ_native_scalar",
+        ],
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
@@ -2282,7 +2354,8 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_cdesc_allocatable_targ_native_scalar",
+#TTT        name="f_inout_vector_cdesc_allocatable_targ_native_scalar",
+        name="f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array",
@@ -2331,6 +2404,12 @@ fc_statements = [
     
     dict(
         name="f_in_shadow",
+        alias=[
+            # TTT
+            "f_in_shadow_scalar",
+            "f_in_shadow_*",
+            "f_in_shadow_&",
+        ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}",
         ],
@@ -2509,6 +2588,18 @@ fc_statements = [
         c_return_type="void",
     ),
 
+    dict(  # f_default
+        name="f_inout_struct_*",
+        alias=[
+            "f_in_struct_scalar",
+            "f_in_struct_*",
+            "f_in_struct_&",
+            "f_out_struct_*",
+            "f_out_struct_&",
+            "f_inout_struct_&",
+            "f_inout_shadow_*",
+        ],
+    ),
     dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
@@ -2623,7 +2714,13 @@ fc_statements = [
         ],
     ),
     dict(
+        # TTT
         name="f_setter_native",
+        alias=[
+            # TTT
+            "f_setter_native_scalar",
+            "f_setter_native_*",
+        ],
         f_arg_call=["{c_var}"],
         # f_setter is intended for the function, this is for an argument.
     ),
@@ -2801,6 +2898,13 @@ fc_statements = [
         ],
         c_local=["cptr", "fptr", "cdesc", "err"],
     ),
+
+    dict(  # f_default
+        name="f_inout_native_*_cfi",
+    ),
+    dict(  # f_default
+        name="f_out_native_**_cfi_allocatable/pointer",
+    ),
     
     ########################################
 
@@ -2976,8 +3080,11 @@ fc_statements = [
     
     ########################################
     # char **
+    dict(  # f_default
+        name="f_in_char_**_cfi",
+    ),
     dict(
-        name='c_in_char_**_cfi',
+        name="c_in_char_**_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
@@ -3424,6 +3531,13 @@ fc_statements = [
 
         cxx_local_var="result",
         c_return_type="void",  # Convert to function.
+    ),
+
+
+    ########################################
+    # unknown
+    dict(  # f_default
+        name="f_in_unknown_scalar",
     ),
     
 ]

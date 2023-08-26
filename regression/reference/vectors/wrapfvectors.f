@@ -443,8 +443,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_vector_&_buf_targ_native_scalar
-    ! Match:     f_in_vector_buf_targ_native_scalar
+    ! Exact:     f_in_vector_&_buf_targ_native_scalar
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_scalar
     ! start vector_sum
@@ -601,8 +600,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     f_inout_vector_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
     ! Requested: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! Match:     c_inout_vector_cdesc_targ_native_scalar
@@ -636,8 +634,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_vector_&_cdesc_targ_native_scalar
-    ! Match:     f_inout_vector_cdesc_targ_native_scalar
+    ! Exact:     f_inout_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(inout)
     ! Requested: c_inout_vector_&_cdesc_targ_native_scalar
     ! Match:     c_inout_vector_cdesc_targ_native_scalar
@@ -691,15 +688,13 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_vector_&_buf_targ_native_*
-    ! Match:     f_in_vector_buf_targ_native_*
+    ! Exact:     f_in_vector_&_buf_targ_native_*
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -730,8 +725,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_vector_&_buf_targ_string_scalar
-    ! Match:     f_in_vector_buf_targ_string_scalar
+    ! Exact:     f_in_vector_&_buf_targ_string_scalar
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_string_scalar
     !>
@@ -853,8 +847,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
@@ -886,8 +879,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default

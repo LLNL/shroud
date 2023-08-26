@@ -93,8 +93,7 @@ contains
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_unknown_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
     ! Requested: c_in_unknown_scalar
     ! Match:     c_default
@@ -113,8 +112,7 @@ contains
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_shadow_*
-    ! Match:     f_default
+    ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
     ! Exact:     c_inout_shadow_*
     subroutine class2_method2(obj, c2)
