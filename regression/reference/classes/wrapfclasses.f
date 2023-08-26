@@ -1097,8 +1097,7 @@ contains
     ! ----------------------------------------
     ! Function:  int Method1
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -1120,8 +1119,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool equivalent
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
@@ -1265,8 +1263,7 @@ contains
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1294,8 +1291,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_m_flag
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start class1_get_m_flag
@@ -1314,8 +1310,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_test
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start class1_get_test
@@ -1519,8 +1514,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_ivar
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function shape_get_ivar(obj) &
@@ -1655,8 +1649,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_nitems
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start data_get_nitems
@@ -1751,8 +1744,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1801,8 +1793,7 @@ contains
     ! ----------------------------------------
     ! Function:  int useclass
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1989,8 +1980,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_global_flag
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function get_global_flag() &
@@ -2007,8 +1997,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_buf_copy
     function last_function_called() &

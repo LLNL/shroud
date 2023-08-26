@@ -67,8 +67,7 @@ contains
     ! ----------------------------------------
     ! Function:  int convert_to_int
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------

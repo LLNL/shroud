@@ -1963,8 +1963,7 @@ contains
     ! ----------------------------------------
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1994,8 +1993,7 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -2053,8 +2051,7 @@ contains
     ! ----------------------------------------
     ! Function:  int sumFixedArray
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -2421,8 +2418,7 @@ contains
     ! ----------------------------------------
     ! Function:  int checkInt2d
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -2612,8 +2608,7 @@ contains
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------

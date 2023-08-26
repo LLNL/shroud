@@ -897,8 +897,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     function class1_get_field1(obj) &
@@ -915,8 +914,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field2
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     function class1_get_field2(obj) &
@@ -933,8 +931,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field3
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     function class1_get_field3(obj) &

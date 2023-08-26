@@ -818,8 +818,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_class_get_x1
@@ -863,8 +862,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_class_get_y1
@@ -911,8 +909,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_x1
@@ -956,8 +953,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_y1
@@ -1001,8 +997,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_z1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_z1
@@ -1050,8 +1045,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStructByValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1080,8 +1074,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1109,8 +1102,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1148,8 +1140,7 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1437,8 +1428,7 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1508,8 +1498,7 @@ contains
     ! ----------------------------------------
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Requested: f_getter_native_*_pointer
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
     ! Exact:     c_getter_native_*_pointer
     ! ----------------------------------------

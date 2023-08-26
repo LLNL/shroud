@@ -515,8 +515,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function struct_as_class_int_get_npts(obj) &
@@ -557,8 +556,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_value
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function struct_as_class_int_get_value(obj) &
@@ -639,8 +637,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function struct_as_class_double_get_npts(obj) &
@@ -681,8 +678,7 @@ contains
     ! ----------------------------------------
     ! Function:  double get_value
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function struct_as_class_double_get_value(obj) &
@@ -724,8 +720,7 @@ contains
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
     ! Attrs:     +api(capptr)+intent(function)
-    ! Requested: f_function_shadow_scalar_capptr_targ_native_scalar
-    ! Match:     f_function_shadow_scalar_capptr
+    ! Exact:     f_function_shadow_scalar_capptr_targ_native_scalar
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_scalar_capptr_targ_native_scalar
     function return_user_type() &
@@ -814,8 +809,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -835,8 +829,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>

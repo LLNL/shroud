@@ -198,8 +198,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     function default_ptr_is_null_0() &
@@ -214,8 +213,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
@@ -328,8 +326,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------
@@ -360,8 +357,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------

@@ -327,14 +327,18 @@ root
     dtor -- f_dtor
     function -- f_function
       bool -- f_function_bool
+        scalar -- f_function_bool
       char
         *
-          buf -- f_function_char_*_buf
+          buf
+            copy -- f_function_char_*_buf_copy/result
+            result -- f_function_char_*_buf_copy/result
           cdesc
             allocatable -- f_function_char_scalar/*_cdesc_allocatable
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
-          cfi -- f_function_char_*_cfi
+          cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
+            copy -- f_function_char_*_cfi_copy
             pointer -- f_function_char_scalar/*_cfi_pointer
           raw -- f_function_char_*_raw
         scalar -- f_function_char_scalar
@@ -348,6 +352,7 @@ root
         & -- f_function_native_&
           buf
             pointer -- f_function_native_&_buf_pointer
+          pointer -- f_function_native_&
         *
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
@@ -360,40 +365,81 @@ root
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
+        scalar -- f_function
       shadow
         &
           capptr -- f_function_shadow_scalar/*/&_capptr
+            caller -- f_function_shadow_scalar/*/&_capptr
+            library -- f_function_shadow_scalar/*/&_capptr
+            targ
+              native
+                scalar -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
         *
           capptr -- f_function_shadow_scalar/*/&_capptr
+            caller -- f_function_shadow_scalar/*/&_capptr
+            library -- f_function_shadow_scalar/*/&_capptr
+            targ
+              native
+                scalar -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
         scalar
           capptr -- f_function_shadow_scalar/*/&_capptr
+            caller -- f_function_shadow_scalar/*/&_capptr
+            library -- f_function_shadow_scalar/*/&_capptr
+            targ
+              native
+                scalar -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
       string
         &
           buf -- f_function_string_scalar/*/&_buf
+            copy -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
-          cfi -- f_function_string_scalar/*/&_cfi
+              caller -- f_function_string_scalar/*/&_cdesc_allocatable
+              library -- f_function_string_scalar/*/&_cdesc_allocatable
+          cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+              caller -- f_function_string_scalar/*/&_cfi_allocatable
+              library -- f_function_string_scalar/*/&_cfi_allocatable
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_function_string_scalar/*/&_cfi_pointer
+              caller -- f_function_string_scalar/*/&_cfi_pointer
+              library -- f_function_string_scalar/*/&_cfi_pointer
         *
           buf -- f_function_string_scalar/*/&_buf
+            copy -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
+              caller -- f_function_string_scalar/*/&_cdesc_allocatable
+              library -- f_function_string_scalar/*/&_cdesc_allocatable
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
-          cfi -- f_function_string_scalar/*/&_cfi
+              library -- f_function_char/string_scalar/*_cdesc_pointer
+          cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+              caller -- f_function_string_scalar/*/&_cfi_allocatable
+              library -- f_function_string_scalar/*/&_cfi_allocatable
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_function_string_scalar/*/&_cfi_pointer
+              caller -- f_function_string_scalar/*/&_cfi_pointer
+              library -- f_function_string_scalar/*/&_cfi_pointer
         scalar
           buf -- f_function_string_scalar/*/&_buf
+            copy -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
+              caller -- f_function_string_scalar/*/&_cdesc_allocatable
+              library -- f_function_string_scalar/*/&_cdesc_allocatable
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
-          cfi -- f_function_string_scalar/*/&_cfi
+          cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+              caller -- f_function_string_scalar/*/&_cfi_allocatable
+              library -- f_function_string_scalar/*/&_cfi_allocatable
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_function_string_scalar/*/&_cfi_pointer
+              caller -- f_function_string_scalar/*/&_cfi_pointer
+              library -- f_function_string_scalar/*/&_cfi_pointer
       struct
         *
           pointer -- f_function_struct_*_pointer
@@ -412,6 +458,8 @@ root
         *
           cdesc
             pointer -- f_function/getter_native_*_cdesc_pointer
+          pointer -- f_getter
+        scalar -- f_getter
       string
         scalar
           cdesc
@@ -4003,7 +4051,11 @@ f_function_bool:
   f_need_wrapper: true
   intent: function
   name: f_function_bool
-f_function_char_*_buf:
+f_function_bool_scalar:
+  f_need_wrapper: true
+  intent: function
+  name: f_function_bool_scalar
+f_function_char_*_buf_copy:
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -4018,7 +4070,23 @@ f_function_char_*_buf:
   f_temps:
   - len
   intent: function
-  name: f_function_char_*_buf
+  name: f_function_char_*_buf_copy
+f_function_char_*_buf_result:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_char_*_buf_result
 f_function_char_*_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4054,12 +4122,6 @@ f_function_char_*_cdesc_pointer:
   - cdesc
   intent: function
   name: f_function_char_*_cdesc_pointer
-f_function_char_*_cfi:
-  f_arg_call:
-  - '{f_var}'
-  f_need_wrapper: true
-  intent: function
-  name: f_function_char_*_cfi
 f_function_char_*_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
@@ -4068,6 +4130,12 @@ f_function_char_*_cfi_allocatable:
   f_need_wrapper: true
   intent: function
   name: f_function_char_*_cfi_allocatable
+f_function_char_*_cfi_copy:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_char_*_cfi_copy
 f_function_char_*_cfi_pointer:
   f_arg_call:
   - '{f_var}'
@@ -4171,6 +4239,23 @@ f_function_native_&_buf_pointer:
   - call c_f_pointer({c_local_ptr}, {F_result})
   intent: function
   name: f_function_native_&_buf_pointer
+f_function_native_&_pointer:
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_call:
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
+  f_declare:
+  - 'type(C_PTR) :: {c_local_ptr}'
+  f_local:
+  - ptr
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_local_ptr}, {F_result})
+  intent: function
+  name: f_function_native_&_pointer
 f_function_native_**:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4281,6 +4366,9 @@ f_function_native_*_raw:
 f_function_native_*_scalar:
   intent: function
   name: f_function_native_*_scalar
+f_function_native_scalar:
+  intent: function
+  name: f_function_native_scalar
 f_function_shadow_&_capptr:
   c_result_var: '{F_result_ptr}'
   f_arg_call:
@@ -4294,6 +4382,45 @@ f_function_shadow_&_capptr:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_&_capptr
+f_function_shadow_&_capptr_caller:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_&_capptr_caller
+f_function_shadow_&_capptr_library:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_&_capptr_library
+f_function_shadow_&_capptr_targ_native_scalar:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_&_capptr_targ_native_scalar
 f_function_shadow_&_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -4315,6 +4442,45 @@ f_function_shadow_*_capptr:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_*_capptr
+f_function_shadow_*_capptr_caller:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_*_capptr_caller
+f_function_shadow_*_capptr_library:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_*_capptr_library
+f_function_shadow_*_capptr_targ_native_scalar:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_*_capptr_targ_native_scalar
 f_function_shadow_*_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -4336,6 +4502,45 @@ f_function_shadow_scalar_capptr:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_scalar_capptr
+f_function_shadow_scalar_capptr_caller:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_scalar_capptr_caller
+f_function_shadow_scalar_capptr_library:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_scalar_capptr_library
+f_function_shadow_scalar_capptr_targ_native_scalar:
+  c_result_var: '{F_result_ptr}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_need_wrapper: true
+  intent: function
+  name: f_function_shadow_scalar_capptr_targ_native_scalar
 f_function_shadow_scalar_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -4360,6 +4565,22 @@ f_function_string_&_buf:
   - len
   intent: function
   name: f_function_string_&_buf
+f_function_string_&_buf_copy:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_&_buf_copy
 f_function_string_&_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4377,12 +4598,40 @@ f_function_string_&_cdesc_allocatable:
   - cdesc
   intent: function
   name: f_function_string_&_cdesc_allocatable
-f_function_string_&_cfi:
+f_function_string_&_cdesc_allocatable_caller:
+  c_helper: copy_string
   f_arg_call:
-  - '{f_var}'
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
   f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
   intent: function
-  name: f_function_string_&_cfi
+  name: f_function_string_&_cdesc_allocatable_caller
+f_function_string_&_cdesc_allocatable_library:
+  c_helper: copy_string
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  intent: function
+  name: f_function_string_&_cdesc_allocatable_library
 f_function_string_&_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
@@ -4391,6 +4640,28 @@ f_function_string_&_cfi_allocatable:
   f_need_wrapper: true
   intent: function
   name: f_function_string_&_cfi_allocatable
+f_function_string_&_cfi_allocatable_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_allocatable_caller
+f_function_string_&_cfi_allocatable_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_allocatable_library
+f_function_string_&_cfi_copy:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_copy
 f_function_string_&_cfi_pointer:
   f_arg_call:
   - '{f_var}'
@@ -4399,6 +4670,22 @@ f_function_string_&_cfi_pointer:
   f_need_wrapper: true
   intent: function
   name: f_function_string_&_cfi_pointer
+f_function_string_&_cfi_pointer_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_pointer_caller
+f_function_string_&_cfi_pointer_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_&_cfi_pointer_library
 f_function_string_*_buf:
   f_arg_call:
   - '{f_var}'
@@ -4415,6 +4702,22 @@ f_function_string_*_buf:
   - len
   intent: function
   name: f_function_string_*_buf
+f_function_string_*_buf_copy:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_*_buf_copy
 f_function_string_*_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4432,6 +4735,40 @@ f_function_string_*_cdesc_allocatable:
   - cdesc
   intent: function
   name: f_function_string_*_cdesc_allocatable
+f_function_string_*_cdesc_allocatable_caller:
+  c_helper: copy_string
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  intent: function
+  name: f_function_string_*_cdesc_allocatable_caller
+f_function_string_*_cdesc_allocatable_library:
+  c_helper: copy_string
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  intent: function
+  name: f_function_string_*_cdesc_allocatable_library
 f_function_string_*_cdesc_pointer:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -4450,12 +4787,24 @@ f_function_string_*_cdesc_pointer:
   - cdesc
   intent: function
   name: f_function_string_*_cdesc_pointer
-f_function_string_*_cfi:
+f_function_string_*_cdesc_pointer_library:
   f_arg_call:
-  - '{f_var}'
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: pointer_string array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
   f_need_wrapper: true
+  f_post_call:
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  f_temps:
+  - cdesc
   intent: function
-  name: f_function_string_*_cfi
+  name: f_function_string_*_cdesc_pointer_library
 f_function_string_*_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
@@ -4464,6 +4813,28 @@ f_function_string_*_cfi_allocatable:
   f_need_wrapper: true
   intent: function
   name: f_function_string_*_cfi_allocatable
+f_function_string_*_cfi_allocatable_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_allocatable_caller
+f_function_string_*_cfi_allocatable_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_allocatable_library
+f_function_string_*_cfi_copy:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_copy
 f_function_string_*_cfi_pointer:
   f_arg_call:
   - '{f_var}'
@@ -4472,6 +4843,22 @@ f_function_string_*_cfi_pointer:
   f_need_wrapper: true
   intent: function
   name: f_function_string_*_cfi_pointer
+f_function_string_*_cfi_pointer_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_pointer_caller
+f_function_string_*_cfi_pointer_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_*_cfi_pointer_library
 f_function_string_scalar_buf:
   f_arg_call:
   - '{f_var}'
@@ -4488,6 +4875,22 @@ f_function_string_scalar_buf:
   - len
   intent: function
   name: f_function_string_scalar_buf
+f_function_string_scalar_buf_copy:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: f_function_string_scalar_buf_copy
 f_function_string_scalar_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:
@@ -4505,6 +4908,40 @@ f_function_string_scalar_cdesc_allocatable:
   - cdesc
   intent: function
   name: f_function_string_scalar_cdesc_allocatable
+f_function_string_scalar_cdesc_allocatable_caller:
+  c_helper: copy_string
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  intent: function
+  name: f_function_string_scalar_cdesc_allocatable_caller
+f_function_string_scalar_cdesc_allocatable_library:
+  c_helper: copy_string
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_string array_context
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  intent: function
+  name: f_function_string_scalar_cdesc_allocatable_library
 f_function_string_scalar_cdesc_pointer:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -4523,12 +4960,6 @@ f_function_string_scalar_cdesc_pointer:
   - cdesc
   intent: function
   name: f_function_string_scalar_cdesc_pointer
-f_function_string_scalar_cfi:
-  f_arg_call:
-  - '{f_var}'
-  f_need_wrapper: true
-  intent: function
-  name: f_function_string_scalar_cfi
 f_function_string_scalar_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
@@ -4537,6 +4968,28 @@ f_function_string_scalar_cfi_allocatable:
   f_need_wrapper: true
   intent: function
   name: f_function_string_scalar_cfi_allocatable
+f_function_string_scalar_cfi_allocatable_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_allocatable_caller
+f_function_string_scalar_cfi_allocatable_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_allocatable_library
+f_function_string_scalar_cfi_copy:
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_copy
 f_function_string_scalar_cfi_pointer:
   f_arg_call:
   - '{f_var}'
@@ -4545,6 +4998,22 @@ f_function_string_scalar_cfi_pointer:
   f_need_wrapper: true
   intent: function
   name: f_function_string_scalar_cfi_pointer
+f_function_string_scalar_cfi_pointer_caller:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_pointer_caller
+f_function_string_scalar_cfi_pointer_library:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  intent: function
+  name: f_function_string_scalar_cfi_pointer_library
 f_function_struct_*_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -4630,6 +5099,12 @@ f_getter_native_*_cdesc_pointer:
   - cdesc
   intent: getter
   name: f_getter_native_*_cdesc_pointer
+f_getter_native_*_pointer:
+  intent: getter
+  name: f_getter_native_*_pointer
+f_getter_native_scalar:
+  intent: getter
+  name: f_getter_native_scalar
 f_getter_string_scalar_cdesc_allocatable:
   c_helper: copy_string
   f_arg_call:

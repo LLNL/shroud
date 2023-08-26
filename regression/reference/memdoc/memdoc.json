@@ -100,7 +100,7 @@
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_library",
-                        "stmt1": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
                         "stmtc0": "c_function_string_*_cdesc_allocatable",
                         "stmtc1": "c_function_string_*_cdesc_allocatable"
                     }

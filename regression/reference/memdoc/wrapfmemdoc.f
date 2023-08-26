@@ -102,8 +102,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_cdesc_allocatable_library
-    ! Match:     f_function_string_*_cdesc_allocatable
+    ! Exact:     f_function_string_*_cdesc_allocatable_library
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_cdesc_allocatable
     ! start get_const_string_ptr_alloc

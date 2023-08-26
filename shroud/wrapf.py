@@ -1741,6 +1741,11 @@ rv = .false.
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
 
+        if fmt_result.stmt0 != fmt_result.stmt1:
+            # This check is used to find non-matching names
+            print("TTT not match wrapf f_stmts", node.name)
+            print("     Requested:", fmt_result.stmt0)
+            print("         Found:", fmt_result.stmt1)
         if fmt_result.stmtc0 != fmt_result.stmtc1:
             # This check is used to find non-matching names
             print("TTT not match wrapf c_stmts", node.name)

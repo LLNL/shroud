@@ -1665,8 +1665,7 @@ contains
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_char_*_cfi_copy
-    ! Match:     f_function_char_*_cfi
+    ! Exact:     f_function_char_*_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(function)
     ! Exact:     c_function_char_*_cfi_copy
     !>
@@ -1693,8 +1692,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * output
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_char_*_cfi_result
-    ! Match:     f_function_char_*_cfi
+    ! Exact:     f_function_char_*_cfi_result
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
     ! Exact:     c_function_char_*_cfi_result
     !>
@@ -1775,8 +1773,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_scalar_cfi_copy
-    ! Match:     f_function_string_scalar_cfi
+    ! Exact:     f_function_string_scalar_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(function)
     ! Exact:     c_function_string_scalar_cfi_copy
     !>
@@ -1801,8 +1798,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string * output
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_string_*_cfi_result
-    ! Match:     f_function_string_*_cfi
+    ! Exact:     f_function_string_*_cfi_result
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
     ! Exact:     c_function_string_*_cfi_result
     !>
@@ -1856,8 +1852,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_cfi_copy
-    ! Match:     f_function_string_&_cfi
+    ! Exact:     f_function_string_&_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_cfi_copy
     !>
@@ -1885,8 +1880,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string & output
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_string_&_cfi_result
-    ! Match:     f_function_string_&_cfi
+    ! Exact:     f_function_string_&_cfi_result
     ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
     ! Exact:     c_function_string_&_cfi_result
     !>
@@ -1906,8 +1900,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_cfi_copy
-    ! Match:     f_function_string_&_cfi
+    ! Exact:     f_function_string_&_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_cfi_copy
     !>
@@ -1941,8 +1934,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_*_cfi_copy
-    ! Match:     f_function_string_*_cfi
+    ! Exact:     f_function_string_*_cfi_copy
     ! Attrs:     +api(cfi)+deref(copy)+intent(function)
     ! Exact:     c_function_string_*_cfi_copy
     !>
@@ -1965,8 +1957,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_cfi_allocatable_library
-    ! Match:     f_function_string_*_cfi_allocatable
+    ! Exact:     f_function_string_*_cfi_allocatable_library
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_cfi_allocatable
     function get_const_string_ptr_alloc() &
@@ -1981,8 +1972,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_cfi_allocatable_caller
-    ! Match:     f_function_string_*_cfi_allocatable
+    ! Exact:     f_function_string_*_cfi_allocatable_caller
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_cfi_allocatable
     !>
@@ -2004,8 +1994,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_cfi_allocatable_caller
-    ! Match:     f_function_string_*_cfi_allocatable
+    ! Exact:     f_function_string_*_cfi_allocatable_caller
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_cfi_allocatable
     !>
@@ -2024,8 +2013,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_string_*_cfi_pointer_library
-    ! Match:     f_function_string_*_cfi_pointer
+    ! Exact:     f_function_string_*_cfi_pointer_library
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_string_*_cfi_pointer
     function get_const_string_ptr_pointer() &
@@ -2302,8 +2290,7 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -2639,8 +2626,7 @@ contains
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -2670,8 +2656,7 @@ contains
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -2719,8 +2704,7 @@ contains
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------

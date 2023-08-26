@@ -961,8 +961,7 @@ contains
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1035,8 +1034,7 @@ contains
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1119,8 +1117,7 @@ contains
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_char_*_buf_copy
-    ! Match:     f_function_char_*_buf
+    ! Exact:     f_function_char_*_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_char_*_buf_copy
     function function4a(arg1, arg2) &
@@ -1288,8 +1285,7 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -1316,8 +1312,7 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -1344,8 +1339,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     !>
@@ -1366,8 +1360,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     !>
@@ -1476,8 +1469,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedType
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -1526,8 +1518,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------

@@ -280,8 +280,7 @@ contains
     ! ----------------------------------------
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_&_pointer
-    ! Match:     f_function_native_&
+    ! Exact:     f_function_native_&_pointer
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     c_function_native_&_pointer
     ! ----------------------------------------
@@ -388,8 +387,7 @@ contains
     ! ----------------------------------------
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_&_pointer
-    ! Match:     f_function_native_&
+    ! Exact:     f_function_native_&_pointer
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     c_function_native_&_pointer
     ! ----------------------------------------

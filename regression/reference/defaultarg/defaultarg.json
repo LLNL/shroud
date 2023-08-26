@@ -1256,7 +1256,7 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
-                                "stmt1": "f_getter",
+                                "stmt1": "f_getter_native_scalar",
                                 "stmtc0": "c_getter_native_scalar",
                                 "stmtc1": "c_getter_native_scalar"
                             }
@@ -1349,7 +1349,7 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
-                                "stmt1": "f_getter",
+                                "stmt1": "f_getter_native_scalar",
                                 "stmtc0": "c_getter_native_scalar",
                                 "stmtc1": "c_getter_native_scalar"
                             }
@@ -1442,7 +1442,7 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
-                                "stmt1": "f_getter",
+                                "stmt1": "f_getter_native_scalar",
                                 "stmtc0": "c_getter_native_scalar",
                                 "stmtc1": "c_getter_native_scalar"
                             }

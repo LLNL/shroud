@@ -619,6 +619,9 @@ fc_statements = [
     ),
     dict(
         name="f_function",
+        alias=[
+            "f_function_native_scalar",
+        ],
     ),
 
     ########## mixin ##########
@@ -917,6 +920,9 @@ fc_statements = [
     ),
     dict(
         name="f_function_bool",
+        alias=[
+            "f_function_bool_scalar",
+        ],
         # The wrapper is needed to convert bool to logical
         f_need_wrapper=True
     ),
@@ -1293,6 +1299,9 @@ fc_statements = [
     dict(
         name="f_function_native_&",
         base="f_function_native_*_pointer",   # XXX - change base to &?
+        alias=[
+            "f_function_native_&_pointer",
+        ],
     ),
     dict(
         name="f_function_native_&_buf_pointer",
@@ -1436,7 +1445,9 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
-        name="f_function_char_*_buf",
+        # f_function_char_*_buf_copy
+        # f_function_char_*_buf_result
+        name="f_function_char_*_buf_copy/result",
         mixin=["f_mixin_in_character_buf"],
     ),
     dict(
@@ -1538,6 +1549,9 @@ fc_statements = [
         # f_function_string_*_cdesc_pointer
         name="f_function_char/string_scalar/*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
+        alias=[
+            "f_function_string_*_cdesc_pointer_library",
+        ],
         f_helper="pointer_string array_context",
         f_arg_decl=[
             "character(len=:), pointer :: {f_var}",
@@ -1793,8 +1807,15 @@ fc_statements = [
         # f_function_string_scalar_buf
         # f_function_string_*_buf
         # f_function_string_&_buf
+        # f_function_string_scalar_buf_copy
+        # f_function_string_*_buf_copy
+        # f_function_string_&_buf_copy
+        # TTT - is the buf version used?
         name="f_function_string_scalar/*/&_buf",
         mixin=["f_mixin_in_character_buf"],
+        alias=[
+            "f_function_string_scalar/*/&_buf_copy",
+        ],
     ),
     
     # similar to f_function_char_scalar_allocatable
@@ -1802,8 +1823,18 @@ fc_statements = [
         # f_function_string_scalar_cdesc_allocatable
         # f_function_string_*_cdesc_allocatable
         # f_function_string_&_cdesc_allocatable
+
+        # f_function_string_scalar_cdesc_allocatable_caller
+        # f_function_string_*_cdesc_allocatable_caller
+        # f_function_string_&_cdesc_allocatable_caller
+        # f_function_string_scalar_cdesc_allocatable_library
+        # f_function_string_*_cdesc_allocatable_library
+        # f_function_string_&_cdesc_allocatable_library
         name="f_function_string_scalar/*/&_cdesc_allocatable",
         mixin=["f_mixin_function_cdesc"],
+        alias=[
+            "f_function_string_scalar/*/&_cdesc_allocatable_caller/library",
+        ],
         c_helper="copy_string",
         f_helper="copy_string array_context",
         f_arg_decl=[
@@ -2418,6 +2449,10 @@ fc_statements = [
         # f_function_shadow_*_capptr
         # f_function_shadow_&_capptr
         name="f_function_shadow_scalar/*/&_capptr",
+        alias=[
+            "f_function_shadow_scalar/*/&_capptr_targ_native_scalar",
+            "f_function_shadow_scalar/*/&_capptr_caller/library",
+        ],
         mixin=["f_mixin_function_shadow_capptr"],
     ),
     dict(
@@ -2561,6 +2596,10 @@ fc_statements = [
     ),
     dict(
         name="f_getter",
+        alias=[
+            "f_getter_native_scalar",
+            "f_getter_native_*_pointer",
+        ],
     ),
     dict(
         name="f_setter",
@@ -2849,7 +2888,7 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
-        name="f_function_char_*_cfi",
+        name="f_function_char_*_cfi_copy/result",
         f_arg_call=["{f_var}"],
         f_need_wrapper=True,
     ),
@@ -3146,10 +3185,13 @@ fc_statements = [
     ),
     
     dict(
-        # f_function_string_scalar_cfi
-        # f_function_string_*_cfi
-        # f_function_string_&_cfi
-        name="f_function_string_scalar/*/&_cfi",
+        # f_function_string_scalar_cfi_copy
+        # f_function_string_*_cfi_copy
+        # f_function_string_&_cfi_copy
+        # f_function_string_scalar_cfi_result
+        # f_function_string_*_cfi_result
+        # f_function_string_&_cfi_result
+        name="f_function_string_scalar/*/&_cfi_copy/result",
         # XXX - avoid calling C directly since the Fortran function
         # is returning an CHARACTER, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
@@ -3161,7 +3203,17 @@ fc_statements = [
         # f_function_string_scalar_cfi_allocatable
         # f_function_string_*_cfi_allocatable
         # f_function_string_&_cfi_allocatable
+
+        # f_function_string_scalar_cfi_allocatable_caller
+        # f_function_string_*_cfi_allocatable_caller
+        # f_function_string_&_cfi_allocatable_caller
+        # f_function_string_scalar_cfi_allocatable_library
+        # f_function_string_*_cfi_allocatable_library
+        # f_function_string_&_cfi_allocatable_library
         name="f_function_string_scalar/*/&_cfi_allocatable",
+        alias=[
+            "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
+        ],
         # XXX - avoid calling C directly since the Fortran function
         # is returning an allocatable, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
@@ -3175,7 +3227,17 @@ fc_statements = [
         # f_function_string_scalar_cfi_pointer
         # f_function_string_*_cfi_pointer
         # f_function_string_&_cfi_pointer
+
+        # f_function_string_scalar_cfi_pointer_caller
+        # f_function_string_*_cfi_pointer_caller
+        # f_function_string_&_cfi_pointer_caller
+        # f_function_string_scalar_cfi_pointer_library
+        # f_function_string_*_cfi_pointer_library
+        # f_function_string_&_cfi_pointer_library
         name="f_function_string_scalar/*/&_cfi_pointer",
+        alias=[
+            "f_function_string_scalar/*/&_cfi_pointer_caller/library",
+        ],
         # XXX - avoid calling C directly since the Fortran function
         # is returning an pointer, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.

@@ -563,8 +563,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getSize
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function ArrayWrapper_getSize(obj) &
@@ -850,8 +849,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool checkPtr
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
@@ -875,8 +873,7 @@ contains
     ! ----------------------------------------
     ! Function:  double sumArray
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function ArrayWrapper_sumArray(obj) &

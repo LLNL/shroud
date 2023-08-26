@@ -444,8 +444,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_flag
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     function class1_get_flag(obj) &
@@ -651,8 +650,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getClassStatic +owner(library)
     ! Attrs:     +api(capptr)+intent(function)
-    ! Requested: f_function_shadow_*_capptr_library
-    ! Match:     f_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr_library
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_*_capptr
     function get_class_static() &
@@ -668,8 +666,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getClassNew +owner(caller)
     ! Attrs:     +api(capptr)+intent(function)
-    ! Requested: f_function_shadow_*_capptr_caller
-    ! Match:     f_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr_caller
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_*_capptr
     ! ----------------------------------------

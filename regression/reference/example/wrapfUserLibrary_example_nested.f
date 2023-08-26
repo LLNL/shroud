@@ -1378,8 +1378,7 @@ contains
     ! ----------------------------------------
     ! Function:  int incrementCount
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1451,8 +1450,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1477,8 +1475,7 @@ contains
     ! ----------------------------------------
     ! Function:  long getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
@@ -1503,8 +1500,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool hasAddr
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
@@ -1612,8 +1608,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_buf_copy
     function ex_class2_get_name(obj) &
@@ -1692,8 +1687,7 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -1870,8 +1864,7 @@ contains
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function ex_class2_get_type_id(obj) &
@@ -1984,8 +1977,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function ex_class2_get_value_int(obj) &
@@ -2002,8 +1994,7 @@ contains
     ! ----------------------------------------
     ! Function:  double getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function ex_class2_get_value_double(obj) &
@@ -2053,8 +2044,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool isNameValid
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
@@ -2076,8 +2066,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool isInitialized
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_bool_scalar
     function is_initialized() &
@@ -2216,8 +2205,7 @@ contains
     ! ----------------------------------------
     ! Function:  size_t test_size_t
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     function test_size_t() &
@@ -2467,8 +2455,7 @@ contains
     ! ----------------------------------------
     ! Function:  int verylongfunctionname2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------

@@ -1301,7 +1301,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_char_*_buf_copy",
-                        "stmt1": "f_function_char_*_buf",
+                        "stmt1": "f_function_char_*_buf_copy",
                         "stmtc0": "c_function_char_*_buf_copy",
                         "stmtc1": "c_function_char_*_buf_copy"
                     },
@@ -1602,7 +1602,7 @@
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_function_char_*_buf_result",
-                            "stmt1": "f_function_char_*_buf",
+                            "stmt1": "f_function_char_*_buf_result",
                             "stmtc0": "c_function_char_*_buf_result",
                             "stmtc1": "c_function_char_*_buf_result"
                         }
@@ -2224,7 +2224,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_scalar_buf_copy",
-                        "stmt1": "f_function_string_scalar_buf",
+                        "stmt1": "f_function_string_scalar_buf_copy",
                         "stmtc0": "c_function_string_scalar_buf_copy",
                         "stmtc1": "c_function_string_scalar_buf_copy"
                     },
@@ -3045,7 +3045,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf",
+                        "stmt1": "f_function_string_&_buf_copy",
                         "stmtc0": "c_function_string_&_buf_copy",
                         "stmtc1": "c_function_string_&_buf_copy"
                     },
@@ -3560,7 +3560,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf",
+                        "stmt1": "f_function_string_&_buf_copy",
                         "stmtc0": "c_function_string_&_buf_copy",
                         "stmtc1": "c_function_string_&_buf_copy"
                     },
@@ -3967,7 +3967,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_buf_copy",
-                        "stmt1": "f_function_string_*_buf",
+                        "stmt1": "f_function_string_*_buf_copy",
                         "stmtc0": "c_function_string_*_buf_copy",
                         "stmtc1": "c_function_string_*_buf_copy"
                     },
@@ -4178,7 +4178,7 @@
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_library",
-                        "stmt1": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
                         "stmtc0": "c_function_string_*_cdesc_allocatable",
                         "stmtc1": "c_function_string_*_cdesc_allocatable"
                     },
@@ -4379,7 +4379,7 @@
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmt1": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
                         "stmtc0": "c_function_string_*_cdesc_allocatable",
                         "stmtc1": "c_function_string_*_cdesc_allocatable"
                     },
@@ -4584,7 +4584,7 @@
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmt1": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
                         "stmtc0": "c_function_string_*_cdesc_allocatable",
                         "stmtc1": "c_function_string_*_cdesc_allocatable"
                     },
@@ -4787,7 +4787,7 @@
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_pointer_library",
-                        "stmt1": "f_function_string_*_cdesc_pointer",
+                        "stmt1": "f_function_string_*_cdesc_pointer_library",
                         "stmtc0": "c_function_string_*_cdesc_pointer",
                         "stmtc1": "c_function_string_*_cdesc_pointer"
                     }
@@ -7164,7 +7164,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function_native_scalar"
                     },
@@ -10340,7 +10340,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function_native_scalar"
                     }
@@ -10674,7 +10674,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function_native_scalar"
                     }
@@ -10867,7 +10867,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function_native_scalar"
                     }

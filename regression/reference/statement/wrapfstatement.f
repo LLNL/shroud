@@ -71,8 +71,7 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength +pure
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_native_scalar
     !>
@@ -93,8 +92,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +len(get_name_length())
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     c_function_string_&_buf_copy
     function get_name_error_pattern() &
