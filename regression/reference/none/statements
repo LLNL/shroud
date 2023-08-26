@@ -21,25 +21,27 @@ root
             pointer -- c_function_char_*_cdesc_allocatable/pointer
           cfi
             allocatable -- c_function_char_*_cfi_allocatable
-            copy -- c_function_char_*_cfi_copy
+            copy -- c_function_char_*_cfi_copy/result
             pointer -- c_function_char_*_cfi_pointer
+            result -- c_function_char_*_cfi_copy/result
           raw -- c_function_char_*_allocatable/raw
         scalar -- c_function_char_scalar
           cfi -- c_function_char_scalar_cfi
       native
-        &
+        & -- c_function_native_*/&/**
           pointer -- c_function_native_*/&/**_pointer
-        *
-          cdesc
-            allocatable -- c_function_native_*_cdesc_allocatable
-            pointer -- c_function_native_*_cdesc_pointer
+        * -- c_function_native_*/&/**
+          allocatable -- c_function_native_*_allocatable/raw
+          cdesc -- c_function_native_*_cdesc
+            allocatable -- c_function_native_*_cdesc_allocatable/pointer
+            pointer -- c_function_native_*_cdesc_allocatable/pointer
           cfi
             allocatable -- c_function_native_*_cfi_allocatable
             pointer -- c_function_native_*_cfi_pointer
           pointer -- c_function_native_*/&/**_pointer
-          raw -- c_function_native_*_raw
+          raw -- c_function_native_*_allocatable/raw
           scalar -- c_function_native_*_scalar
-        ** -- c_function_native_**
+        ** -- c_function_native_*/&/**
           pointer -- c_function_native_*/&/**_pointer
         scalar -- c_function_native_scalar
       shadow
@@ -65,7 +67,8 @@ root
             pointer -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
-            copy -- c_function_string_scalar/*/&_cfi_copy
+            copy -- c_function_string_scalar/*/&_cfi_copy/result
+            result -- c_function_string_scalar/*/&_cfi_copy/result
         * -- c_function_string_scalar/*/&
           buf
             copy -- c_function_string_scalar/*/&_buf_copy/result
@@ -75,8 +78,9 @@ root
             pointer -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
-            copy -- c_function_string_scalar/*/&_cfi_copy
+            copy -- c_function_string_scalar/*/&_cfi_copy/result
             pointer -- c_function_string_*_cfi_pointer
+            result -- c_function_string_scalar/*/&_cfi_copy/result
         scalar -- c_function_string_scalar/*/&
           buf
             copy -- c_function_string_scalar/*/&_buf_copy/result
@@ -85,7 +89,8 @@ root
             allocatable -- c_function_string_scalar_cdesc_allocatable
           cfi
             allocatable -- c_function_string_scalar_cfi_allocatable
-            copy -- c_function_string_scalar/*/&_cfi_copy
+            copy -- c_function_string_scalar/*/&_cfi_copy/result
+            result -- c_function_string_scalar/*/&_cfi_copy/result
       struct -- c_function_struct
         *
           pointer -- c_function_struct_*_pointer
@@ -826,6 +831,26 @@ c_function_char_*_cfi_pointer:
   intent: function
   name: c_function_char_*_cfi_pointer
   owner: library
+c_function_char_*_cfi_result:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - cfi
+  cxx_local_var: result
+  f_c_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_char_*_cfi_result
+  owner: library
 c_function_char_*_raw:
   f_c_module:
     iso_c_binding:
@@ -877,6 +902,15 @@ c_function_char_scalar_cfi:
     - <cstring>
   name: c_function_char_scalar_cfi
   owner: library
+c_function_native_&:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_native_&
+  owner: library
 c_function_native_&_pointer:
   f_c_module:
     iso_c_binding:
@@ -886,7 +920,21 @@ c_function_native_&_pointer:
   intent: function
   name: c_function_native_&_pointer
   owner: library
+c_function_native_*:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_native_*
+  owner: library
 c_function_native_**:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_native_**
   owner: library
@@ -899,7 +947,60 @@ c_function_native_**_pointer:
   intent: function
   name: c_function_native_**_pointer
   owner: library
+c_function_native_*_allocatable:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_native_*_allocatable
+  owner: library
+c_function_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  f_c_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_c_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc
+  owner: library
 c_function_native_*_cdesc_allocatable:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  f_c_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_c_import:
+  - '{F_array_type}'
   intent: function
   name: c_function_native_*_cdesc_allocatable
   owner: library
@@ -999,6 +1100,11 @@ c_function_native_*_pointer:
   name: c_function_native_*_pointer
   owner: library
 c_function_native_*_raw:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_native_*_raw
   owner: library
@@ -1320,6 +1426,30 @@ c_function_string_&_cfi_copy:
   intent: function
   name: c_function_string_&_cfi_copy
   owner: library
+c_function_string_&_cfi_result:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+    \ {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  f_c_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_string_&_cfi_result
+  owner: library
 c_function_string_*:
   c_return:
   - return {c_var};
@@ -1511,6 +1641,30 @@ c_function_string_*_cfi_pointer:
   intent: function
   name: c_function_string_*_cfi_pointer
   owner: library
+c_function_string_*_cfi_result:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+    \ {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  f_c_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_string_*_cfi_result
+  owner: library
 c_function_string_scalar:
   c_return:
   - return {c_var};
@@ -1643,6 +1797,30 @@ c_function_string_scalar_cfi_copy:
   - ISO_Fortran_binding.h
   intent: function
   name: c_function_string_scalar_cfi_copy
+  owner: library
+c_function_string_scalar_cfi_result:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+    \ {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  f_c_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_string_scalar_cfi_result
   owner: library
 c_function_struct:
   c_local_var: pointer
