@@ -906,6 +906,67 @@ fc_statements = [
     ),
 
     ##########
+    # default
+    dict(  # f_default
+        name="f_defaulttmp",
+        alias=[
+            "f_in_native_*_cfi",
+            "f_in_native_**",
+            "f_out_native_***",
+            "f_out_native_&",
+            "f_out_void_*&",
+            "f_inout_native_*",
+            "f_in_native_scalar/*/&",
+            "f_in_char_*_capi/cfi",
+            "f_in_char_**_cfi",
+            "f_inout/out_char_*_cfi",
+            "f_inout_string_&_cfi",
+            "f_in_string_scalar_cfi",
+            "f_in_string_*_cfi",
+            "f_in_string_&_cfi",
+            "f_out_string_*_cfi",
+            "f_out_string_**_cfi_allocatable",
+            "f_out_string_**_cfi_copy",
+            "f_inout_string_*_cfi",
+            "f_out_string_&_cfi",
+            "f_in_vector_&_cdesc_targ_native_scalar",
+            "f_inout_native_*_cfi",
+            "f_out_native_**_cfi_allocatable/pointer",
+            "f_in_unknown_scalar",
+        ],
+    ),
+
+    dict(  # c_default
+        name="c_defaulttmp",
+        alias=[
+            "c_in_bool_scalar",
+            "c_out_bool_*",
+            "c_inout_bool_*",
+            "c_in_native_scalar",
+            "c_in_native_*",
+            "c_in_native_&",
+            "c_in_char_*",
+            "c_in_char_*_capi",
+            "c_inout_char_*",
+            "c_out_native_*",
+            "c_out_native_&",
+            "c_out_native_&*",
+            "c_out_native_**_allocatable",
+            "c_out_native_**_pointer",
+            "c_out_native_**_raw",
+            "c_out_native_***",
+            "c_inout_native_*",
+            "c_inout_native_&",
+            "c_out_native_*&_pointer",
+            "c_out_char_*",
+            "c_in_void_scalar",
+            "c_in_void_*",
+            "c_out_void_*&",
+            "c_in_unknown_scalar",
+        ],
+    ),
+    
+    ##########
     # bool
     dict(
         name="f_in_bool",
@@ -943,51 +1004,10 @@ fc_statements = [
 
     ##########
     # native
-    dict(  # f_default
-        name="f_in_native_scalar/*/&",
-        alias=[
-            "f_in_native_*_cfi",
-        ],
-    ),
-    dict(  # f_default
-        name="f_inout_native_*",
-        alias=[
-            "f_in_native_**",
-            "f_out_native_***",
-            "f_out_native_&",
-        ],
-    ),
     dict(
         name="f_out_native_*",
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
-        ],
-    ),
-    dict(  # c_default
-        name="c_out_native_*",
-        alias=[
-            "c_in_bool_scalar",
-            "c_out_bool_*",
-            "c_inout_bool_*",
-            "c_in_native_scalar",
-            "c_in_native_*",
-            "c_in_native_&",
-            "c_in_char_*",
-            "c_in_char_*_capi",
-            "c_inout_char_*",
-            "c_out_native_&",
-            "c_out_native_&*",
-            "c_out_native_**_allocatable",
-            "c_out_native_**_pointer",
-            "c_out_native_**_raw",
-            "c_out_native_***",
-            "c_inout_native_*",
-            "c_inout_native_&",
-            "c_out_native_*&_pointer",
-            "c_out_char_*",
-            "c_in_void_scalar",
-            "c_in_void_*",
-            "c_out_void_*&",
         ],
     ),
     
@@ -1188,9 +1208,6 @@ fc_statements = [
     dict(
         name="f_in/out/inout_void_*_cdesc",
         base="f_in_native_*_cdesc",
-    ),
-    dict(  # f_default
-        name="f_out_void_*&",
     ),
 
     ########################################
@@ -1411,9 +1428,6 @@ fc_statements = [
             "character, value, intent(IN) :: {f_var}",
         ],
     ),
-    dict(  # f_default
-        name="f_in_char_*_capi/cfi",
-    ),
 
 #    dict(
 #        This simpler version had to be replace for pgi and cray.
@@ -1499,9 +1513,6 @@ fc_statements = [
         c_post_call=[
             "ShroudStrBlankFill({c_var}, {c_var_len});"
         ],
-    ),
-    dict(  # f_default
-        name="f_inout/out_char_*_cfi",
     ),
     dict(
         name="f_inout_char_*_buf",
@@ -1740,23 +1751,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
-    ),
-    dict(  # f_default
-        # f_in_string_scalar_cfi
-        # f_inout_string_*_cfi
-        # f_out_string_&_cfi
-        # f_in_string_scalar_cfi
-        # f_inout_string_*_cfi
-        # f_out_string_&_cfi
-        # f_in_string_scalar_cfi
-        # f_inout_string_*_cfi
-        # f_out_string_&_cfi
-        name="f_in/inout/out_string_scalar/*/&_cfi",
-    ),
-    dict(  # f_default
-        # f_out_string_**_cfi_allocatable
-        # f_out_string_**_cfi_copy
-        name="f_out_string_**_cfi_allocatable/copy",
     ),
 
     dict(
@@ -2099,9 +2093,6 @@ fc_statements = [
             "{cxx_var}.push_back({c_var} + ({c_var_len}*i));",
             "-}}"
         ],
-    ),
-    dict(  # f_default
-        name="f_in_vector_&_cdesc_targ_native_scalar",
     ),
     dict(
         name="f_in_vector_buf_targ_native_*",
@@ -2646,13 +2637,14 @@ fc_statements = [
     ),
 
     dict(  # f_default
-        name="f_inout_struct_*",
+        name="f_defaultstruct",
         alias=[
             "f_in_struct_scalar",
             "f_in_struct_*",
             "f_in_struct_&",
             "f_out_struct_*",
             "f_out_struct_&",
+            "f_inout_struct_*",
             "f_inout_struct_&",
             "f_inout_shadow_*",
         ],
@@ -2969,13 +2961,6 @@ fc_statements = [
         c_local=["cptr", "fptr", "cdesc", "err"],
     ),
 
-    dict(  # f_default
-        name="f_inout_native_*_cfi",
-    ),
-    dict(  # f_default
-        name="f_out_native_**_cfi_allocatable/pointer",
-    ),
-    
     ########################################
 
     dict(
@@ -3150,9 +3135,6 @@ fc_statements = [
     
     ########################################
     # char **
-    dict(  # f_default
-        name="f_in_char_**_cfi",
-    ),
     dict(
         name="c_in_char_**_cfi",
         mixin=[
@@ -3609,14 +3591,4 @@ fc_statements = [
         c_return_type="void",  # Convert to function.
     ),
 
-
-    ########################################
-    # unknown
-    dict(  # f_default
-        name="f_in_unknown_scalar",
-    ),
-    dict(  # c_default
-        name="c_in_unknown_scalar",
-    ),
-    
 ]

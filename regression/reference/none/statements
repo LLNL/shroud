@@ -6,6 +6,7 @@ root
         scalar
           capptr -- c_ctor_shadow_scalar_capptr
           capsule -- c_ctor_shadow_scalar_capsule
+    defaulttmp -- c_defaulttmp
     dtor -- c_dtor
       void
         scalar -- c_dtor
@@ -126,23 +127,23 @@ root
             allocatable -- c_getter_string_scalar_cdesc_allocatable
     in
       bool
-        scalar -- c_out_native_*
+        scalar -- c_defaulttmp
       char
-        * -- c_out_native_*
+        * -- c_defaulttmp
           buf -- c_in_char_*_buf
-          capi -- c_out_native_*
+          capi -- c_defaulttmp
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
           buf -- c_in_char_**_buf
           cfi -- c_in_char_**_cfi
         scalar -- c_in_char_scalar
       native
-        & -- c_out_native_*
-        * -- c_out_native_*
+        & -- c_defaulttmp
+        * -- c_defaulttmp
           cdesc -- c_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
         ** -- c_in_native_**
-        scalar -- c_out_native_*
+        scalar -- c_defaulttmp
       shadow
         & -- c_in/inout_shadow_*/&
         * -- c_in/inout_shadow_*/&
@@ -162,7 +163,7 @@ root
         * -- c_in/out/inout_struct
         scalar -- c_in/out/inout_struct
       unknown
-        scalar -- c_in_unknown_scalar
+        scalar -- c_defaulttmp
       vector
         &
           buf
@@ -187,22 +188,22 @@ root
               string
                 scalar -- c_in_vector_scalar/*/&_buf_targ_string_scalar
       void
-        * -- c_out_native_*
+        * -- c_defaulttmp
           cdesc -- c_in/out/inout_void_*_cdesc
         ** -- c_in/out/inout_void_**
           cfi -- c_in/out/inout_void_**
-        scalar -- c_out_native_*
+        scalar -- c_defaulttmp
     inout
       bool
-        * -- c_out_native_*
+        * -- c_defaulttmp
       char
-        * -- c_out_native_*
+        * -- c_defaulttmp
           buf -- c_inout_char_*_buf
           cfi -- c_inout_char_*_cfi
       native
-        & -- c_out_native_*
+        & -- c_defaulttmp
           hidden -- c_out/inout_native_&_hidden
-        * -- c_out_native_*
+        * -- c_defaulttmp
           cdesc -- c_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
           hidden -- c_out/inout_native_*_hidden
@@ -279,33 +280,33 @@ root
       shadow -- c_mixin_shadow
     out
       bool
-        * -- c_out_native_*
+        * -- c_defaulttmp
       char
-        * -- c_out_native_*
+        * -- c_defaulttmp
           buf -- c_out_char_*_buf
           cfi -- c_out_char_*_cfi
       native
-        & -- c_out_native_*
+        & -- c_defaulttmp
           hidden -- c_out/inout_native_&_hidden
-        &* -- c_out_native_*
-        * -- c_out_native_*
+        &* -- c_defaulttmp
+        * -- c_defaulttmp
           cdesc -- c_in/out/inout_native_*_cdesc
           hidden -- c_out/inout_native_*_hidden
         *&
           cdesc -- c_out_native_*&_cdesc
             pointer -- c_out_native_*&_cdesc
-          pointer -- c_out_native_*
+          pointer -- c_defaulttmp
         **
-          allocatable -- c_out_native_*
+          allocatable -- c_defaulttmp
           cdesc -- c_out_native_**_cdesc
             allocatable -- c_out_native_**_cdesc
             pointer -- c_out_native_**_cdesc
           cfi
             allocatable -- c_out_native_**_cfi_allocatable
             pointer -- c_out_native_**_cfi_pointer
-          pointer -- c_out_native_*
-          raw -- c_out_native_*
-        *** -- c_out_native_*
+          pointer -- c_defaulttmp
+          raw -- c_defaulttmp
+        *** -- c_defaulttmp
       string
         & -- c_out_string_*/&
           buf -- c_out_string_*/&_buf
@@ -355,7 +356,7 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
-        *& -- c_out_native_*
+        *& -- c_defaulttmp
         ** -- c_in/out/inout_void_**
     setter -- c_setter
       arg -- c_setter_arg
@@ -380,6 +381,8 @@ root
         scalar
           capptr -- f_ctor_shadow_scalar_capptr
           capsule -- f_ctor_shadow_scalar_capsule
+    defaultstruct -- f_defaultstruct
+    defaulttmp -- f_defaulttmp
     dtor -- f_dtor
     function -- f_function
       bool -- f_function_bool
@@ -533,19 +536,19 @@ root
       char
         *
           buf -- f_in/out_char_*_buf
-          capi -- f_in_char_*_capi/cfi
-          cfi -- f_in_char_*_capi/cfi
+          capi -- f_defaulttmp
+          cfi -- f_defaulttmp
         **
           buf -- f_in_char_**_buf
-          cfi -- f_in_char_**_cfi
+          cfi -- f_defaulttmp
         scalar -- f_in_char_scalar
       native
-        & -- f_in_native_scalar/*/&
-        * -- f_in_native_scalar/*/&
+        & -- f_defaulttmp
+        * -- f_defaulttmp
           cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_in_native_scalar/*/&
-        ** -- f_inout_native_*
-        scalar -- f_in_native_scalar/*/&
+          cfi -- f_defaulttmp
+        ** -- f_defaulttmp
+        scalar -- f_defaulttmp
       shadow -- f_in_shadow
         & -- f_in_shadow
         * -- f_in_shadow
@@ -553,19 +556,19 @@ root
       string
         &
           buf -- f_in_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
         *
           buf -- f_in_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
         scalar
           buf -- f_in_string_scalar_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
       struct
-        & -- f_inout_struct_*
-        * -- f_inout_struct_*
-        scalar -- f_inout_struct_*
+        & -- f_defaultstruct
+        * -- f_defaultstruct
+        scalar -- f_defaultstruct
       unknown
-        scalar -- f_in_unknown_scalar
+        scalar -- f_defaulttmp
       vector
         &
           buf
@@ -578,7 +581,7 @@ root
           cdesc
             targ
               native
-                scalar -- f_in_vector_&_cdesc_targ_native_scalar
+                scalar -- f_defaulttmp
         buf
           targ
             native
@@ -595,25 +598,23 @@ root
       char
         *
           buf -- f_inout_char_*_buf
-          cfi -- f_inout/out_char_*_cfi
+          cfi -- f_defaulttmp
       native
-        * -- f_inout_native_*
+        * -- f_defaulttmp
           cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_inout_native_*_cfi
+          cfi -- f_defaulttmp
       shadow
-        * -- f_inout_struct_*
+        * -- f_defaultstruct
       string
         &
           buf -- f_inout_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
         *
           buf -- f_inout_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
-        scalar
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
       struct
-        & -- f_inout_struct_*
-        * -- f_inout_struct_*
+        & -- f_defaultstruct
+        * -- f_defaultstruct
       vector
         &
           cdesc
@@ -670,9 +671,9 @@ root
       char
         *
           buf -- f_in/out_char_*_buf
-          cfi -- f_inout/out_char_*_cfi
+          cfi -- f_defaulttmp
       native
-        & -- f_inout_native_*
+        & -- f_defaulttmp
         * -- f_out_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi
@@ -686,29 +687,27 @@ root
             allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
           cfi
-            allocatable -- f_out_native_**_cfi_allocatable/pointer
-            pointer -- f_out_native_**_cfi_allocatable/pointer
+            allocatable -- f_defaulttmp
+            pointer -- f_defaulttmp
           raw -- f_out_native_**_raw
-        *** -- f_inout_native_*
+        *** -- f_defaulttmp
       string
         &
           buf -- f_out_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
         *
           buf -- f_out_string_*/&_buf
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+          cfi -- f_defaulttmp
         **
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
           cfi
-            allocatable -- f_out_string_**_cfi_allocatable/copy
-            copy -- f_out_string_**_cfi_allocatable/copy
-        scalar
-          cfi -- f_in/inout/out_string_scalar/*/&_cfi
+            allocatable -- f_defaulttmp
+            copy -- f_defaulttmp
       struct
-        & -- f_inout_struct_*
-        * -- f_inout_struct_*
+        & -- f_defaultstruct
+        * -- f_defaultstruct
       vector
         &
           cdesc
@@ -739,7 +738,7 @@ root
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
-        *& -- f_out_void_*&
+        *& -- f_defaulttmp
         ** -- f_in/out/inout_void_**
     setter -- f_setter
       native -- f_setter_native
@@ -792,6 +791,10 @@ c_ctor_shadow_scalar_capsule:
   intent: ctor
   name: c_ctor_shadow_scalar_capsule
   owner: caller
+c_defaulttmp:
+  intent: defaulttmp
+  name: c_defaulttmp
+  owner: library
 c_dtor:
   c_call:
   - delete {CXX_this};
@@ -4640,6 +4643,12 @@ f_ctor_shadow_scalar_capsule:
   f_need_wrapper: true
   intent: ctor
   name: f_ctor_shadow_scalar_capsule
+f_defaultstruct:
+  intent: defaultstruct
+  name: f_defaultstruct
+f_defaulttmp:
+  intent: defaulttmp
+  name: f_defaulttmp
 f_dtor:
   intent: dtor
   name: f_dtor
@@ -6195,9 +6204,6 @@ f_inout_string_*_buf:
 f_inout_string_*_cfi:
   intent: inout
   name: f_inout_string_*_cfi
-f_inout_string_scalar_cfi:
-  intent: inout
-  name: f_inout_string_scalar_cfi
 f_inout_struct_&:
   intent: inout
   name: f_inout_struct_&
@@ -6695,9 +6701,6 @@ f_out_string_*_buf:
 f_out_string_*_cfi:
   intent: out
   name: f_out_string_*_cfi
-f_out_string_scalar_cfi:
-  intent: out
-  name: f_out_string_scalar_cfi
 f_out_struct_&:
   intent: out
   name: f_out_struct_&
