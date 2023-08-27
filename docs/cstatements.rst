@@ -16,12 +16,12 @@ C Statements
 
     {C_return_type} {C_name}({C_prototype})
     {
-        {pre_call}
-        {call_code}   {call}    arg_call
+        {c_pre_call}
+        {c_call_code}   {call}    arg_call
         {post_call_pattern}
-        {post_call}
-        {final}
-        {ret}
+        {c_post_call}
+        {c_final}
+        {c_return}
     }
 
 C_prototype -> c_arg_decl
@@ -33,16 +33,16 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     {F_C_subprogram} {F_C_name}({F_C_arguments}) &
         {F_C_result_clause} &
         bind(C, name="{C_name}")
-        f_module / f_module_line
-        f_import
-        arg_c_decl
+        f_c_module / f_c_module_line
+        f_c_import
+        f_c_arg_decl
+        f_c_result_decl
     end {F_C_subprogram} {F_C_name}
 
 Where
 F_C_clause =
 F_C_arguments     = f_c_arg_names
-arg_c_decl        = f_arg_decl, f_result_decl
-F_C_result_clause = f_result_var
+F_C_result_clause = f_c_result_var
 
 Lookup statements
 -----------------
@@ -181,19 +181,19 @@ the wrapped function's argument.
 An empty list will cause no declaration to be added.
 Functions do not add arguments by default.
 
-.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
           exist in a group and have the same number of names.
 
-f_arg_decl
-^^^^^^^^^^
+f_c_arg_decl
+^^^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
 interface. The variable to be
-declared is *c_var*.  *f_module* can be used to add ``USE`` statements
+declared is *c_var*.  *f_c_module* can be used to add ``USE`` statements
 needed by the declarations.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
           exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
@@ -202,22 +202,21 @@ f_c_arg_names
 ^^^^^^^^^^^^^
 
 Names of arguments to pass to C function.
-Used when *buf_arg* is ``arg_decl``.
 Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
           exist in a group and have the same number of names.
 
-f_result_decl
-^^^^^^^^^^^^^
+f_c_result_decl
+^^^^^^^^^^^^^^^
 
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
 
-f_import
-^^^^^^^^
+f_c_import
+^^^^^^^^^^
 
 List of names to import into the Fortran interface.
 The names will be expanded before being used.
@@ -227,11 +226,11 @@ module and it is used in the interface.
 
 .. code-block:: yaml
 
-        f_import=["{F_array_type}"],
+        f_c_import=["{F_array_type}"],
                 
 
-f_module
-^^^^^^^^
+f_c_module
+^^^^^^^^^^
 
 Fortran modules used in the Fortran interface:
 
@@ -239,26 +238,26 @@ Fortran modules used in the Fortran interface:
 
         f_module=dict(iso_c_binding=["C_PTR"]),
 
-f_module_line
-^^^^^^^^^^^^^
+f_c_module_line
+^^^^^^^^^^^^^^^
 
 Fortran modules used in the Fortran interface as a single line
 which allows format strings to be used.
 
 .. code-block:: yaml
 
-        f_module_line="iso_c_binding:{f_kind}",
+        f_c_module_line="iso_c_binding:{f_kind}",
 
 The format is::
 
      module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
 
 
-arg_call
-^^^^^^^^
+c_arg_call
+^^^^^^^^^^
 
-pre_call
-^^^^^^^^
+c_pre_call
+^^^^^^^^^^
 
 Code used with *intent(in)* arguments to convert from C to C++.
 
@@ -271,8 +270,8 @@ Code used with *intent(in)* arguments to convert from C to C++.
    Can be used to deal with error values.
 
 
-call
-^^^^
+c_call
+^^^^^^
 
 Code to call function.  This is usually generated.
 An exception which require explicit call code are constructors
@@ -280,26 +279,23 @@ and destructors for shadow types.
 
 .. sets need_wrapper
 
-post_call
-^^^^^^^^^
+c_post_call
+^^^^^^^^^^^
 
 Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
-You can also specify a library language version as
-**c_post_call** and **cxx_post_call** which will be used
-instead of **post_call**.
 
 
-final
-^^^^^
+c_final
+^^^^^^^
 
 Inserted after *post_call* and before *ret*.
 Can be used to release intermediate memory in the C wrapper.
 
 .. evaluated in context of fmt_result
        
-ret
-^^^
+c_return
+^^^^^^^^
 
 Code for return statement.
 Usually generated but can be replaced.
@@ -309,10 +305,8 @@ Useful to convert a subroutine into a function.
 For example, convert a ``void`` function which fills a ``std::vector``
 to return the number of items.
 
-.. return is a reserved word so it's not possible to do dict(return=[])
-
-return_type
-^^^^^^^^^^^
+c_return_type
+^^^^^^^^^^^^^
 
 Explicit return type when it is different than the
 functions return type.
@@ -320,8 +314,8 @@ For example, with shadow types.
 
 .. code-block:: yaml
 
-      return_type: long
-      ret:
+      c_return_type: long
+      c_return:
       - return Darg->size;
 
 .. from vectors.yaml
@@ -374,21 +368,21 @@ this copy until the shadow class is deleted.
 
 Defaults to *library*.
 
-temps
-^^^^^
+c_temps
+^^^^^^^
 
 A list of suffixes for temporary variable names.
 
 .. code-block:: yaml
 
-    temps=["len"]
+    c_temps=["len"]
 
  Create variable names in the format dictionary using
  ``{fmt.c_temp}{rootname}_{name}``.
  For example, argument *foo* creates *SHT_foo_len*.
 
-local
-^^^^^
+c_local
+^^^^^^^
 
  Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
  *temps* is intended for arguments and is typically used in a mixin
@@ -396,3 +390,21 @@ local
  variables.  This allows creating names without conflicting with
  *temps* from a *mixin* group.
  
+
+
+lang_c and lang_cxx
+^^^^^^^^^^^^^^^^^^^
+
+Language specific versions of each field can be added to these
+dictionaries. The version which corresponds to the YAML file
+*language* field will be used.
+
+.. code-block:: yaml
+
+        lang_c=dict(
+            impl_header=["<stddef.h>"],
+        ),
+        lang_cxx=dict(
+            impl_header=["<cstddef>"],
+        ),
+                

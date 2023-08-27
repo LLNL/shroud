@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Changed some entries in c_statements and f_statements to
+  consistently prefix with ``c_``, ``c_f_`` or ``f_``. This allows one
+  group to describe the entire Fortran wrapper, Fortran interface, C
+  wrapper flow of a variable.
+- Require an exact match when looking up statements for Fortran and C
+  wrappers.  Before it used a trie tree to match 'close enough'
+  statements.  This would sometimes result in different matches after
+  adding new tree leafs which ended up changing the tree traversal.
 
 ## v0.13.0 - 2023-08-23
 ### Added
