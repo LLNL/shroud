@@ -70,7 +70,16 @@ def template_stmts(ast):
     return specialize
 
 def lookup_fc_stmts(path):
-    return lookup_stmts_tree(cf_tree, path)
+    """Lookup statements for C and Fortran wrappers.
+
+    Looked up in the dictionary instead of the tree
+    so the name must match exactly.
+    """
+    name = compute_name(path)
+    stmt = fc_dict.get(name, None)
+    if stmt is None:
+        raise RuntimeError("Unknown fc statement: %s" % name)
+    return stmt
         
 def compute_name(path, char="_"):
     """
