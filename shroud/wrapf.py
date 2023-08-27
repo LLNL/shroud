@@ -1888,6 +1888,21 @@ rv = .false.
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
 
+            sreq = statements.compute_name(f_stmts)
+            smatch = f_intent_blk.name
+            if sreq != smatch:
+                # This check is used to find non-matching names
+                print("TTT not match wrapf iface result", node.name)
+                print("     Requested:", sreq)
+                print("         Found:", smatch)
+            sreq = statements.compute_name(c_stmts)
+            smatch = c_intent_blk.name
+            if sreq != smatch:
+                # This check is used to find non-matching names
+                print("TTT not match wrapf iface result", node.name)
+                print("     Requested:", sreq)
+                print("         Found:", smatch)
+            
             if is_f_arg:
                 implied = f_attrs["implied"]
                 pass_obj = f_attrs["pass"]
@@ -1967,18 +1982,6 @@ rv = .false.
             fmt_arg.stmt1 = f_intent_blk.name
             fmt_arg.stmtc0 = statements.compute_name(c_stmts)
             fmt_arg.stmtc1 = c_intent_blk.name
-
-            if fmt_arg.stmt0 != fmt_arg.stmt1:
-                # This check is used to find non-matching names
-                print("TTT not match wrapf arg f_stmts", node.name)
-                print("     Requested:", fmt_arg.stmt0)
-                print("         Found:", fmt_arg.stmt1)
-            if fmt_arg.stmtc0 != fmt_arg.stmtc1:
-                # This check is used to find non-matching names
-                print("TTT not match wrapf arg c_stmts", node.name)
-                print("     Requested:", fmt_arg.stmtc0)
-                print("         Found:", fmt_arg.stmtc1)
-
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")

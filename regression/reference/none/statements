@@ -534,7 +534,7 @@ root
       bool -- f_in_bool
         scalar -- f_in_bool
       char
-        *
+        * -- f_defaulttmp
           buf -- f_in/out_char_*_buf
           capi -- f_defaulttmp
           cfi -- f_defaulttmp
@@ -592,6 +592,7 @@ root
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_in/out/inout_void_**
           cfi -- f_in/out/inout_void_**
+        scalar -- f_defaulttmp
     inout
       bool -- f_inout_bool
         * -- f_inout_bool
@@ -600,6 +601,7 @@ root
           buf -- f_inout_char_*_buf
           cfi -- f_defaulttmp
       native
+        & -- f_defaulttmp
         * -- f_defaulttmp
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi -- f_defaulttmp
@@ -5814,6 +5816,9 @@ f_in_bool_scalar:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
   intent: in
   name: f_in_bool_scalar
+f_in_char_*:
+  intent: in
+  name: f_in_char_*
 f_in_char_**_buf:
   f_arg_call:
   - '{f_var}'
@@ -6101,6 +6106,9 @@ f_in_void_*_cdesc:
   - cdesc
   intent: in
   name: f_in_void_*_cdesc
+f_in_void_scalar:
+  intent: in
+  name: f_in_void_scalar
 f_inout_bool:
   c_local_var: true
   f_post_call:
@@ -6136,6 +6144,9 @@ f_inout_char_*_buf:
 f_inout_char_*_cfi:
   intent: inout
   name: f_inout_char_*_cfi
+f_inout_native_&:
+  intent: inout
+  name: f_inout_native_&
 f_inout_native_*:
   intent: inout
   name: f_inout_native_*
