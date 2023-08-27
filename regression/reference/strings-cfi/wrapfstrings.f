@@ -86,13 +86,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
@@ -135,8 +133,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_char_*
-    ! Match:     c_default
+    ! Exact:     c_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_passCharPtrInOut")
@@ -1076,8 +1073,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="STR_explicit1")
@@ -1110,8 +1106,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
@@ -1174,13 +1169,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -1219,13 +1212,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
                 bind(C, name="STR_CpassCharPtrBlank")
@@ -1308,8 +1299,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -1371,8 +1361,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)

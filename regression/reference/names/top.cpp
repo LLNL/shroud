@@ -90,8 +90,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +intent(inout)
-// Requested: c_inout_char_*
-// Match:     c_default
+// Exact:     c_inout_char_*
 void TES_getName(char * name)
 {
     // splicer begin function.getName
@@ -348,33 +347,27 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // ----------------------------------------
 // Argument:  const char * rdbase
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * pkg
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * name
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // ----------------------------------------
 // Argument:  void ( * afree)(double * arr +intent(inout)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // ----------------------------------------
 // Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),
     void ( * afree)(double * arr), void ( * assoc)(double * arr,

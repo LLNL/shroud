@@ -240,8 +240,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Requested: c_out_native_**_pointer
-// Match:     c_default
+// Exact:     c_out_native_**_pointer
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
@@ -293,13 +292,11 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Requested: c_out_native_*&_pointer
-// Match:     c_default
+// Exact:     c_out_native_*&_pointer
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_&
-// Match:     c_default
+// Exact:     c_inout_native_&
 void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
     double * * array, int * isize)
 {
@@ -347,8 +344,7 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Requested: c_out_native_**_pointer
-// Match:     c_default
+// Exact:     c_out_native_**_pointer
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
@@ -400,13 +396,11 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Requested: c_out_native_*&_pointer
-// Match:     c_default
+// Exact:     c_out_native_*&_pointer
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_&
-// Match:     c_default
+// Exact:     c_inout_native_&
 void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
 {

@@ -266,8 +266,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_out_native_**_pointer
-        ! Match:     c_default
+        ! Exact:     c_out_native_**_pointer
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
@@ -306,13 +305,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_out_native_*&_pointer
-        ! Match:     c_default
+        ! Exact:     c_out_native_*&_pointer
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_&
-        ! Match:     c_default
+        ! Exact:     c_inout_native_&
         subroutine c_ArrayWrapper_fetchArrayRef(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRef")
             use iso_c_binding, only : C_INT, C_PTR
@@ -347,8 +344,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_out_native_**_pointer
-        ! Match:     c_default
+        ! Exact:     c_out_native_**_pointer
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
@@ -387,13 +383,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_out_native_*&_pointer
-        ! Match:     c_default
+        ! Exact:     c_out_native_*&_pointer
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_&
-        ! Match:     c_default
+        ! Exact:     c_inout_native_&
         subroutine c_ArrayWrapper_fetchArrayRefConst(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst")
             use iso_c_binding, only : C_INT, C_PTR

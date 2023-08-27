@@ -1128,7 +1128,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -1177,7 +1177,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -1382,7 +1382,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -1411,7 +1411,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -1538,7 +1538,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1669,7 +1669,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_inout_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "s",
@@ -1913,7 +1913,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name1",
@@ -2179,7 +2179,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name1",
@@ -2229,7 +2229,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name2",
@@ -2595,7 +2595,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "text",
@@ -3013,7 +3013,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "text",
@@ -3321,7 +3321,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "text",
@@ -3905,7 +3905,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -4599,7 +4599,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -4947,7 +4947,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5112,7 +5112,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5338,7 +5338,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5593,7 +5593,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5621,7 +5621,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -5650,7 +5650,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "type",
@@ -5873,7 +5873,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5937,7 +5937,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "type",
@@ -6118,7 +6118,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "alloc",

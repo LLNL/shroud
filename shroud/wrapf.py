@@ -1300,6 +1300,14 @@ rv = .false.
                            meta["api"], deref_attr]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+
+            sreq = statements.compute_name(c_stmts)
+            smatch = c_intent_blk.name
+            if sreq != smatch:
+                # This check is used to find non-matching names
+                print("TTT not match wrapc iface result", node.name)
+                print("     Requested:", sreq)
+                print("         Found:", smatch)
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")

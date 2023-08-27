@@ -940,8 +940,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  void ( * get)(void) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_FuncPtr1")
             import :: func_ptr1_get
@@ -1001,8 +1000,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_FuncPtr5")
             import :: func_ptr5_get

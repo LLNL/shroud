@@ -141,8 +141,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_char_*
-        ! Match:     c_default
+        ! Exact:     c_inout_char_*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
@@ -377,33 +376,27 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const char * rdbase
         ! Attrs:     +intent(in)
-        ! Requested: c_in_char_*
-        ! Match:     c_default
+        ! Exact:     c_in_char_*
         ! ----------------------------------------
         ! Argument:  const char * pkg
         ! Attrs:     +intent(in)
-        ! Requested: c_in_char_*
-        ! Match:     c_default
+        ! Exact:     c_in_char_*
         ! ----------------------------------------
         ! Argument:  const char * name
         ! Attrs:     +intent(in)
-        ! Requested: c_in_char_*
-        ! Match:     c_default
+        ! Exact:     c_in_char_*
         ! ----------------------------------------
         ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * afree)(double * arr +intent(inout)) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
                 bind(C, name="TES_external_funcs")

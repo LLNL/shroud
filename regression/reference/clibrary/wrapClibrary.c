@@ -112,13 +112,11 @@ double CLI_PassByValueMacro(int arg2)
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * arg2
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
@@ -299,8 +297,7 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external+value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // start CLI_callback1a
 void CLI_callback1a(int type, void ( * incr)(void))
 {
@@ -322,8 +319,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Argument:  const char * type
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  void * in +assumedtype
 // Attrs:     +intent(in)
@@ -331,8 +327,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)

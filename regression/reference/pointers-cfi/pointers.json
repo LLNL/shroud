@@ -4112,7 +4112,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "nitems",
@@ -4356,7 +4356,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -4642,7 +4642,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -4987,7 +4987,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -5243,7 +5243,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "nitems",
@@ -5486,7 +5486,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -5768,7 +5768,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_pointer",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -6962,7 +6962,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_**_allocatable",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_**_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "count",
@@ -8959,7 +8959,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name",

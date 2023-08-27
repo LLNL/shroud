@@ -465,7 +465,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_inout_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -3016,7 +3016,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "afree",
@@ -3044,7 +3044,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "alloc",
@@ -3072,7 +3072,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "assoc",
@@ -3100,7 +3100,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -3129,7 +3129,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "pkg",
@@ -3158,7 +3158,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "rdbase",

@@ -265,8 +265,7 @@ void AA_example_nested_testmpi_serial(void)
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr1
@@ -338,8 +337,7 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,

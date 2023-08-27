@@ -191,13 +191,11 @@ void STR_returnChar(char *SHC_rv)
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_char_*
-// Match:     c_default
+// Exact:     c_out_char_*
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // start STR_passCharPtr
 void STR_passCharPtr(char * dest, const char * src)
 {
@@ -225,8 +223,7 @@ void STR_passCharPtr(char * dest, const char * src)
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // start STR_passCharPtr_bufferify
 void STR_passCharPtr_bufferify(char *dest, int SHT_dest_len,
     const char * src)
@@ -251,8 +248,7 @@ void STR_passCharPtr_bufferify(char *dest, int SHT_dest_len,
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_char_*
-// Match:     c_default
+// Exact:     c_inout_char_*
 void STR_passCharPtrInOut(char * s)
 {
     // splicer begin function.passCharPtrInOut
@@ -1582,8 +1578,7 @@ void STR_fetchArrayStringAllocLen_bufferify(
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 void STR_explicit1(char * name)
 {
     // splicer begin function.explicit1
@@ -1598,8 +1593,7 @@ void STR_explicit1(char * name)
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
 // Attrs:     +intent(out)
-// Requested: c_out_char_*
-// Match:     c_default
+// Exact:     c_out_char_*
 void STR_explicit2(char * name)
 {
     // splicer begin function.explicit2
@@ -1680,13 +1674,11 @@ void STR_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_char_*
-// Match:     c_default
+// Exact:     c_out_char_*
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 void STR_CpassCharPtrBlank(char * dest, const char * src)
 {
     // splicer begin function.CpassCharPtrBlank
@@ -1788,8 +1780,7 @@ void STR_PostDeclare_bufferify(int * count, char *name,
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 int STR_CpassCharPtrNotrim(const char * src)
 {
     // splicer begin function.CpassCharPtrNotrim
@@ -1863,8 +1854,7 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
 // ----------------------------------------
 // Argument:  const char * in
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
 // Attrs:     +api(capi)+intent(in)

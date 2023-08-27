@@ -197,13 +197,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg2
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         function c_function4a(arg1, arg2) &
                 result(SHT_rv) &
@@ -223,13 +221,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg2
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHT_rv, &
                 SHT_rv_len) &
@@ -250,8 +246,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! start c_accept_name
     interface
         subroutine c_accept_name(name) &
@@ -270,8 +265,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_char_*
-    ! Match:     c_default
+    ! Exact:     c_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="passCharPtrInOut")
@@ -306,8 +300,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! start c_return_one_name
     interface
         subroutine c_return_one_name(name1) &
@@ -346,13 +339,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_return_two_names(name1, name2) &
                 bind(C, name="returnTwoNames")
@@ -395,8 +386,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
@@ -446,8 +436,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
@@ -476,8 +465,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len_trim(text))+value
     ! Attrs:     +intent(in)
@@ -555,8 +543,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_bind_c2(outbuf) &
                 bind(C, name="bindC2")
@@ -658,8 +645,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
@@ -709,8 +695,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * incr)(void) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! start c_callback1
     interface
         subroutine c_callback1(type, incr) &
@@ -735,8 +720,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * incr)(void) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! start c_callback1a
     interface
         subroutine c_callback1a(type, incr) &
@@ -765,8 +749,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     interface
         subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
@@ -786,8 +769,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * type
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
@@ -795,13 +777,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")
@@ -822,8 +802,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  const char * type
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
@@ -831,8 +810,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -867,8 +845,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &
                 bind(C, name="callback_set_alloc")

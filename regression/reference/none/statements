@@ -128,7 +128,7 @@ root
       bool
         scalar -- c_out_native_*
       char
-        *
+        * -- c_out_native_*
           buf -- c_in_char_*_buf
           capi -- c_out_native_*
           cfi -- c_in_char_*_cfi
@@ -191,15 +191,16 @@ root
           cdesc -- c_in/out/inout_void_*_cdesc
         ** -- c_in/out/inout_void_**
           cfi -- c_in/out/inout_void_**
+        scalar -- c_out_native_*
     inout
       bool
         * -- c_out_native_*
       char
-        *
+        * -- c_out_native_*
           buf -- c_inout_char_*_buf
           cfi -- c_inout_char_*_cfi
       native
-        &
+        & -- c_out_native_*
           hidden -- c_out/inout_native_&_hidden
         * -- c_out_native_*
           cdesc -- c_in/out/inout_native_*_cdesc
@@ -280,7 +281,7 @@ root
       bool
         * -- c_out_native_*
       char
-        *
+        * -- c_out_native_*
           buf -- c_out_char_*_buf
           cfi -- c_out_char_*_cfi
       native
@@ -293,13 +294,16 @@ root
         *&
           cdesc -- c_out_native_*&_cdesc
             pointer -- c_out_native_*&_cdesc
+          pointer -- c_out_native_*
         **
+          allocatable -- c_out_native_*
           cdesc -- c_out_native_**_cdesc
             allocatable -- c_out_native_**_cdesc
             pointer -- c_out_native_**_cdesc
           cfi
             allocatable -- c_out_native_**_cfi_allocatable
             pointer -- c_out_native_**_cfi_pointer
+          pointer -- c_out_native_*
           raw -- c_out_native_*
         *** -- c_out_native_*
       string
@@ -2238,6 +2242,10 @@ c_in_bool_scalar:
   intent: in
   name: c_in_bool_scalar
   owner: library
+c_in_char_*:
+  intent: in
+  name: c_in_char_*
+  owner: library
 c_in_char_**:
   c_arg_decl:
   - char **{c_var}
@@ -2947,9 +2955,17 @@ c_in_void_*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_in_void_*_cdesc
   owner: library
+c_in_void_scalar:
+  intent: in
+  name: c_in_void_scalar
+  owner: library
 c_inout_bool_*:
   intent: inout
   name: c_inout_bool_*
+  owner: library
+c_inout_char_*:
+  intent: inout
+  name: c_inout_char_*
   owner: library
 c_inout_char_*_buf:
   c_arg_decl:
@@ -2998,6 +3014,10 @@ c_inout_char_*_cfi:
   - ISO_Fortran_binding.h
   intent: inout
   name: c_inout_char_*_cfi
+  owner: library
+c_inout_native_&:
+  intent: inout
+  name: c_inout_native_&
   owner: library
 c_inout_native_&_hidden:
   c_arg_call:
@@ -3728,6 +3748,10 @@ c_out_bool_*:
   intent: out
   name: c_out_bool_*
   owner: library
+c_out_char_*:
+  intent: out
+  name: c_out_char_*
+  owner: library
 c_out_char_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -3844,9 +3868,17 @@ c_out_native_*&_cdesc_pointer:
   intent: out
   name: c_out_native_*&_cdesc_pointer
   owner: library
+c_out_native_*&_pointer:
+  intent: out
+  name: c_out_native_*&_pointer
+  owner: library
 c_out_native_***:
   intent: out
   name: c_out_native_***
+  owner: library
+c_out_native_**_allocatable:
+  intent: out
+  name: c_out_native_**_allocatable
   owner: library
 c_out_native_**_cdesc:
   c_arg_call:
@@ -3996,6 +4028,10 @@ c_out_native_**_cfi_pointer:
   - ISO_Fortran_binding.h
   intent: out
   name: c_out_native_**_cfi_pointer
+  owner: library
+c_out_native_**_pointer:
+  intent: out
+  name: c_out_native_**_pointer
   owner: library
 c_out_native_**_raw:
   intent: out

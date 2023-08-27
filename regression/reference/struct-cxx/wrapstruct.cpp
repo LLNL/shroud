@@ -83,8 +83,7 @@ int STR_passStruct1(const STR_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_char_*
-// Match:     c_default
+// Exact:     c_out_char_*
 int STR_passStruct2(const STR_cstruct1 * s1, char * outbuf)
 {
     // splicer begin function.passStruct2
@@ -252,8 +251,7 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_char_*
-// Match:     c_default
+// Exact:     c_out_char_*
 STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
 {
     // splicer begin function.returnStructPtr2

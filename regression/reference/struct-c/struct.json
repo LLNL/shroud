@@ -2293,7 +2293,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -3568,7 +3568,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_char_*"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",

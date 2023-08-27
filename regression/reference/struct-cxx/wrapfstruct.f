@@ -350,8 +350,7 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_char_*
-        ! Match:     c_default
+        ! Exact:     c_out_char_*
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2")
@@ -505,8 +504,7 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_char_*
-        ! Match:     c_default
+        ! Exact:     c_out_char_*
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr2")

@@ -603,8 +603,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! start c_get_ptr_to_scalar
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
@@ -642,8 +641,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! start c_get_ptr_to_fixed_array
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
@@ -681,8 +679,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -725,8 +722,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! start c_get_ptr_to_func_array
     interface
         subroutine c_get_ptr_to_func_array(count) &
@@ -764,8 +760,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! start c_get_ptr_to_const_scalar
     interface
         subroutine c_get_ptr_to_const_scalar(nitems) &
@@ -803,8 +798,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! start c_get_ptr_to_fixed_const_array
     interface
         subroutine c_get_ptr_to_fixed_const_array(count) &
@@ -842,8 +836,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_pointer
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_pointer
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1021,8 +1014,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_**_allocatable
-    ! Match:     c_default
+    ! Exact:     c_out_native_**_allocatable
     ! start c_get_alloc_to_fixed_array
     interface
         subroutine c_get_alloc_to_fixed_array(count) &
@@ -1338,8 +1330,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! start c_return_int_raw_with_args
     interface
         function c_return_int_raw_with_args(name) &
