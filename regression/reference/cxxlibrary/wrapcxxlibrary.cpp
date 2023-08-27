@@ -124,8 +124,7 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // ----------------------------------------
 // Function:  const std::string & getGroupName +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Requested: c_function_string_&_copy
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_copy
 // ----------------------------------------
 // Argument:  long idx +value
 // Attrs:     +intent(in)

@@ -96,8 +96,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -108,8 +107,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
@@ -159,8 +157,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -171,8 +168,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)

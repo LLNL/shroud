@@ -43,8 +43,7 @@ module library_outer2_mod
         ! ----------------------------------------
         ! Function:  void method
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_class0_method(self) &
                 bind(C, name="LIB_outer2_class0_method")
             import :: LIB_SHROUD_capsule_data
@@ -55,8 +54,7 @@ module library_outer2_mod
         ! ----------------------------------------
         ! Function:  void outer_func
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine outer_func() &
                 bind(C, name="LIB_outer2_outer_func")
             implicit none

@@ -76,8 +76,7 @@ module scope_ns1_mod
         ! ----------------------------------------
         ! Function:  void DataPointer_set_items
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  ns1::DataPointer * SH_this
         ! Attrs:     +intent(inout)+struct(ns1_DataPointer)

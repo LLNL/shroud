@@ -1220,6 +1220,7 @@ rv = .false.
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
+        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
         junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
         spointer = ast.declarator.get_indirect_stmt()
@@ -1228,6 +1229,15 @@ rv = .false.
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
+
+        sreq = statements.compute_name(c_stmts)
+        smatch = c_result_blk.name
+        if sreq != smatch:
+            # This check is used to find non-matching names
+            print("TTT not match wrapf iface result", node.name)
+            print("     Requested:", sreq)
+            print("         Found:", smatch)
+        
         if options.debug:
             stmts_comments.append(
                 "! ----------------------------------------")

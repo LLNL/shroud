@@ -100,8 +100,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_user1_method1(self) &
                 bind(C, name="PRE_User1_method1")
             import :: PRE_SHROUD_capsule_data
@@ -113,8 +112,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_User1_method2")
             import :: PRE_SHROUD_capsule_data
@@ -127,8 +125,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method3def
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_user1_method3def_0(self) &
                 bind(C, name="PRE_User1_method3def_0")
             import :: PRE_SHROUD_capsule_data
@@ -141,8 +138,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method3def
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=0 +value
         ! Attrs:     +intent(in)
@@ -162,8 +158,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void exfunc
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_user2_exfunc_0(self) &
                 bind(C, name="PRE_User2_exfunc_0")
             import :: PRE_SHROUD_capsule_data
@@ -176,8 +171,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void exfunc
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)

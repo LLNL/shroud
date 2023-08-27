@@ -6062,7 +6062,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_copy",
-                        "stmt1": "c_function_string_&"
+                        "stmt1": "c_function_string_&_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

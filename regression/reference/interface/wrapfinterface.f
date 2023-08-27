@@ -25,8 +25,7 @@ module interface_mod
         ! ----------------------------------------
         ! Function:  void Function1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine function1() &
                 bind(C, name="Function1")
             implicit none

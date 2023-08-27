@@ -51,8 +51,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_in
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * arg
     ! Attrs:     +intent(in)
@@ -71,8 +70,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_inout
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * arg
     ! Attrs:     +intent(inout)
@@ -91,8 +89,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_out
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -111,8 +108,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
     ! Attrs:     +intent(in)
@@ -141,8 +137,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void cos_doubles
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -171,8 +166,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void truncate_to_int
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -201,8 +195,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void get_values
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
     ! Attrs:     +intent(out)
@@ -226,8 +219,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void get_values2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
@@ -251,8 +243,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void iota_dimension
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int nvar +value
     ! Attrs:     +intent(in)
@@ -276,8 +267,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void Sum
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+value
     ! Attrs:     +intent(in)
@@ -306,8 +296,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fillIntArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
@@ -326,8 +315,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void incrementIntArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
@@ -351,8 +339,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
@@ -447,8 +434,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void setGlobalInt
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
@@ -483,8 +469,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -504,8 +489,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -524,8 +508,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -545,8 +528,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -565,8 +547,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -591,8 +572,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -611,8 +591,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -632,8 +611,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -652,8 +630,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -673,8 +650,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -693,8 +669,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -714,8 +689,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -735,8 +709,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -761,8 +734,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -782,8 +754,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -802,8 +773,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -822,8 +792,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -842,8 +811,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -862,8 +830,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -903,8 +870,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void DimensionIn
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
     ! Attrs:     +intent(in)
@@ -923,8 +889,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
@@ -944,8 +909,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -1006,8 +970,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -1026,8 +989,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void updateVoidPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
     ! Attrs:     +intent(inout)

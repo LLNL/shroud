@@ -603,6 +603,11 @@ fc_statements = [
     dict(
         name="c_subroutine",
         mixin=["c_mixin_noargs"],
+        alias=[
+            # From wrap_function_interface
+            "c_subroutine_void_scalar",
+            "c_subroutine_void_scalar_capptr",
+        ],
     ),
     dict(
         name="f_subroutine",
@@ -1451,7 +1456,7 @@ fc_statements = [
         # c_function_char_*_raw
         name="c_function_char_*",
         alias=[
-            "c_function_char_*_allocatable/raw",
+            "c_function_char_*_allocatable/copy/pointer/raw",
         ],
         f_c_result_decl=[
             "type(C_PTR) {c_var}",
@@ -1751,6 +1756,13 @@ fc_statements = [
         # c_function_string_*
         # c_function_string_&
         name="c_function_string_scalar/*/&",
+        alias=[
+            "c_function_string_*_allocatable",
+            "c_function_string_*_copy",
+            "c_function_string_*_pointer",
+            "c_function_string_&_allocatable",
+            "c_function_string_&_copy",
+        ],
         # cxx_to_c creates a pointer from a value via c_str()
         # The default behavior will dereference the value.
         c_return=[
@@ -2609,6 +2621,9 @@ fc_statements = [
         # NULL in stddef.h
         name="c_dtor",
         mixin=["c_mixin_noargs"],
+        alias=[
+            "c_dtor_void_scalar",
+        ],
         lang_c=dict(
             impl_header=["<stddef.h>"],
         ),
@@ -2720,6 +2735,10 @@ fc_statements = [
         # Work is done by arg's setter.
         name="c_setter",
         mixin=["c_mixin_noargs"],
+        alias=[
+            # TTT - wrap_function_interface
+            "c_setter_void_scalar",
+        ],
         c_call=[
             "// skip call c_setter",
         ],

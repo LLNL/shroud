@@ -57,8 +57,7 @@ int STMT_GetNameLength(void)
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +len(get_name_length())
 // Attrs:     +deref(copy)+intent(function)
-// Requested: c_function_string_&_copy
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_copy
 const char * STMT_getNameErrorPattern(void)
 {
     // splicer begin function.getNameErrorPattern

@@ -82,8 +82,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
@@ -98,8 +97,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +api(cdesc)+intent(in)
@@ -114,8 +112,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
@@ -135,8 +132,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -159,8 +155,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)

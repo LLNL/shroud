@@ -147,8 +147,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_x1
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -187,8 +186,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_y1
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -227,8 +225,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_x1
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -267,8 +264,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_y1
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -307,8 +303,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_z1
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -445,8 +440,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void acceptStructOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -474,8 +468,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void acceptStructInOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
     ! Attrs:     +intent(inout)
@@ -730,8 +723,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_ptr_set_const_dvalue
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
@@ -772,8 +764,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_list_set_ivalue
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
@@ -814,8 +805,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_list_set_dvalue
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)

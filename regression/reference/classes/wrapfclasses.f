@@ -207,8 +207,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Requested: c_dtor_void_scalar
-    ! Match:     c_dtor
+    ! Exact:     c_dtor_void_scalar
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -264,8 +263,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void returnThis
     ! Attrs:     +api(capptr)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_capptr
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar_capptr
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
@@ -359,8 +357,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: c_function_string_&_allocatable
-    ! Match:     c_function_string_&
+    ! Exact:     c_function_string_&_allocatable
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -453,8 +450,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_test
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -491,8 +487,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_m_name
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
@@ -514,8 +509,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: c_function_string_&_allocatable
-    ! Match:     c_function_string_&
+    ! Exact:     c_function_string_&_allocatable
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -611,8 +605,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void allocate
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -633,8 +626,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void free
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! start c_data_free
     interface
         subroutine c_data_free(self) &
@@ -667,8 +659,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Data
     ! Attrs:     +intent(dtor)
-    ! Requested: c_dtor_void_scalar
-    ! Match:     c_dtor
+    ! Exact:     c_dtor_void_scalar
     ! start c_data_dtor
     interface
         subroutine c_data_dtor(self) &
@@ -701,8 +692,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_nitems
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -739,8 +729,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_items
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar
-    ! Match:     c_setter
+    ! Exact:     c_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
@@ -780,8 +769,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void passClassByValue
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
@@ -929,8 +917,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_global_flag
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -961,8 +948,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: c_function_string_&_copy
-    ! Match:     c_function_string_&
+    ! Exact:     c_function_string_&_copy
     interface
         function c_last_function_called() &
                 result(SHT_rv) &

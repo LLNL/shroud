@@ -148,8 +148,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(copy)+intent(function)
-// Requested: c_function_string_&_copy
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_copy
 const char * AA_example_nested_ExClass2_getName(
     const AA_example_nested_ExClass2 * self)
 {
@@ -186,8 +185,7 @@ void AA_example_nested_ExClass2_getName_bufferify(
 // ----------------------------------------
 // Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_string_&_allocatable
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_allocatable
 const char * AA_example_nested_ExClass2_getName2(
     AA_example_nested_ExClass2 * self)
 {
@@ -218,8 +216,7 @@ void AA_example_nested_ExClass2_getName2_bufferify(
 // ----------------------------------------
 // Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_string_&_allocatable
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_allocatable
 char * AA_example_nested_ExClass2_getName3(
     const AA_example_nested_ExClass2 * self)
 {
@@ -251,8 +248,7 @@ void AA_example_nested_ExClass2_getName3_bufferify(
 // ----------------------------------------
 // Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_string_&_allocatable
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_allocatable
 char * AA_example_nested_ExClass2_getName4(
     AA_example_nested_ExClass2 * self)
 {

@@ -878,7 +878,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_allocatable",
-                                                "stmt1": "c_function_string_&"
+                                                "stmt1": "c_function_string_&_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -1249,7 +1249,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
                                                 "stmt0": "c_subroutine_void_scalar",
-                                                "stmt1": "c_subroutine"
+                                                "stmt1": "c_subroutine_void_scalar"
                                             }
                                         }
                                     },
@@ -2627,7 +2627,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_copy",
-                                                "stmt1": "c_function_string_&"
+                                                "stmt1": "c_function_string_&_copy"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2846,7 +2846,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_allocatable",
-                                                "stmt1": "c_function_string_&"
+                                                "stmt1": "c_function_string_&_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3061,7 +3061,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_allocatable",
-                                                "stmt1": "c_function_string_&"
+                                                "stmt1": "c_function_string_&_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3274,7 +3274,7 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_allocatable",
-                                                "stmt1": "c_function_string_&"
+                                                "stmt1": "c_function_string_&_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",

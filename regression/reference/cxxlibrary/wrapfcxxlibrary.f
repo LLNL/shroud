@@ -54,8 +54,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -80,8 +79,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -111,8 +109,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +deref(copy)+intent(function)
-        ! Requested: c_function_string_&_copy
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_copy
         ! ----------------------------------------
         ! Argument:  long idx +value
         ! Attrs:     +intent(in)

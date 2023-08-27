@@ -37,8 +37,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +deref(copy)+intent(function)
-        ! Requested: c_function_string_&_copy
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_copy
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_getNameErrorPattern")

@@ -7,6 +7,8 @@ root
           capptr -- c_ctor_shadow_scalar_capptr
           capsule -- c_ctor_shadow_scalar_capsule
     dtor -- c_dtor
+      void
+        scalar -- c_dtor
     function -- c_function
       bool
         scalar -- c_function
@@ -24,6 +26,8 @@ root
             copy -- c_function_char_*_cfi_copy/result
             pointer -- c_function_char_*_cfi_pointer
             result -- c_function_char_*_cfi_copy/result
+          copy -- c_function_char_*
+          pointer -- c_function_char_*
           raw -- c_function_char_*
         scalar -- c_function_char_scalar
           cfi -- c_function_char_scalar_cfi
@@ -59,6 +63,7 @@ root
           capsule -- c_function_shadow_scalar_capsule
       string
         & -- c_function_string_scalar/*/&
+          allocatable -- c_function_string_scalar/*/&
           buf
             copy -- c_function_string_scalar/*/&_buf_copy/result
             result -- c_function_string_scalar/*/&_buf_copy/result
@@ -69,7 +74,9 @@ root
             allocatable -- c_function_string_*/&_cfi_allocatable
             copy -- c_function_string_scalar/*/&_cfi_copy/result
             result -- c_function_string_scalar/*/&_cfi_copy/result
+          copy -- c_function_string_scalar/*/&
         * -- c_function_string_scalar/*/&
+          allocatable -- c_function_string_scalar/*/&
           buf
             copy -- c_function_string_scalar/*/&_buf_copy/result
             result -- c_function_string_scalar/*/&_buf_copy/result
@@ -81,6 +88,8 @@ root
             copy -- c_function_string_scalar/*/&_cfi_copy/result
             pointer -- c_function_string_*_cfi_pointer
             result -- c_function_string_scalar/*/&_cfi_copy/result
+          copy -- c_function_string_scalar/*/&
+          pointer -- c_function_string_scalar/*/&
         scalar -- c_function_string_scalar/*/&
           buf
             copy -- c_function_string_scalar/*/&_buf_copy/result
@@ -352,7 +361,12 @@ root
       string
         scalar
           buf -- c_setter_string_scalar_buf
+      void
+        scalar -- c_setter
     subroutine -- c_subroutine
+      void
+        scalar -- c_subroutine
+          capptr -- c_subroutine
   f
     XXXin
       string
@@ -790,6 +804,22 @@ c_dtor:
     - <cstddef>
   name: c_dtor
   owner: library
+c_dtor_void_scalar:
+  c_call:
+  - delete {CXX_this};
+  - '{C_this}->addr = {nullptr};'
+  c_return_type: void
+  impl_header:
+  - <cstddef>
+  intent: dtor
+  lang_c:
+    impl_header:
+    - <stddef.h>
+  lang_cxx:
+    impl_header:
+    - <cstddef>
+  name: c_dtor_void_scalar
+  owner: library
 c_function:
   intent: function
   name: c_function
@@ -1011,6 +1041,24 @@ c_function_char_*_cfi_result:
   - ISO_Fortran_binding.h
   intent: function
   name: c_function_char_*_cfi_result
+  owner: library
+c_function_char_*_copy:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_char_*_copy
+  owner: library
+c_function_char_*_pointer:
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_char_*_pointer
   owner: library
 c_function_char_*_raw:
   f_c_module:
@@ -1444,6 +1492,17 @@ c_function_string_&:
   intent: function
   name: c_function_string_&
   owner: library
+c_function_string_&_allocatable:
+  c_return:
+  - return {c_var};
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_string_&_allocatable
+  owner: library
 c_function_string_&_buf_copy:
   c_arg_decl:
   - char *{c_var}
@@ -1611,6 +1670,17 @@ c_function_string_&_cfi_result:
   intent: function
   name: c_function_string_&_cfi_result
   owner: library
+c_function_string_&_copy:
+  c_return:
+  - return {c_var};
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_string_&_copy
+  owner: library
 c_function_string_*:
   c_return:
   - return {c_var};
@@ -1621,6 +1691,17 @@ c_function_string_*:
   - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_*
+  owner: library
+c_function_string_*_allocatable:
+  c_return:
+  - return {c_var};
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_string_*_allocatable
   owner: library
 c_function_string_*_buf_copy:
   c_arg_decl:
@@ -1825,6 +1906,28 @@ c_function_string_*_cfi_result:
   - ISO_Fortran_binding.h
   intent: function
   name: c_function_string_*_cfi_result
+  owner: library
+c_function_string_*_copy:
+  c_return:
+  - return {c_var};
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_string_*_copy
+  owner: library
+c_function_string_*_pointer:
+  c_return:
+  - return {c_var};
+  f_c_module:
+    iso_c_binding:
+    - C_PTR
+  f_c_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: c_function_string_*_pointer
   owner: library
 c_function_string_scalar:
   c_return:
@@ -4444,9 +4547,23 @@ c_setter_string_scalar_buf:
   intent: setter
   name: c_setter_string_scalar_buf
   owner: library
+c_setter_void_scalar:
+  c_call:
+  - // skip call c_setter
+  intent: setter
+  name: c_setter_void_scalar
+  owner: library
 c_subroutine:
   intent: subroutine
   name: c_subroutine
+  owner: library
+c_subroutine_void_scalar:
+  intent: subroutine
+  name: c_subroutine_void_scalar
+  owner: library
+c_subroutine_void_scalar_capptr:
+  intent: subroutine
+  name: c_subroutine_void_scalar_capptr
   owner: library
 f_XXXin_string_scalar:
   f_arg_call:

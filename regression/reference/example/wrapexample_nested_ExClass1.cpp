@@ -191,8 +191,7 @@ int AA_example_nested_ExClass1_incrementCount(
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_string_&_allocatable
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_allocatable
 const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const AA_example_nested_ExClass1 * self)
 {
@@ -240,8 +239,7 @@ const char * AA_example_nested_ExClass1_getNameArg(
 // ----------------------------------------
 // Function:  void getNameArg
 // Attrs:     +intent(subroutine)
-// Requested: c_subroutine_void_scalar
-// Match:     c_subroutine
+// Exact:     c_subroutine_void_scalar
 // ----------------------------------------
 // Argument:  string & name
 // Attrs:     +api(buf)+deref(result)+intent(out)+is_result
