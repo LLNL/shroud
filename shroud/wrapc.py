@@ -1055,6 +1055,11 @@ class Wrapc(util.WrapperMixin):
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+        if fmt_result.stmt0 != fmt_result.stmt1:
+            # This check is used to find non-matching names
+            print("TTT not match wrapc c_stmts", node.name)
+            print("     Requested:", fmt_result.stmt0)
+            print("         Found:", fmt_result.stmt1)
         
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
@@ -1224,6 +1229,11 @@ class Wrapc(util.WrapperMixin):
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(
                     stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
+            if fmt_arg.stmt0 != fmt_arg.stmt1:
+                # This check is used to find non-matching names
+                print("TTT not match wrapc c_stmts", node.name)
+                print("     Requested:", fmt_arg.stmt0)
+                print("         Found:", fmt_arg.stmt1)
 
             if sapi != "hidden":
                 self.build_proto_list(
