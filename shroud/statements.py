@@ -581,11 +581,17 @@ FStmts = util.Scope(
     f_local=None,
 )
 
+# Fortran/C Statements - both sets of defaults.
+FCStmts = util.Scope(None)
+FCStmts.update(CStmts._to_dict())
+FCStmts.update(FStmts._to_dict())
+
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
+    fc=FCStmts,
 )
                 
         
@@ -3457,7 +3463,12 @@ fc_statements = [
     # C++ array. Allocate in fortran, fill from C.
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
-        name="f_out_string_**_cdesc_allocatable",
+        name="fc_out_string_**_cdesc_allocatable",
+        alias=[
+            "f_out_string_**_cdesc_allocatable",
+            "c_out_string_**_cdesc_allocatable",
+        ],
+        mixin=["c_mixin_out_array_cdesc"],
         f_arg_decl=[
             "character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
@@ -3477,12 +3488,7 @@ fc_statements = [
         ],
         f_temps=["cdesc", "out"],
         f_helper="array_string_allocatable array_context",
-        c_helper="array_string_allocatable",
-    ),
-    dict(
-        name="c_out_string_**_cdesc_allocatable",
-        mixin=["c_mixin_out_array_cdesc"],
-        c_helper="array_string_out_len",
+        c_helper="array_string_allocatable array_string_out_len",
         c_pre_call=[
             "std::string *{cxx_var};",
         ],
@@ -3496,7 +3502,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);",
+            "{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership

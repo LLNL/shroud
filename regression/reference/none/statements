@@ -317,7 +317,7 @@ root
         **
           allocatable -- c_out_string_**_allocatable
           cdesc
-            allocatable -- c_out_string_**_cdesc_allocatable
+            allocatable -- fc_out_string_**_cdesc_allocatable
             copy -- c_out_string_**_cdesc_copy
           cfi
             allocatable -- c_out_string_**_allocatable
@@ -702,7 +702,7 @@ root
           cfi -- f_defaulttmp
         **
           cdesc
-            allocatable -- f_out_string_**_cdesc_allocatable
+            allocatable -- fc_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
           cfi
             allocatable -- f_defaulttmp
@@ -752,6 +752,12 @@ root
     subroutine -- f_subroutine
     tester1 -- f_tester1
     tester2 -- f_tester2
+  fc
+    out
+      string
+        **
+          cdesc
+            allocatable -- fc_out_string_**_cdesc_allocatable
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -4158,14 +4164,14 @@ c_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper: array_string_out_len
+  c_helper: array_string_allocatable array_string_out_len
   c_post_call:
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size     = {c_array_size};'
   - if ({c_char_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {c_char_len};'
   - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {hnamefunc0}({cxx_var}, {c_var_cdesc}->size);'
+  - '{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = 0;'
@@ -6641,7 +6647,7 @@ f_out_string_&_cfi:
   intent: out
   name: f_out_string_&_cfi
 f_out_string_**_cdesc_allocatable:
-  c_helper: array_string_allocatable
+  c_helper: array_string_allocatable array_string_out_len
   f_arg_call:
   - '{c_var_out}'
   f_arg_decl:
@@ -6934,6 +6940,56 @@ f_tester1:
 f_tester2:
   intent: tester2
   name: f_tester2
+fc_out_string_**_cdesc_allocatable:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_string_allocatable array_string_out_len
+  c_post_call:
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size     = {c_array_size};'
+  - if ({c_char_len} > 0) {{+
+  - '{c_var_cdesc}->elem_len = {c_char_len};'
+  - -}} else {{+
+  - '{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);'
+  - -}}
+  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
+  - '{c_var_cdesc}->cxx.idtor = 0;'
+  c_pre_call:
+  - std::string *{cxx_var};
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_out}'
+  f_arg_decl:
+  - 'character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_c_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  f_c_arg_names:
+  - '{c_var_cdesc}'
+  f_c_import:
+  - '{F_array_type}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  - 'type({F_array_type}) :: {c_var_out}'
+  f_helper: array_string_allocatable array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_post_call:
+  - '{c_var_cdesc}%size = {c_var_out}%size;'
+  - '{c_var_cdesc}%elem_len = {c_var_out}%elem_len;'
+  - allocate({f_char_type}{f_var}({c_var_cdesc}%size))
+  - '{c_var_cdesc}%cxx%addr = C_LOC({f_var});'
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
+  - call {hnamefunc0}({c_var_cdesc}, {c_var_out})
+  f_temps:
+  - cdesc
+  - out
+  intent: out
+  name: fc_out_string_**_cdesc_allocatable
+  owner: library
 ***** Python
 root
   base
