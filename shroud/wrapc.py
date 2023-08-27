@@ -1023,7 +1023,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
-            self.name_temp_vars(fmt_result.C_result, result_blk, fmt_result)
+            self.name_temp_vars_c(fmt_result.C_result, result_blk, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1151,7 +1151,7 @@ class Wrapc(util.WrapperMixin):
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg_name
-                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
+                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
@@ -1184,9 +1184,9 @@ class Wrapc(util.WrapperMixin):
                          sapi, c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg_name
-                # XXX - order issue - c_var must be set before name_temp_vars,
+                # XXX - order issue - c_var must be set before name_temp_vars_c,
                 #       but set by set_fmt_fields
-                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
+                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
 
                 if intent_blk.cxx_local_var:
