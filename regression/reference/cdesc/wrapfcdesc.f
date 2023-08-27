@@ -87,8 +87,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         subroutine c_rank2_in(arg) &
                 bind(C, name="CDE_Rank2In")
             use iso_c_binding, only : C_INT
@@ -124,8 +123,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+intent(in)+rank(0)+value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_*
-        ! Match:     c_default
+        ! Exact:     c_in_void_*
         subroutine c_get_scalar1(name, value) &
                 bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -404,8 +402,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an
@@ -442,8 +439,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an

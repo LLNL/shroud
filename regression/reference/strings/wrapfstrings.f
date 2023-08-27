@@ -985,8 +985,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_acceptStringPointerLen")
@@ -1009,8 +1008,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -1035,8 +1033,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_fetchStringPointerLen")
@@ -1059,8 +1056,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -1124,8 +1120,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_fetch_array_string_arg(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringArg")
@@ -1166,8 +1161,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_fetch_array_string_alloc(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAlloc")
@@ -1208,8 +1202,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAllocLen")
@@ -1437,8 +1430,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
@@ -1461,8 +1453,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +api(buf)+intent(inout)
@@ -1525,13 +1516,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: c_in_char_*_capi
-    ! Match:     c_default
+    ! Exact:     c_in_char_*_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
@@ -1556,8 +1545,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: c_in_char_*_capi
-    ! Match:     c_default
+    ! Exact:     c_in_char_*_capi
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -2386,8 +2374,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -2424,8 +2411,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -2756,8 +2742,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
@@ -2823,15 +2808,13 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
     ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: c_in_char_*_capi
-    ! Match:     c_default
+    ! Exact:     c_in_char_*_capi
     !>
     !! \brief Do not NULL terminate input string
     !!
@@ -2867,8 +2850,7 @@ contains
     ! Attrs:     +api(capi)+intent(in)
     ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
-    ! Requested: c_in_char_*_capi
-    ! Match:     c_default
+    ! Exact:     c_in_char_*_capi
     !>
     !! \brief Mix api(buf) and api(capi)
     !!

@@ -34,8 +34,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -57,13 +56,11 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 {
     // splicer begin function.returnStructByValue
@@ -84,13 +81,11 @@ void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -129,13 +124,11 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
@@ -172,18 +165,15 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int z +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
@@ -203,8 +193,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_ptr)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 {
     // splicer begin function.Cstruct_ptr_get_const_dvalue
@@ -220,8 +209,7 @@ const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_ptr)
-// Requested: c_inout_struct_*
-// Match:     c_inout_struct
+// Exact:     c_inout_struct_*
 // ----------------------------------------
 // Argument:  const double * val +intent(in)
 // Attrs:     +intent(setter)
@@ -242,8 +230,7 @@ void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_list)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -267,8 +254,7 @@ void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)
-// Requested: c_inout_struct_*
-// Match:     c_inout_struct
+// Exact:     c_inout_struct_*
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
@@ -288,8 +274,7 @@ void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(in)+struct(Cstruct_list)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -313,8 +298,7 @@ void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)
-// Requested: c_inout_struct_*
-// Match:     c_inout_struct
+// Exact:     c_inout_struct_*
 // ----------------------------------------
 // Argument:  double * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)

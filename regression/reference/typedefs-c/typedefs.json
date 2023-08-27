@@ -173,7 +173,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -187,7 +187,7 @@
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -347,7 +347,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_inout_struct_*",
-                            "stmt1": "c_inout_struct"
+                            "stmt1": "c_inout_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -361,7 +361,7 @@
                             "stmt0": "f_inout_struct_*",
                             "stmt1": "f_inout_struct_*",
                             "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct"
+                            "stmtc1": "c_inout_struct_*"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_s_Struct1_array_descr",
@@ -475,7 +475,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -489,7 +489,7 @@
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         }
                     }
                 },

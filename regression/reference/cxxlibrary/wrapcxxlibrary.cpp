@@ -58,8 +58,7 @@ bool CXX_defaultPtrIsNULL_0(void)
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 bool CXX_defaultPtrIsNULL_1(double * data)
 {
     // splicer begin function.defaultPtrIsNULL_1
@@ -75,18 +74,15 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.defaultArgsInOut_0
@@ -101,23 +97,19 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 // ----------------------------------------
 // Argument:  bool flag=false +value
 // Attrs:     +intent(in)
-// Requested: c_in_bool_scalar
-// Match:     c_default
+// Exact:     c_in_bool_scalar
 void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
     // splicer begin function.defaultArgsInOut_1
@@ -137,8 +129,7 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // ----------------------------------------
 // Argument:  long idx +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.getGroupName
@@ -159,8 +150,7 @@ const char * CXX_getGroupName(long idx)
 // ----------------------------------------
 // Argument:  int32_t idx +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
@@ -186,8 +176,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 // ----------------------------------------
 // Argument:  int64_t idx +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)
 {

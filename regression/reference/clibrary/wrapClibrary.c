@@ -96,8 +96,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 double CLI_PassByValueMacro(int arg2)
 {
     // splicer begin function.PassByValueMacro
@@ -222,8 +221,7 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLI_ImpliedTextLen_bufferify
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
@@ -270,8 +268,7 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)
-// Requested: c_in_void_*
-// Match:     c_default
+// Exact:     c_in_void_*
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -298,8 +295,7 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external+value
 // Attrs:     +intent(in)
@@ -331,8 +327,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Argument:  void * in +assumedtype
 // Attrs:     +intent(in)
-// Requested: c_in_void_*
-// Match:     c_default
+// Exact:     c_in_void_*
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+value
 // Attrs:     +intent(in)

@@ -56,8 +56,7 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
 // Attrs:     +intent(in)
-// Requested: c_in_native_&
-// Match:     c_default
+// Exact:     c_in_native_&
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value)
 {
@@ -75,8 +74,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 double * TEM_vector_double_at(TEM_vector_double * self,
     TEM_vector_double_size_type n)
 {

@@ -64,8 +64,7 @@ module scope_ns1_mod
         ! ----------------------------------------
         ! Argument:  ns1::DataPointer * SH_this
         ! Attrs:     +intent(in)+struct(ns1_DataPointer)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
                 bind(C, name="SCO_ns1_DataPointer_get_items_bufferify")
             import :: SCO_SHROUD_array, data_pointer
@@ -82,8 +81,7 @@ module scope_ns1_mod
         ! ----------------------------------------
         ! Argument:  ns1::DataPointer * SH_this
         ! Attrs:     +intent(inout)+struct(ns1_DataPointer)
-        ! Requested: c_inout_struct_*
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_*
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -115,8 +113,7 @@ contains
     ! Attrs:     +intent(in)+struct(ns1_DataPointer)
     ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(ns1_DataPointer)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -144,8 +141,7 @@ contains
     ! Attrs:     +intent(inout)+struct(ns1_DataPointer)
     ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(ns1_DataPointer)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)

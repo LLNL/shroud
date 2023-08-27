@@ -194,8 +194,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_inout_vector_cdesc_targ_native_scalar
+    ! Exact:     c_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! start c_vector_iota_inout_alloc_bufferify
     interface
         subroutine c_vector_iota_inout_alloc_bufferify(arg, &
@@ -219,8 +218,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +api(cdesc)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_inout_vector_cdesc_targ_native_scalar
+    ! Exact:     c_inout_vector_&_cdesc_targ_native_scalar
     interface
         subroutine c_vector_increment_bufferify(arg, SHT_arg_size, &
                 SHT_arg_cdesc) &
@@ -263,8 +261,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     interface
         function c_vector_of_pointers_bufferify(arg1, SHT_arg1_len, &
                 SHT_arg1_size, num) &
@@ -365,8 +362,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     interface
         subroutine c_return_vector_alloc_bufferify(n, SHT_rv) &
                 bind(C, name="VEC_ReturnVectorAlloc_bufferify")
@@ -385,13 +381,11 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  int len +implied(size(arg,2))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     interface
         function c_return_dim2(arg, len) &
                 result(SHT_rv) &
@@ -602,8 +596,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
-    ! Match:     c_inout_vector_cdesc_targ_native_scalar
+    ! Exact:     c_inout_vector_&_cdesc_allocatable_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -636,8 +629,7 @@ contains
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_targ_native_scalar
-    ! Match:     c_inout_vector_cdesc_targ_native_scalar
+    ! Exact:     c_inout_vector_&_cdesc_targ_native_scalar
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
         integer(C_INT), intent(INOUT), target :: arg(:)
@@ -696,8 +688,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief Fortran 2-d array to vector<const double *>
     !!
@@ -849,8 +840,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! Implement iota function.
     !! Return a vector as an ALLOCATABLE array.
@@ -881,8 +871,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     function return_dim2(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

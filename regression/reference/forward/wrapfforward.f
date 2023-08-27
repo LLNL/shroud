@@ -134,8 +134,7 @@ module forward_mod
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         function c_pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_passStruct1")
@@ -289,8 +288,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function pass_struct1(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

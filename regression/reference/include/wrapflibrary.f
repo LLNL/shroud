@@ -52,8 +52,7 @@ module library_mod
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_unknown_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -95,8 +94,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_unknown_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm

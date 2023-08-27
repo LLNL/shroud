@@ -41,8 +41,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         function c_default_ptr_is_null_1(data) &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_1")
@@ -60,18 +59,15 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         subroutine c_default_args_in_out_0(in1, out1, out2) &
                 bind(C, name="CXX_defaultArgsInOut_0")
             use iso_c_binding, only : C_INT
@@ -89,23 +85,19 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  bool flag=false +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_bool_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_bool_scalar
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
                 bind(C, name="CXX_defaultArgsInOut_1")
             use iso_c_binding, only : C_BOOL, C_INT
@@ -124,8 +116,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  long idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_get_group_name(idx) &
                 result(SHT_rv) &
                 bind(C, name="CXX_getGroupName")
@@ -142,8 +133,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  int32_t idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_get_group_name_int32_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int32_t_bufferify")
@@ -161,8 +151,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Argument:  int64_t idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_get_group_name_int64_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int64_t_bufferify")
@@ -221,8 +210,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     function default_ptr_is_null_1(data) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -245,22 +233,19 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     subroutine default_args_in_out_0(in1, out1, out2)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -282,29 +267,25 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  bool flag=false +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     subroutine default_args_in_out_1(in1, out1, out2, flag)
         use iso_c_binding, only : C_BOOL, C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -330,8 +311,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args
     !!
@@ -360,8 +340,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args
     !!

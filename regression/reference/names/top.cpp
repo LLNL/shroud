@@ -146,8 +146,7 @@ void c_name_special(void)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void YYY_TES_function3a_0(int i)
 {
     // splicer begin function.function3a_0
@@ -162,8 +161,7 @@ void YYY_TES_function3a_0(int i)
 // ----------------------------------------
 // Argument:  long i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void YYY_TES_function3a_1(long i)
 {
     // splicer begin function.function3a_1
@@ -230,8 +228,7 @@ void YYY_TES_fiveplus(void)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 void TES_TestMultilineSplicer(char * name, int * value)
 {
     // splicer begin function.TestMultilineSplicer
@@ -254,8 +251,7 @@ void TES_TestMultilineSplicer(char * name, int * value)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
@@ -276,13 +272,11 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void c_name_instantiation1(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -301,13 +295,11 @@ void c_name_instantiation1(int arg1, long arg2)
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_instantiation2

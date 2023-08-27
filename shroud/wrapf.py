@@ -1955,6 +1955,11 @@ rv = .false.
                 print("TTT not match wrapf arg f_stmts", node.name)
                 print("     Requested:", fmt_arg.stmt0)
                 print("         Found:", fmt_arg.stmt1)
+            if fmt_arg.stmtc0 != fmt_arg.stmtc1:
+                # This check is used to find non-matching names
+                print("TTT not match wrapf arg c_stmts", node.name)
+                print("     Requested:", fmt_arg.stmtc0)
+                print("         Found:", fmt_arg.stmtc1)
 
             if options.debug:
                 stmts_comments.append(

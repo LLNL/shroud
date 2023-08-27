@@ -54,8 +54,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start typefunc
     interface
         function typefunc(arg) &
@@ -77,8 +76,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! start typestruct
     interface
         subroutine typestruct(arg1) &
@@ -97,8 +95,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start return_bytes_for_index_type
     interface
         function return_bytes_for_index_type(arg) &
@@ -131,8 +128,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
             result(SHT_rv)
@@ -158,8 +154,7 @@ contains
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! start typestruct
     subroutine typestruct(arg1)
         type(struct1_rename), intent(INOUT) :: arg1
@@ -183,8 +178,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start return_bytes_for_index_type
     function return_bytes_for_index_type(arg) &
             result(SHT_rv)

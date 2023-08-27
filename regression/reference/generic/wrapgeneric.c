@@ -27,13 +27,11 @@
 // ----------------------------------------
 // Argument:  const int * values +rank(0)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int GEN_SumValues_0d(const int * values, int nvalues)
 {
     // splicer begin function.SumValues_0d
@@ -53,13 +51,11 @@ int GEN_SumValues_0d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int GEN_SumValues_1d(const int * values, int nvalues)
 {
     // splicer begin function.SumValues_1d
@@ -79,13 +75,11 @@ int GEN_SumValues_1d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  const int * values +rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int GEN_SumValues_2d(const int * values, int nvalues)
 {
     // splicer begin function.SumValues_2d
@@ -105,23 +99,19 @@ int GEN_SumValues_2d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  const int * from
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nfrom +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int nto +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
     int nto)
 {
@@ -141,23 +131,19 @@ void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  const int * from
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nfrom +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to +rank(1)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int nto +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
     int nto)
 {
@@ -177,23 +163,19 @@ void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  const int * from +rank(1)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int nfrom +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to +rank(1)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int nto +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
     int nto)
 {
@@ -210,18 +192,15 @@ void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  float * addr +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer_float1d
@@ -238,18 +217,15 @@ void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  float * addr +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_SavePointer_float2d(float * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer_float2d
@@ -265,18 +241,15 @@ void GEN_SavePointer_float2d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  void * addr +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_*
-// Match:     c_default
+// Exact:     c_in_void_*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_SavePointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer2
@@ -294,18 +267,15 @@ void GEN_SavePointer2(void * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  float * addr +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer2_float1d
@@ -323,18 +293,15 @@ void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  float * addr +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer2_float2d
@@ -353,8 +320,7 @@ void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Exact:     c_out_native_**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -390,8 +356,7 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
 // ----------------------------------------
 // Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Exact:     c_out_native_**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -444,8 +409,7 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.UpdateStructAsClass
@@ -466,8 +430,7 @@ long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 // ----------------------------------------
 // Argument:  int inew +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 {
     // splicer begin function.UpdateStructAsClass_int
@@ -488,8 +451,7 @@ long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.UpdateStructAsClass_long

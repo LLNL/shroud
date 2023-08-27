@@ -83,8 +83,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
@@ -193,8 +192,7 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_bool_scalar
-// Match:     c_default
+// Exact:     c_in_bool_scalar
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
     bool flag, CLA_Class1 * SHC_rv)
@@ -227,8 +225,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_bool_scalar
-// Match:     c_default
+// Exact:     c_in_bool_scalar
 // start CLA_Class1_returnThisBuffer_bufferify
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
@@ -319,8 +316,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLA_Class1_directionFunc
 int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
 {

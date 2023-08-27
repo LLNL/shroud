@@ -27,8 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 int FOR_passStruct1(const STR_cstruct1 * arg)
 {
     // splicer begin function.passStruct1

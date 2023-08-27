@@ -36,8 +36,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_struct_&
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_&
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReference")
@@ -55,8 +54,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  const Cstruct1 & arg
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_&
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_&
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReferenceIn")
@@ -75,8 +73,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_struct_&
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_&
         subroutine pass_struct_by_reference_inout(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceInout")
             import :: cstruct1
@@ -92,8 +89,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_struct_&
-        ! Match:     c_out_struct
+        ! Exact:     c_out_struct_&
         subroutine pass_struct_by_reference_out(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceOut")
             import :: cstruct1
@@ -120,8 +116,7 @@ contains
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_&
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_&
     !>
     !! Argument is modified by library, defaults to intent(inout).
     !<
@@ -149,8 +144,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_&
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_&
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_&
     !>
     !! const defaults to intent(in)
     !<
@@ -178,8 +172,7 @@ contains
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_&
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_&
     subroutine pass_struct_by_reference_inout(arg)
         type(cstruct1), intent(INOUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_inout
@@ -201,8 +194,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_struct_&
     ! Attrs:     +intent(out)
-    ! Requested: c_out_struct_&
-    ! Match:     c_out_struct
+    ! Exact:     c_out_struct_&
     subroutine pass_struct_by_reference_out(arg)
         type(cstruct1), intent(OUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_out

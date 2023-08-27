@@ -46,8 +46,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int CLA_directionFunc(int arg)
 {
     // splicer begin function.directionFunc
@@ -209,8 +208,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
@@ -229,8 +227,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag

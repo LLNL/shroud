@@ -958,6 +958,25 @@ fc_statements = [
             "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
+    dict(  # c_default
+        name="c_out_native_*",
+        alias=[
+            "c_in_bool_scalar",
+            "c_out_bool_*",
+            "c_inout_bool_*",
+            "c_in_native_scalar",
+            "c_in_native_*",
+            "c_in_native_&",
+            "c_in_char_*_capi",
+            "c_out_native_&",
+            "c_out_native_&*",
+            "c_out_native_**_raw",
+            "c_out_native_***",
+            "c_inout_native_*",
+            "c_in_void_*",
+            "c_out_void_*&",
+        ],
+    ),
     
     dict(
         # Any array of pointers.  Assumed to be non-contiguous memory.
@@ -976,6 +995,10 @@ fc_statements = [
         # double **count _intent(out)+dimension(ncount)
         name="c_out_native_**_cdesc",
         mixin=["c_mixin_out_array_cdesc"],
+        alias=[
+            "c_out_native_**_cdesc_allocatable",
+            "c_out_native_**_cdesc_pointer",
+        ],
         c_helper="ShroudTypeDefines array_context",
         c_pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
@@ -996,6 +1019,9 @@ fc_statements = [
     dict(
         name="c_out_native_*&_cdesc",
         base="c_out_native_**_cdesc",
+        alias=[
+            "c_out_native_*&_cdesc_pointer",
+        ],
         c_arg_call=["{cxx_var}"],
     ),
     dict(
@@ -1162,6 +1188,9 @@ fc_statements = [
         # c_out_void_**
         # c_inout_void_**
         name='c_in/out/inout_void_**',
+        alias=[
+            "c_in_void_**_cfi",
+        ],
         c_arg_decl=[
             "void **{c_var}",
         ],
@@ -1964,6 +1993,11 @@ fc_statements = [
     dict(
         name="c_inout_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_inout_array_cdesc"],
+        alias=[
+            # TTT
+            "c_inout_vector_&_cdesc_targ_native_scalar",
+            "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+        ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -2607,6 +2641,15 @@ fc_statements = [
         # c_out_struct
         # c_inout_struct
         name="c_in/out/inout_struct",
+        alias=[
+            "c_in_struct_scalar",
+            "c_in_struct_*",
+            "c_in_struct_&",
+            "c_out_struct_*",
+            "c_out_struct_&",
+            "c_inout_struct_*",
+            "c_inout_struct_&",
+        ],
         lang_cxx=dict(
             cxx_local_var="pointer", # cxx_local_var only used with C++
             c_pre_call=[
@@ -3382,6 +3425,9 @@ fc_statements = [
         # Returning a pointer to a string*. However, this needs additional mapping
         # for the C interface.  Fortran calls the +api(cdesc) variant.
         name="c_out_string_**_copy",
+        alias=[
+            "c_out_string_**_cfi_copy",
+        ],
         notimplemented=True,
     ),
 
@@ -3441,6 +3487,9 @@ fc_statements = [
         # Returning a pointer to a string*. However, this needs additional mapping
         # for the C interface.  Fortran calls the +api(cdesc) variant.
         name="c_out_string_**_allocatable",
+        alias=[
+            "c_out_string_**_cfi_allocatable",
+        ],
         notimplemented=True,
     ),
 
@@ -3538,6 +3587,9 @@ fc_statements = [
     # unknown
     dict(  # f_default
         name="f_in_unknown_scalar",
+    ),
+    dict(  # c_default
+        name="c_in_unknown_scalar",
     ),
     
 ]

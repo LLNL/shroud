@@ -701,7 +701,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_struct_*",
-                            "stmt1": "c_in_struct"
+                            "stmt1": "c_in_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -714,7 +714,7 @@
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
                             "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct"
+                            "stmtc1": "c_in_struct_*"
                         }
                     }
                 },
