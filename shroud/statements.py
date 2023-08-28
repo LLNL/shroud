@@ -354,10 +354,10 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
         # check for consistency
         if key[0] == "c":
             if (stmt.c_arg_decl is not None or
-                stmt.f_c_arg_decl is not None or
-                stmt.f_c_arg_names is not None):
+                stmt.i_arg_decl is not None or
+                stmt.i_arg_names is not None):
                 err = False
-                for field in ["c_arg_decl", "f_c_arg_decl", "f_c_arg_names"]:
+                for field in ["c_arg_decl", "i_arg_decl", "i_arg_names"]:
                     fvalue = stmt.get(field)
                     if fvalue is None:
                         err = True
@@ -366,16 +366,16 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
                         err = True
                         print(field, "must be a list in", node["name"])
                 if (stmt.c_arg_decl is None or
-                    stmt.f_c_arg_decl is None or
-                    stmt.f_c_arg_names is None):
-                    print("c_arg_decl, f_c_arg_decl and f_c_arg_names must all exist")
+                    stmt.i_arg_decl is None or
+                    stmt.i_arg_names is None):
+                    print("c_arg_decl, i_arg_decl and i_arg_names must all exist")
                     err = True
                 if err:
                     raise RuntimeError("Error with fields")
                 length = len(stmt.c_arg_decl)
-                if any(len(lst) != length for lst in [stmt.f_c_arg_decl, stmt.f_c_arg_names]):
+                if any(len(lst) != length for lst in [stmt.i_arg_decl, stmt.i_arg_names]):
                     raise RuntimeError(
-                        "c_arg_decl, f_c_arg_decl and f_c_arg_names "
+                        "c_arg_decl, i_arg_decl and i_arg_names "
                         "must all be same length in {}".format(node["name"]))
             
 
@@ -505,12 +505,12 @@ def lookup_stmts_tree(tree, path):
 #                Empty list is no arguments, None is default argument.
 #  c_call       - code to call the function.
 #                 Ex. Will be empty for getter and setter.
-#  f_c_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
+#  i_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
-#  f_c_arg_names - Empty list is no arguments
-#  f_c_result_decl - Declaration for function result.
+#  i_arg_names - Empty list is no arguments
+#  i_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
-#  f_module    - Add module info to interface block.
+#  i_module    - Add module info to interface block.
 CStmts = util.Scope(
     None,
     name="c_default",
@@ -533,14 +533,14 @@ CStmts = util.Scope(
     owner="library",
 
     c_arg_decl=None,
-    f_c_arg_names=None,
-    f_c_arg_decl=None,
+    i_arg_names=None,
+    i_arg_decl=None,
 
-    f_c_result_decl=None,
-    f_c_result_var=None,
-    f_c_module=None,
-    f_c_module_line=None,
-    f_c_import=None,
+    i_result_decl=None,
+    i_result_var=None,
+    i_module=None,
+    i_module_line=None,
+    i_import=None,
 
     notimplemented=False,
 )
@@ -600,8 +600,8 @@ fc_statements = [
         # No arguments. Set necessary fields as a group.
         name="c_mixin_noargs",
         c_arg_decl=[],
-        f_c_arg_decl=[],
-        f_c_arg_names=[],
+        i_arg_decl=[],
+        i_arg_names=[],
     ),    
     dict(
         name="c_subroutine",
@@ -639,14 +639,14 @@ fc_statements = [
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_import=["{F_array_type}"],
+        i_arg_names=["{c_var}"],
+        i_import=["{F_array_type}"],
         c_return_type="void",  # Convert to function.
         c_temps=["cdesc"],
-###        f_c_arg_names=["{c_var}"],
+###        i_arg_names=["{c_var}"],
     ),
     dict(
         name="f_mixin_function_cdesc",
@@ -713,12 +713,12 @@ fc_statements = [
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
         ],
-        f_c_arg_names=["{c_var}", "{c_var_size}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var}", "{c_var_size}"],
+        i_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         c_temps=["size"],
     ),
     dict(
@@ -729,13 +729,13 @@ fc_statements = [
             "size_t {c_var_len}",
             "size_t {c_var_size}",
         ],
-        f_c_arg_names=["{c_var}", "{c_var_len}", "{c_var_size}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var}", "{c_var_len}", "{c_var_size}"],
+        i_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_len}",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         c_temps=["len", "size"],
     ),
 
@@ -763,14 +763,14 @@ fc_statements = [
         ],
 #        c_iface_header="<stddef.h>",
 #        cxx_iface_header="<cstddef>",
-        f_c_arg_names=["{c_var}", "{c_var_size}", "{c_var_cdesc}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var}", "{c_var_size}", "{c_var_cdesc}"],
+        i_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        f_c_import=["{F_array_type}"],
-        f_c_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_import=["{F_array_type}"],
+        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
         c_temps=["size", "cdesc"],
     ),
 
@@ -791,11 +791,11 @@ fc_statements = [
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
-        f_c_arg_names=["{c_var_cdesc}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var_cdesc}"],
+        i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        f_c_import=["{F_array_type}"],
+        i_import=["{F_array_type}"],
         c_temps=["cdesc"],
     ),
     dict(
@@ -809,12 +809,12 @@ fc_statements = [
             "{C_array_type} *{c_var_cdesc}",
             "{C_array_type} *{c_var_out}",
         ],
-        f_c_arg_names=["{c_var_cdesc}", "{c_var_out}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var_cdesc}", "{c_var_out}"],
+        i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
             "type({F_array_type}), intent(OUT) :: {c_var_out}",
         ],
-        f_c_import=["{F_array_type}"],
+        i_import=["{F_array_type}"],
         c_temps=["cdesc", "out"],
     ),
 
@@ -837,13 +837,13 @@ fc_statements = [
             "size_t {c_var_size}",
             "int {c_var_len}",
         ],
-        f_c_arg_names=["{c_var}", "{c_var_size}", "{c_var_len}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var}", "{c_var_size}", "{c_var_len}"],
+        i_arg_decl=[
             "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
             "integer(C_INT), intent(IN), value :: {c_var_len}",
         ],
-        f_c_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
+        i_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
         c_temps=["size", "len"],
     ),
 
@@ -855,11 +855,11 @@ fc_statements = [
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_import=["{F_array_type}"],
+        i_arg_names=["{c_var}"],
+        i_import=["{F_array_type}"],
 #        c_return_type="void",  # Only difference from c_mixin_function_buf
         c_temps=["cdesc"],
     ),
@@ -899,12 +899,12 @@ fc_statements = [
             "char *{c_var}",
             "int {c_var_len}",
         ],
-        f_c_arg_names=["{c_var}", "{c_var_len}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var}", "{c_var_len}"],
+        i_arg_decl=[
             "character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)",
             "integer(C_INT), value, intent(IN) :: {c_var_len}",
         ],
-        f_c_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
+        i_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
         c_temps=["len"],
     ),
 
@@ -1034,11 +1034,11 @@ fc_statements = [
         c_arg_decl=[
             "{cxx_type} **{cxx_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type(C_PTR), intent(IN), value :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # double **count _intent(out)+dimension(ncount)
@@ -1130,8 +1130,8 @@ fc_statements = [
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
-        f_c_arg_names=["{c_var_cdesc}"],
-        f_c_arg_decl=[
+        i_arg_names=["{c_var_cdesc}"],
+        i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
         
@@ -1240,11 +1240,11 @@ fc_statements = [
         c_arg_decl=[
             "void **{c_var}",
         ],
-        f_c_arg_decl=[
-            "type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}",
+        i_arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # f_in_void_**
@@ -1275,17 +1275,17 @@ fc_statements = [
             "c_function_native_*_allocatable/raw",
             "c_function_native_*/&/**_pointer",
         ],
-        f_c_result_decl=[
+        i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_function_native_*_scalar",
-        f_c_result_decl=[
+        i_result_decl=[
             "{f_type} :: {c_var}",
         ],
-        f_c_module_line="iso_c_binding:{f_kind}",
+        i_module_line="iso_c_binding:{f_kind}",
     ),
     # Function has a result with deref(allocatable).
     #
@@ -1431,11 +1431,11 @@ fc_statements = [
         c_arg_decl=[
             "char {c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "character(kind=C_CHAR), value, intent(IN) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_CHAR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
         name="f_in_char_scalar",
@@ -1449,10 +1449,10 @@ fc_statements = [
 #        This simpler version had to be replace for pgi and cray.
 #        See below.
 #        name="c_function_char_scalar",
-#        f_c_result_decl=[
+#        i_result_decl=[
 #            "character(kind=C_CHAR) :: {c_var}",
 #        ],
-#        f_c_module=dict(iso_c_binding=["C_CHAR"]),
+#        i_module=dict(iso_c_binding=["C_CHAR"]),
 #    ),
     dict(
         name="f_function_char_scalar",
@@ -1469,11 +1469,11 @@ fc_statements = [
         c_arg_decl=[
             "char *{c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "character(kind=C_CHAR), intent(OUT) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_CHAR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_CHAR"]),
         c_return_type="void",  # Convert to function.
     ),
 #    dict(
@@ -1496,10 +1496,10 @@ fc_statements = [
         alias=[
             "c_function_char_*_allocatable/copy/pointer/raw",
         ],
-        f_c_result_decl=[
+        i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL terminate the input string.
@@ -1612,11 +1612,11 @@ fc_statements = [
         c_arg_decl=[
             "char **{c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type(C_PTR), intent(IN) :: {c_var}(*)",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name='f_in_char_**_buf',
@@ -1788,10 +1788,10 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        f_c_result_decl=[
+        i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # No need to allocate a local copy since the string is copied
@@ -1804,7 +1804,7 @@ fc_statements = [
         # c_function_string_&_buf_result
         name="c_function_string_scalar/*/&_buf_copy/result",
         mixin=["c_mixin_in_character_buf"],
-        f_c_arg_decl=[
+        i_arg_decl=[
             # Change to intent(OUT) from mixin.
             "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
             "integer(C_INT), value, intent(IN) :: {c_var_len}",
@@ -1841,12 +1841,12 @@ fc_statements = [
             # C++ compiler will convert to std::string when calling function.
             "char *{c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             # Remove VALUE added by c_default
             "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module=dict(iso_c_binding=["C_CHAR"]),
+        i_arg_names=["{c_var}"],
+        i_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
         name="f_in_string_scalar_buf",
@@ -2458,11 +2458,11 @@ fc_statements = [
         c_arg_decl=[
             "{c_type} * {c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_module_line="{f_c_module_line}",
+        i_arg_names=["{c_var}"],
+        i_module_line="{i_module_line}",
     ),
     
     dict(
@@ -2489,7 +2489,7 @@ fc_statements = [
         c_arg_decl=[
             "{c_type} {c_var}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}",
         ],
         cxx_local_var="pointer",
@@ -2554,11 +2554,11 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        f_c_result_var="{F_result_ptr}",
-        f_c_result_decl=[
+        i_result_var="{F_result_ptr}",
+        i_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_function_shadow_scalar_capptr",
@@ -2570,11 +2570,11 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        f_c_result_var="{F_result_ptr}",
-        f_c_result_decl=[
+        i_result_var="{F_result_ptr}",
+        i_result_decl=[
             "type(C_PTR) :: {F_result_ptr}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     
     dict(
@@ -2618,11 +2618,11 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        f_c_result_var="{F_result_ptr}",
-        f_c_result_decl=[
+        i_result_var="{F_result_ptr}",
+        i_result_decl=[
             "type(C_PTR) {F_result_ptr}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_ctor_shadow_scalar_capsule",
@@ -2710,9 +2710,9 @@ fc_statements = [
     dict(
         name="c_function_struct_scalar",
         c_arg_decl=["{c_type} *{c_var}"],
-        f_c_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
-        f_c_arg_names=["{c_var}"],
-        f_c_import=["{f_kind}"],
+        i_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
+        i_arg_names=["{c_var}"],
+        i_import=["{f_kind}"],
         c_return_type="void",  # Convert to function.
         cxx_local_var="result",
         c_post_call=[
@@ -2725,10 +2725,10 @@ fc_statements = [
     dict(
         name="c_function_struct_*_pointer",
         base="c_function_struct",
-        f_c_result_decl=[
+        i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
-        f_c_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_function_struct_*_pointer",
@@ -2899,10 +2899,10 @@ fc_statements = [
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
+        i_arg_names=["{c_var}"],
         c_temps=["cfi"],
     ),
     dict(
@@ -2913,10 +2913,10 @@ fc_statements = [
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}",
         ],
-        f_c_arg_names=["{c_var}"],
+        i_arg_names=["{c_var}"],
         c_pre_call=[
             "char *{cxx_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -2931,11 +2931,11 @@ fc_statements = [
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
         ],
-        f_c_module_line="iso_c_binding:{f_kind}",
-        f_c_arg_names=["{c_var}"],
+        i_module_line="iso_c_binding:{f_kind}",
+        i_arg_names=["{c_var}"],
 #        c_pre_call=[
 #            "{c_type} *{cxx_var} = "
 #            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -3097,8 +3097,8 @@ fc_statements = [
             "c_mixin_function_character",
         ],
         c_return_type="void",  # Convert to function.
-        f_c_arg_names=["{c_var}"],
-        f_c_arg_decl=[        # replace mixin
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3118,8 +3118,8 @@ fc_statements = [
             "c_mixin_function_character",
         ],
         c_return_type="void",  # Convert to function.
-        f_c_arg_names=["{c_var}"],
-        f_c_arg_decl=[        # replace mixin
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3159,7 +3159,7 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}(:)",
         ],
         c_pre_call=[
@@ -3280,11 +3280,11 @@ fc_statements = [
         mixin=[
             "c_mixin_function_character",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         c_return_type="void",  # Convert to function.
-        f_c_arg_names=["{c_var}"],
+        i_arg_names=["{c_var}"],
         lang_c=dict(
             impl_header=["<string.h>"],
         ),
@@ -3308,8 +3308,8 @@ fc_statements = [
             "c_mixin_function_character",
         ],
         c_return_type="void",  # Convert to function.
-        f_c_arg_names=["{c_var}"],
-        f_c_arg_decl=[        # replace mixin
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3341,8 +3341,8 @@ fc_statements = [
         mixin=[
             "c_mixin_function_character",
         ],
-        f_c_arg_names=["{c_var}"],
-        f_c_arg_decl=[        # replace mixin
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         c_return_type="void",  # convert to function
@@ -3533,7 +3533,7 @@ fc_statements = [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
         ],
         c_pre_call=[
@@ -3548,7 +3548,7 @@ fc_statements = [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer",
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
         ],
 
@@ -3575,7 +3575,7 @@ fc_statements = [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable",  # c_post_call
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
         ],
 
@@ -3602,7 +3602,7 @@ fc_statements = [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer",  # c_post_call
         ],
-        f_c_arg_decl=[
+        i_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
         ],
 

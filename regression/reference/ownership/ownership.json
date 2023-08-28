@@ -3738,11 +3738,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
-                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_library",
                         "stmt1": "f_function_shadow_*_capptr_library",
@@ -3928,11 +3928,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
-                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_caller",
                         "stmt1": "f_function_shadow_*_capptr_caller",
@@ -3991,13 +3991,6 @@
             "c_type": "OWN_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
-            "f_c_module": {
-                "--import--": [
-                    "OWN_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
-            "f_c_type": "type(OWN_SHROUD_capsule_data)",
             "f_capsule_data_type": "OWN_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
@@ -4011,6 +4004,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
+            "i_module": {
+                "--import--": [
+                    "OWN_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:OWN_SHROUD_capsule_data",
+            "i_type": "type(OWN_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
                 "ownership.hpp"

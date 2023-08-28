@@ -900,11 +900,11 @@
                             "F_C_var": "val",
                             "c_var": "val",
                             "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "val",
+                            "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
@@ -1516,11 +1516,11 @@
                                     "F_C_var": "val",
                                     "c_var": "val",
                                     "f_assumed_shape": "(:)",
-                                    "f_c_dimension": "(*)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
+                                    "i_dimension": "(*)",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
@@ -2159,11 +2159,11 @@
                                     "F_C_var": "val",
                                     "c_var": "val",
                                     "f_assumed_shape": "(:)",
-                                    "f_c_dimension": "(*)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
+                                    "i_dimension": "(*)",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
@@ -2276,13 +2276,6 @@
             "c_type": "SCO_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
-            "f_c_module": {
-                "--import--": [
-                    "SCO_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:SCO_SHROUD_capsule_data",
-            "f_c_type": "type(SCO_SHROUD_capsule_data)",
             "f_capsule_data_type": "SCO_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
@@ -2296,6 +2289,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
+            "i_module": {
+                "--import--": [
+                    "SCO_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:SCO_SHROUD_capsule_data",
+            "i_type": "type(SCO_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -2336,13 +2336,6 @@
             "c_type": "SCO_Class2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class2",
-            "f_c_module": {
-                "--import--": [
-                    "SCO_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:SCO_SHROUD_capsule_data",
-            "f_c_type": "type(SCO_SHROUD_capsule_data)",
             "f_capsule_data_type": "SCO_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
@@ -2356,6 +2349,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "Class2",
+            "i_module": {
+                "--import--": [
+                    "SCO_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:SCO_SHROUD_capsule_data",
+            "i_type": "type(SCO_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -2475,11 +2475,6 @@
             "c_type": "SCO_datapointer",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "ns1::DataPointer",
-            "f_c_module": {
-                "--import--": [
-                    "data_pointer"
-                ]
-            },
             "f_derived_type": "data_pointer",
             "f_kind": "data_pointer",
             "f_module": {
@@ -2490,6 +2485,11 @@
             "f_module_name": "scope_ns1_mod",
             "f_type": "type(data_pointer)",
             "flat_name": "ns1_DataPointer",
+            "i_module": {
+                "--import--": [
+                    "data_pointer"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2528,11 +2528,6 @@
             "c_type": "SCO_datapointer",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "ns2::DataPointer",
-            "f_c_module": {
-                "--import--": [
-                    "data_pointer"
-                ]
-            },
             "f_derived_type": "data_pointer",
             "f_kind": "data_pointer",
             "f_module": {
@@ -2543,6 +2538,11 @@
             "f_module_name": "scope_ns2_mod",
             "f_type": "type(data_pointer)",
             "flat_name": "ns2_DataPointer",
+            "i_module": {
+                "--import--": [
+                    "data_pointer"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2581,11 +2581,6 @@
             "c_type": "SCO_datapointer",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "ns3::DataPointer",
-            "f_c_module": {
-                "--import--": [
-                    "data_pointer"
-                ]
-            },
             "f_derived_type": "data_pointer",
             "f_kind": "data_pointer",
             "f_module": {
@@ -2596,6 +2591,11 @@
             "f_module_name": "scope_ns3_mod",
             "f_type": "type(data_pointer)",
             "flat_name": "ns3_DataPointer",
+            "i_module": {
+                "--import--": [
+                    "data_pointer"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

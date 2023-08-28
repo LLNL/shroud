@@ -37,12 +37,12 @@ typemap:
       c_header:
       - mpi.h
       c_to_cxx: MPI_Comm_f2c({c_var})
-      f_c_module:
-        iso_c_binding:
-        - C_INT
       f_type: integer
       f_kind: C_INT
-      f_c_type: integer(C_INT)
+      i_type: integer(C_INT)
+      i_module:
+        iso_c_binding:
+        - C_INT
       f_cast: "{f_var}"
       PY_format: O
       LUA_type: LUA_TNONE
@@ -62,7 +62,7 @@ typemap:
       - <stdbool.h>
       f_type: logical
       f_kind: C_BOOL
-      f_c_type: logical(C_BOOL)
+      i_type: logical(C_BOOL)
       f_module:
         iso_c_binding:
         - C_BOOL
@@ -83,12 +83,12 @@ typemap:
       idtor: 0
       cxx_type: char
       c_type: char
-      f_c_module:
-        iso_c_binding:
-        - C_CHAR
       f_type: character(*)
       f_kind: C_CHAR
-      f_c_type: character(kind=C_CHAR)
+      i_type: character(kind=C_CHAR)
+      i_module:
+        iso_c_binding:
+        - C_CHAR
       f_cast: "{f_var}"
       PY_format: s
       PY_ctor: PyString_FromString({ctor_expr})
@@ -442,12 +442,12 @@ typemap:
       cxx_type: std::string
       cxx_to_c: "{cxx_var}{cxx_member}c_str()"
       c_type: char
-      f_c_module:
-        iso_c_binding:
-        - C_CHAR
       f_type: character(*)
       f_kind: C_CHAR
-      f_c_type: character(kind=C_CHAR)
+      i_type: character(kind=C_CHAR)
+      i_module:
+        iso_c_binding:
+        - C_CHAR
       f_cast: "{f_var}"
       impl_header:
       - <string>
@@ -684,10 +684,10 @@ typemap:
       idtor: 0
       cxx_type: void
       c_type: void
-      f_c_module:
+      f_type: type(C_PTR)
+      i_module:
         iso_c_binding:
         - C_PTR
-      f_type: type(C_PTR)
       f_cast: "{f_var}"
       PY_format: O
       PY_ctor: PyCapsule_New({ctor_expr}, NULL, NULL)

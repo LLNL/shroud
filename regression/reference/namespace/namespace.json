@@ -794,13 +794,6 @@
             "c_type": "NS_nswork_ClassWork",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "nswork::ClassWork",
-            "f_c_module": {
-                "--import--": [
-                    "NS_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
-            "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
             "f_class": "class(class_work)",
             "f_derived_type": "class_work",
@@ -814,6 +807,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
+            "i_module": {
+                "--import--": [
+                    "NS_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:NS_SHROUD_capsule_data",
+            "i_type": "type(NS_SHROUD_capsule_data)",
             "impl_header": [
                 "namespace.hpp"
             ],
@@ -836,11 +836,6 @@
             "c_type": "NS_cstruct1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "outer::Cstruct1",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct1"
-                ]
-            },
             "f_derived_type": "cstruct1",
             "f_kind": "cstruct1",
             "f_module": {
@@ -851,6 +846,11 @@
             "f_module_name": "ns_outer_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "outer_Cstruct1",
+            "i_module": {
+                "--import--": [
+                    "cstruct1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },

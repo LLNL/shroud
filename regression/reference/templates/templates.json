@@ -491,11 +491,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<int>",
-                                "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(struct_as_class_int)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -1106,11 +1106,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<double>",
-                                "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(struct_as_class_double)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -1738,11 +1738,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "user<int>",
-                        "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(user_int)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_scalar_capptr_targ_native_scalar",
                         "stmt1": "f_function_shadow_scalar_capptr_targ_native_scalar",
@@ -2784,11 +2784,11 @@
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
-                                        "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_intent": "OUT",
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
+                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "f_ctor_shadow_scalar_capptr",
                                         "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -3194,11 +3194,11 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
-                                            "f_c_module_line": "--import--:vector_int_size_type",
                                             "f_intent": "IN",
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
                                             "f_var": "n",
+                                            "i_module_line": "--import--:vector_int_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_in_native_scalar",
                                             "stmt1": "f_in_native_scalar",
@@ -3476,11 +3476,11 @@
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
-                                        "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_intent": "OUT",
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
+                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "f_ctor_shadow_scalar_capptr",
                                         "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -3886,11 +3886,11 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
-                                            "f_c_module_line": "--import--:vector_double_size_type",
                                             "f_intent": "IN",
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
                                             "f_var": "n",
+                                            "i_module_line": "--import--:vector_double_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_in_native_scalar",
                                             "stmt1": "f_in_native_scalar",
@@ -4271,13 +4271,6 @@
             "c_type": "TEM_Worker",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Worker",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(worker)",
             "f_derived_type": "worker",
@@ -4291,6 +4284,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(worker)",
             "flat_name": "Worker",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4312,13 +4312,6 @@
             "c_type": "TEM_internal_ImplWorker1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(impl_worker1)",
             "f_derived_type": "impl_worker1",
@@ -4332,6 +4325,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker1.hpp"
             ],
@@ -4353,13 +4353,6 @@
             "c_type": "TEM_internal_ImplWorker2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker2",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(impl_worker2)",
             "f_derived_type": "impl_worker2",
@@ -4373,6 +4366,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker2)",
             "flat_name": "internal_ImplWorker2",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker2.hpp"
             ],
@@ -4393,13 +4393,6 @@
             },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector)",
             "f_derived_type": "vector",
@@ -4413,6 +4406,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
             "flat_name": "std_vector",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
             ],
@@ -4437,12 +4437,6 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_c_module": {
-                "--import--": [
-                    "vector_size_type"
-                ]
-            },
-            "f_c_module_line": "--import--:vector_size_type",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "vector_size_type",
             "f_module": {
@@ -4453,6 +4447,12 @@
             "f_module_line": "templates_std_mod:vector_size_type",
             "f_type": "integer(vector_size_type)",
             "flat_name": "size_t",
+            "i_module": {
+                "--import--": [
+                    "vector_size_type"
+                ]
+            },
+            "i_module_line": "--import--:vector_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4476,12 +4476,6 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector<double>::size_type",
-            "f_c_module": {
-                "--import--": [
-                    "vector_double_size_type"
-                ]
-            },
-            "f_c_module_line": "--import--:vector_double_size_type",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "vector_double_size_type",
             "f_module": {
@@ -4492,6 +4486,12 @@
             "f_module_line": "templates_std_mod:vector_double_size_type",
             "f_type": "integer(vector_double_size_type)",
             "flat_name": "size_t",
+            "i_module": {
+                "--import--": [
+                    "vector_double_size_type"
+                ]
+            },
+            "i_module_line": "--import--:vector_double_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4515,12 +4515,6 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector<int>::size_type",
-            "f_c_module": {
-                "--import--": [
-                    "vector_int_size_type"
-                ]
-            },
-            "f_c_module_line": "--import--:vector_int_size_type",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "vector_int_size_type",
             "f_module": {
@@ -4531,6 +4525,12 @@
             "f_module_line": "templates_std_mod:vector_int_size_type",
             "f_type": "integer(vector_int_size_type)",
             "flat_name": "size_t",
+            "i_module": {
+                "--import--": [
+                    "vector_int_size_type"
+                ]
+            },
+            "i_module_line": "--import--:vector_int_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4551,13 +4551,6 @@
             "c_type": "TEM_vector_double",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<double>",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector_double)",
             "f_derived_type": "vector_double",
@@ -4571,6 +4564,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "2",
             "impl_header": [
                 "<vector>"
@@ -4593,13 +4593,6 @@
             "c_type": "TEM_vector_int",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<int>",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector_int)",
             "f_derived_type": "vector_int",
@@ -4613,6 +4606,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_int)",
             "flat_name": "std_vector_int",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
                 "<vector>"
@@ -4634,13 +4634,6 @@
             },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "structAsClass",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class)",
             "f_derived_type": "struct_as_class",
@@ -4654,6 +4647,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class)",
             "flat_name": "structAsClass",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4670,13 +4670,6 @@
             "c_type": "TEM_structAsClass_double",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "structAsClass<double>",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class_double)",
             "f_derived_type": "struct_as_class_double",
@@ -4690,6 +4683,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_double)",
             "flat_name": "structAsClass_double",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "4",
             "impl_header": [
                 "templates.hpp"
@@ -4707,13 +4707,6 @@
             "c_type": "TEM_structAsClass_int",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "structAsClass<int>",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class_int)",
             "f_derived_type": "struct_as_class_int",
@@ -4727,6 +4720,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_int)",
             "flat_name": "structAsClass_int",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "3",
             "impl_header": [
                 "templates.hpp"
@@ -4747,13 +4747,6 @@
             },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "user",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(user)",
             "f_derived_type": "user",
@@ -4767,6 +4760,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user)",
             "flat_name": "user",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4788,13 +4788,6 @@
             "c_type": "TEM_user_int",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "user<int>",
-            "f_c_module": {
-                "--import--": [
-                    "TEM_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
-            "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(user_int)",
             "f_derived_type": "user_int",
@@ -4808,6 +4801,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user_int)",
             "flat_name": "user_int",
+            "i_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
+            "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "5",
             "impl_header": [
                 "templates.hpp"

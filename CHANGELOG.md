@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - Changed some entries in c_statements and f_statements to
-  consistently prefix with ``c_``, ``c_f_`` or ``f_``. This allows one
+  consistently prefix with ``f_``, ``i_`` or ``c_``. This allows one
   group to describe the entire Fortran wrapper, Fortran interface, C
   wrapper flow of a variable.
 - Require an exact match when looking up statements for Fortran and C

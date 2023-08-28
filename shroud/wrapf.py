@@ -216,7 +216,7 @@ class Wrapf(util.WrapperMixin):
                 output.append(ast.gen_arg_as_fortran())
                 self.update_f_module(
                     fileinfo.module_use, {},
-                    ntypemap.f_c_module or ntypemap.f_module
+                    ntypemap.i_module or ntypemap.f_module
                 )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
@@ -778,8 +778,8 @@ rv = .false.
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
-    def add_f_c_module_from_stmts(self, stmt, modules, imports, fmt):
-        """Add USE/IMPORT statements defined in stmt.
+    def add_i_module_from_stmts(self, stmt, modules, imports, fmt):
+        """Add USE/IMPORT statements defined in stmt for interface.
 
         Parameters
         ----------
@@ -790,14 +790,14 @@ rv = .false.
             Indexed as [symbol]
         fmt : Scope
         """
-        if stmt.f_c_module:
+        if stmt.i_module:
             self.update_f_module(
-                modules, imports, stmt.f_c_module)
-        if stmt.f_c_module_line:
+                modules, imports, stmt.i_module)
+        if stmt.i_module_line:
             self.update_f_module_line(
-                modules, imports, stmt.f_c_module_line, fmt)
-        if stmt.f_c_import:
-            for name in stmt.f_c_import:
+                modules, imports, stmt.i_module_line, fmt)
+        if stmt.i_import:
+            for name in stmt.i_import:
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
@@ -1035,7 +1035,7 @@ rv = .false.
                     self.update_f_module(
                         modules,
                         imports,
-                        arg_typemap.f_c_module or arg_typemap.f_module,
+                        arg_typemap.i_module or arg_typemap.f_module,
                     )
 
                 if subprogram == "function":
@@ -1093,13 +1093,13 @@ rv = .false.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
         """
-        if stmts_blk.f_c_arg_decl is not None:
+        if stmts_blk.i_arg_decl is not None:
             # Use explicit declaration from CStmt, both must exist.
-            for name in stmts_blk.f_c_arg_names:
+            for name in stmts_blk.i_arg_names:
                 append_format(arg_c_names, name, fmt)
-            for arg in stmts_blk.f_c_arg_decl:
+            for arg in stmts_blk.i_arg_decl:
                 append_format(arg_c_decl, arg, fmt)
-            self.add_f_c_module_from_stmts(stmts_blk, modules, imports, fmt)
+            self.add_i_module_from_stmts(stmts_blk, modules, imports, fmt)
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
@@ -1146,7 +1146,7 @@ rv = .false.
                     arg_typemap = ast.template_arguments[0].typemap
                 self.update_f_module(
                     modules, imports,
-                    arg_typemap.f_c_module or arg_typemap.f_module
+                    arg_typemap.i_module or arg_typemap.f_module
                 )
 
     def wrap_function_interface(self, cls, node, fileinfo):
@@ -1260,9 +1260,9 @@ rv = .false.
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        if c_result_blk.f_c_result_var:
+        if c_result_blk.i_result_var:
             fmt_func.F_result = wformat(
-                c_result_blk.f_c_result_var, fmt_func)
+                c_result_blk.i_result_var, fmt_func)
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1355,10 +1355,10 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            if c_result_blk.f_c_result_decl is not None:
-                for arg in c_result_blk.f_c_result_decl:
+            if c_result_blk.i_result_decl is not None:
+                for arg in c_result_blk.i_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
-                self.add_f_c_module_from_stmts(c_result_blk, modules, imports, fmt_result)
+                self.add_i_module_from_stmts(c_result_blk, modules, imports, fmt_result)
             elif c_result_blk.c_return_type:
                 # Return type changed by user.
                 ntypemap = self.symtab.lookup_typemap(c_result_blk.c_return_type)
@@ -1370,7 +1370,7 @@ rv = .false.
                 self.update_f_module(
                     modules,
                     imports,
-                    result_typemap.f_c_module or result_typemap.f_module,
+                    result_typemap.i_module or result_typemap.f_module,
                 )
 
         arg_f_use = self.sort_module_info(
@@ -1566,9 +1566,9 @@ rv = .false.
             fmt.f_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
-        f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
-        if f_c_module_line:
-            fmt.f_c_module_line = f_c_module_line
+        i_module_line = ntypemap.i_module_line or ntypemap.f_module_line
+        if i_module_line:
+            fmt.i_module_line = i_module_line
         statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
@@ -1632,7 +1632,7 @@ rv = .false.
         dim = f_meta["dimension"]
         rank = f_attrs["rank"]
         if f_meta["assumed-rank"]:
-            fmt.f_c_dimension = "(..)"
+            fmt.i_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
             fmt.rank = str(rank)
@@ -1644,7 +1644,7 @@ rv = .false.
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                fmt.f_c_dimension = "(*)"
+                fmt.i_dimension = "(*)"
                 if hasattr(fmt, "c_var_cdesc"):
                     fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
@@ -2008,7 +2008,7 @@ rv = .false.
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 declare.append(
                     "{} {}".format(
-                        arg_typemap.f_c_type or arg_typemap.f_type,
+                        arg_typemap.i_type or arg_typemap.f_type,
                         fmt_arg.c_var,
                     )
                 )

@@ -735,7 +735,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_array_allocate="",
             f_array_shape="",
             f_assumed_shape="",  # scalar
-            f_c_dimension="",
             f_char_len=":",      # deferred length
             f_char_type="",      # allocate type - character(len=x) ::
             f_declare_shape_prefix="SHAPE_",
@@ -747,6 +746,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_type="",
             f_var_shape="",      # scalar
 
+            # Fortran interface
+            i_dimension="",
+            
             rank="0",            # scalar
             
             LUA_result="rv",
@@ -792,9 +794,9 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_dimension="XXXc_var_dimension",
                 c_var_len="XXXc_var_len",
                 c_var_trim="XXXc_var_trim",
-                f_c_dimension="XXXf_c_dimension",
-                f_c_module_line="XXXf_c_module_line:XXXnone",
-                f_c_type="XXXf_c_type",
+                i_dimension="XXXi_dimension",
+                i_module_line="XXXi_module_line:XXXnone",
+                i_type="XXXi_type",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",

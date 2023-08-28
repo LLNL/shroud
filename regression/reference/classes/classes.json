@@ -182,11 +182,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -395,11 +395,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -701,11 +701,11 @@
                                 "fmtf": {
                                     "F_C_var": "obj2",
                                     "c_var": "obj2",
-                                    "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
                                     "f_var": "obj2",
+                                    "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_&",
                                     "stmt1": "f_in_shadow_&",
@@ -1107,11 +1107,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_*_capptr",
                                 "stmt1": "f_function_shadow_*_capptr",
@@ -1309,11 +1309,11 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER"
                             }
                         }
@@ -1404,11 +1404,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_*_capptr",
                                 "stmt1": "f_function_shadow_*_capptr",
@@ -3013,11 +3013,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Singleton",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(singleton)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_&_capptr",
                                 "stmt1": "f_function_shadow_&_capptr",
@@ -3182,11 +3182,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Shape",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(shape)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -3483,11 +3483,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Circle",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(circle)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -3810,11 +3810,11 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Data",
-                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(data)",
                                 "f_var": "SHT_rv",
+                                "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
@@ -4365,11 +4365,11 @@
                                     "F_C_var": "val",
                                     "c_var": "val",
                                     "f_assumed_shape": "(:)",
-                                    "f_c_dimension": "(*)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
+                                    "i_dimension": "(*)",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
@@ -4810,11 +4810,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_intent": "IN",
                             "f_type": "type(class1)",
                             "f_var": "arg",
+                            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_scalar",
                             "stmt1": "f_in_shadow_scalar",
@@ -4942,11 +4942,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_intent": "IN",
                             "f_type": "type(class1)",
                             "f_var": "arg",
+                            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_*",
                             "stmt1": "f_in_shadow_*",
@@ -5133,11 +5133,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
                         "stmt1": "f_function_shadow_*_capptr",
@@ -5227,11 +5227,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
                         "stmt1": "f_function_shadow_*_capptr",
@@ -5341,11 +5341,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capsule",
                         "stmt1": "f_function_shadow_*_capsule",
@@ -5433,11 +5433,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capsule",
                         "stmt1": "f_function_shadow_*_capsule",
@@ -5524,11 +5524,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_&_capptr",
                         "stmt1": "f_function_shadow_&_capptr",
@@ -5615,11 +5615,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_&_capptr",
                         "stmt1": "f_function_shadow_&_capptr",
@@ -5777,11 +5777,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
-                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:CLA_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_scalar_capptr",
                         "stmt1": "f_function_shadow_scalar_capptr",
@@ -6297,13 +6297,6 @@
             "c_type": "CLA_Circle",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Circle",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(circle)",
             "f_derived_type": "circle",
@@ -6317,6 +6310,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(circle)",
             "flat_name": "classes_Circle",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "idtor": "3",
             "impl_header": [
                 "classes.hpp"
@@ -6339,13 +6339,6 @@
             "c_type": "CLA_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Class1",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
@@ -6359,6 +6352,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "classes_Class1",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
                 "classes.hpp"
@@ -6407,13 +6407,6 @@
             "c_type": "CLA_Class2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Class2",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
@@ -6427,6 +6420,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "classes_Class2",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "impl_header": [
                 "classes.hpp"
             ],
@@ -6443,13 +6443,6 @@
             "c_type": "CLA_Data",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Data",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(data)",
             "f_derived_type": "data",
@@ -6463,6 +6456,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(data)",
             "flat_name": "classes_Data",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "idtor": "4",
             "impl_header": [
                 "classes.hpp"
@@ -6485,13 +6485,6 @@
             "c_type": "CLA_Shape",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Shape",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(shape)",
             "f_derived_type": "shape",
@@ -6505,6 +6498,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(shape)",
             "flat_name": "classes_Shape",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "idtor": "2",
             "impl_header": [
                 "classes.hpp"
@@ -6527,13 +6527,6 @@
             "c_type": "CLA_Singleton",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "classes::Singleton",
-            "f_c_module": {
-                "--import--": [
-                    "CLA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
-            "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(singleton)",
             "f_derived_type": "singleton",
@@ -6547,6 +6540,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(singleton)",
             "flat_name": "classes_Singleton",
+            "i_module": {
+                "--import--": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:CLA_SHROUD_capsule_data",
+            "i_type": "type(CLA_SHROUD_capsule_data)",
             "impl_header": [
                 "classes.hpp"
             ],

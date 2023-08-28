@@ -789,11 +789,11 @@
                             "F_C_var": "data",
                             "c_var": "data",
                             "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "data",
+                            "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(data)",
@@ -2925,11 +2925,6 @@
             "c_type": "CXX_cstruct1_cls",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct1_cls",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct1_cls"
-                ]
-            },
             "f_derived_type": "cstruct1_cls",
             "f_kind": "cstruct1_cls",
             "f_module": {
@@ -2940,6 +2935,11 @@
             "f_module_name": "cxxlibrary_mod",
             "f_type": "type(cstruct1_cls)",
             "flat_name": "Cstruct1_cls",
+            "i_module": {
+                "--import--": [
+                    "cstruct1_cls"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2957,11 +2957,6 @@
             "c_type": "CXX_cstruct1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "structns::Cstruct1",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct1"
-                ]
-            },
             "f_derived_type": "cstruct1",
             "f_kind": "cstruct1",
             "f_module": {
@@ -2972,6 +2967,11 @@
             "f_module_name": "cxxlibrary_structns_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "structns_Cstruct1",
+            "i_module": {
+                "--import--": [
+                    "cstruct1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

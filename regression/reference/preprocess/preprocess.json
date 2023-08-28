@@ -618,13 +618,6 @@
             "c_type": "PRE_User1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User1",
-            "f_c_module": {
-                "--import--": [
-                    "PRE_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
-            "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user1)",
             "f_derived_type": "user1",
@@ -638,6 +631,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
             "flat_name": "User1",
+            "i_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
+            "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "preprocess.hpp"
             ],
@@ -659,13 +659,6 @@
             "c_type": "PRE_User2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User2",
-            "f_c_module": {
-                "--import--": [
-                    "PRE_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
-            "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user2)",
             "f_derived_type": "user2",
@@ -679,6 +672,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",
             "flat_name": "User2",
+            "i_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
+            "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "User2.hpp"
             ],

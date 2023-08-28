@@ -115,13 +115,13 @@ class Typemap(object):
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_return_code", None),
-        ("f_c_module", None), # Fortran modules needed for interface  (dictionary)
-        ("f_c_module_line", None),
         ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
-        ("f_c_type", None),  # Type for C interface    -- int
         ("f_to_c", None),  # Expression to convert from Fortran to C
+        ("i_type", None),  # Type for C interface    -- int
+        ("i_module", None), # Fortran modules needed for interface  (dictionary)
+        ("i_module_line", None),
         (
             "f_module_name",
             None,
@@ -218,7 +218,7 @@ class Typemap(object):
 
     def finalize(self):
         """Compute some fields based on other fields."""
-        self.f_c_module_line = flatten_modules_to_line(self.f_c_module or self.f_module)
+        self.i_module_line = flatten_modules_to_line(self.i_module or self.f_module)
         self.f_module_line = flatten_modules_to_line(self.f_module)
         if self.cxx_type and not self.flat_name:
             # Do not override an explicitly set value.
@@ -330,7 +330,7 @@ def default_typemap():
             cxx_type="void",
             # fortran='subroutine',
             f_type="type(C_PTR)",
-            f_c_module=dict(iso_c_binding=["C_PTR"]),
+            i_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
             cfi_type="CFI_type_intptr_t",
@@ -800,7 +800,7 @@ def default_typemap():
             c_header="<stdbool.h>",
             f_type="logical",
             f_kind="C_BOOL",
-            f_c_type="logical(C_BOOL)",
+            i_type="logical(C_BOOL)",
             f_module=dict(iso_c_binding=["C_BOOL"]),
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
@@ -824,8 +824,8 @@ def default_typemap():
             c_type="char",  # XXX - char *
             f_type="character(*)",
             f_kind="C_CHAR",
-            f_c_type="character(kind=C_CHAR)",
-            f_c_module=dict(iso_c_binding=["C_CHAR"]),
+            i_type="character(kind=C_CHAR)",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromString({ctor_expr})",
 #            PY_get="PyString_AsString({py_var})",
@@ -845,8 +845,8 @@ def default_typemap():
             impl_header=["<string>"],
             f_type="character(*)",
             f_kind="C_CHAR",
-            f_c_type="character(kind=C_CHAR)",
-            f_c_module=dict(iso_c_binding=["C_CHAR"]),
+            i_type="character(kind=C_CHAR)",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize({ctor_expr})",
             PY_build_format="s#",
@@ -886,8 +886,8 @@ def default_typemap():
             # usually, MPI_Fint will be equivalent to int
             f_type="integer",
             f_kind="C_INT",
-            f_c_type="integer(C_INT)",
-            f_c_module=dict(iso_c_binding=["C_INT"]),
+            i_type="integer(C_INT)",
+            i_module=dict(iso_c_binding=["C_INT"]),
             cxx_to_c="MPI_Comm_c2f({cxx_var})",
             c_to_cxx="MPI_Comm_f2c({c_var})",
         ),
@@ -1045,8 +1045,8 @@ def compute_class_typemap_derived_fields(ntypemap, fields):
         # XXX f_kind
     if "f_type" not in fields:
         ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    if "f_c_type" not in fields:
-        ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+    if "i_type" not in fields:
+        ntypemap.i_type = "type(%s)" % ntypemap.f_capsule_data_type
 
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
@@ -1090,8 +1090,8 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
     
     ntypemap.finalize()
     library.symtab.add_typedef(cxx_name, ntypemap)
@@ -1163,8 +1163,8 @@ def fill_class_typemap(node, fields={}):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {"--import--": [ntypemap.f_capsule_data_type]}
 
     ntypemap.finalize()
 
@@ -1221,8 +1221,8 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-#    if "f_c_module" not in fields:
-#        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+#    if "i_module" not in fields:
+#        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
 
     library.symtab.add_typedef(cxx_name, ntypemap)
 
@@ -1294,10 +1294,10 @@ def fill_struct_typemap(node, fields={}):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {"--import--": [ntypemap.f_derived_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {"--import--": [ntypemap.f_derived_type]}
         
-# GGG - sets f_c_module_line and f_module_line which may or may not be needed
+# GGG - sets i_module_line and f_module_line which may or may not be needed
 ##    ntypemap.finalize()
     if ntypemap.cxx_type and not ntypemap.flat_name:
             ntypemap.compute_flat_name()
@@ -1417,7 +1417,7 @@ def fill_typedef_typemap(node, fields={}):
     # import names which are wrapped by this module
     # XXX - deal with namespaces vs modules
     ntypemap.f_module = {fmtdict.F_module_name: [f_name]}
-    ntypemap.f_c_module = {"--import--": [f_name]}
+    ntypemap.i_module = {"--import--": [f_name]}
     ntypemap.update(fields)
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()

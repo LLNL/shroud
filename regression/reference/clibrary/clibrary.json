@@ -4449,10 +4449,10 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
+                            "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(arg)"
@@ -6337,12 +6337,6 @@
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "EnumTypeID",
-            "f_c_module": {
-                "--import--": [
-                    "enum_type_id"
-                ]
-            },
-            "f_c_module_line": "--import--:enum_type_id",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "enum_type_id",
             "f_module": {
@@ -6353,6 +6347,12 @@
             "f_module_line": "clibrary_mod:enum_type_id",
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
+            "i_module": {
+                "--import--": [
+                    "enum_type_id"
+                ]
+            },
+            "i_module_line": "--import--:enum_type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -6372,12 +6372,6 @@
             "c_type": "CLI_TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
-            "f_c_module": {
-                "--import--": [
-                    "type_id"
-                ]
-            },
-            "f_c_module_line": "--import--:type_id",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "type_id",
             "f_module": {
@@ -6388,6 +6382,12 @@
             "f_module_line": "clibrary_mod:type_id",
             "f_type": "integer(type_id)",
             "flat_name": "int",
+            "i_module": {
+                "--import--": [
+                    "type_id"
+                ]
+            },
+            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -6407,11 +6407,6 @@
             "c_type": "array_info",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "array_info",
-            "f_c_module": {
-                "--import--": [
-                    "array_info"
-                ]
-            },
             "f_derived_type": "array_info",
             "f_kind": "array_info",
             "f_module": {
@@ -6422,6 +6417,11 @@
             "f_module_name": "clibrary_mod",
             "f_type": "type(array_info)",
             "flat_name": "array_info",
+            "i_module": {
+                "--import--": [
+                    "array_info"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

@@ -13,7 +13,7 @@ Unreleased
 ----------
 
 * Rename some fields in Statements to allow C and Fortran entries to exist
-  in the same group by consistently using a ``c_``, ``c_f_`` or ``f_`` prefix.
+  in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
   This allows a single group to contains all the fields used for more complex
   conversions making it easier to follow the flow.
 
@@ -53,15 +53,15 @@ Unreleased
    * - local
      - c_local
    * - f_arg_decl
-     - f_c_arg_decl
+     - i_arg_decl
    * - f_result_decl
-     - f_c_result_decl
+     - i_result_decl
    * - f_result_var
-     - f_c_result_var
+     - i_result_var
    * - f_module
-     - f_c_module
+     - i_module
    * - f_import
-     - f_c_import
+     - i_import
 
 
 .. list-table:: f statements

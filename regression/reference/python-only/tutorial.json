@@ -2490,12 +2490,6 @@
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "tutorial::EnumTypeID",
-            "f_c_module": {
-                "--import--": [
-                    ""
-                ]
-            },
-            "f_c_module_line": "--import--:",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "",
             "f_module": {
@@ -2506,6 +2500,12 @@
             "f_module_line": "tutorial_mod:",
             "f_type": "integer()",
             "flat_name": "int",
+            "i_module": {
+                "--import--": [
+                    ""
+                ]
+            },
+            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -2525,12 +2525,6 @@
             "c_type": "",
             "cfi_type": "CFI_type_int",
             "cxx_type": "tutorial::TypeID",
-            "f_c_module": {
-                "--import--": [
-                    ""
-                ]
-            },
-            "f_c_module_line": "--import--:",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "",
             "f_module": {
@@ -2541,6 +2535,12 @@
             "f_module_line": "tutorial_mod:",
             "f_type": "integer()",
             "flat_name": "int",
+            "i_module": {
+                "--import--": [
+                    ""
+                ]
+            },
+            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

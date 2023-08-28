@@ -186,11 +186,11 @@
                         "fmtf": {
                             "F_C_var": "i1",
                             "c_var": "i1",
-                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i1",
+                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -216,11 +216,11 @@
                         "fmtf": {
                             "F_C_var": "i2",
                             "c_var": "i2",
-                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i2",
+                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -392,11 +392,11 @@
                         "fmtf": {
                             "F_C_var": "i2",
                             "c_var": "i2",
-                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i2",
+                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
@@ -586,11 +586,11 @@
                         "fmtf": {
                             "F_C_var": "i2",
                             "c_var": "i2",
-                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i2",
+                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
@@ -766,11 +766,11 @@
                         "fmtf": {
                             "F_C_var": "i1",
                             "c_var": "i1",
-                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i1",
+                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
@@ -1033,11 +1033,11 @@
                         "fmtf": {
                             "F_C_var": "f1",
                             "c_var": "f1",
-                            "f_c_module_line": "typemap_mod:FLOATTYPE",
                             "f_intent": "IN",
                             "f_kind": "FLOATTYPE",
                             "f_type": "real(FLOATTYPE)",
                             "f_var": "f1",
+                            "i_module_line": "typemap_mod:FLOATTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",

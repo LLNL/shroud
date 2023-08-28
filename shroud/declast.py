@@ -1806,10 +1806,10 @@ class Declaration(Node):
             # If a template, use its type
             ntypemap = self.template_arguments[0].typemap
 
-        typ = ntypemap.f_c_type or ntypemap.f_type
+        typ = ntypemap.i_type or ntypemap.f_type
         if typ is None:
             raise RuntimeError(
-                "Type {} has no value for f_c_type".format(self.typename)
+                "Type {} has no value for i_type".format(self.typename)
             )
         t.append(typ)
         if attrs["value"]:
@@ -1895,7 +1895,7 @@ class Declaration(Node):
             # Used with wrap_struct_as=class for passed-object dummy argument.
             t.append(ntypemap.f_class)
         elif bindc:
-            t.append(ntypemap.f_c_type or ntypemap.f_type)
+            t.append(ntypemap.i_type or ntypemap.f_type)
         else:
             t.append(ntypemap.f_type)
 

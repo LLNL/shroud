@@ -537,11 +537,6 @@
             "c_type": "Cstruct_as_class",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_class",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_as_class"
-                ]
-            },
             "f_derived_type": "cstruct_as_class",
             "f_kind": "cstruct_as_class",
             "f_module": {
@@ -552,6 +547,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
+            "i_module": {
+                "--import--": [
+                    "cstruct_as_class"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -572,11 +572,6 @@
             "c_type": "Cstruct_as_numpy",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_numpy",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_as_numpy"
-                ]
-            },
             "f_derived_type": "cstruct_as_numpy",
             "f_kind": "cstruct_as_numpy",
             "f_module": {
@@ -587,6 +582,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_numpy)",
             "flat_name": "Cstruct_as_numpy",
+            "i_module": {
+                "--import--": [
+                    "cstruct_as_numpy"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

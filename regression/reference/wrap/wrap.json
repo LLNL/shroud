@@ -107,13 +107,6 @@
             "c_type": "WRA_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
-            "f_c_module": {
-                "--import--": [
-                    "WRA_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:WRA_SHROUD_capsule_data",
-            "f_c_type": "type(WRA_SHROUD_capsule_data)",
             "f_capsule_data_type": "WRA_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
@@ -127,6 +120,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
+            "i_module": {
+                "--import--": [
+                    "WRA_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:WRA_SHROUD_capsule_data",
+            "i_type": "type(WRA_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
