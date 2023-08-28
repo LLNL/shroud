@@ -44,7 +44,6 @@ additional arguments.
 
 ..        name="f_default",
 ..        c_helper="",
-..        c_local_var=None,
 
 f_helper
 ^^^^^^^^
@@ -131,29 +130,6 @@ to the end of the call list.
             "{f_var}",
             "len({f_var}, kind=C_INT)",
         ],
-
-c_local_var
-^^^^^^^^^^^
-
-If *true* an intermediate variable is created then passed to the C
-wrapper instead of passing *f_var* directly.  The intermediate
-variable can be used when the Fortran argument must be processed
-before passing to C.
-
-For example, the statements for **f_in_bool** convert the type from
-``LOGICAL`` to ``logical(C_BOOL)``. There is no intrinsic function to
-convert logical variables so an assignment statement is required to
-cause the compiler to convert the value.
-
-.. code-block:: yaml
-
-    dict(
-        name="f_in_bool",
-        c_local_var=True,
-        pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
-    ),
-
-.. XXX - maybe use *temps* and *f_c_arg_names* instead as a more general solution.
 
 f_declare
 ^^^^^^^^^

@@ -2004,7 +2004,7 @@ rv = .false.
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 
-            if f_intent_blk.c_local_var or optattr:
+            if optattr:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 declare.append(
                     "{} {}".format(
@@ -2012,9 +2012,8 @@ rv = .false.
                         fmt_arg.c_var,
                     )
                 )
-                if optattr:
-                    # XXX - Reusing c_local_var logic, would have issues with bool
-                    append_format(optional, default_arg_template, fmt_arg)
+                # XXX - Reusing c_local_var logic, would have issues with bool
+                append_format(optional, default_arg_template, fmt_arg)
 
             need_wrapper = self.build_arg_list_impl(
                 fileinfo,

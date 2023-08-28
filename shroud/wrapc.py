@@ -1003,16 +1003,11 @@ class Wrapc(util.WrapperMixin):
                     header_typedef_nodes[targ.typemap.name] = targ.typemap
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
-            c_local_var = ""
             if result_blk.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
-            elif result_blk.c_local_var:
-                c_local_var = result_blk.c_local_var
-                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif result_typemap.cxx_to_c is None:
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
@@ -1362,7 +1357,7 @@ class Wrapc(util.WrapperMixin):
                     # Do not return C++ result in C wrapper.
                     # Probably assigned to an argument.
                     pass
-                elif result_blk.c_local_var:
+                elif len(result_blk.c_post_call):
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
                     # For example, with struct and shadow.
@@ -1411,7 +1406,7 @@ class Wrapc(util.WrapperMixin):
         elif result_arg is None and C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
-            fmt_result.c_get_value = statements.compute_return_prefix(ast, c_local_var)
+            fmt_result.c_get_value = statements.compute_return_prefix(ast)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             # XXX - No return for void statements.

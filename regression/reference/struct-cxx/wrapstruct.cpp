@@ -224,10 +224,10 @@ void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 {
     // splicer begin function.returnStructPtr1
-    Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
-    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
+    Cstruct1 * SHC_rv = returnStructPtr1(i, d);
+    STR_cstruct1 * SHT_rv_c = static_cast<STR_cstruct1 *>(
+        static_cast<void *>(SHC_rv));
+    return SHT_rv_c;
     // splicer end function.returnStructPtr1
 }
 
@@ -255,10 +255,10 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
 {
     // splicer begin function.returnStructPtr2
-    Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
-    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
+    Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
+    STR_cstruct1 * SHT_rv_c = static_cast<STR_cstruct1 *>(
+        static_cast<void *>(SHC_rv));
+    return SHT_rv_c;
     // splicer end function.returnStructPtr2
 }
 
@@ -287,11 +287,11 @@ STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
     char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.returnStructPtr2_bufferify
-    Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
+    Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
     ShroudStrBlankFill(outbuf, SHT_outbuf_len);
-    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
+    STR_cstruct1 * SHT_rv_c = static_cast<STR_cstruct1 *>(
+        static_cast<void *>(SHC_rv));
+    return SHT_rv_c;
     // splicer end function.returnStructPtr2_bufferify
 }
 
@@ -302,10 +302,10 @@ STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
 STR_cstruct_list * STR_get_global_struct_list(void)
 {
     // splicer begin function.get_global_struct_list
-    Cstruct_list * SHCXX_rv = get_global_struct_list();
-    STR_cstruct_list * SHC_rv = static_cast<STR_cstruct_list *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
+    Cstruct_list * SHC_rv = get_global_struct_list();
+    STR_cstruct_list * SHT_rv_c = static_cast<STR_cstruct_list *>(
+        static_cast<void *>(SHC_rv));
+    return SHT_rv_c;
     // splicer end function.get_global_struct_list
 }
 

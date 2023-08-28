@@ -129,21 +129,9 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
             c_var=rootname)
 
 
-def compute_return_prefix(arg, local_var):
+def compute_return_prefix(arg):
     """Compute how to access variable: dereference, address, as-is"""
-    if local_var == "scalar":
-        if arg.is_pointer():
-            return "&"
-        else:
-            return ""
-    elif local_var == "pointer":
-        if arg.declarator.is_pointer():
-            return ""
-        else:
-            return "*"
-    elif local_var == "funcptr":
-        return ""
-    elif arg.declarator.is_reference():
+    if arg.declarator.is_reference():
         # Convert a return reference into a pointer.
         return "&"
     else:
@@ -2545,7 +2533,6 @@ fc_statements = [
         # c_local_var is passed in as argument.
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
-        c_local_var="pointer",
         owner="caller",
         c_pre_call=[
             "{cxx_type} * {cxx_var} = new {cxx_type};",
@@ -2563,7 +2550,6 @@ fc_statements = [
         # c_function_shadow_&_capptr
         name="c_function_shadow_*/&_capptr",
         mixin=["c_mixin_shadow", "c_function_shadow_*_capsule"],
-        c_local_var="pointer",
         c_return_type=None,
         c_return=[
             "return {c_var};",
@@ -2705,11 +2691,14 @@ fc_statements = [
     dict(
         name="c_function_struct",
         # C++ pointer -> void pointer -> C pointer
-        c_local_var="pointer",
         lang_cxx=dict(
+            c_temps=["c"],
             c_post_call=[
-                "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
+                "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
             ],
+            c_return=[
+                "return {c_var_c};",
+            ]
         ),
     ),
 

@@ -1354,7 +1354,6 @@ c_function_native_scalar:
 c_function_shadow_&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_local_var: pointer
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1394,7 +1393,6 @@ c_function_shadow_&_capsule:
 c_function_shadow_*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_local_var: pointer
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1434,7 +1432,6 @@ c_function_shadow_*_capsule:
 c_function_shadow_scalar_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_local_var: pointer
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1461,7 +1458,6 @@ c_function_shadow_scalar_capptr:
 c_function_shadow_scalar_capptr_targ_native_scalar:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_local_var: pointer
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1488,7 +1484,6 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
 c_function_shadow_scalar_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_local_var: pointer
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -2110,22 +2105,32 @@ c_function_string_scalar_cfi_result:
   name: c_function_string_scalar_cfi_result
   owner: library
 c_function_struct:
-  c_local_var: pointer
   c_post_call:
-  - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
     \ *>(\t{cxx_addr}{cxx_var}));"
+  c_return:
+  - return {c_var_c};
+  c_temps:
+  - c
   intent: function
   lang_cxx:
     c_post_call:
-    - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+    - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
       \ *>(\t{cxx_addr}{cxx_var}));"
+    c_return:
+    - return {c_var_c};
+    c_temps:
+    - c
   name: c_function_struct
   owner: library
 c_function_struct_*_pointer:
-  c_local_var: pointer
   c_post_call:
-  - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
     \ *>(\t{cxx_addr}{cxx_var}));"
+  c_return:
+  - return {c_var_c};
+  c_temps:
+  - c
   f_c_module:
     iso_c_binding:
     - C_PTR
@@ -2134,8 +2139,12 @@ c_function_struct_*_pointer:
   intent: function
   lang_cxx:
     c_post_call:
-    - "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+    - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
       \ *>(\t{cxx_addr}{cxx_var}));"
+    c_return:
+    - return {c_var_c};
+    c_temps:
+    - c
   name: c_function_struct_*_pointer
   owner: library
 c_function_struct_scalar:

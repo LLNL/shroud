@@ -131,22 +131,6 @@ These functions are defined in whelper.py.
 There is no current way to add additional functions.
 
 
-c_local_var
-^^^^^^^^^^^
-
-If a local C variable is created for the return value by post_call, *c_local_var*
-indicates if the local variable is a **pointer** or **scalar**.
-For example, when a structure is returned by a C++ function, the C wrapper creates
-a local variable which contains a pointer to the C type of the struct.
-
-
-
-
-
-If true, generate a local variable using the C declaration for the argument.
-This variable can be used by the pre_call and post_call statements.
-A single declaration will be added even if with ``intent(inout)``.
-
 cxx_local_var
 ^^^^^^^^^^^^^
 
@@ -285,6 +269,9 @@ c_post_call
 Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
 
+.. When the length is greater than 0, typemap.cxx_to_c will not be used
+   since the conversion is assumed to be in the c_post_call code.
+
 
 c_final
 ^^^^^^^
@@ -297,7 +284,7 @@ Can be used to release intermediate memory in the C wrapper.
 c_return
 ^^^^^^^^
 
-Code for return statement.
+List of code for return statement.
 Usually generated but can be replaced.
 For example, with constructors.
 
