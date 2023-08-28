@@ -1619,12 +1619,15 @@ fc_statements = [
         i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        name='f_in_char_**_buf',
-        mixin=["f_mixin_in_string_array_buf"],
-    ),
-    dict(
-        name='c_in_char_**_buf',
-        mixin=["c_mixin_in_string_array_buf"],
+        name='fc_in_char_**_buf',
+        mixin=[
+            "f_mixin_in_string_array_buf",
+            "c_mixin_in_string_array_buf"
+        ],
+        alias=[
+            'f_in_char_**_buf',
+            'c_in_char_**_buf',
+        ],
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         c_pre_call=[

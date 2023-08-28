@@ -134,7 +134,7 @@ root
           capi -- c_defaulttmp
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
-          buf -- c_in_char_**_buf
+          buf -- fc_in_char_**_buf
           cfi -- c_in_char_**_cfi
         scalar -- c_in_char_scalar
       native
@@ -539,7 +539,7 @@ root
           capi -- f_defaulttmp
           cfi -- f_defaulttmp
         **
-          buf -- f_in_char_**_buf
+          buf -- fc_in_char_**_buf
           cfi -- f_defaulttmp
         scalar -- f_in_char_scalar
       native
@@ -762,6 +762,9 @@ root
             result -- fc_function_char_*_buf_copy/result
     in
       bool -- fc_in_bool
+      char
+        **
+          buf -- fc_in_char_**_buf
     inout
       bool
         * -- fc_inout_bool_*
@@ -5850,6 +5853,7 @@ f_in_char_*:
   intent: in
   name: f_in_char_*
 f_in_char_**_buf:
+  c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -7054,6 +7058,41 @@ fc_in_bool:
   - cxx
   intent: in
   name: fc_in_bool
+  owner: library
+fc_in_char_**_buf:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
+  c_post_call:
+  - ShroudStrArrayFree({cxx_var}, {c_var_size});
+  c_pre_call:
+  - "char **{cxx_var} = ShroudStrArrayAlloc({c_var},\t {c_var_size},\t {c_var_len});"
+  c_temps:
+  - size
+  - len
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: in
+  name: fc_in_char_**_buf
   owner: library
 fc_inout_bool_*:
   f_arg_call:
