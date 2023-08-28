@@ -127,7 +127,7 @@ root
             allocatable -- c_getter_string_scalar_cdesc_allocatable
     in
       bool
-        scalar -- c_defaulttmp
+        scalar -- fc_in_bool
       char
         * -- c_defaulttmp
           buf -- c_in_char_*_buf
@@ -195,7 +195,7 @@ root
         scalar -- c_defaulttmp
     inout
       bool
-        * -- c_defaulttmp
+        * -- fc_inout_bool_*
       char
         * -- c_defaulttmp
           buf -- c_inout_char_*_buf
@@ -280,7 +280,7 @@ root
       shadow -- c_mixin_shadow
     out
       bool
-        * -- c_defaulttmp
+        * -- fc_out_bool_*
       char
         * -- c_defaulttmp
           buf -- c_out_char_*_buf
@@ -531,8 +531,8 @@ root
           cdesc
             allocatable -- f_getter_string_scalar_cdesc_allocatable
     in
-      bool -- f_in_bool
-        scalar -- f_in_bool
+      bool
+        scalar -- fc_in_bool
       char
         * -- f_defaulttmp
           buf -- f_in/out_char_*_buf
@@ -594,8 +594,8 @@ root
           cfi -- f_in/out/inout_void_**
         scalar -- f_defaulttmp
     inout
-      bool -- f_inout_bool
-        * -- f_inout_bool
+      bool
+        * -- fc_inout_bool_*
       char
         *
           buf -- f_inout_char_*_buf
@@ -662,14 +662,15 @@ root
         char
           array
             cdesc -- f_mixin_inout_char_array_cdesc
+      local-logical-var -- f_mixin_local-logical-var
       out
         array
           cdesc -- f_mixin_out_array_cdesc
       str
         array -- f_mixin_str_array
     out
-      bool -- f_out_bool
-        * -- f_out_bool
+      bool
+        * -- fc_out_bool_*
       char
         *
           buf -- f_in/out_char_*_buf
@@ -753,7 +754,14 @@ root
     tester1 -- f_tester1
     tester2 -- f_tester2
   fc
+    in
+      bool -- fc_in_bool
+    inout
+      bool
+        * -- fc_inout_bool_*
     out
+      bool
+        * -- fc_out_bool_*
       string
         **
           cdesc
@@ -5810,16 +5818,15 @@ f_getter_string_scalar_cdesc_allocatable:
   - cdesc
   intent: getter
   name: f_getter_string_scalar_cdesc_allocatable
-f_in_bool:
-  c_local_var: true
-  f_pre_call:
-  - '{c_var} = {f_var}  ! coerce to C_BOOL'
-  intent: in
-  name: f_in_bool
 f_in_bool_scalar:
-  c_local_var: true
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
   f_pre_call:
-  - '{c_var} = {f_var}  ! coerce to C_BOOL'
+  - '{c_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_temps:
+  - cxx
   intent: in
   name: f_in_bool_scalar
 f_in_char_*:
@@ -6115,20 +6122,17 @@ f_in_void_*_cdesc:
 f_in_void_scalar:
   intent: in
   name: f_in_void_scalar
-f_inout_bool:
-  c_local_var: true
-  f_post_call:
-  - '{f_var} = {c_var}  ! coerce to logical'
-  f_pre_call:
-  - '{c_var} = {f_var}  ! coerce to C_BOOL'
-  intent: inout
-  name: f_inout_bool
 f_inout_bool_*:
-  c_local_var: true
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
   f_post_call:
-  - '{f_var} = {c_var}  ! coerce to logical'
+  - '{f_var} = {c_var_cxx}  ! coerce to logical'
   f_pre_call:
-  - '{c_var} = {f_var}  ! coerce to C_BOOL'
+  - '{c_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_temps:
+  - cxx
   intent: inout
   name: f_inout_bool_*
 f_inout_char_*_buf:
@@ -6441,6 +6445,15 @@ f_mixin_inout_char_array_cdesc:
   - cdesc
   intent: mixin
   name: f_mixin_inout_char_array_cdesc
+f_mixin_local-logical-var:
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
+  f_temps:
+  - cxx
+  intent: mixin
+  name: f_mixin_local-logical-var
 f_mixin_out_array_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -6473,16 +6486,15 @@ f_mixin_str_array:
   - cdesc
   intent: mixin
   name: f_mixin_str_array
-f_out_bool:
-  c_local_var: true
-  f_post_call:
-  - '{f_var} = {c_var}  ! coerce to logical'
-  intent: out
-  name: f_out_bool
 f_out_bool_*:
-  c_local_var: true
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
   f_post_call:
-  - '{f_var} = {c_var}  ! coerce to logical'
+  - '{f_var} = {c_var_cxx}  ! coerce to logical'
+  f_temps:
+  - cxx
   intent: out
   name: f_out_bool_*
 f_out_char_*_buf:
@@ -6940,6 +6952,44 @@ f_tester1:
 f_tester2:
   intent: tester2
   name: f_tester2
+fc_in_bool:
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
+  f_pre_call:
+  - '{c_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_temps:
+  - cxx
+  intent: in
+  name: fc_in_bool
+  owner: library
+fc_inout_bool_*:
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
+  f_post_call:
+  - '{f_var} = {c_var_cxx}  ! coerce to logical'
+  f_pre_call:
+  - '{c_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_temps:
+  - cxx
+  intent: inout
+  name: fc_inout_bool_*
+  owner: library
+fc_out_bool_*:
+  f_arg_call:
+  - '{c_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {c_var_cxx}'
+  f_post_call:
+  - '{f_var} = {c_var_cxx}  ! coerce to logical'
+  f_temps:
+  - cxx
+  intent: out
+  name: fc_out_bool_*
+  owner: library
 fc_out_string_**_cdesc_allocatable:
   c_arg_call:
   - '&{cxx_var}'

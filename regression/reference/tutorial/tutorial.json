@@ -1228,6 +1228,7 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
+                            "c_var_cxx": "SHT_arg2_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -1286,7 +1287,7 @@
                     "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg1,\t SH_arg2",
+                    "F_arg_c_call": "arg1,\t SHT_arg2_cxx",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments_arg1_arg2",

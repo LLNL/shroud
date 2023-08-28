@@ -525,9 +525,9 @@ contains
         logical, value, intent(IN) :: arg2
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin function.use_default_arguments_arg1_arg2
-        logical(C_BOOL) SH_arg2
-        SH_arg2 = arg2  ! coerce to C_BOOL
-        SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
+        logical(C_BOOL) :: SHT_arg2_cxx
+        SHT_arg2_cxx = arg2  ! coerce to C_BOOL
+        SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SHT_arg2_cxx)
         ! splicer end function.use_default_arguments_arg1_arg2
     end function use_default_arguments_arg1_arg2
     ! end use_default_arguments_arg1_arg2

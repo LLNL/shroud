@@ -290,9 +290,9 @@ contains
         integer(C_INT), intent(OUT) :: out2
         logical, value, intent(IN) :: flag
         ! splicer begin function.default_args_in_out_1
-        logical(C_BOOL) SH_flag
-        SH_flag = flag  ! coerce to C_BOOL
-        call c_default_args_in_out_1(in1, out1, out2, SH_flag)
+        logical(C_BOOL) :: SHT_flag_cxx
+        SHT_flag_cxx = flag  ! coerce to C_BOOL
+        call c_default_args_in_out_1(in1, out1, out2, SHT_flag_cxx)
         ! splicer end function.default_args_in_out_1
     end subroutine default_args_in_out_1
 

@@ -1175,11 +1175,11 @@ contains
         type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.return_this_buffer
         integer(C_INT) SHT_name_len
-        logical(C_BOOL) SH_flag
+        logical(C_BOOL) :: SHT_flag_cxx
         SHT_name_len = len(name, kind=C_INT)
-        SH_flag = flag  ! coerce to C_BOOL
+        SHT_flag_cxx = flag  ! coerce to C_BOOL
         SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
-            name, SHT_name_len, SH_flag, SHT_rv%cxxmem)
+            name, SHT_name_len, SHT_flag_cxx, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer

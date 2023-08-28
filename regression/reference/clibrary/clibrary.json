@@ -864,6 +864,7 @@
                         "fmtf": {
                             "F_C_var": "arg1",
                             "c_var": "arg1",
+                            "c_var_cxx": "SHT_arg1_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -918,6 +919,7 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
+                            "c_var_cxx": "SHT_arg2_cxx",
                             "f_intent": "OUT",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -972,6 +974,7 @@
                         "fmtf": {
                             "F_C_var": "arg3",
                             "c_var": "arg3",
+                            "c_var_cxx": "SHT_arg3_cxx",
                             "f_intent": "INOUT",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -1016,7 +1019,7 @@
                     "F_C_call": "c_check_bool",
                     "F_C_name": "c_check_bool",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SH_arg1,\t SH_arg2,\t SH_arg3",
+                    "F_arg_c_call": "SHT_arg1_cxx,\t SHT_arg2_cxx,\t SHT_arg3_cxx",
                     "F_arguments": "arg1,\t arg2,\t arg3",
                     "F_name_api": "check_bool",
                     "F_name_function": "check_bool",
@@ -2921,6 +2924,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
+                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3229,6 +3233,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
+                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3497,6 +3502,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
+                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3669,6 +3675,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
+                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",

@@ -1010,14 +1010,14 @@ contains
         logical, intent(OUT) :: arg2
         logical, intent(INOUT) :: arg3
         ! splicer begin function.check_bool
-        logical(C_BOOL) SH_arg1
-        logical(C_BOOL) SH_arg2
-        logical(C_BOOL) SH_arg3
-        SH_arg1 = arg1  ! coerce to C_BOOL
-        SH_arg3 = arg3  ! coerce to C_BOOL
-        call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
-        arg2 = SH_arg2  ! coerce to logical
-        arg3 = SH_arg3  ! coerce to logical
+        logical(C_BOOL) :: SHT_arg1_cxx
+        logical(C_BOOL) :: SHT_arg2_cxx
+        logical(C_BOOL) :: SHT_arg3_cxx
+        SHT_arg1_cxx = arg1  ! coerce to C_BOOL
+        SHT_arg3_cxx = arg3  ! coerce to C_BOOL
+        call c_check_bool(SHT_arg1_cxx, SHT_arg2_cxx, SHT_arg3_cxx)
+        arg2 = SHT_arg2_cxx  ! coerce to logical
+        arg3 = SHT_arg3_cxx  ! coerce to logical
         ! splicer end function.check_bool
     end subroutine check_bool
     ! end check_bool

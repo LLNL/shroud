@@ -1004,9 +1004,9 @@ contains
         logical, value, intent(IN) :: arg
         logical :: SHT_rv
         ! splicer begin function.bool_func
-        logical(C_BOOL) SH_arg
-        SH_arg = arg  ! coerce to C_BOOL
-        SHT_rv = c_bool_func(SH_arg)
+        logical(C_BOOL) :: SHT_arg_cxx
+        SHT_arg_cxx = arg  ! coerce to C_BOOL
+        SHT_rv = c_bool_func(SHT_arg_cxx)
         ! splicer end function.bool_func
     end function bool_func
 

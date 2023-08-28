@@ -3849,6 +3849,7 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "c_var_cxx": "SHT_arg_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3893,7 +3894,7 @@
                     "F_C_name": "c_bool_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SH_arg",
+                    "F_arg_c_call": "SHT_arg_cxx",
                     "F_arguments": "arg",
                     "F_name_api": "bool_func",
                     "F_name_function": "bool_func",

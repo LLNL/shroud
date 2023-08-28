@@ -1250,6 +1250,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
+                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -1451,7 +1452,7 @@
                     "F_C_call": "c_default_args_in_out_1",
                     "F_C_name": "c_default_args_in_out_1",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "in1,\t out1,\t out2,\t SH_flag",
+                    "F_arg_c_call": "in1,\t out1,\t out2,\t SHT_flag_cxx",
                     "F_arguments": "in1,\t out1,\t out2,\t flag",
                     "F_name_api": "default_args_in_out",
                     "F_name_function": "default_args_in_out_1",

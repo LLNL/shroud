@@ -280,6 +280,8 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
         scope = util.Scope(default_scopes[steps[0]])
     if "mixin" in node:
         for mpart in node["mixin"]:
+            if mpart not in node_stmts:
+                raise RuntimeError("Unknown group in mixin: %s" % mpart)
             scope.update(node_stmts[mpart])
     scope.update(node)
     step["_stmts"] = scope
@@ -957,9 +959,6 @@ fc_statements = [
     dict(  # c_default
         name="c_defaulttmp",
         alias=[
-            "c_in_bool_scalar",
-            "c_out_bool_*",
-            "c_inout_bool_*",
             "c_in_native_scalar",
             "c_in_native_*",
             "c_in_native_&",
@@ -987,29 +986,42 @@ fc_statements = [
     ##########
     # bool
     dict(
-        name="f_in_bool",
+        name="f_mixin_local-logical-var",
+        f_temps=["cxx"],
+        f_declare=[
+            "logical(C_BOOL) :: {c_var_cxx}",
+        ],
+        f_arg_call=[
+            "{c_var_cxx}",
+        ],
+    ),
+    dict(
+        name="fc_in_bool",
+        mixin=["f_mixin_local-logical-var"],
         alias=[
             "f_in_bool_scalar",
+            "c_in_bool_scalar",
         ],
-        c_local_var=True,
-        f_pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
+        f_pre_call=["{c_var_cxx} = {f_var}  ! coerce to C_BOOL"],
     ),
     dict(
-        name="f_out_bool",
+        name="fc_out_bool_*",
+        mixin=["f_mixin_local-logical-var"],
         alias=[
             "f_out_bool_*",
+            "c_out_bool_*",
         ],
-        c_local_var=True,
-        f_post_call=["{f_var} = {c_var}  ! coerce to logical"],
+        f_post_call=["{f_var} = {c_var_cxx}  ! coerce to logical"],
     ),
     dict(
-        name="f_inout_bool",
+        name="fc_inout_bool_*",
+        mixin=["f_mixin_local-logical-var"],
         alias=[
             "f_inout_bool_*",
+            "c_inout_bool_*",
         ],
-        c_local_var=True,
-        f_pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
-        f_post_call=["{f_var} = {c_var}  ! coerce to logical"],
+        f_pre_call=["{c_var_cxx} = {f_var}  ! coerce to C_BOOL"],
+        f_post_call=["{f_var} = {c_var_cxx}  ! coerce to logical"],
     ),
     dict(
         name="f_function_bool",

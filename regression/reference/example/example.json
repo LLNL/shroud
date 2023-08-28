@@ -1805,6 +1805,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "in",
                                                     "c_var": "in",
+                                                    "c_var_cxx": "SHT_in_cxx",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_BOOL",
                                                     "f_type": "logical",
@@ -1863,7 +1864,7 @@
                                             "F_C_name": "c_ex_class1_has_addr",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SH_in",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_in_cxx",
                                             "F_arguments": "obj,\t in",
                                             "F_name_api": "has_addr",
                                             "F_name_function": "has_addr",

@@ -1431,9 +1431,9 @@ contains
         logical, value, intent(IN) :: in
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
-        logical(C_BOOL) SH_in
-        SH_in = in  ! coerce to C_BOOL
-        SHT_rv = c_ex_class1_has_addr(obj%cxxmem, SH_in)
+        logical(C_BOOL) :: SHT_in_cxx
+        SHT_in_cxx = in  ! coerce to C_BOOL
+        SHT_rv = c_ex_class1_has_addr(obj%cxxmem, SHT_in_cxx)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
     end function ex_class1_has_addr
 
