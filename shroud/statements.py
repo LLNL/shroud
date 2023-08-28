@@ -518,7 +518,6 @@ CStmts = util.Scope(
     iface_header=[],
     impl_header=[],
     c_helper="",
-    c_local_var=None,
     cxx_local_var=None,
     c_arg_call=[],
     c_pre_call=[],
@@ -552,7 +551,6 @@ FStmts = util.Scope(
     name="f_default",
     intent=None,
     c_helper="",
-    c_local_var=None,
     c_result_var=None,
     f_helper="",
     f_module=None,
@@ -1554,19 +1552,21 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
-        # f_function_char_*_buf_copy
-        # f_function_char_*_buf_result
-        name="f_function_char_*_buf_copy/result",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
-        # Copy result into caller's buffer.
         #  char *getname() +len(30)
-        # c_function_char_*_buf_copy
-        # c_function_char_*_buf_result
-        name="c_function_char_*_buf_copy/result",
+        # fc_function_char_*_buf_copy
+        # fc_function_char_*_buf_result
+        name="fc_function_char_*_buf_copy/result",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_function_char_*_buf_copy",
+            "f_function_char_*_buf_result",
+            "c_function_char_*_buf_copy",
+            "c_function_char_*_buf_result",
+        ],
         cxx_local_var="result",
-        mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
         c_post_call=[
             # nsrc=-1 will call strlen({cxx_var})

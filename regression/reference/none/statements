@@ -17,8 +17,8 @@ root
         * -- c_function_char_*
           allocatable -- c_function_char_*
           buf
-            copy -- c_function_char_*_buf_copy/result
-            result -- c_function_char_*_buf_copy/result
+            copy -- fc_function_char_*_buf_copy/result
+            result -- fc_function_char_*_buf_copy/result
           cdesc
             allocatable -- c_function_char_*_cdesc_allocatable/pointer
             pointer -- c_function_char_*_cdesc_allocatable/pointer
@@ -390,8 +390,8 @@ root
       char
         *
           buf
-            copy -- f_function_char_*_buf_copy/result
-            result -- f_function_char_*_buf_copy/result
+            copy -- fc_function_char_*_buf_copy/result
+            result -- fc_function_char_*_buf_copy/result
           cdesc
             allocatable -- f_function_char_scalar/*_cdesc_allocatable
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
@@ -754,6 +754,12 @@ root
     tester1 -- f_tester1
     tester2 -- f_tester2
   fc
+    function
+      char
+        *
+          buf
+            copy -- fc_function_char_*_buf_copy/result
+            result -- fc_function_char_*_buf_copy/result
     in
       bool -- fc_in_bool
     inout
@@ -4689,6 +4695,7 @@ f_function_bool_scalar:
   intent: function
   name: f_function_bool_scalar
 f_function_char_*_buf_copy:
+  c_helper: ShroudStrCopy
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -4705,6 +4712,7 @@ f_function_char_*_buf_copy:
   intent: function
   name: f_function_char_*_buf_copy
 f_function_char_*_buf_result:
+  c_helper: ShroudStrCopy
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -6961,6 +6969,80 @@ f_tester1:
 f_tester2:
   intent: tester2
   name: f_tester2
+fc_function_char_*_buf_copy:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_c_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  f_c_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: fc_function_char_*_buf_copy
+  owner: library
+fc_function_char_*_buf_result:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrCopy
+  c_post_call:
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_c_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  f_c_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: function
+  name: fc_function_char_*_buf_result
+  owner: library
 fc_in_bool:
   f_arg_call:
   - '{c_var_cxx}'
