@@ -154,7 +154,7 @@ def update_statements_for_language(language):
 
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
-#    process_mixin(fc_statements)
+    process_mixin(fc_statements, default_stmts)
     update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
 
 
@@ -188,7 +188,7 @@ def check_statements(stmts):
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
 
 
-def process_mixin(stmts):
+def process_mixin(stmts, defaults):
     """Expand alternates in name
     Such as in/out/inout
 
@@ -199,9 +199,21 @@ def process_mixin(stmts):
     stmtdict = {}
     for stmt in stmts:
         out = compute_all_permutations(stmt["name"])
-        print("XXXXX", stmt["name"])
+#        print("XXXXX", stmt["name"])
         for part in out:
-            print("X    ", "_".join(part))
+            name = "_".join(part)
+#            print("X    ", name)
+            lang = part[0]
+            node = {}
+            node.update(defaults[lang]._to_dict())
+            node.update(stmt)
+            node["name"] = name
+            stmtdict[name] = node
+            if "mixin" in stmt:
+                for mixin in stmt["mixin"]:
+                    if mixin not in stmtdict:
+                        raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
+                    node.update(stmtdict[mixin])
 
     
 def update_for_language(stmts, lang):
