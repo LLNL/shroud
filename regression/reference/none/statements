@@ -372,7 +372,7 @@ root
       void
         scalar -- c_subroutine
           capptr -- c_subroutine
-    tester1 -- c_tester1
+    test -- c_test
   f
     XXXin
       string
@@ -752,7 +752,7 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
-    tester2 -- f_tester2
+    test -- f_test
   fc
     function
       char
@@ -4659,13 +4659,13 @@ c_subroutine_void_scalar_capptr:
   intent: subroutine
   name: c_subroutine_void_scalar_capptr
   owner: library
-c_tester1:
-  intent: tester1
+c_test:
+  intent: test
   lang_c:
     field2:
     - this is a test
     - more test
-  name: c_tester1
+  name: c_test
   owner: library
 f_XXXin_string_scalar:
   f_arg_call:
@@ -7001,9 +7001,9 @@ f_setter_string_scalar_buf:
 f_subroutine:
   intent: subroutine
   name: f_subroutine
-f_tester2:
-  intent: tester2
-  name: f_tester2
+f_test:
+  intent: test
+  name: f_test
 fc_function_char_*_buf_copy:
   c_arg_decl:
   - char *{c_var}
@@ -7442,12 +7442,11 @@ fc_out_string_**_cdesc_allocatable:
   owner: library
 ***** Python
 root
-  base
-    py
-      ctor
-        array -- base_py_ctor_array
-          fill -- base_py_ctor_array_fill
   py
+    base
+      ctor
+        array -- py_base_ctor_array
+          fill -- py_base_ctor_array_fill
     ctor
       char
         * -- py_ctor_char_*
@@ -7608,12 +7607,12 @@ root
       void
         *& -- py_out_void_*&
         ** -- py_out_void_**
-base_py_ctor_array:
+py_base_ctor_array:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
-  intent: py
-  name: base_py_ctor_array
+  intent: base
+  name: py_base_ctor_array
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -7621,12 +7620,12 @@ base_py_ctor_array:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-base_py_ctor_array_fill:
+py_base_ctor_array_fill:
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
-  intent: py
-  name: base_py_ctor_array_fill
+  intent: base
+  name: py_base_ctor_array_fill
   parse_args:
   - '&{py_var}'
   parse_format: O

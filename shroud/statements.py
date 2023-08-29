@@ -154,6 +154,7 @@ def update_statements_for_language(language):
 
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
+#    process_mixin(fc_statements)
     update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
 
 
@@ -187,6 +188,22 @@ def check_statements(stmts):
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
 
 
+def process_mixin(stmts):
+    """Expand alternates in name
+    Such as in/out/inout
+
+    Add into dictionary.
+    Add as aliases
+    Add mixin into dictionary
+    """
+    stmtdict = {}
+    for stmt in stmts:
+        out = compute_all_permutations(stmt["name"])
+        print("XXXXX", stmt["name"])
+        for part in out:
+            print("X    ", "_".join(part))
+
+    
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
@@ -214,15 +231,31 @@ def update_for_language(stmts, lang):
             item.update(item[specific])
 
 
-def compute_stmt_permutations(out, parts):
+def compute_all_permutations(key):
     """Expand parts which have multiple values
 
     Ex: parts = 
       [['c'], ['in', 'out', 'inout'], ['native'], ['*'], ['cfi']]
-    Three entries will be appended to out:
+    Three entries will be returned:
       ['c', 'in', 'native', '*', 'cfi']
       ['c', 'out', 'native', '*', 'cfi']
       ['c', 'inout', 'native', '*', 'cfi']
+    """
+    steps = key.split("_")
+    substeps = []
+    for part in steps:
+        subparts = part.split("/")
+        substeps.append(subparts)
+
+    expanded = []
+    compute_stmt_permutations(expanded, substeps)
+    return expanded
+
+
+def compute_stmt_permutations(out, parts):
+    """Recursively expand permutations
+
+    ex: f_function_string_scalar/*/&_cfi_copy/result
 
     Parameters
     ----------
@@ -252,14 +285,7 @@ def add_statements_to_tree(key, tree, nodes, node_stmts, node):
     Key can have permutations separated by a slash.
         ex name="c_function_string_scalar/*/&_buf_copy/result"
     """
-    steps = key.split("_")
-    substeps = []
-    for part in steps:
-        subparts = part.split("/")
-        substeps.append(subparts)
-
-    expanded = []
-    compute_stmt_permutations(expanded, substeps)
+    expanded = compute_all_permutations(key)
 
     for namelst in expanded:
         name = "_".join(namelst)
