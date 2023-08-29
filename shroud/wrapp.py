@@ -3585,6 +3585,7 @@ def update_statements_for_language(language):
     language : str
         "c" or "c++"
     """
+    statements.check_statements(py_statements)
     statements.update_for_language(py_statements, language)
     statements.update_stmt_tree(py_statements, py_dict, py_tree, default_stmts)
     global default_scope
@@ -4868,7 +4869,7 @@ py_statements = [
     ########################################
     # ctor
     dict(
-        name="base_py_ctor_array",
+        name="py_base_ctor_array",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
@@ -4886,7 +4887,7 @@ py_statements = [
     dict(
         # Fill an array struct member.
         # helper is set by groups which use this as base.
-        name="base_py_ctor_array_fill",
+        name="py_base_ctor_array_fill",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             # Initialize to NULL since it is optional.
@@ -4917,28 +4918,28 @@ py_statements = [
     ),
     dict(
         name="py_ctor_native_[]",
-        base="base_py_ctor_array_fill",
+        base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
-        base="base_py_ctor_array",
+        base="py_base_ctor_array",
         c_helper="get_from_object_{c_type}_{PY_array_arg}",
     ),
     
     dict(
         name="py_ctor_char_[]",
-        base="base_py_ctor_array_fill",
+        base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_char",
     ),
     dict(
         name="py_ctor_char_*",
-        base="base_py_ctor_array",
+        base="py_base_ctor_array",
         c_helper="get_from_object_char",
     ),
     dict(
         name="py_ctor_char_**",
-        base="base_py_ctor_array",
+        base="py_base_ctor_array",
         c_helper="get_from_object_charptr",
         # Need explicit post_call to change cast to char **.
         post_call=[

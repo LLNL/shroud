@@ -151,14 +151,46 @@ def update_statements_for_language(language):
     """
     stmts = read_yaml_resource('fc-statements.yaml')
     fc_statements.extend(stmts)
-    
+
+    check_statements(fc_statements)
     update_for_language(fc_statements, language)
     update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
-    
+
+
+def check_statements(stmts):
+    """Check against a schema
+    """
+    for stmt in stmts:
+        # node is a dict.
+        if "name" not in stmt:
+            raise RuntimeError("Missing name in statements: {}".
+                               format(str(node)))
+        name = stmt["name"]
+        parts = name.split("_")
+        if len(parts) < 2:
+            raise RuntimeError("Statement name is too short")
+        lang = parts[0]
+        intent = parts[1]
+
+        if lang not in ["c", "f", "fc", "lua", "py"]:
+            raise RuntimeError("Statement does not start with a language code: %s" % name)
+
+        if intent not in [
+                "in", "out", "inout", "mixin",
+                "function", "subroutine",
+                "getter", "setter",
+                "ctor", "dtor",
+                "base", "descr",
+                "defaulttmp", "defaultstruct", "XXXin", "test",
+                "in/out/inout", "out/inout", "in/inout", "function/getter",
+        ]:
+            raise RuntimeError("Statement does not contain a valid intent: %s" % name)
+
 
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
+    lang is from YAML file, c or cxx.
 
     stmts=[
       dict(
@@ -340,11 +372,6 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
     # Index by name to find base, mixin.
     node_stmts = {} # Dict from fc_statements for 'mixin'.
     nodes.clear()   # Allow function to be called multiple times.
-    for node in stmts:
-        # node is a dict.
-        if "name" not in node:
-            raise RuntimeError("Missing name in statements: {}".
-                               format(str(node)))
 
     for node in stmts:
         add_statements_to_tree(node["name"], tree, nodes, node_stmts, node)

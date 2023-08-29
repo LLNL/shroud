@@ -918,6 +918,7 @@ def update_statements_for_language(language):
     language : str
         "c" or "c++"
     """
+    statements.check_statements(lua_statements)
     statements.update_for_language(lua_statements, language)
     statements.update_stmt_tree(lua_statements, lua_dict, lua_tree, default_stmts)
     global default_scope
