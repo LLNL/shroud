@@ -143,10 +143,10 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
-    passCharPtrInOut(SHCXX_s);
-    ShroudStrCopy(s, SHT_s_len, SHCXX_s, -1);
-    ShroudStrFree(SHCXX_s);
+    char * SHT_s_str = ShroudStrAlloc(s, SHT_s_len, 0);
+    passCharPtrInOut(SHT_s_str);
+    ShroudStrCopy(s, SHT_s_len, SHT_s_str, -1);
+    ShroudStrFree(SHT_s_str);
     // splicer end function.passCharPtrInOut_bufferify
 }
 

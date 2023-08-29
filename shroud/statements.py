@@ -241,6 +241,8 @@ def add_statements_to_tree(key, tree, nodes, node_stmts, node):
 def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     """Add node to tree.
 
+    Note: mixin are added first, then entries from node.
+
     Parameters
     ----------
     tree : dict
@@ -1504,50 +1506,63 @@ fc_statements = [
     dict(
         # NULL terminate the input string.
         # Skipped if ftrim_char_in, the terminate is done in Fortran.
-        name="c_in_char_*_buf",
-        mixin=["c_mixin_in_character_buf"],
-        cxx_local_var="pointer",
+        name="fc_in_char_*_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_in_char_*_buf",
+            "c_in_char_*_buf",
+        ],
+        c_temps=["len", "str"],
         c_helper="ShroudStrAlloc ShroudStrFree",
         c_pre_call=[
-            "char * {cxx_var} = ShroudStrAlloc(\t"
+            "char * {c_var_str} = ShroudStrAlloc(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
+        c_arg_call=["{c_var_str}"],
         c_post_call=[
-            "ShroudStrFree({cxx_var});"
+            "ShroudStrFree({c_var_str});"
         ],
     ),
     dict(
-        # f_in_char_*_buf
-        # f_out_char_*_buf
-        name="f_in/out_char_*_buf",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
-        name="c_out_char_*_buf",
-        mixin=["c_mixin_in_character_buf"],
+        name="fc_out_char_*_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_out_char_*_buf",
+            "c_out_char_*_buf",
+        ],
         c_helper="ShroudStrBlankFill",
         c_post_call=[
             "ShroudStrBlankFill({c_var}, {c_var_len});"
         ],
     ),
     dict(
-        name="f_inout_char_*_buf",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
-        name="c_inout_char_*_buf",
-        mixin=["c_mixin_in_character_buf"],
-        cxx_local_var="pointer",
+        name="fc_inout_char_*_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_inout_char_*_buf",
+            "c_inout_char_*_buf",
+        ],
+        c_temps=["len", "str"],
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
         c_pre_call=[
-            "char * {cxx_var} = ShroudStrAlloc(\t"
+            "char * {c_var_str} = ShroudStrAlloc(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
+        c_arg_call=["{c_var_str}"],
         c_post_call=[
-            # nsrc=-1 will call strlen({cxx_var})
+            # nsrc=-1 will call strlen({c_var_str})
             "ShroudStrCopy({c_var}, {c_var_len},"
-            "\t {cxx_var},\t -1);",
-            "ShroudStrFree({cxx_var});",
+            "\t {c_var_str},\t -1);",
+            "ShroudStrFree({c_var_str});",
         ],
     ),
     dict(

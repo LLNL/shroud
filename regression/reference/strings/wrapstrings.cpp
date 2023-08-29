@@ -273,10 +273,10 @@ void STR_passCharPtrInOut(char * s)
 void STR_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
-    passCharPtrInOut(SHCXX_s);
-    ShroudStrCopy(s, SHT_s_len, SHCXX_s, -1);
-    ShroudStrFree(SHCXX_s);
+    char * SHT_s_str = ShroudStrAlloc(s, SHT_s_len, 0);
+    passCharPtrInOut(SHT_s_str);
+    ShroudStrCopy(s, SHT_s_len, SHT_s_str, -1);
+    ShroudStrFree(SHT_s_str);
     // splicer end function.passCharPtrInOut_bufferify
 }
 
@@ -1656,10 +1656,10 @@ void STR_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
     int SHT_src_len)
 {
     // splicer begin function.CpassCharPtr_bufferify
-    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 1);
-    CpassCharPtr(dest, SHCXX_src);
+    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 1);
+    CpassCharPtr(dest, SHT_src_str);
     ShroudStrBlankFill(dest, SHT_dest_len);
-    ShroudStrFree(SHCXX_src);
+    ShroudStrFree(SHT_src_str);
     // splicer end function.CpassCharPtr_bufferify
 }
 
@@ -1706,10 +1706,10 @@ void STR_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrBlank_bufferify
-    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 1);
-    CpassCharPtrBlank(dest, SHCXX_src);
+    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 1);
+    CpassCharPtrBlank(dest, SHT_src_str);
     ShroudStrBlankFill(dest, SHT_dest_len);
-    ShroudStrFree(SHCXX_src);
+    ShroudStrFree(SHT_src_str);
     // splicer end function.CpassCharPtrBlank_bufferify
 }
 
@@ -1804,9 +1804,9 @@ int STR_CpassCharPtrNotrim(const char * src)
 int STR_CpassCharPtrNotrim_bufferify(char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrNotrim_bufferify
-    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 0);
-    int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
-    ShroudStrFree(SHCXX_src);
+    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 0);
+    int SHC_rv = CpassCharPtrNotrim(SHT_src_str);
+    ShroudStrFree(SHT_src_str);
     return SHC_rv;
     // splicer end function.CpassCharPtrNotrim_bufferify
 }

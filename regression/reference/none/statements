@@ -130,7 +130,7 @@ root
         scalar -- fc_in_bool
       char
         * -- c_defaulttmp
-          buf -- c_in_char_*_buf
+          buf -- fc_in_char_*_buf
           capi -- c_defaulttmp
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
@@ -198,7 +198,7 @@ root
         * -- fc_inout_bool_*
       char
         * -- c_defaulttmp
-          buf -- c_inout_char_*_buf
+          buf -- fc_inout_char_*_buf
           cfi -- c_inout_char_*_cfi
       native
         & -- c_defaulttmp
@@ -283,7 +283,7 @@ root
         * -- fc_out_bool_*
       char
         * -- c_defaulttmp
-          buf -- c_out_char_*_buf
+          buf -- fc_out_char_*_buf
           cfi -- c_out_char_*_cfi
       native
         & -- c_defaulttmp
@@ -535,7 +535,7 @@ root
         scalar -- fc_in_bool
       char
         * -- f_defaulttmp
-          buf -- f_in/out_char_*_buf
+          buf -- fc_in_char_*_buf
           capi -- f_defaulttmp
           cfi -- f_defaulttmp
         **
@@ -598,7 +598,7 @@ root
         * -- fc_inout_bool_*
       char
         *
-          buf -- f_inout_char_*_buf
+          buf -- fc_inout_char_*_buf
           cfi -- f_defaulttmp
       native
         & -- f_defaulttmp
@@ -673,7 +673,7 @@ root
         * -- fc_out_bool_*
       char
         *
-          buf -- f_in/out_char_*_buf
+          buf -- fc_out_char_*_buf
           cfi -- f_defaulttmp
       native
         & -- f_defaulttmp
@@ -763,14 +763,22 @@ root
     in
       bool -- fc_in_bool
       char
+        *
+          buf -- fc_in_char_*_buf
         **
           buf -- fc_in_char_**_buf
     inout
       bool
         * -- fc_inout_bool_*
+      char
+        *
+          buf -- fc_inout_char_*_buf
     out
       bool
         * -- fc_out_bool_*
+      char
+        *
+          buf -- fc_out_char_*_buf
       string
         **
           cdesc
@@ -2348,17 +2356,19 @@ c_in_char_**_cfi:
   name: c_in_char_**_cfi
   owner: library
 c_in_char_*_buf:
+  c_arg_call:
+  - '{c_var_str}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrAlloc ShroudStrFree
   c_post_call:
-  - ShroudStrFree({cxx_var});
+  - ShroudStrFree({c_var_str});
   c_pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_var_str} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_temps:
   - len
-  cxx_local_var: pointer
+  - str
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -3005,18 +3015,20 @@ c_inout_char_*:
   name: c_inout_char_*
   owner: library
 c_inout_char_*_buf:
+  c_arg_call:
+  - '{c_var_str}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   c_post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-  - ShroudStrFree({cxx_var});
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {c_var_str},\t -1);"
+  - ShroudStrFree({c_var_str});
   c_pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_var_str} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_temps:
   - len
-  cxx_local_var: pointer
+  - str
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -5869,6 +5881,7 @@ f_in_char_**_cfi:
   intent: in
   name: f_in_char_**_cfi
 f_in_char_*_buf:
+  c_helper: ShroudStrAlloc ShroudStrFree
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -6157,6 +6170,7 @@ f_inout_bool_*:
   intent: inout
   name: f_inout_bool_*
 f_inout_char_*_buf:
+  c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -6519,6 +6533,7 @@ f_out_bool_*:
   intent: out
   name: f_out_bool_*
 f_out_char_*_buf:
+  c_helper: ShroudStrBlankFill
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -7094,6 +7109,46 @@ fc_in_char_**_buf:
   intent: in
   name: fc_in_char_**_buf
   owner: library
+fc_in_char_*_buf:
+  c_arg_call:
+  - '{c_var_str}'
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrAlloc ShroudStrFree
+  c_post_call:
+  - ShroudStrFree({c_var_str});
+  c_pre_call:
+  - "char * {c_var_str} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  c_temps:
+  - len
+  - str
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: fc_in_char_*_buf
+  owner: library
 fc_inout_bool_*:
   f_arg_call:
   - '{c_var_cxx}'
@@ -7108,6 +7163,47 @@ fc_inout_bool_*:
   intent: inout
   name: fc_inout_bool_*
   owner: library
+fc_inout_char_*_buf:
+  c_arg_call:
+  - '{c_var_str}'
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
+  c_post_call:
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {c_var_str},\t -1);"
+  - ShroudStrFree({c_var_str});
+  c_pre_call:
+  - "char * {c_var_str} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  c_temps:
+  - len
+  - str
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: inout
+  name: fc_inout_char_*_buf
+  owner: library
 fc_out_bool_*:
   f_arg_call:
   - '{c_var_cxx}'
@@ -7119,6 +7215,41 @@ fc_out_bool_*:
   - cxx
   intent: out
   name: fc_out_bool_*
+  owner: library
+fc_out_char_*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrBlankFill
+  c_post_call:
+  - ShroudStrBlankFill({c_var}, {c_var_len});
+  c_temps:
+  - len
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: out
+  name: fc_out_char_*_buf
   owner: library
 fc_out_string_**_cdesc_allocatable:
   c_arg_call:
