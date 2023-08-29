@@ -455,10 +455,11 @@ def print_tree_statements(fp, statements, defaults):
                 continue
             if value[key]:
                 all[key] = value[key]
-        for key in ["lang_c", "lang_cxx"]:
-            val = value.get(key, None)
-            if val:
-                all[key] = val
+        if root != "f":
+            for key in ["lang_c", "lang_cxx"]:
+                val = value.get(key, None)
+                if val:
+                    all[key] = val
         complete[name] = all
     yaml.safe_dump(complete, fp)
             
@@ -1123,15 +1124,36 @@ fc_statements = [
 
     # Used with intent IN, INOUT, and OUT.
     dict(
-        # c_in_native_*_cdesc
-        # c_out_native_*_cdesc
-        # c_inout_native_*_cdesc
-        name="c_in/out/inout_native_*_cdesc",
-        mixin=["c_mixin_out_array_cdesc"],
-
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
+        name="fc_in/out/inout_native_*_cdesc",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_mixin_out_array_cdesc",
         ],
+        alias=[
+            "f_in_native_*_cdesc",
+            "f_out_native_*_cdesc",
+            "f_inout_native_*_cdesc",
+            "c_in_native_*_cdesc",
+            "c_out_native_*_cdesc",
+            "c_inout_native_*_cdesc",
+        ],
+
+        # TARGET required for argument to C_LOC.
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_helper="ShroudTypeDefines array_context",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        f_pre_call=[
+            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{c_var_cdesc}%type = {sh_type}",
+            "! {c_var_cdesc}%elem_len = C_SIZEOF()",
+#            "{c_var_cdesc}%size = size({f_var})",
+            "{c_var_cdesc}%size = {size}",
+            # Do not set shape for scalar via f_cdesc_shape
+            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+        ],
+
         i_arg_names=["{c_var_cdesc}"],
         i_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
@@ -1151,28 +1173,6 @@ fc_statements = [
                 "(const_cast<void *>({c_var_cdesc}->addr.base));",
             ],
         ),
-    ),
-    dict(
-        # f_in_native_*_cdesc
-        # f_out_native_*_cdesc
-        # f_inout_native_*_cdesc
-        name="f_in/out/inout_native_*_cdesc",
-        mixin=["f_mixin_out_array_cdesc"],
-        # TARGET required for argument to C_LOC.
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
-        ],
-        f_helper="ShroudTypeDefines array_context",
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        f_pre_call=[
-            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{c_var_cdesc}%type = {sh_type}",
-            "! {c_var_cdesc}%elem_len = C_SIZEOF()",
-#            "{c_var_cdesc}%size = size({f_var})",
-            "{c_var_cdesc}%size = {size}",
-            # Do not set shape for scalar via f_cdesc_shape
-            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
-        ],
     ),
 
     ########################################

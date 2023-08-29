@@ -140,7 +140,7 @@ root
       native
         & -- c_defaulttmp
         * -- c_defaulttmp
-          cdesc -- c_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
         ** -- c_in_native_**
         scalar -- c_defaulttmp
@@ -204,7 +204,7 @@ root
         & -- c_defaulttmp
           hidden -- c_out/inout_native_&_hidden
         * -- c_defaulttmp
-          cdesc -- c_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
           hidden -- c_out/inout_native_*_hidden
       shadow
@@ -290,7 +290,7 @@ root
           hidden -- c_out/inout_native_&_hidden
         &* -- c_defaulttmp
         * -- c_defaulttmp
-          cdesc -- c_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           hidden -- c_out/inout_native_*_hidden
         *&
           cdesc -- c_out_native_*&_cdesc
@@ -372,6 +372,7 @@ root
       void
         scalar -- c_subroutine
           capptr -- c_subroutine
+    tester1 -- c_tester1
   f
     XXXin
       string
@@ -545,7 +546,7 @@ root
       native
         & -- f_defaulttmp
         * -- f_defaulttmp
-          cdesc -- f_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- f_defaulttmp
         ** -- f_defaulttmp
         scalar -- f_defaulttmp
@@ -603,7 +604,7 @@ root
       native
         & -- f_defaulttmp
         * -- f_defaulttmp
-          cdesc -- f_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- f_defaulttmp
       shadow
         * -- f_defaultstruct
@@ -678,7 +679,7 @@ root
       native
         & -- f_defaulttmp
         * -- f_out_native_*
-          cdesc -- f_in/out/inout_native_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
           cfi
             allocatable -- f_out_native_*_cfi_allocatable
         *&
@@ -751,7 +752,6 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
-    tester1 -- f_tester1
     tester2 -- f_tester2
   fc
     function
@@ -767,18 +767,27 @@ root
           buf -- fc_in_char_*_buf
         **
           buf -- fc_in_char_**_buf
+      native
+        *
+          cdesc -- fc_in/out/inout_native_*_cdesc
     inout
       bool
         * -- fc_inout_bool_*
       char
         *
           buf -- fc_inout_char_*_buf
+      native
+        *
+          cdesc -- fc_in/out/inout_native_*_cdesc
     out
       bool
         * -- fc_out_bool_*
       char
         *
           buf -- fc_out_char_*_buf
+      native
+        *
+          cdesc -- fc_in/out/inout_native_*_cdesc
       string
         **
           cdesc
@@ -4650,6 +4659,14 @@ c_subroutine_void_scalar_capptr:
   intent: subroutine
   name: c_subroutine_void_scalar_capptr
   owner: library
+c_tester1:
+  intent: tester1
+  lang_c:
+    field2:
+    - this is a test
+    - more test
+  name: c_tester1
+  owner: library
 f_XXXin_string_scalar:
   f_arg_call:
   - '{f_var}'
@@ -5918,6 +5935,7 @@ f_in_native_**:
   intent: in
   name: f_in_native_**
 f_in_native_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6133,6 +6151,7 @@ f_in_void_**_cfi:
   intent: in
   name: f_in_void_**_cfi
 f_in_void_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6196,6 +6215,7 @@ f_inout_native_*:
   intent: inout
   name: f_inout_native_*
 f_inout_native_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6352,6 +6372,7 @@ f_inout_void_**:
   intent: inout
   name: f_inout_void_**
 f_inout_void_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6652,6 +6673,7 @@ f_out_native_**_raw:
   intent: out
   name: f_out_native_**_raw
 f_out_native_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6921,6 +6943,7 @@ f_out_void_**:
   intent: out
   name: f_out_void_**
 f_out_void_*_cdesc:
+  c_helper: array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6978,13 +7001,6 @@ f_setter_string_scalar_buf:
 f_subroutine:
   intent: subroutine
   name: f_subroutine
-f_tester1:
-  intent: tester1
-  lang_c:
-    field2:
-    - this is a test
-    - more test
-  name: f_tester1
 f_tester2:
   intent: tester2
   name: f_tester2
@@ -7149,6 +7165,47 @@ fc_in_char_*_buf:
   intent: in
   name: fc_in_char_*_buf
   owner: library
+fc_in_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_context
+  c_pre_call:
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_pre_call:
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = {sh_type}'
+  - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
+  - '{c_var_cdesc}%size = {size}'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: in
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    c_pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  name: fc_in_native_*_cdesc
+  owner: library
 fc_inout_bool_*:
   f_arg_call:
   - '{c_var_cxx}'
@@ -7204,6 +7261,47 @@ fc_inout_char_*_buf:
   intent: inout
   name: fc_inout_char_*_buf
   owner: library
+fc_inout_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_context
+  c_pre_call:
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_pre_call:
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = {sh_type}'
+  - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
+  - '{c_var_cdesc}%size = {size}'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: inout
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    c_pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  name: fc_inout_native_*_cdesc
+  owner: library
 fc_out_bool_*:
   f_arg_call:
   - '{c_var_cxx}'
@@ -7250,6 +7348,47 @@ fc_out_char_*_buf:
     - C_INT
   intent: out
   name: fc_out_char_*_buf
+  owner: library
+fc_out_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_context
+  c_pre_call:
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: ShroudTypeDefines array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_pre_call:
+  - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{c_var_cdesc}%type = {sh_type}'
+  - '! {c_var_cdesc}%elem_len = C_SIZEOF()'
+  - '{c_var_cdesc}%size = {size}'
+  - '{c_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+  lang_cxx:
+    c_pre_call:
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  name: fc_out_native_*_cdesc
   owner: library
 fc_out_string_**_cdesc_allocatable:
   c_arg_call:
