@@ -3587,6 +3587,7 @@ def update_statements_for_language(language):
     """
     statements.check_statements(py_statements)
     statements.update_for_language(py_statements, language)
+    full_dict = statements.process_mixin(py_statements, default_stmts)
     statements.update_stmt_tree(py_statements, py_dict, py_tree, default_stmts)
     global default_scope
     default_scope = statements.default_scopes["py"]
@@ -3635,7 +3636,6 @@ PyStmts = util.Scope(
 
 default_stmts = dict(
     py=PyStmts,
-    base=PyStmts,
 )
 
 # put into list to avoid duplicating text below

@@ -154,7 +154,7 @@ def update_statements_for_language(language):
 
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
-    process_mixin(fc_statements, default_stmts)
+    full_dict = process_mixin(fc_statements, default_stmts)
     update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
 
 
@@ -189,8 +189,9 @@ def check_statements(stmts):
 
 
 def process_mixin(stmts, defaults):
-    """Expand alternates in name
-    Such as in/out/inout
+    """Return a dictionary of all statements
+    names and aliases will be expanded (ex in/out/inout)
+    Each dictionary will have a unique name.
 
     Add into dictionary.
     Add as aliases
@@ -198,22 +199,55 @@ def process_mixin(stmts, defaults):
     """
     stmtdict = {}
     for stmt in stmts:
-        out = compute_all_permutations(stmt["name"])
-#        print("XXXXX", stmt["name"])
-        for part in out:
-            name = "_".join(part)
-#            print("X    ", name)
-            lang = part[0]
-            node = {}
-            node.update(defaults[lang]._to_dict())
-            node.update(stmt)
-            node["name"] = name
+        name = stmt["name"]
+        lang = name.split("_",1)[0]
+        node = {}
+        node.update(defaults[lang]._to_dict())
+        #base
+        if "mixin" in stmt:
+            for mixin in stmt["mixin"]:
+                if mixin not in stmtdict:
+                    raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
+                node.update(stmtdict[mixin])
+        node.update(stmt)
+        
+        # split into language groups
+        lparts = {}
+        
+#        print("XXXXX", name)
+        out = compute_all_permutations(name)
+        if len(out) == 1:
+            if name in stmtdict:
+                raise RuntimeError("process_mixin: key already exists {}".format(name))
             stmtdict[name] = node
-            if "mixin" in stmt:
-                for mixin in stmt["mixin"]:
-                    if mixin not in stmtdict:
-                        raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
-                    node.update(stmtdict[mixin])
+        else:
+            for part in out:
+                aname = "_".join(part)
+#                print("X    ", aname)
+                anode = node.copy()
+                anode["name"] = aname
+                if aname in stmtdict:
+                    raise RuntimeError("process_mixin: key already exists {}".format(aname))
+                stmtdict[aname] = anode
+                lparts[part[0]] = True
+
+        # Sanity check. Otherwise defaults[lang] would be wrong.
+        if len(lparts) > 1:
+            raise RuntimeError("Only one language per group")
+            
+        if "alias" in stmt:
+            for alias in stmt["alias"]:
+#                print("YYYY ", alias)
+                aout = compute_all_permutations(alias)
+                for apart in aout:
+                    aname = "_".join(apart)
+                    anode = node.copy()
+                    if aname in stmtdict:
+                        raise RuntimeError("process_mixin: key already exists {}".format(aname))
+                    anode["name"] = aname
+                    stmtdict[aname] = anode
+#                    print("Y    ", aname)
+    return stmtdict
 
     
 def update_for_language(stmts, lang):

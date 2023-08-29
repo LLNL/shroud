@@ -920,6 +920,7 @@ def update_statements_for_language(language):
     """
     statements.check_statements(lua_statements)
     statements.update_for_language(lua_statements, language)
+    full_dict = statements.process_mixin(lua_statements, default_stmts)
     statements.update_stmt_tree(lua_statements, lua_dict, lua_tree, default_stmts)
     global default_scope
     default_scope = statements.default_scopes["lua"]
