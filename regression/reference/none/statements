@@ -189,7 +189,7 @@ root
                 scalar -- c_in_vector_scalar/*/&_buf_targ_string_scalar
       void
         * -- c_defaulttmp
-          cdesc -- c_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         ** -- c_in/out/inout_void_**
           cfi -- c_in/out/inout_void_**
         scalar -- c_defaulttmp
@@ -241,7 +241,7 @@ root
               scalar -- c_inout_vector_cdesc_targ_native_scalar
       void
         *
-          cdesc -- c_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         ** -- c_in/out/inout_void_**
     mixin
       arg
@@ -355,7 +355,7 @@ root
               scalar -- c_out_vector_buf_targ_string_scalar
       void
         *
-          cdesc -- c_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         *& -- c_defaulttmp
         ** -- c_in/out/inout_void_**
     setter -- c_setter
@@ -590,7 +590,7 @@ root
               scalar -- f_in_vector_buf_targ_native_scalar
       void
         * -- f_in_void_*
-          cdesc -- f_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
           cfi -- f_in/out/inout_void_**
         scalar -- f_defaulttmp
@@ -638,7 +638,7 @@ root
               scalar -- f_inout_vector_cdesc_targ_native_scalar
       void
         *
-          cdesc -- f_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
     mixin
       function
@@ -741,7 +741,7 @@ root
               scalar -- f_out_vector_buf_targ_string_scalar
       void
         *
-          cdesc -- f_in/out/inout_void_*_cdesc
+          cdesc -- fc_in/out/inout_native_*_cdesc
         *& -- f_defaulttmp
         ** -- f_in/out/inout_void_**
     setter -- f_setter

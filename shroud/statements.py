@@ -24,6 +24,8 @@ except ImportError:
 
 from . import util
 
+from collections import OrderedDict
+
 # The tree of c and fortran statements.
 cf_tree = {}
 fc_dict = {} # dictionary of Scope of all expanded fc_statements.
@@ -155,7 +157,7 @@ def update_statements_for_language(language):
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
     full_dict = process_mixin(fc_statements, default_stmts)
-    update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
+    update_stmt_tree(full_dict, fc_dict, cf_tree, default_stmts)
 
 
 def check_statements(stmts):
@@ -196,57 +198,87 @@ def process_mixin(stmts, defaults):
     Add into dictionary.
     Add as aliases
     Add mixin into dictionary
+
+    alias=[
+        "c_function_native_*_allocatable/raw",
+        "c_function_native_*/&/**_pointer",
+    ],
     """
-    stmtdict = {}
+    # Convert Scope to dict
+    ddefaults = {}
+    for key, node in defaults.items():
+        ddefaults[key] = node._to_dict()
+
+    # Apply base and mixin
+    # This allows mixins to propagate
+    # i.e. you can mixin a group which itself has a mixin.
+    # Save by name permutations into mixins  (in/out/inout)
+    mixins = OrderedDict()
+    aliases = []
     for stmt in stmts:
         name = stmt["name"]
-        lang = name.split("_",1)[0]
+#        print("XXXXX", name)
         node = {}
-        node.update(defaults[lang]._to_dict())
-        #base
+        if "base" in stmt:
+            base = stmt["base"]
+            if base not in mixins:
+                raise RuntimeError("Base {} not found for {}".format(base, name))
+            node.update(mixins[base])
         if "mixin" in stmt:
             for mixin in stmt["mixin"]:
-                if mixin not in stmtdict:
+                ### compute mixin permutations
+                if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
-                node.update(stmtdict[mixin])
+#                print("M    ", mixin)
+                node.update(mixins[mixin])
         node.update(stmt)
-        
-        # split into language groups
-        lparts = {}
-        
-#        print("XXXXX", name)
+        node["orig"] = name
         out = compute_all_permutations(name)
         if len(out) == 1:
-            if name in stmtdict:
+            if name in mixins:
                 raise RuntimeError("process_mixin: key already exists {}".format(name))
-            stmtdict[name] = node
+            node["name"] = name
+            mixins[name] = node
         else:
+            lparts = {}  # count language parts
             for part in out:
                 aname = "_".join(part)
 #                print("X    ", aname)
                 anode = node.copy()
                 anode["name"] = aname
+                if aname in mixins:
+                    raise RuntimeError("process_mixin: key already exists {}".format(aname))
+                mixins[aname] = anode
+                lparts[part[0]] = True
+            # Sanity check. Otherwise defaults[lang] would be wrong.
+            if len(lparts) > 1:
+                raise RuntimeError("Only one language per group")
+
+        if "alias" in stmt:
+            aliases.append((node, stmt["alias"]))
+
+    # Apply defaults.
+    stmtdict = OrderedDict()
+    for stmt in mixins.values():
+        name = stmt["name"]
+        lang = name.split("_",1)[0]
+        node = ddefaults[lang].copy()
+        node.update(stmt)
+        stmtdict[name] = node
+
+    # Install with alias name.
+    for node, aliases in aliases:
+        for alias in aliases:
+#            print("AAAA ", alias)
+            aout = compute_all_permutations(alias)
+            for apart in aout:
+                aname = "_".join(apart)
+                anode = node.copy()
                 if aname in stmtdict:
                     raise RuntimeError("process_mixin: key already exists {}".format(aname))
+                anode["name"] = aname
                 stmtdict[aname] = anode
-                lparts[part[0]] = True
-
-        # Sanity check. Otherwise defaults[lang] would be wrong.
-        if len(lparts) > 1:
-            raise RuntimeError("Only one language per group")
-            
-        if "alias" in stmt:
-            for alias in stmt["alias"]:
-#                print("YYYY ", alias)
-                aout = compute_all_permutations(alias)
-                for apart in aout:
-                    aname = "_".join(apart)
-                    anode = node.copy()
-                    if aname in stmtdict:
-                        raise RuntimeError("process_mixin: key already exists {}".format(aname))
-                    anode["name"] = aname
-                    stmtdict[aname] = anode
-#                    print("Y    ", aname)
+#                print("A    ", aname)
     return stmtdict
 
     
@@ -325,7 +357,7 @@ def compute_stmt_permutations(out, parts):
         out.append(tmp)
 
 
-def add_statements_to_tree(key, tree, nodes, node_stmts, node):
+def add_statements_to_tree(key, tree, nodes, node):
     """Add statement for key.
 
     Key can have permutations separated by a slash.
@@ -338,11 +370,11 @@ def add_statements_to_tree(key, tree, nodes, node_stmts, node):
         if name in nodes:
             raise RuntimeError("Duplicate key in statements: {}".
                                format(name))
-        stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
+        stmt = add_statement_to_tree(tree, nodes, node, namelst)
         stmt.intent = namelst[1]
 
 
-def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
+def add_statement_to_tree(tree, nodes, node, steps):
     """Add node to tree.
 
     Note: mixin are added first, then entries from node.
@@ -353,8 +385,6 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
         The accumulated tree.
     nodes : dict
         Scopes indexed by name to implement 'base'.
-    node_stmts : dict
-        nodes indexed by name to implement 'mixin'.
     node : dict
         A 'statements' dict from fc_statement to add.
     steps : list of str
@@ -366,24 +396,14 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
         step = step.setdefault(part, {})
         label.append(part)
         step["_key"] = "_".join(label)
-    if "base" in node:
-        step['_node'] = node
-        scope = util.Scope(nodes[node["base"]])
-    else:
-        step['_node'] = node
-        scope = util.Scope(default_scopes[steps[0]])
-    if "mixin" in node:
-        for mpart in node["mixin"]:
-            if mpart not in node_stmts:
-                raise RuntimeError("Unknown group in mixin: %s" % mpart)
-            scope.update(node_stmts[mpart])
+    step['_node'] = node
+    scope = util.Scope(default_scopes[steps[0]])
     scope.update(node)
     step["_stmts"] = scope
     name = step["_key"]
     # Name scope using variant name (ex in/out/inout).
     scope.name = name
     nodes[name] = scope
-    node_stmts[name] = node
     return scope
 
         
@@ -423,12 +443,6 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
       },
     }
 
-    alias=[
-        "c_function_native_*_allocatable/raw",
-        "c_function_native_*/&/**_pointer",
-    ],
-
-
     Parameters
     ----------
     stmts : dict
@@ -441,16 +455,11 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
     for key, node in defaults.items():
         default_scopes[key] = node
 
-    # Index by name to find base, mixin.
-    node_stmts = {} # Dict from fc_statements for 'mixin'.
+    # Index by name to find base
     nodes.clear()   # Allow function to be called multiple times.
 
-    for node in stmts:
-        add_statements_to_tree(node["name"], tree, nodes, node_stmts, node)
-
-        if "alias" in node:
-            for alias in node["alias"]:
-                add_statements_to_tree(alias, tree, nodes, node_stmts, node)
+    for node in stmts.values():
+        add_statements_to_tree(node["name"], tree, nodes, node)
 
         # check for consistency
         if key[0] == "c":
@@ -509,7 +518,7 @@ def print_tree_index(tree, lines, indent=""):
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        origname = tree["_node"]["name"]
+        origname = tree["_node"]["orig"]
         lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
     else:
         lines.append("{}{}\n".format(indent, parts[-1]))
@@ -559,6 +568,10 @@ def print_tree_statements(fp, statements, defaults):
                 val = value.get(key, None)
                 if val:
                     all[key] = val
+#        for key in ["orig"]:
+#            val = value.get(key, None)
+#            if val:
+#                all[key] = val
         complete[name] = all
     yaml.safe_dump(complete, fp)
             
@@ -1235,6 +1248,13 @@ fc_statements = [
             "c_in_native_*_cdesc",
             "c_out_native_*_cdesc",
             "c_inout_native_*_cdesc",
+
+            "c_in_void_*_cdesc",
+            "c_out_void_*_cdesc",
+            "c_inout_void_*_cdesc",
+            "f_in_void_*_cdesc",
+            "f_out_void_*_cdesc",
+            "f_inout_void_*_cdesc",
         ],
 
         # TARGET required for argument to C_LOC.
@@ -1314,17 +1334,6 @@ fc_statements = [
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
-    ),
-    dict(
-        # c_in_void_*_cdesc
-        # c_out_void_*_cdesc
-        # c_inout_void_*_cdesc
-        name="c_in/out/inout_void_*_cdesc",
-        base="c_in_native_*_cdesc",
-    ),
-    dict(
-        name="f_in/out/inout_void_*_cdesc",
-        base="f_in_native_*_cdesc",
     ),
 
     ########################################
