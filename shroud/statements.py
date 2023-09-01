@@ -161,6 +161,8 @@ def update_statements_for_language(language):
 
 def check_statements(stmts):
     """Check against a schema
+
+    Checked against the raw input. Before any base or mixin.
     """
     for stmt in stmts:
         # node is a dict.
@@ -187,6 +189,46 @@ def check_statements(stmts):
                 "in/out/inout", "out/inout", "in/inout", "function/getter",
         ]:
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
+
+
+def post_mixin_check_statement(name, stmt):
+    """check for consistency.
+    Called after mixin are applied.
+    This makes it easer to a group to change one of
+    c_arg_decl, i_arg_decl, i_arg_names.
+    """
+    parts = name.split("_")
+    lang = parts[1]
+    
+    if lang in ["c", "fc"]:
+        c_arg_decl = stmt.get("c_arg_decl", None)
+        i_arg_decl = stmt.get("i_arg_decl", None)
+        i_arg_names = stmt.get("i_arg_names", None)
+        if (c_arg_decl is not None or
+            i_arg_decl is not None or
+            i_arg_names is not None):
+            err = False
+            for field in ["c_arg_decl", "i_arg_decl", "i_arg_names"]:
+                fvalue = stmt.get(field)
+                if fvalue is None:
+                    err = True
+                    print("Missing", field, "in", name)
+                elif not isinstance(fvalue, list):
+                    err = True
+                    print(field, "must be a list in", name)
+            if (c_arg_decl is None or
+                i_arg_decl is None or
+                i_arg_names is None):
+                print("c_arg_decl, i_arg_decl and i_arg_names must all exist")
+                import pdb;pdb.set_trace()
+                err = True
+            if err:
+                raise RuntimeError("Error with fields")
+            length = len(c_arg_decl)
+            if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):
+                raise RuntimeError(
+                    "c_arg_decl, i_arg_decl and i_arg_names "
+                    "must all be same length in {}".format(name))
 
 
 def process_mixin(stmts, defaults, stmtdict):
@@ -225,6 +267,7 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 node.update(mixins[mixin])
+        post_mixin_check_statement(name, node)
         node.update(stmt)
         node["orig"] = name
         out = compute_all_permutations(name)
@@ -421,33 +464,6 @@ def update_stmt_tree(stmts, tree):
     for node in stmts.values():
         add_statement_to_tree(tree, node)
 
-        # check for consistency
-        if "f" == "c":
-            if (stmt.c_arg_decl is not None or
-                stmt.i_arg_decl is not None or
-                stmt.i_arg_names is not None):
-                err = False
-                for field in ["c_arg_decl", "i_arg_decl", "i_arg_names"]:
-                    fvalue = stmt.get(field)
-                    if fvalue is None:
-                        err = True
-                        print("Missing", field, "in", node["name"])
-                    elif not isinstance(fvalue, list):
-                        err = True
-                        print(field, "must be a list in", node["name"])
-                if (stmt.c_arg_decl is None or
-                    stmt.i_arg_decl is None or
-                    stmt.i_arg_names is None):
-                    print("c_arg_decl, i_arg_decl and i_arg_names must all exist")
-                    err = True
-                if err:
-                    raise RuntimeError("Error with fields")
-                length = len(stmt.c_arg_decl)
-                if any(len(lst) != length for lst in [stmt.i_arg_decl, stmt.i_arg_names]):
-                    raise RuntimeError(
-                        "c_arg_decl, i_arg_decl and i_arg_names "
-                        "must all be same length in {}".format(node["name"]))
-            
 
 def write_cf_tree(fp):
     """Write out statements tree.
@@ -1233,11 +1249,6 @@ fc_statements = [
             "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
 
-        i_arg_names=["{c_var_cdesc}"],
-        i_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
-        ],
-        
 #        c_helper="ShroudTypeDefines",
         lang_c=dict(
             c_pre_call=[
