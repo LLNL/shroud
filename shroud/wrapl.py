@@ -15,6 +15,7 @@ from . import typemap
 from . import util
 from .util import wformat, append_format
 
+from collections import OrderedDict
 
 class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.
@@ -904,7 +905,7 @@ LuaHelpers = dict(
 
 # The tree of Python Scope statements.
 lua_tree = {}
-lua_dict = {} # dictionary of Scope of all expanded lua_statements,
+lua_dict = OrderedDict() # dictionary of Scope of all expanded lua_statements,
 default_scope = None  # for statements
 
 def update_statements_for_language(language):
@@ -920,10 +921,10 @@ def update_statements_for_language(language):
     """
     statements.check_statements(lua_statements)
     statements.update_for_language(lua_statements, language)
-    full_dict = statements.process_mixin(lua_statements, default_stmts)
-    statements.update_stmt_tree(full_dict, lua_dict, lua_tree, default_stmts)
+    statements.process_mixin(lua_statements, default_stmts, lua_dict)
+    statements.update_stmt_tree(lua_dict, lua_tree)
     global default_scope
-    default_scope = statements.default_scopes["lua"]
+    default_scope = default_stmts["lua"]
 
 
 def write_stmts_tree(fp):

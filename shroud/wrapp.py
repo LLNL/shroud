@@ -45,9 +45,11 @@ from . import util
 from . import whelpers
 from .util import wformat, append_format, append_format_lst
 
+from collections import OrderedDict
+
 # The tree of Python Scope statements.
 py_tree = {}
-py_dict = {} # dictionary of Scope of all expanded py_statements.
+py_dict = OrderedDict() # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
 # If multiple values are returned, save up into to build a tuple to return.
@@ -3587,10 +3589,10 @@ def update_statements_for_language(language):
     """
     statements.check_statements(py_statements)
     statements.update_for_language(py_statements, language)
-    full_dict = statements.process_mixin(py_statements, default_stmts)
-    statements.update_stmt_tree(full_dict, py_dict, py_tree, default_stmts)
+    statements.process_mixin(py_statements, default_stmts, py_dict)
+    statements.update_stmt_tree(py_dict, py_tree)
     global default_scope
-    default_scope = statements.default_scopes["py"]
+    default_scope = default_stmts["py"]
 
 
 def write_stmts_tree(fp):

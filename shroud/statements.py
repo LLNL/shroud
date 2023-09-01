@@ -28,8 +28,7 @@ from collections import OrderedDict
 
 # The tree of c and fortran statements.
 cf_tree = {}
-fc_dict = {} # dictionary of Scope of all expanded fc_statements.
-default_scopes = dict()
+fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
@@ -156,8 +155,8 @@ def update_statements_for_language(language):
 
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
-    full_dict = process_mixin(fc_statements, default_stmts)
-    update_stmt_tree(full_dict, fc_dict, cf_tree, default_stmts)
+    process_mixin(fc_statements, default_stmts, fc_dict)
+    update_stmt_tree(fc_dict, cf_tree)
 
 
 def check_statements(stmts):
@@ -190,7 +189,7 @@ def check_statements(stmts):
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
 
 
-def process_mixin(stmts, defaults):
+def process_mixin(stmts, defaults, stmtdict):
     """Return a dictionary of all statements
     names and aliases will be expanded (ex in/out/inout)
     Each dictionary will have a unique name.
@@ -204,11 +203,6 @@ def process_mixin(stmts, defaults):
         "c_function_native_*/&/**_pointer",
     ],
     """
-    # Convert Scope to dict
-    ddefaults = {}
-    for key, node in defaults.items():
-        ddefaults[key] = node._to_dict()
-
     # Apply base and mixin
     # This allows mixins to propagate
     # i.e. you can mixin a group which itself has a mixin.
@@ -234,6 +228,7 @@ def process_mixin(stmts, defaults):
         node.update(stmt)
         node["orig"] = name
         out = compute_all_permutations(name)
+        firstname = "_".join(out[0])
         if len(out) == 1:
             if name in mixins:
                 raise RuntimeError("process_mixin: key already exists {}".format(name))
@@ -255,31 +250,34 @@ def process_mixin(stmts, defaults):
                 raise RuntimeError("Only one language per group")
 
         if "alias" in stmt:
-            aliases.append((node, stmt["alias"]))
+            aliases.append((firstname, stmt["alias"]))
 
     # Apply defaults.
-    stmtdict = OrderedDict()
     for stmt in mixins.values():
         name = stmt["name"]
-        lang = name.split("_",1)[0]
-        node = ddefaults[lang].copy()
+        parts = name.split("_",2)
+        lang = parts[0]
+        intent = parts[1]
+        node = util.Scope(defaults[lang])
         node.update(stmt)
+        node.intent = intent
         stmtdict[name] = node
 
     # Install with alias name.
-    for node, aliases in aliases:
+    for name, aliases in aliases:
+        node = stmtdict[name]
         for alias in aliases:
 #            print("AAAA ", alias)
             aout = compute_all_permutations(alias)
             for apart in aout:
                 aname = "_".join(apart)
-                anode = node.copy()
+                anode = util.Scope(node)
                 if aname in stmtdict:
                     raise RuntimeError("process_mixin: key already exists {}".format(aname))
-                anode["name"] = aname
+                anode.name = aname
+                anode.intent = apart[1]
                 stmtdict[aname] = anode
 #                print("A    ", aname)
-    return stmtdict
 
     
 def update_for_language(stmts, lang):
@@ -357,24 +355,7 @@ def compute_stmt_permutations(out, parts):
         out.append(tmp)
 
 
-def add_statements_to_tree(key, tree, nodes, node):
-    """Add statement for key.
-
-    Key can have permutations separated by a slash.
-        ex name="c_function_string_scalar/*/&_buf_copy/result"
-    """
-    expanded = compute_all_permutations(key)
-
-    for namelst in expanded:
-        name = "_".join(namelst)
-        if name in nodes:
-            raise RuntimeError("Duplicate key in statements: {}".
-                               format(name))
-        stmt = add_statement_to_tree(tree, nodes, node, namelst)
-        stmt.intent = namelst[1]
-
-
-def add_statement_to_tree(tree, nodes, node, steps):
+def add_statement_to_tree(tree, node):
     """Add node to tree.
 
     Note: mixin are added first, then entries from node.
@@ -383,13 +364,10 @@ def add_statement_to_tree(tree, nodes, node, steps):
     ----------
     tree : dict
         The accumulated tree.
-    nodes : dict
-        Scopes indexed by name to implement 'base'.
     node : dict
         A 'statements' dict from fc_statement to add.
-    steps : list of str
-        ['c', 'native', '*', 'in', 'cfi']
     """
+    steps = node["name"].split("_")
     step = tree
     label = []
     for part in steps:
@@ -397,17 +375,9 @@ def add_statement_to_tree(tree, nodes, node, steps):
         label.append(part)
         step["_key"] = "_".join(label)
     step['_node'] = node
-    scope = util.Scope(default_scopes[steps[0]])
-    scope.update(node)
-    step["_stmts"] = scope
-    name = step["_key"]
-    # Name scope using variant name (ex in/out/inout).
-    scope.name = name
-    nodes[name] = scope
-    return scope
 
         
-def update_stmt_tree(stmts, nodes, tree, defaults):
+def update_stmt_tree(stmts, tree):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
     the values from stmts.  The end key is named _node, since it is
@@ -446,23 +416,13 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
     Parameters
     ----------
     stmts : dict
-    nodes : dict
-        Created Scope members for 'base'.
     tree : dict
-    defaults: dict
     """
-    # Convert defaults into Scope nodes.
-    for key, node in defaults.items():
-        default_scopes[key] = node
-
-    # Index by name to find base
-    nodes.clear()   # Allow function to be called multiple times.
-
     for node in stmts.values():
-        add_statements_to_tree(node["name"], tree, nodes, node)
+        add_statement_to_tree(tree, node)
 
         # check for consistency
-        if key[0] == "c":
+        if "f" == "c":
             if (stmt.c_arg_decl is not None or
                 stmt.i_arg_decl is not None or
                 stmt.i_arg_names is not None):
