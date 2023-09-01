@@ -63,8 +63,7 @@ PY_exfunc_0(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 #ifndef USE_CLASS3_A
 static PyObject *
 PY_exfunc_1(

@@ -42,8 +42,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // ----------------------------------------
 // Function:  int passStructByValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
 // Attrs:     +intent(in)
@@ -104,8 +103,7 @@ fail:
 // ----------------------------------------
 // Function:  int passStruct1
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
@@ -166,8 +164,7 @@ fail:
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -236,8 +233,7 @@ fail:
 // ----------------------------------------
 // Function:  int acceptStructInPtr
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Attrs:     +intent(in)
@@ -306,13 +302,11 @@ fail:
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
 ;
@@ -421,13 +415,11 @@ fail:
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_returnStructByValue__doc__[] =
 "documentation"
 ;
@@ -493,13 +485,11 @@ fail:
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
 ;
@@ -551,13 +541,11 @@ fail:
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +intent(out)

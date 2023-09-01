@@ -56,23 +56,19 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // ----------------------------------------
 // Argument:  int nitems
 // Attrs:     +intent(in)
-// Requested: py_ctor_native_scalar_list
-// Match:     py_ctor_native
+// Exact:     py_ctor_native_scalar_list
 // ----------------------------------------
 // Argument:  int * ivalue +dimension(nitems+nitems)
 // Attrs:     +intent(in)
-// Requested: py_ctor_native_*_list
-// Match:     py_ctor_native_*
+// Exact:     py_ctor_native_*_list
 // ----------------------------------------
 // Argument:  double * dvalue +dimension(nitems*TWO)
 // Attrs:     +intent(in)
-// Requested: py_ctor_native_*_list
-// Match:     py_ctor_native_*
+// Exact:     py_ctor_native_*_list
 // ----------------------------------------
 // Argument:  char * * svalue +dimension(nitems)
 // Attrs:     +intent(in)
-// Requested: py_ctor_char_**_list
-// Match:     py_ctor_char_**
+// Exact:     py_ctor_char_**_list
 static int
 PY_Cstruct_list_tp_init(
   PY_Cstruct_list *self,
@@ -124,8 +120,7 @@ PY_Cstruct_list_tp_init(
 // splicer begin class.Cstruct_list.impl.after_methods
 // splicer end class.Cstruct_list.impl.after_methods
 
-// Requested: py_descr_native_scalar
-// Match:     py_descr_native
+// Exact:     py_descr_native_scalar
 static PyObject *PY_Cstruct_list_nitems_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -133,8 +128,7 @@ static PyObject *PY_Cstruct_list_nitems_getter(PY_Cstruct_list *self,
     return rv;
 }
 
-// Requested: py_descr_native_scalar
-// Match:     py_descr_native
+// Exact:     py_descr_native_scalar
 static int PY_Cstruct_list_nitems_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

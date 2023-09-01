@@ -940,7 +940,11 @@ def write_stmts_tree(fp):
     
 
 def lookup_stmts(path):
-    return statements.lookup_stmts_tree(lua_tree, path)
+    name = statements.compute_name(path)
+    stmt = lua_dict.get(name, None)
+    if stmt is None:
+        raise RuntimeError("Unknown lua statement: %s" % name)
+    return stmt
 
 LuaStmts = util.Scope(
     None,
@@ -956,6 +960,15 @@ default_stmts = dict(
 )
         
 lua_statements = [
+    dict(
+        name="lua_defaulttmp",
+        alias=[
+            "lua_in_unknown_scalar",
+            "lua_in_void_scalar",
+            "lua_in_native_*",
+            "lua_out_native_*",
+        ],
+    ),
     # Factor out some common code patterns to use as mixins.
     dict(
         # Used to capture return value.
@@ -1061,7 +1074,7 @@ lua_statements = [
     #####
     # shadow
     dict(
-        name="lua_ctor",
+        name="lua_ctor_scalar",
         call=[
             "{LUA_userdata_type} * {LUA_userdata_var} ="
                 "\t ({LUA_userdata_type} *) lua_newuserdata"
@@ -1075,7 +1088,7 @@ lua_statements = [
         ],
     ),
     dict(
-        name="lua_dtor",
+        name="lua_dtor_scalar",
         call=[
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",

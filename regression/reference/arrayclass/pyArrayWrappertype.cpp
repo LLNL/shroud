@@ -69,8 +69,7 @@ PY_ArrayWrapper_tp_init(
 // ----------------------------------------
 // Argument:  int size +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_setSize__doc__[] =
 "documentation"
 ;
@@ -99,8 +98,7 @@ PY_setSize(
 // ----------------------------------------
 // Function:  int getSize
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_getSize__doc__[] =
 "documentation"
 ;
@@ -551,8 +549,7 @@ PY_fetchVoidRef(
 // ----------------------------------------
 // Function:  bool checkPtr
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  void * array +value
 // Attrs:     +intent(in)
@@ -602,8 +599,7 @@ fail:
 // ----------------------------------------
 // Function:  double sumArray
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_sumArray__doc__[] =
 "documentation"
 ;

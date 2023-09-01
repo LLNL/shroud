@@ -29,13 +29,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -87,8 +85,7 @@ static int l_Class1_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_scalar
-// Match:     lua_dtor
+// Exact:     lua_dtor_scalar
 static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -210,8 +207,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // ----------------------------------------
 // Function:  Shape
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 static int l_Shape_ctor(lua_State *L)
 {
     // splicer begin class.Shape.method.ctor
@@ -256,8 +252,7 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // ----------------------------------------
 // Function:  Circle
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 static int l_Circle_ctor(lua_State *L)
 {
     // splicer begin class.Circle.method.ctor

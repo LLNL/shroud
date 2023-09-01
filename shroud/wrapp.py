@@ -3607,7 +3607,11 @@ def write_stmts_tree(fp):
 
 
 def lookup_stmts(path):
-    return statements.lookup_stmts_tree(py_tree, path)
+    name = statements.compute_name(path)
+    stmt = py_dict.get(name, None)
+    if stmt is None:
+       raise RuntimeError("Unknown py statement: %s" % name)
+    return stmt
 
 PyStmts = util.Scope(
     None,
@@ -3697,6 +3701,17 @@ fail_capsule=[
 # It doesn't hurt to add them, but I dislike the clutter.
 py_statements = [
 
+    dict(
+        name="py_defaulttmp",
+        alias=[
+            "py_function_native_scalar",
+            "py_in_native_scalar",
+            "py_function_native_*_scalar",
+            "py_in_unknown_scalar",
+            "py_function_struct_list",
+        ],
+    ),
+
 ########################################
 # void
     dict(
@@ -3746,7 +3761,7 @@ py_statements = [
 ########################################
 # bool
     dict(
-        name="py_in_bool",
+        name="py_in_bool_scalar",
         pre_call=["{cxx_var} = PyObject_IsTrue({py_var});"]
     ),
     dict(
@@ -3785,7 +3800,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_bool",
+        name="py_function_bool_scalar",
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4760,6 +4775,9 @@ py_statements = [
     # XXX - must release after copying result.
     dict(
         name="py_function_vector_list",
+        alias=[
+            "py_function_vector_list_targ_native_scalar",
+        ],
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
@@ -4841,6 +4859,9 @@ py_statements = [
     ),
     dict(
         name="py_function_vector_numpy",
+        alias=[
+            "py_function_vector_numpy_targ_native_scalar",
+        ],
         need_numpy=True,
         allocate_local_var=True,
         declare=[
@@ -4908,6 +4929,10 @@ py_statements = [
     
     dict(
         name="py_ctor_native",
+        alias=[
+            "py_ctor_native_scalar_list",
+            "py_ctor_native_scalar_numpy",
+        ],
         arg_declare=[],  # No local variable, assign to struct in post_call.
         declare=[
             "{c_type} {c_var} = 0;",
@@ -4918,28 +4943,46 @@ py_statements = [
     ),
     dict(
         name="py_ctor_native_[]",
+        alias=[
+            "py_ctor_native_[]_list",
+            "py_ctor_native_[]_numpy",
+        ],
         base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
         base="py_base_ctor_array",
+        alias=[
+            "py_ctor_native_*_list",
+            "py_ctor_native_*_numpy",
+        ],
         c_helper="get_from_object_{c_type}_{PY_array_arg}",
     ),
     
     dict(
         name="py_ctor_char_[]",
         base="py_base_ctor_array_fill",
+        alias=[
+            "py_ctor_char_[]_list",
+            "py_ctor_char_[]_numpy",
+        ],
         c_helper="fill_from_PyObject_char",
     ),
     dict(
         name="py_ctor_char_*",
         base="py_base_ctor_array",
+        alias=[
+            "py_ctor_char_*_numpy",
+        ],
         c_helper="get_from_object_char",
     ),
     dict(
         name="py_ctor_char_**",
         base="py_base_ctor_array",
+        alias=[
+            "py_ctor_char_**_list",
+        ],
         c_helper="get_from_object_charptr",
         # Need explicit post_call to change cast to char **.
         post_call=[
@@ -4953,7 +4996,7 @@ py_statements = [
     ########################################
     # descriptors
     dict(
-        name="py_descr_native",
+        name="py_descr_native_scalar",
         setter=[
             "{cxx_decl} = {PY_get};",
             "if (PyErr_Occurred()) {{+",
@@ -4997,6 +5040,9 @@ py_statements = [
     ),
     dict(
         name="py_descr_char_*",
+        alias=[
+            "py_descr_char_*_numpy",
+        ],
         setter_helper="get_from_object_{c_type}_list",
         setter=[
             "{PY_typedef_converter} cvalue;",
@@ -5133,6 +5179,10 @@ py_statements = [
 
     dict(
         name="py_descr_char_[]",
+        alias=[
+            "py_descr_char_[]_list",
+            "py_descr_char_[]_numpy",
+        ],
         setter_helper="fill_from_PyObject_char", #_{PY_array_arg}",
         setter=[
             "Py_XDECREF({c_var_obj});",

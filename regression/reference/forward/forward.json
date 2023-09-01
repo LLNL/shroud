@@ -162,7 +162,7 @@
                                 "cxx_member": "->",
                                 "cxx_var": "SHCXX_rv",
                                 "stmt0": "lua_ctor_scalar",
-                                "stmt1": "lua_ctor"
+                                "stmt1": "lua_ctor_scalar"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -252,7 +252,7 @@
                         "zz_fmtresult": {
                             "fmtl": {
                                 "stmt0": "lua_dtor_scalar",
-                                "stmt1": "lua_dtor"
+                                "stmt1": "lua_dtor_scalar"
                             }
                         }
                     },

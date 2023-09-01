@@ -275,8 +275,7 @@ PY_intargs_out(
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
 // Attrs:     +intent(inout)
@@ -626,8 +625,7 @@ fail:
 // ----------------------------------------
 // Argument:  int nvar +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
 // Attrs:     +intent(out)
@@ -912,8 +910,7 @@ fail:
 // ----------------------------------------
 // Function:  int accumulate
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Attrs:     +intent(in)
@@ -978,8 +975,7 @@ fail:
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +intent(in)
@@ -1040,8 +1036,7 @@ fail:
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_setGlobalInt__doc__[] =
 "documentation"
 ;
@@ -1070,8 +1065,7 @@ PY_setGlobalInt(
 // ----------------------------------------
 // Function:  int sumFixedArray
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_sumFixedArray__doc__[] =
 "documentation"
 ;
@@ -1391,8 +1385,7 @@ PY_getRawPtrToFixedArray(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_returnAddress1__doc__[] =
 "documentation"
 ;
@@ -1430,8 +1423,7 @@ PY_returnAddress1(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_returnAddress2__doc__[] =
 "documentation"
 ;
@@ -1626,8 +1618,7 @@ fail:
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Requested: py_function_native_*_scalar
-// Match:     py_default
+// Exact:     py_function_native_*_scalar
 static char PY_returnIntScalar__doc__[] =
 "documentation"
 ;

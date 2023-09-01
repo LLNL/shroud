@@ -103,7 +103,7 @@
                                     "pytmp_var": "SHTPy_count",
                                     "size_var": "SHSize_count",
                                     "stmt0": "py_ctor_native_[]_list",
-                                    "stmt1": "py_ctor_native_[]",
+                                    "stmt1": "py_ctor_native_[]_list",
                                     "value_var": "SHValue_count"
                                 }
                             },
@@ -129,7 +129,7 @@
                                     "pytmp_var": "SHTPy_name",
                                     "size_var": "SHSize_name",
                                     "stmt0": "py_ctor_char_[]_list",
-                                    "stmt1": "py_ctor_char_[]",
+                                    "stmt1": "py_ctor_char_[]_list",
                                     "value_var": "SHValue_name"
                                 }
                             }

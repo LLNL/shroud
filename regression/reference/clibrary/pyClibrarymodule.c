@@ -54,18 +54,15 @@ PY_NoReturnNoArguments(
 // ----------------------------------------
 // Function:  double PassByValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_PassByValue__doc__[] =
 "documentation"
 ;
@@ -144,13 +141,11 @@ PY_PassByReference(
 // ----------------------------------------
 // Function:  double PassByValueMacro
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_PassByValueMacro__doc__[] =
 "documentation"
 ;
@@ -192,8 +187,7 @@ PY_PassByValueMacro(
 // ----------------------------------------
 // Argument:  const bool arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_bool_scalar
-// Match:     py_in_bool
+// Exact:     py_in_bool_scalar
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
 // Attrs:     +intent(out)
@@ -502,8 +496,7 @@ PY_ImpliedTextLen(
 // ----------------------------------------
 // Function:  int ImpliedLen
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text
 // Attrs:     +intent(in)
@@ -559,8 +552,7 @@ PY_ImpliedLen(
 // ----------------------------------------
 // Function:  int ImpliedLenTrim
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text
 // Attrs:     +intent(in)
@@ -616,8 +608,7 @@ PY_ImpliedLenTrim(
 // ----------------------------------------
 // Function:  bool ImpliedBoolTrue
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool flag +implied(true)+value
 // Exact:     py_default
@@ -659,8 +650,7 @@ fail:
 // ----------------------------------------
 // Function:  bool ImpliedBoolFalse
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool flag +implied(false)+value
 // Exact:     py_default

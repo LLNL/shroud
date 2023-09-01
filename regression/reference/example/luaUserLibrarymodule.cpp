@@ -27,13 +27,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 // ----------------------------------------
 // Argument:  const string * name
 // Attrs:     +intent(in)
@@ -93,8 +91,7 @@ static int l_example_nested_ExClass1_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~ExClass1
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_scalar
-// Match:     lua_dtor
+// Exact:     lua_dtor_scalar
 /**
  * \brief destructor
  *
@@ -274,8 +271,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +intent(in)
@@ -303,8 +299,7 @@ static int l_example_nested_ExClass2_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~ExClass2
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_scalar
-// Match:     lua_dtor
+// Exact:     lua_dtor_scalar
 /**
  * \brief destructor
  *
@@ -869,8 +864,7 @@ static int l_example_nested_test_size_t(lua_State *L)
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Requested: lua_in_unknown_scalar
-// Match:     lua_default
+// Exact:     lua_in_unknown_scalar
 static int l_example_nested_testmpi(lua_State *L)
 {
     // splicer begin function.testmpi
@@ -909,8 +903,7 @@ static int l_example_nested_testmpi(lua_State *L)
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
 // Attrs:     +intent(in)
-// Requested: lua_in_void_scalar
-// Match:     lua_default
+// Exact:     lua_in_void_scalar
 /**
  * \brief subroutine
  *
@@ -931,8 +924,7 @@ static int l_example_nested_FuncPtr1(lua_State *)
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
 // Attrs:     +intent(in)
-// Requested: lua_in_native_*
-// Match:     lua_default
+// Exact:     lua_in_native_*
 /**
  * \brief return a pointer
  *
@@ -975,8 +967,7 @@ static int l_example_nested_FuncPtr3(lua_State *L)
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
 // Attrs:     +intent(in)
-// Requested: lua_in_void_scalar
-// Match:     lua_default
+// Exact:     lua_in_void_scalar
 static int l_example_nested_FuncPtr5(lua_State *)
 {
     // splicer begin function.FuncPtr5
@@ -1135,13 +1126,11 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: lua_in_native_*
-// Match:     lua_default
+// Exact:     lua_in_native_*
 // ----------------------------------------
 // Argument:  double * out +dimension(shape(in))+intent(out)
 // Attrs:     +intent(out)
-// Requested: lua_out_native_*
-// Match:     lua_default
+// Exact:     lua_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Attrs:     +intent(in)

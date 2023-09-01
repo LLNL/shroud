@@ -38,8 +38,7 @@ PyArray_Descr *PY_Cstruct1_array_descr;
 // ----------------------------------------
 // Function:  int passStructByReference
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Attrs:     +intent(inout)
@@ -102,8 +101,7 @@ fail:
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Attrs:     +intent(in)

@@ -57,8 +57,7 @@ PP_local_function1(
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -104,8 +103,7 @@ fail:
 // ----------------------------------------
 // Function:  bool isInitialized
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 static char PP_isInitialized__doc__[] =
 "documentation"
 ;
@@ -176,8 +174,7 @@ PP_test_names(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_test_names_flag(
   PyObject *SHROUD_UNUSED(self),
@@ -211,13 +208,11 @@ PP_test_names_flag(
 // ----------------------------------------
 // Argument:  int i=1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  long j=2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PP_testoptional_2__doc__[] =
 "documentation"
 ;
@@ -263,8 +258,7 @@ PP_testoptional_2(
 // ----------------------------------------
 // Function:  size_t test_size_t
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PP_test_size_t__doc__[] =
 "documentation"
 ;
@@ -294,8 +288,7 @@ PP_test_size_t(
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Requested: py_in_unknown_scalar
-// Match:     py_default
+// Exact:     py_in_unknown_scalar
 #ifdef HAVE_MPI
 static PyObject *
 PP_testmpi_mpi(
@@ -587,58 +580,47 @@ PP_verylongfunctionname1(
 // ----------------------------------------
 // Function:  int verylongfunctionname2
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname3 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname4 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname5 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname6 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname7 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname8 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname9 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname10 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PP_verylongfunctionname2__doc__[] =
 "documentation"
 ;

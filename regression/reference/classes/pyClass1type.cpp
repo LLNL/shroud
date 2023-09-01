@@ -65,8 +65,7 @@ PY_Class1_tp_init_default(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static int
 PY_Class1_tp_init_flag(
   PY_Class1 *self,
@@ -96,8 +95,7 @@ PY_Class1_tp_init_flag(
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_Method1__doc__[] =
 "documentation"
 ;
@@ -127,8 +125,7 @@ PY_Method1(
 // ----------------------------------------
 // Function:  bool equivalent
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
@@ -238,13 +235,11 @@ PY_getName(
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -316,8 +311,7 @@ PY_Class1_tp_init(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 
-// Requested: py_descr_native_scalar
-// Match:     py_descr_native
+// Exact:     py_descr_native_scalar
 static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -325,8 +319,7 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
-// Requested: py_descr_native_scalar
-// Match:     py_descr_native
+// Exact:     py_descr_native_scalar
 static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -334,8 +327,7 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     return rv;
 }
 
-// Requested: py_descr_native_scalar
-// Match:     py_descr_native
+// Exact:     py_descr_native_scalar
 static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

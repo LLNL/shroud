@@ -73,7 +73,7 @@
                         "zz_fmtresult": {
                             "fmtl": {
                                 "stmt0": "lua_dtor_scalar",
-                                "stmt1": "lua_dtor"
+                                "stmt1": "lua_dtor_scalar"
                             }
                         }
                     },
@@ -447,7 +447,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_*_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_*_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -3627,7 +3627,7 @@
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -3878,7 +3878,7 @@
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_flag"
                         }
                     }

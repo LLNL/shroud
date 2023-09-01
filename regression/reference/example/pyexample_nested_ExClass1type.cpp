@@ -122,13 +122,11 @@ PP_ExClass1_tp_init_1(
 // ----------------------------------------
 // Function:  int incrementCount
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PP_incrementCount__doc__[] =
 "documentation"
 ;
@@ -216,13 +214,11 @@ PP_getNameArg(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_getValue_from_int(
   PP_ExClass1 *self,
@@ -252,13 +248,11 @@ PP_getValue_from_int(
 // ----------------------------------------
 // Function:  long getValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_getValue_1(
   PP_ExClass1 *self,
@@ -288,13 +282,11 @@ PP_getValue_1(
 // ----------------------------------------
 // Function:  bool hasAddr
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in +value
 // Attrs:     +intent(in)
-// Requested: py_in_bool_scalar
-// Match:     py_in_bool
+// Exact:     py_in_bool_scalar
 static char PP_hasAddr__doc__[] =
 "documentation"
 ;
