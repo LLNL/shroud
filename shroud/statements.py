@@ -156,8 +156,11 @@ def update_statements_for_language(language):
     check_statements(fc_statements)
     update_for_language(fc_statements, language)
     process_mixin(fc_statements, default_stmts, fc_dict)
-    update_stmt_tree(fc_dict, cf_tree)
 
+
+def create_statement_tree():
+    update_stmt_tree(fc_dict, cf_tree)
+    
 
 def check_statements(stmts):
     """Check against a schema
@@ -427,13 +430,7 @@ def update_stmt_tree(stmts, tree):
     impossible to have an intermediate element with that name (since
     they're split on underscore).
 
-    Implement "base" field.  Base must be defined before use.
-
     Add "_key" to tree to aid debugging.
-
-    Each typemap is converted into a Scope instance with the parent
-    based on the language (c or f) and added as "scope" field.
-    This additional layer of indirection is needed to implement base.
 
     stmts = [
        {name="c_in_native",}           # value1

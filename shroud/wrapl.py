@@ -922,10 +922,13 @@ def update_statements_for_language(language):
     statements.check_statements(lua_statements)
     statements.update_for_language(lua_statements, language)
     statements.process_mixin(lua_statements, default_stmts, lua_dict)
-    statements.update_stmt_tree(lua_dict, lua_tree)
     global default_scope
     default_scope = default_stmts["lua"]
 
+
+def create_statement_tree():
+    statements.update_stmt_tree(lua_dict, lua_tree)
+    
 
 def write_stmts_tree(fp):
     """Write out statements tree.

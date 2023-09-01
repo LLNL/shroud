@@ -564,8 +564,12 @@ def main_with_args(args):
 
     if args.write_statements:
         hfile = os.path.join(args.logdir, args.write_statements)
-        wrapp.update_statements_for_language(newlibrary.language)
-        wrapl.update_statements_for_language(newlibrary.language)
+        lang = newlibrary.language
+        statements.create_statement_tree()
+        wrapp.update_statements_for_language(lang)
+        wrapp.create_statement_tree()
+        wrapl.update_statements_for_language(lang)
+        wrapl.create_statement_tree()
         with open(hfile, "w") as fp:
             fp.write("***** Fortran/C\n")
             statements.write_cf_tree(fp)

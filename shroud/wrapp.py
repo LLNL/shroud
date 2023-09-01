@@ -3590,9 +3590,12 @@ def update_statements_for_language(language):
     statements.check_statements(py_statements)
     statements.update_for_language(py_statements, language)
     statements.process_mixin(py_statements, default_stmts, py_dict)
-    statements.update_stmt_tree(py_dict, py_tree)
     global default_scope
     default_scope = default_stmts["py"]
+
+
+def create_statement_tree():
+    statements.update_stmt_tree(py_dict, py_tree)
 
 
 def write_stmts_tree(fp):
