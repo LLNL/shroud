@@ -903,8 +903,7 @@ LuaHelpers = dict(
 
 ######################################################################
 
-# The tree of Python Scope statements.
-lua_tree = {}
+# The dictionary of Python Scope statements.
 lua_dict = OrderedDict() # dictionary of Scope of all expanded lua_statements,
 default_scope = None  # for statements
 
@@ -926,10 +925,6 @@ def update_statements_for_language(language):
     default_scope = default_stmts["lua"]
 
 
-def create_statement_tree():
-    statements.update_stmt_tree(lua_dict, lua_tree)
-    
-
 def write_stmts_tree(fp):
     """Write out statements tree.
 
@@ -937,8 +932,9 @@ def write_stmts_tree(fp):
     ----------
     fp : file
     """
+    tree = statements.update_stmt_tree(lua_dict)
     lines = []
-    statements.print_tree_index(lua_tree, lines)
+    statements.print_tree_index(tree, lines)
     fp.writelines(lines)
     statements.print_tree_statements(fp, lua_dict, default_stmts)
     

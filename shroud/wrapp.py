@@ -47,8 +47,7 @@ from .util import wformat, append_format, append_format_lst
 
 from collections import OrderedDict
 
-# The tree of Python Scope statements.
-py_tree = {}
+# The dictionary of Python Scope statements.
 py_dict = OrderedDict() # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
@@ -3580,7 +3579,6 @@ def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
-    Fill in py_tree.
 
     Parameters
     ----------
@@ -3594,10 +3592,6 @@ def update_statements_for_language(language):
     default_scope = default_stmts["py"]
 
 
-def create_statement_tree():
-    statements.update_stmt_tree(py_dict, py_tree)
-
-
 def write_stmts_tree(fp):
     """Write out statements tree.
 
@@ -3605,8 +3599,9 @@ def write_stmts_tree(fp):
     ----------
     fp : file
     """
+    tree = statements.update_stmt_tree(py_dict)
     lines = []
-    statements.print_tree_index(py_tree, lines)
+    statements.print_tree_index(tree, lines)
     fp.writelines(lines)
     statements.print_tree_statements(fp, py_dict, default_stmts)
 

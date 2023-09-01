@@ -26,8 +26,7 @@ from . import util
 
 from collections import OrderedDict
 
-# The tree of c and fortran statements.
-cf_tree = {}
+# The dictionary of c and fortran statements.
 fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
 def lookup_c_statements(arg):
@@ -157,10 +156,6 @@ def update_statements_for_language(language):
     update_for_language(fc_statements, language)
     process_mixin(fc_statements, default_stmts, fc_dict)
 
-
-def create_statement_tree():
-    update_stmt_tree(fc_dict, cf_tree)
-    
 
 def check_statements(stmts):
     """Check against a schema
@@ -423,8 +418,8 @@ def add_statement_to_tree(tree, node):
     step['_node'] = node
 
         
-def update_stmt_tree(stmts, tree):
-    """Update tree by adding stmts.  Each key in stmts is split by
+def update_stmt_tree(stmts):
+    """Return tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
     the values from stmts.  The end key is named _node, since it is
     impossible to have an intermediate element with that name (since
@@ -456,10 +451,11 @@ def update_stmt_tree(stmts, tree):
     Parameters
     ----------
     stmts : dict
-    tree : dict
     """
+    tree = {}
     for node in stmts.values():
         add_statement_to_tree(tree, node)
+    return tree
 
 
 def write_cf_tree(fp):
@@ -469,8 +465,9 @@ def write_cf_tree(fp):
     ----------
     fp : file
     """
+    tree = update_stmt_tree(fc_dict)
     lines = []
-    print_tree_index(cf_tree, lines)
+    print_tree_index(tree, lines)
     fp.writelines(lines)
     print_tree_statements(fp, fc_dict, default_stmts)
 
