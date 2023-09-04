@@ -277,11 +277,6 @@ def process_mixin(stmts, defaults, stmtdict):
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
-        if "base" in stmt:
-            base = stmt["base"]
-            if base not in mixins:
-                raise RuntimeError("Base {} not found for {}".format(base, name))
-            node.update(mixins[base])
         if "mixin" in stmt:
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
@@ -1176,7 +1171,9 @@ fc_statements = [
     ),
     dict(
         name="c_out_native_*&_cdesc",
-        base="c_out_native_**_cdesc",
+        mixin=[
+            "c_out_native_**_cdesc",
+        ],
         alias=[
             "c_out_native_*&_cdesc_pointer",
         ],
@@ -1441,7 +1438,12 @@ fc_statements = [
     dict(
         # Pointer to scalar.
         # type(C_PTR) is returned instead of a cdesc argument.
-        name="f_function_native_*_pointer",
+        name="f_function_native_&",
+        alias=[
+            "f_function_native_*_pointer",   # XXX - change base to &?
+            "f_function_native_&_pointer",
+            "f_function_struct_*_pointer",
+        ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1503,15 +1505,10 @@ fc_statements = [
     ),
     
     dict(
-        name="f_function_native_&",
-        base="f_function_native_*_pointer",   # XXX - change base to &?
-        alias=[
-            "f_function_native_&_pointer",
-        ],
-    ),
-    dict(
         name="f_function_native_&_buf_pointer",
-        base="f_function_native_*_pointer",   # XXX - change base to &?
+        mixin=[
+            "f_function_native_&",
+        ],
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -2111,6 +2108,7 @@ fc_statements = [
         mixin=["f_mixin_function_cdesc"],
         alias=[
             "f_function_string_scalar/*/&_cdesc_allocatable_caller/library",
+            "f_getter_string_scalar_cdesc_allocatable",
         ],
         c_helper="copy_string",
         f_helper="copy_string array_context",
@@ -2146,6 +2144,10 @@ fc_statements = [
         # c_out_vector_&_cdesc_targ_native_scalar
         name="c_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=["c_mixin_out_array_cdesc"],
+        alias=[
+            "c_out_vector_*_cdesc_allocatable_targ_native_scalar",
+            "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
+        ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -2170,14 +2172,6 @@ fc_statements = [
             " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
             "delete cxx_ptr;",
         ],
-    ),
-    dict(
-        # c_out_vector_*_cdesc_allocatable_targ_native_scalar
-        # c_out_vector_&_cdesc_allocatable_targ_native_scalar
-        name="c_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
-        # XXX - this mixin is not working as expected, nested mixings...
-#        mixin=["c_out_vector_*_cdesc_targ_native_scalar"],
-        base="c_out_vector_*_cdesc_targ_native_scalar",
     ),
     dict(
         name="c_inout_vector_cdesc_targ_native_scalar",
@@ -2881,15 +2875,13 @@ fc_statements = [
     # Similar to c_function_native_*
     dict(
         name="c_function_struct_*_pointer",
-        base="c_function_struct",
+        mixin=[
+            "c_function_struct",
+        ],
         i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        name="f_function_struct_*_pointer",
-        base="f_function_native_*_pointer",
     ),
 
     ########################################
@@ -2938,7 +2930,9 @@ fc_statements = [
     dict(
         # c_getter_native_scalar
         name="c_getter_native_scalar",
-        base="c_getter",
+        mixin=[
+            "c_getter",
+        ],
         c_return=[
             "return {CXX_this}->{field_name};",
         ],
@@ -2946,7 +2940,9 @@ fc_statements = [
     dict(
         # c_getter_native_*_pointer
         name="c_getter_native_*_pointer",
-        base="c_getter",
+        mixin=[
+            "c_getter",
+        ],
         c_return=[
             "return {CXX_this}->{field_name};",
         ],
@@ -2966,7 +2962,9 @@ fc_statements = [
         # c_setter_native_scalar
         # c_setter_native_*
         name="c_setter_native_scalar/*",
-        base="c_setter_arg",
+        mixin=[
+            "c_setter_arg",
+        ],
         c_post_call=[
             "{CXX_this}->{field_name} = val;",
         ],
@@ -3003,8 +3001,10 @@ fc_statements = [
     dict(
         # Create std::string from Fortran meta data.
         name="c_setter_string_scalar_buf",
-        base="c_setter_arg",
-        mixin=["c_mixin_in_character_buf"],
+        mixin=[
+            "c_setter_arg",
+            "c_mixin_in_character_buf",
+        ],
         c_post_call=[
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",
         ],
@@ -3013,11 +3013,6 @@ fc_statements = [
         # Extract meta data and pass to C.
         name="f_setter_string_scalar_buf",
         mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
-        # Get meta data from C and allocate CHARACTER.
-        name="f_getter_string_scalar_cdesc_allocatable",
-        base="f_function_string_scalar_cdesc_allocatable",
     ),
     
     

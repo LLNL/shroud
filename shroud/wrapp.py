@@ -3746,7 +3746,9 @@ py_statements = [
     ),
     dict(
         name="py_out_void_*&",
-        base="py_out_void_**",
+        mixin=[
+            "py_out_void_**",
+        ],
         arg_call=[
             "{c_var}",
         ]
@@ -3816,12 +3818,16 @@ py_statements = [
     ),
     dict(
         name="py_out_bool_*",
-        base="py_out_bool",
+        mixin=[
+            "py_out_bool",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_inout_bool_*",
-        base="py_inout_bool",
+        mixin=[
+            "py_inout_bool",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     
@@ -3983,6 +3989,9 @@ py_statements = [
         # py_function_native_*_pointer_numpy
         # py_function_native_&_pointer_numpy
         name="py_function_native_*/&_pointer_numpy",
+        alias=[
+            "py_function_native_*_allocatable_numpy",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4004,14 +4013,12 @@ py_statements = [
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
     ),
-    dict(
-        name="py_function_native_*_allocatable_numpy",
-        base="py_function_native_*_pointer_numpy",
-    ),
 
     dict(
         name="py_out_native_**_pointer_numpy",
-        base="py_function_native_*_pointer_numpy",
+        mixin=[
+            "py_function_native_*_pointer_numpy",
+        ],
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4024,7 +4031,9 @@ py_statements = [
     ),
     dict(
         name="py_out_native_*&_pointer_numpy",
-        base="py_out_native_**_pointer_numpy",
+        mixin=[
+            "py_out_native_**_pointer_numpy",
+        ],
         arg_call=["{cxx_var}"],
     ),
 
@@ -4139,7 +4148,9 @@ py_statements = [
     ),
     dict(
         name="py_out_native_**_pointer_list",
-        base="py_function_native_*_pointer_list",
+        mixin=[
+            "py_function_native_*_pointer_list",
+        ],
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4253,6 +4264,9 @@ py_statements = [
 # ctor_expr is arguments to PyString_FromStringAndSize.
     dict(
         name="py_in_string_scalar",
+        alias=[
+            "py_in_string_&",
+        ],
         cxx_local_var="scalar",
         arg_declare=[
             # std::string defaults to making this scalar. Make sure it is pointer.
@@ -4264,11 +4278,10 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_in_string_&",
-        base="py_in_string_scalar",
-    ),
-    dict(
         name="py_inout_string_scalar",
+        alias=[
+            "py_inout_string_&",
+        ],
         cxx_local_var="scalar",
         arg_declare=[
             "char *{c_var};",
@@ -4279,21 +4292,16 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_inout_string_&",
-        base="py_inout_string_scalar",
-    ),
-    dict(
         name="py_out_string_scalar",
+        alias=[
+            "py_out_string_&",
+        ],
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
-    ),
-    dict(
-        name="py_out_string_&",
-        base="py_out_string_scalar",
     ),
     dict(
         name="py_function_string_scalar",
@@ -4303,27 +4311,32 @@ py_statements = [
     ),
     dict(
         name="py_function_string_*",
+        alias=[
+            "py_function_string_&",
+        ],
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
-        name="py_function_string_&",
-        base="py_function_string_*",
-    ),
-    dict(
         name="py_in_string_*",
-        base="py_in_string_scalar",
+        mixin=[
+            "py_in_string_scalar",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_inout_string_*",
-        base="py_inout_string_scalar",
+        mixin=[
+            "py_inout_string_scalar",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_out_string_*",
-        base="py_out_string_scalar",
+        mixin=[
+            "py_out_string_scalar",
+        ],
         arg_call=["&{cxx_var}"],
     ),
 
@@ -4337,6 +4350,9 @@ py_statements = [
 # and does not apply in Python.
     dict(
         name="py_in_struct_list",
+        alias=[
+            "py_in_struct_scalar_list",
+        ],
         arg_declare=[],
     ),
     dict(
@@ -4351,25 +4367,26 @@ py_statements = [
         ],
     ),
 
-    dict(
-        name="py_in_struct_scalar_list",
-        base="py_in_struct_list",
-    ),
-
     # struct-list-cxx   (XXX - is not compiled)
     dict(
         name="py_in_struct_*_list",
-        base="py_in_struct_list",
+        mixin=[
+            "py_in_struct_list",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_inout_struct_*_list",
-        base="py_inout_struct_list",
+        mixin=[
+            "py_inout_struct_list",
+        ],
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_out_struct_*_list",
-        base="py_out_struct_list",
+        mixin=[
+            "py_out_struct_list",
+        ],
         arg_call=["&{cxx_var}"],
     ),
 
@@ -4514,22 +4531,30 @@ py_statements = [
 
     dict(
         name="py_in_struct_&_numpy",
-        base="py_in_struct_*_numpy",
+        mixin=[
+            "py_in_struct_*_numpy",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_inout_struct_&_numpy",
-        base="py_inout_struct_*_numpy",
+        mixin=[
+            "py_inout_struct_*_numpy",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_out_struct_&_numpy",
-        base="py_out_struct_*_numpy",
+        mixin=[
+            "py_out_struct_*_numpy",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_in_struct_scalar_numpy",
-        base="py_in_struct_*_numpy",
+        mixin=[
+            "py_in_struct_*_numpy",
+        ],
         arg_call=["*{cxx_var}"],
     ),
 # cannot support inout/out with call-by-value
@@ -4560,6 +4585,9 @@ py_statements = [
     ),
     dict(
         name="py_out_struct_*_class",
+        alias=[
+            "py_function_shadow_scalar",
+        ],
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         arg_declare=[
@@ -4616,7 +4644,9 @@ py_statements = [
 
     dict(
         name="py_in_struct_scalar_class",
-        base="py_in_struct_*_class",
+        mixin=[
+            "py_in_struct_*_class",
+        ],
         arg_call=["*{cxx_var}"],
     ),
 # cannot support inout/out with call-by-value
@@ -4624,18 +4654,24 @@ py_statements = [
 #        name="py_out_struct_scalart_class",
     dict(
         name="py_in_struct_&_class",
-        base="py_in_struct_*_class",
+        mixin=[
+            "py_in_struct_*_class",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_inout_struct_&_class",
-        base="py_inout_struct_*_class",
+        mixin=[
+            "py_inout_struct_*_class",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         # XXX - this memory will leak
         name="py_out_struct_&_class",
-        base="py_out_struct_*_class",
+        mixin=[
+            "py_out_struct_*_class",
+        ],
         arg_call=["*{cxx_var}"],
         post_call=[
             "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});",
@@ -4684,11 +4720,10 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_shadow_scalar",
-        base="py_out_struct_*_class",
-    ),
-    dict(
         name="py_function_shadow_*",
+        alias=[
+            "py_function_shadow_&",
+        ],
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
 #            ],
@@ -4708,17 +4743,17 @@ py_statements = [
 #            goto_fail=True,
     ),
     dict(
-        name="py_function_shadow_&",
-        base="py_function_shadow_*",
-    ),
-    dict(
         name="py_in_shadow_scalar",
-        base="py_in_shadow_*",
+        mixin=[
+            "py_in_shadow_*",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_in_shadow_&",
-        base="py_in_shadow_*",
+        mixin=[
+            "py_in_shadow_*",
+        ],
         arg_call=["*{cxx_var}"],
     ),
     
@@ -4943,16 +4978,20 @@ py_statements = [
     ),
     dict(
         name="py_ctor_native_[]",
+        mixin=[
+            "py_base_ctor_array_fill",
+        ],
         alias=[
             "py_ctor_native_[]_list",
             "py_ctor_native_[]_numpy",
         ],
-        base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
-        base="py_base_ctor_array",
+        mixin=[
+            "py_base_ctor_array",
+        ],
         alias=[
             "py_ctor_native_*_list",
             "py_ctor_native_*_numpy",
@@ -4962,7 +5001,9 @@ py_statements = [
     
     dict(
         name="py_ctor_char_[]",
-        base="py_base_ctor_array_fill",
+        mixin=[
+            "py_base_ctor_array_fill",
+        ],
         alias=[
             "py_ctor_char_[]_list",
             "py_ctor_char_[]_numpy",
@@ -4971,7 +5012,9 @@ py_statements = [
     ),
     dict(
         name="py_ctor_char_*",
-        base="py_base_ctor_array",
+        mixin=[
+            "py_base_ctor_array",
+        ],
         alias=[
             "py_ctor_char_*_numpy",
         ],
@@ -4979,7 +5022,9 @@ py_statements = [
     ),
     dict(
         name="py_ctor_char_**",
-        base="py_base_ctor_array",
+        mixin=[
+            "py_base_ctor_array",
+        ],
         alias=[
             "py_ctor_char_**_list",
         ],

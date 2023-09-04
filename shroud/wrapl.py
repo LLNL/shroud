@@ -1049,13 +1049,12 @@ lua_statements = [
     # string
     dict(
         name="lua_in_string_*",
+        alias=[
+            "lua_in_string_&",
+        ],
         pre_call=[
             "const char * {c_var} = \t{pop_expr};",
         ],
-    ),
-    dict(
-        name="lua_in_string_&",
-        base="lua_in_string_*",
     ),
     dict(
         name="lua_function_string_scalar",

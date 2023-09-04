@@ -334,7 +334,7 @@ root
             allocatable
               targ
                 native
-                  scalar -- c_out_vector_*/&_cdesc_allocatable_targ_native_scalar
+                  scalar -- c_out_vector_*/&_cdesc_targ_native_scalar
                 string
                   scalar -- c_out_vector_&_cdesc_allocatable_targ_string_scalar
             targ
@@ -347,7 +347,7 @@ root
             allocatable
               targ
                 native
-                  scalar -- c_out_vector_*/&_cdesc_allocatable_targ_native_scalar
+                  scalar -- c_out_vector_*/&_cdesc_targ_native_scalar
             targ
               native
                 scalar -- c_out_vector_*/&_cdesc_targ_native_scalar
@@ -426,7 +426,7 @@ root
           cfi
             allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
-          pointer -- f_function_native_*_pointer
+          pointer -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
@@ -513,7 +513,7 @@ root
             result -- f_function_string_scalar/*/&_cfi_copy/result
       struct
         *
-          pointer -- f_function_struct_*_pointer
+          pointer -- f_function_native_&
         scalar -- f_function_struct_scalar
       vector
         scalar
@@ -534,7 +534,7 @@ root
       string
         scalar
           cdesc
-            allocatable -- f_getter_string_scalar_cdesc_allocatable
+            allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
     in
       bool
         scalar -- fc_in_bool
@@ -7576,18 +7576,18 @@ root
             numpy -- py_function_native_*/&_pointer_numpy
         *
           allocatable
-            numpy -- py_function_native_*_allocatable_numpy
+            numpy -- py_function_native_*/&_pointer_numpy
           pointer
             list -- py_function_native_*_pointer_list
             numpy -- py_function_native_*/&_pointer_numpy
           scalar -- py_defaulttmp
         scalar -- py_defaulttmp
       shadow
-        & -- py_function_shadow_&
+        & -- py_function_shadow_*
         * -- py_function_shadow_*
-        scalar -- py_function_shadow_scalar
+        scalar -- py_out_struct_*_class
       string
-        & -- py_function_string_&
+        & -- py_function_string_*
         * -- py_function_string_*
         scalar -- py_function_string_scalar
       struct
@@ -7624,7 +7624,7 @@ root
         * -- py_in_shadow_*
         scalar -- py_in_shadow_scalar
       string
-        & -- py_in_string_&
+        & -- py_in_string_scalar
         * -- py_in_string_*
         scalar -- py_in_string_scalar
       struct
@@ -7638,7 +7638,7 @@ root
         list -- py_in_struct_list
         scalar
           class -- py_in_struct_scalar_class
-          list -- py_in_struct_scalar_list
+          list -- py_in_struct_list
           numpy -- py_in_struct_scalar_numpy
       unknown
         scalar -- py_defaulttmp
@@ -7661,7 +7661,7 @@ root
       shadow
         * -- py_inout_shadow_*
       string
-        & -- py_inout_string_&
+        & -- py_inout_string_scalar
         * -- py_inout_string_*
         scalar -- py_inout_string_scalar
       struct
@@ -7699,7 +7699,7 @@ root
       shadow
         * -- py_out_shadow_*
       string
-        & -- py_out_string_&
+        & -- py_out_string_scalar
         * -- py_out_string_*
         scalar -- py_out_string_scalar
       struct
@@ -9672,7 +9672,7 @@ root
       shadow
         * -- lua_in_shadow_*
       string
-        & -- lua_in_string_&
+        & -- lua_in_string_*
         * -- lua_in_string_*
       unknown
         scalar -- lua_defaulttmp
