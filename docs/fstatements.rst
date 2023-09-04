@@ -102,6 +102,7 @@ Additional declarations can be added within the splicer via *f_declare*.
 
 .. code-block:: text
 
+        f_arg_name=["{f_var}"],
         f_arg_decl=[
             "character, value, intent(IN) :: {f_var}",
         ],
@@ -126,6 +127,9 @@ to the end of the call list.
         f_arg_call=[
              "C_LOC({f_var})"
         ],
+
+.. code-block:: text
+
         f_arg_call=[
             "{f_var}",
             "len({f_var}, kind=C_INT)",
@@ -201,7 +205,8 @@ For example, to assign to an intermediate variable:
             "{c_local_ptr} = {F_C_call}({f_arg_call})",
         ],
         f_local=["ptr"],
-                
+
+.. used with intent function, subroutine, (getter/setter)
    
 f_post_call
 ^^^^^^^^^^^

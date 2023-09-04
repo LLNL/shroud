@@ -164,43 +164,44 @@ Defaults to *None* which will cause Shroud to generate an argument from
 the wrapped function's argument.
 An empty list will cause no declaration to be added.
 Functions do not add arguments by default.
+A trailing semicolon will be provided.
 
-.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
           exist in a group and have the same number of names.
 
-f_c_arg_decl
-^^^^^^^^^^^^
+i_arg_decl
+^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
 interface. The variable to be
-declared is *c_var*.  *f_c_module* can be used to add ``USE`` statements
+declared is *c_var*.  *i_module* can be used to add ``USE`` statements
 needed by the declarations.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
           exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
 
-f_c_arg_names
-^^^^^^^^^^^^^
+i_arg_names
+^^^^^^^^^^^
 
 Names of arguments to pass to C function.
 Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *f_c_arg_decl*, and *f_c_arg_names* must all
+.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
           exist in a group and have the same number of names.
 
-f_c_result_decl
-^^^^^^^^^^^^^^^
+i_result_decl
+^^^^^^^^^^^^^
 
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
 
-f_c_import
-^^^^^^^^^^
+i_import
+^^^^^^^^
 
 List of names to import into the Fortran interface.
 The names will be expanded before being used.
@@ -210,27 +211,27 @@ module and it is used in the interface.
 
 .. code-block:: yaml
 
-        f_c_import=["{F_array_type}"],
+        i_import=["{F_array_type}"],
                 
 
-f_c_module
-^^^^^^^^^^
+i_module
+^^^^^^^^
 
 Fortran modules used in the Fortran interface:
 
 .. code-block:: yaml
 
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        i_module=dict(iso_c_binding=["C_PTR"]),
 
-f_c_module_line
-^^^^^^^^^^^^^^^
+i_module_line
+^^^^^^^^^^^^^
 
 Fortran modules used in the Fortran interface as a single line
 which allows format strings to be used.
 
 .. code-block:: yaml
 
-        f_c_module_line="iso_c_binding:{f_kind}",
+        i_module_line="iso_c_binding:{f_kind}",
 
 The format is::
 

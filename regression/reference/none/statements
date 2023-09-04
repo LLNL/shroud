@@ -16,7 +16,9 @@ root
       char
         * -- c_function_char_*
           allocatable -- c_function_char_*
+          arg -- fc_function_char_*_arg
           buf
+            arg -- fc_function_char_*_arg
             copy -- fc_function_char_*_buf_copy/result
             result -- fc_function_char_*_buf_copy/result
           cdesc
@@ -390,7 +392,9 @@ root
         scalar -- f_function_bool
       char
         *
+          arg -- fc_function_char_*_arg
           buf
+            arg -- fc_function_char_*_arg
             copy -- fc_function_char_*_buf_copy/result
             result -- fc_function_char_*_buf_copy/result
           cdesc
@@ -757,6 +761,7 @@ root
     function
       char
         *
+          arg -- fc_function_char_*_arg
           buf
             copy -- fc_function_char_*_buf_copy/result
             result -- fc_function_char_*_buf_copy/result
@@ -894,6 +899,38 @@ c_function_char_*_allocatable:
   - type(C_PTR) {c_var}
   intent: function
   name: c_function_char_*_allocatable
+  owner: library
+c_function_char_*_arg:
+  c_arg_decl:
+  - char name
+  - int lenname
+  c_post_call:
+  - // copy into argument
+  c_return_type: void
+  i_arg_decl:
+  - 'character, intent(OUT) :: namehere2(*)'
+  - 'integer(C_INT), intent(IN) :: lname2'
+  i_arg_names:
+  - name
+  - lenname
+  intent: function
+  name: c_function_char_*_arg
+  owner: library
+c_function_char_*_buf_arg:
+  c_arg_decl:
+  - char name
+  - int lenname
+  c_post_call:
+  - // copy into argument
+  c_return_type: void
+  i_arg_decl:
+  - 'character, intent(OUT) :: namehere2(*)'
+  - 'integer(C_INT), intent(IN) :: lname2'
+  i_arg_names:
+  - name
+  - lenname
+  intent: function
+  name: c_function_char_*_buf_arg
   owner: library
 c_function_char_*_buf_copy:
   c_arg_decl:
@@ -4726,6 +4763,26 @@ f_function_bool_scalar:
   f_need_wrapper: true
   intent: function
   name: f_function_bool_scalar
+f_function_char_*_arg:
+  f_arg_call:
+  - namehere3
+  - len(namehere3)
+  f_arg_decl:
+  - 'character(*), intent(OUT) :: namehere2'
+  f_arg_name:
+  - namehere1
+  intent: function
+  name: f_function_char_*_arg
+f_function_char_*_buf_arg:
+  f_arg_call:
+  - namehere3
+  - len(namehere3)
+  f_arg_decl:
+  - 'character(*), intent(OUT) :: namehere2'
+  f_arg_name:
+  - namehere1
+  intent: function
+  name: f_function_char_*_buf_arg
 f_function_char_*_buf_copy:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -7004,6 +7061,29 @@ f_subroutine:
 f_test:
   intent: test
   name: f_test
+fc_function_char_*_arg:
+  c_arg_decl:
+  - char name
+  - int lenname
+  c_post_call:
+  - // copy into argument
+  c_return_type: void
+  f_arg_call:
+  - namehere3
+  - len(namehere3)
+  f_arg_decl:
+  - 'character(*), intent(OUT) :: namehere2'
+  f_arg_name:
+  - namehere1
+  i_arg_decl:
+  - 'character, intent(OUT) :: namehere2(*)'
+  - 'integer(C_INT), intent(IN) :: lname2'
+  i_arg_names:
+  - name
+  - lenname
+  intent: function
+  name: fc_function_char_*_arg
+  owner: library
 fc_function_char_*_buf_copy:
   c_arg_decl:
   - char *{c_var}

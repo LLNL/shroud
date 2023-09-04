@@ -196,8 +196,8 @@ def post_mixin_check_statement(name, stmt):
     c_arg_decl, i_arg_decl, i_arg_names.
     """
     parts = name.split("_")
-    lang = parts[1]
-    
+    lang = parts[0]
+
     if lang in ["c", "fc"]:
         c_arg_decl = stmt.get("c_arg_decl", None)
         i_arg_decl = stmt.get("i_arg_decl", None)
@@ -218,7 +218,6 @@ def post_mixin_check_statement(name, stmt):
                 i_arg_decl is None or
                 i_arg_names is None):
                 print("c_arg_decl, i_arg_decl and i_arg_names must all exist")
-                import pdb;pdb.set_trace()
                 err = True
             if err:
                 raise RuntimeError("Error with fields")
@@ -228,6 +227,31 @@ def post_mixin_check_statement(name, stmt):
                     "c_arg_decl, i_arg_decl and i_arg_names "
                     "must all be same length in {}".format(name))
 
+##-    if lang in ["f", "fc"]:
+##-        # Default f_arg_name is often ok.
+##-        f_arg_name = stmt.get("f_arg_name", None)
+##-        f_arg_decl = stmt.get("f_arg_decl", None)
+##-        if f_arg_name is not None or f_arg_decl is not None:
+##-            err = False
+##-            for field in ["f_arg_name", "f_arg_decl"]:
+##-                fvalue = stmt.get(field)
+##-                if fvalue is None:
+##-                    err = True
+##-                    print("Missing", field, "in", name)
+##-                elif not isinstance(fvalue, list):
+##-                    err = True
+##-                    print(field, "must be a list in", name)
+##-            if (f_arg_name is None or
+##-                f_arg_decl is None):
+##-                print("f_arg_name and f_arg_decl must both exist")
+##-                err = True
+##-            if err:
+##-                raise RuntimeError("Error with fields")
+##-            if len(f_arg_name) != len(f_arg_decl):
+##-                raise RuntimeError(
+##-                    "f_arg_name and f_arg_decl "
+##-                    "must all be same length in {}".format(name))
+            
 
 def process_mixin(stmts, defaults, stmtdict):
     """Return a dictionary of all statements
@@ -265,8 +289,8 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 node.update(mixins[mixin])
-        post_mixin_check_statement(name, node)
         node.update(stmt)
+        post_mixin_check_statement(name, node)
         node["orig"] = name
         out = compute_all_permutations(name)
         firstname = "_".join(out[0])
@@ -1663,6 +1687,48 @@ fc_statements = [
         ],
         c_return_type="void",
     ),
+
+    dict(
+        name="fc_function_char_*_arg",
+        alias=[
+            "f_function_char_*_arg",
+            "c_function_char_*_arg",
+            "f_function_char_*_buf_arg",
+            "c_function_char_*_buf_arg",
+        ],
+        # convert to subroutine
+
+        
+        f_arg_name=["namehere1"],
+        f_arg_decl=[
+            "character(*), intent(OUT) :: namehere2",
+        ],
+        f_arg_call=[
+            "namehere3",
+            "len(namehere3)",
+        ],
+
+        # fc_mixin_function-to-subroutine
+        c_return_type = "void",
+#        f_call=[
+#            "FFFFF",
+#        ],
+
+        c_arg_decl=[
+            "char name",
+            "int lenname",
+        ],
+        i_arg_names=["name", "lenname"],
+        i_arg_decl=[
+            "character, intent(OUT) :: namehere2(*)",
+            "integer(C_INT), intent(IN) :: lname2",
+        ],
+
+        c_post_call=[
+            "// copy into argument",
+        ]
+    ),
+    
 
     dict(
         # Used with both deref allocatable and pointer.
