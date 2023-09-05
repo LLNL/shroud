@@ -61,6 +61,11 @@ To get started using Shroud, check out the full documentation:
 
 http://shroud.readthedocs.io/en/develop
 
+Presentation at FortranCon2020
+
+https://www.youtube.com/watch?v=1mdI-M94vDc
+[Slides](./pdf/Shroud-forcon.pdf)
+
 ## Mailing List
 
 shroud-users@groups.io
@@ -93,6 +98,17 @@ Shroud can be installed using pip
 pip install llnl-shroud
 ```
 
+This can be done in a virtual environment as
+
+```
+cd my_project_folder
+virtualenv my_project
+source my_project/bin/activate
+pip install llnl-shroud
+```
+
+This assumes the bash shell. Source activate.csh for csh.
+
 In addition, a file created by
 [shiv](https://github.com/linkedin/shiv)
 is available from the github release.
@@ -101,13 +117,13 @@ the Python3 on your path.
 Shiv requires Python 3.6+.
 
 ```
-wget https://github.com/LLNL/shroud/archive/shroud-0.12.2.pyz
+wget https://github.com/LLNL/shroud/archive/shroud-0.13.0.pyz
 ```
 
 
 ## License
 
-Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC.
 Produced at the Lawrence Livermore National Laboratory.
 
 SPDX-License-Identifier: (BSD-3-Clause)

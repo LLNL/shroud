@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -81,6 +81,16 @@ class Vectors(unittest.TestCase):
         self.assertEqual(10, rv.size)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7,8,9,10])))
 #        self.assertTrue(np.allclose(rv, outarray))
+
+    def test_returnDim2(self):
+        array2d = np.empty([2,3], dtype="int32")
+        irv = vectors.returnDim2(array2d)
+        self.assertEqual(3, irv)
+
+        array1d = np.empty(3, dtype="int32")
+        with self.assertRaises(ValueError) as context:
+            irv = vectors.returnDim2(array1d)
+        self.assertTrue("arg must be a 2-D array of int" in str(context.exception))
 
 
 # creating a new test suite

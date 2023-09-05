@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -14,116 +14,110 @@ C Statements
 
     extern "C" {
 
-    {C_return_type} {C_name}({C_prototype})    buf_args
+    {C_return_type} {C_name}({C_prototype})
     {
         {pre_call}
-        {call_code}    arg_call
+        {call_code}   {call}    arg_call
         {post_call_pattern}
         {post_call}
         {final}
         {ret}
     }
 
+C_prototype -> c_arg_decl
+
+A corresponding ``bind(C)`` interface can be created for Fortran.
+    
+.. code-block:: text
+
+    {F_C_subprogram} {F_C_name}({F_C_arguments}) &
+        {F_C_result_clause} &
+        bind(C, name="{C_name}")
+        f_module / f_module_line
+        f_import
+        arg_c_decl
+    end {F_C_subprogram} {F_C_name}
+
+Where
+F_C_clause =
+F_C_arguments     = f_c_arg_names
+arg_c_decl        = f_arg_decl, f_result_decl
+F_C_result_clause = f_result_var
+
+Lookup statements
+-----------------
+
+The statements for an argument are looked up by converting the type
+and attributes into an underscore delimited string.
+
+
+* language - ``c``
+
+* intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
+
+* group from typemap. ``native``
+
+* pointer - ``scalar``, ``*``, ``**``
+
+* api - from attribute
+  ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
+
+* deref - from attribute
+  ``allocatable``, ``pointer``, ``raw``, ``result-as-arg``, ``scalar``
+
+
+template
+^^^^^^^^
+
+Each template argument is appended to the initial statement name.
+``targ``, *group* and *pointer*
+    
 c_statements
 ------------
 
 ..        name="c_default",
 
-buf_args
-^^^^^^^^^
+name
+^^^^
 
-*buf_args* lists the arguments which are used by the C wrapper.
-The default is to provide a one-for-one correspondance with the 
-arguments of the function which is being wrapped.
-However, often an additional function is created which will pass 
-additional or different arguments to provide meta-data about the argument.
-
-The Fortran wrapper will call the generated 'bufferified' function
-and provide the meta-data to the C wrapper.
-
-arg
-
-    Use the library argument as the wrapper argument.
-    This is the default when *buf_args* is not explicit.
-
-arg_decl
-    The explicit declarations will be provided in the fields
-    *c_arg_decl* and *f_arg_decl*.
-    
-capsule
-
-    An argument of type *C_capsule_data_type*/*F_capsule_data_type*.
-    It provides a pointer to the C++ memory as well as information
-    to release the memory.
-
-    .. XXX need to add helper automatically
-
-context
-
-    An argument of *C_array_type*/*F_array_type*.
-    For example, used with ``std::vector`` to hold
-    address and size of data contained in the argument
-    in a form which may be used directly by Fortran.
-
-    *c_var_context*
-    options.C_var_context_template
-
-len
-
-    Result of Fortran intrinsic ``LEN`` for string arguments.
-    Type ``int``.
-
-len_trim
-
-    Result of Fortran intrinsic ``LEN_TRIM`` for string arguments.
-    Type ``int``.
-
-size
-
-    Result of Fortran intrinsic ``SIZE`` for array arguments.
-    Type ``long``.
-
-shadow
-
-    Argument will be of type *C_capsule_data_type*.
-
-
-
-
-arg
-
-    default.
-
-shadow
-size
-capsule
-context
-len_trim
-len
-
-   
-buf_extra
-^^^^^^^^^
-
-Used to add argument for return values.
-For example, function which return class instance.
-
-
-c_header
-^^^^^^^^
-
-List of blank delimited header files which will be included by the generated header
-for the C wrapper.  These headers must be C only.
-For example, ``size_t`` requires stddef.h:
+A name can contain variants separated by ``/``.
 
 .. code-block:: yaml
 
-    type: size_t
-    fields:
-        c_type: size_t 
-        cxx_type: size_t
-        c_header: <stddef.h>
+    - name: c_in/out/inout_native_*_cfi
 
+This is equivelent to having three groups:
+    
+.. code-block:: yaml
+
+    - name: c_in_native_*_cfi
+    - name: c_out_native_*_cfi
+    - name: c_inout_native_*_cfi
+
+
+iface_header
+^^^^^^^^^^^^
+
+List of header files which will be included in the generated header
+for the C wrapper.  These headers must be C only and will be
+included after ``ifdef __cplusplus``.
+Used for headers needed for declarations in *c_arg_decl*.
+Can contain headers required for the generated prototypes.
+
+For example, ``ISO_Fortran_binding.h`` is C only.
+
+.. The Cray ftn compiler requires extern "C".
+
+.. note that typemaps will also add c_headers.
+
+impl_header
+^^^^^^^^^^^
+
+A list of header files which will be added to the C
+wrapper implementation.
+These headers may include C++ code.
+
+.. listed in fc_statements as *c_impl_header* and *cxx_impl_header*
 
 c_helper
 ^^^^^^^^
@@ -145,7 +139,6 @@ indicates if the local variable is a **pointer** or **scalar**.
 For example, when a structure is returned by a C++ function, the C wrapper creates
 a local variable which contains a pointer to the C type of the struct.
 
-The local variable can be passed in when buf_args is *shadow*.
 
 
 
@@ -154,38 +147,67 @@ If true, generate a local variable using the C declaration for the argument.
 This variable can be used by the pre_call and post_call statements.
 A single declaration will be added even if with ``intent(inout)``.
 
-cxx_header
-^^^^^^^^^^
-
-A blank delimited list of header files which will be added to the C
-wrapper implementation.
-These headers may include C++ code.
-
 cxx_local_var
 ^^^^^^^^^^^^^
 
 If a local C++ variable is created for an argument by pre_call,
 *cxx_local_var*
-indicates if the local variable is a **pointer** or **scalar**.
+indicates if the local variable is a **pointer**, **scalar** or **result**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
-This in turns will set the format fields *cxx_member*.
+This will properly dereference the variable when passed to the
+C++ function.
+It will also set the format fields *cxx_member*.
 For example, a ``std::string`` argument is created for the C++ function
 from the ``char *`` argument passed into the C API wrapper.
+
+.. code-block:: yaml
+
+        name="c_inout_string",
+        cxx_local_var="scalar",
+        pre_call=["{c_const}std::string {cxx_var}({c_var});"],
+
+ Set to **return** when the *c_var* is passed in as an argument and
+ a C++ variable must be created.
+ Ex ``c_function_shadow``.
+ In this case, *cxx_to_c* is defined so a local variable will already
+ be created, unless *language=c* in which case *cxx_to_c* is unneeded.
 
 c_arg_decl
 ^^^^^^^^^^
 
-A list of declarations in the C wrapper when buf_arg includes "arg_decl".
+A list of declarations to append to the prototype in the C wrapper.
+Defaults to *None* which will cause Shroud to generate an argument from
+the wrapped function's argument.
+An empty list will cause no declaration to be added.
+Functions do not add arguments by default.
+
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist in a group and have the same number of names.
 
 f_arg_decl
 ^^^^^^^^^^
 
-A list of declarations in the Fortran interface when buf_arg includes "arg_decl".
-The variable to be declared is *c_var*.
-*f_module* can be used to add ``USE`` statements.
+A list of dummy argument declarations in the Fortran ``bind(C)``
+interface. The variable to be
+declared is *c_var*.  *f_module* can be used to add ``USE`` statements
+needed by the declarations.
+An empty list will cause no declaration to be added.
 
-.. c_var
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist in a group and have the same number of names.
 
+.. c_var  c_f_dimension
+
+f_c_arg_names
+^^^^^^^^^^^^^
+
+Names of arguments to pass to C function.
+Used when *buf_arg* is ``arg_decl``.
+Defaults to ``{F_C_var}``.
+An empty list will cause no declaration to be added.
+
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist in a group and have the same number of names.
 
 f_result_decl
 ^^^^^^^^^^^^^
@@ -193,6 +215,20 @@ f_result_decl
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
+
+f_import
+^^^^^^^^
+
+List of names to import into the Fortran interface.
+The names will be expanded before being used.
+
+In this example, Shroud creates *F_array_type* derived type in the
+module and it is used in the interface.
+
+.. code-block:: yaml
+
+        f_import=["{F_array_type}"],
+                
 
 f_module
 ^^^^^^^^
@@ -203,6 +239,19 @@ Fortran modules used in the Fortran interface:
 
         f_module=dict(iso_c_binding=["C_PTR"]),
 
+f_module_line
+^^^^^^^^^^^^^
+
+Fortran modules used in the Fortran interface as a single line
+which allows format strings to be used.
+
+.. code-block:: yaml
+
+        f_module_line="iso_c_binding:{f_kind}",
+
+The format is::
+
+     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
 
 
 arg_call
@@ -229,11 +278,17 @@ Code to call function.  This is usually generated.
 An exception which require explicit call code are constructors
 and destructors for shadow types.
 
+.. sets need_wrapper
+
 post_call
 ^^^^^^^^^
 
 Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
+You can also specify a library language version as
+**c_post_call** and **cxx_post_call** which will be used
+instead of **post_call**.
+
 
 final
 ^^^^^
@@ -271,13 +326,12 @@ For example, with shadow types.
 
 .. from vectors.yaml
 
-return_cptr
-^^^^^^^^^^^
-
-If *true*, the function will return a C pointer. This will be
-used by the Fortran interface to declare the function as
-``type(C_PTR)``.
-
+*return_type* can also be used to convert a C wrapper into a void
+function.  This is useful for functions which return pointers but the
+pointer value is assigned to a subroutine argument which holds the
+pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
+would be return by the C wrapper is unneeded by the Fortran wrapper.
+   
  
 destructor_name
 ^^^^^^^^^^^^^^^
@@ -309,7 +363,7 @@ owner
 Set *owner* of the memory.
 Similar to attribute *owner*.
 
-.. c_shadow_scalar_result
+.. XXX example in c_function_shadow_scalar
 
 Used where the ``new``` operator is part of the generated code.
 For example where a class is returned by value or a constructor.
@@ -319,3 +373,26 @@ from the C++ library function.  The Fortran shadow class must keep
 this copy until the shadow class is deleted.
 
 Defaults to *library*.
+
+temps
+^^^^^
+
+A list of suffixes for temporary variable names.
+
+.. code-block:: yaml
+
+    temps=["len"]
+
+ Create variable names in the format dictionary using
+ ``{fmt.c_temp}{rootname}_{name}``.
+ For example, argument *foo* creates *SHT_foo_len*.
+
+local
+^^^^^
+
+ Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+ *temps* is intended for arguments and is typically used in a mixin
+ group.  *local* is used by group to generate names for local
+ variables.  This allows creating names without conflicting with
+ *temps* from a *mixin* group.
+ 

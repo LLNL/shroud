@@ -1,0 +1,97 @@
+copyright:
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: typemap
+cxx_header: typemap.hpp
+
+typemap:
+# IndexType may be 32 or 64 bits depending on USE_64BIT_INDEXTYPE
+- type: IndexType
+  fields:
+    base: integer
+    f_kind: INDEXTYPE
+    f_module_name: typemap_mod
+
+- type: FloatType
+  fields:
+    base: real
+    f_kind: FLOATTYPE
+    f_module_name: typemap_mod
+
+declarations:
+#- decl: IndexType i1
+
+- decl: bool passIndex(IndexType i1, IndexType *i2+intent(out))
+# XXX - This does not act the same as passIndex2.
+#   It does the type coercision in C++ instead of using a fortran intrinsic.
+  fortran_generic:
+  - decl: (int32_t i1)
+    function_suffix: _32
+  - decl: (int64_t i1)
+    function_suffix: _64
+
+- decl: void passIndex2(IndexType i1)
+  fortran_generic:
+  - decl: (int32_t i1)
+    function_suffix: _32
+  - decl: (int64_t i1)
+    function_suffix: _64
+
+- decl: void passFloat(FloatType f1);
+  fortran_generic:
+  - decl: (float f1)
+    function_suffix: _float
+  - decl: (double f1)
+    function_suffix: _double
+
+######################################################################
+splicer_code:
+  f:
+    module_top: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      integer, parameter :: INDEXTYPE = C_INT64_T
+      #else
+      integer, parameter :: INDEXTYPE = C_INT32_T
+      #endif
+
+      #if defined(USE_64BIT_FLOAT)
+      integer, parameter :: FLOATTYPE = C_DOUBLE
+      #else
+      integer, parameter :: FLOATTYPE = C_FLOAT
+      #endif
+  c:
+    types:
+      C_declarations: |
+        #ifndef __cplusplus
+        #if defined(USE_64BIT_INDEXTYPE)
+        typedef int64_t IndexType;
+        #else
+        typedef int32_t IndexType;
+        #endif
+
+        #if defined(USE_64BIT_FLOAT)
+        typedef double FloatType;
+        #else
+        typedef float FloatType;
+        #endif
+        #endif
+
+# Add code which will be integrated with other include and use statements
+# added by typemaps and statements.
+file_code:
+  wraptypemap.h:
+    c_header: <stdint.h>
+    cxx_header: <cstdint>
+  wrapftypemap.f:
+    f_module:
+      iso_c_binding:
+      - C_FLOAT
+      - C_DOUBLE
+      - C_INT32_T
+      - C_INT64_T
+

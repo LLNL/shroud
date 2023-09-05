@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -10,6 +10,8 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import statements
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -26,6 +28,7 @@ class Wrapl(util.WrapperMixin):
             splicers -
         """
         self.newlibrary = newlibrary
+        self.language = newlibrary.language
         self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
@@ -36,6 +39,8 @@ class Wrapl(util.WrapperMixin):
         self.doxygen_begin = "/**"
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
+        self.helpers = Helpers(self.language)
+        update_statements_for_language(self.language)
 
     def reset_file(self):
         pass
@@ -54,6 +59,7 @@ class Wrapl(util.WrapperMixin):
         # Some kludges, need to compute correct value in wrapl.py
         fmt_library.LUA_metadata = "XXLUA_metadata"
         fmt_library.LUA_userdata_type = "XXLUA_userdata_type"
+        fmt_library.push_arg = "XXXpush_arg"
 
         # XXX - Without this c_const is undefined.
         #       Need to sort out where it should be set.
@@ -80,7 +86,7 @@ class Wrapl(util.WrapperMixin):
         """
         self._push_splicer("class")
         for cls in node.classes:
-            if not cls.options.wrap_lua:
+            if not cls.wrap.lua:
                 continue
             name = cls.name
             self.reset_file()
@@ -97,7 +103,7 @@ class Wrapl(util.WrapperMixin):
             self._pop_splicer("function")
 
         for ns in node.namespaces:
-            if ns.options.wrap_lua:
+            if ns.wrap.lua:
                 self.wrap_namespace(ns)
 
     def wrap_class(self, node):
@@ -108,6 +114,7 @@ class Wrapl(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = "SH_this"
+        fmt_class.LUA_name_api = node.apply_LUA_API_option(node.name_api or node.name)
         node.eval_template("LUA_userdata_type")
         node.eval_template("LUA_userdata_member")
         node.eval_template("LUA_class_reg")
@@ -180,9 +187,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         overloaded_methods = {}
         overloads = []
         for function in functions:
-            if not function.options.wrap_lua:
+            if not function.wrap.lua:
                 continue
-            name = function.ast.name
+            name = function.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -211,25 +218,22 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node = overloads[0]
 
         ast = node.ast
+        declarator = ast.declarator
         fmt_func = node.fmtdict
+        fmt_func.LUA_name_api = node.apply_LUA_API_option(node.name)
         fmt = util.Scope(fmt_func)
         node.eval_template("LUA_name")
         node.eval_template("LUA_name_impl")
 
-        CXX_subprogram = ast.get_subprogram()
+        CXX_subprogram = declarator.get_subprogram()
 
         # XXX       ast = node.ast
         # XXX       result_type = ast.typename
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        if node.return_this:
-            # XXX           result_type = 'void'
-            # XXX           result_is_ptr = False
-            CXX_subprogram = "subroutine"
-
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
         if is_dtor:
             CXX_subprogram = "subroutine"
             fmt.LUA_name = "__gc"
@@ -244,9 +248,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             nargs = 0
             in_args = []
             out_args = []
-            for arg in function.ast.params:
+            for arg in function.ast.declarator.params:
                 arg_typemap = arg.typemap
-                if arg.init is not None:
+                if arg.declarator.init is not None:
                     all_calls.append(
                         LuaFunction(
                             function, CXX_subprogram, in_args[:], out_args
@@ -266,6 +270,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         self.splicer_lines = []
         lines = self.splicer_lines
+        self.stmts_comments = []
 
         if len(all_calls) == 1:
             call = all_calls[0]
@@ -365,6 +370,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if node.options.debug:
             for node in overloads:
                 body.append("// " + node.declgen)
+        body.extend(self.stmts_comments)
         if node.options.doxygen:
             for node in overloads:
                 if node.doxygen:
@@ -401,15 +407,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 self.luaL_Reg_module, '{{"{LUA_name}", {LUA_name_impl}}},', fmt
             )
 
-    def do_function(self, cls, luafcn, fmt):
+    def do_function(self, cls, luafcn, fmt_func):
         """
         Wrap a single function/overload/default-argument
         variation of a function.
 
         Args:
-            cls -
-            luafcn -
-            fmt - local format dictionary
+            cls - ast.ClassNode
+            luafcn - LuaFunction
+            fmt_func - local format dictionary
         """
         node = luafcn.function
         #        if not options.wrap_lua:
@@ -428,11 +434,14 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        node.eval_template('LUA_name')
         #        node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node.CXX_subprogram
-        result_typemap = node.CXX_result_typemap
         ast = node.ast
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        declarator = ast.declarator
+        CXX_subprogram = declarator.get_subprogram()
+        result_typemap = ast.typemap
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
+        stmts_comments = self.stmts_comments
+        stmts_comments_args = []  # Used to reorder comments
 
         #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:
@@ -451,11 +460,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
+        fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt_func))
         if CXX_subprogram == "function":
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault("fmtl", util.Scope(fmt))
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
-            if is_ctor or ast.is_pointer():
+            if is_ctor or declarator.is_pointer():
                 #                fmt_result.c_member = '->'
                 fmt_result.cxx_member = "->"
                 fmt_result.cxx_addr = ""
@@ -470,14 +478,16 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 fmt_result.c_var = fmt_result.cxx_var
 
-            fmt.rv_decl = ast.gen_arg_as_cxx(
+            fmt_func.rv_decl = ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None
             )
-            fmt.rv_asgn = fmt.rv_decl + " =\t "
+            fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
 
-        LUA_decl = []  # declare variables and pop values
-        LUA_code = []  # call C++ function
-        LUA_push = []  # push results
+        node_stmt = util.Scope(LuaStmts)
+        declare_code = []  # Declare variables and pop values.
+        node_stmt.pre_call = []  # Extract arguments.
+        node_stmt.call = []  # Call C++ function.
+        node_stmt.post_call = []  # Push results.
 
         # post_parse = []
         cxx_call_list = []
@@ -486,36 +496,36 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if cls:
             cls_typedef = cls.typemap
             if not is_ctor:
-                fmt.LUA_used_param_state = True
-                fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
+                fmt_func.LUA_used_param_state = True
+                fmt_func.c_var = wformat(cls_typedef.LUA_pop, fmt_func)
                 append_format(
-                    LUA_code,
+                    node_stmt.call,
                     "{LUA_userdata_type} * {LUA_userdata_var} =\t {c_var};",
-                    fmt,
+                    fmt_func,
                 )
 
         # parse arguments
         # call function based on number of default arguments provided
         # XXX default_calls = []   # each possible default call
         # XXX if '_has_default_arg' in node:
-        # XXX     append_format(LUA_decl, 'int SH_nargs =
-        # XXX          lua_gettop({LUA_state_var});', fmt)
+        # XXX     append_format(declare_code, 'int SH_nargs =
+        # XXX          lua_gettop({LUA_state_var});', fmt_func)
 
         # Only process nargs.
         # Each variation of default-arguments produces a new call.
-        fmt_arg = util.Scope(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = ast.params[iarg]
-            arg_name = arg.name
+            arg = ast.declarator.params[iarg]
+            a_declarator = arg.declarator
+            arg_name = a_declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt))
+            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.lua_var = "SH_Lua_" + arg_name
             fmt_arg.c_var_len = "L" + arg_name
-            if arg.is_pointer():
+            if a_declarator.is_pointer():
                 fmt_arg.c_deref = " *"
                 fmt_arg.c_member = "->"
                 fmt_arg.cxx_member = "->"
@@ -523,23 +533,43 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_deref = ""
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
-            attrs = arg.attrs
-
-            lua_pop = None
+            attrs = a_declarator.attrs
+            meta = a_declarator.metaattrs
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
-            if attrs["intent"] in ["inout", "in"]:
+
+            intent_blk = None
+            intent = meta["intent"]
+            sgroup = arg_typemap.sgroup
+            spointer = a_declarator.get_indirect_stmt()
+            stmts = None
+            stmts = ["lua", intent, sgroup, spointer]
+            if intent_blk is None:
+                intent_blk = lookup_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = statements.compute_name(stmts)
+            fmt_arg.stmt1 = intent_blk.name
+            # Add some debug comments to function.
+            if node.options.debug:
+                stmts_comments_args.append(
+                    "// ----------------------------------------")
+                stmts_comments_args.append("// Argument:  " + arg.gen_decl())
+                self.document_stmts(
+                    stmts_comments_args, arg, fmt_arg.stmt0, fmt_arg.stmt1)
+            
+            if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
-                fmt_arg.c_var = wformat(arg_typemap.LUA_pop, fmt_arg)
-                if arg_typemap.c_to_cxx is None:
-                    lua_pop = fmt_arg.c_var
-                else:
-                    lua_pop = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                fmt_arg.pop_expr = wformat(arg_typemap.LUA_pop, fmt_arg)
+                if self.language == "c":
+                    pass
+                elif arg_typemap.c_to_cxx:
+                    fmt_arg.c_var = fmt_arg.pop_expr
+                    fmt_arg.pop_expr = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
-            if attrs["intent"] in ["inout", "out"]:
+            if intent in ["inout", "out"]:
                 # output variable must be a pointer
                 # XXX - fix up for strings
                 # XXX  format, vargs = self.intent_out(
@@ -547,101 +577,90 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX  build_format.append(format)
                 # XXX  build_vargs.append('*' + vargs)
 
-                # append_format(LUA_push, arg_typemap.LUA_push, fmt_arg)
-                fmt.LUA_used_param_state = True
+                # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
-                LUA_push.append(tmp + ";")
+                node_stmt.post_call.append(tmp + ";")
+                # XXX - needs work with pointers: int *out+intent(out)
 
-            # argument for C++ function
-            # This has been replaced by gen_arg methods, but not sure about const.
-            #            lang = 'cxx_type'
-            #            arg_const = False
-            #            if arg_typemap.base == 'string':
-            #                # C++ will coerce char * to std::string
-            #                lang = 'c_type'
-            #                arg_const = True  # lua_tostring is const
-            #            if arg.is_reference():
-            #                # convert a reference to a pointer
-            #                ptr = True
-            #            else:
-            #                ptr = False
-
-            if lua_pop:
-                fmt.LUA_used_param_state = True
-                decl_suffix = " =\t {};".format(lua_pop)
-            else:
-                decl_suffix = ";"
-            if arg_typemap.base == "string":
-                LUA_decl.append(
-                    arg.gen_arg_as_c(continuation=True) + decl_suffix
-                )
-            else:
-                LUA_decl.append(
-                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
-                    + decl_suffix
-                )
+            self.append_code(intent_blk, node_stmt, fmt_arg, fmt_func)
 
             cxx_call_list.append(fmt_arg.cxx_var)
+        # --- End loop over function parameters
 
         # call with arguments
-        fmt.cxx_call_list = ",\t ".join(cxx_call_list)
-        #        LUA_code.extend(post_parse)
+        fmt_func.cxx_call_list = ",\t ".join(cxx_call_list)
+        #        call_code.extend(post_parse)
 
+        sgroup = None
+        spointer = ast.declarator.get_indirect_stmt()
+#        print("DDDDDDDDDDDDDD", ast.name)
+        sintent = declarator.metaattrs["intent"]
         if is_ctor:
-            fmt.LUA_used_param_state = True
-            append_format(
-                LUA_code,
-                "{LUA_userdata_type} * {LUA_userdata_var} ="
-                "\t ({LUA_userdata_type} *) lua_newuserdata"
-                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n"
-                "{LUA_userdata_var}->{LUA_userdata_member} ="
-                "\t new {namespace_scope}{cxx_class}({cxx_call_list});\n"
-                "/* Add the metatable to the stack. */\n"
-                'luaL_getmetatable(L, "{LUA_metadata}");\n'
-                "/* Set the metatable on the userdata. */\n"
-                "lua_setmetatable(L, -2);",
-                fmt,
-            )
+            fmt_func.LUA_used_param_state = True
+#            self.helpers.add_helper("maker", fmt_func)
         elif is_dtor:
-            fmt.LUA_used_param_state = True
-            append_format(
-                LUA_code,
-                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
-                "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
-                fmt,
-            )
+            fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
-            append_format(
-                LUA_code,
-                "{LUA_this_call}{function_name}({cxx_call_list});",
-                fmt,
-            )
+            spointer = None
+            sintent = "subroutine"
         else:
-            append_format(
-                LUA_code,
-                "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-                fmt,
-            )
+            sgroup = result_typemap.sgroup
+        stmts = ["lua", sintent, sgroup, spointer]
+        result_blk = lookup_stmts(stmts)
+        fmt_result.stmt0 = statements.compute_name(stmts)
+        fmt_result.stmt1 = result_blk.name
+        if node.options.debug:
+            stmts_comments.append(
+                "// ----------------------------------------")
+            stmts_comments.append(
+                "// Function:  " + ast.gen_decl(params=None))
+            self.document_stmts(
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+            stmts_comments.extend(stmts_comments_args)
+            
 
         #        if 'LUA_error_pattern' in node:
         #            lfmt = util.Scope(fmt)
         #            lfmt.c_var = fmt.LUA_result
         #            lfmt.cxx_var = fmt.LUA_result
-        #            append_format(LUA_code,
+        #            append_format(call_code,
         #                 self.patterns[node['LUA_error_pattern']], lfmt)
 
         # Compute return value
         if CXX_subprogram == "function" and not is_ctor:
-            fmt.LUA_used_param_state = True
-            tmp = wformat(result_typemap.LUA_push, fmt_result)
-            LUA_push.append(tmp + ";")
+            fmt_result.push_arg = fmt_result.c_var
+            fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
+        self.append_code(result_blk, node_stmt, fmt_result, fmt_func)
 
         lines = self.splicer_lines
-        lines.extend(LUA_decl)
-        lines.extend(LUA_code)
+        lines.extend(declare_code)
+        lines.extend(node_stmt.pre_call)
+        lines.extend(node_stmt.call)
         # int lua_checkstack (lua_State *L, int extra)
-        lines.extend(LUA_push)  # return values
+        lines.extend(node_stmt.post_call)  # return values
 
+
+    def append_code(self, blk, node_stmt, fmt, fmt_func):
+        """Append code from blk
+
+        Args:
+            blk - util.Scope
+            node_stmt - LuaStmts
+            fmt - util.Scope
+            fmt_func - util.Scope
+        """
+        if blk.pre_call:
+            fmt_func.LUA_used_param_state = True
+            for line in blk.pre_call:
+                append_format(node_stmt.pre_call, line, fmt)
+        if blk.call:
+            for line in blk.call:
+                append_format(node_stmt.call, line, fmt)
+        if blk.post_call:
+            fmt_func.LUA_used_param_state = True
+            for line in blk.post_call:
+                append_format(node_stmt.post_call, line, fmt)
+        
     def write_header(self, node):
         """
         Args:
@@ -650,6 +669,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
+        header_impl = util.Header(self.newlibrary)
+        header_impl.add_cxx_header(node)
+
         output = []
 
         # add guard
@@ -657,8 +679,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
         util.extern_C(output, "begin")
 
-        for include in node.cxx_header:
-            output.append('#include "%s"' % include)
+        header_impl.write_headers(output)
 
         output.append('#include "lua.h"')
         output.extend(self.lua_type_structs)
@@ -696,20 +717,27 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 
+        hinclude, hsource = self.helpers.find_file_helper_code()
+
+        header_impl = util.Header(self.newlibrary)
+        header_impl.add_cxx_header(node)
+        header_impl.add_shroud_file(fmt.LUA_header_filename)
+        header_impl.add_shroud_dict(hinclude)
+        
         output = []
 
-        for include in node.cxx_header:
-            output.append('#include "{}"'.format(include))
-        append_format(output, '#include "{LUA_header_filename}"', fmt)
+        header_impl.write_headers(output)
 
         util.extern_C(output, "begin")
         output.append('#include "lauxlib.h"')
         util.extern_C(output, "end")
 
+        output.append("")
         self._create_splicer("include", output)
 
         self._create_splicer("C_definition", output)
 
+        output.extend(hsource)
         output.extend(self.body_lines)
 
         self.append_luaL_Reg(output, fmt.LUA_module_reg, self.luaL_Reg_module)
@@ -741,7 +769,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
 class LuaFunction(object):
     """Gather information used to write a wrapper for
-    and overloaded/default-argument function
+    an overloaded/default-argument function
     """
 
     def __init__(self, function, subprogram, inargs, outargs):
@@ -761,3 +789,307 @@ class LuaFunction(object):
 
         if subprogram == "function":
             self.nresults += 1
+
+
+class Helpers(object):
+    def __init__(self, language):
+        self.c_helpers = {}  # c and c++
+        self.language = language
+
+    def add_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for i, helper in enumerate(c_helper.split()):
+            self.c_helpers[helper] = True
+            if helper not in LuaHelpers:
+                raise RuntimeError("No such helper {}".format(helper))
+            setattr(fmt, "hnamefunc" + str(i),
+                    LuaHelpers[helper].get("name", helper))
+        
+#        self.c_helper[name] = True
+#        # Adjust for alias like with type char.
+#        return whelpers.CHelpers[name]["name"]
+
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+
+        Args:
+            name - Name of helper.
+            done - Dictionary of previously processed helpers.
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = LuaHelpers[name]
+        if "dependent_helpers" in helper_info:
+            for dep in helper_info["dependent_helpers"]:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        scope = helper_info.get("scope", "file")
+        # assert scope in ["file", "utility"]
+
+        lang_key = self.language + "_include"
+        if lang_key in helper_info:
+            for include in helper_info[lang_key]:
+                self.helper_summary["include"][scope][include] = True
+        elif "include" in helper_info:
+            for include in helper_info["include"]:
+                self.helper_summary["include"][scope][include] = True
+
+        for key in ["proto", "source"]:
+            lang_key = self.language + "_" + key 
+            if lang_key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[lang_key])
+            elif key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[key])
+
+    def gather_helper_code(self, helpers):
+        """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers - dictionary of helper names.
+        """
+        self.helper_summary = dict(
+            include=dict(file={}, pwrap_impl={}),
+            proto=dict(file=[], pwrap_impl=[]),
+            source=dict(file=[], pwrap_impl=[]),
+        )
+        self.helper_need_numpy = False
+
+        done = {}  # Avoid duplicates by keeping track of what's been gathered.
+        for name in sorted(helpers.keys()):
+            self._gather_helper_code(name, done)
+
+#        print("XXXXXXXX", self.helper_summary)
+
+    def find_file_helper_code(self):
+        """Get "file" helper code.
+        Add to shared_helper, then reset.
+
+        Return dictionary of headers and list of source files.
+        """
+#        if self.newlibrary.options.PY_write_helper_in_util:
+#            self.shared_helper.update(self.c_helper)
+#        if True:
+#            self.c_helpers = {}
+#            return {}, []
+        self.gather_helper_code(self.c_helpers)
+#        self.shared_helper.update(self.c_helpers)
+        self.c_helper = {}
+        return (
+            self.helper_summary["include"]["file"],
+            self.helper_summary["source"]["file"],
+#            self.helper_need_numpy
+        )
+
+        
+
+
+LuaHelpers = dict(
+    maker=dict(
+        source="""
+// Test adding helper
+""",
+    ),
+)
+
+######################################################################
+
+# The tree of Python Scope statements.
+lua_tree = {}
+lua_dict = {} # dictionary of Scope of all expanded lua_statements,
+default_scope = None  # for statements
+
+def update_statements_for_language(language):
+    """Preprocess statements for lookup.
+
+    Update statements for c or c++.
+    Fill in py_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
+    """
+    statements.update_for_language(lua_statements, language)
+    statements.update_stmt_tree(lua_statements, lua_dict, lua_tree, default_stmts)
+    global default_scope
+    default_scope = statements.default_scopes["lua"]
+
+
+def write_stmts_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    statements.print_tree_index(lua_tree, lines)
+    fp.writelines(lines)
+    statements.print_tree_statements(fp, lua_dict, default_stmts)
+    
+
+def lookup_stmts(path):
+    return statements.lookup_stmts_tree(lua_tree, path)
+
+LuaStmts = util.Scope(
+    None,
+    name="lua_default",
+    intent=None,
+    pre_call=[],
+    call=[],
+    post_call=[],
+)
+
+default_stmts = dict(
+    lua=LuaStmts,
+)
+        
+lua_statements = [
+    # Factor out some common code patterns to use as mixins.
+    dict(
+        # Used to capture return value.
+        # Used with intent(result).
+        name="lua_mixin_callfunction",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+    ),
+#    dict(
+#        # Pop an argument off of the stack
+#        name="lua_mixin_pop",
+#        pre_call=[
+#            "// pre_call",
+#        ],
+#    ),
+    dict(
+        # Used to capture return value.
+        # Used with intent(result).
+        name="lua_mixin_push",
+        post_call=[
+            "{push_expr};",
+        ],
+    ),
+    #####
+    # subroutine
+    dict(
+        name="lua_subroutine",
+        call=[
+            "{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+    ),
+    #####
+    # void
+    dict(
+        name="lua_function_void_*",
+        mixin=[
+            "lua_mixin_callfunction",
+        ],
+    ),
+    #####
+    # bool
+    dict(
+        name="lua_in_bool_scalar",
+        pre_call=[
+            "bool {c_var} = {pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_function_bool_scalar",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
+    ),
+    #####
+    # native
+    dict(
+        name="lua_in_native_scalar",
+        pre_call=[
+            "{cxx_type} {cxx_var} =\t {pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_inout_native_*",
+        pre_call=[
+            "// lua_native_*_inout;",
+        ],
+    ),
+    dict(
+        name="lua_function_native_scalar",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
+    ),
+    #####
+    # string
+    dict(
+        name="lua_in_string_*",
+        pre_call=[
+            "const char * {c_var} = \t{pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_in_string_&",
+        base="lua_in_string_*",
+    ),
+    dict(
+        name="lua_function_string_scalar",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
+    ),
+    dict(
+        name="lua_function_string_&",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
+    ),
+    #####
+    # shadow
+    dict(
+        name="lua_ctor",
+        call=[
+            "{LUA_userdata_type} * {LUA_userdata_var} ="
+                "\t ({LUA_userdata_type} *) lua_newuserdata"
+                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));",
+            "{LUA_userdata_var}->{LUA_userdata_member} ="
+                "\t new {namespace_scope}{cxx_class}({cxx_call_list});",
+            "/* Add the metatable to the stack. */",
+            'luaL_getmetatable(L, "{LUA_metadata}");',
+            "/* Set the metatable on the userdata. */",
+            "lua_setmetatable(L, -2);",
+        ],
+    ),
+    dict(
+        name="lua_dtor",
+        call=[
+            "delete {LUA_userdata_var}->{LUA_userdata_member};",
+            "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
+        ],
+    ),
+    dict(
+        name="lua_in_shadow_*",
+        pre_call=[
+            "{cxx_type} * {cxx_var} =\t {pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_function_shadow_*",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push",
+        ],
+    ),
+]

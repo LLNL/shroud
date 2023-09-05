@@ -1,54 +1,65 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
+// #######################################################################
 //
+// Tests for scope.cpp
 //
-#include "scope.hpp"
-#include "wrapscope.h"
-#include "wrapClass1.h"
-#include "wrapClass2.h"
-#include "wrapscope_ns1.h"
-#include "wrapscope_ns2.h"
-#include <string>
-#include <iostream>
 
-void check(bool expr, const std::string &msg)
+#include "scope.hpp"
+
+#include <stdio.h>
+
+typedef enum Color (*fptr1)(void);
+
+enum Color global1 = RED;
+enum Color *global2;
+static enum Color *global3 = &global1;
+
+//int Color = 1;
+
+Color decl(Color top)
 {
-  if (! expr) {
-    std::cout << msg << std::endl;
-  }
+    top = RED;
+    return top;
+}
+
+enum Color decl2(enum Color top)
+{
+    top = RED;
+    return top;
 }
 
 int main(int argc, char *argv[])
 {
+    int i;
+    enum Color local1 = RED;
 
-  check(static_cast<int>(SCO_RED) == static_cast<int>(RED),
-        "top level enum");
+    printf("Value %d\n", local1);
 
-  check(static_cast<int>(SCO_ns1_RED) ==
-        static_cast<int>(ns1::RED),
-        "namespace ns1 enum");
-  check(static_cast<int>(SCO_ns2_RED) ==
-        static_cast<int>(ns2::RED),
-        "namespace ns2 enum");
-  check(static_cast<int>(SCO_ns3_RED) ==
-        static_cast<int>(ns3::RED),
-        "namespace ns3 enum");
+    i = ns1::Color::RED;
+    printf("Value %d\n", i);
 
-  // enum in a class
-  check(static_cast<int>(SCO_Class1_RED) ==
-        static_cast<int>(Class1::RED),
-        "class1 enum");
-  check(static_cast<int>(SCO_Class2_RED) ==
-        static_cast<int>(Class2::RED),
-        "class2 enum");
+    i = ns2::Color::RED;
+    printf("Value %d\n", i);
 
-  // class enum
-  check(static_cast<int>(SCO_ColorEnum_RED) ==
-        static_cast<int>(ColorEnum::RED),
-        "class enum");
+    i = ns3::Color::RED;
+    printf("Value %d\n", i);
 
-  return 0;
+    i = Class2::RED;
+    printf("Value %d\n", i);
+
+    i = static_cast<int>(ColorEnum::RED);
+    printf("Value %d\n", i);
+
+    i = decl(RED);
+    printf("Value %d\n", i);
+    i = decl2(RED);
+    printf("Value %d\n", i);
+
+    i = *global3;
+    printf("Value %d\n", i);
+    
 }

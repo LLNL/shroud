@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -35,7 +35,7 @@ clean :
 
 types.o : types.hpp
 wraptypes.o : wraptypes.h types.hpp
-main.o : wrapftypes.o types.o
+main.o : fruit.o wrapftypes.o types.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wraptypes.o types.o

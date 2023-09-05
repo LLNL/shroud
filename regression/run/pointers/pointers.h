@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -61,9 +61,15 @@ int checkInt2d(int **arg);
 
 void DimensionIn(const int *arg);
 
+// allocatable
+void getAllocToFixedArray(int **nitems);
+
+
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
+void updateVoidPtr(void **addr);
 void fetchVoidPtr(void **addr);
+int VoidPtrArray(void **addr);
 
 int *returnIntPtrToScalar(void);
 int *returnIntPtrToFixedArray(void);
@@ -73,6 +79,8 @@ int *returnIntScalar(void);
 int *returnIntRaw(void);
 int *returnIntRawWithArgs(const char *name);
 int **returnRawPtrToInt2d(void);
+
+int *returnIntAllocToFixedArray(void);
 
 //void getPtrToArray(int **count+intent(out));
 

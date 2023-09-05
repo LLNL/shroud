@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -26,9 +26,11 @@ OBJS = \
     pyClass1type.o \
     pyClass2type.o \
     pySingletontype.o \
+    pyShapetype.o \
+    pyCircletype.o \
     pyclassesutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : classes.so simple
 

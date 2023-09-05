@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -54,6 +54,10 @@ write-helpers BASE
        Write files which contain the available helper functions
        into the files BASE.c and BASE.f.
 
+write-statements BASE
+       Write a file which contain the statements tree.
+       Used for debugging.
+
 write-version
        Write Shroud version into generated files.
        ``--nowrite-version`` will not write the version and is used
@@ -79,6 +83,7 @@ classes
 cxx_header
   Blank delimited list of header files which
   will be included in the implementation file.
+  The order will be preserved when generating wrapper files.
 
 format
    Dictionary of Format fields for the library.
@@ -217,9 +222,11 @@ Options
 -------
 
 C_API_case
-   Control case of *C_name_scope*.
-   Possible values are 'lower' or 'upper'.
-   Any other value will have no effect.
+   Controls mangling of C++ library names to C names
+   via the format field *C_name_api*.
+   Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+   Defaults to *preserve* and will be combined with *C_prefix*.
+   For example, **C_name_template** includes ``{C_prefix}{C_name_scope}{C_name_api}``.
 
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
@@ -240,6 +247,72 @@ C_line_length
   to break lines.
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
+
+C_shadow_result
+  If *true*, the api for the function result will be set to *capptr*,
+  otherwise it will be set to *capsule*.  In both cases, the result is
+  passed from Fortran to the C api as an additional argument. With
+  *C_shadow_result* true, a pointer to the capsule is returned as the
+  function result.  If *false*, the C wrapper is a ``void`` function.
+  *capptr* acts more like C library functions such as ``strcpy`` which
+  return a pointer to the result. *capsule* makes for a simpler
+  Fortran wrapper implementation since the function result is not used
+  since it is identical to the result argument.
+
+class_baseclass
+  Used to define a baseclass for a struct for *wrap_struct_as=class*".
+  The baseclase must already be defined earlier in the YAML file.
+  It must be in the same namespace as the struct.
+
+.. example from struct.yaml
+  
+.. code-block:: yaml
+
+    - decl: struct Cstruct_as_class
+      options:
+        wrap_struct_as: class
+    - decl: struct Cstruct_as_subclass
+      options:
+        wrap_struct_as: class
+        class_baseclass: Cstruct_as_class
+
+ This is equivelent to the C++ code
+
+ .. code-block:: c++
+
+    class Cstruct_as_class;
+    class Cstruct_as_subclass : public Cstruct_as_class;
+
+The corresponding Fortran wrapper will have
+
+.. code-block:: fortran
+
+    type cstruct_as_class
+      type(STR_SHROUD_capsule_data) :: cxxmem
+    end type cstruct_as_class
+    type, extends(cstruct_as_class) ::  cstruct_as_class
+    end type cstruct_as_subclass
+
+class_ctor
+  Indicates that this function is a constructor for a struct.
+  The value is the name of the struct.
+  Useful for *wrap_struct_as=class* when used with C.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct_as_class {
+              int x1;
+              int y1;
+            };
+      options:
+        wrap_struct_as: class
+
+    - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+      options:
+        class_ctor: Cstruct_as_class
+
+class_method
+  Indicates that this function is a method for a struct.
 
 CXX_standard
   C++ standard. Defaults to *2011*.
@@ -262,6 +335,32 @@ debug_index
 doxygen
   If True, create doxygen comments.
 
+F_API_case
+   Controls mangling of C++ library names to Fortran names
+   via the format field *F_name_api*.
+   Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+   Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
+   Since Fortran is case insensitive, users are not required to
+   respect the case of the C++ name.  Using *underscore* makes the
+   names easier to read regardless of the case.
+
+F_assumed_rank_min
+  Minimum rank of argument with assumed-rank.
+  Defaults to 0 (scalar).
+
+F_assumed_rank_max
+  Maximum rank of argument with assumed-rank.
+  Defaults to 7.
+
+F_blanknull
+  Default value of attribute *+blanknull* for ``const char *``
+  arguments.  This attribute will convert blank Fortran strings
+  to a ``NULL`` pointer.
+
+F_CFI
+  Use the C Fortran Interface provided by *Futher Interoperability with C*
+  from Fortran 2018 (initially defined in TS29113 2012).
+
 F_create_bufferify_function
   Controls creation of a *bufferify* function.
   If *true*, an additional C function is created which receives
@@ -274,12 +373,25 @@ F_create_bufferify_function
 F_create_generic
   Controls creation of a generic interface.  It defaults to *true* for
   most cases but will be set to *False* if a function is templated on
-  the return type since Fortran does not distiuguish generics based on
+  the return type since Fortran does not distinguish generics based on
   return type (similar to overloaded functions based on return type in
   C++).
 
 .. XXX should also be set to false when the templated argument in
    cxx_template is part of the implementation and not the interface.
+
+F_default_args
+  Decide how to handle C++ default argument functions.
+  See :ref:`DefaultArguments`.
+
+  generic
+      Create a wrapper for each variation from all arguments
+      to no arguments defaulted.  In Fortran, create a generic
+      interface.
+  optional
+      Make each default argument as a Fortran ``OPTIONAL`` argument.
+  require
+      Require all arguments to be provided to the wrapper.
 
 F_line_length
   Control length of output line for generated Fortran.
@@ -301,6 +413,14 @@ F_standard
   The fortran standard.  Defaults to *2003*.
   This effects the ``mold`` argument of the ``allocate`` statement.
 
+F_return_fortran_pointer
+  Use ``c_f_pointer`` in the Fortran wrapper to return 
+  a Fortran pointer instead of a ``type(C_PTR)``
+  in routines which return a pointer.
+  It does not apply to ``char *``, ``void *``, and routines which return
+  a pointer to a class instance.
+  Defaults to *true*.
+
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
   function which accepts a buffer and length.  The C wrapper will call
@@ -309,13 +429,22 @@ F_string_len_trim
   copying the string in the Fortran wrapper.
   Defaults to *true*.
 
-F_return_fortran_pointer
-  Use ``c_f_pointer`` in the Fortran wrapper to return 
-  a Fortran pointer instead of a ``type(C_PTR)``
-  in routines which return a pointer
-  It does not apply to ``char *``, ``void *``, and routines which return
-  a pointer to a class instance.
-  Defaults to *true*.
+F_struct_getter_setter
+  If true, a getter and setter will be created for struct members
+  which are a pointer to native type. This allows a Fortran pointer
+  to be used with the field instead of having to deal with the
+  ``type(C_PTR)`` directly.
+  Default to *true*
+
+F_trim_char_in
+  Controls code generation for ``const char *`` arguments.
+  If *True*, Fortran perform a ``TRIM`` and concatenates
+  ``C_NULL_CHAR``.  If *False*, it will be done in C.  If the only
+  need for the C wrapper is to null-terminate a string (wrapping a c
+  library and no other argument requires a wrapper), then the C
+  wrapper can be avoid by moving the null-termination action to
+  Fortran.
+  Default is *True*.
 
 .. XXX how to decide length of pointer
 
@@ -337,6 +466,12 @@ literalinclude2
   Each Fortran interface will be encluded in its own ``interface`` block.
   This is to provide the interface context when code is added to the
   documentation.
+
+LUA_API_case
+  Controls mangling of C++ library names to Lua names
+  via the format field *LUA_name_api*.
+  Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+  Defaults to *preserve*.
 
 PY_create_generic
   Controls creation of a multi-dispatch function with
@@ -375,6 +510,18 @@ show_splicer_comments
     else, do not show the comments.
     Only the global level option is used.
 
+wrap_class_as
+    Defines how a ``class`` should be wrapped.
+    If *class*, wrap using a shadow type.
+    If *struct*, wrap the same as a ``struct``.
+    Default is *class*.
+
+wrap_struct_as
+    Defines how a ``struct`` should be wrapped.
+    If *struct*, wrap a struct as a Fortran derived-type.
+    If *class*, wrap a struct the same as a class using a shadow type.
+    Default is *struct*.
+    
 wrap_c
   If *true*, create C wrappers.
   Defaults to *true*.
@@ -396,7 +543,7 @@ Option Templates
 ^^^^^^^^^^^^^^^^
 
 Templates are set in options then expanded to assign to the format 
-dictionary.
+dictionary to create names in the generated code.
 
 C_enum_template
     Name of enumeration in C wrapper.
@@ -429,26 +576,17 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}``
 
-C_var_len_template
-    Format for variable created with *len* annotation.
-    Default ``N{c_var}``
-
-C_var_size_template
-    Format for variable created with *size* annotation.
-    Default ``S{c_var}``
-
-C_var_trim_template
-    Format for variable created with *len_trim* annotation.
-    Default ``L{c_var}``
-
+C_name_typedef_template
+    ``{C_prefix}{C_name_scope}{typedef_name}``
+    
 F_C_name_template
-    ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
-   Defaults to ``{underscore_name}_{argname}``
+   Defaults to ``{F_name_api}_{argname}``
    where *argname* is the name of the function argument.
    see :ref:`DeclAnchor_Function_Pointers`.
 
@@ -456,24 +594,23 @@ F_abstract_interface_subprogram_template
    The name of the abstract interface subprogram which represents a
    function pointer.
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
-   see :ref:`DeclAnchor_Function_Pointers`.
+   See :ref:`DeclAnchor_Function_Pointers`.
 
 F_array_type_template
    ``{C_prefix}SHROUD_array``
    
 F_capsule_data_type_template
-   ``{C_prefix}SHROUD_capsule_data``
-
-F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
-    struct used to implement a shadow class.
-    Each class must have a unique name.
-    Defaults to ``{C_prefix}SHROUD_{F_name_scope}capsule``.
+    struct used to implement a shadow class (**C_capsule_data_type**).
+    All classes use the same derived type.
+    Defaults to ``{C_prefix}SHROUD_capsule_data``.
 
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``
-  
 
+F_derived_name_template
+    Defaults to ``{F_name_api}``.
+    
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
     ``{F_name_scope}{enum_member_lower}``
@@ -481,13 +618,13 @@ F_enum_member_template
     in the Fortran code, not the enum name itself.
 
 F_name_generic_template
-    ``{underscore_name}``
+    ``{F_name_api}``
 
 F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_name_scope}{F_name_api}{function_suffix}{template_suffix}``
 
 F_module_name_library_template
     ``{library_lower}_mod``
@@ -496,8 +633,11 @@ F_module_name_namespace_template
     ``{file_scope}_mod``
 
 F_name_function_template
-    ``{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_name_api}{function_suffix}{template_suffix}``
 
+F_typedef_name_template
+    ``{F_name_scope}{F_name_api}``
+    
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
     ``{LUA_prefix}{cxx_class}_Reg``
@@ -602,7 +742,7 @@ PY_struct_array_descr_create_template
     ``{PY_prefix}{cxx_class}_create_array_descr``
 
 PY_struct_arg
-    How to wrap arrays - numpy, list or class.
+    How to wrap structs - numpy, list or class.
     Defaults to *numpy*.
 
 PY_struct_array_descr_variable_template
@@ -628,6 +768,26 @@ PY_use_numpy
     Allow NumPy arrays to be used in the module.
     For example, when assigning to a struct-as-class member.
 
+SH_class_getter_template
+    Name of generated getter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``get_{wrapped_name}``.
+
+SH_class_setter_template
+    Name of generated setter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``set_{wrapped_name}``.
+
+SH_struct_getter_template
+    Name of generated getter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_get_{wrapped_name}``.
+
+SH_struct_setter_template
+    Name of generated setter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_set_{wrapped_name}``.
+
 YAML_type_filename_template
     Default value for global field YAML_type_filename
     ``{library_lower}_types.yaml``
@@ -644,7 +804,7 @@ Library
 ^^^^^^^
 
 C_array_type
-    Name of structure used to store information about an array
+    Name of structure used to store metadata about an array
     such as its address and size.
     Defaults to *{C_prefix}SHROUD_array*.
 
@@ -692,10 +852,26 @@ C_local
 C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
 
+C_name_api
+    Root name that is used to create various names in the C API.
+    Defaulted by the **C_API_case** option with values
+    *lower*, *upper*, *underscore*, or *preserve*.
+    If set explicitly then **C_API_case** will have no effect.
+
+    May be blank for namespaces to avoid adding the name to
+    *C_name_scope*.
+
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
-    Used with creating names in C.
+    Used to 'flatten' nested C++ names into global C identifiers.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
+    For example, **C_name_template** includes ``{C_prefix}{C_name_scope}{C_name_api}``.
+
+    *C_name_scope* will replace *class_name* with the instantiated *class_name*.
+    which will contain a template arguments.
+
+    This is a computed using *C_name_api* and should not be set explicitly.
 
 C_result
     The name of the C wrapper's result variable.
@@ -725,7 +901,7 @@ CXX_this
     Defaults to ``SH_this``.
 
 F_array_type
-    Name of derived type used to store information about an array
+    Name of derived type used to store metadata about an array
     such as its address and size.
     Default value from option *F_array_type_template* which 
     defaults to *{C_prefix}SHROUD_array*.
@@ -763,6 +939,10 @@ F_derived_member
     A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
 
+F_derived_member_base
+    The *F_derived_member* for the base class of a class.
+    Only single inheritance is support via the ``EXTENDS`` keyword in Fortran.
+
 F_filename_suffix
     Suffix added to Fortran files.
     Defaults to ``f``.
@@ -774,24 +954,26 @@ F_module_name
     which is **{library_lower}_mod**.
     Then converted to lower case.
 
+F_name_api
+    Root name that is used to create various names in the Fortran API.
+    Controlled by the **F_API_case** option with values
+    *lower*, *upper*, *underscore* or *preserve*.
+    Used with options **templates F_C_name_template**, **F_name_impl_template**,
+    **F_name_function_template**, **F_name_generic_template**,
+    **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
+    **F_typedef_name_template**.
+
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in Fortran.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
 
+    This is a computed using *F_name_api* and should not be set explicitly.
+    
 F_impl_filename
     Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
-
-F_pointer
-    The name of Fortran wrapper local variable to save result of a 
-    function which returns a pointer.
-    The pointer is then set in ``F_result`` using ``c_f_pointer``.
-    It must not be the same as any of the routines arguments.
-    It defaults to *SHT_ptr*
-    It is defined for each argument in case it is used by the
-    fc_statements. Set to *SHPTR_arg_name*, where *arg_name* is the
-    argument name.
 
 F_result
     The name of the Fortran wrapper's result variable.
@@ -799,16 +981,10 @@ F_result
     It defaults to *SHT_rv*  (Shroud temporary return value).
 
 F_result_ptr
-    The name of a variable in the Fortran wrapper which holds the
-    result of the C wrapper for functions which return a class instance.
-    It will be type ``type(C_PTR)``.
-
-..  XXX -  useful in wrappers to check for NULL pointers which may indicate error
-
-F_result_capsule
-    The name of the additional argument in the interface for functions
-    which return a class instance.
-    It will be type *F_capsule_data_type*.
+    The name of the variable used with api *capptr* for the
+    function result for arguments which create a shadow type.
+    Defaults to ``SHT_prv``, pointer to return value.
+    Used by option *C_shadow_result*.
 
 F_string_result_as_arg
     The name of the output argument.
@@ -847,6 +1023,12 @@ LUA_impl_filename_suffix
 LUA_module_name
     Name of Lua module for library.
     ``{library_lower}``
+
+LUA_name_api
+    Root name that is used to create various names in the Lua API.
+    Defaulted by the **LUA_API_case** option with values
+    *lower*, *upper*, *underscore*, or *preserve*.
+    If set explicitly then **LUA_API_case** will have no effect.
 
 LUA_prefix
     Prefix added to Lua wrapper functions.
@@ -950,7 +1132,7 @@ flat_name
 
 C_enum_member
     C name for enum member.
-    Computed from *C_enum_member_template*.
+    Computed from option *C_enum_member_template*.
 
 C_value
     Evalued value of enumeration.
@@ -968,7 +1150,7 @@ F_scope_name
 
 F_enum_member
     Fortran name for enum member.
-    Computed from *F_enum_member_template*.
+    Computed from option *F_enum_member_template*.
 
 F_value
     Evalued value of enumeration.
@@ -986,9 +1168,8 @@ C_impl_file
     Defaulted from expansion of option *C_impl_filename_class_template*.
 
 F_derived_name
-   Name of Fortran derived type for this class.
-   Defaults to the value *cxx_class* (usually the C++ class name) converted
-   to lowercase.
+    Name of Fortran derived type for this class.
+    Computed from option *F_derived_name_template*.
 
 F_name_assign
     Name of method that controls assignment of shadow types.
@@ -1051,6 +1232,14 @@ PY_type_obj
 PY_type_dtor
     Pointer to information used to release memory.
 
+PY_PyTypeObject
+    Name of `PyTypeObject` variable for a C++ class.
+    Computed from option *PY_PyTypeObject*.
+
+PY_PyTypeObject_base
+    The name of `PyTypeObject` variable for base class of C++ class.
+    Only single inheritance is support via the tp_base field of `PyTypeObject` struct.
+    
 Function
 ^^^^^^^^
 
@@ -1096,8 +1285,7 @@ F_arguments
 
 F_C_arguments
     Argument names to the ``bind(C)`` interface for the subprogram.
-
-.. uses tabs
+    Arguments are tab delimited to aid in creating continuations.
 
 F_C_call
     The name of the C function to call.  Usually *F_C_name*, but it may
@@ -1115,9 +1303,12 @@ F_C_result_clause
     Result clause for the ``bind(C)`` interface.
 
 F_C_subprogram
-    ``subroutine`` or ``function``.
+    ``subroutine`` or ``function`` for the ``bind(C)`` interface.
+    The C wrapper funtion may be different Fortran wrapper function since
+    some function results may be converted into arguments.
 
-.. uses tabs
+F_C_var
+    Name of dummy argument in the ``bind(C)`` interface.
 
 F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 
@@ -1166,6 +1357,25 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_array_shape
+
+c_array_size
+
+c_array_size2
+  The *dimension* attributes multiplied together.
+
+c_char_len
+  The value of the *len* attribute.
+  It willl be evalued in the C wrapper.
+  Defaults to 0 to indicate no length given.
+
+c_blanknull
+   Used as argument to ``ShroudStrAlloc`` to determine if a
+   blank string, trimmed length is 0, should be a NULL pointer
+   instead of an empty C string -- ``'\0'``.
+   Set via attribute *+blanknull* on a ``const char *`` argument.
+   Should be ``0`` or ``1``.
+
 c_const
     ``const`` if argument has the *const* attribute.
 
@@ -1176,20 +1386,32 @@ c_deref
 c_var
     The C name of the argument.
 
-c_var_len
+.. XXX these fields are creatd by the *temps* or *local* statements field.
+    
+.. c_var_len
     Function argument generated from the *len* annotation.
     Used with char/string arguments.
     Set from option **C_var_len_template**.
 
-c_var_size
+.. c_var_size
     Function argument generated from the *size* annotation.
     Used with array/std::vector arguments.
     Set from option **C_var_size_template**.
 
-c_var_trim
+.. c_var_trim    c_local_trim
     Function argument generated from the *len_trim* annotation.
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
+
+c_var_cdesc
+    Name of variable of type ....
+
+c_var_cdesc2
+    
+c_var_extents
+
+c_var_lower
+
 
 cxx_addr
     Syntax to take address of argument.
@@ -1205,8 +1427,8 @@ cxx_member
     if *pointer*, then set to ``->``.
 
 cxx_T
-    The template parameter for std::vector arguments.
-    ``std::vector<cxx_T>``
+    The template parameters for templated arguments.
+    ``std::vector<{cxx_T}>``
 
 cxx_type
     The C++ type of the argument.
@@ -1214,12 +1436,128 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
-f_var
-    Fortran variable name for argument.
-
 size_var
     Name of variable which holds the size of an array in the
     Python wrapper.
+
+fmtc
+""""
+
+Format strings used with C wrappers.
+Set for each argument.
+
+fmtf
+""""
+
+Format strings used with Fortran wrappers.
+Set for each argument.
+
+c_var
+    The name of the argument passed to the C wrapper.
+    This is initially the same as *f_var* but when the
+    statement field *c_local_var* is true, another name
+    will be generated of the form ``SH_{f_var}``.
+    A declaration will also be added using typemap.f_c_type.
+
+default_value
+    The value of a C++ default value argument.
+
+.. XXX - only defined for native types (integer, real)    
+
+f_array_allocate
+    Fortran shape expression used with ``ALLOCATE`` statement when
+    *dimension* attribute is set.
+    For example, attribute  *+dimension(10)* will create ``(10)``.
+
+f_array_shape
+   Shape of array for use with ``c_f_pointer``.
+   For example, attribute *+dimension(10)* will create``,\t SHT_rv_cdesc%shape(1:1)``.
+   The leading comma is used since scalar will not add a ``SHAPE`` argument to ``c_f_pointer``.
+
+f_assumed_shape
+   Set when *rank* attribute is set to the corresponding shape.
+   ``rank=1`` sets to ``(:)``,
+   ``rank=2`` sets to ``(:,:)``, etc.
+   May also be set to ``(..)`` when attribute *+dimension(..)* is used
+   and option *F_CFI* is True.
+
+f_c_dimension
+    Dimension used in ``bind(C)`` interface.
+    May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
+
+f_c_module_line
+    Typemap.f_c_module in a format usable by FStmts.f_module_line.
+    The dictionary is converted into the string.
+
+f_capsule_data_type
+    The name of the derived type used to share memory information with C or C++.
+    *F_capsule_data_type* for the argument type.
+
+f_cdesc_shape
+    Used to assign the rank of a Fortran variable to a cdesc variable.
+    It will be blank for a scalar.
+    ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
+
+f_char_len
+    Defaults to ``:`` for defered length used with allocatable variables.
+    Used in statements as ``character({f_char_len)``.
+
+f_char_type
+    Character type used in ``ALLOCATE`` statements.
+    Based on *len* attributes.
+    Defaults to blank for ``CHARACTER`` types which have an explicit length
+    in the type declaration - ``CHARACTER(20)``..
+    Otherwise set to ``character(len={c_var_cdesc}%elem_len) :: `` which
+    uses the length computed by the C wrapper and stored in elem_len.
+    For example, find the maximum length of strings in a ``char **`` argument.
+    Used in statements as ``allocate({f_char_type}(f_var})``.
+    
+f_declare_shape_prefix
+
+f_declare_shape_array
+
+f_get_shape_array
+
+f_kind
+    Value from typemap.  ex ``C_INT``.
+    Can be used in *CStmts.f_module_line*.
+
+f_pointer_shape
+
+f_shape_var
+
+f_type
+    Value from typemap.  ex ``integer(C_INT)``.
+    
+f_var
+    Fortran variable name for argument.
+
+hnamefunc
+    Helper name for a function.
+    Each name in statements *f_helper* will set a suffix index.
+    The first helper will be *hnamefunc0*.
+    Used by statements *pre_call* and *post_call* statements.
+
+size
+    Expression to compute size of array argument using ``SIZE`` intrinsic.
+
+fmtl
+""""
+
+Format strings used with Lua wrappers.
+
+fmtpy
+"""""
+
+Format strings used with Python wrappers.
+
+array_size
+    Dimensions multipled together.
+    ``dimension(2,3)`` creates ``(2)*(3)``.
+
+rank
+    Attribute value for *rank*.
+
 
 Result
 ^^^^^^

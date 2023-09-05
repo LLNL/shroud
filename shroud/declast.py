@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -20,7 +20,7 @@ from . import typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
 
-# https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
+# https://docs.python.org/3.10/library/re.html#writing-a-tokenizer
 type_specifier = {
     "void",
     "bool",
@@ -37,10 +37,10 @@ type_specifier = {
 type_qualifier = {"const", "volatile"}
 storage_class = {"auto", "register", "static", "extern", "typedef"}
 
-cxx_keywords = {"class", "enum", "namespace", "struct", "template", "typename"}
-
-# Just to avoid passing it into each call to check_decl
-global_namespace = None
+cxx_keywords = {
+    "class", "enum", "namespace", "struct", "template", "typename",
+    "public", "private", "protected",
+}
 
 token_specification = [
     ("REAL", r"((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))"),
@@ -65,6 +65,7 @@ token_specification = [
     ("GT", r">"),
     ("TILDE", r"\~"),
     ("NAMESPACE", r"::"),
+    ("COLON", r":"),
     ("VARARG", r"\.\.\."),
     ("ID", r"[A-Za-z_][A-Za-z0-9_]*"),  # Identifiers
     ("NEWLINE", r"[\n]"),  # Line endings
@@ -164,9 +165,11 @@ class RecursiveDescent(object):
             self.error_msg("Expected {}, found {}", typ, self.token.typ)
 
     def error_msg(self, format, *args):
-        msg = format.format(*args)
-        ptr = " " * self.token.column + "^"
-        raise RuntimeError("\n".join(["Parse Error", self.decl, ptr, msg]))
+        lines = self.decl.split("\n")
+        lineno = self.token.line
+        msg = "line {}: ".format(lineno) + format.format(*args)
+        ptr = " " * (self.token.column-1) + "^"
+        raise RuntimeError("\n".join(["Parse Error:", lines[lineno-1], ptr, msg]))
 
     def enter(self, name, *args):
         """Print message when entering a function."""
@@ -325,11 +328,6 @@ def check_expr(expr, trace=False):
     a = ExprParser(expr, trace=trace).expression()
     return a
 
-def check_dimension(dim, trace=False):
-    """return a list of expressions"""
-    a = ExprParser(dim, trace=trace).dimension_shape()
-    return a
-
 ######################################################################
 
 
@@ -341,24 +339,19 @@ class Parser(ExprParser):
     consisting of one or more pointer, array, or function modifiers.
     """
 
-    def __init__(self, decl, namespace, trace=False):
-        self.decl = decl  # declaration to parse
-        self.namespace = namespace  # An ast.AstNode subclass.
+    def __init__(self, decl, symtab, trace=False):
+        """
+        Args:
+            decl - str, declaration to parse.
+            namespace - ast.NamespaceNode, ast.ClassNode
+        """
+        self.decl = decl
+        self.symtab = symtab
         self.trace = trace
         self.indent = 0
         self.token = None
         self.tokenizer = tokenize(decl)
         self.next()  # load first token
-
-    def update_namespace(self, node):
-        """Push another level of the namespace.
-        Accept a Template node and save parameters as symbols
-        in a namespace.
-        Used while parsing a template_statement to add TemplateParams to the
-        symbol table.
-        """
-        node.fill_symbols(self.namespace)
-        self.namespace = node
 
     def parameter_list(self):
         """Parse function parameters."""
@@ -383,9 +376,16 @@ class Parser(ExprParser):
         return params
 
     def nested_namespace(self, namespace):
-        """Found start of namespace.
+        """Look for qualified name.
+        Current token.typ is an ID.
 
         <nested-namespace> ::= { namespace :: }* identifier
+
+        Return namespace which owns qualified name and
+        the fully qualified name (aa:bb:cc)
+
+        Args:
+            namespace - Node
         """
         self.enter("nested_namespace")
         nested = [self.token.value]
@@ -417,25 +417,28 @@ class Parser(ExprParser):
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
                                   | ~ ID
+        Args:
+            node - declast.Declaration
         """
         self.enter("declaration_specifier")
         found_type = False
         more = True
+        parent = self.symtab.current
 
         # destructor
         if self.have("TILDE"):
-            if not self.namespace.is_class:
+            if not hasattr(parent, "has_ctor"):  # CXXClass or Struct
                 raise RuntimeError("Destructor is not in a class")
             tok = self.mustbe("ID")
-            if tok.value != self.namespace.name:
+            if tok.value != parent.name:
                 raise RuntimeError("Expected class-name after ~")
-            node.specifier.append(tok.value)
+            node.specifier.append("void")
             self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
-            self.info("destructor", self.namespace.typemap.name)
-            node.attrs["_name"] = "dtor"
-            node.attrs["_destructor"] = True
-            node.typemap = self.namespace.typemap
+            self.info("destructor", parent.typemap.name)
+            node.is_dtor = tok.value
+            #node.typemap = self.namespace.typemap # The class' typemap
+            node.typemap = typemap.void_typemap
             found_type = True
             more = False
 
@@ -443,28 +446,31 @@ class Parser(ExprParser):
             # if self.token.type = 'ID' and  typedef-name
             if not found_type and self.token.typ == "ID":
                 # Find typedef'd names, classes and namespaces
-                ns = self.namespace.unqualified_lookup(self.token.value)
+                ns = self.symtab.current.unqualified_lookup(self.token.value)
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
                     self.parse_template_arguments(node)
                     if (
-                        self.namespace.is_class
-                        and self.namespace is ns
+                        hasattr(ns, "has_ctor")  # CXXClass or Struct
+                        and parent is ns
                         and self.token.typ == "LPAREN"
                     ):
                         # template<T> vector { vector<T>(); }
                         # class Class1 { Class1(); }
                         self.info("constructor")
-                        node.attrs["_name"] = "ctor"
-                        node.attrs["_constructor"] = True
+                        node.is_ctor = True
                         more = False
                     # Save fully resolved typename
                     node.typemap = ns.typemap
+                    #self.info("Typemap {}".format(ns.typemap.name))
+                    if node.typemap.base == "template":
+                        node.template_argument = ns_name
                     found_type = True
                 else:
                     more = False
             elif self.token.typ == "TYPE_SPECIFIER":
+                found_type = True
                 node.specifier.append(self.token.value)
                 self.info("type-specifier:", self.token.value)
                 self.next()
@@ -477,12 +483,26 @@ class Parser(ExprParser):
                 node.storage.append(self.token.value)
                 self.info("storage-class-specifier:", self.token.value)
                 self.next()
+            elif self.token.typ == "CLASS":
+                self.class_decl(node)
+                found_type = True
+            elif self.token.typ == "ENUM":
+                self.enum_decl(node)
+                found_type = True
+            elif self.token.typ == "STRUCT":
+                specifier = self.struct_decl(node)
+                found_type = True
             else:
                 more = False
-        if not node.specifier:
+        if not found_type:
+            # GGG ValueError: Single '}' encountered in format string
+            if self.token.value == '}':
+                value = '}}'
+            else:
+                value = self.token.value
             self.error_msg(
                 "Expected TYPE_SPECIFIER, found {} '{}'".format(
-                    self.token.typ, self.token.value
+                    self.token.typ, value
                 )
             )
         self.exit("declaration_specifier")
@@ -492,6 +512,7 @@ class Parser(ExprParser):
         """Parse vector parameters.
         vector<T>
         map<Key,T>
+        vector<const double *>
 
         Used while parsing function arguments.
         similar to template_argument_list
@@ -499,30 +520,75 @@ class Parser(ExprParser):
         lst = node.template_arguments
         if self.have("LT"):
             while self.token.typ != "GT":
-                temp = Declaration()
-                self.declaration_specifier(temp)
-                self.get_canonical_typemap(temp)
+                temp = self.declaration()
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
                 self.error_msg("Only single template argument accepted")
             self.mustbe("GT")
 
-    def decl_statement(self):
+    def top_level(self):
+        """Parse top/file level scope."""
+        self.enter("top_statement")
+        node = Block()
+        while self.token.typ != "EOF":
+            self.group_statement(node.stmts)
+        self.exit("top_statement")
+        return node
+
+    def group_statement(self, group):
+        """Parse statements and any associated block.
+
+        class name { };
+        struct tag { };
+        namespace name { }
+        """
+        self.enter("group_statement")
+        node = self.line_statement()
+        group.append(node)
+        if isinstance(node, Namespace):
+            self.block_statement(node.group)
+        elif isinstance(node, CXXClass):
+            self.block_statement(node.group)
+            self.mustbe("SEMICOLON")
+        elif isinstance(node, Template):
+            ast = node.decl
+            if isinstance(node.decl, CXXClass):
+                self.block_statement(ast.group)
+            self.mustbe("SEMICOLON")
+        else:
+            self.mustbe("SEMICOLON")
+        self.exit("group_statement")
+    
+    def block_statement(self, group):
+        """Parse curly block.
+        Appends Nodes to group.
+        Block following class, struct, namespace:
+          '{' [ line_statement* ] '}'
+        """
+        self.enter("block_statement")
+        self.mustbe("LCURLY")
+        while self.token.typ != "RCURLY":
+            self.group_statement(group)
+        self.mustbe("RCURLY")
+        self.exit("block_statement")
+    
+    def line_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
         """
-        if self.token.typ == "CLASS":
-            node = self.class_statement()
-        elif self.token.typ == "ENUM":
-            node = self.enum_statement()
-        elif self.token.typ == "STRUCT":
-            node = self.struct_statement()
-        elif self.token.typ == "NAMESPACE":
+        if self.token.typ == "NAMESPACE":
             node = self.namespace_statement()
         elif self.token.typ == "TEMPLATE":
             node = self.template_statement()
         else:
             node = self.declaration()
+        return node
+
+    def decl_statement(self):
+        """Check for optional semicolon and stray stuff at the end of line.
+        Used when parsing decl from YAML which may not have semicolon.
+        """
+        node = self.line_statement()
         self.have("SEMICOLON")
         self.mustbe("EOF")
         return node
@@ -531,38 +597,67 @@ class Parser(ExprParser):
         """Parse a declaration statement.
         Use with decl_statement and function arguments
 
-        <declaration> ::= {<declaration-specifier>}+ <declarator>?
-                           ( '['  <constant-expression>?  ']'  |
-                             '('  <parameter-list>            ')' [ const ] )
-                           [ = <initializer> ]
+        <declaration> ::= {<declaration-specifier>}+ <declarator_item>*
         """
         self.enter("declaration")
-        node = Declaration()
+        node = Declaration(self.symtab)
         self.declaration_specifier(node)
         self.get_canonical_typemap(node)
 
-        if node.attrs["_destructor"]:
-            pass
-        elif node.attrs["_constructor"]:
-            pass
+        self.declarator_item(node)
+
+        # SSS Share fields between Declaration and Declarator for now
+        declarator = node.declarator
+        declarator.typemap = node.typemap
+        if declarator.func:
+            declarator.func.typemap = node.typemap
+        
+        if "typedef" in node.storage:
+            self.symtab.create_typedef(node)
+        self.exit("declaration", str(node))
+        return node
+
+    def declarator_item(self, node):
+        """
+        <declarator_item> ::= (
+                             '['  <constant-expression>?  ']'  |
+                             '('  <parameter-list>            ')' [ const ]
+                            ) [ = <initializer> ]
+        """
+        self.enter("declarator_item")
+        if node.is_dtor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "dtor"
+            declarator.attrs["_destructor"] = node.is_dtor
+        elif node.is_ctor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "ctor"
+            declarator.attrs["_constructor"] = True
         else:
-            node.declarator = self.declarator()
+            declarator = self.declarator()
+        node.declarator = declarator
 
         if self.token.typ == "LPAREN":  # peek
-            node.params = self.parameter_list()
+            # Function parameters.
+            params = self.parameter_list()
+            declarator.params = params
 
             # Look for (void), set to no parameters.
-            if len(node.params) == 1:
-                chk = node.params[0]
-                if (chk.declarator is None and
-                    chk.specifier == ["void"]):
-                    node.params = []
+            if len(params) == 1:
+                chk = params[0]
+                if (chk.declarator.name is None and
+                    chk.specifier == ["void"] and
+                    chk.declarator.func is None    # Function pointers
+                ):
+                    declarator.params = []
 
             #  method const
             if self.token.typ == "TYPE_QUALIFIER":
                 if self.token.value == "const":
                     self.next()
-                    node.func_const = True
+                    declarator.func_const = True
                 else:
                     raise RuntimeError(
                         "'{}' unexpected after function declaration".format(
@@ -571,16 +666,20 @@ class Parser(ExprParser):
                     )
         while self.token.typ == "LBRACKET":
             self.next() # consume bracket
-            node.array.append(self.expression())
+            declarator.array.append(self.expression())
             self.mustbe("RBRACKET")
-        self.attribute(node.attrs)  # variable attributes
+        self.attribute(declarator.attrs)  # variable attributes
 
         # Attribute are parsed before default value since
         # default value may have a +.
         # (int value = 1+size)
         if self.have("EQUALS"):
-            node.init = self.initializer()
-        self.exit("declaration", str(node))
+            declarator.init = self.initializer()
+
+        if declarator.ctor_dtor_name:
+            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.attrs["_name"]
+            
+        self.exit("declarator_item", str(node))
         return node
 
     def declarator(self):
@@ -599,10 +698,9 @@ class Parser(ExprParser):
         elif self.token.typ == "LPAREN":  # (*var)
             self.next()
             node.func = self.declarator()
+            # Promote name.
+            node.name = node.func.name
             self.mustbe("RPAREN")
-        else:
-            if not node.pointer:
-                node = None
 
         self.exit("declarator", str(node))
         return node
@@ -642,19 +740,19 @@ class Parser(ExprParser):
             return
         typename = "_".join(decl.specifier)
         typename = canonical_typemap.get(typename, typename)
-        ntypemap = typemap.lookup_type(typename)
+        ntypemap = self.symtab.lookup_typemap(typename)
 # XXX - incorporate pointer into typemap
 #        nptr = decl.is_pointer()
 #        if nptr == 0:
-#            ntypemap = typemap.lookup_type(typename)
+#            ntypemap = typemap.lookup_typemap(typename)
 #        else:
 #            for i in range(nptr, -1, -1):
-#                ntypemap = typemap.lookup_type(typename + "***"[0:i])
+#                ntypemap = typemap.lookup_typemap(typename + "***"[0:i])
 #                if ntypemap is not None:
 #                    break
         if ntypemap is None:
             self.error_msg(
-                "Unknown typemap '{}".format("_".join(decl.specifier))
+                "(get_canonical_typemap) Unknown typemap '{}' - '{}'".format("_".join(decl.specifier), typename)
             )
         decl.typemap = ntypemap
 
@@ -713,14 +811,56 @@ class Parser(ExprParser):
                 attrs[name] = True
         self.exit("attribute", attrs)
 
-    def class_statement(self):
-        """  class ID
+    def class_decl(self, node):
+        """Create a class.
+
+        class ID [ : ( PUBLIC | PRIVATE | PROTECTED ) ID '{'  '}'
+        class ID ;
+          Forward declare
+        class ID <EOF>
+          Declare in YAML.
+
+        node : declast.Declaration
         """
-        self.enter("class_statement")
+        self.enter("class_decl")
         self.mustbe("CLASS")
         name = self.mustbe("ID")
-        node = CXXClass(name.value)
-        self.exit("class_statement")
+        clsnode = CXXClass(name.value, self.symtab)
+        node.specifier.append("class " + name.value)
+        node.class_specifier = clsnode
+        node.typemap = clsnode.typemap
+        if self.have("EOF"):
+            # Body added by other lines in YAML.
+            node.tag_body = True
+        elif self.have("COLON"):
+            node.tag_body = True
+            if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
+                access_specifier = self.token.value
+                self.next()
+            else:
+                access_specifier = 'private'
+            if self.token.typ == "ID":
+                ns = self.symtab.current.unqualified_lookup(self.token.value)
+                if ns:
+                    ns, ns_name = self.nested_namespace(ns)
+                    # XXX - make sure ns is a ast.ClassNode (and not a namespace)
+                    clsnode.baseclass.append((access_specifier, ns_name, ns))
+                else:
+                    self.error_msg("unknown class '{}'", self.token.value)
+            else:
+                self.mustbe("ID")
+
+        if self.have("LCURLY"):
+            node.tag_body = True
+            members = clsnode.members
+            while self.token.typ != "RCURLY":
+#                members.append(self.declaration()) # GGG, accepts too much  - template
+                members.append(self.line_statement())
+                self.mustbe("SEMICOLON")
+            self.mustbe("RCURLY")
+            self.symtab.pop_scope()
+                    
+        self.exit("class_decl")
         return node
 
     def namespace_statement(self):
@@ -729,7 +869,7 @@ class Parser(ExprParser):
         self.enter("namespace_statement")
         self.mustbe("NAMESPACE")
         name = self.mustbe("ID")
-        node = Namespace(name.value)
+        node = Namespace(name.value, self.symtab)
         self.exit("namespace_statement")
         return node
 
@@ -739,7 +879,7 @@ class Parser(ExprParser):
         """
         self.enter("template_statement")
         self.mustbe("TEMPLATE")
-        node = Template()
+        node = Template(self.symtab)
         name = self.mustbe("LT")
         while self.token.typ != "GT":
             if self.have("TYPENAME"):
@@ -748,16 +888,12 @@ class Parser(ExprParser):
                 name = self.mustbe("ID").value
             else:
                 name = self.mustbe("ID").value
-            node.parameters.append(TemplateParam(name))
+            node.append_template_param(name)
             if not self.have("COMMA"):
                 break
         self.mustbe("GT")
 
-        if self.token.typ == "CLASS":
-            node.decl = self.class_statement()
-        else:
-            self.update_namespace(node)
-            node.decl = self.declaration()
+        node.decl = self.declaration()
 
         self.exit("template_statement")
         return node
@@ -778,7 +914,7 @@ class Parser(ExprParser):
         self.mustbe("LT")
         lst = []
         while self.token.typ != "GT":
-            temp = Declaration()
+            temp = Declaration(self.symtab)
             self.declaration_specifier(temp)
             self.get_canonical_typemap(temp)
             lst.append(temp)
@@ -787,8 +923,17 @@ class Parser(ExprParser):
         self.mustbe("GT")
         return lst
 
-    def enum_statement(self):
-        self.enter("enum_statement")
+    def enum_decl(self, node):
+        """Creating an enumeration.
+
+        ENUM [ CLASS | STRUCT ] ID {  }
+           Add to typemap table as "enum-{name}"
+        ENUM ID
+           Lookup enum in typemap table.
+
+        node : declast.Declaration
+        """
+        self.enter("enum_decl")
         self.mustbe("ENUM")
         if self.have("STRUCT"):
             scope = "struct"
@@ -796,49 +941,227 @@ class Parser(ExprParser):
             scope = "class"
         else:
             scope = None
-        name = self.mustbe("ID")
-        self.mustbe("LCURLY")
-        node = Enum(name.value, scope)
-        members = node.members
-        while self.token.typ != "RCURLY":
-            name = self.mustbe("ID")
-            if self.have("EQUALS"):
-                value = self.expression()
-            else:
-                value = None
-            members.append(EnumValue(name.value, value))
-            if not self.have("COMMA"):
-                break
-        self.mustbe("RCURLY")
-        self.exit("enum_statement", str(members))
+        name = self.mustbe("ID")  # GGG - optional
+        ename = name.value
+        if scope:
+            node.specifier.append("enum {} {}".format(scope, ename))
+        else:
+            node.specifier.append("enum " + ename)
+        if self.have("LCURLY"):
+            #        self.mustbe("LCURLY")
+            node.tag_body = True
+            enumnode = Enum(ename, self.symtab, scope)
+            members = enumnode.members
+            while self.token.typ != "RCURLY":
+                name = self.mustbe("ID")
+                if self.have("EQUALS"):
+                    value = self.expression()
+                else:
+                    value = None
+                members.append(EnumValue(name.value, value))
+                if not self.have("COMMA"):
+                    break
+            self.mustbe("RCURLY")
+            self.symtab.pop_scope()
+            node.enum_specifier = enumnode
+            node.typemap = enumnode.typemap
+        else:
+            enumnode = self.symtab.current.lookup_tag("enum", ename)
+            if enumnode is None:
+                raise RuntimeError("Enum tag '%s' is not defined" % ename)
+            ntypemap = enumnode.typemap
+            node.typemap = ntypemap
+        self.exit("enum_decl")#, str(members))
         return node
 
-    def struct_statement(self):
-        self.enter("struct_statement")
+    def struct_decl(self, node):
+        """Create a struct.
+
+        STRUCT ID {  }
+           Add to typemap table as "struct-{name}"
+        STRUCT ID ;
+           Forward declare
+        STRUCT ID <EOF>
+           Declare in YAML.
+        STRUCT ID [ Declaration ]
+           Lookup struct tag in typemap table.
+
+        node : declast.Declaration
+        """
+        self.enter("struct_decl")
         self.mustbe("STRUCT")
-        name = self.mustbe("ID")
-        self.mustbe("LCURLY")
-        node = Struct(name.value)
-        members = node.members
-        while self.token.typ != "RCURLY":
-            members.append(self.declaration())
-            self.mustbe("SEMICOLON")
-        self.mustbe("RCURLY")
-        self.exit("struct_statement")
+        name = self.mustbe("ID")  # GGG name is optional
+        sname = name.value
+        node.specifier.append("struct " + sname)
+        if self.have("LCURLY"):
+            structnode = Struct(sname, self.symtab)
+            members = structnode.members
+            while self.token.typ != "RCURLY":
+#                members.append(self.declaration()) # GGG, accepts too much
+                members.append(self.line_statement())
+                self.mustbe("SEMICOLON")
+            self.mustbe("RCURLY")
+            self.symtab.pop_scope()
+            node.class_specifier = structnode
+            node.typemap = structnode.typemap
+            node.tag_body = True
+        elif self.have("EOF"):
+            structnode = Struct(sname, self.symtab)
+            node.class_specifier = structnode
+            node.typemap = structnode.typemap
+            # Body added by other lines in YAML.
+            node.tag_body = True
+            # GGG - Caller must call symtab.pop_scope when finished with members.
+        else:
+            structnode = self.symtab.current.lookup_tag("struct", sname)
+            if structnode is None:
+                raise RuntimeError("Struct tag '%s' is not defined" % sname)
+            node.class_specifier = structnode
+            ntypemap = structnode.typemap
+            node.typemap = ntypemap
+        self.exit("struct_decl")
         return node
 
 
 ######################################################################
-
+# Abstract Syntax Tree Nodes
 
 class Node(object):
-    pass
+    """
+    children - Symbol table nodes of types.
+    group - Parse tree nodes.
+    """
+    def init_symtab(self, parent, prefix):
+        """This node can contain nested symbols.
+        Used for looking up scoped names.
+        Used with Struct, CXXClass, Namespace, Global
+
+        scope_prefix is the fully qualifed name (includes scope_name).
+        """
+        if parent is self:
+            print("XXXXXXX parent is self")
+        self.parent = parent
+        self.children = []    # Like symbols but in creation order.
+        self.scope_prefix = prefix
+        self.symbols = {}
+        self.using = []
+#        if parent is not None: # GGG
+#            parent.add_symbol(self.name, self)
+
+    def add_child(self, name, node):
+        """Add child node.
+
+        Done as part of SymbolTable.add_child_to_current.
+        Call explicilty for non-scope Nodes like Declaration.
+        (Actually a function creates a scope, but not one
+        we care about since wrapping is not involved with
+        local variables.)
+
+        node : Node
+        """
+        self.symbols[name] = node
+        self.children.append(node)
+
+    def add_tag(self, tag, node):
+        """Add a Node to symbols.
+        Mangle tag name before adding to symbols dictionary.
+        Used with struct and enum tags.
+        """
+        self.symbols["{}-{}".format(tag, node.name)] = node
+
+    def lookup_tag(self, tag, name):
+        """
+        Mangle tag name before looking up.
+        """
+        return self.unqualified_lookup("{}-{}".format(tag, name))
+        
+    def create_template_typemaps(self, node, symtab):
+        """
+        Create typemaps for each template argument.
+        This is done after we know if if is a class/struct/function template.
+        node - Template
+        """
+        for param in node.parameters:
+            self.symbols[param.name] = param
+            type_name = symtab.scopename + param.name
+            ntypemap = typemap.Typemap(
+                type_name, base="template", cxx_type="-TemplateParam-")
+            param.typemap = ntypemap
+            symtab.register_typemap(type_name, ntypemap)
+
+    def check_forward_declaration(self, symtab):
+        """Return Node of any previously declared name.
+        Used with CXXClass and Struct.
+        If parent already declares name, assume it is a forward
+        declaration (both same Python class)
+
+        Keep both Nodes in children but only one in symbols.
+        Both declartions share typemap.
+        """
+        forward = symtab.current.symbols.get(self.name)
+        if forward:
+            # GGG check types the same and forward has no children.
+            self.typemap = forward.typemap  # GGG
+            self.newtypemap = forward.newtypemap
+        return forward
+
+    def qualified_lookup(self, name):
+        """Look for symbols within this Node.
+        A qualified name is a name that appears on the
+        right hand side of the scope resolution operator ::.
+        """
+        return self.symbols.get(name, None)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols in this node or its parent.
+        Also look in symbols from a USING NAMESPACE statement.
+        [basic.lookup.unqual]
+        """
+        if name in self.symbols:
+            return self.symbols[name]
+        for ns in self.using:
+            if name in ns.symbols:
+                return ns.symbols[name]
+        if self.parent is self:
+            raise RuntimeError("recursion")
+        if self.parent is None:
+            return None
+        else:
+            return self.parent.unqualified_lookup(name)
+
+    def using_directive(self, name):
+        """Implement 'using namespace <name>'
+        """
+        ns = self.unqualified_lookup(name)
+        if ns is None:
+            raise RuntimeError("{} not found in namespace".format(name))
+        if ns not in self.using:
+            self.using.append(ns)
+        
+
+class Global(Node):
+    """Represent the global namespace"""
+    def __init__(self):
+        self.name = "***global***"
+        self.init_symtab(None, "")
+
+
+class Block(Node):
+    """Represent a group of statements"""
+    def __init__(self):
+        self.name = "***block***"
+        self.stmts = []
 
 
 class Identifier(Node):
     def __init__(self, name, args=None):
         self.name = name
         self.args = args
+
+
+class AssumedRank(Node):
+    """Assumed-rank dimension i.e. (..)"""
+    pass
 
 
 class BinaryOp(Node):
@@ -899,96 +1222,26 @@ class Ptr(Node):
 
 class Declarator(Node):
     """
-    If both name and func are are None, then this is an abstract
+    If both name and func are None, then this is an abstract
     declarator: ex. 'int *' in 'void foo(int *)'.
     """
 
     def __init__(self):
         self.pointer = []  # Multiple levels of indirection
         self.name = None  # *name
-        self.func = None  # (*name)     declarator
+        self.func = None  # (*name)     Declarator
+        
+        self.ctor_dtor_name = False
 
-    def gen_decl_work(self, decl, **kwargs):
-        """Generate string by appending text to decl.
-
-        Replace name with value from kwargs.
-        name=None will skip appending any existing name.
-        """
-        if kwargs.get("force_ptr", False):
-            # Force to be a pointer
-            decl.append(" *")
-        elif kwargs.get("as_scalar", False):
-            pass  # Do not print pointer
-        else:
-            for ptr in self.pointer:
-                ptr.gen_decl_work(decl, **kwargs)
-        if self.func:
-            decl.append(" (")
-            self.func.gen_decl_work(decl, **kwargs)
-            decl.append(")")
-        elif "name" in kwargs:
-            if kwargs["name"]:
-                decl.append(" ")
-                decl.append(kwargs["name"])
-        elif self.name:
-            decl.append(" ")
-            decl.append(self.name)
-
-    def __str__(self):
-        out = ""
-        for ptr in self.pointer:
-            out += str(ptr)
-            out += " "
-
-        if self.name:
-            out += self.name
-        elif self.func:
-            out += "(" + str(self.func) + ")"
-
-        return out
-
-
-class Declaration(Node):
-    """
-    specifier = const  int
-    init =         a  *a   a=1
-
-    attrs     - Attributes set by the user.
-    metaattrs - Attributes set by Shroud.
-        struct_member - map ctor argument to struct member.
-    """
-
-    fortran_ranks = [
-        "",
-        "(:)",
-        "(:,:)",
-        "(:,:,:)",
-        "(:,:,:,:)",
-        "(:,:,:,:,:)",
-        "(:,:,:,:,:,:)",
-        "(:,:,:,:,:,:,:)",
-    ]
-
-    def __init__(self):
-        self.specifier = []  # int, long, ...
-        self.storage = []  # static, tyedef, ...
-        self.const = False
-        self.volatile = False
-        self.declarator = None
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
-        self.template_arguments = []
         self.attrs = collections.defaultdict(lambda: None)
         self.metaattrs = collections.defaultdict(lambda: None)
-
         self.func_const = False
         self.typemap = None
 
-        self.stmts_suffix = ''  # Used to find statements in typemap (ex. buf)
-        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
-
-    def get_name(self, use_attr=True):
+    def get_user_name(self, use_attr=True):
         """Get name from declarator
         use_attr - True, check attr for name
         ctor and dtor should have _name set
@@ -997,48 +1250,24 @@ class Declaration(Node):
             name = self.attrs["name"] or self.attrs["_name"]
             if name is not None:
                 return name
-        if self.declarator is None:
-            # abstract declarator
-            return None
-        name = self.declarator.name
-        if name is None:
-            if self.declarator.func:
-                name = self.declarator.func.name
-        return name
-
-    def set_name(self, name):
-        """Set name in declarator"""
-        if self.declarator.name:
-            self.declarator.name = name
-        else:
-            self.declarator.func.name = name
-
-    name = property(get_name, set_name, None, "Declaration name")
-
-    def set_type(self, ntypemap):
-        """Set type specifier from a typemap."""
-        self.typemap = ntypemap
-        # 'long long' into ['long', 'long']
-        self.specifier = ntypemap.cxx_type.split()
-
-    def get_full_type(self):
-        return ' '.join(self.specifier)
+        return self.name
+    user_name = property(get_user_name, None, None, "Declaration user_name")
 
     def is_ctor(self):
         """Return True if self is a constructor."""
         return self.attrs["_constructor"]
 
     def is_dtor(self):
-        """Return True if self is a constructor."""
+        """Return destructor attribute.
+        Will be False for non-destructors, else class name.
+        """
         return self.attrs["_destructor"]
 
     def is_pointer(self):
         """Return number of levels of pointers.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr == "*":
                 nlevels += 1
         return nlevels
@@ -1047,9 +1276,7 @@ class Declaration(Node):
         """Return number of levels of references.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr == "&":
                 nlevels += 1
         return nlevels
@@ -1059,10 +1286,9 @@ class Declaration(Node):
         pointer or reference.
         """
         nlevels = 0
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                if ptr.ptr:
-                    nlevels += 1
+        for ptr in self.pointer:
+            if ptr.ptr:
+                nlevels += 1
         return nlevels
 
     def is_array(self):
@@ -1072,9 +1298,7 @@ class Declaration(Node):
         nlevels = 0
         if self.array:
             nlevels += 1
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr:
                 nlevels += 1
         return nlevels
@@ -1082,11 +1306,9 @@ class Declaration(Node):
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
-        if self.declarator is None:
+        if self.func is None:
             return False
-        if self.declarator.func is None:
-            return False
-        if not self.declarator.func.pointer:
+        if not self.func.pointer:
             return False
         return True
 
@@ -1095,9 +1317,7 @@ class Declaration(Node):
         '*', '**', '&*', '[]'
         """
         out = ''
-        if self.declarator is None:
-            return out
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             out += ptr.ptr
         if self.array:
             out += "[]"   # XXX - multidimensional?
@@ -1105,12 +1325,10 @@ class Declaration(Node):
 
     def get_indirect_stmt(self):
         """Return statement field for pointers.
-        'scalar', 'pointer', '**'
+        'scalar', '*', '**'
         """
         out = ''
-        if self.declarator is None:
-            return "scalar"
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             out += ptr.ptr
         if self.array:
             out += "[]"   # XXX - multidimensional?
@@ -1150,6 +1368,176 @@ class Declaration(Node):
         """Return index of argument in params with name."""
         return find_arg_index_by_name(self.params, name)
 
+    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False,
+                      append_init=True, continuation=False,
+                      attrs=True, **kwargs):
+        """Generate string by appending text to decl.
+
+        Replace name with value from kwargs.
+        name=None will skip appending any existing name.
+
+        attrs=False give compilable code.
+        """
+        if force_ptr:
+            # Force to be a pointer
+            decl.append(" *")
+        elif kwargs.get("as_scalar", False):
+            pass  # Do not print pointer
+        else:
+            for ptr in self.pointer:
+                ptr.gen_decl_work(decl, **kwargs)
+        if self.func:
+            decl.append(" (")
+            self.func.gen_decl_work(decl, attrs=attrs, **kwargs)
+            decl.append(")")
+        elif "name" in kwargs:
+            if kwargs["name"]:
+                decl.append(" ")
+                decl.append(kwargs["name"])
+        elif self.name:
+            decl.append(" ")
+            decl.append(self.name)
+        elif ctor_dtor and self.ctor_dtor_name:
+            decl.append(" ")
+            decl.append(self.ctor_dtor_name)
+
+        if append_init and self.init is not None:
+            decl.append("=")
+            decl.append(str(self.init))
+        #        if use_attrs:
+        #            self.gen_attrs(self.attrs, decl)
+
+        params = kwargs.get("params", self.params)
+        if params is not None:
+            decl.append("(")
+            if continuation:
+                decl.append("\t")
+            if params:
+                comma = ""
+                for arg in params:
+                    decl.append(comma)
+                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation)
+                    if continuation:
+                        comma = ",\t "
+                    else:
+                        comma = ", "
+            else:
+                decl.append("void")
+            decl.append(")")
+            if self.func_const:
+                decl.append(" const")
+        for dim in self.array:
+            decl.append("[")
+            decl.append(todict.print_node(dim))
+            decl.append("]")
+        if attrs:
+            self.gen_attrs(self.attrs, decl)
+
+    _skip_annotations = ["template"]
+
+    def gen_attrs(self, attrs, decl, skip={}):
+        space = " "
+        for attr in sorted(attrs):
+            if attr[0] == "_":  # internal attribute
+                continue
+            if attr in self._skip_annotations:
+                continue
+            if attr in skip:
+                continue
+            value = attrs[attr]
+            if value is None:  # unset
+                continue
+            decl.append(space)
+            decl.append("+")
+            if value is True:
+                decl.append(attr)
+            else:
+                decl.append("{}({})".format(attr, value))
+            space = ""
+
+    def __str__(self):
+        out = []
+        for ptr in self.pointer:
+            out.append(str(ptr))
+            out.append(" ")
+
+        if self.func:
+            out.append("(" + str(self.func) + ")")
+        elif self.name:
+            out.append(self.name)
+
+        if self.params is not None:
+            out.append("(")
+            if self.params:
+                out.append(str(self.params[0]))
+                for param in self.params[1:]:
+                    out.append(",")
+                    out.append(str(param))
+            out.append(")")
+            if self.func_const:
+                out.append(" const")
+        if self.array:
+            for dim in self.array:
+                out.append("[")
+                out.append(todict.print_node(dim))
+                out.append("]")
+        if self.init:
+            out.append("=")
+            out.append(str(self.init))
+
+        return "".join(out)
+
+
+class Declaration(Node):
+    """
+    specifier = const  int
+    init =         a  *a   a=1
+
+    attrs     - Attributes set by the user.
+    metaattrs - Attributes set by Shroud.
+        struct_member - map ctor argument to struct member.
+    """
+
+    fortran_ranks = [
+        "",
+        "(:)",
+        "(:,:)",
+        "(:,:,:)",
+        "(:,:,:,:)",
+        "(:,:,:,:,:)",
+        "(:,:,:,:,:,:)",
+        "(:,:,:,:,:,:,:)",
+    ]
+
+    def __init__(self, symtab=None):
+#        self.symtab = symtab  # GGG -lots of problems with copy
+        self.specifier = []  # int, long, ...
+        self.storage = []  # static, tyedef, ...
+        self.enum_specifier = None   # Enum
+        self.class_specifier = None  # CXXClass, Struct (union)
+        self.tag_body = False        # if True, members are defined.
+        self.const = False
+        self.volatile = False
+        self.declarator = None
+        self.template_arguments = []    # vector<int>, list of Declaration
+        self.template_argument = None   # T arg, str
+        self.is_ctor = False
+        self.is_dtor = False
+
+        self.typemap = None
+
+        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
+        self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
+
+    def set_type(self, ntypemap):
+        """Set type specifier from a typemap."""
+        self.typemap = ntypemap
+        # 'long long' into ['long', 'long']
+        self.specifier = ntypemap.cxx_type.split()
+
+    def get_full_type(self):
+        return ' '.join(self.specifier)
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char, string or vector.
@@ -1160,24 +1548,30 @@ class Declaration(Node):
         new.storage = self.storage[:]
         new.const = self.const
         new.volatile = self.volatile
+        new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
+
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
             # make sure the return type is a pointer
             new.declarator.pointer = [Ptr("*")]
         # new.array = None
-        new.attrs = copy.deepcopy(self.attrs)
-        new.typemap = self.typemap
-        new.template_arguments = self.template_arguments
+        new.declarator.attrs = copy.deepcopy(self.declarator.attrs) # XXX no need for deepcopy in future
+        new.declarator.metaattrs = copy.deepcopy(self.declarator.metaattrs)
+        new.declarator.metaattrs["intent"] = "out"
+        new.declarator.params= None
+        new.declarator.typemap = new.declarator.typemap
         return new
 
-    def _set_to_void(self):
+    def set_return_to_void(self):
         """Change function to void"""
         self.specifier = ["void"]
-        self.typemap = typemap.lookup_type("void")
+        self.typemap = typemap.void_typemap
         self.const = False
         self.volatile = False
         self.declarator.pointer = []
+        self.declarator.typemap = typemap.void_typemap
         self.template_arguments = []
 
     def result_as_arg(self, name):
@@ -1185,8 +1579,8 @@ class Declaration(Node):
         Change function result to 'void'.
         """
         newarg = self._as_arg(name)
-        self.params.append(newarg)
-        self._set_to_void()
+        self.declarator.params.append(newarg)
+        self.set_return_to_void()
         return newarg
 
     def instantiate(self, node):
@@ -1206,36 +1600,22 @@ class Declaration(Node):
             out.append("const ")
         if self.volatile:
             out.append("volatile ")
-        if self.attrs["_destructor"]:
+        if self.is_dtor:
             out.append("~")
-        if self.storage:
-            out.append(" ".join(self.storage))
-            out.append(" ")
-        if self.specifier:
-            out.append(" ".join(self.specifier))
+            out.append(self.is_dtor)
         else:
-            out.append("int")
-        if self.declarator:
+            if self.storage:
+                out.append(" ".join(self.storage))
+                out.append(" ")
+            if self.specifier:
+                out.append(" ".join(self.specifier))
+            else:
+                out.append("int")
+
+        var = str(self.declarator)
+        if var:
             out.append(" ")
-            out.append(str(self.declarator))
-        if self.params is not None:
-            out.append("(")
-            if self.params:
-                out.append(str(self.params[0]))
-                for param in self.params[1:]:
-                    out.append(",")
-                    out.append(str(param))
-            out.append(")")
-            if self.func_const:
-                out.append(" const")
-        if self.array:
-            for dim in self.array:
-                out.append("[")
-                out.append(todict.print_node(dim))
-                out.append("]")
-        if self.init:
-            out.append("=")
-            out.append(str(self.init))
+            out.append(var)
         return "".join(out)
 
     def gen_decl(self, **kwargs):
@@ -1248,78 +1628,37 @@ class Declaration(Node):
         self.gen_decl_work(decl, **kwargs)
         return "".join(decl)
 
-    def gen_decl_work(self, decl, **kwargs):
+    def gen_decl_work(self, decl, attrs=True, **kwargs):
         """Generate string by appending text to decl.
 
         Replace params with value from kwargs.
         Most useful to call with params=None to skip parameters
         and only get function result.
-
-        attrs=False give compilable code.
         """
-        use_attrs = kwargs.get("attrs", True)
         if self.const:
             decl.append("const ")
 
-        if self.attrs["_destructor"]:
+        if self.is_dtor:
             decl.append("~")
-        if self.storage:
-            decl.append(" ".join(self.storage))
-            decl.append(" ")
-        decl.append(" ".join(self.specifier))
+            decl.append(self.is_dtor)
+        else:
+            if self.storage:
+                decl.append(" ".join(self.storage))
+                decl.append(" ")
+            decl.append(" ".join(self.specifier))
         if self.template_arguments:
-            decl.append("<")
-            for targ in self.template_arguments:
-                decl.append(str(targ))
-                decl.append(",")
-            decl[-1] = ">"
+            decl.append(self.gen_template_arguments())
 
-        if self.declarator:
-            self.declarator.gen_decl_work(decl, **kwargs)
+        self.declarator.gen_decl_work(decl, attrs=attrs, **kwargs)
 
-        if self.init is not None:
-            decl.append("=")
-            decl.append(str(self.init))
-        #        if use_attrs:
-        #            self.gen_attrs(self.attrs, decl)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            comma = ""
-            for arg in params:
-                decl.append(comma)
-                arg.gen_decl_work(decl)
-                comma = ", "
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        for dim in self.array:
-            decl.append("[")
-            decl.append(todict.print_node(dim))
-            decl.append("]")
-        if use_attrs:
-            self.gen_attrs(self.attrs, decl)
-
-    _skip_annotations = ["template"]
-
-    def gen_attrs(self, attrs, decl):
-        space = " "
-        for attr in sorted(attrs):
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr in self._skip_annotations:
-                continue
-            value = attrs[attr]
-            if value is None:  # unset
-                continue
-            decl.append(space)
-            decl.append("+")
-            if value is True:
-                decl.append(attr)
-            else:
-                decl.append("{}({})".format(attr, value))
-            space = ""
+    def gen_template_arguments(self):
+        """Return string for template_arguments."""
+        decl = ["<"]
+        for targ in self.template_arguments:
+            decl.append(str(targ))
+            decl.append(",")
+        decl[-1] = ">"
+        return ''.join(decl)
 
     def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
@@ -1336,6 +1675,19 @@ class Declaration(Node):
         self.gen_arg_as_lang(decl, lang="c_type", **kwargs)
         return "".join(decl)
 
+    def gen_arg_as_language(self, lang, **kwargs):
+        """Generate C++ declaration of variable.
+        No parameters or attributes.
+
+        Parameters
+        ----------
+        lang : str
+            "c_type" or "cxx_type"
+        """
+        decl = []
+        self.gen_arg_as_lang(decl, lang=lang, **kwargs)
+        return "".join(decl)
+
     def gen_arg_as_lang(
         self,
         decl,
@@ -1344,6 +1696,7 @@ class Declaration(Node):
         asgn_value=False,
         remove_const=False,
         with_template_args=False,
+        force_ptr=False,
         **kwargs
     ):
         """Generate an argument for the C wrapper.
@@ -1376,12 +1729,13 @@ class Declaration(Node):
         if with_template_args and self.template_arguments:
             # Use template arguments from declaration
             typ = getattr(self.typemap, lang)
-            decl.append(self.typemap.name)
-            decl.append("<")
-            for targ in self.template_arguments:
-                decl.append(str(targ))
-                decl.append(",")
-            decl[-1] = ">"
+            if self.typemap.sgroup == "vector":
+                # Vector types are not explicitly instantiated in the YAML file.
+                decl.append(self.typemap.name)
+                decl.append(self.gen_template_arguments())
+            else:
+                # cxx_type includes template  ex. user<int>
+                decl.append(self.typemap.cxx_type)
         else:
             # Convert template_argument.
             # ex vector<int> -> int
@@ -1389,49 +1743,28 @@ class Declaration(Node):
                 ntypemap = self.template_arguments[0].typemap
             else:
                 ntypemap = self.typemap
-            typ = getattr(ntypemap, lang)
+            typ = getattr(ntypemap, lang) or "--NOTYPE--"
             decl.append(typ)
 
-        if self.declarator is None:
-            # XXX - used with constructor but seems wrong for abstract arguments
+        declarator = self.declarator
+        if self.is_ctor and lang == "c_type":
             # The C wrapper wants a pointer to the type.
-            declarator = Declarator()
-            declarator.name = self.name
-        else:
-            declarator = self.declarator
+            force_ptr = True
 
-        if asgn_value and const_index is not None and not self.is_indirect():
+        if asgn_value and const_index is not None and not self.declarator.is_indirect():
             # Remove 'const' so the variable can be assigned to.
             decl[const_index] = ""
         elif remove_const and const_index is not None:
             decl[const_index] = ""
 
         if lang == "c_type":
-            declarator.gen_decl_work(decl, as_c=True, **kwargs)
+            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
         else:
-            declarator.gen_decl_work(decl, **kwargs)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            if continuation:
-                decl.append("\t")
-            comma = ""
-            for arg in params:
-                decl.append(comma)
-                arg.gen_decl_work(decl, attrs=None, continuation=continuation)
-                if continuation:
-                    comma = ",\t "
-                else:
-                    comma = ", "
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        if self.array:
-            for dim in self.array:
-                decl.append("[")
-                decl.append(todict.print_node(dim))
-                decl.append("]")
+            declarator.gen_decl_work(decl, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
 
     def as_cast(self, language="c"):
         """
@@ -1444,10 +1777,9 @@ class Declaration(Node):
         typ = getattr(self.typemap, language + '_type')
         decl.append(typ)
         ptrs = []
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                ptrs.append("*")   # ptr.ptr)
-        if self.array:
+        for ptr in self.declarator.pointer:
+            ptrs.append("*")   # ptr.ptr)
+        if self.declarator.array:
             ptrs.append("*")
         if ptrs:
             decl.append(" ")
@@ -1466,7 +1798,8 @@ class Declaration(Node):
             name   - Set name explicitly, else self.name.
         """
         t = []
-        attrs = self.attrs
+        attrs = self.declarator.attrs
+        meta = self.declarator.metaattrs
         ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
@@ -1481,9 +1814,12 @@ class Declaration(Node):
         t.append(typ)
         if attrs["value"]:
             t.append("value")
-        intent = intent or attrs["intent"]
-        if intent:
+        intent = intent or meta["intent"]
+        if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
+        elif intent == "setter":
+            # Argument to setter function.
+            t.append("intent(IN)")
 
         decl = []
         decl.append(", ".join(t))
@@ -1492,17 +1828,17 @@ class Declaration(Node):
         if kwargs.get("name", None):
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         if basedef.base == "vector":
             decl.append("(*)")  # is array
         elif ntypemap.base == "string":
             decl.append("(*)")
         elif attrs["dimension"]:
-            # Any dimension is changed to assumed length.
+            # Any dimension is changed to assumed-size.
             decl.append("(*)")
         elif attrs["rank"] is not None and attrs["rank"] > 0:
-            # Any dimension is changed to assumed length.
+            # Any dimension is changed to assumed-size.
             decl.append("(*)")
         elif attrs["allocatable"]:
             # allocatable assumes dimension
@@ -1513,6 +1849,8 @@ class Declaration(Node):
         self,
         bindc=False,
         local=False,
+        pass_obj=False,
+        optional=False,
         **kwargs
     ):
         """Geneate declaration for Fortran variable.
@@ -1522,10 +1860,12 @@ class Declaration(Node):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        attrs = self.attrs
+        declarator = self.declarator
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         ntypemap = self.typemap
-        if self.template_arguments:
-            # If a template, use its type (std::vector)
+        if ntypemap.sgroup == "vector":
+            # If std::vector, use its type (<int>)
             ntypemap = self.template_arguments[0].typemap
 
         is_allocatable = False
@@ -1545,12 +1885,15 @@ class Declaration(Node):
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
                 t.append("character(len=:)")
-            elif self.array:
+            elif declarator.array:
                 t.append("character(kind=C_CHAR)")
             elif not local:
                 t.append("character(len=*)")
             else:
                 t.append("character")
+        elif pass_obj:
+            # Used with wrap_struct_as=class for passed-object dummy argument.
+            t.append(ntypemap.f_class)
         elif bindc:
             t.append(ntypemap.f_c_type or ntypemap.f_type)
         else:
@@ -1559,14 +1902,19 @@ class Declaration(Node):
         if not local:  # must be dummy argument
             if attrs["value"]:
                 t.append("value")
-            intent = attrs["intent"]
-            if intent:
+            intent = meta["intent"]
+            if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
+            elif intent == "setter":
+                # Argument to setter function.
+                t.append("intent(IN)")
 
         if is_allocatable:
             t.append("allocatable")
         if is_pointer:
             t.append("pointer")
+        if optional:
+            t.append("optional")
 
         decl = []
         decl.append(", ".join(t))
@@ -1575,7 +1923,7 @@ class Declaration(Node):
         if "name" in kwargs:
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         dimension = attrs["dimension"]
         rank = attrs["rank"]
@@ -1593,10 +1941,10 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
-        elif self.array:
+        elif declarator.array:
             decl.append("(")
             # Convert to column-major order.
-            for dim in reversed(self.array):
+            for dim in reversed(declarator.array):
                 decl.append(todict.print_node(dim))
                 decl.append(",")
             decl[-1] = ")"
@@ -1606,18 +1954,46 @@ class Declaration(Node):
 
 class CXXClass(Node):
     """A C++ class statement.
+
+    members are populated by function class_decl.
+    children is populated by ast.py
     """
 
-    def __init__(self, name):
+    def __init__(self, name, symtab):
+        """
+        ntypemap from YAML file.
+        """
         self.name = name
+        self.baseclass = []
+        self.members = []
+        self.has_ctor = True
+        self.group = []
+
+        forward = self.check_forward_declaration(symtab)
+
+        if not forward:
+            type_name = symtab.scopename + name
+            ntypemap = typemap.Typemap(
+                type_name,
+                base="shadow",
+                sgroup="shadow",
+            )
+            symtab.register_typemap(type_name, ntypemap)
+            self.newtypemap = ntypemap
+            self.typemap = ntypemap
+        symtab.add_child_to_current(self)
+        symtab.push_scope(self)
 
 
 class Namespace(Node):
     """A C++ namespace statement.
     """
 
-    def __init__(self, name):
+    def __init__(self, name, symtab):
         self.name = name
+        symtab.add_child_to_current(self)
+        symtab.push_scope(self)
+        self.group = []
 
 
 class Enum(Node):
@@ -1626,10 +2002,27 @@ class Enum(Node):
     enum class Color { RED, BLUE, WHITE }
     """
 
-    def __init__(self, name, scope=None):
+    def __init__(self, name, symtab, scope=None):
         self.name = name
         self.scope = scope
         self.members = []
+
+        type_name = symtab.scopename + name
+        inttypemap = symtab.lookup_typemap("int")  # XXX - all enums are not ints
+        ntypemap = inttypemap.clone_as(type_name)
+#        ntypemap = typemap.Typemap( # GGG - do not assume enum is int
+#            type_name,
+#            base="enum",
+#            sgroup="enum",
+#        )
+        ntypemap.is_enum = True  # GGG kludge to identify enums
+        symtab.add_tag_to_current("enum", self)
+        if symtab.language == "cxx":
+            symtab.add_child_to_current(self)
+            symtab.register_typemap(type_name, ntypemap)
+        self.typemap = ntypemap
+
+        symtab.push_scope(self)
 
 
 class EnumValue(Node):
@@ -1642,12 +2035,35 @@ class EnumValue(Node):
 
 class Struct(Node):
     """A struct statement.
+    struct name
     struct name { int i; double d; };
+
+    Add a typemap to the symbol table.
+
+    members are populated by function struct_decl.
+    children is populated by ast.py
     """
 
-    def __init__(self, name):
+    def __init__(self, name, symtab):
         self.name = name
         self.members = []
+        self.has_ctor = True
+        forward = self.check_forward_declaration(symtab)
+
+        if not forward:
+            type_name = symtab.scopename + name
+            ntypemap = typemap.Typemap(
+                type_name,
+                base="struct",
+                sgroup="struct",
+            )
+            symtab.add_tag_to_current("struct", self)
+            if symtab.language == "cxx":
+                symtab.add_child_to_current(self)
+                symtab.register_typemap(type_name, ntypemap)
+            self.newtypemap = ntypemap
+            self.typemap = ntypemap
+        symtab.push_scope(self)
 
 
 class Template(Node):
@@ -1657,28 +2073,32 @@ class Template(Node):
     decl - Declaration or CXXClass Node.
     """
 
-    def __init__(self):
+    def __init__(self, symtab):
         self.parameters = []
-        self.decl = None
+        self.decl = None    # GGG maybe rename to ast or decl_ast
 
-        self.parent = None
-        self.symbols = {}
+        self.name = "template-"
         self.is_class = False
+        self.paramtypemap = symtab.lookup_typemap("--template-parameter--")
 
-    def fill_symbols(self, parent):
-        """Add the TemplateParams into the symbol table.
-        This allows them to be looked up via unqualified_lookup.
+        symtab.push_template_scope(self)
+
+    def append_template_param(self, name):
+        """append a TemplateParam to this Template.
         """
-        self.parent = parent
-        for param in self.parameters:
-            self.symbols[param.name] = param
+        node = TemplateParam(name)
+        node.typemap = self.paramtypemap
+        self.parameters.append(node)
+        self.symbols[name] = node
 
-    def unqualified_lookup(self, name):
-        """Lookup template parameter."""
-        if name in self.symbols:
-            return self.symbols[name]
-        return self.parent.unqualified_lookup(name)
-
+    def add_child(self, name, node):
+        """
+        Add the templated function into the parent,
+        not the Template scope.
+          template<U> class name
+        """
+        self.parent.add_child(name, node)
+            
 
 class TemplateParam(Node):
     """A template parameter.
@@ -1686,6 +2106,11 @@ class TemplateParam(Node):
 
     Create a Typemap for the TemplateParam.
     XXX - class and typename are discarded while parsing.
+
+    Must call Node.create_template_typemaps after the templated 
+    declaration in order to get scope correct for typemaps.
+       template<T> class cname
+    Typemap name will be cname::T
 
     self.typemap = a typemap.Typemap with base='template'.
                    Used as a place holder for the Template argument.
@@ -1696,27 +2121,325 @@ class TemplateParam(Node):
         # Set cxx_type so flat_name will be set.
         # But use an illegal identifer name since it should never be used.
         self.name = name
-        self.typemap = typemap.Typemap(
-            name, base="template", cxx_type="-TemplateParam-")
 
 
-def check_decl(decl, namespace=None, template_types=None, trace=False):
+class Typedef(Node):
+    """
+    Added to SymbolTable to record a typedef name.
+
+    When used with 'int', 'std::string', ...
+    ast will be None.
+    """
+    def __init__(self, name, ast, ntypemap):
+        self.name = name
+        self.ast = ast
+        if ast:
+            ntypemap.is_typedef = True  # GGG kludge to identify typedef
+        self.typemap = ntypemap
+        
+        
+class SymbolTable(object):
+    """Keep track of current scope of names while parsing.
+
+    These names become part of the grammar and must be known
+    while parsing and not part of the AST.
+
+    scope_stack - stack (list) of AstNodes.
+    name_stack - stack (list) of names of scope_stack nodes.
+       useful to create scoped names - ns::class::enum
+    """
+    def __init__(self, language="cxx"):
+        self.scope_stack = []
+        self.scope_len   = []
+        self.scopename = ''
+        self.typemaps = typemap.default_typemap()
+        self.language = language
+
+        # Create the global scope.
+        glb = Global()
+        self.scope_stack.append(glb)
+        self.scope_len.append(0)
+        self.current = glb
+
+    def push_template_scope(self, node):
+        """
+        Template scopes do not add to scopename.
+
+        node - Template
+        """
+        node.init_symtab(self.current, self.scopename)
+        self.scope_stack.append(node)
+        self.scope_len.append(self.scope_len[-1])
+        self.current = node
+
+    def push_scope(self, node):
+        """
+        node creates a new named scope.
+        
+        node = Node subclass: CXXClass, Struct
+        """
+        # node := Struct
+        name = node.name
+        self.scopename = self.scopename[:self.scope_len[-1]] + name + '::'
+        self.scope_len.append(len(self.scopename))
+
+        if not hasattr(node, "scope_prefix"):
+            # Only initialize once.
+            node.init_symtab(self.current, self.scopename)
+        self.scope_stack.append(node)
+        self.current = node
+
+    def pop_scope(self):
+        self.scope_stack.pop()
+        self.scope_len.pop()
+        self.current = self.scope_stack[-1]
+        self.scopename = self.scopename[:self.scope_len[-1]]
+
+    def add_child_to_current(self, node, name=None):
+        """Add symbol to current scope."""
+        self.current.add_child(name or node.name, node)
+
+    def add_tag_to_current(self, tag, node):
+        """Add tag name to symbols."""
+        self.current.add_tag(tag, node)
+
+    def using_directive(self, name):
+        """Implement 'using namespace <name>' for current scope
+        """
+        ns = self.current.using_directive(name)
+
+    def register_typemap(self, name, ntypemap):
+        self.typemaps[name] = ntypemap
+        
+    def lookup_typemap(self, name):
+        ntypemap = self.typemaps.get(name)
+        return ntypemap
+
+    def create_nested_namespaces(self, names):
+        """
+        Create a possibly nested namespace.
+        self.current is set to the last namespace.
+
+        Use add_typedef_by_name to add member to the namespace.
+        Call restore_depth to pop this created namespace.
+        """
+        depth = self.save_depth()
+        ns = self.current
+        for name in names:
+            if name in ns.symbols:
+                ns = ns.symbols[name]
+                # GGG make sure it is a Namespace node
+                self.add_child_to_current(ns)
+                self.push_scope(ns)
+            else:
+                node = Namespace(name, self)
+                ns.symbols[name] = node
+                ns = node
+        return depth
+    
+    def add_namespaces(self, ntypemap, as_typedef=False):
+        """Create nested namespaces from list of names.
+
+        Args:
+            name - list of names for namespaces.
+        """
+        names = ntypemap.name.split("::")
+        cxx_name = names.pop()
+        depth = self.create_nested_namespaces(names)
+        sgroup = ntypemap.sgroup
+        if as_typedef:
+            node = Typedef(cxx_name, None, ntypemap)
+            self.current.add_child(node.name, node)
+        elif sgroup == "shadow":
+            node = CXXClass(cxx_name, self, ntypemap)
+        elif sgroup == "struct":
+            node = Struct(cxx_name, self, ntypemap)
+        else:
+            raise RuntimeError("add_namespaces {}".format(sgroup))
+        self.restore_depth(depth)
+
+    def save_depth(self):
+        """Save current depth of the stack
+        Allow nested scopes to be pushed
+        then restore pop stack to using restore_depth.
+        """
+        return len(self.scope_stack)
+
+    def restore_depth(self, depth):
+        """Restore stack to depth"""
+        n = len(self.scope_stack)
+        for i in range(n - depth):
+            self.pop_scope()
+
+    def stash_stack(self):
+        """
+        Save current state of stack then reset to empty.
+        Use restore_stack to restore saved state.
+        """
+        self.old_scope_stack = self.scope_stack
+        self.old_scope_len = self.scope_len
+        self.old_scopename = self.scopename
+        self.old_current = self.current
+
+        self.current = self.scope_stack[0]
+        self.scope_stack = [self.current]
+        self.scope_len = [0]
+        self.scopename = ""
+
+    def restore_stack(self):
+        """Reset to values from last stash_stack"""
+        self.scope_stack = self.old_scope_stack
+        self.scope_len = self.old_scope_len
+        self.scopename = self.old_scopename
+        self.current = self.old_current
+    
+    def create_typedef(self, ast):
+        """Add a typedef to the symbol table.
+
+        ast - ast.Declaration
+        """
+#        if ast.declarator.pointer:
+#            # typedef int *foo;
+#            name = ast.declarator.name
+#            ntypemap = self.lookup_typemap("--typedef--")
+#            node = Typedef(name, ntypemap)
+#            self.add_child_to_current(node, name)
+        if ast.declarator.func:
+            # typedef int (*fcn)(int);
+            name = ast.declarator.user_name
+            type_name = self.scopename + name
+            ntypemap = typemap.Typemap(
+                type_name,
+                base="fcnptr",
+                sgroup="fcnptr",
+            )
+            self.register_typemap(ntypemap.name, ntypemap)
+            node = Typedef(name, ast, ntypemap)
+#            ntypemap.compute_flat_name() GGG
+            self.add_child_to_current(node, name)
+        else:
+            # typedef int TypeID;
+            # GGG At this point, just creating an alias for type.
+            # typedef void *address;
+            name = ast.declarator.name
+            type_name = self.scopename + name
+            orig = ast.typemap
+            ntypemap = orig.clone_as(type_name)
+            ntypemap.typedef = orig.name
+            ntypemap.cxx_type = ntypemap.name
+            ntypemap.compute_flat_name()
+            self.register_typemap(ntypemap.name, ntypemap)
+            node = Typedef(name, ast, ntypemap)
+            self.add_child_to_current(node, name)
+        ast.typemap = ntypemap
+
+    def add_typedef_by_name(self, name):
+        """
+        Add name into the current scope as a type.
+        Used with predefined types like std::string.
+        The typemap must already exist.
+        """
+        tname = self.scopename + name
+        ntypemap = self.lookup_typemap(tname)
+        if ntypemap is None:
+            raise RuntimeError("Unknown type {}".format(tname))
+        node = Typedef(name, None, ntypemap)
+        self.current.add_child(node.name, node)
+
+    def add_typedef(self, name, ntypemap):
+        """
+        Add typedef from YAML typemap dictionary.
+        typemap:
+        - type: ns::name
+        """
+        self.add_namespaces(ntypemap, as_typedef=True)
+        self.register_typemap(name, ntypemap)  ### GGG move into Typdef.__init__?
+
+    def create_std_names(self):
+        """Add standard types to the Library."""
+        self.add_typedef_by_name("size_t")
+        self.add_typedef_by_name("int8_t")
+        self.add_typedef_by_name("int16_t")
+        self.add_typedef_by_name("int32_t")
+        self.add_typedef_by_name("int64_t")
+        self.add_typedef_by_name("uint8_t")
+        self.add_typedef_by_name("uint16_t")
+        self.add_typedef_by_name("uint32_t")
+        self.add_typedef_by_name("uint64_t")
+        self.add_typedef_by_name("MPI_Comm")
+
+    def create_std_namespace(self):
+        """Create some types in std."""
+        depth = self.create_nested_namespaces(["std"])
+        # create_typedef_typemap  - GGG must be in typemap
+        self.add_typedef_by_name("string")
+        self.add_typedef_by_name("vector")
+        self.restore_depth(depth)
+
+def symtab_to_dict(node):
+    """Return SymbolTable as a dictionary.
+    Used for debugging/testing.
+    """
+    d = dict(cls=node.__class__.__name__)
+    if hasattr(node, "symbols"):
+        if node.symbols:
+            symbols = {}
+            for k, v in node.symbols.items():
+                symbols[k] = symtab_to_dict(v)
+            d['symbols'] = symbols
+    if hasattr(node, "typemap"):
+        # Global and Namespace do not have typemaps.
+        d["typemap"] = node.typemap.name
+    return d
+
+def symtab_to_typemap(node):
+    """Return SymbolTable as a dictionary.
+    Used for debugging/testing.
+    """
+    if hasattr(node, "typemap"):
+        # Global and Namespace do not have typemaps.
+        if node.typemap.sgroup in ["shadow", "struct", "template", "enum"]:
+            return node.typemap.name
+        elif hasattr(node.typemap, "is_enum"):
+            return node.typemap.name
+        else:
+            return None
+    symbols = {}
+    if hasattr(node, "symbols"):
+        for k, v in node.symbols.items():
+            # If a tag exists, just add name of tag.
+            if "enum-" + k in node.symbols:
+                symbols[k] = "enum-" + k
+            elif "struct-" + k in node.symbols:
+                symbols[k] = "struct-" + k
+            else:
+                out = symtab_to_typemap(v)
+                if out is not None:
+                    symbols[k] = out
+    if not symbols:
+        return None
+    else:
+        return symbols
+
+def check_decl(decl, symtab, trace=False):
     """ parse expr as a declaration, return list/dict result.
 
     namespace - An ast.AstNode subclass.
     """
-    if not namespace:
+    #trace = True   # GGG For debug
+    a = Parser(decl, symtab, trace).decl_statement()
+    return a
+
+def check_block(decl, namespace=None, trace=False):
+    """ parse expr as a declaration, return list/dict result.
+
+    namespace - An ast.AstNode subclass.
+    """
+#    trace = True   # GGG For debug
+    if namespace is None:
         # grab global namespace if not passed in.
         namespace = global_namespace
-    if template_types:
-        global type_specifier
-        old_types = type_specifier
-        type_specifier = set(old_types)
-        type_specifier.update(template_types)
-        a = Parser(decl, namespace, trace).decl_statement()
-        type_specifier = old_types
-    else:
-        a = Parser(decl, namespace, trace).decl_statement()
+    a = Parser(decl, namespace, trace).decl_statement()
     return a
 
 
@@ -1728,6 +2451,7 @@ def create_voidstar(ntypemap, name, const=False):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr("*")]
+    arg.declarator.typemap = ntypemap
     arg.specifier = ntypemap.cxx_type.split()
     arg.typemap = ntypemap
     return arg
@@ -1740,18 +2464,24 @@ def create_struct_ctor(cls):
     """
     name = cls.name + "_ctor"
     ast = Declaration()
-    ast.attrs["_constructor"] = True
-    ast.attrs["name"] = name
-##        _name="ctor",
+    ast.is_ctor = True
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
-    ast.params = []
+    declarator = Declarator()
+    ast.declarator = declarator
+    declarator.params = []
+    declarator.typemap = cls.typemap
+    declarator.attrs["_constructor"] = True
+    declarator.attrs["name"] = name
+##        _name="ctor",
+    declarator.metaattrs["intent"] = "ctor"
     return ast
 
 
 def find_arg_by_name(decls, name):
     """Find argument in params with name.
     Return None if not found.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -1760,12 +2490,13 @@ def find_arg_by_name(decls, name):
     if decls is None:
         return None
     for decl in decls:
-        if decl.name == name:
+        if decl.declarator.name == name:
             return decl
     return None
 
 def find_arg_index_by_name(decls, name):
     """Return index of argument in decls with name.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -1774,7 +2505,6 @@ def find_arg_index_by_name(decls, name):
     if decls is None:
         return -1
     for i, decl in enumerate(decls):
-        if decl.name == name:
+        if decl.declarator.name == name:
             return i
     return -1
-

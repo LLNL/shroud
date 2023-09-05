@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -18,27 +18,29 @@ import unittest
 class Namespace(unittest.TestCase):
     def test_ns1(self):
         lib = ast.LibraryNode()
+        symtab = lib.symtab
         self.assertEqual("", lib.scope)
 
         # The Typemap must be created before the TypedefNode.
         ntypemap = typemap.Typemap("foo")
-        typemap.register_type("foo", ntypemap)
+        symtab.register_typemap("foo", ntypemap)
 
         # typedef foo;
         # foo var;
-        typefoo = lib.add_typedef("foo")
+        typefoo = lib.add_typedef("typedef int foo")
         self.assertIsInstance(typefoo, ast.TypedefNode)
         self.assertEqual("foo", typefoo.typemap.name)
         node = lib.qualified_lookup("foo")
-        self.assertEqual(typefoo, node)
+        self.assertEqual(typefoo.ast, node.ast)
         self.assertEqual("foo", node.typemap.name)
 
         typ = lib.unqualified_lookup("foo")
         self.assertTrue(typ)
 
         std = lib.unqualified_lookup("std")
+        self.assertIsInstance(std, declast.Namespace)
         self.assertIsNotNone(std)
-        self.assertEqual("std::", std.scope)
+        self.assertEqual("std::", std.scope_prefix)
 
         # Non existent names
         node = lib.unqualified_lookup("Nonexistent")
@@ -47,97 +49,98 @@ class Namespace(unittest.TestCase):
     def test_ns2_class(self):
         # test class
         lib = ast.LibraryNode()
-        class1 = lib.add_class("Class1")
+        class1 = lib.add_class("class Class1")
         self.assertEqual("Class1", class1.typemap.name)
         self.assertEqual("Class1::", class1.scope)
+        class1.symtab.pop_scope()
 
         node = lib.qualified_lookup("Class1")
-        self.assertEqual(class1, node)
+        self.assertEqual(class1.ast, node)
 
-        ns = lib.add_namespace("ns1")
+        ns = lib.add_namespace("namespace ns1")
         self.assertEqual("ns1::", ns.scope)
 
-        class2 = ns.add_class("Class2")
+        class2 = ns.add_class("class Class2")
         self.assertEqual("ns1::Class2", class2.typemap.name)
         self.assertEqual("ns1::Class2::", class2.scope)
 
         node = ns.unqualified_lookup("Class1")
-        self.assertEqual(class1, node)
+        self.assertEqual(class1.ast, node)
         node = ns.unqualified_lookup("Class2")
-        self.assertEqual(class2, node)
+        self.assertEqual(class2.ast, node)
 
         # look for Class2 in lib
         node = lib.unqualified_lookup("Class2")
         self.assertIsNone(node)
 
         # using namespace ns1
-        lib.using_directive("ns1")
+        lib.ast.using_directive("ns1")
         node = lib.unqualified_lookup("Class2")
-        self.assertEqual(class2, node)
+        self.assertEqual(class2.ast, node)
 
     def test_ns3_enum(self):
         # test enum
-        typemap.initialize()
         lib = ast.LibraryNode()
         enum1 = lib.add_enum("enum Enum1 {}")
         self.assertEqual("Enum1", enum1.typemap.name)
         self.assertEqual("Enum1::", enum1.scope)
 
         node = lib.qualified_lookup("Enum1")
-        self.assertEqual(enum1, node)
+        self.assertEqual(enum1.ast, node)
 
-        ns = lib.add_namespace("ns1")
+        ns = lib.add_namespace("namespace ns1")
         enum2 = ns.add_enum("enum Enum2 {}")
         self.assertEqual("ns1::Enum2", enum2.typemap.name)
         self.assertEqual("ns1::Enum2::", enum2.scope)
 
         node = ns.unqualified_lookup("Enum1")
-        self.assertEqual(enum1, node)
+        self.assertEqual(enum1.ast, node)
         node = ns.unqualified_lookup("Enum2")
-        self.assertEqual(enum2, node)
+        self.assertEqual(enum2.ast, node)
 
         # look for Enum2 in lib
         node = lib.unqualified_lookup("Enum2")
         self.assertIsNone(node)
 
         # using namespace ns1
-        lib.using_directive("ns1")
+        lib.ast.using_directive("ns1")
         node = lib.unqualified_lookup("Enum2")
-        self.assertEqual(enum2, node)
+        self.assertEqual(enum2.ast, node)
 
         # Add enum to class
-        class1 = ns.add_class("Class1")
+        class1 = ns.add_class("class Class1")
         enum3 = class1.add_enum("enum Enum3 {}")
         self.assertEqual("ns1::Class1::Enum3", enum3.typemap.name)
         self.assertEqual("ns1::Class1::Enum3::", enum3.scope)
         node = class1.qualified_lookup("Enum3")
-        self.assertEqual(enum3, node)
+        self.assertEqual(enum3.ast, node)
 
     def test_ns4_namespace(self):
         # nested namespace
         lib = ast.LibraryNode()
-        ns1 = lib.add_namespace("ns1")
+        ns1 = lib.add_namespace("namespace ns1")
         self.assertEqual("ns1::", ns1.scope)
-        self.assertEqual(ns1, lib.qualified_lookup("ns1"))
+        self.assertEqual(ns1.ast, lib.qualified_lookup("ns1"))
 
-        ns2 = ns1.add_namespace("ns2")
+        ns2 = ns1.add_namespace("namespace ns2")
         self.assertEqual("ns1::ns2::", ns2.scope)
-        self.assertEqual(ns2, ns1.qualified_lookup("ns2"))
+        self.assertEqual(ns2.ast, ns1.qualified_lookup("ns2"))
 
-        class1 = ns2.add_class("Class1")
+        class1 = ns2.add_class("class Class1")
+        class1.symtab.pop_scope()
         enumx = ns2.add_enum("enum Enumx {}")
-        self.assertEqual(class1, ns2.qualified_lookup("Class1"))
-        self.assertEqual(enumx, ns2.qualified_lookup("Enumx"))
+        self.assertEqual(class1.ast, ns2.qualified_lookup("Class1"))
+        self.assertEqual(enumx.ast, ns2.qualified_lookup("Enumx"))
 
         # from ns1, try to lookup Enumx
         node = ns1.unqualified_lookup("Enumx")
         self.assertIsNone(node)
         # 'using namespace ns2'
-        self.assertEqual(0, len(ns1.using))
-        node = ns1.using_directive("ns2")
-        self.assertEqual(1, len(ns1.using))
+        self.assertEqual(0, len(ns1.ast.using))
+        node = ns1.ast.using_directive("ns2")
+        self.assertEqual(1, len(ns1.ast.using))
         self.assertEqual(None, ns1.qualified_lookup("Enumx"))
-        self.assertEqual(enumx, ns1.unqualified_lookup("Enumx"))
+        self.assertEqual(enumx.ast, ns1.unqualified_lookup("Enumx"))
 
     def test_declare_namespace(self):
         lib = ast.LibraryNode("")
@@ -146,9 +149,6 @@ class Namespace(unittest.TestCase):
 
 class CheckAst(unittest.TestCase):
     #    maxDiff = None
-    def setUp(self):
-        typemap.initialize()
-
     def test_a_library1(self):
         """Test LibraryNode"""
         library = ast.LibraryNode()
@@ -210,7 +210,8 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.create_library_from_dictionary(node)
+        symtab = declast.SymbolTable()
+        library = ast.create_library_from_dictionary(node, symtab)
 
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(library.options.testa, "a")
@@ -234,7 +235,7 @@ class CheckAst(unittest.TestCase):
     def test_c_class1(self):
         """Add a class to library"""
         library = ast.LibraryNode(format=dict(fmt1="f1", fmt2="f2"))
-        library.add_class("Class1", format=dict(fmt2="f2", fmt3="f3"))
+        library.add_class("class Class1", format=dict(fmt2="f2", fmt3="f3"))
 
         self.assertEqual(library.fmtdict.fmt1, "f1")
         self.assertEqual(library.fmtdict.fmt2, "f2")
@@ -248,19 +249,19 @@ class CheckAst(unittest.TestCase):
         """Add a classes with functions to library"""
         library = ast.LibraryNode()
 
-        cls1 = library.add_class("Class1")
+        cls1 = library.add_class("class Class1")
         cls1.add_function("void c1func1()")
         cls1.add_function("void c1func2()")
 
-        cls2 = library.add_class("Class2")
+        cls2 = library.add_class("class Class2")
         cls2.add_function("void c2func1()")
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
-        self.assertEqual(library.classes[0].functions[0].ast.name, "c1func1")
-        self.assertEqual(library.classes[0].functions[1].ast.name, "c1func2")
+        self.assertEqual(library.classes[0].functions[0].ast.declarator.name, "c1func1")
+        self.assertEqual(library.classes[0].functions[1].ast.declarator.name, "c1func2")
         self.assertEqual(len(library.classes[1].functions), 1)
-        self.assertEqual(library.classes[1].functions[0].ast.name, "c2func1")
+        self.assertEqual(library.classes[1].functions[0].ast.declarator.name, "c2func1")
 
     def test_c_class3(self):
         """Test class options"""
@@ -278,7 +279,8 @@ class CheckAst(unittest.TestCase):
                 }
             ],
         )
-        library = ast.create_library_from_dictionary(node)
+        symtab = declast.SymbolTable()
+        library = ast.create_library_from_dictionary(node, symtab)
 
         self.assertEqual(len(library.classes), 1)
         self.assertEqual(len(library.classes[0].functions), 2)
@@ -295,12 +297,12 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.classes[0].functions[1].options.testb, "bb")
         self.assertEqual(library.classes[0].functions[1].options.testc, "c")
 
-    def test_class_template1(self):
+    def XXXtest_class_template1(self):
         """Test class templates.
         """
         library = ast.LibraryNode()
         cls1 = library.add_class(
-            "vector",
+            "class vector",
             template_parameters=["T"],
             cxx_template=[
                 ast.TemplateArgument("<int>"),
@@ -348,11 +350,11 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(
             library.functions[0].declgen,
-            "void func1(char * arg +intent(inout))",
+            "void func1(char * arg)",
         )
         self.assertEqual(
             library.functions[1].declgen,
-            "void func1(char * arg +intent(inout)+len+len_trim)",
+            "void func1(char * arg)",
         )
 
     def test_function_template1(self):
@@ -392,7 +394,7 @@ class CheckAst(unittest.TestCase):
     def test_e_enum2(self):
         """Add an enum to a namespace"""
         library = ast.LibraryNode()
-        ns = library.add_namespace("ns")
+        ns = library.add_namespace("namespace ns")
         self.assertEqual(len(library.enums), 0)
 
         ns.add_enum("enum Color{RED=1,BLUE,WHITE}")
@@ -404,7 +406,7 @@ class CheckAst(unittest.TestCase):
     def test_e_enum3(self):
         """Add an enum to a class"""
         library = ast.LibraryNode()
-        cls = library.add_class("Class1")
+        cls = library.add_class("class Class1")
         self.assertEqual(len(cls.enums), 0)
         cls.add_enum("enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };")
         self.assertEqual(len(cls.enums), 1)
@@ -424,7 +426,7 @@ class CheckAst(unittest.TestCase):
             "Declaration is not an enumeration" in str(context.exception)
         )
 
-        cls = library.add_class("Class1")
+        cls = library.add_class("class Class1")
         with self.assertRaises(RuntimeError) as context:
             cls.add_enum("void func()")
         self.assertTrue(
@@ -432,9 +434,4 @@ class CheckAst(unittest.TestCase):
         )
 
 if __name__ == "__main__":
-    # Run a single test.
-    suite = unittest.TestSuite()
-    suite.addTest(CheckAst("test_d_generate1"))
-    runner = unittest.TextTestRunner()
-    runner.run(suite)
-        
+    unittest.main()

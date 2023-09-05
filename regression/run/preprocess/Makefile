@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -22,9 +22,9 @@ VPATH = \
 
 OBJS = \
     wrapfpreprocess.o \
-    wrappreprocess.o \
     wrapUser1.o \
     wrapUser2.o \
+    utilpreprocess.o \
     fruit.o \
     main.o
 
@@ -36,4 +36,4 @@ clean :
 
 wrappreprocess.o : preprocess.hpp
 wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h
-main.o : wrapfpreprocess.o wrappreprocess.o
+main.o : fruit.o wrapfpreprocess.o wrappreprocess.o

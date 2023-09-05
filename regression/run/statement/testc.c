@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
  * other Shroud Project Developers.
  * See the top-level COPYRIGHT file for details.
  *
@@ -15,7 +15,7 @@
 
 void test_statement(void)
 {
-  const char * name = STMT_get_name_error_pattern();
+  const char * name = STMT_getNameErrorPattern();
   assert(strcmp(name, "the-name") == 0 && "STMT_get_name_error_pattern");
 }
 

@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -20,8 +20,25 @@ options:
 
 declarations:
 
+########################################
+# Create a generic interface for two functions.
+# XXX - F_force_wrapper is required since the generic interface is using
+#       MODULE PROCEDURE and Shroud is not creating a function since no
+#       wrapper is needed since they're native types.
+- decl: void UpdateAsFloat(float arg)
+  options:
+    F_force_wrapper: True
+  format:
+    F_name_generic: update_real
+- decl: void UpdateAsDouble(double arg)
+  options:
+    F_force_wrapper: True
+  format:
+    F_name_generic: update_real
+
 - decl: double GetGlobalDouble(void)
 
+########################################
 - decl: void GenericReal(double arg)
   options:
     literalinclude: True
@@ -33,6 +50,7 @@ declarations:
   - decl: (double arg)
     function_suffix: _double
 
+########################################
 - decl: long GenericReal2(long arg1, long arg2)
   doxygen:
     brief: Two argument generic
@@ -45,6 +63,30 @@ declarations:
   - decl: (long arg1, long arg2)
     function_suffix: _all_long
 
+
+- decl: int SumValues(const int *values+dimension(..), int nvalues)
+  doxygen:
+    brief: scalar or array argument using assumed rank
+  options:
+    F_assumed_rank_max: 2
+
+########################################
+# Test Fortran Generic and rank.
+# Also creates several bind(C) interfaces to the same function.
+- decl: void AssignValues(const int *from, int nfrom, int *to, int nto)
+  doxygen:
+    description: |
+      Broadcast if nfrom == 1
+      Copy if nfrom == nto
+  fortran_generic:
+  - decl: (const int *from, int *to)
+    function_suffix: _scalar
+  - decl: (const int *from, int *to+rank(1))
+    function_suffix: _broadcast
+  - decl: (const int *from+rank(1), int *to+rank(1))
+    function_suffix: _copy
+
+########################################
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
   # cannot use size as an dummy argument name
   # Add deref(raw) attribute to Fortan function.
@@ -52,15 +94,16 @@ declarations:
   # for the C interface.
   cpp_if: if 1
   fortran_generic:
-  - decl: (float *addr+rank(1)+deref(raw)+intent(in),    int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(1)+intent(in),    int type+implied(T_FLOAT))
     function_suffix: _float1d
-  - decl: (float *addr+rank(2)+deref(raw)+intent(in),  int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(2)+intent(in),  int type+implied(T_FLOAT))
     function_suffix: _float2d
 
 #  - decl: (double *addr+rank(1),   int type+implied(T_DOUBLE))
 #  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
+########################################
 - decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
   fstatements:
     c:
@@ -70,15 +113,16 @@ declarations:
       -
       - type = convert_type(type);
   fortran_generic:
-  - decl: (float *addr+rank(1)+deref(raw)+intent(in))
+  - decl: (float *addr+rank(1)+intent(in))
     function_suffix: _float1d
-  - decl: (float *addr+rank(2)+deref(raw)+intent(in))
+  - decl: (float *addr+rank(2)+intent(in))
     function_suffix: _float2d
 
 #  - decl: (double *addr+rank(1), int type+implied(T_DOUBLE))
 #  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
+########################################
 - decl: void GetPointer(void **addr+intent(out),
                         int *type+intent(out),
                         size_t *size+intent(out))
@@ -93,6 +137,23 @@ declarations:
   - decl: (float **addr+intent(out)+rank(2)+deref(pointer))
     function_suffix: _float2d
 
+
+- decl: struct StructAsClass
+  options:
+    wrap_struct_as: class
+- decl: StructAsClass *CreateStructAsClass(void)
+  options:
+    class_ctor: StructAsClass
+
+########################################
+# XXX - This creates two Fortran wrappers but it also creates a
+#       bind(C) interface for the original routine. Not sure that's needed.
+- decl: long UpdateStructAsClass(StructAsClass *arg, long inew)
+  fortran_generic:
+  - decl: (int inew)
+    function_suffix: _int
+  - decl: (long inew)
+    function_suffix: _long
 
 splicer_code:
   f:

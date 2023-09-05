@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -20,8 +20,10 @@ program tester
 
   call test_vector_int
   call test_vector_double
+  call test_vector_double_ptr
   call test_vector_string
   call test_return
+  call test_implied
 
   call fruit_summary
   call fruit_finalize
@@ -120,9 +122,24 @@ contains
 !    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
   end subroutine test_vector_double
 
+  subroutine test_vector_double_ptr
+    integer(C_INT) rvsum
+    real(C_DOUBLE) datain(3,2)
+
+    call set_case_name("test_vector_double_ptr")
+
+    datain = reshape([1,2,3,4,5,6], shape(datain))
+
+    rvsum = vector_of_pointers(datain, size(datain, 1))
+    call assert_true(sum(datain) == rvsum)
+
+  end subroutine test_vector_double_ptr
+  
   subroutine test_vector_string
     integer irv
     character(10) :: names(3)
+    character(:), allocatable :: anames(:)
+    character(20), allocatable :: a20names(:)
 
     call set_case_name("test_vector_string")
 
@@ -133,11 +150,29 @@ contains
 
     ! Fill strings into names
     names = " "
-!    irv = vector_string_fill(names)
+    call vector_string_fill(names)
 !    call assert_true(irv == 2)
-!    call assert_true( names(1) == "dog")
-!    call assert_true( names(2) == "bird")
-!    call assert_true( names(3) == " ")
+    call assert_true( names(1) == "dog", "vector_string_fill(1)")
+    call assert_true( names(2) == "bird", "vector_string_fill(2)")
+    call assert_true( names(3) == " ", "vector_string_fill(3)")
+
+    ! Fill strings into names
+    call assert_false(allocated(anames), "anames not allocated")
+    call vector_string_fill_allocatable(anames)
+    call assert_true(allocated(anames), "anames is allocated")
+    call assert_equals(2, size(anames), "size of anames")
+    call assert_equals(4, len(anames), "len of anames")
+    call assert_true( anames(1) == "dog", "vector_string_fill_allocatable(1)")
+    call assert_true( anames(2) == "bird", "vector_string_fill_allocatable(2)")
+
+    ! Fill strings into names with len=20
+    call assert_false(allocated(a20names), "a20names not allocated")
+    call vector_string_fill_allocatable_len(a20names)
+    call assert_true(allocated(a20names), "a20names is allocated")
+    call assert_equals(2, size(a20names), "size of a20names")
+    call assert_equals(20, len(a20names), "len of a20names")
+    call assert_true( a20names(1) == "dog", "vector_string_fill_allocatable(1)")
+    call assert_true( a20names(2) == "bird", "vector_string_fill_allocatable(2)")
 
     ! Append -like to names.
     ! Note that strings will be truncated to len(names)
@@ -158,5 +193,16 @@ contains
     call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]))
     
   end subroutine test_return
+
+  subroutine test_implied
+    integer(C_INT) :: array2d(2,3)
+    integer irv
+
+    call set_case_name("test_implied")
+
+    irv = return_dim2(array2d)
+    call assert_equals(3, irv, "return_dim2")
+    
+  end subroutine test_implied
 
 end program tester

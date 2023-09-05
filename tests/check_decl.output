@@ -1,0 +1,930 @@
+
+XXXXXXXXXXXXXXXXXXXX
+# create_std
+XXXX CODE
+
+XXXX PRINT_NODE
+
+XXXX AST
+stmts: []
+XXXX SymbolTable
+cls: Global
+symbols:
+  MPI_Comm:
+    cls: Typedef
+    typemap: MPI_Comm
+  int16_t:
+    cls: Typedef
+    typemap: int16_t
+  int32_t:
+    cls: Typedef
+    typemap: int32_t
+  int64_t:
+    cls: Typedef
+    typemap: int64_t
+  int8_t:
+    cls: Typedef
+    typemap: int8_t
+  size_t:
+    cls: Typedef
+    typemap: size_t
+  std:
+    cls: Namespace
+    symbols:
+      string:
+        cls: Typedef
+        typemap: std::string
+      vector:
+        cls: Typedef
+        typemap: std::vector
+  uint16_t:
+    cls: Typedef
+    typemap: uint16_t
+  uint32_t:
+    cls: Typedef
+    typemap: uint32_t
+  uint64_t:
+    cls: Typedef
+    typemap: uint64_t
+  uint8_t:
+    cls: Typedef
+    typemap: uint8_t
+
+XXXXXXXXXXXXXXXXXXXX
+# variable declarations
+XXXX CODE
+int i;
+const double d;
+XXXX PRINT_NODE
+int i;
+const double d;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: i
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  const: true
+  declarator:
+    name: d
+    typemap_name: double
+  specifier:
+  - double
+  typemap_name: double
+XXXX SymbolTable
+cls: Global
+
+XXXXXXXXXXXXXXXXXXXX
+# variable pointer declarations
+XXXX CODE
+int *i1;
+int **i2;
+int &i3;
+XXXX PRINT_NODE
+int * i1;
+int * * i2;
+int & i3;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: i1
+    pointer:
+    - ptr: '*'
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    name: i2
+    pointer:
+    - ptr: '*'
+    - ptr: '*'
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    name: i3
+    pointer:
+    - ptr: '&'
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+XXXX SymbolTable
+cls: Global
+
+XXXXXXXXXXXXXXXXXXXX
+XXXX CODE
+typedef int footype;
+XXXX PRINT_NODE
+typedef int footype;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: footype
+    typemap_name: int
+  specifier:
+  - int
+  storage:
+  - typedef
+  typemap_name: footype
+XXXX SymbolTable
+cls: Global
+symbols:
+  footype:
+    cls: Typedef
+    typemap: footype
+
+XXXXXXXXXXXXXXXXXXXX
+# Class statement
+XXXX CODE
+class Class1;
+XXXX PRINT_NODE
+class Class1;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    typemap_name: Class1
+  specifier:
+  - class Class1
+  typemap_name: Class1
+XXXX SymbolTable
+cls: Global
+symbols:
+  Class1:
+    cls: CXXClass
+    typemap: Class1
+
+XXXXXXXXXXXXXXXXXXXX
+# Class constructor
+XXXX CODE
+class Class2 {
+  Class2();
+  ~Class2();
+};
+XXXX PRINT_NODE
+class Class2{
+Class2 ();
+~Class2 ();
+}
+;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: CXXClass
+    members:
+    - _ast: Declaration
+      declarator:
+        attrs:
+          _constructor: true
+          _name: ctor
+        params: []
+        typemap_name: Class2
+      is_ctor: true
+      specifier:
+      - Class2
+      typemap_name: Class2
+    - _ast: Declaration
+      declarator:
+        attrs:
+          _destructor: Class2
+          _name: dtor
+        params: []
+        typemap_name: void
+      is_dtor: Class2
+      specifier:
+      - void
+      typemap_name: void
+    name: Class2
+  declarator:
+    typemap_name: Class2
+  specifier:
+  - class Class2
+  typemap_name: Class2
+XXXX SymbolTable
+cls: Global
+symbols:
+  Class2:
+    cls: CXXClass
+    typemap: Class2
+
+XXXXXXXXXXXXXXXXXXXX
+# Structure for C++
+XXXX CODE
+struct Point { int x; int y;};
+struct Point end;
+Point start;
+void func1(struct Point arg1, Point arg2);
+XXXX PRINT_NODE
+struct Point{
+int x;
+int y;
+}
+;
+struct Point end;
+Point start;
+void func1(struct Point arg1,Point arg2);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: x
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      declarator:
+        name: y
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    name: Point
+    typemap_name: Point
+  declarator:
+    typemap_name: Point
+  specifier:
+  - struct Point
+  typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: end
+    typemap_name: Point
+  specifier:
+  - struct Point
+  typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: start
+    typemap_name: Point
+  specifier:
+  - Point
+  typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: func1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: Point
+      specifier:
+      - struct Point
+      typemap_name: Point
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        typemap_name: Point
+      specifier:
+      - Point
+      typemap_name: Point
+    typemap_name: void
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  Point:
+    cls: Struct
+    typemap: Point
+  struct-Point:
+    cls: Struct
+    typemap: Point
+
+XXXXXXXXXXXXXXXXXXXX
+# Typedef structure
+# language=c
+XXXX CODE
+struct list_s {
+  int i;
+};
+struct list_s var1;
+typedef struct list_s list_typ;
+list_typ var2;
+XXXX PRINT_NODE
+struct list_s{
+int i;
+}
+;
+struct list_s var1;
+typedef struct list_s list_typ;
+list_typ var2;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: i
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    name: list_s
+    typemap_name: list_s
+  declarator:
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: var1
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: list_typ
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  storage:
+  - typedef
+  typemap_name: list_typ
+- _ast: Declaration
+  declarator:
+    name: var2
+    typemap_name: list_typ
+  specifier:
+  - list_typ
+  typemap_name: list_typ
+XXXX SymbolTable
+cls: Global
+symbols:
+  list_typ:
+    cls: Typedef
+    typemap: list_typ
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
+
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+# language=c
+#  } listvar;
+XXXX CODE
+struct list_s {
+  struct list_s *next;
+};
+struct list_s var1;
+XXXX PRINT_NODE
+struct list_s{
+struct list_s * next;
+}
+;
+struct list_s var1;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: next
+        pointer:
+        - ptr: '*'
+        typemap_name: list_s
+      specifier:
+      - struct list_s
+      typemap_name: list_s
+    name: list_s
+    typemap_name: list_s
+  declarator:
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: var1
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+XXXX SymbolTable
+cls: Global
+symbols:
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
+
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+# Error: C does not automatically declare a type for structs
+# language=c
+#  } listvar;
+XXXX CODE
+struct list_s {
+  list_s *prev;
+};
+Parse Error:
+  list_s *prev;
+  ^
+line 2: Expected TYPE_SPECIFIER, found ID 'list_s'
+
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+#  } listvar;
+XXXX CODE
+struct list_s {
+  struct list_s *next;
+  list_s *prev;
+};
+XXXX PRINT_NODE
+struct list_s{
+struct list_s * next;
+list_s * prev;
+}
+;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: next
+        pointer:
+        - ptr: '*'
+        typemap_name: list_s
+      specifier:
+      - struct list_s
+      typemap_name: list_s
+    - _ast: Declaration
+      declarator:
+        name: prev
+        pointer:
+        - ptr: '*'
+        typemap_name: list_s
+      specifier:
+      - list_s
+      typemap_name: list_s
+    name: list_s
+    typemap_name: list_s
+  declarator:
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+XXXX SymbolTable
+cls: Global
+symbols:
+  list_s:
+    cls: Struct
+    typemap: list_s
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
+
+XXXXXXXXXXXXXXXXXXXX
+# enumerations
+# language=c
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+enum Color global;
+typedef enum Color Color_typ;
+Color_typ local;
+XXXX PRINT_NODE
+enum Color { RED, WHITE, BLUE };;
+enum Color global;
+typedef enum Color Color_typ;
+Color_typ local;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    typemap_name: Color
+  enum_specifier:
+    _ast: Enum
+    members:
+    - name: RED
+    - name: WHITE
+    - name: BLUE
+    name: Color
+  specifier:
+  - enum Color
+  typemap_name: Color
+- _ast: Declaration
+  declarator:
+    name: global
+    typemap_name: Color
+  specifier:
+  - enum Color
+  typemap_name: Color
+- _ast: Declaration
+  declarator:
+    name: Color_typ
+    typemap_name: Color
+  specifier:
+  - enum Color
+  storage:
+  - typedef
+  typemap_name: Color_typ
+- _ast: Declaration
+  declarator:
+    name: local
+    typemap_name: Color_typ
+  specifier:
+  - Color_typ
+  typemap_name: Color_typ
+XXXX SymbolTable
+cls: Global
+symbols:
+  Color_typ:
+    cls: Typedef
+    typemap: Color_typ
+  enum-Color:
+    cls: Enum
+    typemap: Color
+
+XXXXXXXXXXXXXXXXXXXX
+# enumerations
+# Error: C does not automatically declare a type for enums
+# language=c
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+Color flag = RED;
+Parse Error:
+Color flag = RED;
+^
+line 2: Expected TYPE_SPECIFIER, found ID 'Color'
+
+XXXXXXXXXXXXXXXXXXXX
+# enumerations C++
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+enum Color global;
+Color flag = RED;
+void func1(enum Color arg1, Color arg2);
+XXXX PRINT_NODE
+enum Color { RED, WHITE, BLUE };;
+enum Color global;
+Color flag=RED;
+void func1(enum Color arg1,Color arg2);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    typemap_name: Color
+  enum_specifier:
+    _ast: Enum
+    members:
+    - name: RED
+    - name: WHITE
+    - name: BLUE
+    name: Color
+  specifier:
+  - enum Color
+  typemap_name: Color
+- _ast: Declaration
+  declarator:
+    name: global
+    typemap_name: Color
+  specifier:
+  - enum Color
+  typemap_name: Color
+- _ast: Declaration
+  declarator:
+    init: RED
+    name: flag
+    typemap_name: Color
+  specifier:
+  - Color
+  typemap_name: Color
+- _ast: Declaration
+  declarator:
+    name: func1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: Color
+      specifier:
+      - enum Color
+      typemap_name: Color
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        typemap_name: Color
+      specifier:
+      - Color
+      typemap_name: Color
+    typemap_name: void
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  Color:
+    cls: Enum
+    typemap: Color
+  enum-Color:
+    cls: Enum
+    typemap: Color
+
+XXXXXXXXXXXXXXXXXXXX
+# pointer typedef
+# language=c
+XXXX CODE
+typedef void *address;
+address var;
+void caller(address arg1);
+XXXX PRINT_NODE
+typedef void * address;
+address var;
+void caller(address arg1);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: address
+    pointer:
+    - ptr: '*'
+    typemap_name: void
+  specifier:
+  - void
+  storage:
+  - typedef
+  typemap_name: address
+- _ast: Declaration
+  declarator:
+    name: var
+    typemap_name: address
+  specifier:
+  - address
+  typemap_name: address
+- _ast: Declaration
+  declarator:
+    name: caller
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: address
+      specifier:
+      - address
+      typemap_name: address
+    typemap_name: void
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  address:
+    cls: Typedef
+    typemap: address
+
+XXXXXXXXXXXXXXXXXXXX
+# function pointer typedef
+# language=c
+XXXX CODE
+typedef int (*fcn)(int);
+void caller(fcn callback);
+XXXX PRINT_NODE
+typedef int (* fcn)(int);
+void caller(fcn callback);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    func:
+      name: fcn
+      pointer:
+      - ptr: '*'
+      typemap_name: int
+    name: fcn
+    params:
+    - _ast: Declaration
+      declarator:
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    typemap_name: int
+  specifier:
+  - int
+  storage:
+  - typedef
+  typemap_name: fcn
+- _ast: Declaration
+  declarator:
+    name: caller
+    params:
+    - _ast: Declaration
+      declarator:
+        name: callback
+        typemap_name: fcn
+      specifier:
+      - fcn
+      typemap_name: fcn
+    typemap_name: void
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  fcn:
+    cls: Typedef
+    typemap: fcn
+
+XXXXXXXXXXXXXXXXXXXX
+# template
+XXXX CODE
+template<T> class user {
+  template<U> void nested(T arg1, U arg2 );
+};
+user<int> returnUserType(void);
+XXXX PRINT_NODE
+template<T>  class user{
+template<U>  void nested(T arg1,U arg2);
+}
+;
+user returnUserType();
+
+XXXX AST
+stmts:
+- _ast: Template
+  decl:
+    _ast: Declaration
+    class_specifier:
+      _ast: CXXClass
+      members:
+      - _ast: Template
+        decl:
+          _ast: Declaration
+          declarator:
+            name: nested
+            params:
+            - _ast: Declaration
+              declarator:
+                name: arg1
+              specifier:
+              - T
+              template_argument: T
+            - _ast: Declaration
+              declarator:
+                name: arg2
+              specifier:
+              - U
+              template_argument: U
+            typemap_name: void
+          specifier:
+          - void
+          typemap_name: void
+        parameters:
+        - name: U
+      name: user
+    declarator:
+      typemap_name: user
+    specifier:
+    - class user
+    typemap_name: user
+  parameters:
+  - name: T
+- _ast: Declaration
+  declarator:
+    name: returnUserType
+    params: []
+    typemap_name: user
+  specifier:
+  - user
+  template_arguments:
+  - _ast: Declaration
+    declarator:
+      typemap_name: int
+    specifier:
+    - int
+    typemap_name: int
+  typemap_name: user
+XXXX SymbolTable
+cls: Global
+symbols:
+  user:
+    cls: CXXClass
+    typemap: user
+
+XXXXXXXXXXXXXXXXXXXX
+# nested namespace
+# XXX - fix printing
+XXXX CODE
+namespace ns1 {
+  int i;
+  namespace ns2 {
+    int j;
+  }
+}
+XXXX PRINT_NODE
+namespace ns1;
+
+XXXX AST
+stmts:
+- _ast: Namespace
+  name: ns1
+  ~group:
+  - _ast: Declaration
+    declarator:
+      name: i
+      typemap_name: int
+    specifier:
+    - int
+    typemap_name: int
+  - _ast: Namespace
+    name: ns2
+    ~group:
+    - _ast: Declaration
+      declarator:
+        name: j
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+XXXX SymbolTable
+cls: Global
+symbols:
+  ns1:
+    cls: Namespace
+    symbols:
+      ns2:
+        cls: Namespace
+
+XXXXXXXXXXXXXXXXXXXX
+# class in namespace
+XXXX CODE
+namespace ns {
+  class name {
+     int imem;
+  };
+}
+XXXX PRINT_NODE
+namespace ns;
+
+XXXX AST
+stmts:
+- _ast: Namespace
+  name: ns
+  ~group:
+  - _ast: Declaration
+    class_specifier:
+      _ast: CXXClass
+      members:
+      - _ast: Declaration
+        declarator:
+          name: imem
+          typemap_name: int
+        specifier:
+        - int
+        typemap_name: int
+      name: name
+    declarator:
+      typemap_name: ns::name
+    specifier:
+    - class name
+    typemap_name: ns::name
+XXXX SymbolTable
+cls: Global
+symbols:
+  ns:
+    cls: Namespace
+    symbols:
+      name:
+        cls: CXXClass
+        typemap: ns::name

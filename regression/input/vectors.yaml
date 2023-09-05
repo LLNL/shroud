@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -48,10 +48,14 @@ declarations:
     wrap_lua: False
     literalinclude: True
   fstatements:
+    c:
+      return_type: long
+      ret:
+      - return SHT_arg_cdesc->size;
     c_buf:
       return_type: long
       ret:
-      - return Darg->size;
+      - return SHT_arg_cdesc->size;
     f:
       result: num
       f_module:
@@ -80,7 +84,7 @@ declarations:
       declare:
       -  "integer(C_LONG) :: num"
       post_call:
-      -  "num = Darg%size"
+      -  "num = SHT_arg_cdesc%size"
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:
@@ -117,6 +121,17 @@ declarations:
     wrap_lua: False
 
 ##################################################
+# double *
+
+- decl: int vector_of_pointers(std::vector<const double *> &arg1 +intent(in),
+                               int num)
+  doxygen:
+    brief: Fortran 2-d array to vector<const double *>
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+##################################################
   
 - decl: int vector_string_count(const std::vector< std::string > &arg)
   doxygen:
@@ -128,8 +143,6 @@ declarations:
 
 - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
   options:
-    wrap_c: False
-    wrap_fortran: False
     wrap_python: False
     wrap_lua: False
 #  format:
@@ -140,6 +153,18 @@ declarations:
     description: |
       The C++ function returns void. But the C and Fortran wrappers return
       an int with the number of items added to arg.
+
+- decl: void vector_string_fill_allocatable(
+            std::vector< std::string > &arg+intent(out)+deref(allocatable))
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+- decl: void vector_string_fill_allocatable_len(
+            std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))
+  options:
+    wrap_python: False
+    wrap_lua: False
 
 - decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
   options:
@@ -160,3 +185,8 @@ declarations:
       Implement iota function.
       Return a vector as an ALLOCATABLE array.
       Copy results into the new array.
+
+######################################################################
+# Test implied with two arguments
+- decl: int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))
+# XXX - Not sure how this should work with Python list

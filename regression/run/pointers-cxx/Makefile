@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -16,27 +16,30 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/pointers-cxx \
+    ../cxx \
+    $(top)/regression/run/pointers-cxx \
+    $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     pointers.o \
-    wrapfpointers.o \
     wrappointers.o \
+    utilpointers.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpointers.o
 
-pointers-cxx : $(OBJS)
+pointers-cxx : $(F_OBJS) $(C_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
-# Copy all source files from run/pointers, need to avoid VPATH.
-# Convert C file to C++
-pointers.cpp : $(top)/regression/run/pointers/pointers.c
-	cp $^ $@
-main.f : $(top)/regression/run/pointers/main.f
-	cp $< $@
-main.o : main.f
-pointers.o : pointers.cpp
+main.o : main.f fruit.o wrapfpointers.o
+pointers.o : pointers.cpp pointers.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
+testc.o : testc.c wrappointers.h
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
 clean :
 	rm -f $(OBJS) *.mod pointers main.f pointers.cpp
 

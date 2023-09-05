@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -11,7 +11,8 @@ copyright:
 #  cxx_header  namespace
 
 
-cxx_header: global_header.hpp
+# Order of headers should be preserved in generated code.
+cxx_header: zzheader.hpp global_header.hpp
 
 options:
   debug: True

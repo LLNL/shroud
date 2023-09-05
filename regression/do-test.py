@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -322,14 +322,22 @@ if __name__ == "__main__":
                  cmdline=[
                      "--write-helpers", "helpers",
                      "--yaml-types", "def_types.yaml",
-                     "--write-version",  # Test writing vesion
+                     "--write-statements", "statements",
+                     "--write-version",  # Test writing version
                  ]),
         TestDesc("tutorial"),
         TestDesc("debugfalse", yaml="tutorial",
                  cmdline=[
                      "--option", "debug=False",
                  ]),
+        TestDesc("python-only", yaml="tutorial",
+                 cmdline=[
+                     "--option", "wrap_fortran=False",
+                     "--option", "wrap_c=False",
+                     "--option", "wrap_lua=False",
+                 ]),
         TestDesc("types"),
+        TestDesc("typemap"),
         TestDesc("classes"),
 
         # enum
@@ -338,6 +346,15 @@ if __name__ == "__main__":
                      "--language", "c",
                  ]),
         TestDesc("enum-cxx", yaml="enum",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+        # typedefs
+        TestDesc("typedefs-c", yaml="typedefs",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("typedefs-cxx", yaml="typedefs",
                  cmdline=[
                      "--language", "c++",
                  ]),
@@ -350,6 +367,13 @@ if __name__ == "__main__":
                  ]),
         TestDesc("pointers-cxx", yaml="pointers",
                  cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                 ]),
+        TestDesc("pointers-cfi", yaml="pointers",
+                 cmdline=[
+                     "--option", "F_CFI=true",
                      "--option", "wrap_python=false",
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
@@ -480,15 +504,26 @@ if __name__ == "__main__":
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
         TestDesc("strings"),
+        TestDesc("strings-cfi", yaml="strings",
+                 cmdline=[
+                     "--option", "F_CFI=true",
+                     "--option", "wrap_python=false",
+                 ]),
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
+        TestDesc("defaultarg"),
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),
         TestDesc("ownership"),
         TestDesc("generic"),
+        TestDesc("generic-cfi", yaml="generic",
+                 cmdline=[
+                     "--option", "F_CFI=true",
+                 ]),
         TestDesc("memdoc"),
+        TestDesc("wrap"),
     ]
 
     if args.testname:

@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -21,6 +21,7 @@ VPATH = \
     $(top)/regression/run/templates/python
 
 OBJS = \
+    templates.o \
     pyinternal_ImplWorker1type.o \
     pyinternal_ImplWorker2type.o \
     pyWorkertype.o \
@@ -33,7 +34,7 @@ OBJS = \
     pystd_vector_inttype.o
 
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : templates.so simple
 

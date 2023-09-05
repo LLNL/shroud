@@ -1,11 +1,14 @@
 Read yaml statement.yaml
-C function int GetNameLength() +pure
-C function const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())
-C function void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())
+C int GetNameLength(void) +pure  +intent(function)
+C const string & getNameErrorPattern(void) +len(get_name_length())  +deref(copy)+intent(function)
+C const string & getNameErrorPattern(void) +len(get_name_length())  +api(buf)+deref(copy)+intent(function)
 Close wrapstatement.h
 Close wrapstatement.cpp
-Close typesstatement.h
-C-interface, Fortran function int GetNameLength() +pure
-C-interface, Fortran function const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())
-C-interface function void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())
+Fortran int GetNameLength(void) +pure  +intent(function)
+Fortran const string & getNameErrorPattern(void) +len(get_name_length())  +deref(copy)+intent(function)
+C-interface int GetNameLength(void) +pure  +intent(function)
+C-interface const string & getNameErrorPattern(void) +len(get_name_length())  +deref(copy)+intent(function)
+C-interface const string & getNameErrorPattern(void) +len(get_name_length())  +api(buf)+deref(copy)+intent(function)
 Close wrapfstatement.f
+Close utilstatement.cpp
+Close typesstatement.h

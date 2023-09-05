@@ -2,26 +2,35 @@ Read yaml forward.yaml
 Close forward_types.yaml
 class Class3
 class Class2
-C method Class2()
-C method ~Class2()
-C method void func1(tutorial::Class1 * arg +intent(in))
-C method void acceptClass3(Class3 * arg +intent(in))
+C Class2(void)  +api(capptr)+intent(ctor)
+C ~Class2(void)  +intent(dtor)
+C void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+C void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
 Close wrapClass2.h
 Close wrapClass2.cpp
+C int passStruct1(const Cstruct1 * arg)  +intent(function)
+Close wrapforward.h
 Close wrapforward.cpp
-Close typesforward.h
 class Class3
 class Class2
-C-interface, Fortran method Class2()
-C-interface, Fortran method ~Class2()
-C-interface, Fortran method void func1(tutorial::Class1 * arg +intent(in))
-C-interface, Fortran method void acceptClass3(Class3 * arg +intent(in))
+Fortran Class2(void)  +api(capptr)+intent(ctor)
+Fortran ~Class2(void)  +intent(dtor)
+Fortran void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+Fortran void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
+C-interface Class2(void)  +api(capptr)+intent(ctor)
+C-interface ~Class2(void)  +intent(dtor)
+C-interface void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+C-interface void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
+Fortran int passStruct1(const Cstruct1 * arg)  +intent(function)
+C-interface int passStruct1(const Cstruct1 * arg)  +intent(function)
 Close wrapfforward.f
+Close utilforward.cpp
+Close typesforward.h
 class Class3
 Close pyClass3type.cpp
 class Class2
-Python method Class2()
-Python method ~Class2()
+Python method Class2(void)
+Python method ~Class2(void)
 Python method void func1(tutorial::Class1 * arg +intent(in))
 Python method void acceptClass3(Class3 * arg +intent(in))
 Close pyClass2type.cpp
@@ -29,8 +38,8 @@ Close pyforwardmodule.cpp
 Close pyforwardutil.cpp
 Close pyforwardmodule.hpp
 Close setup.py
-Lua method Class2()
-Lua method ~Class2()
+Lua method Class2(void)
+Lua method ~Class2(void)
 Lua method void func1(tutorial::Class1 * arg +intent(in))
 Lua method void acceptClass3(Class3 * arg +intent(in))
 Close luaforwardmodule.hpp

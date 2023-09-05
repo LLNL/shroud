@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -23,7 +23,8 @@ VPATH = \
     $(top)/regression/run/enum-c \
     $(top)/regression/run/fruit
 
-C_OBJS =
+C_OBJS = \
+    enum.o
 F_OBJS = \
     wrapfenum.o \
     fruit.o \
@@ -35,7 +36,7 @@ enum-c : $(C_OBJS) $(F_OBJS)
 clean :
 	rm -f $(OBJS) *.mod enum-c
 
-main.o : wrapfenum.o
+main.o : fruit.o wrapfenum.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o 

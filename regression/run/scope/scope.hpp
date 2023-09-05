@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -20,6 +20,10 @@ namespace ns1 {
     BLUE,
     WHITE
   };
+  struct DataPointer {
+    int nitems;
+    int *items;
+  };
 };
 
 namespace ns2 {
@@ -28,6 +32,10 @@ namespace ns2 {
     BLUE,
     WHITE
   };
+  struct DataPointer {
+    int nitems;
+    int *items;
+  };
 };
 
 namespace ns3 {
@@ -35,6 +43,10 @@ namespace ns3 {
     RED = 70,
     BLUE,
     WHITE
+  };
+  struct DataPointer {
+    int nitems;
+    int *items;
   };
 };
 

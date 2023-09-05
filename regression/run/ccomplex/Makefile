@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -21,7 +21,7 @@ VPATH = \
 OBJS = \
     ccomplex.o \
     wrapfccomplex.o \
-    wrapccomplex.o \
+    utilccomplex.o \
     fruit.o \
     main.o
 
@@ -31,4 +31,4 @@ ccomplex : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod ccomplex
 
-main.o : wrapfccomplex.o
+main.o : fruit.o wrapfccomplex.o

@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -17,21 +17,20 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/pointers-list-cxx \
-    $(top)/regression/run/pointers/python
+    $(top)/regression/run/pointers \
+    ../../cxx
 
 OBJS = \
     pointers.o \
     pypointersmodule.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : pointers.so
 # simple
 
-# Convert C file to C++
-pointers.cpp : $(top)/regression/run/pointers/pointers.c
-	cp $^ $@
-pointers.o : pointers.cpp
+pointers.o : pointers.cpp pointers.h
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 pointers.so : $(OBJS)
 	$(CXX) $(LD_SHARED) $^ -o $@ $(LIBS)

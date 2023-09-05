@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -61,7 +61,7 @@ The nested namespaces are added to the format field *C_name_scope*.
 
 For the C wrapper, all symbols are globally visible and must be
 unique. The format fields *C_prefix* and *C_name_scope* are used to
-generate the names. This will essentiall "flatten* the namespaces into
+generate the names. This will essentially "flatten" the namespaces into
 legal C identifiers.
 
 .. code-block:: c

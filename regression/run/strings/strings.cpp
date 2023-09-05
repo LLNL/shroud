@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -19,6 +19,20 @@ static const char * static_char = "bird";
 static std::string static_str = std::string("dog");
 static std::string global_str;
 static std::string static_str_empty;
+
+static const int MAXSTRS = 4;
+static std::string strs_array[MAXSTRS];
+
+//----------------------------------------
+// Initialize datastructures for test
+
+void init_test(void)
+{
+    strs_array[0] = "apple";
+    strs_array[1] = "pear";
+    strs_array[2] = "peach";
+    strs_array[3] = "cherry";
+}
 
 //----------------------------------------
 
@@ -90,6 +104,12 @@ const char * getCharPtr4()
     return static_char;
 }
 // end getCharPtr4
+
+
+const char * getCharPtr5()
+{
+    return static_char;
+}
 
 //----------------------------------------
 
@@ -173,6 +193,19 @@ const std::string * getConstStringPtrOwnsAllocPattern()
     return rv;
 }
 
+const std::string * getConstStringPtrPointer()
+{
+    // +deref(pointer) +owner(library)
+    return &static_str;
+}
+
+const std::string * getConstStringPtrOwnsPointer()
+{
+    // +deref(pointer) +owner(caller)
+    std::string * rv = new std::string("getConstStringPtrOwnsPointer");
+    return rv;
+}
+
 //----------------------------------------
 
 void acceptStringConstReference(const std::string & arg1)
@@ -232,6 +265,28 @@ void returnStrings(std::string & arg1, std::string & arg2)
     arg2 = "down";
 }
 
+//----------------------------------------
+
+void fetchArrayStringArg(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+void fetchArrayStringAlloc(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+void fetchArrayStringAllocLen(std::string **strs, int *nstrs)
+{
+    *strs = strs_array;
+    *nstrs = MAXSTRS;
+}
+
+//----------------------------------------
+
 char returnMany(int * arg1)
 {
     *arg1 = 100;
@@ -267,10 +322,31 @@ extern "C" char CreturnChar()
 }
 
 //----------------------------------------
+// Check for NULL pointer
+// dest is assumed to be long enough.
+// attribute +blanknull
 
 extern "C" void CpassCharPtr(char *dest, const char *src)
 {
-    std::strcpy(dest, src);
+    if (src == NULL) {
+        std::strcpy(dest, "NULL");
+    } else {
+        std::strcpy(dest, src);
+    }
+}
+
+//----------------------------------------
+// Check for NULL pointer
+// dest is assumed to be long enough.
+// option F_blanknull
+
+void CpassCharPtrBlank(char *dest, const char *src)
+{
+    if (src == NULL) {
+        std::strcpy(dest, "NULL");
+    } else {
+        std::strcpy(dest, src);
+    }
 }
 
 //----------------------------------------
@@ -280,3 +356,33 @@ void PostDeclare(int *count, std::string &name)
 }
 
 //----------------------------------------
+
+int CpassCharPtrNotrim(const char *src)
+{
+    return strlen(src);
+}
+
+//----------------------------------------
+
+int CpassCharPtrCAPI(void *addr, const char *src)
+{
+    if (addr == const_cast<char *>(src)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+//----------------------------------------
+// Check if strings compare, but only in is null terminated.
+
+int CpassCharPtrCAPI2(const char *in, const char *src)
+{
+    size_t n = strlen(in);
+    if (strncmp(in, src, n) == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+

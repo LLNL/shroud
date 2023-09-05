@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -30,11 +30,16 @@ A Fortran wrapper is created out of several segments.
         ! splicer begin
         declare
         pre_call
-        call
+        call {}( {F_arg_c_call} )
         post_call
         ! splicer end
       end {F_subprogram} {F_name_impl}
 
+
+The ``bind(C)`` interface is defined by the cstatements since it must
+match the C wrapper that is being called.  The C wrapper may have a
+different API than the Fortran wrapper since the Fortran may pass down
+additional arguments.
 
 ..        name="f_default",
 ..        c_helper="",
@@ -63,9 +68,17 @@ A dictionary of list of ``ONLY`` names:
 need_wrapper
 ^^^^^^^^^^^^
 
-If true, the Fortran wrapper will always be created.
+Shroud tries to only create an interface for a C function to
+avoid the extra layer of a Fortran wrapper.
+However, often the Fortran wrapper needs to do some work that
+the C wrapper cannot.
+This field can be set to True to ensure the Fortran wrapper
+is created.
 This is used when an assignment is needed to do a type coercion;
 for example, with logical types.
+
+A wrapper will always be created if the **F_force_wrapper**
+option is set.
 
 .. XXX tends to call bufferify version
 
@@ -73,7 +86,7 @@ arg_name
 ^^^^^^^^
 
 List of name of arguments for Fortran subprogram.
-Will be formated before use to allow ``{f_var}``.
+Will be formatted before being used to expand ``{f_var}``.
 
 Any function result arguments will be added at the end.
 Only added if *arg_decl* is also defined.
@@ -84,7 +97,8 @@ arg_decl
 List of argument or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
-Added before splicer.
+Added before splicer since it is part of the API and must not change.
+Additional declarations can be added within the splicer via *declare*.
 
 .. code-block:: text
 
@@ -92,23 +106,100 @@ Added before splicer.
             "character, value, intent(IN) :: {f_var}",
         ],
 
+.. result declaration is added before arguments
+   but default declaration are after declarations.
+
 arg_c_call
 ^^^^^^^^^^
 
 List of arguments to pass to C wrapper.
-This can include an expression or additional arguments if required. 
+By default the arguments of the Fortran wrapper are passed to the C
+wrapper.  The list of arguments can be set to pass additional
+arguments or expressions.  The format field *f_var* the name of the
+argument.
+
+When used with a **f_function** statement, the argument will be added
+to the end of the call list.
 
 .. code-block:: text
 
-        arg_c_call=["C_LOC({f_var})"],
+        arg_c_call=[
+             "C_LOC({f_var})"
+        ],
+        arg_c_call=[
+            "{f_var}",
+            "len({f_var}, kind=C_INT)",
+        ],
+
+c_local_var
+^^^^^^^^^^^
+
+If *true* an intermediate variable is created then passed to the C
+wrapper instead of passing *f_var* directly.  The intermediate
+variable can be used when the Fortran argument must be processed
+before passing to C.
+
+For example, the statements for **f_in_bool** convert the type from
+``LOGICAL`` to ``logical(C_BOOL)``. There is no intrinsic function to
+convert logical variables so an assignment statement is required to
+cause the compiler to convert the value.
+
+.. code-block:: yaml
+
+    dict(
+        name="f_in_bool",
+        c_local_var=True,
+        pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
+    ),
+
+.. XXX - maybe use *temps* and *f_c_arg_names* instead as a more general solution.
 
 declare
 ^^^^^^^
 
 A list of declarations needed by *pre_call* or *post_call*.
 Usually a *c_local_var* is sufficient.
+No executable statements should be used since all declarations must be
+grouped together.
 Implies *need_wrapper*.
-   
+Added within the splicer to make it easier to replace in the YAML file.
+
+f_import
+^^^^^^^^
+
+List of names to import into the Fortran wrapper.
+The names will be expanded before being used.
+
+In this example, Shroud creates *F_array_type* derived type in the
+module and it is used in the interface.
+
+.. code-block:: yaml
+
+        f_import=["{F_array_type}"],
+                
+f_module
+^^^^^^^^
+
+Fortran modules used in the Fortran wrapper:
+
+.. code-block:: yaml
+
+        f_module=dict(iso_c_binding=["C_PTR"]),
+
+f_module_line
+^^^^^^^^^^^^^
+
+Fortran modules used in the Fortran wrapper as a single line
+which allows format strings to be used.
+
+.. code-block:: yaml
+
+        f_module_line="iso_c_binding:{f_kind}",
+
+The format is::
+
+     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
+
 pre_call
 ^^^^^^^^
 
@@ -127,11 +218,12 @@ For example, to assign to an intermediate variable:
 .. code-block:: text
 
         declare=[
-            "type(C_PTR) :: {F_pointer}",
+            "type(C_PTR) :: {c_local_ptr}",
         ],
         call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
+        local=["ptr"],
                 
    
 post_call
@@ -164,7 +256,41 @@ which will return the number of items copied into the result argument.
           post_call:
           -  "num = Darg%size"
 
+temps
+^^^^^
 
+A list of suffixes for temporary variable names.
+
+.. code-block:: yaml
+
+    temps=["len"]
+
+ Create variable names in the format dictionary using
+ ``{fmt.c_temp}{rootname}_{name}``.
+ For example, argument *foo* creates *SHT_foo_len*.
+
+local
+^^^^^
+
+ Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+ *temps* is intended for arguments and is typically used in a mixin
+ group.  *local* is used by group to generate names for local
+ variables.  This allows creating names without conflicting with
+ *temps* from a *mixin* group.
+
+notimplemented
+--------------
+
+If True the statement is not implemented.
+The generated function will have ``#if 0`` surrounding the
+wrapper.
+
+This is a way to avoid generating code which will not compile when
+the notimplemented wrapper is not needed. For example, the C wrapper
+for a C++ function when only the C bufferify wrapper is needed for
+Fortran.  The statements should eventually be completed to wrap the
+function properly.
+             
 How typemaps are found
 ----------------------
 

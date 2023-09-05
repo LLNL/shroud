@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -17,9 +17,10 @@ to Shroud in order to implement the desired semantic.
 No Arguments
 ------------
 
-A function with no arguments and which does not return a value, can be
-"wrapped" by creating a Fortran interface which allows the function to 
-be called directly.
+A C function with no arguments and which does not return a value, can
+be "wrapped" by creating a Fortran interface which allows the function
+to be called directly. A C++ function will require an ``extern C``
+function to create an C wrapper to deal with the C++ name mangling.
 
 An example is detailed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
@@ -122,13 +123,23 @@ Numeric Functions
     See example :ref:`returnIntPtrToScalar <example_returnIntPtrToScalar>`.
 
 ``int *func() +dimension(10)``
-    Return a Fortran ``POINTER`` to a array.
+    Return a Fortran ``POINTER`` to an array with a fixed length.
     See example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`.
 
 ``int *func() +deref(scalar)``
     Return a scalar.
     See example :ref:`returnIntScalar <example_returnIntScalar>`.
 
+``int *ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +dimension(len) +deref(pointer)``
+    Return a Fortran ``POINTER`` to an array with a variable length.
+    The length is returned in the argument *len*.
+    It is marked *hidden* since it is not required for the Fortran or Python API.
+    The returned array will know its length.
+    See example :ref:`ReturnIntPtrDimPointer <example_ReturnIntPtrDimPointer>`
+    The *deref* attribute can be changed to return a ``type(C_PTR)``, ``ALLOCATABLE`` or
+    a scalar.
+    See example :ref:`ReturnIntPtrDimAlloc <example_ReturnIntPtrDimAlloc>`
+    
 
 Bool
 ----
@@ -263,12 +274,19 @@ wrapped differently.
     See example :ref:`getCharPtr2 <example_getCharPtr2>`.
 
 ``char *getCharPtr3``
-    Create a Fortran subroutine in an additional ``CHARACTER``
+    Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
     be returned limited by the size of the Fortran argument.  The
     argument is defined by the *F_string_result_as_arg* format string.
     Works with Fortran 90.
     See example :ref:`getCharPtr3 <example_getCharPtr3>`.
+
+
+.. XXX returning a scalar char will pass the result to the C wrapper
+   as an ``char *`` argument.  pgi and cray compilers had issues with
+   bind(C) functions which returned CHARACTER(len=1,kind=C_CHAR)
+   valgrind reported uninitialized variables when calling the Fortran
+   wrapper.  i.e.  CHARACTER is not considered a scalar type.
 
 string functions
 ----------------

@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -19,39 +19,40 @@ declarations:
 
 ######################################################################
 - decl: void GetScalar1(std::string & name+intent(in),
-                        void *value+intent(out)+rank(0)+cdesc)
+                        void *value+intent(in)+rank(0)+cdesc)
   doxygen:
     description: |
       Create several Fortran generic functions which call a single
-      C wrapper that checkes the type of the Fortran argument
+      C wrapper that checks the type of the Fortran argument
       and calls the correct templated function.
       Adding the string argument forces a bufferified function
       to be create.
-      XXX The non-bufferified version should not be created since
-      users will not manually create a context struct.
+      Argument value is intent(in). The pointer does not change, only
+      the pointee.
+      XXX - The function is virtual in the sense that GetScalar1 should
+      not need to exist but there is no way, yet, to avoid wrapping the
+      non-bufferify function.
   splicer:
     c_buf: |
-      switch(Dvalue->type) {
+      switch(SHT_value_cdesc->type) {
       case SH_TYPE_INT: {
-        *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+        *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
         break;
       }
       case SH_TYPE_LONG: {
-        *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+        *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
         break;
       }
       case SH_TYPE_FLOAT: {
-        *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+        *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
         break;
       }
       case SH_TYPE_DOUBLE: {
-        *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+        *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
         break;
       }
       // default:
       }
-    c: |
-      // This function should not exist
   fortran_generic:
 #  # rank(0) needed for C_var_context
   - decl: (int *value+intent(out)+rank(0)+cdesc)

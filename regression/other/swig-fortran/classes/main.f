@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -18,6 +18,7 @@ program tester
 
   call test_class1_final
   call test_class1
+  call test_subclass
 
   call fruit_summary
   call fruit_finalize
@@ -145,5 +146,17 @@ contains
 !--
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
-  
+
+  subroutine test_subclass
+    type(Shape) base
+    type(Circle) circle1
+    integer ivar
+
+    base = Shape()
+    ivar = base%get_ivar()
+
+    circle1 = Circle()
+    ivar = circle1%get_ivar()
+  end subroutine test_subclass
+
 end program tester

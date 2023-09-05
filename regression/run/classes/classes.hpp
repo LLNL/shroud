@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -22,8 +22,9 @@ class Class1
 public:
     int m_flag;
     int m_test;
-    Class1()         : m_flag(0), m_test(0)    {};
-    Class1(int flag) : m_flag(flag), m_test(0) {};
+    std::string m_name;
+    Class1()         : m_flag(0), m_test(0), m_name("ctor_name")    {};
+    Class1(int flag) : m_flag(flag), m_test(0), m_name("alt_name")  {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();
@@ -50,6 +51,8 @@ int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();
 Class1 * getclass3();
+const Class1 * getclass2_void();
+Class1 * getclass3_void();
 const Class1 &getConstClassReference();
 Class1 &getClassReference();
 Class1 getClassCopy(int flag);
@@ -97,6 +100,34 @@ class Singleton
 void set_global_flag(int arg);
 int get_global_flag();
 const std::string& LastFunctionCalled();
+
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Test inheritance
+
+class Shape {
+private:
+    int m_ivar;
+public:
+    int get_ivar() const { return m_ivar; }
+};
+
+class Circle : public Shape {
+public:
+    double m_radius;
+};
+
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Test getters with pointers
+
+class Data {
+public:
+    int nitems;
+    int *items;
+    void allocate(int n);
+    void free();
+};
 
 } /* end namespace classes */
 

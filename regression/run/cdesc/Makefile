@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -28,6 +28,7 @@ C_OBJS = \
     wrapcdesc.o
 F_OBJS = \
     wrapfcdesc.o \
+    utilcdesc.o \
     fruit.o \
     main.o
 
@@ -39,7 +40,7 @@ clean :
 
 cdesc.o : cdesc.hpp
 wrapcdesc.o : wrapcdesc.h cdesc.hpp
-main.o : wrapfcdesc.o
+main.o : fruit.o wrapfcdesc.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapcdesc.o cdesc.o

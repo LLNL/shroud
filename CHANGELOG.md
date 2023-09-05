@@ -2,10 +2,136 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## v0.13.0 - 2023-08-23
+### Added
+- Python hello-world-python example for a simple library in examples directory.
+- Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
+  Python uses `PyTypeObject.tp_base` field.
+- Ability to treat a struct as a class.
+  Useful with C code which does not support ``class`` directly.
+  Add options *wrap_class_as*, *wrap_struct_as*, *class_baseclass*, *class_ctor* and *class_method*.
+  Attribute *+pass* defines the passed-object dummy argument. Defines ``PASS``
+  Fortran keyword with type-bound procedures.
+- ``struct`` can now be defined the same as a ``class`` by using a
+  *declarations* field in the YAML file.  The entire struct can
+  continue to be declared in a single *decl* field as before.  This
+  makes it easier to define opaque structs where the members are not
+  listed. Useful with *wrap_struct_as=class*.
+- Added the ability to declare variables using the ``struct`` keyword.
+  ``struct tname vname;``. In this case the semicolon is required
+  to distinguish the *decl* entry from defining a structure.
+- Added the ability to declare variables using the ``enum`` keyword.
+  C++ creates a type for each enumeration.
+- Support `base: struct` in the `typemap` field of the YAML file. This
+  allows structs wrapped outside of the current YAML file to be used.
+- Generate generic interface which allows a scalar or array to be
+  passed for an argument.
+- Allow structs to be templated.
+- Process assumed-rank dimension attribute, *dimension(..)*.
+  Create a generic interface using scalar and each rank.
+- Added support for Futher Interoperability with C.
+  Used when option *F_CFI* is True (C/Fortran Interoperability).
+- Support *deref(pointer)* for ``char *`` and ``std::string`` functions.
+  Requires at least gfortran 6.1.0
+- Added option F_trim_char_in. Controls where ``CHARACTER`` arguments
+  are NULL terminated. If *True* then terminated in Fortran else in C.
+- Added attribute *+blanknull* to convert a blank Fortran string into
+  a NULL pointer instead of a 1-d buffer with ``'/0'``.
+  Used with ``const char *`` arguments.
+  This can be defaulted to True with the *F_blanknull* option.
+- Added ``file_code`` dictionary to input YAML file. It contains
+  directives to add header file and ``USE`` statements into generated files.
+  These are collated with headers and ``USE`` statements added by typemaps,
+  statements and helpers to avoid duplication.
+- Allow typemaps with *base* as *integer* and *real* to be added to the
+  input YAML file. This allows kind parameters to be defined via splicers
+  then used by a typemap.  i.e. ``integer(INDEXTYPE)``
+- Added option *C_shadow_result*. If true, the C wrapper will return a pointer
+  to the capsule holding the function result. The capsule is also passed
+  as an argument.  If false the function is ``void``.
+- The getter for a class member function will return a Fortran pointer if
+  the *dimension* attribute is added to the declaration.
+  Likewise, the setter will expect an array of the same rank as *dimension*.
+  Getter and setters will also be generated for struct fields which are pointers
+  to native types. Option *F_struct_getter_setter* can be used to control their
+  creation.
+- Added ability to add *splicer* to ``typedef`` declarations.
+  For example, to use the C preprocessor to set the type of the typedef.
+  See typedefs.yaml for an example.
+- Added support for out arguments which return a reference to a ``std::vector``
+  or pointer to an array of ``std::string``.
+
+### Fixed
+- yaml extensions supported include .yml in addition to the previous .yaml
+- Order of header files in *cxx_header* is preserved in the generated code.
+- Struct in an inner namespace using Py_struct_arg=numpy is now properly wrapped.
+- Support an array of pointers - ``void **addr+rank(1)``.
+- Fix Fortran wrapper for ``intent(INOUT)`` for ``void **``.
+- Create generic interface even if only one *decl* in *fortran_generic* list.
+- Promote wrap options (ex wrap_fortran) up to container when True
+  (library, class, namespace). This allows wrap_fortran to be False at
+  the global level and set True on a function and get a wrapper.
+  Before a False at the global level would never attempt to do any
+  wrapping.
+- *generic_function* now creates a C wrapper for each Fortran wrapper.
+  This causes each Fortran interface to bind to a different C function which
+  fixes a compile error with xlf.
+- Add continuations on Fortran ``IMPORT`` statements.
+- Better support for ``std::vector`` with pointer template arguments.
+  For examples, ``<const double *>``.
+- Parse ``class``, ``struct`` and ``enum`` as part of declaration.
+  This allows ``typedef struct tag name`` to be parsed properly.
+- Create type table earlier in parse. This allows recursive structs such as
+  ``struct point { struct point *next; }`` to be parsed.
+- Fixed issues in converting function names from CamelCase
+  * Remove redundant underscore
+    ``Create_Cstruct_as_class`` was ``c_create__cstruct_as_class`` now ``c_create_cstruct_as_class``
+  * Add missing underscore
+    ``AFunction`` was ``afunction`` now ``a_function``.
+- Add generic interfaces for class methods.  Generic functions where only being added
+  to the type-bound procedures.  ``class_generic(obj)`` now works instead of only
+  ``obj%generic()``.
+- Replaced the *additional_interfaces* splicer with *additional_declarations*.
+  This new splicer is outside of an interface block and can be used to add
+  add a generic interface that could not be added to *additional_interfaces*.
+
+### Changed
+- Changed name of C and Python function splicers to use *function_name* instead of
+  *underscore_name*.
+- Changed default name mangling for C wrapper functions. Before it used the
+  *underscore_name* format field which converted ``CamelCase`` to ``camel_case``.
+  Added format field *C_name_api*, which is controlled by option *C_API_case*.
+  The default is now to preserve the case of the C++ library routine.
+  The previous behavior can be restored by setting option ``C_API_case: underscore``.
+  Removed format fields *lower_name*, *upper_name* and *underscore_case*.
+- Changed default name mangling for LUA wrappers. Before it used the
+  *underscore_name* format field. Now controlled by option *LUA_API_case* which defaults
+  to *preserve* and sets *fmt.LUA_name_api*.
+- Changed default name mangling for Fortran derived type names. Before it used
+  the *lower_name* format field which converted the ``CamelCase`` to ``camelcase``.
+  Added format field *F_name_api*, which is controlled by option *F_API_case*.
+  *F_name_api* is used by other options to define the Fortran name mangling consistently.
+- The *C_memory_dtor_function* is now written to the utility file,
+  *C_impl_utility*.  This function contains code to delete memory from
+  shadow classes. Previously it was written file *C_impl_filename*.
+  This may require changes to Makefiles.
+- Class instance arguments which are passed by value will now pass the
+  shadow type by reference. This allows the addr and idtor fields to be
+  changed if necessary by the C wrapper.
+- Create C and Fortran wrappers for typedef statements.
+  Before ``typedef`` was treated as an alias.  ``typedef int TypeID`` would
+  substitute ``integer(C_INT)`` for every use of ``TypeID`` in the Fortran wrapper.
+  Now a parameter is created: ``integer, parameter :: type_id = C_INT``.
+  Used as: ``integer(type_id) :: arg``.
+
+### Removed
+- Removed format field *F_capsule_data_type_class*.
+  Create a single capsule derived type in Fortran instead of one per class.
 
 ## v0.12.2 - 2020-08-04
 ### Added
@@ -46,6 +172,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   The dimension attribute must be a list of expressions and should not
   be assumed-shape or assumed-length and are used with *intent(out)* arguments.
 - Pointer arguments default to ``intent(inout)`` instead of ``intent(in)``.
+  ``const`` pointers remain ``intent(in)``.
 - C++ class constructors create a generic interface in Fortran with the same name
   as the derived-type name.  Before it used the +name attribute in the generic name.
   This attribute is still used to create the actual function name.

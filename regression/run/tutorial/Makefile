@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -38,12 +38,12 @@ tutorial : $(C_OBJS) $(F_OBJS)
 clean :
 	rm -f $(OBJS) *.mod tutorial
 
-tutorial.o : tutorial.hpp
-wrapTutorial.o : wrapTutorial.h tutorial.hpp
-main.o : wrapftutorial.o
+tutorial.o : tutorial.cpp tutorial.hpp
+wrapTutorial.o : wrapTutorial.cpp wrapTutorial.h tutorial.hpp
+main.o : fruit.o wrapftutorial.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapTutorial.o tutorial.o
+maincpp : maincpp.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapTutorial.h tutorial.hpp

@@ -1,8 +1,13 @@
 Read yaml enum.yaml
+C int convert_to_int(enum Color in +value)  +intent(function)
 Close wrapenum.h
 Close wrapenum.cpp
-Close typesenum.h
+Fortran int convert_to_int(enum Color in +value)  +intent(function)
+C-interface int convert_to_int(enum Color in +value)  +intent(function)
 Close wrapfenum.f
+Close utilenum.cpp
+Close typesenum.h
+Python function int convert_to_int(enum Color in +value)
 Close pyenummodule.cpp
 Close pyenummodule.hpp
 Close setup.py

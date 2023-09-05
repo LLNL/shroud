@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -22,6 +22,8 @@ program tester
   call test_class1_new_by_value
   call test_class1
   call test_singleton
+  call test_subclass
+  call test_getter
 
   call fruit_summary
   call fruit_finalize
@@ -92,6 +94,7 @@ contains
     type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
+    character(:), allocatable :: name
 
     call set_case_name("test_class1")
 
@@ -106,6 +109,19 @@ contains
     call obj0%set_test(4)
     mtest = obj0%get_test()
     call assert_equals(4, mtest, "get_test 2")
+
+    ! Get default name from constructor
+    name = obj0%get_m_name()
+    call assert_true(allocated(name), "get_m_name")
+    call assert_equals(len(name), 9, "get_m_name len")
+    call assert_equals(name, "ctor_name", "get_m_name value")
+
+    ! Set new name then get.
+    call obj0%set_m_name("changed_name")
+    name = obj0%get_m_name()
+    call assert_true(allocated(name), "get_m_name changed")
+    call assert_equals(len(name), 12, "get_m_name changed len")
+    call assert_equals(name, "changed_name", "get_m_name changed value")
 
     obj1 = class1(1)
     ptr = obj1%get_instance()
@@ -151,6 +167,7 @@ contains
     iflag = useclass(obj0)
     call assert_equals(iflag, 0, "useclass")
 
+    ! C wrapper returns a pointer to the capsule
     obj0a = getclass2()
     ptr = obj0a%get_instance()
     call assert_true(c_associated(ptr), "getclass2 obj0a")
@@ -161,6 +178,17 @@ contains
     call assert_true(c_associated(ptr), "getclass3 obj0a")
     call assert_true(obj0 .eq. obj0a, "getclass3 - obj0 .eq. obj0a")
 
+    ! C wrapper does not return a pointer to the capsule
+    obj0a = getclass2_void()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass2 obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass2 - obj0 .eq. obj0a")
+
+    obj0a = getclass3_void()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass3 obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass3 - obj0 .eq. obj0a")
+    
     obj0a = get_const_class_reference()
     ptr = obj0a%get_instance()
     call assert_true(c_associated(ptr), "getConstClassReference obj0a")
@@ -173,11 +201,11 @@ contains
 
     call obj0%delete
     ptr = obj0%get_instance()
-    call assert_true(.not. c_associated(ptr), "class1_delete obj0")
+    call assert_false(c_associated(ptr), "class1_delete obj0")
 
     call obj1%delete
     ptr = obj1%get_instance()
-    call assert_true(.not. c_associated(ptr), "class1_delete obj1")
+    call assert_false(c_associated(ptr), "class1_delete obj1")
 
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
@@ -193,5 +221,62 @@ contains
     call assert_true(obj0 .eq. obj1, "obj0 .eq obj1")
 
   end subroutine test_singleton
+
+  subroutine test_subclass
+    type(Shape) base
+    type(Circle) circle1
+    type(C_PTR) cxxptr
+    integer ivar
+
+    base = Shape()
+    ivar = base%get_ivar()
+    call assert_equals(ivar, 0, "get_ivar")
+
+    circle1 = Circle()
+    ivar = circle1%get_ivar()
+    call assert_equals(ivar, 0, "get_ivar subclass")
+
+    ! Test inherited Shroud generated methods.
+    cxxptr = circle1%get_instance()
+    call assert_true(c_associated(cxxptr), "subclass instance c_associated")
+    call assert_true(circle1%associated(), "subclass instance associated")
+    
+  end subroutine test_subclass
+
+  subroutine test_getter
+    type(Data) var
+    integer(C_INT) :: nitems
+    integer(C_INT), pointer :: items(:)
+    integer(C_INT), target :: local(5) = [10,11,12,13,14]
+
+    var = Data()
+
+    ! set nitems and items
+    call var%allocate(10)
+
+    nitems = var%get_nitems()
+    call assert_equals(nitems, 10, "Data get_nitems")
+
+    ! get the 'int *' field and convert to pointer
+    nullify(items)
+    items => var%get_items()
+    call assert_true(associated(items), "Data items associated")
+    call assert_equals(size(items), 10, "Data items size")
+    call assert_true(all(items(:) .eq. [1,2,3,4,5,6,7,8,9,10]), "Data items values")
+    call var%free()
+
+    ! set nitems and items
+    call var%set_nitems(size(local))
+    call var%set_items(local)
+
+    nullify(items)
+    items => var%get_items()
+    call assert_true(associated(items), "Data items associated local")
+    call assert_true(associated(items,local), "Data items associated local")
+    call assert_equals(size(items), size(local), "Data items size local")
+    call assert_true(all(items(:) .eq. local(:)), "Data items values local")
+
+    call var%dtor()
+  end subroutine test_getter
 
 end program tester

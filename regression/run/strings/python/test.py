@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -16,6 +16,8 @@ import strings
 static_char = 'bird'
 static_str  = 'dog'
 
+strs_array = ["apple", "pear", "peach", "cherry"]
+
 class NotTrue:
     """Test bool arguments errors"""
     def __bool__(self):
@@ -24,11 +26,12 @@ class NotTrue:
 class Strings(unittest.TestCase):
     """Test tutorial problem"""
      
-    def XXsetUp(self):
+    def setUp(self):
         """ Setting up for the test """
-        print("FooTest:setUp_:begin")
-        ## do something...
-        print("FooTest:setUp_:end")
+        strings.init_test()
+#        print("FooTest:setUp_:begin")
+#        ## do something...
+#        print("FooTest:setUp_:end")
      
     def XXtearDown(self):
         """Cleaning up after the test"""

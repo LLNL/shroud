@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -55,7 +55,7 @@ class Struct(unittest.TestCase):
 
         with self.assertRaises(ValueError) as context:
             i = cstruct.passStructByValue((2.0, "two"))
-        self.assertTrue("arg must be a 1-D array of Cstruct1" in str(context.exception))
+        self.assertTrue("arg must be a 0-D array of Cstruct1" in str(context.exception))
 
     def test_passStruct1(self):
         i = cstruct.passStruct1((12,12.6))

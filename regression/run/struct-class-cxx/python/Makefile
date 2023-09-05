@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -16,7 +16,9 @@ INCLUDE = \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/struct-class-cxx
+    $(top)/regression/reference/struct-class-cxx \
+    $(top)/regression/run/struct \
+    ../../cxx
 
 OBJS = \
     struct.o \
@@ -28,18 +30,15 @@ OBJS = \
     pyCstruct_numpytype.o \
     pyArrays1type.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cstruct.so
-
-# Convert C++ file to C
-struct.cpp : $(top)/regression/run/struct/struct.c
-	cp $^ $@
 
 cstruct.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
-struct.o : struct.cpp
+struct.o : struct.cpp struct.h
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 clean :
 	rm -f *.so *.o

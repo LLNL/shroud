@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -39,6 +39,7 @@ Contents
    types
    namespaces
    struct
+   defaultargs
    templates
    declarations
    output
@@ -47,14 +48,17 @@ Contents
    python
    cookbook
    typemaps
+   statements
    cstatements
    fstatements
    reference
+   releases
    previouswork
    pypreviouswork
    futurework
    appendix-A
    appendix-PY
+   glossary
 
 
 Indices and tables

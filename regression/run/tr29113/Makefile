@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -44,7 +44,7 @@ clean :
 
 tr29113.o : tr29113.hpp
 wrapTr29113.o : wraptr29113.h tr29113.hpp
-main.o : wrapftr29113.o
+main.o : fruit.o wrapftr29113.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapTr29113.o tr29113.o

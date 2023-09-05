@@ -2,7 +2,7 @@
 #  Test templates
 #
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -20,11 +20,13 @@ declarations:
 - decl: namespace std
   format:
     # Do not put 'std' into names
-    C_name_scope: ""
+    C_name_api: ""
     PY_module_scope: templates
   declarations:
   - decl: template<typename T> class vector
     # std::vector class
+    format:
+       fmtsample: original
     cxx_header: <vector>
     cxx_template:
     - instantiation: <int>
@@ -71,11 +73,16 @@ declarations:
   cxx_template:
   - instantiation: <int>
   declarations:
+  # constructor is not wrapped
   - decl: template<U> void nested( T arg1, U arg2 );
     # XXX - error if cxx_template is missing
     cxx_template:
     - instantiation: <double>
 
+- decl: user<int> returnUserType(void);
+  options:
+    # XXX - returns an object, wrapper must allocate first to put into PyObject.
+    wrap_python: False
 
 
 #- decl: template<ArgType> void Function7(ArgType arg)
@@ -114,3 +121,18 @@ declarations:
   cxx_template:
   - instantiation: <internal::ImplWorker1>
   - instantiation: <internal::ImplWorker2>
+
+##################################################
+- decl: template<typename T> struct structAsClass
+  options:
+    wrap_struct_as: class
+    wrap_python: False # XXX test later
+  cxx_template:
+  - instantiation: <int>
+  - instantiation: <double>
+  declarations:
+  - decl: structAsClass()
+  - decl: void set_npts(int n)
+  - decl: int get_npts()
+  - decl: void set_value(T v)
+  - decl: T get_value()

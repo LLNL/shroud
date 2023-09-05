@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -31,7 +31,7 @@ venv.dir := $(top)/$(tempdir)/venv
 # If venv.dir is created then use it, else depend on python in path.
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
-PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
+PYTHON := $(venv.dir)/bin/$(notdir $(PYTHONEXE))
 endif
 
 export PYTHON PYTHONEXE
@@ -39,10 +39,17 @@ export LUA
 
 include $(top)/regression/run/Makefile
 
+
+info:
+	@echo PYTHON     = $(PYTHON)
+	@echo PYTHON_VER = $(PYTHON_VER)
+	@echo PLATFORM   = $(PLATFORM)
+
 ########################################################################
 # For development:
 # make virtualenv
 # make develop
+# module load gcc/6.1.0   or newer
 
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).
@@ -52,12 +59,18 @@ include $(top)/regression/run/Makefile
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(PYTHON) -m venv --system-site-packages $(venv.dir)
-	$(python.dir)/pip install --upgrade pip
+	$(venv.dir)/bin/pip install --upgrade pip
+#wheel setuptools
 virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
+pipinstall :
+	$(venv.dir)/bin/pip install .
+
 develop :
 	$(PYTHON) setup.py develop
+#	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
+#	$(venv.dir)/bin/pip install --editable .
 
 setup-sqa :
 #	$(PYTHON) -m pip install ruamel-yaml
@@ -158,6 +171,41 @@ do-test-shiv :
 	$(PYTHON) regression/do-test.py $(do-test-args)
 
 ########################################################################
+# Nuitka is a Python compiler written in Python.
+# http://nuitka.net/
+# hinted-compilation https://github.com/Nuitka/NUITKA-Utilities
+#
+# Create an executable at $(nuitka-root)/$(vernum)/shroud.dist/shroud
+
+nuitka-root = dist-nuitka
+
+install-nuitka :
+	$(python.dir)/pip install nuitka
+
+# $(python.dir)/python -m nuitka 
+nuitka-options = $(python.dir)/nuitka3
+nuitka-options += --standalone
+nuitka-options += --follow-imports
+#nuitka-options += --show-progress
+#nuitka-options += --show-scons
+#nuitka-options += --generate-c-only
+nuitka-options += --remove-output
+#nuitka-options += --output-dir=nuitka-work
+
+# Use version in output file name.
+nuitka-file : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+nuitka-file :
+	CC=gcc $(nuitka-options) --output-dir=$(nuitka-root)/$(vernum) dist-nuitka/shroud.py
+
+# Test nuitka created executable
+do-test-nuitka : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+do-test-nuitka :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(nuitka-root)/$(vernum)/shroud.dist/shroud; \
+	$(PYTHON) regression/do-test.py $(do-test-args)
+
+########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
@@ -182,6 +230,28 @@ requirements.txt :
 test-clean :
 	rm -rf $(tempdir)/test
 	rm -rf $(tempdir)/run
+
+########################################################################
+#
+# Compare output of check_decl.py with previous run.
+#
+decl_file = check_decl.output
+decl_path = $(tempdir)/$(decl_file)
+decl_ref = $(testsdir)/$(decl_file)
+
+.PHONY : test-decl-work
+test-decl-work :
+	rm -f $(decl_path) && \
+	$(PYTHON) $(testsdir)/check_decl.py >& $(decl_path)
+
+test-decl : test-decl-work
+	diff $(decl_ref) $(decl_path)
+
+test-decl-replace : test-decl-work
+	cp $(decl_path) $(decl_ref)
+
+test-decl-diff :
+	tkdiff $(decl_ref) $(decl_path)
 
 ########################################################################
 #
@@ -217,7 +287,50 @@ distclean:
 #	rm -rf dist
 #	rm -rf .eggs
 
-.PHONY : virtualenv develop docs test testdirs
+.PHONY : virtualenv pipinstall develop docs test testdirs
+.PHONY : virtualenv2
 .PHONY : test-clean
 .PHONY : do-test do-test-replace print-debug
 .PHONY : distclean
+
+########################################################################
+
+# ANSI color codes
+none    := \033[0m
+red     := \033[0;31m
+green   := \033[0;32m
+yellow  := \033[0;33m
+blue    := \033[0;34m
+magenta := \033[0;35m
+cyan    := \033[0;36m
+all_colors := none red green yellow blue magenta cyan
+export $(all_colors) all_colors
+
+# Shell command to unset the exported colors, when not on terminal.
+setcolors = { [ -t 1 ] || unset $${all_colors}; }
+
+# Macro cprint to be used in rules.
+# Example: $(call cprint,"$${red}warning: %s$${none}\n" "a is not defined")
+cprint = $(setcolors) && printf $(1)
+
+# Macro cprint2 to be used in rules generated with $(eval ), i.e. expanded twice
+# $(1) - Text to print, $(2) - color-name (optional)
+cprint2 = $(setcolors) && \
+  printf "$(if $(2),$$$${$(2)},$$$${green})%s$$$${none}\n" '$(1)'
+
+.PHONY: printvars print-%
+# Print the value of a variable named "foo".
+# Usage: make print-foo
+print-%:
+	@$(call cprint,"%s is $${green}%s$${none} ($${cyan}%s$${none})\
+	  (from $${magenta}%s$${none})\n" '$*' '$($*)' '$(value $*)'\
+	  '$(origin $*)')
+
+# Print the value of (nearly) all the variables.
+# Usage: make printvars
+printvars:
+	@:;$(foreach V,$(sort $(.VARIABLES)),\
+	$(if $(filter-out environ% default automatic,$(origin $V)),\
+	$(info $(V)=$($V) ($(value $(V))))))
+	@:
+

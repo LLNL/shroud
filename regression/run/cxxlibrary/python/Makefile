@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -23,9 +23,10 @@ OBJS = \
     cxxlibrary.o \
     pyCstruct1_clstype.o \
     pycxxlibrarymodule.o \
+    pycxxlibrary_structnsmodule.o \
     pycxxlibraryutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cxxlibrary.so
 

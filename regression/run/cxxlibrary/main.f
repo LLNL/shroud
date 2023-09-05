@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -10,7 +10,6 @@
 program tester
   use fruit
   use iso_c_binding
-  use cxxlibrary_mod
   implicit none
   logical ok
 
@@ -18,6 +17,7 @@ program tester
 
   call test_struct
   call test_default_args
+  call test_generic
 
   call fruit_summary
   call fruit_finalize
@@ -30,6 +30,7 @@ program tester
 contains
 
   subroutine test_struct
+    use cxxlibrary_structns_mod
     type(cstruct1) str1, str2
     integer(C_INT) rvi
 
@@ -59,6 +60,7 @@ contains
   end subroutine test_struct
 
   subroutine test_default_args
+    use cxxlibrary_mod
     real(C_DOUBLE) :: some_var(2)
     integer(C_INT) :: out1, out2
     
@@ -74,5 +76,22 @@ contains
     call assert_equals(20, out2, "defaultArgsInOut")
     
   end subroutine test_default_args
+
+  subroutine test_generic
+    use cxxlibrary_mod
+    character(30) rv
+
+    rv = get_group_name(1)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_LONG)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT32_T)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT64_T)
+    call assert_equals("global-string", rv, "getGroupName");
+    
+  end subroutine test_generic
   
 end program tester

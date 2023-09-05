@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -73,7 +73,7 @@ In Fortran this becomes:
 .. code-block:: fortran
 
     type(instance) inst
-    inst = instance_new()
+    inst = instance()
     call inst%method(1)
 
 .. note :: The ability to generate C++ wrappers for Fortran is not supported.
@@ -102,12 +102,14 @@ In addition, Fortran 2003 provides object oriented programming facilities:
    * Enumerations compatible with C
 
 *Further Interoperability of Fortran with C*, Technical Specification
-TS 29113, now part of Fortran 2019, introduced additional features:
+TS 29113, now part of Fortran 2018, introduced additional features:
 
    * assumed-type
+   * assumed-rank
    * ``ALLOCATABLE``, ``OPTIONAL``, and ``POINTER`` attributes may be
      specified for a dummy argument in a procedure interface that has
      the ``BIND`` attribute.
+   * ``CONTIGUOUS`` attribute
 
 .. A Fortran pointer is similar to a C++ instance in that it not only has
    the address of the memory but also contains meta-data such as the
@@ -122,6 +124,22 @@ Shroud uses the features of Fortran 2003 as well as additional
 generated code to solve the interoperability problem to create
 an idiomatic interface.
 
+Limitations
+^^^^^^^^^^^
+
+Not all features of C++ can be mapped to Fortran.  Variadic
+function are not directly supported. Fortran supports ``OPTIONAL``
+arguments but that does not map to variadic functions.  ``OPTIONAL``
+has a known number of possible argument while variadic does not.
+
+Templates will be explicitly instantiated.  The instances are listed
+in the YAML file and a wrapper will be created for each one. However,
+Fortran can not initantiate templates at compile time.
+
+Lambda functions are not supported.
+
+Some other features are not currently supported but will be in the future:
+complex type, exceptions.
 
 Requirements
 ^^^^^^^^^^^^

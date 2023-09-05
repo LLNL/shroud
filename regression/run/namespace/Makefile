@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -30,7 +30,7 @@ C_OBJS = \
     wrapns.o \
     wrapns_outer.o
 F_OBJS= \
-    wrapfns.f \
+    wrapfns.o \
     fruit.o \
     main.o
 
@@ -43,7 +43,7 @@ clean :
 namespace.o : namespace.hpp
 wrapns.o : namespace.hpp
 wrapns_outer.o : namespace.hpp
-main.o : wrapfns.o wrapfns_outer.o
+main.o : fruit.o wrapfns.o wrapfns_outer.o
 
 testc.o : testc.c wrapns.h wrapns_outer.h
 testc : testc.o $(C_OBJS)

@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -24,6 +24,8 @@ OBJS = \
     struct.o \
     wrapfstruct.o \
     wrapstruct.o \
+    wrapCstruct_as_class.o \
+    wrapCstruct_as_subclass.o \
     fruit.o \
     main.o
 
@@ -35,4 +37,4 @@ clean :
 
 struct.o : struct.h
 wrapstruct.o : wrapstruct.h struct.h
-main.o : wrapfstruct.o
+main.o : fruit.o wrapfstruct.o

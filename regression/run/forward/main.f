@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -16,6 +16,7 @@ program tester
 
   call init_fruit
 
+  call test_struct
 
   call fruit_summary
   call fruit_finalize
@@ -24,5 +25,19 @@ program tester
   if (.not. ok) then
      call exit(1)
   endif
+
+contains
+
+  subroutine test_struct
+    use struct_mod
+
+    type(cstruct1) s1
+
+    call set_case_name("test_struct")
+
+    s1 = cstruct1(4, 5)
+    call assert_equals(4, pass_struct1(s1), "pass_struct1")
+
+  end subroutine test_struct
 
 end program tester

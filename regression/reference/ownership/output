@@ -3,9 +3,9 @@ Wrote wrapClass1.h
 Wrote wrapClass1.cpp
 Wrote wrapownership.h
 Wrote wrapownership.cpp
-Wrote typesownership.h
 Wrote wrapfownership.f
 Wrote utilownership.cpp
+Wrote typesownership.h
 Wrote pyClass1type.cpp
 Wrote pyownershipmodule.cpp
 Wrote pyownershiputil.cpp

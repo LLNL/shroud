@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -26,6 +26,7 @@ void passClassByValue(Class1 arg)
 {
     last_function_called = "passClassByValue";
     global_flag = arg.m_test;
+    arg.m_test += 10;  // No effect to caller since pass by value.
     return;
 }
 
@@ -51,6 +52,18 @@ const Class1 * getclass2()
 Class1 * getclass3()
 {
     last_function_called = "getclass3";
+    return const_cast<Class1 *>(global_class1);
+}
+
+const Class1 * getclass2_void()
+{
+    last_function_called = "getclass2_void";
+    return global_class1;
+}
+
+Class1 * getclass3_void()
+{
+    last_function_called = "getclass3_void";
     return const_cast<Class1 *>(global_class1);
 }
 
@@ -135,6 +148,23 @@ Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
     return Class1::RIGHT;
 }
 
+//----------------------------------------------------------------------
+
+void Data::allocate(int n)
+{
+    nitems = n;
+    items = new int[n];
+    for (int i = 0; i < n; ++i)
+    {
+        items[i] = i + 1;
+    }
+}
+void Data::free(void)
+{
+    nitems = 0;
+    delete [] items;
+}
+    
 //----------------------------------------------------------------------
 
 void set_global_flag(int arg)

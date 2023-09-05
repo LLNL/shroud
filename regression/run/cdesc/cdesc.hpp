@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -9,7 +9,11 @@
 #ifndef CDESC_HPP
 #define CDESC_HPP
 
+#include <string>
+
 void Rank2In(int *arg);
+
+void GetScalar1(std::string & name, void *value);
 
 template<typename DataType>
 DataType getData();

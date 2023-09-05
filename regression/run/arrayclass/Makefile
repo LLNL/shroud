@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -22,8 +22,8 @@ VPATH = \
 #    arrayclass.o   # This file is not created
 OBJS = \
     wrapfarrayclass.o \
-    wraparrayclass.o \
     wrapArrayWrapper.o \
+    utilarrayclass.o \
     fruit.o \
     main.o
 
@@ -33,4 +33,4 @@ arrayclass : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod arrayclass
 
-main.o : wrapfarrayclass.o
+main.o : fruit.o wrapfarrayclass.o

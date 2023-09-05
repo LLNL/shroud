@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -23,6 +23,7 @@ class CheckImplied(unittest.TestCase):
         node = self.library.add_function(
             "void func1("
             "int *array  +intent(in)+dimension(:),"
+            "int *array2 +intent(in)+dimension(:,:),"
             "int  scalar +intent(in)+implied(size(array))"
             ")"
         )
@@ -58,25 +59,23 @@ class CheckImplied(unittest.TestCase):
 
     def test_implied_attrs(self):
         func = self.func1
-        decls = self.func1.ast.params
+        decls = self.func1.ast.declarator.params
         generate.check_implied_attrs(func, decls)
 
     def test_implied(self):
         func = self.func1
-        decls = self.func1.ast.params
+        decls = self.func1.ast.declarator.params
         expr = generate.check_implied(func, "user(array)", decls)
         self.assertEqual("user(array)", expr)
 
     def test_errors(self):
         func = self.func1
-        decls = self.func1.ast.params
+        decls = self.func1.ast.declarator.params
+
+        generate.check_implied(func, "size(array2,1)", decls)
 
         with self.assertRaises(RuntimeError) as context:
-            generate.check_implied(func, "size(array,n2)", decls)
-        self.assertTrue("Too many arguments" in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            generate.check_implied(func, "size(array2)", decls)
+            generate.check_implied(func, "size(unknown)", decls)
         self.assertTrue("Unknown argument" in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:

@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -111,6 +111,20 @@ class Classes(unittest.TestCase):
         obj1 = classes.Singleton.getReference()
 
         obj2 = obj0.getReference()
+
+    def test_subclass(self):
+        base = classes.Shape()
+        self.assertEqual(0, base.get_ivar())
+
+        circle1 = classes.Circle()
+        self.assertEqual(0, base.get_ivar())
+
+        self.assertIsInstance(base, classes.Shape)
+        self.assertIsInstance(circle1, classes.Shape)
+
+        self.assertNotIsInstance(base, classes.Circle)
+        self.assertIsInstance(circle1, classes.Circle)
+        
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

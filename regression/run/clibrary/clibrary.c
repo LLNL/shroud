@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
  * other Shroud Project Developers.
  * See the top-level COPYRIGHT file for details.
  *
@@ -190,6 +190,11 @@ void callback1(int type, void (*incr)(void))
   // Use type to decide how to call incr
 }
 // end callback1
+
+void callback1a(int type, void (*incr)(void))
+{
+  // Use type to decide how to call incr
+}
 
 void callback2(int type, void * in, void (*incr)(int *))
 {

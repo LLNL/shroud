@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -39,7 +39,7 @@ clean :
 
 statement.o : statement.hpp
 wrapstatement.o : wrapstatement.h statement.hpp
-main.o : wrapfstatement.o
+main.o : fruit.o wrapfstatement.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapStatement.o wrapClass1.o wrapSingleton.o statement.o

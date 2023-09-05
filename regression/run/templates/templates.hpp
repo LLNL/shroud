@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -55,3 +55,27 @@ public:
   template<typename U> void nested(T arg1, U arg2)
   { }
 };
+
+user<int> returnUserType(void);
+
+template<typename T>
+struct structAsClass {
+    int npts;
+    T value;
+    void set_npts(int n) { npts=n; };
+    int get_npts() { return npts; };
+    void set_value(T v) { value = v; };
+    T get_value() { return value; };
+};
+
+
+template<typename T>
+struct userStruct {
+    int npts;
+    T value;
+    void set_npts(int n) { npts=n; };
+    int get_npts() { return npts; };
+    void set_value(T v) { value = v; };
+    T get_value() { return value; };
+};
+

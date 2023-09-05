@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -12,6 +12,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/strings \
+    -I$(top)/regression/run \
     -I$(top)/regression/run/strings \
     -I$(top)/regression/run/fruit
 
@@ -34,4 +35,4 @@ strings : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod strings
 
-main.o : wrapfstrings.o
+main.o : fruit.o wrapfstrings.o

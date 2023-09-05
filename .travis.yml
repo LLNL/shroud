@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -15,6 +15,7 @@ python:
 - "3.6"
 - "3.7"
 - "3.8"
+- "3.9"
 
 # Command to install dependencies.
 # This installs Shroud into the virtualenv.

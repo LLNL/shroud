@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -23,8 +23,10 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
+    struct_mod.o \
     tutorial_mod.o \
     forward.o \
+    wrapforward.o \
     wrapfforward.o \
     wrapClass2.o \
     fruit.o \
@@ -36,13 +38,15 @@ forward : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod forward
 
-# 'other' package
+# 'other' packages
+struct_mod.o : struct_mod.f
 tutorial_mod.o : tutorial_mod.f
 
-wrapfforward.o : tutorial_mod.o
+wrapforward.o : wrapforward.h
+wrapfforward.o : struct_mod.o tutorial_mod.o
 forward.o : forward.hpp
 wrapClass1.o : wrapClass2.h forward.hpp
-main.o : wrapfforward.o
+main.o : fruit.o wrapfforward.o struct_mod.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapClass2.o forward.o

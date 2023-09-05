@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -13,7 +13,7 @@ Shroud will create code to map between C and Fortran pointers.  The
 *interoperability with C* features of Fortran 2003 and the
 call-by-reference feature of Fortran provides most of the features
 necessary to pass arrays to C++ libraries. Shroud can also provide
-additional semantic information.  Adding the ``+rank(n)`` attribute
+additional semantic information.  Adding the *rank* attribute
 will declare the argument as an assumed-shape array with the given
 rank: ``+rank(2)`` creates ``arg(:,:)``.  The ``+dimension(n)`` attribute
 will instead give an explicit dimension: ``+dimension(10,20)`` creates
@@ -45,17 +45,20 @@ function interface
 The result of the the Fortran function directly accesses the memory
 returned from the C++ library.
 
-An array can be returned by adding the attribute ``+dimension(n)`` to
+An array can be returned by adding the *dimension* attribute to
 the function.  The dimension expression will be used to provide the
 ``shape`` argument to ``c_f_pointer``.  The arguments to *dimension*
 are C++ expressions which are evaluated after the C++ function is
-called and can be the name of another argument to the function or call
+called and can be the name of another argument to the function or a call
 another C++ function.  As a simple example, this declaration returns a
 pointer to a constant sized array.
 
 .. code-block:: yaml
 
     - decl: int *returnIntPtrToFixedArray(void) +dimension(10)
+
+Example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`
+shows the generated code.
 
 If the dimension is unknown when the function returns, a ``type(C_PTR)``
 can be returned with ``+deref(raw)``.  This will allow the user
@@ -69,8 +72,14 @@ Shroud treats the argument similar to a function which returns a
 pointer: it adds the *deref(pointer)* attribute to treats it as a
 ``POINTER`` to a scalar.  The *dimension* attribute can be used to
 create an array similar to a function result.
+If the *deref(allocatable)* attribute is added, then a Fortran array
+will be allocated to the size of *dimension* attribute and the
+argument will be copied into the Fortran memory.
 
-Function which return multiple layers of indirection will return
+.. If *owner(caller)*, then the memory will be released.
+   The Fortran ``ALLOCATABLE`` array will need to be released by the user.
+
+A function which returns multiple layers of indirection will return
 a ``type(C_PTR)``.  This is also true for function arguments beyond
 ``int **arg +intent(out)``.
 This pointer can represent non-contiguous memory and Shroud
@@ -82,24 +91,26 @@ common idiom and can be processed since the length of each string can
 be found with ``strlen``.
 See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-Shroud can be made to allocate an array before the C++ library is
-called using ``deref(allocatable)``.  For example, ``int **arg
-+intent(out)+deref(allocatable)+dimension(n)``.  The value of the
-*dimension* attribute is used to define the shape of the array and
-must be know before the library function is called.  The *dimension*
-attribute can include the Fortran intrinsic ``size`` to define the
-shape in terms of another array.  This is more useful in Python since
-*intent(out)* arguments are not used in the function call and instead
-they are returned by the function.  In Fortran, it is easier to pass
-in the array and allow the C++ library function to fill it directly.
+In Python wrappers, Shroud will allocate *intent(out)* arguments
+before calling the function. This requires the dimension attribute
+which defines the shape and must be known before the function is
+called.  The argument will then be returned by the function along with
+the function result and other *intent(out)* arguments.  For example,
+``int **arg +intent(out)+dimension(n)``.  The value of the *dimension*
+attribute is used to define the shape of the array and must be known
+before the library function is called.  The *dimension* attribute can
+include the Fortran intrinsic ``size`` to define the shape in terms of
+another array.
 
-Python wrappers add some additional requirements on attributes.
-Python will create NumPy arrays for *intent(out)* arguments but
-require an explicit shape using *dimension* attribute. Fortran passes
-in an argument for *intent(out)* arguments which will be filled by the
-C++ library.  However, Python will need to create the NumPy array
-before calling the C++ function.
-For example, using ``+intent(out)+rank(1)`` will have problems.
+.. XXX - If no dimension, return as capsule?
+
+.. Python wrappers add some additional requirements on attributes.
+   Python will create NumPy arrays for *intent(out)* arguments but
+   require an explicit shape using *dimension* attribute. Fortran passes
+   in an argument for *intent(out)* arguments which will be filled by the
+   C++ library.  However, Python will need to create the NumPy array
+   before calling the C++ function.  For example, using
+   ``+intent(out)+rank(1)`` will have problems.
 
 ``char *`` functions are treated differently.  By default *deref*
 attribute will be set to *allocatable*.  After the C++ function
@@ -147,6 +158,8 @@ responsibility to ``deallocate`` the Fortran array. However, Fortran
 will release the array automatically under some conditions when the
 caller function returns. If *owner(library)* is set, the Fortran
 caller never needs to release the memory.
+
+.. XXX - std::vector defaults to deref(allocatable) to copy data out of vector.
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
 
@@ -233,8 +246,8 @@ C and Fortran
 
 Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
-**F_capsule_data_type**. Their names default to
-``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{F_name_scope}capsule``.
+**F_capsule_data_type**. Their names in the format dictionary default to
+``{C_prefix}SHROUD_capsule_data`` and ``{C_prefix}SHROUD_capsule_data``.
 In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
 .. literalinclude:: ../regression/reference/classes/typesclasses.h
@@ -246,8 +259,8 @@ And :file:`wrapftutorial.f`:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start derived-type SHROUD_class1_capsule
-   :end-before: end derived-type SHROUD_class1_capsule
+   :start-after: start helper capsule_data_helper
+   :end-before: end helper capsule_data_helper
    :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
@@ -255,10 +268,16 @@ or ``std::string *``.  *idtor* is a Shroud generated index of the
 destructor code defined by *destructor_name* or the *free_pattern* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
-be released and is used with the **owner(library)** attribute. A
-typical function would look like:
+be released and is used with the **owner(library)** attribute.
 
-.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+Each class creates its own capsule struct for the C wrapper.
+This is to provide a measure of type safety in the C API.
+All Fortran classes use the same derived type since the
+user does not directly access the derived type.
+
+A typical destructor function would look like:
+
+.. literalinclude:: ../regression/reference/tutorial/utilTutorial.cpp
    :language: c++
    :start-after: start release allocated memory
    :end-before: end release allocated memory
@@ -289,7 +308,8 @@ and the ``bind(C)`` equivalent **F_array_type**.:
    :start-after: start array_context
    :end-before: end array_context
 
-The union for ``addr`` makes some assignments easier and also aids debugging.
+The union for ``addr`` makes some assignments easier by removing
+the need for casts and also aids debugging.
 The union is replaced with a single ``type(C_PTR)`` for Fortran:
 
 .. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f
@@ -307,8 +327,8 @@ to avoid deallocating the memory.
 
 .. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
    :language: c++
-   :start-after: start STR_get_const_string_ptr_alloc_bufferify
-   :end-before: end STR_get_const_string_ptr_alloc_bufferify
+   :start-after: start STR_getConstStringPtrAlloc_bufferify
+   :end-before: end STR_getConstStringPtrAlloc_bufferify
 
 The Fortran wrapper uses the metadata to allocate the return argument
 to the correct length:
@@ -329,7 +349,7 @@ to set the value of the result and possible free memory for
    :end-before: end helper copy_string
 
 .. note:: The three steps of call, allocate, copy could be replaced
-          with a single call by using the *futher interoperability
+          with a single call by using the *further interoperability
           with C* features of Fortran 2018 (a.k.a TS 29113).  This
           feature allows Fortran ``ALLOCATABLE`` variables to be
           allocated by C. However, not all compilers currently support

@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -36,7 +36,7 @@ clean :
 
 vectors.o : vectors.hpp
 wrapvectors.o : wrapvectors.h vectors.hpp
-main.o : wrapfvectors.o
+main.o : fruit.o wrapfvectors.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapvectors.o vectors.o

@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -20,5 +20,11 @@ namespace forward
   void Class2::acceptClass3(Class3 *arg)
   {
   };
+
+  // Use a struct defined in another wrapped library.
+  int passStruct1(const Cstruct1 *s1)
+  {
+    return s1->ifield;
+  }
   
 } /* end namespace forward */

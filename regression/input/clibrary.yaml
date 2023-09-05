@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -215,10 +215,21 @@ declarations:
 ######################################################################
 # Function pointer (from tutorial.yaml)
 
-- decl: int callback1(int type, void (*incr)(void)+external)
+- decl: void callback1(int type, void (*incr)(void)+external)
   doxygen:
     brief: Test function pointer
   options:
+    wrap_lua: False
+    wrap_python: False
+    literalinclude: True
+  
+- decl: void callback1a(int type, void (*incr)(void)+external)
+  doxygen:
+    brief: Test function pointer
+    description: |
+      Add C_force_wrapper to test generating function pointer prototype.
+  options:
+    C_force_wrapper: True
     wrap_lua: False
     wrap_python: False
     literalinclude: True

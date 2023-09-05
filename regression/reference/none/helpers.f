@@ -1,4 +1,7 @@
 
+---------- ShroudTypeDefines ----------
+{}
+
 ##### start ShroudTypeDefines derived_type
 
 ! helper ShroudTypeDefines
@@ -35,6 +38,22 @@ integer, parameter, private :: &
     SH_TYPE_OTHER     = 32
 ##### end ShroudTypeDefines derived_type
 
+---------- array_context ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper"
+    ],
+    "modules": {
+        "iso_c_binding": [
+            "C_NULL_PTR",
+            "C_PTR",
+            "C_SIZE_T",
+            "C_INT",
+            "C_LONG"
+        ]
+    }
+}
+
 ##### start array_context derived_type
 
 ! helper array_context
@@ -55,6 +74,39 @@ type, bind(C) :: LIB_SHROUD_array
 end type LIB_SHROUD_array
 ##### end array_context derived_type
 
+---------- array_string_allocatable ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_array_string_allocatable"
+}
+
+##### start array_string_allocatable interface
+
+interface
+    ! helper array_string_allocatable
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_array_string_allocatable(out, in) &
+         bind(c,name="LIB_ShroudArrayStringAllocatable")
+        import LIB_SHROUD_array, LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_array), intent(IN) :: out
+        type(LIB_SHROUD_array), intent(IN) :: in
+    end subroutine LIB_SHROUD_array_string_allocatable
+end interface
+##### end array_string_allocatable interface
+
+---------- capsule_data_helper ----------
+{
+    "modules": {
+        "iso_c_binding": [
+            "C_PTR",
+            "C_INT",
+            "C_NULL_PTR"
+        ]
+    }
+}
+
 ##### start capsule_data_helper derived_type
 
 ! helper capsule_data_helper
@@ -63,6 +115,14 @@ type, bind(C) :: LIB_SHROUD_capsule_data
     integer(C_INT) :: idtor = 0       ! index of destructor
 end type LIB_SHROUD_capsule_data
 ##### end capsule_data_helper derived_type
+
+---------- capsule_dtor ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper"
+    ],
+    "name": "LIB_SHROUD_capsule_dtor"
+}
 
 ##### start capsule_dtor interface
 
@@ -77,6 +137,14 @@ interface
     end subroutine LIB_SHROUD_capsule_dtor
 end interface
 ##### end capsule_dtor interface
+
+---------- capsule_helper ----------
+{
+    "dependent_helpers": [
+        "capsule_data_helper",
+        "capsule_dtor"
+    ]
+}
 
 ##### start capsule_helper derived_type
 
@@ -105,341 +173,37 @@ subroutine SHROUD_capsule_delete(cap)
 end subroutine SHROUD_capsule_delete
 ##### end capsule_helper source
 
-##### start copy_array_double interface
+---------- copy_array ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_copy_array"
+}
+
+##### start copy_array interface
 
 interface
-    ! helper copy_array_double
+    ! helper copy_array
     ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_double(context, c_var, c_var_size) &
+    subroutine LIB_SHROUD_copy_array(context, c_var, c_var_size) &
         bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_DOUBLE, C_SIZE_T
+        use iso_c_binding, only : C_PTR, C_SIZE_T
         import LIB_SHROUD_array
         type(LIB_SHROUD_array), intent(IN) :: context
-        real(C_DOUBLE), intent(OUT) :: c_var(*)
+        type(C_PTR), intent(IN), value :: c_var
         integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_double
+    end subroutine LIB_SHROUD_copy_array
 end interface
-##### end copy_array_double interface
+##### end copy_array interface
 
-##### start copy_array_double_complex interface
-
-interface
-    ! helper copy_array_double_complex
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_double_complex(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_DOUBLE_COMPLEX, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        complex(C_DOUBLE_COMPLEX), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_double_complex
-end interface
-##### end copy_array_double_complex interface
-
-##### start copy_array_float interface
-
-interface
-    ! helper copy_array_float
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_float(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_FLOAT, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        real(C_FLOAT), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_float
-end interface
-##### end copy_array_float interface
-
-##### start copy_array_float_complex interface
-
-interface
-    ! helper copy_array_float_complex
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_float_complex(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_FLOAT_COMPLEX, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        complex(C_FLOAT_COMPLEX), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_float_complex
-end interface
-##### end copy_array_float_complex interface
-
-##### start copy_array_int interface
-
-interface
-    ! helper copy_array_int
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_int(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_int
-end interface
-##### end copy_array_int interface
-
-##### start copy_array_int16_t interface
-
-interface
-    ! helper copy_array_int16_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_int16_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT16_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT16_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_int16_t
-end interface
-##### end copy_array_int16_t interface
-
-##### start copy_array_int32_t interface
-
-interface
-    ! helper copy_array_int32_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_int32_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT32_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT32_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_int32_t
-end interface
-##### end copy_array_int32_t interface
-
-##### start copy_array_int64_t interface
-
-interface
-    ! helper copy_array_int64_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_int64_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT64_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT64_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_int64_t
-end interface
-##### end copy_array_int64_t interface
-
-##### start copy_array_int8_t interface
-
-interface
-    ! helper copy_array_int8_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_int8_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT8_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT8_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_int8_t
-end interface
-##### end copy_array_int8_t interface
-
-##### start copy_array_long interface
-
-interface
-    ! helper copy_array_long
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_long(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_LONG, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_LONG), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_long
-end interface
-##### end copy_array_long interface
-
-##### start copy_array_long_long interface
-
-interface
-    ! helper copy_array_long_long
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_long_long(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_LONG_LONG, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_LONG_LONG), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_long_long
-end interface
-##### end copy_array_long_long interface
-
-##### start copy_array_short interface
-
-interface
-    ! helper copy_array_short
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_short(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_SHORT, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_SHORT), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_short
-end interface
-##### end copy_array_short interface
-
-##### start copy_array_size_t interface
-
-interface
-    ! helper copy_array_size_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_size_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_SIZE_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_SIZE_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_size_t
-end interface
-##### end copy_array_size_t interface
-
-##### start copy_array_uint16_t interface
-
-interface
-    ! helper copy_array_uint16_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_uint16_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT16_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT16_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_uint16_t
-end interface
-##### end copy_array_uint16_t interface
-
-##### start copy_array_uint32_t interface
-
-interface
-    ! helper copy_array_uint32_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_uint32_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT32_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT32_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_uint32_t
-end interface
-##### end copy_array_uint32_t interface
-
-##### start copy_array_uint64_t interface
-
-interface
-    ! helper copy_array_uint64_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_uint64_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT64_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT64_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_uint64_t
-end interface
-##### end copy_array_uint64_t interface
-
-##### start copy_array_uint8_t interface
-
-interface
-    ! helper copy_array_uint8_t
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_uint8_t(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT8_T, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT8_T), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_uint8_t
-end interface
-##### end copy_array_uint8_t interface
-
-##### start copy_array_unsigned_int interface
-
-interface
-    ! helper copy_array_unsigned_int
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_unsigned_int(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_INT), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_unsigned_int
-end interface
-##### end copy_array_unsigned_int interface
-
-##### start copy_array_unsigned_long interface
-
-interface
-    ! helper copy_array_unsigned_long
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_unsigned_long(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_LONG, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_LONG), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_unsigned_long
-end interface
-##### end copy_array_unsigned_long interface
-
-##### start copy_array_unsigned_long_long interface
-
-interface
-    ! helper copy_array_unsigned_long_long
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_unsigned_long_long(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_LONG_LONG, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_LONG_LONG), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_unsigned_long_long
-end interface
-##### end copy_array_unsigned_long_long interface
-
-##### start copy_array_unsigned_short interface
-
-interface
-    ! helper copy_array_unsigned_short
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array_unsigned_short(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_SHORT, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        integer(C_SHORT), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array_unsigned_short
-end interface
-##### end copy_array_unsigned_short interface
+---------- copy_string ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_copy_string_and_free"
+}
 
 ##### start copy_string interface
 
@@ -456,3 +220,48 @@ interface
     end subroutine LIB_SHROUD_copy_string_and_free
 end interface
 ##### end copy_string interface
+
+---------- pointer_string ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_pointer_string"
+}
+
+##### start pointer_string source
+
+! helper pointer_string
+! Assign context to an assumed-length character pointer
+subroutine LIB_SHROUD_pointer_string(context, var)
+    use iso_c_binding, only : c_f_pointer, C_PTR
+    implicit none
+    type(LIB_SHROUD_array), intent(IN) :: context
+    character(len=:), pointer, intent(OUT) :: var
+    character(len=context%elem_len), pointer :: fptr
+    call c_f_pointer(context%base_addr, fptr)
+    var => fptr
+end subroutine LIB_SHROUD_pointer_string
+##### end pointer_string source
+
+---------- vector_string_allocatable ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_vector_string_allocatable"
+}
+
+##### start vector_string_allocatable interface
+
+interface
+    ! helper vector_string_allocatable
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_vector_string_allocatable(out, in) &
+         bind(c,name="LIB_ShroudVectorStringAllocatable")
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: out
+        type(LIB_SHROUD_array), intent(IN) :: in
+    end subroutine LIB_SHROUD_vector_string_allocatable
+end interface
+##### end vector_string_allocatable interface

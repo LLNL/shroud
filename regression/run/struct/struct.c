@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
  * other Shroud Project Developers.
  * See the top-level COPYRIGHT file for details.
  *
@@ -93,6 +93,12 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf)
     return &global_Cstruct1;
 }
 
+int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
+{
+    int rv = work(arg);
+    return rv;
+}
+
 #if 0
 Cstruct1 *returnStructPtrNew(int i, double d)
 {
@@ -109,6 +115,40 @@ void freeStruct(Cstruct1 *arg1)
 #endif
 
 /*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+Cstruct_as_class *Create_Cstruct_as_class(void)
+{
+    Cstruct_as_class *rv = (Cstruct_as_class *)
+        malloc(sizeof(Cstruct_as_class));
+    rv->x1 = 0;
+    rv->y1 = 0;
+    return rv;
+}
+
+Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+{
+    Cstruct_as_class *rv = (Cstruct_as_class *)
+        malloc(sizeof(Cstruct_as_class));
+    rv->x1 = x;
+    rv->y1 = y;
+    return rv;
+}
+
+Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+{
+    Cstruct_as_subclass *rv = (Cstruct_as_subclass *)
+        malloc(sizeof(Cstruct_as_subclass));
+    rv->x1 = x;
+    rv->y1 = y;
+    rv->z1 = z;
+    return rv;
+}
+
+int Cstruct_as_class_sum(const Cstruct_as_class *point)
+{
+    return point->x1 + point->y1;
+}
 
 // Return sum of x members to test that they were passed in correctly.
 

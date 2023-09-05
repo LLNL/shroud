@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -7,6 +7,9 @@ copyright:
 -
 
 # Wrap a C library with structs
+# This file is tested as language=c and c++.
+# Only C features are tested here.
+# cxxlibrary.yaml has additional struct tests with C++ specific features.
 
 # Several tests have a 'char *outbuf+intent(out)' argument
 # which will force a C bufferify wrapper to be created.
@@ -28,6 +31,10 @@ options:
 format:
   # Avoid conflict with builtin module
   PY_module_name: cstruct
+  # Remove these methods to make documentation less cluttered.
+  F_name_associated:
+  F_name_instance_get:
+  F_name_instance_set:
 
 declarations:
 
@@ -77,11 +84,19 @@ declarations:
       Generates a bufferify C wrapper function.
 
 ######################################################################
-- decl: struct Cstruct_ptr {
-          char *cfield;
-          const double *const_dvalue;
-        };
-#          double *dvalue;
+#- decl: int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
+#  doxygen:
+#    brief: Pass struct as function pointer argument
+#    description: |
+#      The arguments to the function pointer include a pointer to struct.
+#      The struct in C and C++ have different names.
+#      Must cast function pointer.
+
+######################################################################
+- decl: struct Cstruct_ptr
+  declarations:
+  - decl: char *cfield;
+  - decl: const double *const_dvalue;
         # dvalue is implied +readonly because of const.
 
 ######################################################################
@@ -104,6 +119,7 @@ declarations:
           double *dvalue  +dimension(nitems);
         };
   options:
+    F_struct_getter_setter: False
     PY_array_arg: numpy
 
 ######################################################################
@@ -113,6 +129,64 @@ declarations:
         };
   options:
     PY_array_arg: numpy
+
+######################################################################
+#  test struct-as-class
+
+# start Cstruct_as_class
+- decl: struct Cstruct_as_class {
+          int x1;
+          int y1;
+        };
+  options:
+    wrap_struct_as: class
+# end Cstruct_as_class
+    wrap_python: False  # tested in struct-py.yaml
+    literalinclude: True
+  doxygen:
+    description: |
+      Treat a struct as a class, i.e. create a shadow derived type.
+
+# start Create_Cstruct_as_class
+- decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+  options:
+    class_ctor: Cstruct_as_class
+# end Create_Cstruct_as_class
+    wrap_python: False
+    literalinclude: True
+- decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_class
+
+# start Cstruct_as_class_sum
+- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+  options:
+    wrap_python: False
+    class_method: Cstruct_as_class
+  format:
+    F_name_function: sum
+# end Cstruct_as_class_sum
+
+
+- decl: struct Cstruct_as_subclass {
+          int x1;
+          int y1;
+          int z1;
+        };
+  options:
+    wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
+    wrap_python: False
+    literalinclude: True
+  doxygen:
+    description: |
+      Treat a struct as a subclass of another struct
+
+- decl: Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_subclass
 
 ######################################################################
 splicer_code:

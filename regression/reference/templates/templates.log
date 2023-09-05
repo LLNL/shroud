@@ -1,64 +1,121 @@
 Read yaml templates.yaml
 Close templates_types.yaml
-class vector
-C method vector()
-C method ~vector()
-C method void push_back(const int & value +intent(in))
-C method int & at(size_type n +intent(in)+value)
+class vector<int>
+C vector(void)  +api(capptr)+intent(ctor)
+C ~vector(void)  +intent(dtor)
+C void push_back(const int & value +intent(in))  +intent(subroutine)
+C int & at(size_type n +value)  +deref(pointer)+intent(function)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
-class vector
-C method vector()
-C method ~vector()
-C method void push_back(const double & value +intent(in))
-C method double & at(size_type n +intent(in)+value)
+class vector<double>
+C vector(void)  +api(capptr)+intent(ctor)
+C ~vector(void)  +intent(dtor)
+C void push_back(const double & value +intent(in))  +intent(subroutine)
+C double & at(size_type n +value)  +deref(pointer)+intent(function)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
 class ImplWorker1
 class ImplWorker2
 class Worker
-class user
-C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+class user<int>
+C void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
 Close wrapuser_int.h
 Close wrapuser_int.cpp
-C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C function int UseImplWorker()
-C function int UseImplWorker()
+class structAsClass<int>
+C structAsClass(void)  +api(capptr)+intent(ctor)
+C void set_npts(int n +value)  +intent(subroutine)
+C int get_npts(void)  +intent(function)
+C void set_value(int v +value)  +intent(subroutine)
+C int get_value(void)  +intent(function)
+Close wrapstructAsClass_int.h
+Close wrapstructAsClass_int.cpp
+class structAsClass<double>
+C structAsClass(void)  +api(capptr)+intent(ctor)
+C void set_npts(int n +value)  +intent(subroutine)
+C int get_npts(void)  +intent(function)
+C void set_value(double v +value)  +intent(subroutine)
+C double get_value(void)  +intent(function)
+Close wrapstructAsClass_double.h
+Close wrapstructAsClass_double.cpp
+C user<int> returnUserType(void)  +api(capptr)+intent(function)
+C void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C int UseImplWorker(void)  +intent(function)
+C int UseImplWorker(void)  +intent(function)
 Close wraptemplates.h
 Close wraptemplates.cpp
-Close typestemplates.h
 class Worker
-class user
-C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C-interface, Fortran function int UseImplWorker()
-C-interface, Fortran function int UseImplWorker()
-class vector
-C-interface, Fortran method vector()
-C-interface, Fortran method ~vector()
-C-interface, Fortran method void push_back(const int & value +intent(in))
-C-interface, Fortran method int & at(size_type n +intent(in)+value)
-class vector
-C-interface, Fortran method vector()
-C-interface, Fortran method ~vector()
-C-interface, Fortran method void push_back(const double & value +intent(in))
-C-interface, Fortran method double & at(size_type n +intent(in)+value)
+class user<int>
+Fortran void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
+C-interface void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
+class structAsClass<int>
+Fortran structAsClass(void)  +api(capptr)+intent(ctor)
+Fortran void set_npts(int n +value)  +intent(subroutine)
+Fortran int get_npts(void)  +intent(function)
+Fortran void set_value(int v +value)  +intent(subroutine)
+Fortran int get_value(void)  +intent(function)
+C-interface structAsClass(void)  +api(capptr)+intent(ctor)
+C-interface void set_npts(int n +value)  +intent(subroutine)
+C-interface int get_npts(void)  +intent(function)
+C-interface void set_value(int v +value)  +intent(subroutine)
+C-interface int get_value(void)  +intent(function)
+class structAsClass<double>
+Fortran structAsClass(void)  +api(capptr)+intent(ctor)
+Fortran void set_npts(int n +value)  +intent(subroutine)
+Fortran int get_npts(void)  +intent(function)
+Fortran void set_value(double v +value)  +intent(subroutine)
+Fortran double get_value(void)  +intent(function)
+C-interface structAsClass(void)  +api(capptr)+intent(ctor)
+C-interface void set_npts(int n +value)  +intent(subroutine)
+C-interface int get_npts(void)  +intent(function)
+C-interface void set_value(double v +value)  +intent(subroutine)
+C-interface double get_value(void)  +intent(function)
+Fortran user<int> returnUserType(void)  +api(capptr)+intent(function)
+Fortran void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+Fortran void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+Fortran int UseImplWorker(void)  +intent(function)
+Fortran int UseImplWorker(void)  +intent(function)
+C-interface user<int> returnUserType(void)  +api(capptr)+intent(function)
+C-interface void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C-interface int UseImplWorker(void)  +intent(function)
+C-interface int UseImplWorker(void)  +intent(function)
+class vector<int>
+typedef size_type
+Fortran vector(void)  +api(capptr)+intent(ctor)
+Fortran ~vector(void)  +intent(dtor)
+Fortran void push_back(const int & value +intent(in))  +intent(subroutine)
+Fortran int & at(size_type n +value)  +deref(pointer)+intent(function)
+C-interface vector(void)  +api(capptr)+intent(ctor)
+C-interface ~vector(void)  +intent(dtor)
+C-interface void push_back(const int & value +intent(in))  +intent(subroutine)
+C-interface int & at(size_type n +value)  +deref(pointer)+intent(function)
+class vector<double>
+typedef size_type
+Fortran vector(void)  +api(capptr)+intent(ctor)
+Fortran ~vector(void)  +intent(dtor)
+Fortran void push_back(const double & value +intent(in))  +intent(subroutine)
+Fortran double & at(size_type n +value)  +deref(pointer)+intent(function)
+C-interface vector(void)  +api(capptr)+intent(ctor)
+C-interface ~vector(void)  +intent(dtor)
+C-interface void push_back(const double & value +intent(in))  +intent(subroutine)
+C-interface double & at(size_type n +value)  +deref(pointer)+intent(function)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
+Close utiltemplates.cpp
+Close typestemplates.h
 class vector
-Python method vector()
-Python method ~vector()
+Python method vector(void)
+Python method ~vector(void)
 Python method void push_back(const int & value +intent(in))
-Python method int & at(size_type n +intent(in)+value)
+Python method int & at(size_type n +value)
 Close pystd_vector_inttype.cpp
 class vector
-Python method vector()
-Python method ~vector()
+Python method vector(void)
+Python method ~vector(void)
 Python method void push_back(const double & value +intent(in))
-Python method double & at(size_type n +intent(in)+value)
+Python method double & at(size_type n +value)
 Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1
@@ -69,12 +126,12 @@ Close pytemplates_internalmodule.cpp
 class Worker
 Close pyWorkertype.cpp
 class user
-Python method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Python method void nested(int arg1 +value, double arg2 +value)
 Close pyuser_inttype.cpp
-Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-Python function int UseImplWorker()
-Python function int UseImplWorker()
+Python function void FunctionTU(int arg1 +value, long arg2 +value)
+Python function void FunctionTU(float arg1 +value, double arg2 +value)
+Python function int UseImplWorker(void)
+Python function int UseImplWorker(void)
 Close pytemplatesmodule.cpp
 Close pytemplatesutil.cpp
 Close pytemplatesmodule.hpp

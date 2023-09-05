@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -22,6 +22,8 @@ program tester
   call test_vector_double
   call function_generic
   call function_templates
+  call user_class
+  call struct_templates
 
   call fruit_summary
   call fruit_finalize
@@ -94,5 +96,41 @@ contains
     call assert_equals(2, rv_int)
 
   end subroutine function_templates
+
+  subroutine user_class
+    type(user_int) uvar1
+
+    uvar1 = return_user_type()
+
+    call uvar1%nested_double(12, 45.5d0)
+    
+  end subroutine user_class
+
+  subroutine struct_templates
+
+    type(struct_as_class_int) s_int
+    type(struct_as_class_double) s_double
+
+    call set_case_name("struct_templates")
+
+    ! int
+    s_int = struct_as_class_int()
+
+    call s_int%set_npts(5_C_INT)
+    call s_int%set_value(2_C_INT)
+
+    call assert_equals(5_C_INT, s_int%get_npts())
+    call assert_equals(2_C_INT, s_int%get_value())
+
+    ! double
+    s_double = struct_as_class_double()
+
+    call s_double%set_npts(5_C_INT)
+    call s_double%set_value(2.5_C_DOUBLE)
+
+    call assert_equals(5_C_INT, s_double%get_npts())
+    call assert_equals(2.5_C_DOUBLE, s_double%get_value())
+
+  end subroutine struct_templates
 
 end program tester

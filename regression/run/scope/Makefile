@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -38,11 +38,11 @@ clean :
 	rm -f $(OBJS) *.mod scope
 
 scope.o : scope.hpp
-wrapScope.o : wrapscope.h scope.hpp
-main.o : wrapfscope.o
+wrapscope.o : wrapscope.h scope.hpp
+main.o : fruit.o wrapfscope.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapscope.o
+maincpp : maincpp.o #wrapscope.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapscope.h scope.hpp

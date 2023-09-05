@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -14,6 +14,9 @@ Shroud will create multiple output file which must be compiled with
 C++ or Fortran compilers.
 
 One C++ file will be created for the library and one file for each C++ class.
+In addition a utility file will be created with routines which are
+implemented in C but called from Fortran.  This includes some memory
+management routines.
 
 Fortran creates a file for the library and one per additional namespace.
 Since Fortran does not support forward referencing of derived types,
@@ -324,6 +327,11 @@ which reference the type.
 This is used for files which are not part of the library but which contain code
 which helps map C++ constants to C constants
 
+A global *fortran_header* field will insert ``#include`` lines to be
+used with the Fortran preprocessor (typically a variant of the C
+preprocessor).  This will work with the ``cpp_if`` lines in
+declarations which will conditionally compile a wrapper.
+
 .. FILL IN MORE
 
 Local Variable
@@ -348,7 +356,6 @@ Format variable which control names are
 * CXX_this
 * C_result
 
-* F_pointer - ``SHT_pointer``
 * F_result - ``SHT_rv``  (return value)
 * F_this - ``obj``
 
@@ -439,6 +446,8 @@ the first example since ``mpi.h`` should only be included when
 When using ``cpp_if``, it is useful to set the option
 ``F_filename_suffix`` to ``F``. This will cause most compilers to
 process the Fortran souce with ``cpp`` before compilation.
+The ``fortran_header`` field can be added to the YAML file to
+insert ``#include`` directives at the top of the Fortran source files.
 
 The ``typemaps`` field can only appear at the outermost layer
 and is used to augment existing typemaps.

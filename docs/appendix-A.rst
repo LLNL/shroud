@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -54,8 +54,8 @@ that Fortran can call.
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c
-   :start-after: start TUT_no_return_no_arguments
-   :end-before: end TUT_no_return_no_arguments
+   :start-after: start TUT_NoReturnNoArguments
+   :end-before: end TUT_NoReturnNoArguments
 
 Fortran usage:
 
@@ -261,6 +261,9 @@ Example usage:
     integer(c_int), allocatable :: out_int(:)
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
 
+Numeric Pointers
+----------------
+
 .. ############################################################
 
 .. _example_getRawPtrToFixedArray:
@@ -323,8 +326,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_get_ptr_to_scalar_bufferify
-   :end-before: end POI_get_ptr_to_scalar_bufferify
+   :start-after: start POI_getPtrToScalar_bufferify
+   :end-before: end POI_getPtrToScalar_bufferify
 
 Fortran calls C via the following interface:
 
@@ -378,8 +381,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_get_ptr_to_dynamic_array_bufferify
-   :end-before: end POI_get_ptr_to_dynamic_array_bufferify
+   :start-after: start POI_getPtrToDynamicArray_bufferify
+   :end-before: end POI_getPtrToDynamicArray_bufferify
 
 Fortran calls C via the following interface:
 
@@ -528,8 +531,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c
-   :start-after: start TUT_get_min_max
-   :end-before: end TUT_get_min_max
+   :start-after: start TUT_getMinMax
+   :end-before: end TUT_getMinMax
 
 Fortran calls C via the following interface:
 
@@ -604,8 +607,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_return_int_ptr_to_fixed_array_bufferify
-   :end-before: end POI_return_int_ptr_to_fixed_array_bufferify
+   :start-after: start POI_returnIntPtrToFixedArray_bufferify
+   :end-before: end POI_returnIntPtrToFixedArray_bufferify
 
 Fortran calls C via the following interface:
 
@@ -649,8 +652,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_return_int_scalar
-   :end-before: end POI_return_int_scalar
+   :start-after: start POI_returnIntScalar
+   :end-before: end POI_returnIntScalar
 
 Fortran calls C via the following interface:
 
@@ -664,7 +667,125 @@ Example usage:
 
 .. code-block:: fortran
 
+    integer :: ivalue
     ivalue = return_int_scalar()
+
+.. ############################################################
+
+.. _example_ReturnIntPtrDimPointer:
+
+returnIntPtrDimPointer
+^^^^^^^^^^^^^^^^^^^^^^
+
+Return a Fortran pointer to an array.
+The length of the array is returned from C++ in the *len* argument.
+This argument sets the *hidden* attribute since it is not needed in
+the Fortran wrapper. It will be used in the ``c_f_pointer`` call to
+set the length of the array.
+
+..    - decl: int *ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +deref(pointer)
+
+The input is in file :file:`ownership.yaml`.
+
+.. literalinclude:: ../regression/input/ownership.yaml
+   :language: yaml
+   :start-after: start ReturnIntPtrDimPointer
+   :end-before: end ReturnIntPtrDimPointer
+
+The C wrapper calls the C++ function from an ``extern C`` wrapper.
+In does not hide the *len* argument.
+This function does not use the *deref* attribute.
+      
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_ReturnIntPtrDimPointer
+   :end-before: end OWN_ReturnIntPtrDimPointer
+
+The bufferify function passes an argument to contain the meta data of the array.
+It is written to :file:`wrapownership.cpp`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_ReturnIntPtrDimPointer_bufferify
+   :end-before: end OWN_ReturnIntPtrDimPointer_bufferify
+
+Fortran calls the bufferify function in :file:`wrapfownership.f`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapfownership.f
+   :language: fortran
+   :start-after: start return_int_ptr_dim_pointer
+   :end-before: end return_int_ptr_dim_pointer
+   :dedent: 4
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: ivalue(:)
+    integer len
+
+    ivalue => return_int_ptr_dim_pointer()
+    len = size(ivalue)
+
+.. ############################################################
+
+.. _example_ReturnIntPtrDimAlloc:
+
+returnIntPtrDimAlloc
+^^^^^^^^^^^^^^^^^^^^
+
+Convert a pointer returned from C++ into a Fortran allocatable array.
+To do this, memory is allocated in Fortran then the C++ values are copied
+into it.
+The advantage is that the user does not have to worry about releasing the
+C++ memory.
+The length of the array is returned from C++ in the *len* argument.
+This argument sets the *hidden* attribute since it is not needed in
+the Fortran wrapper.
+
+..    - decl: int *ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +deref(allocatable)
+
+The input is in file :file:`ownership.yaml`.
+
+.. literalinclude:: ../regression/input/ownership.yaml
+   :language: yaml
+   :start-after: start ReturnIntPtrDimAlloc
+   :end-before: end ReturnIntPtrDimAlloc
+
+The C wrapper calls the C++ function from an ``extern C`` wrapper.
+In does not hide the *len* argument.
+This function does not use the *deref* attribute.
+      
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_ReturnIntPtrDimAlloc
+   :end-before: end OWN_ReturnIntPtrDimAlloc
+
+The bufferify function passes an argument to contain the meta data of the array.
+It is written to :file:`wrapownership.cpp`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_ReturnIntPtrDimAlloc_bufferify
+   :end-before: end OWN_ReturnIntPtrDimAlloc_bufferify
+
+Fortran calls the bufferify function in :file:`wrapfownership.f`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapfownership.f
+   :language: fortran
+   :start-after: start return_int_ptr_dim_alloc
+   :end-before: end return_int_ptr_dim_alloc
+   :dedent: 4
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), allocatable :: ivalue(:)
+    integer len
+
+    ivalue = return_int_ptr_dim_alloc()
+    len = size(ivalue)
 
 Bool
 ----
@@ -804,8 +925,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: start CLI_return_one_name_bufferify
-   :end-before: end CLI_return_one_name_bufferify
+   :start-after: start CLI_returnOneName_bufferify
+   :end-before: end CLI_returnOneName_bufferify
 
 Fortran calls C via the following interface:
 
@@ -869,15 +990,15 @@ blank filled.:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_pass_char_ptr
-   :end-before: end STR_pass_char_ptr
+   :start-after: start STR_passCharPtr
+   :end-before: end STR_passCharPtr
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_pass_char_ptr_bufferify
-   :end-before: end STR_pass_char_ptr_bufferify
+   :start-after: start STR_passCharPtr_bufferify
+   :end-before: end STR_passCharPtr_bufferify
 
 Fortran calls C via the following interface:
 
@@ -944,8 +1065,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: start CLI_implied_text_len_bufferify
-   :end-before: end CLI_implied_text_len_bufferify
+   :start-after: start CLI_ImpliedTextLen_bufferify
+   :end-before: end CLI_ImpliedTextLen_bufferify
 
 Fortran calls C via the following interface:
 
@@ -996,10 +1117,12 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_accept_char_array_in_bufferify
-   :end-before: end POI_accept_char_array_in_bufferify
+   :start-after: start POI_acceptCharArrayIn_bufferify
+   :end-before: end POI_acceptCharArrayIn_bufferify
 
-Most of the work is done by the helper function:
+Most of the work is done by the helper function.
+This converts the Fortran array into NULL terminated strings by
+copying all of the values:
 
 .. literalinclude:: ../regression/reference/none/helpers.c
    :language: c
@@ -1067,15 +1190,15 @@ Which will call the C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_accept_string_reference
-   :end-before: end STR_accept_string_reference
+   :start-after: start STR_acceptStringReference
+   :end-before: end STR_acceptStringReference
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_accept_string_reference_bufferify
-   :end-before: end STR_accept_string_reference_bufferify
+   :start-after: start STR_acceptStringReference_bufferify
+   :end-before: end STR_acceptStringReference_bufferify
 
 An interface for the native C function is also created:
 
@@ -1152,8 +1275,8 @@ struct which is used by the Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr1_bufferify
-   :end-before: end STR_get_char_ptr1_bufferify
+   :start-after: start STR_getCharPtr1_bufferify
+   :end-before: end STR_getCharPtr1_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1210,8 +1333,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr2_bufferify
-   :end-before: end STR_get_char_ptr2_bufferify
+   :start-after: start STR_getCharPtr2_bufferify
+   :end-before: end STR_getCharPtr2_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1267,8 +1390,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr3_bufferify
-   :end-before: end STR_get_char_ptr3_bufferify
+   :start-after: start STR_getCharPtr3_bufferify
+   :end-before: end STR_getCharPtr3_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1320,15 +1443,15 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_const_string_ref_pure_bufferify
-   :end-before: end STR_get_const_string_ref_pure_bufferify
+   :start-after: start STR_getConstStringRefPure_bufferify
+   :end-before: end STR_getConstStringRefPure_bufferify
 
 The native C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_const_string_ref_pure
-   :end-before: end STR_get_const_string_ref_pure
+   :start-after: start STR_getConstStringRefPure
+   :end-before: end STR_getConstStringRefPure
 
 Fortran calls C via the following interface:
 
@@ -1476,7 +1599,7 @@ the library function will be copied.
 
 Finally, the ``std::vector`` is released based on the value of ``idtor``:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+.. literalinclude:: ../regression/reference/vectors/utilvectors.cpp
    :language: c
    :start-after: start release allocated memory
    :end-before: end release allocated memory
@@ -2079,8 +2202,8 @@ are combined into a generic interface.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: ! start interface class1
-   :end-before: ! end interface class1
+   :start-after: ! start generic interface class1
+   :end-before: ! end generic interface class1
    :dedent: 4
 
 A class instance is created and destroy from Fortran as:
@@ -2109,6 +2232,7 @@ Corresponding C++ code:
 
 Getter and Setter
 ^^^^^^^^^^^^^^^^^
+
 The C++ header file from :file:`classes.hpp`.
 
 .. code-block:: c++
@@ -2228,6 +2352,127 @@ Corresponding C++ code:
 
 .. ############################################################
 
+.. _example_struct_as_class:
+
+Struct as a Class
+^^^^^^^^^^^^^^^^^
+
+While C does not support object-oriented programming directly, it can be
+emulated by using structs.  The 'base class' struct is ``Cstruct_as_clss``.
+It is subclassed by ``Cstruct_as_subclass`` which explicitly duplicates
+the members of ``C_struct_as_class``.
+The C header file from :file:`struct.h`.
+
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start struct Cstruct_as_class
+   :end-before: end struct Cstruct_as_class
+
+The C 'constructor' returns a pointer to an instance of the object.
+
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start Cstruct_as_class ctor
+   :end-before: end Cstruct_as_class ctor
+
+The 'methods' pass an instance of the class as an explicit *this* object.
+          
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start Cstruct_as_class Cstruct_as_class_sum
+   :end-before: end Cstruct_as_class Cstruct_as_class_sum
+
+The methods are wrapped in :file:`classes.yaml`:
+
+.. code-block:: yaml
+
+    declarations:
+    - decl: struct Cstruct_as_class {
+              int x1;
+              int y1;
+            };
+      options:
+        wrap_struct_as: class
+    
+    - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+      options:
+        class_ctor: Cstruct_as_class
+    - decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+      options:
+        class_ctor: Cstruct_as_class
+    
+    - decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+      options:
+        class_method: Cstruct_as_class
+      format:
+        F_name_function: sum
+
+    - decl: struct Cstruct_as_subclass {
+              int x1;
+              int y1;
+              int z1;
+            };
+      options:
+        wrap_struct_as: class
+        class_baseclass: Cstruct_as_class
+    - decl: Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+      options:
+        wrap_python: False
+        class_ctor: Cstruct_as_subclass
+
+This uses several options to creates the class features for the struct:
+*wrap_struct_as*, *class_ctor*, *class_method*.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_class
+   :end-before: end derived-type cstruct_as_class
+
+The subclass is created using the Fortran ``EXTENDS`` keyword.  No
+additional members are added. The ``cxxmem`` field from
+``cstruct_as_class`` will now point to an instance of the C struct
+``Cstruct_as_subclass``.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_subclass
+   :end-before: end derived-type cstruct_as_subclass
+
+The C wrapper to construct the struct-as-class.  It calls the C function
+and fills in the fields for the shadow struct.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapstruct.c
+   :language: c
+   :start-after: start STR_Create_Cstruct_as_class
+   :end-before: end STR_Create_Cstruct_as_class
+
+A Fortran generic interface is created for the class:
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start generic interface cstruct_as_class
+   :end-before: end generic interface cstruct_as_class
+   :dedent: 4
+
+And the Fortran constructor call the C wrapper function.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start create_cstruct_as_class
+   :end-before: end create_cstruct_as_class
+   :dedent: 4
+
+The class can be used as:
+
+
+.. literalinclude:: ../regression/run/struct/main.f
+   :language: fortran
+   :start-after: start main.f test_struct_class
+   :end-before: end main.f test_struct_class
+   :dedent: 4
+
+.. ############################################################
+
 .. _example_UseDefaultArguments:
 
 Default Value Arguments
@@ -2262,18 +2507,18 @@ create each wrapper.
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments
-   :end-before: end TUT_use_default_arguments
+   :start-after: start TUT_UseDefaultArguments
+   :end-before: end TUT_UseDefaultArguments
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments_arg1
-   :end-before: end TUT_use_default_arguments_arg1
+   :start-after: start TUT_UseDefaultArguments_arg1
+   :end-before: end TUT_UseDefaultArguments_arg1
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments_arg1_arg2
-   :end-before: end TUT_use_default_arguments_arg1_arg2
+   :start-after: start TUT_UseDefaultArguments_arg1_arg2
+   :end-before: end TUT_UseDefaultArguments_arg1_arg2
 
 This creates three corresponding Fortran interfaces:
 
@@ -2375,8 +2620,8 @@ A generic interface is created for each declaration in the *fortran_generic* blo
 
 .. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
    :language: fortran
-   :start-after: ! start interface generic_real
-   :end-before: ! end interface generic_real
+   :start-after: ! start generic interface generic_real
+   :end-before: ! end generic interface generic_real
    :dedent: 4
 
 A Fortran wrapper is created for each declaration in the *fortran_generic* block.

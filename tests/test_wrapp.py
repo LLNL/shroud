@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -7,7 +7,7 @@
 from __future__ import print_function
 
 from shroud import ast
-from shroud import declast
+from shroud import generate
 from shroud import util
 from shroud import wrapp
 
@@ -72,8 +72,8 @@ struct Cstruct_list {
         #####
         var = map['ivalue']
         # done in generate.VerifyAttrs.parse_attrs
-        var.ast.metaattrs["dimension"] = \
-            declast.check_dimension(var.ast.attrs["dimension"])
+        declarator = var.ast.declarator
+        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."
@@ -85,8 +85,8 @@ struct Cstruct_list {
         #####
         var = map['dvalue']
         # done in generate.VerifyAttrs.parse_attrs
-        var.ast.metaattrs["dimension"] = \
-            declast.check_dimension(var.ast.attrs["dimension"])
+        declarator = var.ast.declarator
+        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."

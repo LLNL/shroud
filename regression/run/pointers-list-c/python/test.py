@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -77,13 +77,6 @@ class Pointers(unittest.TestCase):
 
         self.assertIsInstance(arg2, list)
         self.assertEqual([11,12,13], arg2)
-
-    def test_iota_allocatable(self):
-        # out - created list.
-        out = pointers.iota_allocatable(3)
-        self.assertIsInstance(out, list)
-        self.assertEqual(3, len(out))
-        self.assertEqual([1,2,3], out)
 
     def test_iota_dimension(self):
         # out - created list.

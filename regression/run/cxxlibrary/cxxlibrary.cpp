@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
  * other Shroud Project Developers.
  * See the top-level COPYRIGHT file for details.
  *
@@ -11,10 +11,12 @@
 
 #include "cxxlibrary.hpp"
 
-static Cstruct1 global_Cstruct1;
 static Cstruct1_cls global_Cstruct1_cls;
+static std::string global_string("global-string");
 
 //----------------------------------------------------------------------
+namespace structns {
+static Cstruct1 global_Cstruct1;
 // Test Fortran.
 // Test Python struct as numpy.
 
@@ -42,6 +44,7 @@ void passStructByReferenceOut(Cstruct1 &arg)
 {
     arg = global_Cstruct1;
 }
+};  // namespace cxxlibrary
 
 //----------------------------------------------------------------------
 // Test Python struct as class.
@@ -97,4 +100,11 @@ void defaultArgsInOut(int in1, int *out1, int *out2, bool flag)
 
 void accept_complex(std::complex<double> *arg1)
 {
+}
+
+//----------------------------------------------------------------------
+
+const std::string& getGroupName(long idx)
+{
+    return global_string;
 }

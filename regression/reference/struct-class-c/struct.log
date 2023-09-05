@@ -1,30 +1,30 @@
 Read yaml struct.yaml
 Close struct_types.yaml
 class Cstruct1
-Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+Python method Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)
 Close pyCstruct1type.c
 class Cstruct_ptr
-Python method Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)
+Python method Cstruct_ptr(char * cfield, const double * const_dvalue) +name(Cstruct_ptr_ctor)
 Close pyCstruct_ptrtype.c
 class Cstruct_list
-Python method Cstruct_list(int nitems +intent(in), int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)
+Python method Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems), double * dvalue +dimension(nitems*TWO), char * * svalue +dimension(nitems)) +name(Cstruct_list_ctor)
 Close pyCstruct_listtype.c
 class Cstruct_numpy
-Python method Cstruct_numpy(int nitems +intent(in), int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)
+Python method Cstruct_numpy(int nitems, int * ivalue +dimension(nitems), double * dvalue +dimension(nitems)) +name(Cstruct_numpy_ctor)
 Close pyCstruct_numpytype.c
 class Arrays1
-Python method Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)
+Python method Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)
 Close pyArrays1type.c
-Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
-Python function int passStruct1(const Cstruct1 * arg +intent(in))
-Python function int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
+Python function int passStructByValue(Cstruct1 arg +value)
+Python function int passStruct1(const Cstruct1 * arg)
+Python function int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))
 Python function int acceptStructInPtr(Cstruct1 * arg +intent(in))
-Python function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
+Python function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)
 Python function void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
-Python function Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
-Python function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
-Python function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
-Python function Cstruct_list * get_global_struct_list()
+Python function Cstruct1 returnStructByValue(int i +value, double d +value)
+Python function Cstruct1 * returnStructPtr1(int i +value, double d +value)
+Python function Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))
+Python function Cstruct_list * get_global_struct_list(void)
 Close pystructmodule.c
 Close pystructutil.c
 Close pystructmodule.h

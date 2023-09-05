@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -34,9 +34,32 @@ void test_pairs()
   assert(big == 100);
 }
 
+void test_structAsClass()
+{
+    structAsClass<double> mystruct = {2, 3.5};
+
+    assert(mystruct.get_npts() == 2);
+    assert(mystruct.get_value() == 3.5);
+
+    mystruct.set_npts(5);
+    mystruct.set_value(2.5);
+
+    assert(mystruct.npts == 5);
+    assert(mystruct.value == 2.5);
+
+    struct {
+        int npts;
+        double value;
+    } explicit_struct;
+    assert(sizeof(mystruct) == sizeof(explicit_struct));
+}
+
 int main(int argc, char *argv[])
 {
   test_vector_int();
 
   test_pairs();
+
+  test_structAsClass();
+  
 }

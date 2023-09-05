@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -64,6 +64,10 @@ declarations:
       cxx_header: ExClass1.hpp
       # include files to add to module
 
+      # Test adding fields to typemap
+      fields:
+         export: True
+
       python:
         type: [ init, repr, richcompare ]
 
@@ -115,6 +119,7 @@ declarations:
                init, alloc, new, free, del]
 
       declarations:
+      - decl: class ExClass2Nested
       - decl: ExClass2(const string *name)
         doxygen:
           brief:  constructor
@@ -133,6 +138,7 @@ declarations:
       - decl: const string& getName() const
         # test annotating result
         fattrs:
+          # XXX - len is evalued in C code
           len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
 
     # test variations of const for result and method
@@ -300,7 +306,7 @@ declarations:
 
     - decl: void cos_doubles(
                double * in   +intent(in)  +rank(2),
-               double * out  +intent(out) +deref(allocatable)+dimension(shape(in)),
+               double * out  +intent(out) +dimension(shape(in)),
                int      sizein +implied(size(in)))
       doxygen:
         brief: Test multidimensional arrays with allocatable

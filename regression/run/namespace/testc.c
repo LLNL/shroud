@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
  * other Shroud Project Developers.
  * See the top-level COPYRIGHT file for details.
  *
@@ -15,12 +15,12 @@
 
 void test_ns(void)
 {
-  NS_one();
+  NS_One();
 }
 
 void test_ns_outer(void)
 {
-  NS_outer_one();
+  NS_outer_One();
 }
 
 int main(int argc, char *argv[])

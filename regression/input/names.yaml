@@ -3,7 +3,7 @@
 # Various format combinations are tested.
 
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -62,8 +62,8 @@ declarations:
   - decl: class Names
     options:
       none: foo
-      C_name_template: XXX_{C_prefix}{C_name_scope}{underscore_name}{function_suffix}
-      F_C_name_template: XXX_{C_prefix}{F_name_scope}{underscore_name}{function_suffix}
+      C_name_template: XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}
+      F_C_name_template: XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}
     format:
       C_header_filename: foo.h
       C_impl_filename: foo.cpp
@@ -86,9 +86,9 @@ declarations:
 
 - block: True
   options:
-    C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
-    F_C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
-    F_name_impl_template: "{library}_{F_name_scope}{underscore_name}{function_suffix}"
+    C_name_template: YYY_{C_prefix}{C_name_api}{function_suffix}
+    F_C_name_template: YYY_{C_prefix}{F_name_api}{function_suffix}
+    F_name_impl_template: "{library}_{F_name_scope}{F_name_api}{function_suffix}"
   declarations:
   - decl: void function1()
   - decl: void function2()
@@ -116,7 +116,7 @@ declarations:
 - decl: namespace ns1
   options:
     # test options in namespace
-    F_name_impl_template: "{library_lower}_{F_name_scope}{underscore_name}{function_suffix}"
+    F_name_impl_template: "{library_lower}_{F_name_scope}{F_name_api}{function_suffix}"
   declarations:
   - decl: void init_ns1()
 
@@ -223,7 +223,17 @@ declarations:
   - decl: class Class1
     declarations:
     - decl: void Member1()
-    
+
+- decl: namespace CAPI2
+  options:
+    wrap_python: False
+  format:
+    C_name_api: CAPItwo
+    F_name_api: FAPItwo
+  declarations:
+  - decl: void Worker1()
+
+
 ########################################
 # Copied from templates.yaml
 - decl: template<typename T> int UseImplWorker()
@@ -231,6 +241,41 @@ declarations:
      brief: Function which uses a templated T in the implemetation.
   cxx_template:
   - instantiation: <internal::ImplWorker1>
+
+########################################
+# from struct.yaml
+# Check that F_derived_member_base is set correctly.
+# Should be F_derived_name of class_baseclass.
+
+- decl: struct Cstruct_as_class
+  options:
+    wrap_struct_as: class
+  format:
+    F_derived_name: Fstruct_as_class
+
+- decl: struct Cstruct_as_subclass
+  options:
+    wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
+  format:
+    F_derived_name: Fstruct_as_subclass
+
+# Fortran type-bound name same as function name so will generate:
+#    procedure :: cstruct_as_class_sum
+- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+  options:
+    class_method: Cstruct_as_class
+
+########################################
+# Continuation of IMPORT statement
+
+- decl: void external_funcs(const char *rdbase, const char *pkg,
+                            const char *name,
+                            void (*alloc)(double *arr+intent(inout), int *err+intent(out)),
+                            void (*afree)(double *arr+intent(inout)),
+                            void (*assoc)(double *arr+intent(in), int *err+intent(out)))
+  options:
+    wrap_python: False
 
 ########################################
 # Test explicit splicers
@@ -246,11 +291,14 @@ splicer_code:
          - // lines from explict splicer - namespace ns0
          class:
            Names:
-             CXX_definitions:
-             - // CXX_definitions for ns0 class Names
+             CXX_definitions: |
+               // CXX_definitions for ns0 class Names
+               // allow YAML multiline strings
        ns0::inner:
           CXX_definitions:
           - // CXX_definitions for ns0::inner
+          - // Allow blank line below (convert None to '')
+          -
      class:
        Names2:
          C_definitions:
@@ -263,6 +311,7 @@ splicer_code:
      namespace:
        ns0::inner:
           file_top:
+          # necessary to quote line to avoid creating a dictionary with the : metacharacter.
           -  "! top of ns0::inner"
      function:
        test_multiline_splicer:
@@ -275,3 +324,9 @@ splicer_code:
        test_multiline_splicer:
        - // This splicer should be ignored.
        - // Instead the inline splicer above is used since it is closer to the decl.
+
+
+file_code:
+  top.h:
+     c_header: cfoo.h
+     cxx_header: cxxfoo.hpp

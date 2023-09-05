@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -19,25 +19,27 @@ options:
   wrap_lua: False
 
 declarations:
+- decl: namespace structns
+  declarations:
 
 # Struct from struct.yaml, but will be passed via a reference
-- decl: struct Cstruct1 {
-          int ifield;
-          double dfield;
-        };
-  options:
-    PY_struct_arg: numpy
+  - decl: struct Cstruct1 {
+            int ifield;
+            double dfield;
+          };
+    options:
+      PY_struct_arg: numpy
 
-- decl: int passStructByReference(Cstruct1 &arg)
-  doxygen:
-    description: |
-       Argument is modified by library, defaults to intent(inout).
-- decl: int passStructByReferenceIn(const Cstruct1 &arg)
-  doxygen:
-    description: |
-       const defaults to intent(in)
-- decl: void passStructByReferenceInout(Cstruct1 &arg +intent(inout))
-- decl: void passStructByReferenceOut(Cstruct1 &arg +intent(out))
+  - decl: int passStructByReference(Cstruct1 &arg)
+    doxygen:
+      description: |
+         Argument is modified by library, defaults to intent(inout).
+  - decl: int passStructByReferenceIn(const Cstruct1 &arg)
+    doxygen:
+      description: |
+         const defaults to intent(in)
+  - decl: void passStructByReferenceInout(Cstruct1 &arg +intent(inout))
+  - decl: void passStructByReferenceOut(Cstruct1 &arg +intent(out))
 
 
 ##################################################
@@ -71,3 +73,16 @@ declarations:
            int *out1+intent(out),
            int *out2+intent(out),
            bool flag = false)
+
+##################################################
+
+- decl: const std::string& getGroupName(long idx) +len(30)
+  doxygen:
+    brief: String reference function with scalar generic args
+  fortran_generic:
+  - decl: (int32_t idx)
+    function_suffix: _int32_t
+  - decl: (int64_t idx)
+    function_suffix: _int64_t
+  options:
+    wrap_python: False

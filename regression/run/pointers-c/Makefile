@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -20,11 +20,12 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
-    pointers.o \
-    wrapfpointers.o \
-    wrappointers.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpointers.o \
+    pointers.o \
+    wrappointers.o \
+    utilpointers.o
 
 pointers-c : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
@@ -32,4 +33,4 @@ pointers-c : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod pointers
 
-main.o : wrapfpointers.o
+main.o : fruit.o wrapfpointers.o

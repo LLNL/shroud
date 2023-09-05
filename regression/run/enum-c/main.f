@@ -1,4 +1,4 @@
-! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 ! other Shroud Project Developers.
 ! See the top-level COPYRIGHT file for details.
 !
@@ -17,6 +17,7 @@ program tester
   call init_fruit
 
   call test_enums
+  call test_enum_functions
 
   call fruit_summary
   call fruit_finalize
@@ -47,4 +48,16 @@ contains
 
   end subroutine test_enums
 
+  subroutine test_enum_functions
+    ! test functions which pass enums
+
+    integer icol
+
+    call set_case_name("test_enum_functions")
+
+    icol = convert_to_int(RED)
+    call assert_equals(RED, icol, "convert_to_int")
+    
+  end subroutine test_enum_functions
+  
 end program tester

@@ -1,5 +1,5 @@
 copyright:
-- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 - other Shroud Project Developers.
 - See the top-level COPYRIGHT file for details.
 -
@@ -13,7 +13,7 @@ namespace: classes
 options:
   debug: True
   wrap_python: True
-#  wrap_lua: True
+  wrap_lua: True
   literalinclude2: True
 
 declarations:
@@ -23,6 +23,9 @@ declarations:
   declarations:
   - decl: int m_flag +readonly;
   - decl: int m_test +name(test);
+  - decl: std::string m_name
+    options:
+      wrap_python: False
   - decl: Class1()
     format:
       function_suffix: _default
@@ -42,8 +45,10 @@ declarations:
        # Need to fix fmt.cxx_deref
        wrap_lua: False
 
+# start returnThis
   - decl: Class1 * returnThis();
     return_this: True
+# end returnThis
     doxygen:
        brief: Return pointer to 'this' to allow chaining calls
     options:
@@ -53,8 +58,8 @@ declarations:
   - decl: Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);
     # do not set return_this
     # passing in a string will cause node.generated_suffix to be set to '_buf'.
-    # but result is not bufferified so look for c_statements['result'], not
-    # 'result_buf'.
+    # but result is not bufferified so look for c_statements['function'], not
+    # 'function_buf'.
 
     # The bool argument tests that wrapf.py does not use _generated_suffix
     # since it only applies to the generated C function.
@@ -104,20 +109,43 @@ declarations:
     wrap_lua: False
   
 # parser does not recognized **
-#- decl: void getclass(const Class1 **arg1) 
+#- decl: void getclass(const Class1 **arg1)
+#  doxygen:
+#    brief:  Return class pointer via argument
 #  options:
 #    wrap_python: False
 #    wrap_lua: False
   
 - decl: const Class1 *getclass2() 
+  doxygen:
+    brief:  Return const class pointer
   options:
     # const issues with python
     wrap_python: False
     wrap_lua: False
   
 - decl: Class1 *getclass3() 
+  doxygen:
+    brief:  Return class pointer
   options:
 #  wrap_python: False
+    wrap_lua: False
+
+- decl: const Class1 *getclass2_void() 
+  doxygen:
+    brief:  C wrapper will return void
+  options:
+    C_shadow_result: False
+    # const issues with python
+    wrap_python: False
+    wrap_lua: False
+  
+- decl: Class1 *getclass3_void() 
+  doxygen:
+    brief:  C wrapper will return void
+  options:
+    C_shadow_result: False
+    wrap_python: False
     wrap_lua: False
 
 - decl: const Class1 &getConstClassReference()
@@ -143,10 +171,48 @@ declarations:
 - decl: class Singleton
   options:
     wrap_lua: false
+    literalinclude: True
+  format:
+    # Avoid this clutter in the documentation (literalinclude)
+    F_name_instance_get:
+    F_name_instance_set:
+    F_name_associated:
   declarations:
 #  - decl: static Singleton* instancePtr()
   - decl: static Singleton& getReference()
 
+##################################################
+
+- decl: class Shape
+  declarations:
+  - decl: Shape()
+  - decl: int get_ivar() const
+
+- decl: "class Circle : public Shape"
+  declarations:
+  - decl: Circle()
+
+##################################################
+# test getters with pointers
+
+- decl: class Data
+  options:
+    wrap_lua: false
+    wrap_python: false
+    literalinclude: true
+  format:
+    # Remove these methods to make documentation less cluttered.
+    F_name_associated:
+    F_name_instance_get:
+    F_name_instance_set:
+  declarations:
+  - decl: int nitems;
+  - decl: int *items  +dimension(nitems);
+  - decl: void allocate(int n);
+  - decl: void free();
+  - decl: Data()
+  - decl: ~Data()
+    
 ##################################################
 # Used with testing
 - decl: void set_global_flag(int arg)

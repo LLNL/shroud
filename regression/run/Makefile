@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -8,30 +8,66 @@
 #
 #  Compile and test generated wrappers.
 #
+# Initialization
+# 3.80 for order-only dependency.
+need := 3.80
+ok := $(filter $(need),$(firstword $(sort $(MAKE_VERSION) $(need))))
+$(if $(ok),,$(error version $(need) of gmake or greater is required))
+
 compiler = gcc
 export compiler
 
+# build/temp-
+#             run/$(testdir)/prob
+# relrunpath- relative directory, allow multiple compiler builds
+testdir = .
+relrunpath = $(tempdir)/run/$(testdir)
+
 include $(top)/regression/run/defaults.mk
 
+# ( prefix, directory, command )
+# Save output to file and record PASS/FAIL
+ifeq ($(LOGOUTPUT),1)
+run-command = cd $2 && rm -f $1.PASS $1.FAIL ; { $3 >| $1.out 2>&1; } && touch $1.PASS || ( touch $1.FAIL; false )
+else
+run-command = cd $2 && $3
+endif
+
 ######################################################################
-# Compile a Fortran test
-fortran-% : $(tempdir)/run/%/.. phony_explicit
-	$(MAKE) \
-	    -C $(tempdir)/run/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) $*
+#
+# Several tests compile the test code with both C and C++.
+# Copy the .c suffix to a .cpp suffix file to compile as C++.
+# Done as an order-only dependency since the referrence file will not
+# change during the compilation test.
+#
 
-# Run a Fortran test
-test-fortran-% : fortran-%
-	$(tempdir)/run/$*/$*
+.PHONY : sync-cxx
+sync-cxx : \
+  $(relrunpath)/cxx/pointers.cpp \
+  $(relrunpath)/cxx/struct.cpp \
+  $(relrunpath)/cxx/typedefs.cpp
 
-# Run the Fortran tests
-test-fortran : \
+$(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/typedefs.cpp : regression/run/typedefs/typedefs.c | $(relrunpath)/cxx/..
+	cp $< $@
+
+
+######################################################################
+# Fortran
+
+fortran-test-list-std = \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-typemap32 \
+  test-fortran-typemap64 \
   test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \
+  test-fortran-typedefs-c \
+  test-fortran-typedefs-cxx \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
@@ -45,33 +81,70 @@ test-fortran : \
   test-fortran-ccomplex \
   test-fortran-clibrary \
   test-fortran-cxxlibrary \
+  test-fortran-defaultarg32 \
+  test-fortran-defaultarg64 \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
   test-fortran-templates
 
+fortran-test-list-cfi = \
+  test-fortran-pointers-cfi \
+  test-fortran-strings-cfi \
+  test-fortran-generic-cfi
+
+fortran-test-list = $(fortran-test-list-std) $(fortran-test-list-cfi)
+
+# Compile a Fortran test
+fortran-% : | $(relrunpath)/%/.. sync-cxx
+	$(call run-command,build-f,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) $*)
+
+# Run a Fortran test
+.PHONY : $(fortran-test-list)
+$(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
+	$(call run-command,test-f,$(relrunpath)/$*,./$*)
+
+# Run the Fortran tests
+.PHONY : test-fortran
+test-fortran : $(fortran-test-list-std)
+
+# Futher Interoperability with C
+# gfortran 9.1
+# intel 16.0.3
+.PHONY : test-cfi
+test-cfi : $(fortran-test-list-cfi)
+
+
 ######################################################################
-# Compile a C test
-c-% : $(tempdir)/run/%/.. phony_explicit
-	$(MAKE) \
-	    -C $(tempdir)/run/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) testc
+# C
 
-
-# Run the C tests
-test-c-% : c-%
-	$(tempdir)/run/$*/testc
-
-# Compile C tests
-test-c : \
+c-test-list = \
   test-c-types \
+  test-c-typemap32 \
+  test-c-typemap64 \
   test-c-classes \
   test-c-enum-c \
+  test-c-typedefs-cxx \
   test-c-namespace \
+  test-c-pointers-cxx \
+  test-c-struct-cxx \
   test-c-statement \
   test-c-templates
 
+# Compile a C test
+c-% : | $(relrunpath)/%/.. sync-cxx
+	$(call run-command,build-c,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) testc)
+
+# Run the C tests
+.PHONY : $(c-test-list)
+$(c-test-list) : test-c-% : c-% | $(relrunpath)/%/..
+	$(call run-command,test-c,$(relrunpath)/$*,./testc)
+
+# Compile C tests
+.PHONY : test-c
+test-c : $(c-test-list)
 
 ##  test-c-tutorial 
 ##  test-c-types 
@@ -89,36 +162,34 @@ test-c : \
 
 
 ######################################################################
-# Compile a C++ test
-cpp-% : $(tempdir)/run/%/.. phony_explicit
-	$(MAKE) \
-	    -C $(tempdir)/run/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) maincpp
+# C++
 
-# Run a C++ test
-test-cpp-% : cpp-%
-	$(tempdir)/run/$*/maincpp
-
-test-cpp : \
-  cpp-tutorial \
-  cpp-templates \
+cpp-test-list = \
+  test-cpp-tutorial \
+  test-cpp-templates \
+  test-cpp-defaultarg32 \
+  test-cpp-defaultarg64 \
   test-cpp-scope
 
+# Compile a C++ test
+cpp-% : | $(relrunpath)/%/..
+	$(call run-command,build-cxx,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) maincpp)
+
+# Run a C++ test
+.PHONY : $(cpp-test-list)
+$(cpp-test-list) : test-cpp-% : cpp-% | $(relrunpath)/%/..
+	$(call run-command,test-cxx,$(relrunpath)/$*,./maincpp)
+
+.PHONY : test-cpp
+test-cpp : $(cpp-test-list)
+
 ######################################################################
-# Compile the generated Python wrapper
-pymod-% : $(tempdir)/run/%/python/.. phony_explicit
-	$(MAKE) \
-	    -C $(tempdir)/run/$(subst pymod-,,$@)/python \
-	    -f $(top)/regression/run/$(subst pymod-,,$@)/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
+# Python
+#  test-python-typedefs-c \
+#  test-python-typedefs-cxx
 
-# Run the Python tests
-test-python-% : pymod-%
-	export PYTHONPATH=$(top)/$(tempdir)/run/$*/python; \
-	$(python.exe) $(top)/regression/run/$*/python/test.py
-
-test-python : \
+python-test-list = \
   test-python-tutorial \
   test-python-types \
   test-python-classes \
@@ -138,32 +209,62 @@ test-python : \
   test-python-struct-py-c \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
+  test-python-vectors-list \
   test-python-ccomplex \
   test-python-clibrary \
   test-python-cxxlibrary \
   test-python-ownership \
   test-python-templates
 
+# Compile the generated Python wrapper
+pymod-% : | $(relrunpath)/%/python/.. sync-cxx
+	$(call run-command,build-py,$(relrunpath)/$*/python,\
+	$(MAKE) -f $(top)/regression/run/$*/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all)
+
+# Run the Python tests
+.PHONY : $(python-test-list)
+$(python-test-list) : test-python-% : pymod-% | $(relrunpath)/%/python/..
+	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
+	$(call run-command,test-py,$(relrunpath)/$*/python, \
+	$(python.exe) $(top)/regression/run/$*/python/test.py)
+
+.PHONY : test-python
+test-python : $(python-test-list)
+
 # test-python-templates
 
 ######################################################################
-# Compile the geneated Lua wrapper
-lua-tutorial : $(tempdir)/run/tutorial/lua/.. phony_explicit
-	$(MAKE) \
-	    -C $(tempdir)/run/tutorial/lua \
-	    -f $(top)/regression/run/tutorial/lua/Makefile \
-	    LUA=$(LUA) top=$(top) all
+# Lua
+
+lua-test-list = \
+    test-lua-tutorial \
+    test-lua-classes
+
+# Compile the generated Lua wrapper
+compile-lua-% : | $(relrunpath)/%/lua/..
+	$(call run-command,build-lua,$(relrunpath)/$*/lua,\
+	$(MAKE) -f $(top)/regression/run/$*/lua/Makefile \
+	    LUA=$(LUA) top=$(top) all)
 
 # Run the Lua test
-test-lua : lua-tutorial
-#	export LUA_PATH=$(top)/$(tempdir)/run/tutorial/lua;
-	cd $(top)/$(tempdir)/run/tutorial/lua; \
-	$(LUA_BIN) $(top)/regression/run/tutorial/lua/test.lua
+.PHONY : $(lua-test-list)
+$(lua-test-list) : test-lua-% : compile-lua-% | $(relrunpath)/%/lua/..
+#	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
+	$(call run-command,test-lua,$(relrunpath)/$*/lua, \
+	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
+
+.PHONY : test-lua
+test-lua : $(lua-test-list)
 
 ######################################################################
+.PHONY : test-all test-all-fortran-c
 test-all : test-c test-fortran test-python test-lua
 
+test-all-fortran-c : test-c test-fortran
+
 # test specific yaml files
+.PHONY : test-pointers
 test-pointers : \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
@@ -172,7 +273,9 @@ test-pointers : \
   test-python-pointers-list-c \
   test-python-pointers-list-cxx
 
+.PHONY : test-struct
 test-struct : \
+  test-c-struct-cxx \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-python-struct-numpy-c \
@@ -180,68 +283,13 @@ test-struct : \
   test-python-struct-class-c \
   test-python-struct-class-cxx
 
-.PHONY : test-c
-.PHONY : test-python
-.PHONY : test-lua lua-tutorial
-.PHONY : test-all
-.PHONY : test-struct
+.PHONY : test-typemap
+test-typemap : \
+  test-c-typemap32 \
+  test-c-typemap64 \
+  test-fortran-typemap32 \
+  test-fortran-typemap64 \
 
-.PHONY: phony_explicit
-phony_explicit: 
-
-# Avoid deleting directories created to run tests.
-# They are created via pattern rules.
-.SECONDARY: \
-    $(tempdir)/run/ccomplex/.. \
-    $(tempdir)/run/ccomplex/python/.. \
-    $(tempdir)/run/cdesc/.. \
-    $(tempdir)/run/classes/.. \
-    $(tempdir)/run/classes/python/.. \
-    $(tempdir)/run/clibrary/.. \
-    $(tempdir)/run/clibrary/python/.. \
-    $(tempdir)/run/cxxlibrary/.. \
-    $(tempdir)/run/cxxlibrary/python/.. \
-    $(tempdir)/run/enum-c/.. \
-    $(tempdir)/run/enum-c/python/.. \
-    $(tempdir)/run/forward/.. \
-    $(tempdir)/run/generic/.. \
-    $(tempdir)/run/namespace/.. \
-    $(tempdir)/run/namespace/python/.. \
-    $(tempdir)/run/ownership/.. \
-    $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/pointers-c/..\
-    $(tempdir)/run/pointers-cxx/..\
-    $(tempdir)/run/pointers-numpy-cxx/python/.. \
-    $(tempdir)/run/pointers-list-cxx/python/.. \
-    $(tempdir)/run/pointers-numpy-c/python/.. \
-    $(tempdir)/run/pointers-list-c/python/.. \
-    $(tempdir)/run/preprocess/..\
-    $(tempdir)/run/preprocess/python/.. \
-    $(tempdir)/run/preprocess/.. \
-    $(tempdir)/run/arrayclass/.. \
-    $(tempdir)/run/arrayclass/python/.. \
-    $(tempdir)/run/scope/.. \
-    $(tempdir)/run/statement/.. \
-    $(tempdir)/run/strings/.. \
-    $(tempdir)/run/strings/python/.. \
-    $(tempdir)/run/struct-c/.. \
-    $(tempdir)/run/struct-cxx/.. \
-    $(tempdir)/run/struct-numpy-c/python/.. \
-    $(tempdir)/run/struct-numpy-cxx/python/.. \
-    $(tempdir)/run/struct-class-c/python/.. \
-    $(tempdir)/run/struct-class-cxx/python/.. \
-    $(tempdir)/run/struct-list-c/python/.. \
-    $(tempdir)/run/structlist/python/.. \
-    $(tempdir)/run/struct-py-c/python/.. \
-    $(tempdir)/run/struct-py-cxx/python/.. \
-    $(tempdir)/run/templates/.. \
-    $(tempdir)/run/templates/python/.. \
-    $(tempdir)/run/tutorial/..\
-    $(tempdir)/run/tutorial/python/.. \
-    $(tempdir)/run/tutorial/lua/.. \
-    $(tempdir)/run/types/..\
-    $(tempdir)/run/types/python/..\
-    $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors-list/python/.. \
-    $(tempdir)/run/vectors-numpy/python/..
-
+test-clean-testdir :
+	rm -rf $(relrunpath)
+.PHONY : test-clean-testdir

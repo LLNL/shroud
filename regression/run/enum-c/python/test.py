@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -47,6 +47,11 @@ class Enum(unittest.TestCase):
         self.assertEqual(4, cenum.f1)
         self.assertEqual(5, cenum.g1)
         self.assertEqual(100, cenum.h1)
+
+    def test_convert_to_int(self):
+        icol = cenum.convert_to_int(cenum.RED)
+        self.assertEqual(cenum.RED, icol)
+        
 
 
 # creating a new test suite

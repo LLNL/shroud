@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -15,7 +15,7 @@ The template is given as part of the ``decl`` and the instantations are listed i
 
   - decl: |
         template<typename ArgType>
-        void Function7(ArgType arg)
+        void TemplateArgument(ArgType arg)
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
@@ -42,3 +42,11 @@ then the template argument is used.  For the above example,
 *C_impl_filename* will default to ``wrapvector_int.cpp`` but has been
 explicitly changed to ``wrapvectorforint.cpp``.
 
+Functions can be created which return a templated class:
+
+.. code-block:: yaml
+
+    - decl: vector<int> getVector()
+
+The result type must be instantiated via the *cxx_template* block before
+it can be used.

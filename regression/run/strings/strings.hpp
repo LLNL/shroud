@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -13,6 +13,8 @@
 
 #include <string>
 
+void init_test(void);
+
 void passChar(char status);
 void passCharForce(char status);
 char returnChar();
@@ -24,6 +26,7 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 const char * getCharPtr4();
+const char * getCharPtr5();
 
 const std::string getConstStringResult();
 const std::string getConstStringLen();
@@ -40,6 +43,9 @@ const std::string * getConstStringPtrLen();
 const std::string * getConstStringPtrAlloc();
 const std::string * getConstStringPtrOwnsAlloc();
 const std::string * getConstStringPtrOwnsAllocPattern();
+
+const std::string * getConstStringPtrPointer();
+const std::string * getConstStringPtrOwnsPointer();
 
 void acceptName_instance(std::string arg1);
 
@@ -63,6 +69,10 @@ int acceptStringInstance(std::string arg1);
 
 void returnStrings(std::string & arg1, std::string & arg2);
 
+void fetchArrayStringArg(std::string **strs, int *nstrs);
+void fetchArrayStringAlloc(std::string **strs, int *nstrs);
+void fetchArrayStringAllocLen(std::string **strs, int *nstrs);
+
 char returnMany(int * arg1);
 
 void explicit1(char * name);
@@ -74,8 +84,12 @@ extern "C" {
 
   void CpassCharPtr(char * dest, const char *src);
 }
+void CpassCharPtrBlank(char *dest, const char *src);
 
 void PostDeclare(int *count, std::string &name);
+int CpassCharPtrNotrim(const char *src);
+int CpassCharPtrCAPI(void *addr, const char *src);
+int CpassCharPtrCAPI2(const char *in, const char *src);
 
 
 #endif // STRINGS_HPP

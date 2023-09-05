@@ -1,0 +1,73 @@
+copyright:
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Create an executable program for typedefs
+# C source to enable testing of typedefs with struct/enum tags.
+
+library: typedefs
+cxx_header: typedefs.h
+
+options:
+  debug: True
+  wrap_python: True
+  PY_struct_arg: list
+  literalinclude: True
+
+declarations:
+
+# Using a typedef as an alias
+- decl: typedef int TypeID;
+- decl: TypeID typefunc(TypeID arg);
+
+# struct typedef
+- decl: struct s_Struct1 {
+          int i;
+          double d;
+        };
+- decl: typedef struct s_Struct1 Struct1Rename;
+- decl: void typestruct(Struct1Rename *arg1);
+
+######################################################################
+
+- decl: typedef int32_t IndexType
+  fields:
+    c_to_cxx : static_cast<IndexType>({c_var})
+    cxx_to_c : static_cast<TYP_IndexType>({cxx_var})
+#    c_type   : SIDRE_TypeID
+  splicer:
+    c: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      typedef int64_t TYP_IndexType;
+      #else
+      typedef int32_t TYP_IndexType;
+      #endif
+    f: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      integer, parameter :: INDEX_TYPE = C_INT64_T
+      #else
+      integer, parameter :: INDEX_TYPE = C_INT32_T
+      #endif
+
+- decl: int returnBytesForIndexType(IndexType arg);
+  options:
+    wrap_python: False
+
+
+######################################################################
+
+# Add code which will be integrated with other include and use statements
+# added by typemaps and statements.
+file_code:
+#  wraptypemap.h:
+#    c_header: <stdint.h>
+#    cxx_header: <cstdint>
+  wrapftypedefs.f:
+    f_module:
+      iso_c_binding:
+      - C_INT32_T
+      - C_INT64_T

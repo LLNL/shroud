@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
@@ -31,4 +31,4 @@ clibrary : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod clibrary
 
-main.o : wrapfclibrary.o
+main.o : fruit.o wrapfclibrary.o
