@@ -550,6 +550,8 @@ def print_tree_statements(fp, statements, defaults):
         for key in base.__dict__.keys():
             if key[0] == "_":
                 continue
+            if key not in value:
+                print("XXX key not in value", key, value.name)
             if value[key]:
                 all[key] = value[key]
         if root != "f":
@@ -703,36 +705,41 @@ fc_statements = [
     dict(
         # No arguments. Set necessary fields as a group.
         name="c_mixin_noargs",
-        c_arg_decl=[],
-        i_arg_decl=[],
-        i_arg_names=[],
-    ),    
-    dict(
-        name="c_subroutine",
-        mixin=["c_mixin_noargs"],
         alias=[
             # From wrap_function_interface
             "c_subroutine_void_scalar",
             "c_subroutine_void_scalar_capptr",
         ],
-    ),
+        c_arg_decl=[],
+        i_arg_decl=[],
+        i_arg_names=[],
+    ),    
     dict(
-        name="f_subroutine",
+        name="fc_subroutine",
+        mixin=[
+            "c_mixin_noargs",
+        ],
+        alias=[
+            "f_subroutine",
+            "c_subroutine",
+        ],
         f_arg_call=[],
     ),
 
     dict(
         name="c_function",
         alias=[
-            "c_function_bool_scalar",
-            "c_function_native_scalar",
             "c_function_void_*",
         ],
     ),
     dict(
         name="f_function",
+    ),
+    dict(
+        name="fc_function_native_scalar",
         alias=[
             "f_function_native_scalar",
+            "c_function_native_scalar",
         ],
     ),
 
@@ -1114,9 +1121,10 @@ fc_statements = [
         f_post_call=["{f_var} = {c_var_cxx}  ! coerce to logical"],
     ),
     dict(
-        name="f_function_bool",
+        name="fc_function_bool_scalar",
         alias=[
             "f_function_bool_scalar",
+            "c_function_bool_scalar",
         ],
         # The wrapper is needed to convert bool to logical
         f_need_wrapper=True
@@ -1315,7 +1323,10 @@ fc_statements = [
     ),
     dict(
         # return a type(C_PTR)
-        name="f_function_void_*",
+        name="fc_function_void_*",
+        alias=[
+            "f_function_void_*",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
@@ -1420,8 +1431,14 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_function_native_*_cdesc_allocatable",
-        mixin=["f_mixin_function_cdesc"],
+        name="fc_function_native_*_cdesc_allocatable",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_function_native_*_cdesc",
+        ],
+        alias=[
+            "f_function_native_*_cdesc_allocatable",
+        ],
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
@@ -1438,8 +1455,13 @@ fc_statements = [
     dict(
         # Pointer to scalar.
         # type(C_PTR) is returned instead of a cdesc argument.
-        name="f_function_native_&",
+        name="fc_mixin_function_native_&",
         alias=[
+            "fc_function_native_&",
+            "fc_function_native_*_pointer",   # XXX - change base to &?
+            "fc_function_native_&_pointer",
+            "fc_function_struct_*_pointer",
+            "f_function_native_&",
             "f_function_native_*_pointer",   # XXX - change base to &?
             "f_function_native_&_pointer",
             "f_function_struct_*_pointer",
@@ -1462,8 +1484,17 @@ fc_statements = [
     dict(
         # f_function_native_*_cdesc_pointer
         # f_getter_native_*_cdesc_pointer
-        name="f_function/getter_native_*_cdesc_pointer",
-        mixin=["f_mixin_function_cdesc"],
+#        name="f_function/getter_native_*_cdesc_pointer",
+        name="fc_function_native_*_cdesc_pointer",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_function_native_*_cdesc",
+        ],
+        alias=[
+            "fc_getter_native_*_cdesc_pointer",
+            "f_function_native_*_cdesc_pointer",
+            "f_getter_native_*_cdesc_pointer",
+        ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
@@ -1474,8 +1505,14 @@ fc_statements = [
     ),
     dict(
         # +deref(pointer) +owner(caller)
-        name="f_function_native_*_cdesc_pointer_caller",
-        mixin=["f_mixin_function_cdesc"],
+        name="fc_function_native_*_cdesc_pointer_caller",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_function_native_*_cdesc",
+        ],
+        alias=[
+            "f_function_native_*_cdesc_pointer_caller",
+        ],
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_name=["{c_var_capsule}"],
@@ -1489,7 +1526,10 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_function_native_*_raw",
+        name="fc_function_native_*_raw",
+        alias=[
+            "f_function_native_*_raw",
+        ],
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
@@ -1497,7 +1537,10 @@ fc_statements = [
     dict(
         # int **func(void)
         # regardless of deref value.
-        name="f_function_native_**",
+        name="fc_function_native_**",
+        alias=[
+            "f_function_native_**",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
@@ -1507,7 +1550,7 @@ fc_statements = [
     dict(
         name="f_function_native_&_buf_pointer",
         mixin=[
-            "f_function_native_&",
+            "fc_mixin_function_native_&",
         ],
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
@@ -1515,7 +1558,10 @@ fc_statements = [
     ),
 
     dict(
-        name="f_function_native_*_scalar",
+        name="fc_function_native_*_scalar",
+        alias=[
+            "f_function_native_*_scalar",
+        ],
         # avoid catching f_native_*
     ),
 
@@ -1551,14 +1597,16 @@ fc_statements = [
 #        i_module=dict(iso_c_binding=["C_CHAR"]),
 #    ),
     dict(
-        name="f_function_char_scalar",
+        name="fc_function_char_scalar",
+        alias=[
+            "f_function_char_scalar",
+            "c_function_char_scalar",
+        ],
         f_arg_call=["{c_var}"],  # Pass result as an argument.
-    ),
-    dict(
+
         # Pass result as an argument.
         # pgi and cray compilers have problems with functions which
         # return a scalar char.
-        name="c_function_char_scalar",
         c_call=[
             "*{c_var} = {function_name}({C_call_list});",
         ],
@@ -1727,11 +1775,33 @@ fc_statements = [
     ),
     
 
+##-    dict(
+##-        # Used with both deref allocatable and pointer.
+##-        # c_function_char_*_cdesc_allocatable
+##-        # c_function_char_*_cdesc_pointer
+##-        name="c_function_char_*_cdesc_allocatable/pointer",
+##-        mixin=["c_mixin_function_cdesc"],
+##-        c_helper="ShroudTypeDefines",
+##-        # Copy address of result into c_var and save length.
+##-        # When returning a std::string (and not a reference or pointer)
+##-        # an intermediate object is created to save the results
+##-        # which will be passed to copy_string
+##-        c_post_call=[
+##-            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
+##-            "{c_var_cdesc}->cxx.idtor = {idtor};",
+##-            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
+##-            "{c_var_cdesc}->type = {sh_type};",
+##-            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+##-            "{c_var_cdesc}->size = 1;",
+##-            "{c_var_cdesc}->rank = 0;",
+##-        ],
+##-    ),
     dict(
         # Used with both deref allocatable and pointer.
         # c_function_char_*_cdesc_allocatable
         # c_function_char_*_cdesc_pointer
-        name="c_function_char_*_cdesc_allocatable/pointer",
+#        name="c_mixin_function_char_*_cdesc_allocatable/pointer",
+        name="c_mixin_function_char_*_cdesc",
         mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
@@ -1751,7 +1821,10 @@ fc_statements = [
 
     dict(
         # char *func() +deref(raw)
-        name="f_function_char_*_raw",
+        name="fc_function_char_*_raw",
+        alias=[
+            "f_function_char_*_raw",
+        ],
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
@@ -1793,9 +1866,18 @@ fc_statements = [
     dict(
         # f_function_char_scalar_cdesc_allocatable
         # f_function_char_*_cdesc_allocatable
-        name="f_function_char_scalar/*_cdesc_allocatable",
-        mixin=["f_mixin_function_cdesc"],
-        c_helper="copy_string",
+        name="fc_mixin_function_char_scalar_cdesc_allocatable",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_mixin_function_char_*_cdesc",
+        ],
+        alias=[
+            "fc_function_char_scalar_cdesc_allocatable",
+            "fc_function_char_*_cdesc_allocatable",
+            "f_function_char_scalar/*_cdesc_allocatable",
+            "c_function_char_*_cdesc_allocatable/pointer",
+        ],
+        c_helper="copy_string ShroudTypeDefines",
         f_helper="copy_string array_context",
         f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
@@ -1810,9 +1892,15 @@ fc_statements = [
         # f_function_char_*_cdesc_pointer
         # f_function_string_scalar_cdesc_pointer
         # f_function_string_*_cdesc_pointer
-        name="f_function_char/string_scalar/*_cdesc_pointer",
-        mixin=["f_mixin_function_cdesc"],
+        name="fc_mixin_function_char_scalar_cdesc_pointer",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_mixin_function_cdesc",
+        ],
         alias=[
+            "fc_function_char/string_scalar/*_cdesc_pointer",
+            "fc_function_string_*_cdesc_pointer_library",
+            "f_function_char/string_scalar/*_cdesc_pointer",
             "f_function_string_*_cdesc_pointer_library",
         ],
         f_helper="pointer_string array_context",
@@ -1828,6 +1916,16 @@ fc_statements = [
             #"{f_var} => {c_local_s}",
             #"-end block",
             "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})",
+        ],
+
+        # TTT - replace c_function_string_*/&_cdesc_allocatable_pointer
+        c_helper="ShroudStrToArray",
+        # Copy address of result into c_var and save length.
+        # When returning a std::string (and not a reference or pointer)
+        # an intermediate object is created to save the results
+        # which will be passed to copy_string
+        c_post_call=[
+            "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -1956,8 +2054,11 @@ fc_statements = [
         # c_function_string_scalar_buf_result
         # c_function_string_*_buf_result
         # c_function_string_&_buf_result
-        name="c_function_string_scalar/*/&_buf_copy/result",
+        name="c_mixin_function_string_scalar_buf_copy",
         mixin=["c_mixin_in_character_buf"],
+        alias=[
+            "c_function_string_scalar/*/&_buf_copy/result",
+        ],
         i_arg_decl=[
             # Change to intent(OUT) from mixin.
             "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
@@ -2085,9 +2186,26 @@ fc_statements = [
         # f_function_string_*_buf_result
         # f_function_string_&_buf_result
         # TTT - is the buf version used?
-        name="f_function_string_scalar/*/&_buf",
-        mixin=["f_mixin_in_character_buf"],
+#        name="f_function_string_scalar/*/&_buf",
+        name="fc_mixin_function_string_scalar_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_function_string_scalar_buf_copy",
+        ],
         alias=[
+            "fc_function_string_scalar_buf",
+            "fc_function_string_*_buf",
+            "fc_function_string_&_buf",
+            
+            "fc_function_string_scalar_buf_copy",
+            "fc_function_string_*_buf_copy",
+            "fc_function_string_&_buf_copy",
+
+            "fc_function_string_scalar_buf_result",
+            "fc_function_string_*_buf_result",
+            "fc_function_string_&_buf_result",
+            
+            "f_function_string_scalar/*/&_buf",
             "f_function_string_scalar/*/&_buf_copy/result",
         ],
     ),
@@ -2104,13 +2222,20 @@ fc_statements = [
         # f_function_string_scalar_cdesc_allocatable_library
         # f_function_string_*_cdesc_allocatable_library
         # f_function_string_&_cdesc_allocatable_library
-        name="f_function_string_scalar/*/&_cdesc_allocatable",
-        mixin=["f_mixin_function_cdesc"],
+        name="fc_mixin_function_string_scalarx_cdesc_allocatable",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_mixin_function_cdesc",
+        ],
         alias=[
+            "f_function_string_scalar/*/&_cdesc_allocatable",
             "f_function_string_scalar/*/&_cdesc_allocatable_caller/library",
             "f_getter_string_scalar_cdesc_allocatable",
+            "fc_function_string_scalar/*/&_cdesc_allocatable",
+            "fc_function_string_scalar/*/&_cdesc_allocatable_caller/library",
+            "fc_getter_string_scalar_cdesc_allocatable",
         ],
-        c_helper="copy_string",
+        c_helper="copy_string ShroudStrToArray",
         f_helper="copy_string array_context",
         f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
@@ -2119,6 +2244,16 @@ fc_statements = [
             "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
             "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
+
+        # from c_function_string_*/&_cdesc_allocatable/pointer
+        # Copy address of result into c_var and save length.
+        # When returning a std::string (and not a reference or pointer)
+        # an intermediate object is created to save the results
+        # which will be passed to copy_string
+        c_post_call=[
+            "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+        ],
+
     ),
     
     ########################################
@@ -2207,11 +2342,31 @@ fc_statements = [
         ],
     ),
     # Almost same as intent_out_buf.
+    # Similar to f_vector_out_allocatable but must declare result variable.
+    # Always return a 1-d array.
     dict(
-        name="c_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-        mixin=["c_mixin_function_cdesc"],
+        name="fc_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+        mixin=[
+            "f_mixin_function_cdesc",
+            "c_mixin_function_cdesc",
+        ],
+        alias=[
+            "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+            "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+        ],
+
+        c_helper="copy_array ShroudTypeDefines",
+        f_helper="copy_array",
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        f_arg_decl=[
+            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_post_call=[
+            "allocate({f_var}({c_var_cdesc}%size))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+        ],
+        
         cxx_local_var="pointer",
-        c_helper="ShroudTypeDefines",
         c_pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -2584,22 +2739,6 @@ fc_statements = [
             "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
-    # Similar to f_vector_out_allocatable but must declare result variable.
-    # Always return a 1-d array.
-    dict(
-        name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-        mixin=["f_mixin_function_cdesc"],
-        c_helper="copy_array",
-        f_helper="copy_array",
-        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
-        f_arg_decl=[
-            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
-        ],
-        f_post_call=[
-            "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
-        ],
-    ),
 
     ##########
     # Extract pointer to C++ instance.
@@ -2667,8 +2806,20 @@ fc_statements = [
     dict(
         # c_function_shadow_*_capsule
         # c_function_shadow_&_capsule
-        name="c_function_shadow_*/&_capsule",
-        mixin=["c_mixin_shadow"],
+        name="fc_mixin_function_shadow_*_capsule",
+        mixin=[
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+        ],
+        alias=[
+            "fc_function_shadow_scalar_capsule",
+            "fc_function_shadow_*_capsule",
+            "fc_function_shadow_&_capsule",
+            "f_function_shadow_scalar_capsule",
+            "f_function_shadow_*_capsule",
+            "f_function_shadow_&_capsule",
+            "c_function_shadow_*/&_capsule",
+        ],
         cxx_local_var="result",
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
@@ -2700,7 +2851,11 @@ fc_statements = [
         # c_function_shadow_*_capptr
         # c_function_shadow_&_capptr
         name="c_function_shadow_*/&_capptr",
-        mixin=["c_mixin_shadow", "c_function_shadow_*_capsule"],
+        mixin=[
+            "c_mixin_shadow",
+#            "c_function_shadow_*_capsule",
+            "fc_mixin_function_shadow_*_capsule",
+        ],
         c_return_type=None,
         c_return=[
             "return {c_var};",
@@ -2729,26 +2884,19 @@ fc_statements = [
     ),
     
     dict(
-        # f_function_shadow_scalar_capsule
-        # f_function_shadow_*_capsule
-        # f_function_shadow_&_capsule
-        name="f_function_shadow_scalar/*/&_capsule",
-        mixin=["f_mixin_function_shadow_capsule"],
-    ),
-    dict(
         # f_function_shadow_scalar_capptr
         # f_function_shadow_*_capptr
         # f_function_shadow_&_capptr
-        name="f_function_shadow_scalar/*/&_capptr",
+        name="fc_mixin_function_shadow_scalar_capptr",
         alias=[
+            "fc_function_shadow_scalar/*/&_capptr",
+            "fc_function_shadow_scalar/*/&_capptr_targ_native_scalar",
+            "fc_function_shadow_scalar/*/&_capptr_caller/library",
+            "f_function_shadow_scalar/*/&_capptr",
             "f_function_shadow_scalar/*/&_capptr_targ_native_scalar",
             "f_function_shadow_scalar/*/&_capptr_caller/library",
         ],
         mixin=["f_mixin_function_shadow_capptr"],
-    ),
-    dict(
-        name="f_dtor",
-        f_arg_call=[],
     ),
     dict(
         name="c_ctor_shadow_scalar_capsule",
@@ -2763,7 +2911,7 @@ fc_statements = [
         owner="caller",
     ),
     dict(
-        name="c_ctor_shadow_scalar_capptr",
+        name="c_defaulttmp_ctor_shadow_scalar_capptr",
         mixin=["c_mixin_shadow", "c_ctor_shadow_scalar_capsule"],
         c_return_type=None,
         c_return=[
@@ -2780,8 +2928,25 @@ fc_statements = [
         mixin=["f_mixin_function_shadow_capsule"],
     ),
     dict(
-        name="f_ctor_shadow_scalar_capptr",
-        mixin=["f_mixin_function_shadow_capptr"],
+        name="fc_ctor_shadow_scalar_capptr",
+        mixin=[
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_ctor_shadow_scalar_capsule",
+        ],
+        alias=[
+            "f_ctor_shadow_scalar_capptr",
+            "c_ctor_shadow_scalar_capptr",
+        ],
+        c_return_type=None,
+        c_return=[
+            "return {c_var};",
+        ],
+        i_result_var="{F_result_ptr}",
+        i_result_decl=[
+            "type(C_PTR) {F_result_ptr}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL in stddef.h
@@ -2801,6 +2966,16 @@ fc_statements = [
             "{C_this}->addr = {nullptr};",
         ],
         c_return_type="void",
+    ),
+    dict(
+        name="fc_dtor",
+        mixin=[
+            "c_dtor",
+        ],
+        alias=[
+            "f_dtor",
+        ],
+        f_arg_call=[],
     ),
 
     dict(  # f_default
@@ -2855,11 +3030,13 @@ fc_statements = [
 
     # start function_struct_scalar
     dict(
-        name="f_function_struct_scalar",
+        name="fc_function_struct_scalar",
+        alias=[
+            "f_function_struct_scalar",
+            "c_function_struct_scalar",
+        ],
         f_arg_call=["{f_var}"],
-    ),
-    dict(
-        name="c_function_struct_scalar",
+
         c_arg_decl=["{c_type} *{c_var}"],
         i_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
         i_arg_names=["{c_var}"],
@@ -2916,14 +3093,19 @@ fc_statements = [
         name="c_setter_arg",
     ),
     dict(
-        name="f_getter",
+        name="fc_getter",
         alias=[
+            "fc_getter_native_scalar",
             "f_getter_native_scalar",
+            "fc_getter_native_*_pointer",
             "f_getter_native_*_pointer",
         ],
     ),
     dict(
-        name="f_setter",
+        name="fc_setter",
+        alias=[
+            "f_setter",
+        ],
         f_arg_call=[],
     ),
 
@@ -3021,29 +3203,6 @@ fc_statements = [
     ########################################
     # char arg
     dict(
-        # Add allocatable attribute to declaration.
-        # f_function_char_scalar_cfi_allocatable
-        # f_function_char_*_cfi_allocatable
-        name="f_function_char_scalar/*_cfi_allocatable",
-        f_need_wrapper=True,
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_arg_call=["{f_var}"],  # Pass result as an argument.
-    ),
-    dict(
-        # Add allocatable attribute to declaration.
-        # f_function_char_scalar_cfi_allocatable
-        # f_function_char_*_cfi_allocatable
-        name="f_function_char_scalar/*_cfi_pointer",
-        f_need_wrapper=True,
-        f_arg_decl=[
-            "character(len=:), pointer :: {f_var}",
-        ],
-        f_arg_call=["{f_var}"],  # Pass result as an argument.
-    ),
-    
-    dict(
         # XXX - needs a better name. function/arg
         # Function which return char * or std::string.
         name="c_mixin_function_character",
@@ -3057,6 +3216,94 @@ fc_statements = [
         i_arg_names=["{c_var}"],
         c_temps=["cfi"],
     ),
+    dict(
+        # Add allocatable attribute to declaration.
+        # f_function_char_scalar_cfi_allocatable
+        # f_function_char_*_cfi_allocatable
+        name="fc_function_char_*_cfi_allocatable",
+        mixin=[
+            "c_mixin_function_character",
+        ],
+        alias=[
+            "f_function_char_scalar/*_cfi_allocatable",
+            "c_function_char_*_cfi_allocatable",
+        ],
+        f_need_wrapper=True,
+        f_arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+        f_arg_call=["{f_var}"],  # Pass result as an argument.
+
+        c_return_type="void",  # Convert to function.
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        c_pre_call=[],         # replace mixin
+        c_post_call=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+            "-}}",
+            "-}}",
+        ],
+    ),
+    dict(
+        # Add allocatable attribute to declaration.
+        # f_function_char_scalar_cfi_pointer
+        # f_function_char_*_cfi_pointer
+        name="fc_function_char_scalar_cfi_pointer",
+        mixin=[
+            "c_mixin_function_character",
+        ],
+        alias=[
+            "fc_function_char_*_cfi_pointer",
+            "f_function_char_scalar/*_cfi_pointer",
+            "c_function_char_*_cfi_pointer",
+        ],
+        f_need_wrapper=True,
+        f_arg_decl=[
+            "character(len=:), pointer :: {f_var}",
+        ],
+        f_arg_call=["{f_var}"],  # Pass result as an argument.
+
+        c_return_type="void",  # Convert to function.
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), pointer :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        c_pre_call=[],         # replace mixin
+        c_post_call=[
+# CFI_index_t nbar[1] = {3};
+#  CFI_CDESC_T(1) c_p;
+#  CFI_establish((CFI_cdesc_t* )&c_p, bar, CFI_attribute_pointer, CFI_type_int,
+#                nbar[0]*sizeof(int), 1, nbar);
+#  CFI_setpointer(f_p, (CFI_cdesc_t *)&c_p, NULL);
+
+            # CFI_index_t nbar[1] = {3};
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
+            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+            "\t CFI_attribute_pointer,\t CFI_type_char,"
+            "\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",  # set assumed-length
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}",            
+        ],
+        c_local=["cptr", "fptr", "cdesc", "len", "err"],
+    ),
+    
     dict(
         # Character argument which use CFI_desc_t.
         name="c_mixin_arg_character_cfi",
@@ -3218,18 +3465,20 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
-        name="f_function_char_*_cfi_copy/result",
-        f_arg_call=["{f_var}"],
-        f_need_wrapper=True,
-    ),
-    dict(
-        # Copy result into caller's buffer.
-        # c_function_char_*_cfi_copy
-        # c_function_char_*_cfi_result
-        name="c_function_char_*_cfi_copy/result",
+        name="fc_function_char_*_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
+        alias=[
+            "f_function_char_*_cfi_copy/result",
+            "c_function_char_*_cfi_copy/result",
+        ],
+        f_arg_call=["{f_var}"],
+        f_need_wrapper=True,
+
+        # Copy result into caller's buffer.
+        # c_function_char_*_cfi_copy
+        # c_function_char_*_cfi_result
         cxx_local_var="result",
         c_pre_call=[],         # undo mixin
         c_helper="ShroudStrCopy",
@@ -3243,66 +3492,45 @@ fc_statements = [
         ],
         c_return_type="void",  # Convert to function.
     ),
-    dict(
-        name="c_function_char_*_cfi_allocatable",
-        mixin=[
-            "c_mixin_function_character",
-        ],
-        c_return_type="void",  # Convert to function.
-        i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
-        ],
-        cxx_local_var=None,  # replace mixin
-        c_pre_call=[],         # replace mixin
-        c_post_call=[
-            "if ({cxx_var} != {nullptr}) {{+",
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
-            "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
-            "-}}",
-            "-}}",
-        ],
-    ),
-    dict(
-        name="c_function_char_*_cfi_pointer",
-        mixin=[
-            "c_mixin_function_character",
-        ],
-        c_return_type="void",  # Convert to function.
-        i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), pointer :: {c_var}",
-        ],
-        cxx_local_var=None,  # replace mixin
-        c_pre_call=[],         # replace mixin
-        c_post_call=[
-# CFI_index_t nbar[1] = {3};
-#  CFI_CDESC_T(1) c_p;
-#  CFI_establish((CFI_cdesc_t* )&c_p, bar, CFI_attribute_pointer, CFI_type_int,
-#                nbar[0]*sizeof(int), 1, nbar);
-#  CFI_setpointer(f_p, (CFI_cdesc_t *)&c_p, NULL);
-
-            # CFI_index_t nbar[1] = {3};
-            "int {c_local_err};",
-            "if ({cxx_var} == {nullptr}) {{+",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
-            "-}} else {{+",
-            "CFI_CDESC_T(0) {c_local_fptr};",
-            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
-            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
-            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
-            "\t CFI_attribute_pointer,\t CFI_type_char,"
-            "\t {c_local_len},\t 0,\t {nullptr});",
-            "if ({c_local_err} == CFI_SUCCESS) {{+",
-            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",  # set assumed-length
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
-            "-}}",
-            "-}}",            
-        ],
-        c_local=["cptr", "fptr", "cdesc", "len", "err"],
-    ),
+##-    dict(
+##-        name="c_function_char_*_cfi_pointer",
+##-        mixin=[
+##-            "c_mixin_function_character",
+##-        ],
+##-        c_return_type="void",  # Convert to function.
+##-        i_arg_names=["{c_var}"],
+##-        i_arg_decl=[        # replace mixin
+##-            "character(len=:), intent({f_intent}), pointer :: {c_var}",
+##-        ],
+##-        cxx_local_var=None,  # replace mixin
+##-        c_pre_call=[],         # replace mixin
+##-        c_post_call=[
+##-# CFI_index_t nbar[1] = {3};
+##-#  CFI_CDESC_T(1) c_p;
+##-#  CFI_establish((CFI_cdesc_t* )&c_p, bar, CFI_attribute_pointer, CFI_type_int,
+##-#                nbar[0]*sizeof(int), 1, nbar);
+##-#  CFI_setpointer(f_p, (CFI_cdesc_t *)&c_p, NULL);
+##-
+##-            # CFI_index_t nbar[1] = {3};
+##-            "int {c_local_err};",
+##-            "if ({cxx_var} == {nullptr}) {{+",
+##-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+##-            "-}} else {{+",
+##-            "CFI_CDESC_T(0) {c_local_fptr};",
+##-            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+##-            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
+##-            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
+##-            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+##-            "\t CFI_attribute_pointer,\t CFI_type_char,"
+##-            "\t {c_local_len},\t 0,\t {nullptr});",
+##-            "if ({c_local_err} == CFI_SUCCESS) {{+",
+##-            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",  # set assumed-length
+##-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+##-            "-}}",
+##-            "-}}",            
+##-        ],
+##-        c_local=["cptr", "fptr", "cdesc", "len", "err"],
+##-    ),
     
     ########################################
     # char **
@@ -3331,6 +3559,29 @@ fc_statements = [
         ],
     ),
 
+    ########################################
+    dict(
+        # f_function_string_scalar_cfi_pointer
+        # f_function_string_*_cfi_pointer
+        # f_function_string_&_cfi_pointer
+
+        # f_function_string_scalar_cfi_pointer_caller
+        # f_function_string_*_cfi_pointer_caller
+        # f_function_string_&_cfi_pointer_caller
+        # f_function_string_scalar_cfi_pointer_library
+        # f_function_string_*_cfi_pointer_library
+        # f_function_string_&_cfi_pointer_library
+        name="fc_mixin_function_string_scalar_cfi_pointer",
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an pointer, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        f_need_wrapper=True,
+        f_arg_decl=[
+            "character(len=:), pointer :: {f_var}",
+        ],
+        f_arg_call=["{f_var}"],
+    ),
+    
     ########################################
     # std::string
     dict(
@@ -3397,16 +3648,34 @@ fc_statements = [
         c_local=["trim"],
     ),
     dict(
+        # f_function_string_scalar_cfi_copy
+        # f_function_string_*_cfi_copy
+        # f_function_string_&_cfi_copy
+        # f_function_string_scalar_cfi_result
+        # f_function_string_*_cfi_result
+        # f_function_string_&_cfi_result
         # c_function_string_scalar_cfi_copy
         # c_function_string_*_cfi_copy
         # c_function_string_&_cfi_copy
         # c_function_string_scalar_cfi_result
         # c_function_string_*_cfi_result
         # c_function_string_&_cfi_result
-        name="c_function_string_scalar/*/&_cfi_copy/result",
+        name="fc_mixin_function_string_scalar/*/&_cfi_copy/result",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
+        alias=[
+            "fc_function_string_scalar/*/&_cfi_copy/result",
+            "f_function_string_scalar/*/&_cfi_copy/result",
+            "c_function_string_scalar/*/&_cfi_copy/result",
+        ],
+
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an CHARACTER, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        f_need_wrapper=True,
+        f_arg_call=["{f_var}"],
+        
         cxx_local_var=None, # replace mixin
         c_pre_call=[],        # replace mixin
         c_helper="ShroudStrCopy",
@@ -3424,40 +3693,21 @@ fc_statements = [
         ],
         c_return_type="void",  # Convert to function.
     ),
-    # std::string * function()
-    dict(
-        # c_function_string_*_cfi_allocatable
-        # c_function_string_&_cfi_allocatable
-        name="c_function_string_*/&_cfi_allocatable",
-        mixin=[
-            "c_mixin_function_character",
-        ],
-        i_arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
-        ],
-        c_return_type="void",  # Convert to function.
-        i_arg_names=["{c_var}"],
-        lang_c=dict(
-            impl_header=["<string.h>"],
-        ),
-        lang_cxx=dict(
-            impl_header=["<cstring>"],
-        ),
-        c_post_call=[
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
-            "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr,"
-            " \t{cxx_var}{cxx_member}data(),"
-            " \t{cxx_var}{cxx_member}length());",
-            "-}}",
-        ],
-    ),
     # XXX - consolidate with c_function_*_cfi_pointer?
     # XXX - via a helper to get address and length of string
     dict(
-        name="c_function_string_*_cfi_pointer",
+        name="fc_function_string_*_cfi_pointer",
         mixin=[
+            "fc_mixin_function_string_scalar_cfi_pointer",
             "c_mixin_function_character",
+        ],
+        alias=[
+##            "fc_function_string_scalar/*/&_cfi_pointer",
+            "fc_function_string_scalar/&_cfi_pointer",
+            "fc_function_string_scalar/*/&_cfi_pointer_caller/library",
+            "f_function_string_scalar/*/&_cfi_pointer",
+            "f_function_string_scalar/*/&_cfi_pointer_caller/library",
+            "c_function_string_*_cfi_pointer",
         ],
         c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
@@ -3487,11 +3737,74 @@ fc_statements = [
         c_local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
 
+    
+    # similar to f_char_scalar_allocatable
+    dict(
+        # f_function_string_scalar_cfi_allocatable
+        # f_function_string_*_cfi_allocatable
+        # f_function_string_&_cfi_allocatable
+
+        # f_function_string_scalar_cfi_allocatable_caller
+        # f_function_string_*_cfi_allocatable_caller
+        # f_function_string_&_cfi_allocatable_caller
+        # f_function_string_scalar_cfi_allocatable_library
+        # f_function_string_*_cfi_allocatable_library
+        # f_function_string_&_cfi_allocatable_library
+        name="fc_mixin_function_string_scalar_cfi_allocatable",
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an allocatable, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        f_need_wrapper=True,
+        f_arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+        f_arg_call=["{f_var}"],
+    ),
+    # std::string * function()
+    dict(
+        # c_function_string_*_cfi_allocatable
+        # c_function_string_&_cfi_allocatable
+        name="fc_function_string_*/&_cfi_allocatable",
+        mixin=[
+            "fc_mixin_function_string_scalar_cfi_allocatable",
+            "c_mixin_function_character",
+        ],
+        alias=[
+            "f_function_string_*/&_cfi_allocatable",
+            "c_function_string_*/&_cfi_allocatable",
+            "fc_function_string_scalar/*/&_cfi_allocatable_caller/library",
+            "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
+        ],
+        i_arg_decl=[
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+        ],
+        c_return_type="void",  # Convert to function.
+        i_arg_names=["{c_var}"],
+        lang_c=dict(
+            impl_header=["<string.h>"],
+        ),
+        lang_cxx=dict(
+            impl_header=["<cstring>"],
+        ),
+        c_post_call=[
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr,"
+            " \t{cxx_var}{cxx_member}data(),"
+            " \t{cxx_var}{cxx_member}length());",
+            "-}}",
+        ],
+    ),
     # std::string & function()
     dict(
-        name="c_function_string_scalar_cfi_allocatable",
+        name="fc_function_string_scalar_cfi_allocatable",
         mixin=[
+            "fc_mixin_function_string_scalar_cfi_allocatable",
             "c_mixin_function_character",
+        ],
+        alias=[
+            "f_function_string_scalar_cfi_allocatable",
+            "c_function_string_scalar_cfi_allocatable",
         ],
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
@@ -3512,70 +3825,6 @@ fc_statements = [
             "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
             "delete cxx_ptr;",
         ],
-    ),
-    
-    dict(
-        # f_function_string_scalar_cfi_copy
-        # f_function_string_*_cfi_copy
-        # f_function_string_&_cfi_copy
-        # f_function_string_scalar_cfi_result
-        # f_function_string_*_cfi_result
-        # f_function_string_&_cfi_result
-        name="f_function_string_scalar/*/&_cfi_copy/result",
-        # XXX - avoid calling C directly since the Fortran function
-        # is returning an CHARACTER, which CFI can not do.
-        # Fortran wrapper passed function result to C which fills it.
-        f_need_wrapper=True,
-        f_arg_call=["{f_var}"],
-    ),
-    # similar to f_char_scalar_allocatable
-    dict(
-        # f_function_string_scalar_cfi_allocatable
-        # f_function_string_*_cfi_allocatable
-        # f_function_string_&_cfi_allocatable
-
-        # f_function_string_scalar_cfi_allocatable_caller
-        # f_function_string_*_cfi_allocatable_caller
-        # f_function_string_&_cfi_allocatable_caller
-        # f_function_string_scalar_cfi_allocatable_library
-        # f_function_string_*_cfi_allocatable_library
-        # f_function_string_&_cfi_allocatable_library
-        name="f_function_string_scalar/*/&_cfi_allocatable",
-        alias=[
-            "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
-        ],
-        # XXX - avoid calling C directly since the Fortran function
-        # is returning an allocatable, which CFI can not do.
-        # Fortran wrapper passed function result to C which fills it.
-        f_need_wrapper=True,
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_arg_call=["{f_var}"],
-    ),
-    dict(
-        # f_function_string_scalar_cfi_pointer
-        # f_function_string_*_cfi_pointer
-        # f_function_string_&_cfi_pointer
-
-        # f_function_string_scalar_cfi_pointer_caller
-        # f_function_string_*_cfi_pointer_caller
-        # f_function_string_&_cfi_pointer_caller
-        # f_function_string_scalar_cfi_pointer_library
-        # f_function_string_*_cfi_pointer_library
-        # f_function_string_&_cfi_pointer_library
-        name="f_function_string_scalar/*/&_cfi_pointer",
-        alias=[
-            "f_function_string_scalar/*/&_cfi_pointer_caller/library",
-        ],
-        # XXX - avoid calling C directly since the Fortran function
-        # is returning an pointer, which CFI can not do.
-        # Fortran wrapper passed function result to C which fills it.
-        f_need_wrapper=True,
-        f_arg_decl=[
-            "character(len=:), pointer :: {f_var}",
-        ],
-        f_arg_call=["{f_var}"],
     ),
 
     ##########
@@ -3713,20 +3962,22 @@ fc_statements = [
 
     dict(
         # Pass result as an argument to C wrapper.
-        name="f_function_native_*_cfi_allocatable",
-        f_arg_decl=[
-            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
-        ],
-        f_arg_call=["{f_var}"],
-    ),
-    dict(
+        name="fc_function_native_*_cfi_allocatable",
         # Convert to subroutine and pass result as an argument.
         # Return an allocated copy of data.
-        name="c_function_native_*_cfi_allocatable",
         mixin=[
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable",  # c_post_call
         ],
+        alias=[
+            "f_function_native_*_cfi_allocatable",
+            "c_function_native_*_cfi_allocatable",
+        ],
+        f_arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        f_arg_call=["{f_var}"],
+
         i_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
         ],
@@ -3737,7 +3988,17 @@ fc_statements = [
 
     dict(
         # Pass result as an argument to C wrapper.
-        name="f_function_native_*_cfi_pointer",
+        name="fc_function_native_*_cfi_pointer",
+        # Convert to subroutine and pass result as an argument.
+        # Return Fortran pointer to data.
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_pointer",  # c_post_call
+        ],
+        alias=[
+            "f_function_native_*_cfi_pointer",
+            "c_function_native_*_cfi_pointer",
+        ],
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -3745,15 +4006,7 @@ fc_statements = [
             "nullify({f_var})",
         ],
         f_arg_call=["{f_var}"],
-    ),
-    dict(
-        # Convert to subroutine and pass result as an argument.
-        # Return Fortran pointer to data.
-        name="c_function_native_*_cfi_pointer",
-        mixin=[
-            "c_mixin_arg_native_cfi",
-            "c_mixin_native_cfi_pointer",  # c_post_call
-        ],
+
         i_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
         ],
