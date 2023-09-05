@@ -50,8 +50,7 @@ void AA_example_nested_local_function1(void)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -66,8 +65,7 @@ bool AA_example_nested_isNameValid(const char * name)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
@@ -83,8 +81,7 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 // ----------------------------------------
 // Function:  bool isInitialized
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.isInitialized
@@ -138,8 +135,7 @@ void AA_example_nested_test_names_bufferify(char *name,
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_test_names_flag(const char * name, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag
@@ -159,8 +155,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_test_names_flag_bufferify(char *name,
     int SHT_name_len, int flag)
 {
@@ -189,8 +184,7 @@ void AA_example_nested_testoptional_0(void)
 // ----------------------------------------
 // Argument:  int i=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_testoptional_1(int i)
 {
     // splicer begin namespace.example::nested.function.testoptional_1
@@ -205,13 +199,11 @@ void AA_example_nested_testoptional_1(int i)
 // ----------------------------------------
 // Argument:  int i=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  long j=2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_testoptional_2(int i, long j)
 {
     // splicer begin namespace.example::nested.function.testoptional_2
@@ -222,8 +214,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 // ----------------------------------------
 // Function:  size_t test_size_t
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
@@ -240,8 +231,7 @@ size_t AA_example_nested_test_size_t(void)
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Requested: c_in_unknown_scalar
-// Match:     c_default
+// Exact:     c_in_unknown_scalar
 void AA_example_nested_testmpi_mpi(MPI_Fint comm)
 {
     // splicer begin namespace.example::nested.function.testmpi_mpi
@@ -275,8 +265,7 @@ void AA_example_nested_testmpi_serial(void)
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr1
@@ -295,8 +284,7 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 void AA_example_nested_FuncPtr2(double * ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr2
@@ -315,8 +303,7 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr3
@@ -335,8 +322,7 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // ----------------------------------------
 // Argument:  double ( * get)(double +value, int +value) +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr4
@@ -351,8 +337,7 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
@@ -370,53 +355,43 @@ void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*
 void AA_example_nested_verylongfunctionname1(int * verylongname1,
     int * verylongname2, int * verylongname3, int * verylongname4,
     int * verylongname5, int * verylongname6, int * verylongname7,
@@ -432,58 +407,47 @@ void AA_example_nested_verylongfunctionname1(int * verylongname1,
 // ----------------------------------------
 // Function:  int verylongfunctionname2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname3 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname4 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname5 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname6 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname7 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname8 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname9 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname10 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int AA_example_nested_verylongfunctionname2(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
@@ -509,18 +473,15 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  double * out +dimension(shape(in))+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void AA_example_nested_cos_doubles(double * in, double * out,
     int sizein)
 {

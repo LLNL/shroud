@@ -83,8 +83,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
@@ -120,8 +119,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // start CLA_Class1_Method1
 int CLA_Class1_Method1(CLA_Class1 * self)
 {
@@ -141,8 +139,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  bool equivalent
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar
-// Match:     c_function
+// Exact:     c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
@@ -195,8 +192,7 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_bool_scalar
-// Match:     c_default
+// Exact:     c_in_bool_scalar
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
     bool flag, CLA_Class1 * SHC_rv)
@@ -229,8 +225,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Requested: c_in_bool_scalar
-// Match:     c_default
+// Exact:     c_in_bool_scalar
 // start CLA_Class1_returnThisBuffer_bufferify
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
@@ -278,8 +273,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // ----------------------------------------
 // Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: c_function_string_&_allocatable
-// Match:     c_function_string_&
+// Exact:     c_function_string_&_allocatable
 // start CLA_Class1_getName
 const char * CLA_Class1_getName(CLA_Class1 * self)
 {
@@ -317,13 +311,11 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLA_Class1_directionFunc
 int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
 {
@@ -395,8 +387,7 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 // ----------------------------------------
 // Function:  std::string get_m_name
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-// Requested: c_getter_string_scalar_cdesc_allocatable
-// Match:     c_getter_string_scalar_cdesc
+// Exact:     c_getter_string_scalar_cdesc_allocatable
 // start CLA_Class1_get_m_name_bufferify
 void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)

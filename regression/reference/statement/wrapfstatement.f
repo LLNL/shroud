@@ -25,8 +25,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  int GetNameLength +pure
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         pure function get_name_length() &
                 result(SHT_rv) &
                 bind(C, name="STMT_GetNameLength")
@@ -38,8 +37,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +deref(copy)+intent(function)
-        ! Requested: c_function_string_&_copy
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_copy
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_getNameErrorPattern")
@@ -51,8 +49,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         subroutine c_get_name_error_pattern_bufferify(SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="STMT_getNameErrorPattern_bufferify")
@@ -73,11 +70,9 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength +pure
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief helper function for Fortran to get length of name.
     !!
@@ -96,11 +91,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +len(get_name_length())
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     function get_name_error_pattern() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

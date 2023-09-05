@@ -1120,8 +1120,7 @@ PY_fetchStringPointerLen(
 // ----------------------------------------
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +intent(in)

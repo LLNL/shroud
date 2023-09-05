@@ -232,7 +232,6 @@
             "f_array_allocate": "",
             "f_array_shape": "",
             "f_assumed_shape": "",
-            "f_c_dimension": "",
             "f_char_len": ":",
             "f_char_type": "",
             "f_declare_shape_array": "",
@@ -245,6 +244,7 @@
             "f_var_shape": "",
             "file_scope": "library",
             "function_suffix": "",
+            "i_dimension": "",
             "library": "library",
             "library_lower": "library",
             "library_upper": "LIBRARY",
@@ -276,15 +276,15 @@
             ],
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
-            "f_c_module": {
+            "f_kind": "C_INT",
+            "f_type": "integer",
+            "flat_name": "MPI_Comm",
+            "i_module": {
                 "iso_c_binding": [
                     "C_INT"
                 ]
             },
-            "f_c_type": "integer(C_INT)",
-            "f_kind": "C_INT",
-            "f_type": "integer",
-            "flat_name": "MPI_Comm"
+            "i_type": "integer(C_INT)"
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
@@ -299,7 +299,6 @@
             "c_type": "bool",
             "cfi_type": "CFI_type_Bool",
             "cxx_type": "bool",
-            "f_c_type": "logical(C_BOOL)",
             "f_kind": "C_BOOL",
             "f_module": {
                 "iso_c_binding": [
@@ -308,6 +307,7 @@
             },
             "f_type": "logical",
             "flat_name": "bool",
+            "i_type": "logical(C_BOOL)",
             "sgroup": "bool",
             "sh_type": "SH_TYPE_BOOL"
         },
@@ -321,15 +321,15 @@
             "base": "string",
             "c_type": "char",
             "cxx_type": "char",
-            "f_c_module": {
+            "f_kind": "C_CHAR",
+            "f_type": "character(*)",
+            "flat_name": "char",
+            "i_module": {
                 "iso_c_binding": [
                     "C_CHAR"
                 ]
             },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character(*)",
-            "flat_name": "char",
+            "i_type": "character(kind=C_CHAR)",
             "sgroup": "char"
         },
         "double": {
@@ -704,15 +704,15 @@
             "c_type": "char",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
-            "f_c_module": {
+            "f_kind": "C_CHAR",
+            "f_type": "character(*)",
+            "flat_name": "std_string",
+            "i_module": {
                 "iso_c_binding": [
                     "C_CHAR"
                 ]
             },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character(*)",
-            "flat_name": "std_string",
+            "i_type": "character(kind=C_CHAR)",
             "impl_header": [
                 "<string>"
             ],
@@ -950,13 +950,13 @@
             "c_type": "void",
             "cfi_type": "CFI_type_intptr_t",
             "cxx_type": "void",
-            "f_c_module": {
+            "f_type": "type(C_PTR)",
+            "flat_name": "void",
+            "i_module": {
                 "iso_c_binding": [
                     "C_PTR"
                 ]
             },
-            "f_type": "type(C_PTR)",
-            "flat_name": "void",
             "sgroup": "void",
             "sh_type": "SH_TYPE_CPTR"
         }

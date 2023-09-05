@@ -38,8 +38,7 @@ PyObject *PY_init_cxxlibrary_structns(void);
 // ----------------------------------------
 // Function:  int passStructByReferenceCls
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg
 // Attrs:     +intent(inout)
@@ -81,8 +80,7 @@ PY_passStructByReferenceCls(
 // ----------------------------------------
 // Function:  int passStructByReferenceInCls
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1_cls & arg
 // Attrs:     +intent(in)
@@ -205,8 +203,7 @@ fail:
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Requested: py_function_bool_scalar
-// Match:     py_function_bool
+// Exact:     py_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
@@ -287,8 +284,7 @@ fail:
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
@@ -300,8 +296,7 @@ fail:
 // ----------------------------------------
 // Argument:  bool flag=false +value
 // Attrs:     +intent(in)
-// Requested: py_in_bool_scalar
-// Match:     py_in_bool
+// Exact:     py_in_bool_scalar
 static char PY_defaultArgsInOut_1__doc__[] =
 "documentation"
 ;

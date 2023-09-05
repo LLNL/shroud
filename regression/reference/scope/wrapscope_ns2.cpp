@@ -21,13 +21,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * DataPointer_get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
 // Attrs:     +intent(in)+struct(ns2_DataPointer)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Exact:     c_in_struct_*
 void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
@@ -53,8 +51,7 @@ void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
 // Attrs:     +intent(inout)+struct(ns2_DataPointer)
-// Requested: c_inout_struct_*
-// Match:     c_inout_struct
+// Exact:     c_inout_struct_*
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)

@@ -247,7 +247,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt1": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "i",
@@ -258,9 +258,9 @@
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_native_scalar",
                                     "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmtc1": "c_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -278,7 +278,7 @@
                                     "py_var": "SHPy_i",
                                     "size_var": "SHSize_i",
                                     "stmt0": "py_in_native_scalar",
-                                    "stmt1": "py_default",
+                                    "stmt1": "py_in_native_scalar",
                                     "value_var": "SHValue_i"
                                 }
                             }
@@ -475,7 +475,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt1": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
@@ -486,9 +486,9 @@
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_native_scalar",
                                     "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmtc1": "c_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -506,7 +506,7 @@
                                     "py_var": "SHPy_flag",
                                     "size_var": "SHSize_flag",
                                     "stmt0": "py_in_native_scalar",
-                                    "stmt1": "py_default",
+                                    "stmt1": "py_in_native_scalar",
                                     "value_var": "SHValue_flag"
                                 }
                             }
@@ -618,13 +618,6 @@
             "c_type": "PRE_User1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User1",
-            "f_c_module": {
-                "--import--": [
-                    "PRE_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
-            "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user1)",
             "f_derived_type": "user1",
@@ -638,6 +631,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
             "flat_name": "User1",
+            "i_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
+            "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "preprocess.hpp"
             ],
@@ -659,13 +659,6 @@
             "c_type": "PRE_User2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User2",
-            "f_c_module": {
-                "--import--": [
-                    "PRE_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
-            "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user2)",
             "f_derived_type": "user2",
@@ -679,6 +672,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",
             "flat_name": "User2",
+            "i_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
+            "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "User2.hpp"
             ],

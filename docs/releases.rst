@@ -9,6 +9,91 @@ Releases
 
 Notes to help migrate between releases.
 
+Unreleased
+----------
+
+* Rename some fields in Statements to allow C and Fortran entries to exist
+  in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
+  This allows a single group to contains all the fields used for more complex
+  conversions making it easier to follow the flow.
+
+  This will change the name of fields in *fstatements* in an input YAML file.
+  These are used to changed the default behavior of a wrapper.
+
+.. code-block:: yaml
+
+    - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
+      fstatements:
+        c:
+          c_return_type: long
+          c_return:
+          - return SHT_arg_cdesc->size;
+
+
+.. list-table:: c statements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Old Name
+     - New Name
+   * - arg_call
+     - c_arg_call
+   * - pre_call
+     - c_pre_call
+   * - call
+     - c_call
+   * - post_call
+     - c_post_call
+   * - final
+     - c_final
+   * - ret
+     - c_return
+   * - temps
+     - c_temps
+   * - local
+     - c_local
+   * - f_arg_decl
+     - i_arg_decl
+   * - f_result_decl
+     - i_result_decl
+   * - f_result_var
+     - i_result_var
+   * - f_module
+     - i_module
+   * - f_import
+     - i_import
+
+
+.. list-table:: f statements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Old Name
+     - New Name
+   * - need_wrapper
+     - f_need_wrapper
+   * - arg_name
+     - f_arg_name
+   * - arg_decl
+     - f_arg_decl
+   * - arg_c_call
+     - f_arg_call
+   * - declare
+     - f_declare
+   * - pre_call
+     - f_pre_call
+   * - call
+     - f_call
+   * - post_call
+     - f_post_call
+   * - result
+     - f_result
+   * - temps
+     - f_temps
+   * - local
+     - f_local
+
+       
 v0.13.0
 -------
 

@@ -43,13 +43,11 @@ PyObject *PY_init_templates_internal(void);
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
  *
@@ -84,13 +82,11 @@ PY_FunctionTU_0(
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
  *
@@ -121,8 +117,7 @@ PY_FunctionTU_1(
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
 ;
@@ -152,8 +147,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;

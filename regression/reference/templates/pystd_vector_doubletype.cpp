@@ -102,8 +102,7 @@ PY_push_back(
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_at__doc__[] =
 "documentation"
 ;

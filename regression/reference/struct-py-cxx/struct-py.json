@@ -91,7 +91,7 @@
                                     "py_var": "SHPy_x1",
                                     "size_var": "SHSize_x1",
                                     "stmt0": "py_ctor_native_scalar_numpy",
-                                    "stmt1": "py_ctor_native",
+                                    "stmt1": "py_ctor_native_scalar_numpy",
                                     "value_var": "SHValue_x1"
                                 }
                             },
@@ -114,7 +114,7 @@
                                     "py_var": "SHPy_y1",
                                     "size_var": "SHSize_y1",
                                     "stmt0": "py_ctor_native_scalar_numpy",
-                                    "stmt1": "py_ctor_native",
+                                    "stmt1": "py_ctor_native_scalar_numpy",
                                     "value_var": "SHValue_y1"
                                 }
                             }
@@ -496,7 +496,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -534,11 +534,6 @@
             "c_type": "STR_cstruct_as_class",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_class",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_as_class"
-                ]
-            },
             "f_derived_type": "cstruct_as_class",
             "f_kind": "cstruct_as_class",
             "f_module": {
@@ -549,6 +544,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
+            "i_module": {
+                "--import--": [
+                    "cstruct_as_class"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -566,11 +566,6 @@
             "c_type": "STR_cstruct_as_numpy",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_numpy",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_as_numpy"
-                ]
-            },
             "f_derived_type": "cstruct_as_numpy",
             "f_kind": "cstruct_as_numpy",
             "f_module": {
@@ -581,6 +576,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_numpy)",
             "flat_name": "Cstruct_as_numpy",
+            "i_module": {
+                "--import--": [
+                    "cstruct_as_numpy"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

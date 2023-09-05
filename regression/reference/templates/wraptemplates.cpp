@@ -26,8 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  user<int> returnUserType
 // Attrs:     +api(capptr)+intent(function)
-// Requested: c_function_shadow_scalar_capptr_targ_native_scalar
-// Match:     c_function_shadow_scalar_capptr
+// Exact:     c_function_shadow_scalar_capptr_targ_native_scalar
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
     // splicer begin function.returnUserType
@@ -50,13 +49,11 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TEM_FunctionTU_0(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -75,13 +72,11 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TEM_FunctionTU_1(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_1
@@ -96,8 +91,7 @@ void TEM_FunctionTU_1(float arg1, double arg2)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int TEM_UseImplWorker_internal_ImplWorker1(void)
 {
     // splicer begin function.UseImplWorker_internal_ImplWorker1
@@ -113,8 +107,7 @@ int TEM_UseImplWorker_internal_ImplWorker1(void)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int TEM_UseImplWorker_internal_ImplWorker2(void)
 {
     // splicer begin function.UseImplWorker_internal_ImplWorker2

@@ -56,8 +56,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
 // Attrs:     +intent(in)
-// Requested: c_in_native_&
-// Match:     c_default
+// Exact:     c_in_native_&
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
@@ -70,13 +69,11 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // ----------------------------------------
 // Function:  int & at
 // Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_&_pointer
-// Match:     c_function_native_&
+// Exact:     c_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int * TEM_vector_int_at(TEM_vector_int * self,
     TEM_vector_int_size_type n)
 {

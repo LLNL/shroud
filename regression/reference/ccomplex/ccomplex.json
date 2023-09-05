@@ -78,7 +78,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "stmt0": "c_inout_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_inout_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -89,9 +89,9 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "stmt0": "f_inout_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*",
                             "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_inout_native_*"
                         }
                     }
                 },
@@ -183,7 +183,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "c_inout_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_inout_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -194,9 +194,9 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "f_inout_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_native_*",
                             "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_inout_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -315,7 +315,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -328,7 +328,7 @@
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -596,7 +596,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -609,7 +609,7 @@
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -651,7 +651,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "flag",
@@ -664,7 +664,7 @@
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",

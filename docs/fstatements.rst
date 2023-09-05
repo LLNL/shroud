@@ -25,13 +25,14 @@ A Fortran wrapper is created out of several segments.
 .. code-block:: text
 
       {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
-        arg_f_use
-        arg_f_decl
+        f_module
+        f_import
+        f_arg_decl
         ! splicer begin
-        declare
-        pre_call
-        call {}( {F_arg_c_call} )
-        post_call
+        f_declare
+        f_pre_call
+        f_call {}( {f_arg_call} )
+        f_post_call
         ! splicer end
       end {F_subprogram} {F_name_impl}
 
@@ -43,7 +44,6 @@ additional arguments.
 
 ..        name="f_default",
 ..        c_helper="",
-..        c_local_var=None,
 
 f_helper
 ^^^^^^^^
@@ -65,8 +65,8 @@ A dictionary of list of ``ONLY`` names:
           iso_c_binding:
           - C_SIZE_T
    
-need_wrapper
-^^^^^^^^^^^^
+f_need_wrapper
+^^^^^^^^^^^^^^
 
 Shroud tries to only create an interface for a C function to
 avoid the extra layer of a Fortran wrapper.
@@ -82,34 +82,35 @@ option is set.
 
 .. XXX tends to call bufferify version
 
-arg_name
-^^^^^^^^
+f_arg_name
+^^^^^^^^^^
 
 List of name of arguments for Fortran subprogram.
 Will be formatted before being used to expand ``{f_var}``.
 
 Any function result arguments will be added at the end.
-Only added if *arg_decl* is also defined.
+Only added if *f_arg_decl* is also defined.
 
-arg_decl
-^^^^^^^^
+f_arg_decl
+^^^^^^^^^^
 
 List of argument or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
 Added before splicer since it is part of the API and must not change.
-Additional declarations can be added within the splicer via *declare*.
+Additional declarations can be added within the splicer via *f_declare*.
 
 .. code-block:: text
 
-        arg_decl=[
+        f_arg_name=["{f_var}"],
+        f_arg_decl=[
             "character, value, intent(IN) :: {f_var}",
         ],
 
 .. result declaration is added before arguments
    but default declaration are after declarations.
 
-arg_c_call
+f_arg_call
 ^^^^^^^^^^
 
 List of arguments to pass to C wrapper.
@@ -123,45 +124,25 @@ to the end of the call list.
 
 .. code-block:: text
 
-        arg_c_call=[
+        f_arg_call=[
              "C_LOC({f_var})"
         ],
-        arg_c_call=[
+
+.. code-block:: text
+
+        f_arg_call=[
             "{f_var}",
             "len({f_var}, kind=C_INT)",
         ],
 
-c_local_var
-^^^^^^^^^^^
+f_declare
+^^^^^^^^^
 
-If *true* an intermediate variable is created then passed to the C
-wrapper instead of passing *f_var* directly.  The intermediate
-variable can be used when the Fortran argument must be processed
-before passing to C.
-
-For example, the statements for **f_in_bool** convert the type from
-``LOGICAL`` to ``logical(C_BOOL)``. There is no intrinsic function to
-convert logical variables so an assignment statement is required to
-cause the compiler to convert the value.
-
-.. code-block:: yaml
-
-    dict(
-        name="f_in_bool",
-        c_local_var=True,
-        pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
-    ),
-
-.. XXX - maybe use *temps* and *f_c_arg_names* instead as a more general solution.
-
-declare
-^^^^^^^
-
-A list of declarations needed by *pre_call* or *post_call*.
+A list of declarations needed by *f_pre_call* or *f_post_call*.
 Usually a *c_local_var* is sufficient.
 No executable statements should be used since all declarations must be
 grouped together.
-Implies *need_wrapper*.
+Implies *f_need_wrapper*.
 Added within the splicer to make it easier to replace in the YAML file.
 
 f_import
@@ -200,41 +181,42 @@ The format is::
 
      module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
 
-pre_call
-^^^^^^^^
+f_pre_call
+^^^^^^^^^^
 
 Statement to execute before call, often to coerce types when *f_cast*
 cannot be used.
-Implies *need_wrapper*.
+Implies *f_need_wrapper*.
    
-call
-^^^^
+f_call
+^^^^^^
 
 Code used to call the function.
-Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
+Defaults to ``{F_result} = {F_C_call}({f_arg_call})``
 
 For example, to assign to an intermediate variable:
 
 .. code-block:: text
 
-        declare=[
+        f_declare=[
             "type(C_PTR) :: {c_local_ptr}",
         ],
-        call=[
-            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+        f_call=[
+            "{c_local_ptr} = {F_C_call}({f_arg_call})",
         ],
-        local=["ptr"],
-                
+        f_local=["ptr"],
+
+.. used with intent function, subroutine, (getter/setter)
    
-post_call
-^^^^^^^^^
+f_post_call
+^^^^^^^^^^^
 
 Statement to execute after call.
-Can be use to cleanup after *pre_call* or to coerce the return value.
-Implies *need_wrapper*.
+Can be use to cleanup after *f_pre_call* or to coerce the return value.
+Implies *f_need_wrapper*.
    
-result
-^^^^^^
+f_result
+^^^^^^^^
 
 Name of result variable.
 Added as the ``RESULT`` clause of the subprogram statement.
@@ -248,35 +230,35 @@ which will return the number of items copied into the result argument.
     - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
       fstatements:
         f:
-          result: num
+          f_result: num
           f_module:
             iso_c_binding: ["C_LONG"]
-          declare:
+          f_declare:
           -  "integer(C_LONG) :: num"
-          post_call:
+          f_post_call:
           -  "num = Darg%size"
 
-temps
-^^^^^
+f_temps
+^^^^^^^
 
 A list of suffixes for temporary variable names.
 
 .. code-block:: yaml
 
-    temps=["len"]
+    f_temps=["len"]
 
  Create variable names in the format dictionary using
  ``{fmt.c_temp}{rootname}_{name}``.
  For example, argument *foo* creates *SHT_foo_len*.
 
-local
-^^^^^
+f_local
+^^^^^^^
 
- Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+ Similar to *f_temps* but uses ``{fmt.C_local}{rootname}_{name}``.
  *temps* is intended for arguments and is typically used in a mixin
- group.  *local* is used by group to generate names for local
+ group.  *f_local* is used by group to generate names for local
  variables.  This allows creating names without conflicting with
- *temps* from a *mixin* group.
+ *f_temps* from a *mixin* group.
 
 notimplemented
 --------------
@@ -297,4 +279,12 @@ How typemaps are found
 alias
 ^^^^^
 
-Names another node which will be used for its contents.
+List of other names which will be used for its contents.
+
+.. code-block:: yaml
+
+        name="fc_out_string_**_cdesc_allocatable",
+        alias=[
+            "f_out_string_**_cdesc_allocatable",
+            "c_out_string_**_cdesc_allocatable",
+        ],

@@ -419,6 +419,8 @@ deref
 
 Define how to dereference function results and pointers
 which are returned via an argument.
+It's also used with objects which represent an array such
+as std::string or std::vector.
 This may be used in conjunction with *dimension* to create arrays.
 For example, ``int **out +intent(out)+deref(pointer)+dimension(10)``.
 
@@ -437,6 +439,8 @@ copy
     This helps reduce memory management problems since there is no dynamic memory.
     In addition, this helps with non-contiguous C++ memory such as
     arrays or vectors of ``char *`` or ``std::string``.
+    Fortran can not deal with ragged arrays directly and will copy into
+    the contiguous argument.
 
 pointer
 
@@ -482,7 +486,7 @@ raw
 
     For Python, return a ``PyCapsule``.
 
-result-as-arg
+result
 
    Added by Shroud when a function result needs to be passed as an
    additional argument from the Fortran wrapper to the C wrapper.

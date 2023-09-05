@@ -37,8 +37,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +intent(in)
@@ -221,13 +220,11 @@ fail:
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(function)
-// Requested: py_function_vector_numpy_targ_native_scalar
-// Match:     py_function_vector_numpy
+// Exact:     py_function_vector_numpy_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -293,8 +290,7 @@ fail:
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)

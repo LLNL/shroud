@@ -82,8 +82,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
@@ -96,18 +95,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start pass_by_value
     interface
         function pass_by_value(arg1, arg2) &
@@ -125,18 +121,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void PassByReference
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double * arg1 +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! start pass_by_reference
     interface
         subroutine pass_by_reference(arg1, arg2) &
@@ -152,13 +145,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     interface
         function pass_by_value_macro(arg2) &
                 result(SHT_rv) &
@@ -173,23 +164,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void checkBool
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const bool arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool * arg2 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_bool_*
-    ! Match:     c_default
+    ! Exact:     c_out_bool_*
     ! ----------------------------------------
     ! Argument:  bool * arg3 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_bool_*
-    ! Match:     c_default
+    ! Exact:     c_inout_bool_*
     ! start c_check_bool
     interface
         subroutine c_check_bool(arg1, arg2, arg3) &
@@ -206,18 +193,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: c_function_char_*_copy
-    ! Match:     c_function_char_*
+    ! Exact:     c_function_char_*_copy
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg2
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         function c_function4a(arg1, arg2) &
                 result(SHT_rv) &
@@ -233,18 +217,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg2
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHT_rv, &
                 SHT_rv_len) &
@@ -261,13 +242,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void acceptName
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! start c_accept_name
     interface
         subroutine c_accept_name(name) &
@@ -282,13 +261,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_char_*
-    ! Match:     c_default
+    ! Exact:     c_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="passCharPtrInOut")
@@ -301,8 +278,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
@@ -320,13 +296,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnOneName
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! start c_return_one_name
     interface
         subroutine c_return_one_name(name1) &
@@ -341,8 +315,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnOneName
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -362,18 +335,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnTwoNames
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_return_two_names(name1, name2) &
                 bind(C, name="returnTwoNames")
@@ -387,8 +357,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnTwoNames
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -413,18 +382,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start c_implied_text_len
     interface
         subroutine c_implied_text_len(text, ltext) &
@@ -440,8 +406,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -449,8 +414,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start c_implied_text_len_bufferify
     interface
         subroutine c_implied_text_len_bufferify(text, SHT_text_len, &
@@ -468,23 +432,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(false)+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     interface
         function c_implied_len(text, ltext, flag) &
                 result(SHT_rv) &
@@ -501,23 +461,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * text
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len_trim(text))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(true)+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     interface
         function c_implied_len_trim(text, ltext, flag) &
                 result(SHT_rv) &
@@ -534,13 +490,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(true)+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     interface
         function c_implied_bool_true(flag) &
                 result(SHT_rv) &
@@ -555,13 +509,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool flag +implied(false)+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     interface
         function c_implied_bool_false(flag) &
                 result(SHT_rv) &
@@ -576,8 +528,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void bindC1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     interface
         subroutine Fortran_bindC1a() &
                 bind(C, name="bindC1")
@@ -588,13 +539,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void bindC2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_bind_c2(outbuf) &
                 bind(C, name="bindC2")
@@ -607,8 +556,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void bindC2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -626,13 +574,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void passVoidStarStar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * in +intent(in)+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
     ! Attrs:     +intent(out)
@@ -652,13 +598,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedType
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! start pass_assumed_type
     interface
         function pass_assumed_type(arg) &
@@ -675,13 +619,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void passAssumedTypeDim
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! start pass_assumed_type_dim
     interface
         subroutine pass_assumed_type_dim(arg) &
@@ -695,18 +637,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
@@ -722,13 +661,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -750,18 +687,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  void ( * incr)(void) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! start c_callback1
     interface
         subroutine c_callback1(type, incr) &
@@ -778,18 +712,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback1a
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  void ( * incr)(void) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! start c_callback1a
     interface
         subroutine c_callback1a(type, incr) &
@@ -806,23 +737,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     interface
         subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
@@ -838,28 +765,23 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback3
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const char * type
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_char_*
-    ! Match:     c_default
+    ! Exact:     c_out_char_*
     interface
         subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")
@@ -876,23 +798,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback3
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const char * type
     ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Exact:     c_in_char_*
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
@@ -915,23 +833,19 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback_set_alloc
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int tc +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! ----------------------------------------
     ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_void_scalar
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &
                 bind(C, name="callback_set_alloc")
@@ -971,27 +885,21 @@ contains
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! start pass_by_value
     function pass_by_value(arg1, arg2) &
             result(SHT_rv)
@@ -1017,18 +925,15 @@ contains
     ! ----------------------------------------
     ! Argument:  double * arg1 +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! start pass_by_reference
     subroutine pass_by_reference(arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1046,19 +951,15 @@ contains
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! PassByValueMacro is a #define macro. Force a C wrapper
     !! to allow Fortran to have an actual function to call.
@@ -1083,27 +984,21 @@ contains
     ! ----------------------------------------
     ! Argument:  const bool arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_bool_scalar
-    ! Match:     f_in_bool
+    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool * arg2 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_bool_*
-    ! Match:     f_out_bool
+    ! Exact:     f_out_bool_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_bool_*
-    ! Match:     c_default
+    ! Exact:     c_out_bool_*
     ! ----------------------------------------
     ! Argument:  bool * arg3 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_bool_*
-    ! Match:     f_inout_bool
+    ! Exact:     f_inout_bool_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_bool_*
-    ! Match:     c_default
+    ! Exact:     c_inout_bool_*
     !>
     !! \brief Check intent with bool
     !!
@@ -1115,14 +1010,14 @@ contains
         logical, intent(OUT) :: arg2
         logical, intent(INOUT) :: arg3
         ! splicer begin function.check_bool
-        logical(C_BOOL) SH_arg1
-        logical(C_BOOL) SH_arg2
-        logical(C_BOOL) SH_arg3
-        SH_arg1 = arg1  ! coerce to C_BOOL
-        SH_arg3 = arg3  ! coerce to C_BOOL
-        call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
-        arg2 = SH_arg2  ! coerce to logical
-        arg3 = SH_arg3  ! coerce to logical
+        logical(C_BOOL) :: SHT_arg1_cxx
+        logical(C_BOOL) :: SHT_arg2_cxx
+        logical(C_BOOL) :: SHT_arg3_cxx
+        SHT_arg1_cxx = arg1  ! coerce to C_BOOL
+        SHT_arg3_cxx = arg3  ! coerce to C_BOOL
+        call c_check_bool(SHT_arg1_cxx, SHT_arg2_cxx, SHT_arg3_cxx)
+        arg2 = SHT_arg2_cxx  ! coerce to logical
+        arg3 = SHT_arg3_cxx  ! coerce to logical
         ! splicer end function.check_bool
     end subroutine check_bool
     ! end check_bool
@@ -1131,11 +1026,9 @@ contains
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_char_*_buf_copy
-    ! Match:     f_function_char_*_buf
+    ! Exact:     f_function_char_*_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_char_*_buf_copy
-    ! Match:     c_function_char_*_buf
+    ! Exact:     c_function_char_*_buf_copy
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -1301,11 +1194,9 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1330,11 +1221,9 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1359,11 +1248,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1382,11 +1269,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1463,8 +1348,7 @@ contains
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
+    ! Exact:     c_in_void_*
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
     ! Attrs:     +intent(out)
@@ -1493,11 +1377,9 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedType
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief Test assumed-type
     !!
@@ -1544,11 +1426,9 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
@@ -1585,11 +1465,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1614,11 +1492,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1644,11 +1520,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1706,19 +1580,15 @@ contains
     ! ----------------------------------------
     ! Argument:  int tc +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     !>
     !! The function argument takes a struct argument
     !! which is defined in this library.

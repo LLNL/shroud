@@ -90,8 +90,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +intent(inout)
-// Requested: c_inout_char_*
-// Match:     c_default
+// Exact:     c_inout_char_*
 void TES_getName(char * name)
 {
     // splicer begin function.getName
@@ -110,10 +109,10 @@ void TES_getName(char * name)
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.getName_bufferify
-    char * ARG_name = ShroudStrAlloc(name, SHT_name_len, 0);
-    getName(ARG_name);
-    ShroudStrCopy(name, SHT_name_len, ARG_name, -1);
-    ShroudStrFree(ARG_name);
+    char * SHT_name_str = ShroudStrAlloc(name, SHT_name_len, 0);
+    getName(SHT_name_str);
+    ShroudStrCopy(name, SHT_name_len, SHT_name_str, -1);
+    ShroudStrFree(SHT_name_str);
     // splicer end function.getName_bufferify
 }
 
@@ -146,8 +145,7 @@ void c_name_special(void)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void YYY_TES_function3a_0(int i)
 {
     // splicer begin function.function3a_0
@@ -162,8 +160,7 @@ void YYY_TES_function3a_0(int i)
 // ----------------------------------------
 // Argument:  long i +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void YYY_TES_function3a_1(long i)
 {
     // splicer begin function.function3a_1
@@ -174,8 +171,7 @@ void YYY_TES_function3a_1(long i)
 // ----------------------------------------
 // Function:  int function4
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +intent(in)
@@ -192,8 +188,7 @@ int YYY_TES_function4(const char * rv)
 // ----------------------------------------
 // Function:  int function4
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +api(buf)+intent(in)
@@ -232,8 +227,7 @@ void YYY_TES_fiveplus(void)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 void TES_TestMultilineSplicer(char * name, int * value)
 {
     // splicer begin function.TestMultilineSplicer
@@ -256,8 +250,7 @@ void TES_TestMultilineSplicer(char * name, int * value)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
@@ -278,13 +271,11 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void c_name_instantiation1(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -303,13 +294,11 @@ void c_name_instantiation1(int arg1, long arg2)
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_instantiation2
@@ -324,8 +313,7 @@ void TES_FunctionTU_instantiation2(float arg1, double arg2)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int TES_UseImplWorker_instantiation3(void)
 {
     // splicer begin function.UseImplWorker_instantiation3
@@ -337,8 +325,7 @@ int TES_UseImplWorker_instantiation3(void)
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
@@ -360,33 +347,27 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // ----------------------------------------
 // Argument:  const char * rdbase
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * pkg
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  const char * name
 // Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Exact:     c_in_char_*
 // ----------------------------------------
 // Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // ----------------------------------------
 // Argument:  void ( * afree)(double * arr +intent(inout)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 // ----------------------------------------
 // Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
 // Attrs:     +intent(in)
-// Requested: c_in_void_scalar
-// Match:     c_default
+// Exact:     c_in_void_scalar
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),
     void ( * afree)(double * arr), void ( * assoc)(double * arr,

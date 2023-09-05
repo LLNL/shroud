@@ -25,8 +25,7 @@ module testnames_ns1_mod
         ! ----------------------------------------
         ! Function:  void init_ns1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_init_ns1() &
                 bind(C, name="TES_ns1_init_ns1")
             implicit none

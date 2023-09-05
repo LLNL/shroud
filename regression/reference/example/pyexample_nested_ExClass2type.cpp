@@ -301,8 +301,7 @@ PP_getName4(
 // ----------------------------------------
 // Function:  int GetNameLength
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
@@ -379,13 +378,11 @@ PP_get_class1(
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 // ----------------------------------------
 // Argument:  SidreLength len=1 +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PP_declare_1__doc__[] =
 "documentation"
 ;
@@ -464,8 +461,7 @@ PP_destroyall(
 // ----------------------------------------
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static char PP_getTypeID__doc__[] =
 "documentation"
 ;
@@ -495,8 +491,7 @@ PP_getTypeID(
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_setValue_int(
   PP_ExClass2 *self,
@@ -525,8 +520,7 @@ PP_setValue_int(
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_setValue_long(
   PP_ExClass2 *self,
@@ -555,8 +549,7 @@ PP_setValue_long(
 // ----------------------------------------
 // Argument:  float value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_setValue_float(
   PP_ExClass2 *self,
@@ -585,8 +578,7 @@ PP_setValue_float(
 // ----------------------------------------
 // Argument:  double value +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static PyObject *
 PP_setValue_double(
   PP_ExClass2 *self,
@@ -611,8 +603,7 @@ PP_setValue_double(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static PyObject *
 PP_getValue_int(
   PP_ExClass2 *self,
@@ -634,8 +625,7 @@ PP_getValue_int(
 // ----------------------------------------
 // Function:  double getValue
 // Attrs:     +intent(function)
-// Requested: py_function_native_scalar
-// Match:     py_default
+// Exact:     py_function_native_scalar
 static PyObject *
 PP_getValue_double(
   PP_ExClass2 *self,

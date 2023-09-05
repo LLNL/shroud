@@ -132,7 +132,7 @@ class VerifyAttrs(object):
             ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for function '{}' define at line {}".format(
-                        attr, node.ast.name, node.linenumber
+                        attr, node.name, node.linenumber
                     )
                 )
 

@@ -32,8 +32,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_0
@@ -55,13 +54,11 @@ DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_1
@@ -83,18 +80,15 @@ DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg3=2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
     DEF_Class1 * SHC_rv)
 {
@@ -130,8 +124,7 @@ void DEF_Class1_delete(DEF_Class1 * self)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -151,13 +144,11 @@ void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
     int arg2)
 {
@@ -178,18 +169,15 @@ void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2=1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg3=2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void DEF_Class1_DefaultArguments_2(DEF_Class1 * self, int arg1,
     int arg2, int arg3)
 {

@@ -1481,10 +1481,6 @@ f_assumed_shape
    May also be set to ``(..)`` when attribute *+dimension(..)* is used
    and option *F_CFI* is True.
 
-f_c_dimension
-    Dimension used in ``bind(C)`` interface.
-    May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
-
 f_c_module_line
     Typemap.f_c_module in a format usable by FStmts.f_module_line.
     The dictionary is converted into the string.
@@ -1537,6 +1533,16 @@ hnamefunc
     Each name in statements *f_helper* will set a suffix index.
     The first helper will be *hnamefunc0*.
     Used by statements *pre_call* and *post_call* statements.
+
+i_dimension
+    Dimension used in ``bind(C)`` interface.
+    May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
+
+i_module_line
+    Used with Fortran interface.
+
+i_type
+    Used with Fortran interface.
 
 size
     Expression to compute size of array argument using ``SIZE`` intrinsic.

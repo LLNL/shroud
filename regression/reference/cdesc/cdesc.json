@@ -84,18 +84,18 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "c_var_cdesc2": "Darg",
                             "f_assumed_shape": "(:,:)",
-                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "i_dimension": "(*)",
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)"
@@ -206,7 +206,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_cdesc2": "Darg",
                             "f_assumed_shape": "(:,:)",
-                            "f_c_dimension": "(*)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:2) = shape(arg)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -214,6 +213,7 @@
                             "f_var": "arg",
                             "hnamefunc0": "ShroudTypeDefines",
                             "hnamefunc1": "array_context",
+                            "i_dimension": "(*)",
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -486,7 +486,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_in_void_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_void_*"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -1320,7 +1320,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1332,9 +1332,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -1442,7 +1442,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1454,9 +1454,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -1632,7 +1632,7 @@
                 ],
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1728,7 +1728,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1835,7 +1835,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -1880,7 +1880,7 @@
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_native_*"
                         }
                     }
                 },
@@ -1967,7 +1967,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -2074,7 +2074,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "call": [
+                        "f_call": [
                             "value = c_get_data_{stype}()"
                         ]
                     }
@@ -2119,7 +2119,7 @@
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_native_*"
                         }
                     }
                 },

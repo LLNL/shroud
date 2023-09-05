@@ -41,8 +41,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -199,8 +198,7 @@ void VEC_vector_iota_out_alloc_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-// Requested: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
-// Match:     c_inout_vector_cdesc_targ_native_scalar
+// Exact:     c_inout_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     size_t SHT_arg_size, VEC_SHROUD_array *SHT_arg_cdesc)
@@ -228,8 +226,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
 // Attrs:     +api(cdesc)+intent(inout)
-// Requested: c_inout_vector_&_cdesc_targ_native_scalar
-// Match:     c_inout_vector_cdesc_targ_native_scalar
+// Exact:     c_inout_vector_&_cdesc_targ_native_scalar
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -283,8 +280,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  int vector_of_pointers
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -292,8 +288,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
     size_t SHT_arg1_size, int num)
 {
@@ -314,8 +309,7 @@ int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
 // ----------------------------------------
 // Function:  int vector_string_count
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -422,13 +416,11 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Requested: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-// Match:     c_function_vector_scalar_cdesc_targ_native_scalar
+// Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
 {
@@ -449,18 +441,15 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 int VEC_returnDim2(int * arg, int len)
 {
     // splicer begin function.returnDim2

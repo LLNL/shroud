@@ -37,8 +37,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Requested: py_function_native_*_scalar
-// Match:     py_default
+// Exact:     py_function_native_*_scalar
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
 ;
@@ -327,8 +326,7 @@ fail:
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_createClassStatic__doc__[] =
 "documentation"
 ;
@@ -386,8 +384,7 @@ PY_getClassStatic(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
+// Exact:     py_in_native_scalar
 static char PY_getClassNew__doc__[] =
 "documentation"
 ;

@@ -25,8 +25,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker3
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine inner3_worker3() &
                 bind(C, name="WWW_inner3_worker3")
             implicit none
@@ -35,8 +34,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine worker() &
                 bind(C, name="WWW_worker")
             implicit none
@@ -45,8 +43,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker4
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")
             implicit none

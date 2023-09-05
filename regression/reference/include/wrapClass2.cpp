@@ -26,8 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Requested: c_in_unknown_scalar
-// Match:     c_default
+// Exact:     c_in_unknown_scalar
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);

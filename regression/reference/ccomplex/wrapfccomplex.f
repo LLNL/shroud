@@ -23,13 +23,11 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptFloatComplexInoutPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     interface
         subroutine accept_float_complex_inout_ptr(arg1) &
                 bind(C, name="acceptFloatComplexInoutPtr")
@@ -42,13 +40,11 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexInoutPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     interface
         subroutine accept_double_complex_inout_ptr(arg1) &
                 bind(C, name="acceptDoubleComplexInoutPtr")
@@ -61,13 +57,11 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine accept_double_complex_out_ptr(arg1) &
                 bind(C, name="acceptDoubleComplexOutPtr")
@@ -80,18 +74,15 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtrFlag
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Exact:     c_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     interface
         subroutine accept_double_complex_out_ptr_flag(arg1, flag) &
                 bind(C, name="acceptDoubleComplexOutPtrFlag")
@@ -118,11 +109,9 @@ contains
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     subroutine accept_float_complex_inout_ptr(arg1)
         use iso_c_binding, only : C_FLOAT_COMPLEX
         complex(C_FLOAT_COMPLEX), intent(INOUT) :: arg1
@@ -143,11 +132,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     subroutine accept_double_complex_inout_ptr(arg1)
         use iso_c_binding, only : C_DOUBLE_COMPLEX
         complex(C_DOUBLE_COMPLEX), intent(INOUT) :: arg1
@@ -170,8 +157,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     subroutine accept_double_complex_out_ptr(arg1)
         use iso_c_binding, only : C_DOUBLE_COMPLEX
         complex(C_DOUBLE_COMPLEX), intent(OUT) :: arg1
@@ -194,15 +180,13 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! Return two values so Py_BuildValue is used.
     !! Creates a Py_complex for intent(out)

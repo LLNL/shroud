@@ -96,8 +96,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -108,13 +107,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_&
-        ! Match:     c_default
+        ! Exact:     c_in_native_&
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
@@ -127,13 +124,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_&_pointer
-        ! Match:     c_function_native_&
+        ! Exact:     c_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
@@ -162,8 +157,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -174,13 +168,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_&
-        ! Match:     c_default
+        ! Exact:     c_in_native_&
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
@@ -193,13 +185,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_native_&_pointer
-        ! Match:     c_function_native_&
+        ! Exact:     c_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
@@ -264,11 +254,9 @@ contains
     ! ----------------------------------------
     ! Argument:  const int & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_&
-    ! Match:     f_default
+    ! Exact:     f_in_native_&
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_&
-    ! Match:     c_default
+    ! Exact:     c_in_native_&
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
         class(vector_int) :: obj
@@ -282,19 +270,15 @@ contains
     ! ----------------------------------------
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_&_pointer
-    ! Match:     f_function_native_&
+    ! Exact:     f_function_native_&_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_&_pointer
-    ! Match:     c_function_native_&
+    ! Exact:     c_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function vector_int_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -373,11 +357,9 @@ contains
     ! ----------------------------------------
     ! Argument:  const double & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_&
-    ! Match:     f_default
+    ! Exact:     f_in_native_&
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_&
-    ! Match:     c_default
+    ! Exact:     c_in_native_&
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(vector_double) :: obj
@@ -391,19 +373,15 @@ contains
     ! ----------------------------------------
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_&_pointer
-    ! Match:     f_function_native_&
+    ! Exact:     f_function_native_&_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_&_pointer
-    ! Match:     c_function_native_&
+    ! Exact:     c_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function vector_double_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer

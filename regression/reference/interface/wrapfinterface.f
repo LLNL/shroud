@@ -25,8 +25,7 @@ module interface_mod
         ! ----------------------------------------
         ! Function:  void Function1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine function1() &
                 bind(C, name="Function1")
             implicit none
@@ -35,18 +34,15 @@ module interface_mod
         ! ----------------------------------------
         ! Function:  double Function2
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int arg2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")
@@ -83,27 +79,21 @@ contains
     ! ----------------------------------------
     ! Function:  double Function2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function function2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT

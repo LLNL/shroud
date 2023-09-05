@@ -37,8 +37,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +api(capptr)+intent(ctor)
-// Requested: lua_ctor_scalar
-// Match:     lua_ctor
+// Exact:     lua_ctor_scalar
 static int l_Class2_ctor(lua_State *L)
 {
     // splicer begin class.Class2.method.ctor
@@ -57,8 +56,7 @@ static int l_Class2_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~Class2
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_scalar
-// Match:     lua_dtor
+// Exact:     lua_dtor_scalar
 static int l_Class2_dtor(lua_State *L)
 {
     // splicer begin class.Class2.method.__gc

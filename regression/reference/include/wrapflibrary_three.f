@@ -43,13 +43,11 @@ module library_three_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             import :: LIB_SHROUD_capsule_data, custom_type
@@ -71,11 +69,9 @@ contains
     ! ----------------------------------------
     ! Argument:  CustomType arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine class1_method1(obj, arg1)
         use library_mod, only : custom_type
         class(class1) :: obj

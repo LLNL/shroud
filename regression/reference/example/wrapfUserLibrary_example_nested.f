@@ -218,8 +218,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass1
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_ex_class1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
@@ -230,13 +229,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int incrementCount
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int incr +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_ex_class1_increment_count(self, incr) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_incrementCount")
@@ -251,8 +248,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_string_&_allocatable
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_allocatable
         pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
@@ -293,13 +289,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void getNameArg
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  string & name
         ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-        ! Requested: c_function_string_&_buf_result
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_result
         subroutine c_ex_class1_get_name_arg_bufferify(self, name, &
                 SHT_name_len) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
@@ -314,13 +308,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int getValue
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_ex_class1_get_value_from_int(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getValue_from_int")
@@ -335,13 +327,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  long getValue
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_ex_class1_get_value_1(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getValue_1")
@@ -356,13 +346,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool hasAddr
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  bool in +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_bool_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_bool_scalar
         function c_ex_class1_has_addr(self, in) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_hasAddr")
@@ -377,8 +365,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void SplicerSpecial
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_ex_class1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_SplicerSpecial")
             import :: AA_SHROUD_capsule_data
@@ -428,8 +415,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_ex_class2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
@@ -440,8 +426,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +deref(copy)+intent(function)
-        ! Requested: c_function_string_&_copy
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_copy
         pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName")
@@ -455,8 +440,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         subroutine c_ex_class2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="AA_example_nested_ExClass2_getName_bufferify")
@@ -471,8 +455,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_string_&_allocatable
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_allocatable
         function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2")
@@ -498,8 +481,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_string_&_allocatable
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_allocatable
         pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3")
@@ -525,8 +507,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Requested: c_function_string_&_allocatable
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_allocatable
         function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4")
@@ -552,8 +533,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int GetNameLength
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         pure function c_ex_class2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_GetNameLength")
@@ -587,13 +567,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
             import :: AA_SHROUD_capsule_data, type_id
@@ -605,18 +583,15 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  SidreLength len=1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
             import :: AA_SHROUD_capsule_data, sidre_length, type_id
@@ -629,8 +604,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void destroyall
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_ex_class2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
             import :: AA_SHROUD_capsule_data
@@ -641,8 +615,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
@@ -655,13 +628,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_set_value_int(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_int")
             use iso_c_binding, only : C_INT
@@ -674,13 +645,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  long value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_set_value_long(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_long")
             use iso_c_binding, only : C_LONG
@@ -693,13 +662,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  float value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_set_value_float(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_float")
             use iso_c_binding, only : C_FLOAT
@@ -712,13 +679,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double value +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_ex_class2_set_value_double(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_double")
             use iso_c_binding, only : C_DOUBLE
@@ -731,8 +696,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int getValue
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_ex_class2_get_value_int(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_int")
@@ -746,8 +710,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  double getValue
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_ex_class2_get_value_double(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_double")
@@ -761,8 +724,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void local_function1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine local_function1() &
                 bind(C, name="AA_example_nested_local_function1")
             implicit none
@@ -771,8 +733,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -789,8 +750,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -808,8 +768,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isInitialized
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         function c_is_initialized() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_isInitialized")
@@ -821,8 +780,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -837,8 +795,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -854,8 +811,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -863,8 +819,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_test_names_flag(name, flag) &
                 bind(C, name="AA_example_nested_test_names_flag")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -876,8 +831,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -885,8 +839,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_test_names_flag_bufferify(name, SHT_name_len, flag) &
                 bind(C, name="AA_example_nested_test_names_flag_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -899,8 +852,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_testoptional_0() &
                 bind(C, name="AA_example_nested_testoptional_0")
             implicit none
@@ -909,13 +861,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_testoptional_1(i) &
                 bind(C, name="AA_example_nested_testoptional_1")
             use iso_c_binding, only : C_INT
@@ -926,18 +876,15 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  long j=2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_testoptional_2(i, j) &
                 bind(C, name="AA_example_nested_testoptional_2")
             use iso_c_binding, only : C_INT, C_LONG
@@ -949,8 +896,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  size_t test_size_t
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function test_size_t() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_test_size_t")
@@ -963,13 +909,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testmpi
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_unknown_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_unknown_scalar
         subroutine c_testmpi_mpi(comm) &
                 bind(C, name="AA_example_nested_testmpi_mpi")
             use iso_c_binding, only : C_INT
@@ -982,8 +926,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testmpi
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_example_nested_testmpi_serial")
             implicit none
@@ -993,13 +936,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * get)(void) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_FuncPtr1")
             import :: func_ptr1_get
@@ -1010,13 +951,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr2
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * ( * get)(void)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_FuncPtr2")
             import :: func_ptr2_get
@@ -1027,13 +966,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr3
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double ( * get)(int i +value, int +value) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_FuncPtr3")
             import :: func_ptr3_get
@@ -1044,13 +981,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr4
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double ( * get)(double +value, int +value) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_FuncPtr4")
             import :: custom_funptr
@@ -1061,13 +996,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr5
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_void_scalar
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_FuncPtr5")
             import :: func_ptr5_get
@@ -1078,58 +1011,47 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void verylongfunctionname1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * verylongname1 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname2 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname3 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname4 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname5 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname6 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname7 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname8 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname9 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         ! ----------------------------------------
         ! Argument:  int * verylongname10 +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
+        ! Exact:     c_inout_native_*
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
@@ -1152,58 +1074,47 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int verylongfunctionname2
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname3 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname4 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname5 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname6 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname7 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname8 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname9 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname10 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_verylongfunctionname2(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
@@ -1228,23 +1139,19 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void cos_doubles
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * in +intent(in)+rank(2)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         ! ----------------------------------------
         ! Argument:  double * out +dimension(shape(in))+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  int sizein +implied(size(in))+value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_cos_doubles(in, out, sizein) &
                 bind(C, name="AA_example_nested_cos_doubles")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1393,19 +1300,15 @@ contains
     ! ----------------------------------------
     ! Function:  int incrementCount
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int incr +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function ex_class1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1448,11 +1351,9 @@ contains
     ! ----------------------------------------
     ! Argument:  string & name
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: f_function_string_&_buf_result
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_result
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
-    ! Requested: c_function_string_&_buf_result
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_result
     subroutine ex_class1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
@@ -1468,19 +1369,15 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function ex_class1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1495,19 +1392,15 @@ contains
     ! ----------------------------------------
     ! Function:  long getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function ex_class1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -1522,19 +1415,15 @@ contains
     ! ----------------------------------------
     ! Function:  bool hasAddr
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool in +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_bool_scalar
-    ! Match:     f_in_bool
+    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     function ex_class1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -1542,9 +1431,9 @@ contains
         logical, value, intent(IN) :: in
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
-        logical(C_BOOL) SH_in
-        SH_in = in  ! coerce to C_BOOL
-        SHT_rv = c_ex_class1_has_addr(obj%cxxmem, SH_in)
+        logical(C_BOOL) :: SHT_in_cxx
+        SHT_in_cxx = in  ! coerce to C_BOOL
+        SHT_rv = c_ex_class1_has_addr(obj%cxxmem, SHT_in_cxx)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
     end function ex_class1_has_addr
 
@@ -1632,11 +1521,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     function ex_class2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1713,11 +1600,9 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! \brief helper function for Fortran
     !!
@@ -1741,8 +1626,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const ExClass1 * in
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     function ex_class2_get_class1(obj, in) &
@@ -1768,11 +1652,9 @@ contains
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_declare_0_int(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
@@ -1792,11 +1674,9 @@ contains
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_declare_0_long(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
@@ -1816,20 +1696,16 @@ contains
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int len=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Argument:  SidreLength len=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT
         use userlibrary_mod, only : sidre_length, type_id
@@ -1851,20 +1727,16 @@ contains
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long len=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Argument:  SidreLength len=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_LONG
         use userlibrary_mod, only : sidre_length, type_id
@@ -1892,11 +1764,9 @@ contains
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function ex_class2_get_type_id(obj) &
             result(SHT_rv)
         use userlibrary_mod, only : type_id
@@ -1917,11 +1787,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
@@ -1941,11 +1809,9 @@ contains
     ! ----------------------------------------
     ! Argument:  long value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
         class(ex_class2) :: obj
@@ -1965,11 +1831,9 @@ contains
     ! ----------------------------------------
     ! Argument:  float value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
         class(ex_class2) :: obj
@@ -1989,11 +1853,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double value +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine ex_class2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(ex_class2) :: obj
@@ -2007,11 +1869,9 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function ex_class2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -2026,11 +1886,9 @@ contains
     ! ----------------------------------------
     ! Function:  double getValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function ex_class2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -2078,11 +1936,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool isNameValid
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
@@ -2102,11 +1958,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool isInitialized
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -2155,11 +2009,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -2194,11 +2046,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int i=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -2216,19 +2066,15 @@ contains
     ! ----------------------------------------
     ! Argument:  int i=1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long j=2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -2243,11 +2089,9 @@ contains
     ! ----------------------------------------
     ! Function:  size_t test_size_t
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     function test_size_t() &
             result(SHT_rv)
         use iso_c_binding, only : C_SIZE_T
@@ -2268,11 +2112,9 @@ contains
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_unknown_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_unknown_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_unknown_scalar
     subroutine testmpi_mpi(comm)
         integer, value, intent(IN) :: comm
         ! splicer begin namespace.example::nested.function.testmpi_mpi
@@ -2394,83 +2236,63 @@ contains
     ! ----------------------------------------
     ! Argument:  int * verylongname1 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname2 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname3 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname4 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname5 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname6 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname7 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname8 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname9 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname10 +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
+    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Exact:     c_inout_native_*
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -2495,91 +2317,69 @@ contains
     ! ----------------------------------------
     ! Function:  int verylongfunctionname2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname3 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname4 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname5 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname6 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname7 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname8 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname9 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname10 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
@@ -2612,18 +2412,15 @@ contains
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(shape(in))+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

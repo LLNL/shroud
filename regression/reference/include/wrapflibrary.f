@@ -47,13 +47,11 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_unknown_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -66,8 +64,7 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)
@@ -93,11 +90,9 @@ contains
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_unknown_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_unknown_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
@@ -113,8 +108,7 @@ contains
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_shadow_*
-    ! Match:     f_default
+    ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
     ! Exact:     c_inout_shadow_*
     subroutine class2_method2(obj, c2)

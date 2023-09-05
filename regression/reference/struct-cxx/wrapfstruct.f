@@ -143,8 +143,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -179,8 +178,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -215,8 +213,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -251,8 +248,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -287,8 +283,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_z1
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -307,13 +302,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStructByValue
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 arg +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_scalar
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_scalar
         ! start pass_struct_by_value
         function pass_struct_by_value(arg) &
                 result(SHT_rv) &
@@ -329,13 +322,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStruct1
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         ! start pass_struct1
         function pass_struct1(arg) &
                 result(SHT_rv) &
@@ -351,18 +342,15 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_char_*
-        ! Match:     c_default
+        ! Exact:     c_out_char_*
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2")
@@ -377,13 +365,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +api(buf)+intent(out)
@@ -403,13 +389,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int acceptStructInPtr
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &
                 bind(C, name="STR_acceptStructInPtr")
@@ -423,23 +407,19 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void acceptStructOutPtr
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_struct_*
-        ! Match:     c_out_struct
+        ! Exact:     c_out_struct_*
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine accept_struct_out_ptr(arg, i, d) &
                 bind(C, name="STR_acceptStructOutPtr")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -453,13 +433,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void acceptStructInOutPtr
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_struct_*
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_*
         subroutine accept_struct_in_out_ptr(arg) &
                 bind(C, name="STR_acceptStructInOutPtr")
             import :: cstruct1
@@ -474,13 +452,11 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_return_struct_by_value(i, d, SHT_rv) &
                 bind(C, name="STR_returnStructByValue")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -494,18 +470,15 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr1
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_struct_*_pointer
-        ! Match:     c_function_struct_*
+        ! Exact:     c_function_struct_*_pointer
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr1")
@@ -519,23 +492,19 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_struct_*_pointer
-        ! Match:     c_function_struct_*
+        ! Exact:     c_function_struct_*_pointer
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_char_*
-        ! Match:     c_default
+        ! Exact:     c_out_char_*
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr2")
@@ -550,18 +519,15 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_struct_*_pointer
-        ! Match:     c_function_struct_*
+        ! Exact:     c_function_struct_*_pointer
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +api(buf)+intent(out)
@@ -582,8 +548,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct_list * get_global_struct_list
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Requested: c_function_struct_*_pointer
-        ! Match:     c_function_struct_*
+        ! Exact:     c_function_struct_*_pointer
         function c_get_global_struct_list() &
                 result(SHT_rv) &
                 bind(C, name="STR_get_global_struct_list")
@@ -615,13 +580,11 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  int x +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int y +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_class_args")
@@ -637,8 +600,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int Cstruct_as_class_sum
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
@@ -660,18 +622,15 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  int x +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int y +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int z +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_subclass_args")
@@ -688,13 +647,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  const double * Cstruct_ptr_get_const_dvalue
         ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-        ! Requested: c_getter_native_*_pointer
-        ! Match:     c_getter_native_*
+        ! Exact:     c_getter_native_*_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this
         ! Attrs:     +intent(in)+struct(Cstruct_ptr)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         function cstruct_ptr_get_const_dvalue(SH_this) &
                 result(SHT_rv) &
                 bind(C, name="STR_Cstruct_ptr_get_const_dvalue")
@@ -708,13 +665,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_ptr_set_const_dvalue
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this
         ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
-        ! Requested: c_inout_struct_*
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_*
         ! ----------------------------------------
         ! Argument:  const double * val +intent(in)
         ! Attrs:     +intent(setter)
@@ -731,13 +686,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int * Cstruct_list_get_ivalue
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-        ! Requested: c_getter_native_*_cdesc_pointer
-        ! Match:     c_getter_native_*_cdesc
+        ! Exact:     c_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(in)+struct(Cstruct_list)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv) &
                 bind(C, name="STR_Cstruct_list_get_ivalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
@@ -749,13 +702,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_list_set_ivalue
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(inout)+struct(Cstruct_list)
-        ! Requested: c_inout_struct_*
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_*
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -772,13 +723,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  double * Cstruct_list_get_dvalue
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-        ! Requested: c_getter_native_*_cdesc_pointer
-        ! Match:     c_getter_native_*_cdesc
+        ! Exact:     c_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(in)+struct(Cstruct_list)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv) &
                 bind(C, name="STR_Cstruct_list_get_dvalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
@@ -790,13 +739,11 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_list_set_dvalue
         ! Attrs:     +intent(setter)
-        ! Requested: c_setter_void_scalar
-        ! Match:     c_setter
+        ! Exact:     c_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(inout)+struct(Cstruct_list)
-        ! Requested: c_inout_struct_*
-        ! Match:     c_inout_struct
+        ! Exact:     c_inout_struct_*
         ! ----------------------------------------
         ! Argument:  double * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -831,8 +778,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_class_get_x1
@@ -857,8 +803,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_x1
@@ -876,8 +821,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_class_get_y1
@@ -902,8 +846,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_y1
@@ -924,8 +867,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_x1
@@ -950,8 +892,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_x1
@@ -969,8 +910,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_y1
@@ -995,8 +935,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_y1
@@ -1014,8 +953,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_z1
     ! Attrs:     +intent(getter)
-    ! Requested: f_getter_native_scalar
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start cstruct_as_subclass_get_z1
@@ -1040,8 +978,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_scalar
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_z1
@@ -1063,19 +1000,15 @@ contains
     ! ----------------------------------------
     ! Function:  int passStructByValue
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_struct_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_scalar
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_scalar
     ! start pass_struct_by_value
     function pass_struct_by_value(arg) &
             result(SHT_rv)
@@ -1094,19 +1027,15 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     ! start pass_struct1
     function pass_struct1(arg) &
             result(SHT_rv)
@@ -1124,19 +1053,15 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
@@ -1164,19 +1089,15 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function accept_struct_in_ptr(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1199,27 +1120,21 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_struct_*
-    ! Match:     f_default
+    ! Exact:     f_out_struct_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_struct_*
-    ! Match:     c_out_struct
+    ! Exact:     c_out_struct_*
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! Pass name argument which will build a bufferify function.
     !<
@@ -1245,11 +1160,9 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     subroutine accept_struct_in_out_ptr(arg)
         type(cstruct1), intent(INOUT) :: arg
         ! splicer begin function.accept_struct_in_out_ptr
@@ -1267,19 +1180,15 @@ contains
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function return_struct_by_value(i, d) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1296,24 +1205,19 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief Return a pointer to a struct
     !!
@@ -1338,24 +1242,19 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double d +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
@@ -1389,8 +1288,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_struct_*_pointer
-    ! Match:     c_function_struct_*
+    ! Exact:     c_function_struct_*_pointer
     function get_global_struct_list() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR, c_f_pointer
@@ -1429,19 +1327,15 @@ contains
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int y +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function create_cstruct_as_class_args(x, y) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -1457,16 +1351,13 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     function cstruct_as_class_sum(point) &
@@ -1488,27 +1379,21 @@ contains
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int y +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int z +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     function create_cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -1529,19 +1414,15 @@ contains
     ! ----------------------------------------
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Requested: f_getter_native_*_pointer
-    ! Match:     f_getter
+    ! Exact:     f_getter_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Requested: c_getter_native_*_pointer
-    ! Match:     c_getter_native_*
+    ! Exact:     c_getter_native_*_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function cstruct_ptr_get_const_dvalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1565,16 +1446,13 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! ----------------------------------------
     ! Argument:  const double * val +intent(in)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_ptr_set_const_dvalue(SH_this, val)
@@ -1593,16 +1471,13 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function cstruct_list_get_ivalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1628,16 +1503,13 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_list_set_ivalue(SH_this, val)
@@ -1656,16 +1528,13 @@ contains
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Requested: c_getter_native_*_cdesc_pointer
-    ! Match:     c_getter_native_*_cdesc
+    ! Exact:     c_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(Cstruct_list)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function cstruct_list_get_dvalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -1691,16 +1560,13 @@ contains
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: f_inout_struct_*
-    ! Match:     f_default
+    ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
-    ! Requested: c_inout_struct_*
-    ! Match:     c_inout_struct
+    ! Exact:     c_inout_struct_*
     ! ----------------------------------------
     ! Argument:  double * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Requested: f_setter_native_*
-    ! Match:     f_setter_native
+    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_*
     subroutine cstruct_list_set_dvalue(SH_this, val)

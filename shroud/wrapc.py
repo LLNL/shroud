@@ -773,15 +773,15 @@ class Wrapc(util.WrapperMixin):
         if intent_blk.c_helper:
             self.add_c_helper(intent_blk.c_helper, fmt)
 
-        if intent_blk.pre_call:
+        if intent_blk.c_pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
-            for line in intent_blk.pre_call:
+            for line in intent_blk.c_pre_call:
                 append_format(pre_call, line, fmt)
 
-        if intent_blk.post_call:
+        if intent_blk.c_post_call:
             need_wrapper = True
-            for line in intent_blk.post_call:
+            for line in intent_blk.c_post_call:
                 append_format(post_call, line, fmt)
 
         return need_wrapper
@@ -1003,16 +1003,11 @@ class Wrapc(util.WrapperMixin):
                     header_typedef_nodes[targ.typemap.name] = targ.typemap
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
-            c_local_var = ""
             if result_blk.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
-            elif result_blk.c_local_var:
-                c_local_var = result_blk.c_local_var
-                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif result_typemap.cxx_to_c is None:
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
@@ -1023,7 +1018,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
-            self.name_temp_vars(fmt_result.C_result, result_blk, fmt_result)
+            self.name_temp_vars_c(fmt_result.C_result, result_blk, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1055,6 +1050,11 @@ class Wrapc(util.WrapperMixin):
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+        if fmt_result.stmt0 != fmt_result.stmt1:
+            # This check is used to find non-matching names
+            print("TTT not match wrapc c_stmts", node.name)
+            print("     Requested:", fmt_result.stmt0)
+            print("         Found:", fmt_result.stmt1)
         
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
@@ -1146,7 +1146,7 @@ class Wrapc(util.WrapperMixin):
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg_name
-                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
+                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
@@ -1160,7 +1160,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for statement.final in fmt_result context
+                # Set cxx_var for statement.c_final in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
 
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
@@ -1179,9 +1179,9 @@ class Wrapc(util.WrapperMixin):
                          sapi, c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg_name
-                # XXX - order issue - c_var must be set before name_temp_vars,
+                # XXX - order issue - c_var must be set before name_temp_vars_c,
                 #       but set by set_fmt_fields
-                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
+                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
 
                 if intent_blk.cxx_local_var:
@@ -1224,6 +1224,11 @@ class Wrapc(util.WrapperMixin):
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(
                     stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
+            if fmt_arg.stmt0 != fmt_arg.stmt1:
+                # This check is used to find non-matching names
+                print("TTT not match wrapc c_stmts", node.name)
+                print("     Requested:", fmt_arg.stmt0)
+                print("         Found:", fmt_arg.stmt1)
 
             if sapi != "hidden":
                 self.build_proto_list(
@@ -1243,8 +1248,8 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if intent_blk.arg_call:
-                    for arg_call in intent_blk.arg_call:
+                if intent_blk.c_arg_call:
+                    for arg_call in intent_blk.c_arg_call:
                         append_format(call_list, arg_call, fmt_arg)
                 elif cxx_local_var == "scalar":
                     if declarator.is_pointer():
@@ -1285,10 +1290,10 @@ class Wrapc(util.WrapperMixin):
         )
 
         return_deref_attr = ast.declarator.metaattrs["deref"]
-        if result_blk.return_type:
+        if result_blk.c_return_type:
             # Override return type.
             fmt_func.C_return_type = wformat(
-                result_blk.return_type, fmt_result)
+                result_blk.c_return_type, fmt_result)
         elif return_deref_attr == "scalar":
             # Need a wrapper since it will dereference the return pointer.
             need_wrapper = True
@@ -1320,8 +1325,8 @@ class Wrapc(util.WrapperMixin):
                     fmt_pattern,
                 )
 
-        if result_blk.call:
-            raw_call_code = result_blk.call
+        if result_blk.c_call:
+            raw_call_code = result_blk.c_call
             need_wrapper = True
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
@@ -1348,11 +1353,11 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
-                elif result_blk.return_type == "void":
+                elif result_blk.c_return_type == "void":
                     # Do not return C++ result in C wrapper.
                     # Probably assigned to an argument.
                     pass
-                elif result_blk.c_local_var:
+                elif len(result_blk.c_post_call):
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
                     # For example, with struct and shadow.
@@ -1381,18 +1386,18 @@ class Wrapc(util.WrapperMixin):
         for line in raw_call_code:
             append_format(call_code, line, fmt_result)
 
-        if result_blk.final:
+        if result_blk.c_final:
             need_wrapper = True
             final_code.append("{+")
             final_code.append("// final")
-            for line in result_blk.final:
+            for line in result_blk.c_final:
                 append_format(final_code, line, fmt_result)
             final_code.append("-}")
 
-        if result_blk.return_type == "void":
+        if result_blk.c_return_type == "void":
             raw_return_code = []
-        elif result_blk.ret:
-            raw_return_code = result_blk.ret
+        elif result_blk.c_return:
+            raw_return_code = result_blk.c_return
         elif return_deref_attr == "copy":
             raw_return_code = ["return {cxx_var};"]
         elif return_deref_attr == "scalar":
@@ -1401,7 +1406,7 @@ class Wrapc(util.WrapperMixin):
         elif result_arg is None and C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
-            fmt_result.c_get_value = statements.compute_return_prefix(ast, c_local_var)
+            fmt_result.c_get_value = statements.compute_return_prefix(ast)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             # XXX - No return for void statements.

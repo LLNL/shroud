@@ -173,21 +173,21 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_var": "arg",
+                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -205,7 +205,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -248,22 +248,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "TypeID",
-                        "f_c_module_line": "--import--:type_id",
                         "f_intent": "OUT",
                         "f_kind": "type_id",
                         "f_type": "integer(type_id)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:type_id",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -279,7 +279,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -347,21 +347,21 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_inout_struct_*",
-                            "stmt1": "c_inout_struct"
+                            "stmt1": "c_inout_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "c_var": "arg1",
-                            "f_c_module_line": "--import--:struct1_rename",
                             "f_intent": "INOUT",
                             "f_kind": "struct1_rename",
                             "f_type": "type(struct1_rename)",
                             "f_var": "arg1",
+                            "i_module_line": "--import--:struct1_rename",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_struct_*",
                             "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct"
+                            "stmtc1": "c_inout_struct_*"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_s_Struct1_array_descr",
@@ -475,21 +475,21 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_c_module_line": "--import--:index_type",
                             "f_intent": "IN",
                             "f_kind": "index_type",
                             "f_type": "integer(index_type)",
                             "f_var": "arg",
+                            "i_module_line": "--import--:index_type",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         }
                     }
                 },
@@ -530,7 +530,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
+                        "stmt1": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -542,9 +542,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function",
+                        "stmt1": "f_function_native_scalar",
                         "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function"
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             }
@@ -702,12 +702,6 @@
             ],
             "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})",
             "cxx_type": "IndexType",
-            "f_c_module": {
-                "--import--": [
-                    "index_type"
-                ]
-            },
-            "f_c_module_line": "--import--:index_type",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "index_type",
             "f_module": {
@@ -718,6 +712,12 @@
             "f_module_line": "typedefs_mod:index_type",
             "f_type": "integer(index_type)",
             "flat_name": "int32_t",
+            "i_module": {
+                "--import--": [
+                    "index_type"
+                ]
+            },
+            "i_module_line": "--import--:index_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT32_T",
             "typedef": "int32_t",
@@ -737,12 +737,6 @@
             "c_type": "TYP_Struct1Rename",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Struct1Rename",
-            "f_c_module": {
-                "--import--": [
-                    "struct1_rename"
-                ]
-            },
-            "f_c_module_line": "--import--:struct1_rename",
             "f_derived_type": "s_struct1",
             "f_kind": "struct1_rename",
             "f_module": {
@@ -754,6 +748,12 @@
             "f_module_name": "typedefs_mod",
             "f_type": "type(struct1_rename)",
             "flat_name": "s_Struct1",
+            "i_module": {
+                "--import--": [
+                    "struct1_rename"
+                ]
+            },
+            "i_module_line": "--import--:struct1_rename",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT",
             "typedef": "s_Struct1",
@@ -773,12 +773,6 @@
             "c_type": "TYP_TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
-            "f_c_module": {
-                "--import--": [
-                    "type_id"
-                ]
-            },
-            "f_c_module_line": "--import--:type_id",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "type_id",
             "f_module": {
@@ -789,6 +783,12 @@
             "f_module_line": "typedefs_mod:type_id",
             "f_type": "integer(type_id)",
             "flat_name": "int",
+            "i_module": {
+                "--import--": [
+                    "type_id"
+                ]
+            },
+            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -813,11 +813,6 @@
             "c_type": "Struct1Rename",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Struct1Rename",
-            "f_c_module": {
-                "--import--": [
-                    "struct1_rename"
-                ]
-            },
             "f_derived_type": "struct1_rename",
             "f_kind": "struct1_rename",
             "f_module": {
@@ -828,6 +823,11 @@
             "f_module_name": "typedefs_mod",
             "f_type": "type(struct1_rename)",
             "flat_name": "s_Struct1",
+            "i_module": {
+                "--import--": [
+                    "struct1_rename"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

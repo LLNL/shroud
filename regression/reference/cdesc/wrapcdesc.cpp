@@ -45,8 +45,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Exact:     c_in_native_*
 void CDE_Rank2In(int * arg)
 {
     // splicer begin function.Rank2In
@@ -94,8 +93,7 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  void * value +cdesc+intent(in)+rank(0)+value
 // Attrs:     +intent(in)
-// Requested: c_in_void_*
-// Match:     c_default
+// Exact:     c_in_void_*
 void CDE_GetScalar1(char * name, void * value)
 {
     // splicer begin function.GetScalar1
@@ -210,8 +208,7 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  int getData
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int CDE_getData_int(void)
 {
     // splicer begin function.getData_int
@@ -226,8 +223,7 @@ int CDE_getData_int(void)
 // ----------------------------------------
 // Function:  double getData
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 double CDE_getData_double(void)
 {
     // splicer begin function.getData_double

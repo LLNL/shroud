@@ -27,13 +27,11 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,
     double arg2)
 {

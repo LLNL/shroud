@@ -224,8 +224,8 @@ A C ``int`` is represented as:
 Fortran
 -------
 
-f_c_module
-^^^^^^^^^^
+i_module
+^^^^^^^^
 
 Fortran modules needed for type in the interface.
 A dictionary keyed on the module name with the value being a list of symbols.
@@ -247,8 +247,8 @@ imported into the interface.
        - indextype
 
 
-f_c_type
-^^^^^^^^
+i_type
+^^^^^^
 
 Type declaration for ``bind(C)`` interface.
 Defaults to *None* which will then use *f_type*.

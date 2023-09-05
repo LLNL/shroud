@@ -83,8 +83,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  ~Class2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_dtor_void_scalar
-        ! Match:     c_dtor
+        ! Exact:     c_dtor_void_scalar
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data
@@ -95,8 +94,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  void func1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -113,8 +111,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  void acceptClass3
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -130,13 +127,11 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  int passStruct1
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Exact:     c_in_struct_*
         function c_pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_passStruct1")
@@ -221,8 +216,7 @@ contains
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     subroutine class2_func1(obj, arg)
@@ -243,8 +237,7 @@ contains
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_shadow_*
-    ! Match:     f_in_shadow
+    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
@@ -284,19 +277,15 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: f_in_struct_*
-    ! Match:     f_default
+    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_struct_*
-    ! Match:     c_in_struct
+    ! Exact:     c_in_struct_*
     function pass_struct1(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

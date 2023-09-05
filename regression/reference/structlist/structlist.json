@@ -103,7 +103,7 @@
                                     "pytmp_var": "SHTPy_count",
                                     "size_var": "SHSize_count",
                                     "stmt0": "py_ctor_native_[]_list",
-                                    "stmt1": "py_ctor_native_[]",
+                                    "stmt1": "py_ctor_native_[]_list",
                                     "value_var": "SHValue_count"
                                 }
                             },
@@ -129,7 +129,7 @@
                                     "pytmp_var": "SHTPy_name",
                                     "size_var": "SHSize_name",
                                     "stmt0": "py_ctor_char_[]_list",
-                                    "stmt1": "py_ctor_char_[]",
+                                    "stmt1": "py_ctor_char_[]_list",
                                     "value_var": "SHValue_name"
                                 }
                             }
@@ -327,11 +327,6 @@
             "c_type": "Arrays1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
-            "f_c_module": {
-                "--import--": [
-                    "arrays1"
-                ]
-            },
             "f_derived_type": "arrays1",
             "f_kind": "arrays1",
             "f_module": {
@@ -342,6 +337,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
+            "i_module": {
+                "--import--": [
+                    "arrays1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

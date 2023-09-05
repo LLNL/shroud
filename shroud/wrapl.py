@@ -15,6 +15,7 @@ from . import typemap
 from . import util
 from .util import wformat, append_format
 
+from collections import OrderedDict
 
 class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.
@@ -902,9 +903,8 @@ LuaHelpers = dict(
 
 ######################################################################
 
-# The tree of Python Scope statements.
-lua_tree = {}
-lua_dict = {} # dictionary of Scope of all expanded lua_statements,
+# The dictionary of Python Scope statements.
+lua_dict = OrderedDict() # dictionary of Scope of all expanded lua_statements,
 default_scope = None  # for statements
 
 def update_statements_for_language(language):
@@ -918,10 +918,11 @@ def update_statements_for_language(language):
     language : str
         "c" or "c++"
     """
+    statements.check_statements(lua_statements)
     statements.update_for_language(lua_statements, language)
-    statements.update_stmt_tree(lua_statements, lua_dict, lua_tree, default_stmts)
+    statements.process_mixin(lua_statements, default_stmts, lua_dict)
     global default_scope
-    default_scope = statements.default_scopes["lua"]
+    default_scope = default_stmts["lua"]
 
 
 def write_stmts_tree(fp):
@@ -931,14 +932,19 @@ def write_stmts_tree(fp):
     ----------
     fp : file
     """
+    tree = statements.update_stmt_tree(lua_dict)
     lines = []
-    statements.print_tree_index(lua_tree, lines)
+    statements.print_tree_index(tree, lines)
     fp.writelines(lines)
     statements.print_tree_statements(fp, lua_dict, default_stmts)
     
 
 def lookup_stmts(path):
-    return statements.lookup_stmts_tree(lua_tree, path)
+    name = statements.compute_name(path)
+    stmt = lua_dict.get(name, None)
+    if stmt is None:
+        raise RuntimeError("Unknown lua statement: %s" % name)
+    return stmt
 
 LuaStmts = util.Scope(
     None,
@@ -954,6 +960,15 @@ default_stmts = dict(
 )
         
 lua_statements = [
+    dict(
+        name="lua_defaulttmp",
+        alias=[
+            "lua_in_unknown_scalar",
+            "lua_in_void_scalar",
+            "lua_in_native_*",
+            "lua_out_native_*",
+        ],
+    ),
     # Factor out some common code patterns to use as mixins.
     dict(
         # Used to capture return value.
@@ -1034,13 +1049,12 @@ lua_statements = [
     # string
     dict(
         name="lua_in_string_*",
+        alias=[
+            "lua_in_string_&",
+        ],
         pre_call=[
             "const char * {c_var} = \t{pop_expr};",
         ],
-    ),
-    dict(
-        name="lua_in_string_&",
-        base="lua_in_string_*",
     ),
     dict(
         name="lua_function_string_scalar",
@@ -1059,7 +1073,7 @@ lua_statements = [
     #####
     # shadow
     dict(
-        name="lua_ctor",
+        name="lua_ctor_scalar",
         call=[
             "{LUA_userdata_type} * {LUA_userdata_var} ="
                 "\t ({LUA_userdata_type} *) lua_newuserdata"
@@ -1073,7 +1087,7 @@ lua_statements = [
         ],
     ),
     dict(
-        name="lua_dtor",
+        name="lua_dtor_scalar",
         call=[
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",

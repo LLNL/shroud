@@ -942,7 +942,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -1042,7 +1042,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -1188,7 +1188,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -1288,7 +1288,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -1419,7 +1419,7 @@
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -1440,7 +1440,7 @@
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -1609,7 +1609,7 @@
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -1630,7 +1630,7 @@
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -1661,7 +1661,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_struct_list",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_struct_list",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
                     }
@@ -1751,7 +1751,7 @@
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -1772,7 +1772,7 @@
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -1804,7 +1804,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_struct_list",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_struct_list",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
                     }
@@ -1916,7 +1916,7 @@
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -1937,7 +1937,7 @@
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_i"
                         }
                     },
@@ -1992,7 +1992,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_struct_list",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_struct_list",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
                     }
@@ -2054,7 +2054,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_struct_list",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_struct_list",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
                     }
@@ -2354,11 +2354,6 @@
             "c_type": "STR_arrays1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
-            "f_c_module": {
-                "--import--": [
-                    "arrays1"
-                ]
-            },
             "f_derived_type": "arrays1",
             "f_kind": "arrays1",
             "f_module": {
@@ -2369,6 +2364,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
+            "i_module": {
+                "--import--": [
+                    "arrays1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2386,11 +2386,6 @@
             "c_type": "STR_cstruct1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct1",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct1"
-                ]
-            },
             "f_derived_type": "cstruct1",
             "f_kind": "cstruct1",
             "f_module": {
@@ -2401,6 +2396,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
+            "i_module": {
+                "--import--": [
+                    "cstruct1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2412,13 +2412,6 @@
             "c_type": "STR_Cstruct_as_class",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Cstruct_as_class",
-            "f_c_module": {
-                "--import--": [
-                    "STR_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:STR_SHROUD_capsule_data",
-            "f_c_type": "type(STR_SHROUD_capsule_data)",
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_class)",
             "f_derived_type": "cstruct_as_class",
@@ -2432,6 +2425,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
+            "i_module": {
+                "--import--": [
+                    "STR_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:STR_SHROUD_capsule_data",
+            "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"
             ],
@@ -2448,13 +2448,6 @@
             "c_type": "STR_Cstruct_as_subclass",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Cstruct_as_subclass",
-            "f_c_module": {
-                "--import--": [
-                    "STR_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:STR_SHROUD_capsule_data",
-            "f_c_type": "type(STR_SHROUD_capsule_data)",
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_subclass)",
             "f_derived_type": "cstruct_as_subclass",
@@ -2468,6 +2461,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
+            "i_module": {
+                "--import--": [
+                    "STR_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:STR_SHROUD_capsule_data",
+            "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"
             ],
@@ -2490,11 +2490,6 @@
             "c_type": "STR_cstruct_list",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_list",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_list"
-                ]
-            },
             "f_derived_type": "cstruct_list",
             "f_kind": "cstruct_list",
             "f_module": {
@@ -2505,6 +2500,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_list)",
             "flat_name": "Cstruct_list",
+            "i_module": {
+                "--import--": [
+                    "cstruct_list"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2522,11 +2522,6 @@
             "c_type": "STR_cstruct_numpy",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_numpy",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_numpy"
-                ]
-            },
             "f_derived_type": "cstruct_numpy",
             "f_kind": "cstruct_numpy",
             "f_module": {
@@ -2537,6 +2532,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_numpy)",
             "flat_name": "Cstruct_numpy",
+            "i_module": {
+                "--import--": [
+                    "cstruct_numpy"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
@@ -2554,11 +2554,6 @@
             "c_type": "STR_cstruct_ptr",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_ptr",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct_ptr"
-                ]
-            },
             "f_derived_type": "cstruct_ptr",
             "f_kind": "cstruct_ptr",
             "f_module": {
@@ -2569,6 +2564,11 @@
             "f_module_name": "struct_mod",
             "f_type": "type(cstruct_ptr)",
             "flat_name": "Cstruct_ptr",
+            "i_module": {
+                "--import--": [
+                    "cstruct_ptr"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         }

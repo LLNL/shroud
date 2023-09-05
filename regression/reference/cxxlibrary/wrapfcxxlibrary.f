@@ -25,8 +25,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         function c_default_ptr_is_null_0() &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_0")
@@ -38,13 +37,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         function c_default_ptr_is_null_1(data) &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_1")
@@ -57,23 +54,19 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         subroutine c_default_args_in_out_0(in1, out1, out2) &
                 bind(C, name="CXX_defaultArgsInOut_0")
             use iso_c_binding, only : C_INT
@@ -86,28 +79,23 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
+        ! Exact:     c_out_native_*
         ! ----------------------------------------
         ! Argument:  bool flag=false +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_bool_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_bool_scalar
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
                 bind(C, name="CXX_defaultArgsInOut_1")
             use iso_c_binding, only : C_BOOL, C_INT
@@ -121,13 +109,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +deref(copy)+intent(function)
-        ! Requested: c_function_string_&_copy
-        ! Match:     c_function_string_&
+        ! Exact:     c_function_string_&_copy
         ! ----------------------------------------
         ! Argument:  long idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         function c_get_group_name(idx) &
                 result(SHT_rv) &
                 bind(C, name="CXX_getGroupName")
@@ -140,13 +126,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int32_t idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_get_group_name_int32_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int32_t_bufferify")
@@ -160,13 +144,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Requested: c_function_string_&_buf_copy
-        ! Match:     c_function_string_&_buf
+        ! Exact:     c_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int64_t idx +value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_scalar
-        ! Match:     c_default
+        ! Exact:     c_in_native_scalar
         subroutine c_get_group_name_int64_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int64_t_bufferify")
@@ -202,11 +184,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     function default_ptr_is_null_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -219,19 +199,15 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar
-    ! Match:     f_function_bool
+    ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
-    ! Match:     f_default
+    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Exact:     c_in_native_*
     function default_ptr_is_null_1(data) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -252,25 +228,21 @@ contains
     ! ----------------------------------------
     ! Argument:  int in1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     subroutine default_args_in_out_0(in1, out1, out2)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -290,33 +262,27 @@ contains
     ! ----------------------------------------
     ! Argument:  int in1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     ! ----------------------------------------
     ! Argument:  bool flag=false +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_bool_scalar
-    ! Match:     f_in_bool
+    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_bool_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_bool_scalar
     subroutine default_args_in_out_1(in1, out1, out2, flag)
         use iso_c_binding, only : C_BOOL, C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -324,9 +290,9 @@ contains
         integer(C_INT), intent(OUT) :: out2
         logical, value, intent(IN) :: flag
         ! splicer begin function.default_args_in_out_1
-        logical(C_BOOL) SH_flag
-        SH_flag = flag  ! coerce to C_BOOL
-        call c_default_args_in_out_1(in1, out1, out2, SH_flag)
+        logical(C_BOOL) :: SHT_flag_cxx
+        SHT_flag_cxx = flag  ! coerce to C_BOOL
+        call c_default_args_in_out_1(in1, out1, out2, SHT_flag_cxx)
         ! splicer end function.default_args_in_out_1
     end subroutine default_args_in_out_1
 
@@ -334,19 +300,15 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int32_t idx +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args
     !!
@@ -367,19 +329,15 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Requested: f_function_string_&_buf_copy
-    ! Match:     f_function_string_&_buf
+    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Requested: c_function_string_&_buf_copy
-    ! Match:     c_function_string_&_buf
+    ! Exact:     c_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int64_t idx +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
+    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Exact:     c_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args
     !!

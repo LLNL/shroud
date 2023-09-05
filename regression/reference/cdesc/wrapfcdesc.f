@@ -82,13 +82,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_native_*
-        ! Match:     c_default
+        ! Exact:     c_in_native_*
         subroutine c_rank2_in(arg) &
                 bind(C, name="CDE_Rank2In")
             use iso_c_binding, only : C_INT
@@ -99,8 +97,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +api(cdesc)+intent(in)
@@ -115,8 +112,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
@@ -124,8 +120,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+intent(in)+rank(0)+value
         ! Attrs:     +intent(in)
-        ! Requested: c_in_void_*
-        ! Match:     c_default
+        ! Exact:     c_in_void_*
         subroutine c_get_scalar1(name, value) &
                 bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -137,8 +132,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -161,8 +155,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -185,8 +178,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  int getData
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_get_data_int() &
                 result(SHT_rv) &
                 bind(C, name="CDE_getData_int")
@@ -198,8 +190,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  double getData
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_function
+        ! Exact:     c_function_native_scalar
         function c_get_data_double() &
                 result(SHT_rv) &
                 bind(C, name="CDE_getData_double")
@@ -354,11 +345,9 @@ contains
     ! ----------------------------------------
     ! Function:  int getData
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! Wrapper for function which is templated on the return value.
     !<
@@ -375,11 +364,9 @@ contains
     ! ----------------------------------------
     ! Function:  double getData
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_function_native_scalar
     !>
     !! Wrapper for function which is templated on the return value.
     !<
@@ -410,8 +397,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an
@@ -448,8 +434,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
+    ! Exact:     c_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an

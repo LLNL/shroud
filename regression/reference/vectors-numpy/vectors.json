@@ -124,7 +124,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -289,22 +289,22 @@
                 },
                 "fstatements": {
                     "c": {
-                        "ret": [
+                        "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "return_type": "long"
+                        "c_return_type": "long"
                     },
                     "c_buf": {
-                        "ret": [
+                        "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "return_type": "long"
+                        "c_return_type": "long"
                     },
                     "f": {
-                        "call": [
+                        "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
                         ],
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
@@ -312,7 +312,7 @@
                                 "C_LONG"
                             ]
                         },
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",
@@ -386,7 +386,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "declare": [
+                        "f_declare": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {
@@ -394,10 +394,10 @@
                                 "C_LONG"
                             ]
                         },
-                        "post_call": [
+                        "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "result": "num"
+                        "f_result": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num2",
@@ -1219,7 +1219,7 @@
                             "py_var": "SHPy_n",
                             "size_var": "SHSize_n",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_n"
                         }
                     }
@@ -1254,7 +1254,7 @@
                         "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_vector_numpy_targ_native_scalar",
-                        "stmt1": "py_function_vector_numpy",
+                        "stmt1": "py_function_vector_numpy_targ_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -1388,7 +1388,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }

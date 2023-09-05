@@ -73,7 +73,7 @@
                         "zz_fmtresult": {
                             "fmtl": {
                                 "stmt0": "lua_dtor_scalar",
-                                "stmt1": "lua_dtor"
+                                "stmt1": "lua_dtor_scalar"
                             }
                         }
                     },
@@ -164,7 +164,7 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
-                                "stmt1": "f_getter",
+                                "stmt1": "f_getter_native_scalar",
                                 "stmtc0": "c_getter_native_scalar",
                                 "stmtc1": "c_getter_native_scalar"
                             }
@@ -331,7 +331,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -447,7 +447,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_native_*_scalar",
-                        "stmt1": "py_default",
+                        "stmt1": "py_function_native_*_scalar",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -525,7 +525,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -540,7 +540,7 @@
                         "stmt0": "f_function_native_*_pointer",
                         "stmt1": "f_function_native_*_pointer",
                         "stmtc0": "c_function_native_*_pointer",
-                        "stmtc1": "c_function_native_*"
+                        "stmtc1": "c_function_native_*_pointer"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -638,7 +638,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -680,7 +680,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_raw",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -781,7 +781,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -854,7 +854,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -875,7 +875,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1038,7 +1038,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1143,7 +1143,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1216,7 +1216,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_allocatable",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1238,7 +1238,7 @@
                         "stmt0": "f_function_native_*_cdesc_allocatable",
                         "stmt1": "f_function_native_*_cdesc_allocatable",
                         "stmtc0": "c_function_native_*_cdesc_allocatable",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1401,7 +1401,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_allocatable",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1504,7 +1504,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1577,7 +1577,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1598,7 +1598,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1759,7 +1759,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1860,7 +1860,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1905,7 +1905,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2011,7 +2011,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -2085,7 +2085,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2107,7 +2107,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2272,7 +2272,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2374,7 +2374,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -2439,7 +2439,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_allocatable",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2566,7 +2566,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -2640,7 +2640,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt1": "c_function_native_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2662,7 +2662,7 @@
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
                         "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmtc1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2826,7 +2826,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt1": "c_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3596,7 +3596,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "flag",
@@ -3607,9 +3607,9 @@
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3627,7 +3627,7 @@
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -3738,14 +3738,14 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
-                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_library",
-                        "stmt1": "f_function_shadow_*_capptr",
+                        "stmt1": "f_function_shadow_*_capptr_library",
                         "stmtc0": "c_function_shadow_*_capptr",
                         "stmtc1": "c_function_shadow_*_capptr"
                     },
@@ -3847,7 +3847,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_default"
+                            "stmt1": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "flag",
@@ -3858,9 +3858,9 @@
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_native_scalar",
                             "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3878,7 +3878,7 @@
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
                             "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
+                            "stmt1": "py_in_native_scalar",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -3928,14 +3928,14 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
-                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
+                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_caller",
-                        "stmt1": "f_function_shadow_*_capptr",
+                        "stmt1": "f_function_shadow_*_capptr_caller",
                         "stmtc0": "c_function_shadow_*_capptr",
                         "stmtc1": "c_function_shadow_*_capptr"
                     },
@@ -3991,13 +3991,6 @@
             "c_type": "OWN_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
-            "f_c_module": {
-                "--import--": [
-                    "OWN_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
-            "f_c_type": "type(OWN_SHROUD_capsule_data)",
             "f_capsule_data_type": "OWN_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
@@ -4011,6 +4004,13 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
+            "i_module": {
+                "--import--": [
+                    "OWN_SHROUD_capsule_data"
+                ]
+            },
+            "i_module_line": "--import--:OWN_SHROUD_capsule_data",
+            "i_type": "type(OWN_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
                 "ownership.hpp"

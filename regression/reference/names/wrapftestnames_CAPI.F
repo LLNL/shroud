@@ -53,8 +53,7 @@ module testnames_capi_mod
         ! ----------------------------------------
         ! Function:  void Member1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_class1_member1(self) &
                 bind(C, name="TES_capi_class1_member1")
             import :: TES_SHROUD_capsule_data
@@ -65,8 +64,7 @@ module testnames_capi_mod
         ! ----------------------------------------
         ! Function:  void Worker1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Exact:     c_subroutine_void_scalar
         subroutine c_worker1() &
                 bind(C, name="TES_capi_worker1")
             implicit none

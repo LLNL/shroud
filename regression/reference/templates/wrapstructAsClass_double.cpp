@@ -42,8 +42,7 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
     int n)
 {
@@ -57,8 +56,7 @@ void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  int get_npts
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 {
     structAsClass<double> *SH_this =
@@ -76,8 +74,7 @@ int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 // ----------------------------------------
 // Argument:  double v +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
     double v)
 {
@@ -91,8 +88,7 @@ void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  double get_value
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar
-// Match:     c_function
+// Exact:     c_function_native_scalar
 double TEM_structAsClass_double_get_value(
     TEM_structAsClass_double * self)
 {

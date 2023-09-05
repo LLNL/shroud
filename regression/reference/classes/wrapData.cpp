@@ -28,8 +28,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Exact:     c_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {
@@ -122,8 +121,7 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 // ----------------------------------------
 // Function:  int * get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-// Requested: c_getter_native_*_cdesc_pointer
-// Match:     c_getter_native_*_cdesc
+// Exact:     c_getter_native_*_cdesc_pointer
 // start CLA_Data_get_items_bufferify
 void CLA_Data_get_items_bufferify(CLA_Data * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
