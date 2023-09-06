@@ -2326,11 +2326,18 @@ fc_statements = [
     # vector
     # Specialize for std::vector<native>
     dict(
-        # c_in_vector_scalar_buf_targ_native_scalar
-        # c_in_vector_*_buf_targ_native_scalar
-        # c_in_vector_&_buf_targ_native_scalar
-        name="c_in_vector_scalar/*/&_buf_targ_native_scalar",
-        mixin=["c_mixin_in_array_buf"],
+        # fc_in_vector_scalar_buf_targ_native_scalar
+        # fc_in_vector_*_buf_targ_native_scalar
+        # fc_in_vector_&_buf_targ_native_scalar
+        name="fc_in_vector_scalar/*/&_buf_targ_native_scalar",
+        mixin=[
+            "f_mixin_in_array_buf",
+            "c_mixin_in_array_buf",
+        ],
+        alias=[
+            "f_in_vector_&_buf_targ_native_scalar",
+            "c_in_vector_scalar/*/&_buf_targ_native_scalar",
+        ],
         cxx_local_var="scalar",
         c_pre_call=[
             (
@@ -2339,18 +2346,13 @@ fc_statements = [
             )
         ],
     ),
-    # cxx_var is always a pointer to a vector
+
     dict(
-        # c_out_vector_*_cdesc_targ_native_scalar
-        # c_out_vector_&_cdesc_targ_native_scalar
-        name="c_out_vector_*/&_cdesc_targ_native_scalar",
-        mixin=["c_mixin_out_array_cdesc"],
-        alias=[
-            "c_out_vector_*_cdesc_allocatable_targ_native_scalar",
-            "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
+        name="c_mixin_out_vector_cdesc_targ_native_scalar",
+        mixin=[
+            "c_mixin_out_array_cdesc",
         ],
         cxx_local_var="pointer",
-        c_helper="ShroudTypeDefines",
         c_pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -2374,13 +2376,39 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
     ),
+    
+    # copy into user's existing array
+    # cxx_var is always a pointer to a vector
     dict(
-        name="c_inout_vector_cdesc_targ_native_scalar",
+        # fc_out_vector_*_cdesc_targ_native_scalar
+        # fc_out_vector_&_cdesc_targ_native_scalar
+        name="fc_out_vector_*/&_cdesc_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_mixin_out_vector_cdesc_targ_native_scalar",
+        ],
+        alias=[
+            "f_out_vector_*/&_cdesc_targ_native_scalar",
+            "c_out_vector_*/&_cdesc_targ_native_scalar",
+        ],
+
+        c_helper="copy_array ShroudTypeDefines",
+        f_helper="copy_array",
+        # TARGET required for argument to C_LOC.
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
+        f_post_call=[
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+        ],
+    ),
+    dict(
+        name="c_mixin_inout_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_inout_array_cdesc"],
         alias=[
             # TTT
-            "c_inout_vector_&_cdesc_targ_native_scalar",
-            "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+            "c_inout_vector_cdesc_targ_native_scalar",
         ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -2474,8 +2502,15 @@ fc_statements = [
     # Specialize for std::vector<native *>
     dict(
         # Create a vector for pointers
-        name="c_in_vector_&_buf_targ_native_*",
-        mixin=["c_mixin_in_2d_array_buf"],
+        name="fc_in_vector_&_buf_targ_native_*",
+        mixin=[
+            "f_mixin_in_2d_array_buf",
+            "c_mixin_in_2d_array_buf",
+        ],
+        alias=[
+            "f_in_vector_&_buf_targ_native_*",
+            "c_in_vector_&_buf_targ_native_*",
+        ],
         cxx_local_var="scalar",
         c_pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
@@ -2484,26 +2519,20 @@ fc_statements = [
             "-}}"
         ],
     ),
-    dict(
-        name="f_in_vector_buf_targ_native_*",
-        mixin=["f_mixin_in_2d_array_buf"],
-        alias=[
-            "f_in_vector_&_buf_targ_native_*",
-        ],
-    ),
     
-    # Specialize for std::vector<string>.
     dict(
-#TTT        name="f_in_vector_buf_targ_string_scalar",
-        name="f_in_vector_&_buf_targ_string_scalar",
-        mixin=["f_mixin_in_string_array_buf"],
-    ),
-    dict(
-        # c_in_vector_scalar_buf_targ_string_scalar
-        # c_in_vector_*_buf_targ_string_scalar
-        # c_in_vector_&_buf_targ_string_scalar
-        name="c_in_vector_scalar/*/&_buf_targ_string_scalar",
-        mixin=["c_mixin_in_string_array_buf"],
+        # fc_in_vector_scalar_buf_targ_string_scalar
+        # fc_in_vector_*_buf_targ_string_scalar
+        # fc_in_vector_&_buf_targ_string_scalar
+        name="fc_in_vector_scalar/*/&_buf_targ_string_scalar",
+        mixin=[
+            "f_mixin_in_string_array_buf",
+            "c_mixin_in_string_array_buf",
+        ],
+        alias=[
+            "f_in_vector_&_buf_targ_string_scalar",
+            "c_in_vector_scalar/*/&_buf_targ_string_scalar",
+        ],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         c_pre_call=[
@@ -2637,12 +2666,15 @@ fc_statements = [
     ),
 
     dict(
-        name="f_out_vector_&_cdesc_targ_string_scalar",
-        mixin=["f_mixin_str_array"],
-    ),
-    dict(
-        name="c_out_vector_&_cdesc_targ_string_scalar",
-        mixin=["c_mixin_out_array_cdesc"],
+        name="fc_out_vector_&_cdesc_targ_string_scalar",
+        mixin=[
+            "f_mixin_str_array",
+            "c_mixin_out_array_cdesc",
+        ],
+        alias=[
+            "f_out_vector_&_cdesc_targ_string_scalar",
+            "c_out_vector_&_cdesc_targ_string_scalar",
+        ],
         c_helper="vector_string_out",
         c_pre_call=[
             "{c_const}std::vector<std::string> {cxx_var};"
@@ -2651,19 +2683,25 @@ fc_statements = [
         c_post_call=[
             "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});",
         ],
-
     ),
 
     ##########
     # As above but +deref(allocatable)
     # 
     dict(
-        name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        name="fc_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        mixin=[
+            "c_mixin_out_array_cdesc",
+        ],
+        alias=[
+            "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+            "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        ],
         f_arg_decl=[
             "character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="vector_string_allocatable array_context capsule_data_helper",
-        c_helper="vector_string_allocatable",
+        c_helper="vector_string_allocatable vector_string_out_len",
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
@@ -2679,11 +2717,7 @@ fc_statements = [
             "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
         ],
         f_temps=["cdesc", "out"],
-    ),
-    dict(
-        name="c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        mixin=["c_mixin_out_array_cdesc"],
-        c_helper="vector_string_out_len",
+
         c_pre_call=[
 #            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
             "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
@@ -2693,7 +2727,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {hnamefunc0}(*{cxx_var});",
+            "{c_var_cdesc}->elem_len = {hnamefunc1}(*{cxx_var});",
             "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
@@ -2715,35 +2749,32 @@ fc_statements = [
     #                            '-}}',
     #                        ],
     #                    ),
-    # copy into user's existing array
+#    dict(
+#        # f_out_vector_*_cdesc_targ_native_scalar
+#        # f_out_vector_&_cdesc_targ_native_scalar
+#        name="f_out_vector_*/&_cdesc_targ_native_scalar",
+#        mixin=["f_mixin_out_array_cdesc"],
+#        c_helper="copy_array",
+#        f_helper="copy_array",
+#        # TARGET required for argument to C_LOC.
+#        f_arg_decl=[
+#            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+#        ],
+#        f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
+#        f_post_call=[
+#            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+#        ],
+#    ),
     dict(
-        name="f_in_vector_buf_targ_native_scalar",
-        mixin=["f_mixin_in_array_buf"],
+        name="fc_inout_vector_&_cdesc_targ_native_scalar",
+        mixin=[
+            "f_mixin_inout_array_cdesc",
+            "c_mixin_inout_vector_cdesc_targ_native_scalar",
+        ],
         alias=[
-            "f_in_vector_&_buf_targ_native_scalar",
-        ],
-    ),
-    dict(
-        # f_out_vector_*_cdesc_targ_native_scalar
-        # f_out_vector_&_cdesc_targ_native_scalar
-        name="f_out_vector_*/&_cdesc_targ_native_scalar",
-        mixin=["f_mixin_out_array_cdesc"],
-        c_helper="copy_array",
-        f_helper="copy_array",
-        # TARGET required for argument to C_LOC.
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
-        f_post_call=[
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
-        ],
-    ),
-    dict(
-        name="f_inout_vector_cdesc_targ_native_scalar",
-        mixin=["f_mixin_inout_array_cdesc"],
-        alias=[
+###            "f_inout_vector_&_cdesc_targ_native_scalar",
             "f_inout_vector_&_cdesc_targ_native_scalar",
+            "c_inout_vector_&_cdesc_targ_native_scalar",
         ],
         c_helper="copy_array",
         f_helper="copy_array",
@@ -2772,10 +2803,19 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        # f_out_vector_*_cdesc_allocatable_targ_native_scalar
-        # f_out_vector_&_cdesc_allocatable_targ_native_scalar
-        name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
-        mixin=["f_mixin_out_array_cdesc"],
+        # fc_out_vector_*_cdesc_allocatable_targ_native_scalar
+        # fc_out_vector_&_cdesc_allocatable_targ_native_scalar
+        name="fc_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_mixin_out_vector_cdesc_targ_native_scalar"
+        ],
+        alias=[
+            "f_out_vector_*_cdesc_allocatable_targ_native_scalar",
+            "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
+            "c_out_vector_*_cdesc_allocatable_targ_native_scalar",
+            "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
+        ],
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
@@ -2790,8 +2830,15 @@ fc_statements = [
     ),
     dict(
 #TTT        name="f_inout_vector_cdesc_allocatable_targ_native_scalar",
-        name="f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-        mixin=["f_mixin_inout_array_cdesc"],
+        name="fc_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+        mixin=[
+            "f_mixin_inout_array_cdesc",
+            "c_mixin_inout_vector_cdesc_targ_native_scalar",
+        ],
+        alias=[
+            "f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+            "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+        ],
         c_helper="copy_array",
         f_helper="copy_array",
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
