@@ -1024,10 +1024,7 @@ fc_statements = [
     dict(  # f_default
         name="f_defaulttmp",
         alias=[
-            "f_out_native_&",
             "f_in_void_scalar",
-            "f_out_void_*&",
-            "f_inout_native_&",
             "f_in_native_&",
             "f_in_char_*_capi",
             "f_inout/out_char_*_cfi",
@@ -1051,16 +1048,12 @@ fc_statements = [
             "c_in_native_&",
             "c_in_char_*_capi",
             "c_inout_char_*",
-            "c_out_native_&",
             "c_out_native_&*",
             "c_out_native_**_allocatable",
             "c_out_native_**_pointer",
-            "c_inout_native_&",
             "c_out_native_*&_pointer",
             "c_out_char_*",
             "c_in_void_scalar",
-            "c_in_void_*",
-            "c_out_void_*&",
             "c_in_unknown_scalar",
         ],
     ),
@@ -1076,9 +1069,17 @@ fc_statements = [
             "f_in_native_*",
             "c_in_native_*",
 
+            "fc_out_native_&",
+            "f_out_native_&",
+            "c_out_native_&",
+
             "fc_inout_native_*",
             "f_inout_native_*",
             "c_inout_native_*",
+
+            "fc_inout_native_&",
+            "f_inout_native_&",
+            "c_inout_native_&",
             
             "fc_out_native_***",
             "f_out_native_***",
@@ -1087,6 +1088,10 @@ fc_statements = [
             "fc_in_char_*",
             "f_in_char_*",
             "c_in_char_*",
+
+            "fc_out_void_*&",
+            "f_out_void_*&",
+            "c_out_void_*&",
         ],
     ),
     
@@ -1368,7 +1373,11 @@ fc_statements = [
     ########################################
     # void *
     dict(
-        name="f_in_void_*",
+        name="fc_in_void_*",
+        alias=[
+            "f_in_void_*",
+            "c_in_void_*",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR), intent(IN) :: {f_var}",
@@ -3094,6 +3103,21 @@ fc_statements = [
     dict(  # f_default
         name="f_defaultstruct",
         alias=[
+            "f_inout_shadow_*",
+        ],
+    ),
+    dict(
+        # Used with in, out, inout
+        # C pointer -> void pointer -> C++ pointer
+        name="fc_in/out/inout_struct",
+        alias=[
+            "fc_in_struct_scalar",
+            "fc_in_struct_*",
+            "fc_in_struct_&",
+            "fc_out_struct_*",
+            "fc_out_struct_&",
+            "fc_inout_struct_*",
+            "fc_inout_struct_&",
             "f_in_struct_scalar",
             "f_in_struct_*",
             "f_in_struct_&",
@@ -3101,17 +3125,6 @@ fc_statements = [
             "f_out_struct_&",
             "f_inout_struct_*",
             "f_inout_struct_&",
-            "f_inout_shadow_*",
-        ],
-    ),
-    dict(
-        # Used with in, out, inout
-        # C pointer -> void pointer -> C++ pointer
-        # c_in_struct
-        # c_out_struct
-        # c_inout_struct
-        name="c_in/out/inout_struct",
-        alias=[
             "c_in_struct_scalar",
             "c_in_struct_*",
             "c_in_struct_&",
