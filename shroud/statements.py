@@ -1026,17 +1026,6 @@ fc_statements = [
         alias=[
             "f_in_void_scalar",
             "f_in_native_&",
-            "f_in_char_*_capi",
-            "f_inout/out_char_*_cfi",
-            "f_inout_string_&_cfi",
-            "f_in_string_scalar_cfi",
-            "f_in_string_*_cfi",
-            "f_in_string_&_cfi",
-            "f_out_string_*_cfi",
-            "f_out_string_**_cfi_allocatable",
-            "f_out_string_**_cfi_copy",
-            "f_inout_string_*_cfi",
-            "f_out_string_&_cfi",
             "f_in_vector_&_cdesc_targ_native_scalar",
             "f_in_unknown_scalar",
         ],
@@ -1046,7 +1035,6 @@ fc_statements = [
         name="c_defaulttmp",
         alias=[
             "c_in_native_&",
-            "c_in_char_*_capi",
             "c_inout_char_*",
             "c_out_native_&*",
             "c_out_native_**_allocatable",
@@ -1092,6 +1080,10 @@ fc_statements = [
             "fc_out_void_*&",
             "f_out_void_*&",
             "c_out_void_*&",
+
+            "fc_in_char_*_capi",
+            "f_in_char_*_capi",
+            "c_in_char_*_capi",
         ],
     ),
     
@@ -1629,7 +1621,15 @@ fc_statements = [
     ########################################
     # char arg
     dict(
-        name="c_in_char_scalar",
+        name="fc_in_char_scalar",
+        alias=[
+            "f_in_char_scalar",
+            "c_in_char_scalar",
+        ],
+        # By default the declaration is character(LEN=*).
+        f_arg_decl=[
+            "character, value, intent(IN) :: {f_var}",
+        ],
         c_arg_decl=[
             "char {c_var}",
         ],
@@ -1638,13 +1638,6 @@ fc_statements = [
         ],
         i_arg_names=["{c_var}"],
         i_module=dict(iso_c_binding=["C_CHAR"]),
-    ),
-    dict(
-        name="f_in_char_scalar",
-        # By default the declaration is character(LEN=*).
-        f_arg_decl=[
-            "character, value, intent(IN) :: {f_var}",
-        ],
     ),
 
 #    dict(
@@ -3549,9 +3542,13 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_out_char_*_cfi",
+        name="fc_out_char_*_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_out_char_*_cfi",
+            "c_out_char_*_cfi",
         ],
         c_helper="ShroudStrBlankFill",
         c_post_call=[
@@ -3559,9 +3556,13 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_inout_char_*_cfi",
+        name="fc_inout_char_*_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_inout_char_*_cfi",
+            "c_inout_char_*_cfi",
         ],
         # Null terminate string.
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -3601,7 +3602,9 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
-        name="fc_function_char_*_cfi_copy",
+        # fc_function_char_*_cfi_copy
+        # fc_function_char_*_cfi_result
+        name="fc_function_char_*_cfi_copy/result",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
@@ -3725,12 +3728,15 @@ fc_statements = [
     ########################################
     # std::string
     dict(
-        # c_in_string_scalar_cfi
-        # c_in_string_*_cfi
-        # c_in_string_&_cfi
-        name="c_in_string_scalar/*/&_cfi",
+        # fc_in_string_scalar_cfi
+        # fc_in_string_*_cfi
+        # fc_in_string_&_cfi
+        name="fc_in_string_scalar/*/&_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "c_in_string_scalar/*/&_cfi",
         ],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",   # replace mixin
@@ -3744,11 +3750,16 @@ fc_statements = [
         c_local=["trim"],
     ),
     dict(
-        # c_out_string_*_cfi
-        # c_out_string_&_cfi
-        name="c_out_string_*/&_cfi",
+        # fc_out_string_*_cfi
+        # fc_out_string_&_cfi
+        name="fc_out_string_*/&_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_out_string_*_cfi",
+            "f_out_string_&_cfi",
+            "c_out_string_*/&_cfi",
         ],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -3765,11 +3776,16 @@ fc_statements = [
         ],
     ),
     dict(
-        # c_inout_string_*_cfi
-        # c_inout_string_&_cfi
-        name="c_inout_string_*/&_cfi",
+        # fc_inout_string_*_cfi
+        # fc_inout_string_&_cfi
+        name="fc_inout_string_*/&_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_inout_string_&_cfi",
+            "f_inout_string_*_cfi",
+            "c_inout_string_*/&_cfi",
         ],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -3993,8 +4009,12 @@ fc_statements = [
         # std::string **arg+intent(out)+dimension(size)
         # Returning a pointer to a string*. However, this needs additional mapping
         # for the C interface.  Fortran calls the +api(cdesc) variant.
-        name="c_out_string_**_copy",
+        name="fc_out_string_**_copy",
         alias=[
+            "f_out_string_**_copy",
+            "c_out_string_**_copy",
+            "fc_out_string_**_cfi_copy",
+            "f_out_string_**_cfi_copy",
             "c_out_string_**_cfi_copy",
         ],
         notimplemented=True,
@@ -4055,8 +4075,12 @@ fc_statements = [
         # std::string **arg+intent(out)+dimension(size)+deref(allocatable)
         # Returning a pointer to a string*. However, this needs additional mapping
         # for the C interface.  Fortran calls the +api(cdesc) variant.
-        name="c_out_string_**_allocatable",
+        name="fc_out_string_**_allocatable",
         alias=[
+            "c_out_string_**_allocatable",
+# TTT        "f_out_string_**_allocatable",
+            "fc_out_string_**_cfi_allocatable",
+            "f_out_string_**_cfi_allocatable",
             "c_out_string_**_cfi_allocatable",
         ],
         notimplemented=True,
