@@ -133,9 +133,9 @@ root
             allocatable -- c_getter_string_scalar_cdesc_allocatable
     in
       bool
-        scalar -- fc_in_bool
+        scalar -- fc_in_bool_scalar
       char
-        * -- c_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_in_char_*_buf
           capi -- c_defaulttmp
           cfi -- c_in_char_*_cfi
@@ -145,21 +145,21 @@ root
         scalar -- c_in_char_scalar
       native
         & -- c_defaulttmp
-        * -- c_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
-        ** -- c_in_native_**
-        scalar -- c_defaulttmp
+        ** -- fc_in_native_**
+        scalar -- fc_defaulttmp_native_scalar
       shadow
-        & -- c_in/inout_shadow_*/&
-        * -- c_in/inout_shadow_*/&
-        scalar -- c_in/inout_shadow_scalar
+        & -- fc_mixin_in_shadow_&
+        * -- fc_in_shadow_*
+        scalar -- fc_in_shadow_scalar
       string
         & -- c_in_string_*/&
-          buf -- c_in_string_*/&_buf
+          buf -- fc_in_string_*/&_buf
           cfi -- c_in_string_scalar/*/&_cfi
         * -- c_in_string_*/&
-          buf -- c_in_string_*/&_buf
+          buf -- fc_in_string_*/&_buf
           cfi -- c_in_string_scalar/*/&_cfi
         scalar -- c_in_string_scalar
           buf -- c_in_string_scalar_buf
@@ -196,8 +196,8 @@ root
       void
         * -- c_defaulttmp
           cdesc -- fc_in/out/inout_native_*_cdesc
-        ** -- c_in/out/inout_void_**
-          cfi -- c_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
+          cfi -- fc_in/out/inout_void_**
         scalar -- c_defaulttmp
     inout
       bool
@@ -209,14 +209,13 @@ root
       native
         & -- c_defaulttmp
           hidden -- c_out/inout_native_&_hidden
-        * -- c_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- c_in/inout_native_*_cfi
           hidden -- c_out/inout_native_*_hidden
       shadow
-        & -- c_in/inout_shadow_*/&
-        * -- c_in/inout_shadow_*/&
-        scalar -- c_in/inout_shadow_scalar
+        & -- c_mixin_in_shadow_*
+        * -- c_mixin_in_shadow_*
       string
         & -- c_inout_string_*/&
           buf -- c_inout_string_*/&_buf
@@ -248,7 +247,7 @@ root
       void
         *
           cdesc -- fc_in/out/inout_native_*_cdesc
-        ** -- c_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
     mixin
       arg
         character
@@ -273,6 +272,8 @@ root
           buf -- c_mixin_in_array_buf
         character
           buf -- c_mixin_in_character_buf
+        shadow
+          * -- c_mixin_in_shadow_*
         string
           array
             buf -- c_mixin_in_string_array_buf
@@ -302,7 +303,7 @@ root
         & -- c_defaulttmp
           hidden -- c_out/inout_native_&_hidden
         &* -- c_defaulttmp
-        * -- c_defaulttmp
+        * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
           hidden -- c_out/inout_native_*_hidden
         *&
@@ -312,14 +313,14 @@ root
         **
           allocatable -- c_defaulttmp
           cdesc -- c_out_native_**_cdesc
-            allocatable -- c_out_native_**_cdesc
-            pointer -- c_out_native_**_cdesc
+            allocatable -- fc_out_native_**_cdesc_allocatable
+            pointer -- fc_out_native_**/*&_cdesc_pointer
           cfi
             allocatable -- c_out_native_**_cfi_allocatable
             pointer -- c_out_native_**_cfi_pointer
           pointer -- c_defaulttmp
-          raw -- c_defaulttmp
-        *** -- c_defaulttmp
+          raw -- fc_out_native_**_raw
+        *** -- fc_defaulttmp_native_scalar
       string
         & -- c_out_string_*/&
           buf -- c_out_string_*/&_buf
@@ -370,15 +371,15 @@ root
         *
           cdesc -- fc_in/out/inout_native_*_cdesc
         *& -- c_defaulttmp
-        ** -- c_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
     setter -- c_setter
       arg -- c_setter_arg
       native
-        * -- c_setter_native_scalar/*
-        scalar -- c_setter_native_scalar/*
+        * -- fc_setter_native_scalar/*
+        scalar -- fc_setter_native_scalar/*
       string
         scalar
-          buf -- c_setter_string_scalar_buf
+          buf -- fc_setter_string_scalar_buf
       void
         scalar -- c_setter
     subroutine -- fc_subroutine
@@ -548,9 +549,9 @@ root
             allocatable -- fc_mixin_function_string_scalarx_cdesc_allocatable
     in
       bool
-        scalar -- fc_in_bool
+        scalar -- fc_in_bool_scalar
       char
-        * -- f_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_in_char_*_buf
           capi -- f_defaulttmp
           cfi -- f_defaulttmp
@@ -560,21 +561,21 @@ root
         scalar -- f_in_char_scalar
       native
         & -- f_defaulttmp
-        * -- f_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- f_defaulttmp
-        ** -- f_defaulttmp
-        scalar -- f_defaulttmp
-      shadow -- f_in_shadow
-        & -- f_in_shadow
-        * -- f_in_shadow
-        scalar -- f_in_shadow
+        ** -- fc_in_native_**
+        scalar -- fc_defaulttmp_native_scalar
+      shadow
+        & -- fc_mixin_in_shadow_&
+        * -- fc_in_shadow_*
+        scalar -- fc_in_shadow_scalar
       string
         &
-          buf -- f_in_string_*/&_buf
+          buf -- fc_in_string_*/&_buf
           cfi -- f_defaulttmp
         *
-          buf -- f_in_string_*/&_buf
+          buf -- fc_in_string_*/&_buf
           cfi -- f_defaulttmp
         scalar
           buf -- f_in_string_scalar_buf
@@ -606,8 +607,8 @@ root
       void
         * -- f_in_void_*
           cdesc -- fc_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
-          cfi -- f_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
+          cfi -- fc_in/out/inout_void_**
         scalar -- f_defaulttmp
     inout
       bool
@@ -618,7 +619,7 @@ root
           cfi -- f_defaulttmp
       native
         & -- f_defaulttmp
-        * -- f_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- f_defaulttmp
       shadow
@@ -654,7 +655,7 @@ root
       void
         *
           cdesc -- fc_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
     mixin
       function
         cdesc -- f_mixin_function_cdesc
@@ -682,6 +683,7 @@ root
       out
         array
           cdesc -- f_mixin_out_array_cdesc
+      shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
     out
@@ -693,23 +695,23 @@ root
           cfi -- f_defaulttmp
       native
         & -- f_defaulttmp
-        * -- f_out_native_*
+        * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi
             allocatable -- f_out_native_*_cfi_allocatable
         *&
           cdesc
-            allocatable -- f_out_native_**/*&_cdesc_allocatable
-            pointer -- f_out_native_**/*&_cdesc_pointer
+            allocatable -- f_out_native_*&_cdesc_allocatable
+            pointer -- fc_out_native_**/*&_cdesc_pointer
         **
           cdesc
-            allocatable -- f_out_native_**/*&_cdesc_allocatable
-            pointer -- f_out_native_**/*&_cdesc_pointer
+            allocatable -- fc_out_native_**_cdesc_allocatable
+            pointer -- fc_out_native_**/*&_cdesc_pointer
           cfi
             allocatable -- f_defaulttmp
             pointer -- f_defaulttmp
-          raw -- f_out_native_**_raw
-        *** -- f_defaulttmp
+          raw -- fc_out_native_**_raw
+        *** -- fc_defaulttmp_native_scalar
       string
         &
           buf -- f_out_string_*/&_buf
@@ -758,14 +760,14 @@ root
         *
           cdesc -- fc_in/out/inout_native_*_cdesc
         *& -- f_defaulttmp
-        ** -- f_in/out/inout_void_**
+        ** -- fc_in/out/inout_void_**
     setter -- fc_setter
-      native -- f_setter_native
-        * -- f_setter_native
-        scalar -- f_setter_native
+      native
+        * -- fc_setter_native_scalar/*
+        scalar -- fc_setter_native_scalar/*
       string
         scalar
-          buf -- f_setter_string_scalar_buf
+          buf -- fc_setter_string_scalar_buf
     subroutine -- fc_subroutine
     test -- f_test
   fc
@@ -773,6 +775,9 @@ root
       shadow
         scalar
           capptr -- fc_ctor_shadow_scalar_capptr
+    defaulttmp
+      native
+        scalar -- fc_defaulttmp_native_scalar
     dtor -- fc_dtor
     function
       bool
@@ -918,15 +923,29 @@ root
           cdesc
             allocatable -- fc_mixin_function_string_scalarx_cdesc_allocatable
     in
-      bool -- fc_in_bool
+      bool
+        scalar -- fc_in_bool_scalar
       char
-        *
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_in_char_*_buf
         **
           buf -- fc_in_char_**_buf
       native
-        *
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
+        ** -- fc_in_native_**
+        scalar -- fc_defaulttmp_native_scalar
+      shadow
+        & -- fc_mixin_in_shadow_&
+        * -- fc_in_shadow_*
+        scalar -- fc_in_shadow_scalar
+      string
+        &
+          buf -- fc_in_string_*/&_buf
+        *
+          buf -- fc_in_string_*/&_buf
+      void
+        ** -- fc_in/out/inout_void_**
     inout
       bool
         * -- fc_inout_bool_*
@@ -934,8 +953,10 @@ root
         *
           buf -- fc_inout_char_*_buf
       native
-        *
+        * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
+      void
+        ** -- fc_in/out/inout_void_**
     mixin
       function
         char
@@ -969,6 +990,9 @@ root
           scalarx
             cdesc
               allocatable -- fc_mixin_function_string_scalarx_cdesc_allocatable
+      in
+        shadow
+          & -- fc_mixin_in_shadow_&
     out
       bool
         * -- fc_out_bool_*
@@ -976,13 +1000,30 @@ root
         *
           buf -- fc_out_char_*_buf
       native
-        *
+        * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
+        *&
+          cdesc
+            pointer -- fc_out_native_**/*&_cdesc_pointer
+        **
+          cdesc
+            allocatable -- fc_out_native_**_cdesc_allocatable
+            pointer -- fc_out_native_**/*&_cdesc_pointer
+          raw -- fc_out_native_**_raw
+        *** -- fc_defaulttmp_native_scalar
       string
         **
           cdesc
             allocatable -- fc_out_string_**_cdesc_allocatable
+      void
+        ** -- fc_in/out/inout_void_**
     setter -- fc_setter
+      native
+        * -- fc_setter_native_scalar/*
+        scalar -- fc_setter_native_scalar/*
+      string
+        scalar
+          buf -- fc_setter_string_scalar_buf
     subroutine -- fc_subroutine
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
@@ -3416,20 +3457,6 @@ c_inout_shadow_*:
   intent: inout
   name: c_inout_shadow_*
   owner: library
-c_inout_shadow_scalar:
-  c_arg_decl:
-  - '{c_type} {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_module_line: '{i_module_line}'
-  intent: inout
-  name: c_inout_shadow_scalar
-  owner: library
 c_inout_string_&:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
@@ -3963,6 +3990,20 @@ c_mixin_in_character_buf:
   intent: mixin
   name: c_mixin_in_character_buf
   owner: library
+c_mixin_in_shadow_*:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: mixin
+  name: c_mixin_in_shadow_*
+  owner: library
 c_mixin_in_string_array_buf:
   c_arg_decl:
   - const char *{c_var}
@@ -4269,7 +4310,7 @@ c_out_native_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
+  c_helper: copy_array ShroudTypeDefines array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -6299,14 +6340,6 @@ f_in_native_*_cfi:
 f_in_native_scalar:
   intent: in
   name: f_in_native_scalar
-f_in_shadow:
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {f_var}'
-  f_need_wrapper: true
-  intent: in
-  name: f_in_shadow
 f_in_shadow_&:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -6332,6 +6365,7 @@ f_in_shadow_scalar:
   intent: in
   name: f_in_shadow_scalar
 f_in_string_&_buf:
+  c_helper: ShroudLenTrim
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -6351,6 +6385,7 @@ f_in_string_&_cfi:
   intent: in
   name: f_in_string_&_cfi
 f_in_string_*_buf:
+  c_helper: ShroudLenTrim
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -6857,6 +6892,14 @@ f_mixin_out_array_cdesc:
   - cdesc
   intent: mixin
   name: f_mixin_out_array_cdesc
+f_mixin_shadow-arg:
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  intent: mixin
+  name: f_mixin_shadow-arg
 f_mixin_str_array:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -6939,6 +6982,7 @@ f_out_native_*&_cdesc_allocatable:
   intent: out
   name: f_out_native_*&_cdesc_allocatable
 f_out_native_*&_cdesc_pointer:
+  c_helper: ShroudTypeDefines array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6959,7 +7003,7 @@ f_out_native_***:
   intent: out
   name: f_out_native_***
 f_out_native_**_cdesc_allocatable:
-  c_helper: copy_array
+  c_helper: copy_array ShroudTypeDefines array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -6979,6 +7023,7 @@ f_out_native_**_cdesc_allocatable:
   intent: out
   name: f_out_native_**_cdesc_allocatable
 f_out_native_**_cdesc_pointer:
+  c_helper: ShroudTypeDefines array_context
   f_arg_call:
   - '{c_var_cdesc}'
   f_arg_decl:
@@ -7304,11 +7349,6 @@ f_out_void_*_cdesc:
 f_setter:
   intent: setter
   name: f_setter
-f_setter_native:
-  f_arg_call:
-  - '{c_var}'
-  intent: setter
-  name: f_setter_native
 f_setter_native_*:
   f_arg_call:
   - '{c_var}'
@@ -7375,6 +7415,10 @@ fc_ctor_shadow_scalar_capptr:
   intent: ctor
   name: fc_ctor_shadow_scalar_capptr
   owner: caller
+fc_defaulttmp_native_scalar:
+  intent: defaulttmp
+  name: fc_defaulttmp_native_scalar
+  owner: library
 fc_dtor:
   c_call:
   - delete {CXX_this};
@@ -10045,7 +10089,7 @@ fc_getter_string_scalar_cdesc_allocatable:
   intent: getter
   name: fc_getter_string_scalar_cdesc_allocatable
   owner: library
-fc_in_bool:
+fc_in_bool_scalar:
   f_arg_call:
   - '{c_var_cxx}'
   f_declare:
@@ -10055,7 +10099,11 @@ fc_in_bool:
   f_temps:
   - cxx
   intent: in
-  name: fc_in_bool
+  name: fc_in_bool_scalar
+  owner: library
+fc_in_char_*:
+  intent: in
+  name: fc_in_char_*
   owner: library
 fc_in_char_**_buf:
   c_arg_decl:
@@ -10132,6 +10180,23 @@ fc_in_char_*_buf:
   intent: in
   name: fc_in_char_*_buf
   owner: library
+fc_in_native_*:
+  intent: in
+  name: fc_in_native_*
+  owner: library
+fc_in_native_**:
+  c_arg_decl:
+  - '{cxx_type} **{cxx_var}'
+  i_arg_decl:
+  - 'type(C_PTR), intent(IN), value :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  intent: in
+  name: fc_in_native_**
+  owner: library
 fc_in_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -10172,6 +10237,157 @@ fc_in_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: fc_in_native_*_cdesc
+  owner: library
+fc_in_native_scalar:
+  intent: in
+  name: fc_in_native_scalar
+  owner: library
+fc_in_shadow_&:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: in
+  name: fc_in_shadow_&
+  owner: library
+fc_in_shadow_*:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: in
+  name: fc_in_shadow_*
+  owner: library
+fc_in_shadow_scalar:
+  c_arg_decl:
+  - '{c_type} {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: in
+  name: fc_in_shadow_scalar
+  owner: library
+fc_in_string_&_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudLenTrim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: fc_in_string_&_buf
+  owner: library
+fc_in_string_*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudLenTrim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: fc_in_string_*_buf
+  owner: library
+fc_in_void_**:
+  c_arg_decl:
+  - void **{c_var}
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  intent: in
+  name: fc_in_void_**
   owner: library
 fc_inout_bool_*:
   f_arg_call:
@@ -10228,6 +10444,10 @@ fc_inout_char_*_buf:
   intent: inout
   name: fc_inout_char_*_buf
   owner: library
+fc_inout_native_*:
+  intent: inout
+  name: fc_inout_native_*
+  owner: library
 fc_inout_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -10268,6 +10488,24 @@ fc_inout_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: fc_inout_native_*_cdesc
+  owner: library
+fc_inout_void_**:
+  c_arg_decl:
+  - void **{c_var}
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  intent: inout
+  name: fc_inout_void_**
   owner: library
 fc_mixin_function_char_scalar_cdesc_allocatable:
   c_arg_decl:
@@ -10643,6 +10881,25 @@ fc_mixin_function_string_scalarx_cdesc_allocatable:
   intent: mixin
   name: fc_mixin_function_string_scalarx_cdesc_allocatable
   owner: library
+fc_mixin_in_shadow_&:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: mixin
+  name: fc_mixin_in_shadow_&
+  owner: library
 fc_out_bool_*:
   f_arg_call:
   - '{c_var_cxx}'
@@ -10689,6 +10946,150 @@ fc_out_char_*_buf:
     - C_INT
   intent: out
   name: fc_out_char_*_buf
+  owner: library
+fc_out_native_*:
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  intent: out
+  name: fc_out_native_*
+  owner: library
+fc_out_native_*&_cdesc_pointer:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: fc_out_native_*&_cdesc_pointer
+  owner: library
+fc_out_native_***:
+  intent: out
+  name: fc_out_native_***
+  owner: library
+fc_out_native_**_cdesc_allocatable:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: copy_array ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: fc_out_native_**_cdesc_allocatable
+  owner: library
+fc_out_native_**_cdesc_pointer:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{c_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: fc_out_native_**_cdesc_pointer
+  owner: library
+fc_out_native_**_raw:
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: out
+  name: fc_out_native_**_raw
   owner: library
 fc_out_native_*_cdesc:
   c_arg_decl:
@@ -10781,9 +11182,77 @@ fc_out_string_**_cdesc_allocatable:
   intent: out
   name: fc_out_string_**_cdesc_allocatable
   owner: library
+fc_out_void_**:
+  c_arg_decl:
+  - void **{c_var}
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  intent: out
+  name: fc_out_void_**
+  owner: library
 fc_setter:
   intent: setter
   name: fc_setter
+  owner: library
+fc_setter_native_*:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  f_arg_call:
+  - '{c_var}'
+  intent: setter
+  name: fc_setter_native_*
+  owner: library
+fc_setter_native_scalar:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  f_arg_call:
+  - '{c_var}'
+  intent: setter
+  name: fc_setter_native_scalar
+  owner: library
+fc_setter_string_scalar_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_post_call:
+  - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
+  c_temps:
+  - len
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: setter
+  name: fc_setter_string_scalar_buf
   owner: library
 fc_subroutine:
   intent: subroutine

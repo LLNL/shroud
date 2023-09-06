@@ -1025,15 +1025,11 @@ fc_statements = [
         name="f_defaulttmp",
         alias=[
             "f_in_native_*_cfi",
-            "f_in_native_**",
-            "f_out_native_***",
             "f_out_native_&",
             "f_in_void_scalar",
             "f_out_void_*&",
-            "f_inout_native_*",
             "f_inout_native_&",
-            "f_in_native_*/&",
-            "f_in_char_*",
+            "f_in_native_&",
             "f_in_char_*_capi/cfi",
             "f_in_char_**_cfi",
             "f_inout/out_char_*_cfi",
@@ -1056,19 +1052,13 @@ fc_statements = [
     dict(  # c_default
         name="c_defaulttmp",
         alias=[
-            "c_in_native_*",
             "c_in_native_&",
-            "c_in_char_*",
             "c_in_char_*_capi",
             "c_inout_char_*",
-            "c_out_native_*",
             "c_out_native_&",
             "c_out_native_&*",
             "c_out_native_**_allocatable",
             "c_out_native_**_pointer",
-            "c_out_native_**_raw",
-            "c_out_native_***",
-            "c_inout_native_*",
             "c_inout_native_&",
             "c_out_native_*&_pointer",
             "c_out_char_*",
@@ -1080,10 +1070,27 @@ fc_statements = [
     ),
 
     dict(
-        name="fc_in_native_scalar",
+        name="fc_defaulttmp_native_scalar",
         alias=[
+            "fc_in_native_scalar",            
             "f_in_native_scalar",
             "c_in_native_scalar",
+
+            "fc_in_native_*",
+            "f_in_native_*",
+            "c_in_native_*",
+
+            "fc_inout_native_*",
+            "f_inout_native_*",
+            "c_inout_native_*",
+            
+            "fc_out_native_***",
+            "f_out_native_***",
+            "c_out_native_***",
+            
+            "fc_in_char_*",
+            "f_in_char_*",
+            "c_in_char_*",
         ],
     ),
     
@@ -1140,7 +1147,11 @@ fc_statements = [
     ##########
     # native
     dict(
-        name="f_out_native_*",
+        name="fc_out_native_*",
+        alias=[
+            "f_out_native_*",
+            "c_out_native_*",
+        ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
@@ -1149,7 +1160,11 @@ fc_statements = [
     dict(
         # Any array of pointers.  Assumed to be non-contiguous memory.
         # All Fortran can do is treat as a type(C_PTR).
-        name="c_in_native_**",
+        name="fc_in_native_**",
+        alias=[
+            "f_in_native_**",
+            "c_in_native_**",
+        ],
         c_arg_decl=[
             "{cxx_type} **{cxx_var}",
         ],
@@ -1163,10 +1178,6 @@ fc_statements = [
         # double **count _intent(out)+dimension(ncount)
         name="c_out_native_**_cdesc",
         mixin=["c_mixin_out_array_cdesc"],
-        alias=[
-            "c_out_native_**_cdesc_allocatable",
-            "c_out_native_**_cdesc_pointer",
-        ],
         c_helper="ShroudTypeDefines array_context",
         c_pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
@@ -1200,9 +1211,37 @@ fc_statements = [
         # with a Fortran pointer.
         # f_out_native_**_cdesc_allocatable
         # f_out_native_*&_cdesc_allocatable
-        name="f_out_native_**/*&_cdesc_allocatable",
+#TTT        name="f_out_native_**/*&_cdesc_allocatable",
+        name="f_out_native_*&_cdesc_allocatable",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
+        f_helper="copy_array",
+#XXX        f_helper="copy_array_{c_type}",
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+        f_post_call=[
+            # intent(out) ensure that it is already deallocated.
+            "allocate({f_var}{f_array_allocate})",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+        ],
+    ),
+    dict(
+        # deref(allocatable)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer.
+#TTT        name="f_out_native_**/*&_cdesc_allocatable",
+        name="fc_out_native_**_cdesc_allocatable",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_out_native_**_cdesc",
+        ],
+        alias=[
+            "f_out_native_**_cdesc_allocatable",
+            "c_out_native_**_cdesc_allocatable",
+        ],
+        c_helper="copy_array ShroudTypeDefines array_context",
         f_helper="copy_array",
 #XXX        f_helper="copy_array_{c_type}",
         f_arg_decl=[
@@ -1221,8 +1260,15 @@ fc_statements = [
         # with a Fortran pointer.
         # f_out_native_**_cdesc_pointer
         # f_out_native_*&_cdesc_pointer
-        name="f_out_native_**/*&_cdesc_pointer",
-        mixin=["f_mixin_out_array_cdesc"],
+        name="fc_out_native_**/*&_cdesc_pointer",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_out_native_**_cdesc",
+        ],
+        alias=[
+            "f_out_native_**/*&_cdesc_pointer",
+            "c_out_native_**_cdesc_pointer",
+        ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -1233,7 +1279,11 @@ fc_statements = [
     ),
     dict(
         # Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
-        name="f_out_native_**_raw",
+        name="fc_out_native_**_raw",
+        alias=[
+            "f_out_native_**_raw",
+            "c_out_native_**_raw",
+        ],
         f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
         ],
@@ -1344,12 +1394,22 @@ fc_statements = [
     # void **
     dict(
         # Treat as an assumed length array in Fortran interface.
+        # f_in_void_**
+        # f_out_void_**
+        # f_inout_void_**
         # c_in_void_**
         # c_out_void_**
         # c_inout_void_**
-        name='c_in/out/inout_void_**',
+        name="fc_in/out/inout_void_**",
         alias=[
+            "f_in/out/inout_void_**",
+            "c_in/out/inout_void_**",
+            "f_in_void_**_cfi",
             "c_in_void_**_cfi",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
         c_arg_decl=[
             "void **{c_var}",
@@ -1359,19 +1419,6 @@ fc_statements = [
         ],
         i_arg_names=["{c_var}"],
         i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        # f_in_void_**
-        # f_out_void_**
-        # f_inout_void_**
-        name="f_in/out/inout_void_**",
-        alias=[
-            "f_in_void_**_cfi",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        f_arg_decl=[
-            "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}",
-        ],
     ),
     
     dict(
