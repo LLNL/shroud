@@ -1032,7 +1032,7 @@ fc_statements = [
             "f_out_void_*&",
             "f_inout_native_*",
             "f_inout_native_&",
-            "f_in_native_scalar/*/&",
+            "f_in_native_*/&",
             "f_in_char_*",
             "f_in_char_*_capi/cfi",
             "f_in_char_**_cfi",
@@ -1056,7 +1056,6 @@ fc_statements = [
     dict(  # c_default
         name="c_defaulttmp",
         alias=[
-            "c_in_native_scalar",
             "c_in_native_*",
             "c_in_native_&",
             "c_in_char_*",
@@ -1079,6 +1078,14 @@ fc_statements = [
             "c_in_unknown_scalar",
         ],
     ),
+
+    dict(
+        name="fc_in_native_scalar",
+        alias=[
+            "f_in_native_scalar",
+            "c_in_native_scalar",
+        ],
+    ),
     
     ##########
     # bool
@@ -1093,7 +1100,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="fc_in_bool",
+        name="fc_in_bool_scalar",
         mixin=["f_mixin_local-logical-var"],
         alias=[
             "f_in_bool_scalar",
@@ -1968,14 +1975,17 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_in_string_*/&_buf",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
         # c_in_string_*_buf
         # c_in_string_&_buf
-        name="c_in_string_*/&_buf",
-        mixin=["c_mixin_in_character_buf"],
+        name="fc_in_string_*/&_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_in_string_*/&_buf",
+            "c_in_string_*/&_buf",
+        ],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         c_pre_call=[
@@ -2743,6 +2753,18 @@ fc_statements = [
     ##########
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
+
+    dict(
+        name="f_mixin_shadow-arg",
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}",
+        ],
+        f_arg_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        f_need_wrapper=True,
+    ),
+    
     dict(
         name="c_mixin_shadow",
         c_arg_decl=[
@@ -2755,27 +2777,35 @@ fc_statements = [
         i_module_line="{i_module_line}",
     ),
     
-    dict(
-        name="f_in_shadow",
-        alias=[
-            # TTT
-            "f_in_shadow_scalar",
-            "f_in_shadow_*",
-            "f_in_shadow_&",
-        ],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}) :: {f_var}",
-        ],
-        f_arg_call=[
-            "{f_var}%{F_derived_member}",
-        ],
-        f_need_wrapper=True,
-    ),
+#    dict(
+#        name="f_in_shadow",    f_mixin_shadow-arg
+#        alias=[
+#            # TTT
+#            "f_in_shadow_scalar",
+#            "f_in_shadow_*",
+##TTT            "f_in_shadow_&",
+#        ],
+#        f_arg_decl=[
+#            "{f_type}, intent({f_intent}) :: {f_var}",
+#        ],
+#        f_arg_call=[
+#            "{f_var}%{F_derived_member}",
+#        ],
+#        f_need_wrapper=True,
+#    ),
     dict(
         # c_in_shadow_scalar
         # c_inout_shadow_scalar  # XXX inout by value makes no sense.
-        name="c_in/inout_shadow_scalar",
-        mixin=["c_mixin_shadow"],
+        ###name="c_in/inout_shadow_scalar",
+        name="fc_in_shadow_scalar",
+        mixin=[
+            "f_mixin_shadow-arg",
+            "c_mixin_shadow"
+        ],
+        alias=[
+            "f_in_shadow_scalar",
+            "c_in_shadow_scalar",
+        ],
         c_arg_decl=[
             "{c_type} {c_var}",
         ],
@@ -2789,16 +2819,30 @@ fc_statements = [
         ],
     ),
     dict(
-        # c_in_shadow_*
-        # c_in_shadow_&
-        # c_inout_shadow_*
-        # c_inout_shadow_&
-        name="c_in/inout_shadow_*/&",
+        name="c_mixin_in_shadow_*",
         mixin=["c_mixin_shadow"],
+        alias=[
+#            "c_in_shadow_*",
+#TTT            "c_in_shadow_&",
+            "c_inout_shadow_*",
+            "c_inout_shadow_&",
+        ],
         cxx_local_var="pointer",
         c_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
             "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
+        ],
+    ),
+
+    dict(
+        name="fc_in_shadow_*",
+        mixin=[
+            "f_mixin_shadow-arg",
+            "c_mixin_in_shadow_*",
+        ],
+        alias=[
+            "f_in_shadow_*",
+            "c_in_shadow_*",
         ],
     ),
 
@@ -2827,6 +2871,31 @@ fc_statements = [
         ],
         c_return_type="void",
     ),
+
+    # TTT new merged group
+    dict(
+        name="fc_mixin_in_shadow_&",
+        mixin=["c_mixin_shadow"],
+        alias=[
+            "fc_in_shadow_&",
+            "f_in_shadow_&",
+            "c_in_shadow_&",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}",
+        ],
+        f_arg_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        f_need_wrapper=True,
+
+        cxx_local_var="pointer",
+        c_pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
+        ],
+    ),
+
     dict(
         name="c_function_shadow_scalar_capsule",
         # Return a instance by value.
@@ -3131,22 +3200,21 @@ fc_statements = [
     ),
     dict(
         # TTT
-        name="f_setter_native",
+        name="fc_setter_native_scalar/*",
+        mixin=[
+            "c_setter_arg",
+        ],
         alias=[
             # TTT
             "f_setter_native_scalar",
             "f_setter_native_*",
+            "c_setter_native_scalar",
+            "c_setter_native_*",
         ],
         f_arg_call=["{c_var}"],
         # f_setter is intended for the function, this is for an argument.
-    ),
-    dict(
         # c_setter_native_scalar
         # c_setter_native_*
-        name="c_setter_native_scalar/*",
-        mixin=[
-            "c_setter_arg",
-        ],
         c_post_call=[
             "{CXX_this}->{field_name} = val;",
         ],
@@ -3181,22 +3249,22 @@ fc_statements = [
         c_return_type="void",  # Convert to function.
     ),
     dict(
+        # Extract meta data and pass to C.
         # Create std::string from Fortran meta data.
-        name="c_setter_string_scalar_buf",
+        name="fc_setter_string_scalar_buf",
         mixin=[
+            "f_mixin_in_character_buf",            
             "c_setter_arg",
             "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_setter_string_scalar_buf",
+            "c_setter_string_scalar_buf",
         ],
         c_post_call=[
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",
         ],
     ),
-    dict(
-        # Extract meta data and pass to C.
-        name="f_setter_string_scalar_buf",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    
     
     ########################################
     # CFI - Further Interoperability with C
