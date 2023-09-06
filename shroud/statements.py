@@ -2007,9 +2007,17 @@ fc_statements = [
         ],
     ),
     dict(
-        # c_inout_string_*
-        # c_inout_string_&
-        name="c_inout_string_*/&",
+        # fc_inout_string_*
+        # fc_inout_string_&
+        name="fc_inout_string_*/&",
+        mixin=[
+            "f_mixin_in_character_buf",
+        ],
+        alias=[
+            "fc_inout_string_*/&_buf",
+            "f_inout_string_*/&_buf",
+            "c_inout_string_*/&",
+        ],
         lang_cxx=dict(
             impl_header=["<cstring>"],
         ),
@@ -2039,14 +2047,17 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_out_string_*/&_buf",
-        mixin=["f_mixin_in_character_buf"],
-    ),
-    dict(
-        # c_out_string_*_buf
-        # c_out_string_&_buf
-        name="c_out_string_*/&_buf",
-        mixin=["c_mixin_in_character_buf"],
+        # fc_out_string_*_buf
+        # fc_out_string_&_buf
+        name="fc_out_string_*/&_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_out_string_*/&_buf",
+            "c_out_string_*/&_buf",
+        ],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
         c_pre_call=[
@@ -2057,10 +2068,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
-    ),
-    dict(
-        name="f_inout_string_*/&_buf",
-        mixin=["f_mixin_in_character_buf"],
     ),
     dict(
         # c_inout_string_*_buf
@@ -2160,16 +2167,19 @@ fc_statements = [
         i_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
-        name="f_in_string_scalar_buf",
-        mixin=["f_mixin_in_character_buf"],
+        name="fc_in_string_scalar_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf",
+        ],
+        alias=[
+            "f_in_string_scalar_buf",
+            "c_in_string_scalar_buf",
+        ],
         f_arg_decl=[
             # Remove VALUE added by f_default
             "character(len=*), intent({f_intent}) :: {f_var}",
         ],
-    ),
-    dict(
-        name="c_in_string_scalar_buf",
-        mixin=["c_mixin_in_character_buf"],
         cxx_local_var="scalar",
         c_pre_call=[
             "int {c_local_trim} = ShroudLenTrim({c_var}, {c_var_len});",
@@ -3988,12 +3998,15 @@ fc_statements = [
     # C++ array. Copy into Fortran argument.
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
-        name="f_out_string_**_cdesc_copy",
-        mixin=["f_mixin_str_array"],
-    ),
-    dict(
-        name="c_out_string_**_cdesc_copy",
-        mixin=["c_mixin_out_array_cdesc"],
+        name="fc_out_string_**_cdesc_copy",
+        mixin=[
+            "f_mixin_str_array",
+            "c_mixin_out_array_cdesc",
+        ],
+        alias=[
+            "f_out_string_**_cdesc_copy",
+            "c_out_string_**_cdesc_copy",
+        ],
         c_helper="array_string_out",
         c_pre_call=[
             "std::string *{cxx_var};"
