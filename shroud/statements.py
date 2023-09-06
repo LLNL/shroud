@@ -1024,14 +1024,12 @@ fc_statements = [
     dict(  # f_default
         name="f_defaulttmp",
         alias=[
-            "f_in_native_*_cfi",
             "f_out_native_&",
             "f_in_void_scalar",
             "f_out_void_*&",
             "f_inout_native_&",
             "f_in_native_&",
-            "f_in_char_*_capi/cfi",
-            "f_in_char_**_cfi",
+            "f_in_char_*_capi",
             "f_inout/out_char_*_cfi",
             "f_inout_string_&_cfi",
             "f_in_string_scalar_cfi",
@@ -1043,8 +1041,6 @@ fc_statements = [
             "f_inout_string_*_cfi",
             "f_out_string_&_cfi",
             "f_in_vector_&_cdesc_targ_native_scalar",
-            "f_inout_native_*_cfi",
-            "f_out_native_**_cfi_allocatable/pointer",
             "f_in_unknown_scalar",
         ],
     ),
@@ -1404,6 +1400,7 @@ fc_statements = [
         alias=[
             "f_in/out/inout_void_**",
             "c_in/out/inout_void_**",
+            "fc_in_void_**_cfi",
             "f_in_void_**_cfi",
             "c_in_void_**_cfi",
         ],
@@ -3497,12 +3494,19 @@ fc_statements = [
     ########################################
 
     dict(
-        # c_in_native_*_cfi
-        # c_inout_native_*_cfi
-        name="c_in/inout_native_*_cfi",
+        # fc_in_native_*_cfi
+        # fc_inout_native_*_cfi
+        name="fc_in/inout_native_*_cfi",
         mixin=[
             "c_mixin_arg_native_cfi",
         ],
+        alias=[
+            "f_in_native_*_cfi",
+            "f_inout_native_*_cfi",
+            "c_in_native_*_cfi",
+            "c_inout_native_*_cfi",
+        ],
+        
         c_pre_call=[
             "{cxx_type} *{cxx_var} = "
             "{cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -3511,9 +3515,13 @@ fc_statements = [
     
     ########################################
     dict(
-        name="c_in_char_*_cfi",
+        name="fc_in_char_*_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_in_char_*_cfi",
+            "c_in_char_*_cfi",
         ],
         # Null terminate string.
         c_helper="ShroudStrAlloc ShroudStrFree",
@@ -3650,9 +3658,13 @@ fc_statements = [
     ########################################
     # char **
     dict(
-        name="c_in_char_**_cfi",
+        name="fc_in_char_**_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_in_char_**_cfi",
+            "c_in_char_**_cfi",
         ],
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}(:)",
@@ -4044,10 +4056,14 @@ fc_statements = [
     ),
     dict(
         # Set Fortran pointer to point to cxx_var
-        name="c_out_native_**_cfi_allocatable",
+        name="fc_out_native_**_cfi_allocatable",
         mixin=[
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable",
+        ],
+        alias=[
+            "f_out_native_**_cfi_allocatable",
+            "c_out_native_**_cfi_allocatable",
         ],
         i_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
@@ -4059,10 +4075,14 @@ fc_statements = [
     ),
     dict(
         # Set Fortran pointer to point to cxx_var
-        name="c_out_native_**_cfi_pointer",
+        name="fc_out_native_**_cfi_pointer",
         mixin=[
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer",
+        ],
+        alias=[
+            "f_out_native_**_cfi_pointer",
+            "c_out_native_**_cfi_pointer",
         ],
         i_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
