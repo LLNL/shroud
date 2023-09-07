@@ -333,7 +333,7 @@ def process_mixin(stmts, defaults, stmtdict):
                 aname = "_".join(apart)
                 anode = util.Scope(node)
                 if aname in stmtdict:
-                    raise RuntimeError("process_mixin: key already exists {}".format(aname))
+                    raise RuntimeError("process_mixin: alias already exists {}".format(aname))
                 anode.name = aname
                 anode.intent = apart[1]
                 stmtdict[aname] = anode
@@ -3806,6 +3806,9 @@ fc_statements = [
         ],
         alias=[
             "c_in_string_scalar/*/&_cfi",
+            "f_in_string_scalar_cfi",
+            "f_in_string_*_cfi",
+            "f_in_string_&_cfi",
         ],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",   # replace mixin

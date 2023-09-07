@@ -46,6 +46,8 @@ The base types that Shroud uses are **bool**, **integer**, **real**,
 
 .. **template**
 
+.. used with Fortran declaration:  {base}({kind})
+
 cpp_if
 ^^^^^^
 
