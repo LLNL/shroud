@@ -228,6 +228,9 @@ class VerifyAttrs(object):
         mderef = None
         ntypemap = ast.typemap
         nindirect = declarator.is_indirect()
+        attrs = ast.declarator.attrs
+        meta = ast.declarator.metaattrs
+        fapi = None
         if declarator.get_subprogram() == "subroutine":
             pass
         if ntypemap.sgroup == "void":
@@ -259,24 +262,66 @@ class VerifyAttrs(object):
                     format(node.decl))
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
+            array = False
             if deref:
                 mderef = deref
             elif ntypemap.sgroup == "char":  # char *
-                if attrs["len"]:
+                if "F_string_result_as_arg" in node.user_fmt:
+                    mderef = "arg"
+                elif attrs["len"]:
                     mderef = "copy"
                 else:
                     mderef = "allocatable"
-            elif attrs["dimension"]:
+                    fapi = "cdesc"
+            elif attrs["dimension"]:  # XXX - or rank?
                 mderef = "pointer"
+                if node.options.F_CFI:
+                    fapi = "cfi"
+                else:
+                    fapi = "cdesc"
+                array = True
             else:
                 mderef = options.return_scalar_pointer
+
+            if fapi is not None:
+                pass
+            elif mderef == "raw":
+                fapi = None
+            elif mderef == "scalar":
+                fapi = None
+            elif node.options.F_CFI:
+                fapi = "cfi"
+            elif mderef in ["allocatable", "pointer"]:
+                if array:
+                    fapi = "cdesc"
+                else:
+                    # pointer to scalar
+                    fapi = None
+            else:
+                fapi = "buf"
+            
+#            meta["api"] = fapi
         elif deref:
             raise RuntimeError(
                 "Cannot have attribute 'deref' on non-pointer in {}".format(
                     node.decl
                 )
             )
-        ast.declarator.metaattrs["deref"] = mderef
+        meta["deref"] = mderef
+
+        if fapi is None:
+            return
+        if meta["intent"] in ["subroutine", "dtor"]:
+            f_stmts = ["f", meta["intent"]]
+        else:
+            f_stmts = ["f",
+                       meta["intent"],
+                       ntypemap.sgroup,
+                       declarator.get_indirect_stmt(),
+                       fapi, #meta["api"],
+                       mderef,
+                       attrs["owner"]] #+ specialize
+        ast.fstmt = statements.compute_name(f_stmts)
         
     def check_deref_attr_var(self, node, ast):
         """Check deref attr and set default for variable.
@@ -1796,6 +1841,7 @@ class GenFunctions(object):
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif meta["deref"] in ["allocatable", "pointer"]:
             need_buf_result   = "cfi"
+#TTT     need_buf_result   = None
 
         if not (need_buf_result or
                 has_cfi_arg):
@@ -1993,6 +2039,7 @@ class GenFunctions(object):
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
+#TTT         need_buf_result = None
         elif result_typemap.base == "vector":
             need_buf_result = "cdesc"
         elif result_is_ptr:

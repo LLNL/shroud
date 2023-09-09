@@ -1769,6 +1769,10 @@ rv = .false.
             print("TTT not match wrapf c_stmts", node.name)
             print("     Requested:", fmt_result.stmtc0)
             print("         Found:", fmt_result.stmtc1)
+#        if node.fstmt is not None and node.fstmt != fmt_result.stmt1:
+#            print("TTT not match node.fstmt", node.name)
+#            print("    node.fstmt:", node.fstmt)
+#            print("     Requested:", fmt_result.stmt0)
                   
         if options.debug:
             stmts_comments.append(
@@ -1779,6 +1783,8 @@ rv = .false.
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+            if ast.fstmt is not None and ast.fstmt != fmt_result.stmt1:
+                stmts_comments.append("! Gen:       " + ast.fstmt)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
@@ -1790,10 +1796,14 @@ rv = .false.
             C_subprogram = "subroutine"
             need_wrapper = True
         if f_result_blk.f_result:
-            # Change a subroutine into function.
-            fmt_func.F_subprogram = "function"
-            fmt_func.F_result = f_result_blk.f_result
-            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            if f_result_blk.f_result == "subroutine":
+                fmt_func.F_subprogram = "subroutine"
+                fmt_func.F_result_clause = ""
+            else:
+                # Change a subroutine into function.
+                fmt_func.F_subprogram = "function"
+                fmt_func.F_result = f_result_blk.f_result
+                fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         if cls:
             need_wrapper = True

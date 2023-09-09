@@ -15,6 +15,8 @@ Combinations of language, type and attributes are used to select
 a statement entry.
 
 
+.. mixin - must be a single name, no alternative allowed such as allocatable/pointer
+
 
 Passing function result as an argument
 --------------------------------------

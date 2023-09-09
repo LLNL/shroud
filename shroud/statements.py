@@ -2295,7 +2295,7 @@ fc_statements = [
         # f_function_string_scalar_cdesc_allocatable_library
         # f_function_string_*_cdesc_allocatable_library
         # f_function_string_&_cdesc_allocatable_library
-        name="fc_mixin_function_string_scalarx_cdesc_allocatable",
+        name="fc_mixin_function_string_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
             "c_mixin_function_cdesc",
@@ -3673,11 +3673,12 @@ fc_statements = [
         # Copy result into caller's buffer.
         # fc_function_char_*_cfi_copy
         # fc_function_char_*_cfi_result
-        name="fc_function_char_*_cfi_copy/result",
+        name="fc_function_char_*_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
         alias=[
+            "fc_function_char_*_cfi_result",
             "f_function_char_*_cfi_copy/result",
             "c_function_char_*_cfi_copy/result",
         ],
@@ -3699,6 +3700,27 @@ fc_statements = [
             "\t {cxx_var},\t -1);",
         ],
         c_return_type="void",  # Convert to function.
+    ),
+    dict(
+        # Change function result into an argument
+        # F_string_result_arg
+        name="fc_function_char_*_cfi_arg",
+        mixin=[
+            "fc_function_char_*_cfi_copy",
+#            "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_function_char_*_cfi_arg",
+            "c_function_char_*_cfi_arg",
+        ],
+
+        f_result = "subroutine",
+        f_arg_name=["{F_string_result_as_arg}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
+        ],
+        f_arg_call=["{F_string_result_as_arg}"],
+
     ),
 ##-    dict(
 ##-        name="c_function_char_*_cfi_pointer",

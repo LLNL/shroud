@@ -97,6 +97,7 @@ f_arg_decl
 List of argument or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
+Also used when a function result is converted into an argument.
 Added before splicer since it is part of the API and must not change.
 Additional declarations can be added within the splicer via *f_declare*.
 
@@ -237,6 +238,8 @@ which will return the number of items copied into the result argument.
           -  "integer(C_LONG) :: num"
           f_post_call:
           -  "num = Darg%size"
+
+When set to **subroutine** it will treat the subprogram as a ``subroutine``.
 
 f_temps
 ^^^^^^^
