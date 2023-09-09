@@ -1256,12 +1256,12 @@
                                     {
                                         "<FUNCTION>": "13 ****************************************",
                                         "C_generated_path": [
-                                            "arg_to_buffer",
+                                            "result_as_arg",
                                             "arg_to_buffer"
                                         ],
                                         "_PTR_C_CXX_index": "5",
                                         "_PTR_F_C_index": "12",
-                                        "_generated": "arg_to_buffer",
+                                        "_generated": "result_as_arg",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,

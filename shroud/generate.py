@@ -1618,6 +1618,7 @@ class GenFunctions(object):
         F_new.wrap.assign(fortran=True)
         # Do not add '_bufferify'
         F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
+        F_new._generated = "result_as_arg"
 
         # Do not wrap original function (does not have result argument)
         node.wrap.fortran = False

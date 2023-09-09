@@ -1488,12 +1488,12 @@
             {
                 "<FUNCTION>": "54 ****************************************",
                 "C_generated_path": [
-                    "arg_to_cfi",
+                    "result_as_arg",
                     "arg_to_cfi"
                 ],
                 "_PTR_C_CXX_index": "8",
                 "_PTR_F_C_index": "53",
-                "_generated": "arg_to_cfi",
+                "_generated": "result_as_arg",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2319,12 +2319,12 @@
                 "<FUNCTION>": "59 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
-                    "arg_to_cfi",
+                    "result_as_arg",
                     "arg_to_cfi"
                 ],
                 "_PTR_C_CXX_index": "13",
                 "_PTR_F_C_index": "58",
-                "_generated": "arg_to_cfi",
+                "_generated": "result_as_arg",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3118,12 +3118,12 @@
                 "<FUNCTION>": "64 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
-                    "arg_to_cfi",
+                    "result_as_arg",
                     "arg_to_cfi"
                 ],
                 "_PTR_C_CXX_index": "17",
                 "_PTR_F_C_index": "63",
-                "_generated": "arg_to_cfi",
+                "_generated": "result_as_arg",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
