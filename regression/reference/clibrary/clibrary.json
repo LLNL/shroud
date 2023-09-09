@@ -1439,8 +1439,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "function4a",
                     "cxx_rv_decl": "char * SHCXX_rv",
-                    "function_name": "Function4a",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "Function4a"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1836,8 +1836,8 @@
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr_in_out",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "passCharPtrInOut",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2082,8 +2082,8 @@
                     "F_C_name": "c_return_one_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_one_name",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "returnOneName",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2455,8 +2455,8 @@
                     "F_C_name": "c_return_two_names_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_two_names",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "returnTwoNames",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2810,8 +2810,8 @@
                     "F_C_name": "c_implied_text_len_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "implied_text_len",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "ImpliedTextLen",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4059,8 +4059,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "bindC2",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4831,8 +4831,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "pass_assumed_type_buf",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passAssumedTypeBuf",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "passAssumedTypeBuf"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5969,8 +5969,8 @@
                     "F_C_name": "c_callback3_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "callback3",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "callback3",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }

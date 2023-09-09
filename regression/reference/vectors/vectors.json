@@ -225,8 +225,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "vector_sum",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_sum",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_sum"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -465,8 +465,8 @@
                     "F_C_name": "c_vector_iota_out_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_iota_out",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -743,8 +743,8 @@
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_name_api": "vector_iota_out_with_num",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -996,8 +996,8 @@
                     "F_C_name": "c_vector_iota_out_with_num2_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_iota_out_with_num2",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num2",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1217,8 +1217,8 @@
                     "F_C_name": "c_vector_iota_out_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_iota_out_alloc",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_alloc",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1440,8 +1440,8 @@
                     "F_C_name": "c_vector_iota_inout_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_iota_inout_alloc",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_inout_alloc",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1648,8 +1648,8 @@
                     "F_C_name": "c_vector_increment_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_increment",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_increment",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1861,8 +1861,8 @@
                     "F_C_name": "c_vector_iota_out_d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_iota_out_d",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_d",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2165,8 +2165,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "vector_of_pointers",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_of_pointers",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_of_pointers"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2424,8 +2424,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "vector_string_count",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_string_count",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_string_count"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2666,8 +2666,8 @@
                     "F_C_name": "c_vector_string_fill_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_string_fill",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2883,8 +2883,8 @@
                     "F_C_name": "c_vector_string_fill_allocatable_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_string_fill_allocatable",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3103,8 +3103,8 @@
                     "F_C_name": "c_vector_string_fill_allocatable_len_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "vector_string_fill_allocatable_len",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable_len",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3387,8 +3387,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_vector_alloc",
                     "cxx_rv_decl": "*SHC_rv",
-                    "function_name": "ReturnVectorAlloc",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnVectorAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

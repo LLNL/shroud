@@ -154,8 +154,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

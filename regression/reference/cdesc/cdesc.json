@@ -234,8 +234,8 @@
                     "F_C_name": "c_rank2_in_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "rank2_in",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "Rank2In",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -830,8 +830,9 @@
                     "F_C_name": "c_get_scalar1_0_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_scalar1",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_0_bufferify",
+                    "function_suffix": "_0",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1150,8 +1151,9 @@
                     "F_C_name": "c_get_scalar1_1_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_scalar1",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_1_bufferify",
+                    "function_suffix": "_1",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1887,8 +1889,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "GetScalar2",
                     "F_name_api": "get_scalar2",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
-                    "function_suffix": "_0_bufferify",
+                    "function_suffix": "_0",
                     "stype": "int"
                 }
             },
@@ -2126,8 +2129,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "GetScalar2",
                     "F_name_api": "get_scalar2",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
-                    "function_suffix": "_1_bufferify",
+                    "function_suffix": "_1",
                     "stype": "double"
                 }
             }

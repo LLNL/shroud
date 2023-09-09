@@ -1862,7 +1862,7 @@ class GenFunctions(object):
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
         fmt_func = C_new.fmtdict
-        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
+        fmt_func.f_c_suffix = fmt_func.C_cfi_suffix
 
         C_new.wrap.assign(c=True)#, fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
@@ -2071,7 +2071,7 @@ class GenFunctions(object):
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
         
         fmt_func = C_new.fmtdict
-        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
+        fmt_func.f_c_suffix = fmt_func.C_bufferify_suffix
 
         options = C_new.options
         C_new.wrap.assign(c=node.options.wrap_c)

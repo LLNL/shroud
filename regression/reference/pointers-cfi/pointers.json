@@ -997,8 +997,8 @@
                     "F_C_name": "c_cos_doubles_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cos_doubles",
+                    "f_c_suffix": "_CFI",
                     "function_name": "cos_doubles",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1460,8 +1460,8 @@
                     "F_C_name": "c_truncate_to_int_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "truncate_to_int",
+                    "f_c_suffix": "_CFI",
                     "function_name": "truncate_to_int",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2412,8 +2412,8 @@
                     "F_C_name": "c_sum_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "sum",
+                    "f_c_suffix": "_CFI",
                     "function_name": "Sum",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2857,8 +2857,8 @@
                     "F_C_name": "c_increment_int_array_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "increment_int_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "incrementIntArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3174,8 +3174,8 @@
                     "F_C_name": "c_fill_with_zeros_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fill_with_zeros",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fill_with_zeros",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3526,8 +3526,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "accumulate",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "accumulate",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "accumulate"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3824,8 +3824,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "accept_char_array_in",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptCharArrayIn",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "acceptCharArrayIn"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4265,8 +4265,8 @@
                     "F_C_name": "get_ptr_to_scalar",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_scalar",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToScalar",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4529,8 +4529,8 @@
                     "F_C_name": "get_ptr_to_fixed_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4895,8 +4895,8 @@
                     "F_C_name": "get_ptr_to_dynamic_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5161,8 +5161,8 @@
                     "F_C_name": "get_ptr_to_func_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_func_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFuncArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5397,8 +5397,8 @@
                     "F_C_name": "get_ptr_to_const_scalar",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_const_scalar",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToConstScalar",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5657,8 +5657,8 @@
                     "F_C_name": "get_ptr_to_fixed_const_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_const_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedConstArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6019,8 +6019,8 @@
                     "F_C_name": "get_ptr_to_dynamic_const_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicConstArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -7129,8 +7129,8 @@
                     "F_C_name": "get_alloc_to_fixed_array",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_alloc_to_fixed_array",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getAllocToFixedArray",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -7881,8 +7881,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "void_ptr_array",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "VoidPtrArray",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "VoidPtrArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8049,8 +8049,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_scalar",
                     "cxx_rv_decl": "int * SHCXX_rv",
-                    "function_name": "returnIntPtrToScalar",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntPtrToScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8251,8 +8251,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "cxx_rv_decl": "int * SHCXX_rv",
-                    "function_name": "returnIntPtrToFixedArray",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntPtrToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8443,8 +8443,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "cxx_rv_decl": "const int * SHCXX_rv",
-                    "function_name": "returnIntPtrToConstScalar",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntPtrToConstScalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8647,8 +8647,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "cxx_rv_decl": "const int * SHCXX_rv",
-                    "function_name": "returnIntPtrToFixedConstArray",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntPtrToFixedConstArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9141,8 +9141,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "return_int_raw_with_args",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntRawWithArgs",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntRawWithArgs"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9426,8 +9426,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "cxx_rv_decl": "int * SHCXX_rv",
-                    "function_name": "returnIntAllocToFixedArray",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "returnIntAllocToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

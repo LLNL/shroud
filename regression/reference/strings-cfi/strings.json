@@ -681,8 +681,8 @@
                     "F_C_name": "pass_char_ptr",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr",
+                    "f_c_suffix": "_CFI",
                     "function_name": "passCharPtr",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -904,8 +904,8 @@
                     "F_C_name": "pass_char_ptr_in_out",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr_in_out",
+                    "f_c_suffix": "_CFI",
                     "function_name": "passCharPtrInOut",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1057,8 +1057,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_char_ptr1",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr1",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getCharPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1243,8 +1243,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_char_ptr2",
                     "cxx_rv_decl": "const char * SHCXX_rv",
-                    "function_name": "getCharPtr2",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getCharPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1465,8 +1465,8 @@
                     "F_name_api": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr3",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getCharPtr3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1558,6 +1558,7 @@
                     "F_name_impl": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
                     "F_subprogram": "subroutine",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getCharPtr3",
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
@@ -1812,8 +1813,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_char_ptr5",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr5",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getCharPtr5"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1965,8 +1966,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_result",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
-                    "function_name": "getConstStringResult",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringResult"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2115,8 +2116,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_len",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
-                    "function_name": "getConstStringLen",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2295,8 +2296,8 @@
                     "F_name_api": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
-                    "function_name": "getConstStringAsArg",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2388,6 +2389,7 @@
                     "F_name_impl": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "F_subprogram": "subroutine",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getConstStringAsArg",
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
@@ -2499,8 +2501,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_alloc",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
-                    "function_name": "getConstStringAlloc",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2679,8 +2681,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ref_pure",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefPure",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringRefPure"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2869,8 +2871,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ref_len",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefLen",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringRefLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3094,8 +3096,8 @@
                     "F_name_api": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefAsArg",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3188,6 +3190,7 @@
                     "F_name_impl": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "F_subprogram": "subroutine",
+                    "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefAsArg",
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
@@ -3352,8 +3355,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ref_len_empty",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefLenEmpty",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringRefLenEmpty"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3527,8 +3530,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ref_alloc",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefAlloc",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringRefAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3729,8 +3732,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_len",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrLen",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringPtrLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3910,8 +3913,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4094,8 +4097,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrOwnsAlloc",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringPtrOwnsAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4280,8 +4283,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrOwnsAllocPattern",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringPtrOwnsAllocPattern"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4462,8 +4465,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_const_string_ptr_pointer",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrPointer",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "getConstStringPtrPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4717,8 +4720,8 @@
                     "F_C_name": "accept_string_const_reference",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_const_reference",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringConstReference",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4938,8 +4941,8 @@
                     "F_C_name": "accept_string_reference_out",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference_out",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringReferenceOut",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5157,8 +5160,8 @@
                     "F_C_name": "accept_string_reference",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringReference",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5374,8 +5377,8 @@
                     "F_C_name": "accept_string_pointer_const",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_const",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointerConst",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5589,8 +5592,8 @@
                     "F_C_name": "accept_string_pointer",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointer",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5810,8 +5813,8 @@
                     "F_C_name": "fetch_string_pointer",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fetchStringPointer",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6131,8 +6134,8 @@
                     "F_C_name": "accept_string_pointer_len",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_len",
+                    "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointerLen",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6456,8 +6459,8 @@
                     "F_C_name": "fetch_string_pointer_len",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer_len",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fetchStringPointerLen",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6700,8 +6703,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "accept_string_instance",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptStringInstance",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "acceptStringInstance"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7151,8 +7154,8 @@
                     "F_C_name": "fetch_array_string_arg",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_arg",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringArg",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -7503,8 +7506,8 @@
                     "F_C_name": "fetch_array_string_alloc",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringAlloc",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -7861,8 +7864,8 @@
                     "F_C_name": "fetch_array_string_alloc_len",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc_len",
+                    "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringAllocLen",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -8141,8 +8144,8 @@
                     "F_C_name": "explicit1",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "explicit1",
+                    "f_c_suffix": "_CFI",
                     "function_name": "explicit1",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -8364,8 +8367,8 @@
                     "F_C_name": "explicit2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "explicit2",
+                    "f_c_suffix": "_CFI",
                     "function_name": "explicit2",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -8894,8 +8897,8 @@
                     "F_C_name": "cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr",
+                    "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtr",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -9228,8 +9231,8 @@
                     "F_C_name": "cpass_char_ptr_blank",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr_blank",
+                    "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtrBlank",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -9566,8 +9569,8 @@
                     "F_C_name": "post_declare",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "post_declare",
+                    "f_c_suffix": "_CFI",
                     "function_name": "PostDeclare",
-                    "function_suffix": "_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -9819,8 +9822,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "cpass_char_ptr_notrim",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrNotrim",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "CpassCharPtrNotrim"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -10401,8 +10404,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "cpass_char_ptr_capi2",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrCAPI2",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "CpassCharPtrCAPI2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

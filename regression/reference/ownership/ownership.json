@@ -1014,8 +1014,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointer",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnIntPtrDimPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1377,8 +1377,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimAlloc",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnIntPtrDimAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1735,8 +1735,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_dim_default",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefault",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnIntPtrDimDefault"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2247,8 +2247,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointerNew",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnIntPtrDimPointerNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2801,8 +2801,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefaultNew",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnIntPtrDimDefaultNew"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

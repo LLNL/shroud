@@ -1287,8 +1287,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
-                            "function_name": "returnThisBuffer",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "returnThisBuffer"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1625,8 +1625,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                            "function_name": "getName",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getName"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2289,9 +2289,9 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "std::string SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
-                            "function_suffix": "_bufferify",
                             "struct_name": "Class1",
                             "wrapped_name": "m_name"
                         },
@@ -2495,9 +2495,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
-                            "function_suffix": "_bufferify",
                             "stmt0": "c_setter",
                             "stmt1": "c_setter",
                             "struct_name": "Class1",
@@ -2845,8 +2845,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                            "function_name": "getName",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getName"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -4234,9 +4234,9 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int * SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "get_items",
-                            "function_suffix": "_bufferify",
                             "struct_name": "Data",
                             "wrapped_name": "items"
                         },
@@ -6226,8 +6226,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

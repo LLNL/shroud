@@ -1444,7 +1444,7 @@ class Wrapc(util.WrapperMixin):
             )
             impl.append("{+")
             impl.extend(setup_this)
-            sname = wformat("{function_name}{function_suffix}{template_suffix}",
+            sname = wformat("{function_name}{function_suffix}{f_c_suffix}{template_suffix}",
                             fmt_func)
             self._create_splicer(sname, impl, C_code, C_force)
             impl.append("-}")

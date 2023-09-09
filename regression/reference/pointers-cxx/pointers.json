@@ -2633,8 +2633,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "accept_char_array_in",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptCharArrayIn",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "acceptCharArrayIn"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3063,8 +3063,8 @@
                     "F_C_name": "c_get_ptr_to_scalar_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_scalar",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToScalar",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3314,8 +3314,8 @@
                     "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3667,8 +3667,8 @@
                     "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3920,8 +3920,8 @@
                     "F_C_name": "c_get_ptr_to_func_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_func_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFuncArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4145,8 +4145,8 @@
                     "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_const_scalar",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToConstScalar",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4392,8 +4392,8 @@
                     "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_const_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedConstArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4741,8 +4741,8 @@
                     "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicConstArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -5850,8 +5850,8 @@
                     "F_C_name": "c_get_alloc_to_fixed_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_alloc_to_fixed_array",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getAllocToFixedArray",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6738,8 +6738,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntPtrToFixedArray",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "returnIntPtrToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7025,8 +7025,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "cxx_rv_decl": "const int * SHC_rv",
-                    "function_name": "returnIntPtrToFixedConstArray",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "returnIntPtrToFixedConstArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7647,8 +7647,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "returnIntAllocToFixedArray",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "returnIntAllocToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

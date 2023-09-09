@@ -717,9 +717,9 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "data_pointer_get_items",
                     "cxx_rv_decl": "int * SHC_rv",
+                    "f_c_suffix": "_bufferify",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
-                    "function_suffix": "_bufferify",
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
                 },
@@ -1333,9 +1333,9 @@
                             "F_C_subprogram": "subroutine",
                             "F_name_api": "data_pointer_get_items",
                             "cxx_rv_decl": "int * SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
-                            "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },
@@ -1976,9 +1976,9 @@
                             "F_C_subprogram": "subroutine",
                             "F_name_api": "data_pointer_get_items",
                             "cxx_rv_decl": "int * SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
-                            "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },

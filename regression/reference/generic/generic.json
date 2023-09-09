@@ -5695,8 +5695,9 @@
                     "F_C_name": "c_get_pointer_as_pointer_float1d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d_bufferify",
+                    "function_suffix": "_float1d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6038,8 +6039,9 @@
                     "F_C_name": "c_get_pointer_as_pointer_float2d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d_bufferify",
+                    "function_suffix": "_float2d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }

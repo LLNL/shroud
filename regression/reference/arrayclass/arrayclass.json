@@ -732,8 +732,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
-                            "function_name": "getArray",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getArray"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -969,8 +969,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
-                            "function_name": "getArrayConst",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getArrayConst"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1205,8 +1205,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
-                            "function_name": "getArrayC",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getArrayC"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1444,8 +1444,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
-                            "function_name": "getArrayConstC",
-                            "function_suffix": "_bufferify"
+                            "f_c_suffix": "_bufferify",
+                            "function_name": "getArrayConstC"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1879,8 +1879,8 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtr",
-                            "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine"
                         }
@@ -2279,8 +2279,8 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRef",
-                            "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine"
                         }
@@ -2681,8 +2681,8 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtrConst",
-                            "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine"
                         }
@@ -3083,8 +3083,8 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRefConst",
-                            "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine"
                         }

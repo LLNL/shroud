@@ -176,8 +176,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

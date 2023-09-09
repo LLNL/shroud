@@ -790,8 +790,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "concatenate_strings",
                     "cxx_rv_decl": "*SHCXX_rv",
-                    "function_name": "ConcatenateStrings",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ConcatenateStrings"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1618,8 +1618,9 @@
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "overloaded_function",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "OverloadedFunction",
-                    "function_suffix": "_from_name_bufferify",
+                    "function_suffix": "_from_name",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3111,8 +3112,9 @@
                     "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fortran_generic_overloaded",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_float_bufferify",
+                    "function_suffix": "_1_float",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3354,8 +3356,9 @@
                     "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fortran_generic_overloaded",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_double_bufferify",
+                    "function_suffix": "_1_double",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6160,8 +6163,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

@@ -1852,8 +1852,9 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int32_t_bufferify"
+                    "function_suffix": "_int32_t"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2092,8 +2093,9 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int64_t_bufferify"
+                    "function_suffix": "_int64_t"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

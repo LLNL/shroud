@@ -1431,8 +1431,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "sum_values",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "SumValues",
-                    "function_suffix": "_CFI"
+                    "f_c_suffix": "_CFI",
+                    "function_name": "SumValues"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2582,8 +2582,9 @@
                     "F_C_name": "c_assign_values_broadcast_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
+                    "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
-                    "function_suffix": "_broadcast_CFI",
+                    "function_suffix": "_broadcast",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -2995,8 +2996,9 @@
                     "F_C_name": "c_assign_values_copy_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
+                    "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
-                    "function_suffix": "_copy_CFI",
+                    "function_suffix": "_copy",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3622,8 +3624,9 @@
                     "F_C_name": "c_save_pointer_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
-                    "function_suffix": "_float1d_CFI",
+                    "function_suffix": "_float1d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3941,8 +3944,9 @@
                     "F_C_name": "c_save_pointer_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
-                    "function_suffix": "_float2d_CFI",
+                    "function_suffix": "_float2d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -4600,8 +4604,9 @@
                     "F_C_name": "c_save_pointer2_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
+                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
-                    "function_suffix": "_float1d_CFI",
+                    "function_suffix": "_float1d",
                     "hnamefunc0": "ShroudTypeDefines",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
@@ -4940,8 +4945,9 @@
                     "F_C_name": "c_save_pointer2_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
+                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
-                    "function_suffix": "_float2d_CFI",
+                    "function_suffix": "_float2d",
                     "hnamefunc0": "ShroudTypeDefines",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
@@ -5864,8 +5870,9 @@
                     "F_C_name": "c_get_pointer_as_pointer_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d_CFI",
+                    "function_suffix": "_float1d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -6219,8 +6226,9 @@
                     "F_C_name": "c_get_pointer_as_pointer_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
+                    "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d_CFI",
+                    "function_suffix": "_float2d",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }

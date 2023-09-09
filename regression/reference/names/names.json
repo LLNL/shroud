@@ -629,8 +629,8 @@
                     "F_C_name": "c_get_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_name",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "getName",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -1265,8 +1265,8 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "function4",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "function4",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "function4"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1734,8 +1734,8 @@
                     "F_C_name": "c_test_multiline_splicer_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "test_multiline_splicer",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "TestMultilineSplicer",
-                    "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine"
                 }
@@ -3444,8 +3444,8 @@
                         ],
                         "name": "Names",
                         "options": {
-                            "C_name_template": "XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}",
-                            "F_C_name_template": "XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}",
+                            "C_name_template": "XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}",
+                            "F_C_name_template": "XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}{f_c_suffix}",
                             "none": "foo"
                         },
                         "parse_keyword": "class",

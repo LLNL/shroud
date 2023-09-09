@@ -487,8 +487,9 @@
                                             "F_name_generic": "ex_class1",
                                             "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
+                                            "f_c_suffix": "_bufferify",
                                             "function_name": "ctor",
-                                            "function_suffix": "_1_bufferify"
+                                            "function_suffix": "_1"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -978,8 +979,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                                            "function_name": "getNameErrorCheck",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getNameErrorCheck"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -1233,8 +1234,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                                            "function_name": "getNameArg",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getNameArg"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -1322,6 +1323,7 @@
                                             "F_name_impl": "ex_class1_get_name_arg",
                                             "F_string_result_as_arg": "name",
                                             "F_subprogram": "subroutine",
+                                            "f_c_suffix": "_bufferify",
                                             "function_name": "getNameArg",
                                             "function_suffix": "",
                                             "stmt0": "f_subroutine",
@@ -2436,8 +2438,8 @@
                                             "F_name_generic": "ex_class2",
                                             "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
-                                            "function_name": "ctor",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "ctor"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -2730,8 +2732,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                                            "function_name": "getName",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getName"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -2946,8 +2948,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
-                                            "function_name": "getName2",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getName2"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -3161,8 +3163,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
-                                            "function_name": "getName3",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getName3"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -3373,8 +3375,8 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
-                                            "function_name": "getName4",
-                                            "function_suffix": "_bufferify"
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getName4"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
@@ -6857,8 +6859,8 @@
                                     "F_C_subprogram": "function",
                                     "F_name_api": "is_name_valid",
                                     "cxx_rv_decl": "bool SHC_rv",
-                                    "function_name": "isNameValid",
-                                    "function_suffix": "_bufferify"
+                                    "f_c_suffix": "_bufferify",
+                                    "function_name": "isNameValid"
                                 },
                                 "zz_fmtresult": {
                                     "fmtc": {
@@ -7254,8 +7256,9 @@
                                     "F_C_name": "c_test_names_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "F_name_api": "test_names",
+                                    "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
-                                    "function_suffix": "_bufferify",
+                                    "function_suffix": "",
                                     "stmt0": "c_subroutine",
                                     "stmt1": "c_subroutine"
                                 }
@@ -7638,8 +7641,9 @@
                                     "F_C_name": "c_test_names_flag_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "F_name_api": "test_names",
+                                    "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
-                                    "function_suffix": "_flag_bufferify",
+                                    "function_suffix": "_flag",
                                     "stmt0": "c_subroutine",
                                     "stmt1": "c_subroutine"
                                 }
