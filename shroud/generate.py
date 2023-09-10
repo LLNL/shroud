@@ -1804,8 +1804,6 @@ class GenFunctions(object):
                 has_cfi_arg):
             return False
 
-        options.wrap_fortran = False
-
         # Create a new C function and change arguments
         # and add attributes.
         C_new = node.clone()

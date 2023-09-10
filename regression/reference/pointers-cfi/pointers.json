@@ -636,9 +636,7 @@
                     "description": "allocate OUT same type as IN implied size of array"
                 },
                 "name": "cos_doubles",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -856,9 +854,7 @@
                     "description": "allocate OUT same type as IN implied size of array"
                 },
                 "name": "cos_doubles",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -1099,9 +1095,7 @@
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
                 "name": "truncate_to_int",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -1319,9 +1313,7 @@
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
                 "name": "truncate_to_int",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -2075,7 +2067,6 @@
                 "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
                 "name": "Sum",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -2276,7 +2267,6 @@
                 "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
                 "name": "Sum",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_lua": false
                 },
                 "splicer_group": "cfi",
@@ -2601,9 +2591,7 @@
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "name": "incrementIntArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -2754,9 +2742,7 @@
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "name": "incrementIntArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -2922,9 +2908,7 @@
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
                 "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
                 "name": "fill_with_zeros",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -3071,9 +3055,7 @@
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
                 "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
                 "name": "fill_with_zeros",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -3240,9 +3222,7 @@
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
                 "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
                 "name": "accumulate",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -3417,9 +3397,7 @@
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
                 "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
                 "name": "accumulate",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -3606,9 +3584,7 @@
                     "description": "Return strlen of the first index as a check.\n"
                 },
                 "name": "acceptCharArrayIn",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -3743,9 +3719,7 @@
                     "description": "Return strlen of the first index as a check.\n"
                 },
                 "name": "acceptCharArrayIn",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -4084,7 +4058,6 @@
                 "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
                 "name": "getPtrToScalar",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -4188,7 +4161,6 @@
                 "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
                 "name": "getPtrToScalar",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",
@@ -4326,9 +4298,7 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "name": "getPtrToFixedArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -4443,9 +4413,7 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "name": "getPtrToFixedArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -4612,9 +4580,7 @@
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
                 "name": "getPtrToDynamicArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -4780,9 +4746,7 @@
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
                 "name": "getPtrToDynamicArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -4957,9 +4921,7 @@
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "name": "getPtrToFuncArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -5075,9 +5037,7 @@
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "name": "getPtrToFuncArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -5215,7 +5175,6 @@
                 "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
                 "name": "getPtrToConstScalar",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -5320,7 +5279,6 @@
                 "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
                 "name": "getPtrToConstScalar",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",
@@ -5456,9 +5414,7 @@
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "name": "getPtrToFixedConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -5571,9 +5527,7 @@
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "name": "getPtrToFixedConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -5738,9 +5692,7 @@
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "name": "getPtrToDynamicConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -5904,9 +5856,7 @@
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "name": "getPtrToDynamicConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -6932,7 +6882,6 @@
                 },
                 "name": "getAllocToFixedArray",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -7051,7 +7000,6 @@
                 },
                 "name": "getAllocToFixedArray",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",
@@ -7675,7 +7623,6 @@
                 "name": "VoidPtrArray",
                 "options": {
                     "F_force_wrapper": true,
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -7809,7 +7756,6 @@
                 "name": "VoidPtrArray",
                 "options": {
                     "F_force_wrapper": true,
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",
@@ -7938,9 +7884,7 @@
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
                 "name": "returnIntPtrToScalar",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -8016,9 +7960,7 @@
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
                 "name": "returnIntPtrToScalar",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -8127,9 +8069,7 @@
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -8218,9 +8158,7 @@
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -8331,9 +8269,7 @@
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "name": "returnIntPtrToConstScalar",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -8410,9 +8346,7 @@
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "name": "returnIntPtrToConstScalar",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -8522,9 +8456,7 @@
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 },
@@ -8614,9 +8546,7 @@
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedConstArray",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -8931,7 +8861,6 @@
                 },
                 "name": "returnIntRawWithArgs",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -9068,7 +8997,6 @@
                 },
                 "name": "returnIntRawWithArgs",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",
@@ -9300,7 +9228,6 @@
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "name": "returnIntAllocToFixedArray",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -9393,7 +9320,6 @@
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "name": "returnIntAllocToFixedArray",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "splicer_group": "cfi",

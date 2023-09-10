@@ -1037,6 +1037,8 @@ root
         ** -- fc_in/out/inout_void_**
     mixin
       function
+        cfi
+          character-arg -- fc_mixin_function_cfi_character-arg
         char
           scalar
             cdesc
@@ -1058,7 +1060,6 @@ root
               allocatable -- fc_mixin_function_string_scalar_cfi_allocatable
               copy -- fc_mixin_function_string_scalar_cfi_copy
               pointer -- fc_mixin_function_string_scalar_cfi_pointer
-      function-character-arg -- fc_mixin_function-character-arg
       in
         shadow
           & -- fc_mixin_in_shadow_&
@@ -11712,7 +11713,7 @@ fc_inout_void_**:
   intent: inout
   name: fc_inout_void_**
   owner: library
-fc_mixin_function-character-arg:
+fc_mixin_function_cfi_character-arg:
   f_arg_call:
   - '{F_string_result_as_arg}'
   f_arg_decl:
@@ -11725,7 +11726,7 @@ fc_mixin_function-character-arg:
   i_arg_names:
   - '{F_string_result_as_arg}'
   intent: mixin
-  name: fc_mixin_function-character-arg
+  name: fc_mixin_function_cfi_character-arg
   owner: library
 fc_mixin_function_char_scalar_cdesc_allocatable:
   c_arg_decl:

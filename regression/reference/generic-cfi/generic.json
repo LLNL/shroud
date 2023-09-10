@@ -1136,8 +1136,7 @@
                 },
                 "name": "SumValues",
                 "options": {
-                    "F_assumed_rank_max": 2,
-                    "wrap_fortran": false
+                    "F_assumed_rank_max": 2
                 },
                 "wrap": {
                     "c": true
@@ -1320,8 +1319,7 @@
                 },
                 "name": "SumValues",
                 "options": {
-                    "F_assumed_rank_max": 2,
-                    "wrap_fortran": false
+                    "F_assumed_rank_max": 2
                 },
                 "splicer_group": "cfi",
                 "wrap": {
@@ -2292,9 +2290,7 @@
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
                 "name": "AssignValues",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "AssignValues",
@@ -2406,9 +2402,7 @@
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
                 "name": "AssignValues",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -2688,9 +2682,7 @@
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
                 "name": "AssignValues",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "AssignValues",
@@ -2806,9 +2798,7 @@
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
                 "name": "AssignValues",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -3384,9 +3374,7 @@
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "SavePointer",
@@ -3479,9 +3467,7 @@
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -3700,9 +3686,7 @@
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "SavePointer",
@@ -3795,9 +3779,7 @@
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -4346,9 +4328,7 @@
                     }
                 },
                 "name": "SavePointer2",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "SavePointer2",
@@ -4451,9 +4431,7 @@
                     }
                 },
                 "name": "SavePointer2",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -4683,9 +4661,7 @@
                     }
                 },
                 "name": "SavePointer2",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "SavePointer2",
@@ -4788,9 +4764,7 @@
                     }
                 },
                 "name": "SavePointer2",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -5593,9 +5567,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "GetPointerAsPointer",
@@ -5703,9 +5675,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
@@ -5945,9 +5915,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "GetPointerAsPointer",
@@ -6055,9 +6023,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
