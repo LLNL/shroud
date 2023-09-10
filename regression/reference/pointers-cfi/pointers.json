@@ -542,9 +542,6 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
@@ -643,8 +640,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -751,25 +747,19 @@
                     "C_prototype": "double * in,\t double * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
-                    "F_C_call": "c_cos_doubles_CFI",
                     "F_C_name": "c_cos_doubles",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "in,\t out,\t SH_sizein",
-                    "F_arguments": "in,\t out",
                     "F_name_api": "cos_doubles",
-                    "F_name_function": "cos_doubles",
-                    "F_name_generic": "cos_doubles",
-                    "F_name_impl": "cos_doubles",
-                    "F_subprogram": "subroutine",
                     "function_name": "cos_doubles",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "46 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -872,7 +862,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -994,20 +985,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t double * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
+                    "F_C_call": "c_cos_doubles_CFI",
                     "F_C_name": "c_cos_doubles_CFI",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
+                    "F_arguments": "in,\t out",
                     "F_name_api": "cos_doubles",
+                    "F_name_function": "cos_doubles",
+                    "F_name_generic": "cos_doubles",
+                    "F_name_impl": "cos_doubles",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "cos_doubles",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "5 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
@@ -1106,8 +1103,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -1214,25 +1210,19 @@
                     "C_prototype": "double * in,\t int * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
-                    "F_C_call": "c_truncate_to_int_CFI",
                     "F_C_name": "c_truncate_to_int",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "in,\t out,\t SH_sizein",
-                    "F_arguments": "in,\t out",
                     "F_name_api": "truncate_to_int",
-                    "F_name_function": "truncate_to_int",
-                    "F_name_generic": "truncate_to_int",
-                    "F_name_impl": "truncate_to_int",
-                    "F_subprogram": "subroutine",
                     "function_name": "truncate_to_int",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "47 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -1335,7 +1325,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -1457,13 +1448,22 @@
                     "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t int * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
+                    "F_C_call": "c_truncate_to_int_CFI",
                     "F_C_name": "c_truncate_to_int_CFI",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
+                    "F_arguments": "in,\t out",
                     "F_name_api": "truncate_to_int",
+                    "F_name_function": "truncate_to_int",
+                    "F_name_generic": "truncate_to_int",
+                    "F_name_impl": "truncate_to_int",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "truncate_to_int",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1995,9 +1995,6 @@
             },
             {
                 "<FUNCTION>": "9 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
@@ -2082,8 +2079,7 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -2185,25 +2181,19 @@
                     "C_prototype": "int len,\t const int * values,\t int * result",
                     "C_return_type": "void",
                     "F_C_arguments": "len,\t values,\t result",
-                    "F_C_call": "c_sum_CFI",
                     "F_C_name": "c_sum",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SH_len,\t values,\t result",
-                    "F_arguments": "values,\t result",
                     "F_name_api": "sum",
-                    "F_name_function": "sum",
-                    "F_name_generic": "sum",
-                    "F_name_impl": "sum",
-                    "F_subprogram": "subroutine",
                     "function_name": "Sum",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "48 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -2292,7 +2282,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -2409,13 +2400,22 @@
                     "C_prototype": "int len,\t CFI_cdesc_t *SHT_values_cfi,\t int * result",
                     "C_return_type": "void",
                     "F_C_arguments": "len,\t values,\t result",
+                    "F_C_call": "c_sum_CFI",
                     "F_C_name": "c_sum_CFI",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_len,\t values,\t result",
+                    "F_arguments": "values,\t result",
                     "F_name_api": "sum",
+                    "F_name_function": "sum",
+                    "F_name_generic": "sum",
+                    "F_name_impl": "sum",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "Sum",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2540,9 +2540,6 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
@@ -2608,8 +2605,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "array": {
@@ -2682,25 +2678,19 @@
                     "C_prototype": "int * array,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "array,\t sizein",
-                    "F_C_call": "c_increment_int_array_CFI",
                     "F_C_name": "c_increment_int_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "array,\t SH_sizein",
-                    "F_arguments": "array",
                     "F_name_api": "increment_int_array",
-                    "F_name_function": "increment_int_array",
-                    "F_name_generic": "increment_int_array",
-                    "F_name_impl": "increment_int_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "incrementIntArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "49 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -2770,7 +2760,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "array": {
@@ -2854,20 +2845,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_array_cfi,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "array,\t sizein",
+                    "F_C_call": "c_increment_int_array_CFI",
                     "F_C_name": "c_increment_int_array_CFI",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "array,\t SH_sizein",
+                    "F_arguments": "array",
                     "F_name_api": "increment_int_array",
+                    "F_name_function": "increment_int_array",
+                    "F_name_generic": "increment_int_array",
+                    "F_name_impl": "increment_int_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "incrementIntArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "12 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
@@ -2929,8 +2926,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "x": {
@@ -3003,25 +2999,19 @@
                     "C_prototype": "double * x,\t int x_length",
                     "C_return_type": "void",
                     "F_C_arguments": "x,\t x_length",
-                    "F_C_call": "c_fill_with_zeros_CFI",
                     "F_C_name": "c_fill_with_zeros",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "x,\t SH_x_length",
-                    "F_arguments": "x",
                     "F_name_api": "fill_with_zeros",
-                    "F_name_function": "fill_with_zeros",
-                    "F_name_generic": "fill_with_zeros",
-                    "F_name_impl": "fill_with_zeros",
-                    "F_subprogram": "subroutine",
                     "function_name": "fill_with_zeros",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "50 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3087,7 +3077,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "x": {
@@ -3171,20 +3162,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_x_cfi,\t int x_length",
                     "C_return_type": "void",
                     "F_C_arguments": "x,\t x_length",
+                    "F_C_call": "c_fill_with_zeros_CFI",
                     "F_C_name": "c_fill_with_zeros_CFI",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "x,\t SH_x_length",
+                    "F_arguments": "x",
                     "F_name_api": "fill_with_zeros",
+                    "F_name_function": "fill_with_zeros",
+                    "F_name_generic": "fill_with_zeros",
+                    "F_name_impl": "fill_with_zeros",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fill_with_zeros",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "13 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
@@ -3247,8 +3244,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "arr": {
@@ -3321,18 +3317,10 @@
                     "C_prototype": "const int * arr,\t size_t len",
                     "C_return_type": "int",
                     "F_C_arguments": "arr,\t len",
-                    "F_C_call": "c_accumulate_CFI",
                     "F_C_name": "c_accumulate",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "arr,\t SH_len",
-                    "F_arguments": "arr",
                     "F_name_api": "accumulate",
-                    "F_name_function": "accumulate",
-                    "F_name_generic": "accumulate",
-                    "F_name_impl": "accumulate",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "accumulate"
                 },
@@ -3356,21 +3344,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "51 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3437,7 +3423,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arr": {
@@ -3521,10 +3508,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_arr_cfi,\t size_t len",
                     "C_return_type": "int",
                     "F_C_arguments": "arr,\t len",
+                    "F_C_call": "c_accumulate_CFI",
                     "F_C_name": "c_accumulate_CFI",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "arr,\t SH_len",
+                    "F_arguments": "arr",
                     "F_name_api": "accumulate",
+                    "F_name_function": "accumulate",
+                    "F_name_generic": "accumulate",
+                    "F_name_impl": "accumulate",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "accumulate"
@@ -3549,19 +3544,21 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "14 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
@@ -3613,8 +3610,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "names": {
@@ -3658,18 +3654,10 @@
                     "C_prototype": "char **names",
                     "C_return_type": "int",
                     "F_C_arguments": "names",
-                    "F_C_call": "c_accept_char_array_in_CFI",
                     "F_C_name": "c_accept_char_array_in",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "names",
-                    "F_arguments": "names",
                     "F_name_api": "accept_char_array_in",
-                    "F_name_function": "accept_char_array_in",
-                    "F_name_generic": "accept_char_array_in",
-                    "F_name_impl": "accept_char_array_in",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptCharArrayIn"
                 },
@@ -3693,21 +3681,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "52 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3763,7 +3749,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "names": {
@@ -3819,10 +3806,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_names_cfi",
                     "C_return_type": "int",
                     "F_C_arguments": "names",
+                    "F_C_call": "c_accept_char_array_in_CFI",
                     "F_C_name": "accept_char_array_in",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "names",
+                    "F_arguments": "names",
                     "F_name_api": "accept_char_array_in",
+                    "F_name_function": "accept_char_array_in",
+                    "F_name_generic": "accept_char_array_in",
+                    "F_name_impl": "accept_char_array_in",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptCharArrayIn"
@@ -3847,11 +3842,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -4039,9 +4039,6 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
@@ -4091,8 +4088,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "nitems": {
@@ -4132,25 +4128,19 @@
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
-                    "F_C_call": "c_get_ptr_to_scalar_CFI",
                     "F_C_name": "c_get_ptr_to_scalar",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "nitems",
-                    "F_arguments": "nitems",
                     "F_name_api": "get_ptr_to_scalar",
-                    "F_name_function": "get_ptr_to_scalar",
-                    "F_name_generic": "get_ptr_to_scalar",
-                    "F_name_impl": "get_ptr_to_scalar",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToScalar",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "53 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4204,7 +4194,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nitems": {
@@ -4262,20 +4253,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_nitems_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
+                    "F_C_call": "c_get_ptr_to_scalar_CFI",
                     "F_C_name": "get_ptr_to_scalar",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "nitems",
+                    "F_arguments": "nitems",
                     "F_name_api": "get_ptr_to_scalar",
+                    "F_name_function": "get_ptr_to_scalar",
+                    "F_name_generic": "get_ptr_to_scalar",
+                    "F_name_impl": "get_ptr_to_scalar",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToScalar",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "18 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "54",
                 "ast": {
                     "declarator": {
@@ -4333,8 +4330,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -4379,25 +4375,19 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
-                    "F_C_call": "c_get_ptr_to_fixed_array_CFI",
                     "F_C_name": "c_get_ptr_to_fixed_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_fixed_array",
-                    "F_name_function": "get_ptr_to_fixed_array",
-                    "F_name_generic": "get_ptr_to_fixed_array",
-                    "F_name_impl": "get_ptr_to_fixed_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToFixedArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "54 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4459,7 +4449,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -4526,20 +4517,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_ptr_to_fixed_array_CFI",
                     "F_C_name": "get_ptr_to_fixed_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_fixed_array",
+                    "F_name_function": "get_ptr_to_fixed_array",
+                    "F_name_generic": "get_ptr_to_fixed_array",
+                    "F_name_impl": "get_ptr_to_fixed_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "19 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "55",
                 "ast": {
                     "declarator": {
@@ -4619,8 +4616,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -4694,25 +4690,19 @@
                     "C_prototype": "int * * count,\t int * ncount",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t ncount",
-                    "F_C_call": "c_get_ptr_to_dynamic_array_CFI",
                     "F_C_name": "c_get_ptr_to_dynamic_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_dynamic_array",
-                    "F_name_function": "get_ptr_to_dynamic_array",
-                    "F_name_generic": "get_ptr_to_dynamic_array",
-                    "F_name_impl": "get_ptr_to_dynamic_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "55 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4796,7 +4786,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -4892,20 +4883,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_ptr_to_dynamic_array_CFI",
                     "F_C_name": "get_ptr_to_dynamic_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_dynamic_array",
+                    "F_name_function": "get_ptr_to_dynamic_array",
+                    "F_name_generic": "get_ptr_to_dynamic_array",
+                    "F_name_impl": "get_ptr_to_dynamic_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "20 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "56",
                 "ast": {
                     "declarator": {
@@ -4964,8 +4961,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -5010,25 +5006,19 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
-                    "F_C_call": "c_get_ptr_to_func_array_CFI",
                     "F_C_name": "c_get_ptr_to_func_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_func_array",
-                    "F_name_function": "get_ptr_to_func_array",
-                    "F_name_generic": "get_ptr_to_func_array",
-                    "F_name_impl": "get_ptr_to_func_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToFuncArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "56 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5091,7 +5081,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -5158,20 +5149,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_ptr_to_func_array_CFI",
                     "F_C_name": "get_ptr_to_func_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_func_array",
+                    "F_name_function": "get_ptr_to_func_array",
+                    "F_name_generic": "get_ptr_to_func_array",
+                    "F_name_impl": "get_ptr_to_func_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFuncArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "21 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "57",
                 "ast": {
                     "declarator": {
@@ -5222,8 +5219,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "nitems": {
@@ -5263,25 +5259,19 @@
                     "C_prototype": "const int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
-                    "F_C_call": "c_get_ptr_to_const_scalar_CFI",
                     "F_C_name": "c_get_ptr_to_const_scalar",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "nitems",
-                    "F_arguments": "nitems",
                     "F_name_api": "get_ptr_to_const_scalar",
-                    "F_name_function": "get_ptr_to_const_scalar",
-                    "F_name_generic": "get_ptr_to_const_scalar",
-                    "F_name_impl": "get_ptr_to_const_scalar",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToConstScalar",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "57 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5336,7 +5326,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nitems": {
@@ -5394,20 +5385,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_nitems_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
+                    "F_C_call": "c_get_ptr_to_const_scalar_CFI",
                     "F_C_name": "get_ptr_to_const_scalar",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "nitems",
+                    "F_arguments": "nitems",
                     "F_name_api": "get_ptr_to_const_scalar",
+                    "F_name_function": "get_ptr_to_const_scalar",
+                    "F_name_generic": "get_ptr_to_const_scalar",
+                    "F_name_impl": "get_ptr_to_const_scalar",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToConstScalar",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "22 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "58",
                 "ast": {
                     "declarator": {
@@ -5463,8 +5460,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -5509,25 +5505,19 @@
                     "C_prototype": "const int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
-                    "F_C_call": "c_get_ptr_to_fixed_const_array_CFI",
                     "F_C_name": "c_get_ptr_to_fixed_const_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_fixed_const_array",
-                    "F_name_function": "get_ptr_to_fixed_const_array",
-                    "F_name_generic": "get_ptr_to_fixed_const_array",
-                    "F_name_impl": "get_ptr_to_fixed_const_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToFixedConstArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "58 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5587,7 +5577,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -5654,20 +5645,26 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_ptr_to_fixed_const_array_CFI",
                     "F_C_name": "get_ptr_to_fixed_const_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_fixed_const_array",
+                    "F_name_function": "get_ptr_to_fixed_const_array",
+                    "F_name_generic": "get_ptr_to_fixed_const_array",
+                    "F_name_impl": "get_ptr_to_fixed_const_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedConstArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "23 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "59",
                 "ast": {
                     "declarator": {
@@ -5745,8 +5742,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -5820,25 +5816,19 @@
                     "C_prototype": "const int * * count,\t int * ncount",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t ncount",
-                    "F_C_call": "c_get_ptr_to_dynamic_const_array_CFI",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
-                    "F_name_function": "get_ptr_to_dynamic_const_array",
-                    "F_name_generic": "get_ptr_to_dynamic_const_array",
-                    "F_name_impl": "get_ptr_to_dynamic_const_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicConstArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "59 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5920,7 +5910,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -6016,13 +6007,22 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_ptr_to_dynamic_const_array_CFI",
                     "F_C_name": "get_ptr_to_dynamic_const_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
+                    "F_name_function": "get_ptr_to_dynamic_const_array",
+                    "F_name_generic": "get_ptr_to_dynamic_const_array",
+                    "F_name_impl": "get_ptr_to_dynamic_const_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicConstArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6877,9 +6877,6 @@
             },
             {
                 "<FUNCTION>": "31 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "60",
                 "ast": {
                     "declarator": {
@@ -6939,8 +6936,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -6985,25 +6981,19 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
-                    "F_C_call": "c_get_alloc_to_fixed_array_CFI",
                     "F_C_name": "c_get_alloc_to_fixed_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count",
-                    "F_arguments": "count",
                     "F_name_api": "get_alloc_to_fixed_array",
-                    "F_name_function": "get_alloc_to_fixed_array",
-                    "F_name_generic": "get_alloc_to_fixed_array",
-                    "F_name_impl": "get_alloc_to_fixed_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "getAllocToFixedArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "60 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7067,7 +7057,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -7126,13 +7117,22 @@
                     "C_prototype": "CFI_cdesc_t *SHT_count_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
+                    "F_C_call": "c_get_alloc_to_fixed_array_CFI",
                     "F_C_name": "get_alloc_to_fixed_array",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count",
+                    "F_arguments": "count",
                     "F_name_api": "get_alloc_to_fixed_array",
+                    "F_name_function": "get_alloc_to_fixed_array",
+                    "F_name_generic": "get_alloc_to_fixed_array",
+                    "F_name_impl": "get_alloc_to_fixed_array",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "getAllocToFixedArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7630,9 +7630,6 @@
             },
             {
                 "<FUNCTION>": "36 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "61",
                 "ast": {
                     "declarator": {
@@ -7682,8 +7679,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -7726,18 +7722,10 @@
                     "C_prototype": "void **addr",
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
-                    "F_C_call": "c_void_ptr_array_CFI",
                     "F_C_name": "c_void_ptr_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "addr",
-                    "F_arguments": "addr",
                     "F_name_api": "void_ptr_array",
-                    "F_name_function": "void_ptr_array",
-                    "F_name_generic": "void_ptr_array",
-                    "F_name_impl": "void_ptr_array",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "VoidPtrArray"
                 },
@@ -7761,21 +7749,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "61 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7829,7 +7815,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -7876,10 +7863,18 @@
                     "C_prototype": "void **addr",
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
+                    "F_C_call": "c_void_ptr_array_CFI",
                     "F_C_name": "c_void_ptr_array_CFI",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "addr",
+                    "F_arguments": "addr",
                     "F_name_api": "void_ptr_array",
+                    "F_name_function": "void_ptr_array",
+                    "F_name_generic": "void_ptr_array",
+                    "F_name_impl": "void_ptr_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "VoidPtrArray"
@@ -7904,19 +7899,21 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "37 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "62",
                 "ast": {
                     "declarator": {
@@ -7945,8 +7942,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToScalar",
@@ -7954,18 +7950,10 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_scalar_CFI",
                     "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_scalar",
-                    "F_name_function": "return_int_ptr_to_scalar",
-                    "F_name_generic": "return_int_ptr_to_scalar",
-                    "F_name_impl": "return_int_ptr_to_scalar",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToScalar"
                 },
@@ -7989,21 +7977,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cfi_pointer",
-                        "stmt1": "f_function_native_*_cfi_pointer",
-                        "stmtc0": "c_function_native_*_cfi_pointer",
-                        "stmtc1": "c_function_native_*_cfi_pointer"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "62 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8036,7 +8022,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToScalar_CFI",
@@ -8044,10 +8031,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_return_int_ptr_to_scalar_CFI",
                     "F_C_name": "c_return_int_ptr_to_scalar_CFI",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv",
+                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_scalar",
+                    "F_name_function": "return_int_ptr_to_scalar",
+                    "F_name_generic": "return_int_ptr_to_scalar",
+                    "F_name_impl": "return_int_ptr_to_scalar",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToScalar"
@@ -8085,19 +8080,21 @@
                         "c_var_cfi": "SHT_rv_cfi",
                         "c_var_extents": "SHT_rv_extents",
                         "c_var_lower": "SHT_rv_lower",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "38 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "63",
                 "ast": {
                     "declarator": {
@@ -8134,8 +8131,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToFixedArray",
@@ -8143,18 +8139,10 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_fixed_array_CFI",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_fixed_array",
-                    "F_name_function": "return_int_ptr_to_fixed_array",
-                    "F_name_generic": "return_int_ptr_to_fixed_array",
-                    "F_name_impl": "return_int_ptr_to_fixed_array",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray"
                 },
@@ -8180,7 +8168,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8188,16 +8175,15 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cfi_pointer",
-                        "stmt1": "f_function_native_*_cfi_pointer",
-                        "stmtc0": "c_function_native_*_cfi_pointer",
-                        "stmtc1": "c_function_native_*_cfi_pointer"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "63 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8238,7 +8224,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToFixedArray_CFI",
@@ -8246,10 +8233,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_return_int_ptr_to_fixed_array_CFI",
                     "F_C_name": "c_return_int_ptr_to_fixed_array_CFI",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv",
+                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_fixed_array",
+                    "F_name_function": "return_int_ptr_to_fixed_array",
+                    "F_name_generic": "return_int_ptr_to_fixed_array",
+                    "F_name_impl": "return_int_ptr_to_fixed_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToFixedArray"
@@ -8293,6 +8288,7 @@
                         "c_var_cfi": "SHT_rv_cfi",
                         "c_var_extents": "SHT_rv_extents",
                         "c_var_lower": "SHT_rv_lower",
+                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8300,15 +8296,16 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "39 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "64",
                 "ast": {
                     "const": true,
@@ -8338,8 +8335,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToConstScalar",
@@ -8347,18 +8343,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_const_scalar_CFI",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_const_scalar",
-                    "F_name_function": "return_int_ptr_to_const_scalar",
-                    "F_name_generic": "return_int_ptr_to_const_scalar",
-                    "F_name_impl": "return_int_ptr_to_const_scalar",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToConstScalar"
                 },
@@ -8382,21 +8370,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cfi_pointer",
-                        "stmt1": "f_function_native_*_cfi_pointer",
-                        "stmtc0": "c_function_native_*_cfi_pointer",
-                        "stmtc1": "c_function_native_*_cfi_pointer"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "64 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8430,7 +8416,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToConstScalar_CFI",
@@ -8438,10 +8425,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_return_int_ptr_to_const_scalar_CFI",
                     "F_C_name": "c_return_int_ptr_to_const_scalar_CFI",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv",
+                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_const_scalar",
+                    "F_name_function": "return_int_ptr_to_const_scalar",
+                    "F_name_generic": "return_int_ptr_to_const_scalar",
+                    "F_name_impl": "return_int_ptr_to_const_scalar",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToConstScalar"
@@ -8479,19 +8474,21 @@
                         "c_var_cfi": "SHT_rv_cfi",
                         "c_var_extents": "SHT_rv_extents",
                         "c_var_lower": "SHT_rv_lower",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "40 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "65",
                 "ast": {
                     "const": true,
@@ -8529,8 +8526,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToFixedConstArray",
@@ -8538,18 +8534,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_fixed_const_array_CFI",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
-                    "F_name_function": "return_int_ptr_to_fixed_const_array",
-                    "F_name_generic": "return_int_ptr_to_fixed_const_array",
-                    "F_name_impl": "return_int_ptr_to_fixed_const_array",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToFixedConstArray"
                 },
@@ -8575,7 +8563,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8583,16 +8570,15 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cfi_pointer",
-                        "stmt1": "f_function_native_*_cfi_pointer",
-                        "stmtc0": "c_function_native_*_cfi_pointer",
-                        "stmtc1": "c_function_native_*_cfi_pointer"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "65 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "40",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8634,7 +8620,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntPtrToFixedConstArray_CFI",
@@ -8642,10 +8629,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_return_int_ptr_to_fixed_const_array_CFI",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array_CFI",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv",
+                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
+                    "F_name_function": "return_int_ptr_to_fixed_const_array",
+                    "F_name_generic": "return_int_ptr_to_fixed_const_array",
+                    "F_name_impl": "return_int_ptr_to_fixed_const_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const int * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToFixedConstArray"
@@ -8689,6 +8684,7 @@
                         "c_var_cfi": "SHT_rv_cfi",
                         "c_var_extents": "SHT_rv_extents",
                         "c_var_lower": "SHT_rv_lower",
+                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8696,7 +8692,11 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
@@ -8880,9 +8880,6 @@
             },
             {
                 "<FUNCTION>": "43 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "66",
                 "ast": {
                     "declarator": {
@@ -8938,8 +8935,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -8979,18 +8975,10 @@
                     "C_prototype": "const char * name",
                     "C_return_type": "int *",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_return_int_raw_with_args_CFI",
                     "F_C_name": "c_return_int_raw_with_args",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "name",
-                    "F_arguments": "name",
                     "F_name_api": "return_int_raw_with_args",
-                    "F_name_function": "return_int_raw_with_args",
-                    "F_name_generic": "return_int_raw_with_args",
-                    "F_name_impl": "return_int_raw_with_args",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntRawWithArgs"
                 },
@@ -9014,21 +9002,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_raw",
-                        "stmt1": "f_function_native_*_raw",
-                        "stmtc0": "c_function_native_*_raw",
-                        "stmtc1": "c_function_native_*_raw"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "66 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -9088,7 +9074,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -9136,10 +9123,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
                     "C_return_type": "int *",
                     "F_C_arguments": "name",
+                    "F_C_call": "c_return_int_raw_with_args_CFI",
                     "F_C_name": "return_int_raw_with_args",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "name",
+                    "F_arguments": "name",
                     "F_name_api": "return_int_raw_with_args",
+                    "F_name_function": "return_int_raw_with_args",
+                    "F_name_generic": "return_int_raw_with_args",
+                    "F_name_impl": "return_int_raw_with_args",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntRawWithArgs"
@@ -9164,11 +9159,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_raw",
+                        "stmt1": "f_function_native_*_raw",
+                        "stmtc0": "c_function_native_*_raw",
+                        "stmtc1": "c_function_native_*_raw"
                     }
                 }
             },
@@ -9266,9 +9266,6 @@
             },
             {
                 "<FUNCTION>": "45 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_F_C_index": "67",
                 "ast": {
                     "declarator": {
@@ -9307,8 +9304,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntAllocToFixedArray",
@@ -9316,18 +9312,10 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_alloc_to_fixed_array_CFI",
                     "F_C_name": "c_return_int_alloc_to_fixed_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_int_alloc_to_fixed_array",
-                    "F_name_function": "return_int_alloc_to_fixed_array",
-                    "F_name_generic": "return_int_alloc_to_fixed_array",
-                    "F_name_impl": "return_int_alloc_to_fixed_array",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntAllocToFixedArray"
                 },
@@ -9353,7 +9341,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -9361,16 +9348,15 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cfi_allocatable",
-                        "stmt1": "f_function_native_*_cfi_allocatable",
-                        "stmtc0": "c_function_native_*_cfi_allocatable",
-                        "stmtc1": "c_function_native_*_cfi_allocatable"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "67 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -9413,7 +9399,8 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_returnIntAllocToFixedArray_CFI",
@@ -9421,10 +9408,18 @@
                     "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_return_int_alloc_to_fixed_array_CFI",
                     "F_C_name": "c_return_int_alloc_to_fixed_array_CFI",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv",
+                    "F_arguments": "",
                     "F_name_api": "return_int_alloc_to_fixed_array",
+                    "F_name_function": "return_int_alloc_to_fixed_array",
+                    "F_name_generic": "return_int_alloc_to_fixed_array",
+                    "F_name_impl": "return_int_alloc_to_fixed_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "returnIntAllocToFixedArray"
@@ -9460,6 +9455,7 @@
                         "c_var_cfi": "SHT_rv_cfi",
                         "c_var_extents": "SHT_rv_extents",
                         "c_var_lower": "SHT_rv_lower",
+                        "cxx_type": "int",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -9467,7 +9463,11 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cfi_allocatable",
+                        "stmt1": "f_function_native_*_cfi_allocatable",
+                        "stmtc0": "c_function_native_*_cfi_allocatable",
+                        "stmtc1": "c_function_native_*_cfi_allocatable"
                     }
                 }
             }

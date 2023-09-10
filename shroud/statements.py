@@ -82,6 +82,7 @@ def lookup_fc_stmts(path):
         #  It'll be wrong but acts as a starting place.
         stmt = fc_dict.get("fc_mixin_unknown")
         print("Unknown fc statement: %s" % name)
+#        raise RuntimeError("Unknown fc statement: %s" % name)
     return stmt
         
 def compute_name(path, char="_"):
@@ -200,8 +201,9 @@ def post_mixin_check_statement(name, stmt):
     """
     parts = name.split("_")
     lang = parts[0]
+    intent = parts[1]
 
-    if lang in ["c", "fc"]:
+    if lang in ["c", "fc"] and intent != "mixin":
         c_arg_decl = stmt.get("c_arg_decl", None)
         i_arg_decl = stmt.get("i_arg_decl", None)
         i_arg_names = stmt.get("i_arg_names", None)
@@ -799,11 +801,27 @@ fc_statements = [
         f_need_wrapper=True,
     ),
 
+    # Convert function result to character argument
+    dict(
+        name="fc_mixin_function_cfi_character-arg",
+        f_result = "subroutine",
+        f_arg_name=["{F_string_result_as_arg}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
+        ],
+        f_arg_call=["{F_string_result_as_arg}"],
+        i_arg_names=["{F_string_result_as_arg}"],
+        i_arg_decl=[
+            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
+        ],
+#        c_arg_decl  XXX - consistency check wants this set
+    ),
+    
     dict(
         # Default returned by lookup_fc_stmts when group is not found.
         name="fc_mixin_unknown",
     ),
-    
+
     ##########
     # array
     dict(
@@ -3716,19 +3734,12 @@ fc_statements = [
         mixin=[
             "fc_function_char_*_cfi_copy",
 #            "c_mixin_arg_character_cfi",
+            "fc_mixin_function_cfi_character-arg",
         ],
         alias=[
             "f_function_char_*_cfi_arg",
             "c_function_char_*_cfi_arg",
         ],
-
-        f_result = "subroutine",
-        f_arg_name=["{F_string_result_as_arg}"],
-        f_arg_decl=[
-            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
-        ],
-        f_arg_call=["{F_string_result_as_arg}"],
-
     ),
 ##-    dict(
 ##-        name="c_function_char_*_cfi_pointer",
@@ -3918,7 +3929,7 @@ fc_statements = [
         # c_function_string_scalar_cfi_result
         # c_function_string_*_cfi_result
         # c_function_string_&_cfi_result
-        name="fc_mixin_function_string_scalar/*/&_cfi_copy/result",
+        name="fc_mixin_function_string_scalar_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
@@ -3951,6 +3962,21 @@ fc_statements = [
         ],
         c_return_type="void",  # Convert to function.
     ),
+    dict(
+        name="fc_function_string_scalar_cfi_arg",
+        mixin=[
+            "fc_mixin_function_string_scalar_cfi_copy",
+            "fc_mixin_function_cfi_character-arg",
+        ],
+        alias=[
+            "f_function_string_scalar_cfi_arg",
+            "c_function_string_scalar_cfi_arg",
+
+            "f_function_string_&_cfi_arg",
+            "c_function_string_&_cfi_arg",
+        ],
+    ),
+
     # XXX - consolidate with c_function_*_cfi_pointer?
     # XXX - via a helper to get address and length of string
     dict(

@@ -1565,7 +1565,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
@@ -1602,7 +1602,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
@@ -1750,7 +1750,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
@@ -1810,7 +1810,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
@@ -1838,7 +1838,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     f_inout_native_*_cfi
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_native_*_cfi
@@ -1863,7 +1863,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
@@ -1892,7 +1892,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_char_**_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_**_cfi
@@ -1971,7 +1971,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -1997,7 +1997,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2026,7 +2026,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2056,7 +2056,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2087,7 +2087,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2113,7 +2113,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2139,7 +2139,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
@@ -2358,7 +2358,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
     ! Exact:     f_out_native_**_cfi_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
     ! Exact:     c_out_native_**_cfi_allocatable
@@ -2483,7 +2483,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_void_**_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_void_**_cfi
@@ -2502,7 +2502,7 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
@@ -2521,7 +2521,7 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
@@ -2540,7 +2540,7 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
@@ -2559,7 +2559,7 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
@@ -2629,7 +2629,7 @@ contains
     ! Exact:     c_function_native_*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_char_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
@@ -2674,7 +2674,7 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     f_function_native_*_cfi_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_native_*_cfi_allocatable

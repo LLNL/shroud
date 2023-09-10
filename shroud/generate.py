@@ -1817,10 +1817,14 @@ class GenFunctions(object):
         C_new.splicer_group = "cfi"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
+        if result_as_arg:
+            C_new.ast.declarator.metaattrs["deref"] = "arg"
+            # Special case for wrapf.py to override "allocatable"
+            node.ast.declarator.metaattrs["deref"] = None
         fmt_func = C_new.fmtdict
         fmt_func.f_c_suffix = fmt_func.C_cfi_suffix
 
-        C_new.wrap.assign(c=True)#, fortran=True)
+        C_new.wrap.assign(c=True, fortran=True)  # XXX - f_c
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
@@ -1829,34 +1833,13 @@ class GenFunctions(object):
                 arg.declarator.metaattrs["api"] = generated_suffix
 
         ast = C_new.ast
-        if True: # preserve to avoid changing indention for now.
-            f_attrs = node.ast.declarator.attrs  # Fortran function attributes
-            f_meta = node.ast.declarator.metaattrs  # Fortran function attributes
-            if result_as_arg:
-                # decl: const char * getCharPtr2() +len(30)
-                # +len implies copying into users buffer.
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.declarator.attrs
-                # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = None
-                result_as_string.declarator.metaattrs["api"] = "cfi"
-                result_as_string.declarator.metaattrs["deref"] = "result"
-                result_as_string.declarator.metaattrs["is_result"] = True
-                C_new.ast.declarator.metaattrs["api"] = None
-                C_new.ast.declarator.metaattrs["intent"] = "subroutine"
-                C_new.ast.declarator.metaattrs["deref"] = None
 
-        if result_as_arg:
-            F_new = self.result_as_arg(node, C_new)
-            ordered_functions.append(F_new)
-            self.append_function_index(F_new)
-        else:
-            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
-                node.wrap.c = False
-            # Fortran function may call C subroutine if string/vector result
-            # Fortran function calls bufferify function.
-            node._PTR_F_C_index = C_new._function_index
+        node.wrap.fortran = False
+        if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
+            # Do not wrap intermediate functions
+            node.wrap.c = False
+        # Fortran function calls cfi/bufferify function.
+        node._PTR_F_C_index = C_new._function_index
         return True
 
     def arg_to_buffer(self, node, ordered_functions):
