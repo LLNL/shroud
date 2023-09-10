@@ -1758,7 +1758,6 @@ contains
     ! Function:  void getCharPtr3
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Gen:       f_function_char_*_buf_arg
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------

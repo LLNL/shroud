@@ -1794,10 +1794,6 @@ rv = .false.
             print("TTT not match wrapf c_stmts", node.name)
             print("     Requested:", fmt_result.stmtc0)
             print("         Found:", fmt_result.stmtc1)
-#        if node.fstmt is not None and node.fstmt != fmt_result.stmt1:
-#            print("TTT not match node.fstmt", node.name)
-#            print("    node.fstmt:", node.fstmt)
-#            print("     Requested:", fmt_result.stmt0)
                   
         if options.debug:
             if node.C_generated_path:
@@ -1811,8 +1807,6 @@ rv = .false.
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
-            if ast.fstmt is not None and ast.fstmt != fmt_result.stmt1:
-                stmts_comments.append("! Gen:       " + ast.fstmt)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)

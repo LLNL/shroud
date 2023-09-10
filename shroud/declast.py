@@ -1525,7 +1525,6 @@ class Declaration(Node):
         self.is_dtor = False
 
         self.typemap = None
-        self.fstmt = None
 
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
         self.blanknull = False     # Convert blank CHARACTER to NULL pointer.

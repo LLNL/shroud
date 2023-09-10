@@ -1601,7 +1601,6 @@ contains
     ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_char_*_cfi_allocatable
-    ! Gen:       f_function_char_*_cdesc_allocatable
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_char_*_cfi_allocatable
     !>
@@ -1644,7 +1643,6 @@ contains
     ! Function:  void getCharPtr3
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Gen:       f_function_char_*_cfi_arg
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
