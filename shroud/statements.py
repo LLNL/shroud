@@ -78,7 +78,10 @@ def lookup_fc_stmts(path):
     name = compute_name(path)
     stmt = fc_dict.get(name, None)
     if stmt is None:
-        raise RuntimeError("Unknown fc statement: %s" % name)
+        # XXX - return something so code will get generated
+        #  It'll be wrong but acts as a starting place.
+        stmt = fc_dict.get("fc_mixin_unknown")
+        print("Unknown fc statement: %s" % name)
     return stmt
         
 def compute_name(path, char="_"):
@@ -794,6 +797,11 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
         c_result_var="{F_result_ptr}",
         f_need_wrapper=True,
+    ),
+
+    dict(
+        # Default returned by lookup_fc_stmts when group is not found.
+        name="fc_mixin_unknown",
     ),
     
     ##########

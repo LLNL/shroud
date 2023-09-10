@@ -1065,6 +1065,7 @@ root
       in
         shadow
           & -- fc_mixin_in_shadow_&
+      unknown -- fc_mixin_unknown
     out
       bool
         * -- fc_out_bool_*
@@ -12002,6 +12003,10 @@ fc_mixin_in_shadow_&:
   i_module_line: '{i_module_line}'
   intent: mixin
   name: fc_mixin_in_shadow_&
+  owner: library
+fc_mixin_unknown:
+  intent: mixin
+  name: fc_mixin_unknown
   owner: library
 fc_out_bool_*:
   f_arg_call:
