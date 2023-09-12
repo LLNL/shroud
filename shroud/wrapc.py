@@ -1135,81 +1135,43 @@ class Wrapc(util.WrapperMixin):
             cxx_local_var = ""
             sapi = c_meta["api"]
 
-            if c_meta["is_result"]:
-                # This argument is the C function result
-                arg_call = False
+            # regular argument (not function result)
+            arg_call = arg
+            spointer = declarator.get_indirect_stmt()
+            if c_attrs["hidden"] and node._generated:
+                sapi = "hidden"
+            stmts = ["c", c_meta["intent"], sgroup, spointer,
+                     sapi, c_meta["deref"]] + specialize
+            intent_blk = statements.lookup_fc_stmts(stmts)
+            fmt_arg.c_var = arg_name
+            # XXX - order issue - c_var must be set before name_temp_vars_c,
+            #       but set by set_fmt_fields
+            self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
 
-                fmt_pattern = fmt_arg
-                result_arg = arg
-                return_deref_attr = c_meta["deref"]
-                spointer = CXX_ast.declarator.get_indirect_stmt()
-                stmts = [
-                    "c", "function", sgroup, spointer,
-                    sapi, return_deref_attr,
-                ]
-                intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg_name
-                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
-                self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
-                need_wrapper = True
+            if intent_blk.cxx_local_var:
+                # Explicit conversion must be in pre_call.
                 cxx_local_var = intent_blk.cxx_local_var
-
-                # Note that result_type is void, so use arg_typemap.
-                if cxx_local_var == "result":
-                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
-                elif self.language == "c":
-                    fmt_arg.cxx_var = fmt_arg.c_var
-                elif arg_typemap.cxx_to_c is None:
-                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
-                else:
-                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for statement.c_final in fmt_result context
-                fmt_result.cxx_var = fmt_arg.cxx_var
-
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var, params=None, continuation=True
-                )
-                if cxx_local_var in ["pointer", "scalar"]:
-                    fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
-                compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
+                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+            elif self.language == "c":
+                fmt_arg.cxx_var = fmt_arg.c_var
+            elif arg_typemap.c_to_cxx is None:
+                # Compatible
+                fmt_arg.cxx_var = fmt_arg.c_var
             else:
-                # regular argument (not function result)
-                arg_call = arg
-                spointer = declarator.get_indirect_stmt()
-                if c_attrs["hidden"] and node._generated:
-                    sapi = "hidden"
-                stmts = ["c", c_meta["intent"], sgroup, spointer,
-                         sapi, c_meta["deref"]] + specialize
-                intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg_name
-                # XXX - order issue - c_var must be set before name_temp_vars_c,
-                #       but set by set_fmt_fields
-                self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
-                self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
-
-                if intent_blk.cxx_local_var:
-                    # Explicit conversion must be in pre_call.
-                    cxx_local_var = intent_blk.cxx_local_var
-                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-                elif self.language == "c":
-                    fmt_arg.cxx_var = fmt_arg.c_var
-                elif arg_typemap.c_to_cxx is None:
-                    # Compatible
-                    fmt_arg.cxx_var = fmt_arg.c_var
-                else:
-                    # convert C argument to C++
-                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-                    fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                        name=fmt_arg.cxx_var,
-                        params=None,
-                        as_ptr=True,
-                        continuation=True,
-                    )
-                    append_format(
-                        pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
-                    )
-                compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+                # convert C argument to C++
+                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var,
+                    params=None,
+                    as_ptr=True,
+                    continuation=True,
+                )
+                append_format(
+                    pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+                )
+            compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             if c_meta["struct"]:
                 # This is a getter/setter 'this' argument.

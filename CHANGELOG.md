@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   wrappers.  Before it used a trie tree to match 'close enough'
   statements.  This would sometimes result in different matches after
   adding new tree leafs which ended up changing the tree traversal.
+- Added deref(arg) to deal with Fortran wrappers which return a
+  function result via an argument. Used when
+  fmt.F_string_result_as_arg is defined.  Eliminated
+  meta["is_result"].
 
 ## v0.13.0 - 2023-08-23
 ### Added

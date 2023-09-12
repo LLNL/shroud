@@ -1317,12 +1317,8 @@ rv = .false.
             deref_attr = meta["deref"]
 
             spointer = declarator.get_indirect_stmt()
-            if meta["is_result"]:
-                c_stmts = ["c", "function", sgroup, spointer,
-                           meta["api"], deref_attr]
-            else:
-                c_stmts = ["c", intent, sgroup, spointer,
-                           meta["api"], deref_attr]
+            c_stmts = ["c", intent, sgroup, spointer,
+                       meta["api"], deref_attr]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
 
@@ -1870,26 +1866,9 @@ rv = .false.
 
             junk, specialize = statements.lookup_c_statements(c_arg)
             
-            # string C functions may have their results copied
-            # into an argument passed in, F_string_result_as_arg.
-            # Or the wrapper may provide an argument in the Fortran API
-            # to hold the result.
-            is_f_arg = True  # assume C and Fortran arguments match
-            if c_meta["is_result"]:
-                if not fmt_func.F_string_result_as_arg:
-                    # It is not in the Fortran API
-                    is_f_arg = False
-                    fmt_arg.c_var = fmt_func.F_result
-                    fmt_arg.f_var = fmt_func.F_result
-                    need_wrapper = True
-                    have_f_arg = True
-            if not is_f_arg:
-                # Pass result as an argument to the C++ function.
-                f_arg = c_arg
-            else:
-                # An argument to the C and Fortran function
-                f_index += 1
-                f_arg = f_args[f_index]
+            # An argument to the C and Fortran function
+            f_index += 1
+            f_arg = f_args[f_index]
             f_declarator = f_arg.declarator
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
@@ -1902,15 +1881,10 @@ rv = .false.
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_declarator.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
-            if c_meta["is_result"]:
-                # This argument is the C function result
-                c_stmts = ["c", "function", c_sgroup, c_spointer, c_api, c_deref_attr]
-                f_stmts = ["f", "function", f_sgroup, f_spointer, c_api, f_deref_attr]
-            else:
-                # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
-                # Fortran need to know how the C function is being called.
-                c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr]
-                f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
+            # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
+            # Fortran need to know how the C function is being called.
+            c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr]
+            f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
@@ -1935,79 +1909,78 @@ rv = .false.
                 print("     Requested:", sreq)
                 print("         Found:", smatch)
             
-            if is_f_arg:
-                implied = f_attrs["implied"]
-                pass_obj = f_attrs["pass"]
+            implied = f_attrs["implied"]
+            pass_obj = f_attrs["pass"]
 
-                if c_arg.ftrim_char_in:
-                    # Pass NULL terminated string to C.
-                    arg_f_decl.append(
-                        "character(len=*), intent(IN) :: {}".format(f_name)
-                    )
-                    arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_name))
-                    self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
+            if c_arg.ftrim_char_in:
+                # Pass NULL terminated string to C.
+                arg_f_decl.append(
+                    "character(len=*), intent(IN) :: {}".format(f_name)
+                )
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append("trim({})//C_NULL_CHAR".format(f_name))
+                self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
+                need_wrapper = True
+                continue
+            elif c_attrs["assumedtype"]:
+                # Passed directly to C as a 'void *'
+                arg_f_decl.append(
+                    "type(*) :: {}".format(f_name)
+                )
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append(f_name)
+                continue
+            elif f_declarator.is_function_pointer():
+                absiface = self.add_abstract_interface(node, f_arg, fileinfo)
+                if c_attrs["external"]:
+                    # external is similar to assumed type, in that it will
+                    # accept any function.  But external is not allowed
+                    # in bind(C), so make sure a wrapper is generated.
+                    arg_f_decl.append("external :: {}".format(f_name))
                     need_wrapper = True
-                    continue
-                elif c_attrs["assumedtype"]:
-                    # Passed directly to C as a 'void *'
-                    arg_f_decl.append(
-                        "type(*) :: {}".format(f_name)
-                    )
-                    arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_name)
-                    continue
-                elif f_declarator.is_function_pointer():
-                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                    if c_attrs["external"]:
-                        # external is similar to assumed type, in that it will
-                        # accept any function.  But external is not allowed
-                        # in bind(C), so make sure a wrapper is generated.
-                        arg_f_decl.append("external :: {}".format(f_name))
-                        need_wrapper = True
-                    else:
-                        arg_f_decl.append(
-                            "procedure({}) :: {}".format(absiface, f_name)
-                        )
-                    arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_name)
-                    # function pointers are pass thru without any other action
-                    continue
-                elif implied:
-                    # implied is computed then passed to C++.
-                    fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
-                        implied, node, f_arg)
-                    if intermediate:
-                        fmt_arg.c_var = "SH_" + fmt_arg.f_var
-                        arg_f_decl.append(f_arg.gen_arg_as_fortran(
-                            name=fmt_arg.c_var, local=True, bindc=True))
-                        append_format(pre_call, "{c_var} = {pre_call_intent}", fmt_arg)
-                        arg_c_call.append(fmt_arg.c_var)
-                    else:
-                        arg_c_call.append(fmt_arg.pre_call_intent)
-                    for helper in f_helper.split():
-                        fileinfo.f_helper[helper] = True
-                    self.update_f_module(modules, imports, f_arg.typemap.f_module)
-                    need_wrapper = True
-                    continue
-                elif hidden:
-                    # Argument is not passed into Fortran.
-                    # hidden value is used in C wrapper.
-                    continue
-                elif f_intent_blk.f_arg_decl:
-                    # Explicit declarations from fc_statements.
-                    self.add_stmt_declaration(
-                        f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
-                    if not f_result_blk.f_arg_name:
-                        arg_f_names.append(fmt_arg.f_var)
-                    self.add_f_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
-                    # Generate declaration from argument.
-                    if options.F_default_args == "optional" and c_arg.declarator.init is not None:
-                        fmt_arg.default_value = c_arg.declarator.init
-                        optattr = True
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
+                    arg_f_decl.append(
+                        "procedure({}) :: {}".format(absiface, f_name)
+                    )
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append(f_name)
+                # function pointers are pass thru without any other action
+                continue
+            elif implied:
+                # implied is computed then passed to C++.
+                fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
+                    implied, node, f_arg)
+                if intermediate:
+                    fmt_arg.c_var = "SH_" + fmt_arg.f_var
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                        name=fmt_arg.c_var, local=True, bindc=True))
+                    append_format(pre_call, "{c_var} = {pre_call_intent}", fmt_arg)
+                    arg_c_call.append(fmt_arg.c_var)
+                else:
+                    arg_c_call.append(fmt_arg.pre_call_intent)
+                for helper in f_helper.split():
+                    fileinfo.f_helper[helper] = True
+                self.update_f_module(modules, imports, f_arg.typemap.f_module)
+                need_wrapper = True
+                continue
+            elif hidden:
+                # Argument is not passed into Fortran.
+                # hidden value is used in C wrapper.
+                continue
+            elif f_intent_blk.f_arg_decl:
+                # Explicit declarations from fc_statements.
+                self.add_stmt_declaration(
+                    f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
+                if not f_result_blk.f_arg_name:
                     arg_f_names.append(fmt_arg.f_var)
+                self.add_f_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
+            else:
+                # Generate declaration from argument.
+                if options.F_default_args == "optional" and c_arg.declarator.init is not None:
+                    fmt_arg.default_value = c_arg.declarator.init
+                    optattr = True
+                arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
+                arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(f_stmts)
