@@ -541,9 +541,6 @@
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "17",
                         "ast": {
                             "declarator": {
@@ -580,7 +577,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtdict": {
@@ -589,18 +585,10 @@
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_arguments": "self",
-                            "F_C_call": "c_ArrayWrapper_getArray_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArray",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                            "F_arguments": "obj",
                             "F_name_api": "getArray",
-                            "F_name_function": "getArray",
-                            "F_name_generic": "getArray",
-                            "F_name_impl": "ArrayWrapper_getArray",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "PY_name_impl": "PY_getArray",
                             "c_const": "",
                             "c_deref": "*",
@@ -631,23 +619,14 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "double",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_cdesc_pointer",
-                                "stmt1": "f_function_native_*_cdesc_pointer",
-                                "stmtc0": "c_function_native_*_cdesc_pointer",
-                                "stmtc1": "c_function_native_*_cdesc_pointer"
+                                "sh_type": "SH_TYPE_DOUBLE"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -676,6 +655,9 @@
                     },
                     {
                         "<FUNCTION>": "17 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "5",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -715,7 +697,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArray_bufferify",
@@ -723,10 +706,18 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
+                            "F_C_call": "c_ArrayWrapper_getArray_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArray_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                            "F_arguments": "obj",
                             "F_name_api": "getArray",
+                            "F_name_function": "getArray",
+                            "F_name_generic": "getArray",
+                            "F_name_impl": "ArrayWrapper_getArray",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -762,22 +753,27 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(obj->getSize())",
+                                "cxx_type": "double",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "18",
                         "ast": {
                             "declarator": {
@@ -815,7 +811,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtdict": {
@@ -824,19 +819,11 @@
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_arguments": "self",
-                            "F_C_call": "c_ArrayWrapper_getArrayConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayConst",
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                            "F_arguments": "obj",
                             "F_name_api": "getArrayConst",
-                            "F_name_function": "getArrayConst",
-                            "F_name_generic": "getArrayConst",
-                            "F_name_impl": "ArrayWrapper_getArrayConst",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "PY_name_impl": "PY_getArrayConst",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -867,23 +854,14 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "double",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_cdesc_pointer",
-                                "stmt1": "f_function_native_*_cdesc_pointer",
-                                "stmtc0": "c_function_native_*_cdesc_pointer",
-                                "stmtc1": "c_function_native_*_cdesc_pointer"
+                                "sh_type": "SH_TYPE_DOUBLE"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -912,6 +890,9 @@
                     },
                     {
                         "<FUNCTION>": "18 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -952,7 +933,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConst_bufferify",
@@ -960,10 +942,18 @@
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
+                            "F_C_call": "c_ArrayWrapper_getArrayConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayConst_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                            "F_arguments": "obj",
                             "F_name_api": "getArrayConst",
+                            "F_name_function": "getArrayConst",
+                            "F_name_generic": "getArrayConst",
+                            "F_name_impl": "ArrayWrapper_getArrayConst",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -999,22 +989,27 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(obj->getSize())",
+                                "cxx_type": "double",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "7 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "19",
                         "ast": {
                             "const": true,
@@ -1052,7 +1047,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtdict": {
@@ -1061,18 +1055,10 @@
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_arguments": "self",
-                            "F_C_call": "c_ArrayWrapper_getArrayC_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayC",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                            "F_arguments": "obj",
                             "F_name_api": "getArrayC",
-                            "F_name_function": "getArrayC",
-                            "F_name_generic": "getArrayC",
-                            "F_name_impl": "ArrayWrapper_getArrayC",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "PY_name_impl": "PY_getArrayC",
                             "c_const": "",
                             "c_deref": "*",
@@ -1103,23 +1089,14 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "double",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_cdesc_pointer",
-                                "stmt1": "f_function_native_*_cdesc_pointer",
-                                "stmtc0": "c_function_native_*_cdesc_pointer",
-                                "stmtc1": "c_function_native_*_cdesc_pointer"
+                                "sh_type": "SH_TYPE_DOUBLE"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1148,6 +1125,9 @@
                     },
                     {
                         "<FUNCTION>": "19 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "7",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -1188,7 +1168,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayC_bufferify",
@@ -1196,10 +1177,18 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
+                            "F_C_call": "c_ArrayWrapper_getArrayC_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayC_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                            "F_arguments": "obj",
                             "F_name_api": "getArrayC",
+                            "F_name_function": "getArrayC",
+                            "F_name_generic": "getArrayC",
+                            "F_name_impl": "ArrayWrapper_getArrayC",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1235,22 +1224,27 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(obj->getSize())",
+                                "cxx_type": "double",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "20",
                         "ast": {
                             "const": true,
@@ -1289,7 +1283,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtdict": {
@@ -1298,19 +1291,11 @@
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_arguments": "self",
-                            "F_C_call": "c_ArrayWrapper_getArrayConstC_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayConstC",
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                            "F_arguments": "obj",
                             "F_name_api": "getArrayConstC",
-                            "F_name_function": "getArrayConstC",
-                            "F_name_generic": "getArrayConstC",
-                            "F_name_impl": "ArrayWrapper_getArrayConstC",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "PY_name_impl": "PY_getArrayConstC",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -1341,23 +1326,14 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "double",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_cdesc_pointer",
-                                "stmt1": "f_function_native_*_cdesc_pointer",
-                                "stmtc0": "c_function_native_*_cdesc_pointer",
-                                "stmtc1": "c_function_native_*_cdesc_pointer"
+                                "sh_type": "SH_TYPE_DOUBLE"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1386,6 +1362,9 @@
                     },
                     {
                         "<FUNCTION>": "20 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "8",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -1427,7 +1406,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConstC_bufferify",
@@ -1435,10 +1415,18 @@
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
+                            "F_C_call": "c_ArrayWrapper_getArrayConstC_bufferify",
                             "F_C_name": "c_ArrayWrapper_getArrayConstC_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                            "F_arguments": "obj",
                             "F_name_api": "getArrayConstC",
+                            "F_name_function": "getArrayConstC",
+                            "F_name_generic": "getArrayConstC",
+                            "F_name_impl": "ArrayWrapper_getArrayConstC",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1474,22 +1462,27 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(obj->getSize())",
+                                "cxx_type": "double",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "9 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "21",
                         "ast": {
                             "declarator": {
@@ -1564,7 +1557,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtargs": {
@@ -1684,30 +1676,24 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
-                            "F_C_call": "c_ArrayWrapper_fetchArrayPtr_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayPtr",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayPtr",
-                            "F_name_function": "fetchArrayPtr",
-                            "F_name_generic": "fetchArrayPtr",
-                            "F_name_impl": "ArrayWrapper_fetchArrayPtr",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_fetchArrayPtr",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtr",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmt0": "c_subroutine",
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "21 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "9",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -1785,7 +1771,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -1872,24 +1859,30 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
+                            "F_C_call": "c_ArrayWrapper_fetchArrayPtr_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayPtr_bufferify",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayPtr",
+                            "F_name_function": "fetchArrayPtr",
+                            "F_name_generic": "fetchArrayPtr",
+                            "F_name_impl": "ArrayWrapper_fetchArrayPtr",
+                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtr",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "10 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "22",
                         "ast": {
                             "declarator": {
@@ -1964,7 +1957,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtargs": {
@@ -2084,30 +2076,24 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
-                            "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayRef",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayRef",
-                            "F_name_function": "fetchArrayRef",
-                            "F_name_generic": "fetchArrayRef",
-                            "F_name_impl": "ArrayWrapper_fetchArrayRef",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_fetchArrayRef",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRef",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmt0": "c_subroutine",
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "22 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "10",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -2185,7 +2171,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -2272,24 +2259,30 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
+                            "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayRef_bufferify",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayRef",
+                            "F_name_function": "fetchArrayRef",
+                            "F_name_generic": "fetchArrayRef",
+                            "F_name_impl": "ArrayWrapper_fetchArrayRef",
+                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRef",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "11 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "23",
                         "ast": {
                             "declarator": {
@@ -2365,7 +2358,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtargs": {
@@ -2485,30 +2477,24 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
-                            "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayPtrConst",
-                            "F_name_function": "fetchArrayPtrConst",
-                            "F_name_generic": "fetchArrayPtrConst",
-                            "F_name_impl": "ArrayWrapper_fetchArrayPtrConst",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_fetchArrayPtrConst",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtrConst",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmt0": "c_subroutine",
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "23 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "11",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -2587,7 +2573,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -2674,24 +2661,30 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
+                            "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayPtrConst",
+                            "F_name_function": "fetchArrayPtrConst",
+                            "F_name_generic": "fetchArrayPtrConst",
+                            "F_name_impl": "ArrayWrapper_fetchArrayPtrConst",
+                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtrConst",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "12 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "24",
                         "ast": {
                             "declarator": {
@@ -2767,7 +2760,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
                             "python": true
                         },
                         "zz_fmtargs": {
@@ -2887,30 +2879,24 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
-                            "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayRefConst",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayRefConst",
-                            "F_name_function": "fetchArrayRefConst",
-                            "F_name_generic": "fetchArrayRefConst",
-                            "F_name_impl": "ArrayWrapper_fetchArrayRefConst",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_fetchArrayRefConst",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRefConst",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmt0": "c_subroutine",
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
                         "<FUNCTION>": "24 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "12",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -2989,7 +2975,8 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -3076,17 +3063,26 @@
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
+                            "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
                             "F_C_name": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                            "F_arguments": "obj,\t array",
                             "F_name_api": "fetchArrayRefConst",
+                            "F_name_function": "fetchArrayRefConst",
+                            "F_name_generic": "fetchArrayRefConst",
+                            "F_name_impl": "ArrayWrapper_fetchArrayRefConst",
+                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRefConst",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {

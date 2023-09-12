@@ -400,9 +400,6 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
@@ -474,7 +471,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -585,26 +581,20 @@
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_pass_char_ptr_bufferify",
                     "F_C_name": "c_pass_char_ptr",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t SHT_dest_len,\t trim(src)//C_NULL_CHAR",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "pass_char_ptr",
-                    "F_name_function": "pass_char_ptr",
-                    "F_name_generic": "pass_char_ptr",
-                    "F_name_impl": "pass_char_ptr",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passCharPtr",
                     "function_name": "passCharPtr",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "49 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -679,7 +669,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -755,20 +746,26 @@
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src",
+                    "F_C_call": "c_pass_char_ptr_bufferify",
                     "F_C_name": "c_pass_char_ptr_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "dest,\t SHT_dest_len,\t trim(src)//C_NULL_CHAR",
+                    "F_arguments": "dest,\t src",
                     "F_name_api": "pass_char_ptr",
+                    "F_name_function": "pass_char_ptr",
+                    "F_name_generic": "pass_char_ptr",
+                    "F_name_impl": "pass_char_ptr",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "passCharPtr",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "5 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
@@ -816,7 +813,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -877,26 +873,20 @@
                     "C_prototype": "char * s",
                     "C_return_type": "void",
                     "F_C_arguments": "s",
-                    "F_C_call": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_name": "c_pass_char_ptr_in_out",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "s,\t SHT_s_len",
-                    "F_arguments": "s",
                     "F_name_api": "pass_char_ptr_in_out",
-                    "F_name_function": "pass_char_ptr_in_out",
-                    "F_name_generic": "pass_char_ptr_in_out",
-                    "F_name_impl": "pass_char_ptr_in_out",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "50 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -947,7 +937,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "s": {
@@ -998,20 +989,26 @@
                     "C_prototype": "char *s,\t int SHT_s_len",
                     "C_return_type": "void",
                     "F_C_arguments": "s,\t SHT_s_len",
+                    "F_C_call": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "s,\t SHT_s_len",
+                    "F_arguments": "s",
                     "F_name_api": "pass_char_ptr_in_out",
+                    "F_name_function": "pass_char_ptr_in_out",
+                    "F_name_generic": "pass_char_ptr_in_out",
+                    "F_name_impl": "pass_char_ptr_in_out",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "passCharPtrInOut",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "6 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "51",
                 "ast": {
                     "const": true,
@@ -1045,7 +1042,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -1054,18 +1050,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr1_bufferify",
                     "F_C_name": "c_get_char_ptr1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr1",
-                    "F_name_function": "get_char_ptr1",
-                    "F_name_generic": "get_char_ptr1",
-                    "F_name_impl": "get_char_ptr1",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getCharPtr1",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1"
@@ -1090,19 +1078,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_char_*_cdesc_allocatable",
-                        "stmt1": "f_function_char_*_cdesc_allocatable",
-                        "stmtc0": "c_function_char_*_cdesc_allocatable",
-                        "stmtc1": "c_function_char_*_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1126,6 +1106,9 @@
             },
             {
                 "<FUNCTION>": "51 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1162,7 +1145,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr1_bufferify",
@@ -1170,10 +1154,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_char_ptr1_bufferify",
                     "F_C_name": "c_get_char_ptr1_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_char_ptr1",
+                    "F_name_function": "get_char_ptr1",
+                    "F_name_generic": "get_char_ptr1",
+                    "F_name_impl": "get_char_ptr1",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr1"
@@ -1201,19 +1193,23 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_char_*_cdesc_allocatable",
+                        "stmt1": "f_function_char_*_cdesc_allocatable",
+                        "stmtc0": "c_function_char_*_cdesc_allocatable",
+                        "stmtc1": "c_function_char_*_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "7 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "52",
                 "ast": {
                     "const": true,
@@ -1250,7 +1246,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -1259,18 +1254,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr2_bufferify",
                     "F_C_name": "c_get_char_ptr2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr2",
-                    "F_name_function": "get_char_ptr2",
-                    "F_name_generic": "get_char_ptr2",
-                    "F_name_impl": "get_char_ptr2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getCharPtr2",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr2"
@@ -1295,18 +1282,12 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "char",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_char_*_buf_copy",
-                        "stmt1": "f_function_char_*_buf_copy",
-                        "stmtc0": "c_function_char_*_buf_copy",
-                        "stmtc1": "c_function_char_*_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1330,6 +1311,9 @@
             },
             {
                 "<FUNCTION>": "52 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1369,7 +1353,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr2_bufferify",
@@ -1377,10 +1362,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_char_ptr2_bufferify",
                     "F_C_name": "c_get_char_ptr2_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_char_ptr2",
+                    "F_name_function": "get_char_ptr2",
+                    "F_name_generic": "get_char_ptr2",
+                    "F_name_impl": "get_char_ptr2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr2"
@@ -1408,17 +1401,23 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "char",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_char_*_buf_copy",
+                        "stmt1": "f_function_char_*_buf_copy",
+                        "stmtc0": "c_function_char_*_buf_copy",
+                        "stmtc1": "c_function_char_*_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "8 ****************************************",
+                "_PTR_F_C_index": "53",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1518,46 +1517,35 @@
             },
             {
                 "<FUNCTION>": "53 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "intent": "subroutine"
+                            "api": "buf",
+                            "deref": "arg",
+                            "intent": "function"
                         },
                         "name": "getCharPtr3",
-                        "params": [
+                        "params": [],
+                        "pointer": [
                             {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
+                                "ptr": "*"
                             }
                         ],
-                        "typemap_name": "void"
+                        "typemap_name": "char"
                     },
                     "specifier": [
-                        "void"
+                        "char"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output)",
+                "declgen": "const char * getCharPtr3(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1571,156 +1559,64 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
-                },
-                "zz_fmtargs": {
-                    "output": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_type": "char",
-                            "cxx_var": "SHC_rv",
-                            "hnamefunc0": "ShroudStrCopy",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_function_char_*_buf_result",
-                            "stmt1": "c_function_char_*_buf_result"
-                        },
-                        "fmtf": {
-                            "F_C_var": "output",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "output",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_char_*_buf_result",
-                            "stmt1": "f_function_char_*_buf_result",
-                            "stmtc0": "c_function_char_*_buf_result",
-                            "stmtc1": "c_function_char_*_buf_result"
-                        }
-                    }
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr3_bufferify",
                     "C_name_api": "getCharPtr3",
-                    "C_prototype": "char *output,\t int SHT_output_len",
+                    "C_prototype": "char *output,\t int noutput",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t SHT_output_len",
+                    "F_C_arguments": "output,\t noutput",
+                    "F_C_call": "c_get_char_ptr3_bufferify",
                     "F_C_name": "c_get_char_ptr3_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "output,\t SHT_rv_len",
+                    "F_arguments": "output",
                     "F_name_api": "get_char_ptr3",
+                    "F_name_function": "get_char_ptr3",
+                    "F_name_generic": "get_char_ptr3",
+                    "F_name_impl": "get_char_ptr3",
+                    "F_result_clause": "",
                     "F_string_result_as_arg": "output",
+                    "F_subprogram": "subroutine",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_intptr_t",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_type": "char",
                         "cxx_var": "SHC_rv",
+                        "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar",
-                        "stmt1": "c_subroutine_void_scalar"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "54 ****************************************",
-                "C_generated_path": [
-                    "result_as_arg",
-                    "arg_to_buffer"
-                ],
-                "_PTR_C_CXX_index": "8",
-                "_PTR_F_C_index": "53",
-                "_generated": "result_as_arg",
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getCharPtr3",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_char_*_buf_arg",
+                        "stmt1": "c_function_char_*_buf_arg"
                     },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output)",
-                "doxygen": {
-                    "brief": "return a 'const char *' as argument"
-                },
-                "name": "getCharPtr3",
-                "options": {
-                    "literalinclude": true
-                },
-                "splicer_group": "buf",
-                "user_fmt": {
-                    "F_string_result_as_arg": "output"
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getCharPtr3",
-                    "F_C_call": "c_get_char_ptr3_bufferify",
-                    "F_arg_c_call": "output,\t SHT_output_len",
-                    "F_arguments": "output",
-                    "F_name_api": "get_char_ptr3",
-                    "F_name_function": "get_char_ptr3",
-                    "F_name_generic": "get_char_ptr3",
-                    "F_name_impl": "get_char_ptr3",
-                    "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "f_c_suffix": "_bufferify",
-                    "function_name": "getCharPtr3",
-                    "function_suffix": "",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cxx_type": "char",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_char_*_buf_arg",
+                        "stmt1": "f_function_char_*_buf_arg",
+                        "stmtc0": "c_function_char_*_buf_arg",
+                        "stmtc1": "c_function_char_*_buf_arg"
+                    }
                 }
             },
             {
@@ -1818,10 +1714,7 @@
             },
             {
                 "<FUNCTION>": "10 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "55",
+                "_PTR_F_C_index": "54",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1856,8 +1749,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr5",
@@ -1865,18 +1757,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr5_bufferify",
                     "F_C_name": "c_get_char_ptr5",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr5",
-                    "F_name_function": "get_char_ptr5",
-                    "F_name_generic": "get_char_ptr5",
-                    "F_name_impl": "get_char_ptr5",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr5"
                 },
@@ -1900,24 +1784,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_pointer_string",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_char_*_cdesc_pointer",
-                        "stmt1": "f_function_char_*_cdesc_pointer",
-                        "stmtc0": "c_function_char_*_cdesc_pointer",
-                        "stmtc1": "c_function_char_*_cdesc_pointer"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
             {
-                "<FUNCTION>": "55 ****************************************",
+                "<FUNCTION>": "54 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1957,7 +1836,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr5_bufferify",
@@ -1965,10 +1845,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_char_ptr5_bufferify",
                     "F_C_name": "c_get_char_ptr5_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_char_ptr5",
+                    "F_name_function": "get_char_ptr5",
+                    "F_name_generic": "get_char_ptr5",
+                    "F_name_impl": "get_char_ptr5",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr5"
@@ -1996,21 +1884,25 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_pointer_string",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_char_*_cdesc_pointer",
+                        "stmt1": "f_function_char_*_cdesc_pointer",
+                        "stmtc0": "c_function_char_*_cdesc_pointer",
+                        "stmtc1": "c_function_char_*_cdesc_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "11 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "56",
+                "_PTR_F_C_index": "55",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2035,40 +1927,15 @@
                 "name": "getConstStringResult",
                 "options": {},
                 "wrap": {
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
                     "C_name_api": "getConstStringResult",
-                    "F_C_call": "c_get_const_string_result_bufferify",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_result",
-                    "F_name_function": "get_const_string_result",
-                    "F_name_generic": "get_const_string_result",
-                    "F_name_impl": "get_const_string_result",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringResult",
                     "function_name": "getConstStringResult"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
-                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
-                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
-                    },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
@@ -2089,8 +1956,11 @@
                 }
             },
             {
-                "<FUNCTION>": "56 ****************************************",
+                "<FUNCTION>": "55 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2120,7 +1990,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringResult_bufferify",
@@ -2128,10 +1999,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_result_bufferify",
                     "F_C_name": "c_get_const_string_result_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_result",
+                    "F_name_function": "get_const_string_result",
+                    "F_name_generic": "get_const_string_result",
+                    "F_name_impl": "get_const_string_result",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringResult"
@@ -2158,21 +2037,25 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
+                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
+                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "12 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "57",
+                "_PTR_F_C_index": "56",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2200,39 +2083,15 @@
                 "name": "getConstStringLen",
                 "options": {},
                 "wrap": {
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
                     "C_name_api": "getConstStringLen",
-                    "F_C_call": "c_get_const_string_len_bufferify",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_len",
-                    "F_name_function": "get_const_string_len",
-                    "F_name_generic": "get_const_string_len",
-                    "F_name_impl": "get_const_string_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringLen",
                     "function_name": "getConstStringLen"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
-                        "f_char_len": "len=30",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_copy",
-                        "stmt1": "f_function_string_scalar_buf_copy",
-                        "stmtc0": "c_function_string_scalar_buf_copy",
-                        "stmtc1": "c_function_string_scalar_buf_copy"
-                    },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
@@ -2253,8 +2112,11 @@
                 }
             },
             {
-                "<FUNCTION>": "57 ****************************************",
+                "<FUNCTION>": "56 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2287,7 +2149,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringLen_bufferify",
@@ -2295,10 +2158,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_const_string_len_bufferify",
                     "F_C_name": "c_get_const_string_len_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_len",
+                    "F_name_function": "get_const_string_len",
+                    "F_name_generic": "get_const_string_len",
+                    "F_name_impl": "get_const_string_len",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringLen"
@@ -2326,18 +2197,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_scalar_buf_copy",
+                        "stmt1": "f_function_string_scalar_buf_copy",
+                        "stmtc0": "c_function_string_scalar_buf_copy",
+                        "stmtc1": "c_function_string_scalar_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "13 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "_PTR_F_C_index": "57",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2394,48 +2271,32 @@
                 }
             },
             {
-                "<FUNCTION>": "58 ****************************************",
+                "<FUNCTION>": "57 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "intent": "subroutine"
+                            "api": "buf",
+                            "deref": "arg",
+                            "intent": "function"
                         },
                         "name": "getConstStringAsArg",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "void"
+                        "params": [],
+                        "typemap_name": "std::string"
                     },
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output)",
+                "declgen": "const string getConstStringAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2447,163 +2308,69 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
-                },
-                "zz_fmtargs": {
-                    "output": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "hnamefunc0": "ShroudStrCopy",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_function_string_scalar_buf_result",
-                            "stmt1": "c_function_string_scalar_buf_result"
-                        },
-                        "fmtf": {
-                            "F_C_var": "output",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "output",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_*_buf_result",
-                            "stmt1": "f_function_string_*_buf_result",
-                            "stmtc0": "c_function_string_*_buf_result",
-                            "stmtc1": "c_function_string_*_buf_result"
-                        }
-                    }
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringAsArg_bufferify",
                     "C_name_api": "getConstStringAsArg",
-                    "C_prototype": "char *output,\t int SHT_output_len",
+                    "C_prototype": "char *output,\t int noutput",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t SHT_output_len",
+                    "F_C_arguments": "output,\t noutput",
+                    "F_C_call": "c_get_const_string_as_arg_bufferify",
                     "F_C_name": "c_get_const_string_as_arg_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "output,\t SHT_rv_len",
+                    "F_arguments": "output",
                     "F_name_api": "get_const_string_as_arg",
+                    "F_name_function": "get_const_string_as_arg",
+                    "F_name_generic": "get_const_string_as_arg",
+                    "F_name_impl": "get_const_string_as_arg",
+                    "F_result_clause": "",
                     "F_string_result_as_arg": "output",
+                    "F_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_intptr_t",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar",
-                        "stmt1": "c_subroutine_void_scalar"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_string_scalar_buf_arg",
+                        "stmt1": "c_function_string_scalar_buf_arg"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_scalar_buf_arg",
+                        "stmt1": "f_function_string_scalar_buf_arg",
+                        "stmtc0": "c_function_string_scalar_buf_arg",
+                        "stmtc1": "c_function_string_scalar_buf_arg"
                     }
                 }
             },
             {
-                "<FUNCTION>": "59 ****************************************",
-                "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "result_as_arg",
-                    "arg_to_buffer"
-                ],
-                "_PTR_C_CXX_index": "13",
-                "_PTR_F_C_index": "58",
-                "_generated": "result_as_arg",
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getConstStringAsArg",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output)",
-                "doxygen": {
-                    "brief": "return a 'const string' as argument"
-                },
-                "name": "getConstStringAsArg",
-                "options": {},
-                "splicer_group": "buf",
-                "user_fmt": {
-                    "F_string_result_as_arg": "output"
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getConstStringAsArg",
-                    "F_C_call": "c_get_const_string_as_arg_bufferify",
-                    "F_arg_c_call": "output,\t SHT_output_len",
-                    "F_arguments": "output",
-                    "F_name_api": "get_const_string_as_arg",
-                    "F_name_function": "get_const_string_as_arg",
-                    "F_name_generic": "get_const_string_as_arg",
-                    "F_name_impl": "get_const_string_as_arg",
-                    "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "f_c_suffix": "_bufferify",
-                    "function_name": "getConstStringAsArg",
-                    "function_suffix": "",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
-                }
-            },
-            {
                 "<FUNCTION>": "14 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "60",
+                "_PTR_F_C_index": "58",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2625,40 +2392,15 @@
                 "name": "getConstStringAlloc",
                 "options": {},
                 "wrap": {
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
                     "C_name_api": "getConstStringAlloc",
-                    "F_C_call": "c_get_const_string_alloc_bufferify",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_alloc",
-                    "F_name_function": "get_const_string_alloc",
-                    "F_name_generic": "get_const_string_alloc",
-                    "F_name_impl": "get_const_string_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringAlloc",
                     "function_name": "getConstStringAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
-                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
-                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
-                    },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
@@ -2679,7 +2421,10 @@
                 }
             },
             {
-                "<FUNCTION>": "60 ****************************************",
+                "<FUNCTION>": "58 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2706,7 +2451,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringAlloc_bufferify",
@@ -2714,10 +2460,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_alloc_bufferify",
                     "F_C_name": "c_get_const_string_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_alloc",
+                    "F_name_function": "get_const_string_alloc",
+                    "F_name_generic": "get_const_string_alloc",
+                    "F_name_impl": "get_const_string_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringAlloc"
@@ -2744,20 +2498,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
+                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
+                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "15 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "61",
+                "_PTR_F_C_index": "59",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2790,7 +2548,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -2799,18 +2556,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_pure_bufferify",
                     "F_C_name": "c_get_const_string_ref_pure",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_pure",
-                    "F_name_function": "get_const_string_ref_pure",
-                    "F_name_generic": "get_const_string_ref_pure",
-                    "F_name_impl": "get_const_string_ref_pure",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefPure",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure"
@@ -2836,19 +2585,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_cdesc_allocatable",
-                        "stmt1": "f_function_string_&_cdesc_allocatable",
-                        "stmtc0": "c_function_string_&_cdesc_allocatable",
-                        "stmtc1": "c_function_string_&_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -2871,7 +2612,10 @@
                 }
             },
             {
-                "<FUNCTION>": "61 ****************************************",
+                "<FUNCTION>": "59 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2908,7 +2652,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefPure_bufferify",
@@ -2916,10 +2661,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ref_pure_bufferify",
                     "F_C_name": "c_get_const_string_ref_pure_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_pure",
+                    "F_name_function": "get_const_string_ref_pure",
+                    "F_name_generic": "get_const_string_ref_pure",
+                    "F_name_impl": "get_const_string_ref_pure",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefPure"
@@ -2946,21 +2699,25 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_cdesc_allocatable",
+                        "stmt1": "f_function_string_&_cdesc_allocatable",
+                        "stmtc0": "c_function_string_&_cdesc_allocatable",
+                        "stmtc1": "c_function_string_&_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "16 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "62",
+                "_PTR_F_C_index": "60",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2995,7 +2752,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -3004,18 +2760,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_len_bufferify",
                     "F_C_name": "c_get_const_string_ref_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len",
-                    "F_name_function": "get_const_string_ref_len",
-                    "F_name_generic": "get_const_string_ref_len",
-                    "F_name_impl": "get_const_string_ref_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefLen",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen"
@@ -3042,18 +2790,12 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3076,8 +2818,11 @@
                 }
             },
             {
-                "<FUNCTION>": "62 ****************************************",
+                "<FUNCTION>": "60 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "16",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3116,7 +2861,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLen_bufferify",
@@ -3124,10 +2870,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_const_string_ref_len_bufferify",
                     "F_C_name": "c_get_const_string_ref_len_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len",
+                    "F_name_function": "get_const_string_ref_len",
+                    "F_name_generic": "get_const_string_ref_len",
+                    "F_name_impl": "get_const_string_ref_len",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefLen"
@@ -3155,18 +2909,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "17 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "_PTR_F_C_index": "61",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3265,48 +3025,37 @@
                 }
             },
             {
-                "<FUNCTION>": "63 ****************************************",
+                "<FUNCTION>": "61 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "intent": "subroutine"
+                            "api": "buf",
+                            "deref": "arg",
+                            "intent": "function"
                         },
                         "name": "getConstStringRefAsArg",
-                        "params": [
+                        "params": [],
+                        "pointer": [
                             {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "string"
-                                ],
-                                "typemap_name": "std::string"
+                                "ptr": "&"
                             }
                         ],
-                        "typemap_name": "void"
+                        "typemap_name": "std::string"
                     },
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output)",
+                "declgen": "const string & getConstStringRefAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3319,165 +3068,70 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
-                },
-                "zz_fmtargs": {
-                    "output": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "hnamefunc0": "ShroudStrCopy",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_function_string_&_buf_result",
-                            "stmt1": "c_function_string_&_buf_result"
-                        },
-                        "fmtf": {
-                            "F_C_var": "output",
-                            "c_var": "output",
-                            "c_var_len": "SHT_output_len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "output",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf_result",
-                            "stmt1": "f_function_string_&_buf_result",
-                            "stmtc0": "c_function_string_&_buf_result",
-                            "stmtc1": "c_function_string_&_buf_result"
-                        }
-                    }
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAsArg_bufferify",
                     "C_name_api": "getConstStringRefAsArg",
-                    "C_prototype": "char *output,\t int SHT_output_len",
+                    "C_prototype": "char *output,\t int noutput",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t SHT_output_len",
+                    "F_C_arguments": "output,\t noutput",
+                    "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
                     "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "output,\t SHT_rv_len",
+                    "F_arguments": "output",
                     "F_name_api": "get_const_string_ref_as_arg",
+                    "F_name_function": "get_const_string_ref_as_arg",
+                    "F_name_generic": "get_const_string_ref_as_arg",
+                    "F_name_impl": "get_const_string_ref_as_arg",
+                    "F_result_clause": "",
                     "F_string_result_as_arg": "output",
+                    "F_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_intptr_t",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar",
-                        "stmt1": "c_subroutine_void_scalar"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "64 ****************************************",
-                "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "result_as_arg",
-                    "arg_to_buffer"
-                ],
-                "_PTR_C_CXX_index": "17",
-                "_PTR_F_C_index": "63",
-                "_generated": "result_as_arg",
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getConstStringRefAsArg",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "result",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "name": "output",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "void"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_string_&_buf_arg",
+                        "stmt1": "c_function_string_&_buf_arg"
                     },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output)",
-                "doxygen": {
-                    "brief": "return a 'const string&' as argument",
-                    "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
-                },
-                "name": "getConstStringRefAsArg",
-                "options": {},
-                "splicer_group": "buf",
-                "user_fmt": {
-                    "F_string_result_as_arg": "output"
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getConstStringRefAsArg",
-                    "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
-                    "F_arg_c_call": "output,\t SHT_output_len",
-                    "F_arguments": "output",
-                    "F_name_api": "get_const_string_ref_as_arg",
-                    "F_name_function": "get_const_string_ref_as_arg",
-                    "F_name_generic": "get_const_string_ref_as_arg",
-                    "F_name_impl": "get_const_string_ref_as_arg",
-                    "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "f_c_suffix": "_bufferify",
-                    "function_name": "getConstStringRefAsArg",
-                    "function_suffix": "",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_arg",
+                        "stmt1": "f_function_string_&_buf_arg",
+                        "stmtc0": "c_function_string_&_buf_arg",
+                        "stmtc1": "c_function_string_&_buf_arg"
+                    }
                 }
             },
             {
                 "<FUNCTION>": "18 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "65",
+                "_PTR_F_C_index": "62",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3511,7 +3165,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -3520,18 +3173,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
                     "F_C_name": "c_get_const_string_ref_len_empty",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len_empty",
-                    "F_name_function": "get_const_string_ref_len_empty",
-                    "F_name_generic": "get_const_string_ref_len_empty",
-                    "F_name_impl": "get_const_string_ref_len_empty",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefLenEmpty",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty"
@@ -3558,18 +3203,12 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3592,8 +3231,11 @@
                 }
             },
             {
-                "<FUNCTION>": "65 ****************************************",
+                "<FUNCTION>": "62 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3631,7 +3273,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLenEmpty_bufferify",
@@ -3639,10 +3282,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
                     "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len_empty",
+                    "F_name_function": "get_const_string_ref_len_empty",
+                    "F_name_generic": "get_const_string_ref_len_empty",
+                    "F_name_impl": "get_const_string_ref_len_empty",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefLenEmpty"
@@ -3670,21 +3321,23 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "19 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "66",
+                "_PTR_F_C_index": "63",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3712,7 +3365,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -3721,18 +3373,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ref_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_alloc",
-                    "F_name_function": "get_const_string_ref_alloc",
-                    "F_name_generic": "get_const_string_ref_alloc",
-                    "F_name_impl": "get_const_string_ref_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefAlloc",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc"
@@ -3758,19 +3402,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_cdesc_allocatable",
-                        "stmt1": "f_function_string_&_cdesc_allocatable",
-                        "stmtc0": "c_function_string_&_cdesc_allocatable",
-                        "stmtc1": "c_function_string_&_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3793,7 +3429,10 @@
                 }
             },
             {
-                "<FUNCTION>": "66 ****************************************",
+                "<FUNCTION>": "63 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3825,7 +3464,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAlloc_bufferify",
@@ -3833,10 +3473,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ref_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ref_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_alloc",
+                    "F_name_function": "get_const_string_ref_alloc",
+                    "F_name_generic": "get_const_string_ref_alloc",
+                    "F_name_impl": "get_const_string_ref_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefAlloc"
@@ -3863,20 +3511,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_cdesc_allocatable",
+                        "stmt1": "f_function_string_&_cdesc_allocatable",
+                        "stmtc0": "c_function_string_&_cdesc_allocatable",
+                        "stmtc1": "c_function_string_&_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "20 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "67",
+                "_PTR_F_C_index": "64",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3918,7 +3570,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -3927,18 +3578,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_len_bufferify",
                     "F_C_name": "c_get_const_string_ptr_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_len",
-                    "F_name_function": "get_const_string_ptr_len",
-                    "F_name_generic": "get_const_string_ptr_len",
-                    "F_name_impl": "get_const_string_ptr_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrLen",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen"
@@ -3965,18 +3608,12 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_buf_copy",
-                        "stmt1": "f_function_string_*_buf_copy",
-                        "stmtc0": "c_function_string_*_buf_copy",
-                        "stmtc1": "c_function_string_*_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3999,7 +3636,10 @@
                 }
             },
             {
-                "<FUNCTION>": "67 ****************************************",
+                "<FUNCTION>": "64 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4045,7 +3685,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrLen_bufferify",
@@ -4053,10 +3694,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_const_string_ptr_len_bufferify",
                     "F_C_name": "c_get_const_string_ptr_len_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_len",
+                    "F_name_function": "get_const_string_ptr_len",
+                    "F_name_generic": "get_const_string_ptr_len",
+                    "F_name_impl": "get_const_string_ptr_len",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrLen"
@@ -4084,21 +3733,23 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_buf_copy",
+                        "stmt1": "f_function_string_*_buf_copy",
+                        "stmtc0": "c_function_string_*_buf_copy",
+                        "stmtc1": "c_function_string_*_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "21 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "68",
+                "_PTR_F_C_index": "65",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4129,7 +3780,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -4138,18 +3788,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_alloc",
-                    "F_name_function": "get_const_string_ptr_alloc",
-                    "F_name_generic": "get_const_string_ptr_alloc",
-                    "F_name_impl": "get_const_string_ptr_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc"
@@ -4175,19 +3817,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_cdesc_allocatable_library",
-                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4210,7 +3844,10 @@
                 }
             },
             {
-                "<FUNCTION>": "68 ****************************************",
+                "<FUNCTION>": "65 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4245,7 +3882,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrAlloc_bufferify",
@@ -4253,10 +3891,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_alloc",
+                    "F_name_function": "get_const_string_ptr_alloc",
+                    "F_name_generic": "get_const_string_ptr_alloc",
+                    "F_name_impl": "get_const_string_ptr_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrAlloc"
@@ -4283,20 +3929,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_cdesc_allocatable_library",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
+                        "stmtc0": "c_function_string_*_cdesc_allocatable",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "22 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "69",
+                "_PTR_F_C_index": "66",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4330,7 +3980,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -4339,18 +3988,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
-                    "F_name_function": "get_const_string_ptr_owns_alloc",
-                    "F_name_generic": "get_const_string_ptr_owns_alloc",
-                    "F_name_impl": "get_const_string_ptr_owns_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc"
@@ -4376,19 +4017,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4411,7 +4044,10 @@
                 }
             },
             {
-                "<FUNCTION>": "69 ****************************************",
+                "<FUNCTION>": "66 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4449,7 +4085,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAlloc_bufferify",
@@ -4457,10 +4094,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
+                    "F_name_function": "get_const_string_ptr_owns_alloc",
+                    "F_name_generic": "get_const_string_ptr_owns_alloc",
+                    "F_name_impl": "get_const_string_ptr_owns_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrOwnsAlloc"
@@ -4487,20 +4132,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_cdesc_allocatable_caller",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
+                        "stmtc0": "c_function_string_*_cdesc_allocatable",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "23 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "70",
+                "_PTR_F_C_index": "67",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4535,7 +4184,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtdict": {
@@ -4544,18 +4192,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
-                    "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
-                    "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
-                    "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
@@ -4581,19 +4221,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4616,7 +4248,10 @@
                 }
             },
             {
-                "<FUNCTION>": "70 ****************************************",
+                "<FUNCTION>": "67 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4655,7 +4290,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAllocPattern_bufferify",
@@ -4663,10 +4299,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
@@ -4693,20 +4337,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_cdesc_allocatable_caller",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_caller",
+                        "stmtc0": "c_function_string_*_cdesc_allocatable",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "24 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "71",
+                "_PTR_F_C_index": "68",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4739,8 +4387,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrPointer",
@@ -4748,18 +4395,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_pointer_bufferify",
                     "F_C_name": "c_get_const_string_ptr_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_pointer",
-                    "F_name_function": "get_const_string_ptr_pointer",
-                    "F_name_generic": "get_const_string_ptr_pointer",
-                    "F_name_impl": "get_const_string_ptr_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrPointer"
                 },
@@ -4784,24 +4423,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_pointer_string",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_cdesc_pointer_library",
-                        "stmt1": "f_function_string_*_cdesc_pointer_library",
-                        "stmtc0": "c_function_string_*_cdesc_pointer",
-                        "stmtc1": "c_function_string_*_cdesc_pointer"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
             {
-                "<FUNCTION>": "71 ****************************************",
+                "<FUNCTION>": "68 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "24",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4839,7 +4473,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrPointer_bufferify",
@@ -4847,10 +4482,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ptr_pointer_bufferify",
                     "F_C_name": "c_get_const_string_ptr_pointer_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_pointer",
+                    "F_name_function": "get_const_string_ptr_pointer",
+                    "F_name_generic": "get_const_string_ptr_pointer",
+                    "F_name_impl": "get_const_string_ptr_pointer",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrPointer"
@@ -4877,20 +4520,24 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_pointer_string",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_cdesc_pointer_library",
+                        "stmt1": "f_function_string_*_cdesc_pointer_library",
+                        "stmtc0": "c_function_string_*_cdesc_pointer",
+                        "stmtc1": "c_function_string_*_cdesc_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "25 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "72",
+                "_PTR_F_C_index": "69",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4935,7 +4582,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -4996,26 +4642,20 @@
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_const_reference_bufferify",
                     "F_C_name": "c_accept_string_const_reference",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_const_reference",
-                    "F_name_function": "accept_string_const_reference",
-                    "F_name_generic": "accept_string_const_reference",
-                    "F_name_impl": "accept_string_const_reference",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringConstReference",
                     "function_name": "acceptStringConstReference",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "72 ****************************************",
+                "<FUNCTION>": "69 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "25",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5064,7 +4704,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5111,21 +4752,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_const_reference_bufferify",
                     "F_C_name": "c_accept_string_const_reference_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_const_reference",
+                    "F_name_function": "accept_string_const_reference",
+                    "F_name_generic": "accept_string_const_reference",
+                    "F_name_impl": "accept_string_const_reference",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringConstReference",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "26 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "73",
+                "_PTR_F_C_index": "70",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5172,7 +4819,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -5233,26 +4879,20 @@
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_reference_out_bufferify",
                     "F_C_name": "c_accept_string_reference_out",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference_out",
-                    "F_name_function": "accept_string_reference_out",
-                    "F_name_generic": "accept_string_reference_out",
-                    "F_name_impl": "accept_string_reference_out",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringReferenceOut",
                     "function_name": "acceptStringReferenceOut",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "73 ****************************************",
+                "<FUNCTION>": "70 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5303,7 +4943,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5350,21 +4991,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_reference_out_bufferify",
                     "F_C_name": "c_accept_string_reference_out_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference_out",
+                    "F_name_function": "accept_string_reference_out",
+                    "F_name_generic": "accept_string_reference_out",
+                    "F_name_impl": "accept_string_reference_out",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringReferenceOut",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "27 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "74",
+                "_PTR_F_C_index": "71",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5410,7 +5057,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -5471,26 +5117,20 @@
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_reference_bufferify",
                     "F_C_name": "c_accept_string_reference",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference",
-                    "F_name_function": "accept_string_reference",
-                    "F_name_generic": "accept_string_reference",
-                    "F_name_impl": "accept_string_reference",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringReference",
                     "function_name": "acceptStringReference",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "74 ****************************************",
+                "<FUNCTION>": "71 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "27",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5540,7 +5180,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5588,21 +5229,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_reference_bufferify",
                     "F_C_name": "c_accept_string_reference_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference",
+                    "F_name_function": "accept_string_reference",
+                    "F_name_generic": "accept_string_reference",
+                    "F_name_impl": "accept_string_reference",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringReference",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "28 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "75",
+                "_PTR_F_C_index": "72",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5646,7 +5293,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -5707,26 +5353,20 @@
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_pointer_const_bufferify",
                     "F_C_name": "c_accept_string_pointer_const",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer_const",
-                    "F_name_function": "accept_string_pointer_const",
-                    "F_name_generic": "accept_string_pointer_const",
-                    "F_name_impl": "accept_string_pointer_const",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringPointerConst",
                     "function_name": "acceptStringPointerConst",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "75 ****************************************",
+                "<FUNCTION>": "72 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5774,7 +5414,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5821,21 +5462,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_pointer_const_bufferify",
                     "F_C_name": "c_accept_string_pointer_const_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer_const",
+                    "F_name_function": "accept_string_pointer_const",
+                    "F_name_generic": "accept_string_pointer_const",
+                    "F_name_impl": "accept_string_pointer_const",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointerConst",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "29 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "76",
+                "_PTR_F_C_index": "73",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5878,7 +5525,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -5939,26 +5585,20 @@
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_pointer_bufferify",
                     "F_C_name": "c_accept_string_pointer",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer",
-                    "F_name_function": "accept_string_pointer",
-                    "F_name_generic": "accept_string_pointer",
-                    "F_name_impl": "accept_string_pointer",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringPointer",
                     "function_name": "acceptStringPointer",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "76 ****************************************",
+                "<FUNCTION>": "73 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6005,7 +5645,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6053,21 +5694,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_pointer_bufferify",
                     "F_C_name": "c_accept_string_pointer_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer",
+                    "F_name_function": "accept_string_pointer",
+                    "F_name_generic": "accept_string_pointer",
+                    "F_name_impl": "accept_string_pointer",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "30 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "77",
+                "_PTR_F_C_index": "74",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6114,7 +5761,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -6175,26 +5821,20 @@
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_fetch_string_pointer_bufferify",
                     "F_C_name": "c_fetch_string_pointer",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "fetch_string_pointer",
-                    "F_name_function": "fetch_string_pointer",
-                    "F_name_generic": "fetch_string_pointer",
-                    "F_name_impl": "fetch_string_pointer",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_fetchStringPointer",
                     "function_name": "fetchStringPointer",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "77 ****************************************",
+                "<FUNCTION>": "74 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "30",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6245,7 +5885,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6292,21 +5933,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_fetch_string_pointer_bufferify",
                     "F_C_name": "c_fetch_string_pointer_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "fetch_string_pointer",
+                    "F_name_function": "fetch_string_pointer",
+                    "F_name_generic": "fetch_string_pointer",
+                    "F_name_impl": "fetch_string_pointer",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "fetchStringPointer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "31 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "78",
+                "_PTR_F_C_index": "75",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6371,7 +6018,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -6481,26 +6127,20 @@
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
-                    "F_C_call": "c_accept_string_pointer_len_bufferify",
                     "F_C_name": "c_accept_string_pointer_len",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
-                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "accept_string_pointer_len",
-                    "F_name_function": "accept_string_pointer_len",
-                    "F_name_generic": "accept_string_pointer_len",
-                    "F_name_impl": "accept_string_pointer_len",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptStringPointerLen",
                     "function_name": "acceptStringPointerLen",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "78 ****************************************",
+                "<FUNCTION>": "75 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6569,7 +6209,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6650,21 +6291,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
+                    "F_C_call": "c_accept_string_pointer_len_bufferify",
                     "F_C_name": "c_accept_string_pointer_len_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
+                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "accept_string_pointer_len",
+                    "F_name_function": "accept_string_pointer_len",
+                    "F_name_generic": "accept_string_pointer_len",
+                    "F_name_impl": "accept_string_pointer_len",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointerLen",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "32 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "79",
+                "_PTR_F_C_index": "76",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6732,7 +6379,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -6842,26 +6488,20 @@
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
-                    "F_C_call": "c_fetch_string_pointer_len_bufferify",
                     "F_C_name": "c_fetch_string_pointer_len",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
-                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "fetch_string_pointer_len",
-                    "F_name_function": "fetch_string_pointer_len",
-                    "F_name_generic": "fetch_string_pointer_len",
-                    "F_name_impl": "fetch_string_pointer_len",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_fetchStringPointerLen",
                     "function_name": "fetchStringPointerLen",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "79 ****************************************",
+                "<FUNCTION>": "76 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "32",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6933,7 +6573,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -7013,21 +6654,27 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
+                    "F_C_call": "c_fetch_string_pointer_len_bufferify",
                     "F_C_name": "c_fetch_string_pointer_len_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
+                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "fetch_string_pointer_len",
+                    "F_name_function": "fetch_string_pointer_len",
+                    "F_name_generic": "fetch_string_pointer_len",
+                    "F_name_impl": "fetch_string_pointer_len",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "fetchStringPointerLen",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "33 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "80",
+                "_PTR_F_C_index": "77",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7068,7 +6715,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -7128,18 +6774,10 @@
                     "C_prototype": "char *arg1",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_instance_bufferify",
                     "F_C_name": "c_accept_string_instance",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_instance",
-                    "F_name_function": "accept_string_instance",
-                    "F_name_generic": "accept_string_instance",
-                    "F_name_impl": "accept_string_instance",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_acceptStringInstance",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance"
@@ -7164,16 +6802,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -7195,7 +6828,10 @@
                 }
             },
             {
-                "<FUNCTION>": "80 ****************************************",
+                "<FUNCTION>": "77 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "33",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -7240,7 +6876,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -7288,10 +6925,18 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
+                    "F_C_call": "c_accept_string_instance_bufferify",
                     "F_C_name": "c_accept_string_instance_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len",
+                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_instance",
+                    "F_name_function": "accept_string_instance",
+                    "F_name_generic": "accept_string_instance",
+                    "F_name_impl": "accept_string_instance",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringInstance"
@@ -7316,11 +6961,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -7451,10 +7101,7 @@
             },
             {
                 "<FUNCTION>": "35 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "81",
+                "_PTR_F_C_index": "78",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7533,8 +7180,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -7608,25 +7254,19 @@
                     "C_prototype": "char * * strs,\t int * nstrs",
                     "C_return_type": "void",
                     "F_C_arguments": "strs,\t nstrs",
-                    "F_C_call": "c_fetch_array_string_arg_bufferify",
                     "F_C_name": "c_fetch_array_string_arg",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_strs_cdesc",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_arg",
-                    "F_name_function": "fetch_array_string_arg",
-                    "F_name_generic": "fetch_array_string_arg",
-                    "F_name_impl": "fetch_array_string_arg",
-                    "F_subprogram": "subroutine",
                     "function_name": "fetchArrayStringArg",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "81 ****************************************",
+                "<FUNCTION>": "78 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "35",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -7710,7 +7350,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -7797,21 +7438,27 @@
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_call": "c_fetch_array_string_arg_bufferify",
                     "F_C_name": "c_fetch_array_string_arg_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_strs_cdesc",
+                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_arg",
+                    "F_name_function": "fetch_array_string_arg",
+                    "F_name_generic": "fetch_array_string_arg",
+                    "F_name_impl": "fetch_array_string_arg",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringArg",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "36 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "82",
+                "_PTR_F_C_index": "79",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7891,8 +7538,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -7966,25 +7612,19 @@
                     "C_prototype": "char * * strs,\t int * nstrs",
                     "C_return_type": "void",
                     "F_C_arguments": "strs,\t nstrs",
-                    "F_C_call": "c_fetch_array_string_alloc_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_strs_out",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc",
-                    "F_name_function": "fetch_array_string_alloc",
-                    "F_name_generic": "fetch_array_string_alloc",
-                    "F_name_impl": "fetch_array_string_alloc",
-                    "F_subprogram": "subroutine",
                     "function_name": "fetchArrayStringAlloc",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "82 ****************************************",
+                "<FUNCTION>": "79 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -8069,7 +7709,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -8159,21 +7800,27 @@
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_call": "c_fetch_array_string_alloc_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_strs_out",
+                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc",
+                    "F_name_function": "fetch_array_string_alloc",
+                    "F_name_generic": "fetch_array_string_alloc",
+                    "F_name_impl": "fetch_array_string_alloc",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringAlloc",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "37 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "83",
+                "_PTR_F_C_index": "80",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8254,8 +7901,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -8331,25 +7977,19 @@
                     "C_prototype": "char * * strs,\t int * nstrs",
                     "C_return_type": "void",
                     "F_C_arguments": "strs,\t nstrs",
-                    "F_C_call": "c_fetch_array_string_alloc_len_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc_len",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_strs_out",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc_len",
-                    "F_name_function": "fetch_array_string_alloc_len",
-                    "F_name_generic": "fetch_array_string_alloc_len",
-                    "F_name_impl": "fetch_array_string_alloc_len",
-                    "F_subprogram": "subroutine",
                     "function_name": "fetchArrayStringAllocLen",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "83 ****************************************",
+                "<FUNCTION>": "80 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -8435,7 +8075,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nstrs": {
@@ -8526,13 +8167,22 @@
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_call": "c_fetch_array_string_alloc_len_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc_len_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_strs_out",
+                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc_len",
+                    "F_name_function": "fetch_array_string_alloc_len",
+                    "F_name_generic": "fetch_array_string_alloc_len",
+                    "F_name_impl": "fetch_array_string_alloc_len",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringAllocLen",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -8723,10 +8373,7 @@
             },
             {
                 "<FUNCTION>": "40 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "84",
+                "_PTR_F_C_index": "81",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8772,8 +8419,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -8815,25 +8461,19 @@
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_explicit2_bufferify",
                     "F_C_name": "c_explicit2",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len",
-                    "F_arguments": "name",
                     "F_name_api": "explicit2",
-                    "F_name_function": "explicit2",
-                    "F_name_generic": "explicit2",
-                    "F_name_impl": "explicit2",
-                    "F_subprogram": "subroutine",
                     "function_name": "explicit2",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "84 ****************************************",
+                "<FUNCTION>": "81 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "40",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -8884,7 +8524,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -8933,13 +8574,22 @@
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
+                    "F_C_call": "c_explicit2_bufferify",
                     "F_C_name": "c_explicit2_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len",
+                    "F_arguments": "name",
                     "F_name_api": "explicit2",
+                    "F_name_function": "explicit2",
+                    "F_name_generic": "explicit2",
+                    "F_name_impl": "explicit2",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "explicit2",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -9173,10 +8823,7 @@
             },
             {
                 "<FUNCTION>": "43 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "85",
+                "_PTR_F_C_index": "82",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9249,8 +8896,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -9320,25 +8966,19 @@
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_cpass_char_ptr_bufferify",
                     "F_C_name": "c_cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr",
-                    "F_name_function": "cpass_char_ptr",
-                    "F_name_generic": "cpass_char_ptr",
-                    "F_name_impl": "cpass_char_ptr",
-                    "F_subprogram": "subroutine",
                     "function_name": "CpassCharPtr",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "85 ****************************************",
+                "<FUNCTION>": "82 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -9417,7 +9057,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -9504,21 +9145,27 @@
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
+                    "F_C_call": "c_cpass_char_ptr_bufferify",
                     "F_C_name": "c_cpass_char_ptr_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
+                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr",
+                    "F_name_function": "cpass_char_ptr",
+                    "F_name_generic": "cpass_char_ptr",
+                    "F_name_impl": "cpass_char_ptr",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtr",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "44 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "86",
+                "_PTR_F_C_index": "83",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9587,8 +9234,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -9658,25 +9304,19 @@
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_cpass_char_ptr_blank_bufferify",
                     "F_C_name": "c_cpass_char_ptr_blank",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr_blank",
-                    "F_name_function": "cpass_char_ptr_blank",
-                    "F_name_generic": "cpass_char_ptr_blank",
-                    "F_name_impl": "cpass_char_ptr_blank",
-                    "F_subprogram": "subroutine",
                     "function_name": "CpassCharPtrBlank",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "86 ****************************************",
+                "<FUNCTION>": "83 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "44",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -9751,7 +9391,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -9838,21 +9479,27 @@
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
+                    "F_C_call": "c_cpass_char_ptr_blank_bufferify",
                     "F_C_name": "c_cpass_char_ptr_blank_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
+                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr_blank",
+                    "F_name_function": "cpass_char_ptr_blank",
+                    "F_name_generic": "cpass_char_ptr_blank",
+                    "F_name_impl": "cpass_char_ptr_blank",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtrBlank",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "45 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "87",
+                "_PTR_F_C_index": "84",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9919,7 +9566,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -10035,26 +9681,20 @@
                     "C_prototype": "int * count,\t char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name",
-                    "F_C_call": "c_post_declare_bufferify",
                     "F_C_name": "c_post_declare",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count,\t name,\t SHT_name_len",
-                    "F_arguments": "count,\t name",
                     "F_name_api": "post_declare",
-                    "F_name_function": "post_declare",
-                    "F_name_generic": "post_declare",
-                    "F_name_impl": "post_declare",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_PostDeclare",
                     "function_name": "PostDeclare",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
-                "<FUNCTION>": "87 ****************************************",
+                "<FUNCTION>": "84 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -10125,7 +9765,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -10210,21 +9851,27 @@
                     "C_prototype": "int * count,\t char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name,\t SHT_name_len",
+                    "F_C_call": "c_post_declare_bufferify",
                     "F_C_name": "c_post_declare_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "count,\t name,\t SHT_name_len",
+                    "F_arguments": "count,\t name",
                     "F_name_api": "post_declare",
+                    "F_name_function": "post_declare",
+                    "F_name_generic": "post_declare",
+                    "F_name_impl": "post_declare",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "PostDeclare",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "46 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "88",
+                "_PTR_F_C_index": "85",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -10270,8 +9917,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "src": {
@@ -10311,18 +9957,10 @@
                     "C_prototype": "const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "src",
-                    "F_C_call": "c_cpass_char_ptr_notrim_bufferify",
                     "F_C_name": "c_cpass_char_ptr_notrim",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "src,\t SHT_src_len",
-                    "F_arguments": "src",
                     "F_name_api": "cpass_char_ptr_notrim",
-                    "F_name_function": "cpass_char_ptr_notrim",
-                    "F_name_generic": "cpass_char_ptr_notrim",
-                    "F_name_impl": "cpass_char_ptr_notrim",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "CpassCharPtrNotrim"
                 },
@@ -10346,21 +9984,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
-                "<FUNCTION>": "88 ****************************************",
+                "<FUNCTION>": "85 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "46",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -10411,7 +10047,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "src": {
@@ -10461,10 +10098,18 @@
                     "C_prototype": "char *src,\t int SHT_src_len",
                     "C_return_type": "int",
                     "F_C_arguments": "src,\t SHT_src_len",
+                    "F_C_call": "c_cpass_char_ptr_notrim_bufferify",
                     "F_C_name": "c_cpass_char_ptr_notrim_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "src,\t SHT_src_len",
+                    "F_arguments": "src",
                     "F_name_api": "cpass_char_ptr_notrim",
+                    "F_name_function": "cpass_char_ptr_notrim",
+                    "F_name_generic": "cpass_char_ptr_notrim",
+                    "F_name_impl": "cpass_char_ptr_notrim",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtrNotrim"
@@ -10489,11 +10134,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },

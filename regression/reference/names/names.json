@@ -396,9 +396,6 @@
         "functions": [
             {
                 "<FUNCTION>": "4 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
@@ -443,7 +440,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -506,26 +502,20 @@
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_get_name_bufferify",
                     "F_C_name": "c_get_name",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len",
-                    "F_arguments": "name",
                     "F_name_api": "get_name",
-                    "F_name_function": "get_name",
-                    "F_name_generic": "get_name",
-                    "F_name_impl": "get_name",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_getName",
                     "function_name": "getName",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -573,7 +563,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -626,13 +617,22 @@
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
+                    "F_C_call": "c_get_name_bufferify",
                     "F_C_name": "c_get_name_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len",
+                    "F_arguments": "name",
                     "F_name_api": "get_name",
+                    "F_name_function": "get_name",
+                    "F_name_generic": "get_name",
+                    "F_name_impl": "get_name",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getName",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -996,9 +996,6 @@
             },
             {
                 "<FUNCTION>": "9 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
@@ -1040,7 +1037,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -1101,18 +1097,10 @@
                     "C_prototype": "const char * rv",
                     "C_return_type": "int",
                     "F_C_arguments": "rv",
-                    "F_C_call": "YYY_TES_function4_bufferify",
                     "F_C_name": "YYY_TES_function4",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "rv,\t SHT_rv_len",
-                    "F_arguments": "rv",
                     "F_name_api": "function4",
-                    "F_name_function": "function4",
-                    "F_name_generic": "function4",
-                    "F_name_impl": "testnames_function4",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_function4",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "function4"
@@ -1137,16 +1125,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1169,6 +1152,9 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1213,7 +1199,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "rv": {
@@ -1260,10 +1247,18 @@
                     "C_prototype": "char *rv,\t int SHT_rv_len",
                     "C_return_type": "int",
                     "F_C_arguments": "rv,\t SHT_rv_len",
+                    "F_C_call": "YYY_TES_function4_bufferify",
                     "F_C_name": "YYY_TES_function4_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "rv,\t SHT_rv_len",
+                    "F_arguments": "rv",
                     "F_name_api": "function4",
+                    "F_name_function": "function4",
+                    "F_name_generic": "function4",
+                    "F_name_impl": "testnames_function4",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "function4"
@@ -1288,11 +1283,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -1350,9 +1350,6 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
@@ -1435,7 +1432,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "python": true
                 },
                 "zz_fmtargs": {
@@ -1545,26 +1541,20 @@
                     "C_prototype": "char * name,\t int * value",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t value",
-                    "F_C_call": "c_test_multiline_splicer_bufferify",
                     "F_C_name": "c_test_multiline_splicer",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
-                    "F_arguments": "name,\t value",
                     "F_name_api": "test_multiline_splicer",
-                    "F_name_function": "test_multiline_splicer",
-                    "F_name_generic": "test_multiline_splicer",
-                    "F_name_impl": "test_multiline_splicer",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_TestMultilineSplicer",
                     "function_name": "TestMultilineSplicer",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1650,7 +1640,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -1731,13 +1722,22 @@
                     "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t value",
+                    "F_C_call": "c_test_multiline_splicer_bufferify",
                     "F_C_name": "c_test_multiline_splicer_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
+                    "F_arguments": "name,\t value",
                     "F_name_api": "test_multiline_splicer",
+                    "F_name_function": "test_multiline_splicer",
+                    "F_name_generic": "test_multiline_splicer",
+                    "F_name_impl": "test_multiline_splicer",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "TestMultilineSplicer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {

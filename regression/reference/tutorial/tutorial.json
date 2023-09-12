@@ -422,9 +422,6 @@
             },
             {
                 "<FUNCTION>": "2 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "30",
                 "ast": {
                     "const": true,
@@ -489,7 +486,6 @@
                 "name": "ConcatenateStrings",
                 "options": {},
                 "wrap": {
-                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
@@ -569,15 +565,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "ConcatenateStrings",
-                    "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc",
-                    "F_arguments": "arg1,\t arg2",
                     "F_name_api": "concatenate_strings",
-                    "F_name_function": "concatenate_strings",
-                    "F_name_generic": "concatenate_strings",
-                    "F_name_impl": "concatenate_strings",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "LUA_name": "ConcatenateStrings",
                     "LUA_name_api": "ConcatenateStrings",
                     "LUA_name_impl": "l_ConcatenateStrings",
@@ -585,22 +573,6 @@
                     "function_name": "ConcatenateStrings"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "TUT_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
-                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
-                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
-                    },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
                         "cxx_addr": "&",
@@ -632,6 +604,9 @@
             },
             {
                 "<FUNCTION>": "30 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -702,7 +677,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -785,10 +761,18 @@
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv",
+                    "F_C_call": "c_concatenate_strings_bufferify",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc",
+                    "F_arguments": "arg1,\t arg2",
                     "F_name_api": "concatenate_strings",
+                    "F_name_function": "concatenate_strings",
+                    "F_name_generic": "concatenate_strings",
+                    "F_name_impl": "concatenate_strings",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ConcatenateStrings"
@@ -815,11 +799,18 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "TUT_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
+                        "stmtc0": "c_function_string_scalar_cdesc_allocatable",
+                        "stmtc1": "c_function_string_scalar_cdesc_allocatable"
                     }
                 }
             },
@@ -1366,9 +1357,6 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "31",
                 "_overloaded": true,
                 "ast": {
@@ -1414,7 +1402,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
@@ -1490,26 +1477,17 @@
                     "C_prototype": "const char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_overloaded_function_from_name_bufferify",
                     "F_C_name": "c_overloaded_function_from_name",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len",
-                    "F_arguments": "name",
                     "F_name_api": "overloaded_function",
-                    "F_name_function": "overloaded_function_from_name",
-                    "F_name_generic": "overloaded_function",
-                    "F_name_impl": "overloaded_function_from_name",
-                    "F_subprogram": "subroutine",
                     "LUA_name": "OverloadedFunction",
                     "LUA_name_api": "OverloadedFunction",
                     "LUA_name_impl": "l_OverloadedFunction",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -1520,6 +1498,9 @@
             },
             {
                 "<FUNCTION>": "31 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -1568,7 +1549,8 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -1615,14 +1597,23 @@
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
+                    "F_C_call": "c_overloaded_function_from_name_bufferify",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len",
+                    "F_arguments": "name",
                     "F_name_api": "overloaded_function",
+                    "F_name_function": "overloaded_function_from_name",
+                    "F_name_generic": "overloaded_function",
+                    "F_name_impl": "overloaded_function_from_name",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2878,10 +2869,6 @@
             {
                 "<FUNCTION>": "28 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
@@ -2942,30 +2929,20 @@
                 "options": {
                     "F_string_len_trim": true
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
-                    "F_arguments": "name,\t arg2",
                     "F_name_api": "fortran_generic_overloaded",
-                    "F_name_function": "fortran_generic_overloaded_1_float",
-                    "F_name_generic": "fortran_generic_overloaded",
-                    "F_name_impl": "fortran_generic_overloaded_1_float",
-                    "F_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_float",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_suffix": "_1_float"
                 }
             },
             {
                 "<FUNCTION>": "32 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -3029,7 +3006,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg2": {
@@ -3109,23 +3087,28 @@
                     "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t arg2",
+                    "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
+                    "F_arguments": "name,\t arg2",
                     "F_name_api": "fortran_generic_overloaded",
+                    "F_name_function": "fortran_generic_overloaded_1_float",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_1_float",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "29 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_PTR_F_C_index": "33",
                 "_generated": "fortran_generic",
@@ -3186,30 +3169,20 @@
                 "options": {
                     "F_string_len_trim": true
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
-                    "F_arguments": "name,\t arg2",
                     "F_name_api": "fortran_generic_overloaded",
-                    "F_name_function": "fortran_generic_overloaded_1_double",
-                    "F_name_generic": "fortran_generic_overloaded",
-                    "F_name_impl": "fortran_generic_overloaded_1_double",
-                    "F_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_double",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_suffix": "_1_double"
                 }
             },
             {
                 "<FUNCTION>": "33 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -3273,7 +3246,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg2": {
@@ -3353,14 +3327,23 @@
                     "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t arg2",
+                    "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
+                    "F_arguments": "name,\t arg2",
                     "F_name_api": "fortran_generic_overloaded",
+                    "F_name_function": "fortran_generic_overloaded_1_double",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_1_double",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5986,9 +5969,6 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "34",
                 "ast": {
                     "const": true,
@@ -6020,7 +6000,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
@@ -6030,18 +6009,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "last_function_called",
-                    "F_name_function": "last_function_called",
-                    "F_name_generic": "last_function_called",
-                    "F_name_impl": "last_function_called",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "LUA_name": "LastFunctionCalled",
                     "LUA_name_api": "LastFunctionCalled",
                     "LUA_name_impl": "l_LastFunctionCalled",
@@ -6071,18 +6042,12 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -6116,6 +6081,9 @@
             },
             {
                 "<FUNCTION>": "34 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6150,7 +6118,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "TUT_LastFunctionCalled_bufferify",
@@ -6158,10 +6127,18 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "last_function_called",
+                    "F_name_function": "last_function_called",
+                    "F_name_generic": "last_function_called",
+                    "F_name_impl": "last_function_called",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "LastFunctionCalled"
@@ -6189,12 +6166,17 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf_copy"
                     }
                 }
             }

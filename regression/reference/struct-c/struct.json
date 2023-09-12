@@ -2204,9 +2204,6 @@
             },
             {
                 "<FUNCTION>": "12 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "30",
                 "ast": {
                     "declarator": {
@@ -2272,8 +2269,7 @@
                 "name": "passStruct2",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "outbuf": {
@@ -2342,18 +2338,10 @@
                     "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
                     "C_return_type": "int",
                     "F_C_arguments": "s1,\t outbuf",
-                    "F_C_call": "c_pass_struct2_bufferify",
                     "F_C_name": "c_pass_struct2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "s1,\t outbuf,\t SHT_outbuf_len",
-                    "F_arguments": "s1,\t outbuf",
                     "F_name_api": "pass_struct2",
-                    "F_name_function": "pass_struct2",
-                    "F_name_generic": "pass_struct2",
-                    "F_name_impl": "pass_struct2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2"
                 },
@@ -2377,21 +2365,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "30 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2461,7 +2447,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "outbuf": {
@@ -2541,10 +2528,18 @@
                     "C_prototype": "const Cstruct1 * s1,\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "int",
                     "F_C_arguments": "s1,\t outbuf,\t SHT_outbuf_len",
+                    "F_C_call": "c_pass_struct2_bufferify",
                     "F_C_name": "c_pass_struct2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "s1,\t outbuf,\t SHT_outbuf_len",
+                    "F_arguments": "s1,\t outbuf",
                     "F_name_api": "pass_struct2",
+                    "F_name_function": "pass_struct2",
+                    "F_name_generic": "pass_struct2",
+                    "F_name_impl": "pass_struct2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "passStruct2"
@@ -2569,11 +2564,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function_native_scalar"
                     }
                 }
             },
@@ -3401,9 +3401,6 @@
             },
             {
                 "<FUNCTION>": "18 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "31",
                 "ast": {
                     "declarator": {
@@ -3489,8 +3486,7 @@
                 "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "d": {
@@ -3588,18 +3584,10 @@
                     "C_prototype": "int i,\t double d,\t char * outbuf",
                     "C_return_type": "Cstruct1 *",
                     "F_C_arguments": "i,\t d,\t outbuf",
-                    "F_C_call": "c_return_struct_ptr2_bufferify",
                     "F_C_name": "c_return_struct_ptr2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "i,\t d,\t outbuf,\t SHT_outbuf_len",
-                    "F_arguments": "i,\t d,\t outbuf",
                     "F_name_api": "return_struct_ptr2",
-                    "F_name_function": "return_struct_ptr2",
-                    "F_name_generic": "return_struct_ptr2",
-                    "F_name_impl": "return_struct_ptr2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2"
                 },
@@ -3622,23 +3610,20 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
-                        "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_function_struct_*_pointer",
-                        "stmt1": "f_function_struct_*_pointer",
-                        "stmtc0": "c_function_struct_*_pointer",
-                        "stmtc1": "c_function_struct_*_pointer"
+                        "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
             },
             {
                 "<FUNCTION>": "31 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3728,7 +3713,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "d": {
@@ -3841,10 +3827,18 @@
                     "C_prototype": "int i,\t double d,\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "Cstruct1 *",
                     "F_C_arguments": "i,\t d,\t outbuf,\t SHT_outbuf_len",
+                    "F_C_call": "c_return_struct_ptr2_bufferify",
                     "F_C_name": "c_return_struct_ptr2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "i,\t d,\t outbuf,\t SHT_outbuf_len",
+                    "F_arguments": "i,\t d,\t outbuf",
                     "F_name_api": "return_struct_ptr2",
+                    "F_name_function": "return_struct_ptr2",
+                    "F_name_generic": "return_struct_ptr2",
+                    "F_name_impl": "return_struct_ptr2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "returnStructPtr2"
@@ -3868,12 +3862,18 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
+                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
+                        "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_STRUCT"
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "stmt0": "f_function_struct_*_pointer",
+                        "stmt1": "f_function_struct_*_pointer",
+                        "stmtc0": "c_function_struct_*_pointer",
+                        "stmtc1": "c_function_struct_*_pointer"
                     }
                 }
             },
@@ -4959,10 +4959,6 @@
             },
             {
                 "<FUNCTION>": "26 ****************************************",
-                "C_generated_path": [
-                    "getter/setter",
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "32",
                 "_generated": "getter/setter",
                 "ast": {
@@ -5026,50 +5022,21 @@
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "ivalue"
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_ivalue",
-                    "F_C_call": "c_cstruct_list_get_ivalue_bufferify",
-                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
-                    "F_arguments": "SH_this",
                     "F_name_api": "cstruct_list_get_ivalue",
-                    "F_name_function": "cstruct_list_get_ivalue",
-                    "F_name_generic": "cstruct_list_get_ivalue",
-                    "F_name_impl": "cstruct_list_get_ivalue",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_get_ivalue",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "ivalue"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_getter_native_*_cdesc_pointer",
-                        "stmt1": "f_getter_native_*_cdesc_pointer",
-                        "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc_pointer"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "32 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5137,7 +5104,8 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "SH_this": {
@@ -5182,10 +5150,18 @@
                     "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_call": "c_cstruct_list_get_ivalue_bufferify",
                     "F_C_name": "c_cstruct_list_get_ivalue_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
                     "F_name_api": "cstruct_list_get_ivalue",
+                    "F_name_function": "cstruct_list_get_ivalue",
+                    "F_name_generic": "cstruct_list_get_ivalue",
+                    "F_name_impl": "cstruct_list_get_ivalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "field_name": "ivalue",
@@ -5219,14 +5195,22 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
-                        "f_array_allocate": "(nitems+nitems)",
+                        "cxx_type": "int",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -5421,10 +5405,6 @@
             },
             {
                 "<FUNCTION>": "28 ****************************************",
-                "C_generated_path": [
-                    "getter/setter",
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "33",
                 "_generated": "getter/setter",
                 "ast": {
@@ -5488,50 +5468,21 @@
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "dvalue"
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_dvalue",
-                    "F_C_call": "c_cstruct_list_get_dvalue_bufferify",
-                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
-                    "F_arguments": "SH_this",
                     "F_name_api": "cstruct_list_get_dvalue",
-                    "F_name_function": "cstruct_list_get_dvalue",
-                    "F_name_generic": "cstruct_list_get_dvalue",
-                    "F_name_impl": "cstruct_list_get_dvalue",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_get_dvalue",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "dvalue"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "double",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_DOUBLE",
-                        "f_type": "real(C_DOUBLE)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_getter_native_*_cdesc_pointer",
-                        "stmt1": "f_getter_native_*_cdesc_pointer",
-                        "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc_pointer"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "33 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5599,7 +5550,8 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "SH_this": {
@@ -5644,10 +5596,18 @@
                     "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_call": "c_cstruct_list_get_dvalue_bufferify",
                     "F_C_name": "c_cstruct_list_get_dvalue_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
                     "F_name_api": "cstruct_list_get_dvalue",
+                    "F_name_function": "cstruct_list_get_dvalue",
+                    "F_name_generic": "cstruct_list_get_dvalue",
+                    "F_name_impl": "cstruct_list_get_dvalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "double * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "field_name": "dvalue",
@@ -5681,14 +5641,22 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
-                        "f_array_allocate": "(nitems*TWO)",
+                        "cxx_type": "double",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_DOUBLE"
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc_pointer"
                     }
                 }
             },

@@ -1650,10 +1650,6 @@
             {
                 "<FUNCTION>": "10 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "12",
                 "_generated": "fortran_generic",
@@ -1708,44 +1704,20 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "getGroupName",
-                    "F_C_call": "c_get_group_name_int32_t_bufferify",
-                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "idx",
                     "F_name_api": "get_group_name",
-                    "F_name_function": "get_group_name_int32_t",
-                    "F_name_generic": "get_group_name",
-                    "F_name_impl": "get_group_name_int32_t",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
-                        "f_char_len": "len=30",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "12 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -1803,7 +1775,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "idx": {
@@ -1847,10 +1820,18 @@
                     "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_group_name_int32_t_bufferify",
                     "F_C_name": "c_get_group_name_int32_t_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "idx",
                     "F_name_api": "get_group_name",
+                    "F_name_function": "get_group_name_int32_t",
+                    "F_name_generic": "get_group_name",
+                    "F_name_impl": "get_group_name_int32_t",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
@@ -1879,22 +1860,23 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf_copy"
                     }
                 }
             },
             {
                 "<FUNCTION>": "11 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "13",
                 "_generated": "fortran_generic",
@@ -1949,44 +1931,20 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "getGroupName",
-                    "F_C_call": "c_get_group_name_int64_t_bufferify",
-                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "idx",
                     "F_name_api": "get_group_name",
-                    "F_name_function": "get_group_name_int64_t",
-                    "F_name_generic": "get_group_name",
-                    "F_name_impl": "get_group_name_int64_t",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
-                        "f_char_len": "len=30",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "13 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -2044,7 +2002,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "idx": {
@@ -2088,10 +2047,18 @@
                     "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_group_name_int64_t_bufferify",
                     "F_C_name": "c_get_group_name_int64_t_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "idx",
                     "F_name_api": "get_group_name",
+                    "F_name_function": "get_group_name_int64_t",
+                    "F_name_generic": "get_group_name",
+                    "F_name_impl": "get_group_name_int64_t",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
@@ -2120,12 +2087,17 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf_copy"
                     }
                 }
             }

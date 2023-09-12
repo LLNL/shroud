@@ -3,7 +3,7 @@ C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(alloc
 C const std::string * getConstStringPtrAlloc(void) +owner(library)  +api(cdesc)+deref(allocatable)+intent(function)
 Close wrapmemdoc.h
 Close wrapmemdoc.cpp
-Fortran const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
+Fortran const std::string * getConstStringPtrAlloc(void) +owner(library)  +api(cdesc)+deref(allocatable)+intent(function)
 C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
 C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +api(cdesc)+deref(allocatable)+intent(function)
 Close wrapfmemdoc.f

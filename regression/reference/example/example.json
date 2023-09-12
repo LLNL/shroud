@@ -158,9 +158,6 @@
                                     },
                                     {
                                         "<FUNCTION>": "1 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
                                         "_PTR_F_C_index": "10",
                                         "_overloaded": true,
                                         "ast": {
@@ -215,7 +212,6 @@
                                         },
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -291,19 +287,12 @@
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "name,\t SHT_rv",
-                                            "F_C_call": "c_ex_class1_ctor_1_bufferify",
                                             "F_C_name": "c_ex_class1_ctor_1",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
-                                            "F_arguments": "name",
                                             "F_name_api": "ctor",
-                                            "F_name_function": "ctor_1",
                                             "F_name_generic": "ex_class1",
-                                            "F_name_impl": "ex_class1_ctor_1",
                                             "F_result": "SHT_prv",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_method": "tp_init",
@@ -327,20 +316,14 @@
                                                 "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor_shadow_scalar_capptr",
-                                                "stmt1": "f_ctor_shadow_scalar_capptr",
-                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
-                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -376,6 +359,9 @@
                                     },
                                     {
                                         "<FUNCTION>": "10 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
                                         "_PTR_C_CXX_index": "1",
                                         "_generated": "arg_to_buffer",
                                         "_overloaded": true,
@@ -433,7 +419,8 @@
                                         "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtargs": {
                                             "name": {
@@ -480,12 +467,19 @@
                                             "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
+                                            "F_C_call": "c_ex_class1_ctor_1_bufferify",
                                             "F_C_name": "c_ex_class1_ctor_1_bufferify",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
+                                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
+                                            "F_arguments": "name",
                                             "F_name_api": "ctor",
+                                            "F_name_function": "ctor_1",
                                             "F_name_generic": "ex_class1",
+                                            "F_name_impl": "ex_class1_ctor_1",
                                             "F_result": "SHT_prv",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "f_c_suffix": "_bufferify",
                                             "function_name": "ctor",
@@ -507,14 +501,20 @@
                                                 "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                                             }
                                         }
                                     },
@@ -797,9 +797,6 @@
                                     },
                                     {
                                         "<FUNCTION>": "4 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
                                         "_PTR_F_C_index": "11",
                                         "ast": {
                                             "const": true,
@@ -829,7 +826,6 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -839,19 +835,11 @@
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
                                             "C_return_type": "const char *",
                                             "F_C_arguments": "self",
-                                            "F_C_call": "c_ex_class1_get_name_error_check_bufferify",
                                             "F_C_name": "c_ex_class1_get_name_error_check",
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                            "F_arguments": "obj",
                                             "F_name_api": "get_name_error_check",
-                                            "F_name_function": "get_name_error_check",
-                                            "F_name_generic": "get_name_error_check",
-                                            "F_name_impl": "ex_class1_get_name_error_check",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "LUA_name": "getNameErrorCheck",
                                             "LUA_name_api": "getNameErrorCheck",
                                             "LUA_name_impl": "l_example_nested_ExClass1_getNameErrorCheck",
@@ -884,19 +872,11 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "hnamefunc0": "AA_SHROUD_copy_string_and_free",
-                                                "hnamefunc1": "array_context",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_cdesc_allocatable",
-                                                "stmt1": "f_function_string_&_cdesc_allocatable",
-                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
-                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -930,6 +910,9 @@
                                     },
                                     {
                                         "<FUNCTION>": "11 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
                                         "_PTR_C_CXX_index": "4",
                                         "_generated": "arg_to_buffer",
                                         "ast": {
@@ -962,7 +945,8 @@
                                         "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_getNameErrorCheck_bufferify",
@@ -970,10 +954,18 @@
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
+                                            "F_C_call": "c_ex_class1_get_name_error_check_bufferify",
                                             "F_C_name": "c_ex_class1_get_name_error_check_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                            "F_arguments": "obj",
                                             "F_name_api": "get_name_error_check",
+                                            "F_name_function": "get_name_error_check",
+                                            "F_name_generic": "get_name_error_check",
+                                            "F_name_impl": "ex_class1_get_name_error_check",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1004,16 +996,24 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                                "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "hnamefunc0": "AA_SHROUD_copy_string_and_free",
+                                                "hnamefunc1": "array_context",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             }
                                         }
                                     },
                                     {
                                         "<FUNCTION>": "5 ****************************************",
+                                        "_PTR_F_C_index": "12",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -1129,48 +1129,36 @@
                                     },
                                     {
                                         "<FUNCTION>": "12 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
                                         "_PTR_C_CXX_index": "5",
                                         "_generated": "arg_to_buffer",
                                         "ast": {
+                                            "const": true,
                                             "declarator": {
                                                 "func_const": true,
                                                 "metaattrs": {
-                                                    "intent": "subroutine"
+                                                    "api": "buf",
+                                                    "deref": "arg",
+                                                    "intent": "function"
                                                 },
                                                 "name": "getNameArg",
-                                                "params": [
+                                                "params": [],
+                                                "pointer": [
                                                     {
-                                                        "declarator": {
-                                                            "func_const": true,
-                                                            "metaattrs": {
-                                                                "api": "buf",
-                                                                "deref": "result",
-                                                                "intent": "out",
-                                                                "is_result": true
-                                                            },
-                                                            "name": "name",
-                                                            "pointer": [
-                                                                {
-                                                                    "ptr": "&"
-                                                                }
-                                                            ],
-                                                            "typemap_name": "std::string"
-                                                        },
-                                                        "specifier": [
-                                                            "string"
-                                                        ],
-                                                        "typemap_name": "std::string"
+                                                        "ptr": "&"
                                                     }
                                                 ],
-                                                "typemap_name": "void"
+                                                "typemap_name": "std::string"
                                             },
                                             "specifier": [
-                                                "void"
+                                                "string"
                                             ],
-                                            "typemap_name": "void"
+                                            "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "void getNameArg(string & name) const",
+                                        "declgen": "const string & getNameArg(void) const",
                                         "name": "getNameArg",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -1179,56 +1167,28 @@
                                         },
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
-                                        },
-                                        "zz_fmtargs": {
-                                            "name": {
-                                                "fmtc": {
-                                                    "c_addr": "",
-                                                    "c_const": "",
-                                                    "c_deref": "*",
-                                                    "c_member": "->",
-                                                    "c_type": "char",
-                                                    "c_var": "name",
-                                                    "c_var_len": "SHT_name_len",
-                                                    "cfi_type": "CFI_type_other",
-                                                    "cxx_addr": "&",
-                                                    "cxx_member": ".",
-                                                    "cxx_nonconst_ptr": "&SHCXX_rv",
-                                                    "cxx_type": "std::string",
-                                                    "cxx_var": "SHCXX_rv",
-                                                    "hnamefunc0": "ShroudStrCopy",
-                                                    "idtor": "0",
-                                                    "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "c_function_string_&_buf_result",
-                                                    "stmt1": "c_function_string_&_buf_result"
-                                                },
-                                                "fmtf": {
-                                                    "F_C_var": "name",
-                                                    "c_var": "name",
-                                                    "c_var_len": "SHT_name_len",
-                                                    "f_intent": "OUT",
-                                                    "f_kind": "C_CHAR",
-                                                    "f_type": "character(*)",
-                                                    "f_var": "name",
-                                                    "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_function_string_&_buf_result",
-                                                    "stmt1": "f_function_string_&_buf_result",
-                                                    "stmtc0": "c_function_string_&_buf_result",
-                                                    "stmtc1": "c_function_string_&_buf_result"
-                                                }
-                                            }
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_getNameArg_bufferify",
                                             "C_name_api": "getNameArg",
-                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int SHT_name_len",
+                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int nname",
                                             "C_return_type": "void",
-                                            "F_C_arguments": "self,\t name,\t SHT_name_len",
+                                            "F_C_arguments": "self,\t name,\t nname",
+                                            "F_C_call": "c_ex_class1_get_name_arg_bufferify",
                                             "F_C_name": "c_ex_class1_get_name_arg_bufferify",
+                                            "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t name,\t SHT_rv_len",
+                                            "F_arguments": "obj,\t name",
                                             "F_name_api": "get_name_arg",
+                                            "F_name_function": "get_name_arg",
+                                            "F_name_generic": "get_name_arg",
+                                            "F_name_impl": "ex_class1_get_name_arg",
+                                            "F_result_clause": "",
                                             "F_string_result_as_arg": "name",
+                                            "F_subprogram": "subroutine",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1239,97 +1199,36 @@
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
-                                                "c_const": "",
-                                                "c_type": "void",
+                                                "c_const": "const ",
+                                                "c_type": "char",
                                                 "c_var": "SHC_rv",
-                                                "cfi_type": "CFI_type_intptr_t",
+                                                "cfi_type": "CFI_type_other",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
-                                                "cxx_type": "void",
+                                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                                "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
+                                                "hnamefunc0": "ShroudStrCopy",
                                                 "idtor": "0",
-                                                "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_subroutine_void_scalar",
-                                                "stmt1": "c_subroutine_void_scalar"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "13 ****************************************",
-                                        "C_generated_path": [
-                                            "result_as_arg",
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_C_CXX_index": "5",
-                                        "_PTR_F_C_index": "12",
-                                        "_generated": "result_as_arg",
-                                        "ast": {
-                                            "declarator": {
-                                                "func_const": true,
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
-                                                "name": "getNameArg",
-                                                "params": [
-                                                    {
-                                                        "declarator": {
-                                                            "func_const": true,
-                                                            "metaattrs": {
-                                                                "api": "buf",
-                                                                "deref": "result",
-                                                                "intent": "out",
-                                                                "is_result": true
-                                                            },
-                                                            "name": "name",
-                                                            "pointer": [
-                                                                {
-                                                                    "ptr": "&"
-                                                                }
-                                                            ],
-                                                            "typemap_name": "std::string"
-                                                        },
-                                                        "specifier": [
-                                                            "string"
-                                                        ],
-                                                        "typemap_name": "std::string"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "c_function_string_&_buf_arg",
+                                                "stmt1": "c_function_string_&_buf_arg"
                                             },
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "const string& getNameArg() const",
-                                        "declgen": "void getNameArg(string & name) const",
-                                        "name": "getNameArg",
-                                        "options": {},
-                                        "splicer_group": "buf",
-                                        "user_fmt": {
-                                            "F_string_result_as_arg": "name"
-                                        },
-                                        "wrap": {
-                                            "fortran": true
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name_api": "getNameArg",
-                                            "F_C_call": "c_ex_class1_get_name_arg_bufferify",
-                                            "F_arg_c_call": "obj%cxxmem,\t name,\t SHT_name_len",
-                                            "F_arguments": "obj,\t name",
-                                            "F_name_api": "get_name_arg",
-                                            "F_name_function": "get_name_arg",
-                                            "F_name_generic": "get_name_arg",
-                                            "F_name_impl": "ex_class1_get_name_arg",
-                                            "F_string_result_as_arg": "name",
-                                            "F_subprogram": "subroutine",
-                                            "f_c_suffix": "_bufferify",
-                                            "function_name": "getNameArg",
-                                            "function_suffix": "",
-                                            "stmt0": "f_subroutine",
-                                            "stmt1": "f_subroutine",
-                                            "stmtc0": "c_subroutine",
-                                            "stmtc1": "c_subroutine"
+                                            "fmtf": {
+                                                "F_C_var": "SHT_rv",
+                                                "c_var": "SHT_rv",
+                                                "c_var_len": "SHT_rv_len",
+                                                "cxx_type": "std::string",
+                                                "f_intent": "OUT",
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "f_var": "SHT_rv",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_function_string_&_buf_arg",
+                                                "stmt1": "f_function_string_&_buf_arg",
+                                                "stmtc0": "c_function_string_&_buf_arg",
+                                                "stmtc1": "c_function_string_&_buf_arg"
+                                            }
                                         }
                                     },
                                     {
@@ -2104,11 +2003,8 @@
                                 ],
                                 "functions": [
                                     {
-                                        "<FUNCTION>": "14 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_F_C_index": "40",
+                                        "<FUNCTION>": "13 ****************************************",
+                                        "_PTR_F_C_index": "39",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -2163,7 +2059,6 @@
                                         },
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -2239,19 +2134,12 @@
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_arguments": "name,\t SHT_rv",
-                                            "F_C_call": "c_ex_class2_ctor_bufferify",
                                             "F_C_name": "c_ex_class2_ctor",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
-                                            "F_arguments": "name",
                                             "F_name_api": "ctor",
-                                            "F_name_function": "ctor",
                                             "F_name_generic": "ex_class2",
-                                            "F_name_impl": "ex_class2_ctor",
                                             "F_result": "SHT_prv",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "LUA_name": "ctor",
                                             "LUA_name_api": "ctor",
                                             "LUA_name_impl": "l_example_nested_ExClass2_ctor",
@@ -2277,20 +2165,14 @@
                                                 "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass2",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor_shadow_scalar_capptr",
-                                                "stmt1": "f_ctor_shadow_scalar_capptr",
-                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
-                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -2325,8 +2207,11 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "40 ****************************************",
-                                        "_PTR_C_CXX_index": "14",
+                                        "<FUNCTION>": "39 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_PTR_C_CXX_index": "13",
                                         "_generated": "arg_to_buffer",
                                         "_overloaded": true,
                                         "ast": {
@@ -2384,7 +2269,8 @@
                                         "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtargs": {
                                             "name": {
@@ -2431,12 +2317,19 @@
                                             "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
+                                            "F_C_call": "c_ex_class2_ctor_bufferify",
                                             "F_C_name": "c_ex_class2_ctor_bufferify",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
+                                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
+                                            "F_arguments": "name",
                                             "F_name_api": "ctor",
+                                            "F_name_function": "ctor",
                                             "F_name_generic": "ex_class2",
+                                            "F_name_impl": "ex_class2_ctor",
                                             "F_result": "SHT_prv",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "f_c_suffix": "_bufferify",
                                             "function_name": "ctor"
@@ -2457,19 +2350,25 @@
                                                 "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "cxx_type": "example::nested::ExClass2",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                                             }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "15 ****************************************",
+                                        "<FUNCTION>": "14 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
@@ -2543,11 +2442,8 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "16 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_F_C_index": "41",
+                                        "<FUNCTION>": "15 ****************************************",
+                                        "_PTR_F_C_index": "40",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2579,7 +2475,6 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -2589,19 +2484,11 @@
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "const char *",
                                             "F_C_arguments": "self",
-                                            "F_C_call": "c_ex_class2_get_name_bufferify",
                                             "F_C_name": "c_ex_class2_get_name",
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t SHT_rv_len",
-                                            "F_arguments": "obj",
                                             "F_name_api": "get_name",
-                                            "F_name_function": "get_name",
-                                            "F_name_generic": "get_name",
-                                            "F_name_impl": "ex_class2_get_name",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "LUA_name": "getName",
                                             "LUA_name_api": "getName",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName",
@@ -2635,18 +2522,12 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "c_var_len": "SHT_rv_len",
-                                                "cxx_type": "std::string",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_copy",
-                                                "stmt1": "f_function_string_&_buf_copy",
-                                                "stmtc0": "c_function_string_&_buf_copy",
-                                                "stmtc1": "c_function_string_&_buf_copy"
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2679,8 +2560,11 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "41 ****************************************",
-                                        "_PTR_C_CXX_index": "16",
+                                        "<FUNCTION>": "40 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_PTR_C_CXX_index": "15",
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "const": true,
@@ -2715,7 +2599,8 @@
                                         "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_getName_bufferify",
@@ -2723,10 +2608,18 @@
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t char *SHC_rv,\t int SHT_rv_len",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv,\t SHT_rv_len",
+                                            "F_C_call": "c_ex_class2_get_name_bufferify",
                                             "F_C_name": "c_ex_class2_get_name_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t SHT_rv_len",
+                                            "F_arguments": "obj",
                                             "F_name_api": "get_name",
+                                            "F_name_function": "get_name",
+                                            "F_name_generic": "get_name",
+                                            "F_name_impl": "ex_class2_get_name",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2758,21 +2651,23 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
+                                                "cxx_type": "std::string",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_function_string_&_buf_copy",
+                                                "stmt1": "f_function_string_&_buf_copy",
+                                                "stmtc0": "c_function_string_&_buf_copy",
+                                                "stmtc1": "c_function_string_&_buf_copy"
                                             }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "17 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_F_C_index": "42",
+                                        "<FUNCTION>": "16 ****************************************",
+                                        "_PTR_F_C_index": "41",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2800,7 +2695,6 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -2810,18 +2704,10 @@
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "const char *",
                                             "F_C_arguments": "self",
-                                            "F_C_call": "c_ex_class2_get_name2_bufferify",
                                             "F_C_name": "c_ex_class2_get_name2",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                            "F_arguments": "obj",
                                             "F_name_api": "get_name2",
-                                            "F_name_function": "get_name2",
-                                            "F_name_generic": "get_name2",
-                                            "F_name_impl": "ex_class2_get_name2",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "LUA_name": "getName2",
                                             "LUA_name_api": "getName2",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName2",
@@ -2854,19 +2740,11 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "hnamefunc0": "AA_SHROUD_copy_string_and_free",
-                                                "hnamefunc1": "array_context",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_cdesc_allocatable",
-                                                "stmt1": "f_function_string_&_cdesc_allocatable",
-                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
-                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2899,8 +2777,11 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "42 ****************************************",
-                                        "_PTR_C_CXX_index": "17",
+                                        "<FUNCTION>": "41 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_PTR_C_CXX_index": "16",
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "const": true,
@@ -2931,7 +2812,8 @@
                                         "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_getName2_bufferify",
@@ -2939,10 +2821,18 @@
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
+                                            "F_C_call": "c_ex_class2_get_name2_bufferify",
                                             "F_C_name": "c_ex_class2_get_name2_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                            "F_arguments": "obj",
                                             "F_name_api": "get_name2",
+                                            "F_name_function": "get_name2",
+                                            "F_name_generic": "get_name2",
+                                            "F_name_impl": "ex_class2_get_name2",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2973,20 +2863,24 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                                "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "hnamefunc0": "AA_SHROUD_copy_string_and_free",
+                                                "hnamefunc1": "array_context",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "18 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_F_C_index": "43",
+                                        "<FUNCTION>": "17 ****************************************",
+                                        "_PTR_F_C_index": "42",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -3014,7 +2908,6 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
                                             "lua": true,
                                             "python": true
                                         },
@@ -3024,19 +2917,11 @@
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "char *",
                                             "F_C_arguments": "self",
-                                            "F_C_call": "c_ex_class2_get_name3_bufferify",
                                             "F_C_name": "c_ex_class2_get_name3",
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                            "F_arguments": "obj",
                                             "F_name_api": "get_name3",
-                                            "F_name_function": "get_name3",
-                                            "F_name_generic": "get_name3",
-                                            "F_name_impl": "ex_class2_get_name3",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
                                             "LUA_name": "getName3",
                                             "LUA_name_api": "getName3",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName3",
@@ -3069,6 +2954,128 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_intent": "OUT",
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "f_var": "SHT_rv",
+                                                "sh_type": "SH_TYPE_OTHER"
+                                            },
+                                            "fmtl": {
+                                                "c_var": "SHCXX_rv.c_str()",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_var": "SHCXX_rv",
+                                                "push_arg": "SHCXX_rv.c_str()",
+                                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                                "stmt0": "lua_function_string_&",
+                                                "stmt1": "lua_function_string_&"
+                                            },
+                                            "fmtpy": {
+                                                "array_size": "1",
+                                                "c_deref": "",
+                                                "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "SHCXX_rv",
+                                                "data_var": "SHData_rv",
+                                                "numpy_type": null,
+                                                "py_var": "SHTPy_rv",
+                                                "size_var": "SHSize_rv",
+                                                "stmt0": "py_function_string_&",
+                                                "stmt1": "py_function_string_&",
+                                                "value_var": "SHValue_rv"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "<FUNCTION>": "42 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_PTR_C_CXX_index": "17",
+                                        "_generated": "arg_to_buffer",
+                                        "ast": {
+                                            "declarator": {
+                                                "func_const": true,
+                                                "metaattrs": {
+                                                    "api": "cdesc",
+                                                    "deref": "allocatable",
+                                                    "intent": "function"
+                                                },
+                                                "name": "getName3",
+                                                "params": [],
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ],
+                                                "typemap_name": "std::string"
+                                            },
+                                            "specifier": [
+                                                "string"
+                                            ],
+                                            "typemap_name": "std::string"
+                                        },
+                                        "decl": "string& getName3() const",
+                                        "declgen": "string & getName3(void) const",
+                                        "name": "getName3",
+                                        "options": {},
+                                        "splicer_group": "buf",
+                                        "wrap": {
+                                            "c": true,
+                                            "f_c": true,
+                                            "fortran": true
+                                        },
+                                        "zz_fmtdict": {
+                                            "C_name": "AA_example_nested_ExClass2_getName3_bufferify",
+                                            "C_name_api": "getName3",
+                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "self,\t SHT_rv",
+                                            "F_C_call": "c_ex_class2_get_name3_bufferify",
+                                            "F_C_name": "c_ex_class2_get_name3_bufferify",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                            "F_arguments": "obj",
+                                            "F_name_api": "get_name3",
+                                            "F_name_function": "get_name3",
+                                            "F_name_generic": "get_name3",
+                                            "F_name_impl": "ex_class2_get_name3",
+                                            "F_result_clause": "\fresult(SHT_rv)",
+                                            "F_subprogram": "function",
+                                            "c_const": "const ",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_var": "self",
+                                            "cxx_rv_decl": "std::string & SHCXX_rv",
+                                            "f_c_suffix": "_bufferify",
+                                            "function_name": "getName3"
+                                        },
+                                        "zz_fmtresult": {
+                                            "fmtc": {
+                                                "c_const": "",
+                                                "c_type": "char",
+                                                "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
+                                                "cfi_type": "CFI_type_other",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "SHCXX_rv",
+                                                "hnamefunc0": "ShroudStrToArray",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
+                                            },
+                                            "fmtf": {
+                                                "F_C_var": "SHT_rv",
+                                                "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_type": "std::string",
                                                 "f_intent": "OUT",
@@ -3082,6 +3089,88 @@
                                                 "stmt1": "f_function_string_&_cdesc_allocatable",
                                                 "stmtc0": "c_function_string_&_cdesc_allocatable",
                                                 "stmtc1": "c_function_string_&_cdesc_allocatable"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "<FUNCTION>": "18 ****************************************",
+                                        "_PTR_F_C_index": "43",
+                                        "ast": {
+                                            "declarator": {
+                                                "metaattrs": {
+                                                    "deref": "allocatable",
+                                                    "intent": "function"
+                                                },
+                                                "name": "getName4",
+                                                "params": [],
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ],
+                                                "typemap_name": "std::string"
+                                            },
+                                            "specifier": [
+                                                "string"
+                                            ],
+                                            "typemap_name": "std::string"
+                                        },
+                                        "decl": "string& getName4()",
+                                        "declgen": "string & getName4(void)",
+                                        "name": "getName4",
+                                        "options": {},
+                                        "wrap": {
+                                            "c": true,
+                                            "lua": true,
+                                            "python": true
+                                        },
+                                        "zz_fmtdict": {
+                                            "C_name": "AA_example_nested_ExClass2_getName4",
+                                            "C_name_api": "getName4",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self",
+                                            "C_return_type": "char *",
+                                            "F_C_arguments": "self",
+                                            "F_C_name": "c_ex_class2_get_name4",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_name_api": "get_name4",
+                                            "LUA_name": "getName4",
+                                            "LUA_name_api": "getName4",
+                                            "LUA_name_impl": "l_example_nested_ExClass2_getName4",
+                                            "PY_name_impl": "PP_getName4",
+                                            "c_const": "",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_var": "self",
+                                            "cxx_rv_decl": "std::string & SHCXX_rv",
+                                            "function_name": "getName4"
+                                        },
+                                        "zz_fmtresult": {
+                                            "fmtc": {
+                                                "c_const": "",
+                                                "c_rv_decl": "char * SHC_rv",
+                                                "c_type": "char",
+                                                "c_val": "SHCXX_rv.c_str()",
+                                                "c_var": "SHC_rv",
+                                                "cfi_type": "CFI_type_other",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "SHCXX_rv",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmt0": "c_function_string_&_allocatable",
+                                                "stmt1": "c_function_string_&_allocatable"
+                                            },
+                                            "fmtf": {
+                                                "F_C_var": "SHT_rv",
+                                                "c_var": "SHT_rv",
+                                                "f_intent": "OUT",
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "f_var": "SHT_rv",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3115,96 +3204,15 @@
                                     },
                                     {
                                         "<FUNCTION>": "43 ****************************************",
+                                        "C_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
                                         "_PTR_C_CXX_index": "18",
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "declarator": {
-                                                "func_const": true,
                                                 "metaattrs": {
                                                     "api": "cdesc",
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
-                                                },
-                                                "name": "getName3",
-                                                "params": [],
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ],
-                                                "typemap_name": "std::string"
-                                            },
-                                            "specifier": [
-                                                "string"
-                                            ],
-                                            "typemap_name": "std::string"
-                                        },
-                                        "decl": "string& getName3() const",
-                                        "declgen": "string & getName3(void) const",
-                                        "name": "getName3",
-                                        "options": {},
-                                        "splicer_group": "buf",
-                                        "wrap": {
-                                            "c": true,
-                                            "f_c": true
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName3_bufferify",
-                                            "C_name_api": "getName3",
-                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
-                                            "C_return_type": "void",
-                                            "F_C_arguments": "self,\t SHT_rv",
-                                            "F_C_name": "c_ex_class2_get_name3_bufferify",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
-                                            "F_name_api": "get_name3",
-                                            "c_const": "const ",
-                                            "c_deref": "*",
-                                            "c_member": "->",
-                                            "c_var": "self",
-                                            "cxx_rv_decl": "std::string & SHCXX_rv",
-                                            "f_c_suffix": "_bufferify",
-                                            "function_name": "getName3"
-                                        },
-                                        "zz_fmtresult": {
-                                            "fmtc": {
-                                                "c_const": "",
-                                                "c_type": "char",
-                                                "c_var": "SHC_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cfi_type": "CFI_type_other",
-                                                "cxx_addr": "&",
-                                                "cxx_member": ".",
-                                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                                "cxx_type": "std::string",
-                                                "cxx_var": "SHCXX_rv",
-                                                "hnamefunc0": "ShroudStrToArray",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_cdesc_allocatable",
-                                                "stmt1": "c_function_string_&_cdesc_allocatable"
-                                            },
-                                            "fmtf": {
-                                                "F_C_var": "SHT_rv",
-                                                "c_var": "SHT_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "f_intent": "OUT",
-                                                "f_kind": "C_CHAR",
-                                                "f_type": "character(*)",
-                                                "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "19 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
-                                        "_PTR_F_C_index": "44",
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
                                                     "deref": "allocatable",
                                                     "intent": "function"
                                                 },
@@ -3226,22 +3234,22 @@
                                         "declgen": "string & getName4(void)",
                                         "name": "getName4",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
-                                            "fortran": true,
-                                            "lua": true,
-                                            "python": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName4",
+                                            "C_name": "AA_example_nested_ExClass2_getName4_bufferify",
                                             "C_name_api": "getName4",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self",
-                                            "C_return_type": "char *",
-                                            "F_C_arguments": "self",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_call": "c_ex_class2_get_name4_bufferify",
-                                            "F_C_name": "c_ex_class2_get_name4",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
+                                            "F_C_name": "c_ex_class2_get_name4_bufferify",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                             "F_arguments": "obj",
                                             "F_name_api": "get_name4",
@@ -3250,34 +3258,31 @@
                                             "F_name_impl": "ex_class2_get_name4",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
-                                            "LUA_name": "getName4",
-                                            "LUA_name_api": "getName4",
-                                            "LUA_name_impl": "l_example_nested_ExClass2_getName4",
-                                            "PY_name_impl": "PP_getName4",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
+                                            "f_c_suffix": "_bufferify",
                                             "function_name": "getName4"
                                         },
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
-                                                "c_rv_decl": "char * SHC_rv",
                                                 "c_type": "char",
-                                                "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cfi_type": "CFI_type_other",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
+                                                "hnamefunc0": "ShroudStrToArray",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_allocatable",
-                                                "stmt1": "c_function_string_&_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3295,121 +3300,11 @@
                                                 "stmt1": "f_function_string_&_cdesc_allocatable",
                                                 "stmtc0": "c_function_string_&_cdesc_allocatable",
                                                 "stmtc1": "c_function_string_&_cdesc_allocatable"
-                                            },
-                                            "fmtl": {
-                                                "c_var": "SHCXX_rv.c_str()",
-                                                "cxx_addr": "&",
-                                                "cxx_member": ".",
-                                                "cxx_var": "SHCXX_rv",
-                                                "push_arg": "SHCXX_rv.c_str()",
-                                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                "stmt0": "lua_function_string_&",
-                                                "stmt1": "lua_function_string_&"
-                                            },
-                                            "fmtpy": {
-                                                "array_size": "1",
-                                                "c_deref": "",
-                                                "c_var": "SHCXX_rv",
-                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                                                "cxx_addr": "&",
-                                                "cxx_member": ".",
-                                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                                "cxx_type": "std::string",
-                                                "cxx_var": "SHCXX_rv",
-                                                "data_var": "SHData_rv",
-                                                "numpy_type": null,
-                                                "py_var": "SHTPy_rv",
-                                                "size_var": "SHSize_rv",
-                                                "stmt0": "py_function_string_&",
-                                                "stmt1": "py_function_string_&",
-                                                "value_var": "SHValue_rv"
                                             }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "44 ****************************************",
-                                        "_PTR_C_CXX_index": "19",
-                                        "_generated": "arg_to_buffer",
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
-                                                    "api": "cdesc",
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
-                                                },
-                                                "name": "getName4",
-                                                "params": [],
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ],
-                                                "typemap_name": "std::string"
-                                            },
-                                            "specifier": [
-                                                "string"
-                                            ],
-                                            "typemap_name": "std::string"
-                                        },
-                                        "decl": "string& getName4()",
-                                        "declgen": "string & getName4(void)",
-                                        "name": "getName4",
-                                        "options": {},
-                                        "splicer_group": "buf",
-                                        "wrap": {
-                                            "c": true,
-                                            "f_c": true
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName4_bufferify",
-                                            "C_name_api": "getName4",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
-                                            "C_return_type": "void",
-                                            "F_C_arguments": "self,\t SHT_rv",
-                                            "F_C_name": "c_ex_class2_get_name4_bufferify",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
-                                            "F_name_api": "get_name4",
-                                            "c_const": "",
-                                            "c_deref": "*",
-                                            "c_member": "->",
-                                            "c_var": "self",
-                                            "cxx_rv_decl": "std::string & SHCXX_rv",
-                                            "f_c_suffix": "_bufferify",
-                                            "function_name": "getName4"
-                                        },
-                                        "zz_fmtresult": {
-                                            "fmtc": {
-                                                "c_const": "",
-                                                "c_type": "char",
-                                                "c_var": "SHC_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cfi_type": "CFI_type_other",
-                                                "cxx_addr": "&",
-                                                "cxx_member": ".",
-                                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                                "cxx_type": "std::string",
-                                                "cxx_var": "SHCXX_rv",
-                                                "hnamefunc0": "ShroudStrToArray",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_cdesc_allocatable",
-                                                "stmt1": "c_function_string_&_cdesc_allocatable"
-                                            },
-                                            "fmtf": {
-                                                "F_C_var": "SHT_rv",
-                                                "c_var": "SHT_rv",
-                                                "c_var_cdesc": "SHT_rv_cdesc",
-                                                "f_intent": "OUT",
-                                                "f_kind": "C_CHAR",
-                                                "f_type": "character(*)",
-                                                "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "20 ****************************************",
+                                        "<FUNCTION>": "19 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -3535,7 +3430,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "21 ****************************************",
+                                        "<FUNCTION>": "20 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
@@ -3758,7 +3653,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "27 ****************************************",
+                                        "<FUNCTION>": "26 ****************************************",
                                         "_generated": "has_default_arg",
                                         "_overloaded": true,
                                         "ast": {
@@ -3891,7 +3786,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "34 ****************************************",
+                                        "<FUNCTION>": "33 ****************************************",
                                         "_generated": "return_this",
                                         "_overloaded": true,
                                         "ast": {
@@ -4073,12 +3968,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "36 ****************************************",
+                                        "<FUNCTION>": "35 ****************************************",
                                         "C_generated_path": [
                                             "fortran_generic",
                                             "return_this"
                                         ],
-                                        "_PTR_F_C_index": "34",
+                                        "_PTR_F_C_index": "33",
                                         "_generated": "fortran_generic",
                                         "_overloaded": true,
                                         "ast": {
@@ -4156,12 +4051,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "37 ****************************************",
+                                        "<FUNCTION>": "36 ****************************************",
                                         "C_generated_path": [
                                             "fortran_generic",
                                             "return_this"
                                         ],
-                                        "_PTR_F_C_index": "34",
+                                        "_PTR_F_C_index": "33",
                                         "_generated": "fortran_generic",
                                         "_overloaded": true,
                                         "ast": {
@@ -4239,9 +4134,9 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "22 ****************************************",
+                                        "<FUNCTION>": "21 ****************************************",
                                         "_default_funcs": [
-                                            27
+                                            26
                                         ],
                                         "_has_default_arg": true,
                                         "_nargs": [
@@ -4508,9 +4403,9 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "35 ****************************************",
+                                        "<FUNCTION>": "34 ****************************************",
                                         "_default_funcs": [
-                                            27
+                                            26
                                         ],
                                         "_generated": "return_this",
                                         "_has_default_arg": true,
@@ -4749,14 +4644,14 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "38 ****************************************",
+                                        "<FUNCTION>": "37 ****************************************",
                                         "C_generated_path": [
                                             "fortran_generic",
                                             "return_this"
                                         ],
-                                        "_PTR_F_C_index": "35",
+                                        "_PTR_F_C_index": "34",
                                         "_default_funcs": [
-                                            27
+                                            26
                                         ],
                                         "_generated": "fortran_generic",
                                         "_has_default_arg": true,
@@ -4840,14 +4735,14 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "39 ****************************************",
+                                        "<FUNCTION>": "38 ****************************************",
                                         "C_generated_path": [
                                             "fortran_generic",
                                             "return_this"
                                         ],
-                                        "_PTR_F_C_index": "35",
+                                        "_PTR_F_C_index": "34",
                                         "_default_funcs": [
-                                            27
+                                            26
                                         ],
                                         "_generated": "fortran_generic",
                                         "_has_default_arg": true,
@@ -4931,7 +4826,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "23 ****************************************",
+                                        "<FUNCTION>": "22 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
@@ -4995,7 +4890,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "24 ****************************************",
+                                        "<FUNCTION>": "23 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -5116,7 +5011,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "25 ****************************************",
+                                        "<FUNCTION>": "24 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5218,7 +5113,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "28 ****************************************",
+                                        "<FUNCTION>": "27 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -5425,7 +5320,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "29 ****************************************",
+                                        "<FUNCTION>": "28 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -5629,7 +5524,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "30 ****************************************",
+                                        "<FUNCTION>": "29 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -5833,7 +5728,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "31 ****************************************",
+                                        "<FUNCTION>": "30 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -6043,7 +5938,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "26 ****************************************",
+                                        "<FUNCTION>": "25 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6104,7 +5999,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "32 ****************************************",
+                                        "<FUNCTION>": "31 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -6257,7 +6152,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "33 ****************************************",
+                                        "<FUNCTION>": "32 ****************************************",
                                         "C_generated_path": [
                                             "cxx_template"
                                         ],
@@ -6479,7 +6374,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "45 ****************************************",
+                                "<FUNCTION>": "44 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6538,11 +6433,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "46 ****************************************",
-                                "C_generated_path": [
-                                    "arg_to_buffer"
-                                ],
-                                "_PTR_F_C_index": "64",
+                                "<FUNCTION>": "45 ****************************************",
+                                "_PTR_F_C_index": "63",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6594,7 +6486,6 @@
                                 },
                                 "wrap": {
                                     "c": true,
-                                    "fortran": true,
                                     "lua": true,
                                     "python": true
                                 },
@@ -6670,18 +6561,10 @@
                                     "C_prototype": "const char * name",
                                     "C_return_type": "bool",
                                     "F_C_arguments": "name",
-                                    "F_C_call": "c_is_name_valid_bufferify",
                                     "F_C_name": "c_is_name_valid",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
-                                    "F_arg_c_call": "name,\t SHT_name_len",
-                                    "F_arguments": "name",
                                     "F_name_api": "is_name_valid",
-                                    "F_name_function": "is_name_valid",
-                                    "F_name_generic": "is_name_valid",
-                                    "F_name_impl": "is_name_valid",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
                                     "LUA_name": "isNameValid",
                                     "LUA_name_api": "isNameValid",
                                     "LUA_name_impl": "l_example_nested_isNameValid",
@@ -6709,16 +6592,11 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "bool",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
-                                        "sh_type": "SH_TYPE_BOOL",
-                                        "stmt0": "f_function_bool_scalar",
-                                        "stmt1": "f_function_bool_scalar",
-                                        "stmtc0": "c_function_bool_scalar",
-                                        "stmtc1": "c_function_bool_scalar"
+                                        "sh_type": "SH_TYPE_BOOL"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -6751,8 +6629,11 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "64 ****************************************",
-                                "_PTR_C_CXX_index": "46",
+                                "<FUNCTION>": "63 ****************************************",
+                                "C_generated_path": [
+                                    "arg_to_buffer"
+                                ],
+                                "_PTR_C_CXX_index": "45",
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {
@@ -6807,7 +6688,8 @@
                                 "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true
+                                    "f_c": true,
+                                    "fortran": true
                                 },
                                 "zz_fmtargs": {
                                     "name": {
@@ -6854,10 +6736,18 @@
                                     "C_prototype": "char *name,\t int SHT_name_len",
                                     "C_return_type": "bool",
                                     "F_C_arguments": "name,\t SHT_name_len",
+                                    "F_C_call": "c_is_name_valid_bufferify",
                                     "F_C_name": "c_is_name_valid_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
+                                    "F_arg_c_call": "name,\t SHT_name_len",
+                                    "F_arguments": "name",
                                     "F_name_api": "is_name_valid",
+                                    "F_name_function": "is_name_valid",
+                                    "F_name_generic": "is_name_valid",
+                                    "F_name_impl": "is_name_valid",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "f_c_suffix": "_bufferify",
                                     "function_name": "isNameValid"
@@ -6882,16 +6772,21 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
+                                        "cxx_type": "bool",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
-                                        "sh_type": "SH_TYPE_BOOL"
+                                        "sh_type": "SH_TYPE_BOOL",
+                                        "stmt0": "f_function_bool_scalar",
+                                        "stmt1": "f_function_bool_scalar",
+                                        "stmtc0": "c_function_bool_scalar",
+                                        "stmtc1": "c_function_bool_scalar"
                                     }
                                 }
                             },
                             {
-                                "<FUNCTION>": "47 ****************************************",
+                                "<FUNCTION>": "46 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -7003,11 +6898,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "48 ****************************************",
-                                "C_generated_path": [
-                                    "arg_to_buffer"
-                                ],
-                                "_PTR_F_C_index": "65",
+                                "<FUNCTION>": "47 ****************************************",
+                                "_PTR_F_C_index": "64",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7052,7 +6944,6 @@
                                 },
                                 "wrap": {
                                     "c": true,
-                                    "fortran": true,
                                     "lua": true,
                                     "python": true
                                 },
@@ -7128,26 +7019,17 @@
                                     "C_prototype": "const char * name",
                                     "C_return_type": "void",
                                     "F_C_arguments": "name",
-                                    "F_C_call": "c_test_names_bufferify",
                                     "F_C_name": "c_test_names",
                                     "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "name,\t SHT_name_len",
-                                    "F_arguments": "name",
                                     "F_name_api": "test_names",
-                                    "F_name_function": "test_names",
-                                    "F_name_generic": "test_names",
-                                    "F_name_impl": "test_names",
-                                    "F_subprogram": "subroutine",
                                     "LUA_name": "test_names",
                                     "LUA_name_api": "test_names",
                                     "LUA_name_impl": "l_example_nested_test_names",
                                     "PY_name_impl": "PP_test_names",
                                     "function_name": "test_names",
                                     "function_suffix": "",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine"
+                                    "stmt0": "c_subroutine",
+                                    "stmt1": "c_subroutine"
                                 },
                                 "zz_fmtresult": {
                                     "fmtl": {
@@ -7157,8 +7039,11 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "65 ****************************************",
-                                "_PTR_C_CXX_index": "48",
+                                "<FUNCTION>": "64 ****************************************",
+                                "C_generated_path": [
+                                    "arg_to_buffer"
+                                ],
+                                "_PTR_C_CXX_index": "47",
                                 "_generated": "arg_to_buffer",
                                 "_overloaded": true,
                                 "ast": {
@@ -7206,7 +7091,8 @@
                                 },
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true
+                                    "f_c": true,
+                                    "fortran": true
                                 },
                                 "zz_fmtargs": {
                                     "name": {
@@ -7253,22 +7139,28 @@
                                     "C_prototype": "char *name,\t int SHT_name_len",
                                     "C_return_type": "void",
                                     "F_C_arguments": "name,\t SHT_name_len",
+                                    "F_C_call": "c_test_names_bufferify",
                                     "F_C_name": "c_test_names_bufferify",
                                     "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "name,\t SHT_name_len",
+                                    "F_arguments": "name",
                                     "F_name_api": "test_names",
+                                    "F_name_function": "test_names",
+                                    "F_name_generic": "test_names",
+                                    "F_name_impl": "test_names",
+                                    "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
                                     "function_suffix": "",
-                                    "stmt0": "c_subroutine",
-                                    "stmt1": "c_subroutine"
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_subroutine",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine"
                                 }
                             },
                             {
-                                "<FUNCTION>": "49 ****************************************",
-                                "C_generated_path": [
-                                    "arg_to_buffer"
-                                ],
-                                "_PTR_F_C_index": "66",
+                                "<FUNCTION>": "48 ****************************************",
+                                "_PTR_F_C_index": "65",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7329,7 +7221,6 @@
                                 },
                                 "wrap": {
                                     "c": true,
-                                    "fortran": true,
                                     "lua": true,
                                     "python": true
                                 },
@@ -7467,23 +7358,14 @@
                                     "C_prototype": "const char * name,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_arguments": "name,\t flag",
-                                    "F_C_call": "c_test_names_flag_bufferify",
                                     "F_C_name": "c_test_names_flag",
                                     "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "name,\t SHT_name_len,\t flag",
-                                    "F_arguments": "name,\t flag",
                                     "F_name_api": "test_names",
-                                    "F_name_function": "test_names_flag",
-                                    "F_name_generic": "test_names",
-                                    "F_name_impl": "test_names_flag",
-                                    "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_test_names_flag",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine"
+                                    "stmt0": "c_subroutine",
+                                    "stmt1": "c_subroutine"
                                 },
                                 "zz_fmtresult": {
                                     "fmtl": {
@@ -7493,8 +7375,11 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "66 ****************************************",
-                                "_PTR_C_CXX_index": "49",
+                                "<FUNCTION>": "65 ****************************************",
+                                "C_generated_path": [
+                                    "arg_to_buffer"
+                                ],
+                                "_PTR_C_CXX_index": "48",
                                 "_generated": "arg_to_buffer",
                                 "_overloaded": true,
                                 "ast": {
@@ -7558,7 +7443,8 @@
                                 },
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true
+                                    "f_c": true,
+                                    "fortran": true
                                 },
                                 "zz_fmtargs": {
                                     "flag": {
@@ -7638,18 +7524,27 @@
                                     "C_prototype": "char *name,\t int SHT_name_len,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_arguments": "name,\t SHT_name_len,\t flag",
+                                    "F_C_call": "c_test_names_flag_bufferify",
                                     "F_C_name": "c_test_names_flag_bufferify",
                                     "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "name,\t SHT_name_len,\t flag",
+                                    "F_arguments": "name,\t flag",
                                     "F_name_api": "test_names",
+                                    "F_name_function": "test_names_flag",
+                                    "F_name_generic": "test_names",
+                                    "F_name_impl": "test_names_flag",
+                                    "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
-                                    "stmt0": "c_subroutine",
-                                    "stmt1": "c_subroutine"
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_subroutine",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine"
                                 }
                             },
                             {
-                                "<FUNCTION>": "62 ****************************************",
+                                "<FUNCTION>": "61 ****************************************",
                                 "C_generated_path": [
                                     "has_default_arg"
                                 ],
@@ -7702,7 +7597,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "63 ****************************************",
+                                "<FUNCTION>": "62 ****************************************",
                                 "C_generated_path": [
                                     "has_default_arg"
                                 ],
@@ -7810,10 +7705,10 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "50 ****************************************",
+                                "<FUNCTION>": "49 ****************************************",
                                 "_default_funcs": [
-                                    62,
-                                    63
+                                    61,
+                                    62
                                 ],
                                 "_has_default_arg": true,
                                 "_nargs": [
@@ -8052,7 +7947,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "51 ****************************************",
+                                "<FUNCTION>": "50 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8163,7 +8058,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "52 ****************************************",
+                                "<FUNCTION>": "51 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8318,7 +8213,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "53 ****************************************",
+                                "<FUNCTION>": "52 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8379,7 +8274,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "54 ****************************************",
+                                "<FUNCTION>": "53 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8531,7 +8426,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "55 ****************************************",
+                                "<FUNCTION>": "54 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8687,7 +8582,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "56 ****************************************",
+                                "<FUNCTION>": "55 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8868,7 +8763,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "57 ****************************************",
+                                "<FUNCTION>": "56 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -9009,7 +8904,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "58 ****************************************",
+                                "<FUNCTION>": "57 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -9289,7 +9184,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "59 ****************************************",
+                                "<FUNCTION>": "58 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -10235,7 +10130,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "60 ****************************************",
+                                "<FUNCTION>": "59 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -11175,7 +11070,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "61 ****************************************",
+                                "<FUNCTION>": "60 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {

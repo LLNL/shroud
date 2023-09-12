@@ -5,7 +5,7 @@ C const string & getNameErrorPattern(void) +len(get_name_length())  +api(buf)+de
 Close wrapstatement.h
 Close wrapstatement.cpp
 Fortran int GetNameLength(void) +pure  +intent(function)
-Fortran const string & getNameErrorPattern(void) +len(get_name_length())  +deref(copy)+intent(function)
+Fortran const string & getNameErrorPattern(void) +len(get_name_length())  +api(buf)+deref(copy)+intent(function)
 C-interface int GetNameLength(void) +pure  +intent(function)
 C-interface const string & getNameErrorPattern(void) +len(get_name_length())  +deref(copy)+intent(function)
 C-interface const string & getNameErrorPattern(void) +len(get_name_length())  +api(buf)+deref(copy)+intent(function)

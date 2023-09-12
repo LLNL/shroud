@@ -44,7 +44,7 @@ Fortran double PassByValue(double arg1 +value, int arg2 +value)  +intent(functio
 Fortran void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))  +intent(subroutine)
 Fortran double PassByValueMacro(int arg2 +value)  +intent(function)
 Fortran void checkBool(const bool arg1 +value, bool * arg2 +intent(out), bool * arg3 +intent(inout))  +intent(subroutine)
-Fortran char * Function4a(const char * arg1, const char * arg2) +len(30)  +deref(copy)+intent(function)
+Fortran char * Function4a(const char * arg1, const char * arg2) +len(30)  +api(buf)+deref(copy)+intent(function)
 Fortran void acceptName(const char * name)  +intent(subroutine)
 Fortran void passCharPtrInOut(char * s +intent(inout))  +intent(subroutine)
 Fortran void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))  +intent(subroutine)

@@ -5361,10 +5361,6 @@
             {
                 "<FUNCTION>": "27 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "31",
                 "_generated": "fortran_generic",
@@ -5459,30 +5455,20 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
-                    "F_arg_c_call": "SHT_addr_cdesc",
-                    "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
-                    "F_name_function": "get_pointer_as_pointer_float1d",
-                    "F_name_generic": "get_pointer_as_pointer",
-                    "F_name_impl": "get_pointer_as_pointer_float1d",
-                    "F_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_suffix": "_float1d"
                 }
             },
             {
                 "<FUNCTION>": "31 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "27",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -5580,7 +5566,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -5692,23 +5679,28 @@
                     "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_addr_cdesc",
+                    "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
                     "F_C_name": "c_get_pointer_as_pointer_float1d_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_addr_cdesc",
+                    "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
+                    "F_name_function": "get_pointer_as_pointer_float1d",
+                    "F_name_generic": "get_pointer_as_pointer",
+                    "F_name_impl": "get_pointer_as_pointer_float1d",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "28 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
@@ -5803,30 +5795,20 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
-                    "F_arg_c_call": "SHT_addr_cdesc",
-                    "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
-                    "F_name_function": "get_pointer_as_pointer_float2d",
-                    "F_name_generic": "get_pointer_as_pointer",
-                    "F_name_impl": "get_pointer_as_pointer_float2d",
-                    "F_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_suffix": "_float2d"
                 }
             },
             {
                 "<FUNCTION>": "32 ****************************************",
                 "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -5924,7 +5906,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -6036,14 +6019,23 @@
                     "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_addr_cdesc",
+                    "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
                     "F_C_name": "c_get_pointer_as_pointer_float2d_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_addr_cdesc",
+                    "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
+                    "F_name_function": "get_pointer_as_pointer_float2d",
+                    "F_name_generic": "get_pointer_as_pointer",
+                    "F_name_impl": "get_pointer_as_pointer_float2d",
+                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine"
                 }
             },
             {

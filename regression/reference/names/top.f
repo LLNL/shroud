@@ -573,7 +573,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +len(worklen)+len_trim(worktrim)
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
@@ -660,7 +660,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & rv
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
@@ -697,7 +697,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf

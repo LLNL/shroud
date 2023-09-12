@@ -55,7 +55,7 @@ void STR_getCharPtr2_bufferify(char *SHC_rv, int SHT_rv_len);
 
 const char * STR_getCharPtr3(void);
 
-void STR_getCharPtr3_bufferify(char *output, int SHT_output_len);
+void STR_getCharPtr3_bufferify(char *output, int noutput);
 
 const char * STR_getCharPtr4(void);
 
@@ -71,8 +71,7 @@ void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-void STR_getConstStringAsArg_bufferify(char *output,
-    int SHT_output_len);
+void STR_getConstStringAsArg_bufferify(char *output, int noutput);
 
 void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
 
@@ -87,8 +86,7 @@ void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
 const char * STR_getConstStringRefAsArg(void);
 
-void STR_getConstStringRefAsArg_bufferify(char *output,
-    int SHT_output_len);
+void STR_getConstStringRefAsArg_bufferify(char *output, int noutput);
 
 const char * STR_getConstStringRefLenEmpty(void);
 

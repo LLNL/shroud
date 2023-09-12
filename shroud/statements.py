@@ -803,6 +803,41 @@ fc_statements = [
 
     # Convert function result to character argument
     dict(
+        name="fc_mixin_function_buf_character-arg",
+        f_result="subroutine",
+        f_arg_name=["{F_string_result_as_arg}"],
+        f_arg_decl=[
+            "character(*), intent(OUT) :: {F_string_result_as_arg}",
+        ],
+        f_temps=["len"],
+        f_declare=[
+            "integer(C_INT) {c_var_len}",
+        ],
+        f_pre_call=[
+            "{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)",
+        ],
+        f_arg_call=[
+            "{F_string_result_as_arg}",
+            "{c_var_len}",
+        ],
+
+        # fc_mixin_function-to-subroutine
+        c_return_type = "void",
+
+        c_arg_decl=[
+            "char *{F_string_result_as_arg}",
+            "int n{F_string_result_as_arg}",
+        ],
+        i_arg_names=["{F_string_result_as_arg}", "n{F_string_result_as_arg}"],
+        i_arg_decl=[
+            "character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)",
+            "integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}",
+        ],
+        i_module_line="iso_c_binding:C_CHAR,C_INT",
+    ),
+    
+    # Convert function result to character argument
+    dict(
         name="fc_mixin_function_cfi_character-arg",
         f_result = "subroutine",
         f_arg_name=["{F_string_result_as_arg}"],
@@ -1821,6 +1856,9 @@ fc_statements = [
 
     dict(
         name="fc_function_char_*_arg",
+        mixin=[
+            "fc_mixin_function_buf_character-arg",
+        ],
         alias=[
             "f_function_char_*_arg",
             "c_function_char_*_arg",
@@ -1829,37 +1867,50 @@ fc_statements = [
         ],
         # convert to subroutine
 
-        
-        f_arg_name=["namehere1"],
-        f_arg_decl=[
-            "character(*), intent(OUT) :: namehere2",
-        ],
-        f_arg_call=[
-            "namehere3",
-            "len(namehere3)",
-        ],
 
-        # fc_mixin_function-to-subroutine
-        c_return_type = "void",
-#        f_call=[
-#            "FFFFF",
-#        ],
-
-        c_arg_decl=[
-            "char name",
-            "int lenname",
-        ],
-        i_arg_names=["name", "lenname"],
-        i_arg_decl=[
-            "character, intent(OUT) :: namehere2(*)",
-            "integer(C_INT), intent(IN) :: lname2",
-        ],
-
+        c_helper="ShroudStrCopy",
         c_post_call=[
-            "// copy into argument",
+            # nsrc=-1 will call strlen({c_var_str})
+            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
+            "\t {c_var},\t -1);",
         ]
     ),
-    
+
+    dict(
+        name="fc_function_char_*_cdesc_arg",
+        alias=[
+            "f_function_char_*_cdesc_arg",
+            "c_function_char_*_cdesc_arg",
+        ],
+    ),
+
+    dict(
+        name="fc_function_string_scalar_buf_arg",
+        mixin=[
+            "fc_mixin_function_buf_character-arg",
+        ],
+        alias=[
+            "f_function_string_scalar_buf_arg",
+            "c_function_string_scalar_buf_arg",
+
+            "fc_function_string_&_buf_arg",
+            "f_function_string_&_buf_arg",
+            "c_function_string_&_buf_arg",
+        ],
+        # XXX make as a mixin.
+        # See c_function_string_scalar_buf_result
+        c_helper="ShroudStrCopy",
+        c_post_call=[
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
+            "\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
+            "\t {cxx_var}{cxx_member}data(),"
+            "\t {cxx_var}{cxx_member}size());",
+            "-}}",
+        ],
+    ),
 
 ##-    dict(
 ##-        # Used with both deref allocatable and pointer.

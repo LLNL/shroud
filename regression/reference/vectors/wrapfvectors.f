@@ -136,13 +136,13 @@ module vectors_mod
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
-                result(SHT_rv) &
+                result(num) &
                 bind(C, name="VEC_vector_iota_out_with_num_bufferify")
             use iso_c_binding, only : C_LONG
             import :: VEC_SHROUD_array
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
-            integer(C_LONG) SHT_rv
+            integer(C_LONG) num
         end function c_vector_iota_out_with_num_bufferify
     end interface
     ! end c_vector_iota_out_with_num_bufferify
@@ -440,7 +440,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_native_scalar
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_scalar
@@ -465,7 +465,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
@@ -495,7 +495,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
@@ -530,7 +530,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
@@ -566,7 +566,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
@@ -597,7 +597,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(inout)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
     ! Exact:     c_inout_vector_&_cdesc_allocatable_targ_native_scalar
@@ -630,7 +630,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(cdesc)+intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(inout)
     ! Exact:     c_inout_vector_&_cdesc_targ_native_scalar
@@ -655,7 +655,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
@@ -683,7 +683,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_native_*
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_*
@@ -719,7 +719,7 @@ contains
     ! Exact:     c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_string_scalar
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_string_scalar
@@ -747,7 +747,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_string_scalar
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_targ_string_scalar
@@ -782,7 +782,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
@@ -812,7 +812,7 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
@@ -835,7 +835,7 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar

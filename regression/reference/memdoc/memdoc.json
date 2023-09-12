@@ -12,9 +12,6 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "1",
                 "ast": {
                     "const": true,
@@ -45,8 +42,7 @@
                 "name": "getConstStringPtrAlloc",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrAlloc",
@@ -54,18 +50,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_alloc",
-                    "F_name_function": "get_const_string_ptr_alloc",
-                    "F_name_generic": "get_const_string_ptr_alloc",
-                    "F_name_impl": "get_const_string_ptr_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc"
                 },
@@ -90,24 +78,19 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_*_cdesc_allocatable_library",
-                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
             {
                 "<FUNCTION>": "1 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "const": true,
@@ -141,7 +124,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrAlloc_bufferify",
@@ -149,10 +133,18 @@
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_alloc",
+                    "F_name_function": "get_const_string_ptr_alloc",
+                    "F_name_generic": "get_const_string_ptr_alloc",
+                    "F_name_impl": "get_const_string_ptr_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrAlloc"
@@ -179,11 +171,18 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_*_cdesc_allocatable_library",
+                        "stmt1": "f_function_string_*_cdesc_allocatable_library",
+                        "stmtc0": "c_function_string_*_cdesc_allocatable",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable"
                     }
                 }
             }

@@ -1559,7 +1559,7 @@ class GenFunctions(object):
                 attrs[name] = c_attrs[name]
                 del c_attrs[name]
 
-    def result_as_arg(self, node, C_new):
+    def XXXresult_as_arg(self, node, C_new):
         """
         Create a Fortran function for a C function which has the
         result added as an argument.
@@ -2005,12 +2005,18 @@ class GenFunctions(object):
         C_new.splicer_group = "buf"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
+        if result_as_arg:
+            C_new.ast.declarator.metaattrs["deref"] = "arg"
+            # Special case for wrapf.py to override "allocatable"
+            node.ast.declarator.metaattrs["deref"] = None
+            # XXX - the legacy wrapper uses buf, easier to call from C.
+            C_new.ast.declarator.metaattrs["api"] = "buf"
         
         fmt_func = C_new.fmtdict
         fmt_func.f_c_suffix = fmt_func.C_bufferify_suffix
 
         options = C_new.options
-        C_new.wrap.assign(c=node.options.wrap_c)
+        C_new.wrap.assign(c=True, fortran=True)  # XXX - f_c
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
@@ -2030,40 +2036,12 @@ class GenFunctions(object):
                 node.wrap.c = False
                 node.wrap.lua = False  # NotImplemented
 
-        ast = C_new.ast
-        if True: # preserve to avoid changing indention for now.
-            # Add additional argument to hold result.
-            # This will allocate a new character variable to hold the
-            # results of the C++ function.
-            f_attrs = node.ast.declarator.attrs  # Fortran function attributes
-            f_meta = node.ast.declarator.metaattrs  # Fortran function attributes
-
-            if result_as_arg:
-                # decl: const char * getCharPtr2() +len(30)
-                # +len implies copying into users buffer.
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.declarator.attrs
-                # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = None
-                # We've added an argument to fill, use api=buf.
-                result_as_string.declarator.metaattrs["api"] = "buf"
-                result_as_string.declarator.metaattrs["deref"] = "result"
-                result_as_string.declarator.metaattrs["is_result"] = True
-                C_new.ast.declarator.metaattrs["api"] = None
-                C_new.ast.declarator.metaattrs["intent"] = "subroutine"
-                C_new.ast.declarator.metaattrs["deref"] = None
-
-        if result_as_arg:
-            F_new = self.result_as_arg(node, C_new)
-            ordered_functions.append(F_new)
-            self.append_function_index(F_new)
-        else:
-            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
-                node.wrap.c = False
+        node.wrap.fortran = False
+        if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
+            node.wrap.c = False
             
-            # Fortran function may call C subroutine if string/vector result
-            node._PTR_F_C_index = C_new._function_index
+        # Fortran function may call C subroutine if string/vector result
+        node._PTR_F_C_index = C_new._function_index
 
     def XXXcheck_class_dependencies(self, node):
         """
