@@ -86,13 +86,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_unknown_scalar
+    ! Exact:     f_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
@@ -104,13 +104,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_shadow_*
+    ! Exact:     f_inout_shadow_*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

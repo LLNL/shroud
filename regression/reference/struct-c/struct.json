@@ -734,8 +734,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
                                 "stmt1": "f_getter_native_scalar",
-                                "stmtc0": "c_getter_native_scalar",
-                                "stmtc1": "c_getter_native_scalar"
+                                "stmtc0": "f_getter_native_scalar",
+                                "stmtc1": "f_getter_native_scalar"
                             }
                         }
                     },
@@ -821,8 +821,8 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
                                     "stmt1": "f_setter_native_scalar",
-                                    "stmtc0": "c_setter_native_scalar",
-                                    "stmtc1": "c_setter_native_scalar"
+                                    "stmtc0": "f_setter_native_scalar",
+                                    "stmtc1": "f_setter_native_scalar"
                                 }
                             }
                         },
@@ -851,8 +851,8 @@
                             "function_name": "set_x1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc0": "f_setter",
+                            "stmtc1": "f_setter",
                             "struct_name": "Cstruct_as_class",
                             "wrapped_name": "x1"
                         }
@@ -945,8 +945,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
                                 "stmt1": "f_getter_native_scalar",
-                                "stmtc0": "c_getter_native_scalar",
-                                "stmtc1": "c_getter_native_scalar"
+                                "stmtc0": "f_getter_native_scalar",
+                                "stmtc1": "f_getter_native_scalar"
                             }
                         }
                     },
@@ -1032,8 +1032,8 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
                                     "stmt1": "f_setter_native_scalar",
-                                    "stmtc0": "c_setter_native_scalar",
-                                    "stmtc1": "c_setter_native_scalar"
+                                    "stmtc0": "f_setter_native_scalar",
+                                    "stmtc1": "f_setter_native_scalar"
                                 }
                             }
                         },
@@ -1062,8 +1062,8 @@
                             "function_name": "set_y1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc0": "f_setter",
+                            "stmtc1": "f_setter",
                             "struct_name": "Cstruct_as_class",
                             "wrapped_name": "y1"
                         }
@@ -1252,8 +1252,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
                                 "stmt1": "f_getter_native_scalar",
-                                "stmtc0": "c_getter_native_scalar",
-                                "stmtc1": "c_getter_native_scalar"
+                                "stmtc0": "f_getter_native_scalar",
+                                "stmtc1": "f_getter_native_scalar"
                             }
                         }
                     },
@@ -1339,8 +1339,8 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
                                     "stmt1": "f_setter_native_scalar",
-                                    "stmtc0": "c_setter_native_scalar",
-                                    "stmtc1": "c_setter_native_scalar"
+                                    "stmtc0": "f_setter_native_scalar",
+                                    "stmtc1": "f_setter_native_scalar"
                                 }
                             }
                         },
@@ -1369,8 +1369,8 @@
                             "function_name": "set_x1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc0": "f_setter",
+                            "stmtc1": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "x1"
                         }
@@ -1463,8 +1463,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
                                 "stmt1": "f_getter_native_scalar",
-                                "stmtc0": "c_getter_native_scalar",
-                                "stmtc1": "c_getter_native_scalar"
+                                "stmtc0": "f_getter_native_scalar",
+                                "stmtc1": "f_getter_native_scalar"
                             }
                         }
                     },
@@ -1550,8 +1550,8 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
                                     "stmt1": "f_setter_native_scalar",
-                                    "stmtc0": "c_setter_native_scalar",
-                                    "stmtc1": "c_setter_native_scalar"
+                                    "stmtc0": "f_setter_native_scalar",
+                                    "stmtc1": "f_setter_native_scalar"
                                 }
                             }
                         },
@@ -1580,8 +1580,8 @@
                             "function_name": "set_y1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc0": "f_setter",
+                            "stmtc1": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "y1"
                         }
@@ -1674,8 +1674,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_getter_native_scalar",
                                 "stmt1": "f_getter_native_scalar",
-                                "stmtc0": "c_getter_native_scalar",
-                                "stmtc1": "c_getter_native_scalar"
+                                "stmtc0": "f_getter_native_scalar",
+                                "stmtc1": "f_getter_native_scalar"
                             }
                         }
                     },
@@ -1761,8 +1761,8 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
                                     "stmt1": "f_setter_native_scalar",
-                                    "stmtc0": "c_setter_native_scalar",
-                                    "stmtc1": "c_setter_native_scalar"
+                                    "stmtc0": "f_setter_native_scalar",
+                                    "stmtc1": "f_setter_native_scalar"
                                 }
                             }
                         },
@@ -1791,8 +1791,8 @@
                             "function_name": "set_z1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc0": "f_setter",
+                            "stmtc1": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "z1"
                         }
@@ -2005,8 +2005,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_scalar",
                             "stmt1": "f_in_struct_scalar",
-                            "stmtc0": "c_in_struct_scalar",
-                            "stmtc1": "c_in_struct_scalar"
+                            "stmtc0": "f_in_struct_scalar",
+                            "stmtc1": "f_in_struct_scalar"
                         }
                     }
                 },
@@ -2060,8 +2060,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2142,8 +2142,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -2197,8 +2197,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2483,8 +2483,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
-                            "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc0": "f_out_char_*_buf",
+                            "stmtc1": "f_out_char_*_buf"
                         }
                     },
                     "s1": {
@@ -2516,8 +2516,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -2572,8 +2572,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2654,8 +2654,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -2709,8 +2709,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2826,8 +2826,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_out_struct_*",
                             "stmt1": "f_out_struct_*",
-                            "stmtc0": "c_out_struct_*",
-                            "stmtc1": "c_out_struct_*"
+                            "stmtc0": "f_out_struct_*",
+                            "stmtc1": "f_out_struct_*"
                         }
                     },
                     "d": {
@@ -2859,8 +2859,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "i": {
@@ -2892,8 +2892,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -2917,8 +2917,8 @@
                     "function_name": "acceptStructOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -2998,8 +2998,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
                             "stmt1": "f_inout_struct_*",
-                            "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct_*"
+                            "stmtc0": "f_inout_struct_*",
+                            "stmtc1": "f_inout_struct_*"
                         }
                     }
                 },
@@ -3023,8 +3023,8 @@
                     "function_name": "acceptStructInOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -3115,8 +3115,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "i": {
@@ -3148,8 +3148,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3202,8 +3202,8 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_function_struct_scalar",
                         "stmt1": "f_function_struct_scalar",
-                        "stmtc0": "c_function_struct_scalar",
-                        "stmtc1": "c_function_struct_scalar"
+                        "stmtc0": "f_function_struct_scalar",
+                        "stmtc1": "f_function_struct_scalar"
                     }
                 }
             },
@@ -3305,8 +3305,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "i": {
@@ -3338,8 +3338,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3394,8 +3394,8 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_function_struct_*_pointer",
                         "stmt1": "f_function_struct_*_pointer",
-                        "stmtc0": "c_function_struct_*_pointer",
-                        "stmtc1": "c_function_struct_*_pointer"
+                        "stmtc0": "f_function_struct_*_pointer",
+                        "stmtc1": "f_function_struct_*_pointer"
                     }
                 }
             },
@@ -3746,8 +3746,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "i": {
@@ -3779,8 +3779,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "outbuf": {
@@ -3815,8 +3815,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
-                            "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc0": "f_out_char_*_buf",
+                            "stmtc1": "f_out_char_*_buf"
                         }
                     }
                 },
@@ -3872,8 +3872,8 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_function_struct_*_pointer",
                         "stmt1": "f_function_struct_*_pointer",
-                        "stmtc0": "c_function_struct_*_pointer",
-                        "stmtc1": "c_function_struct_*_pointer"
+                        "stmtc0": "f_function_struct_*_pointer",
+                        "stmtc1": "f_function_struct_*_pointer"
                     }
                 }
             },
@@ -3957,8 +3957,8 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_function_struct_*_pointer",
                         "stmt1": "f_function_struct_*_pointer",
-                        "stmtc0": "c_function_struct_*_pointer",
-                        "stmtc1": "c_function_struct_*_pointer"
+                        "stmtc0": "f_function_struct_*_pointer",
+                        "stmtc1": "f_function_struct_*_pointer"
                     }
                 }
             },
@@ -4048,8 +4048,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
                         "stmt1": "f_function_shadow_*_capptr",
-                        "stmtc0": "c_function_shadow_*_capptr",
-                        "stmtc1": "c_function_shadow_*_capptr"
+                        "stmtc0": "f_function_shadow_*_capptr",
+                        "stmtc1": "f_function_shadow_*_capptr"
                     }
                 }
             },
@@ -4150,8 +4150,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "y": {
@@ -4183,8 +4183,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -4240,8 +4240,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
                         "stmt1": "f_function_shadow_*_capptr",
-                        "stmtc0": "c_function_shadow_*_capptr",
-                        "stmtc1": "c_function_shadow_*_capptr"
+                        "stmtc0": "f_function_shadow_*_capptr",
+                        "stmtc1": "f_function_shadow_*_capptr"
                     }
                 }
             },
@@ -4330,8 +4330,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_*",
                             "stmt1": "f_in_shadow_*",
-                            "stmtc0": "c_in_shadow_*",
-                            "stmtc1": "c_in_shadow_*"
+                            "stmtc0": "f_in_shadow_*",
+                            "stmtc1": "f_in_shadow_*"
                         }
                     }
                 },
@@ -4385,8 +4385,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -4503,8 +4503,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "y": {
@@ -4536,8 +4536,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "z": {
@@ -4569,8 +4569,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -4626,8 +4626,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
                         "stmt1": "f_function_shadow_*_capptr",
-                        "stmtc0": "c_function_shadow_*_capptr",
-                        "stmtc1": "c_function_shadow_*_capptr"
+                        "stmtc0": "f_function_shadow_*_capptr",
+                        "stmtc1": "f_function_shadow_*_capptr"
                     }
                 }
             },
@@ -4723,8 +4723,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -4780,8 +4780,8 @@
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_getter_native_*_pointer",
                         "stmt1": "f_getter_native_*_pointer",
-                        "stmtc0": "c_getter_native_*_pointer",
-                        "stmtc1": "c_getter_native_*_pointer"
+                        "stmtc0": "f_getter_native_*_pointer",
+                        "stmtc1": "f_getter_native_*_pointer"
                     }
                 }
             },
@@ -4891,8 +4891,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
                             "stmt1": "f_inout_struct_*",
-                            "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct_*"
+                            "stmtc0": "f_inout_struct_*",
+                            "stmtc1": "f_inout_struct_*"
                         }
                     },
                     "val": {
@@ -4924,8 +4924,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_setter_native_*",
                             "stmt1": "f_setter_native_*",
-                            "stmtc0": "c_setter_native_*",
-                            "stmtc1": "c_setter_native_*"
+                            "stmtc0": "f_setter_native_*",
+                            "stmtc1": "f_setter_native_*"
                         }
                     }
                 },
@@ -4951,8 +4951,8 @@
                     "function_name": "Cstruct_ptr_set_const_dvalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
-                    "stmtc0": "c_setter",
-                    "stmtc1": "c_setter",
+                    "stmtc0": "f_setter",
+                    "stmtc1": "f_setter",
                     "struct_name": "Cstruct_ptr",
                     "wrapped_name": "const_dvalue"
                 }
@@ -5137,8 +5137,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -5209,8 +5209,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_getter_native_*_cdesc_pointer",
                         "stmt1": "f_getter_native_*_cdesc_pointer",
-                        "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc_pointer"
+                        "stmtc0": "f_getter_native_*_cdesc_pointer",
+                        "stmtc1": "f_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -5331,8 +5331,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
                             "stmt1": "f_inout_struct_*",
-                            "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct_*"
+                            "stmtc0": "f_inout_struct_*",
+                            "stmtc1": "f_inout_struct_*"
                         }
                     },
                     "val": {
@@ -5370,8 +5370,8 @@
                             "size": "size(val)",
                             "stmt0": "f_setter_native_*",
                             "stmt1": "f_setter_native_*",
-                            "stmtc0": "c_setter_native_*",
-                            "stmtc1": "c_setter_native_*"
+                            "stmtc0": "f_setter_native_*",
+                            "stmtc1": "f_setter_native_*"
                         }
                     }
                 },
@@ -5397,8 +5397,8 @@
                     "function_name": "Cstruct_list_set_ivalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
-                    "stmtc0": "c_setter",
-                    "stmtc1": "c_setter",
+                    "stmtc0": "f_setter",
+                    "stmtc1": "f_setter",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "ivalue"
                 }
@@ -5583,8 +5583,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -5655,8 +5655,8 @@
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_getter_native_*_cdesc_pointer",
                         "stmt1": "f_getter_native_*_cdesc_pointer",
-                        "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc_pointer"
+                        "stmtc0": "f_getter_native_*_cdesc_pointer",
+                        "stmtc1": "f_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -5777,8 +5777,8 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
                             "stmt1": "f_inout_struct_*",
-                            "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct_*"
+                            "stmtc0": "f_inout_struct_*",
+                            "stmtc1": "f_inout_struct_*"
                         }
                     },
                     "val": {
@@ -5816,8 +5816,8 @@
                             "size": "size(val)",
                             "stmt0": "f_setter_native_*",
                             "stmt1": "f_setter_native_*",
-                            "stmtc0": "c_setter_native_*",
-                            "stmtc1": "c_setter_native_*"
+                            "stmtc0": "f_setter_native_*",
+                            "stmtc1": "f_setter_native_*"
                         }
                     }
                 },
@@ -5843,8 +5843,8 @@
                     "function_name": "Cstruct_list_set_dvalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
-                    "stmtc0": "c_setter",
-                    "stmtc1": "c_setter",
+                    "stmtc0": "f_setter",
+                    "stmtc1": "f_setter",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "dvalue"
                 }

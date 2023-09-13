@@ -878,7 +878,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! start no_return_no_arguments
     subroutine no_return_no_arguments()
         ! splicer begin function.no_return_no_arguments
@@ -895,19 +895,19 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start pass_by_value
     function pass_by_value(arg1, arg2) &
             result(SHT_rv)
@@ -929,19 +929,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * arg1 +intent(in)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start pass_by_reference
     subroutine pass_by_reference(arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -961,13 +961,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! PassByValueMacro is a #define macro. Force a C wrapper
     !! to allow Fortran to have an actual function to call.
@@ -988,25 +988,25 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const bool arg1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool * arg2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_bool_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_bool_*
+    ! Exact:     f_out_bool_*
     ! ----------------------------------------
     ! Argument:  bool * arg3 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_bool_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_bool_*
+    ! Exact:     f_inout_bool_*
     !>
     !! \brief Check intent with bool
     !!
@@ -1036,7 +1036,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_char_*_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_char_*_buf_copy
+    ! Exact:     f_function_char_*_buf_copy
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -1056,7 +1056,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! start accept_name
     subroutine accept_name(name)
         use iso_c_binding, only : C_NULL_CHAR
@@ -1073,13 +1073,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_char_*_buf
+    ! Exact:     f_inout_char_*_buf
     !>
     !! \brief toupper
     !!
@@ -1102,13 +1102,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Test charlen attribute
     !!
@@ -1134,19 +1134,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Test charlen attribute
     !!
@@ -1174,13 +1174,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Fill text, at most ltext characters.
     !!
@@ -1204,7 +1204,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1231,7 +1231,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -1258,7 +1258,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1279,7 +1279,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     !>
     !! \brief Single, implied bool argument
     !!
@@ -1302,7 +1302,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief Rename Fortran name for interface only function
     !!
@@ -1321,13 +1321,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Rename Fortran name for interface only function
     !!
@@ -1350,19 +1350,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * in +intent(in)+value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     !>
     !! \brief Assign in to out.
     !!
@@ -1387,7 +1387,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief Test assumed-type
     !!
@@ -1415,7 +1415,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief Test assumed-type with rank(1)
     !!
@@ -1436,13 +1436,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Test assumed-type
     !!
@@ -1469,13 +1469,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1496,13 +1496,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1524,13 +1524,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Test function pointer
     !!
@@ -1551,13 +1551,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief Test function pointer
     !!
@@ -1584,19 +1584,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int tc +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_*
+    ! Exact:     f_inout_struct_*
     !>
     !! The function argument takes a struct argument
     !! which is defined in this library.

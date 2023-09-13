@@ -437,13 +437,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_native_scalar
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_vector_&_buf_targ_native_scalar
+    ! Exact:     f_in_vector_&_buf_targ_native_scalar
     ! start vector_sum
     function vector_sum(arg) &
             result(SHT_rv)
@@ -462,13 +462,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -492,13 +492,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -527,13 +527,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -563,13 +563,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -594,13 +594,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-    ! Exact:     c_inout_vector_&_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -627,13 +627,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +api(cdesc)+intent(inout)
     ! Exact:     f_inout_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(inout)
-    ! Exact:     c_inout_vector_&_cdesc_targ_native_scalar
+    ! Exact:     f_inout_vector_&_cdesc_targ_native_scalar
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
         integer(C_INT), intent(INOUT), target :: arg(:)
@@ -652,13 +652,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_targ_native_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_native_scalar
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -680,19 +680,19 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_native_*
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_vector_&_buf_targ_native_*
+    ! Exact:     f_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Fortran 2-d array to vector<const double *>
     !!
@@ -716,13 +716,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_vector_&_buf_targ_string_scalar
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_vector_&_buf_targ_string_scalar
+    ! Exact:     f_in_vector_&_buf_targ_string_scalar
     !>
     !! \brief count number of underscore in vector of strings
     !!
@@ -744,13 +744,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_targ_string_scalar
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_targ_string_scalar
+    ! Exact:     f_out_vector_&_cdesc_targ_string_scalar
     !>
     !! \brief Fill in arg with some animal names
     !!
@@ -779,13 +779,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     subroutine vector_string_fill_allocatable(arg)
         use iso_c_binding, only : C_LOC
         character(:), intent(OUT), allocatable, target :: arg(:)
@@ -809,13 +809,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_vector_&_cdesc_allocatable_targ_string_scalar
+    ! Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
     subroutine vector_string_fill_allocatable_len(arg)
         use iso_c_binding, only : C_LOC
         character(len=20), intent(OUT), allocatable, target :: arg(:)
@@ -838,13 +838,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
+    ! Exact:     f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! Implement iota function.
     !! Return a vector as an ALLOCATABLE array.
@@ -869,13 +869,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     function return_dim2(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

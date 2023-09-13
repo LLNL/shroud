@@ -48,8 +48,8 @@
                             "function_name": "FuncInClass",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         }
                     }
                 ],

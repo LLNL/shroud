@@ -73,7 +73,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief helper function for Fortran to get length of name.
     !!
@@ -94,7 +94,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     function get_name_error_pattern() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

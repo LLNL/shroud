@@ -1250,13 +1250,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! start intargs_in
     subroutine intargs_in(arg)
         use iso_c_binding, only : C_INT
@@ -1275,13 +1275,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     !>
     !! Argument is modified by library, defaults to intent(inout).
     !<
@@ -1303,13 +1303,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start intargs_out
     subroutine intargs_out(arg)
         use iso_c_binding, only : C_INT
@@ -1328,25 +1328,25 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * argout +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start intargs
     subroutine intargs(argin, arginout, argout)
         use iso_c_binding, only : C_INT
@@ -1365,19 +1365,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief compute cos of IN and save in OUT
     !!
@@ -1401,19 +1401,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief truncate IN argument and save in OUT
     !!
@@ -1440,19 +1440,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * values +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief fill values into array
     !!
@@ -1480,19 +1480,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief fill values into two arrays
     !!
@@ -1518,19 +1518,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int nvar +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start iota_dimension
     subroutine iota_dimension(nvar, values)
         use iso_c_binding, only : C_INT
@@ -1548,19 +1548,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start sum
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
@@ -1581,13 +1581,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! Return three values into memory the user provides.
     !<
@@ -1607,13 +1607,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     !>
     !! Increment array in place using intent(INOUT).
     !<
@@ -1634,13 +1634,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! start fill_with_zeros
     subroutine fill_with_zeros(x)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1658,13 +1658,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! start accumulate
     function accumulate(arr) &
             result(SHT_rv)
@@ -1685,13 +1685,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_char_**_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_**_buf
+    ! Exact:     f_in_char_**_buf
     !>
     !! Return strlen of the first index as a check.
     !<
@@ -1715,13 +1715,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start set_global_int
     subroutine set_global_int(value)
         use iso_c_binding, only : C_INT
@@ -1740,7 +1740,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! Used to test values global_array.
     !<
@@ -1762,13 +1762,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1787,13 +1787,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
@@ -1816,13 +1816,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is the length of
     !! the argument ncount.
@@ -1846,13 +1846,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
@@ -1877,13 +1877,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1902,13 +1902,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1928,13 +1928,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1955,13 +1955,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_out_native_**_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     !>
     !! Called directly via an interface in Fortran.
     !<
@@ -1981,13 +1981,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_out_native_**_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     !>
     !! Create a Fortran wrapper.
     !<
@@ -2008,13 +2008,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_out_native_**_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
     !! Called directly via an interface in Fortran.
@@ -2036,13 +2036,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_out_native_**_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
     !! Create a Fortran wrapper.
@@ -2064,13 +2064,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_***
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_***
+    ! Exact:     f_out_native_***
     !>
     !! Test multiple layers of indirection.
     !<
@@ -2092,13 +2092,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_**
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_**
+    ! Exact:     f_in_native_**
     !>
     !! Check results of getRawPtrToInt2d.
     !<
@@ -2120,13 +2120,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     !>
     !! Test +dimension(10,20) +intent(in) together.
     !! This will not use assumed-shape in the Fortran wrapper.
@@ -2147,13 +2147,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_native_**_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_allocatable
+    ! Exact:     f_out_native_**_cdesc_allocatable
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
@@ -2178,13 +2178,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_void_*
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_void_*
+    ! Exact:     f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start return_address1
     function return_address1(flag) &
             result(SHT_rv)
@@ -2203,13 +2203,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_void_*
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_void_*
+    ! Exact:     f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start return_address2
     function return_address2(flag) &
             result(SHT_rv)
@@ -2229,13 +2229,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     ! start fetch_void_ptr
     subroutine fetch_void_ptr(addr)
         use iso_c_binding, only : C_PTR
@@ -2252,13 +2252,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_void_**
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_void_**
+    ! Exact:     f_inout_void_**
     ! start update_void_ptr
     subroutine update_void_ptr(addr)
         use iso_c_binding, only : C_PTR
@@ -2274,13 +2274,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_**
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_**
+    ! Exact:     f_in_void_**
     ! start void_ptr_array
     function void_ptr_array(addr) &
             result(SHT_rv)
@@ -2298,7 +2298,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_pointer
+    ! Exact:     f_function_native_*_pointer
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
@@ -2318,7 +2318,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
@@ -2338,7 +2338,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_pointer
+    ! Exact:     f_function_native_*_pointer
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
@@ -2358,7 +2358,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
@@ -2380,7 +2380,7 @@ contains
     ! Attrs:     +deref(scalar)+intent(function)
     ! Exact:     f_function_native_*_scalar
     ! Attrs:     +deref(scalar)+intent(function)
-    ! Exact:     c_function_native_*_scalar
+    ! Exact:     f_function_native_*_scalar
     ! start return_int_scalar
     function return_int_scalar() &
             result(SHT_rv)
@@ -2400,7 +2400,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_native_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Exact:     c_function_native_*_raw
+    ! Exact:     f_function_native_*_raw
     !>
     !! Call directly via interface.
     !<
@@ -2421,7 +2421,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_native_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Exact:     c_function_native_*_raw
+    ! Exact:     f_function_native_*_raw
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_function_native_*_raw.
@@ -2443,7 +2443,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_**
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_**
+    ! Exact:     f_function_native_**
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d
@@ -2465,7 +2465,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_native_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_allocatable
+    ! Exact:     f_function_native_*_cdesc_allocatable
     ! start return_int_alloc_to_fixed_array
     function return_int_alloc_to_fixed_array() &
             result(SHT_rv)

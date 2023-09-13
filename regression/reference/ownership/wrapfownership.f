@@ -426,7 +426,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     subroutine class1_dtor(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.dtor
@@ -440,7 +440,7 @@ contains
     ! Attrs:     +intent(getter)
     ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -484,7 +484,7 @@ contains
     ! Attrs:     +deref(scalar)+intent(function)
     ! Exact:     f_function_native_*_scalar
     ! Attrs:     +deref(scalar)+intent(function)
-    ! Exact:     c_function_native_*_scalar
+    ! Exact:     f_function_native_*_scalar
     function return_int_ptr_scalar() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -500,7 +500,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_pointer
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_pointer
+    ! Exact:     f_function_native_*_pointer
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -518,7 +518,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     ! start return_int_ptr_dim_pointer
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -539,7 +539,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_native_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_allocatable
+    ! Exact:     f_function_native_*_cdesc_allocatable
     ! start return_int_ptr_dim_alloc
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
@@ -561,7 +561,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -580,7 +580,7 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer_caller
+    ! Exact:     f_function_native_*_cdesc_pointer_caller
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -601,7 +601,7 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer_caller
+    ! Exact:     f_function_native_*_cdesc_pointer_caller
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -623,13 +623,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine create_class_static(flag)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
@@ -644,7 +644,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr_library
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr_library
+    ! Exact:     f_function_shadow_*_capptr_library
     function get_class_static() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -660,13 +660,13 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr_caller
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr_caller
+    ! Exact:     f_function_shadow_*_capptr_caller
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

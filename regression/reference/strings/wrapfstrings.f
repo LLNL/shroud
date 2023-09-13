@@ -1553,7 +1553,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine init_test()
         ! splicer begin function.init_test
         call c_init_test()
@@ -1568,13 +1568,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_char_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     !>
     !! \brief pass a single char argument as a scalar.
     !!
@@ -1592,13 +1592,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_char_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     !>
     !! By default no Fortran wrapper is created.
     !! Force one so it can be tested.
@@ -1615,7 +1615,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_char_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_char_scalar
+    ! Exact:     f_function_char_scalar
     !>
     !! \brief return a char argument (non-pointer)
     !!
@@ -1634,13 +1634,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     !>
     !! \brief strcpy like behavior
     !!
@@ -1668,13 +1668,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_char_*_buf
+    ! Exact:     f_inout_char_*_buf
     !>
     !! \brief toupper
     !!
@@ -1697,7 +1697,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_char_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_char_*_cdesc_allocatable
+    ! Exact:     f_function_char_*_cdesc_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -1722,7 +1722,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_char_*_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_char_*_buf_copy
+    ! Exact:     f_function_char_*_buf_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -1746,7 +1746,7 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Exact:     f_function_char_*_buf_arg
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
-    ! Exact:     c_function_char_*_buf_arg
+    ! Exact:     f_function_char_*_buf_arg
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -1769,7 +1769,7 @@ contains
     ! Attrs:     +deref(raw)+intent(function)
     ! Exact:     f_function_char_*_raw
     ! Attrs:     +deref(raw)+intent(function)
-    ! Exact:     c_function_char_*_raw
+    ! Exact:     f_function_char_*_raw
     !>
     !! \brief return a 'const char *' as type(C_PTR)
     !!
@@ -1790,7 +1790,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_char_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_char_*_cdesc_pointer
+    ! Exact:     f_function_char_*_cdesc_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
@@ -1813,7 +1813,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_scalar_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_cdesc_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
@@ -1836,7 +1836,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_scalar_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_copy
+    ! Exact:     f_function_string_scalar_buf_copy
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1858,7 +1858,7 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Exact:     f_function_string_scalar_buf_arg
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_arg
+    ! Exact:     f_function_string_scalar_buf_arg
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1878,7 +1878,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_scalar_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_cdesc_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1897,7 +1897,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
@@ -1922,7 +1922,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -1947,7 +1947,7 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Exact:     f_function_string_&_buf_arg
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
-    ! Exact:     c_function_string_&_buf_arg
+    ! Exact:     f_function_string_&_buf_arg
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -1969,7 +1969,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     !>
     !! \brief Test returning empty string reference
     !!
@@ -1992,7 +1992,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -2011,7 +2011,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_*_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_*_buf_copy
+    ! Exact:     f_function_string_*_buf_copy
     !>
     !! \brief return a 'const string *' as character(30)
     !!
@@ -2037,7 +2037,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_library
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable_library
+    ! Exact:     f_function_string_*_cdesc_allocatable_library
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -2056,7 +2056,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_caller
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable_caller
+    ! Exact:     f_function_string_*_cdesc_allocatable_caller
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -2082,7 +2082,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_caller
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable_caller
+    ! Exact:     f_function_string_*_cdesc_allocatable_caller
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
@@ -2105,7 +2105,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_string_*_cdesc_pointer_library
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_pointer_library
+    ! Exact:     f_function_string_*_cdesc_pointer_library
     function get_const_string_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer
@@ -2124,13 +2124,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     !>
     !! \brief Accept a const string reference
     !!
@@ -2155,13 +2155,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_string_&_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_&_buf
+    ! Exact:     f_out_string_&_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -2185,13 +2185,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_&_buf
+    ! Exact:     f_inout_string_&_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -2217,13 +2217,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_*_buf
+    ! Exact:     f_in_string_*_buf
     !>
     !! \brief Accept a const string pointer - intent(in)
     !!
@@ -2244,13 +2244,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_string_*_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_*_buf
+    ! Exact:     f_inout_string_*_buf
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -2271,13 +2271,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_string_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_*_buf
+    ! Exact:     f_out_string_*_buf
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -2299,19 +2299,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_string_*_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_*_buf
+    ! Exact:     f_inout_string_*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -2336,19 +2336,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_string_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_*_buf
+    ! Exact:     f_out_string_*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -2374,13 +2374,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_scalar_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_scalar_buf
+    ! Exact:     f_in_string_scalar_buf
     !>
     !! \brief Accept a string instance
     !!
@@ -2403,13 +2403,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
     ! Exact:     f_out_string_**_cdesc_copy
     ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_copy
+    ! Exact:     f_out_string_**_cdesc_copy
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2439,13 +2439,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_string_**_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_allocatable
+    ! Exact:     f_out_string_**_cdesc_allocatable
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2477,13 +2477,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Exact:     f_out_string_**_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_allocatable
+    ! Exact:     f_out_string_**_cdesc_allocatable
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2513,7 +2513,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine explicit1(name)
         use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
@@ -2528,13 +2528,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name
@@ -2552,13 +2552,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_char_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     !>
     !! \brief pass a single char argument as a scalar, extern "C"
     !!
@@ -2576,7 +2576,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_char_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_char_scalar
+    ! Exact:     f_function_char_scalar
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -2595,19 +2595,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_char_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     !>
     !! \brief strcpy like behavior
     !!
@@ -2636,19 +2636,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_char_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     !>
     !! \brief Test F_blanknull option
     !!
@@ -2673,19 +2673,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_&_buf
+    ! Exact:     f_inout_string_&_buf
     !>
     !! Test post_declare.
     !! The std::string in py_string_inout must be declared before the
@@ -2709,13 +2709,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_char_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     !>
     !! \brief NULL terminate input string in C, not in Fortran.
     !!
@@ -2739,19 +2739,19 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
     ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     !>
     !! \brief Do not NULL terminate input string
     !!
@@ -2781,13 +2781,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
     ! Exact:     f_in_char_*_capi
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     !>
     !! \brief Mix api(buf) and api(capi)
     !!

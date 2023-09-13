@@ -153,8 +153,8 @@
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
                                 "stmt1": "f_ctor_shadow_scalar_capptr",
-                                "stmtc0": "c_ctor_shadow_scalar_capptr",
-                                "stmtc1": "c_ctor_shadow_scalar_capptr"
+                                "stmtc0": "f_ctor_shadow_scalar_capptr",
+                                "stmtc1": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -246,8 +246,8 @@
                             "function_name": "dtor",
                             "stmt0": "f_dtor",
                             "stmt1": "f_dtor",
-                            "stmtc0": "c_dtor",
-                            "stmtc1": "c_dtor"
+                            "stmtc0": "f_dtor",
+                            "stmtc1": "f_dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -336,8 +336,8 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
                                     "stmt1": "f_in_shadow_*",
-                                    "stmtc0": "c_in_shadow_*",
-                                    "stmtc1": "c_in_shadow_*"
+                                    "stmtc0": "f_in_shadow_*",
+                                    "stmtc1": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -405,8 +405,8 @@
                             "function_name": "func1",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -495,8 +495,8 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
                                     "stmt1": "f_in_shadow_*",
-                                    "stmtc0": "c_in_shadow_*",
-                                    "stmtc1": "c_in_shadow_*"
+                                    "stmtc0": "f_in_shadow_*",
+                                    "stmtc1": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -566,8 +566,8 @@
                             "function_name": "acceptClass3",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -713,8 +713,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_struct_*",
                             "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtc0": "f_in_struct_*",
+                            "stmtc1": "f_in_struct_*"
                         }
                     }
                 },
@@ -768,8 +768,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             }

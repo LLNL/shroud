@@ -42,7 +42,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine worker1()
         ! splicer begin namespace.CAPI2.function.worker1
         call c_worker1()

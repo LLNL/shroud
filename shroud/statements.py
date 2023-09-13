@@ -727,6 +727,7 @@ fc_statements = [
         alias=[
             "f_subroutine",
             "c_subroutine",
+            "f_subroutine_void_scalar",
         ],
         f_arg_call=[],
     ),

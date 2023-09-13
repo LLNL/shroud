@@ -88,8 +88,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     }
                 },
@@ -113,8 +113,8 @@
                     "function_name": "intargs_in",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -194,8 +194,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         }
                     }
                 },
@@ -219,8 +219,8 @@
                     "function_name": "intargs_inout",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -300,8 +300,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -325,8 +325,8 @@
                     "function_name": "intargs_out",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -445,8 +445,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "arginout": {
@@ -478,8 +478,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         }
                     },
                     "argout": {
@@ -511,8 +511,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -536,8 +536,8 @@
                     "function_name": "intargs",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -675,8 +675,8 @@
                             "size": "size(in)",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     },
                     "out": {
@@ -713,8 +713,8 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "sizein": {
@@ -768,8 +768,8 @@
                     "function_name": "cos_doubles",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -907,8 +907,8 @@
                             "size": "size(in)",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     },
                     "out": {
@@ -945,8 +945,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "sizein": {
@@ -1000,8 +1000,8 @@
                     "function_name": "truncate_to_int",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1112,8 +1112,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "values": {
@@ -1150,8 +1150,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -1175,8 +1175,8 @@
                     "function_name": "get_values",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1298,8 +1298,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "arg2": {
@@ -1336,8 +1336,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -1361,8 +1361,8 @@
                     "function_name": "get_values2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1464,8 +1464,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "values": {
@@ -1502,8 +1502,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -1527,8 +1527,8 @@
                     "function_name": "iota_dimension",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1679,8 +1679,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "values": {
@@ -1716,8 +1716,8 @@
                             "size": "size(values)",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     }
                 },
@@ -1741,8 +1741,8 @@
                     "function_name": "Sum",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1836,8 +1836,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -1861,8 +1861,8 @@
                     "function_name": "fillIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1967,8 +1967,8 @@
                             "size": "size(array)",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         }
                     },
                     "sizein": {
@@ -2022,8 +2022,8 @@
                     "function_name": "incrementIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -2124,8 +2124,8 @@
                             "size": "size(x)",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         }
                     },
                     "x_length": {
@@ -2179,8 +2179,8 @@
                     "function_name": "fill_with_zeros",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -2282,8 +2282,8 @@
                             "size": "size(arr)",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     },
                     "len": {
@@ -2367,8 +2367,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2603,8 +2603,8 @@
                             "size": "size(names)",
                             "stmt0": "f_in_char_**_buf",
                             "stmt1": "f_in_char_**_buf",
-                            "stmtc0": "c_in_char_**_buf",
-                            "stmtc1": "c_in_char_**_buf"
+                            "stmtc0": "f_in_char_**_buf",
+                            "stmtc1": "f_in_char_**_buf"
                         }
                     }
                 },
@@ -2659,8 +2659,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -2736,8 +2736,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -2761,8 +2761,8 @@
                     "function_name": "setGlobalInt",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -2841,8 +2841,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -3039,8 +3039,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     }
                 },
@@ -3065,8 +3065,8 @@
                     "function_name": "getPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -3290,8 +3290,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     }
                 },
@@ -3316,8 +3316,8 @@
                     "function_name": "getPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -3614,8 +3614,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     },
                     "ncount": {
@@ -3669,8 +3669,8 @@
                     "function_name": "getPtrToDynamicArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -3896,8 +3896,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     }
                 },
@@ -3922,8 +3922,8 @@
                     "function_name": "getPtrToFuncArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -4121,8 +4121,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     }
                 },
@@ -4147,8 +4147,8 @@
                     "function_name": "getPtrToConstScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -4368,8 +4368,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     }
                 },
@@ -4394,8 +4394,8 @@
                     "function_name": "getPtrToFixedConstArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -4688,8 +4688,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_pointer",
                             "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc_pointer"
+                            "stmtc0": "f_out_native_**_cdesc_pointer",
+                            "stmtc1": "f_out_native_**_cdesc_pointer"
                         }
                     },
                     "ncount": {
@@ -4743,8 +4743,8 @@
                     "function_name": "getPtrToDynamicConstArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -4832,8 +4832,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_raw",
                             "stmt1": "f_out_native_**_raw",
-                            "stmtc0": "c_out_native_**_raw",
-                            "stmtc1": "c_out_native_**_raw"
+                            "stmtc0": "f_out_native_**_raw",
+                            "stmtc1": "f_out_native_**_raw"
                         }
                     }
                 },
@@ -4857,8 +4857,8 @@
                     "function_name": "getRawPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -4949,8 +4949,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_raw",
                             "stmt1": "f_out_native_**_raw",
-                            "stmtc0": "c_out_native_**_raw",
-                            "stmtc1": "c_out_native_**_raw"
+                            "stmtc0": "f_out_native_**_raw",
+                            "stmtc1": "f_out_native_**_raw"
                         }
                     }
                 },
@@ -4974,8 +4974,8 @@
                     "function_name": "getRawPtrToScalarForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5063,8 +5063,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_raw",
                             "stmt1": "f_out_native_**_raw",
-                            "stmtc0": "c_out_native_**_raw",
-                            "stmtc1": "c_out_native_**_raw"
+                            "stmtc0": "f_out_native_**_raw",
+                            "stmtc1": "f_out_native_**_raw"
                         }
                     }
                 },
@@ -5088,8 +5088,8 @@
                     "function_name": "getRawPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5180,8 +5180,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_raw",
                             "stmt1": "f_out_native_**_raw",
-                            "stmtc0": "c_out_native_**_raw",
-                            "stmtc1": "c_out_native_**_raw"
+                            "stmtc0": "f_out_native_**_raw",
+                            "stmtc1": "f_out_native_**_raw"
                         }
                     }
                 },
@@ -5205,8 +5205,8 @@
                     "function_name": "getRawPtrToFixedArrayForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5297,8 +5297,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_***",
                             "stmt1": "f_out_native_***",
-                            "stmtc0": "c_out_native_***",
-                            "stmtc1": "c_out_native_***"
+                            "stmtc0": "f_out_native_***",
+                            "stmtc1": "f_out_native_***"
                         }
                     }
                 },
@@ -5322,8 +5322,8 @@
                     "function_name": "getRawPtrToInt2d",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5411,8 +5411,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_**",
                             "stmt1": "f_in_native_**",
-                            "stmtc0": "c_in_native_**",
-                            "stmtc1": "c_in_native_**"
+                            "stmtc0": "f_in_native_**",
+                            "stmtc1": "f_in_native_**"
                         }
                     }
                 },
@@ -5466,8 +5466,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -5568,8 +5568,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         }
                     }
                 },
@@ -5593,8 +5593,8 @@
                     "function_name": "DimensionIn",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5826,8 +5826,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_**_cdesc_allocatable",
                             "stmt1": "f_out_native_**_cdesc_allocatable",
-                            "stmtc0": "c_out_native_**_cdesc_allocatable",
-                            "stmtc1": "c_out_native_**_cdesc_allocatable"
+                            "stmtc0": "f_out_native_**_cdesc_allocatable",
+                            "stmtc1": "f_out_native_**_cdesc_allocatable"
                         }
                     }
                 },
@@ -5852,8 +5852,8 @@
                     "function_name": "getAllocToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -5933,8 +5933,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -5987,8 +5987,8 @@
                         "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "f_function_void_*",
                         "stmt1": "f_function_void_*",
-                        "stmtc0": "c_function_void_*",
-                        "stmtc1": "c_function_void_*"
+                        "stmtc0": "f_function_void_*",
+                        "stmtc1": "f_function_void_*"
                     }
                 }
             },
@@ -6071,8 +6071,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -6125,8 +6125,8 @@
                         "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "f_function_void_*",
                         "stmt1": "f_function_void_*",
-                        "stmtc0": "c_function_void_*",
-                        "stmtc1": "c_function_void_*"
+                        "stmtc0": "f_function_void_*",
+                        "stmtc1": "f_function_void_*"
                     }
                 }
             },
@@ -6209,8 +6209,8 @@
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "f_out_void_**",
                             "stmt1": "f_out_void_**",
-                            "stmtc0": "c_out_void_**",
-                            "stmtc1": "c_out_void_**"
+                            "stmtc0": "f_out_void_**",
+                            "stmtc1": "f_out_void_**"
                         }
                     }
                 },
@@ -6234,8 +6234,8 @@
                     "function_name": "fetchVoidPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -6320,8 +6320,8 @@
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "f_inout_void_**",
                             "stmt1": "f_inout_void_**",
-                            "stmtc0": "c_inout_void_**",
-                            "stmtc1": "c_inout_void_**"
+                            "stmtc0": "f_inout_void_**",
+                            "stmtc1": "f_inout_void_**"
                         }
                     }
                 },
@@ -6345,8 +6345,8 @@
                     "function_name": "updateVoidPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -6435,8 +6435,8 @@
                             "size": "size(addr)",
                             "stmt0": "f_in_void_**",
                             "stmt1": "f_in_void_**",
-                            "stmtc0": "c_in_void_**",
-                            "stmtc1": "c_in_void_**"
+                            "stmtc0": "f_in_void_**",
+                            "stmtc1": "f_in_void_**"
                         }
                     }
                 },
@@ -6490,8 +6490,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
                         "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtc0": "f_function_native_scalar",
+                        "stmtc1": "f_function_native_scalar"
                     }
                 }
             },
@@ -6575,8 +6575,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_pointer",
                         "stmt1": "f_function_native_*_pointer",
-                        "stmtc0": "c_function_native_*_pointer",
-                        "stmtc1": "c_function_native_*_pointer"
+                        "stmtc0": "f_function_native_*_pointer",
+                        "stmtc1": "f_function_native_*_pointer"
                     }
                 }
             },
@@ -6773,8 +6773,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc_pointer"
+                        "stmtc0": "f_function_native_*_cdesc_pointer",
+                        "stmtc1": "f_function_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -6859,8 +6859,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_pointer",
                         "stmt1": "f_function_native_*_pointer",
-                        "stmtc0": "c_function_native_*_pointer",
-                        "stmtc1": "c_function_native_*_pointer"
+                        "stmtc0": "f_function_native_*_pointer",
+                        "stmtc1": "f_function_native_*_pointer"
                     }
                 }
             },
@@ -7059,8 +7059,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_pointer",
                         "stmt1": "f_function_native_*_cdesc_pointer",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc_pointer"
+                        "stmtc0": "f_function_native_*_cdesc_pointer",
+                        "stmtc1": "f_function_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -7145,8 +7145,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_scalar",
                         "stmt1": "f_function_native_*_scalar",
-                        "stmtc0": "c_function_native_*_scalar",
-                        "stmtc1": "c_function_native_*_scalar"
+                        "stmtc0": "f_function_native_*_scalar",
+                        "stmtc1": "f_function_native_*_scalar"
                     }
                 }
             },
@@ -7237,8 +7237,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_raw",
                         "stmt1": "f_function_native_*_raw",
-                        "stmtc0": "c_function_native_*_raw",
-                        "stmtc1": "c_function_native_*_raw"
+                        "stmtc0": "f_function_native_*_raw",
+                        "stmtc1": "f_function_native_*_raw"
                     }
                 }
             },
@@ -7383,8 +7383,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_raw",
                         "stmt1": "f_function_native_*_raw",
-                        "stmtc0": "c_function_native_*_raw",
-                        "stmtc1": "c_function_native_*_raw"
+                        "stmtc0": "f_function_native_*_raw",
+                        "stmtc1": "f_function_native_*_raw"
                     }
                 }
             },
@@ -7475,8 +7475,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_**",
                         "stmt1": "f_function_native_**",
-                        "stmtc0": "c_function_native_**",
-                        "stmtc1": "c_function_native_**"
+                        "stmtc0": "f_function_native_**",
+                        "stmtc1": "f_function_native_**"
                     }
                 }
             },
@@ -7680,8 +7680,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_allocatable",
                         "stmt1": "f_function_native_*_cdesc_allocatable",
-                        "stmtc0": "c_function_native_*_cdesc_allocatable",
-                        "stmtc1": "c_function_native_*_cdesc_allocatable"
+                        "stmtc0": "f_function_native_*_cdesc_allocatable",
+                        "stmtc1": "f_function_native_*_cdesc_allocatable"
                     }
                 }
             }

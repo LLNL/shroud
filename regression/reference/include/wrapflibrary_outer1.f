@@ -69,7 +69,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine class0_method(obj)
         class(class0) :: obj
         call c_class0_method(obj%cxxmem)
@@ -106,7 +106,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine outer_func()
         call c_outer_func()
     end subroutine outer_func

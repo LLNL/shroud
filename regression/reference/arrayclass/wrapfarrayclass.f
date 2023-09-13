@@ -505,7 +505,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function ArrayWrapper_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -521,13 +521,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int size +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ArrayWrapper_setSize(obj, size)
         use iso_c_binding, only : C_INT
         class(ArrayWrapper) :: obj
@@ -542,7 +542,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function ArrayWrapper_getSize(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -558,13 +558,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int & size +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_&
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_&
+    ! Exact:     f_out_native_&
     subroutine ArrayWrapper_fillSize(obj, size)
         use iso_c_binding, only : C_INT
         class(ArrayWrapper) :: obj
@@ -579,7 +579,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine ArrayWrapper_allocate(obj)
         class(ArrayWrapper) :: obj
         ! splicer begin class.ArrayWrapper.method.allocate
@@ -593,7 +593,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     function ArrayWrapper_getArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -613,7 +613,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayConst(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -634,7 +634,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -655,7 +655,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     f_function_native_*_cdesc_pointer
     function ArrayWrapper_getArrayConstC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -676,13 +676,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtr(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(ArrayWrapper) :: obj
@@ -702,13 +702,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_*&_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_*&_cdesc_pointer
+    ! Exact:     f_out_native_*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRef(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(ArrayWrapper) :: obj
@@ -728,13 +728,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtrConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(ArrayWrapper) :: obj
@@ -754,13 +754,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_*&_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_*&_cdesc_pointer
+    ! Exact:     f_out_native_*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRefConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(ArrayWrapper) :: obj
@@ -779,13 +779,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * array +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     subroutine ArrayWrapper_fetchVoidPtr(obj, array)
         use iso_c_binding, only : C_PTR
         class(ArrayWrapper) :: obj
@@ -800,13 +800,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * & array +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_*&
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_*&
+    ! Exact:     f_out_void_*&
     subroutine ArrayWrapper_fetchVoidRef(obj, array)
         class(ArrayWrapper) :: obj
         type(C_PTR), intent(OUT) :: array
@@ -820,13 +820,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  void * array +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     function ArrayWrapper_checkPtr(obj, array) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_PTR
@@ -843,7 +843,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function ArrayWrapper_sumArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

@@ -1031,7 +1031,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -1049,13 +1049,13 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
             result(SHT_rv)
@@ -1074,7 +1074,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     ! start class1_delete
     subroutine class1_delete(obj)
         class(class1) :: obj
@@ -1089,7 +1089,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief returns the value of flag member
     !!
@@ -1111,13 +1111,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_&
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_&
+    ! Exact:     f_in_shadow_&
     !>
     !! \brief Pass in reference to instance
     !!
@@ -1141,7 +1141,7 @@ contains
     ! Attrs:     +api(capptr)+intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +api(capptr)+intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -1161,19 +1161,19 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -1203,7 +1203,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     !>
     !! \brief Test const method
     !!
@@ -1227,7 +1227,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     !>
     !! \brief test helper
     !!
@@ -1252,13 +1252,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
@@ -1278,7 +1278,7 @@ contains
     ! Attrs:     +intent(getter)
     ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
@@ -1297,7 +1297,7 @@ contains
     ! Attrs:     +intent(getter)
     ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
@@ -1316,13 +1316,13 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter
+    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_scalar
+    ! Exact:     f_setter_native_scalar
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
@@ -1340,7 +1340,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
     ! Exact:     f_getter_string_scalar_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-    ! Exact:     c_getter_string_scalar_cdesc_allocatable
+    ! Exact:     f_getter_string_scalar_cdesc_allocatable
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
@@ -1362,13 +1362,13 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter
+    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
     ! Exact:     f_setter_string_scalar_buf
     ! Attrs:     +api(buf)+intent(setter)
-    ! Exact:     c_setter_string_scalar_buf
+    ! Exact:     f_setter_string_scalar_buf
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
         use iso_c_binding, only : C_INT
@@ -1414,7 +1414,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     !>
     !! \brief test helper
     !!
@@ -1463,7 +1463,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_&_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     ! start singleton_get_reference
     function singleton_get_reference() &
             result(SHT_rv)
@@ -1484,7 +1484,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function shape_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1500,7 +1500,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function shape_get_ivar(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1542,7 +1542,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function circle_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1561,13 +1561,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start data_allocate
     subroutine data_allocate(obj, n)
         use iso_c_binding, only : C_INT
@@ -1584,7 +1584,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! start data_free
     subroutine data_free(obj)
         class(data) :: obj
@@ -1599,7 +1599,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! start data_ctor
     function data_ctor() &
             result(SHT_rv)
@@ -1617,7 +1617,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     ! start data_dtor
     subroutine data_dtor(obj)
         class(data) :: obj
@@ -1633,7 +1633,7 @@ contains
     ! Attrs:     +intent(getter)
     ! Exact:     f_getter_native_scalar
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start data_get_nitems
     function data_get_nitems(obj) &
             result(SHT_rv)
@@ -1652,13 +1652,13 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter
+    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_native_scalar
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_scalar
+    ! Exact:     f_setter_native_scalar
     ! start data_set_nitems
     subroutine data_set_nitems(obj, val)
         use iso_c_binding, only : C_INT
@@ -1676,7 +1676,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-    ! Exact:     c_getter_native_*_cdesc_pointer
+    ! Exact:     f_getter_native_*_cdesc_pointer
     ! start data_get_items
     function data_get_items(obj) &
             result(SHT_rv)
@@ -1698,13 +1698,13 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter
+    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_*
+    ! Exact:     f_setter_native_*
     ! start data_set_items
     subroutine data_set_items(obj, val)
         use iso_c_binding, only : C_INT
@@ -1726,13 +1726,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     function direction_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1749,13 +1749,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_scalar
+    ! Exact:     f_in_shadow_scalar
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -1772,13 +1772,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_*
+    ! Exact:     f_in_shadow_*
     function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1794,7 +1794,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     !>
     !! \brief Return const class pointer
     !!
@@ -1814,7 +1814,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     !>
     !! \brief Return class pointer
     !!
@@ -1834,7 +1834,7 @@ contains
     ! Attrs:     +api(capsule)+intent(function)
     ! Exact:     f_function_shadow_*_capsule
     ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Exact:     f_function_shadow_*_capsule
     !>
     !! \brief C wrapper will return void
     !!
@@ -1852,7 +1852,7 @@ contains
     ! Attrs:     +api(capsule)+intent(function)
     ! Exact:     f_function_shadow_*_capsule
     ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Exact:     f_function_shadow_*_capsule
     !>
     !! \brief C wrapper will return void
     !!
@@ -1870,7 +1870,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_&_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     function get_const_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1886,7 +1886,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_&_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     function get_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1902,13 +1902,13 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capptr
+    ! Exact:     f_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
@@ -1931,13 +1931,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine set_global_flag(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
@@ -1954,7 +1954,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function get_global_flag() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1971,7 +1971,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

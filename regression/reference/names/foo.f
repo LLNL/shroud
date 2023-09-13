@@ -102,7 +102,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -118,7 +118,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
@@ -131,7 +131,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2

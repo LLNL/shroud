@@ -270,13 +270,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +cdesc+intent(in)+rank(2)
     ! Attrs:     +api(cdesc)+intent(in)
     ! Exact:     f_in_native_*_cdesc
     ! Attrs:     +api(cdesc)+intent(in)
-    ! Exact:     c_in_native_*_cdesc
+    ! Exact:     f_in_native_*_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
@@ -298,19 +298,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+intent(out)+rank(0)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_native_*_cdesc
+    ! Exact:     f_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checks the type of the Fortran argument
@@ -347,19 +347,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+intent(out)+rank(0)
     ! Attrs:     +api(cdesc)+intent(out)
     ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Exact:     c_out_native_*_cdesc
+    ! Exact:     f_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checks the type of the Fortran argument
@@ -396,7 +396,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! Wrapper for function which is templated on the return value.
     !<
@@ -415,7 +415,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! Wrapper for function which is templated on the return value.
     !<
@@ -434,19 +434,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an
@@ -471,19 +471,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an

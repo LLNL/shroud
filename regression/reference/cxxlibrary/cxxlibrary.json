@@ -701,8 +701,8 @@
                         "sh_type": "SH_TYPE_BOOL",
                         "stmt0": "f_function_bool_scalar",
                         "stmt1": "f_function_bool_scalar",
-                        "stmtc0": "c_function_bool_scalar",
-                        "stmtc1": "c_function_bool_scalar"
+                        "stmtc0": "f_function_bool_scalar",
+                        "stmtc1": "f_function_bool_scalar"
                     }
                 }
             },
@@ -799,8 +799,8 @@
                             "size": "size(data)",
                             "stmt0": "f_in_native_*",
                             "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtc0": "f_in_native_*",
+                            "stmtc1": "f_in_native_*"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -878,8 +878,8 @@
                         "sh_type": "SH_TYPE_BOOL",
                         "stmt0": "f_function_bool_scalar",
                         "stmt1": "f_function_bool_scalar",
-                        "stmtc0": "c_function_bool_scalar",
-                        "stmtc1": "c_function_bool_scalar"
+                        "stmtc0": "f_function_bool_scalar",
+                        "stmtc1": "f_function_bool_scalar"
                     },
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
@@ -1020,8 +1020,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     },
                     "out1": {
@@ -1053,8 +1053,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     },
                     "out2": {
@@ -1086,8 +1086,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         }
                     }
                 },
@@ -1112,8 +1112,8 @@
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1258,8 +1258,8 @@
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "f_in_bool_scalar",
                             "stmt1": "f_in_bool_scalar",
-                            "stmtc0": "c_in_bool_scalar",
-                            "stmtc1": "c_in_bool_scalar"
+                            "stmtc0": "f_in_bool_scalar",
+                            "stmtc1": "f_in_bool_scalar"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1312,8 +1312,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1364,8 +1364,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1417,8 +1417,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1465,8 +1465,8 @@
                     "function_suffix": "_1",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -1808,8 +1808,8 @@
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -1869,8 +1869,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_&_buf_copy",
                         "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "stmtc0": "f_function_string_&_buf_copy",
+                        "stmtc1": "f_function_string_&_buf_copy"
                     }
                 }
             },
@@ -2035,8 +2035,8 @@
                             "sh_type": "SH_TYPE_INT64_T",
                             "stmt0": "f_in_native_scalar",
                             "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtc0": "f_in_native_scalar",
+                            "stmtc1": "f_in_native_scalar"
                         }
                     }
                 },
@@ -2096,8 +2096,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_&_buf_copy",
                         "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "stmtc0": "f_function_string_&_buf_copy",
+                        "stmtc1": "f_function_string_&_buf_copy"
                     }
                 }
             }
@@ -2283,8 +2283,8 @@
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_&",
                                     "stmt1": "f_inout_struct_&",
-                                    "stmtc0": "c_inout_struct_&",
-                                    "stmtc1": "c_inout_struct_&"
+                                    "stmtc0": "f_inout_struct_&",
+                                    "stmtc1": "f_inout_struct_&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2364,8 +2364,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_function_native_scalar",
-                                "stmtc0": "c_function_native_scalar",
-                                "stmtc1": "c_function_native_scalar"
+                                "stmtc0": "f_function_native_scalar",
+                                "stmtc1": "f_function_native_scalar"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -2465,8 +2465,8 @@
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_&",
                                     "stmt1": "f_in_struct_&",
-                                    "stmtc0": "c_in_struct_&",
-                                    "stmtc1": "c_in_struct_&"
+                                    "stmtc0": "f_in_struct_&",
+                                    "stmtc1": "f_in_struct_&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2546,8 +2546,8 @@
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_function_native_scalar",
-                                "stmtc0": "c_function_native_scalar",
-                                "stmtc1": "c_function_native_scalar"
+                                "stmtc0": "f_function_native_scalar",
+                                "stmtc1": "f_function_native_scalar"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -2646,8 +2646,8 @@
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_&",
                                     "stmt1": "f_inout_struct_&",
-                                    "stmtc0": "c_inout_struct_&",
-                                    "stmtc1": "c_inout_struct_&"
+                                    "stmtc0": "f_inout_struct_&",
+                                    "stmtc1": "f_inout_struct_&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2697,8 +2697,8 @@
                             "function_name": "passStructByReferenceInout",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         }
                     },
                     {
@@ -2779,8 +2779,8 @@
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_out_struct_&",
                                     "stmt1": "f_out_struct_&",
-                                    "stmtc0": "c_out_struct_&",
-                                    "stmtc1": "c_out_struct_&"
+                                    "stmtc0": "f_out_struct_&",
+                                    "stmtc1": "f_out_struct_&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2829,8 +2829,8 @@
                             "function_name": "passStructByReferenceOut",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         }
                     }
                 ],

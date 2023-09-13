@@ -108,13 +108,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_&
+    ! Exact:     f_inout_struct_&
     !>
     !! Argument is modified by library, defaults to intent(inout).
     !<
@@ -136,13 +136,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_&
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_struct_&
+    ! Exact:     f_in_struct_&
     !>
     !! const defaults to intent(in)
     !<
@@ -164,13 +164,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_&
+    ! Exact:     f_inout_struct_&
     subroutine pass_struct_by_reference_inout(arg)
         type(cstruct1), intent(INOUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_inout
@@ -186,13 +186,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_struct_&
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_struct_&
+    ! Exact:     f_out_struct_&
     subroutine pass_struct_by_reference_out(arg)
         type(cstruct1), intent(OUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_out

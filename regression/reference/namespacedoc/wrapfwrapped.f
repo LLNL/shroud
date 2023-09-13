@@ -62,7 +62,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine inner3_worker3()
         ! splicer begin function.worker3
         call c_inner3_worker3()
@@ -77,7 +77,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine worker()
         ! splicer begin function.worker
         call c_worker()
@@ -95,7 +95,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine inner4_worker4()
         ! splicer begin namespace.inner2.function.worker4
         call c_inner4_worker4()

@@ -1746,7 +1746,7 @@ rv = .false.
             fmt_result = fmt_func
             # intent will be "subroutine" or "dtor".
             f_stmts = ["f", sintent]
-            c_stmts = ["c", sintent]
+            c_stmts = ["f", sintent]
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
@@ -1760,7 +1760,7 @@ rv = .false.
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
                        return_deref_attr, r_attrs["owner"]] + specialize
-            c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
+            c_stmts = ["f", sintent, sgroup, spointer, c_result_api,
                        return_deref_attr, r_attrs["owner"]] + specialize
         fmt_func.F_subprogram = subprogram
 
@@ -1883,7 +1883,7 @@ rv = .false.
             f_deref_attr = f_meta["deref"]
             # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
             # Fortran need to know how the C function is being called.
-            c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr]
+            c_stmts = ["f", intent, c_sgroup, c_spointer, c_api, f_deref_attr]
             f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)

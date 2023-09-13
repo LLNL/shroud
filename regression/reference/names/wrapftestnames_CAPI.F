@@ -81,7 +81,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine class1_member1(obj)
         class(class1) :: obj
         ! splicer begin namespace.CAPI.class.Class1.method.member1
@@ -120,7 +120,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine worker1()
         ! splicer begin namespace.CAPI.function.worker1
         call c_worker1()

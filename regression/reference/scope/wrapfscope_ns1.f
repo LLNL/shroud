@@ -108,13 +108,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns1_DataPointer)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns1_DataPointer)
-    ! Exact:     c_getter_native_*_cdesc_pointer
+    ! Exact:     f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  ns1::DataPointer * SH_this
     ! Attrs:     +intent(in)+struct(ns1_DataPointer)
     ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(ns1_DataPointer)
-    ! Exact:     c_in_struct_*
+    ! Exact:     f_in_struct_*
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -136,19 +136,19 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter
+    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  ns1::DataPointer * SH_this
     ! Attrs:     +intent(inout)+struct(ns1_DataPointer)
     ! Exact:     f_inout_struct_*
     ! Attrs:     +intent(inout)+struct(ns1_DataPointer)
-    ! Exact:     c_inout_struct_*
+    ! Exact:     f_inout_struct_*
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_*
+    ! Exact:     f_setter_native_*
     subroutine data_pointer_set_items(SH_this, val)
         use iso_c_binding, only : C_INT
         type(data_pointer), intent(INOUT) :: SH_this

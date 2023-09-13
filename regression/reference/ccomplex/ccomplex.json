@@ -90,8 +90,8 @@
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         }
                     }
                 },
@@ -115,8 +115,8 @@
                     "function_name": "acceptFloatComplexInoutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -195,8 +195,8 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "f_inout_native_*",
                             "stmt1": "f_inout_native_*",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_inout_native_*"
+                            "stmtc0": "f_inout_native_*",
+                            "stmtc1": "f_inout_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -244,8 +244,8 @@
                     "function_name": "acceptDoubleComplexInoutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -327,8 +327,8 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -375,8 +375,8 @@
                     "function_name": "acceptDoubleComplexOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             },
             {
@@ -608,8 +608,8 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -663,8 +663,8 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
                             "stmt1": "f_out_native_*",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_out_native_*"
+                            "stmtc0": "f_out_native_*",
+                            "stmtc1": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -709,8 +709,8 @@
                     "function_name": "acceptDoubleComplexOutPtrFlag",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             }
         ],

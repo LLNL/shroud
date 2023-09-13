@@ -203,8 +203,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_&_cdesc_allocatable",
                         "stmt1": "f_function_string_&_cdesc_allocatable",
-                        "stmtc0": "c_function_string_&_cdesc_allocatable",
-                        "stmtc1": "c_function_string_&_cdesc_allocatable"
+                        "stmtc0": "f_function_string_&_cdesc_allocatable",
+                        "stmtc1": "f_function_string_&_cdesc_allocatable"
                     }
                 }
             },
@@ -253,8 +253,8 @@
                     "function_name": "One",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "stmtc0": "f_subroutine",
+                    "stmtc1": "f_subroutine"
                 }
             }
         ],
@@ -641,8 +641,8 @@
                             "function_name": "One",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "stmtc0": "f_subroutine",
+                            "stmtc1": "f_subroutine"
                         }
                     }
                 ],

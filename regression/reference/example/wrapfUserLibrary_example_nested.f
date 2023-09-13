@@ -1249,7 +1249,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function ex_class1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1266,13 +1266,13 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_*_buf
+    ! Exact:     f_in_string_*_buf
     !>
     !! \brief constructor
     !!
@@ -1300,7 +1300,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     !>
     !! \brief destructor
     !!
@@ -1318,13 +1318,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int incr +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     function ex_class1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1342,7 +1342,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function ex_class1_get_name_error_check(obj) &
             result(SHT_rv)
         class(ex_class1) :: obj
@@ -1363,7 +1363,7 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Exact:     f_function_string_&_buf_arg
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
-    ! Exact:     c_function_string_&_buf_arg
+    ! Exact:     f_function_string_&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
         class(ex_class1) :: obj
         character(*), intent(OUT) :: name
@@ -1380,13 +1380,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     function ex_class1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1403,13 +1403,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     function ex_class1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -1426,13 +1426,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool in +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     function ex_class1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -1451,7 +1451,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine ex_class1_splicer_special(obj)
         class(ex_class1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
@@ -1484,13 +1484,13 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_*_buf
+    ! Exact:     f_in_string_*_buf
     !>
     !! \brief constructor
     !!
@@ -1514,7 +1514,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     !>
     !! \brief destructor
     !!
@@ -1532,7 +1532,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     function ex_class2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1552,7 +1552,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function ex_class2_get_name2(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1572,7 +1572,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function ex_class2_get_name3(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1592,7 +1592,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function ex_class2_get_name4(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1611,7 +1611,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     !>
     !! \brief helper function for Fortran
     !!
@@ -1631,13 +1631,13 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  const ExClass1 * in
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_*
+    ! Exact:     f_in_shadow_*
     function ex_class2_get_class1(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1657,13 +1657,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_declare_0_int(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
@@ -1679,13 +1679,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_declare_0_long(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
@@ -1701,20 +1701,20 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int len=1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Argument:  SidreLength len=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT
         use userlibrary_mod, only : sidre_length, type_id
@@ -1732,20 +1732,20 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long len=1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Argument:  SidreLength len=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_LONG
         use userlibrary_mod, only : sidre_length, type_id
@@ -1762,7 +1762,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine ex_class2_destroyall(obj)
         class(ex_class2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.destroyall
@@ -1775,7 +1775,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function ex_class2_get_type_id(obj) &
             result(SHT_rv)
         use userlibrary_mod, only : type_id
@@ -1792,13 +1792,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
@@ -1814,13 +1814,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  long value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
         class(ex_class2) :: obj
@@ -1836,13 +1836,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
         class(ex_class2) :: obj
@@ -1858,13 +1858,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double value +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine ex_class2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(ex_class2) :: obj
@@ -1880,7 +1880,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function ex_class2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1897,7 +1897,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function ex_class2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1933,7 +1933,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine local_function1()
         ! splicer begin namespace.example::nested.function.local_function1
         call c_local_function1()
@@ -1947,13 +1947,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -1969,7 +1969,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -1985,13 +1985,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -2008,19 +2008,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -2038,7 +2038,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine testoptional_0()
         ! splicer begin namespace.example::nested.function.testoptional_0
         call c_testoptional_0()
@@ -2051,13 +2051,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int i=1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -2071,19 +2071,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int i=1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long j=2 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -2100,7 +2100,7 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     function test_size_t() &
             result(SHT_rv)
         use iso_c_binding, only : C_SIZE_T
@@ -2117,13 +2117,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_unknown_scalar
+    ! Exact:     f_in_unknown_scalar
     subroutine testmpi_mpi(comm)
         integer, value, intent(IN) :: comm
         ! splicer begin namespace.example::nested.function.testmpi_mpi
@@ -2138,7 +2138,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine testmpi_serial()
         ! splicer begin namespace.example::nested.function.testmpi_serial
         call c_testmpi_serial()
@@ -2153,7 +2153,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief subroutine
     !!
@@ -2173,7 +2173,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief return a pointer
     !!
@@ -2191,7 +2191,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief abstract argument
     !!
@@ -2208,7 +2208,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     !>
     !! \brief abstract argument
     !!
@@ -2227,7 +2227,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine func_ptr5(get)
         procedure(func_ptr5_get) :: get
         ! splicer begin namespace.example::nested.function.func_ptr5
@@ -2241,67 +2241,67 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int * verylongname1 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname2 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname3 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname4 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname5 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname6 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname7 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname8 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname9 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * verylongname10 +intent(inout)
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -2328,67 +2328,67 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname2 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname3 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname4 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname5 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname6 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname7 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname8 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname9 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int verylongname10 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
@@ -2417,19 +2417,19 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(2)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(shape(in))+intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

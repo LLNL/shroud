@@ -128,7 +128,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     function last_function_called() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -148,7 +148,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     subroutine one()
         ! splicer begin function.one
         call c_one()

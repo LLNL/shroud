@@ -183,7 +183,7 @@ contains
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -199,7 +199,7 @@ contains
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor
+    ! Exact:     f_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor
@@ -212,13 +212,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_*
+    ! Exact:     f_in_shadow_*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
@@ -233,13 +233,13 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_*
+    ! Exact:     f_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
         type(class3), intent(IN) :: arg
@@ -279,13 +279,13 @@ contains
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_struct_*
+    ! Exact:     f_in_struct_*
     function pass_struct1(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

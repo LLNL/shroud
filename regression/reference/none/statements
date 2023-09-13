@@ -790,6 +790,8 @@ root
         scalar
           buf -- fc_setter_string_scalar_buf
     subroutine -- fc_subroutine
+      void
+        scalar -- fc_subroutine
     test -- f_test
   fc
     ctor
@@ -8007,6 +8009,9 @@ f_setter_string_scalar_buf:
 f_subroutine:
   intent: subroutine
   name: f_subroutine
+f_subroutine_void_scalar:
+  intent: subroutine
+  name: f_subroutine_void_scalar
 f_test:
   intent: test
   name: f_test
