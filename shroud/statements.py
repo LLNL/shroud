@@ -396,7 +396,7 @@ def compute_all_permutations(key):
 def compute_stmt_permutations(out, parts):
     """Recursively expand permutations
 
-    ex: f_function_string_scalar/*/&_cfi_copy/result
+    ex: f_function_string_scalar/*/&_cfi_copy
 
     Parameters
     ----------
@@ -1834,16 +1834,14 @@ fc_statements = [
         #  char *getname() +len(30)
         # fc_function_char_*_buf_copy
         # fc_function_char_*_buf_result
-        name="fc_function_char_*_buf_copy/result",
+        name="fc_function_char_*_buf_copy",
         mixin=[
             "f_mixin_in_character_buf",
             "c_mixin_in_character_buf",
         ],
         alias=[
             "f_function_char_*_buf_copy",
-            "f_function_char_*_buf_result",
             "c_function_char_*_buf_copy",
-            "c_function_char_*_buf_result",
         ],
         cxx_local_var="result",
         c_helper="ShroudStrCopy",
@@ -2199,13 +2197,10 @@ fc_statements = [
         # c_function_string_scalar_buf_copy
         # c_function_string_*_buf_copy
         # c_function_string_&_buf_copy
-        # c_function_string_scalar_buf_result
-        # c_function_string_*_buf_result
-        # c_function_string_&_buf_result
         name="c_mixin_function_string_scalar_buf_copy",
         mixin=["c_mixin_in_character_buf"],
         alias=[
-            "c_function_string_scalar/*/&_buf_copy/result",
+            "c_function_string_scalar/*/&_buf_copy",
         ],
         i_arg_decl=[
             # Change to intent(OUT) from mixin.
@@ -2336,9 +2331,6 @@ fc_statements = [
         # f_function_string_scalar_buf_copy
         # f_function_string_*_buf_copy
         # f_function_string_&_buf_copy
-        # f_function_string_scalar_buf_result
-        # f_function_string_*_buf_result
-        # f_function_string_&_buf_result
         # TTT - is the buf version used?
 #        name="f_function_string_scalar/*/&_buf",
         name="fc_mixin_function_string_scalar_buf",
@@ -2355,12 +2347,8 @@ fc_statements = [
             "fc_function_string_*_buf_copy",
             "fc_function_string_&_buf_copy",
 
-            "fc_function_string_scalar_buf_result",
-            "fc_function_string_*_buf_result",
-            "fc_function_string_&_buf_result",
-            
             "f_function_string_scalar/*/&_buf",
-            "f_function_string_scalar/*/&_buf_copy/result",
+            "f_function_string_scalar/*/&_buf_copy",
         ],
     ),
     
@@ -3756,22 +3744,20 @@ fc_statements = [
     dict(
         # Copy result into caller's buffer.
         # fc_function_char_*_cfi_copy
-        # fc_function_char_*_cfi_result
         name="fc_function_char_*_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
         alias=[
             "fc_function_char_*_cfi_result",
-            "f_function_char_*_cfi_copy/result",
-            "c_function_char_*_cfi_copy/result",
+            "f_function_char_*_cfi_copy",
+            "c_function_char_*_cfi_copy",
         ],
         f_arg_call=["{f_var}"],
         f_need_wrapper=True,
 
         # Copy result into caller's buffer.
         # c_function_char_*_cfi_copy
-        # c_function_char_*_cfi_result
         cxx_local_var="result",
         c_pre_call=[],         # undo mixin
         c_helper="ShroudStrCopy",
@@ -3978,23 +3964,17 @@ fc_statements = [
         # f_function_string_scalar_cfi_copy
         # f_function_string_*_cfi_copy
         # f_function_string_&_cfi_copy
-        # f_function_string_scalar_cfi_result
-        # f_function_string_*_cfi_result
-        # f_function_string_&_cfi_result
         # c_function_string_scalar_cfi_copy
         # c_function_string_*_cfi_copy
         # c_function_string_&_cfi_copy
-        # c_function_string_scalar_cfi_result
-        # c_function_string_*_cfi_result
-        # c_function_string_&_cfi_result
         name="fc_mixin_function_string_scalar_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
         alias=[
-            "fc_function_string_scalar/*/&_cfi_copy/result",
-            "f_function_string_scalar/*/&_cfi_copy/result",
-            "c_function_string_scalar/*/&_cfi_copy/result",
+            "fc_function_string_scalar/*/&_cfi_copy",
+            "f_function_string_scalar/*/&_cfi_copy",
+            "c_function_string_scalar/*/&_cfi_copy",
         ],
 
         # XXX - avoid calling C directly since the Fortran function

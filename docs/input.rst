@@ -433,6 +433,11 @@ allocatable
 
     For Python, create a NumPy array (same as *pointer* attribute)
 
+arg
+
+   Added by Shroud when a function result needs to be passed as an
+   additional argument from the Fortran wrapper to the C wrapper.
+
 copy
 
     Copy results into the Fortran argument.
@@ -485,11 +490,6 @@ raw
     For Fortran, return a ``type(C_PTR)``.
 
     For Python, return a ``PyCapsule``.
-
-result
-
-   Added by Shroud when a function result needs to be passed as an
-   additional argument from the Fortran wrapper to the C wrapper.
 
 scalar
 
