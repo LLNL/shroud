@@ -1761,7 +1761,7 @@ rv = .false.
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
                        return_deref_attr, r_attrs["owner"]] + specialize
             c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr] + specialize
+                       return_deref_attr, r_attrs["owner"]] + specialize
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)

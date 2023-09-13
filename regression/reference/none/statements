@@ -47,7 +47,11 @@ root
           allocatable -- c_function_native_*/&/**
           cdesc -- c_function_native_*_cdesc
             allocatable -- c_function_native_*_cdesc
+              caller -- c_function_native_*_cdesc
+              library -- c_function_native_*_cdesc
             pointer -- c_function_native_*_cdesc
+              caller -- c_function_native_*_cdesc
+              library -- c_function_native_*_cdesc
           cfi
             allocatable -- fc_function_native_*_cfi_allocatable
             pointer -- fc_function_native_*_cfi_pointer
@@ -60,9 +64,13 @@ root
       shadow
         &
           capptr -- c_function_shadow_*/&_capptr
+            caller -- c_function_shadow_*/&_capptr
+            library -- c_function_shadow_*/&_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
         *
           capptr -- c_function_shadow_*/&_capptr
+            caller -- c_function_shadow_*/&_capptr
+            library -- c_function_shadow_*/&_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
         scalar
           capptr -- c_function_shadow_scalar_capptr
@@ -79,9 +87,15 @@ root
             result -- c_mixin_function_string_scalar_buf_copy
           cdesc
             allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
+              caller -- c_function_string_*/&_cdesc_allocatable/pointer
+              library -- c_function_string_*/&_cdesc_allocatable/pointer
             pointer -- c_function_string_*/&_cdesc_allocatable/pointer
+              caller -- c_function_string_*/&_cdesc_allocatable/pointer
+              library -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi
             allocatable -- fc_function_string_*/&_cfi_allocatable
+              caller -- fc_function_string_*/&_cfi_allocatable
+              library -- fc_function_string_*/&_cfi_allocatable
             arg -- fc_function_string_scalar_cfi_arg
             copy -- fc_mixin_function_string_scalar_cfi_copy
             result -- fc_mixin_function_string_scalar_cfi_copy
@@ -93,11 +107,19 @@ root
             result -- c_mixin_function_string_scalar_buf_copy
           cdesc
             allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
+              caller -- c_function_string_*/&_cdesc_allocatable/pointer
+              library -- c_function_string_*/&_cdesc_allocatable/pointer
             pointer -- c_function_string_*/&_cdesc_allocatable/pointer
+              caller -- c_function_string_*/&_cdesc_allocatable/pointer
+              library -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi
             allocatable -- fc_function_string_*/&_cfi_allocatable
+              caller -- fc_function_string_*/&_cfi_allocatable
+              library -- fc_function_string_*/&_cfi_allocatable
             copy -- fc_mixin_function_string_scalar_cfi_copy
             pointer -- fc_function_string_*_cfi_pointer
+              caller -- fc_function_string_*_cfi_pointer
+              library -- fc_function_string_*_cfi_pointer
             result -- fc_mixin_function_string_scalar_cfi_copy
           copy -- c_function_string_scalar/*/&
           pointer -- c_function_string_scalar/*/&
@@ -110,6 +132,8 @@ root
             allocatable -- c_function_string_scalar_cdesc_allocatable
           cfi
             allocatable -- fc_function_string_scalar_cfi_allocatable
+              caller -- fc_function_string_*/&_cfi_allocatable
+              library -- fc_function_string_*/&_cfi_allocatable
             arg -- fc_function_string_scalar_cfi_arg
             copy -- fc_mixin_function_string_scalar_cfi_copy
             result -- fc_mixin_function_string_scalar_cfi_copy
@@ -1707,6 +1731,54 @@ c_function_native_*_cdesc_allocatable:
   intent: function
   name: c_function_native_*_cdesc_allocatable
   owner: library
+c_function_native_*_cdesc_allocatable_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc_allocatable_caller
+  owner: library
+c_function_native_*_cdesc_allocatable_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc_allocatable_library
+  owner: library
 c_function_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1730,6 +1802,54 @@ c_function_native_*_cdesc_pointer:
   - '{F_array_type}'
   intent: function
   name: c_function_native_*_cdesc_pointer
+  owner: library
+c_function_native_*_cdesc_pointer_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc_pointer_caller
+  owner: library
+c_function_native_*_cdesc_pointer_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc_pointer_library
   owner: library
 c_function_native_*_cfi_allocatable:
   c_arg_decl:
@@ -1845,6 +1965,52 @@ c_function_shadow_&_capptr:
   intent: function
   name: c_function_shadow_&_capptr
   owner: library
+c_function_shadow_&_capptr_caller:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  cxx_local_var: result
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_&_capptr_caller
+  owner: library
+c_function_shadow_&_capptr_library:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  cxx_local_var: result
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_&_capptr_library
+  owner: library
 c_function_shadow_&_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -1883,6 +2049,52 @@ c_function_shadow_*_capptr:
   i_result_var: '{F_result_ptr}'
   intent: function
   name: c_function_shadow_*_capptr
+  owner: library
+c_function_shadow_*_capptr_caller:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  cxx_local_var: result
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_*_capptr_caller
+  owner: library
+c_function_shadow_*_capptr_library:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  cxx_local_var: result
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_*_capptr_library
   owner: library
 c_function_shadow_*_capsule:
   c_arg_decl:
@@ -2088,6 +2300,42 @@ c_function_string_&_cdesc_allocatable:
   intent: function
   name: c_function_string_&_cdesc_allocatable
   owner: library
+c_function_string_&_cdesc_allocatable_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_&_cdesc_allocatable_caller
+  owner: library
+c_function_string_&_cdesc_allocatable_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_&_cdesc_allocatable_library
+  owner: library
 c_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2105,6 +2353,42 @@ c_function_string_&_cdesc_pointer:
   - '{F_array_type}'
   intent: function
   name: c_function_string_&_cdesc_pointer
+  owner: library
+c_function_string_&_cdesc_pointer_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_&_cdesc_pointer_caller
+  owner: library
+c_function_string_&_cdesc_pointer_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_&_cdesc_pointer_library
   owner: library
 c_function_string_&_cfi_allocatable:
   c_arg_decl:
@@ -2134,6 +2418,64 @@ c_function_string_&_cfi_allocatable:
     impl_header:
     - <cstring>
   name: c_function_string_&_cfi_allocatable
+  owner: library
+c_function_string_&_cfi_allocatable_caller:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_&_cfi_allocatable_caller
+  owner: library
+c_function_string_&_cfi_allocatable_library:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_&_cfi_allocatable_library
   owner: library
 c_function_string_&_cfi_arg:
   c_arg_decl:
@@ -2312,6 +2654,42 @@ c_function_string_*_cdesc_allocatable:
   intent: function
   name: c_function_string_*_cdesc_allocatable
   owner: library
+c_function_string_*_cdesc_allocatable_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_*_cdesc_allocatable_caller
+  owner: library
+c_function_string_*_cdesc_allocatable_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_*_cdesc_allocatable_library
+  owner: library
 c_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2329,6 +2707,42 @@ c_function_string_*_cdesc_pointer:
   - '{F_array_type}'
   intent: function
   name: c_function_string_*_cdesc_pointer
+  owner: library
+c_function_string_*_cdesc_pointer_caller:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_*_cdesc_pointer_caller
+  owner: library
+c_function_string_*_cdesc_pointer_library:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_*_cdesc_pointer_library
   owner: library
 c_function_string_*_cfi_allocatable:
   c_arg_decl:
@@ -2358,6 +2772,64 @@ c_function_string_*_cfi_allocatable:
     impl_header:
     - <cstring>
   name: c_function_string_*_cfi_allocatable
+  owner: library
+c_function_string_*_cfi_allocatable_caller:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_*_cfi_allocatable_caller
+  owner: library
+c_function_string_*_cfi_allocatable_library:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_*_cfi_allocatable_library
   owner: library
 c_function_string_*_cfi_copy:
   c_arg_decl:
@@ -2419,6 +2891,80 @@ c_function_string_*_cfi_pointer:
   - ISO_Fortran_binding.h
   intent: function
   name: c_function_string_*_cfi_pointer
+  owner: library
+c_function_string_*_cfi_pointer_caller:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
+  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_string_*_cfi_pointer_caller
+  owner: library
+c_function_string_*_cfi_pointer_library:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
+  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_string_*_cfi_pointer_library
   owner: library
 c_function_string_*_cfi_result:
   c_arg_decl:
@@ -2598,6 +3144,64 @@ c_function_string_scalar_cfi_allocatable:
   - ISO_Fortran_binding.h
   intent: function
   name: c_function_string_scalar_cfi_allocatable
+  owner: library
+c_function_string_scalar_cfi_allocatable_caller:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_scalar_cfi_allocatable_caller
+  owner: library
+c_function_string_scalar_cfi_allocatable_library:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
+  intent: function
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: c_function_string_scalar_cfi_allocatable_library
   owner: library
 c_function_string_scalar_cfi_arg:
   c_arg_decl:

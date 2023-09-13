@@ -3939,8 +3939,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_library",
                         "stmt1": "f_function_string_*_cdesc_allocatable_library",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "stmtc0": "c_function_string_*_cdesc_allocatable_library",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable_library"
                     }
                 }
             },
@@ -4142,8 +4142,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_caller",
                         "stmt1": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "stmtc0": "c_function_string_*_cdesc_allocatable_caller",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable_caller"
                     }
                 }
             },
@@ -4347,8 +4347,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_allocatable_caller",
                         "stmt1": "f_function_string_*_cdesc_allocatable_caller",
-                        "stmtc0": "c_function_string_*_cdesc_allocatable",
-                        "stmtc1": "c_function_string_*_cdesc_allocatable"
+                        "stmtc0": "c_function_string_*_cdesc_allocatable_caller",
+                        "stmtc1": "c_function_string_*_cdesc_allocatable_caller"
                     }
                 }
             },
@@ -4530,8 +4530,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_string_*_cdesc_pointer_library",
                         "stmt1": "f_function_string_*_cdesc_pointer_library",
-                        "stmtc0": "c_function_string_*_cdesc_pointer",
-                        "stmtc1": "c_function_string_*_cdesc_pointer"
+                        "stmtc0": "c_function_string_*_cdesc_pointer_library",
+                        "stmtc1": "c_function_string_*_cdesc_pointer_library"
                     }
                 }
             },

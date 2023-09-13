@@ -580,7 +580,7 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     c_function_native_*_cdesc_pointer_caller
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -601,7 +601,7 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_cdesc_pointer_caller
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-    ! Exact:     c_function_native_*_cdesc_pointer
+    ! Exact:     c_function_native_*_cdesc_pointer_caller
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -644,7 +644,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr_library
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     c_function_shadow_*_capptr_library
     function get_class_static() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -660,7 +660,7 @@ contains
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr_caller
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     c_function_shadow_*_capptr_caller
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)

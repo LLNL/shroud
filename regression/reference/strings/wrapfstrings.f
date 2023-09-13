@@ -2037,7 +2037,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_library
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable
+    ! Exact:     c_function_string_*_cdesc_allocatable_library
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -2056,7 +2056,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_caller
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable
+    ! Exact:     c_function_string_*_cdesc_allocatable_caller
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -2082,7 +2082,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_caller
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable
+    ! Exact:     c_function_string_*_cdesc_allocatable_caller
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
@@ -2105,7 +2105,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Exact:     f_function_string_*_cdesc_pointer_library
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_pointer
+    ! Exact:     c_function_string_*_cdesc_pointer_library
     function get_const_string_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer

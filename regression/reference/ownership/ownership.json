@@ -2281,8 +2281,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc_pointer"
+                        "stmtc0": "c_function_native_*_cdesc_pointer_caller",
+                        "stmtc1": "c_function_native_*_cdesc_pointer_caller"
                     }
                 }
             },
@@ -2834,8 +2834,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_cdesc_pointer_caller",
                         "stmt1": "f_function_native_*_cdesc_pointer_caller",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc_pointer"
+                        "stmtc0": "c_function_native_*_cdesc_pointer_caller",
+                        "stmtc1": "c_function_native_*_cdesc_pointer_caller"
                     }
                 }
             },
@@ -3741,8 +3741,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_library",
                         "stmt1": "f_function_shadow_*_capptr_library",
-                        "stmtc0": "c_function_shadow_*_capptr",
-                        "stmtc1": "c_function_shadow_*_capptr"
+                        "stmtc0": "c_function_shadow_*_capptr_library",
+                        "stmtc1": "c_function_shadow_*_capptr_library"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -3931,8 +3931,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr_caller",
                         "stmt1": "f_function_shadow_*_capptr_caller",
-                        "stmtc0": "c_function_shadow_*_capptr",
-                        "stmtc1": "c_function_shadow_*_capptr"
+                        "stmtc0": "c_function_shadow_*_capptr_caller",
+                        "stmtc1": "c_function_shadow_*_capptr_caller"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",

@@ -571,7 +571,7 @@ def print_tree_statements(fp, statements, defaults):
         complete[name] = all
     yaml.safe_dump(complete, fp)
             
-def lookup_stmts_tree(tree, path):
+def XXXlookup_stmts_tree(tree, path):
     """
     Lookup path in statements tree.
     Look for longest path which matches.
@@ -1534,10 +1534,11 @@ fc_statements = [
         # c_function_native_*_cdesc_allocatable
         # c_function_native_*_cdesc_pointer
         name="c_function_native_*_cdesc",
+        mixin=["c_mixin_function_cdesc"],
         alias=[
             "c_function_native_*_cdesc_allocatable/pointer",
+            "c_function_native_*_cdesc_allocatable/pointer_caller/library",
         ],
-        mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines array_context",
         c_post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
@@ -2289,6 +2290,9 @@ fc_statements = [
         # c_function_string_&_cdesc_pointer
         name="c_function_string_*/&_cdesc_allocatable/pointer",
         mixin=["c_mixin_function_cdesc"],
+        alias=[
+            "c_function_string_*/&_cdesc_allocatable/pointer_caller/library",
+        ],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -3122,6 +3126,9 @@ fc_statements = [
             "c_mixin_shadow",
 #            "c_function_shadow_*_capsule",
             "fc_mixin_function_shadow_*_capsule",
+        ],
+        alias=[
+            "c_function_shadow_*/&_capptr_caller/library",
         ],
         c_return_type=None,
         c_return=[
@@ -4043,6 +4050,7 @@ fc_statements = [
             "f_function_string_scalar/*/&_cfi_pointer",
             "f_function_string_scalar/*/&_cfi_pointer_caller/library",
             "c_function_string_*_cfi_pointer",
+            "c_function_string_*_cfi_pointer_caller/library",
         ],
         c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
@@ -4109,6 +4117,7 @@ fc_statements = [
             "c_function_string_*/&_cfi_allocatable",
             "fc_function_string_scalar/*/&_cfi_allocatable_caller/library",
             "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
+            "c_function_string_scalar/*/&_cfi_allocatable_caller/library",
         ],
         i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",

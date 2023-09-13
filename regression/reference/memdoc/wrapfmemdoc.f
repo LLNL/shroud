@@ -104,7 +104,7 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_*_cdesc_allocatable_library
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_cdesc_allocatable
+    ! Exact:     c_function_string_*_cdesc_allocatable_library
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
