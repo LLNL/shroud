@@ -45,7 +45,7 @@ module enum_mod
         ! ----------------------------------------
         ! Argument:  enum Color in +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="convert_to_int")

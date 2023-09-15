@@ -27,7 +27,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     interface
         subroutine accept_float_complex_inout_ptr(arg1) &
                 bind(C, name="acceptFloatComplexInoutPtr")
@@ -44,7 +44,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     interface
         subroutine accept_double_complex_inout_ptr(arg1) &
                 bind(C, name="acceptDoubleComplexInoutPtr")
@@ -61,7 +61,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine accept_double_complex_out_ptr(arg1) &
                 bind(C, name="acceptDoubleComplexOutPtr")
@@ -78,11 +78,11 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine accept_double_complex_out_ptr_flag(arg1, flag) &
                 bind(C, name="acceptDoubleComplexOutPtrFlag")

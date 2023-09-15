@@ -86,7 +86,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_*
+        ! Exact:     f_in_native_*
         subroutine c_rank2_in(arg) &
                 bind(C, name="CDE_Rank2In")
             use iso_c_binding, only : C_INT
@@ -102,7 +102,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +api(cdesc)+intent(in)
-        ! Exact:     c_in_native_*_cdesc
+        ! Exact:     f_in_native_*_cdesc
         subroutine c_rank2_in_bufferify(SHT_arg_cdesc) &
                 bind(C, name="CDE_Rank2In_bufferify")
             import :: CDE_SHROUD_array
@@ -117,11 +117,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_string_&
+        ! Exact:     f_in_string_&
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+intent(in)+rank(0)+value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_void_*
+        ! Exact:     f_in_void_*
         subroutine c_get_scalar1(name, value) &
                 bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -138,11 +138,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
+        ! Exact:     f_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +api(cdesc)+intent(out)
-        ! Exact:     c_out_native_*_cdesc
+        ! Exact:     f_out_native_*_cdesc
         subroutine c_get_scalar1_0_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
                 bind(C, name="CDE_GetScalar1_0_bufferify")
@@ -162,11 +162,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
+        ! Exact:     f_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +api(cdesc)+intent(out)
-        ! Exact:     c_out_native_*_cdesc
+        ! Exact:     f_out_native_*_cdesc
         subroutine c_get_scalar1_1_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
                 bind(C, name="CDE_GetScalar1_1_bufferify")
@@ -212,11 +212,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
+        ! Exact:     f_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_native_*
+        ! Exact:     f_out_native_*
         subroutine c_get_scalar2_0_bufferify(name, SHT_name_len, value) &
                 bind(C, name="CDE_GetScalar2_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -234,11 +234,11 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
+        ! Exact:     f_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_native_*
+        ! Exact:     f_out_native_*
         subroutine c_get_scalar2_1_bufferify(name, SHT_name_len, value) &
                 bind(C, name="CDE_GetScalar2_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT

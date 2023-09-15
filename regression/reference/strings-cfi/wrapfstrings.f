@@ -39,7 +39,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine pass_char(status) &
                 bind(C, name="STR_passChar")
@@ -56,7 +56,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine c_pass_char_force(status) &
                 bind(C, name="STR_passCharForce")
@@ -86,11 +86,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
@@ -111,11 +111,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_char_*_cfi
+    ! Exact:     f_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     ! start pass_char_ptr
     interface
         subroutine pass_char_ptr(dest, src) &
@@ -134,7 +134,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_char_*
+    ! Exact:     f_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_passCharPtrInOut")
@@ -152,7 +152,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_char_*_cfi
+    ! Exact:     f_inout_char_*_cfi
     interface
         subroutine pass_char_ptr_in_out(s) &
                 bind(C, name="STR_passCharPtrInOut_CFI")
@@ -636,7 +636,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_&
+    ! Exact:     f_in_string_&
     interface
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_acceptStringConstReference")
@@ -654,7 +654,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_string_&_cfi
+    ! Exact:     f_in_string_&_cfi
     interface
         subroutine accept_string_const_reference(arg1) &
                 bind(C, name="STR_acceptStringConstReference_CFI")
@@ -670,7 +670,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_&
+    ! Exact:     f_out_string_&
     interface
         subroutine c_accept_string_reference_out(arg1) &
                 bind(C, name="STR_acceptStringReferenceOut")
@@ -688,7 +688,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_string_&_cfi
+    ! Exact:     f_out_string_&_cfi
     interface
         subroutine accept_string_reference_out(arg1) &
                 bind(C, name="STR_acceptStringReferenceOut_CFI")
@@ -704,7 +704,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_&
+    ! Exact:     f_inout_string_&
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
@@ -724,7 +724,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_string_&_cfi
+    ! Exact:     f_inout_string_&_cfi
     ! start accept_string_reference
     interface
         subroutine accept_string_reference(arg1) &
@@ -742,7 +742,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_*
+    ! Exact:     f_in_string_*
     interface
         subroutine c_accept_string_pointer_const(arg1) &
                 bind(C, name="STR_acceptStringPointerConst")
@@ -760,7 +760,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_string_*_cfi
+    ! Exact:     f_in_string_*_cfi
     interface
         subroutine accept_string_pointer_const(arg1) &
                 bind(C, name="STR_acceptStringPointerConst_CFI")
@@ -776,7 +776,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_*
+    ! Exact:     f_inout_string_*
     interface
         subroutine c_accept_string_pointer(arg1) &
                 bind(C, name="STR_acceptStringPointer")
@@ -794,7 +794,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_string_*_cfi
+    ! Exact:     f_inout_string_*_cfi
     interface
         subroutine accept_string_pointer(arg1) &
                 bind(C, name="STR_acceptStringPointer_CFI")
@@ -810,7 +810,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_*
+    ! Exact:     f_out_string_*
     interface
         subroutine c_fetch_string_pointer(arg1) &
                 bind(C, name="STR_fetchStringPointer")
@@ -828,7 +828,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_string_*_cfi
+    ! Exact:     f_out_string_*_cfi
     interface
         subroutine fetch_string_pointer(arg1) &
                 bind(C, name="STR_fetchStringPointer_CFI")
@@ -844,11 +844,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_*
+    ! Exact:     f_inout_string_*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_acceptStringPointerLen")
@@ -867,11 +867,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_string_*_cfi
+    ! Exact:     f_inout_string_*_cfi
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine accept_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_acceptStringPointerLen_CFI")
@@ -889,11 +889,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_*
+    ! Exact:     f_out_string_*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_fetchStringPointerLen")
@@ -912,11 +912,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_string_*_cfi
+    ! Exact:     f_out_string_*_cfi
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine fetch_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_fetchStringPointerLen_CFI")
@@ -934,7 +934,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_scalar
+    ! Exact:     f_in_string_scalar
     interface
         function c_accept_string_instance(arg1) &
                 result(SHT_rv) &
@@ -954,7 +954,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_string_scalar_cfi
+    ! Exact:     f_in_string_scalar_cfi
     interface
         function accept_string_instance(arg1) &
                 result(SHT_rv) &
@@ -973,11 +973,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +deref(copy)+intent(out)
-    ! Exact:     c_out_string_**_copy
+    ! Exact:     f_out_string_**_copy
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_arg(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringArg")
@@ -996,7 +996,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +api(cfi)+deref(copy)+intent(out)
-    ! Exact:     c_out_string_**_cfi_copy
+    ! Exact:     f_out_string_**_cfi_copy
     interface
         subroutine fetch_array_string_arg(strs) &
                 bind(C, name="STR_fetchArrayStringArg_CFI")
@@ -1013,11 +1013,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_allocatable
+    ! Exact:     f_out_string_**_allocatable
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_alloc(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAlloc")
@@ -1036,7 +1036,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cfi_allocatable
+    ! Exact:     f_out_string_**_cfi_allocatable
     interface
         subroutine fetch_array_string_alloc(strs) &
                 bind(C, name="STR_fetchArrayStringAlloc_CFI")
@@ -1053,11 +1053,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_allocatable
+    ! Exact:     f_out_string_**_allocatable
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAllocLen")
@@ -1076,7 +1076,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cfi_allocatable
+    ! Exact:     f_out_string_**_cfi_allocatable
     interface
         subroutine fetch_array_string_alloc_len(strs) &
                 bind(C, name="STR_fetchArrayStringAllocLen_CFI")
@@ -1093,7 +1093,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="STR_explicit1")
@@ -1111,7 +1111,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     interface
         subroutine explicit1(name) &
                 bind(C, name="STR_explicit1_CFI")
@@ -1127,7 +1127,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
@@ -1145,7 +1145,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_char_*_cfi
+    ! Exact:     f_out_char_*_cfi
     interface
         subroutine explicit2(name) &
                 bind(C, name="STR_explicit2_CFI")
@@ -1161,7 +1161,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CpassChar")
@@ -1191,11 +1191,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -1214,11 +1214,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_char_*_cfi
+    ! Exact:     f_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     interface
         subroutine cpass_char_ptr(dest, src) &
                 bind(C, name="STR_CpassCharPtr_CFI")
@@ -1235,11 +1235,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
                 bind(C, name="STR_CpassCharPtrBlank")
@@ -1258,11 +1258,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
-    ! Exact:     c_out_char_*_cfi
+    ! Exact:     f_out_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     interface
         subroutine cpass_char_ptr_blank(dest, src) &
                 bind(C, name="STR_CpassCharPtrBlank_CFI")
@@ -1279,11 +1279,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_&
+    ! Exact:     f_inout_string_&
     interface
         subroutine c_post_declare(count, name) &
                 bind(C, name="STR_PostDeclare")
@@ -1302,11 +1302,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_native_*_cfi
+    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_string_&_cfi
+    ! Exact:     f_inout_string_&_cfi
     interface
         subroutine post_declare(count, name) &
                 bind(C, name="STR_PostDeclare_CFI")
@@ -1324,7 +1324,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -1344,7 +1344,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     interface
         function cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -1363,11 +1363,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
@@ -1387,11 +1387,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -1412,11 +1412,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     interface
         function cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &

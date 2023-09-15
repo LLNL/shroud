@@ -112,7 +112,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_update_as_float(arg) &
                 bind(C, name="UpdateAsFloat")
@@ -129,7 +129,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_update_as_double(arg) &
                 bind(C, name="UpdateAsDouble")
@@ -160,7 +160,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_generic_real
     interface
         subroutine c_generic_real(arg) &
@@ -179,11 +179,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &
@@ -203,11 +203,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * values
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_sum_values(values, nvalues) &
                 result(SHT_rv) &
@@ -228,11 +228,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_sum_values_0d(values, nvalues) &
                 result(SHT_rv) &
@@ -253,11 +253,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_sum_values_1d(values, nvalues) &
                 result(SHT_rv) &
@@ -278,11 +278,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_sum_values_2d(values, nvalues) &
                 result(SHT_rv) &
@@ -302,19 +302,19 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_assign_values(from, nfrom, to, nto) &
                 bind(C, name="AssignValues")
@@ -335,19 +335,19 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_assign_values_scalar(from, nfrom, to, nto) &
                 bind(C, name="GEN_AssignValues_scalar")
@@ -368,19 +368,19 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_assign_values_broadcast(from, nfrom, to, nto) &
                 bind(C, name="GEN_AssignValues_broadcast")
@@ -401,19 +401,19 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_assign_values_copy(from, nfrom, to, nto) &
                 bind(C, name="GEN_AssignValues_copy")
@@ -434,15 +434,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer(addr, type, size) &
                 bind(C, name="SavePointer")
@@ -464,15 +464,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer_float1d(addr, type, size) &
                 bind(C, name="GEN_SavePointer_float1d")
@@ -494,15 +494,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer_float2d(addr, type, size) &
                 bind(C, name="GEN_SavePointer_float2d")
@@ -522,15 +522,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer2(addr, type, size) &
                 bind(C, name="GEN_SavePointer2")
@@ -550,15 +550,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer2_float1d(addr, type, size) &
                 bind(C, name="GEN_SavePointer2_float1d")
@@ -578,15 +578,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_save_pointer2_float2d(addr, type, size) &
                 bind(C, name="GEN_SavePointer2_float2d")
@@ -605,15 +605,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  size_t * size +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine get_pointer(addr, type, size) &
                 bind(C, name="GetPointer")
@@ -633,15 +633,15 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  size_t * size +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_get_pointer_as_pointer(addr, type, size) &
                 bind(C, name="GetPointerAsPointer")
@@ -663,7 +663,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     interface
         subroutine c_get_pointer_as_pointer_float1d_bufferify( &
                 SHT_addr_cdesc) &
@@ -684,7 +684,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cdesc_pointer
+    ! Exact:     f_out_native_**_cdesc_pointer
     interface
         subroutine c_get_pointer_as_pointer_float2d_bufferify( &
                 SHT_addr_cdesc) &
@@ -719,11 +719,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_shadow_*
+    ! Exact:     f_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_update_struct_as_class(arg, inew) &
                 result(SHT_rv) &
@@ -745,11 +745,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_shadow_*
+    ! Exact:     f_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_update_struct_as_class_int(arg, inew) &
                 result(SHT_rv) &
@@ -771,11 +771,11 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_shadow_*
+    ! Exact:     f_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_update_struct_as_class_long(arg, inew) &
                 result(SHT_rv) &

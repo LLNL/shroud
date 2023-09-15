@@ -1138,12 +1138,7 @@ fc_statements = [
     dict(  # c_default
         name="c_defaulttmp",
         alias=[
-            "c_inout_char_*",
             "c_out_native_&*",
-            "c_out_native_**_allocatable",
-            "c_out_native_**_pointer",
-            "c_out_native_*&_pointer",
-            "c_out_char_*",
         ],
     ),
 
@@ -1162,9 +1157,17 @@ fc_statements = [
             "f_in_native_&",
             "c_in_native_&",
 
+            "fc_out_char_*",
+            "f_out_char_*",
+            "c_out_char_*",
+
             "fc_out_native_&",
             "f_out_native_&",
             "c_out_native_&",
+
+            "fc_out_native_*&_pointer",
+            "f_out_native_*&_pointer",
+            "c_out_native_*&_pointer",
 
             "fc_inout_native_*",
             "f_inout_native_*",
@@ -1174,6 +1177,14 @@ fc_statements = [
             "f_inout_native_&",
             "c_inout_native_&",
             
+            "fc_out_native_**_allocatable",
+            "f_out_native_**_allocatable",
+            "c_out_native_**_allocatable",
+
+            "fc_out_native_**_pointer",
+            "f_out_native_**_pointer",
+            "c_out_native_**_pointer",
+
             "fc_out_native_***",
             "f_out_native_***",
             "c_out_native_***",
@@ -1182,6 +1193,10 @@ fc_statements = [
             "f_in_char_*",
             "c_in_char_*",
 
+            "fc_inout_char_*",
+            "f_inout_char_*",
+            "c_inout_char_*",
+            
             "fc_in_void_scalar",
             "f_in_void_scalar",
             "c_in_void_scalar",
@@ -2019,7 +2034,11 @@ fc_statements = [
     #####
     dict(
         # Treat as an assumed length array in Fortran interface.
-        name='c_in_char_**',
+        name="fc_in_char_**",
+        alias=[
+            "f_in_char_**",
+            "c_in_char_**",
+        ],
         c_arg_decl=[
             "char **{c_var}",
         ],
@@ -2119,14 +2138,26 @@ fc_statements = [
     dict(
         # c_in_string_*
         # c_in_string_&
-        name="c_in_string_*/&",
+        name="fc_in_string_*/&",
+        alias=[
+            "f_in_string_*",
+            "c_in_string_*",
+            "f_in_string_&",
+            "c_in_string_&",
+        ],
         cxx_local_var="scalar",
         c_pre_call=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         # c_out_string_*
         # c_out_string_&
-        name="c_out_string_*/&",
+        name="fc_out_string_*/&",
+        alias=[
+            "f_out_string_*",
+            "c_out_string_*",
+            "f_out_string_&",
+            "c_out_string_&",
+        ],
         lang_cxx=dict(
             impl_header=["<cstring>"],
         ),
@@ -2148,8 +2179,7 @@ fc_statements = [
             "f_mixin_in_character_buf",
         ],
         alias=[
-            "fc_inout_string_*/&_buf",
-            "f_inout_string_*/&_buf",
+            "f_inout_string_*/&",
             "c_inout_string_*/&",
         ],
         lang_cxx=dict(
@@ -2206,8 +2236,15 @@ fc_statements = [
     dict(
         # c_inout_string_*_buf
         # c_inout_string_&_buf
-        name="c_inout_string_*/&_buf",
-        mixin=["c_mixin_in_character_buf"],
+        name="fc_inout_string_*/&_buf",
+        mixin=[
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        alias=[
+            "f_inout_string_*/&_buf",
+            "c_inout_string_*/&_buf",
+        ],
         c_helper="ShroudStrCopy ShroudLenTrim",
         cxx_local_var="scalar",
         c_pre_call=[
@@ -2293,7 +2330,11 @@ fc_statements = [
     ),
     dict(
         # Used with C wrapper.
-        name="c_in_string_scalar",
+        name="fc_in_string_scalar",
+        alias=[
+            "f_in_string_scalar",
+            "c_in_string_scalar",
+        ],
         c_arg_decl=[
             # Argument is a pointer while std::string is a scalar.
             # C++ compiler will convert to std::string when calling function.
@@ -4294,7 +4335,7 @@ fc_statements = [
         name="fc_out_string_**_allocatable",
         alias=[
             "c_out_string_**_allocatable",
-# TTT        "f_out_string_**_allocatable",
+            "f_out_string_**_allocatable",
             "fc_out_string_**_cfi_allocatable",
             "f_out_string_**_cfi_allocatable",
             "c_out_string_**_cfi_allocatable",

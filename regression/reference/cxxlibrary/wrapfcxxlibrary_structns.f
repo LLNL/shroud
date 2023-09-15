@@ -36,7 +36,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_struct_&
+        ! Exact:     f_inout_struct_&
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReference")
@@ -54,7 +54,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  const Cstruct1 & arg
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_struct_&
+        ! Exact:     f_in_struct_&
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReferenceIn")
@@ -72,7 +72,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_struct_&
+        ! Exact:     f_inout_struct_&
         subroutine pass_struct_by_reference_inout(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceInout")
             import :: cstruct1
@@ -87,7 +87,7 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_struct_&
+        ! Exact:     f_out_struct_&
         subroutine pass_struct_by_reference_out(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceOut")
             import :: cstruct1

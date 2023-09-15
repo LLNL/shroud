@@ -51,7 +51,7 @@ module library_mod
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_unknown_scalar
+        ! Exact:     f_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -68,7 +68,7 @@ module library_mod
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_shadow_*
+        ! Exact:     f_inout_shadow_*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: LIB_SHROUD_capsule_data

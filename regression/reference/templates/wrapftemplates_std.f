@@ -112,7 +112,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_&
+        ! Exact:     f_in_native_&
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
@@ -130,7 +130,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
@@ -175,7 +175,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_&
+        ! Exact:     f_in_native_&
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
@@ -193,7 +193,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")

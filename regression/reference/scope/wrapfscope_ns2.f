@@ -65,7 +65,7 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(in)+struct(ns2_DataPointer)
-        ! Exact:     c_in_struct_*
+        ! Exact:     f_in_struct_*
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
                 bind(C, name="SCO_ns2_DataPointer_get_items_bufferify")
             import :: SCO_SHROUD_array, data_pointer
@@ -82,11 +82,11 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(inout)+struct(ns2_DataPointer)
-        ! Exact:     c_inout_struct_*
+        ! Exact:     f_inout_struct_*
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
-        ! Exact:     c_setter_native_*
+        ! Exact:     f_setter_native_*
         subroutine data_pointer_set_items(SH_this, val) &
                 bind(C, name="SCO_ns2_DataPointer_set_items")
             use iso_c_binding, only : C_INT

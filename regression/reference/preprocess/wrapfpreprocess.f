@@ -143,7 +143,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Argument:  int i=0 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
@@ -176,7 +176,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT

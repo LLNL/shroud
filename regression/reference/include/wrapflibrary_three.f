@@ -47,7 +47,7 @@ module library_three_mod
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             import :: LIB_SHROUD_capsule_data, custom_type

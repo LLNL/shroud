@@ -103,7 +103,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int size +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine c_ArrayWrapper_setSize(self, size) &
                 bind(C, name="ARR_ArrayWrapper_setSize")
             use iso_c_binding, only : C_INT
@@ -134,7 +134,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int & size +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_native_&
+        ! Exact:     f_out_native_&
         subroutine c_ArrayWrapper_fillSize(self, size) &
                 bind(C, name="ARR_ArrayWrapper_fillSize")
             use iso_c_binding, only : C_INT
@@ -270,11 +270,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Exact:     c_out_native_**_pointer
+        ! Exact:     f_out_native_**_pointer
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_native_*
+        ! Exact:     f_inout_native_*
         subroutine c_ArrayWrapper_fetchArrayPtr(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtr")
             use iso_c_binding, only : C_INT, C_PTR
@@ -293,7 +293,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-        ! Exact:     c_out_native_**_cdesc_pointer
+        ! Exact:     f_out_native_**_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayPtr_bufferify(self, &
                 SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtr_bufferify")
@@ -310,11 +310,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Exact:     c_out_native_*&_pointer
+        ! Exact:     f_out_native_*&_pointer
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_native_&
+        ! Exact:     f_inout_native_&
         subroutine c_ArrayWrapper_fetchArrayRef(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRef")
             use iso_c_binding, only : C_INT, C_PTR
@@ -333,7 +333,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-        ! Exact:     c_out_native_*&_cdesc_pointer
+        ! Exact:     f_out_native_*&_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayRef_bufferify(self, &
                 SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRef_bufferify")
@@ -350,11 +350,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Exact:     c_out_native_**_pointer
+        ! Exact:     f_out_native_**_pointer
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_native_*
+        ! Exact:     f_inout_native_*
         subroutine c_ArrayWrapper_fetchArrayPtrConst(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst")
             use iso_c_binding, only : C_INT, C_PTR
@@ -373,7 +373,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-        ! Exact:     c_out_native_**_cdesc_pointer
+        ! Exact:     f_out_native_**_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayPtrConst_bufferify(self, &
                 SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst_bufferify")
@@ -390,11 +390,11 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Exact:     c_out_native_*&_pointer
+        ! Exact:     f_out_native_*&_pointer
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_native_&
+        ! Exact:     f_inout_native_&
         subroutine c_ArrayWrapper_fetchArrayRefConst(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst")
             use iso_c_binding, only : C_INT, C_PTR
@@ -413,7 +413,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-        ! Exact:     c_out_native_*&_cdesc_pointer
+        ! Exact:     f_out_native_*&_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayRefConst_bufferify(self, &
                 SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst_bufferify")
@@ -430,7 +430,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_void_**
+        ! Exact:     f_out_void_**
         subroutine c_ArrayWrapper_fetchVoidPtr(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetchVoidPtr")
             use iso_c_binding, only : C_PTR
@@ -447,7 +447,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  void * & array +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_void_*&
+        ! Exact:     f_out_void_*&
         subroutine c_ArrayWrapper_fetchVoidRef(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetchVoidRef")
             use iso_c_binding, only : C_PTR
@@ -464,7 +464,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  void * array +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_void_*
+        ! Exact:     f_in_void_*
         function c_ArrayWrapper_checkPtr(self, array) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_checkPtr")

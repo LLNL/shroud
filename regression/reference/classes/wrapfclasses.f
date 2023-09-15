@@ -188,7 +188,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_rv) &
@@ -244,7 +244,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_&
+    ! Exact:     f_in_shadow_&
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -283,11 +283,11 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_&
+    ! Exact:     f_in_string_&
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
@@ -313,11 +313,11 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
@@ -398,7 +398,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -460,7 +460,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_scalar
+    ! Exact:     f_setter_native_scalar
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -499,7 +499,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
-    ! Exact:     c_setter_string_scalar_buf
+    ! Exact:     f_setter_string_scalar_buf
     ! start c_class1_set_m_name_bufferify
     interface
         subroutine c_class1_set_m_name_bufferify(self, val, SHT_val_len) &
@@ -618,7 +618,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_data_allocate
     interface
         subroutine c_data_allocate(self, n) &
@@ -707,7 +707,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_scalar
+    ! Exact:     f_setter_native_scalar
     ! start c_data_set_nitems
     interface
         subroutine c_data_set_nitems(self, val) &
@@ -746,7 +746,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_native_*
+    ! Exact:     f_setter_native_*
     ! start c_data_set_items
     interface
         subroutine c_data_set_items(self, val) &
@@ -767,7 +767,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -786,7 +786,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_scalar
+    ! Exact:     f_in_shadow_scalar
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_passClassByValue")
@@ -803,7 +803,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_*
+    ! Exact:     f_in_shadow_*
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -913,7 +913,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_get_class_copy(flag, SHT_rv) &
                 result(SHT_prv) &
@@ -934,7 +934,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine set_global_flag(arg) &
                 bind(C, name="CLA_set_global_flag")

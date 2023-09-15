@@ -161,7 +161,7 @@ root
           buf -- fc_in_char_*_buf
           capi -- fc_defaulttmp_native_scalar
           cfi -- fc_in_char_*_cfi
-        ** -- c_in_char_**
+        ** -- fc_in_char_**
           buf -- fc_in_char_**_buf
           cfi -- fc_in_char_**_cfi
         scalar -- fc_in_char_scalar
@@ -177,13 +177,13 @@ root
         * -- fc_in_shadow_*
         scalar -- fc_in_shadow_scalar
       string
-        & -- c_in_string_*/&
+        & -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        * -- c_in_string_*/&
+        * -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        scalar -- c_in_string_scalar
+        scalar -- fc_in_string_scalar
           buf -- fc_in_string_scalar_buf
           cfi -- fc_in_string_scalar/*/&_cfi
       struct
@@ -225,7 +225,7 @@ root
       bool
         * -- fc_inout_bool_*
       char
-        * -- c_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_inout_char_*_buf
           cfi -- fc_inout_char_*_cfi
       native
@@ -240,10 +240,10 @@ root
         * -- fc_inout_shadow_*
       string
         & -- fc_inout_string_*/&
-          buf -- c_inout_string_*/&_buf
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
         * -- fc_inout_string_*/&
-          buf -- c_inout_string_*/&_buf
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
       struct
         & -- fc_in/out/inout_struct
@@ -328,7 +328,7 @@ root
       bool
         * -- fc_out_bool_*
       char
-        * -- c_defaulttmp
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_out_char_*_buf
           cfi -- fc_out_char_*_cfi
       native
@@ -341,23 +341,23 @@ root
         *&
           cdesc -- c_out_native_*&_cdesc
             pointer -- c_out_native_*&_cdesc
-          pointer -- c_defaulttmp
+          pointer -- fc_defaulttmp_native_scalar
         **
-          allocatable -- c_defaulttmp
+          allocatable -- fc_defaulttmp_native_scalar
           cdesc -- c_out_native_**_cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
             pointer -- fc_out_native_**/*&_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
-          pointer -- c_defaulttmp
+          pointer -- fc_defaulttmp_native_scalar
           raw -- fc_out_native_**_raw
         *** -- fc_defaulttmp_native_scalar
       string
-        & -- c_out_string_*/&
+        & -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
-        * -- c_out_string_*/&
+        * -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
         **
@@ -589,7 +589,7 @@ root
           buf -- fc_in_char_*_buf
           capi -- fc_defaulttmp_native_scalar
           cfi -- fc_in_char_*_cfi
-        **
+        ** -- fc_in_char_**
           buf -- fc_in_char_**_buf
           cfi -- fc_in_char_**_cfi
         scalar -- fc_in_char_scalar
@@ -605,13 +605,13 @@ root
         * -- fc_in_shadow_*
         scalar -- fc_in_shadow_scalar
       string
-        &
+        & -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        *
+        * -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        scalar
+        scalar -- fc_in_string_scalar
           buf -- fc_in_string_scalar_buf
           cfi -- fc_in_string_scalar/*/&_cfi
       struct
@@ -643,7 +643,7 @@ root
       bool
         * -- fc_inout_bool_*
       char
-        *
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_inout_char_*_buf
           cfi -- fc_inout_char_*_cfi
       native
@@ -654,11 +654,11 @@ root
       shadow
         * -- fc_inout_shadow_*
       string
-        &
-          buf -- fc_inout_string_*/&
+        & -- fc_inout_string_*/&
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
-        *
-          buf -- fc_inout_string_*/&
+        * -- fc_inout_string_*/&
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
       struct
         & -- fc_in/out/inout_struct
@@ -717,7 +717,7 @@ root
       bool
         * -- fc_out_bool_*
       char
-        *
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_out_char_*_buf
           cfi -- fc_out_char_*_cfi
       native
@@ -730,23 +730,27 @@ root
           cdesc
             allocatable -- f_out_native_*&_cdesc_allocatable
             pointer -- fc_out_native_**/*&_cdesc_pointer
+          pointer -- fc_defaulttmp_native_scalar
         **
+          allocatable -- fc_defaulttmp_native_scalar
           cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
             pointer -- fc_out_native_**/*&_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
+          pointer -- fc_defaulttmp_native_scalar
           raw -- fc_out_native_**_raw
         *** -- fc_defaulttmp_native_scalar
       string
-        &
+        & -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
-        *
+        * -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
         **
+          allocatable -- fc_out_string_**_allocatable
           cdesc
             allocatable -- fc_out_string_**_cdesc_allocatable
             copy -- fc_out_string_**_cdesc_copy
@@ -961,7 +965,7 @@ root
           buf -- fc_in_char_*_buf
           capi -- fc_defaulttmp_native_scalar
           cfi -- fc_in_char_*_cfi
-        **
+        ** -- fc_in_char_**
           buf -- fc_in_char_**_buf
           cfi -- fc_in_char_**_cfi
         scalar -- fc_in_char_scalar
@@ -977,13 +981,13 @@ root
         * -- fc_in_shadow_*
         scalar -- fc_in_shadow_scalar
       string
-        &
+        & -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        *
+        * -- fc_in_string_*/&
           buf -- fc_in_string_*/&_buf
           cfi -- fc_in_string_scalar/*/&_cfi
-        scalar
+        scalar -- fc_in_string_scalar
           buf -- fc_in_string_scalar_buf
           cfi -- fc_in_string_scalar/*/&_cfi
       struct -- fc_in/out/inout_struct
@@ -1024,7 +1028,7 @@ root
       bool
         * -- fc_inout_bool_*
       char
-        *
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_inout_char_*_buf
           cfi -- fc_inout_char_*_cfi
       native
@@ -1036,10 +1040,10 @@ root
         * -- fc_inout_shadow_*
       string
         & -- fc_inout_string_*/&
-          buf -- fc_inout_string_*/&
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
         * -- fc_inout_string_*/&
-          buf -- fc_inout_string_*/&
+          buf -- fc_inout_string_*/&_buf
           cfi -- fc_inout_string_*/&_cfi
       struct -- fc_in/out/inout_struct
         & -- fc_in/out/inout_struct
@@ -1091,7 +1095,7 @@ root
       bool
         * -- fc_out_bool_*
       char
-        *
+        * -- fc_defaulttmp_native_scalar
           buf -- fc_out_char_*_buf
           cfi -- fc_out_char_*_cfi
       native
@@ -1101,20 +1105,23 @@ root
         *&
           cdesc
             pointer -- fc_out_native_**/*&_cdesc_pointer
+          pointer -- fc_defaulttmp_native_scalar
         **
+          allocatable -- fc_defaulttmp_native_scalar
           cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
             pointer -- fc_out_native_**/*&_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
+          pointer -- fc_defaulttmp_native_scalar
           raw -- fc_out_native_**_raw
         *** -- fc_defaulttmp_native_scalar
       string
-        &
+        & -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
-        *
+        * -- fc_out_string_*/&
           buf -- fc_out_string_*/&_buf
           cfi -- fc_out_string_*/&_cfi
         **
@@ -6959,6 +6966,9 @@ f_in_bool_scalar:
 f_in_char_*:
   intent: in
   name: f_in_char_*
+f_in_char_**:
+  intent: in
+  name: f_in_char_**
 f_in_char_**_buf:
   c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
   f_arg_call:
@@ -7066,6 +7076,9 @@ f_in_shadow_scalar:
   f_need_wrapper: true
   intent: in
   name: f_in_shadow_scalar
+f_in_string_&:
+  intent: in
+  name: f_in_string_&
 f_in_string_&_buf:
   c_helper: ShroudLenTrim
   f_arg_call:
@@ -7087,6 +7100,9 @@ f_in_string_&_cfi:
   c_helper: ShroudLenTrim
   intent: in
   name: f_in_string_&_cfi
+f_in_string_*:
+  intent: in
+  name: f_in_string_*
 f_in_string_*_buf:
   c_helper: ShroudLenTrim
   f_arg_call:
@@ -7108,6 +7124,9 @@ f_in_string_*_cfi:
   c_helper: ShroudLenTrim
   intent: in
   name: f_in_string_*_cfi
+f_in_string_scalar:
+  intent: in
+  name: f_in_string_scalar
 f_in_string_scalar_buf:
   f_arg_call:
   - '{f_var}'
@@ -7243,6 +7262,9 @@ f_inout_bool_*:
   - cxx
   intent: inout
   name: f_inout_bool_*
+f_inout_char_*:
+  intent: inout
+  name: f_inout_char_*
 f_inout_char_*_buf:
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   f_arg_call:
@@ -7298,7 +7320,24 @@ f_inout_native_*_cfi:
 f_inout_shadow_*:
   intent: inout
   name: f_inout_shadow_*
+f_inout_string_&:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: inout
+  name: f_inout_string_&
 f_inout_string_&_buf:
+  c_helper: ShroudStrCopy ShroudLenTrim
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -7318,7 +7357,24 @@ f_inout_string_&_cfi:
   c_helper: ShroudStrCopy
   intent: inout
   name: f_inout_string_&_cfi
+f_inout_string_*:
+  f_arg_call:
+  - '{f_var}'
+  - '{c_var_len}'
+  f_declare:
+  - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  intent: inout
+  name: f_inout_string_*
 f_inout_string_*_buf:
+  c_helper: ShroudStrCopy ShroudLenTrim
   f_arg_call:
   - '{f_var}'
   - '{c_var_len}'
@@ -7623,6 +7679,9 @@ f_out_bool_*:
   - cxx
   intent: out
   name: f_out_bool_*
+f_out_char_*:
+  intent: out
+  name: f_out_char_*
 f_out_char_*_buf:
   c_helper: ShroudStrBlankFill
   f_arg_call:
@@ -7690,9 +7749,15 @@ f_out_native_*&_cdesc_pointer:
   - cdesc
   intent: out
   name: f_out_native_*&_cdesc_pointer
+f_out_native_*&_pointer:
+  intent: out
+  name: f_out_native_*&_pointer
 f_out_native_***:
   intent: out
   name: f_out_native_***
+f_out_native_**_allocatable:
+  intent: out
+  name: f_out_native_**_allocatable
 f_out_native_**_cdesc_allocatable:
   c_helper: copy_array ShroudTypeDefines array_context
   f_arg_call:
@@ -7737,6 +7802,9 @@ f_out_native_**_cfi_allocatable:
 f_out_native_**_cfi_pointer:
   intent: out
   name: f_out_native_**_cfi_pointer
+f_out_native_**_pointer:
+  intent: out
+  name: f_out_native_**_pointer
 f_out_native_**_raw:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'
@@ -7770,6 +7838,9 @@ f_out_native_*_cdesc:
 f_out_native_*_cfi_allocatable:
   intent: out
   name: f_out_native_*_cfi_allocatable
+f_out_string_&:
+  intent: out
+  name: f_out_string_&
 f_out_string_&_buf:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -7791,6 +7862,12 @@ f_out_string_&_cfi:
   c_helper: ShroudStrCopy
   intent: out
   name: f_out_string_&_cfi
+f_out_string_*:
+  intent: out
+  name: f_out_string_*
+f_out_string_**_allocatable:
+  intent: out
+  name: f_out_string_**_allocatable
 f_out_string_**_cdesc_allocatable:
   c_helper: array_string_allocatable array_string_out_len
   f_arg_call:
@@ -11078,6 +11155,19 @@ fc_in_char_*:
   intent: in
   name: fc_in_char_*
   owner: library
+fc_in_char_**:
+  c_arg_decl:
+  - char **{c_var}
+  i_arg_decl:
+  - 'type(C_PTR), intent(IN) :: {c_var}(*)'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  intent: in
+  name: fc_in_char_**
+  owner: library
 fc_in_char_**_buf:
   c_arg_decl:
   - const char *{c_var}
@@ -11361,6 +11451,13 @@ fc_in_shadow_scalar:
   intent: in
   name: fc_in_shadow_scalar
   owner: library
+fc_in_string_&:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: fc_in_string_&
+  owner: library
 fc_in_string_&_buf:
   c_arg_decl:
   - char *{c_var}
@@ -11419,6 +11516,13 @@ fc_in_string_&_cfi:
   intent: in
   name: fc_in_string_&_cfi
   owner: library
+fc_in_string_*:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: fc_in_string_*
+  owner: library
 fc_in_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -11476,6 +11580,19 @@ fc_in_string_*_cfi:
   - ISO_Fortran_binding.h
   intent: in
   name: fc_in_string_*_cfi
+  owner: library
+fc_in_string_scalar:
+  c_arg_decl:
+  - char *{c_var}
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  intent: in
+  name: fc_in_string_scalar
   owner: library
 fc_in_string_scalar_buf:
   c_arg_decl:
@@ -11915,6 +12032,10 @@ fc_inout_bool_*:
   intent: inout
   name: fc_inout_bool_*
   owner: library
+fc_inout_char_*:
+  intent: inout
+  name: fc_inout_char_*
+  owner: library
 fc_inout_char_*_buf:
   c_arg_call:
   - '{c_var_str}'
@@ -12089,10 +12210,16 @@ fc_inout_string_&:
   name: fc_inout_string_&
   owner: library
 fc_inout_string_&_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrCopy ShroudLenTrim
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));"
+  c_temps:
+  - len
   cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
@@ -12107,12 +12234,17 @@ fc_inout_string_&_buf:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_temps:
   - len
-  impl_header:
-  - <cstring>
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: inout
-  lang_cxx:
-    impl_header:
-    - <cstring>
   name: fc_inout_string_&_buf
   owner: library
 fc_inout_string_&_cfi:
@@ -12168,10 +12300,16 @@ fc_inout_string_*:
   name: fc_inout_string_*
   owner: library
 fc_inout_string_*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrCopy ShroudLenTrim
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));"
+  c_temps:
+  - len
   cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
@@ -12186,12 +12324,17 @@ fc_inout_string_*_buf:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_temps:
   - len
-  impl_header:
-  - <cstring>
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: inout
-  lang_cxx:
-    impl_header:
-    - <cstring>
   name: fc_inout_string_*_buf
   owner: library
 fc_inout_string_*_cfi:
@@ -12742,6 +12885,10 @@ fc_out_bool_*:
   intent: out
   name: fc_out_bool_*
   owner: library
+fc_out_char_*:
+  intent: out
+  name: fc_out_char_*
+  owner: library
 fc_out_char_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -12848,9 +12995,17 @@ fc_out_native_*&_cdesc_pointer:
   intent: out
   name: fc_out_native_*&_cdesc_pointer
   owner: library
+fc_out_native_*&_pointer:
+  intent: out
+  name: fc_out_native_*&_pointer
+  owner: library
 fc_out_native_***:
   intent: out
   name: fc_out_native_***
+  owner: library
+fc_out_native_**_allocatable:
+  intent: out
+  name: fc_out_native_**_allocatable
   owner: library
 fc_out_native_**_cdesc_allocatable:
   c_arg_call:
@@ -13004,6 +13159,10 @@ fc_out_native_**_cfi_pointer:
   intent: out
   name: fc_out_native_**_cfi_pointer
   owner: library
+fc_out_native_**_pointer:
+  intent: out
+  name: fc_out_native_**_pointer
+  owner: library
 fc_out_native_**_raw:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'
@@ -13053,6 +13212,20 @@ fc_out_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: fc_out_native_*_cdesc
+  owner: library
+fc_out_string_&:
+  c_post_call:
+  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  c_pre_call:
+  - '{c_const}std::string {cxx_var};'
+  cxx_local_var: scalar
+  impl_header:
+  - <cstring>
+  intent: out
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: fc_out_string_&
   owner: library
 fc_out_string_&_buf:
   c_arg_decl:
@@ -13113,6 +13286,20 @@ fc_out_string_&_cfi:
   - ISO_Fortran_binding.h
   intent: out
   name: fc_out_string_&_cfi
+  owner: library
+fc_out_string_*:
+  c_post_call:
+  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  c_pre_call:
+  - '{c_const}std::string {cxx_var};'
+  cxx_local_var: scalar
+  impl_header:
+  - <cstring>
+  intent: out
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  name: fc_out_string_*
   owner: library
 fc_out_string_**_allocatable:
   intent: out

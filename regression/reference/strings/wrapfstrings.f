@@ -100,7 +100,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine pass_char(status) &
                 bind(C, name="STR_passChar")
@@ -117,7 +117,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine c_pass_char_force(status) &
                 bind(C, name="STR_passCharForce")
@@ -147,11 +147,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
@@ -172,11 +172,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! start c_pass_char_ptr_bufferify
     interface
         subroutine c_pass_char_ptr_bufferify(dest, SHT_dest_len, src) &
@@ -197,7 +197,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_char_*
+    ! Exact:     f_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_passCharPtrInOut")
@@ -215,7 +215,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_char_*_buf
+    ! Exact:     f_inout_char_*_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
                 bind(C, name="STR_passCharPtrInOut_bufferify")
@@ -732,7 +732,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_&
+    ! Exact:     f_in_string_&
     interface
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_acceptStringConstReference")
@@ -750,7 +750,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -769,7 +769,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_&
+    ! Exact:     f_out_string_&
     interface
         subroutine c_accept_string_reference_out(arg1) &
                 bind(C, name="STR_acceptStringReferenceOut")
@@ -787,7 +787,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_&_buf
+    ! Exact:     f_out_string_&_buf
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -806,7 +806,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_&
+    ! Exact:     f_inout_string_&
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
@@ -826,7 +826,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_&_buf
+    ! Exact:     f_inout_string_&_buf
     ! start c_accept_string_reference_bufferify
     interface
         subroutine c_accept_string_reference_bufferify(arg1, &
@@ -847,7 +847,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_*
+    ! Exact:     f_in_string_*
     interface
         subroutine c_accept_string_pointer_const(arg1) &
                 bind(C, name="STR_acceptStringPointerConst")
@@ -865,7 +865,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_*_buf
+    ! Exact:     f_in_string_*_buf
     interface
         subroutine c_accept_string_pointer_const_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -884,7 +884,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_*
+    ! Exact:     f_inout_string_*
     interface
         subroutine c_accept_string_pointer(arg1) &
                 bind(C, name="STR_acceptStringPointer")
@@ -902,7 +902,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_*_buf
+    ! Exact:     f_inout_string_*_buf
     interface
         subroutine c_accept_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_acceptStringPointer_bufferify")
@@ -920,7 +920,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_*
+    ! Exact:     f_out_string_*
     interface
         subroutine c_fetch_string_pointer(arg1) &
                 bind(C, name="STR_fetchStringPointer")
@@ -938,7 +938,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_*_buf
+    ! Exact:     f_out_string_*_buf
     interface
         subroutine c_fetch_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_fetchStringPointer_bufferify")
@@ -956,11 +956,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_*
+    ! Exact:     f_inout_string_*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_acceptStringPointerLen")
@@ -979,11 +979,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_*_buf
+    ! Exact:     f_inout_string_*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -1003,11 +1003,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_string_*
+    ! Exact:     f_out_string_*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_fetchStringPointerLen")
@@ -1026,11 +1026,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_string_*_buf
+    ! Exact:     f_out_string_*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -1050,7 +1050,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_scalar
+    ! Exact:     f_in_string_scalar
     interface
         function c_accept_string_instance(arg1) &
                 result(SHT_rv) &
@@ -1070,7 +1070,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_scalar_buf
+    ! Exact:     f_in_string_scalar_buf
     interface
         function c_accept_string_instance_bufferify(arg1, SHT_arg1_len) &
                 result(SHT_rv) &
@@ -1090,11 +1090,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +deref(copy)+intent(out)
-    ! Exact:     c_out_string_**_copy
+    ! Exact:     f_out_string_**_copy
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_arg(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringArg")
@@ -1113,7 +1113,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
     ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_copy
+    ! Exact:     f_out_string_**_cdesc_copy
     interface
         subroutine c_fetch_array_string_arg_bufferify(SHT_strs_cdesc) &
                 bind(C, name="STR_fetchArrayStringArg_bufferify")
@@ -1130,11 +1130,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_allocatable
+    ! Exact:     f_out_string_**_allocatable
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_alloc(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAlloc")
@@ -1153,7 +1153,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_allocatable
+    ! Exact:     f_out_string_**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc) &
                 bind(C, name="STR_fetchArrayStringAlloc_bufferify")
@@ -1170,11 +1170,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_allocatable
+    ! Exact:     f_out_string_**_allocatable
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     interface
         subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAllocLen")
@@ -1193,7 +1193,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_string_**_cdesc_allocatable
+    ! Exact:     f_out_string_**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_len_bufferify( &
                 SHT_strs_cdesc) &
@@ -1211,7 +1211,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="STR_explicit1")
@@ -1228,7 +1228,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
@@ -1246,7 +1246,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     interface
         subroutine c_explicit2_bufferify(name, SHT_name_len) &
                 bind(C, name="STR_explicit2_bufferify")
@@ -1264,7 +1264,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char status +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_scalar
+    ! Exact:     f_in_char_scalar
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CpassChar")
@@ -1294,11 +1294,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -1317,11 +1317,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     interface
         subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
                 SHT_src_len) &
@@ -1342,11 +1342,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_char_*
+    ! Exact:     f_out_char_*
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
                 bind(C, name="STR_CpassCharPtrBlank")
@@ -1365,11 +1365,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(buf)+intent(out)
-    ! Exact:     c_out_char_*_buf
+    ! Exact:     f_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     interface
         subroutine c_cpass_char_ptr_blank_bufferify(dest, SHT_dest_len, &
                 src, SHT_src_len) &
@@ -1390,11 +1390,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_string_&
+    ! Exact:     f_inout_string_&
     interface
         subroutine c_post_declare(count, name) &
                 bind(C, name="STR_PostDeclare")
@@ -1413,11 +1413,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +api(buf)+intent(inout)
-    ! Exact:     c_inout_string_&_buf
+    ! Exact:     f_inout_string_&_buf
     interface
         subroutine c_post_declare_bufferify(count, name, SHT_name_len) &
                 bind(C, name="STR_PostDeclare_bufferify")
@@ -1436,7 +1436,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -1456,7 +1456,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_char_*_buf
+    ! Exact:     f_in_char_*_buf
     interface
         function c_cpass_char_ptr_notrim_bufferify(src, SHT_src_len) &
                 result(SHT_rv) &
@@ -1476,11 +1476,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_*
+    ! Exact:     f_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
@@ -1500,11 +1500,11 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Attrs:     +api(capi)+intent(in)
-    ! Exact:     c_in_char_*_capi
+    ! Exact:     f_in_char_*_capi
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &

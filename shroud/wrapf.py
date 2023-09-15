@@ -1317,7 +1317,7 @@ rv = .false.
             deref_attr = meta["deref"]
 
             spointer = declarator.get_indirect_stmt()
-            c_stmts = ["c", intent, sgroup, spointer,
+            c_stmts = ["f", intent, sgroup, spointer,
                        meta["api"], deref_attr]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)

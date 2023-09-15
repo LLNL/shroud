@@ -38,11 +38,11 @@ module interface_mod
         ! ----------------------------------------
         ! Argument:  double arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")

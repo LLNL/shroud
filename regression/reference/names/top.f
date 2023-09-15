@@ -141,7 +141,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_char_*
+        ! Exact:     f_inout_char_*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
@@ -157,7 +157,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +api(buf)+intent(inout)
-        ! Exact:     c_inout_char_*_buf
+        ! Exact:     f_inout_char_*_buf
         subroutine c_get_name_bufferify(name, SHT_name_len) &
                 bind(C, name="TES_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -191,7 +191,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine YYY_TES_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
             use iso_c_binding, only : C_INT
@@ -206,7 +206,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  long i +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine YYY_TES_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
             use iso_c_binding, only : C_LONG
@@ -221,7 +221,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_string_&
+        ! Exact:     f_in_string_&
         function YYY_TES_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -239,7 +239,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
+        ! Exact:     f_in_string_&_buf
         function YYY_TES_function4_bufferify(rv, SHT_rv_len) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
@@ -266,11 +266,11 @@ module top_module
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_string_&
+        ! Exact:     f_inout_string_&
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_native_*
+        ! Exact:     f_out_native_*
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -287,11 +287,11 @@ module top_module
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +api(buf)+intent(inout)
-        ! Exact:     c_inout_string_&_buf
+        ! Exact:     f_inout_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_native_*
+        ! Exact:     f_out_native_*
         subroutine c_test_multiline_splicer_bufferify(name, &
                 SHT_name_len, value) &
                 bind(C, name="TES_TestMultilineSplicer_bufferify")
@@ -310,11 +310,11 @@ module top_module
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  long arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -331,11 +331,11 @@ module top_module
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Exact:     f_in_native_scalar
         subroutine c_function_tu_instantiation2(arg1, arg2) &
                 bind(C, name="TES_FunctionTU_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -364,7 +364,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_shadow_*
+        ! Exact:     f_in_shadow_*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="TES_Cstruct_as_class_sum")
@@ -382,27 +382,27 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const char * rdbase
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_char_*
+        ! Exact:     f_in_char_*
         ! ----------------------------------------
         ! Argument:  const char * pkg
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_char_*
+        ! Exact:     f_in_char_*
         ! ----------------------------------------
         ! Argument:  const char * name
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_char_*
+        ! Exact:     f_in_char_*
         ! ----------------------------------------
         ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_void_scalar
+        ! Exact:     f_in_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * afree)(double * arr +intent(inout)) +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_void_scalar
+        ! Exact:     f_in_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_void_scalar
+        ! Exact:     f_in_void_scalar
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
                 bind(C, name="TES_external_funcs")

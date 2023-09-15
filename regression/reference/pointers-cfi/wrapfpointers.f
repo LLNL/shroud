@@ -27,7 +27,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * arg
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! start intargs_in
     interface
         subroutine intargs_in(arg) &
@@ -46,7 +46,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * arg
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! start intargs_inout
     interface
         subroutine intargs_inout(arg) &
@@ -65,7 +65,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start intargs_out
     interface
         subroutine intargs_out(arg) &
@@ -84,15 +84,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * argout +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start intargs
     interface
         subroutine intargs(argin, arginout, argout) &
@@ -113,15 +113,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_cos_doubles
     interface
         subroutine c_cos_doubles(in, out, sizein) &
@@ -143,15 +143,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_native_*_cfi
+    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  double * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_cos_doubles_CFI
     interface
         subroutine c_cos_doubles_CFI(in, out, sizein) &
@@ -172,15 +172,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_truncate_to_int
     interface
         subroutine c_truncate_to_int(in, out, sizein) &
@@ -202,15 +202,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_native_*_cfi
+    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int * out +dimension(size(in))+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_truncate_to_int_CFI
     interface
         subroutine c_truncate_to_int_CFI(in, out, sizein) &
@@ -231,11 +231,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * values +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start get_values
     interface
         subroutine get_values(nvalues, values) &
@@ -255,11 +255,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start get_values2
     interface
         subroutine get_values2(arg1, arg2) &
@@ -279,11 +279,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int nvar +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start iota_dimension
     interface
         subroutine iota_dimension(nvar, values) &
@@ -303,15 +303,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start c_sum
     interface
         subroutine c_sum(len, values, result) &
@@ -333,15 +333,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_native_*_cfi
+    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start c_sum_CFI
     interface
         subroutine c_sum_CFI(len, values, result) &
@@ -362,7 +362,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start fill_int_array
     interface
         subroutine fill_int_array(out) &
@@ -381,11 +381,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(array))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_increment_int_array
     interface
         subroutine c_increment_int_array(array, sizein) &
@@ -406,11 +406,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_native_*_cfi
+    ! Exact:     f_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(array))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_increment_int_array_CFI
     interface
         subroutine c_increment_int_array_CFI(array, sizein) &
@@ -430,11 +430,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_native_*
+    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int x_length +implied(size(x))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_fill_with_zeros
     interface
         subroutine c_fill_with_zeros(x, x_length) &
@@ -455,11 +455,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     c_inout_native_*_cfi
+    ! Exact:     f_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int x_length +implied(size(x))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_fill_with_zeros_CFI
     interface
         subroutine c_fill_with_zeros_CFI(x, x_length) &
@@ -479,11 +479,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  size_t len +implied(size(arr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_accumulate
     interface
         function c_accumulate(arr, len) &
@@ -506,11 +506,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_native_*_cfi
+    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  size_t len +implied(size(arr))+value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_accumulate_CFI
     interface
         function c_accumulate_CFI(arr, len) &
@@ -532,7 +532,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_**
+    ! Exact:     f_in_char_**
     ! start c_accept_char_array_in
     interface
         function c_accept_char_array_in(names) &
@@ -554,7 +554,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_**_cfi
+    ! Exact:     f_in_char_**_cfi
     ! start accept_char_array_in
     interface
         function accept_char_array_in(names) &
@@ -575,7 +575,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start set_global_int
     interface
         subroutine set_global_int(value) &
@@ -610,7 +610,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! start c_get_ptr_to_scalar
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
@@ -630,7 +630,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_scalar
     interface
         subroutine get_ptr_to_scalar(nitems) &
@@ -649,7 +649,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! start c_get_ptr_to_fixed_array
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
@@ -669,7 +669,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_fixed_array
     interface
         subroutine get_ptr_to_fixed_array(count) &
@@ -688,11 +688,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start c_get_ptr_to_dynamic_array
     interface
         subroutine c_get_ptr_to_dynamic_array(count, ncount) &
@@ -713,7 +713,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_dynamic_array
     interface
         subroutine get_ptr_to_dynamic_array(count) &
@@ -732,7 +732,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! start c_get_ptr_to_func_array
     interface
         subroutine c_get_ptr_to_func_array(count) &
@@ -752,7 +752,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_func_array
     interface
         subroutine get_ptr_to_func_array(count) &
@@ -771,7 +771,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! start c_get_ptr_to_const_scalar
     interface
         subroutine c_get_ptr_to_const_scalar(nitems) &
@@ -791,7 +791,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_const_scalar
     interface
         subroutine get_ptr_to_const_scalar(nitems) &
@@ -810,7 +810,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! start c_get_ptr_to_fixed_const_array
     interface
         subroutine c_get_ptr_to_fixed_const_array(count) &
@@ -830,7 +830,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_fixed_const_array
     interface
         subroutine get_ptr_to_fixed_const_array(count) &
@@ -849,11 +849,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_pointer
+    ! Exact:     f_out_native_**_pointer
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_*
+    ! Exact:     f_out_native_*
     ! start c_get_ptr_to_dynamic_const_array
     interface
         subroutine c_get_ptr_to_dynamic_const_array(count, ncount) &
@@ -874,7 +874,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     c_out_native_**_cfi_pointer
+    ! Exact:     f_out_native_**_cfi_pointer
     ! start get_ptr_to_dynamic_const_array
     interface
         subroutine get_ptr_to_dynamic_const_array(count) &
@@ -893,7 +893,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     ! start get_raw_ptr_to_scalar
     interface
         subroutine get_raw_ptr_to_scalar(nitems) &
@@ -912,7 +912,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     ! start c_get_raw_ptr_to_scalar_force
     interface
         subroutine c_get_raw_ptr_to_scalar_force(nitems) &
@@ -931,7 +931,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     ! start get_raw_ptr_to_fixed_array
     interface
         subroutine get_raw_ptr_to_fixed_array(count) &
@@ -950,7 +950,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_out_native_**_raw
+    ! Exact:     f_out_native_**_raw
     ! start c_get_raw_ptr_to_fixed_array_force
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force(count) &
@@ -969,7 +969,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_***
+    ! Exact:     f_out_native_***
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
@@ -988,7 +988,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_**
+    ! Exact:     f_in_native_**
     ! start check_int2d
     interface
         function check_int2d(arg) &
@@ -1009,7 +1009,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_*
+    ! Exact:     f_in_native_*
     ! start c_dimension_in
     interface
         subroutine c_dimension_in(arg) &
@@ -1028,7 +1028,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     c_out_native_**_allocatable
+    ! Exact:     f_out_native_**_allocatable
     ! start c_get_alloc_to_fixed_array
     interface
         subroutine c_get_alloc_to_fixed_array(count) &
@@ -1048,7 +1048,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(out)
-    ! Exact:     c_out_native_**_cfi_allocatable
+    ! Exact:     f_out_native_**_cfi_allocatable
     ! start get_alloc_to_fixed_array
     interface
         subroutine get_alloc_to_fixed_array(count) &
@@ -1067,7 +1067,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start return_address1
     interface
         function return_address1(flag) &
@@ -1088,7 +1088,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_return_address2
     interface
         function c_return_address2(flag) &
@@ -1109,7 +1109,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_void_**
+    ! Exact:     f_out_void_**
     ! start fetch_void_ptr
     interface
         subroutine fetch_void_ptr(addr) &
@@ -1128,7 +1128,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_void_**
+    ! Exact:     f_inout_void_**
     ! start c_update_void_ptr
     interface
         subroutine c_update_void_ptr(addr) &
@@ -1147,7 +1147,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_**
+    ! Exact:     f_in_void_**
     ! start c_void_ptr_array
     interface
         function c_void_ptr_array(addr) &
@@ -1169,7 +1169,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_void_**_cfi
+    ! Exact:     f_in_void_**_cfi
     ! start c_void_ptr_array_CFI
     interface
         function c_void_ptr_array_CFI(addr) &
@@ -1350,7 +1350,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_char_*
+    ! Exact:     f_in_char_*
     ! start c_return_int_raw_with_args
     interface
         function c_return_int_raw_with_args(name) &
@@ -1372,7 +1372,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     c_in_char_*_cfi
+    ! Exact:     f_in_char_*_cfi
     ! start return_int_raw_with_args
     interface
         function return_int_raw_with_args(name) &

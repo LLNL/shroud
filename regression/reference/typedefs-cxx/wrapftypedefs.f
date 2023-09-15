@@ -54,7 +54,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start typefunc
     interface
         function typefunc(arg) &
@@ -75,7 +75,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_*
+    ! Exact:     f_inout_struct_*
     ! start typestruct
     interface
         subroutine typestruct(arg1) &
@@ -94,7 +94,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start return_bytes_for_index_type
     interface
         function return_bytes_for_index_type(arg) &

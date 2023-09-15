@@ -94,11 +94,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
@@ -119,11 +119,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
                 arg2, SHT_arg2_len, SHT_rv) &
@@ -164,7 +164,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start c_use_default_arguments_arg1
     interface
         function c_use_default_arguments_arg1(arg1) &
@@ -185,11 +185,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  bool arg2=true +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_bool_scalar
+    ! Exact:     f_in_bool_scalar
     ! start c_use_default_arguments_arg1_arg2
     interface
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
@@ -211,7 +211,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_&
+    ! Exact:     f_in_string_&
     interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_OverloadedFunction_from_name")
@@ -229,7 +229,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 SHT_name_len) &
@@ -248,7 +248,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int indx +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_overloaded_function_from_index(indx) &
                 bind(C, name="TUT_OverloadedFunction_from_index")
@@ -266,7 +266,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_template_argument_int(arg) &
                 bind(C, name="TUT_TemplateArgument_int")
@@ -284,7 +284,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_template_argument_double(arg) &
                 bind(C, name="TUT_TemplateArgument_double")
@@ -342,11 +342,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_string_&
+    ! Exact:     f_in_string_&
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
                 bind(C, name="TUT_FortranGenericOverloaded_1")
@@ -365,11 +365,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
                 SHT_name_len, arg2) &
@@ -390,11 +390,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     c_in_string_&_buf
+    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
                 SHT_name_len, arg2) &
@@ -415,7 +415,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_num(num) &
                 result(SHT_rv) &
@@ -435,11 +435,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
@@ -459,15 +459,15 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_num_offset_stride(num, offset, &
                 stride) &
@@ -490,11 +490,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
@@ -515,15 +515,15 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
@@ -544,19 +544,19 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
@@ -578,7 +578,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
@@ -597,7 +597,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function enumfunc(arg) &
                 result(SHT_rv) &
@@ -616,7 +616,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  Color arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
@@ -635,11 +635,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_&
+    ! Exact:     f_out_native_&
     ! ----------------------------------------
     ! Argument:  int & max +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     c_out_native_&
+    ! Exact:     f_out_native_&
     ! start get_min_max
     interface
         subroutine get_min_max(min, max) &
@@ -659,11 +659,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  int in +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int ( * incr)(int +value) +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Exact:     f_in_native_scalar
     ! start callback1
     interface
         function callback1(in, incr) &
