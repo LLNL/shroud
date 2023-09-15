@@ -80,7 +80,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  ~Class1
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data
@@ -92,7 +92,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int get_flag
         ! Attrs:     +intent(getter)
-        ! Exact:     c_getter_native_scalar
+        ! Exact:     f_getter_native_scalar
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="OWN_Class1_get_flag")
@@ -106,7 +106,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Exact:     c_function_native_*_raw
+        ! Exact:     f_function_native_*_raw
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrRaw")
@@ -118,7 +118,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrScalar +deref(scalar)
         ! Attrs:     +deref(scalar)+intent(function)
-        ! Exact:     c_function_native_*_scalar
+        ! Exact:     f_function_native_*_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrScalar")
@@ -130,7 +130,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrPointer")
@@ -142,7 +142,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Exact:     c_function_native_*_raw
+        ! Exact:     f_function_native_*_raw
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
         ! Attrs:     +intent(out)
@@ -159,7 +159,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -179,7 +179,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointer_bufferify")
@@ -192,7 +192,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_native_*_allocatable
+        ! Exact:     f_function_native_*_allocatable
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -212,7 +212,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_allocatable
+        ! Exact:     f_function_native_*_cdesc_allocatable
         ! start c_return_int_ptr_dim_alloc_bufferify
         subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimAlloc_bufferify")
@@ -225,7 +225,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -243,7 +243,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
             import :: OWN_SHROUD_array
@@ -254,7 +254,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -271,7 +271,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -289,7 +289,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointerNew_bufferify")
             import :: OWN_SHROUD_array
@@ -300,7 +300,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_native_*_allocatable
+        ! Exact:     f_function_native_*_allocatable
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -317,7 +317,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +capsule+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -335,7 +335,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefaultNew_bufferify")
             import :: OWN_SHROUD_array
@@ -346,7 +346,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  void createClassStatic
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
@@ -361,7 +361,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     c_function_shadow_*_capptr
+        ! Exact:     f_function_shadow_*_capptr
         function c_get_class_static(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="OWN_getClassStatic")
@@ -375,7 +375,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     c_function_shadow_*_capptr
+        ! Exact:     f_function_shadow_*_capptr
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)

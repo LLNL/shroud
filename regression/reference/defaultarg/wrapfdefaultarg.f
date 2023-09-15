@@ -72,7 +72,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -94,7 +94,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -120,7 +120,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -151,7 +151,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_void_scalar
+    ! Exact:     f_dtor_void_scalar
     interface
         subroutine c_class1_delete(self) &
                 bind(C, name="DEF_Class1_delete")
@@ -165,7 +165,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -185,7 +185,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -209,7 +209,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -239,7 +239,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     interface
         function c_class1_get_field1(self) &
                 result(SHT_rv) &
@@ -256,7 +256,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field2
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     interface
         function c_class1_get_field2(self) &
                 result(SHT_rv) &
@@ -273,7 +273,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field3
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     interface
         function c_class1_get_field3(self) &
                 result(SHT_rv) &
@@ -290,7 +290,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
@@ -308,7 +308,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
@@ -330,7 +330,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
@@ -360,7 +360,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
@@ -385,7 +385,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
@@ -415,7 +415,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
@@ -449,7 +449,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
@@ -476,7 +476,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
@@ -508,7 +508,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
@@ -536,7 +536,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)

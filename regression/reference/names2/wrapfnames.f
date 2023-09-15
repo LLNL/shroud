@@ -25,7 +25,7 @@ module worker_names
         ! ----------------------------------------
         ! Function:  void AFunction
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine a_function() &
                 bind(C, name="NAM_AFunction")
             implicit none

@@ -166,7 +166,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! start c_class1_ctor_default
     interface
         function c_class1_ctor_default(SHT_rv) &
@@ -184,7 +184,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -207,7 +207,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_void_scalar
+    ! Exact:     f_dtor_void_scalar
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -222,7 +222,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int Method1
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! start c_class1_method1
     interface
         function c_class1_method1(self) &
@@ -240,7 +240,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  bool equivalent
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_bool_scalar
+    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
@@ -264,7 +264,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void returnThis
     ! Attrs:     +api(capptr)+intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar_capptr
+    ! Exact:     f_subroutine_void_scalar_capptr
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
@@ -279,7 +279,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
@@ -309,7 +309,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
@@ -340,7 +340,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! start c_class1_getclass3
     interface
         function c_class1_getclass3(self, SHT_rv) &
@@ -359,7 +359,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_allocatable
+    ! Exact:     f_function_string_&_allocatable
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -378,7 +378,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, SHT_rv) &
@@ -394,7 +394,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -418,7 +418,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_m_flag
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -437,7 +437,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_test
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -456,7 +456,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_test
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -478,7 +478,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  std::string get_m_name
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-    ! Exact:     c_getter_string_scalar_cdesc_allocatable
+    ! Exact:     f_getter_string_scalar_cdesc_allocatable
     ! start c_class1_get_m_name_bufferify
     interface
         subroutine c_class1_get_m_name_bufferify(self, SHT_rv) &
@@ -495,7 +495,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_m_name
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
@@ -517,7 +517,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_allocatable
+    ! Exact:     f_function_string_&_allocatable
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -534,7 +534,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_cdesc_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, SHT_rv) &
                 bind(C, name="CLA_Class2_getName_bufferify")
@@ -548,7 +548,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     ! start c_singleton_get_reference
     interface
         function c_singleton_get_reference(SHT_rv) &
@@ -566,7 +566,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     interface
         function c_shape_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -582,7 +582,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_ivar
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     interface
         pure function c_shape_get_ivar(self) &
                 result(SHT_rv) &
@@ -598,7 +598,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     interface
         function c_circle_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -614,7 +614,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void allocate
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -635,7 +635,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void free
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! start c_data_free
     interface
         subroutine c_data_free(self) &
@@ -650,7 +650,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Data
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Exact:     f_ctor_shadow_scalar_capptr
     ! start c_data_ctor
     interface
         function c_data_ctor(SHT_rv) &
@@ -668,7 +668,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Data
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_void_scalar
+    ! Exact:     f_dtor_void_scalar
     ! start c_data_dtor
     interface
         subroutine c_data_dtor(self) &
@@ -684,7 +684,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_nitems
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_data_get_nitems
     interface
         function c_data_get_nitems(self) &
@@ -703,7 +703,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_nitems
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -725,7 +725,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int * get_items
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-    ! Exact:     c_getter_native_*_cdesc_pointer
+    ! Exact:     f_getter_native_*_cdesc_pointer
     ! start c_data_get_items_bufferify
     interface
         subroutine c_data_get_items_bufferify(self, SHT_rv) &
@@ -742,7 +742,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_items
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
@@ -763,7 +763,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -782,7 +782,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void passClassByValue
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
@@ -799,7 +799,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int useclass
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
@@ -819,7 +819,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     interface
         function c_getclass2(SHT_rv) &
                 result(SHT_prv) &
@@ -835,7 +835,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     interface
         function c_getclass3(SHT_rv) &
                 result(SHT_prv) &
@@ -851,7 +851,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2_void
     ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Exact:     f_function_shadow_*_capsule
     interface
         subroutine c_getclass2_void(SHT_rv) &
                 bind(C, name="CLA_getclass2_void")
@@ -864,7 +864,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * getclass3_void
     ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Exact:     f_function_shadow_*_capsule
     interface
         subroutine c_getclass3_void(SHT_rv) &
                 bind(C, name="CLA_getclass3_void")
@@ -877,7 +877,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     interface
         function c_get_const_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -893,7 +893,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_&_capptr
+    ! Exact:     f_function_shadow_&_capptr
     interface
         function c_get_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -909,7 +909,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capptr
+    ! Exact:     f_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -930,7 +930,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_global_flag
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -947,7 +947,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int get_global_flag
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     interface
         function get_global_flag() &
                 result(SHT_rv) &
@@ -961,7 +961,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_copy
+    ! Exact:     f_function_string_&_copy
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -976,7 +976,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="CLA_LastFunctionCalled_bufferify")

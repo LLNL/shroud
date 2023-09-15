@@ -108,7 +108,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
@@ -125,7 +125,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void UpdateAsDouble
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -142,7 +142,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  double GetGlobalDouble
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     interface
         function get_global_double() &
                 result(SHT_rv) &
@@ -156,7 +156,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GenericReal
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -175,7 +175,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
@@ -199,7 +199,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values
     ! Attrs:     +intent(in)
@@ -224,7 +224,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
     ! Attrs:     +intent(in)
@@ -249,7 +249,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
@@ -274,7 +274,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
     ! Attrs:     +intent(in)
@@ -298,7 +298,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -331,7 +331,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -364,7 +364,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -397,7 +397,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
     ! Attrs:     +intent(in)
@@ -430,7 +430,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -460,7 +460,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -490,7 +490,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
@@ -518,7 +518,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -546,7 +546,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -574,7 +574,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Attrs:     +intent(in)
@@ -601,7 +601,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -629,7 +629,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -659,7 +659,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -680,7 +680,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -699,7 +699,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     interface
         function c_create_struct_as_class(SHT_rv) &
                 result(SHT_prv) &
@@ -715,7 +715,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
@@ -741,7 +741,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
@@ -767,7 +767,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)

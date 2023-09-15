@@ -47,7 +47,7 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
@@ -64,7 +64,7 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)

@@ -1245,7 +1245,7 @@ rv = .false.
         junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
         spointer = ast.declarator.get_indirect_stmt()
-        c_stmts = ["c", sintent, sgroup, spointer, result_api,
+        c_stmts = ["f", sintent, sgroup, spointer, result_api,
                    r_meta["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(

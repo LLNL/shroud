@@ -54,7 +54,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -68,7 +68,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine XXX_TES_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
@@ -79,7 +79,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine XXX_TES_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data

@@ -25,7 +25,7 @@ module testnames_capi2_mod
         ! ----------------------------------------
         ! Function:  void Worker1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_worker1() &
                 bind(C, name="TES_CAPItwo_Worker1")
             implicit none

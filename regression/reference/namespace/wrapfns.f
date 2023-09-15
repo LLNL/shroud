@@ -73,7 +73,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_allocatable
+        ! Exact:     f_function_string_&_allocatable
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="NS_LastFunctionCalled")
@@ -86,7 +86,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_cdesc_allocatable
+        ! Exact:     f_function_string_&_cdesc_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv) &
                 bind(C, name="NS_LastFunctionCalled_bufferify")
             import :: NS_SHROUD_array
@@ -97,7 +97,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  void One
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine one() &
                 bind(C, name="NS_One")
             implicit none

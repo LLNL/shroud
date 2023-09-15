@@ -85,7 +85,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  ArrayWrapper
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_ArrayWrapper_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
@@ -99,7 +99,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void setSize
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int size +value
         ! Attrs:     +intent(in)
@@ -116,7 +116,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  int getSize
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         pure function c_ArrayWrapper_getSize(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getSize")
@@ -130,7 +130,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fillSize
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int & size +intent(out)
         ! Attrs:     +intent(out)
@@ -147,7 +147,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void allocate
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_ArrayWrapper_allocate(self) &
                 bind(C, name="ARR_ArrayWrapper_allocate")
             import :: ARR_SHROUD_capsule_data
@@ -158,7 +158,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         function c_ArrayWrapper_getArray(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArray")
@@ -173,7 +173,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -185,7 +185,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         pure function c_ArrayWrapper_getArrayConst(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst")
@@ -200,7 +200,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConst_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -212,7 +212,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         function c_ArrayWrapper_getArrayC(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC")
@@ -227,7 +227,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayC_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -239,7 +239,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_pointer
+        ! Exact:     f_function_native_*_pointer
         pure function c_ArrayWrapper_getArrayConstC(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC")
@@ -254,7 +254,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Exact:     c_function_native_*_cdesc_pointer
+        ! Exact:     f_function_native_*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -266,7 +266,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -289,7 +289,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -306,7 +306,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -329,7 +329,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -346,7 +346,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -369,7 +369,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -386,7 +386,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -409,7 +409,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -426,7 +426,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchVoidPtr
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
         ! Attrs:     +intent(out)
@@ -443,7 +443,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchVoidRef
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void * & array +intent(out)
         ! Attrs:     +intent(out)
@@ -460,7 +460,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  bool checkPtr
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  void * array +value
         ! Attrs:     +intent(in)
@@ -479,7 +479,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double sumArray
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_ArrayWrapper_sumArray(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_sumArray")

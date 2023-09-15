@@ -26,7 +26,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         function c_default_ptr_is_null_0() &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_0")
@@ -38,7 +38,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Attrs:     +intent(in)
@@ -56,7 +56,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -81,7 +81,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -111,7 +111,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_copy
+        ! Exact:     f_function_string_&_copy
         ! ----------------------------------------
         ! Argument:  long idx +value
         ! Attrs:     +intent(in)
@@ -129,7 +129,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_buf_copy
+        ! Exact:     f_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int32_t idx +value
         ! Attrs:     +intent(in)
@@ -148,7 +148,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_buf_copy
+        ! Exact:     f_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int64_t idx +value
         ! Attrs:     +intent(in)

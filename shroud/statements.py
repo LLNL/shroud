@@ -713,12 +713,21 @@ fc_statements = [
         alias=[
             # From wrap_function_interface
             "c_subroutine_void_scalar",
-            "c_subroutine_void_scalar_capptr",
         ],
         c_arg_decl=[],
         i_arg_decl=[],
         i_arg_names=[],
-    ),    
+    ),
+    dict(
+        name="fc_subroutine_void_scalar_capptr",
+        mixin=[
+            "c_mixin_noargs",
+        ],
+        alias=[
+            "f_subroutine_void_scalar_capptr",
+            "c_subroutine_void_scalar_capptr",
+        ],
+    ),
     dict(
         name="fc_subroutine",
         mixin=[
@@ -750,6 +759,42 @@ fc_statements = [
     ),
 
     ########## mixin ##########
+    dict(
+        # Return a C pointer directly.
+        name="f_mixin_function_ptr",
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+        i_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
+        
+    ),
+    dict(
+        # Return a C pointer as a type(C_PTR)
+        name="f_mixin_function_c-ptr",
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        f_arg_decl=[
+            "{f_type}, pointer :: {f_var}",
+        ],
+        f_declare=[
+            "type(C_PTR) :: {c_local_ptr}",
+        ],
+        f_call=[
+            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+        ],
+        f_post_call=[
+            "call c_f_pointer({c_local_ptr}, {F_result})",
+        ],
+        f_local=["ptr"],
+
+        i_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
+    ),
     dict(
         name="c_mixin_function_cdesc",
         # Pass array_type as argument to contain the function result.
@@ -1492,16 +1537,10 @@ fc_statements = [
         # Works with deref allocatable and pointer.
         # c_function_native_*
         # c_function_native_&
-        # c_function_native_**
-        # c_function_native_*_allocatable
-        # c_function_native_*_raw
-        # c_function_native_*_pointer
-        # c_function_native_&_pointer
-        # c_function_native_**_pointer
-        name="c_function_native_*/&/**",
+        name="c_function_native_*/&",
+        # f_mixin_function_ptr
         alias=[
-            "c_function_native_*_allocatable/raw",
-            "c_function_native_*/&/**_pointer",
+            "c_function_native_**_pointer",
         ],
         i_result_decl=[
             "type(C_PTR) {c_var}",
@@ -1582,12 +1621,13 @@ fc_statements = [
             "fc_function_native_&",
             "fc_function_native_*_pointer",   # XXX - change base to &?
             "fc_function_native_&_pointer",
-            "fc_function_struct_*_pointer",
             "f_function_native_&",
             "f_function_native_*_pointer",   # XXX - change base to &?
+            "c_function_native_*_pointer",
             "f_function_native_&_pointer",
-            "f_function_struct_*_pointer",
+            "c_function_native_&_pointer",
         ],
+        # mixin f_mixin_function_c-ptr
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1602,6 +1642,12 @@ fc_statements = [
             "call c_f_pointer({c_local_ptr}, {F_result})",
         ],
         f_local=["ptr"],
+
+        i_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
+        
     ),
     dict(
         # f_function_native_*_cdesc_pointer
@@ -1649,23 +1695,27 @@ fc_statements = [
     ),
     dict(
         name="fc_function_native_*_raw",
+        mixin=[
+            "f_mixin_function_ptr",
+        ],
         alias=[
             "f_function_native_*_raw",
-        ],
-        f_arg_decl=[
-            "type(C_PTR) :: {f_var}",
+            "c_function_native_*_raw",
         ],
     ),
     dict(
         # int **func(void)
         # regardless of deref value.
         name="fc_function_native_**",
+        mixin=[
+            "f_mixin_function_ptr",
+        ],
         alias=[
             "f_function_native_**",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        f_arg_decl=[
-            "type(C_PTR) :: {f_var}",
+            "c_function_native_**",
+
+            "f_function_native_*_allocatable",
+            "c_function_native_*_allocatable",
         ],
     ),
     
@@ -1758,11 +1808,21 @@ fc_statements = [
     
     dict(
         # c_function_char_*_allocatable
+        # c_function_char_*_copy
+        # c_function_char_*_pointer
         # c_function_char_*_raw
-        name="c_function_char_*",
+        name="fc_function_char_*",
         alias=[
+            "f_function_char_*",
+            "c_function_char_*",
+            "f_function_char_*_allocatable/copy/pointer/raw",
             "c_function_char_*_allocatable/copy/pointer/raw",
         ],
+
+        f_arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+        
         i_result_decl=[
             "type(C_PTR) {c_var}",
         ],
@@ -1956,16 +2016,6 @@ fc_statements = [
         ],
     ),
 
-    dict(
-        # char *func() +deref(raw)
-        name="fc_function_char_*_raw",
-        alias=[
-            "f_function_char_*_raw",
-        ],
-        f_arg_decl=[
-            "type(C_PTR) :: {f_var}",
-        ],
-    ),
     #####
     dict(
         # Treat as an assumed length array in Fortran interface.
@@ -2171,15 +2221,24 @@ fc_statements = [
     ),
 
     dict(
+        # Fortran calling a C function without
+        # any api argument - is this useful?
         # c_function_string_scalar
         # c_function_string_*
         # c_function_string_&
-        name="c_function_string_scalar/*/&",
+        name="fc_mixin_function_string_scalar",
         alias=[
+            "f_function_string_scalar/*/&",
+            "c_function_string_scalar/*/&",
+            "f_function_string_*_allocatable",
             "c_function_string_*_allocatable",
+            "f_function_string_*_copy",
             "c_function_string_*_copy",
+            "f_function_string_*_pointer",
             "c_function_string_*_pointer",
+            "f_function_string_&_allocatable",
             "c_function_string_&_allocatable",
+            "f_function_string_&_copy",
             "c_function_string_&_copy",
         ],
         # cxx_to_c creates a pointer from a value via c_str()
@@ -3129,12 +3188,29 @@ fc_statements = [
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
     ),
+    
     dict(
-        name="c_function_shadow_scalar_capptr",
-        mixin=["c_mixin_shadow", "c_function_shadow_scalar_capsule"],
-        alias=[
-            "c_function_shadow_scalar_capptr_targ_native_scalar",
+        # f_function_shadow_scalar_capptr
+        # f_function_shadow_*_capptr
+        # f_function_shadow_&_capptr
+        name="fc_mixin_function_shadow_scalar_capptr",
+        mixin=[
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_function_shadow_scalar_capsule"
         ],
+        alias=[
+            "fc_function_shadow_scalar/*/&_capptr",
+            "fc_function_shadow_scalar/*/&_capptr_targ_native_scalar",
+            "f_function_shadow_scalar_capptr_targ_native_scalar",
+            "c_function_shadow_scalar_capptr_targ_native_scalar",
+            "fc_function_shadow_scalar/*/&_capptr_caller/library",
+            "f_function_shadow_scalar/*/&_capptr",
+            "c_function_shadow_scalar_capptr",
+#            "f_function_shadow_scalar/*/&_capptr_targ_native_scalar",
+            "f_function_shadow_scalar/*/&_capptr_caller/library",
+        ],
+
         c_return_type="{c_type} *",
         c_return=[
             "return {c_var};",
@@ -3144,22 +3220,6 @@ fc_statements = [
             "type(C_PTR) :: {F_result_ptr}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    
-    dict(
-        # f_function_shadow_scalar_capptr
-        # f_function_shadow_*_capptr
-        # f_function_shadow_&_capptr
-        name="fc_mixin_function_shadow_scalar_capptr",
-        alias=[
-            "fc_function_shadow_scalar/*/&_capptr",
-            "fc_function_shadow_scalar/*/&_capptr_targ_native_scalar",
-            "fc_function_shadow_scalar/*/&_capptr_caller/library",
-            "f_function_shadow_scalar/*/&_capptr",
-            "f_function_shadow_scalar/*/&_capptr_targ_native_scalar",
-            "f_function_shadow_scalar/*/&_capptr_caller/library",
-        ],
-        mixin=["f_mixin_function_shadow_capptr"],
     ),
     dict(
         name="c_ctor_shadow_scalar_capsule",
@@ -3237,6 +3297,7 @@ fc_statements = [
         ],
         alias=[
             "f_dtor",
+            "f_dtor_void_scalar",  # Used with interface
         ],
         f_arg_call=[],
     ),
@@ -3312,14 +3373,15 @@ fc_statements = [
     
     # Similar to c_function_native_*
     dict(
-        name="c_function_struct_*_pointer",
+        name="fc_function_struct_*_pointer",
         mixin=[
+            "f_mixin_function_c-ptr",
             "c_function_struct",
         ],
-        i_result_decl=[
-            "type(C_PTR) {c_var}",
+        alias=[
+            "f_function_struct_*_pointer",
+            "c_function_struct_*_pointer",
         ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
 
     ########################################
@@ -3337,59 +3399,41 @@ fc_statements = [
         ],
     ),
     dict(
-        # Not actually calling a subroutine.
-        # Work is done by arg's setter.
-        name="c_setter",
-        mixin=["c_mixin_noargs"],
-        alias=[
-            # TTT - wrap_function_interface
-            "c_setter_void_scalar",
-        ],
-        c_call=[
-            "// skip call c_setter",
-        ],
-    ),
-    dict(
         # Argument to setter.
         name="c_setter_arg",
     ),
     dict(
         name="fc_getter",
+        mixin=[
+            "c_getter",
+        ],
         alias=[
             "fc_getter_native_scalar",
             "f_getter_native_scalar",
+            "c_getter_native_scalar",
             "fc_getter_native_*_pointer",
             "f_getter_native_*_pointer",
+            "c_getter_native_*_pointer",
+        ],
+        c_return=[
+            "return {CXX_this}->{field_name};",
         ],
     ),
     dict(
         name="fc_setter",
+        mixin=["c_mixin_noargs"],
         alias=[
             "f_setter",
+            "c_setter",
+            "f_setter_void_scalar",  # for interface
+            "c_setter_void_scalar",
         ],
         f_arg_call=[],
+        c_call=[
+            "// skip call c_setter",
+        ],
     ),
 
-    dict(
-        # c_getter_native_scalar
-        name="c_getter_native_scalar",
-        mixin=[
-            "c_getter",
-        ],
-        c_return=[
-            "return {CXX_this}->{field_name};",
-        ],
-    ),
-    dict(
-        # c_getter_native_*_pointer
-        name="c_getter_native_*_pointer",
-        mixin=[
-            "c_getter",
-        ],
-        c_return=[
-            "return {CXX_this}->{field_name};",
-        ],
-    ),
     dict(
         # TTT
         name="fc_setter_native_scalar/*",

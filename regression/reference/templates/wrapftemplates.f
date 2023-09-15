@@ -104,7 +104,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void nested
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -126,7 +126,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_struct_as_class_int_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
@@ -140,7 +140,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
@@ -157,7 +157,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_struct_as_class_int_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_npts")
@@ -172,7 +172,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int v +value
         ! Attrs:     +intent(in)
@@ -190,7 +190,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_value
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_struct_as_class_int_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_value")
@@ -204,7 +204,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_struct_as_class_double_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
@@ -218,7 +218,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
@@ -235,7 +235,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_struct_as_class_double_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_npts")
@@ -250,7 +250,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double v +value
         ! Attrs:     +intent(in)
@@ -268,7 +268,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  double get_value
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_struct_as_class_double_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_value")
@@ -282,7 +282,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     c_function_shadow_scalar_capptr_targ_native_scalar
+        ! Exact:     f_function_shadow_scalar_capptr_targ_native_scalar
         function c_return_user_type(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_returnUserType")
@@ -297,7 +297,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -318,7 +318,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
@@ -339,7 +339,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker1")
@@ -352,7 +352,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker2")

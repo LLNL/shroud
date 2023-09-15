@@ -69,7 +69,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  Class2
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_class2_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -83,7 +83,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  ~Class2
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data
@@ -94,7 +94,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  void func1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -111,7 +111,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  void acceptClass3
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -127,7 +127,7 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  int passStruct1
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)

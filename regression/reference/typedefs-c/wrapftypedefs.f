@@ -50,7 +50,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
@@ -71,7 +71,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  void typestruct
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
@@ -90,7 +90,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)

@@ -164,7 +164,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_ex_class1_ctor_0(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
@@ -178,7 +178,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
@@ -198,7 +198,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
@@ -219,7 +219,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass1
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_ex_class1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
@@ -230,7 +230,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int incrementCount
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int incr +value
         ! Attrs:     +intent(in)
@@ -249,7 +249,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_allocatable
+        ! Exact:     f_function_string_&_allocatable
         pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
@@ -264,7 +264,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_cdesc_allocatable
+        ! Exact:     f_function_string_&_cdesc_allocatable
         subroutine c_ex_class1_get_name_error_check_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
@@ -277,7 +277,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameArg
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_string_&
+        ! Exact:     f_function_string_&
         pure function c_ex_class1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg")
@@ -292,7 +292,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameArg
         ! Attrs:     +api(buf)+deref(arg)+intent(function)
-        ! Exact:     c_function_string_&_buf_arg
+        ! Exact:     f_function_string_&_buf_arg
         subroutine c_ex_class1_get_name_arg_bufferify(self, name, nname) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -306,7 +306,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int getValue
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int value +value
         ! Attrs:     +intent(in)
@@ -325,7 +325,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  long getValue
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long value +value
         ! Attrs:     +intent(in)
@@ -344,7 +344,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool hasAddr
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  bool in +value
         ! Attrs:     +intent(in)
@@ -363,7 +363,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void SplicerSpecial
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_ex_class1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_SplicerSpecial")
             import :: AA_SHROUD_capsule_data
@@ -374,7 +374,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
@@ -394,7 +394,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
@@ -414,7 +414,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass2
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_ex_class2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
@@ -425,7 +425,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_copy
+        ! Exact:     f_function_string_&_copy
         pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName")
@@ -440,7 +440,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_buf_copy
+        ! Exact:     f_function_string_&_buf_copy
         subroutine c_ex_class2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="AA_example_nested_ExClass2_getName_bufferify")
@@ -455,7 +455,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_allocatable
+        ! Exact:     f_function_string_&_allocatable
         function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2")
@@ -470,7 +470,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_cdesc_allocatable
+        ! Exact:     f_function_string_&_cdesc_allocatable
         subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -482,7 +482,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_allocatable
+        ! Exact:     f_function_string_&_allocatable
         pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3")
@@ -497,7 +497,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_cdesc_allocatable
+        ! Exact:     f_function_string_&_cdesc_allocatable
         subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -509,7 +509,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_allocatable
+        ! Exact:     f_function_string_&_allocatable
         function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4")
@@ -524,7 +524,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_cdesc_allocatable
+        ! Exact:     f_function_string_&_cdesc_allocatable
         subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -536,7 +536,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int GetNameLength
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         pure function c_ex_class2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_GetNameLength")
@@ -550,7 +550,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     c_function_shadow_*_capptr
+        ! Exact:     f_function_shadow_*_capptr
         ! ----------------------------------------
         ! Argument:  const ExClass1 * in
         ! Attrs:     +intent(in)
@@ -571,7 +571,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
@@ -588,7 +588,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
@@ -609,7 +609,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void destroyall
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_ex_class2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
             import :: AA_SHROUD_capsule_data
@@ -620,7 +620,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
@@ -634,7 +634,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int value +value
         ! Attrs:     +intent(in)
@@ -652,7 +652,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  long value +value
         ! Attrs:     +intent(in)
@@ -670,7 +670,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  float value +value
         ! Attrs:     +intent(in)
@@ -688,7 +688,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void setValue
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double value +value
         ! Attrs:     +intent(in)
@@ -706,7 +706,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int getValue
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_ex_class2_get_value_int(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_int")
@@ -721,7 +721,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  double getValue
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_ex_class2_get_value_double(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_double")
@@ -735,7 +735,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void local_function1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine local_function1() &
                 bind(C, name="AA_example_nested_local_function1")
             implicit none
@@ -744,7 +744,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -762,7 +762,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -780,7 +780,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isInitialized
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_bool_scalar
+        ! Exact:     f_function_bool_scalar
         function c_is_initialized() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_isInitialized")
@@ -792,7 +792,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -808,7 +808,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -824,7 +824,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -845,7 +845,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
@@ -867,7 +867,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_testoptional_0() &
                 bind(C, name="AA_example_nested_testoptional_0")
             implicit none
@@ -877,7 +877,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
@@ -892,7 +892,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testoptional
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
@@ -912,7 +912,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  size_t test_size_t
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function test_size_t() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_test_size_t")
@@ -925,7 +925,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testmpi
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
@@ -942,7 +942,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void testmpi
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_example_nested_testmpi_serial")
             implicit none
@@ -952,7 +952,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * get)(void) +value
         ! Attrs:     +intent(in)
@@ -967,7 +967,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * ( * get)(void)
         ! Attrs:     +intent(in)
@@ -982,7 +982,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr3
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double ( * get)(int i +value, int +value) +value
         ! Attrs:     +intent(in)
@@ -997,7 +997,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr4
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double ( * get)(double +value, int +value) +value
         ! Attrs:     +intent(in)
@@ -1012,7 +1012,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void FuncPtr5
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
         ! Attrs:     +intent(in)
@@ -1027,7 +1027,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void verylongfunctionname1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * verylongname1 +intent(inout)
         ! Attrs:     +intent(inout)
@@ -1090,7 +1090,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  int verylongfunctionname2
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int verylongname1 +value
         ! Attrs:     +intent(in)
@@ -1155,7 +1155,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void cos_doubles
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double * in +intent(in)+rank(2)
         ! Attrs:     +intent(in)

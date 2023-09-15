@@ -23,7 +23,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptFloatComplexInoutPtr
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
@@ -40,7 +40,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexInoutPtr
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
@@ -57,7 +57,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
@@ -74,7 +74,7 @@ module ccomplex_mod
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtrFlag
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)

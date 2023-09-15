@@ -130,7 +130,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_cstruct_as_class_get_x1
     interface
         function c_cstruct_as_class_get_x1(self) &
@@ -149,7 +149,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_x1
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -171,7 +171,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_cstruct_as_class_get_y1
     interface
         function c_cstruct_as_class_get_y1(self) &
@@ -190,7 +190,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_y1
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -212,7 +212,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int get_x1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_cstruct_as_subclass_get_x1
     interface
         function c_cstruct_as_subclass_get_x1(self) &
@@ -231,7 +231,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_x1
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -253,7 +253,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int get_y1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_cstruct_as_subclass_get_y1
     interface
         function c_cstruct_as_subclass_get_y1(self) &
@@ -272,7 +272,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_y1
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -294,7 +294,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int get_z1
     ! Attrs:     +intent(getter)
-    ! Exact:     c_getter_native_scalar
+    ! Exact:     f_getter_native_scalar
     ! start c_cstruct_as_subclass_get_z1
     interface
         function c_cstruct_as_subclass_get_z1(self) &
@@ -313,7 +313,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void set_z1
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -334,7 +334,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStructByValue
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg +value
     ! Attrs:     +intent(in)
@@ -356,7 +356,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Attrs:     +intent(in)
@@ -378,7 +378,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -404,7 +404,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -430,7 +430,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -450,7 +450,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void acceptStructOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -478,7 +478,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void acceptStructInOutPtr
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
     ! Attrs:     +intent(inout)
@@ -495,7 +495,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 returnStructByValue
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_struct_scalar
+    ! Exact:     f_function_struct_scalar
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -519,7 +519,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_struct_*_pointer
+    ! Exact:     f_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -543,7 +543,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_struct_*_pointer
+    ! Exact:     f_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -573,7 +573,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_struct_*_pointer
+    ! Exact:     f_function_struct_*_pointer
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -604,7 +604,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     c_function_struct_*_pointer
+    ! Exact:     f_function_struct_*_pointer
     interface
         function c_get_global_struct_list() &
                 result(SHT_rv) &
@@ -618,7 +618,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! start c_create_cstruct_as_class
     interface
         function c_create_cstruct_as_class(SHT_rv) &
@@ -636,7 +636,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -662,7 +662,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)
@@ -682,7 +682,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_*_capptr
+    ! Exact:     f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -714,7 +714,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_ptr)
-    ! Exact:     c_getter_native_*_pointer
+    ! Exact:     f_getter_native_*_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_ptr)
@@ -735,7 +735,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_ptr_set_const_dvalue
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
@@ -759,7 +759,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int * Cstruct_list_get_ivalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Exact:     c_getter_native_*_cdesc_pointer
+    ! Exact:     f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
@@ -778,7 +778,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_list_set_ivalue
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)
@@ -802,7 +802,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  double * Cstruct_list_get_dvalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
-    ! Exact:     c_getter_native_*_cdesc_pointer
+    ! Exact:     f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(in)+struct(Cstruct_list)
@@ -821,7 +821,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void Cstruct_list_set_dvalue
     ! Attrs:     +intent(setter)
-    ! Exact:     c_setter_void_scalar
+    ! Exact:     f_setter_void_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
     ! Attrs:     +intent(inout)+struct(Cstruct_list)

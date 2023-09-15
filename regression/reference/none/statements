@@ -18,8 +18,8 @@ root
       bool
         scalar -- fc_function_bool_scalar
       char
-        * -- c_function_char_*
-          allocatable -- c_function_char_*
+        * -- fc_function_char_*
+          allocatable -- fc_function_char_*
           arg -- fc_function_char_*_arg
           buf
             arg -- fc_function_char_*_arg
@@ -33,16 +33,16 @@ root
             arg -- fc_function_char_*_cfi_arg
             copy -- fc_function_char_*_cfi_copy
             pointer -- fc_function_char_scalar_cfi_pointer
-          copy -- c_function_char_*
-          pointer -- c_function_char_*
-          raw -- c_function_char_*
+          copy -- fc_function_char_*
+          pointer -- fc_function_char_*
+          raw -- fc_function_char_*
         scalar -- fc_function_char_scalar
           cfi -- c_function_char_scalar_cfi
       native
-        & -- c_function_native_*/&/**
-          pointer -- c_function_native_*/&/**
-        * -- c_function_native_*/&/**
-          allocatable -- c_function_native_*/&/**
+        & -- c_function_native_*/&
+          pointer -- fc_mixin_function_native_&
+        * -- c_function_native_*/&
+          allocatable -- fc_function_native_**
           cdesc -- c_function_native_*_cdesc
             allocatable -- c_function_native_*_cdesc
               caller -- c_function_native_*_cdesc
@@ -53,11 +53,11 @@ root
           cfi
             allocatable -- fc_function_native_*_cfi_allocatable
             pointer -- fc_function_native_*_cfi_pointer
-          pointer -- c_function_native_*/&/**
-          raw -- c_function_native_*/&/**
+          pointer -- fc_mixin_function_native_&
+          raw -- fc_function_native_*_raw
           scalar -- c_function_native_*_scalar
-        ** -- c_function_native_*/&/**
-          pointer -- c_function_native_*/&/**
+        ** -- fc_function_native_**
+          pointer -- c_function_native_*/&
         scalar -- fc_function_native_scalar
       shadow
         &
@@ -71,14 +71,14 @@ root
             library -- c_function_shadow_*/&_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
         scalar
-          capptr -- c_function_shadow_scalar_capptr
+          capptr -- fc_mixin_function_shadow_scalar_capptr
             targ
               native
-                scalar -- c_function_shadow_scalar_capptr
+                scalar -- fc_mixin_function_shadow_scalar_capptr
           capsule -- c_function_shadow_scalar_capsule
       string
-        & -- c_function_string_scalar/*/&
-          allocatable -- c_function_string_scalar/*/&
+        & -- fc_mixin_function_string_scalar
+          allocatable -- fc_mixin_function_string_scalar
           buf
             arg -- fc_function_string_scalar_buf_arg
             copy -- c_mixin_function_string_scalar_buf_copy
@@ -95,9 +95,9 @@ root
               library -- fc_function_string_*/&_cfi_allocatable
             arg -- fc_function_string_scalar_cfi_arg
             copy -- fc_mixin_function_string_scalar_cfi_copy
-          copy -- c_function_string_scalar/*/&
-        * -- c_function_string_scalar/*/&
-          allocatable -- c_function_string_scalar/*/&
+          copy -- fc_mixin_function_string_scalar
+        * -- fc_mixin_function_string_scalar
+          allocatable -- fc_mixin_function_string_scalar
           buf
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
@@ -115,9 +115,9 @@ root
             pointer -- fc_function_string_*_cfi_pointer
               caller -- fc_function_string_*_cfi_pointer
               library -- fc_function_string_*_cfi_pointer
-          copy -- c_function_string_scalar/*/&
-          pointer -- c_function_string_scalar/*/&
-        scalar -- c_function_string_scalar/*/&
+          copy -- fc_mixin_function_string_scalar
+          pointer -- fc_mixin_function_string_scalar
+        scalar -- fc_mixin_function_string_scalar
           buf
             arg -- fc_function_string_scalar_buf_arg
             copy -- c_mixin_function_string_scalar_buf_copy
@@ -131,7 +131,7 @@ root
             copy -- fc_mixin_function_string_scalar_cfi_copy
       struct -- c_function_struct
         *
-          pointer -- c_function_struct_*_pointer
+          pointer -- fc_function_struct_*_pointer
         scalar -- fc_function_struct_scalar
       vector
         scalar
@@ -147,8 +147,8 @@ root
         *
           cdesc
             pointer -- c_getter_native_*_cdesc_pointer
-          pointer -- c_getter_native_*_pointer
-        scalar -- c_getter_native_scalar
+          pointer -- fc_getter
+        scalar -- fc_getter
       string
         scalar
           cdesc
@@ -404,7 +404,7 @@ root
           cdesc -- fc_in/out/inout_native_*_cdesc
         *& -- fc_defaulttmp_native_scalar
         ** -- fc_in/out/inout_void_**
-    setter -- c_setter
+    setter -- fc_setter
       arg -- c_setter_arg
       native
         * -- fc_setter_native_scalar/*
@@ -413,11 +413,11 @@ root
         scalar
           buf -- fc_setter_string_scalar_buf
       void
-        scalar -- c_setter
+        scalar -- fc_setter
     subroutine -- fc_subroutine
       void
         scalar -- c_mixin_noargs
-          capptr -- c_mixin_noargs
+          capptr -- fc_subroutine_void_scalar_capptr
     test -- c_test
   f
     XXXin
@@ -430,11 +430,14 @@ root
           capsule -- f_ctor_shadow_scalar_capsule
     defaulttmp -- f_defaulttmp
     dtor -- fc_dtor
+      void
+        scalar -- fc_dtor
     function -- f_function
       bool
         scalar -- fc_function_bool_scalar
       char
-        *
+        * -- fc_function_char_*
+          allocatable -- fc_function_char_*
           arg -- fc_function_char_*_arg
           buf
             arg -- fc_function_char_*_arg
@@ -448,7 +451,9 @@ root
             arg -- fc_function_char_*_cfi_arg
             copy -- fc_function_char_*_cfi_copy
             pointer -- fc_function_char_scalar_cfi_pointer
-          raw -- fc_function_char_*_raw
+          copy -- fc_function_char_*
+          pointer -- fc_function_char_*
+          raw -- fc_function_char_*
         scalar -- fc_function_char_scalar
           cdesc
             allocatable -- fc_mixin_function_char_scalar_cdesc_allocatable
@@ -462,6 +467,7 @@ root
             pointer -- f_function_native_&_buf_pointer
           pointer -- fc_mixin_function_native_&
         *
+          allocatable -- fc_function_native_**
           cdesc
             allocatable -- fc_function_native_*_cdesc_allocatable
             pointer -- fc_function_native_*_cdesc_pointer
@@ -479,17 +485,11 @@ root
           capptr -- fc_mixin_function_shadow_scalar_capptr
             caller -- fc_mixin_function_shadow_scalar_capptr
             library -- fc_mixin_function_shadow_scalar_capptr
-            targ
-              native
-                scalar -- fc_mixin_function_shadow_scalar_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
         *
           capptr -- fc_mixin_function_shadow_scalar_capptr
             caller -- fc_mixin_function_shadow_scalar_capptr
             library -- fc_mixin_function_shadow_scalar_capptr
-            targ
-              native
-                scalar -- fc_mixin_function_shadow_scalar_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
         scalar
           capptr -- fc_mixin_function_shadow_scalar_capptr
@@ -500,7 +500,8 @@ root
                 scalar -- fc_mixin_function_shadow_scalar_capptr
           capsule -- fc_mixin_function_shadow_*_capsule
       string
-        &
+        & -- fc_mixin_function_string_scalar
+          allocatable -- fc_mixin_function_string_scalar
           buf -- fc_mixin_function_string_scalar_buf
             arg -- fc_function_string_scalar_buf_arg
             copy -- fc_mixin_function_string_scalar_buf
@@ -517,7 +518,9 @@ root
             pointer -- fc_function_string_*_cfi_pointer
               caller -- fc_function_string_*_cfi_pointer
               library -- fc_function_string_*_cfi_pointer
-        *
+          copy -- fc_mixin_function_string_scalar
+        * -- fc_mixin_function_string_scalar
+          allocatable -- fc_mixin_function_string_scalar
           buf -- fc_mixin_function_string_scalar_buf
             copy -- fc_mixin_function_string_scalar_buf
           cdesc
@@ -534,7 +537,9 @@ root
             pointer -- fc_function_string_*_cfi_pointer
               caller -- fc_function_string_*_cfi_pointer
               library -- fc_function_string_*_cfi_pointer
-        scalar
+          copy -- fc_mixin_function_string_scalar
+          pointer -- fc_mixin_function_string_scalar
+        scalar -- fc_mixin_function_string_scalar
           buf -- fc_mixin_function_string_scalar_buf
             arg -- fc_function_string_scalar_buf_arg
             copy -- fc_mixin_function_string_scalar_buf
@@ -554,7 +559,7 @@ root
               library -- fc_function_string_*_cfi_pointer
       struct
         *
-          pointer -- fc_mixin_function_native_&
+          pointer -- fc_function_struct_*_pointer
         scalar -- fc_function_struct_scalar
       vector
         scalar
@@ -678,7 +683,9 @@ root
         ** -- fc_in/out/inout_void_**
     mixin
       function
+        c-ptr -- f_mixin_function_c-ptr
         cdesc -- f_mixin_function_cdesc
+        ptr -- f_mixin_function_ptr
         shadow
           capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
@@ -789,9 +796,12 @@ root
       string
         scalar
           buf -- fc_setter_string_scalar_buf
+      void
+        scalar -- fc_setter
     subroutine -- fc_subroutine
       void
         scalar -- fc_subroutine
+          capptr -- fc_subroutine_void_scalar_capptr
     test -- f_test
   fc
     ctor
@@ -806,7 +816,7 @@ root
       bool
         scalar -- fc_function_bool_scalar
       char
-        *
+        * -- fc_function_char_*
           arg -- fc_function_char_*_arg
           buf
             copy -- fc_function_char_*_buf_copy
@@ -820,7 +830,6 @@ root
             copy -- fc_function_char_*_cfi_copy
             pointer -- fc_function_char_scalar_cfi_pointer
             result -- fc_function_char_*_cfi_copy
-          raw -- fc_function_char_*_raw
         scalar -- fc_function_char_scalar
           cdesc
             allocatable -- fc_mixin_function_char_scalar_cdesc_allocatable
@@ -922,7 +931,7 @@ root
               library -- fc_function_string_*_cfi_pointer
       struct
         *
-          pointer -- fc_mixin_function_native_&
+          pointer -- fc_function_struct_*_pointer
         scalar -- fc_function_struct_scalar
       vector
         scalar
@@ -1066,7 +1075,7 @@ root
           scalar
             capptr -- fc_mixin_function_shadow_scalar_capptr
         string
-          scalar
+          scalar -- fc_mixin_function_string_scalar
             buf -- fc_mixin_function_string_scalar_buf
             cdesc
               allocatable -- fc_mixin_function_string_scalar_cdesc_allocatable
@@ -1154,6 +1163,9 @@ root
         scalar
           buf -- fc_setter_string_scalar_buf
     subroutine -- fc_subroutine
+      void
+        scalar
+          capptr -- fc_subroutine_void_scalar_capptr
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -5716,6 +5728,9 @@ f_defaulttmp:
 f_dtor:
   intent: dtor
   name: f_dtor
+f_dtor_void_scalar:
+  intent: dtor
+  name: f_dtor_void_scalar
 f_function:
   intent: function
   name: f_function
@@ -5723,6 +5738,16 @@ f_function_bool_scalar:
   f_need_wrapper: true
   intent: function
   name: f_function_bool_scalar
+f_function_char_*:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  intent: function
+  name: f_function_char_*
+f_function_char_*_allocatable:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  intent: function
+  name: f_function_char_*_allocatable
 f_function_char_*_arg:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -5850,6 +5875,16 @@ f_function_char_*_cfi_pointer:
   f_need_wrapper: true
   intent: function
   name: f_function_char_*_cfi_pointer
+f_function_char_*_copy:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  intent: function
+  name: f_function_char_*_copy
+f_function_char_*_pointer:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  intent: function
+  name: f_function_char_*_pointer
 f_function_char_*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -5971,6 +6006,14 @@ f_function_native_**:
     - C_PTR
   intent: function
   name: f_function_native_**
+f_function_native_*_allocatable:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: function
+  name: f_function_native_*_allocatable
 f_function_native_*_cdesc_allocatable:
   c_helper: copy_array
   f_arg_call:
@@ -6070,6 +6113,9 @@ f_function_native_*_pointer:
 f_function_native_*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   intent: function
   name: f_function_native_*_raw
 f_function_native_*_scalar:
@@ -6117,19 +6163,6 @@ f_function_shadow_&_capptr_library:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_&_capptr_library
-f_function_shadow_&_capptr_targ_native_scalar:
-  c_result_var: '{F_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  intent: function
-  name: f_function_shadow_&_capptr_targ_native_scalar
 f_function_shadow_&_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -6177,19 +6210,6 @@ f_function_shadow_*_capptr_library:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_*_capptr_library
-f_function_shadow_*_capptr_targ_native_scalar:
-  c_result_var: '{F_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  intent: function
-  name: f_function_shadow_*_capptr_targ_native_scalar
 f_function_shadow_*_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -6258,6 +6278,12 @@ f_function_shadow_scalar_capsule:
   f_need_wrapper: true
   intent: function
   name: f_function_shadow_scalar_capsule
+f_function_string_&:
+  intent: function
+  name: f_function_string_&
+f_function_string_&_allocatable:
+  intent: function
+  name: f_function_string_&_allocatable
 f_function_string_&_buf:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -6428,6 +6454,15 @@ f_function_string_&_cfi_pointer_library:
   f_need_wrapper: true
   intent: function
   name: f_function_string_&_cfi_pointer_library
+f_function_string_&_copy:
+  intent: function
+  name: f_function_string_&_copy
+f_function_string_*:
+  intent: function
+  name: f_function_string_*
+f_function_string_*_allocatable:
+  intent: function
+  name: f_function_string_*_allocatable
 f_function_string_*_buf:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -6606,6 +6641,15 @@ f_function_string_*_cfi_pointer_library:
   f_need_wrapper: true
   intent: function
   name: f_function_string_*_cfi_pointer_library
+f_function_string_*_copy:
+  intent: function
+  name: f_function_string_*_copy
+f_function_string_*_pointer:
+  intent: function
+  name: f_function_string_*_pointer
+f_function_string_scalar:
+  intent: function
+  name: f_function_string_scalar
 f_function_string_scalar_buf:
   c_helper: ShroudStrCopy
   f_arg_call:
@@ -7386,6 +7430,23 @@ f_inout_void_*_cdesc:
   - cdesc
   intent: inout
   name: f_inout_void_*_cdesc
+f_mixin_function_c-ptr:
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_call:
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
+  f_declare:
+  - 'type(C_PTR) :: {c_local_ptr}'
+  f_local:
+  - ptr
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_local_ptr}, {F_result})
+  intent: mixin
+  name: f_mixin_function_c-ptr
 f_mixin_function_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -7397,6 +7458,14 @@ f_mixin_function_cdesc:
   - cdesc
   intent: mixin
   name: f_mixin_function_cdesc
+f_mixin_function_ptr:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: mixin
+  name: f_mixin_function_ptr
 f_mixin_function_shadow_capptr:
   c_result_var: '{F_result_ptr}'
   f_arg_call:
@@ -8006,12 +8075,18 @@ f_setter_string_scalar_buf:
   - len
   intent: setter
   name: f_setter_string_scalar_buf
+f_setter_void_scalar:
+  intent: setter
+  name: f_setter_void_scalar
 f_subroutine:
   intent: subroutine
   name: f_subroutine
 f_subroutine_void_scalar:
   intent: subroutine
   name: f_subroutine_void_scalar
+f_subroutine_void_scalar_capptr:
+  intent: subroutine
+  name: f_subroutine_void_scalar_capptr
 f_test:
   intent: test
   name: f_test
@@ -8073,6 +8148,17 @@ fc_function_bool_scalar:
   f_need_wrapper: true
   intent: function
   name: fc_function_bool_scalar
+  owner: library
+fc_function_char_*:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: fc_function_char_*
   owner: library
 fc_function_char_*_arg:
   c_arg_decl:
@@ -8362,12 +8448,6 @@ fc_function_char_*_cfi_result:
   intent: function
   name: fc_function_char_*_cfi_result
   owner: library
-fc_function_char_*_raw:
-  f_arg_decl:
-  - 'type(C_PTR) :: {f_var}'
-  intent: function
-  name: fc_function_char_*_raw
-  owner: library
 fc_function_char_scalar:
   c_arg_decl:
   - char *{c_var}
@@ -8513,6 +8593,11 @@ fc_function_native_&:
     - c_f_pointer
   f_post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: fc_function_native_&
   owner: library
@@ -8531,6 +8616,11 @@ fc_function_native_&_pointer:
     - c_f_pointer
   f_post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: fc_function_native_&_pointer
   owner: library
@@ -8540,6 +8630,11 @@ fc_function_native_**:
   f_module:
     iso_c_binding:
     - C_PTR
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: fc_function_native_**
   owner: library
@@ -8753,12 +8848,25 @@ fc_function_native_*_pointer:
     - c_f_pointer
   f_post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: fc_function_native_*_pointer
   owner: library
 fc_function_native_*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: fc_function_native_*_raw
   owner: library
@@ -8771,7 +8879,18 @@ fc_function_native_scalar:
   name: fc_function_native_scalar
   owner: library
 fc_function_shadow_&_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8781,11 +8900,33 @@ fc_function_shadow_&_capptr:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_&_capptr
-  owner: library
+  owner: caller
 fc_function_shadow_&_capptr_caller:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8795,11 +8936,33 @@ fc_function_shadow_&_capptr_caller:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_&_capptr_caller
-  owner: library
+  owner: caller
 fc_function_shadow_&_capptr_library:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8809,11 +8972,33 @@ fc_function_shadow_&_capptr_library:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_&_capptr_library
-  owner: library
+  owner: caller
 fc_function_shadow_&_capptr_targ_native_scalar:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8823,9 +9008,20 @@ fc_function_shadow_&_capptr_targ_native_scalar:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_&_capptr_targ_native_scalar
-  owner: library
+  owner: caller
 fc_function_shadow_&_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -8848,7 +9044,18 @@ fc_function_shadow_&_capsule:
   name: fc_function_shadow_&_capsule
   owner: library
 fc_function_shadow_*_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8858,11 +9065,33 @@ fc_function_shadow_*_capptr:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_*_capptr
-  owner: library
+  owner: caller
 fc_function_shadow_*_capptr_caller:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8872,11 +9101,33 @@ fc_function_shadow_*_capptr_caller:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_*_capptr_caller
-  owner: library
+  owner: caller
 fc_function_shadow_*_capptr_library:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8886,11 +9137,33 @@ fc_function_shadow_*_capptr_library:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_*_capptr_library
-  owner: library
+  owner: caller
 fc_function_shadow_*_capptr_targ_native_scalar:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8900,9 +9173,20 @@ fc_function_shadow_*_capptr_targ_native_scalar:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_*_capptr_targ_native_scalar
-  owner: library
+  owner: caller
 fc_function_shadow_*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -8925,7 +9209,18 @@ fc_function_shadow_*_capsule:
   name: fc_function_shadow_*_capsule
   owner: library
 fc_function_shadow_scalar_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8935,11 +9230,33 @@ fc_function_shadow_scalar_capptr:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_scalar_capptr
-  owner: library
+  owner: caller
 fc_function_shadow_scalar_capptr_caller:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8949,11 +9266,33 @@ fc_function_shadow_scalar_capptr_caller:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_scalar_capptr_caller
-  owner: library
+  owner: caller
 fc_function_shadow_scalar_capptr_library:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8963,11 +9302,33 @@ fc_function_shadow_scalar_capptr_library:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_scalar_capptr_library
-  owner: library
+  owner: caller
 fc_function_shadow_scalar_capptr_targ_native_scalar:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -8977,9 +9338,20 @@ fc_function_shadow_scalar_capptr_targ_native_scalar:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: function
   name: fc_function_shadow_scalar_capptr_targ_native_scalar
-  owner: library
+  owner: caller
 fc_function_shadow_scalar_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -10486,6 +10858,13 @@ fc_function_string_scalar_cfi_pointer_library:
   name: fc_function_string_scalar_cfi_pointer_library
   owner: library
 fc_function_struct_*_pointer:
+  c_post_call:
+  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+    \ *>(\t{cxx_addr}{cxx_var}));"
+  c_return:
+  - return {c_var_c};
+  c_temps:
+  - c
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -10500,7 +10879,20 @@ fc_function_struct_*_pointer:
     - c_f_pointer
   f_post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
+  lang_cxx:
+    c_post_call:
+    - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
+      \ *>(\t{cxx_addr}{cxx_var}));"
+    c_return:
+    - return {c_var_c};
+    c_temps:
+    - c
   name: fc_function_struct_*_pointer
   owner: library
 fc_function_struct_scalar:
@@ -10577,6 +10969,10 @@ fc_function_void_*:
   name: fc_function_void_*
   owner: library
 fc_getter:
+  c_call:
+  - // skip call c_getter
+  c_return:
+  - return {CXX_this}->{field_name};
   intent: getter
   name: fc_getter
   owner: library
@@ -10620,10 +11016,18 @@ fc_getter_native_*_cdesc_pointer:
   name: fc_getter_native_*_cdesc_pointer
   owner: library
 fc_getter_native_*_pointer:
+  c_call:
+  - // skip call c_getter
+  c_return:
+  - return {CXX_this}->{field_name};
   intent: getter
   name: fc_getter_native_*_pointer
   owner: library
 fc_getter_native_scalar:
+  c_call:
+  - // skip call c_getter
+  c_return:
+  - return {CXX_this}->{field_name};
   intent: getter
   name: fc_getter_native_scalar
   owner: library
@@ -12111,6 +12515,11 @@ fc_mixin_function_native_&:
     - c_f_pointer
   f_post_call:
   - call c_f_pointer({c_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
   intent: mixin
   name: fc_mixin_function_native_&
   owner: library
@@ -12136,7 +12545,18 @@ fc_mixin_function_shadow_*_capsule:
   name: fc_mixin_function_shadow_*_capsule
   owner: library
 fc_mixin_function_shadow_scalar_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
   c_result_var: '{F_result_ptr}'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -12146,8 +12566,30 @@ fc_mixin_function_shadow_scalar_capptr:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_module_line: '{i_module_line}'
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: mixin
   name: fc_mixin_function_shadow_scalar_capptr
+  owner: caller
+fc_mixin_function_string_scalar:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: mixin
+  name: fc_mixin_function_string_scalar
   owner: library
 fc_mixin_function_string_scalar_buf:
   c_arg_decl:
@@ -13167,6 +13609,8 @@ fc_out_void_**:
   name: fc_out_void_**
   owner: library
 fc_setter:
+  c_call:
+  - // skip call c_setter
   intent: setter
   name: fc_setter
   owner: library
@@ -13223,6 +13667,10 @@ fc_setter_string_scalar_buf:
 fc_subroutine:
   intent: subroutine
   name: fc_subroutine
+  owner: library
+fc_subroutine_void_scalar_capptr:
+  intent: subroutine
+  name: fc_subroutine_void_scalar_capptr
   owner: library
 ***** Python
 root

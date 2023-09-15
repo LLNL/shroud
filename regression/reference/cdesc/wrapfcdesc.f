@@ -82,7 +82,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
@@ -98,7 +98,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +api(cdesc)+intent(in)
@@ -113,7 +113,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
@@ -134,7 +134,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -158,7 +158,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -182,7 +182,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  int getData
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_get_data_int() &
                 result(SHT_rv) &
                 bind(C, name="CDE_getData_int")
@@ -195,7 +195,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  double getData
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_get_data_double() &
                 result(SHT_rv) &
                 bind(C, name="CDE_getData_double")
@@ -208,7 +208,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -230,7 +230,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)

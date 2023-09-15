@@ -82,7 +82,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_vector_int_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_vector_int_ctor")
@@ -96,7 +96,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -108,7 +108,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
@@ -126,7 +126,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_&_pointer
+        ! Exact:     f_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
@@ -145,7 +145,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Exact:     f_ctor_shadow_scalar_capptr
         function c_vector_double_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_vector_double_ctor")
@@ -159,7 +159,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Exact:     c_dtor_void_scalar
+        ! Exact:     f_dtor_void_scalar
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -171,7 +171,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)
@@ -189,7 +189,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     c_function_native_&_pointer
+        ! Exact:     f_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)

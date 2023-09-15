@@ -137,7 +137,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
@@ -153,7 +153,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +api(buf)+intent(inout)
@@ -169,7 +169,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine YYY_TES_function1() &
                 bind(C, name="YYY_TES_function1")
             implicit none
@@ -178,7 +178,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine f_c_name_special() &
                 bind(C, name="c_name_special")
             implicit none
@@ -187,7 +187,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function3a
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
@@ -202,7 +202,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function3a
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  long i +value
         ! Attrs:     +intent(in)
@@ -217,7 +217,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  int function4
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
@@ -235,7 +235,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  int function4
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
@@ -253,7 +253,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function5 +name(fiveplus)
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         subroutine YYY_TES_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
             implicit none
@@ -262,7 +262,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +intent(inout)
@@ -283,7 +283,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +api(buf)+intent(inout)
@@ -306,7 +306,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -327,7 +327,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
@@ -348,7 +348,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
                 bind(C, name="TES_UseImplWorker_instantiation3")
@@ -360,7 +360,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  int Cstruct_as_class_sum
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
@@ -378,7 +378,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void external_funcs
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Exact:     f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const char * rdbase
         ! Attrs:     +intent(in)

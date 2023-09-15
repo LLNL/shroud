@@ -41,7 +41,7 @@ module enum_mod
         ! ----------------------------------------
         ! Function:  int convert_to_int
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in +value
         ! Attrs:     +intent(in)

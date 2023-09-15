@@ -25,7 +25,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  int GetNameLength +pure
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Exact:     f_function_native_scalar
         pure function get_name_length() &
                 result(SHT_rv) &
                 bind(C, name="STMT_GetNameLength")
@@ -37,7 +37,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_copy
+        ! Exact:     f_function_string_&_copy
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_getNameErrorPattern")
@@ -50,7 +50,7 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
-        ! Exact:     c_function_string_&_buf_copy
+        ! Exact:     f_function_string_&_buf_copy
         subroutine c_get_name_error_pattern_bufferify(SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="STMT_getNameErrorPattern_bufferify")

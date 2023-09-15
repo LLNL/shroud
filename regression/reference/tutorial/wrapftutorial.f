@@ -77,7 +77,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
@@ -90,7 +90,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -115,7 +115,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_cdesc_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
@@ -143,7 +143,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! start c_use_default_arguments
     interface
         function c_use_default_arguments() &
@@ -160,7 +160,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -181,7 +181,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -207,7 +207,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
@@ -225,7 +225,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -244,7 +244,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int indx +value
     ! Attrs:     +intent(in)
@@ -262,7 +262,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -280,7 +280,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -298,7 +298,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int TemplateReturn
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     interface
         function c_template_return_int() &
                 result(SHT_rv) &
@@ -313,7 +313,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  double TemplateReturn
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     interface
         function c_template_return_double() &
                 result(SHT_rv) &
@@ -327,7 +327,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_FortranGenericOverloaded_0")
@@ -338,7 +338,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
@@ -361,7 +361,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -386,7 +386,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -411,7 +411,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -431,7 +431,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -455,7 +455,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -486,7 +486,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -511,7 +511,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -540,7 +540,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -574,7 +574,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
@@ -593,7 +593,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  EnumTypeID enumfunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
     ! Attrs:     +intent(in)
@@ -612,7 +612,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  Color colorfunc
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Color arg +value
     ! Attrs:     +intent(in)
@@ -631,7 +631,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void getMinMax
     ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine_void_scalar
+    ! Exact:     f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
     ! Attrs:     +intent(out)
@@ -655,7 +655,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  int callback1
     ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int in +value
     ! Attrs:     +intent(in)
@@ -682,7 +682,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_copy
+    ! Exact:     f_function_string_&_copy
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -697,7 +697,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     c_function_string_&_buf_copy
+    ! Exact:     f_function_string_&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="TUT_LastFunctionCalled_bufferify")

@@ -61,7 +61,7 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Function:  int * DataPointer_get_items
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-        ! Exact:     c_getter_native_*_cdesc_pointer
+        ! Exact:     f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(in)+struct(ns2_DataPointer)
@@ -78,7 +78,7 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Function:  void DataPointer_set_items
         ! Attrs:     +intent(setter)
-        ! Exact:     c_setter_void_scalar
+        ! Exact:     f_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(inout)+struct(ns2_DataPointer)
