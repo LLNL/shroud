@@ -83,12 +83,12 @@ root
             arg -- fc_function_string_scalar_buf_arg
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
-            allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
-              caller -- c_function_string_*/&_cdesc_allocatable/pointer
-              library -- c_function_string_*/&_cdesc_allocatable/pointer
-            pointer -- c_function_string_*/&_cdesc_allocatable/pointer
-              caller -- c_function_string_*/&_cdesc_allocatable/pointer
-              library -- c_function_string_*/&_cdesc_allocatable/pointer
+            allocatable -- c_mixin_function_string_*_cdesc_allocatable
+              caller -- c_mixin_function_string_*_cdesc_allocatable
+              library -- c_mixin_function_string_*_cdesc_allocatable
+            pointer -- c_mixin_function_string_*_cdesc_allocatable
+              caller -- c_mixin_function_string_*_cdesc_allocatable
+              library -- c_mixin_function_string_*_cdesc_allocatable
           cfi
             allocatable -- fc_function_string_*/&_cfi_allocatable
               caller -- fc_function_string_*/&_cfi_allocatable
@@ -101,12 +101,12 @@ root
           buf
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
-            allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
-              caller -- c_function_string_*/&_cdesc_allocatable/pointer
-              library -- c_function_string_*/&_cdesc_allocatable/pointer
-            pointer -- c_function_string_*/&_cdesc_allocatable/pointer
-              caller -- c_function_string_*/&_cdesc_allocatable/pointer
-              library -- c_function_string_*/&_cdesc_allocatable/pointer
+            allocatable -- c_mixin_function_string_*_cdesc_allocatable
+              caller -- c_mixin_function_string_*_cdesc_allocatable
+              library -- c_mixin_function_string_*_cdesc_allocatable
+            pointer -- c_mixin_function_string_*_cdesc_allocatable
+              caller -- c_mixin_function_string_*_cdesc_allocatable
+              library -- c_mixin_function_string_*_cdesc_allocatable
           cfi
             allocatable -- fc_function_string_*/&_cfi_allocatable
               caller -- fc_function_string_*/&_cfi_allocatable
@@ -283,6 +283,9 @@ root
             cdesc -- c_mixin_function_char_*_cdesc
         character -- c_mixin_function_character
         string
+          *
+            cdesc
+              allocatable -- c_mixin_function_string_*_cdesc_allocatable
           scalar
             buf
               copy -- c_mixin_function_string_scalar_buf_copy
@@ -4538,6 +4541,24 @@ c_mixin_function_character:
   - ISO_Fortran_binding.h
   intent: mixin
   name: c_mixin_function_character
+  owner: library
+c_mixin_function_string_*_cdesc_allocatable:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  c_post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  c_return_type: void
+  c_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: mixin
+  name: c_mixin_function_string_*_cdesc_allocatable
   owner: library
 c_mixin_function_string_scalar_buf_copy:
   c_arg_decl:

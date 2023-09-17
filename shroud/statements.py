@@ -1591,8 +1591,10 @@ fc_statements = [
         name="c_function_native_*_cdesc",
         mixin=["c_mixin_function_cdesc"],
         alias=[
-            "c_function_native_*_cdesc_allocatable/pointer",
-            "c_function_native_*_cdesc_allocatable/pointer_caller/library",
+            "c_function_native_*_cdesc_allocatable",
+            "c_function_native_*_cdesc_allocatable_caller/library",
+            "c_function_native_*_cdesc_pointer",
+            "c_function_native_*_cdesc_pointer_caller/library",
         ],
         c_helper="ShroudTypeDefines array_context",
         c_post_call=[
@@ -2081,7 +2083,8 @@ fc_statements = [
             "fc_function_char_scalar_cdesc_allocatable",
             "fc_function_char_*_cdesc_allocatable",
             "f_function_char_scalar/*_cdesc_allocatable",
-            "c_function_char_*_cdesc_allocatable/pointer",
+            "c_function_char_*_cdesc_allocatable",
+            "c_function_char_*_cdesc_pointer",
         ],
         c_helper="copy_string ShroudTypeDefines",
         f_helper="copy_string array_context",
@@ -2384,10 +2387,13 @@ fc_statements = [
         # c_function_string_&_cdesc_allocatable
         # c_function_string_*_cdesc_pointer
         # c_function_string_&_cdesc_pointer
-        name="c_function_string_*/&_cdesc_allocatable/pointer",
+        name="c_mixin_function_string_*_cdesc_allocatable",
         mixin=["c_mixin_function_cdesc"],
         alias=[
-            "c_function_string_*/&_cdesc_allocatable/pointer_caller/library",
+            "c_function_string_*/&_cdesc_allocatable",
+            "c_function_string_*/&_cdesc_allocatable_caller/library",
+            "c_function_string_*/&_cdesc_pointer",
+            "c_function_string_*/&_cdesc_pointer_caller/library",
         ],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
