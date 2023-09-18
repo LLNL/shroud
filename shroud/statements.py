@@ -689,7 +689,7 @@ FCStmts.update(FStmts._to_dict())
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
-    f=FStmts,
+    f=FCStmts,
     fc=FCStmts,
 )
                 
