@@ -1712,8 +1712,8 @@
                     "F_name_api": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -1959,8 +1959,8 @@
                     "F_name_api": "return_one_name",
                     "PY_name_impl": "PY_returnOneName",
                     "function_name": "returnOneName",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2275,8 +2275,8 @@
                     "F_name_api": "return_two_names",
                     "PY_name_impl": "PY_returnTwoNames",
                     "function_name": "returnTwoNames",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2641,8 +2641,8 @@
                     "F_name_api": "implied_text_len",
                     "PY_name_impl": "PY_ImpliedTextLen",
                     "function_name": "ImpliedTextLen",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -3934,8 +3934,8 @@
                     "F_name_api": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
                     "function_name": "bindC2",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -5678,8 +5678,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "callback3",
                     "function_name": "callback3",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

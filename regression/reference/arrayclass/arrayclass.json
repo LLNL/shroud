@@ -1685,8 +1685,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtr",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine"
                         }
                     },
                     {
@@ -2085,8 +2085,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRef",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine"
                         }
                     },
                     {
@@ -2486,8 +2486,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtrConst",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine"
                         }
                     },
                     {
@@ -2888,8 +2888,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRefConst",
-                            "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine"
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_subroutine"
                         }
                     },
                     {

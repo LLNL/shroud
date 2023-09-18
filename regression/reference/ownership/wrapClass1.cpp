@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ~Class1
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void OWN_Class1_dtor(OWN_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);

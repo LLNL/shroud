@@ -137,7 +137,7 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 // ----------------------------------------
 // Function:  void passCharPtrInOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
@@ -163,7 +163,7 @@ void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 // ----------------------------------------
 // Function:  void returnOneName
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -189,7 +189,7 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 // ----------------------------------------
 // Function:  void returnTwoNames
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -216,7 +216,7 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // ----------------------------------------
 // Function:  void ImpliedTextLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -245,7 +245,7 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 // ----------------------------------------
 // Function:  void bindC2
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
@@ -296,7 +296,7 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Function:  void callback1a
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)
@@ -323,7 +323,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Function:  void callback3
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const char * type
 // Attrs:     +intent(in)

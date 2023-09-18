@@ -46,7 +46,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -70,7 +70,7 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)

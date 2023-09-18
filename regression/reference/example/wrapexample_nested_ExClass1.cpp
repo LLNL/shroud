@@ -159,7 +159,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
 // ----------------------------------------
 // Function:  ~ExClass1
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 {
     example::nested::ExClass1 *SH_this =
@@ -318,7 +318,7 @@ bool AA_example_nested_ExClass1_hasAddr(
 // ----------------------------------------
 // Function:  void SplicerSpecial
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void AA_example_nested_ExClass1_SplicerSpecial(
     AA_example_nested_ExClass1 * self)
 {

@@ -66,7 +66,7 @@ int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 // ----------------------------------------
 // Function:  void vector_iota_out
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
@@ -100,7 +100,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
@@ -136,7 +136,7 @@ long VEC_vector_iota_out_with_num_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num2
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
@@ -168,7 +168,7 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_out_alloc
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -200,7 +200,7 @@ void VEC_vector_iota_out_alloc_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_inout_alloc
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
@@ -229,7 +229,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // ----------------------------------------
 // Function:  void vector_increment
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
 // Attrs:     +api(cdesc)+intent(inout)
@@ -260,7 +260,7 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // ----------------------------------------
 // Function:  void vector_iota_out_d
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
@@ -355,7 +355,7 @@ int VEC_vector_string_count_bufferify(const char *arg,
 // ----------------------------------------
 // Function:  void vector_string_fill
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
@@ -373,7 +373,7 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  void vector_string_fill_allocatable
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -399,7 +399,7 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // ----------------------------------------
 // Function:  void vector_string_fill_allocatable_len
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)

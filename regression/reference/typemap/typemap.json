@@ -790,8 +790,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_index2",
                     "function_name": "passIndex2",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -1057,8 +1057,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_float",
                     "function_name": "passFloat",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

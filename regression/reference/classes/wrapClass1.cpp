@@ -99,7 +99,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 // start CLA_Class1_delete
 void CLA_Class1_delete(CLA_Class1 * self)
 {
@@ -166,7 +166,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 // ----------------------------------------
 // Function:  void returnThis
 // Attrs:     +api(capptr)+intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // start CLA_Class1_returnThis
 void CLA_Class1_returnThis(CLA_Class1 * self)
 {
@@ -373,7 +373,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  void set_test
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
@@ -415,7 +415,7 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  void set_m_name
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  std::string val +intent(in)
 // Attrs:     +api(buf)+intent(setter)

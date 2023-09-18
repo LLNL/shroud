@@ -38,7 +38,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // ----------------------------------------
 // Function:  void set_npts
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
@@ -70,7 +70,7 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 // ----------------------------------------
 // Function:  void set_value
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int v +value
 // Attrs:     +intent(in)

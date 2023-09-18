@@ -37,7 +37,7 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 // ----------------------------------------
 // Function:  void method1
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 {
     ns0::Names *SH_this = static_cast<ns0::Names *>(self->addr);
@@ -49,7 +49,7 @@ void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 // ----------------------------------------
 // Function:  void method2
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2)
 {
     ns0::Names *SH_this2 = static_cast<ns0::Names *>(self2->addr);

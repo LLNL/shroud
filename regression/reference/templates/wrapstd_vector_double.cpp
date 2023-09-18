@@ -38,7 +38,7 @@ TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 // ----------------------------------------
 // Function:  ~vector
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void TEM_vector_double_dtor(TEM_vector_double * self)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
@@ -53,7 +53,7 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 // ----------------------------------------
 // Function:  void push_back
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
 // Attrs:     +intent(in)

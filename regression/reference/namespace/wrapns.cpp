@@ -71,7 +71,7 @@ void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 // ----------------------------------------
 // Function:  void One
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void NS_One(void)
 {
     // splicer begin function.One

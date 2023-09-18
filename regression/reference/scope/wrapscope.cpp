@@ -49,7 +49,7 @@ void SCO_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
 // ----------------------------------------
 // Function:  void DataPointer_set_items
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  ns3::DataPointer * SH_this
 // Attrs:     +intent(inout)+struct(ns3_DataPointer)

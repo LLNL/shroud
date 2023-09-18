@@ -749,8 +749,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cos_doubles",
                     "function_name": "cos_doubles",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -1208,8 +1208,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "truncate_to_int",
                     "function_name": "truncate_to_int",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2176,8 +2176,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "sum",
                     "function_name": "Sum",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2670,8 +2670,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "increment_int_array",
                     "function_name": "incrementIntArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2987,8 +2987,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fill_with_zeros",
                     "function_name": "fill_with_zeros",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -4105,8 +4105,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_scalar",
                     "function_name": "getPtrToScalar",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -4349,8 +4349,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_array",
                     "function_name": "getPtrToFixedArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -4660,8 +4660,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_array",
                     "function_name": "getPtrToDynamicArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -4972,8 +4972,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_func_array",
                     "function_name": "getPtrToFuncArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -5222,8 +5222,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_const_scalar",
                     "function_name": "getPtrToConstScalar",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -5465,8 +5465,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_fixed_const_array",
                     "function_name": "getPtrToFixedConstArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -5772,8 +5772,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
                     "function_name": "getPtrToDynamicConstArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -6934,8 +6934,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_alloc_to_fixed_array",
                     "function_name": "getAllocToFixedArray",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

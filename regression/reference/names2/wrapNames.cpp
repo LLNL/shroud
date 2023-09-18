@@ -21,7 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void AFunction
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void NAM_AFunction(void)
 {
     // splicer begin function.AFunction

@@ -977,7 +977,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
             # intent will be "subroutine", "dtor", "setter"
-            stmts = ["c", sintent]
+            stmts = ["f", sintent]
             result_blk = statements.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult

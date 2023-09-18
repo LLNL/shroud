@@ -38,7 +38,7 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 // ----------------------------------------
 // Function:  void set_npts
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
@@ -71,7 +71,7 @@ int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 // ----------------------------------------
 // Function:  void set_value
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double v +value
 // Attrs:     +intent(in)

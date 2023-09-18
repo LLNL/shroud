@@ -66,7 +66,7 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void passStructByReferenceInout
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
 // Attrs:     +intent(inout)
@@ -83,7 +83,7 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void passStructByReferenceOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
 // Attrs:     +intent(out)

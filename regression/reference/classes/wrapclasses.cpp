@@ -66,7 +66,7 @@ int CLA_directionFunc(int arg)
 // ----------------------------------------
 // Function:  void passClassByValue
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
@@ -223,7 +223,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)

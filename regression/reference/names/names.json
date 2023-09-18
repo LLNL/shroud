@@ -507,8 +507,8 @@
                     "F_name_api": "get_name",
                     "PY_name_impl": "PY_getName",
                     "function_name": "getName",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -1546,8 +1546,8 @@
                     "F_name_api": "test_multiline_splicer",
                     "PY_name_impl": "PY_TestMultilineSplicer",
                     "function_name": "TestMultilineSplicer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

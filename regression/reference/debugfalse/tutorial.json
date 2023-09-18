@@ -1487,8 +1487,8 @@
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2857,8 +2857,8 @@
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {

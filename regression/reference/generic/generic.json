@@ -484,8 +484,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "generic_real",
                     "function_name": "GenericReal",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -2471,8 +2471,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -3592,8 +3592,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -4338,8 +4338,8 @@
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "hnamefunc0": "ShroudTypeDefines",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -5354,8 +5354,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

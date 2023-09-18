@@ -38,7 +38,7 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 // ----------------------------------------
 // Function:  ~vector
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
@@ -53,7 +53,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // ----------------------------------------
 // Function:  void push_back
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
 // Attrs:     +intent(in)

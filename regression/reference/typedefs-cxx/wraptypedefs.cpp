@@ -41,7 +41,7 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 // ----------------------------------------
 // Function:  void typestruct
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Struct1Rename * arg1
 // Attrs:     +intent(inout)

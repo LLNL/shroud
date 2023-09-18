@@ -135,7 +135,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
 // ----------------------------------------
 // Function:  ~ExClass2
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 {
     example::nested::ExClass2 *SH_this =
@@ -328,7 +328,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 // ----------------------------------------
 // Function:  void declare
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -348,7 +348,7 @@ void AA_example_nested_ExClass2_declare_0(
 // ----------------------------------------
 // Function:  void declare
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -372,7 +372,7 @@ void AA_example_nested_ExClass2_declare_1(
 // ----------------------------------------
 // Function:  void destroyall
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self)
 {
@@ -403,7 +403,7 @@ AA_TypeID AA_example_nested_ExClass2_getTypeID(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
@@ -422,7 +422,7 @@ void AA_example_nested_ExClass2_setValue_int(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
@@ -441,7 +441,7 @@ void AA_example_nested_ExClass2_setValue_long(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  float value +value
 // Attrs:     +intent(in)
@@ -460,7 +460,7 @@ void AA_example_nested_ExClass2_setValue_float(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double value +value
 // Attrs:     +intent(in)

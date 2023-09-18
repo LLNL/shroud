@@ -146,7 +146,7 @@ int STR_acceptStructInPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void acceptStructOutPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
 // Attrs:     +intent(out)
@@ -171,7 +171,7 @@ void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d)
 // ----------------------------------------
 // Function:  void acceptStructInOutPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
 // Attrs:     +intent(inout)
@@ -421,7 +421,7 @@ const double * STR_Cstruct_ptr_get_const_dvalue(
 // ----------------------------------------
 // Function:  void Cstruct_ptr_set_const_dvalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_ptr)
@@ -472,7 +472,7 @@ void STR_Cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
 // ----------------------------------------
 // Function:  void Cstruct_list_set_ivalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)
@@ -522,7 +522,7 @@ void STR_Cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
 // ----------------------------------------
 // Function:  void Cstruct_list_set_dvalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)

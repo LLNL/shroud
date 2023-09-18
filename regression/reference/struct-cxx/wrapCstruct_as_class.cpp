@@ -41,7 +41,7 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 // ----------------------------------------
 // Function:  void set_x1
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
@@ -79,7 +79,7 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 // ----------------------------------------
 // Function:  void set_y1
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)

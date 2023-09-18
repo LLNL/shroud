@@ -3967,8 +3967,8 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_0",
-                                            "stmt0": "c_subroutine",
-                                            "stmt1": "c_subroutine"
+                                            "stmt0": "f_subroutine",
+                                            "stmt1": "f_subroutine"
                                         }
                                     },
                                     {
@@ -4643,8 +4643,8 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_1",
-                                            "stmt0": "c_subroutine",
-                                            "stmt1": "c_subroutine"
+                                            "stmt0": "f_subroutine",
+                                            "stmt1": "f_subroutine"
                                         }
                                     },
                                     {
@@ -7032,8 +7032,8 @@
                                     "PY_name_impl": "PP_test_names",
                                     "function_name": "test_names",
                                     "function_suffix": "",
-                                    "stmt0": "c_subroutine",
-                                    "stmt1": "c_subroutine"
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_subroutine"
                                 },
                                 "zz_fmtresult": {
                                     "fmtl": {
@@ -7368,8 +7368,8 @@
                                     "PY_name_impl": "PP_test_names_flag",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
-                                    "stmt0": "c_subroutine",
-                                    "stmt1": "c_subroutine"
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_subroutine"
                                 },
                                 "zz_fmtresult": {
                                     "fmtl": {

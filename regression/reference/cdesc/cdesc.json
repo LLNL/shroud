@@ -109,8 +109,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "rank2_in",
                     "function_name": "Rank2In",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {
@@ -512,8 +512,8 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine"
                 }
             },
             {

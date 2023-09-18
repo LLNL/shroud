@@ -105,7 +105,7 @@ DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor
+// Exact:     f_dtor
 void DEF_Class1_delete(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -123,7 +123,7 @@ void DEF_Class1_delete(DEF_Class1 * self)
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -144,7 +144,7 @@ void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -169,7 +169,7 @@ void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)

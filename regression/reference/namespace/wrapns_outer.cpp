@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void One
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void NS_outer_One(void)
 {
     // splicer begin namespace.outer.function.One

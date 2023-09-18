@@ -21,7 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void Member1
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void TES_capi_class1_member1(TES_capi_class1 * self)
 {
     CAPI::Class1 *SH_this = static_cast<CAPI::Class1 *>(self->addr);

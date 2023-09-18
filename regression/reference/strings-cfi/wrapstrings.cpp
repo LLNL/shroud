@@ -95,7 +95,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Function:  void init_test
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void STR_init_test(void)
 {
     // splicer begin function.init_test
@@ -110,7 +110,7 @@ void STR_init_test(void)
 // ----------------------------------------
 // Function:  void passChar
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char status +value
 // Attrs:     +intent(in)
@@ -129,7 +129,7 @@ void STR_passChar(char status)
 // ----------------------------------------
 // Function:  void passCharForce
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char status +value
 // Attrs:     +intent(in)
@@ -166,7 +166,7 @@ void STR_returnChar(char *SHC_rv)
 // ----------------------------------------
 // Function:  void passCharPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +intent(out)
@@ -195,7 +195,7 @@ void STR_passCharPtr(char * dest, const char * src)
 // ----------------------------------------
 // Function:  void passCharPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -228,7 +228,7 @@ void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Function:  void passCharPtrInOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +intent(inout)
@@ -250,7 +250,7 @@ void STR_passCharPtrInOut(char * s)
 // ----------------------------------------
 // Function:  void passCharPtrInOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +api(cfi)+intent(inout)
@@ -997,7 +997,7 @@ void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  void acceptStringConstReference
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +intent(in)
@@ -1021,7 +1021,7 @@ void STR_acceptStringConstReference(const char * arg1)
 // ----------------------------------------
 // Function:  void acceptStringConstReference
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +api(cfi)+intent(in)
@@ -1046,7 +1046,7 @@ void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void acceptStringReferenceOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
 // Attrs:     +intent(out)
@@ -1071,7 +1071,7 @@ void STR_acceptStringReferenceOut(char * arg1)
 // ----------------------------------------
 // Function:  void acceptStringReferenceOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -1097,7 +1097,7 @@ void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void acceptStringReference
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1
 // Attrs:     +intent(inout)
@@ -1124,7 +1124,7 @@ void STR_acceptStringReference(char * arg1)
 // ----------------------------------------
 // Function:  void acceptStringReference
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1
 // Attrs:     +api(cfi)+intent(inout)
@@ -1150,7 +1150,7 @@ void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void acceptStringPointerConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string * arg1
 // Attrs:     +intent(in)
@@ -1171,7 +1171,7 @@ void STR_acceptStringPointerConst(const char * arg1)
 // ----------------------------------------
 // Function:  void acceptStringPointerConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string * arg1
 // Attrs:     +api(cfi)+intent(in)
@@ -1193,7 +1193,7 @@ void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void acceptStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +intent(inout)
@@ -1215,7 +1215,7 @@ void STR_acceptStringPointer(char * arg1)
 // ----------------------------------------
 // Function:  void acceptStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +api(cfi)+intent(inout)
@@ -1240,7 +1240,7 @@ void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void fetchStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +intent(out)
@@ -1263,7 +1263,7 @@ void STR_fetchStringPointer(char * arg1)
 // ----------------------------------------
 // Function:  void fetchStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -1288,7 +1288,7 @@ void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void acceptStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +intent(inout)
@@ -1316,7 +1316,7 @@ void STR_acceptStringPointerLen(char * arg1, int * nlen)
 // ----------------------------------------
 // Function:  void acceptStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +api(cfi)+intent(inout)
@@ -1348,7 +1348,7 @@ void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // ----------------------------------------
 // Function:  void fetchStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +intent(out)
@@ -1377,7 +1377,7 @@ void STR_fetchStringPointerLen(char * arg1, int * nlen)
 // ----------------------------------------
 // Function:  void fetchStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -1454,7 +1454,7 @@ int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // ----------------------------------------
 // Function:  void fetchArrayStringArg
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +dimension(nstrs)+intent(out)
 // Attrs:     +deref(copy)+intent(out)
@@ -1484,7 +1484,7 @@ void STR_fetchArrayStringArg(char * * strs, int * nstrs)
 // ----------------------------------------
 // Function:  void fetchArrayStringArg
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +dimension(nstrs)+intent(out)
 // Attrs:     +api(cfi)+deref(copy)+intent(out)
@@ -1515,7 +1515,7 @@ void STR_fetchArrayStringArg_CFI(char * * strs)
 // ----------------------------------------
 // Function:  void fetchArrayStringAlloc
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
@@ -1546,7 +1546,7 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 // ----------------------------------------
 // Function:  void fetchArrayStringAlloc
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
 // Attrs:     +api(cfi)+deref(allocatable)+intent(out)
@@ -1577,7 +1577,7 @@ void STR_fetchArrayStringAlloc_CFI(char * * strs)
 // ----------------------------------------
 // Function:  void fetchArrayStringAllocLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
 // Attrs:     +deref(allocatable)+intent(out)
@@ -1608,7 +1608,7 @@ void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 // ----------------------------------------
 // Function:  void fetchArrayStringAllocLen
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
 // Attrs:     +api(cfi)+deref(allocatable)+intent(out)
@@ -1629,7 +1629,7 @@ void STR_fetchArrayStringAllocLen_CFI(char * * strs)
 // ----------------------------------------
 // Function:  void explicit1
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
 // Attrs:     +intent(in)
@@ -1645,7 +1645,7 @@ void STR_explicit1(char * name)
 // ----------------------------------------
 // Function:  void explicit1
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
 // Attrs:     +api(cfi)+intent(in)
@@ -1663,7 +1663,7 @@ void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 // ----------------------------------------
 // Function:  void explicit2
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
 // Attrs:     +intent(out)
@@ -1679,7 +1679,7 @@ void STR_explicit2(char * name)
 // ----------------------------------------
 // Function:  void explicit2
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
 // Attrs:     +api(cfi)+intent(out)
@@ -1720,7 +1720,7 @@ void STR_CreturnChar(char *SHC_rv)
 // ----------------------------------------
 // Function:  void CpassCharPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -1749,7 +1749,7 @@ void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Function:  void CpassCharPtrBlank
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
 // Attrs:     +intent(out)
@@ -1773,7 +1773,7 @@ void STR_CpassCharPtrBlank(char * dest, const char * src)
 // ----------------------------------------
 // Function:  void CpassCharPtrBlank
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
 // Attrs:     +api(cfi)+intent(out)
@@ -1804,7 +1804,7 @@ void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Function:  void PostDeclare
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
 // Attrs:     +intent(in)
@@ -1832,7 +1832,7 @@ void STR_PostDeclare(int * count, char * name)
 // ----------------------------------------
 // Function:  void PostDeclare
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
 // Attrs:     +api(cfi)+intent(in)

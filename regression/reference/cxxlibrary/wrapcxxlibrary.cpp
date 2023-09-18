@@ -72,7 +72,7 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
@@ -95,7 +95,7 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)

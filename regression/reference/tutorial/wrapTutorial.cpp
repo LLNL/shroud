@@ -79,7 +79,7 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // start TUT_NoReturnNoArguments
 void TUT_NoReturnNoArguments(void)
 {
@@ -199,7 +199,7 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -216,7 +216,7 @@ void TUT_OverloadedFunction_from_name(const char * name)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
@@ -234,7 +234,7 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int indx +value
 // Attrs:     +intent(in)
@@ -250,7 +250,7 @@ void TUT_OverloadedFunction_from_index(int indx)
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
@@ -266,7 +266,7 @@ void TUT_TemplateArgument_int(int arg)
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double arg +value
 // Attrs:     +intent(in)
@@ -307,7 +307,7 @@ double TUT_TemplateReturn_double(void)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void TUT_FortranGenericOverloaded_0(void)
 {
     // splicer begin function.FortranGenericOverloaded_0
@@ -318,7 +318,7 @@ void TUT_FortranGenericOverloaded_0(void)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -339,7 +339,7 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
@@ -362,7 +362,7 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
@@ -580,7 +580,7 @@ int TUT_colorfunc(int arg)
 // ----------------------------------------
 // Function:  void getMinMax
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int & min +intent(out)
 // Attrs:     +intent(out)

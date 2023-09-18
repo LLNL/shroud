@@ -209,7 +209,7 @@ const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 // ----------------------------------------
 // Function:  void Cstruct_ptr_set_const_dvalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_ptr)
@@ -256,7 +256,7 @@ void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
 // ----------------------------------------
 // Function:  void Cstruct_list_set_ivalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)
@@ -302,7 +302,7 @@ void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
 // ----------------------------------------
 // Function:  void Cstruct_list_set_dvalue
 // Attrs:     +intent(setter)
-// Exact:     c_setter
+// Exact:     f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
 // Attrs:     +intent(inout)+struct(Cstruct_list)

@@ -324,7 +324,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 // ----------------------------------------
 // Function:  void createClassStatic
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

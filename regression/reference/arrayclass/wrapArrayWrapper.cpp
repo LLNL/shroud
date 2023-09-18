@@ -37,7 +37,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 // ----------------------------------------
 // Function:  void setSize
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int size +value
 // Attrs:     +intent(in)
@@ -67,7 +67,7 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  void fillSize
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  int & size +intent(out)
 // Attrs:     +intent(out)
@@ -83,7 +83,7 @@ void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int * size)
 // ----------------------------------------
 // Function:  void allocate
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -240,7 +240,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 // ----------------------------------------
 // Function:  void fetchArrayPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -262,7 +262,7 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -293,7 +293,7 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayRef
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -315,7 +315,7 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayRef
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -346,7 +346,7 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -368,7 +368,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -399,7 +399,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -421,7 +421,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -452,7 +452,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
 // ----------------------------------------
 // Function:  void fetchVoidPtr
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
 // Attrs:     +intent(out)
@@ -469,7 +469,7 @@ void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchVoidRef
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Exact:     f_subroutine
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
 // Attrs:     +intent(out)
