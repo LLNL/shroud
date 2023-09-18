@@ -1770,9 +1770,10 @@ rv = .false.
         fmt_result.stmt0 = statements.compute_name(f_stmts)
         fmt_result.stmt1 = f_result_blk.name
 
-        c_result_blk = statements.lookup_fc_stmts(c_stmts)
-        c_result_blk = statements.lookup_local_stmts(
-            ["c", c_result_api], c_result_blk, node)
+        c_result_blk = f_result_blk
+#TTT        c_result_blk = statements.lookup_fc_stmts(c_stmts)
+#TTT        c_result_blk = statements.lookup_local_stmts(
+#TTT            ["c", c_result_api], c_result_blk, node)
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
 
@@ -1889,7 +1890,8 @@ rv = .false.
             f_stmts.extend(specialize)
 
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
-            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+            c_intent_blk = f_intent_blk
+#TTT            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             self.name_temp_vars_f(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
