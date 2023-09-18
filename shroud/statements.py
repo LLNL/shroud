@@ -1518,7 +1518,6 @@ fc_statements = [
         alias=[
             "c_in/out/inout_void_**",
             "f_in_void_**_cfi",
-            "c_in_void_**_cfi",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
@@ -3497,7 +3496,6 @@ fc_statements = [
         ],
         alias=[
             "f_function_char_scalar_cfi_allocatable",
-            "c_function_char_*_cfi_allocatable",
         ],
         f_need_wrapper=True,
         f_arg_decl=[
@@ -3531,7 +3529,6 @@ fc_statements = [
         ],
         alias=[
             "f_function_char_*_cfi_pointer",
-            "c_function_char_*_cfi_pointer",
         ],
         f_need_wrapper=True,
         f_arg_decl=[
@@ -3658,10 +3655,6 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_native_cfi",
         ],
-        alias=[
-            "c_in_native_*_cfi",
-            "c_inout_native_*_cfi",
-        ],
         
         c_pre_call=[
             "{cxx_type} *{cxx_var} = "
@@ -3674,9 +3667,6 @@ fc_statements = [
         name="f_in_char_*_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
-        ],
-        alias=[
-            "c_in_char_*_cfi",
         ],
         # Null terminate string.
         c_helper="ShroudStrAlloc ShroudStrFree",
@@ -3695,9 +3685,6 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        alias=[
-            "c_out_char_*_cfi",
-        ],
         c_helper="ShroudStrBlankFill",
         c_post_call=[
             "ShroudStrBlankFill({cxx_var}, {c_var_cfi}->elem_len);"
@@ -3707,9 +3694,6 @@ fc_statements = [
         name="f_inout_char_*_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
-        ],
-        alias=[
-            "c_inout_char_*_cfi",
         ],
         # Null terminate string.
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -3727,34 +3711,10 @@ fc_statements = [
         ],
     ),
     dict(
-        # Blank fill result.
-        name="c_function_char_scalar_cfi",
-        mixin=[
-            "c_mixin_arg_character_cfi",
-        ],
-        lang_c=dict(
-            impl_header=["<string.h>"],
-        ),
-        lang_cxx=dict(
-            impl_header=["<cstring>"],
-        ),
-        cxx_local_var=None,  # replace mixin
-        c_pre_call=[],         # replace mixin        
-        c_post_call=[
-            "char *{c_var} = "
-            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "{stdlib}memset({c_var}, ' ', {c_var_cfi}->elem_len);",
-            "{c_var}[0] = {cxx_var};",
-        ],
-    ),
-    dict(
         # Copy result into caller's buffer.
         name="f_function_char_*_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
-        ],
-        alias=[
-            "c_function_char_*_cfi_copy",
         ],
         f_arg_call=["{f_var}"],
         f_need_wrapper=True,
@@ -3782,9 +3742,6 @@ fc_statements = [
             "f_function_char_*_cfi_copy",
 #            "c_mixin_arg_character_cfi",
             "f_mixin_function_cfi_character-arg",
-        ],
-        alias=[
-            "c_function_char_*_cfi_arg",
         ],
     ),
 ##-    dict(
@@ -3833,9 +3790,6 @@ fc_statements = [
         name="f_in_char_**_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
-        ],
-        alias=[
-            "c_in_char_**_cfi",
         ],
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}(:)",
@@ -3958,7 +3912,6 @@ fc_statements = [
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_copy",
-            "c_function_string_scalar/*/&_cfi_copy",
         ],
 
         # XXX - avoid calling C directly since the Fortran function
@@ -4006,8 +3959,6 @@ fc_statements = [
         alias=[
             "f_function_string_scalar/*/&_cfi_pointer",
             "f_function_string_scalar/*/&_cfi_pointer_caller/library",
-            "c_function_string_*_cfi_pointer",
-            "c_function_string_*_cfi_pointer_caller/library",
         ],
         c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
@@ -4070,9 +4021,7 @@ fc_statements = [
             "c_mixin_function_character",
         ],
         alias=[
-            "c_function_string_*/&_cfi_allocatable",
             "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
-            "c_function_string_scalar/*/&_cfi_allocatable_caller/library",
         ],
         i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
@@ -4100,9 +4049,6 @@ fc_statements = [
         mixin=[
             "f_mixin_function_string_scalar_cfi_allocatable",
             "c_mixin_function_character",
-        ],
-        alias=[
-            "c_function_string_scalar_cfi_allocatable",
         ],
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
@@ -4157,7 +4103,6 @@ fc_statements = [
         alias=[
             "c_out_string_**_copy",
             "f_out_string_**_cfi_copy",
-            "c_out_string_**_cfi_copy",
         ],
         notimplemented=True,
     ),
@@ -4220,7 +4165,6 @@ fc_statements = [
         alias=[
             "c_out_string_**_allocatable",
             "f_out_string_**_cfi_allocatable",
-            "c_out_string_**_cfi_allocatable",
         ],
         notimplemented=True,
     ),

@@ -28,16 +28,10 @@ root
             allocatable -- f_function_char_scalar_cdesc_allocatable
             arg -- f_function_char_*_cdesc_arg
             pointer -- f_function_char_scalar_cdesc_pointer
-          cfi
-            allocatable -- f_function_char_*_cfi_allocatable
-            arg -- f_function_char_*_cfi_arg
-            copy -- f_function_char_*_cfi_copy
-            pointer -- f_function_char_scalar_cfi_pointer
           copy -- f_function_char_*
           pointer -- f_function_char_*
           raw -- f_function_char_*
         scalar -- f_function_char_scalar
-          cfi -- c_function_char_scalar_cfi
       native
         & -- c_function_native_*/&
           pointer -- f_mixin_function_native_&
@@ -86,11 +80,6 @@ root
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
-          cfi
-            allocatable -- f_function_string_*/&_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            copy -- f_mixin_function_string_scalar_cfi_copy
           copy -- f_mixin_function_string_scalar
         * -- f_mixin_function_string_scalar
           allocatable -- f_mixin_function_string_scalar
@@ -103,14 +92,6 @@ root
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
-          cfi
-            allocatable -- f_function_string_*/&_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            copy -- f_mixin_function_string_scalar_cfi_copy
-            pointer -- f_mixin_function_string_*_cfi_pointer
-              caller -- f_mixin_function_string_*_cfi_pointer
-              library -- f_mixin_function_string_*_cfi_pointer
           copy -- f_mixin_function_string_scalar
           pointer -- f_mixin_function_string_scalar
         scalar -- f_mixin_function_string_scalar
@@ -119,11 +100,6 @@ root
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
             allocatable -- f_function_string_scalar_cdesc_allocatable
-          cfi
-            allocatable -- f_function_string_scalar_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            copy -- f_mixin_function_string_scalar_cfi_copy
       struct -- c_function_struct
         *
           pointer -- f_function_struct_*_pointer
@@ -155,16 +131,13 @@ root
         * -- f_defaulttmp_native_scalar
           buf -- f_in_char_*_buf
           capi -- f_defaulttmp_native_scalar
-          cfi -- f_in_char_*_cfi
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
-          cfi -- f_in_char_**_cfi
         scalar -- f_in_char_scalar
       native
         & -- f_defaulttmp_native_scalar
         * -- f_defaulttmp_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_in/inout_native_*_cfi
         ** -- f_in_native_**
         scalar -- f_defaulttmp_native_scalar
       shadow
@@ -211,7 +184,6 @@ root
         * -- f_in_void_*
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
-          cfi -- f_in/out/inout_void_**
         scalar -- f_defaulttmp_native_scalar
     inout
       bool
@@ -219,13 +191,11 @@ root
       char
         * -- f_defaulttmp_native_scalar
           buf -- f_inout_char_*_buf
-          cfi -- f_inout_char_*_cfi
       native
         & -- f_defaulttmp_native_scalar
           hidden -- f_out/inout_native_&_hidden
         * -- f_defaulttmp_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_in/inout_native_*_cfi
           hidden -- f_out/inout_native_*_hidden
       shadow
         & -- c_mixin_in_shadow_*
@@ -320,7 +290,6 @@ root
       char
         * -- f_defaulttmp_native_scalar
           buf -- f_out_char_*_buf
-          cfi -- f_out_char_*_cfi
       native
         & -- f_defaulttmp_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -350,9 +319,6 @@ root
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
-          cfi
-            allocatable -- f_out_string_**_allocatable
-            copy -- f_out_string_**_copy
           copy -- f_out_string_**_copy
       struct
         & -- f_defaulttmp_struct
@@ -1088,106 +1054,6 @@ c_function_char_*_cdesc_pointer:
   intent: function
   name: c_function_char_*_cdesc_pointer
   owner: library
-c_function_char_*_cfi_allocatable:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - if ({cxx_var} != {nullptr}) {{+
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \tstrlen({cxx_var}));"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_char_*_cfi_allocatable
-  owner: library
-c_function_char_*_cfi_arg:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
-  c_return_type: void
-  c_temps:
-  - cfi
-  cxx_local_var: result
-  i_arg_decl:
-  - 'character(len=*), intent(OUT) :: {F_string_result_as_arg}'
-  i_arg_names:
-  - '{F_string_result_as_arg}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_char_*_cfi_arg
-  owner: library
-c_function_char_*_cfi_copy:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
-  c_return_type: void
-  c_temps:
-  - cfi
-  cxx_local_var: result
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_char_*_cfi_copy
-  owner: library
-c_function_char_*_cfi_pointer:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = {cxx_nonconst_ptr};
-  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_char_*_cfi_pointer
-  owner: library
 c_function_char_*_copy:
   i_module:
     iso_c_binding:
@@ -1230,32 +1096,6 @@ c_function_char_scalar:
     - C_CHAR
   intent: function
   name: c_function_char_scalar
-  owner: library
-c_function_char_scalar_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - '{stdlib}memset({c_var}, '' '', {c_var_cfi}->elem_len);'
-  - '{c_var}[0] = {cxx_var};'
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_char_scalar_cfi
   owner: library
 c_function_native_&:
   i_module:
@@ -1929,117 +1769,6 @@ c_function_string_&_cdesc_pointer_library:
   intent: function
   name: c_function_string_&_cdesc_pointer_library
   owner: library
-c_function_string_&_cfi_allocatable:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_&_cfi_allocatable
-  owner: library
-c_function_string_&_cfi_allocatable_caller:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_&_cfi_allocatable_caller
-  owner: library
-c_function_string_&_cfi_allocatable_library:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_&_cfi_allocatable_library
-  owner: library
-c_function_string_&_cfi_copy:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_&_cfi_copy
-  owner: library
 c_function_string_&_copy:
   c_return:
   - return {c_var};
@@ -2208,228 +1937,6 @@ c_function_string_*_cdesc_pointer_library:
   intent: function
   name: c_function_string_*_cdesc_pointer_library
   owner: library
-c_function_string_*_cfi_allocatable:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_*_cfi_allocatable
-  owner: library
-c_function_string_*_cfi_allocatable_caller:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_*_cfi_allocatable_caller
-  owner: library
-c_function_string_*_cfi_allocatable_library:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_*_cfi_allocatable_library
-  owner: library
-c_function_string_*_cfi_copy:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_*_cfi_copy
-  owner: library
-c_function_string_*_cfi_pointer:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_*_cfi_pointer
-  owner: library
-c_function_string_*_cfi_pointer_caller:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_*_cfi_pointer_caller
-  owner: library
-c_function_string_*_cfi_pointer_library:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_*_cfi_pointer_library
-  owner: library
 c_function_string_*_copy:
   c_return:
   - return {c_var};
@@ -2535,110 +2042,6 @@ c_function_string_scalar_cdesc_allocatable:
   - '{F_array_type}'
   intent: function
   name: c_function_string_scalar_cdesc_allocatable
-  owner: library
-c_function_string_scalar_cfi_allocatable:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}.length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  destructor_name: new_string
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_scalar_cfi_allocatable
-  owner: library
-c_function_string_scalar_cfi_allocatable_caller:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_scalar_cfi_allocatable_caller
-  owner: library
-c_function_string_scalar_cfi_allocatable_library:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  impl_header:
-  - <cstring>
-  intent: function
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
-  name: c_function_string_scalar_cfi_allocatable_library
-  owner: library
-c_function_string_scalar_cfi_copy:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: c_function_string_scalar_cfi_copy
   owner: library
 c_function_struct:
   c_post_call:
@@ -2850,31 +2253,6 @@ c_in_char_**_buf:
   intent: in
   name: c_in_char_**_buf
   owner: library
-c_in_char_**_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
-  c_post_call:
-  - ShroudStrArrayFree({cxx_var}, {c_var_size});
-  c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_var_len} = {c_var_cfi}->elem_len;
-  - size_t {c_var_size} = {c_var_cfi}->dim[0].extent;
-  - "char **{cxx_var} = ShroudStrArrayAlloc({c_var},\t {c_var_size},\t {c_var_len});"
-  c_temps:
-  - cfi
-  - len
-  - size
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}(:)'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: in
-  name: c_in_char_**_cfi
-  owner: library
 c_in_char_*_buf:
   c_arg_call:
   - '{c_var_str}'
@@ -2905,27 +2283,6 @@ c_in_char_*_buf:
 c_in_char_*_capi:
   intent: in
   name: c_in_char_*_capi
-  owner: library
-c_in_char_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrAlloc ShroudStrFree
-  c_post_call:
-  - ShroudStrFree({cxx_var});
-  c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
-  c_temps:
-  - cfi
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: in
-  name: c_in_char_*_cfi
   owner: library
 c_in_char_scalar:
   c_arg_decl:
@@ -2983,26 +2340,6 @@ c_in_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_in_native_*_cdesc
-  owner: library
-c_in_native_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_pre_call:
-  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
-  c_temps:
-  - cfi
-  - extents
-  - lower
-  cxx_local_var: pointer
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
-  i_arg_names:
-  - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: in
-  name: c_in_native_*_cfi
   owner: library
 c_in_native_scalar:
   intent: in
@@ -3407,19 +2744,6 @@ c_in_void_**:
   intent: in
   name: c_in_void_**
   owner: library
-c_in_void_**_cfi:
-  c_arg_decl:
-  - void **{c_var}
-  i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
-  i_arg_names:
-  - '{c_var}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  intent: in
-  name: c_in_void_**_cfi
-  owner: library
 c_in_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3483,28 +2807,6 @@ c_inout_char_*_buf:
   intent: inout
   name: c_inout_char_*_buf
   owner: library
-c_inout_char_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
-  c_post_call:
-  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
-  - ShroudStrFree({cxx_var});
-  c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
-  c_temps:
-  - cfi
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: inout
-  name: c_inout_char_*_cfi
-  owner: library
 c_inout_native_&:
   intent: inout
   name: c_inout_native_&
@@ -3543,26 +2845,6 @@ c_inout_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_inout_native_*_cdesc
-  owner: library
-c_inout_native_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_pre_call:
-  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
-  c_temps:
-  - cfi
-  - extents
-  - lower
-  cxx_local_var: pointer
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
-  i_arg_names:
-  - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: inout
-  name: c_inout_native_*_cfi
   owner: library
 c_inout_native_*_hidden:
   c_arg_call:
@@ -4317,26 +3599,6 @@ c_out_char_*_buf:
   intent: out
   name: c_out_char_*_buf
   owner: library
-c_out_char_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper: ShroudStrBlankFill
-  c_post_call:
-  - ShroudStrBlankFill({cxx_var}, {c_var_cfi}->elem_len);
-  c_pre_call:
-  - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  c_temps:
-  - cfi
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: out
-  name: c_out_char_*_cfi
-  owner: library
 c_out_native_&:
   intent: out
   name: c_out_native_&
@@ -4623,16 +3885,6 @@ c_out_string_**_cdesc_copy:
   - '{F_array_type}'
   intent: out
   name: c_out_string_**_cdesc_copy
-  owner: library
-c_out_string_**_cfi_allocatable:
-  intent: out
-  name: c_out_string_**_cfi_allocatable
-  notimplemented: true
-  owner: library
-c_out_string_**_cfi_copy:
-  intent: out
-  name: c_out_string_**_cfi_copy
-  notimplemented: true
   owner: library
 c_out_string_**_copy:
   intent: out
