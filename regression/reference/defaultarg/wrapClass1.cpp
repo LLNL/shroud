@@ -29,7 +29,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -52,7 +52,7 @@ DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -78,7 +78,7 @@ DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -195,7 +195,7 @@ void DEF_Class1_DefaultArguments_2(DEF_Class1 * self, int arg1,
 // ----------------------------------------
 // Function:  int get_field1
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 int DEF_Class1_get_field1(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -209,7 +209,7 @@ int DEF_Class1_get_field1(DEF_Class1 * self)
 // ----------------------------------------
 // Function:  int get_field2
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 int DEF_Class1_get_field2(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -223,7 +223,7 @@ int DEF_Class1_get_field2(DEF_Class1 * self)
 // ----------------------------------------
 // Function:  int get_field3
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 int DEF_Class1_get_field3(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);

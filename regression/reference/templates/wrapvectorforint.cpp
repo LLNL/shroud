@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -71,7 +71,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // ----------------------------------------
 // Function:  int & at
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_&_pointer
+// Exact:     f_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)

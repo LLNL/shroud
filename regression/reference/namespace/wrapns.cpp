@@ -45,7 +45,7 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_allocatable
+// Exact:     f_function_string_&_allocatable
 const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
@@ -59,7 +59,7 @@ const char * NS_LastFunctionCalled(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_cdesc_allocatable
+// Exact:     f_function_string_&_cdesc_allocatable
 void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.LastFunctionCalled_bufferify

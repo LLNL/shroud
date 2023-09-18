@@ -67,7 +67,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -334,7 +334,7 @@ void POI_getAllocToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Exact:     c_function_native_*_cdesc_pointer
+// Exact:     f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -357,7 +357,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Exact:     c_function_native_*_cdesc_pointer
+// Exact:     f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -379,7 +379,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Exact:     c_function_native_*_scalar
+// Exact:     f_function_native_*_scalar
 // start POI_returnIntScalar
 int POI_returnIntScalar(void)
 {
@@ -394,7 +394,7 @@ int POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_native_*_cdesc_allocatable
+// Exact:     f_function_native_*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)

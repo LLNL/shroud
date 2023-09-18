@@ -92,7 +92,7 @@ void TUT_NoReturnNoArguments(void)
 // ----------------------------------------
 // Function:  double PassByValue
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
@@ -117,7 +117,7 @@ double TUT_PassByValue(double arg1, int arg2)
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_cdesc_allocatable
+// Exact:     f_function_string_scalar_cdesc_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)
@@ -144,7 +144,7 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // start TUT_UseDefaultArguments
 double TUT_UseDefaultArguments(void)
 {
@@ -159,7 +159,7 @@ double TUT_UseDefaultArguments(void)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
@@ -177,7 +177,7 @@ double TUT_UseDefaultArguments_arg1(double arg1)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
@@ -282,7 +282,7 @@ void TUT_TemplateArgument_double(double arg)
 // ----------------------------------------
 // Function:  int TemplateReturn
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 int TUT_TemplateReturn_int(void)
 {
     // splicer begin function.TemplateReturn_int
@@ -295,7 +295,7 @@ int TUT_TemplateReturn_int(void)
 // ----------------------------------------
 // Function:  double TemplateReturn
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 double TUT_TemplateReturn_double(void)
 {
     // splicer begin function.TemplateReturn_double
@@ -385,7 +385,7 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -402,7 +402,7 @@ int TUT_UseDefaultOverload_num(int num)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -422,7 +422,7 @@ int TUT_UseDefaultOverload_num_offset(int num, int offset)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -448,7 +448,7 @@ int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -469,7 +469,7 @@ int TUT_UseDefaultOverload_3(double type, int num)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -493,7 +493,7 @@ int TUT_UseDefaultOverload_4(double type, int num, int offset)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -523,7 +523,7 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
@@ -539,7 +539,7 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  EnumTypeID arg +value
 // Attrs:     +intent(in)
@@ -558,7 +558,7 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 // ----------------------------------------
 // Function:  Color colorfunc
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  Color arg +value
 // Attrs:     +intent(in)
@@ -605,7 +605,7 @@ void TUT_getMinMax(int * min, int * max)
 // ----------------------------------------
 // Function:  int callback1
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int in +value
 // Attrs:     +intent(in)
@@ -627,7 +627,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     c_function_string_&_copy
+// Exact:     f_function_string_&_copy
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
@@ -641,7 +641,7 @@ const char * TUT_LastFunctionCalled(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     c_function_string_&_buf_copy
+// Exact:     f_function_string_&_buf_copy
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify

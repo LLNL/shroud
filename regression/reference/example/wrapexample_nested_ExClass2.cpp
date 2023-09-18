@@ -83,7 +83,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +intent(in)
@@ -109,7 +109,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +api(buf)+intent(in)
@@ -149,7 +149,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     c_function_string_&_copy
+// Exact:     f_function_string_&_copy
 const char * AA_example_nested_ExClass2_getName(
     const AA_example_nested_ExClass2 * self)
 {
@@ -166,7 +166,7 @@ const char * AA_example_nested_ExClass2_getName(
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     c_function_string_&_buf_copy
+// Exact:     f_function_string_&_buf_copy
 void AA_example_nested_ExClass2_getName_bufferify(
     const AA_example_nested_ExClass2 * self, char *SHC_rv,
     int SHT_rv_len)
@@ -187,7 +187,7 @@ void AA_example_nested_ExClass2_getName_bufferify(
 // ----------------------------------------
 // Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_allocatable
+// Exact:     f_function_string_&_allocatable
 const char * AA_example_nested_ExClass2_getName2(
     AA_example_nested_ExClass2 * self)
 {
@@ -204,7 +204,7 @@ const char * AA_example_nested_ExClass2_getName2(
 // ----------------------------------------
 // Function:  const string & getName2
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_cdesc_allocatable
+// Exact:     f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
 {
@@ -219,7 +219,7 @@ void AA_example_nested_ExClass2_getName2_bufferify(
 // ----------------------------------------
 // Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_allocatable
+// Exact:     f_function_string_&_allocatable
 char * AA_example_nested_ExClass2_getName3(
     const AA_example_nested_ExClass2 * self)
 {
@@ -236,7 +236,7 @@ char * AA_example_nested_ExClass2_getName3(
 // ----------------------------------------
 // Function:  string & getName3
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_cdesc_allocatable
+// Exact:     f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName3_bufferify(
     const AA_example_nested_ExClass2 * self,
     AA_SHROUD_array *SHT_rv_cdesc)
@@ -252,7 +252,7 @@ void AA_example_nested_ExClass2_getName3_bufferify(
 // ----------------------------------------
 // Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_allocatable
+// Exact:     f_function_string_&_allocatable
 char * AA_example_nested_ExClass2_getName4(
     AA_example_nested_ExClass2 * self)
 {
@@ -269,7 +269,7 @@ char * AA_example_nested_ExClass2_getName4(
 // ----------------------------------------
 // Function:  string & getName4
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_cdesc_allocatable
+// Exact:     f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
 {
@@ -288,7 +288,7 @@ void AA_example_nested_ExClass2_getName4_bufferify(
 // ----------------------------------------
 // Function:  int GetNameLength
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 int AA_example_nested_ExClass2_GetNameLength(
     const AA_example_nested_ExClass2 * self)
 {
@@ -302,7 +302,7 @@ int AA_example_nested_ExClass2_GetNameLength(
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     c_function_shadow_*_capptr
+// Exact:     f_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  const ExClass1 * in
 // Attrs:     +intent(in)
@@ -386,7 +386,7 @@ void AA_example_nested_ExClass2_destroyall(
 // ----------------------------------------
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 AA_TypeID AA_example_nested_ExClass2_getTypeID(
     const AA_example_nested_ExClass2 * self)
 {
@@ -479,7 +479,7 @@ void AA_example_nested_ExClass2_setValue_double(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 int AA_example_nested_ExClass2_getValue_int(
     AA_example_nested_ExClass2 * self)
 {
@@ -495,7 +495,7 @@ int AA_example_nested_ExClass2_getValue_int(
 // ----------------------------------------
 // Function:  double getValue
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 double AA_example_nested_ExClass2_getValue_double(
     AA_example_nested_ExClass2 * self)
 {

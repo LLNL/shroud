@@ -987,7 +987,7 @@ class Wrapc(util.WrapperMixin):
             spointer = declarator.get_indirect_stmt()
             # intent will be "function", "ctor", "getter"
             junk, specialize = statements.lookup_c_statements(ast)
-            stmts = ["c", sintent, result_typemap.sgroup, spointer,
+            stmts = ["f", sintent, result_typemap.sgroup, spointer,
                      result_api, meta["deref"]] + specialize
             result_blk = statements.lookup_fc_stmts(stmts)
 

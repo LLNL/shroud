@@ -377,7 +377,7 @@ void POI_fill_with_zeros(double * x, int x_length)
 // ----------------------------------------
 // Function:  int accumulate
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Attrs:     +intent(in)
@@ -402,7 +402,7 @@ int POI_accumulate(const int * arr, size_t len)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +intent(in)
@@ -424,7 +424,7 @@ int POI_acceptCharArrayIn(char **names)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -466,7 +466,7 @@ void POI_setGlobalInt(int value)
 // ----------------------------------------
 // Function:  int sumFixedArray
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // start POI_sumFixedArray
 int POI_sumFixedArray(void)
 {
@@ -938,7 +938,7 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // ----------------------------------------
 // Function:  int checkInt2d
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Attrs:     +intent(in)
@@ -1028,7 +1028,7 @@ void POI_getAllocToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  void * returnAddress1
 // Attrs:     +intent(function)
-// Exact:     c_function_void_*
+// Exact:     f_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -1046,7 +1046,7 @@ void * POI_returnAddress1(int flag)
 // ----------------------------------------
 // Function:  void * returnAddress2
 // Attrs:     +intent(function)
-// Exact:     c_function_void_*
+// Exact:     f_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -1098,7 +1098,7 @@ void POI_updateVoidPtr(void **addr)
 // ----------------------------------------
 // Function:  int VoidPtrArray
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
 // Attrs:     +intent(in)
@@ -1116,7 +1116,7 @@ int POI_VoidPtrArray(void **addr)
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_*_pointer
+// Exact:     f_function_native_*_pointer
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
@@ -1130,7 +1130,7 @@ int * POI_returnIntPtrToScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_*_pointer
+// Exact:     f_function_native_*_pointer
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
@@ -1145,7 +1145,7 @@ int * POI_returnIntPtrToFixedArray(void)
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Exact:     c_function_native_*_cdesc_pointer
+// Exact:     f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -1167,7 +1167,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_*_pointer
+// Exact:     f_function_native_*_pointer
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
@@ -1181,7 +1181,7 @@ const int * POI_returnIntPtrToConstScalar(void)
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_*_pointer
+// Exact:     f_function_native_*_pointer
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
@@ -1196,7 +1196,7 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Exact:     c_function_native_*_cdesc_pointer
+// Exact:     f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -1218,7 +1218,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Exact:     c_function_native_*_scalar
+// Exact:     f_function_native_*_scalar
 // start POI_returnIntScalar
 int POI_returnIntScalar(void)
 {
@@ -1235,7 +1235,7 @@ int POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Exact:     c_function_native_*_raw
+// Exact:     f_function_native_*_raw
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
@@ -1253,7 +1253,7 @@ int * POI_returnIntRaw(void)
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Exact:     c_function_native_*_raw
+// Exact:     f_function_native_*_raw
 // ----------------------------------------
 // Argument:  const char * name
 // Attrs:     +intent(in)
@@ -1275,7 +1275,7 @@ int * POI_returnIntRawWithArgs(const char * name)
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
 // Attrs:     +intent(function)
-// Exact:     c_function_native_**
+// Exact:     f_function_native_**
 // start POI_returnRawPtrToInt2d
 int * * POI_returnRawPtrToInt2d(void)
 {
@@ -1289,7 +1289,7 @@ int * * POI_returnRawPtrToInt2d(void)
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_native_*_allocatable
+// Exact:     f_function_native_*_allocatable
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {
@@ -1304,7 +1304,7 @@ int * POI_returnIntAllocToFixedArray(void)
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_native_*_cdesc_allocatable
+// Exact:     f_function_native_*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)

@@ -78,7 +78,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHC_rv)
 {
@@ -102,7 +102,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name
 // Attrs:     +intent(in)
@@ -132,7 +132,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name
 // Attrs:     +api(buf)+intent(in)
@@ -173,7 +173,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // ----------------------------------------
 // Function:  int incrementCount
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr +value
 // Attrs:     +intent(in)
@@ -192,7 +192,7 @@ int AA_example_nested_ExClass1_incrementCount(
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_allocatable
+// Exact:     f_function_string_&_allocatable
 const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const AA_example_nested_ExClass1 * self)
 {
@@ -209,7 +209,7 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_cdesc_allocatable
+// Exact:     f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const AA_example_nested_ExClass1 * self,
     AA_SHROUD_array *SHT_rv_cdesc)
@@ -225,7 +225,7 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
 // ----------------------------------------
 // Function:  const string & getNameArg
 // Attrs:     +intent(function)
-// Exact:     c_function_string_&
+// Exact:     f_function_string_&
 const char * AA_example_nested_ExClass1_getNameArg(
     const AA_example_nested_ExClass1 * self)
 {
@@ -242,7 +242,7 @@ const char * AA_example_nested_ExClass1_getNameArg(
 // ----------------------------------------
 // Function:  const string & getNameArg
 // Attrs:     +api(buf)+deref(arg)+intent(function)
-// Exact:     c_function_string_&_buf_arg
+// Exact:     f_function_string_&_buf_arg
 void AA_example_nested_ExClass1_getNameArg_bufferify(
     const AA_example_nested_ExClass1 * self, char *name, int nname)
 {
@@ -261,7 +261,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
@@ -280,7 +280,7 @@ int AA_example_nested_ExClass1_getValue_from_int(
 // ----------------------------------------
 // Function:  long getValue
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
@@ -299,7 +299,7 @@ long AA_example_nested_ExClass1_getValue_1(
 // ----------------------------------------
 // Function:  bool hasAddr
 // Attrs:     +intent(function)
-// Exact:     c_function_bool_scalar
+// Exact:     f_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in +value
 // Attrs:     +intent(in)

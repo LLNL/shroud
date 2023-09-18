@@ -24,7 +24,7 @@
 // ----------------------------------------
 // Function:  int SumValues
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(0)
 // Attrs:     +intent(in)
@@ -49,7 +49,7 @@ int GEN_SumValues_0d(const int * values, int nvalues)
 // ----------------------------------------
 // Function:  int SumValues
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
 // Attrs:     +intent(in)
@@ -74,7 +74,7 @@ int GEN_SumValues_1d(const int * values, int nvalues)
 // ----------------------------------------
 // Function:  int SumValues
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(2)
 // Attrs:     +intent(in)
@@ -399,7 +399,7 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
 // ----------------------------------------
 // Function:  StructAsClass * CreateStructAsClass
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     c_function_shadow_*_capptr
+// Exact:     f_function_shadow_*_capptr
 GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass
@@ -413,7 +413,7 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Function:  long UpdateStructAsClass
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
@@ -435,7 +435,7 @@ long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 // ----------------------------------------
 // Function:  long UpdateStructAsClass
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
@@ -457,7 +457,7 @@ long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 // ----------------------------------------
 // Function:  long UpdateStructAsClass
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)

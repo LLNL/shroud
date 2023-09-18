@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int get_x1
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 // start STR_Cstruct_as_class_get_x1
 int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 {
@@ -62,7 +62,7 @@ void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 // ----------------------------------------
 // Function:  int get_y1
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 // start STR_Cstruct_as_class_get_y1
 int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 {

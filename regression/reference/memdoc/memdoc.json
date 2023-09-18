@@ -72,8 +72,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_allocatable",
-                        "stmt1": "c_function_string_*_allocatable"
+                        "stmt0": "f_function_string_*_allocatable",
+                        "stmt1": "f_function_string_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -161,11 +161,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_cdesc_allocatable",
-                        "stmt1": "c_function_string_*_cdesc_allocatable"
+                        "stmt0": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

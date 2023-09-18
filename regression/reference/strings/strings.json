@@ -362,8 +362,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_scalar",
-                        "stmt1": "c_function_char_scalar"
+                        "stmt0": "f_function_char_scalar",
+                        "stmt1": "f_function_char_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1072,8 +1072,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_allocatable",
-                        "stmt1": "c_function_char_*_allocatable"
+                        "stmt0": "f_function_char_*_allocatable",
+                        "stmt1": "f_function_char_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1186,8 +1186,8 @@
                         "hnamefunc1": "ShroudTypeDefines",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_cdesc_allocatable",
-                        "stmt1": "c_function_char_*_cdesc_allocatable"
+                        "stmt0": "f_function_char_*_cdesc_allocatable",
+                        "stmt1": "f_function_char_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1276,8 +1276,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_copy",
-                        "stmt1": "c_function_char_*_copy"
+                        "stmt0": "f_function_char_*_copy",
+                        "stmt1": "f_function_char_*_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1394,8 +1394,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_buf_copy",
-                        "stmt1": "c_function_char_*_buf_copy"
+                        "stmt0": "f_function_char_*_buf_copy",
+                        "stmt1": "f_function_char_*_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1483,8 +1483,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*",
-                        "stmt1": "c_function_char_*"
+                        "stmt0": "f_function_char_*",
+                        "stmt1": "f_function_char_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1599,8 +1599,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_buf_arg",
-                        "stmt1": "c_function_char_*_buf_arg"
+                        "stmt0": "f_function_char_*_buf_arg",
+                        "stmt1": "f_function_char_*_buf_arg"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1693,8 +1693,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_raw",
-                        "stmt1": "c_function_char_*_raw"
+                        "stmt0": "f_function_char_*_raw",
+                        "stmt1": "f_function_char_*_raw"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1778,8 +1778,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_pointer",
-                        "stmt1": "c_function_char_*_pointer"
+                        "stmt0": "f_function_char_*_pointer",
+                        "stmt1": "f_function_char_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1873,12 +1873,11 @@
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "hnamefunc0": "copy_string",
-                        "hnamefunc1": "ShroudTypeDefines",
+                        "hnamefunc0": "ShroudTypeDefines",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_*_cdesc_pointer",
-                        "stmt1": "c_function_char_*_cdesc_pointer"
+                        "stmt0": "f_function_char_*_cdesc_pointer",
+                        "stmt1": "f_function_char_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2028,10 +2027,11 @@
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc1": "copy_string",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "c_function_string_scalar_cdesc_allocatable"
+                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_string_scalar_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2190,8 +2190,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_scalar_buf_copy",
-                        "stmt1": "c_function_string_scalar_buf_copy"
+                        "stmt0": "f_function_string_scalar_buf_copy",
+                        "stmt1": "f_function_string_scalar_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2348,8 +2348,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_scalar_buf_arg",
-                        "stmt1": "c_function_string_scalar_buf_arg"
+                        "stmt0": "f_function_string_scalar_buf_arg",
+                        "stmt1": "f_function_string_scalar_buf_arg"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2489,10 +2489,11 @@
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc1": "copy_string",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "c_function_string_scalar_cdesc_allocatable"
+                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_string_scalar_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2579,8 +2580,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_allocatable",
-                        "stmt1": "c_function_string_&_allocatable"
+                        "stmt0": "f_function_string_&_allocatable",
+                        "stmt1": "f_function_string_&_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2689,11 +2690,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_cdesc_allocatable",
-                        "stmt1": "c_function_string_&_cdesc_allocatable"
+                        "stmt0": "f_function_string_&_cdesc_allocatable",
+                        "stmt1": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2784,8 +2786,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_copy",
-                        "stmt1": "c_function_string_&_copy"
+                        "stmt0": "f_function_string_&_copy",
+                        "stmt1": "f_function_string_&_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2902,8 +2904,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_buf_copy",
-                        "stmt1": "c_function_string_&_buf_copy"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2992,8 +2994,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&",
-                        "stmt1": "c_function_string_&"
+                        "stmt0": "f_function_string_&",
+                        "stmt1": "f_function_string_&"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3108,8 +3110,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_buf_arg",
-                        "stmt1": "c_function_string_&_buf_arg"
+                        "stmt0": "f_function_string_&_buf_arg",
+                        "stmt1": "f_function_string_&_buf_arg"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3197,8 +3199,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_copy",
-                        "stmt1": "c_function_string_&_copy"
+                        "stmt0": "f_function_string_&_copy",
+                        "stmt1": "f_function_string_&_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3314,8 +3316,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_buf_copy",
-                        "stmt1": "c_function_string_&_buf_copy"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3396,8 +3398,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_allocatable",
-                        "stmt1": "c_function_string_&_allocatable"
+                        "stmt0": "f_function_string_&_allocatable",
+                        "stmt1": "f_function_string_&_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3501,11 +3503,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_cdesc_allocatable",
-                        "stmt1": "c_function_string_&_cdesc_allocatable"
+                        "stmt0": "f_function_string_&_cdesc_allocatable",
+                        "stmt1": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3602,8 +3605,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_copy",
-                        "stmt1": "c_function_string_*_copy"
+                        "stmt0": "f_function_string_*_copy",
+                        "stmt1": "f_function_string_*_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3726,8 +3729,8 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_buf_copy",
-                        "stmt1": "c_function_string_*_buf_copy"
+                        "stmt0": "f_function_string_*_buf_copy",
+                        "stmt1": "f_function_string_*_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3811,8 +3814,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_allocatable",
-                        "stmt1": "c_function_string_*_allocatable"
+                        "stmt0": "f_function_string_*_allocatable",
+                        "stmt1": "f_function_string_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3919,11 +3922,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_cdesc_allocatable",
-                        "stmt1": "c_function_string_*_cdesc_allocatable"
+                        "stmt0": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4011,8 +4015,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_allocatable",
-                        "stmt1": "c_function_string_*_allocatable"
+                        "stmt0": "f_function_string_*_allocatable",
+                        "stmt1": "f_function_string_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4122,11 +4126,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_cdesc_allocatable",
-                        "stmt1": "c_function_string_*_cdesc_allocatable"
+                        "stmt0": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4215,8 +4220,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_allocatable",
-                        "stmt1": "c_function_string_*_allocatable"
+                        "stmt0": "f_function_string_*_allocatable",
+                        "stmt1": "f_function_string_*_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4327,11 +4332,12 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
+                        "hnamefunc0": "copy_string",
+                        "hnamefunc1": "ShroudStrToArray",
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_cdesc_allocatable",
-                        "stmt1": "c_function_string_*_cdesc_allocatable"
+                        "stmt0": "f_function_string_*_cdesc_allocatable",
+                        "stmt1": "f_function_string_*_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4417,8 +4423,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_pointer",
-                        "stmt1": "c_function_string_*_pointer"
+                        "stmt0": "f_function_string_*_pointer",
+                        "stmt1": "f_function_string_*_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4513,8 +4519,8 @@
                         "hnamefunc0": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_*_cdesc_pointer",
-                        "stmt1": "c_function_string_*_cdesc_pointer"
+                        "stmt0": "f_function_string_*_cdesc_pointer",
+                        "stmt1": "f_function_string_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6796,8 +6802,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6955,8 +6961,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -8785,8 +8791,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_char_scalar",
-                        "stmt1": "c_function_char_scalar"
+                        "stmt0": "f_function_char_scalar",
+                        "stmt1": "f_function_char_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -9978,8 +9984,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10128,8 +10134,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10326,8 +10332,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -10519,8 +10525,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

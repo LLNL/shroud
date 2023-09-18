@@ -92,7 +92,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Function:  double PassByValueMacro
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
@@ -109,7 +109,7 @@ double CLI_PassByValueMacro(int arg2)
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     c_function_char_*_buf_copy
+// Exact:     f_function_char_*_buf_copy
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
@@ -269,7 +269,7 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 // ----------------------------------------
 // Function:  int passAssumedTypeBuf
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)

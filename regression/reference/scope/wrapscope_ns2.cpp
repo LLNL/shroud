@@ -22,7 +22,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * DataPointer_get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-// Exact:     c_getter_native_*_cdesc_pointer
+// Exact:     f_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
 // Attrs:     +intent(in)+struct(ns2_DataPointer)

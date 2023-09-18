@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     TEM_structAsClass_int * SHC_rv)
 {
@@ -55,7 +55,7 @@ void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 // ----------------------------------------
 // Function:  int get_npts
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>
@@ -89,7 +89,7 @@ void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
 // ----------------------------------------
 // Function:  int get_value
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 int TEM_structAsClass_int_get_value(TEM_structAsClass_int * self)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>

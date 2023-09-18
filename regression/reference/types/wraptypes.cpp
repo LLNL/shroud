@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  short short_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  short arg1 +value
 // Attrs:     +intent(in)
@@ -39,7 +39,7 @@ short TYP_short_func(short arg1)
 // ----------------------------------------
 // Function:  int int_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -55,7 +55,7 @@ int TYP_int_func(int arg1)
 // ----------------------------------------
 // Function:  long long_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  long arg1 +value
 // Attrs:     +intent(in)
@@ -71,7 +71,7 @@ long TYP_long_func(long arg1)
 // ----------------------------------------
 // Function:  long long long_long_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  long long arg1 +value
 // Attrs:     +intent(in)
@@ -87,7 +87,7 @@ long long TYP_long_long_func(long long arg1)
 // ----------------------------------------
 // Function:  short int short_int_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  short int arg1 +value
 // Attrs:     +intent(in)
@@ -103,7 +103,7 @@ short TYP_short_int_func(short arg1)
 // ----------------------------------------
 // Function:  long int long_int_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  long int arg1 +value
 // Attrs:     +intent(in)
@@ -119,7 +119,7 @@ long TYP_long_int_func(long arg1)
 // ----------------------------------------
 // Function:  long long int long_long_int_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  long long int arg1 +value
 // Attrs:     +intent(in)
@@ -135,7 +135,7 @@ long long TYP_long_long_int_func(long long arg1)
 // ----------------------------------------
 // Function:  unsigned unsigned_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned arg1 +value
 // Attrs:     +intent(in)
@@ -151,7 +151,7 @@ unsigned int TYP_unsigned_func(unsigned int arg1)
 // ----------------------------------------
 // Function:  unsigned short ushort_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned short arg1 +value
 // Attrs:     +intent(in)
@@ -167,7 +167,7 @@ unsigned short TYP_ushort_func(unsigned short arg1)
 // ----------------------------------------
 // Function:  unsigned int uint_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned int arg1 +value
 // Attrs:     +intent(in)
@@ -183,7 +183,7 @@ unsigned int TYP_uint_func(unsigned int arg1)
 // ----------------------------------------
 // Function:  unsigned long ulong_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long arg1 +value
 // Attrs:     +intent(in)
@@ -199,7 +199,7 @@ unsigned long TYP_ulong_func(unsigned long arg1)
 // ----------------------------------------
 // Function:  unsigned long long ulong_long_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long long arg1 +value
 // Attrs:     +intent(in)
@@ -215,7 +215,7 @@ unsigned long long TYP_ulong_long_func(unsigned long long arg1)
 // ----------------------------------------
 // Function:  unsigned long int ulong_int_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long int arg1 +value
 // Attrs:     +intent(in)
@@ -231,7 +231,7 @@ unsigned long TYP_ulong_int_func(unsigned long arg1)
 // ----------------------------------------
 // Function:  int8_t int8_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int8_t arg1 +value
 // Attrs:     +intent(in)
@@ -247,7 +247,7 @@ int8_t TYP_int8_func(int8_t arg1)
 // ----------------------------------------
 // Function:  int16_t int16_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int16_t arg1 +value
 // Attrs:     +intent(in)
@@ -263,7 +263,7 @@ int16_t TYP_int16_func(int16_t arg1)
 // ----------------------------------------
 // Function:  int32_t int32_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int32_t arg1 +value
 // Attrs:     +intent(in)
@@ -279,7 +279,7 @@ int32_t TYP_int32_func(int32_t arg1)
 // ----------------------------------------
 // Function:  int64_t int64_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  int64_t arg1 +value
 // Attrs:     +intent(in)
@@ -295,7 +295,7 @@ int64_t TYP_int64_func(int64_t arg1)
 // ----------------------------------------
 // Function:  uint8_t uint8_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  uint8_t arg1 +value
 // Attrs:     +intent(in)
@@ -311,7 +311,7 @@ uint8_t TYP_uint8_func(uint8_t arg1)
 // ----------------------------------------
 // Function:  uint16_t uint16_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  uint16_t arg1 +value
 // Attrs:     +intent(in)
@@ -327,7 +327,7 @@ uint16_t TYP_uint16_func(uint16_t arg1)
 // ----------------------------------------
 // Function:  uint32_t uint32_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  uint32_t arg1 +value
 // Attrs:     +intent(in)
@@ -343,7 +343,7 @@ uint32_t TYP_uint32_func(uint32_t arg1)
 // ----------------------------------------
 // Function:  uint64_t uint64_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  uint64_t arg1 +value
 // Attrs:     +intent(in)
@@ -359,7 +359,7 @@ uint64_t TYP_uint64_func(uint64_t arg1)
 // ----------------------------------------
 // Function:  size_t size_func
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  size_t arg1 +value
 // Attrs:     +intent(in)
@@ -375,7 +375,7 @@ size_t TYP_size_func(size_t arg1)
 // ----------------------------------------
 // Function:  bool bool_func
 // Attrs:     +intent(function)
-// Exact:     c_function_bool_scalar
+// Exact:     f_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool arg +value
 // Attrs:     +intent(in)
@@ -401,7 +401,7 @@ bool TYP_bool_func(bool arg)
 // ----------------------------------------
 // Function:  bool returnBoolAndOthers
 // Attrs:     +intent(function)
-// Exact:     c_function_bool_scalar
+// Exact:     f_function_bool_scalar
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Attrs:     +intent(out)

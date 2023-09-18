@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int passStruct1
 // Attrs:     +intent(function)
-// Exact:     c_function_native_scalar
+// Exact:     f_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)

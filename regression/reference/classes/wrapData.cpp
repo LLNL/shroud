@@ -56,7 +56,7 @@ void CLA_Data_free(CLA_Data * self)
 // ----------------------------------------
 // Function:  Data
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 // start CLA_Data_ctor
 CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 {
@@ -88,7 +88,7 @@ void CLA_Data_dtor(CLA_Data * self)
 // ----------------------------------------
 // Function:  int get_nitems
 // Attrs:     +intent(getter)
-// Exact:     c_getter_native_scalar
+// Exact:     f_getter_native_scalar
 // start CLA_Data_get_nitems
 int CLA_Data_get_nitems(CLA_Data * self)
 {
@@ -124,7 +124,7 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 // ----------------------------------------
 // Function:  int * get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-// Exact:     c_getter_native_*_cdesc_pointer
+// Exact:     f_getter_native_*_cdesc_pointer
 // start CLA_Data_get_items_bufferify
 void CLA_Data_get_items_bufferify(CLA_Data * self,
     CLA_SHROUD_array *SHT_rv_cdesc)

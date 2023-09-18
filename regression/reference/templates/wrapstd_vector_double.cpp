@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capptr
+// Exact:     f_ctor_shadow_scalar_capptr
 TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -72,7 +72,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // ----------------------------------------
 // Function:  double & at
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     c_function_native_&_pointer
+// Exact:     f_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
