@@ -79,7 +79,7 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // start TUT_NoReturnNoArguments
 void TUT_NoReturnNoArguments(void)
 {
@@ -92,15 +92,15 @@ void TUT_NoReturnNoArguments(void)
 // ----------------------------------------
 // Function:  double PassByValue
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 double TUT_PassByValue(double arg1, int arg2)
 {
     // splicer begin function.PassByValue
@@ -117,15 +117,15 @@ double TUT_PassByValue(double arg1, int arg2)
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     f_function_string_scalar_cdesc_allocatable
+// Statement: f_function_string_scalar_cdesc_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  const std::string & arg2
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc)
 {
@@ -144,7 +144,7 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // start TUT_UseDefaultArguments
 double TUT_UseDefaultArguments(void)
 {
@@ -159,11 +159,11 @@ double TUT_UseDefaultArguments(void)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // start TUT_UseDefaultArguments_arg1
 double TUT_UseDefaultArguments_arg1(double arg1)
 {
@@ -177,15 +177,15 @@ double TUT_UseDefaultArguments_arg1(double arg1)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  bool arg2=true +value
 // Attrs:     +intent(in)
-// Exact:     f_in_bool_scalar
+// Statement: f_in_bool_scalar
 // start TUT_UseDefaultArguments_arg1_arg2
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 {
@@ -199,11 +199,11 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     f_in_string_&
+// Statement: f_in_string_&
 void TUT_OverloadedFunction_from_name(const char * name)
 {
     // splicer begin function.OverloadedFunction_from_name
@@ -216,11 +216,11 @@ void TUT_OverloadedFunction_from_name(const char * name)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
@@ -234,11 +234,11 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int indx +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_OverloadedFunction_from_index(int indx)
 {
     // splicer begin function.OverloadedFunction_from_index
@@ -250,11 +250,11 @@ void TUT_OverloadedFunction_from_index(int indx)
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_TemplateArgument_int(int arg)
 {
     // splicer begin function.TemplateArgument_int
@@ -266,11 +266,11 @@ void TUT_TemplateArgument_int(int arg)
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_TemplateArgument_double(double arg)
 {
     // splicer begin function.TemplateArgument_double
@@ -282,7 +282,7 @@ void TUT_TemplateArgument_double(double arg)
 // ----------------------------------------
 // Function:  int TemplateReturn
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 int TUT_TemplateReturn_int(void)
 {
     // splicer begin function.TemplateReturn_int
@@ -295,7 +295,7 @@ int TUT_TemplateReturn_int(void)
 // ----------------------------------------
 // Function:  double TemplateReturn
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 double TUT_TemplateReturn_double(void)
 {
     // splicer begin function.TemplateReturn_double
@@ -307,7 +307,7 @@ double TUT_TemplateReturn_double(void)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 void TUT_FortranGenericOverloaded_0(void)
 {
     // splicer begin function.FortranGenericOverloaded_0
@@ -318,15 +318,15 @@ void TUT_FortranGenericOverloaded_0(void)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     f_in_string_&
+// Statement: f_in_string_&
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
@@ -339,15 +339,15 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  float arg2 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
@@ -362,15 +362,15 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
@@ -385,11 +385,11 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_num(int num)
 {
     // splicer begin function.UseDefaultOverload_num
@@ -402,15 +402,15 @@ int TUT_UseDefaultOverload_num(int num)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_num_offset
@@ -422,19 +422,19 @@ int TUT_UseDefaultOverload_num_offset(int num, int offset)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
 {
@@ -448,15 +448,15 @@ int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_3(double type, int num)
 {
     // splicer begin function.UseDefaultOverload_3
@@ -469,19 +469,19 @@ int TUT_UseDefaultOverload_3(double type, int num)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_4
@@ -493,23 +493,23 @@ int TUT_UseDefaultOverload_4(double type, int num, int offset)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
 {
@@ -523,11 +523,11 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
@@ -539,11 +539,11 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  EnumTypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 {
     // splicer begin function.enumfunc
@@ -558,11 +558,11 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 // ----------------------------------------
 // Function:  Color colorfunc
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  Color arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int TUT_colorfunc(int arg)
 {
     // splicer begin function.colorfunc
@@ -580,15 +580,15 @@ int TUT_colorfunc(int arg)
 // ----------------------------------------
 // Function:  void getMinMax
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int & min +intent(out)
 // Attrs:     +intent(out)
-// Exact:     f_out_native_&
+// Statement: f_out_native_&
 // ----------------------------------------
 // Argument:  int & max +intent(out)
 // Attrs:     +intent(out)
-// Exact:     f_out_native_&
+// Statement: f_out_native_&
 // start TUT_getMinMax
 void TUT_getMinMax(int * min, int * max)
 {
@@ -605,15 +605,15 @@ void TUT_getMinMax(int * min, int * max)
 // ----------------------------------------
 // Function:  int callback1
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int in +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int ( * incr)(int +value) +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {
@@ -627,7 +627,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     f_function_string_&_copy
+// Statement: f_function_string_&_copy
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
@@ -641,7 +641,7 @@ const char * TUT_LastFunctionCalled(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     f_function_string_&_buf_copy
+// Statement: f_function_string_&_buf_copy
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify

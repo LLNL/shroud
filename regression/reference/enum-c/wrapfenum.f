@@ -41,11 +41,11 @@ module enum_mod
         ! ----------------------------------------
         ! Function:  int convert_to_int
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="convert_to_int")
@@ -66,11 +66,11 @@ contains
     ! ----------------------------------------
     ! Function:  int convert_to_int
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     function convert_to_int(in) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

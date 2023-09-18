@@ -44,7 +44,7 @@ PY_vector_double_tp_del (PY_vector_double *self)
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 static int
 PY_vector_double_tp_init(
   PY_vector_double *self,
@@ -65,11 +65,11 @@ PY_vector_double_tp_init(
 // ----------------------------------------
 // Function:  void push_back
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
 // Attrs:     +intent(in)
-// Exact:     py_in_native_&
+// Statement: py_in_native_&
 static char PY_push_back__doc__[] =
 "documentation"
 ;
@@ -98,11 +98,11 @@ PY_push_back(
 // ----------------------------------------
 // Function:  double & at
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     py_function_native_&_pointer_numpy
+// Statement: py_function_native_&_pointer_numpy
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_at__doc__[] =
 "documentation"
 ;

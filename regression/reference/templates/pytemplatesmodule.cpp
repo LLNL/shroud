@@ -39,15 +39,15 @@ PyObject *PY_init_templates_internal(void);
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
  *
@@ -78,15 +78,15 @@ PY_FunctionTU_0(
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
  *
@@ -117,7 +117,7 @@ PY_FunctionTU_1(
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
 ;
@@ -147,7 +147,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;

@@ -115,11 +115,11 @@ module scope_mod
         ! ----------------------------------------
         ! Function:  int * DataPointer_get_items
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns3_DataPointer)
-        ! Exact:     f_getter_native_*_cdesc_pointer
+        ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  ns3::DataPointer * SH_this
         ! Attrs:     +intent(in)+struct(ns3_DataPointer)
-        ! Exact:     f_in_struct_*
+        ! Statement: f_in_struct_*
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
                 bind(C, name="SCO_DataPointer_get_items_bufferify")
             import :: SCO_SHROUD_array, data_pointer
@@ -132,15 +132,15 @@ module scope_mod
         ! ----------------------------------------
         ! Function:  void DataPointer_set_items
         ! Attrs:     +intent(setter)
-        ! Exact:     f_setter_void_scalar
+        ! Statement: f_setter_void_scalar
         ! ----------------------------------------
         ! Argument:  ns3::DataPointer * SH_this
         ! Attrs:     +intent(inout)+struct(ns3_DataPointer)
-        ! Exact:     f_inout_struct_*
+        ! Statement: f_inout_struct_*
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
-        ! Exact:     f_setter_native_*
+        ! Statement: f_setter_native_*
         subroutine data_pointer_set_items(SH_this, val) &
                 bind(C, name="SCO_DataPointer_set_items")
             use iso_c_binding, only : C_INT
@@ -212,11 +212,11 @@ contains
     ! ----------------------------------------
     ! Function:  int * DataPointer_get_items
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns3_DataPointer)
-    ! Exact:     f_getter_native_*_cdesc_pointer
+    ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  ns3::DataPointer * SH_this
     ! Attrs:     +intent(in)+struct(ns3_DataPointer)
-    ! Exact:     f_in_struct_*
+    ! Statement: f_in_struct_*
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -237,15 +237,15 @@ contains
     ! ----------------------------------------
     ! Function:  void DataPointer_set_items
     ! Attrs:     +intent(setter)
-    ! Exact:     f_setter
+    ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  ns3::DataPointer * SH_this
     ! Attrs:     +intent(inout)+struct(ns3_DataPointer)
-    ! Exact:     f_inout_struct_*
+    ! Statement: f_inout_struct_*
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
-    ! Exact:     f_setter_native_*
+    ! Statement: f_setter_native_*
     subroutine data_pointer_set_items(SH_this, val)
         use iso_c_binding, only : C_INT
         use scope_ns3_mod, only : data_pointer

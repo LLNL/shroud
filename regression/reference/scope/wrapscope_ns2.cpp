@@ -22,11 +22,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * DataPointer_get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns2_DataPointer)
-// Exact:     f_getter_native_*_cdesc_pointer
+// Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
 // Attrs:     +intent(in)+struct(ns2_DataPointer)
-// Exact:     f_in_struct_*
+// Statement: f_in_struct_*
 void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
@@ -49,15 +49,15 @@ void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
 // ----------------------------------------
 // Function:  void DataPointer_set_items
 // Attrs:     +intent(setter)
-// Exact:     f_setter
+// Statement: f_setter
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
 // Attrs:     +intent(inout)+struct(ns2_DataPointer)
-// Exact:     f_inout_struct_*
+// Statement: f_inout_struct_*
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
-// Exact:     f_setter_native_*
+// Statement: f_setter_native_*
 void SCO_ns2_DataPointer_set_items(SCO_datapointer * SH_this, int * val)
 {
     // splicer begin namespace.ns2.function.DataPointer_set_items

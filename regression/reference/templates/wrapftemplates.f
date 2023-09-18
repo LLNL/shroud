@@ -104,15 +104,15 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void nested
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -126,7 +126,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_scalar_capptr
         function c_struct_as_class_int_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
@@ -140,11 +140,11 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_int_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_int_set_npts")
             use iso_c_binding, only : C_INT
@@ -157,7 +157,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_struct_as_class_int_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_npts")
@@ -172,11 +172,11 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int v +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_int_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_int_set_value")
             use iso_c_binding, only : C_INT
@@ -190,7 +190,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_value
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_struct_as_class_int_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_value")
@@ -204,7 +204,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_scalar_capptr
         function c_struct_as_class_double_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
@@ -218,11 +218,11 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_double_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_double_set_npts")
             use iso_c_binding, only : C_INT
@@ -235,7 +235,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_struct_as_class_double_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_npts")
@@ -250,11 +250,11 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  double v +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_double_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_double_set_value")
             use iso_c_binding, only : C_DOUBLE
@@ -268,7 +268,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  double get_value
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_struct_as_class_double_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_value")
@@ -282,7 +282,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     f_function_shadow_scalar_capptr_targ_native_scalar
+        ! Statement: f_function_shadow_scalar_capptr_targ_native_scalar
         function c_return_user_type(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_returnUserType")
@@ -297,15 +297,15 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  long arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_function_tu_0(arg1, arg2) &
                 bind(C, name="TEM_FunctionTU_0")
             use iso_c_binding, only : C_INT, C_LONG
@@ -318,15 +318,15 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_function_tu_1(arg1, arg2) &
                 bind(C, name="TEM_FunctionTU_1")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -339,7 +339,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker1")
@@ -352,7 +352,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
-        ! Exact:     f_function_native_scalar
+        ! Statement: f_function_native_scalar
         function c_use_impl_worker_internal_ImplWorker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_UseImplWorker_internal_ImplWorker2")
@@ -410,15 +410,15 @@ contains
     ! ----------------------------------------
     ! Function:  void nested
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine user_int_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         class(user_int) :: obj
@@ -458,7 +458,7 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     function struct_as_class_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -472,11 +472,11 @@ contains
     ! ----------------------------------------
     ! Function:  void set_npts
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine struct_as_class_int_set_npts(obj, n)
         use iso_c_binding, only : C_INT
         class(struct_as_class_int) :: obj
@@ -489,7 +489,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     function struct_as_class_int_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -504,11 +504,11 @@ contains
     ! ----------------------------------------
     ! Function:  void set_value
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int v +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine struct_as_class_int_set_value(obj, v)
         use iso_c_binding, only : C_INT
         class(struct_as_class_int) :: obj
@@ -522,7 +522,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_value
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     function struct_as_class_int_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -562,7 +562,7 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     function struct_as_class_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -576,11 +576,11 @@ contains
     ! ----------------------------------------
     ! Function:  void set_npts
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine struct_as_class_double_set_npts(obj, n)
         use iso_c_binding, only : C_INT
         class(struct_as_class_double) :: obj
@@ -593,7 +593,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     function struct_as_class_double_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -608,11 +608,11 @@ contains
     ! ----------------------------------------
     ! Function:  void set_value
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double v +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine struct_as_class_double_set_value(obj, v)
         use iso_c_binding, only : C_DOUBLE
         class(struct_as_class_double) :: obj
@@ -626,7 +626,7 @@ contains
     ! ----------------------------------------
     ! Function:  double get_value
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     function struct_as_class_double_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -666,7 +666,7 @@ contains
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     f_function_shadow_scalar_capptr_targ_native_scalar
+    ! Statement: f_function_shadow_scalar_capptr_targ_native_scalar
     function return_user_type() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -681,15 +681,15 @@ contains
     ! ----------------------------------------
     ! Function:  void FunctionTU
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -707,15 +707,15 @@ contains
     ! ----------------------------------------
     ! Function:  void FunctionTU
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -733,7 +733,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -751,7 +751,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!

@@ -47,11 +47,11 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_unknown_scalar
+        ! Statement: f_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -64,11 +64,11 @@ module library_mod
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)
-        ! Exact:     f_inout_shadow_*
+        ! Statement: f_inout_shadow_*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: LIB_SHROUD_capsule_data
@@ -84,11 +84,11 @@ contains
     ! ----------------------------------------
     ! Function:  void method1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_unknown_scalar
+    ! Statement: f_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
@@ -98,11 +98,11 @@ contains
     ! ----------------------------------------
     ! Function:  void method2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
     ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_shadow_*
+    ! Statement: f_inout_shadow_*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

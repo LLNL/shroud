@@ -19,7 +19,7 @@ module library_one_two_mod
         ! ----------------------------------------
         ! Function:  void function1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine function1() &
                 bind(C, name="LIB_one_two_function1")
             implicit none
@@ -34,7 +34,7 @@ contains
     ! ----------------------------------------
     ! Function:  void function1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine function1()
         call c_function1()
     end subroutine function1

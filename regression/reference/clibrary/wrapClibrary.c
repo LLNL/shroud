@@ -92,11 +92,11 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Function:  double PassByValueMacro
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 double CLI_PassByValueMacro(int arg2)
 {
     // splicer begin function.PassByValueMacro
@@ -109,15 +109,15 @@ double CLI_PassByValueMacro(int arg2)
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     f_function_char_*_buf_copy
+// Statement: f_function_char_*_buf_copy
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
-// Exact:     f_in_char_*
+// Statement: f_in_char_*
 // ----------------------------------------
 // Argument:  const char * arg2
 // Attrs:     +intent(in)
-// Exact:     f_in_char_*
+// Statement: f_in_char_*
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
@@ -137,11 +137,11 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 // ----------------------------------------
 // Function:  void passCharPtrInOut
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
-// Exact:     f_inout_char_*_buf
+// Statement: f_inout_char_*_buf
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
@@ -163,11 +163,11 @@ void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 // ----------------------------------------
 // Function:  void returnOneName
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 // start CLI_returnOneName_bufferify
 void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
@@ -189,15 +189,15 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 // ----------------------------------------
 // Function:  void returnTwoNames
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len)
 {
@@ -216,15 +216,15 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // ----------------------------------------
 // Function:  void ImpliedTextLen
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // start CLI_ImpliedTextLen_bufferify
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
@@ -245,11 +245,11 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 // ----------------------------------------
 // Function:  void bindC2
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.bindC2_bufferify
@@ -269,15 +269,15 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 // ----------------------------------------
 // Function:  int passAssumedTypeBuf
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)
-// Exact:     f_in_void_*
+// Statement: f_in_void_*
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len)
 {
@@ -296,15 +296,15 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Function:  void callback1a
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external+value
 // Attrs:     +intent(in)
-// Exact:     f_in_void_scalar
+// Statement: f_in_void_scalar
 // start CLI_callback1a
 void CLI_callback1a(int type, void ( * incr)(void))
 {
@@ -323,23 +323,23 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Function:  void callback3
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const char * type
 // Attrs:     +intent(in)
-// Exact:     f_in_char_*
+// Statement: f_in_char_*
 // ----------------------------------------
 // Argument:  void * in +assumedtype
 // Attrs:     +intent(in)
-// Exact:     f_in_void_*
+// Statement: f_in_void_*
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+value
 // Attrs:     +intent(in)
-// Exact:     f_in_void_scalar
+// Statement: f_in_void_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     f_out_char_*_buf
+// Statement: f_out_char_*_buf
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char *outbuf, int SHT_outbuf_len)
 {

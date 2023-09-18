@@ -50,15 +50,15 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // ----------------------------------------
 // Function:  Cstruct_ptr +name(Cstruct_ptr_ctor)
 // Attrs:     +intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char * cfield
 // Attrs:     +intent(in)
-// Exact:     py_ctor_char_*_numpy
+// Statement: py_ctor_char_*_numpy
 // ----------------------------------------
 // Argument:  const double * const_dvalue
 // Attrs:     +intent(in)
-// Exact:     py_ctor_native_*_numpy
+// Statement: py_ctor_native_*_numpy
 static int
 PY_Cstruct_ptr_tp_init(
   PY_Cstruct_ptr *self,
@@ -101,7 +101,7 @@ PY_Cstruct_ptr_tp_init(
 // splicer begin class.Cstruct_ptr.impl.after_methods
 // splicer end class.Cstruct_ptr.impl.after_methods
 
-// Exact:     py_descr_char_*_numpy
+// Statement: py_descr_char_*_numpy
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -112,7 +112,7 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
-// Exact:     py_descr_char_*_numpy
+// Statement: py_descr_char_*_numpy
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -128,7 +128,7 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -149,7 +149,7 @@ static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static int PY_Cstruct_ptr_const_dvalue_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

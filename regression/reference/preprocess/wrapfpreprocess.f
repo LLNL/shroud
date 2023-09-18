@@ -100,7 +100,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_user1_method1(self) &
                 bind(C, name="PRE_User1_method1")
             import :: PRE_SHROUD_capsule_data
@@ -112,7 +112,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_User1_method2")
             import :: PRE_SHROUD_capsule_data
@@ -126,7 +126,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method3def
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_user1_method3def_0(self) &
                 bind(C, name="PRE_User1_method3def_0")
             import :: PRE_SHROUD_capsule_data
@@ -139,11 +139,11 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void method3def
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int i=0 +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
@@ -159,7 +159,7 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void exfunc
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_user2_exfunc_0(self) &
                 bind(C, name="PRE_User2_exfunc_0")
             import :: PRE_SHROUD_capsule_data
@@ -172,11 +172,11 @@ module preprocess_mod
         ! ----------------------------------------
         ! Function:  void exfunc
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT
@@ -215,7 +215,7 @@ contains
     ! ----------------------------------------
     ! Function:  void method1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine user1_method1(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method1
@@ -227,7 +227,7 @@ contains
     ! ----------------------------------------
     ! Function:  void method2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine user1_method2(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method2
@@ -241,7 +241,7 @@ contains
     ! ----------------------------------------
     ! Function:  void method3def
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine user1_method3def_0(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method3def_0
@@ -254,11 +254,11 @@ contains
     ! ----------------------------------------
     ! Function:  void method3def
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int i=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine user1_method3def_1(obj, i)
         use iso_c_binding, only : C_INT
         class(user1) :: obj
@@ -300,7 +300,7 @@ contains
     ! ----------------------------------------
     ! Function:  void exfunc
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine user2_exfunc_0(obj)
         class(user2) :: obj
         ! splicer begin class.User2.method.exfunc_0
@@ -313,11 +313,11 @@ contains
     ! ----------------------------------------
     ! Function:  void exfunc
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine user2_exfunc_1(obj, flag)
         use iso_c_binding, only : C_INT
         class(user2) :: obj

@@ -21,7 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void worker
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 void WWW_inner1_worker(void)
 {
     // splicer begin namespace.inner1.function.worker

@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     f_ctor_shadow_scalar_capptr
+// Statement: f_ctor_shadow_scalar_capptr
 TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -38,7 +38,7 @@ TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 // ----------------------------------------
 // Function:  ~vector
 // Attrs:     +intent(dtor)
-// Exact:     f_dtor
+// Statement: f_dtor
 void TEM_vector_double_dtor(TEM_vector_double * self)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
@@ -53,11 +53,11 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 // ----------------------------------------
 // Function:  void push_back
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
 // Attrs:     +intent(in)
-// Exact:     f_in_native_&
+// Statement: f_in_native_&
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value)
 {
@@ -72,11 +72,11 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // ----------------------------------------
 // Function:  double & at
 // Attrs:     +deref(pointer)+intent(function)
-// Exact:     f_function_native_&_pointer
+// Statement: f_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 double * TEM_vector_double_at(TEM_vector_double * self,
     TEM_vector_double_size_type n)
 {

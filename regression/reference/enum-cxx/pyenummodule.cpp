@@ -34,11 +34,11 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  int convert_to_int
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_convert_to_int__doc__[] =
 "documentation"
 ;

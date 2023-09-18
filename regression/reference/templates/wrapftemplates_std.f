@@ -82,7 +82,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_scalar_capptr
         function c_vector_int_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_vector_int_ctor")
@@ -96,7 +96,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Exact:     f_dtor_void_scalar
+        ! Statement: f_dtor_void_scalar
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -108,11 +108,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_&
+        ! Statement: f_in_native_&
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
@@ -126,11 +126,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     f_function_native_&_pointer
+        ! Statement: f_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
@@ -145,7 +145,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_scalar_capptr
         function c_vector_double_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_vector_double_ctor")
@@ -159,7 +159,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Exact:     f_dtor_void_scalar
+        ! Statement: f_dtor_void_scalar
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -171,11 +171,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  void push_back
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_&
+        ! Statement: f_in_native_&
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
@@ -189,11 +189,11 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Exact:     f_function_native_&_pointer
+        ! Statement: f_function_native_&_pointer
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Exact:     f_in_native_scalar
+        ! Statement: f_in_native_scalar
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
@@ -222,7 +222,7 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     function vector_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -236,7 +236,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
+    ! Statement: f_dtor
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
         ! splicer begin namespace.std.class.vector_int.method.dtor
@@ -248,11 +248,11 @@ contains
     ! ----------------------------------------
     ! Function:  void push_back
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_&
+    ! Statement: f_in_native_&
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
         class(vector_int) :: obj
@@ -266,11 +266,11 @@ contains
     ! ----------------------------------------
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_&_pointer
+    ! Statement: f_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     function vector_int_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -313,7 +313,7 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -327,7 +327,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
+    ! Statement: f_dtor
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj
         ! splicer begin namespace.std.class.vector_double.method.dtor
@@ -339,11 +339,11 @@ contains
     ! ----------------------------------------
     ! Function:  void push_back
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const double & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_&
+    ! Statement: f_in_native_&
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(vector_double) :: obj
@@ -357,11 +357,11 @@ contains
     ! ----------------------------------------
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_&_pointer
+    ! Statement: f_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     function vector_double_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer

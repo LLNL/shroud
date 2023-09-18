@@ -40,7 +40,7 @@ PY_Circle_tp_del (PY_Circle *self)
 // ----------------------------------------
 // Function:  Circle
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 static int
 PY_Circle_tp_init(
   PY_Circle *self,

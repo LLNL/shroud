@@ -37,7 +37,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     lua_ctor_scalar
+// Statement: lua_ctor_scalar
 static int l_Class2_ctor(lua_State *L)
 {
     // splicer begin class.Class2.method.ctor
@@ -56,7 +56,7 @@ static int l_Class2_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~Class2
 // Attrs:     +intent(dtor)
-// Exact:     lua_dtor_scalar
+// Statement: lua_dtor_scalar
 static int l_Class2_dtor(lua_State *L)
 {
     // splicer begin class.Class2.method.__gc
@@ -72,11 +72,11 @@ static int l_Class2_dtor(lua_State *L)
 // ----------------------------------------
 // Function:  void func1
 // Attrs:     +intent(subroutine)
-// Exact:     lua_subroutine
+// Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Attrs:     +intent(in)
-// Exact:     lua_in_shadow_*
+// Statement: lua_in_shadow_*
 static int l_Class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1
@@ -94,11 +94,11 @@ static int l_Class2_func1(lua_State *L)
 // ----------------------------------------
 // Function:  void acceptClass3
 // Attrs:     +intent(subroutine)
-// Exact:     lua_subroutine
+// Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
-// Exact:     lua_in_shadow_*
+// Statement: lua_in_shadow_*
 static int l_Class2_acceptClass3(lua_State *L)
 {
     // splicer begin class.Class2.method.acceptClass3

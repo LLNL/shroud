@@ -42,11 +42,11 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int CLA_directionFunc(int arg)
 {
     // splicer begin function.directionFunc
@@ -66,11 +66,11 @@ int CLA_directionFunc(int arg)
 // ----------------------------------------
 // Function:  void passClassByValue
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_shadow_scalar
+// Statement: f_in_shadow_scalar
 void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.passClassByValue
@@ -83,11 +83,11 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // ----------------------------------------
 // Function:  int useclass
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
-// Exact:     f_in_shadow_*
+// Statement: f_in_shadow_*
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
@@ -105,7 +105,7 @@ int CLA_useclass(CLA_Class1 * arg)
 // ----------------------------------------
 // Function:  const Class1 * getclass2
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     f_function_shadow_*_capptr
+// Statement: f_function_shadow_*_capptr
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2
@@ -123,7 +123,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     f_function_shadow_*_capptr
+// Statement: f_function_shadow_*_capptr
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3
@@ -141,7 +141,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 * getclass2_void
 // Attrs:     +api(capsule)+intent(function)
-// Exact:     f_function_shadow_*_capsule
+// Statement: f_function_shadow_*_capsule
 void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2_void
@@ -158,7 +158,7 @@ void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 * getclass3_void
 // Attrs:     +api(capsule)+intent(function)
-// Exact:     f_function_shadow_*_capsule
+// Statement: f_function_shadow_*_capsule
 void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3_void
@@ -171,7 +171,7 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 & getConstClassReference
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     f_function_shadow_&_capptr
+// Statement: f_function_shadow_&_capptr
 CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getConstClassReference
@@ -186,7 +186,7 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 & getClassReference
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     f_function_shadow_&_capptr
+// Statement: f_function_shadow_&_capptr
 CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassReference
@@ -204,11 +204,11 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 getClassCopy
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     f_function_shadow_scalar_capptr
+// Statement: f_function_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
@@ -223,11 +223,11 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag
@@ -238,7 +238,7 @@ void CLA_set_global_flag(int arg)
 // ----------------------------------------
 // Function:  int get_global_flag
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag
@@ -250,7 +250,7 @@ int CLA_get_global_flag(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     f_function_string_&_copy
+// Statement: f_function_string_&_copy
 const char * CLA_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
@@ -264,7 +264,7 @@ const char * CLA_LastFunctionCalled(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
-// Exact:     f_function_string_&_buf_copy
+// Statement: f_function_string_&_buf_copy
 void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify

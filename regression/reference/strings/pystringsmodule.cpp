@@ -85,7 +85,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  void init_test
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 static char PY_init_test__doc__[] =
 "documentation"
 ;
@@ -105,11 +105,11 @@ PY_init_test(
 // ----------------------------------------
 // Function:  void passChar
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char status +value
 // Attrs:     +intent(in)
-// Exact:     py_in_char_scalar
+// Statement: py_in_char_scalar
 static char PY_passChar__doc__[] =
 "documentation"
 ;
@@ -142,7 +142,7 @@ PY_passChar(
 // ----------------------------------------
 // Function:  char returnChar
 // Attrs:     +intent(function)
-// Exact:     py_function_char_scalar
+// Statement: py_function_char_scalar
 static char PY_returnChar__doc__[] =
 "documentation"
 ;
@@ -172,15 +172,15 @@ PY_returnChar(
 // ----------------------------------------
 // Function:  void passCharPtr
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_char_*_charlen
+// Statement: py_out_char_*_charlen
 // ----------------------------------------
 // Argument:  const char * src
 // Attrs:     +intent(in)
-// Exact:     py_in_char_*
+// Statement: py_in_char_*
 static char PY_passCharPtr__doc__[] =
 "documentation"
 ;
@@ -222,11 +222,11 @@ PY_passCharPtr(
 // ----------------------------------------
 // Function:  void passCharPtrInOut
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +intent(inout)
-// Exact:     py_inout_char_*
+// Statement: py_inout_char_*
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -266,7 +266,7 @@ PY_passCharPtrInOut(
 // ----------------------------------------
 // Function:  const char * getCharPtr1
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_char_*
+// Statement: py_function_char_*
 static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
@@ -296,7 +296,7 @@ PY_getCharPtr1(
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_char_*
+// Statement: py_function_char_*
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -326,7 +326,7 @@ PY_getCharPtr2(
 // ----------------------------------------
 // Function:  const char * getCharPtr3
 // Attrs:     +intent(function)
-// Exact:     py_function_char_*
+// Statement: py_function_char_*
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
@@ -356,7 +356,7 @@ PY_getCharPtr3(
 // ----------------------------------------
 // Function:  const string getConstStringResult
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_scalar
+// Statement: py_function_string_scalar
 static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
@@ -387,7 +387,7 @@ PY_getConstStringResult(
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_scalar
+// Statement: py_function_string_scalar
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -418,7 +418,7 @@ PY_getConstStringLen(
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
 // Attrs:     +intent(function)
-// Exact:     py_function_string_scalar
+// Statement: py_function_string_scalar
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -449,7 +449,7 @@ PY_getConstStringAsArg(
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_scalar
+// Statement: py_function_string_scalar
 static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
@@ -476,7 +476,7 @@ PY_getConstStringAlloc(
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
@@ -507,7 +507,7 @@ PY_getConstStringRefPure(
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -541,7 +541,7 @@ PY_getConstStringRefLen(
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
 // Attrs:     +intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -574,7 +574,7 @@ PY_getConstStringRefAsArg(
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -605,7 +605,7 @@ PY_getConstStringRefLenEmpty(
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
@@ -632,7 +632,7 @@ PY_getConstStringRefAlloc(
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_*
+// Statement: py_function_string_*
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
@@ -667,7 +667,7 @@ PY_getConstStringPtrLen(
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_*
+// Statement: py_function_string_*
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
 ;
@@ -694,7 +694,7 @@ PY_getConstStringPtrAlloc(
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_*
+// Statement: py_function_string_*
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
@@ -728,7 +728,7 @@ PY_getConstStringPtrOwnsAlloc(
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_*
+// Statement: py_function_string_*
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;
@@ -758,11 +758,11 @@ PY_getConstStringPtrOwnsAllocPattern(
 // ----------------------------------------
 // Function:  void acceptStringConstReference
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +intent(in)
-// Exact:     py_in_string_&
+// Statement: py_in_string_&
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
@@ -802,11 +802,11 @@ PY_acceptStringConstReference(
 // ----------------------------------------
 // Function:  void acceptStringReferenceOut
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_string_&
+// Statement: py_out_string_&
 static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
 ;
@@ -843,11 +843,11 @@ PY_acceptStringReferenceOut(
 // ----------------------------------------
 // Function:  void acceptStringReference
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string & arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_string_&
+// Statement: py_inout_string_&
 static char PY_acceptStringReference__doc__[] =
 "documentation"
 ;
@@ -893,11 +893,11 @@ PY_acceptStringReference(
 // ----------------------------------------
 // Function:  void acceptStringPointerConst
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string * arg1
 // Attrs:     +intent(in)
-// Exact:     py_in_string_*
+// Statement: py_in_string_*
 static char PY_acceptStringPointerConst__doc__[] =
 "documentation"
 ;
@@ -934,11 +934,11 @@ PY_acceptStringPointerConst(
 // ----------------------------------------
 // Function:  void acceptStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_string_*
+// Statement: py_inout_string_*
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
@@ -981,11 +981,11 @@ PY_acceptStringPointer(
 // ----------------------------------------
 // Function:  void fetchStringPointer
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_string_*
+// Statement: py_out_string_*
 static char PY_fetchStringPointer__doc__[] =
 "documentation"
 ;
@@ -1020,15 +1020,15 @@ PY_fetchStringPointer(
 // ----------------------------------------
 // Function:  void acceptStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_string_*
+// Statement: py_inout_string_*
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 static char PY_acceptStringPointerLen__doc__[] =
 "documentation"
 ;
@@ -1074,15 +1074,15 @@ PY_acceptStringPointerLen(
 // ----------------------------------------
 // Function:  void fetchStringPointerLen
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_string_*
+// Statement: py_out_string_*
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 static char PY_fetchStringPointerLen__doc__[] =
 "documentation"
 ;
@@ -1120,11 +1120,11 @@ PY_fetchStringPointerLen(
 // ----------------------------------------
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_string_scalar
+// Statement: py_in_string_scalar
 static char PY_acceptStringInstance__doc__[] =
 "documentation"
 ;
@@ -1166,15 +1166,15 @@ PY_acceptStringInstance(
 // ----------------------------------------
 // Function:  void returnStrings
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_string_&
+// Statement: py_out_string_&
 // ----------------------------------------
 // Argument:  std::string & arg2 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_string_&
+// Statement: py_out_string_&
 static char PY_returnStrings__doc__[] =
 "documentation"
 ;
@@ -1209,11 +1209,11 @@ PY_returnStrings(
 // ----------------------------------------
 // Function:  void explicit1
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
 // Attrs:     +intent(in)
-// Exact:     py_in_char_*
+// Statement: py_in_char_*
 static char PY_explicit1__doc__[] =
 "documentation"
 ;
@@ -1242,11 +1242,11 @@ PY_explicit1(
 // ----------------------------------------
 // Function:  void CpassChar
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char status +value
 // Attrs:     +intent(in)
-// Exact:     py_in_char_scalar
+// Statement: py_in_char_scalar
 static char PY_CpassChar__doc__[] =
 "documentation"
 ;
@@ -1279,7 +1279,7 @@ PY_CpassChar(
 // ----------------------------------------
 // Function:  char CreturnChar
 // Attrs:     +intent(function)
-// Exact:     py_function_char_scalar
+// Statement: py_function_char_scalar
 static char PY_CreturnChar__doc__[] =
 "documentation"
 ;
@@ -1309,15 +1309,15 @@ PY_CreturnChar(
 // ----------------------------------------
 // Function:  void PostDeclare
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_in_native_*_pointer_list
+// Statement: py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  std::string & name
 // Attrs:     +intent(inout)
-// Exact:     py_inout_string_&
+// Statement: py_inout_string_&
 static char PY_PostDeclare__doc__[] =
 "documentation"
 ;

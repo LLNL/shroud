@@ -29,15 +29,15 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     lua_ctor_scalar
+// Statement: lua_ctor_scalar
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     lua_ctor_scalar
+// Statement: lua_ctor_scalar
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Exact:     lua_in_native_scalar
+// Statement: lua_in_native_scalar
 static int l_Class1_ctor(lua_State *L)
 {
     // splicer begin class.Class1.method.ctor
@@ -85,7 +85,7 @@ static int l_Class1_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Exact:     lua_dtor_scalar
+// Statement: lua_dtor_scalar
 static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -101,7 +101,7 @@ static int l_Class1_delete(lua_State *L)
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Exact:     lua_function_native_scalar
+// Statement: lua_function_native_scalar
 /**
  * \brief returns the value of flag member
  *
@@ -121,7 +121,7 @@ static int l_Class1_Method1(lua_State *L)
 // ----------------------------------------
 // Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     lua_function_string_&
+// Statement: lua_function_string_&
 /**
  * \brief test helper
  *
@@ -141,11 +141,11 @@ static int l_Class1_getName(lua_State *L)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Exact:     lua_function_native_scalar
+// Statement: lua_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Exact:     lua_in_native_scalar
+// Statement: lua_in_native_scalar
 static int l_Class1_directionFunc(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
@@ -177,7 +177,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
 // ----------------------------------------
 // Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     lua_function_string_&
+// Statement: lua_function_string_&
 /**
  * \brief test helper
  *
@@ -207,7 +207,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // ----------------------------------------
 // Function:  Shape
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     lua_ctor_scalar
+// Statement: lua_ctor_scalar
 static int l_Shape_ctor(lua_State *L)
 {
     // splicer begin class.Shape.method.ctor
@@ -226,7 +226,7 @@ static int l_Shape_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  int get_ivar
 // Attrs:     +intent(function)
-// Exact:     lua_function_native_scalar
+// Statement: lua_function_native_scalar
 static int l_Shape_get_ivar(lua_State *L)
 {
     // splicer begin class.Shape.method.get_ivar
@@ -252,7 +252,7 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // ----------------------------------------
 // Function:  Circle
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     lua_ctor_scalar
+// Statement: lua_ctor_scalar
 static int l_Circle_ctor(lua_State *L)
 {
     // splicer begin class.Circle.method.ctor
@@ -280,11 +280,11 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Exact:     lua_function_native_scalar
+// Statement: lua_function_native_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
-// Exact:     lua_in_native_scalar
+// Statement: lua_in_native_scalar
 static int l_directionFunc(lua_State *L)
 {
     // splicer begin function.directionFunc
@@ -300,11 +300,11 @@ static int l_directionFunc(lua_State *L)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Attrs:     +intent(subroutine)
-// Exact:     lua_subroutine
+// Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Exact:     lua_in_native_scalar
+// Statement: lua_in_native_scalar
 static int l_set_global_flag(lua_State *L)
 {
     // splicer begin function.set_global_flag
@@ -318,7 +318,7 @@ static int l_set_global_flag(lua_State *L)
 // ----------------------------------------
 // Function:  int get_global_flag
 // Attrs:     +intent(function)
-// Exact:     lua_function_native_scalar
+// Statement: lua_function_native_scalar
 static int l_get_global_flag(lua_State *L)
 {
     // splicer begin function.get_global_flag
@@ -332,7 +332,7 @@ static int l_get_global_flag(lua_State *L)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     lua_function_string_&
+// Statement: lua_function_string_&
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

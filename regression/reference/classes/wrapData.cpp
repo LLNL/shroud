@@ -24,11 +24,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  void allocate
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {
@@ -42,7 +42,7 @@ void CLA_Data_allocate(CLA_Data * self, int n)
 // ----------------------------------------
 // Function:  void free
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // start CLA_Data_free
 void CLA_Data_free(CLA_Data * self)
 {
@@ -56,7 +56,7 @@ void CLA_Data_free(CLA_Data * self)
 // ----------------------------------------
 // Function:  Data
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     f_ctor_shadow_scalar_capptr
+// Statement: f_ctor_shadow_scalar_capptr
 // start CLA_Data_ctor
 CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 {
@@ -72,7 +72,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 // ----------------------------------------
 // Function:  ~Data
 // Attrs:     +intent(dtor)
-// Exact:     f_dtor
+// Statement: f_dtor
 // start CLA_Data_dtor
 void CLA_Data_dtor(CLA_Data * self)
 {
@@ -88,7 +88,7 @@ void CLA_Data_dtor(CLA_Data * self)
 // ----------------------------------------
 // Function:  int get_nitems
 // Attrs:     +intent(getter)
-// Exact:     f_getter_native_scalar
+// Statement: f_getter_native_scalar
 // start CLA_Data_get_nitems
 int CLA_Data_get_nitems(CLA_Data * self)
 {
@@ -104,11 +104,11 @@ int CLA_Data_get_nitems(CLA_Data * self)
 // ----------------------------------------
 // Function:  void set_nitems
 // Attrs:     +intent(setter)
-// Exact:     f_setter
+// Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
-// Exact:     f_setter_native_scalar
+// Statement: f_setter_native_scalar
 // start CLA_Data_set_nitems
 void CLA_Data_set_nitems(CLA_Data * self, int val)
 {
@@ -124,7 +124,7 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 // ----------------------------------------
 // Function:  int * get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
-// Exact:     f_getter_native_*_cdesc_pointer
+// Statement: f_getter_native_*_cdesc_pointer
 // start CLA_Data_get_items_bufferify
 void CLA_Data_get_items_bufferify(CLA_Data * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
@@ -148,11 +148,11 @@ void CLA_Data_get_items_bufferify(CLA_Data * self,
 // ----------------------------------------
 // Function:  void set_items
 // Attrs:     +intent(setter)
-// Exact:     f_setter
+// Statement: f_setter
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
-// Exact:     f_setter_native_*
+// Statement: f_setter_native_*
 // start CLA_Data_set_items
 void CLA_Data_set_items(CLA_Data * self, int * val)
 {

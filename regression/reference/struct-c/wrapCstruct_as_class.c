@@ -19,7 +19,7 @@
 // ----------------------------------------
 // Function:  int get_x1
 // Attrs:     +intent(getter)
-// Exact:     f_getter_native_scalar
+// Statement: f_getter_native_scalar
 // start STR_Cstruct_as_class_get_x1
 int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 {
@@ -35,11 +35,11 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 // ----------------------------------------
 // Function:  void set_x1
 // Attrs:     +intent(setter)
-// Exact:     f_setter
+// Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
-// Exact:     f_setter_native_scalar
+// Statement: f_setter_native_scalar
 // start STR_Cstruct_as_class_set_x1
 void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 {
@@ -55,7 +55,7 @@ void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 // ----------------------------------------
 // Function:  int get_y1
 // Attrs:     +intent(getter)
-// Exact:     f_getter_native_scalar
+// Statement: f_getter_native_scalar
 // start STR_Cstruct_as_class_get_y1
 int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 {
@@ -71,11 +71,11 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 // ----------------------------------------
 // Function:  void set_y1
 // Attrs:     +intent(setter)
-// Exact:     f_setter
+// Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
-// Exact:     f_setter_native_scalar
+// Statement: f_setter_native_scalar
 // start STR_Cstruct_as_class_set_y1
 void STR_Cstruct_as_class_set_y1(STR_Cstruct_as_class * self, int val)
 {

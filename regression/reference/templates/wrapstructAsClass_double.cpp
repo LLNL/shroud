@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     f_ctor_shadow_scalar_capptr
+// Statement: f_ctor_shadow_scalar_capptr
 TEM_structAsClass_double * TEM_structAsClass_double_ctor(
     TEM_structAsClass_double * SHC_rv)
 {
@@ -38,11 +38,11 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 // ----------------------------------------
 // Function:  void set_npts
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
     int n)
 {
@@ -56,7 +56,7 @@ void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  int get_npts
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 {
     structAsClass<double> *SH_this =
@@ -71,11 +71,11 @@ int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 // ----------------------------------------
 // Function:  void set_value
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double v +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
     double v)
 {
@@ -90,7 +90,7 @@ void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
 // ----------------------------------------
 // Function:  double get_value
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 double TEM_structAsClass_double_get_value(
     TEM_structAsClass_double * self)
 {

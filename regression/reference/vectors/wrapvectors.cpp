@@ -42,11 +42,11 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_vector_&_buf_targ_native_scalar
+// Statement: f_in_vector_&_buf_targ_native_scalar
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 {
@@ -66,11 +66,11 @@ int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 // ----------------------------------------
 // Function:  void vector_iota_out
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_vector_&_cdesc_targ_native_scalar
+// Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -100,11 +100,11 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_vector_&_cdesc_targ_native_scalar
+// Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -136,11 +136,11 @@ long VEC_vector_iota_out_with_num_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num2
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_vector_&_cdesc_targ_native_scalar
+// Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -168,11 +168,11 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_out_alloc
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Exact:     f_out_vector_&_cdesc_allocatable_targ_native_scalar
+// Statement: f_out_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -200,11 +200,11 @@ void VEC_vector_iota_out_alloc_bufferify(
 // ----------------------------------------
 // Function:  void vector_iota_inout_alloc
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-// Exact:     f_inout_vector_&_cdesc_allocatable_targ_native_scalar
+// Statement: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     size_t SHT_arg_size, VEC_SHROUD_array *SHT_arg_cdesc)
@@ -229,11 +229,11 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // ----------------------------------------
 // Function:  void vector_increment
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
 // Attrs:     +api(cdesc)+intent(inout)
-// Exact:     f_inout_vector_&_cdesc_targ_native_scalar
+// Statement: f_inout_vector_&_cdesc_targ_native_scalar
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -260,11 +260,11 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // ----------------------------------------
 // Function:  void vector_iota_out_d
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_vector_&_cdesc_targ_native_scalar
+// Statement: f_out_vector_&_cdesc_targ_native_scalar
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -289,15 +289,15 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  int vector_of_pointers
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_vector_&_buf_targ_native_*
+// Statement: f_in_vector_&_buf_targ_native_*
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
     size_t SHT_arg1_size, int num)
 {
@@ -319,11 +319,11 @@ int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
 // ----------------------------------------
 // Function:  int vector_string_count
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_vector_&_buf_targ_string_scalar
+// Statement: f_in_vector_&_buf_targ_string_scalar
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len)
 {
@@ -355,11 +355,11 @@ int VEC_vector_string_count_bufferify(const char *arg,
 // ----------------------------------------
 // Function:  void vector_string_fill
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_vector_&_cdesc_targ_string_scalar
+// Statement: f_out_vector_&_cdesc_targ_string_scalar
 void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_string_fill_bufferify
@@ -373,11 +373,11 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  void vector_string_fill_allocatable
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
+// Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -399,11 +399,11 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // ----------------------------------------
 // Function:  void vector_string_fill_allocatable_len
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Exact:     f_out_vector_&_cdesc_allocatable_targ_string_scalar
+// Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -430,11 +430,11 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
+// Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
 {
@@ -455,15 +455,15 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Exact:     f_in_native_*
+// Statement: f_in_native_*
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value
 // Attrs:     +intent(in)
-// Exact:     f_in_native_scalar
+// Statement: f_in_native_scalar
 int VEC_returnDim2(int * arg, int len)
 {
     // splicer begin function.returnDim2

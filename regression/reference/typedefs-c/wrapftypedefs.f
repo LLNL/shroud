@@ -50,11 +50,11 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! start typefunc
     interface
         function typefunc(arg) &
@@ -71,11 +71,11 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  void typestruct
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_*
+    ! Statement: f_inout_struct_*
     ! start typestruct
     interface
         subroutine typestruct(arg1) &
@@ -90,11 +90,11 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     interface
         function return_bytes_for_index_type(arg) &
@@ -119,11 +119,11 @@ contains
     ! ----------------------------------------
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
             result(SHT_rv)
@@ -141,11 +141,11 @@ contains
     ! ----------------------------------------
     ! Function:  void typestruct
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_*
+    ! Statement: f_inout_struct_*
     ! start typestruct
     subroutine typestruct(arg1)
         type(struct1_rename), intent(INOUT) :: arg1
@@ -161,11 +161,11 @@ contains
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     function return_bytes_for_index_type(arg) &
             result(SHT_rv)

@@ -72,11 +72,11 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         function c_class1_new_0(arg1, SHT_rv) &
                 result(SHT_prv) &
@@ -94,15 +94,15 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         function c_class1_new_1(arg1, arg2, SHT_rv) &
                 result(SHT_prv) &
@@ -120,19 +120,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg3=2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         function c_class1_new_2(arg1, arg2, arg3, SHT_rv) &
                 result(SHT_prv) &
@@ -151,7 +151,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor_void_scalar
+    ! Statement: f_dtor_void_scalar
     interface
         subroutine c_class1_delete(self) &
                 bind(C, name="DEF_Class1_delete")
@@ -165,11 +165,11 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_class1_default_arguments_0(self, arg1) &
                 bind(C, name="DEF_Class1_DefaultArguments_0")
@@ -185,15 +185,15 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_class1_default_arguments_1(self, arg1, arg2) &
                 bind(C, name="DEF_Class1_DefaultArguments_1")
@@ -209,19 +209,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg3=2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_class1_default_arguments_2(self, arg1, arg2, arg3) &
                 bind(C, name="DEF_Class1_DefaultArguments_2")
@@ -239,7 +239,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field1
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     interface
         function c_class1_get_field1(self) &
                 result(SHT_rv) &
@@ -256,7 +256,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field2
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     interface
         function c_class1_get_field2(self) &
                 result(SHT_rv) &
@@ -273,7 +273,7 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  int get_field3
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     interface
         function c_class1_get_field3(self) &
                 result(SHT_rv) &
@@ -290,11 +290,11 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_nelems(num_elems) &
                 bind(C, name="DEF_apply_generic_nelems")
@@ -308,15 +308,15 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_nelems_offset(num_elems, offset) &
                 bind(C, name="DEF_apply_generic_nelems_offset")
@@ -330,19 +330,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_nelems_offset_stride(num_elems, &
                 offset, stride) &
@@ -360,15 +360,15 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_type_nelems(type, num_elems) &
                 bind(C, name="DEF_apply_generic_type_nelems")
@@ -385,19 +385,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_type_nelems_offset(type, num_elems, &
                 offset) &
@@ -415,23 +415,23 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_generic_type_nelems_offset_stride(type, &
                 num_elems, offset, stride) &
@@ -449,19 +449,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_require_0(num_elems, offset, stride) &
                 bind(C, name="DEF_apply_require_0")
@@ -476,23 +476,23 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_require_1(type, num_elems, offset, stride) &
                 bind(C, name="DEF_apply_require_1")
@@ -508,19 +508,19 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_optional_0(num_elems, offset, stride) &
                 bind(C, name="DEF_apply_optional_0")
@@ -536,23 +536,23 @@ module defaultarg_mod
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine_void_scalar
+    ! Statement: f_subroutine_void_scalar
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     interface
         subroutine c_apply_optional_1(type, num_elems, offset, stride) &
                 bind(C, name="DEF_apply_optional_1")
@@ -614,11 +614,11 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods with Class constructor.
     !! Creates a generic interface.
@@ -638,15 +638,15 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods with Class constructor.
     !! Creates a generic interface.
@@ -666,19 +666,19 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 +name(new)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg3=2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods with Class constructor.
     !! Creates a generic interface.
@@ -699,7 +699,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
+    ! Statement: f_dtor
     subroutine class1_delete(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
@@ -711,11 +711,11 @@ contains
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods within a Class.
     !! Creates a generic interface and generic type-bound methods.
@@ -733,15 +733,15 @@ contains
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods within a Class.
     !! Creates a generic interface and generic type-bound methods.
@@ -759,19 +759,19 @@ contains
     ! ----------------------------------------
     ! Function:  void DefaultArguments
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg3=2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     !>
     !! Test default parameter methods within a Class.
     !! Creates a generic interface and generic type-bound methods.
@@ -791,7 +791,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field1
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     function class1_get_field1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -806,7 +806,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field2
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     function class1_get_field2(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -821,7 +821,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_field3
     ! Attrs:     +intent(getter)
-    ! Exact:     f_getter_native_scalar
+    ! Statement: f_getter_native_scalar
     function class1_get_field3(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -862,11 +862,11 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_nelems(num_elems)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         ! splicer begin function.apply_generic_nelems
@@ -878,15 +878,15 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_nelems_offset(num_elems, offset)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
@@ -898,19 +898,19 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_nelems_offset_stride(num_elems, offset, &
             stride)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
@@ -927,15 +927,15 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_type_nelems(type, num_elems)
         integer(type_id), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
@@ -950,19 +950,19 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_type_nelems_offset(type, num_elems, offset)
         integer(type_id), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
@@ -977,23 +977,23 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_generic_type_nelems_offset_stride(type, num_elems, &
             offset, stride)
         integer(type_id), value, intent(IN) :: type
@@ -1010,19 +1010,19 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_require_0(num_elems, offset, stride)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
@@ -1035,23 +1035,23 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_require
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_require_1(type, num_elems, offset, stride)
         integer(type_id), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
@@ -1065,19 +1065,19 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_optional_0(num_elems, offset, stride)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN), optional :: offset
@@ -1103,23 +1103,23 @@ contains
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  TypeID type +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType num_elems +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType offset=0 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType stride=1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
+    ! Statement: f_in_native_scalar
     subroutine apply_optional_1(type, num_elems, offset, stride)
         integer(type_id), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems

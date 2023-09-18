@@ -33,7 +33,7 @@
 // ----------------------------------------
 // Function:  void worker4
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 static char PY_worker4__doc__[] =
 "documentation"
 ;

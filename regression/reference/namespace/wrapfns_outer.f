@@ -32,7 +32,7 @@ module ns_outer_mod
         ! ----------------------------------------
         ! Function:  void One
         ! Attrs:     +intent(subroutine)
-        ! Exact:     f_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine one() &
                 bind(C, name="NS_outer_One")
             implicit none
@@ -49,7 +49,7 @@ contains
     ! ----------------------------------------
     ! Function:  void One
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
+    ! Statement: f_subroutine
     subroutine one()
         ! splicer begin namespace.outer.function.one
         call c_one()

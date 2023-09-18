@@ -38,11 +38,11 @@ PyArray_Descr *PY_Struct1Rename_array_descr;
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_typefunc__doc__[] =
 "documentation"
 ;
@@ -76,11 +76,11 @@ PY_typefunc(
 // ----------------------------------------
 // Function:  void typestruct
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  Struct1Rename * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_struct_*_list
+// Statement: py_inout_struct_*_list
 static char PY_typestruct__doc__[] =
 "documentation"
 ;

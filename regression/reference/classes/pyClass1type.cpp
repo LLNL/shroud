@@ -40,7 +40,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 static int
 PY_Class1_tp_init_default(
   PY_Class1 *self,
@@ -61,11 +61,11 @@ PY_Class1_tp_init_default(
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static int
 PY_Class1_tp_init_flag(
   PY_Class1 *self,
@@ -95,7 +95,7 @@ PY_Class1_tp_init_flag(
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static char PY_Method1__doc__[] =
 "documentation"
 ;
@@ -125,11 +125,11 @@ PY_Method1(
 // ----------------------------------------
 // Function:  bool equivalent
 // Attrs:     +intent(function)
-// Exact:     py_function_bool_scalar
+// Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
-// Exact:     py_in_shadow_&
+// Statement: py_in_shadow_&
 static char PY_equivalent__doc__[] =
 "documentation"
 ;
@@ -175,7 +175,7 @@ fail:
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     py_function_shadow_*
+// Statement: py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -204,7 +204,7 @@ PY_getclass3(
 // ----------------------------------------
 // Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -235,11 +235,11 @@ PY_getName(
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -311,7 +311,7 @@ PY_Class1_tp_init(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 
-// Exact:     py_descr_native_scalar
+// Statement: py_descr_native_scalar
 static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -319,7 +319,7 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native_scalar
+// Statement: py_descr_native_scalar
 static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -327,7 +327,7 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native_scalar
+// Statement: py_descr_native_scalar
 static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

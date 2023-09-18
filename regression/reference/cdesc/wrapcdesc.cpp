@@ -41,11 +41,11 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  void Rank2In
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Exact:     f_in_native_*
+// Statement: f_in_native_*
 void CDE_Rank2In(int * arg)
 {
     // splicer begin function.Rank2In
@@ -57,11 +57,11 @@ void CDE_Rank2In(int * arg)
 // ----------------------------------------
 // Function:  void Rank2In
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +api(cdesc)+intent(in)
-// Exact:     f_in_native_*_cdesc
+// Statement: f_in_native_*_cdesc
 void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In_bufferify
@@ -86,15 +86,15 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Function:  void GetScalar1
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
-// Exact:     f_in_string_&
+// Statement: f_in_string_&
 // ----------------------------------------
 // Argument:  void * value +cdesc+intent(in)+rank(0)+value
 // Attrs:     +intent(in)
-// Exact:     f_in_void_*
+// Statement: f_in_void_*
 void CDE_GetScalar1(char * name, void * value)
 {
     // splicer begin function.GetScalar1
@@ -119,15 +119,15 @@ void CDE_GetScalar1(char * name, void * value)
 // ----------------------------------------
 // Function:  void GetScalar1
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_native_*_cdesc
+// Statement: f_out_native_*_cdesc
 void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
@@ -170,15 +170,15 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  void GetScalar1
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     f_out_native_*_cdesc
+// Statement: f_out_native_*_cdesc
 void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
@@ -212,7 +212,7 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  int getData
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 int CDE_getData_int(void)
 {
     // splicer begin function.getData_int
@@ -228,7 +228,7 @@ int CDE_getData_int(void)
 // ----------------------------------------
 // Function:  double getData
 // Attrs:     +intent(function)
-// Exact:     f_function_native_scalar
+// Statement: f_function_native_scalar
 double CDE_getData_double(void)
 {
     // splicer begin function.getData_double
@@ -248,15 +248,15 @@ double CDE_getData_double(void)
 // ----------------------------------------
 // Function:  void GetScalar2
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Exact:     f_out_native_*
+// Statement: f_out_native_*
 void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
     int * value)
 {
@@ -276,15 +276,15 @@ void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  void GetScalar2
 // Attrs:     +intent(subroutine)
-// Exact:     f_subroutine
+// Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     f_in_string_&_buf
+// Statement: f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +intent(out)
 // Attrs:     +intent(out)
-// Exact:     f_out_native_*
+// Statement: f_out_native_*
 void CDE_GetScalar2_1_bufferify(char *name, int SHT_name_len,
     double * value)
 {

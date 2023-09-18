@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ~Class1
 // Attrs:     +intent(dtor)
-// Exact:     f_dtor
+// Statement: f_dtor
 void OWN_Class1_dtor(OWN_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -38,7 +38,7 @@ void OWN_Class1_dtor(OWN_Class1 * self)
 // ----------------------------------------
 // Function:  int get_flag
 // Attrs:     +intent(getter)
-// Exact:     f_getter_native_scalar
+// Statement: f_getter_native_scalar
 int OWN_Class1_get_flag(OWN_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);

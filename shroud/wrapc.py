@@ -1049,8 +1049,7 @@ class Wrapc(util.WrapperMixin):
                 stmts_comments.append("// Index:     {}".format(node._function_index))
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("// Function:  " + c_decl)
-            self.document_stmts(
-                stmts_comments, ast, result_blk.name)
+            self.document_stmts(stmts_comments, ast, result_blk.name)
         
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).

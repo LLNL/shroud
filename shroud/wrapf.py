@@ -1262,8 +1262,7 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
-            self.document_stmts(
-                stmts_comments, ast, c_result_blk.name)
+            self.document_stmts(stmts_comments, ast, c_result_blk.name)
         self.name_temp_vars_c(fmt_func.C_result, c_result_blk, fmt_result)
 
         if c_result_blk.c_return_type == "void":
@@ -1318,9 +1317,7 @@ rv = .false.
                     "! ----------------------------------------")
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
-                self.document_stmts(
-                    stmts_comments, arg, statements.compute_name(c_stmts),
-                    c_intent_blk.name)
+                self.document_stmts(stmts_comments, arg, c_intent_blk.name)
             self.name_temp_vars_c(arg_name, c_intent_blk, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1765,8 +1762,7 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
-            self.document_stmts(
-                stmts_comments, ast, f_result_blk.name)
+            self.document_stmts(stmts_comments, ast, f_result_blk.name)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
