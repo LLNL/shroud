@@ -103,8 +103,7 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
+                        "stmt": "py_function_string_&",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -424,8 +423,7 @@
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
-                                            "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_scalar_numpy",
                                             "value_var": "SHValue_dfield"
                                         }
                                     },
@@ -447,8 +445,7 @@
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
-                                            "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_scalar_numpy",
                                             "value_var": "SHValue_ifield"
                                         }
                                     }
@@ -480,8 +477,7 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt0": "py_default",
-                                        "stmt1": "py_default",
+                                        "stmt": "py_default",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     }

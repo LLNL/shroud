@@ -797,14 +797,13 @@ return 1;""",
                 fmt.c_var_non_const = wformat(
                     "{cast_const}{c_type} *{cast1}{c_var}{cast2}", fmt)
 
-        stmt0 = statements.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
         output = fileinfo.GetSetBody
         ########################################
         # getter
         output.append("")
         if options.debug:
-            self.document_stmts(output, ast, stmt0, intent_blk.name)
+            self.document_stmts(output, ast, intent_blk.name)
         append_format(
             output,
             "static PyObject *{PY_getter}("
@@ -839,7 +838,7 @@ return 1;""",
 
             output.append("")
             if options.debug:
-                self.document_stmts(output, ast, stmt0, intent_blk.name)
+                self.document_stmts(output, ast, intent_blk.name)
             append_format(
                 output,
                 "static int {PY_setter}("
@@ -1203,16 +1202,14 @@ return 1;""",
         else:
             fmt_result = fmt
             result_blk = default_scope
-            fmt_result.stmt0 = result_blk.name
-            fmt_result.stmt1 = result_blk.name
+            fmt_result.stmt = result_blk.name
         stmts_comments = []
         if options.debug:
             stmts_comments.append(
                 "// ----------------------------------------")
             stmts_comments.append(
                 "// Function:  " + ast.gen_decl(params=None))
-            self.document_stmts(
-                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+            self.document_stmts(stmts_comments, ast, result_blk.name)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
         if result_blk.fmtdict is not None:
             for key, value in result_blk.fmtdict.items():
@@ -1365,12 +1362,10 @@ return 1;""",
                 if intent_blk is None:
                     intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
-                fmt_arg.stmt0 = statements.compute_name(stmts)
-                fmt_arg.stmt1 = intent_blk.name
+                fmt_arg.stmt = intent_blk.name
                 # Add some debug comments to function.
                 if options.debug:
-                    self.document_stmts(
-                        stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
+                    self.document_stmts(stmts_comments, arg, intent_blk.name)
             elif options.debug:
                 stmts_comments.append(
                     self.comment + " Exact:     " + intent_blk.name)
@@ -2023,8 +2018,7 @@ return 1;""",
         if is_ctor:
             # Code added by create_ctor_function.
             result_blk = default_scope
-            fmt_result.stmt0 = result_blk.name
-            fmt_result.stmt1 = result_blk.name
+            fmt_result.stmt = result_blk.name
         elif result_typemap.base == "struct":
             stmts = ["py", "function", sgroup, options.PY_struct_arg]
         elif result_typemap.base == "vector":
@@ -2043,9 +2037,7 @@ return 1;""",
             stmts = ["py", "function", sgroup, spointer]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
-            # Useful for debugging.  Requested and found path.
-            fmt_result.stmt0 = statements.compute_name(stmts)
-            fmt_result.stmt1 = result_blk.name
+            fmt_result.stmt = result_blk.name
                 
         return fmt_result, result_blk
 

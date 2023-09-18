@@ -548,16 +548,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             stmts = ["lua", intent, sgroup, spointer]
             if intent_blk is None:
                 intent_blk = lookup_stmts(stmts)
-            # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = statements.compute_name(stmts)
-            fmt_arg.stmt1 = intent_blk.name
+            fmt_arg.stmt = intent_blk.name
             # Add some debug comments to function.
             if node.options.debug:
                 stmts_comments_args.append(
                     "// ----------------------------------------")
                 stmts_comments_args.append("// Argument:  " + arg.gen_decl())
-                self.document_stmts(
-                    stmts_comments_args, arg, fmt_arg.stmt0, fmt_arg.stmt1)
+                self.document_stmts(stmts_comments_args, arg, intent_blk.name)
             
             if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
@@ -608,15 +605,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sgroup = result_typemap.sgroup
         stmts = ["lua", sintent, sgroup, spointer]
         result_blk = lookup_stmts(stmts)
-        fmt_result.stmt0 = statements.compute_name(stmts)
-        fmt_result.stmt1 = result_blk.name
+        fmt_result.stmt = result_blk.name
         if node.options.debug:
             stmts_comments.append(
                 "// ----------------------------------------")
             stmts_comments.append(
                 "// Function:  " + ast.gen_decl(params=None))
-            self.document_stmts(
-                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
+            self.document_stmts(stmts_comments, ast, result_blk.name)
             stmts_comments.extend(stmts_comments_args)
             
 

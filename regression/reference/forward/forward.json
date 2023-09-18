@@ -157,8 +157,7 @@
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_var": "SHCXX_rv",
-                                "stmt0": "lua_ctor_scalar",
-                                "stmt1": "lua_ctor_scalar"
+                                "stmt": "lua_ctor_scalar"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -177,8 +176,7 @@
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_default",
-                                "stmt1": "py_default",
+                                "stmt": "py_default",
                                 "value_var": "SHValue_rv",
                                 "vargs": "SHCXX_rv"
                             }
@@ -245,8 +243,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtl": {
-                                "stmt0": "lua_dtor_scalar",
-                                "stmt1": "lua_dtor_scalar"
+                                "stmt": "lua_dtor_scalar"
                             }
                         }
                     },
@@ -340,8 +337,7 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<tutorial::Class1 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
-                                    "stmt0": "lua_in_shadow_*",
-                                    "stmt1": "lua_in_shadow_*"
+                                    "stmt": "lua_in_shadow_*"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PY_Class1_Type",
@@ -361,8 +357,7 @@
                                     "py_object": "PyObject",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_in_shadow_*",
-                                    "stmt1": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow_*",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -398,8 +393,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtl": {
-                                "stmt0": "lua_subroutine",
-                                "stmt1": "lua_subroutine"
+                                "stmt": "lua_subroutine"
                             }
                         }
                     },
@@ -493,8 +487,7 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<forward::Class3 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
-                                    "stmt0": "lua_in_shadow_*",
-                                    "stmt1": "lua_in_shadow_*"
+                                    "stmt": "lua_in_shadow_*"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
@@ -516,8 +509,7 @@
                                     "py_object": "PY_Class3",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_in_shadow_*",
-                                    "stmt1": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow_*",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -553,8 +545,7 @@
                         },
                         "zz_fmtresult": {
                             "fmtl": {
-                                "stmt0": "lua_subroutine",
-                                "stmt1": "lua_subroutine"
+                                "stmt": "lua_subroutine"
                             }
                         }
                     }
