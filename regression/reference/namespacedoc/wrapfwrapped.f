@@ -61,8 +61,6 @@ contains
     ! Function:  void worker3
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine inner3_worker3()
         ! splicer begin function.worker3
         call c_inner3_worker3()
@@ -74,8 +72,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     subroutine worker()
@@ -92,8 +88,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker4
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     subroutine inner4_worker4()

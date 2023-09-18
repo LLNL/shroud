@@ -223,8 +223,6 @@ contains
     ! Function:  vector
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
-    ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
     function vector_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -239,8 +237,6 @@ contains
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
-    ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
         ! splicer begin namespace.std.class.vector_int.method.dtor
@@ -253,12 +249,8 @@ contains
     ! Function:  void push_back
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int & value +intent(in)
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_&
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_&
     subroutine vector_int_push_back(obj, value)
@@ -275,12 +267,8 @@ contains
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_&_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function vector_int_at(obj, n) &
@@ -326,8 +314,6 @@ contains
     ! Function:  vector
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
-    ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -342,8 +328,6 @@ contains
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
-    ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj
         ! splicer begin namespace.std.class.vector_double.method.dtor
@@ -356,12 +340,8 @@ contains
     ! Function:  void push_back
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const double & value +intent(in)
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_&
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_&
     subroutine vector_double_push_back(obj, value)
@@ -378,12 +358,8 @@ contains
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_&_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_&_pointer
     ! ----------------------------------------
     ! Argument:  size_type n +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function vector_double_at(obj, n) &

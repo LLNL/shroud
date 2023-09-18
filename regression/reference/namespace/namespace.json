@@ -78,8 +78,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_allocatable",
-                        "stmt1": "f_function_string_&_allocatable"
+                        "stmtc": "f_function_string_&_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -187,8 +186,7 @@
                         "hnamefunc1": "ShroudStrToArray",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_cdesc_allocatable",
-                        "stmt1": "f_function_string_&_cdesc_allocatable"
+                        "stmtc": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -202,10 +200,7 @@
                         "hnamefunc0": "NS_SHROUD_copy_string_and_free",
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_cdesc_allocatable",
-                        "stmt1": "f_function_string_&_cdesc_allocatable",
-                        "stmtc0": "f_function_string_&_cdesc_allocatable",
-                        "stmtc1": "f_function_string_&_cdesc_allocatable"
+                        "stmtf": "f_function_string_&_cdesc_allocatable"
                     }
                 }
             },
@@ -252,10 +247,8 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_One",
                     "function_name": "One",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             }
         ],
@@ -640,10 +633,8 @@
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_One",
                             "function_name": "One",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],

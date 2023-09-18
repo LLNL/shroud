@@ -189,8 +189,6 @@ contains
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_bool_scalar
     function default_ptr_is_null_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -204,12 +202,8 @@ contains
     ! Function:  bool defaultPtrIsNULL
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     function default_ptr_is_null_1(data) &
@@ -227,24 +221,16 @@ contains
     ! Function:  void defaultArgsInOut
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int in1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     subroutine default_args_in_out_0(in1, out1, out2)
@@ -261,30 +247,20 @@ contains
     ! Function:  void defaultArgsInOut
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int in1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  bool flag=false +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     subroutine default_args_in_out_1(in1, out1, out2, flag)
@@ -305,12 +281,8 @@ contains
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
-    ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     f_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int32_t idx +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -334,12 +306,8 @@ contains
     ! Function:  const std::string & getGroupName +len(30)
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
-    ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     f_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int64_t idx +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>

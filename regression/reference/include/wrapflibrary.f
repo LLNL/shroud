@@ -85,12 +85,8 @@ contains
     ! Function:  void method1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_unknown_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_unknown_scalar
     subroutine class2_method1(obj, comm)
@@ -103,12 +99,8 @@ contains
     ! Function:  void method2
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_shadow_*
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_shadow_*
     subroutine class2_method2(obj, c2)

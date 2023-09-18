@@ -80,8 +80,6 @@ contains
     ! Function:  void Member1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine class1_member1(obj)
         class(class1) :: obj
         ! splicer begin namespace.CAPI.class.Class1.method.member1
@@ -117,8 +115,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Worker1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     subroutine worker1()

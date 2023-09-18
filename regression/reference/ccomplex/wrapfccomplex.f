@@ -104,12 +104,8 @@ contains
     ! Function:  void acceptFloatComplexInoutPtr
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float complex * arg1
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     subroutine accept_float_complex_inout_ptr(arg1)
@@ -127,12 +123,8 @@ contains
     ! Function:  void acceptDoubleComplexInoutPtr
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double complex * arg1
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_native_*
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
     subroutine accept_double_complex_inout_ptr(arg1)
@@ -150,12 +142,8 @@ contains
     ! Function:  void acceptDoubleComplexOutPtr
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     subroutine accept_double_complex_out_ptr(arg1)
@@ -173,18 +161,12 @@ contains
     ! Function:  void acceptDoubleComplexOutPtrFlag
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     !>

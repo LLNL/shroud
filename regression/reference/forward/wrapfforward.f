@@ -182,8 +182,6 @@ contains
     ! Function:  Class2
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     f_ctor_shadow_scalar_capptr
-    ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -198,8 +196,6 @@ contains
     ! Function:  ~Class2
     ! Attrs:     +intent(dtor)
     ! Exact:     f_dtor
-    ! Attrs:     +intent(dtor)
-    ! Exact:     f_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor
@@ -211,12 +207,8 @@ contains
     ! Function:  void func1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     subroutine class2_func1(obj, arg)
@@ -232,12 +224,8 @@ contains
     ! Function:  void acceptClass3
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_shadow_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
@@ -278,12 +266,8 @@ contains
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_*
     function pass_struct1(arg) &

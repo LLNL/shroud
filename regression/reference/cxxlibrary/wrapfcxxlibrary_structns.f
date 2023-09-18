@@ -107,12 +107,8 @@ contains
     ! Function:  int passStructByReference
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     !>
@@ -135,12 +131,8 @@ contains
     ! Function:  int passStructByReferenceIn
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_struct_&
     ! Attrs:     +intent(in)
     ! Exact:     f_in_struct_&
     !>
@@ -163,12 +155,8 @@ contains
     ! Function:  void passStructByReferenceInout
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(inout)
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_&
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_struct_&
     subroutine pass_struct_by_reference_inout(arg)
@@ -185,12 +173,8 @@ contains
     ! Function:  void passStructByReferenceOut
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_struct_&
     ! Attrs:     +intent(out)
     ! Exact:     f_out_struct_&
     subroutine pass_struct_by_reference_out(arg)

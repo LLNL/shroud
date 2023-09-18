@@ -64,12 +64,8 @@ contains
     ! Function:  void method1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  CustomType arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine class1_method1(obj, arg1)

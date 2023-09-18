@@ -137,8 +137,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor_shadow_scalar_capptr",
-                                "stmt1": "f_ctor_shadow_scalar_capptr"
+                                "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
                                 "C_result": "SHT_prv",
@@ -151,10 +150,7 @@
                                 "f_var": "SHT_rv",
                                 "i_module_line": "--import--:FOR_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor_shadow_scalar_capptr",
-                                "stmt1": "f_ctor_shadow_scalar_capptr",
-                                "stmtc0": "f_ctor_shadow_scalar_capptr",
-                                "stmtc1": "f_ctor_shadow_scalar_capptr"
+                                "stmtf": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -244,10 +240,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
-                            "stmt0": "f_dtor",
-                            "stmt1": "f_dtor",
-                            "stmtc0": "f_dtor",
-                            "stmtc1": "f_dtor"
+                            "stmtc": "f_dtor",
+                            "stmtf": "f_dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -322,8 +316,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_in_shadow_*"
+                                    "stmtc": "f_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -334,10 +327,7 @@
                                     "f_var": "arg",
                                     "i_module_line": "tutorial_mod:SHROUD_class1_capsule",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_in_shadow_*",
-                                    "stmtc0": "f_in_shadow_*",
-                                    "stmtc1": "f_in_shadow_*"
+                                    "stmtf": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -403,10 +393,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -481,8 +469,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_in_shadow_*"
+                                    "stmtc": "f_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -493,10 +480,7 @@
                                     "f_var": "arg",
                                     "i_module_line": "--import--:FOR_SHROUD_capsule_data",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_in_shadow_*",
-                                    "stmtc0": "f_in_shadow_*",
-                                    "stmtc1": "f_in_shadow_*"
+                                    "stmtf": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -564,10 +548,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -700,8 +682,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_struct_*",
-                            "stmt1": "f_in_struct_*"
+                            "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -711,10 +692,7 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_struct_*",
-                            "stmt1": "f_in_struct_*",
-                            "stmtc0": "f_in_struct_*",
-                            "stmtc1": "f_in_struct_*"
+                            "stmtf": "f_in_struct_*"
                         }
                     }
                 },
@@ -754,8 +732,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -766,10 +743,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             }

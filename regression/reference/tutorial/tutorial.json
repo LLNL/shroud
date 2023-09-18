@@ -128,10 +128,8 @@
                     "LUA_name_impl": "l_NoReturnNoArguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
                     "function_name": "NoReturnNoArguments",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -217,8 +215,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -228,10 +225,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -283,8 +277,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -294,10 +287,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -374,8 +364,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -386,10 +375,7 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv",
@@ -699,8 +685,7 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf"
+                            "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -711,10 +696,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf",
-                            "stmtc0": "f_in_string_&_buf",
-                            "stmtc1": "f_in_string_&_buf"
+                            "stmtf": "f_in_string_&_buf"
                         }
                     },
                     "arg2": {
@@ -735,8 +717,7 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf"
+                            "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -747,10 +728,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf",
-                            "stmtc0": "f_in_string_&_buf",
-                            "stmtc1": "f_in_string_&_buf"
+                            "stmtf": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -793,8 +771,7 @@
                         "hnamefunc1": "copy_string",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "f_function_string_scalar_cdesc_allocatable"
+                        "stmtc": "f_function_string_scalar_cdesc_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -808,10 +785,7 @@
                         "hnamefunc0": "TUT_SHROUD_copy_string_and_free",
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmt1": "f_function_string_scalar_cdesc_allocatable",
-                        "stmtc0": "f_function_string_scalar_cdesc_allocatable",
-                        "stmtc1": "f_function_string_scalar_cdesc_allocatable"
+                        "stmtf": "f_function_string_scalar_cdesc_allocatable"
                     }
                 }
             },
@@ -887,8 +861,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -899,10 +872,7 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -978,8 +948,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -989,10 +958,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -1033,8 +999,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1045,10 +1010,7 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -1148,8 +1110,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -1159,10 +1120,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1214,8 +1172,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt0": "f_in_bool_scalar",
-                            "stmt1": "f_in_bool_scalar"
+                            "stmtc": "f_in_bool_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -1226,10 +1183,7 @@
                             "f_type": "logical",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt0": "f_in_bool_scalar",
-                            "stmt1": "f_in_bool_scalar",
-                            "stmtc0": "f_in_bool_scalar",
-                            "stmtc1": "f_in_bool_scalar"
+                            "stmtf": "f_in_bool_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -1310,8 +1264,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1322,10 +1275,7 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv",
@@ -1423,8 +1373,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&",
-                            "stmt1": "f_in_string_&"
+                            "stmtc": "f_in_string_&"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1487,8 +1436,7 @@
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine"
+                    "stmtc": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -1572,8 +1520,7 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf"
+                            "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1584,10 +1531,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf",
-                            "stmtc0": "f_in_string_&_buf",
-                            "stmtc1": "f_in_string_&_buf"
+                            "stmtf": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -1611,10 +1555,8 @@
                     "f_c_suffix": "_bufferify",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
@@ -1682,8 +1624,7 @@
                             "cxx_var": "indx",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "indx",
@@ -1693,10 +1634,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "indx",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1753,10 +1691,8 @@
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_index",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -1937,8 +1873,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1948,10 +1883,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2011,10 +1943,8 @@
                     "LUA_name_impl": "l_TemplateArgument",
                     "PY_name_impl": "PY_TemplateArgument_int",
                     "function_name": "TemplateArgument",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine",
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine",
                     "template_suffix": "_int"
                 },
                 "zz_fmtresult": {
@@ -2122,8 +2052,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2133,10 +2062,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2193,10 +2119,8 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_TemplateArgument_double",
                     "function_name": "TemplateArgument",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine",
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine",
                     "template_suffix": "_double"
                 },
                 "zz_fmtresult": {
@@ -2368,8 +2292,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2380,10 +2303,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -2489,8 +2409,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2501,10 +2420,7 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -2557,10 +2473,8 @@
                     "PY_name_impl": "PY_FortranGenericOverloaded_0",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_0",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2734,8 +2648,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -2796,8 +2709,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&",
-                            "stmt1": "f_in_string_&"
+                            "stmtc": "f_in_string_&"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -2857,8 +2769,7 @@
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine"
+                    "stmtc": "f_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -3027,8 +2938,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -3038,10 +2948,7 @@
                             "f_type": "real(C_FLOAT)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "name": {
@@ -3062,8 +2969,7 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf"
+                            "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -3074,10 +2980,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf",
-                            "stmtc0": "f_in_string_&_buf",
-                            "stmtc1": "f_in_string_&_buf"
+                            "stmtf": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -3101,10 +3004,8 @@
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
@@ -3267,8 +3168,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
@@ -3278,10 +3178,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "name": {
@@ -3302,8 +3199,7 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf"
+                            "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -3314,10 +3210,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_in_string_&_buf",
-                            "stmtc0": "f_in_string_&_buf",
-                            "stmtc1": "f_in_string_&_buf"
+                            "stmtf": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -3341,10 +3234,8 @@
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
@@ -3416,8 +3307,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -3427,10 +3317,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3471,8 +3358,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3483,10 +3369,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -3576,8 +3459,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -3587,10 +3469,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
@@ -3609,8 +3488,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "offset",
@@ -3620,10 +3498,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3664,8 +3539,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3676,10 +3550,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -3793,8 +3664,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -3804,10 +3674,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3859,8 +3726,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "offset",
@@ -3870,10 +3736,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -3925,8 +3788,7 @@
                             "cxx_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "stride",
@@ -3936,10 +3798,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "stride",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -4018,8 +3877,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4030,10 +3888,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv",
@@ -4144,8 +3999,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -4155,10 +4009,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
@@ -4177,8 +4028,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "type",
@@ -4188,10 +4038,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -4232,8 +4079,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4244,10 +4090,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -4348,8 +4191,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -4359,10 +4201,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
@@ -4381,8 +4220,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "offset",
@@ -4392,10 +4230,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
@@ -4414,8 +4249,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "type",
@@ -4425,10 +4259,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -4469,8 +4300,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4481,10 +4311,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -4609,8 +4436,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -4620,10 +4446,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -4675,8 +4498,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "offset",
@@ -4686,10 +4508,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -4741,8 +4560,7 @@
                             "cxx_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "stride",
@@ -4752,10 +4570,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "stride",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 4,
@@ -4807,8 +4622,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "type",
@@ -4818,10 +4632,7 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -4897,8 +4708,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4909,10 +4719,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv",
@@ -5004,8 +4811,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -5016,10 +4822,7 @@
                             "f_var": "arg",
                             "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5096,8 +4899,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -5109,10 +4911,7 @@
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:type_id",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv",
@@ -5206,8 +5005,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -5218,10 +5016,7 @@
                             "f_var": "arg",
                             "i_module_line": "--import--:enum_type_id",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5302,8 +5097,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -5315,10 +5109,7 @@
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:enum_type_id",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)",
@@ -5412,8 +5203,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -5423,10 +5213,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5507,8 +5294,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -5519,10 +5305,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     },
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)",
@@ -5645,8 +5428,7 @@
                             "cxx_var": "max",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_&",
-                            "stmt1": "f_out_native_&"
+                            "stmtc": "f_out_native_&"
                         },
                         "fmtf": {
                             "F_C_var": "max",
@@ -5656,10 +5438,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "max",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_&",
-                            "stmt1": "f_out_native_&",
-                            "stmtc0": "f_out_native_&",
-                            "stmtc1": "f_out_native_&"
+                            "stmtf": "f_out_native_&"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5698,8 +5477,7 @@
                             "cxx_var": "min",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_&",
-                            "stmt1": "f_out_native_&"
+                            "stmtc": "f_out_native_&"
                         },
                         "fmtf": {
                             "F_C_var": "min",
@@ -5709,10 +5487,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "min",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_&",
-                            "stmt1": "f_out_native_&",
-                            "stmtc0": "f_out_native_&",
-                            "stmtc1": "f_out_native_&"
+                            "stmtf": "f_out_native_&"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5755,10 +5530,8 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_getMinMax",
                     "function_name": "getMinMax",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
@@ -5866,8 +5639,7 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "in",
@@ -5877,10 +5649,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "in",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "f_in_native_scalar",
-                            "stmtc1": "f_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     },
                     "incr": {
@@ -5899,8 +5668,7 @@
                             "cxx_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "incr",
@@ -5949,8 +5717,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -5961,10 +5728,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "f_function_native_scalar",
-                        "stmtc1": "f_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
@@ -6037,8 +5801,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_copy",
-                        "stmt1": "f_function_string_&_copy"
+                        "stmtc": "f_function_string_&_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6160,8 +5923,7 @@
                         "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy"
+                        "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6174,10 +5936,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "f_function_string_&_buf_copy",
-                        "stmtc1": "f_function_string_&_buf_copy"
+                        "stmtf": "f_function_string_&_buf_copy"
                     }
                 }
             }

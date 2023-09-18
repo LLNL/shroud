@@ -43,8 +43,6 @@ contains
     ! Function:  void worker
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine worker()
         ! splicer begin namespace.inner1.function.worker
         call c_worker()

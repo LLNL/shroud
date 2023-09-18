@@ -50,8 +50,6 @@ contains
     ! Function:  void One
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine one()
         ! splicer begin namespace.outer.function.one
         call c_one()

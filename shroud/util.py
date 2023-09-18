@@ -498,7 +498,7 @@ class WrapperMixin(object):
         ))
         return "".join(decl)
         
-    def document_stmts(self, output, ast, stmt0, stmt1):
+    def document_stmts(self, output, ast, stmt0, stmt1=None):
         """A comments to show which statements were used.
 
         Skip metaattributes which are objects.
@@ -507,7 +507,11 @@ class WrapperMixin(object):
         if dbg:
             output.append(self.comment + " Attrs:    " + dbg)
         
-        if stmt0 == stmt1:
+        if stmt1 is None:
+            output.append(
+#                self.comment + " Statement: " + stmt0)
+                self.comment + " Exact:     " + stmt0)
+        elif stmt0 == stmt1:
             output.append(
                 self.comment + " Exact:     " + stmt0)
         else:

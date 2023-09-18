@@ -73,8 +73,7 @@
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_unknown_scalar",
-                                    "stmt1": "f_in_unknown_scalar"
+                                    "stmtc": "f_in_unknown_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "comm",
@@ -84,10 +83,7 @@
                                     "f_type": "integer",
                                     "f_var": "comm",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_in_unknown_scalar",
-                                    "stmt1": "f_in_unknown_scalar",
-                                    "stmtc0": "f_in_unknown_scalar",
-                                    "stmtc1": "f_in_unknown_scalar"
+                                    "stmtf": "f_in_unknown_scalar"
                                 }
                             }
                         },
@@ -113,10 +109,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     },
                     {
@@ -180,8 +174,7 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_inout_shadow_*",
-                                    "stmt1": "f_inout_shadow_*"
+                                    "stmtc": "f_inout_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "c2",
@@ -192,10 +185,7 @@
                                     "f_var": "c2",
                                     "i_module_line": "--import--:LIB_SHROUD_capsule_data",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_inout_shadow_*",
-                                    "stmt1": "f_inout_shadow_*",
-                                    "stmtc0": "f_inout_shadow_*",
-                                    "stmtc1": "f_inout_shadow_*"
+                                    "stmtf": "f_inout_shadow_*"
                                 }
                             }
                         },
@@ -221,10 +211,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],
@@ -318,10 +306,8 @@
                                     "F_name_impl": "function1",
                                     "F_subprogram": "subroutine",
                                     "function_name": "function1",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "f_subroutine",
-                                    "stmtc1": "f_subroutine"
+                                    "stmtc": "f_subroutine",
+                                    "stmtf": "f_subroutine"
                                 }
                             }
                         ],
@@ -452,8 +438,7 @@
                                             "cxx_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt0": "f_in_native_scalar",
-                                            "stmt1": "f_in_native_scalar"
+                                            "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
                                             "F_C_var": "arg1",
@@ -464,10 +449,7 @@
                                             "f_var": "arg1",
                                             "i_module_line": "--import--:custom_type",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt0": "f_in_native_scalar",
-                                            "stmt1": "f_in_native_scalar",
-                                            "stmtc0": "f_in_native_scalar",
-                                            "stmtc1": "f_in_native_scalar"
+                                            "stmtf": "f_in_native_scalar"
                                         }
                                     }
                                 },
@@ -493,10 +475,8 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "f_subroutine",
-                                    "stmtc1": "f_subroutine"
+                                    "stmtc": "f_subroutine",
+                                    "stmtf": "f_subroutine"
                                 }
                             }
                         ],
@@ -610,10 +590,8 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "f_subroutine",
-                                    "stmtc1": "f_subroutine"
+                                    "stmtc": "f_subroutine",
+                                    "stmtf": "f_subroutine"
                                 }
                             }
                         ],
@@ -687,10 +665,8 @@
                             "F_name_impl": "outer_func",
                             "F_subprogram": "subroutine",
                             "function_name": "outer_func",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],
@@ -779,10 +755,8 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
-                                    "stmt0": "f_subroutine",
-                                    "stmt1": "f_subroutine",
-                                    "stmtc0": "f_subroutine",
-                                    "stmtc1": "f_subroutine"
+                                    "stmtc": "f_subroutine",
+                                    "stmtf": "f_subroutine"
                                 }
                             }
                         ],
@@ -856,10 +830,8 @@
                             "F_name_impl": "outer_func",
                             "F_subprogram": "subroutine",
                             "function_name": "outer_func",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],

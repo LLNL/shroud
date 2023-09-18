@@ -442,12 +442,8 @@ contains
     ! Function:  short short_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  short arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function short_func(arg1) &
@@ -467,12 +463,8 @@ contains
     ! Function:  int int_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function int_func(arg1) &
@@ -492,12 +484,8 @@ contains
     ! Function:  long long_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function long_func(arg1) &
@@ -517,12 +505,8 @@ contains
     ! Function:  long long long_long_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long long arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function long_long_func(arg1) &
@@ -542,12 +526,8 @@ contains
     ! Function:  short int short_int_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  short int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function short_int_func(arg1) &
@@ -567,12 +547,8 @@ contains
     ! Function:  long int long_int_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function long_int_func(arg1) &
@@ -592,12 +568,8 @@ contains
     ! Function:  long long int long_long_int_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long long int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function long_long_int_func(arg1) &
@@ -617,12 +589,8 @@ contains
     ! Function:  unsigned unsigned_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function unsigned_func(arg1) &
@@ -642,12 +610,8 @@ contains
     ! Function:  unsigned short ushort_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned short arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function ushort_func(arg1) &
@@ -667,12 +631,8 @@ contains
     ! Function:  unsigned int uint_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function uint_func(arg1) &
@@ -692,12 +652,8 @@ contains
     ! Function:  unsigned long ulong_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function ulong_func(arg1) &
@@ -717,12 +673,8 @@ contains
     ! Function:  unsigned long long ulong_long_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long long arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function ulong_long_func(arg1) &
@@ -742,12 +694,8 @@ contains
     ! Function:  unsigned long int ulong_int_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long int arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function ulong_int_func(arg1) &
@@ -767,12 +715,8 @@ contains
     ! Function:  int8_t int8_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int8_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function int8_func(arg1) &
@@ -792,12 +736,8 @@ contains
     ! Function:  int16_t int16_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int16_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function int16_func(arg1) &
@@ -817,12 +757,8 @@ contains
     ! Function:  int32_t int32_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int32_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function int32_func(arg1) &
@@ -842,12 +778,8 @@ contains
     ! Function:  int64_t int64_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int64_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function int64_func(arg1) &
@@ -867,12 +799,8 @@ contains
     ! Function:  uint8_t uint8_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint8_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function uint8_func(arg1) &
@@ -892,12 +820,8 @@ contains
     ! Function:  uint16_t uint16_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint16_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function uint16_func(arg1) &
@@ -917,12 +841,8 @@ contains
     ! Function:  uint32_t uint32_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint32_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function uint32_func(arg1) &
@@ -942,12 +862,8 @@ contains
     ! Function:  uint64_t uint64_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint64_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function uint64_func(arg1) &
@@ -967,12 +883,8 @@ contains
     ! Function:  size_t size_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function size_func(arg1) &
@@ -990,12 +902,8 @@ contains
     ! Function:  bool bool_func
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     function bool_func(arg) &
@@ -1014,12 +922,8 @@ contains
     ! Function:  bool returnBoolAndOthers
     ! Attrs:     +intent(function)
     ! Exact:     f_function_bool_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     !>

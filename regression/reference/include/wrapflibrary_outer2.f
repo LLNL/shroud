@@ -68,8 +68,6 @@ contains
     ! Function:  void method
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine class0_method(obj)
         class(class0) :: obj
         call c_class0_method(obj%cxxmem)
@@ -103,8 +101,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void outer_func
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     subroutine outer_func()

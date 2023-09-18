@@ -804,12 +804,8 @@ contains
     ! Function:  void UpdateAsFloat
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine update_as_float(arg)
@@ -824,12 +820,8 @@ contains
     ! Function:  void UpdateAsDouble
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine update_as_double(arg)
@@ -844,8 +836,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double GetGlobalDouble
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     function get_global_double() &
@@ -863,15 +853,11 @@ contains
     ! Function:  void GenericReal
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Argument:  double arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     !>
     !! \brief Single argument generic
     !!
@@ -891,12 +877,8 @@ contains
     ! Function:  void GenericReal
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -918,22 +900,16 @@ contains
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Argument:  long arg1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! Argument:  long arg2 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     !>
     !! \brief Two argument generic
     !!
@@ -956,18 +932,12 @@ contains
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg2 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -994,18 +964,12 @@ contains
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
     ! Attrs:     +api(cfi)+assumed-rank+intent(in)
     ! Exact:     f_in_native_*_cfi
-    ! Attrs:     +api(cfi)+assumed-rank+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -1029,30 +993,20 @@ contains
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_native_*
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -1075,30 +1029,20 @@ contains
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_*
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     f_inout_native_*_cfi
-    ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     f_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nto +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -1121,30 +1065,20 @@ contains
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
-    ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     f_inout_native_*_cfi
-    ! Attrs:     +api(cfi)+intent(inout)
-    ! Exact:     f_inout_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nto +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -1168,12 +1102,8 @@ contains
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     subroutine save_pointer_float1d(addr)
@@ -1195,12 +1125,8 @@ contains
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     subroutine save_pointer_float2d(addr)
@@ -1221,12 +1147,8 @@ contains
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     subroutine save_pointer2_float1d(addr)
@@ -1246,12 +1168,8 @@ contains
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Attrs:     +api(cfi)+intent(in)
-    ! Exact:     f_in_native_*_cfi
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     f_in_native_*_cfi
     subroutine save_pointer2_float2d(addr)
@@ -1272,24 +1190,16 @@ contains
     ! Function:  void GetPointer
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! ----------------------------------------
     ! Argument:  size_t * size +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*
     subroutine get_pointer(addr, type, size)
@@ -1309,12 +1219,8 @@ contains
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     subroutine get_pointer_as_pointer_float1d(addr)
@@ -1332,12 +1238,8 @@ contains
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cfi_pointer
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_cfi_pointer
     subroutine get_pointer_as_pointer_float2d(addr)
@@ -1351,8 +1253,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
-    ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     f_function_shadow_*_capptr
     function create_struct_as_class() &
@@ -1370,18 +1270,12 @@ contains
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_shadow_*
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function update_struct_as_class_int(arg, inew) &
@@ -1400,18 +1294,12 @@ contains
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
     ! Exact:     f_inout_shadow_*
-    ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function update_struct_as_class_long(arg, inew) &

@@ -771,8 +771,6 @@ contains
     ! Function:  void NoReturnNoArguments
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! start no_return_no_arguments
     subroutine no_return_no_arguments()
         ! splicer begin function.no_return_no_arguments
@@ -788,18 +786,12 @@ contains
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function pass_by_value(arg1, arg2) &
@@ -819,18 +811,12 @@ contains
     ! Function:  const std::string ConcatenateStrings
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     f_function_string_scalar_cdesc_allocatable
-    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_scalar_cdesc_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
-    ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
-    ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     !>
@@ -862,8 +848,6 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! start use_default_arguments
     function use_default_arguments() &
             result(SHT_rv)
@@ -880,12 +864,8 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! start use_default_arguments_arg1
@@ -904,18 +884,12 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  bool arg2=true +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_bool_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_bool_scalar
     ! start use_default_arguments_arg1_arg2
@@ -938,12 +912,8 @@ contains
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
-    ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
     subroutine overloaded_function_from_name(name)
@@ -961,12 +931,8 @@ contains
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int indx +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine overloaded_function_from_index(indx)
@@ -982,12 +948,8 @@ contains
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine template_argument_int(arg)
@@ -1003,12 +965,8 @@ contains
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine template_argument_double(arg)
@@ -1022,8 +980,6 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int TemplateReturn
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
     function template_return_int() &
@@ -1040,8 +996,6 @@ contains
     ! Function:  double TemplateReturn
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1055,8 +1009,6 @@ contains
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine fortran_generic_overloaded_0()
         ! splicer begin function.fortran_generic_overloaded_0
         call c_fortran_generic_overloaded_0()
@@ -1068,18 +1020,12 @@ contains
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
-    ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine fortran_generic_overloaded_1_float(name, arg2)
@@ -1099,18 +1045,12 @@ contains
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     f_in_string_&_buf
-    ! Attrs:     +api(buf)+intent(in)
-    ! Exact:     f_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     subroutine fortran_generic_overloaded_1_double(name, arg2)
@@ -1130,12 +1070,8 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_num(num) &
@@ -1153,18 +1089,12 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_num_offset(num, offset) &
@@ -1182,24 +1112,16 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_num_offset_stride(num, offset, stride) &
@@ -1220,18 +1142,12 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_3(type, num) &
@@ -1250,24 +1166,16 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_4(type, num, offset) &
@@ -1286,30 +1194,20 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double type +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function use_default_overload_5(type, num, offset, stride) &
@@ -1331,12 +1229,8 @@ contains
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function typefunc(arg) &
@@ -1355,12 +1249,8 @@ contains
     ! Function:  EnumTypeID enumfunc
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function enumfunc(arg) &
@@ -1379,12 +1269,8 @@ contains
     ! Function:  Color colorfunc
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Color arg +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     function colorfunc(arg) &
@@ -1404,18 +1290,12 @@ contains
     ! Function:  void getMinMax
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_&
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_&
     ! ----------------------------------------
     ! Argument:  int & max +intent(out)
-    ! Attrs:     +intent(out)
-    ! Exact:     f_out_native_&
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_&
     !>
@@ -1440,12 +1320,8 @@ contains
     ! Function:  int callback1
     ! Attrs:     +intent(function)
     ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int in +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_scalar
     !>
@@ -1469,8 +1345,6 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
-    ! Attrs:     +api(buf)+deref(copy)+intent(function)
-    ! Exact:     f_function_string_&_buf_copy
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Exact:     f_function_string_&_buf_copy
     function last_function_called() &

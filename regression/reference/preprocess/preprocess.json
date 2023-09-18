@@ -58,10 +58,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     },
                     {
@@ -112,10 +110,8 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     },
                     {
@@ -170,10 +166,8 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_0",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     },
                     {
@@ -246,8 +240,7 @@
                                     "cxx_var": "i",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_in_native_scalar"
+                                    "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "i",
@@ -257,10 +250,7 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_in_native_scalar",
-                                    "stmtc0": "f_in_native_scalar",
-                                    "stmtc1": "f_in_native_scalar"
+                                    "stmtf": "f_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -308,10 +298,8 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_1",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],
@@ -407,10 +395,8 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_0",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     },
                     {
@@ -474,8 +460,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_in_native_scalar"
+                                    "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
@@ -485,10 +470,7 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_in_native_scalar",
-                                    "stmtc0": "f_in_native_scalar",
-                                    "stmtc1": "f_in_native_scalar"
+                                    "stmtf": "f_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -535,10 +517,8 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_1",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "f_subroutine",
-                            "stmtc1": "f_subroutine"
+                            "stmtc": "f_subroutine",
+                            "stmtf": "f_subroutine"
                         }
                     }
                 ],

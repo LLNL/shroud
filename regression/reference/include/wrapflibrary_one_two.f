@@ -35,8 +35,6 @@ contains
     ! Function:  void function1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine function1()
         call c_function1()
     end subroutine function1

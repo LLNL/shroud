@@ -41,8 +41,6 @@ contains
     ! Function:  void init_ns1
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
     subroutine testnames_init_ns1()
         ! splicer begin namespace.ns1.function.init_ns1
         call c_init_ns1()

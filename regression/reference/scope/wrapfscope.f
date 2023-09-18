@@ -213,12 +213,8 @@ contains
     ! Function:  int * DataPointer_get_items
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns3_DataPointer)
     ! Exact:     f_getter_native_*_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns3_DataPointer)
-    ! Exact:     f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  ns3::DataPointer * SH_this
-    ! Attrs:     +intent(in)+struct(ns3_DataPointer)
-    ! Exact:     f_in_struct_*
     ! Attrs:     +intent(in)+struct(ns3_DataPointer)
     ! Exact:     f_in_struct_*
     function data_pointer_get_items(SH_this) &
@@ -242,18 +238,12 @@ contains
     ! Function:  void DataPointer_set_items
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
-    ! Attrs:     +intent(setter)
-    ! Exact:     f_setter
     ! ----------------------------------------
     ! Argument:  ns3::DataPointer * SH_this
     ! Attrs:     +intent(inout)+struct(ns3_DataPointer)
     ! Exact:     f_inout_struct_*
-    ! Attrs:     +intent(inout)+struct(ns3_DataPointer)
-    ! Exact:     f_inout_struct_*
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
-    ! Attrs:     +intent(setter)
-    ! Exact:     f_setter_native_*
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_native_*
     subroutine data_pointer_set_items(SH_this, val)

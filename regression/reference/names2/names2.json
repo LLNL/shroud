@@ -51,10 +51,8 @@
                     "F_name_impl": "a_function",
                     "F_subprogram": "subroutine",
                     "function_name": "AFunction",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "f_subroutine",
-                    "stmtc1": "f_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             }
         ],
