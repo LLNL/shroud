@@ -1140,7 +1140,7 @@ class Wrapc(util.WrapperMixin):
             spointer = declarator.get_indirect_stmt()
             if c_attrs["hidden"] and node._generated:
                 sapi = "hidden"
-            stmts = ["c", c_meta["intent"], sgroup, spointer,
+            stmts = ["f", c_meta["intent"], sgroup, spointer,
                      sapi, c_meta["deref"]] + specialize
             intent_blk = statements.lookup_fc_stmts(stmts)
             fmt_arg.c_var = arg_name

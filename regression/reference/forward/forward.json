@@ -322,8 +322,8 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_in_shadow_*",
-                                    "stmt1": "c_in_shadow_*"
+                                    "stmt0": "f_in_shadow_*",
+                                    "stmt1": "f_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -481,8 +481,8 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_in_shadow_*",
-                                    "stmt1": "c_in_shadow_*"
+                                    "stmt0": "f_in_shadow_*",
+                                    "stmt1": "f_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -700,8 +700,8 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_struct_*",
-                            "stmt1": "c_in_struct_*"
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_in_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",

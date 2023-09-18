@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  CustomType arg1 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void LIB_three_Class1_method1(LIB_three_Class1 * self,
     LIB_CustomType arg1)
 {

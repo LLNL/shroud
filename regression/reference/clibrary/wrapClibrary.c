@@ -96,7 +96,7 @@ static void ShroudStrFree(char *src)
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 double CLI_PassByValueMacro(int arg2)
 {
     // splicer begin function.PassByValueMacro
@@ -113,11 +113,11 @@ double CLI_PassByValueMacro(int arg2)
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
-// Exact:     c_in_char_*
+// Exact:     f_in_char_*
 // ----------------------------------------
 // Argument:  const char * arg2
 // Attrs:     +intent(in)
-// Exact:     c_in_char_*
+// Exact:     f_in_char_*
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
@@ -141,7 +141,7 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
-// Exact:     c_inout_char_*_buf
+// Exact:     f_inout_char_*_buf
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
@@ -167,7 +167,7 @@ void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 // start CLI_returnOneName_bufferify
 void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
@@ -193,11 +193,11 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len)
 {
@@ -220,11 +220,11 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start CLI_ImpliedTextLen_bufferify
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
@@ -249,7 +249,7 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.bindC2_bufferify
@@ -273,11 +273,11 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)
-// Exact:     c_in_void_*
+// Exact:     f_in_void_*
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len)
 {
@@ -300,11 +300,11 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external+value
 // Attrs:     +intent(in)
-// Exact:     c_in_void_scalar
+// Exact:     f_in_void_scalar
 // start CLI_callback1a
 void CLI_callback1a(int type, void ( * incr)(void))
 {
@@ -327,19 +327,19 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // ----------------------------------------
 // Argument:  const char * type
 // Attrs:     +intent(in)
-// Exact:     c_in_char_*
+// Exact:     f_in_char_*
 // ----------------------------------------
 // Argument:  void * in +assumedtype
 // Attrs:     +intent(in)
-// Exact:     c_in_void_*
+// Exact:     f_in_void_*
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+value
 // Attrs:     +intent(in)
-// Exact:     c_in_void_scalar
+// Exact:     f_in_void_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
-// Exact:     c_out_char_*_buf
+// Exact:     f_out_char_*_buf
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char *outbuf, int SHT_outbuf_len)
 {

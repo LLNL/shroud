@@ -43,7 +43,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {
     User2 *SH_this = static_cast<User2 *>(self->addr);

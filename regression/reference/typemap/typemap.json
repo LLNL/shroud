@@ -180,8 +180,8 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "i1",
@@ -210,8 +210,8 @@
                             "cxx_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "i2",
@@ -353,8 +353,8 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "i1",
@@ -386,8 +386,8 @@
                             "cxx_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "i2",
@@ -547,8 +547,8 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "i1",
@@ -580,8 +580,8 @@
                             "cxx_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "i2",
@@ -760,8 +760,8 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "i1",
@@ -1027,8 +1027,8 @@
                             "cxx_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "f1",

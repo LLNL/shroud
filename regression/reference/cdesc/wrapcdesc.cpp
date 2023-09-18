@@ -45,7 +45,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Exact:     c_in_native_*
+// Exact:     f_in_native_*
 void CDE_Rank2In(int * arg)
 {
     // splicer begin function.Rank2In
@@ -61,7 +61,7 @@ void CDE_Rank2In(int * arg)
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +api(cdesc)+intent(in)
-// Exact:     c_in_native_*_cdesc
+// Exact:     f_in_native_*_cdesc
 void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In_bufferify
@@ -90,11 +90,11 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
-// Exact:     c_in_string_&
+// Exact:     f_in_string_&
 // ----------------------------------------
 // Argument:  void * value +cdesc+intent(in)+rank(0)+value
 // Attrs:     +intent(in)
-// Exact:     c_in_void_*
+// Exact:     f_in_void_*
 void CDE_GetScalar1(char * name, void * value)
 {
     // splicer begin function.GetScalar1
@@ -123,11 +123,11 @@ void CDE_GetScalar1(char * name, void * value)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     c_out_native_*_cdesc
+// Exact:     f_out_native_*_cdesc
 void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
@@ -174,11 +174,11 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
-// Exact:     c_out_native_*_cdesc
+// Exact:     f_out_native_*_cdesc
 void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
@@ -252,11 +252,11 @@ double CDE_getData_double(void)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Exact:     c_out_native_*
+// Exact:     f_out_native_*
 void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
     int * value)
 {
@@ -280,11 +280,11 @@ void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +intent(out)
 // Attrs:     +intent(out)
-// Exact:     c_out_native_*
+// Exact:     f_out_native_*
 void CDE_GetScalar2_1_bufferify(char *name, int SHT_name_len,
     double * value)
 {

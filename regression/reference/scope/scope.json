@@ -654,8 +654,8 @@
                             "cxx_var": "SHCXX_SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_in_struct_*",
-                            "stmt1": "c_in_struct_*"
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_in_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
@@ -842,8 +842,8 @@
                             "cxx_var": "SHCXX_SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_inout_struct_*",
-                            "stmt1": "c_inout_struct_*"
+                            "stmt0": "f_inout_struct_*",
+                            "stmt1": "f_inout_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
@@ -877,8 +877,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_setter_native_*",
-                            "stmt1": "c_setter_native_*"
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "val",
@@ -1254,8 +1254,8 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct_*"
+                                    "stmt0": "f_in_struct_*",
+                                    "stmt1": "f_in_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -1442,8 +1442,8 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_inout_struct_*",
-                                    "stmt1": "c_inout_struct_*"
+                                    "stmt0": "f_inout_struct_*",
+                                    "stmt1": "f_inout_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -1477,8 +1477,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_setter_native_*",
-                                    "stmt1": "c_setter_native_*"
+                                    "stmt0": "f_setter_native_*",
+                                    "stmt1": "f_setter_native_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -1881,8 +1881,8 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct_*"
+                                    "stmt0": "f_in_struct_*",
+                                    "stmt1": "f_in_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -2069,8 +2069,8 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_inout_struct_*",
-                                    "stmt1": "c_inout_struct_*"
+                                    "stmt0": "f_inout_struct_*",
+                                    "stmt1": "f_inout_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -2104,8 +2104,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_setter_native_*",
-                                    "stmt1": "c_setter_native_*"
+                                    "stmt0": "f_setter_native_*",
+                                    "stmt1": "f_setter_native_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",

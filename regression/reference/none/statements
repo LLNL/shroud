@@ -230,11 +230,11 @@ root
           cfi -- fc_inout_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
-          hidden -- c_out/inout_native_&_hidden
+          hidden -- fc_out/inout_native_&_hidden
         * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- fc_in/inout_native_*_cfi
-          hidden -- c_out/inout_native_*_hidden
+          hidden -- fc_out/inout_native_*_hidden
       shadow
         & -- c_mixin_in_shadow_*
         * -- fc_inout_shadow_*
@@ -333,20 +333,20 @@ root
           cfi -- fc_out_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
-          hidden -- c_out/inout_native_&_hidden
+          hidden -- fc_out/inout_native_&_hidden
         &* -- c_defaulttmp
         * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
-          hidden -- c_out/inout_native_*_hidden
+          hidden -- fc_out/inout_native_*_hidden
         *&
-          cdesc -- c_out_native_*&_cdesc
-            pointer -- c_out_native_*&_cdesc
+          cdesc
+            pointer -- fc_out_native_*&_cdesc
           pointer -- fc_defaulttmp_native_scalar
         **
           allocatable -- fc_defaulttmp_native_scalar
           cdesc -- c_out_native_**_cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
-            pointer -- fc_out_native_**/*&_cdesc_pointer
+            pointer -- fc_out_native_**_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
@@ -651,9 +651,11 @@ root
           cfi -- fc_inout_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
+          hidden -- fc_out/inout_native_&_hidden
         * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- fc_in/inout_native_*_cfi
+          hidden -- fc_out/inout_native_*_hidden
       shadow
         * -- fc_inout_shadow_*
       string
@@ -691,6 +693,9 @@ root
       function
         c-ptr -- f_mixin_function_c-ptr
         cdesc -- f_mixin_function_cdesc
+        native
+          cdesc
+            pointer -- f_mixin_function_native_cdesc_pointer
         ptr -- f_mixin_function_ptr
         shadow
           capptr -- f_mixin_function_shadow_capptr
@@ -713,12 +718,12 @@ root
           array
             cdesc -- f_mixin_inout_char_array_cdesc
       local-logical-var -- f_mixin_local-logical-var
-      native
-        cdesc
-          pointer -- f_mixin_native_cdesc_pointer
       out
         array
           cdesc -- f_mixin_out_array_cdesc
+        native
+          cdesc
+            pointer -- f_mixin_out_native_cdesc_pointer
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -731,20 +736,22 @@ root
           cfi -- fc_out_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
+          hidden -- fc_out/inout_native_&_hidden
         * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi
             allocatable -- f_out_native_*_cfi_allocatable
+          hidden -- fc_out/inout_native_*_hidden
         *&
           cdesc
             allocatable -- f_out_native_*&_cdesc_allocatable
-            pointer -- fc_out_native_**/*&_cdesc_pointer
+            pointer -- fc_out_native_*&_cdesc
           pointer -- fc_defaulttmp_native_scalar
         **
           allocatable -- fc_defaulttmp_native_scalar
           cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
-            pointer -- fc_out_native_**/*&_cdesc_pointer
+            pointer -- fc_out_native_**_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
@@ -1029,9 +1036,11 @@ root
           cfi -- fc_inout_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
+          hidden -- fc_out/inout_native_&_hidden
         * -- fc_defaulttmp_native_scalar
           cdesc -- fc_in/out/inout_native_*_cdesc
           cfi -- fc_in/inout_native_*_cfi
+          hidden -- fc_out/inout_native_*_hidden
       shadow
         * -- fc_inout_shadow_*
       string
@@ -1103,17 +1112,18 @@ root
           cfi -- fc_out_char_*_cfi
       native
         & -- fc_defaulttmp_native_scalar
+          hidden -- fc_out/inout_native_&_hidden
         * -- fc_out_native_*
           cdesc -- fc_in/out/inout_native_*_cdesc
+          hidden -- fc_out/inout_native_*_hidden
         *&
-          cdesc
-            pointer -- fc_out_native_**/*&_cdesc_pointer
+          cdesc -- fc_out_native_*&_cdesc
           pointer -- fc_defaulttmp_native_scalar
         **
           allocatable -- fc_defaulttmp_native_scalar
           cdesc
             allocatable -- fc_out_native_**_cdesc_allocatable
-            pointer -- fc_out_native_**/*&_cdesc_pointer
+            pointer -- fc_out_native_**_cdesc_pointer
           cfi
             allocatable -- fc_out_native_**_cfi_allocatable
             pointer -- fc_out_native_**_cfi_pointer
@@ -4912,33 +4922,6 @@ c_out_native_*:
   intent: out
   name: c_out_native_*
   owner: library
-c_out_native_*&_cdesc:
-  c_arg_call:
-  - '{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: c_out_native_*&_cdesc
-  owner: library
 c_out_native_*&_cdesc_pointer:
   c_arg_call:
   - '{cxx_var}'
@@ -7350,6 +7333,9 @@ f_inout_char_*_cfi:
 f_inout_native_&:
   intent: inout
   name: f_inout_native_&
+f_inout_native_&_hidden:
+  intent: inout
+  name: f_inout_native_&_hidden
 f_inout_native_*:
   intent: inout
   name: f_inout_native_*
@@ -7378,6 +7364,9 @@ f_inout_native_*_cdesc:
 f_inout_native_*_cfi:
   intent: inout
   name: f_inout_native_*_cfi
+f_inout_native_*_hidden:
+  intent: inout
+  name: f_inout_native_*_hidden
 f_inout_shadow_*:
   intent: inout
   name: f_inout_shadow_*
@@ -7585,6 +7574,16 @@ f_mixin_function_cdesc:
   - cdesc
   intent: mixin
   name: f_mixin_function_cdesc
+f_mixin_function_native_cdesc_pointer:
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  intent: mixin
+  name: f_mixin_function_native_cdesc_pointer
 f_mixin_function_ptr:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -7699,16 +7698,6 @@ f_mixin_local-logical-var:
   - cxx
   intent: mixin
   name: f_mixin_local-logical-var
-f_mixin_native_cdesc_pointer:
-  f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
-  f_post_call:
-  - call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})
-  intent: mixin
-  name: f_mixin_native_cdesc_pointer
 f_mixin_out_array_cdesc:
   f_arg_call:
   - '{c_var_cdesc}'
@@ -7719,6 +7708,16 @@ f_mixin_out_array_cdesc:
   - cdesc
   intent: mixin
   name: f_mixin_out_array_cdesc
+f_mixin_out_native_cdesc_pointer:
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  intent: mixin
+  name: f_mixin_out_native_cdesc_pointer
 f_mixin_shadow-arg:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -7787,6 +7786,9 @@ f_out_char_*_cfi:
 f_out_native_&:
   intent: out
   name: f_out_native_&
+f_out_native_&_hidden:
+  intent: out
+  name: f_out_native_&_hidden
 f_out_native_*:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
@@ -7919,6 +7921,9 @@ f_out_native_*_cdesc:
 f_out_native_*_cfi_allocatable:
   intent: out
   name: f_out_native_*_cfi_allocatable
+f_out_native_*_hidden:
+  intent: out
+  name: f_out_native_*_hidden
 f_out_string_&:
   intent: out
   name: f_out_string_&
@@ -11852,6 +11857,14 @@ fc_inout_native_&:
   intent: inout
   name: fc_inout_native_&
   owner: library
+fc_inout_native_&_hidden:
+  c_arg_call:
+  - '{cxx_var}'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  intent: inout
+  name: fc_inout_native_&_hidden
+  owner: library
 fc_inout_native_*:
   intent: inout
   name: fc_inout_native_*
@@ -11916,6 +11929,14 @@ fc_inout_native_*_cfi:
   - ISO_Fortran_binding.h
   intent: inout
   name: fc_inout_native_*_cfi
+  owner: library
+fc_inout_native_*_hidden:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  intent: inout
+  name: fc_inout_native_*_hidden
   owner: library
 fc_inout_shadow_*:
   c_arg_decl:
@@ -12837,15 +12858,23 @@ fc_out_native_&:
   intent: out
   name: fc_out_native_&
   owner: library
+fc_out_native_&_hidden:
+  c_arg_call:
+  - '{cxx_var}'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  intent: out
+  name: fc_out_native_&_hidden
+  owner: library
 fc_out_native_*:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
   intent: out
   name: fc_out_native_*
   owner: library
-fc_out_native_*&_cdesc_pointer:
+fc_out_native_*&_cdesc:
   c_arg_call:
-  - '&{cxx_var}'
+  - '{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines array_context
@@ -12882,7 +12911,7 @@ fc_out_native_*&_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: fc_out_native_*&_cdesc_pointer
+  name: fc_out_native_*&_cdesc
   owner: library
 fc_out_native_*&_pointer:
   intent: out
@@ -13101,6 +13130,14 @@ fc_out_native_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: fc_out_native_*_cdesc
+  owner: library
+fc_out_native_*_hidden:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  intent: out
+  name: fc_out_native_*_hidden
   owner: library
 fc_out_string_&:
   c_post_call:

@@ -27,7 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  enum Color in +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int ENU_convert_to_int(int in)
 {
     // splicer begin function.convert_to_int

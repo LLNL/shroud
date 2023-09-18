@@ -165,8 +165,8 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_vector_&_buf_targ_native_scalar",
-                            "stmt1": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmt0": "f_in_vector_&_buf_targ_native_scalar",
+                            "stmt1": "f_in_vector_&_buf_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -406,8 +406,8 @@
                             "hnamefunc1": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -678,8 +678,8 @@
                             "hnamefunc1": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -929,8 +929,8 @@
                             "hnamefunc1": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1148,8 +1148,8 @@
                             "hnamefunc0": "VEC_ShroudCopyArray",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1367,8 +1367,8 @@
                             "hnamefunc0": "VEC_ShroudCopyArray",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt0": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+                            "stmt1": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1573,8 +1573,8 @@
                             "hnamefunc0": "VEC_ShroudCopyArray",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmt0": "f_inout_vector_&_cdesc_targ_native_scalar",
+                            "stmt1": "f_inout_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1784,8 +1784,8 @@
                             "hnamefunc1": "ShroudTypeDefines",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2039,8 +2039,8 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_in_vector_&_buf_targ_native_*",
-                            "stmt1": "c_in_vector_&_buf_targ_native_*"
+                            "stmt0": "f_in_vector_&_buf_targ_native_*",
+                            "stmt1": "f_in_vector_&_buf_targ_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -2079,8 +2079,8 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -2317,8 +2317,8 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_vector_&_buf_targ_string_scalar",
-                            "stmt1": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmt0": "f_in_vector_&_buf_targ_string_scalar",
+                            "stmt1": "f_in_vector_&_buf_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2563,8 +2563,8 @@
                             "hnamefunc0": "VEC_ShroudVectorStringOut",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_string_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_targ_string_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2774,8 +2774,8 @@
                             "hnamefunc1": "VEC_ShroudVectorStringOutSize",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2991,8 +2991,8 @@
                             "hnamefunc1": "VEC_ShroudVectorStringOutSize",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3262,8 +3262,8 @@
                             "cxx_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "n",
@@ -3429,8 +3429,8 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*",
-                            "stmt1": "c_in_native_*"
+                            "stmt0": "f_in_native_*",
+                            "stmt1": "f_in_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3466,8 +3466,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "len",

@@ -77,8 +77,8 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmt0": "c_inout_native_*",
-                            "stmt1": "c_inout_native_*"
+                            "stmt0": "f_inout_native_*",
+                            "stmt1": "f_inout_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -182,8 +182,8 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "c_inout_native_*",
-                            "stmt1": "c_inout_native_*"
+                            "stmt0": "f_inout_native_*",
+                            "stmt1": "f_inout_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -314,8 +314,8 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -595,8 +595,8 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -650,8 +650,8 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "flag",

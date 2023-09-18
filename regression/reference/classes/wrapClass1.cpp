@@ -83,7 +83,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
@@ -143,7 +143,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
-// Exact:     c_in_shadow_&
+// Exact:     f_in_shadow_&
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {
@@ -189,11 +189,11 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
-// Exact:     c_in_string_&
+// Exact:     f_in_string_&
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Exact:     c_in_bool_scalar
+// Exact:     f_in_bool_scalar
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
     bool flag, CLA_Class1 * SHC_rv)
@@ -223,11 +223,11 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Exact:     c_in_bool_scalar
+// Exact:     f_in_bool_scalar
 // start CLA_Class1_returnThisBuffer_bufferify
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
@@ -318,7 +318,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start CLA_Class1_directionFunc
 int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
 {
@@ -377,7 +377,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
-// Exact:     c_setter_native_scalar
+// Exact:     f_setter_native_scalar
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {
@@ -419,7 +419,7 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Argument:  std::string val +intent(in)
 // Attrs:     +api(buf)+intent(setter)
-// Exact:     c_setter_string_scalar_buf
+// Exact:     f_setter_string_scalar_buf
 // start CLA_Class1_set_m_name_bufferify
 void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self, char *val,
     int SHT_val_len)

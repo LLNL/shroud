@@ -28,7 +28,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {
@@ -108,7 +108,7 @@ int CLA_Data_get_nitems(CLA_Data * self)
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(setter)
-// Exact:     c_setter_native_scalar
+// Exact:     f_setter_native_scalar
 // start CLA_Data_set_nitems
 void CLA_Data_set_nitems(CLA_Data * self, int val)
 {
@@ -152,7 +152,7 @@ void CLA_Data_get_items_bufferify(CLA_Data * self,
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
-// Exact:     c_setter_native_*
+// Exact:     f_setter_native_*
 // start CLA_Data_set_items
 void CLA_Data_set_items(CLA_Data * self, int * val)
 {

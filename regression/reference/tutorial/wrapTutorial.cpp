@@ -96,11 +96,11 @@ void TUT_NoReturnNoArguments(void)
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 double TUT_PassByValue(double arg1, int arg2)
 {
     // splicer begin function.PassByValue
@@ -121,11 +121,11 @@ double TUT_PassByValue(double arg1, int arg2)
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  const std::string & arg2
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc)
 {
@@ -163,7 +163,7 @@ double TUT_UseDefaultArguments(void)
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start TUT_UseDefaultArguments_arg1
 double TUT_UseDefaultArguments_arg1(double arg1)
 {
@@ -181,11 +181,11 @@ double TUT_UseDefaultArguments_arg1(double arg1)
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  bool arg2=true +value
 // Attrs:     +intent(in)
-// Exact:     c_in_bool_scalar
+// Exact:     f_in_bool_scalar
 // start TUT_UseDefaultArguments_arg1_arg2
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 {
@@ -203,7 +203,7 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     c_in_string_&
+// Exact:     f_in_string_&
 void TUT_OverloadedFunction_from_name(const char * name)
 {
     // splicer begin function.OverloadedFunction_from_name
@@ -220,7 +220,7 @@ void TUT_OverloadedFunction_from_name(const char * name)
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
@@ -238,7 +238,7 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 // ----------------------------------------
 // Argument:  int indx +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_OverloadedFunction_from_index(int indx)
 {
     // splicer begin function.OverloadedFunction_from_index
@@ -254,7 +254,7 @@ void TUT_OverloadedFunction_from_index(int indx)
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_TemplateArgument_int(int arg)
 {
     // splicer begin function.TemplateArgument_int
@@ -270,7 +270,7 @@ void TUT_TemplateArgument_int(int arg)
 // ----------------------------------------
 // Argument:  double arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_TemplateArgument_double(double arg)
 {
     // splicer begin function.TemplateArgument_double
@@ -322,11 +322,11 @@ void TUT_FortranGenericOverloaded_0(void)
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     c_in_string_&
+// Exact:     f_in_string_&
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
@@ -343,11 +343,11 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  float arg2 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
@@ -366,11 +366,11 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
-// Exact:     c_in_string_&_buf
+// Exact:     f_in_string_&_buf
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
@@ -389,7 +389,7 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_num(int num)
 {
     // splicer begin function.UseDefaultOverload_num
@@ -406,11 +406,11 @@ int TUT_UseDefaultOverload_num(int num)
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_num_offset
@@ -426,15 +426,15 @@ int TUT_UseDefaultOverload_num_offset(int num, int offset)
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
 {
@@ -452,11 +452,11 @@ int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_3(double type, int num)
 {
     // splicer begin function.UseDefaultOverload_3
@@ -473,15 +473,15 @@ int TUT_UseDefaultOverload_3(double type, int num)
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_4
@@ -497,19 +497,19 @@ int TUT_UseDefaultOverload_4(double type, int num, int offset)
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
 {
@@ -527,7 +527,7 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
@@ -543,7 +543,7 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 // ----------------------------------------
 // Argument:  EnumTypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 {
     // splicer begin function.enumfunc
@@ -562,7 +562,7 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 // ----------------------------------------
 // Argument:  Color arg +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 int TUT_colorfunc(int arg)
 {
     // splicer begin function.colorfunc
@@ -584,11 +584,11 @@ int TUT_colorfunc(int arg)
 // ----------------------------------------
 // Argument:  int & min +intent(out)
 // Attrs:     +intent(out)
-// Exact:     c_out_native_&
+// Exact:     f_out_native_&
 // ----------------------------------------
 // Argument:  int & max +intent(out)
 // Attrs:     +intent(out)
-// Exact:     c_out_native_&
+// Exact:     f_out_native_&
 // start TUT_getMinMax
 void TUT_getMinMax(int * min, int * max)
 {
@@ -609,11 +609,11 @@ void TUT_getMinMax(int * min, int * max)
 // ----------------------------------------
 // Argument:  int in +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // ----------------------------------------
 // Argument:  int ( * incr)(int +value) +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {

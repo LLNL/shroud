@@ -79,8 +79,8 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*",
-                            "stmt1": "c_in_native_*"
+                            "stmt0": "f_in_native_*",
+                            "stmt1": "f_in_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -188,8 +188,8 @@
                             "hnamefunc0": "array_context",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*_cdesc",
-                            "stmt1": "c_in_native_*_cdesc"
+                            "stmt0": "f_in_native_*_cdesc",
+                            "stmt1": "f_in_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -455,8 +455,8 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_string_&",
-                            "stmt1": "c_in_string_&"
+                            "stmt0": "f_in_string_&",
+                            "stmt1": "f_in_string_&"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -485,8 +485,8 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_in_void_*",
-                            "stmt1": "c_in_void_*"
+                            "stmt0": "f_in_void_*",
+                            "stmt1": "f_in_void_*"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -745,8 +745,8 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt0": "f_in_string_&_buf",
+                            "stmt1": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -782,8 +782,8 @@
                             "hnamefunc0": "array_context",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*_cdesc",
-                            "stmt1": "c_out_native_*_cdesc"
+                            "stmt0": "f_out_native_*_cdesc",
+                            "stmt1": "f_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -1062,8 +1062,8 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt0": "f_in_string_&_buf",
+                            "stmt1": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1099,8 +1099,8 @@
                             "hnamefunc0": "array_context",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_native_*_cdesc",
-                            "stmt1": "c_out_native_*_cdesc"
+                            "stmt0": "f_out_native_*_cdesc",
+                            "stmt1": "f_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -1854,8 +1854,8 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt0": "f_in_string_&_buf",
+                            "stmt1": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1888,8 +1888,8 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -2140,8 +2140,8 @@
                             "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt0": "f_in_string_&_buf",
+                            "stmt1": "f_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -2174,8 +2174,8 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_out_native_*"
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "value",

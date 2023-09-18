@@ -30,7 +30,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Attrs:     +intent(inout)
-// Exact:     c_inout_struct_&
+// Exact:     f_inout_struct_&
 int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReference
@@ -51,7 +51,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Attrs:     +intent(in)
-// Exact:     c_in_struct_&
+// Exact:     f_in_struct_&
 int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceIn
@@ -70,7 +70,7 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
 // Attrs:     +intent(inout)
-// Exact:     c_inout_struct_&
+// Exact:     f_inout_struct_&
 void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceInout
@@ -87,7 +87,7 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
 // Attrs:     +intent(out)
-// Exact:     c_out_struct_&
+// Exact:     f_out_struct_&
 void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceOut

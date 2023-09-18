@@ -42,7 +42,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>
@@ -74,7 +74,7 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 // ----------------------------------------
 // Argument:  int v +value
 // Attrs:     +intent(in)
-// Exact:     c_in_native_scalar
+// Exact:     f_in_native_scalar
 void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
     int v)
 {

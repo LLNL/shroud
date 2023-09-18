@@ -1270,7 +1270,17 @@ fc_statements = [
     # native
 
     dict(
-        name="f_mixin_native_cdesc_pointer",
+        name="f_mixin_out_native_cdesc_pointer",
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
+        ],
+        f_post_call=[
+            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
+        ],
+    ),
+    dict(
+        name="f_mixin_function_native_cdesc_pointer",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
@@ -1330,11 +1340,14 @@ fc_statements = [
         # XXX - similar to c_function_native_*_buf
     ),
     dict(
-        name="c_out_native_*&_cdesc",
+        name="fc_out_native_*&_cdesc",
         mixin=[
+            "f_mixin_out_array_cdesc",
+            "f_mixin_out_native_cdesc_pointer",
             "c_out_native_**_cdesc",
         ],
         alias=[
+            "f_out_native_*&_cdesc_pointer",
             "c_out_native_*&_cdesc_pointer",
         ],
         c_arg_call=["{cxx_var}"],
@@ -1394,21 +1407,15 @@ fc_statements = [
         # with a Fortran pointer.
         # f_out_native_**_cdesc_pointer
         # f_out_native_*&_cdesc_pointer
-        name="fc_out_native_**/*&_cdesc_pointer",
+        name="fc_out_native_**_cdesc_pointer",
         mixin=[
             "f_mixin_out_array_cdesc",
+            "f_mixin_out_native_cdesc_pointer",
             "c_out_native_**_cdesc",
         ],
         alias=[
-            "f_out_native_**/*&_cdesc_pointer",
+            "f_out_native_**_cdesc_pointer",
             "c_out_native_**_cdesc_pointer",
-        ],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        f_post_call=[
-            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(
@@ -1487,7 +1494,11 @@ fc_statements = [
     dict(
         # c_out_native_*_hidden
         # c_inout_native_*_hidden
-        name="c_out/inout_native_*_hidden",
+        name="fc_out/inout_native_*_hidden",
+        alias=[
+            "f_out/inout_native_*_hidden",
+            "c_out/inout_native_*_hidden",
+        ],
         c_pre_call=[
             "{cxx_type} {cxx_var};",
         ],
@@ -1496,7 +1507,11 @@ fc_statements = [
     dict(
         # c_out_native_&_hidden
         # c_inout_native_&_hidden
-        name="c_out/inout_native_&_hidden",
+        name="fc_out/inout_native_&_hidden",
+        alias=[
+            "f_out/inout_native_&_hidden",
+            "c_out/inout_native_&_hidden",
+        ],
         c_pre_call=[
             "{cxx_type} {cxx_var};",
         ],
@@ -1685,7 +1700,7 @@ fc_statements = [
         name="fc_function_native_*_cdesc_pointer",
         mixin=[
             "f_mixin_function_cdesc",
-            "f_mixin_native_cdesc_pointer",
+            "f_mixin_function_native_cdesc_pointer",
             "c_function_native_*_cdesc",
         ],
         alias=[
@@ -3541,7 +3556,7 @@ fc_statements = [
         name="fc_getter_native_*_cdesc_pointer",
         mixin=[
             "f_mixin_function_cdesc",
-            "f_mixin_native_cdesc_pointer",
+            "f_mixin_function_native_cdesc_pointer",
             "c_getter",
             "c_mixin_function_cdesc",
         ],
@@ -3549,7 +3564,7 @@ fc_statements = [
             "f_getter_native_*_cdesc_pointer",
             "c_getter_native_*_cdesc_pointer",
         ],
-        # See fc_function_native_*_cdesc_pointer  f_mixin_native_cdesc_pointer
+        # See fc_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         
         c_helper="ShroudTypeDefines array_context",
         c_post_call=[
