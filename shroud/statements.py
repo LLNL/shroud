@@ -2886,38 +2886,25 @@ fc_statements = [
             "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};",
         ],
     ),
-    dict(
-        name="c_mixin_in_shadow_*",
-        mixin=["c_mixin_shadow"],
-        alias=[
-            "c_inout_shadow_&",
-        ],
-        cxx_local_var="pointer",
-        c_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} =\t "
-            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
-        ],
-    ),
 
     dict(
         name="f_in_shadow_*",
         mixin=[
             "f_mixin_shadow-arg",
-            "c_mixin_in_shadow_*",
+            "c_mixin_shadow",
         ],
         alias=[
             "c_in_shadow_*",
-        ],
-    ),
-
-    dict(
-        name="f_inout_shadow_*",
-        mixin=[
-##            "f_mixin_shadow-arg",
-            "c_mixin_in_shadow_*",
-        ],
-        alias=[
+            "f_inout_shadow_*",
             "c_inout_shadow_*",
+            "f_inout_shadow_&",
+            "c_inout_shadow_&",
+        ],
+
+        cxx_local_var="pointer",
+        c_pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
         ],
     ),
 

@@ -173,8 +173,8 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
           hidden -- f_out/inout_native_*_hidden
       shadow
-        & -- c_mixin_in_shadow_*
-        * -- f_inout_shadow_*
+        & -- f_in_shadow_*
+        * -- f_in_shadow_*
       string
         & -- f_inout_string_*/&
           buf -- f_inout_string_*/&_buf
@@ -218,8 +218,6 @@ root
       in
         character
           buf -- c_mixin_in_character_buf
-        shadow
-          * -- c_mixin_in_shadow_*
       inout
         array
           cdesc -- c_mixin_inout_array_cdesc
@@ -577,7 +575,8 @@ root
           cfi -- f_in/inout_native_*_cfi
           hidden -- f_out/inout_native_*_hidden
       shadow
-        * -- f_inout_shadow_*
+        & -- f_in_shadow_*
+        * -- f_in_shadow_*
       string
         & -- f_inout_string_*/&
           buf -- f_inout_string_*/&_buf
@@ -2798,20 +2797,6 @@ c_mixin_in_character_buf:
     - C_INT
   intent: mixin
   name: c_mixin_in_character_buf
-  owner: library
-c_mixin_in_shadow_*:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_module_line: '{i_module_line}'
-  intent: mixin
-  name: c_mixin_in_shadow_*
   owner: library
 c_mixin_inout_array_cdesc:
   c_arg_decl:
@@ -7896,12 +7881,36 @@ f_inout_native_*_hidden:
   intent: inout
   name: f_inout_native_*_hidden
   owner: library
+f_inout_shadow_&:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_module_line: '{i_module_line}'
+  intent: inout
+  name: f_inout_shadow_&
+  owner: library
 f_inout_shadow_*:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   cxx_local_var: pointer
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
