@@ -519,6 +519,7 @@ def main_with_args(args):
     TypeOut(newlibrary, config).write_class_types()
 
     try:
+        statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call

@@ -11,11 +11,12 @@ from shroud import util
 
 import unittest
 
+default_stmts = statements.default_stmts
+
 class Statements(unittest.TestCase):
     def XXXtest_alias(self):
         # Prefix names with "c" to work with statements.default_stmts.
         cf_dict = {}
-        cf_tree = {}
         stmts = [
             dict(
                 name="c_a",
@@ -35,7 +36,6 @@ class Statements(unittest.TestCase):
     def test_base(self):
         # Prefix names with "c" to work with statements.default_stmts.
         cf_dict = {}
-        cf_tree = {}
         stmts = [
             dict(
                 name="c_a",
@@ -44,19 +44,20 @@ class Statements(unittest.TestCase):
             ),
             dict(
                 name="c_b",
-                base="c_a",
+                mixin=[
+                    "c_a",
+                ],
                 field2="field2_from_c_b",
             ),
         ]
-        statements.update_stmt_tree(
-            stmts, cf_dict, cf_tree, statements.default_stmts)
+        statements.process_mixin(stmts, default_stmts, cf_dict)
 
-        rv = statements.lookup_stmts_tree(cf_tree, ["c", "a"])
+        rv = cf_dict.get("c_a")
         self.assertIsInstance(rv, util.Scope)
         self.assertEqual("field1_from_c_a", rv.field1)
         self.assertEqual("field2_from_c_a", rv.field2)
 
-        rv = statements.lookup_stmts_tree(cf_tree, ["c", "b"])
+        rv = cf_dict.get("c_b")
         self.assertIsInstance(rv, util.Scope)
         self.assertEqual("field1_from_c_a", rv.field1)
         self.assertEqual("field2_from_c_b", rv.field2)
@@ -64,7 +65,6 @@ class Statements(unittest.TestCase):
     def test_mixin(self):
         # Prefix names with "c" to work with statements.default_stmts.
         cf_dict = {}
-        cf_tree = {}
         stmts = [
             dict(
                 name="c_mixin_field1",
@@ -87,15 +87,14 @@ class Statements(unittest.TestCase):
                 field2="field2_from_c_b",
             ),
         ]
-        statements.update_stmt_tree(
-            stmts, cf_dict, cf_tree, statements.default_stmts)
+        statements.process_mixin(stmts, default_stmts, cf_dict)
 
-        rv = statements.lookup_stmts_tree(cf_tree, ["c", "a"])
+        rv = cf_dict.get("c_a")
         self.assertIsInstance(rv, util.Scope)
         self.assertEqual("field1_from_c_a", rv.field1)
         self.assertEqual("field2_from_c_a", rv.field2)
 
-        rv = statements.lookup_stmts_tree(cf_tree, ["c", "b"])
+        rv = cf_dict.get("c_b")
         self.assertIsInstance(rv, util.Scope)
         self.assertEqual("field1_from_mixin_field1", rv.field1)
         self.assertEqual("field1a_from_mixin_field1", rv.field1a)
@@ -103,7 +102,6 @@ class Statements(unittest.TestCase):
         
     def test_lookup_tree1(self):
         cf_dict = {}
-        cf_tree = {}
         stmts = [
             dict(
                 name="c_string_result_buf_allocatable"
@@ -112,21 +110,16 @@ class Statements(unittest.TestCase):
                 name="c_string_scalar_result_buf_allocatable"
             ),
         ]
-        statements.update_stmt_tree(
-            stmts, cf_dict, cf_tree, statements.default_stmts)
+        statements.process_mixin(stmts, default_stmts, cf_dict)
 
-        rv = statements.lookup_stmts_tree(
-            cf_tree, ["c","string","result","buf","allocatable"])
+        rv = cf_dict.get("c_string_result_buf_allocatable")
         self.assertEqual(rv["name"], "c_string_result_buf_allocatable")
 
-        rv = statements.lookup_stmts_tree(
-            cf_tree, ["c","string","scalar", "result","buf","allocatable"])
+        rv = cf_dict.get("c_string_scalar_result_buf_allocatable")
         self.assertEqual(rv["name"], "c_string_scalar_result_buf_allocatable")
 
-        # pointer is not in the tree, so skip while doing the lookup.
-        rv = statements.lookup_stmts_tree(
-            cf_tree, ["c","string","pointer", "result","buf","allocatable"])
-        self.assertEqual(rv["name"], "c_string_result_buf_allocatable")
+        # pointer is not in the tree
+        self.assertIsNone(cf_dict.get("c_string_pointer_result_buf_allocatable"))
         
 
 if __name__ == "__main__":

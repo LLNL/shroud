@@ -413,13 +413,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.parent = None
         self.cxx_header = cxx_header.split()
         self.fortran_header = fortran_header.split()
-        self.language = language.lower()
-        if self.language not in ["c", "c++"]:
-            raise RuntimeError("language must be 'c' or 'c++', found {}"
-                               .format(self.language))
-        if self.language == "c++":
-            # Use a form which can be used as a variable name
-            self.language = "cxx"
+        self.language = util.find_language(language)
         self.library = library
         self.name = library
         self.nodename = "library"
@@ -485,8 +479,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             self.wrap_namespace = ns
 
         self.ast = self.symtab.current  # declast.Global
-
-        statements.update_statements_for_language(self.language)
 
         self.setup = kwargs.get("setup", {}) # for setup.py
 

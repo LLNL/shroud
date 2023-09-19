@@ -142,7 +142,7 @@ def compute_return_prefix(arg):
         return ""
 
 
-def update_statements_for_language(language):
+def update_fc_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
@@ -571,42 +571,6 @@ def print_tree_statements(fp, statements, defaults):
         complete[name] = all
     yaml.safe_dump(complete, fp)
             
-def XXXlookup_stmts_tree(tree, path):
-    """
-    Lookup path in statements tree.
-    Look for longest path which matches.
-    Used to find specific cases first, then fall back to general.
-    ex path = ['result', 'allocatable']
-         Finds 'result_allocatable' if it exists, else 'result'.
-    If not found, return an empty dictionary.
-
-    path typically consists of:
-      in, out, inout, result
-      generated_clause - buf
-      deref - allocatable
-
-    Args:
-        tree  - dictionary of nested dictionaries
-        path  - list of name components.
-                Blank entries are ignored.
-    """
-    found = default_scopes[path[0]]
-    work = []
-    step = tree
-    for part in path:
-        if not part:
-            # skip empty parts
-            continue
-        if part not in step:
-            continue
-        step = step[part]
-        if "_node" in step:
-            # Path ends here.
-            found = step["_stmts"]
-#    if not isinstance(found, util.Scope):
-#        raise RuntimeError
-    return found
-
 
 # C Statements.
 #  intent      - Set from name.
