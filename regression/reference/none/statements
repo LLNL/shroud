@@ -216,11 +216,6 @@ root
           *
             cdesc -- c_mixin_function_native_*_cdesc
       in
-        2d
-          array
-            buf -- c_mixin_in_2d_array_buf
-        array
-          buf -- c_mixin_in_array_buf
         character
           buf -- c_mixin_in_character_buf
         shadow
@@ -2784,42 +2779,6 @@ c_mixin_function_native_*_cdesc:
   - '{c_var_cdesc}->size = {c_array_size};'
   intent: mixin
   name: c_mixin_function_native_*_cdesc
-  owner: library
-c_mixin_in_2d_array_buf:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_len}
-  - size_t {c_var_size}
-  c_temps:
-  - len
-  - size
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: mixin
-  name: c_mixin_in_2d_array_buf
-  owner: library
-c_mixin_in_array_buf:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_temps:
-  - size
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: mixin
-  name: c_mixin_in_array_buf
   owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
@@ -8569,6 +8528,13 @@ f_mixin_function_string_scalar_cfi_copy:
   name: f_mixin_function_string_scalar_cfi_copy
   owner: library
 f_mixin_in_2d_array_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_len}
+  - size_t {c_var_size}
+  c_temps:
+  - len
+  - size
   f_arg_call:
   - '{f_var}'
   - size({f_var}, 1, kind=C_SIZE_T)
@@ -8579,10 +8545,24 @@ f_mixin_in_2d_array_buf:
     iso_c_binding:
     - C_SIZE_T
   f_need_wrapper: true
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  - '{c_var_size}'
+  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
   intent: mixin
   name: f_mixin_in_2d_array_buf
   owner: library
 f_mixin_in_array_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_temps:
+  - size
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -8590,6 +8570,13 @@ f_mixin_in_array_buf:
     iso_c_binding:
     - C_SIZE_T
   f_need_wrapper: true
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
   intent: mixin
   name: f_mixin_in_array_buf
   owner: library

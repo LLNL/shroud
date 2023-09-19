@@ -919,22 +919,7 @@ fc_statements = [
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_need_wrapper=True,
-    ),
-    dict(
-        # Pass argument, len and size to C.
-        name="f_mixin_in_2d_array_buf",
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}) :: {f_var}(:,:)",
-        ],
-        f_arg_call=["{f_var}",
-                    "size({f_var}, 1, kind=C_SIZE_T)",
-                    "size({f_var}, 2, kind=C_SIZE_T)"],
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        f_need_wrapper=True,
-    ),
-    dict(
-        # Pass argument and size to C.
-        name="c_mixin_in_array_buf",
+
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
@@ -949,7 +934,16 @@ fc_statements = [
     ),
     dict(
         # Pass argument, len and size to C.
-        name="c_mixin_in_2d_array_buf",
+        name="f_mixin_in_2d_array_buf",
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}(:,:)",
+        ],
+        f_arg_call=["{f_var}",
+                    "size({f_var}, 1, kind=C_SIZE_T)",
+                    "size({f_var}, 2, kind=C_SIZE_T)"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_need_wrapper=True,
+
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {c_var_len}",
@@ -2331,7 +2325,6 @@ fc_statements = [
         name="f_in_vector_scalar/*/&_buf_targ_native_scalar",
         mixin=[
             "f_mixin_in_array_buf",
-            "c_mixin_in_array_buf",
         ],
         alias=[
             "c_in_vector_scalar/*/&_buf_targ_native_scalar",
@@ -2493,7 +2486,6 @@ fc_statements = [
         name="f_in_vector_&_buf_targ_native_*",
         mixin=[
             "f_mixin_in_2d_array_buf",
-            "c_mixin_in_2d_array_buf",
         ],
         alias=[
             "c_in_vector_&_buf_targ_native_*",
