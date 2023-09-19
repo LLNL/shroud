@@ -416,7 +416,7 @@ root
               caller -- f_function_string_*/&_cfi_allocatable
               library -- f_function_string_*/&_cfi_allocatable
             arg -- f_function_string_scalar_cfi_arg
-            copy -- f_mixin_function_string_scalar_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
@@ -436,7 +436,7 @@ root
             allocatable -- f_function_string_*/&_cfi_allocatable
               caller -- f_function_string_*/&_cfi_allocatable
               library -- f_function_string_*/&_cfi_allocatable
-            copy -- f_mixin_function_string_scalar_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
@@ -455,7 +455,7 @@ root
               caller -- f_function_string_*/&_cfi_allocatable
               library -- f_function_string_*/&_cfi_allocatable
             arg -- f_function_string_scalar_cfi_arg
-            copy -- f_mixin_function_string_scalar_cfi_copy
+            copy -- f_function_string_scalar/*/&_cfi_copy
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer

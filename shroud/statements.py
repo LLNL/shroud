@@ -282,9 +282,9 @@ def process_mixin(stmts, defaults, stmtdict):
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
-#        parts = name.split("_")
-#        if parts[1] == "mixin" and "alias" in stmt:
-#            print("XXXX - mixin should not have alias: ", name)
+        parts = name.split("_")
+        if parts[1] == "mixin" and "alias" in stmt:
+            print("XXXX - mixin should not have alias: ", name)
         if "mixin" in stmt:
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
@@ -1885,7 +1885,6 @@ fc_statements = [
             "c_function_string_&_buf_arg",
         ],
         # XXX make as a mixin.
-        # See c_function_string_scalar_buf_result
         c_helper="ShroudStrCopy",
         c_post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
@@ -3696,20 +3695,10 @@ fc_statements = [
         c_local=["trim"],
     ),
     dict(
-        # f_function_string_scalar_cfi_copy
-        # f_function_string_*_cfi_copy
-        # f_function_string_&_cfi_copy
-        # c_function_string_scalar_cfi_copy
-        # c_function_string_*_cfi_copy
-        # c_function_string_&_cfi_copy
         name="f_mixin_function_string_scalar_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        alias=[
-            "f_function_string_scalar/*/&_cfi_copy",
-        ],
-
         # XXX - avoid calling C directly since the Fortran function
         # is returning an CHARACTER, which CFI can not do.
         # Fortran wrapper passed function result to C which fills it.
@@ -3732,6 +3721,15 @@ fc_statements = [
             "-}}",
         ],
         c_return_type="void",  # Convert to function.
+    ),
+    # f_function_string_scalar_cfi_copy
+    # f_function_string_*_cfi_copy
+    # f_function_string_&_cfi_copy
+    dict(
+        name="f_function_string_scalar/*/&_cfi_copy",
+        mixin=[
+            "f_mixin_function_string_scalar_cfi_copy",
+        ],
     ),
     dict(
         name="f_function_string_scalar_cfi_arg",
@@ -3796,16 +3794,6 @@ fc_statements = [
     
     # similar to f_char_scalar_allocatable
     dict(
-        # f_function_string_scalar_cfi_allocatable
-        # f_function_string_*_cfi_allocatable
-        # f_function_string_&_cfi_allocatable
-
-        # f_function_string_scalar_cfi_allocatable_caller
-        # f_function_string_*_cfi_allocatable_caller
-        # f_function_string_&_cfi_allocatable_caller
-        # f_function_string_scalar_cfi_allocatable_library
-        # f_function_string_*_cfi_allocatable_library
-        # f_function_string_&_cfi_allocatable_library
         name="f_mixin_function_string_scalar_cfi_allocatable",
         # XXX - avoid calling C directly since the Fortran function
         # is returning an allocatable, which CFI can not do.
@@ -3820,6 +3808,12 @@ fc_statements = [
     dict(
         # f_function_string_*_cfi_allocatable
         # f_function_string_&_cfi_allocatable
+        # f_function_string_scalar_cfi_allocatable_caller
+        # f_function_string_*_cfi_allocatable_caller
+        # f_function_string_&_cfi_allocatable_caller
+        # f_function_string_scalar_cfi_allocatable_library
+        # f_function_string_*_cfi_allocatable_library
+        # f_function_string_&_cfi_allocatable_library
         name="f_function_string_*/&_cfi_allocatable",
         mixin=[
             "f_mixin_function_string_scalar_cfi_allocatable",
