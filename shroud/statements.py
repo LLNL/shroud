@@ -756,8 +756,16 @@ fc_statements = [
         i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        name="c_mixin_function_cdesc",
         # Pass array_type as argument to contain the function result.
+        name="f_mixin_function_cdesc",
+        f_helper="array_context",
+        f_declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+        f_arg_call=["{c_var_cdesc}"],
+        f_temps=["cdesc"],
+        f_need_wrapper=True,
+
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -768,17 +776,43 @@ fc_statements = [
         i_import=["{F_array_type}"],
         c_return_type="void",  # Convert to function.
         c_temps=["cdesc"],
-###        i_arg_names=["{c_var}"],
+    ),
+
+    dict(
+        # Add function result to cdesc. Used with pointer and allocatable
+        # c_temp cdesc already added
+        # assumes mixin=["f_mixin_function_cdesc"],
+        name="c_mixin_function_native_*_cdesc",
+        c_helper="ShroudTypeDefines array_context",
+        c_post_call=[
+            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_cdesc}->size = {c_array_size};",
+        ],
     ),
     dict(
-        name="f_mixin_function_cdesc",
-        f_helper="array_context",
-        f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
+        # Used with both deref allocatable and pointer.
+        # assumes mixin=["f_mixin_function_cdesc"],
+        name="c_mixin_function_char_*_cdesc",
+        c_helper="ShroudTypeDefines",
+        # Copy address of result into c_var and save length.
+        # When returning a std::string (and not a reference or pointer)
+        # an intermediate object is created to save the results
+        # which will be passed to copy_string
+        c_post_call=[
+            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;",
         ],
-        f_arg_call=["{c_var_cdesc}"],  # Pass result as an argument.
-        f_temps=["cdesc"],
-        f_need_wrapper=True,
     ),
 
     dict(
@@ -1211,6 +1245,7 @@ fc_statements = [
     # native
 
     dict(
+        # Make argument a Fortran pointer
         name="f_mixin_out_native_cdesc_pointer",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_decl=[
@@ -1221,6 +1256,7 @@ fc_statements = [
         ],
     ),
     dict(
+        # Make result a Fortran pointer
         name="f_mixin_function_native_cdesc_pointer",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_decl=[
@@ -1518,50 +1554,11 @@ fc_statements = [
         ],
         i_module_line="iso_c_binding:{f_kind}",
     ),
-    # Function has a result with deref(allocatable).
-    #
-    #    C wrapper:
-    #       Add context argument for result
-    #       Fill in values to describe array.
-    #
-    #    Fortran:
-    #        c_step1(context)
-    #        allocate(Fout(len))
-    #        c_step2(context, Fout, size(len))
-    #
-    #        c_step1(context)
-    #        call c_f_pointer(c_ptr, f_ptr, shape)
-    #
-    # Works with deref pointer and allocatable since Fortran
-    # does that part.
-    dict(
-        # c_function_native_*_cdesc_allocatable
-        # c_function_native_*_cdesc_pointer
-        name="c_function_native_*_cdesc",
-        mixin=["c_mixin_function_cdesc"],
-        alias=[
-            "c_function_native_*_cdesc_allocatable",
-            "c_function_native_*_cdesc_allocatable_caller/library",
-            "c_function_native_*_cdesc_pointer",
-            "c_function_native_*_cdesc_pointer_caller/library",
-        ],
-        c_helper="ShroudTypeDefines array_context",
-        c_post_call=[
-            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var};",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
-            "{c_var_cdesc}->rank = {rank};"
-            "{c_array_shape}",
-            "{c_var_cdesc}->size = {c_array_size};",
-        ],
-    ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_function_native_*_cdesc",
+            "c_mixin_function_native_*_cdesc",
         ],
         c_helper="copy_array ShroudTypeDefines array_context",
         # XXX - use case for append to c_helper, first two from mixin
@@ -1615,7 +1612,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
-            "c_function_native_*_cdesc",
+            "c_mixin_function_native_*_cdesc",
         ],
     ),
     dict(
@@ -1623,7 +1620,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_pointer_caller",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_function_native_*_cdesc",
+            "c_mixin_function_native_*_cdesc",
         ],
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
@@ -1889,50 +1886,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
-        ],
-    ),
-
-##-    dict(
-##-        # Used with both deref allocatable and pointer.
-##-        # c_function_char_*_cdesc_allocatable
-##-        # c_function_char_*_cdesc_pointer
-##-        name="c_function_char_*_cdesc_allocatable/pointer",
-##-        mixin=["c_mixin_function_cdesc"],
-##-        c_helper="ShroudTypeDefines",
-##-        # Copy address of result into c_var and save length.
-##-        # When returning a std::string (and not a reference or pointer)
-##-        # an intermediate object is created to save the results
-##-        # which will be passed to copy_string
-##-        c_post_call=[
-##-            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
-##-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-##-            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
-##-            "{c_var_cdesc}->type = {sh_type};",
-##-            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-##-            "{c_var_cdesc}->size = 1;",
-##-            "{c_var_cdesc}->rank = 0;",
-##-        ],
-##-    ),
-    dict(
-        # Used with both deref allocatable and pointer.
-        # c_function_char_*_cdesc_allocatable
-        # c_function_char_*_cdesc_pointer
-#        name="c_mixin_function_char_*_cdesc_allocatable/pointer",
-        name="c_mixin_function_char_*_cdesc",
-        mixin=["c_mixin_function_cdesc"],
-        c_helper="ShroudTypeDefines",
-        # Copy address of result into c_var and save length.
-        # When returning a std::string (and not a reference or pointer)
-        # an intermediate object is created to save the results
-        # which will be passed to copy_string
-        c_post_call=[
-            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{c_var_cdesc}->size = 1;",
-            "{c_var_cdesc}->rank = 0;",
         ],
     ),
 
@@ -2308,13 +2261,10 @@ fc_statements = [
         name="f_mixin_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_cdesc",
         ],
         alias=[
             "f_function_string_*/&_cdesc_allocatable",
             "f_function_string_*/&_cdesc_allocatable_caller/library",
-            "c_function_string_*/&_cdesc_allocatable",
-            "c_function_string_*/&_cdesc_allocatable_caller/library",
 
         ],
 
@@ -2386,11 +2336,9 @@ fc_statements = [
         name="f_function_string_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
         alias=[
-            "c_function_string_scalar_cdesc_allocatable",
             "f_function_string_scalar_cdesc_allocatable_caller/library",
 
             # f_function_string_&_cdesc_allocatable
@@ -2532,10 +2480,6 @@ fc_statements = [
         name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_cdesc",
-        ],
-        alias=[
-            "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         ],
 
         c_helper="copy_array ShroudTypeDefines",
@@ -3370,13 +3314,9 @@ fc_statements = [
         # Similar to calling a function, but save field pointer instead.
         name="f_getter_native_*_cdesc_pointer",
         mixin=[
+            "c_getter",
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
-            "c_getter",
-            "c_mixin_function_cdesc",
-        ],
-        alias=[
-            "c_getter_native_*_cdesc_pointer",
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         

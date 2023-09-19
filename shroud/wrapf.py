@@ -2556,7 +2556,7 @@ class ModuleInfo(object):
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers.
-        Add fmt.hnamefuncX for use by pre_call and post_call.
+        Add fmt.fhelper_X for use by pre_call and post_call.
         """
         f_helper = wformat(helpers, fmt)
         for i, helper in enumerate(f_helper.split()):

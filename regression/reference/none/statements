@@ -37,13 +37,6 @@ root
           pointer -- f_mixin_function_native_&
         * -- c_function_native_*/&
           allocatable -- f_function_native_**
-          cdesc -- c_function_native_*_cdesc
-            allocatable -- c_function_native_*_cdesc
-              caller -- c_function_native_*_cdesc
-              library -- c_function_native_*_cdesc
-            pointer -- c_function_native_*_cdesc
-              caller -- c_function_native_*_cdesc
-              library -- c_function_native_*_cdesc
           pointer -- f_mixin_function_native_&
           raw -- f_function_native_*_raw
           scalar -- c_function_native_*_scalar
@@ -74,9 +67,6 @@ root
             arg -- f_function_string_scalar_buf_arg
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
-            allocatable -- f_mixin_function_string_*_cdesc_allocatable
-              caller -- f_mixin_function_string_*_cdesc_allocatable
-              library -- f_mixin_function_string_*_cdesc_allocatable
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
@@ -86,9 +76,6 @@ root
           buf
             copy -- c_mixin_function_string_scalar_buf_copy
           cdesc
-            allocatable -- f_mixin_function_string_*_cdesc_allocatable
-              caller -- f_mixin_function_string_*_cdesc_allocatable
-              library -- f_mixin_function_string_*_cdesc_allocatable
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
@@ -98,26 +85,15 @@ root
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- c_mixin_function_string_scalar_buf_copy
-          cdesc
-            allocatable -- f_function_string_scalar_cdesc_allocatable
       struct -- c_function_struct
         *
           pointer -- f_function_struct_*_pointer
         scalar -- f_function_struct_scalar
-      vector
-        scalar
-          cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
       void
         * -- c_function
     getter -- c_getter
       native
         *
-          cdesc
-            pointer -- f_getter_native_*_cdesc_pointer
           pointer -- f_mixin_getter
         scalar -- f_mixin_getter
       string
@@ -237,11 +213,13 @@ root
         native
           cfi -- c_mixin_arg_native_cfi
       function
-        cdesc -- c_mixin_function_cdesc
         char
           *
             cdesc -- c_mixin_function_char_*_cdesc
         character -- c_mixin_function_character
+        native
+          *
+            cdesc -- c_mixin_function_native_*_cdesc
         string
           scalar
             buf
@@ -1151,174 +1129,6 @@ c_function_native_*_allocatable:
   intent: function
   name: c_function_native_*_allocatable
   owner: library
-c_function_native_*_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc
-  owner: library
-c_function_native_*_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_allocatable
-  owner: library
-c_function_native_*_cdesc_allocatable_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_allocatable_caller
-  owner: library
-c_function_native_*_cdesc_allocatable_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_allocatable_library
-  owner: library
-c_function_native_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_pointer
-  owner: library
-c_function_native_*_cdesc_pointer_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_pointer_caller
-  owner: library
-c_function_native_*_cdesc_pointer_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_cdesc_pointer_library
-  owner: library
 c_function_native_*_pointer:
   i_module:
     iso_c_binding:
@@ -1661,60 +1471,6 @@ c_function_string_&_buf_copy:
   intent: function
   name: c_function_string_&_buf_copy
   owner: library
-c_function_string_&_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_&_cdesc_allocatable
-  owner: library
-c_function_string_&_cdesc_allocatable_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_&_cdesc_allocatable_caller
-  owner: library
-c_function_string_&_cdesc_allocatable_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_&_cdesc_allocatable_library
-  owner: library
 c_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1828,60 +1584,6 @@ c_function_string_*_buf_copy:
     - C_INT
   intent: function
   name: c_function_string_*_buf_copy
-  owner: library
-c_function_string_*_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_*_cdesc_allocatable
-  owner: library
-c_function_string_*_cdesc_allocatable_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_*_cdesc_allocatable_caller
-  owner: library
-c_function_string_*_cdesc_allocatable_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_*_cdesc_allocatable_library
   owner: library
 c_function_string_*_cdesc_pointer:
   c_arg_decl:
@@ -2021,28 +1723,6 @@ c_function_string_scalar_buf_copy:
   intent: function
   name: c_function_string_scalar_buf_copy
   owner: library
-c_function_string_scalar_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudStrToArray copy_string
-  c_post_call:
-  - ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});
-  c_pre_call:
-  - std::string * {cxx_var} = new std::string;
-  c_return_type: void
-  c_temps:
-  - cdesc
-  cxx_local_var: pointer
-  destructor_name: new_string
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_string_scalar_cdesc_allocatable
-  owner: library
 c_function_struct:
   c_post_call:
   - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
@@ -2102,35 +1782,6 @@ c_function_struct_scalar:
   intent: function
   name: c_function_struct_scalar
   owner: library
-c_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_array ShroudTypeDefines
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  cxx_local_var: pointer
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-  owner: library
 c_function_void_*:
   intent: function
   name: c_function_void_*
@@ -2140,32 +1791,6 @@ c_getter:
   - // skip call c_getter
   intent: getter
   name: c_getter
-  owner: library
-c_getter_native_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_call:
-  - // skip call c_getter
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: getter
-  name: c_getter_native_*_cdesc_pointer
   owner: library
 c_getter_native_*_pointer:
   c_call:
@@ -3217,24 +2842,7 @@ c_mixin_arg_native_cfi:
   intent: mixin
   name: c_mixin_arg_native_cfi
   owner: library
-c_mixin_function_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: c_mixin_function_cdesc
-  owner: library
 c_mixin_function_char_*_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
@@ -3244,15 +2852,6 @@ c_mixin_function_char_*_cdesc:
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
   intent: mixin
   name: c_mixin_function_char_*_cdesc
   owner: library
@@ -3269,6 +2868,19 @@ c_mixin_function_character:
   - ISO_Fortran_binding.h
   intent: mixin
   name: c_mixin_function_character
+  owner: library
+c_mixin_function_native_*_cdesc:
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  intent: mixin
+  name: c_mixin_function_native_*_cdesc
   owner: library
 c_mixin_function_string_scalar_buf_copy:
   c_arg_decl:
@@ -8990,6 +8602,11 @@ f_mixin_function_c-ptr:
   name: f_mixin_function_c-ptr
   owner: library
 f_mixin_function_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_return_type: void
+  c_temps:
+  - cdesc
   f_arg_call:
   - '{c_var_cdesc}'
   f_declare:
@@ -8998,6 +8615,12 @@ f_mixin_function_cdesc:
   f_need_wrapper: true
   f_temps:
   - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
   intent: mixin
   name: f_mixin_function_cdesc
   owner: library
