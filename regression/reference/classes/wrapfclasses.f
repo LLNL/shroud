@@ -176,7 +176,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class1_ctor_default
     end interface
     ! end c_class1_ctor_default
@@ -199,7 +199,7 @@ module classes_mod
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class1_ctor_flag
     end interface
     ! end c_class1_ctor_flag
@@ -575,7 +575,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_shape_ctor
     end interface
 
@@ -607,7 +607,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_circle_ctor
     end interface
 
@@ -660,7 +660,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_data_ctor
     end interface
     ! end c_data_ctor

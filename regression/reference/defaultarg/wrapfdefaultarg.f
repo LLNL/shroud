@@ -86,7 +86,7 @@ module defaultarg_mod
             implicit none
             integer(C_INT), value, intent(IN) :: arg1
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class1_new_0
     end interface
 
@@ -113,7 +113,7 @@ module defaultarg_mod
             integer(C_INT), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class1_new_1
     end interface
 
@@ -144,7 +144,7 @@ module defaultarg_mod
             integer(C_INT), value, intent(IN) :: arg2
             integer(C_INT), value, intent(IN) :: arg3
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class1_new_2
     end interface
 

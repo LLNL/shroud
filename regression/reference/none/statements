@@ -780,7 +780,7 @@ c_ctor_shadow_scalar_capptr:
     - C_PTR
   i_module_line: '{i_module_line}'
   i_result_decl:
-  - type(C_PTR) {F_result_ptr}
+  - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: ctor
   name: c_ctor_shadow_scalar_capptr
@@ -3635,7 +3635,7 @@ f_ctor_shadow_scalar_capptr:
     - C_PTR
   i_module_line: '{i_module_line}'
   i_result_decl:
-  - type(C_PTR) {F_result_ptr}
+  - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: ctor
   name: f_ctor_shadow_scalar_capptr
@@ -8488,6 +8488,12 @@ f_mixin_function_shadow_capptr:
     iso_c_binding:
     - C_PTR
   f_need_wrapper: true
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  i_result_var: '{F_result_ptr}'
   intent: mixin
   name: f_mixin_function_shadow_capptr
   owner: library

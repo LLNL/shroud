@@ -93,7 +93,7 @@ module arrayclass_mod
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_ArrayWrapper_ctor
 
         ! ----------------------------------------

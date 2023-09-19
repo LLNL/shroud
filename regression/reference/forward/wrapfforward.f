@@ -77,7 +77,7 @@ module forward_mod
             import :: FOR_SHROUD_capsule_data
             implicit none
             type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function c_class2_ctor
 
         ! ----------------------------------------

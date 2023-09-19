@@ -62,7 +62,7 @@ module name_module
             import :: TES_SHROUD_capsule_data
             implicit none
             type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function XXX_TES_names_defaultctor
 
         ! ----------------------------------------

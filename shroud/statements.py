@@ -853,6 +853,12 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
         c_result_var="{F_result_ptr}",
         f_need_wrapper=True,
+
+        i_result_var="{F_result_ptr}",
+        i_result_decl=[
+            "type(C_PTR) :: {F_result_ptr}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
 
     # Convert function result to character argument
@@ -2990,11 +2996,6 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        i_result_var="{F_result_ptr}",
-        i_result_decl=[
-            "type(C_PTR) :: {F_result_ptr}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     
     dict(
@@ -3018,11 +3019,6 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        i_result_var="{F_result_ptr}",
-        i_result_decl=[
-            "type(C_PTR) :: {F_result_ptr}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="c_ctor_shadow_scalar_capsule",
@@ -3067,11 +3063,6 @@ fc_statements = [
         c_return=[
             "return {c_var};",
         ],
-        i_result_var="{F_result_ptr}",
-        i_result_decl=[
-            "type(C_PTR) {F_result_ptr}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL in stddef.h
