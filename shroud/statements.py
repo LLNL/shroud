@@ -2916,18 +2916,10 @@ fc_statements = [
 
     # Return a C_capsule_data_type.
     dict(
-        # c_function_shadow_*_capsule
-        # c_function_shadow_&_capsule
-        name="f_mixin_function_shadow_*_capsule",
+        name="f_function_shadow_*_capsule",
         mixin=[
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
-        ],
-        alias=[
-            "f_function_shadow_scalar_capsule",
-            "f_function_shadow_*_capsule",
-            "f_function_shadow_&_capsule",
-            "c_function_shadow_*/&_capsule",
         ],
         cxx_local_var="result",
         c_post_call=[
@@ -2984,14 +2976,21 @@ fc_statements = [
         # f_function_shadow_&_capptr
         name="f_function_shadow_*/&_capptr",
         mixin=[
-            "f_mixin_function_shadow_*_capsule",
             "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
         ],
         alias=[
             "c_function_shadow_*/&_capptr",
             "f_function_shadow_*/&_capptr_caller/library",
             "c_function_shadow_*/&_capptr_caller/library",
         ],
+
+        cxx_local_var="result",
+        c_post_call=[
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};",
+        ],
+        
         c_return_type=None,
         c_return=[
             "return {c_var};",
@@ -3044,10 +3043,6 @@ fc_statements = [
             "type(C_PTR) {F_result_ptr}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        name="f_ctor_shadow_scalar_capsule",
-        mixin=["f_mixin_function_shadow_capsule"],
     ),
     dict(
         name="f_ctor_shadow_scalar_capptr",
