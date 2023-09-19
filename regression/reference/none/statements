@@ -25,7 +25,6 @@ root
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
           cdesc
-            allocatable -- f_function_char_scalar_cdesc_allocatable
             arg -- f_function_char_*_cdesc_arg
             pointer -- f_function_char_scalar_cdesc_pointer
           copy -- f_function_char_*
@@ -34,10 +33,10 @@ root
         scalar -- f_function_char_scalar
       native
         & -- c_function_native_*/&
-          pointer -- f_mixin_function_native_&
+          pointer -- f_function_native_&
         * -- c_function_native_*/&
           allocatable -- f_function_native_**
-          pointer -- f_mixin_function_native_&
+          pointer -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- c_function_native_*_scalar
         ** -- f_function_native_**
@@ -61,30 +60,30 @@ root
                 scalar -- f_function_shadow_scalar_capptr
           capsule -- c_function_shadow_scalar_capsule
       string
-        & -- f_mixin_function_string_scalar
-          allocatable -- f_mixin_function_string_scalar
+        & -- f_shared_function_string_scalar
+          allocatable -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
-            copy -- c_mixin_function_string_scalar_buf_copy
+            copy -- f_function_string_scalar_buf
           cdesc
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
-          copy -- f_mixin_function_string_scalar
-        * -- f_mixin_function_string_scalar
-          allocatable -- f_mixin_function_string_scalar
+          copy -- f_shared_function_string_scalar
+        * -- f_shared_function_string_scalar
+          allocatable -- f_shared_function_string_scalar
           buf
-            copy -- c_mixin_function_string_scalar_buf_copy
+            copy -- f_function_string_scalar_buf
           cdesc
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
-          copy -- f_mixin_function_string_scalar
-          pointer -- f_mixin_function_string_scalar
-        scalar -- f_mixin_function_string_scalar
+          copy -- f_shared_function_string_scalar
+          pointer -- f_shared_function_string_scalar
+        scalar -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
-            copy -- c_mixin_function_string_scalar_buf_copy
+            copy -- f_function_string_scalar_buf
       struct -- c_function_struct
         *
           pointer -- f_function_struct_*_pointer
@@ -94,8 +93,8 @@ root
     getter -- c_getter
       native
         *
-          pointer -- f_mixin_getter
-        scalar -- f_mixin_getter
+          pointer -- f_getter_native_scalar
+        scalar -- f_getter_native_scalar
       string
         scalar
           cdesc
@@ -201,7 +200,7 @@ root
         cdesc
           targ
             native
-              scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
+              scalar -- c_inout_vector_cdesc_targ_native_scalar
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -220,10 +219,6 @@ root
         native
           *
             cdesc -- c_mixin_function_native_*_cdesc
-        string
-          scalar
-            buf
-              copy -- c_mixin_function_string_scalar_buf_copy
       in
         2d
           array
@@ -240,11 +235,6 @@ root
       inout
         array
           cdesc -- c_mixin_inout_array_cdesc
-        vector
-          cdesc
-            targ
-              native
-                scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
       native
         cfi
           allocatable -- c_mixin_native_cfi_allocatable
@@ -333,7 +323,7 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         *& -- f_defaulttmp_native_scalar
         ** -- f_in/out/inout_void_**
-    setter -- f_mixin_setter
+    setter -- f_setter
       arg -- c_setter_arg
       native
         * -- f_setter_native_scalar/*
@@ -342,10 +332,10 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
       void
-        scalar -- f_mixin_setter
+        scalar -- f_setter
     subroutine -- f_subroutine
       void
-        scalar -- c_mixin_noargs
+        scalar -- f_subroutine_void_scalar_capptr
           capptr -- f_subroutine_void_scalar_capptr
     test -- c_test
   f
@@ -394,10 +384,10 @@ root
             allocatable -- f_function_char_*_cfi_allocatable
             pointer -- f_function_char_scalar_cfi_pointer
       native
-        & -- f_mixin_function_native_&
+        & -- f_function_native_&
           buf
             pointer -- f_function_native_&_buf_pointer
-          pointer -- f_mixin_function_native_&
+          pointer -- f_function_native_&
         *
           allocatable -- f_function_native_**
           cdesc
@@ -407,7 +397,7 @@ root
           cfi
             allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
-          pointer -- f_mixin_function_native_&
+          pointer -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- f_defaulttmp_native_scalar
         ** -- f_function_native_**
@@ -432,15 +422,15 @@ root
                 scalar -- f_function_shadow_scalar_capptr
           capsule -- f_mixin_function_shadow_*_capsule
       string
-        & -- f_mixin_function_string_scalar
-          allocatable -- f_mixin_function_string_scalar
-          buf -- f_mixin_function_string_scalar_buf
+        & -- f_shared_function_string_scalar
+          allocatable -- f_shared_function_string_scalar
+          buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
-            copy -- f_mixin_function_string_scalar_buf
+            copy -- f_function_string_scalar_buf
           cdesc
-            allocatable -- f_mixin_function_string_*_cdesc_allocatable
-              caller -- f_mixin_function_string_*_cdesc_allocatable
-              library -- f_mixin_function_string_*_cdesc_allocatable
+            allocatable -- f_function_string_*_cdesc_allocatable
+              caller -- f_function_string_*_cdesc_allocatable
+              library -- f_function_string_*_cdesc_allocatable
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
@@ -450,18 +440,18 @@ root
               library -- f_function_string_*/&_cfi_allocatable
             arg -- f_function_string_scalar_cfi_arg
             copy -- f_mixin_function_string_scalar_cfi_copy
-            pointer -- f_mixin_function_string_*_cfi_pointer
-              caller -- f_mixin_function_string_*_cfi_pointer
-              library -- f_mixin_function_string_*_cfi_pointer
-          copy -- f_mixin_function_string_scalar
-        * -- f_mixin_function_string_scalar
-          allocatable -- f_mixin_function_string_scalar
-          buf -- f_mixin_function_string_scalar_buf
-            copy -- f_mixin_function_string_scalar_buf
+            pointer -- f_shared_function_string_*_cfi_pointer
+              caller -- f_shared_function_string_*_cfi_pointer
+              library -- f_shared_function_string_*_cfi_pointer
+          copy -- f_shared_function_string_scalar
+        * -- f_shared_function_string_scalar
+          allocatable -- f_shared_function_string_scalar
+          buf -- f_function_string_scalar_buf
+            copy -- f_function_string_scalar_buf
           cdesc
-            allocatable -- f_mixin_function_string_*_cdesc_allocatable
-              caller -- f_mixin_function_string_*_cdesc_allocatable
-              library -- f_mixin_function_string_*_cdesc_allocatable
+            allocatable -- f_function_string_*_cdesc_allocatable
+              caller -- f_function_string_*_cdesc_allocatable
+              library -- f_function_string_*_cdesc_allocatable
             pointer -- f_function_string_*_cdesc_pointer
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
@@ -470,15 +460,15 @@ root
               caller -- f_function_string_*/&_cfi_allocatable
               library -- f_function_string_*/&_cfi_allocatable
             copy -- f_mixin_function_string_scalar_cfi_copy
-            pointer -- f_mixin_function_string_*_cfi_pointer
-              caller -- f_mixin_function_string_*_cfi_pointer
-              library -- f_mixin_function_string_*_cfi_pointer
-          copy -- f_mixin_function_string_scalar
-          pointer -- f_mixin_function_string_scalar
-        scalar -- f_mixin_function_string_scalar
-          buf -- f_mixin_function_string_scalar_buf
+            pointer -- f_shared_function_string_*_cfi_pointer
+              caller -- f_shared_function_string_*_cfi_pointer
+              library -- f_shared_function_string_*_cfi_pointer
+          copy -- f_shared_function_string_scalar
+          pointer -- f_shared_function_string_scalar
+        scalar -- f_shared_function_string_scalar
+          buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
-            copy -- f_mixin_function_string_scalar_buf
+            copy -- f_function_string_scalar_buf
           cdesc
             allocatable -- f_function_string_scalar_cdesc_allocatable
               caller -- f_function_string_scalar_cdesc_allocatable
@@ -489,9 +479,9 @@ root
               library -- f_function_string_*/&_cfi_allocatable
             arg -- f_function_string_scalar_cfi_arg
             copy -- f_mixin_function_string_scalar_cfi_copy
-            pointer -- f_mixin_function_string_*_cfi_pointer
-              caller -- f_mixin_function_string_*_cfi_pointer
-              library -- f_mixin_function_string_*_cfi_pointer
+            pointer -- f_shared_function_string_*_cfi_pointer
+              caller -- f_shared_function_string_*_cfi_pointer
+              library -- f_shared_function_string_*_cfi_pointer
       struct
         *
           pointer -- f_function_struct_*_pointer
@@ -510,8 +500,8 @@ root
         *
           cdesc
             pointer -- f_getter_native_*_cdesc_pointer
-          pointer -- f_mixin_getter
-        scalar -- f_mixin_getter
+          pointer -- f_getter_native_scalar
+        scalar -- f_getter_native_scalar
       string
         scalar
           cdesc
@@ -644,7 +634,6 @@ root
         cfi
           character-arg -- f_mixin_function_cfi_character-arg
         native
-          & -- f_mixin_function_native_&
           cdesc
             pointer -- f_mixin_function_native_cdesc_pointer
         ptr -- f_mixin_function_ptr
@@ -654,18 +643,10 @@ root
           capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
         string
-          *
-            cdesc
-              allocatable -- f_mixin_function_string_*_cdesc_allocatable
-            cfi
-              pointer -- f_mixin_function_string_*_cfi_pointer
-          scalar -- f_mixin_function_string_scalar
-            buf -- f_mixin_function_string_scalar_buf
+          scalar
             cfi
               allocatable -- f_mixin_function_string_scalar_cfi_allocatable
               copy -- f_mixin_function_string_scalar_cfi_copy
-              pointer -- f_mixin_function_string_scalar_cfi_pointer
-      getter -- f_mixin_getter
       in
         2d
           array
@@ -690,7 +671,6 @@ root
         native
           cdesc
             pointer -- f_mixin_out_native_cdesc_pointer
-      setter -- f_mixin_setter
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -777,7 +757,7 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         *& -- f_defaulttmp_native_scalar
         ** -- f_in/out/inout_void_**
-    setter -- f_mixin_setter
+    setter -- f_setter
       native
         * -- f_setter_native_scalar/*
         scalar -- f_setter_native_scalar/*
@@ -785,7 +765,14 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
       void
-        scalar -- f_mixin_setter
+        scalar -- f_setter
+    shared
+      function
+        string
+          *
+            cfi
+              pointer -- f_shared_function_string_*_cfi_pointer
+          scalar -- f_shared_function_string_scalar
     subroutine -- f_subroutine
       void
         scalar -- f_subroutine
@@ -979,30 +966,6 @@ c_function_char_*_buf_copy:
     - C_INT
   intent: function
   name: c_function_char_*_buf_copy
-  owner: library
-c_function_char_*_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudTypeDefines
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_char_*_cdesc_allocatable
   owner: library
 c_function_char_*_cdesc_arg:
   intent: function
@@ -2882,33 +2845,6 @@ c_mixin_function_native_*_cdesc:
   intent: mixin
   name: c_mixin_function_native_*_cdesc
   owner: library
-c_mixin_function_string_scalar_buf_copy:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - len
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: mixin
-  name: c_mixin_function_string_scalar_buf_copy
-  owner: library
 c_mixin_in_2d_array_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
@@ -3020,43 +2956,6 @@ c_mixin_inout_array_cdesc:
   i_module_line: iso_c_binding:{f_kind},C_SIZE_T
   intent: mixin
   name: c_mixin_inout_array_cdesc
-  owner: library
-c_mixin_inout_vector_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
-  c_temps:
-  - size
-  - cdesc
-  cxx_local_var: pointer
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: mixin
-  name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
 c_mixin_native_cfi_allocatable:
   c_post_call:
@@ -5396,7 +5295,7 @@ f_function_string_&_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5427,7 +5326,7 @@ f_function_string_&_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5458,7 +5357,7 @@ f_function_string_&_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5970,7 +5869,7 @@ f_function_string_*_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6001,7 +5900,7 @@ f_function_string_*_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6032,7 +5931,7 @@ f_function_string_*_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6554,7 +6453,7 @@ f_function_string_scalar_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6589,7 +6488,7 @@ f_function_string_scalar_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6624,7 +6523,7 @@ f_function_string_scalar_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -7102,7 +7001,7 @@ f_getter_string_scalar_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -8545,7 +8444,7 @@ f_mixin_char_cdesc_allocate:
   f_helper: copy_string array_context
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   intent: mixin
   name: f_mixin_char_cdesc_allocate
   owner: library
@@ -8639,29 +8538,6 @@ f_mixin_function_cfi_character-arg:
   intent: mixin
   name: f_mixin_function_cfi_character-arg
   owner: library
-f_mixin_function_native_&:
-  f_arg_decl:
-  - '{f_type}, pointer :: {f_var}'
-  f_call:
-  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
-  f_declare:
-  - 'type(C_PTR) :: {c_local_ptr}'
-  f_local:
-  - ptr
-  f_module:
-    iso_c_binding:
-    - C_PTR
-    - c_f_pointer
-  f_post_call:
-  - call c_f_pointer({c_local_ptr}, {F_result})
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: mixin
-  name: f_mixin_function_native_&
-  owner: library
 f_mixin_function_native_cdesc_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
@@ -8731,130 +8607,6 @@ f_mixin_function_shadow_capsule:
   intent: mixin
   name: f_mixin_function_shadow_capsule
   owner: library
-f_mixin_function_string_*_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_string ShroudStrToArray
-  c_post_call:
-  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  f_arg_call:
-  - '{c_var_cdesc}'
-  f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
-  f_declare:
-  - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: copy_string array_context
-  f_need_wrapper: true
-  f_post_call:
-  - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: f_mixin_function_string_*_cdesc_allocatable
-  owner: library
-f_mixin_function_string_*_cfi_pointer:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  f_arg_call:
-  - '{f_var}'
-  f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: mixin
-  name: f_mixin_function_string_*_cfi_pointer
-  owner: library
-f_mixin_function_string_scalar:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: mixin
-  name: f_mixin_function_string_scalar
-  owner: library
-f_mixin_function_string_scalar_buf:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper: ShroudStrCopy
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - len
-  f_arg_call:
-  - '{f_var}'
-  - '{c_var_len}'
-  f_declare:
-  - integer(C_INT) {c_var_len}
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_need_wrapper: true
-  f_pre_call:
-  - '{c_var_len} = len({f_var}, kind=C_INT)'
-  f_temps:
-  - len
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: mixin
-  name: f_mixin_function_string_scalar_buf
-  owner: library
 f_mixin_function_string_scalar_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
@@ -8890,23 +8642,6 @@ f_mixin_function_string_scalar_cfi_copy:
   - ISO_Fortran_binding.h
   intent: mixin
   name: f_mixin_function_string_scalar_cfi_copy
-  owner: library
-f_mixin_function_string_scalar_cfi_pointer:
-  f_arg_call:
-  - '{f_var}'
-  f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
-  f_need_wrapper: true
-  intent: mixin
-  name: f_mixin_function_string_scalar_cfi_pointer
-  owner: library
-f_mixin_getter:
-  c_call:
-  - // skip call c_getter
-  c_return:
-  - return {CXX_this}->{field_name};
-  intent: mixin
-  name: f_mixin_getter
   owner: library
 f_mixin_in_2d_array_buf:
   f_arg_call:
@@ -9021,12 +8756,6 @@ f_mixin_out_native_cdesc_pointer:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
   intent: mixin
   name: f_mixin_out_native_cdesc_pointer
-  owner: library
-f_mixin_setter:
-  c_call:
-  - // skip call c_setter
-  intent: mixin
-  name: f_mixin_setter
   owner: library
 f_mixin_shadow-arg:
   f_arg_call:
@@ -10142,6 +9871,59 @@ f_setter_void_scalar:
   - // skip call c_setter
   intent: setter
   name: f_setter_void_scalar
+  owner: library
+f_shared_function_string_*_cfi_pointer:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
+  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: shared
+  name: f_shared_function_string_*_cfi_pointer
+  owner: library
+f_shared_function_string_scalar:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: shared
+  name: f_shared_function_string_scalar
   owner: library
 f_subroutine:
   intent: subroutine

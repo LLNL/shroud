@@ -187,7 +187,7 @@ def check_statements(stmts):
                 "getter", "setter",
                 "ctor", "dtor",
                 "base", "descr",
-                "defaulttmp", "defaultstruct", "XXXin", "test",
+                "defaulttmp", "defaultstruct", "XXXin", "test", "shared",
                 "in/out/inout", "out/inout", "in/inout", "function/getter",
         ]:
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
@@ -282,6 +282,9 @@ def process_mixin(stmts, defaults, stmtdict):
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
+#        parts = name.split("_")
+#        if parts[1] == "mixin" and "alias" in stmt:
+#            print("XXXX - mixin should not have alias: ", name)
         if "mixin" in stmt:
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
@@ -673,10 +676,6 @@ fc_statements = [
     dict(
         # No arguments. Set necessary fields as a group.
         name="c_mixin_noargs",
-        alias=[
-            # From wrap_function_interface
-            "c_subroutine_void_scalar",
-        ],
         c_arg_decl=[],
         i_arg_decl=[],
         i_arg_names=[],
@@ -687,6 +686,7 @@ fc_statements = [
             "c_mixin_noargs",
         ],
         alias=[
+            "c_subroutine_void_scalar",
             "c_subroutine_void_scalar_capptr",
         ],
     ),
@@ -778,6 +778,20 @@ fc_statements = [
         c_temps=["cdesc"],
     ),
 
+    dict(
+        # Allocate Fortran CHARACTER scalar, then fill from cdesc.
+        name="f_mixin_char_cdesc_allocate",
+        c_helper="ShroudStrToArray",
+        f_helper="copy_string array_context",
+        f_arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+        f_post_call=[
+            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
+            "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
+        ],
+    ),
+    
     dict(
         # Add function result to cdesc. Used with pointer and allocatable
         # c_temp cdesc already added
@@ -1577,9 +1591,8 @@ fc_statements = [
     dict(
         # Pointer to scalar.
         # type(C_PTR) is returned instead of a cdesc argument.
-        name="f_mixin_function_native_&",
+        name="f_function_native_&",
         alias=[
-            "f_function_native_&",
             "f_function_native_*_pointer",   # XXX - change base to &?
             "c_function_native_*_pointer",
             "f_function_native_&_pointer",
@@ -1661,7 +1674,7 @@ fc_statements = [
     dict(
         name="f_function_native_&_buf_pointer",
         mixin=[
-            "f_mixin_function_native_&",
+            "f_function_native_&",
         ],
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
@@ -1929,21 +1942,13 @@ fc_statements = [
         name="f_function_char_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
+            "f_mixin_char_cdesc_allocate",
             "c_mixin_function_char_*_cdesc",
         ],
         alias=[
             "f_function_char_*_cdesc_allocatable",
-            "c_function_char_*_cdesc_allocatable",
         ],
         c_helper="copy_string ShroudTypeDefines",
-        f_helper="copy_string array_context",
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_post_call=[
-            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
-        ],
     ),
 
     # XXX note: split by char/scalar - use of ShroudStrToArray
@@ -2135,7 +2140,7 @@ fc_statements = [
         # c_function_string_scalar
         # c_function_string_*
         # c_function_string_&
-        name="f_mixin_function_string_scalar",
+        name="f_shared_function_string_scalar",
         alias=[
             "f_function_string_scalar/*/&",
             "c_function_string_scalar/*/&",
@@ -2159,35 +2164,6 @@ fc_statements = [
             "type(C_PTR) {c_var}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        # No need to allocate a local copy since the string is copied
-        # into a Fortran variable before the string is deleted.
-        # c_function_string_scalar_buf_copy
-        # c_function_string_*_buf_copy
-        # c_function_string_&_buf_copy
-        name="c_mixin_function_string_scalar_buf_copy",
-        mixin=["c_mixin_in_character_buf"],
-        alias=[
-            "c_function_string_scalar/*/&_buf_copy",
-        ],
-        i_arg_decl=[
-            # Change to intent(OUT) from mixin.
-            "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
-            "integer(C_INT), value, intent(IN) :: {c_var_len}",
-        ],
-        c_helper="ShroudStrCopy",
-        c_post_call=[
-            "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
-            "\t {nullptr},\t 0);",
-            "-}} else {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
-            "\t {cxx_var}{cxx_member}data(),"
-            "\t {cxx_var}{cxx_member}size());",
-            "-}}",
-        ],
-        c_return_type="void",
     ),
 
     # std::string
@@ -2242,41 +2218,22 @@ fc_statements = [
         c_local=["trim"],
     ),
     
-    # Uses a two part call to copy results of std::string into a
-    # allocatable Fortran array.
-    #    c_step1(context)
-    #    allocate(character(len=context%elem_len): Fout)
-    #    c_step2(context, Fout, context%elem_len)
-    # only used with bufferifed routines and intent(out) or result
-    # std::string * function()
     dict(
-        # f_function_string_*_cdesc_allocatable
-        # f_function_string_&_cdesc_allocatable
         # f_function_string_*_cdesc_allocatable_caller
         # f_function_string_&_cdesc_allocatable_caller
         # f_function_string_*_cdesc_allocatable_library
         # f_function_string_&_cdesc_allocatable_library
-        # c_function_string_*_cdesc_allocatable
-        # c_function_string_&_cdesc_allocatable
-        name="f_mixin_function_string_*_cdesc_allocatable",
+        name="f_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
+            "f_mixin_char_cdesc_allocate",
         ],
         alias=[
-            "f_function_string_*/&_cdesc_allocatable",
+            "f_function_string_&_cdesc_allocatable",
             "f_function_string_*/&_cdesc_allocatable_caller/library",
 
         ],
 
-        f_helper="copy_string array_context",
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_post_call=[
-            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
-        ],
-        
         c_helper="copy_string ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -2295,13 +2252,12 @@ fc_statements = [
         # f_function_string_*_buf_copy
         # f_function_string_&_buf_copy
         # TTT - is the buf version used?
-        name="f_mixin_function_string_scalar_buf",
+        name="f_function_string_scalar_buf",
         mixin=[
             "f_mixin_in_character_buf",
-            "c_mixin_function_string_scalar_buf_copy",
+            "c_mixin_in_character_buf",
         ],
         alias=[
-            "f_function_string_scalar_buf",
             "f_function_string_*_buf",
             "f_function_string_&_buf",
             
@@ -2311,23 +2267,30 @@ fc_statements = [
 
 #            "f_function_string_scalar/*/&_buf",
 #            "f_function_string_scalar/*/&_buf_copy",
+            "c_function_string_scalar/*/&_buf_copy",
         ],
+
+        i_arg_decl=[
+            # Change to intent(OUT) from mixin.
+            "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
+            "integer(C_INT), value, intent(IN) :: {c_var_len}",
+        ],
+        c_helper="ShroudStrCopy",
+        # No need to allocate a local copy since the string is copied
+        # into a Fortran variable before the string is deleted.
+        c_post_call=[
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "ShroudStrCopy({c_var}, {c_var_len},"
+            "\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "ShroudStrCopy({c_var}, {c_var_len},"
+            "\t {cxx_var}{cxx_member}data(),"
+            "\t {cxx_var}{cxx_member}size());",
+            "-}}",
+        ],
+        c_return_type="void",
     ),
 
-    dict(
-        # Allocate Fortran CHARACTER scalar, then fill from C data.
-        name="f_mixin_char_cdesc_allocate",
-        c_helper="ShroudStrToArray",
-        f_helper="copy_string array_context",
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_post_call=[
-            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
-        ],
-    ),
-    
     # similar to f_function_char_scalar_allocatable
     dict(
         # f_function_string_scalar_cdesc_allocatable
@@ -2442,12 +2405,8 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_mixin_inout_vector_cdesc_targ_native_scalar",
+        name="c_inout_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_inout_array_cdesc"],
-        alias=[
-            # TTT
-            "c_inout_vector_cdesc_targ_native_scalar",
-        ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -2798,7 +2757,7 @@ fc_statements = [
         name="f_inout_vector_&_cdesc_targ_native_scalar",
         mixin=[
             "f_mixin_inout_array_cdesc",
-            "c_mixin_inout_vector_cdesc_targ_native_scalar",
+            "c_inout_vector_cdesc_targ_native_scalar",
         ],
         alias=[
             "c_inout_vector_&_cdesc_targ_native_scalar",
@@ -2857,7 +2816,7 @@ fc_statements = [
         name="f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_inout_array_cdesc",
-            "c_mixin_inout_vector_cdesc_targ_native_scalar",
+            "c_inout_vector_cdesc_targ_native_scalar",
         ],
         alias=[
             "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
@@ -3264,12 +3223,11 @@ fc_statements = [
         name="c_setter_arg",
     ),
     dict(
-        name="f_mixin_getter",
+        name="f_getter_native_scalar",
         mixin=[
             "c_getter",
         ],
         alias=[
-            "f_getter_native_scalar",
             "c_getter_native_scalar",
             "f_getter_native_*_pointer",
             "c_getter_native_*_pointer",
@@ -3279,10 +3237,9 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_mixin_setter",
+        name="f_setter",
         mixin=["c_mixin_noargs"],
         alias=[
-            "f_setter",
             "c_setter",
             "f_setter_void_scalar",  # for interface
             "c_setter_void_scalar",
@@ -3716,29 +3673,6 @@ fc_statements = [
     ),
 
     ########################################
-    dict(
-        # f_function_string_scalar_cfi_pointer
-        # f_function_string_*_cfi_pointer
-        # f_function_string_&_cfi_pointer
-
-        # f_function_string_scalar_cfi_pointer_caller
-        # f_function_string_*_cfi_pointer_caller
-        # f_function_string_&_cfi_pointer_caller
-        # f_function_string_scalar_cfi_pointer_library
-        # f_function_string_*_cfi_pointer_library
-        # f_function_string_&_cfi_pointer_library
-        name="f_mixin_function_string_scalar_cfi_pointer",
-        # XXX - avoid calling C directly since the Fortran function
-        # is returning an pointer, which CFI can not do.
-        # Fortran wrapper passed function result to C which fills it.
-        f_need_wrapper=True,
-        f_arg_decl=[
-            "character(len=:), pointer :: {f_var}",
-        ],
-        f_arg_call=["{f_var}"],
-    ),
-    
-    ########################################
     # std::string
     dict(
         # f_in_string_scalar_cfi
@@ -3855,15 +3789,24 @@ fc_statements = [
     # XXX - consolidate with c_function_*_cfi_pointer?
     # XXX - via a helper to get address and length of string
     dict(
-        name="f_mixin_function_string_*_cfi_pointer",
+        name="f_shared_function_string_*_cfi_pointer",
         mixin=[
-            "f_mixin_function_string_scalar_cfi_pointer",
             "c_mixin_function_character",
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_pointer",
             "f_function_string_scalar/*/&_cfi_pointer_caller/library",
         ],
+
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an pointer, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        f_need_wrapper=True,
+        f_arg_decl=[
+            "character(len=:), pointer :: {f_var}",
+        ],
+        f_arg_call=["{f_var}"],
+        
         c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
