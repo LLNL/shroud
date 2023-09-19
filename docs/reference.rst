@@ -1417,6 +1417,12 @@ c_var_extents
 
 c_var_lower
 
+chelper_*
+    Helper name for a function.
+    Each name in statements *c_helper* will create a format name
+    which starts with *chelper_* and end with the helper name.
+    It will contain the name of the C function for the helper.
+    Used by statements *c_pre_call* and *c_post_call* statements.
 
 cxx_addr
     Syntax to take address of argument.
@@ -1533,11 +1539,12 @@ f_type
 f_var
     Fortran variable name for argument.
 
-hnamefunc
+fhelper_*
     Helper name for a function.
-    Each name in statements *f_helper* will set a suffix index.
-    The first helper will be *hnamefunc0*.
-    Used by statements *pre_call* and *post_call* statements.
+    Each name in statements *f_helper* will create a format name
+    which starts with *fhelper_* and end with the helper name.
+    It will contain the name of the Fortran function for the helper.
+    Used by statements *f_pre_call* and *f_post_call* statements.
 
 i_dimension
     Dimension used in ``bind(C)`` interface.

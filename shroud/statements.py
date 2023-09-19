@@ -1310,7 +1310,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1336,7 +1336,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1573,7 +1573,7 @@ fc_statements = [
         f_post_call=[
             # XXX - allocate scalar
             "allocate({f_var}{f_array_allocate})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1989,7 +1989,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
+            "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
     ),
 
@@ -2017,7 +2017,7 @@ fc_statements = [
             #"call c_f_pointer({c_var_cdesc}%base_addr, {c_local_s})",
             #"{f_var} => {c_local_s}",
             #"-end block",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})",
+            "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})",
         ],
     ),
     dict(
@@ -2048,7 +2048,7 @@ fc_statements = [
             #"call c_f_pointer({c_var_cdesc}%base_addr, {c_local_s})",
             #"{f_var} => {c_local_s}",
             #"-end block",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})",
+            "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})",
         ],
 
         # TTT - replace c_function_string_*/&_cdesc_allocatable_pointer
@@ -2324,7 +2324,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
+            "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
         
         c_helper="copy_string ShroudStrToArray",
@@ -2374,7 +2374,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
+            "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
     ),
     
@@ -2490,7 +2490,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
         f_post_call=[
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2546,7 +2546,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
         
         cxx_local_var="pointer",
@@ -2767,7 +2767,7 @@ fc_statements = [
         ],
         c_arg_call=["{cxx_var}"],
         c_post_call=[
-            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});",
+            "{chelper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});",
         ],
     ),
 
@@ -2799,7 +2799,7 @@ fc_statements = [
             "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
             "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
+            "call {fhelper_vector_string_allocatable}({c_var_cdesc}, {c_var_out})",
         ],
         f_temps=["cdesc", "out"],
 
@@ -2812,7 +2812,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {hnamefunc1}(*{cxx_var});",
+            "{c_var_cdesc}->elem_len = {chelper_vector_string_out_len}(*{cxx_var});",
             "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
@@ -2867,7 +2867,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2881,7 +2881,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {hnamefunc0}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+            "call {fhelper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
@@ -2906,7 +2906,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2928,7 +2928,7 @@ fc_statements = [
         f_post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({c_var_cdesc}%size))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 
@@ -4054,7 +4054,7 @@ fc_statements = [
         ],
         c_arg_call=["&{cxx_var}"],
         c_post_call=[
-            "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
+            "{chelper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
         ],
 
     ),
@@ -4096,7 +4096,7 @@ fc_statements = [
             "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
             "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
             "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {hnamefunc0}({c_var_cdesc}, {c_var_out})",
+            "call {fhelper_array_string_allocatable}({c_var_cdesc}, {c_var_out})",
         ],
         f_temps=["cdesc", "out"],
         f_helper="array_string_allocatable array_context",
@@ -4114,7 +4114,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);",
+            "{c_var_cdesc}->elem_len = {chelper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership

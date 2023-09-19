@@ -1136,8 +1136,8 @@
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "file_scope": "Cstruct_as_class",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Cstruct_as_class"
                 }
             },
             {
@@ -1864,8 +1864,8 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "file_scope": "Cstruct_as_subclass",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Cstruct_as_subclass"
                 }
             }
         ],
@@ -2392,12 +2392,12 @@
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
                             "cfi_type": "CFI_type_other",
+                            "chelper_ShroudStrBlankFill": "ShroudStrBlankFill",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "hnamefunc0": "ShroudStrBlankFill",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtc": "f_out_char_*_buf"
@@ -3650,12 +3650,12 @@
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
                             "cfi_type": "CFI_type_other",
+                            "chelper_ShroudStrBlankFill": "ShroudStrBlankFill",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "hnamefunc0": "ShroudStrBlankFill",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtc": "f_out_char_*_buf"
@@ -4964,12 +4964,12 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_int",
+                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                        "chelper_array_context": "array_context",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "hnamefunc0": "ShroudTypeDefines",
-                        "hnamefunc1": "array_context",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
@@ -4988,7 +4988,7 @@
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
+                        "fhelper_array_context": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -5392,12 +5392,12 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_double",
+                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                        "chelper_array_context": "array_context",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "hnamefunc0": "ShroudTypeDefines",
-                        "hnamefunc1": "array_context",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_DOUBLE",
@@ -5416,7 +5416,7 @@
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
+                        "fhelper_array_context": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmtf": "f_getter_native_*_cdesc_pointer"

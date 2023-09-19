@@ -2563,7 +2563,7 @@ class ModuleInfo(object):
             self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
                 raise RuntimeError("No such helper {}".format(helper))
-            setattr(fmt, "hnamefunc" + str(i),
+            setattr(fmt, "fhelper_" + helper,
                     whelpers.FHelpers[helper].get("name", helper))
             
         

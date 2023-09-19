@@ -3848,7 +3848,7 @@ c_out_string_**_cdesc_allocatable:
   - if ({c_char_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {c_char_len};'
   - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);'
+  - '{c_var_cdesc}->elem_len = {chelper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = 0;'
@@ -3872,7 +3872,7 @@ c_out_string_**_cdesc_copy:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_string_out
   c_post_call:
-  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{chelper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
@@ -3980,7 +3980,7 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - if ({c_char_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {c_char_len};'
   - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {hnamefunc1}(*{cxx_var});'
+  - '{c_var_cdesc}->elem_len = {chelper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -4033,7 +4033,7 @@ c_out_vector_&_cdesc_targ_string_scalar:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: vector_string_out
   c_post_call:
-  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});"
+  - "{chelper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_pre_call:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
@@ -4509,7 +4509,7 @@ f_function_char_*_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -4552,7 +4552,7 @@ f_function_char_*_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -4761,7 +4761,7 @@ f_function_char_scalar_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -4800,7 +4800,7 @@ f_function_char_scalar_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5008,7 +5008,8 @@ f_function_native_*_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+    \ kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5783,7 +5784,7 @@ f_function_string_&_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5814,7 +5815,7 @@ f_function_string_&_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5845,7 +5846,7 @@ f_function_string_&_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5878,7 +5879,7 @@ f_function_string_&_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5911,7 +5912,7 @@ f_function_string_&_cdesc_pointer_caller:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -5944,7 +5945,7 @@ f_function_string_&_cdesc_pointer_library:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6357,7 +6358,7 @@ f_function_string_*_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6388,7 +6389,7 @@ f_function_string_*_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6419,7 +6420,7 @@ f_function_string_*_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6452,7 +6453,7 @@ f_function_string_*_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6485,7 +6486,7 @@ f_function_string_*_cdesc_pointer_caller:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6518,7 +6519,7 @@ f_function_string_*_cdesc_pointer_library:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  - "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6941,7 +6942,7 @@ f_function_string_scalar_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -6976,7 +6977,7 @@ f_function_string_scalar_cdesc_allocatable_caller:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -7011,7 +7012,7 @@ f_function_string_scalar_cdesc_allocatable_library:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -7349,7 +7350,7 @@ f_function_vector_scalar_cdesc:
     - C_LOC
     - C_SIZE_T
   f_post_call:
-  - "call {hnamefunc0}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   intent: function
   name: f_function_vector_scalar_cdesc
   owner: library
@@ -7387,7 +7388,7 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   f_need_wrapper: true
   f_post_call:
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -7489,7 +7490,7 @@ f_getter_string_scalar_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -8788,7 +8789,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   f_post_call:
   - if (allocated({f_var})) deallocate({f_var})
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -8842,7 +8843,7 @@ f_inout_vector_&_cdesc_targ_native_scalar:
     - C_LOC
     - C_SIZE_T
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -8932,7 +8933,7 @@ f_mixin_char_cdesc_allocate:
   f_helper: copy_string array_context
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   intent: mixin
   name: f_mixin_char_cdesc_allocate
   owner: library
@@ -9126,7 +9127,7 @@ f_mixin_function_string_*_cdesc_allocatable:
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
-  - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
+  - "call {fhelper_copy_string}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -9585,7 +9586,7 @@ f_out_native_*&_cdesc_allocatable:
     - C_SIZE_T
   f_post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
   f_temps:
   - cdesc
   intent: out
@@ -9675,7 +9676,7 @@ f_out_native_**_cdesc_allocatable:
     - C_SIZE_T
   f_post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -9955,7 +9956,7 @@ f_out_string_**_cdesc_allocatable:
   - if ({c_char_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {c_char_len};'
   - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {hnamefunc1}({cxx_var}, {c_var_cdesc}->size);'
+  - '{c_var_cdesc}->elem_len = {chelper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = 0;'
@@ -9980,7 +9981,7 @@ f_out_string_**_cdesc_allocatable:
   - allocate({f_char_type}{f_var}({c_var_cdesc}%size))
   - '{c_var_cdesc}%cxx%addr = C_LOC({f_var});'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {hnamefunc0}({c_var_cdesc}, {c_var_out})
+  - call {fhelper_array_string_allocatable}({c_var_cdesc}, {c_var_out})
   f_temps:
   - cdesc
   - out
@@ -10000,7 +10001,7 @@ f_out_string_**_cdesc_copy:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_string_out
   c_post_call:
-  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{chelper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
@@ -10156,7 +10157,7 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
     - C_SIZE_T
   f_post_call:
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -10178,7 +10179,7 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - if ({c_char_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {c_char_len};'
   - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {hnamefunc1}(*{cxx_var});'
+  - '{c_var_cdesc}->elem_len = {chelper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -10204,7 +10205,7 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - allocate({f_char_type}{f_var}({c_var_cdesc}%size))
   - '{c_var_cdesc}%cxx%addr = C_LOC({f_var});'
   - '{c_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {hnamefunc0}({c_var_cdesc}, {c_var_out})
+  - call {fhelper_vector_string_allocatable}({c_var_cdesc}, {c_var_out})
   f_temps:
   - cdesc
   - out
@@ -10248,7 +10249,7 @@ f_out_vector_&_cdesc_targ_native_scalar:
     - C_SIZE_T
     - C_LOC
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -10267,7 +10268,7 @@ f_out_vector_&_cdesc_targ_string_scalar:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: vector_string_out
   c_post_call:
-  - "{hnamefunc0}(\t{c_var_cdesc},\t {cxx_var});"
+  - "{chelper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_pre_call:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
@@ -10332,7 +10333,7 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
     - C_SIZE_T
   f_post_call:
   - allocate({f_var}({c_var_cdesc}%size))
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
@@ -10375,7 +10376,7 @@ f_out_vector_*_cdesc_targ_native_scalar:
     - C_SIZE_T
     - C_LOC
   f_post_call:
-  - "call {hnamefunc0}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:

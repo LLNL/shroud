@@ -54,8 +54,8 @@
                     "cxx_class": "Class3",
                     "cxx_type": "Class3",
                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
-                    "file_scope": "Class3",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Class3"
                 }
             },
             {
@@ -591,8 +591,8 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
-                    "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Class2"
                 }
             }
         ],

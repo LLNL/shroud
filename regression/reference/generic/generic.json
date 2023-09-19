@@ -37,8 +37,8 @@
                     "cxx_class": "StructAsClass",
                     "cxx_type": "StructAsClass",
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                    "file_scope": "StructAsClass",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "StructAsClass"
                 }
             }
         ],
@@ -4173,8 +4173,8 @@
                     "F_C_name": "c_save_pointer2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
+                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "function_name": "SavePointer2",
-                    "hnamefunc0": "ShroudTypeDefines",
                     "stmtc": "f_subroutine"
                 }
             },
@@ -4387,9 +4387,9 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float1d",
                     "F_subprogram": "subroutine",
+                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d",
-                    "hnamefunc0": "ShroudTypeDefines",
                     "stmtc": "f_subroutine",
                     "stmtf": "f_subroutine"
                 }
@@ -4603,9 +4603,9 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float2d",
                     "F_subprogram": "subroutine",
+                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d",
-                    "hnamefunc0": "ShroudTypeDefines",
                     "stmtc": "f_subroutine",
                     "stmtf": "f_subroutine"
                 }
@@ -5382,13 +5382,13 @@
                             "c_var": "addr",
                             "c_var_cdesc": "SHT_addr_cdesc",
                             "cfi_type": "CFI_type_float",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_array_context": "array_context",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
                             "cxx_type": "float",
                             "cxx_var": "addr",
-                            "hnamefunc0": "ShroudTypeDefines",
-                            "hnamefunc1": "array_context",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmtc": "f_out_native_**_cdesc_pointer"
@@ -5403,7 +5403,7 @@
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
-                            "hnamefunc0": "array_context",
+                            "fhelper_array_context": "array_context",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
@@ -5714,13 +5714,13 @@
                             "c_var": "addr",
                             "c_var_cdesc": "SHT_addr_cdesc",
                             "cfi_type": "CFI_type_float",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_array_context": "array_context",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
                             "cxx_type": "float",
                             "cxx_var": "addr",
-                            "hnamefunc0": "ShroudTypeDefines",
-                            "hnamefunc1": "array_context",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmtc": "f_out_native_**_cdesc_pointer"
@@ -5735,7 +5735,7 @@
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
-                            "hnamefunc0": "array_context",
+                            "fhelper_array_context": "array_context",
                             "i_dimension": "(*)",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
