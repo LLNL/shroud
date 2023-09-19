@@ -1054,10 +1054,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_INT"]),
         f_need_wrapper=True,
-    ),
-    dict(
-        # Pass argument, size and len to C.
-        name="c_mixin_in_string_array_buf",
+
         c_arg_decl=[
             "const char *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
@@ -1922,7 +1919,6 @@ fc_statements = [
         name='f_in_char_**_buf',
         mixin=[
             "f_mixin_in_string_array_buf",
-            "c_mixin_in_string_array_buf"
         ],
         alias=[
             'c_in_char_**_buf',
@@ -2518,7 +2514,6 @@ fc_statements = [
         name="f_in_vector_scalar/*/&_buf_targ_string_scalar",
         mixin=[
             "f_mixin_in_string_array_buf",
-            "c_mixin_in_string_array_buf",
         ],
         alias=[
             "c_in_vector_scalar/*/&_buf_targ_string_scalar",
@@ -2544,11 +2539,10 @@ fc_statements = [
     # XXX untested [cf]_out_vector_buf_string
     dict(
         name="f_out_vector_buf_targ_string_scalar",
-        mixin=["f_mixin_in_string_array_buf"],
-    ),
-    dict(
-        name="c_out_vector_buf_targ_string_scalar",
-        mixin=["c_mixin_in_string_array_buf"],
+        mixin=[
+            "f_mixin_in_string_array_buf",
+        ],
+
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
         c_pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
@@ -2573,11 +2567,10 @@ fc_statements = [
     # XXX untested [cf]_inout_vector_buf_string
     dict(
         name="f_inout_vector_buf_targ_string_scalar",
-        mixin=["f_mixin_in_string_array_buf"],
-    ),
-    dict(
-        name="c_inout_vector_buf_targ_string_scalar",
-        mixin=["c_mixin_in_string_array_buf"],
+        mixin=[
+            "f_mixin_in_string_array_buf",
+        ],
+
         cxx_local_var="scalar",
         c_pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",

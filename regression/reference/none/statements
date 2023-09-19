@@ -193,10 +193,6 @@ root
             targ
               native
                 scalar -- f_inout_vector_&_cdesc_targ_native_scalar
-        buf
-          targ
-            string
-              scalar -- c_inout_vector_buf_targ_string_scalar
         cdesc
           targ
             native
@@ -229,9 +225,6 @@ root
           buf -- c_mixin_in_character_buf
         shadow
           * -- c_mixin_in_shadow_*
-        string
-          array
-            buf -- c_mixin_in_string_array_buf
       inout
         array
           cdesc -- c_mixin_inout_array_cdesc
@@ -314,10 +307,6 @@ root
             targ
               native
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
-        buf
-          targ
-            string
-              scalar -- c_out_vector_buf_targ_string_scalar
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -2648,55 +2637,6 @@ c_inout_vector_&_cdesc_targ_native_scalar:
   intent: inout
   name: c_inout_vector_&_cdesc_targ_native_scalar
   owner: library
-c_inout_vector_buf_targ_string_scalar:
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {c_var_size}
-  - int {c_var_len}
-  c_local:
-  - i
-  - n
-  - s
-  c_post_call:
-  - '{{+'
-  - char * {c_local_s} = {c_var};
-  - std::vector<{cxx_T}>::size_type
-  - +{c_local_i} = 0,
-  - '{c_local_n} = {c_var_size};'
-  - -{c_local_n} = std::min({cxx_var}.size(),{c_local_n});
-  - for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "ShroudStrCopy({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());"
-  - '{c_local_s} += {c_var_len};'
-  - -}}
-  - -}}
-  c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
-  - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
-  - std::vector<{cxx_T}>::size_type
-  - +{c_local_i} = 0,
-  - '{c_local_n} = {c_var_size};'
-  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));"
-  - '{c_local_s} += {c_var_len};'
-  - -}}
-  - -}}
-  c_temps:
-  - size
-  - len
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
-  intent: inout
-  name: c_inout_vector_buf_targ_string_scalar
-  owner: library
 c_inout_vector_cdesc_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
@@ -2913,26 +2853,6 @@ c_mixin_in_shadow_*:
   i_module_line: '{i_module_line}'
   intent: mixin
   name: c_mixin_in_shadow_*
-  owner: library
-c_mixin_in_string_array_buf:
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {c_var_size}
-  - int {c_var_len}
-  c_temps:
-  - size
-  - len
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
-  intent: mixin
-  name: c_mixin_in_string_array_buf
   owner: library
 c_mixin_inout_array_cdesc:
   c_arg_decl:
@@ -3613,46 +3533,6 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - '{F_array_type}'
   intent: out
   name: c_out_vector_*_cdesc_targ_native_scalar
-  owner: library
-c_out_vector_buf_targ_string_scalar:
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {c_var_size}
-  - int {c_var_len}
-  c_helper: ShroudStrCopy
-  c_local:
-  - i
-  - n
-  - s
-  c_post_call:
-  - '{{+'
-  - char * {c_local_s} = {c_var};
-  - std::vector<{cxx_T}>::size_type
-  - +{c_local_i} = 0,
-  - '{c_local_n} = {c_var_size};'
-  - '{c_local_n} = std::min({cxx_var}.size(),{c_local_n});'
-  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "ShroudStrCopy({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());"
-  - '{c_local_s} += {c_var_len};'
-  - -}}
-  - -}}
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-  c_temps:
-  - size
-  - len
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
-  intent: out
-  name: c_out_vector_buf_targ_string_scalar
   owner: library
 c_out_void_*&:
   intent: out
@@ -8372,6 +8252,42 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   name: f_inout_vector_&_cdesc_targ_native_scalar
   owner: library
 f_inout_vector_buf_targ_string_scalar:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_local:
+  - i
+  - n
+  - s
+  c_post_call:
+  - '{{+'
+  - char * {c_local_s} = {c_var};
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -{c_local_n} = std::min({cxx_var}.size(),{c_local_n});
+  - for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "ShroudStrCopy({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  c_pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{{+'
+  - '{c_const}char * {c_local_s} = {c_var};'
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "{cxx_var}.push_back(std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  c_temps:
+  - size
+  - len
+  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -8381,6 +8297,15 @@ f_inout_vector_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   intent: inout
   name: f_inout_vector_buf_targ_string_scalar
   owner: library
@@ -8686,6 +8611,13 @@ f_mixin_in_character_buf:
   name: f_mixin_in_character_buf
   owner: library
 f_mixin_in_string_array_buf:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_temps:
+  - size
+  - len
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -8695,6 +8627,15 @@ f_mixin_in_string_array_buf:
     - C_SIZE_T
     - C_INT
   f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   intent: mixin
   name: f_mixin_in_string_array_buf
   owner: library
@@ -9741,6 +9682,33 @@ f_out_vector_*_cdesc_targ_native_scalar:
   name: f_out_vector_*_cdesc_targ_native_scalar
   owner: library
 f_out_vector_buf_targ_string_scalar:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper: ShroudStrCopy
+  c_local:
+  - i
+  - n
+  - s
+  c_post_call:
+  - '{{+'
+  - char * {c_local_s} = {c_var};
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - '{c_local_n} = std::min({cxx_var}.size(),{c_local_n});'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "ShroudStrCopy({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  c_temps:
+  - size
+  - len
+  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9750,6 +9718,15 @@ f_out_vector_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   intent: out
   name: f_out_vector_buf_targ_string_scalar
   owner: library
