@@ -205,6 +205,9 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      destructor
+        new-string -- c_mixin_destructor_new-string
+        new-vector -- c_mixin_destructor_new-vector
       function
         char
           *
@@ -2540,6 +2543,9 @@ c_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - size
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
@@ -2577,6 +2583,9 @@ c_inout_vector_&_cdesc_targ_native_scalar:
   - size
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
@@ -2614,6 +2623,9 @@ c_inout_vector_cdesc_targ_native_scalar:
   - size
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
@@ -2699,6 +2711,22 @@ c_mixin_arg_native_cfi:
   - ISO_Fortran_binding.h
   intent: mixin
   name: c_mixin_arg_native_cfi
+  owner: library
+c_mixin_destructor_new-string:
+  destructor:
+  - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: new_string
+  intent: mixin
+  name: c_mixin_destructor_new-string
+  owner: library
+c_mixin_destructor_new-vector:
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  intent: mixin
+  name: c_mixin_destructor_new-vector
   owner: library
 c_mixin_function_char_*_cdesc:
   c_helper: ShroudTypeDefines
@@ -2884,6 +2912,9 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -3296,6 +3327,9 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -3352,6 +3386,9 @@ c_out_vector_&_cdesc_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -3401,6 +3438,9 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -3429,6 +3469,9 @@ c_out_vector_*_cdesc_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
@@ -6176,6 +6219,9 @@ f_function_string_scalar_cdesc_allocatable:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: new_string
   f_arg_call:
   - '{c_var_cdesc}'
@@ -6211,6 +6257,9 @@ f_function_string_scalar_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: new_string
   f_arg_call:
   - '{c_var_cdesc}'
@@ -6246,6 +6295,9 @@ f_function_string_scalar_cdesc_allocatable_library:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: new_string
   f_arg_call:
   - '{c_var_cdesc}'
@@ -6281,7 +6333,6 @@ f_function_string_scalar_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
-  destructor_name: new_string
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6618,6 +6669,9 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{c_var_cdesc}'
@@ -8041,6 +8095,9 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - size
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{f_var}'
@@ -8097,6 +8154,9 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - size
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{f_var}'
@@ -9327,6 +9387,9 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{c_var_cdesc}'
@@ -9420,6 +9483,9 @@ f_out_vector_&_cdesc_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{c_var_cdesc}'
@@ -9503,6 +9569,9 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{c_var_cdesc}'
@@ -9547,6 +9616,9 @@ f_out_vector_*_cdesc_targ_native_scalar:
   c_temps:
   - cdesc
   cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   f_arg_call:
   - '{c_var_cdesc}'

@@ -608,6 +608,7 @@ CStmts = util.Scope(
     c_local=None,
 
     destructor_name=None,
+    destructor=[],
     owner="library",
 
     c_arg_decl=None,
@@ -910,6 +911,27 @@ fc_statements = [
             "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
         ],
 #        c_arg_decl  XXX - consistency check wants this set
+    ),
+
+    ### destructors
+    # Each destructor must have a unique name.
+    dict(
+        name="c_mixin_destructor_new-string",
+        destructor_name="new_string",
+        destructor=[
+            "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
+            "delete cxx_ptr;",
+        ],
+    ),
+    
+    dict(
+        name="c_mixin_destructor_new-vector",
+        destructor_name="std_vector_{cxx_T}",
+        destructor=[
+            "std::vector<{cxx_T}> *cxx_ptr ="
+            " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
+            "delete cxx_ptr;",
+        ],
     ),
     
     dict(
@@ -2295,6 +2317,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
+            "c_mixin_destructor_new-string",
         ],
         alias=[
             "f_function_string_scalar_cdesc_allocatable_caller/library",
@@ -2309,11 +2332,6 @@ fc_statements = [
         # which will be passed to copy_string
         c_pre_call=[
             "std::string * {cxx_var} = new std::string;",
-        ],
-        destructor_name="new_string",
-        destructor=[
-            "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
-            "delete cxx_ptr;",
         ],
         c_post_call=[
             "ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});",
@@ -2347,6 +2365,7 @@ fc_statements = [
         name="c_mixin_out_vector_cdesc_targ_native_scalar",
         mixin=[
             "c_mixin_out_array_cdesc",
+            "c_mixin_destructor_new-vector",
         ],
         cxx_local_var="pointer",
         c_pre_call=[
@@ -2364,12 +2383,6 @@ fc_statements = [
             "{c_var_cdesc}->size = {cxx_var}->size();",
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
-        ],
-        destructor_name="std_vector_{cxx_T}",
-        destructor=[
-            "std::vector<{cxx_T}> *cxx_ptr ="
-            " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-            "delete cxx_ptr;",
         ],
     ),
     
@@ -2400,7 +2413,10 @@ fc_statements = [
     ),
     dict(
         name="c_inout_vector_cdesc_targ_native_scalar",
-        mixin=["c_mixin_inout_array_cdesc"],
+        mixin=[
+            "c_mixin_inout_array_cdesc",
+            "c_mixin_destructor_new-vector",
+        ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -2419,12 +2435,6 @@ fc_statements = [
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
         ],
-        destructor_name="std_vector_{cxx_T}",
-        destructor=[
-            "std::vector<{cxx_T}> *cxx_ptr ="
-            " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-            "delete cxx_ptr;",
-        ],
     ),
     # Almost same as intent_out_buf.
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -2433,6 +2443,7 @@ fc_statements = [
         name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_function_cdesc",
+            "c_mixin_destructor_new-vector",
         ],
 
         c_helper="copy_array ShroudTypeDefines",
@@ -2462,12 +2473,6 @@ fc_statements = [
             "{c_var_cdesc}->size = {cxx_var}->size();",
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
-        ],
-        destructor_name="std_vector_{cxx_T}",
-        destructor=[
-            "std::vector<{cxx_T}> *cxx_ptr ="
-            " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-            "delete cxx_ptr;",
         ],
     ),
     #                dict(
@@ -3861,12 +3866,6 @@ fc_statements = [
             "if (SH_ret == CFI_SUCCESS) {{+",
             "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);",
             "-}}",
-        ],
-        
-        destructor_name="new_string",
-        destructor=[
-            "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
-            "delete cxx_ptr;",
         ],
     ),
 

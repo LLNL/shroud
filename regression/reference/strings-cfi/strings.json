@@ -1782,7 +1782,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "1",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_scalar_cfi_allocatable"
                     },
@@ -2163,7 +2163,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "1",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_scalar_cfi_allocatable"
                     },
@@ -3492,7 +3492,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "2",
+                        "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_*_allocatable"
                     },
@@ -3586,7 +3586,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "2",
+                        "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_*_cfi_allocatable"
                     },
@@ -3668,7 +3668,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "3",
+                        "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_*_allocatable"
                     },
@@ -3763,7 +3763,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "3",
+                        "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_*_cfi_allocatable"
                     },
