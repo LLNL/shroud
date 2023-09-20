@@ -213,9 +213,6 @@ root
           *
             cdesc -- c_mixin_function_char_*_cdesc
         character -- c_mixin_function_character
-        native
-          *
-            cdesc -- c_mixin_function_native_*_cdesc
       in
         character
           buf -- c_mixin_in_character_buf
@@ -223,6 +220,8 @@ root
         array
           cdesc -- c_mixin_inout_array_cdesc
       native
+        cdesc
+          fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
         cfi
           allocatable -- c_mixin_native_cfi_allocatable
           pointer -- c_mixin_native_cfi_pointer
@@ -239,6 +238,9 @@ root
               native
                 scalar -- c_mixin_out_vector_cdesc_targ_native_scalar
       shadow -- c_mixin_shadow
+      vector
+        cdesc
+          fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
     out
       bool
         * -- f_out_bool_*
@@ -2755,19 +2757,6 @@ c_mixin_function_character:
   intent: mixin
   name: c_mixin_function_character
   owner: library
-c_mixin_function_native_*_cdesc:
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  intent: mixin
-  name: c_mixin_function_native_*_cdesc
-  owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
@@ -2809,6 +2798,19 @@ c_mixin_inout_array_cdesc:
   i_module_line: iso_c_binding:{f_kind},C_SIZE_T
   intent: mixin
   name: c_mixin_inout_array_cdesc
+  owner: library
+c_mixin_native_cdesc_fill-cdesc:
+  c_helper: ShroudTypeDefines array_context
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  intent: mixin
+  name: c_mixin_native_cdesc_fill-cdesc
   owner: library
 c_mixin_native_cfi_allocatable:
   c_post_call:
@@ -2935,6 +2937,19 @@ c_mixin_shadow:
   i_module_line: '{i_module_line}'
   intent: mixin
   name: c_mixin_shadow
+  owner: library
+c_mixin_vector_cdesc_fill-cdesc:
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  intent: mixin
+  name: c_mixin_vector_cdesc_fill-cdesc
   owner: library
 c_out_bool_*:
   intent: out

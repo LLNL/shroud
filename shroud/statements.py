@@ -797,7 +797,7 @@ fc_statements = [
         # Add function result to cdesc. Used with pointer and allocatable
         # c_temp cdesc already added
         # assumes mixin=["f_mixin_function_cdesc"],
-        name="c_mixin_function_native_*_cdesc",
+        name="c_mixin_native_cdesc_fill-cdesc",
         c_helper="ShroudTypeDefines array_context",
         c_post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
@@ -1329,23 +1329,14 @@ fc_statements = [
     dict(
         # double **count _intent(out)+dimension(ncount)
         name="c_out_native_**_cdesc",
-        mixin=["c_mixin_out_array_cdesc"],
-        c_helper="ShroudTypeDefines array_context",
+        mixin=[
+            "c_mixin_out_array_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+        ],
         c_pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
         ],
         c_arg_call=["&{cxx_var}"],
-        c_post_call=[
-            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var};",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
-            "{c_var_cdesc}->rank = {rank};"
-            "{c_array_shape}",
-            "{c_var_cdesc}->size = {c_array_size};",
-        ],
-        # XXX - similar to c_function_native_*_buf
     ),
     dict(
         name="f_out_native_*&_cdesc",
@@ -1591,7 +1582,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_native_*_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
         ],
         c_helper="copy_array ShroudTypeDefines array_context",
         # XXX - use case for append to c_helper, first two from mixin
@@ -1644,7 +1635,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
-            "c_mixin_function_native_*_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
         ],
     ),
     dict(
@@ -1652,7 +1643,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_pointer_caller",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_native_*_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
         ],
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
@@ -2362,18 +2353,10 @@ fc_statements = [
     ),
 
     dict(
-        name="c_mixin_out_vector_cdesc_targ_native_scalar",
-        mixin=[
-            "c_mixin_out_array_cdesc",
-            "c_mixin_destructor_new-vector",
-        ],
-        cxx_local_var="pointer",
-        c_pre_call=[
-            "{c_const}std::vector<{cxx_T}>"
-            "\t *{cxx_var} = new std::vector<{cxx_T}>;"
-        ],
+        # Fill cdesc with vector information
+        # Return address and size of vector data.
+        name="c_mixin_vector_cdesc_fill-cdesc",
         c_post_call=[
-            # Return address and size of vector data.
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
@@ -2383,6 +2366,20 @@ fc_statements = [
             "{c_var_cdesc}->size = {cxx_var}->size();",
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
+        ],
+    ),
+    
+    dict(
+        name="c_mixin_out_vector_cdesc_targ_native_scalar",
+        mixin=[
+            "c_mixin_out_array_cdesc",
+            "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc",
+        ],
+        cxx_local_var="pointer",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}>"
+            "\t *{cxx_var} = new std::vector<{cxx_T}>;"
         ],
     ),
     
@@ -2416,24 +2413,13 @@ fc_statements = [
         mixin=[
             "c_mixin_inout_array_cdesc",
             "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc",
         ],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         c_pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
-        ],
-        c_post_call=[
-            # Return address and size of vector data.
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
-            " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
-            "{c_var_cdesc}->size = {cxx_var}->size();",
-            "{c_var_cdesc}->rank = 1;",
-            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
         ],
     ),
     # Almost same as intent_out_buf.
@@ -2444,6 +2430,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc",
         ],
 
         c_helper="copy_array ShroudTypeDefines",
@@ -2462,33 +2449,7 @@ fc_statements = [
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
         ],
-        c_post_call=[
-            # Return address and size of vector data.
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
-            " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
-            "{c_var_cdesc}->size = {cxx_var}->size();",
-            "{c_var_cdesc}->rank = 1;",
-            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
-        ],
     ),
-    #                dict(
-    #                    name="c_function_vector_buf",
-    #                    c_helper='ShroudStrCopy',
-    #                    c_post_call=[
-    #                        'if ({cxx_var}.empty()) {{+',
-    #                        'ShroudStrCopy({c_var}, {c_var_len},'
-    #                        '{nullptr}, 0);',
-    #                        '-}} else {{+',
-    #                        'ShroudStrCopy({c_var}, {c_var_len},'
-    #                        '\t {cxx_var}{cxx_member}data(),'
-    #                        '\t {cxx_var}{cxx_member}size());',
-    #                        '-}}',
-    #                    ],
-    #                ),
 
     # Specialize for std::vector<native *>
     dict(
