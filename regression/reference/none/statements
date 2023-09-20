@@ -6,9 +6,9 @@ root
         scalar
           capptr -- f_ctor_shadow_scalar_capptr
     defaulttmp -- c_defaulttmp
-    dtor -- c_dtor
+    dtor
       void
-        scalar -- c_dtor
+        scalar -- f_dtor
     function -- c_function
       bool
         scalar -- f_function_bool_scalar
@@ -83,7 +83,7 @@ root
         scalar -- f_function_struct_scalar
       void
         * -- c_function
-    getter -- c_getter
+    getter
       native
         *
           pointer -- f_getter_native_scalar
@@ -208,6 +208,7 @@ root
           *
             cdesc -- c_mixin_function_char_*_cdesc
         character -- c_mixin_function_character
+      getter -- c_mixin_getter
       in
         character
           buf -- c_mixin_in_character_buf
@@ -364,8 +365,6 @@ root
             pointer -- f_function_char_scalar_cfi_pointer
       native
         & -- f_function_native_&
-          buf
-            pointer -- f_function_native_&_buf_pointer
           pointer -- f_function_native_&
         *
           allocatable -- f_function_native_**
@@ -778,22 +777,6 @@ c_ctor_shadow_scalar_capptr:
 c_defaulttmp:
   intent: defaulttmp
   name: c_defaulttmp
-  owner: library
-c_dtor:
-  c_call:
-  - delete {CXX_this};
-  - '{C_this}->addr = {nullptr};'
-  c_return_type: void
-  impl_header:
-  - <cstddef>
-  intent: dtor
-  lang_c:
-    impl_header:
-    - <stddef.h>
-  lang_cxx:
-    impl_header:
-    - <cstddef>
-  name: c_dtor
   owner: library
 c_dtor_void_scalar:
   c_call:
@@ -1648,12 +1631,6 @@ c_function_struct_scalar:
 c_function_void_*:
   intent: function
   name: c_function_void_*
-  owner: library
-c_getter:
-  c_call:
-  - // skip call c_getter
-  intent: getter
-  name: c_getter
   owner: library
 c_getter_native_*_pointer:
   c_call:
@@ -2707,6 +2684,12 @@ c_mixin_function_character:
   - ISO_Fortran_binding.h
   intent: mixin
   name: c_mixin_function_character
+  owner: library
+c_mixin_getter:
+  c_call:
+  - // skip call c_getter
+  intent: mixin
+  name: c_mixin_getter
   owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
@@ -4197,29 +4180,6 @@ f_function_native_&:
   - type(C_PTR) {c_var}
   intent: function
   name: f_function_native_&
-  owner: library
-f_function_native_&_buf_pointer:
-  f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
-  f_call:
-  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
-  f_declare:
-  - 'type(C_PTR) :: {c_local_ptr}'
-  f_local:
-  - ptr
-  f_module:
-    iso_c_binding:
-    - C_PTR
-    - c_f_pointer
-  f_post_call:
-  - call c_f_pointer({c_local_ptr}, {F_result})
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: f_function_native_&_buf_pointer
   owner: library
 f_function_native_&_pointer:
   f_arg_decl:

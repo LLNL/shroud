@@ -1616,6 +1616,7 @@ fc_statements = [
             "c_function_native_*_pointer",
             "f_function_native_&_pointer",
             "c_function_native_&_pointer",
+#            "f_function_native_&_buf_pointer",  # XXX - untested
         ],
         # mixin f_mixin_function_c-ptr
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
@@ -1690,16 +1691,6 @@ fc_statements = [
         ],
     ),
     
-    dict(
-        name="f_function_native_&_buf_pointer",
-        mixin=[
-            "f_function_native_&",
-        ],
-        f_arg_decl=[
-            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-        ],
-    ),
-
     ########################################
     # char arg
     dict(
@@ -3009,9 +3000,10 @@ fc_statements = [
     ),
     dict(
         # NULL in stddef.h
-        name="c_dtor",
+        name="f_dtor",
         mixin=["c_mixin_noargs"],
         alias=[
+            "f_dtor_void_scalar",  # Used with interface
             "c_dtor_void_scalar",
         ],
         lang_c=dict(
@@ -3020,21 +3012,12 @@ fc_statements = [
         lang_cxx=dict(
             impl_header=["<cstddef>"],
         ),
+        f_arg_call=[],
         c_call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
         ],
         c_return_type="void",
-    ),
-    dict(
-        name="f_dtor",
-        mixin=[
-            "c_dtor",
-        ],
-        alias=[
-            "f_dtor_void_scalar",  # Used with interface
-        ],
-        f_arg_call=[],
     ),
 
     dict(
@@ -3118,7 +3101,7 @@ fc_statements = [
 
     dict(
         # Base for all getters to avoid calling function.
-        name="c_getter",
+        name="c_mixin_getter",
         mixin=["c_mixin_noargs"],
         c_call=[
             "// skip call c_getter",
@@ -3131,7 +3114,7 @@ fc_statements = [
     dict(
         name="f_getter_native_scalar",
         mixin=[
-            "c_getter",
+            "c_mixin_getter",
         ],
         alias=[
             "c_getter_native_scalar",
@@ -3177,7 +3160,7 @@ fc_statements = [
         # Similar to calling a function, but save field pointer instead.
         name="f_getter_native_*_cdesc_pointer",
         mixin=[
-            "c_getter",
+            "c_mixin_getter",
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
         ],
@@ -3202,7 +3185,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
-            "c_getter",
+            "c_mixin_getter",
             "c_mixin_out_character_cdesc",
         ],
         alias=[
