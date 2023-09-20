@@ -283,11 +283,19 @@ def process_mixin(stmts, defaults, stmtdict):
 #        print("XXXXX", name)
         node = {}
         parts = name.split("_")
-        if parts[1] == "mixin" and "alias" in stmt:
-            print("XXXX - mixin should not have alias: ", name)
+        if parts[1] == "mixin":
+            if "base" in stmt:
+                print("XXXX - mixin should not have 'base' field: ", name)
+            if "alias" in stmt:
+                print("XXXX - mixin should not have 'alias' field: ", name)
         if "mixin" in stmt:
+            if "base" in stmt:
+                print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
+#                parts = mixin.split("_")
+#                if parts[1] != "mixin":
+#                    print("XXXX - mixin must have intent 'mixin': ", name)
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
@@ -326,7 +334,10 @@ def process_mixin(stmts, defaults, stmtdict):
         parts = name.split("_",2)
         lang = parts[0]
         intent = parts[1]
-        node = util.Scope(defaults[lang])
+        if "base" in stmt:
+            node = util.Scope(stmtdict[stmt["base"]])
+        else:
+            node = util.Scope(defaults[lang])
         node.update(stmt)
         node.intent = intent
         stmtdict[name] = node
@@ -1355,9 +1366,7 @@ fc_statements = [
         # deref(allocatable)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_out_native_**_cdesc_allocatable
         # f_out_native_*&_cdesc_allocatable
-#TTT        name="f_out_native_**/*&_cdesc_allocatable",
         name="f_out_native_*&_cdesc_allocatable",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
