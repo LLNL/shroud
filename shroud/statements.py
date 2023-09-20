@@ -1366,7 +1366,7 @@ fc_statements = [
         # deref(allocatable)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_out_native_*&_cdesc_allocatable
+        # XXX - untested
         name="f_out_native_*&_cdesc_allocatable",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
@@ -2375,7 +2375,6 @@ fc_statements = [
     dict(
         name="c_mixin_out_vector_cdesc_targ_native_scalar",
         mixin=[
-            "c_mixin_out_array_cdesc",
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc",
         ],
@@ -2394,6 +2393,7 @@ fc_statements = [
         name="f_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_cdesc",
+            "c_mixin_out_array_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar",
         ],
         alias=[
@@ -2750,6 +2750,7 @@ fc_statements = [
         name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_cdesc",
+            "c_mixin_out_array_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
         ],
         alias=[

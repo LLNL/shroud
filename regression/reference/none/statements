@@ -2713,8 +2713,6 @@ c_mixin_out_native_**:
   name: c_mixin_out_native_**
   owner: library
 c_mixin_out_vector_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -2727,19 +2725,11 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
   intent: mixin
   name: c_mixin_out_vector_cdesc_targ_native_scalar
   owner: library
