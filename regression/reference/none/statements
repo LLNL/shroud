@@ -193,7 +193,6 @@ root
           *
             cdesc -- c_mixin_function_char_*_cdesc
         character -- c_mixin_function_character
-      getter -- c_mixin_getter
       in
         character
           buf -- c_mixin_in_character_buf
@@ -216,8 +215,6 @@ root
         array
           cdesc -- c_mixin_out_array_cdesc
           cdesc-and-cdesc -- c_mixin_out_array_cdesc-and-cdesc
-        character
-          cdesc -- c_mixin_out_character_cdesc
         native
           ** -- c_mixin_out_native_**
         vector
@@ -1606,13 +1603,11 @@ c_getter_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - // skip call c_getter
-  c_helper: ShroudStrToArray
-  c_post_call:
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();'
   - '{c_var_cdesc}->type = 0; // SH_CHAR;'
   - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
   - '{c_var_cdesc}->rank = 0;'
+  c_helper: ShroudStrToArray
   c_return_type: void
   c_temps:
   - cdesc
@@ -2519,12 +2514,6 @@ c_mixin_function_character:
   intent: mixin
   name: c_mixin_function_character
   owner: library
-c_mixin_getter:
-  c_call:
-  - // skip call c_getter
-  intent: mixin
-  name: c_mixin_getter
-  owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
@@ -2689,20 +2678,6 @@ c_mixin_out_array_cdesc-and-cdesc:
   - '{F_array_type}'
   intent: mixin
   name: c_mixin_out_array_cdesc-and-cdesc
-  owner: library
-c_mixin_out_character_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: c_mixin_out_character_cdesc
   owner: library
 c_mixin_out_native_**:
   c_arg_call:
@@ -6477,9 +6452,6 @@ f_getter_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - // skip call c_getter
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
@@ -6487,6 +6459,7 @@ f_getter_native_*_cdesc_pointer:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  c_helper: ShroudTypeDefines array_context
   c_return_type: void
   c_temps:
   - cdesc
@@ -6534,13 +6507,11 @@ f_getter_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - // skip call c_getter
-  c_helper: ShroudStrToArray
-  c_post_call:
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();'
   - '{c_var_cdesc}->type = 0; // SH_CHAR;'
   - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
   - '{c_var_cdesc}->rank = 0;'
+  c_helper: ShroudStrToArray
   c_return_type: void
   c_temps:
   - cdesc

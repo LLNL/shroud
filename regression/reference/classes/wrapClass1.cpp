@@ -402,7 +402,6 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_name_bufferify
-    // skip call c_getter
     SHT_rv_cdesc->addr.base = SH_this->m_name.data();
     SHT_rv_cdesc->type = 0; // SH_CHAR;
     SHT_rv_cdesc->elem_len = SH_this->m_name.size();

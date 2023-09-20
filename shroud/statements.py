@@ -256,6 +256,30 @@ def post_mixin_check_statement(name, stmt):
 ##-                raise RuntimeError(
 ##-                    "f_arg_name and f_arg_decl "
 ##-                    "must all be same length in {}".format(name))
+
+def append_mixin(stmt, mixin):
+    """Append each mixin to stmt.
+    """
+    for key, value in mixin.items():
+        if key in ["mixin", "name"]:
+            pass
+        elif isinstance(value, list):
+            if key in stmt:
+                stmt[key].extend(value)
+            else:
+                stmt[key] = value[:]
+        elif isinstance(value, str):
+            if value is None:
+                stmt[key] = value
+            elif key in stmt:
+                if stmt[key] is None:
+                    stmt[key] = value
+                else:
+                    stmt[key] = stmt[key] + " " + value
+            else:
+                stmt[key] = value
+        else:
+            stmt[key] = value
             
 
 def process_mixin(stmts, defaults, stmtdict):
@@ -300,6 +324,7 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 node.update(mixins[mixin])
+#                append_mixin(node, mixins[mixin])
         node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
@@ -1105,21 +1130,6 @@ fc_statements = [
 
     
     ##########
-    # Return CHARACTER address and length to Fortran via a cdesc.
-    dict(
-        name="c_mixin_out_character_cdesc",
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
-        ],
-        i_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var}",
-        ],
-        i_arg_names=["{c_var}"],
-        i_import=["{F_array_type}"],
-#        c_return_type="void",  # Only difference from c_mixin_function_buf
-        c_temps=["cdesc"],
-    ),
-
     # Pass CHARACTER and LEN to C wrapper.
     dict(
         name="f_mixin_in_character_buf",
@@ -2261,6 +2271,10 @@ fc_statements = [
         # f_function_string_scalar_buf_copy
         # f_function_string_*_buf_copy
         # f_function_string_&_buf_copy
+
+        # c_function_string_scalar_buf_copy
+        # c_function_string_*_buf_copy
+        # c_function_string_&_buf_copy
         # TTT - is the buf version used?
         name="f_function_string_scalar_buf",
         mixin=[
@@ -3084,24 +3098,20 @@ fc_statements = [
     # getters are functions.
     #  When passed meta data, converted into a subroutine.
     # setters are first argument to subroutine.
+    # Replace c_call with getter code.
 
-    dict(
-        # Base for all getters to avoid calling function.
-        name="c_mixin_getter",
-        mixin=["c_mixin_noargs"],
-        c_call=[
-            "// skip call c_getter",
-        ],
-    ),
     dict(
         name="f_getter_native_scalar",
         mixin=[
-            "c_mixin_getter",
+            "c_mixin_noargs",
         ],
         alias=[
             "c_getter_native_scalar",
             "f_getter_native_*_pointer",
             "c_getter_native_*_pointer",
+        ],
+        c_call=[
+            "// skip call c_getter",
         ],
         c_return=[
             "return {CXX_this}->{field_name};",
@@ -3139,14 +3149,13 @@ fc_statements = [
         # Similar to calling a function, but save field pointer instead.
         name="f_getter_native_*_cdesc_pointer",
         mixin=[
-            "c_mixin_getter",
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         
         c_helper="ShroudTypeDefines array_context",
-        c_post_call=[
+        c_call=[
             "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name};",
@@ -3164,15 +3173,13 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
-            "c_mixin_getter",
-            "c_mixin_out_character_cdesc",
         ],
         alias=[
             "c_getter_string_scalar_cdesc_allocatable",
         ],
 ##       c_helper="ShroudStrToArray",
         
-        c_post_call=[
+        c_call=[
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
             "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",

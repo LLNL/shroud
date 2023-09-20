@@ -456,7 +456,6 @@ void STR_Cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
     // splicer begin function.Cstruct_list_get_ivalue_bufferify
     Cstruct_list * SHCXX_SH_this = static_cast<Cstruct_list *>
         (static_cast<void *>(SH_this));
-    // skip call c_getter
     SHT_rv_cdesc->cxx.addr  = SHCXX_SH_this->ivalue;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHCXX_SH_this->ivalue;
@@ -506,7 +505,6 @@ void STR_Cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
     // splicer begin function.Cstruct_list_get_dvalue_bufferify
     Cstruct_list * SHCXX_SH_this = static_cast<Cstruct_list *>
         (static_cast<void *>(SH_this));
-    // skip call c_getter
     SHT_rv_cdesc->cxx.addr  = SHCXX_SH_this->dvalue;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHCXX_SH_this->dvalue;

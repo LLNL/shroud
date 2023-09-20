@@ -33,7 +33,6 @@ void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     // splicer begin namespace.ns2.function.DataPointer_get_items_bufferify
     ns2::DataPointer * SHCXX_SH_this = static_cast<ns2::DataPointer *>
         (static_cast<void *>(SH_this));
-    // skip call c_getter
     SHT_rv_cdesc->cxx.addr  = SHCXX_SH_this->items;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHCXX_SH_this->items;
