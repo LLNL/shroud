@@ -1868,8 +1868,6 @@ fc_statements = [
             "f_function_char_*_buf_arg",
             "c_function_char_*_buf_arg",
         ],
-        # convert to subroutine
-
 
         c_helper="ShroudStrCopy",
         c_post_call=[
