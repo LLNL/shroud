@@ -51,7 +51,6 @@ root
             targ
               native
                 scalar -- f_function_shadow_scalar_capptr
-          capsule -- c_function_shadow_scalar_capsule
       string
         & -- f_shared_function_string_scalar
           allocatable -- f_shared_function_string_scalar
@@ -77,7 +76,7 @@ root
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
-      struct -- c_function_struct
+      struct
         *
           pointer -- f_function_struct_*_pointer
         scalar -- f_function_struct_scalar
@@ -176,20 +175,6 @@ root
       struct
         & -- f_defaulttmp_struct
         * -- f_defaulttmp_struct
-      vector
-        &
-          cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_inout_vector_&_cdesc_allocatable_targ_native_scalar
-            targ
-              native
-                scalar -- f_inout_vector_&_cdesc_targ_native_scalar
-        cdesc
-          targ
-            native
-              scalar -- c_inout_vector_cdesc_targ_native_scalar
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -215,6 +200,11 @@ root
       inout
         array
           cdesc -- c_mixin_inout_array_cdesc
+        vector
+          cdesc
+            targ
+              native
+                scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
       native
         cdesc
           fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
@@ -228,6 +218,8 @@ root
           cdesc-and-cdesc -- c_mixin_out_array_cdesc-and-cdesc
         character
           cdesc -- c_mixin_out_character_cdesc
+        native
+          ** -- c_mixin_out_native_**
         vector
           cdesc
             targ
@@ -256,7 +248,7 @@ root
           pointer -- f_defaulttmp_native_scalar
         **
           allocatable -- f_defaulttmp_native_scalar
-          cdesc -- c_out_native_**_cdesc
+          cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
           pointer -- f_defaulttmp_native_scalar
@@ -305,7 +297,6 @@ root
         *& -- f_defaulttmp_native_scalar
         ** -- f_in/out/inout_void_**
     setter -- f_setter
-      arg -- c_setter_arg
       native
         * -- f_setter_native_scalar/*
         scalar -- f_setter_native_scalar/*
@@ -1226,24 +1217,6 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
   intent: function
   name: c_function_shadow_scalar_capptr_targ_native_scalar
   owner: caller
-c_function_shadow_scalar_capsule:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
-  c_return_type: void
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_module_line: '{i_module_line}'
-  intent: function
-  name: c_function_shadow_scalar_capsule
-  owner: caller
 c_function_string_&:
   c_return:
   - return {c_var};
@@ -1568,25 +1541,6 @@ c_function_string_scalar_buf_copy:
     - C_INT
   intent: function
   name: c_function_string_scalar_buf_copy
-  owner: library
-c_function_struct:
-  c_post_call:
-  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
-    \ *>(\t{cxx_addr}{cxx_var}));"
-  c_return:
-  - return {c_var_c};
-  c_temps:
-  - c
-  intent: function
-  lang_cxx:
-    c_post_call:
-    - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
-      \ *>(\t{cxx_addr}{cxx_var}));"
-    c_return:
-    - return {c_var_c};
-    c_temps:
-    - c
-  name: c_function_struct
   owner: library
 c_function_struct_*_pointer:
   c_post_call:
@@ -2451,126 +2405,6 @@ c_inout_struct_*:
     cxx_local_var: pointer
   name: c_inout_struct_*
   owner: library
-c_inout_vector_&_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_array
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
-  c_temps:
-  - size
-  - cdesc
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: inout
-  name: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
-  owner: library
-c_inout_vector_&_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_array
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
-  c_temps:
-  - size
-  - cdesc
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: inout
-  name: c_inout_vector_&_cdesc_targ_native_scalar
-  owner: library
-c_inout_vector_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
-  c_temps:
-  - size
-  - cdesc
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
-  intent: inout
-  name: c_inout_vector_cdesc_targ_native_scalar
-  owner: library
 c_inout_void_**:
   c_arg_decl:
   - void **{c_var}
@@ -2733,6 +2567,46 @@ c_mixin_inout_array_cdesc:
   intent: mixin
   name: c_mixin_inout_array_cdesc
   owner: library
+c_mixin_inout_vector_cdesc_targ_native_scalar:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: copy_array ShroudTypeDefines
+  c_post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
+    \ + {c_var_size});"
+  c_temps:
+  - size
+  - cdesc
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: mixin
+  name: c_mixin_inout_vector_cdesc_targ_native_scalar
+  owner: library
 c_mixin_native_cdesc_fill-cdesc:
   c_helper: ShroudTypeDefines array_context
   c_post_call:
@@ -2830,10 +2704,18 @@ c_mixin_out_character_cdesc:
   intent: mixin
   name: c_mixin_out_character_cdesc
   owner: library
+c_mixin_out_native_**:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  intent: mixin
+  name: c_mixin_out_native_**
+  owner: library
 c_mixin_out_vector_cdesc_targ_native_scalar:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper: array_context
+  c_helper: ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2873,6 +2755,7 @@ c_mixin_shadow:
   name: c_mixin_shadow
   owner: library
 c_mixin_vector_cdesc_fill-cdesc:
+  c_helper: ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2973,33 +2856,6 @@ c_out_native_***:
 c_out_native_**_allocatable:
   intent: out
   name: c_out_native_**_allocatable
-  owner: library
-c_out_native_**_cdesc:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: c_out_native_**_cdesc
   owner: library
 c_out_native_**_cdesc_allocatable:
   c_arg_call:
@@ -3476,10 +3332,6 @@ c_setter:
   - // skip call c_setter
   intent: setter
   name: c_setter
-  owner: library
-c_setter_arg:
-  intent: setter
-  name: c_setter_arg
   owner: library
 c_setter_native_*:
   c_post_call:
@@ -8001,7 +7853,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_array
+  c_helper: copy_array ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -8060,7 +7912,7 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper: copy_array
+  c_helper: copy_array ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
