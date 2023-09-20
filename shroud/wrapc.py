@@ -1051,9 +1051,6 @@ class Wrapc(util.WrapperMixin):
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_blk.name)
         
-        # Indicate which argument contains function result, usually none.
-        # Can be changed when a result is converted into an argument (string/vector).
-        result_arg = None
         setup_this = []
         pre_call = []  # list of temporary variable declarations
         post_call = []
@@ -1297,35 +1294,33 @@ class Wrapc(util.WrapperMixin):
                 "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
                 "{CXX_template}(\t{C_call_list});",
             ]
-            if result_arg is None:
-                # Return result from function
-                # (It was not passed back in an argument)
-                if self.language == "c":
-                    pass
-                elif result_blk.c_return_type == "void":
-                    # Do not return C++ result in C wrapper.
-                    # Probably assigned to an argument.
-                    pass
-                elif len(result_blk.c_post_call):
-                    # c_var is created by the post_call clause or
-                    # it may be passed in as an argument.
-                    # For example, with struct and shadow.
-                    pass
-                elif result_typemap.cxx_to_c is not None:
-                    # Make intermediate c_var value if a conversion
-                    # is required i.e. not the same as cxx_var.
-                    fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
-                        name=fmt_result.c_var, params=None, continuation=True
-                    )
-                    fmt_result.c_val = wformat(
-                        result_typemap.cxx_to_c, fmt_result
-                    )
-                    append_format(
-                        return_code, "{c_rv_decl} =\t {c_val};", fmt_result
-                    )
-                self.set_cxx_nonconst_ptr(ast, fmt_result)
-                    
-                self.header_impl.add_typemap_list(result_typemap.impl_header)
+            # Return result from function
+            if self.language == "c":
+                pass
+            elif result_blk.c_return_type == "void":
+                # Do not return C++ result in C wrapper.
+                # Probably assigned to an argument.
+                pass
+            elif len(result_blk.c_post_call):
+                # c_var is created by the post_call clause or
+                # it may be passed in as an argument.
+                # For example, with struct and shadow.
+                pass
+            elif result_typemap.cxx_to_c is not None:
+                # Make intermediate c_var value if a conversion
+                # is required i.e. not the same as cxx_var.
+                fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
+                    name=fmt_result.c_var, params=None, continuation=True
+                )
+                fmt_result.c_val = wformat(
+                    result_typemap.cxx_to_c, fmt_result
+                )
+                append_format(
+                    return_code, "{c_rv_decl} =\t {c_val};", fmt_result
+                )
+            self.set_cxx_nonconst_ptr(ast, fmt_result)
+                
+            self.header_impl.add_typemap_list(result_typemap.impl_header)
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_blk, pre_call, post_call, need_wrapper
@@ -1352,7 +1347,7 @@ class Wrapc(util.WrapperMixin):
         elif return_deref_attr == "scalar":
             # dereference pointer to return scalar
             raw_return_code = ["return *{cxx_var};"]
-        elif result_arg is None and C_subprogram == "function":
+        elif C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
             fmt_result.c_get_value = statements.compute_return_prefix(ast)
