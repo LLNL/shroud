@@ -853,7 +853,7 @@ fc_statements = [
         f_need_wrapper=True,
     ),
     dict(
-        # Pass function result as a capsule argument from Fortran to C.
+        # Pass function result as a capsule field of shadow class from Fortran to C.
         name="f_mixin_function_shadow_capptr",
         f_arg_decl=[
             "{f_type} :: {f_var}",
@@ -2992,44 +2992,20 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_ctor_shadow_scalar_capsule",
-        mixin=["c_mixin_shadow"],
-        cxx_local_var="pointer",
+        name="f_ctor_shadow_scalar_capptr",
+        mixin=[
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+        ],
+        alias=[
+            "c_ctor_shadow_scalar_capptr",
+        ],
         c_call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};",
         ],
-        c_return_type="void",
         owner="caller",
-    ),
-    dict(
-        name="c_defaulttmp_ctor_shadow_scalar_capptr",
-        mixin=["c_mixin_shadow", "c_ctor_shadow_scalar_capsule"],
-        c_return_type=None,
-        c_return=[
-            "return {c_var};",
-        ],
-        i_result_var="{F_result_ptr}",
-        i_result_decl=[
-            "type(C_PTR) {F_result_ptr}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        name="f_ctor_shadow_scalar_capptr",
-        mixin=[
-            "f_mixin_function_shadow_capptr",
-            "c_mixin_shadow",
-            "c_ctor_shadow_scalar_capsule",
-        ],
-        alias=[
-            "c_ctor_shadow_scalar_capptr",
-        ],
-        c_return_type=None,
-        c_return=[
-            "return {c_var};",
-        ],
     ),
     dict(
         # NULL in stddef.h

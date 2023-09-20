@@ -165,11 +165,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_get_value": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_type": "classes::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
@@ -366,11 +367,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_get_value": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_type": "classes::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
@@ -3035,11 +3037,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_get_value": "",
                                 "c_type": "CLA_Shape",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_type": "classes::Shape",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "2",
@@ -3324,11 +3327,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_get_value": "",
                                 "c_type": "CLA_Circle",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_type": "classes::Circle",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "3",
@@ -3637,11 +3641,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_get_value": "",
                                 "c_type": "CLA_Data",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_type": "classes::Data",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "4",
