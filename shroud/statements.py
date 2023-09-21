@@ -685,15 +685,13 @@ FStmts = util.Scope(
 )
 
 # Fortran/C Statements - both sets of defaults.
-FCStmts = util.Scope(None)
-FCStmts.update(CStmts._to_dict())
-FCStmts.update(FStmts._to_dict())
+FStmts.update(CStmts._to_dict())
 
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
-    f=FCStmts,
+    f=FStmts,
 )
                 
         
