@@ -2604,17 +2604,12 @@ fc_statements = [
     dict(
         # Collect information about a string argument
         name="f_mixin_str_array",
-        mixin=["f_mixin_out_array_cdesc"],
-
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_helper="ShroudTypeDefines array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
-        f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-        ],
         f_pre_call=[
             "{c_var_cdesc}%cxx%addr = C_LOC({f_var})",
             "{c_var_cdesc}%base_addr = C_LOC({f_var})",
@@ -2626,19 +2621,19 @@ fc_statements = [
             "{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
 #            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
-        f_arg_call=["{c_var_cdesc}"],
-        f_temps=["cdesc"],
     ),
 
     dict(
         name="f_out_vector_&_cdesc_targ_string_scalar",
         mixin=[
             "f_mixin_str_array",
+            "f_mixin_out_array_cdesc",
             "c_mixin_out_array_cdesc",
         ],
         alias=[
             "c_out_vector_&_cdesc_targ_string_scalar",
         ],
+        f_helper="ShroudTypeDefines array_context",  # TTT - append_mixin
         c_helper="vector_string_out",
         c_pre_call=[
             "{c_const}std::vector<std::string> {cxx_var};"
@@ -2824,22 +2819,6 @@ fc_statements = [
         i_module_line="{i_module_line}",
     ),
     
-#    dict(
-#        name="f_in_shadow",    f_mixin_shadow-arg
-#        alias=[
-#            # TTT
-#            "f_in_shadow_scalar",
-#            "f_in_shadow_*",
-##TTT            "f_in_shadow_&",
-#        ],
-#        f_arg_decl=[
-#            "{f_type}, intent({f_intent}) :: {f_var}",
-#        ],
-#        f_arg_call=[
-#            "{f_var}%{F_derived_member}",
-#        ],
-#        f_need_wrapper=True,
-#    ),
     dict(
         # c_in_shadow_scalar
         # c_inout_shadow_scalar  # XXX inout by value makes no sense.
@@ -2900,7 +2879,6 @@ fc_statements = [
         c_return_type="void",
     ),
 
-    # TTT new merged group
     dict(
         name="f_in_shadow_&",
         mixin=["c_mixin_shadow"],
@@ -3787,11 +3765,13 @@ fc_statements = [
         name="f_out_string_**_cdesc_copy",
         mixin=[
             "f_mixin_str_array",
+            "f_mixin_out_array_cdesc",
             "c_mixin_out_array_cdesc",
         ],
         alias=[
             "c_out_string_**_cdesc_copy",
         ],
+        f_helper="ShroudTypeDefines array_context",  # TTT - append_mixin
         c_helper="array_string_out",
         c_pre_call=[
             "std::string *{cxx_var};"
