@@ -15,9 +15,6 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "16",
                 "ast": {
                     "declarator": {
@@ -74,40 +71,18 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_sum",
-                    "F_C_call": "c_vector_sum_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T)",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_sum",
-                    "F_name_function": "vector_sum",
-                    "F_name_generic": "vector_sum",
-                    "F_name_impl": "vector_sum",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "vector_sum"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "16 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -168,7 +143,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -189,8 +165,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_vector_&_buf_targ_native_scalar",
-                            "stmt1": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmtc": "f_in_vector_&_buf_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -206,10 +181,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_in_vector_&_buf_targ_native_scalar",
-                            "stmt1": "f_in_vector_&_buf_targ_native_scalar",
-                            "stmtc0": "c_in_vector_&_buf_targ_native_scalar",
-                            "stmtc1": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmtf": "f_in_vector_&_buf_targ_native_scalar"
                         }
                     }
                 },
@@ -220,13 +192,21 @@
                     "C_prototype": "int *arg,\t size_t SHT_arg_size",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t SHT_arg_size",
+                    "F_C_call": "c_vector_sum_bufferify",
                     "F_C_name": "c_vector_sum_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T)",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_sum",
+                    "F_name_function": "vector_sum",
+                    "F_name_generic": "vector_sum",
+                    "F_name_impl": "vector_sum",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_sum",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_sum"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -242,25 +222,23 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "1 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "17",
                 "ast": {
                     "declarator": {
@@ -320,28 +298,18 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out",
-                    "F_C_call": "c_vector_iota_out_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out",
-                    "F_name_function": "vector_iota_out",
-                    "F_name_generic": "vector_iota_out",
-                    "F_name_impl": "vector_iota_out",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_iota_out",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_out"
                 }
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -406,7 +374,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -419,17 +388,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -442,15 +411,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -461,20 +427,24 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_out_bufferify",
                     "F_C_name": "c_vector_iota_out_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out",
+                    "F_name_function": "vector_iota_out",
+                    "F_name_generic": "vector_iota_out",
+                    "F_name_impl": "vector_iota_out",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "2 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
@@ -564,30 +534,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num",
-                    "F_C_call": "c_vector_iota_out_with_num_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_with_num",
-                    "F_name_function": "vector_iota_out_with_num",
-                    "F_name_generic": "vector_iota_out_with_num",
-                    "F_name_impl": "vector_iota_out_with_num",
-                    "F_result": "num",
-                    "F_result_clause": "\fresult(num)",
-                    "F_subprogram": "function",
-                    "function_name": "vector_iota_out_with_num",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_out_with_num"
                 }
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -682,7 +640,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -695,17 +654,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -718,15 +677,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -737,21 +693,27 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "long",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_out_with_num_bufferify",
                     "F_C_name": "c_vector_iota_out_with_num_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_result_clause": "\fresult(num)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_with_num",
+                    "F_name_function": "vector_iota_out_with_num",
+                    "F_name_generic": "vector_iota_out_with_num",
+                    "F_name_impl": "vector_iota_out_with_num",
+                    "F_result": "num",
+                    "F_result_clause": "\fresult(num)",
+                    "F_subprogram": "function",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "3 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
@@ -829,30 +791,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num2",
-                    "F_C_call": "c_vector_iota_out_with_num2_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_with_num2",
-                    "F_name_function": "vector_iota_out_with_num2",
-                    "F_name_generic": "vector_iota_out_with_num2",
-                    "F_name_impl": "vector_iota_out_with_num2",
-                    "F_result": "num",
-                    "F_result_clause": "\fresult(num)",
-                    "F_subprogram": "function",
-                    "function_name": "vector_iota_out_with_num2",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_out_with_num2"
                 }
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "3",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -935,7 +885,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -948,17 +899,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -971,15 +922,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -990,20 +938,26 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_out_with_num2_bufferify",
                     "F_C_name": "c_vector_iota_out_with_num2_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_with_num2",
+                    "F_name_function": "vector_iota_out_with_num2",
+                    "F_name_generic": "vector_iota_out_with_num2",
+                    "F_name_impl": "vector_iota_out_with_num2",
+                    "F_result": "num",
+                    "F_result_clause": "\fresult(num)",
+                    "F_subprogram": "function",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num2",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "4 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
@@ -1066,28 +1020,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_alloc",
-                    "F_C_call": "c_vector_iota_out_alloc_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_alloc",
-                    "F_name_function": "vector_iota_out_alloc",
-                    "F_name_generic": "vector_iota_out_alloc",
-                    "F_name_impl": "vector_iota_out_alloc",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_iota_out_alloc",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_out_alloc"
                 }
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1155,7 +1099,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1168,17 +1113,16 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1192,15 +1136,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         }
                     }
                 },
@@ -1211,20 +1152,24 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_out_alloc_bufferify",
                     "F_C_name": "c_vector_iota_out_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_alloc",
+                    "F_name_function": "vector_iota_out_alloc",
+                    "F_name_generic": "vector_iota_out_alloc",
+                    "F_name_impl": "vector_iota_out_alloc",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_alloc",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "5 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
@@ -1287,28 +1232,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_inout_alloc",
-                    "F_C_call": "c_vector_iota_inout_alloc_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_inout_alloc",
-                    "F_name_function": "vector_iota_inout_alloc",
-                    "F_name_generic": "vector_iota_inout_alloc",
-                    "F_name_impl": "vector_iota_inout_alloc",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_iota_inout_alloc",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_inout_alloc"
                 }
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1376,7 +1311,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1390,17 +1326,17 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmtc": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1415,15 +1351,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmt1": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmtc0": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar",
-                            "stmtc1": "c_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmtf": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         }
                     }
                 },
@@ -1434,20 +1367,24 @@
                     "C_prototype": "int *arg,\t size_t SHT_arg_size,\t VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_inout_alloc_bufferify",
                     "F_C_name": "c_vector_iota_inout_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_inout_alloc",
+                    "F_name_function": "vector_iota_inout_alloc",
+                    "F_name_generic": "vector_iota_inout_alloc",
+                    "F_name_impl": "vector_iota_inout_alloc",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_inout_alloc",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "6 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "22",
                 "ast": {
                     "declarator": {
@@ -1503,28 +1440,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_increment",
-                    "F_C_call": "c_vector_increment_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_increment",
-                    "F_name_function": "vector_increment",
-                    "F_name_generic": "vector_increment",
-                    "F_name_impl": "vector_increment",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_increment",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_increment"
                 }
             },
             {
                 "<FUNCTION>": "22 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1585,7 +1512,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1599,17 +1527,17 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmtc": "f_inout_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1623,15 +1551,12 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_inout_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_inout_vector_&_cdesc_targ_native_scalar",
-                            "stmtc0": "c_inout_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmtf": "f_inout_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -1642,20 +1567,24 @@
                     "C_prototype": "int *arg,\t size_t SHT_arg_size,\t VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_cdesc",
+                    "F_C_call": "c_vector_increment_bufferify",
                     "F_C_name": "c_vector_increment_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_increment",
+                    "F_name_function": "vector_increment",
+                    "F_name_generic": "vector_increment",
+                    "F_name_impl": "vector_increment",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_increment",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "7 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "23",
                 "ast": {
                     "declarator": {
@@ -1714,28 +1643,18 @@
                 "options": {
                     "wrap_lua": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_d",
-                    "F_C_call": "c_vector_iota_out_d_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_d",
-                    "F_name_function": "vector_iota_out_d",
-                    "F_name_generic": "vector_iota_out_d",
-                    "F_name_impl": "vector_iota_out_d",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_iota_out_d",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_iota_out_d"
                 }
             },
             {
                 "<FUNCTION>": "23 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1799,7 +1718,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1812,17 +1732,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_double",
+                            "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "chelper_copy_array": "VEC_ShroudCopyArray",
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "double",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudTypeDefines",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1835,15 +1755,12 @@
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array",
+                            "fhelper_copy_array": "VEC_SHROUD_copy_array",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_targ_native_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_targ_native_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
                     }
                 },
@@ -1854,20 +1771,24 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_iota_out_d_bufferify",
                     "F_C_name": "c_vector_iota_out_d_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_iota_out_d",
+                    "F_name_function": "vector_iota_out_d",
+                    "F_name_generic": "vector_iota_out_d",
+                    "F_name_impl": "vector_iota_out_d",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_d",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "8 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "24",
                 "ast": {
                     "declarator": {
@@ -1949,40 +1870,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_of_pointers",
-                    "F_C_call": "c_vector_of_pointers_bufferify",
-                    "F_arg_c_call": "arg1,\t size(arg1, 1, kind=C_SIZE_T),\t size(arg1, 2, kind=C_SIZE_T),\t num",
-                    "F_arguments": "arg1,\t num",
                     "F_name_api": "vector_of_pointers",
-                    "F_name_function": "vector_of_pointers",
-                    "F_name_generic": "vector_of_pointers",
-                    "F_name_impl": "vector_of_pointers",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "vector_of_pointers"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2069,7 +1968,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -2091,8 +1991,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_in_vector_&_buf_targ_native_*",
-                            "stmt1": "c_in_vector_&_buf_targ_native_*"
+                            "stmtc": "f_in_vector_&_buf_targ_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -2109,10 +2008,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg1)",
-                            "stmt0": "f_in_vector_&_buf_targ_native_*",
-                            "stmt1": "f_in_vector_&_buf_targ_native_*",
-                            "stmtc0": "c_in_vector_&_buf_targ_native_*",
-                            "stmtc1": "c_in_vector_&_buf_targ_native_*"
+                            "stmtf": "f_in_vector_&_buf_targ_native_*"
                         }
                     },
                     "num": {
@@ -2131,8 +2027,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "num",
@@ -2142,10 +2037,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -2156,13 +2048,21 @@
                     "C_prototype": "double *arg1,\t size_t SHT_arg1_len,\t size_t SHT_arg1_size,\t int num",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t SHT_arg1_size,\t num",
+                    "F_C_call": "c_vector_of_pointers_bufferify",
                     "F_C_name": "c_vector_of_pointers_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg1,\t size(arg1, 1, kind=C_SIZE_T),\t size(arg1, 2, kind=C_SIZE_T),\t num",
+                    "F_arguments": "arg1,\t num",
                     "F_name_api": "vector_of_pointers",
+                    "F_name_function": "vector_of_pointers",
+                    "F_name_generic": "vector_of_pointers",
+                    "F_name_impl": "vector_of_pointers",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_of_pointers",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_of_pointers"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2178,25 +2078,23 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "9 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "25",
                 "ast": {
                     "declarator": {
@@ -2256,40 +2154,18 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_count",
-                    "F_C_call": "c_vector_string_count_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t len(arg, kind=C_INT)",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_string_count",
-                    "F_name_function": "vector_string_count",
-                    "F_name_generic": "vector_string_count",
-                    "F_name_impl": "vector_string_count",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "vector_string_count"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "25 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2354,7 +2230,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2371,17 +2248,16 @@
                             "c_var_len": "SHT_arg_len",
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
+                            "chelper_ShroudLenTrim": "ShroudLenTrim",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg",
-                            "hnamefunc0": "ShroudLenTrim",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_vector_&_buf_targ_string_scalar",
-                            "stmt1": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmtc": "f_in_vector_&_buf_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2401,10 +2277,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt0": "f_in_vector_&_buf_targ_string_scalar",
-                            "stmt1": "f_in_vector_&_buf_targ_string_scalar",
-                            "stmtc0": "c_in_vector_&_buf_targ_string_scalar",
-                            "stmtc1": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmtf": "f_in_vector_&_buf_targ_string_scalar"
                         }
                     }
                 },
@@ -2415,13 +2288,21 @@
                     "C_prototype": "const char *arg,\t size_t SHT_arg_size,\t int SHT_arg_len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_len",
+                    "F_C_call": "c_vector_string_count_bufferify",
                     "F_C_name": "c_vector_string_count_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t len(arg, kind=C_INT)",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_string_count",
+                    "F_name_function": "vector_string_count",
+                    "F_name_generic": "vector_string_count",
+                    "F_name_impl": "vector_string_count",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "vector_string_count",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "vector_string_count"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2437,25 +2318,23 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "10 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "26",
                 "ast": {
                     "declarator": {
@@ -2516,28 +2395,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
-                    "F_C_call": "c_vector_string_fill_bufferify",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill",
-                    "F_name_function": "vector_string_fill",
-                    "F_name_generic": "vector_string_fill",
-                    "F_name_impl": "vector_string_fill",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_string_fill",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_string_fill"
                 }
             },
             {
                 "<FUNCTION>": "26 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2603,7 +2472,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2616,17 +2486,16 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "chelper_vector_string_out": "VEC_ShroudVectorStringOut",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "std::string",
                             "cxx_var": "arg",
-                            "hnamefunc0": "VEC_ShroudVectorStringOut",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_targ_string_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2639,16 +2508,13 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg",
-                            "hnamefunc0": "ShroudTypeDefines",
-                            "hnamefunc1": "array_context",
+                            "fhelper_ShroudTypeDefines": "ShroudTypeDefines",
+                            "fhelper_array_context": "array_context",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_targ_string_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_targ_string_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_targ_string_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_targ_string_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_targ_string_scalar"
                         }
                     }
                 },
@@ -2659,20 +2525,24 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_string_fill_bufferify",
                     "F_C_name": "c_vector_string_fill_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill",
+                    "F_name_function": "vector_string_fill",
+                    "F_name_generic": "vector_string_fill",
+                    "F_name_impl": "vector_string_fill",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "11 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
@@ -2731,28 +2601,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable",
-                    "F_C_call": "c_vector_string_fill_allocatable_bufferify",
-                    "F_arg_c_call": "SHT_arg_out",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill_allocatable",
-                    "F_name_function": "vector_string_fill_allocatable",
-                    "F_name_generic": "vector_string_fill_allocatable",
-                    "F_name_impl": "vector_string_fill_allocatable",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_string_fill_allocatable",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_string_fill_allocatable"
                 }
             },
             {
                 "<FUNCTION>": "27 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2816,7 +2676,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2829,17 +2690,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "chelper_vector_string_allocatable": "VEC_ShroudVectorStringAllocatable",
+                            "chelper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "std::string",
                             "cxx_var": "arg",
-                            "hnamefunc0": "VEC_ShroudVectorStringOutSize",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2854,17 +2715,14 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_vector_string_allocatable",
-                            "hnamefunc1": "array_context",
-                            "hnamefunc2": "capsule_data_helper",
+                            "fhelper_array_context": "array_context",
+                            "fhelper_capsule_data_helper": "capsule_data_helper",
+                            "fhelper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         }
                     }
                 },
@@ -2875,20 +2733,24 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_string_fill_allocatable_bufferify",
                     "F_C_name": "c_vector_string_fill_allocatable_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_out",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill_allocatable",
+                    "F_name_function": "vector_string_fill_allocatable",
+                    "F_name_generic": "vector_string_fill_allocatable",
+                    "F_name_impl": "vector_string_fill_allocatable",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
                 "<FUNCTION>": "12 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
@@ -2948,28 +2810,18 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable_len",
-                    "F_C_call": "c_vector_string_fill_allocatable_len_bufferify",
-                    "F_arg_c_call": "SHT_arg_out",
-                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill_allocatable_len",
-                    "F_name_function": "vector_string_fill_allocatable_len",
-                    "F_name_generic": "vector_string_fill_allocatable_len",
-                    "F_name_impl": "vector_string_fill_allocatable_len",
-                    "F_subprogram": "subroutine",
-                    "function_name": "vector_string_fill_allocatable_len",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "function_name": "vector_string_fill_allocatable_len"
                 }
             },
             {
                 "<FUNCTION>": "28 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3034,7 +2886,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -3048,17 +2901,17 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "chelper_vector_string_allocatable": "VEC_ShroudVectorStringAllocatable",
+                            "chelper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "std::string",
                             "cxx_var": "arg",
-                            "hnamefunc0": "VEC_ShroudVectorStringOutSize",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3073,17 +2926,14 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_vector_string_allocatable",
-                            "hnamefunc1": "array_context",
-                            "hnamefunc2": "capsule_data_helper",
+                            "fhelper_array_context": "array_context",
+                            "fhelper_capsule_data_helper": "capsule_data_helper",
+                            "fhelper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "i_dimension": "(*)",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmt1": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmtc0": "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-                            "stmtc1": "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmtf": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         }
                     }
                 },
@@ -3094,13 +2944,20 @@
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
+                    "F_C_call": "c_vector_string_fill_allocatable_len_bufferify",
                     "F_C_name": "c_vector_string_fill_allocatable_len_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_out",
+                    "F_arguments": "arg",
                     "F_name_api": "vector_string_fill_allocatable_len",
+                    "F_name_function": "vector_string_fill_allocatable_len",
+                    "F_name_generic": "vector_string_fill_allocatable_len",
+                    "F_name_impl": "vector_string_fill_allocatable_len",
+                    "F_subprogram": "subroutine",
+                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable_len",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine"
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
                 }
             },
             {
@@ -3174,9 +3031,6 @@
             },
             {
                 "<FUNCTION>": "14 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "29",
                 "ast": {
                     "declarator": {
@@ -3231,48 +3085,18 @@
                 },
                 "name": "ReturnVectorAlloc",
                 "options": {},
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "ReturnVectorAlloc",
-                    "F_C_call": "c_return_vector_alloc_bufferify",
-                    "F_arg_c_call": "n,\t SHT_rv_cdesc",
-                    "F_arguments": "n",
                     "F_name_api": "return_vector_alloc",
-                    "F_name_function": "return_vector_alloc",
-                    "F_name_generic": "return_vector_alloc",
-                    "F_name_impl": "return_vector_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "function_name": "ReturnVectorAlloc"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_T": "int",
-                        "cxx_type": "std::vector<{cxx_T}>",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "VEC_SHROUD_copy_array",
-                        "i_dimension": "(*)",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "size": "size(SHT_rv)",
-                        "stmt0": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-                        "stmt1": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-                        "stmtc0": "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-                        "stmtc1": "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "29 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3332,7 +3156,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "n": {
@@ -3351,8 +3176,7 @@
                             "cxx_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "n",
@@ -3362,10 +3186,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "n",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_in_native_scalar",
-                            "stmt1": "f_in_native_scalar",
-                            "stmtc0": "c_in_native_scalar",
-                            "stmtc1": "c_in_native_scalar"
+                            "stmtf": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3376,13 +3197,21 @@
                     "C_prototype": "int n,\t VEC_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "n,\t SHT_rv",
+                    "F_C_call": "c_return_vector_alloc_bufferify",
                     "F_C_name": "c_return_vector_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "n,\t SHT_rv_cdesc",
+                    "F_arguments": "n",
                     "F_name_api": "return_vector_alloc",
+                    "F_name_function": "return_vector_alloc",
+                    "F_name_generic": "return_vector_alloc",
+                    "F_name_impl": "return_vector_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "*SHC_rv",
-                    "function_name": "ReturnVectorAlloc",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "ReturnVectorAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3391,30 +3220,36 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_other",
+                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                        "chelper_copy_array": "VEC_ShroudCopyArray",
                         "cxx_T": "int",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "std::vector<{cxx_T}>",
                         "cxx_var": "SHC_rv",
-                        "hnamefunc0": "ShroudTypeDefines",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
-                        "stmt1": "c_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                        "stmtc": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_T": "int",
+                        "cxx_type": "std::vector<{cxx_T}>",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
+                        "f_kind": "C_INT",
                         "f_type": null,
                         "f_var": "SHT_rv",
+                        "fhelper_copy_array": "VEC_SHROUD_copy_array",
                         "i_dimension": "(*)",
                         "rank": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "size": "size(SHT_rv)"
+                        "size": "size(SHT_rv)",
+                        "stmtf": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
                     }
                 }
             },
@@ -3500,8 +3335,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*",
-                            "stmt1": "c_in_native_*"
+                            "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3515,10 +3349,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_in_native_*",
-                            "stmt1": "f_in_native_*",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_in_native_*"
+                            "stmtf": "f_in_native_*"
                         }
                     },
                     "len": {
@@ -3537,8 +3368,7 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_scalar",
-                            "stmt1": "c_in_native_scalar"
+                            "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -3588,8 +3418,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3600,10 +3429,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             }

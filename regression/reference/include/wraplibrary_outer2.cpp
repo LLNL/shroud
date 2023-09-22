@@ -19,7 +19,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void outer_func
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Statement: f_subroutine
 void LIB_outer2_outer_func(void)
 {
     outer2::outer_func();

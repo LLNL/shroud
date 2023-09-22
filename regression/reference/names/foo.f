@@ -54,7 +54,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_scalar_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -62,13 +62,13 @@ module name_module
             import :: TES_SHROUD_capsule_data
             implicit none
             type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) SHT_prv
+            type(C_PTR) :: SHT_prv
         end function XXX_TES_names_defaultctor
 
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine XXX_TES_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
@@ -79,7 +79,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine XXX_TES_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data
@@ -100,9 +100,7 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capptr
-    ! Attrs:     +api(capptr)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_scalar_capptr
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -116,9 +114,7 @@ contains
     ! ----------------------------------------
     ! Function:  void method1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
@@ -129,9 +125,7 @@ contains
     ! ----------------------------------------
     ! Function:  void method2
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2

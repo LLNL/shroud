@@ -53,7 +53,7 @@ module testnames_capi_mod
         ! ----------------------------------------
         ! Function:  void Member1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_class1_member1(self) &
                 bind(C, name="TES_capi_class1_member1")
             import :: TES_SHROUD_capsule_data
@@ -64,7 +64,7 @@ module testnames_capi_mod
         ! ----------------------------------------
         ! Function:  void Worker1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine c_worker1() &
                 bind(C, name="TES_capi_worker1")
             implicit none
@@ -79,9 +79,7 @@ contains
     ! ----------------------------------------
     ! Function:  void Member1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine class1_member1(obj)
         class(class1) :: obj
         ! splicer begin namespace.CAPI.class.Class1.method.member1
@@ -118,9 +116,7 @@ contains
     ! ----------------------------------------
     ! Function:  void Worker1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine worker1()
         ! splicer begin namespace.CAPI.function.worker1
         call c_worker1()

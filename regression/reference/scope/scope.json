@@ -200,8 +200,8 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Class1"
                 }
             },
             {
@@ -294,8 +294,8 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper"
+                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "file_scope": "Class2"
                 }
             }
         ],
@@ -502,10 +502,6 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
-                "C_generated_path": [
-                    "getter/setter",
-                    "arg_to_buffer"
-                ],
                 "_PTR_F_C_index": "2",
                 "_generated": "getter/setter",
                 "ast": {
@@ -563,50 +559,21 @@
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
                 },
-                "wrap": {
-                    "fortran": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "C_name_api": "DataPointer_get_items",
-                    "F_C_call": "c_data_pointer_get_items_bufferify",
-                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
-                    "F_arguments": "SH_this",
                     "F_name_api": "data_pointer_get_items",
-                    "F_name_function": "data_pointer_get_items",
-                    "F_name_generic": "data_pointer_get_items",
-                    "F_name_impl": "data_pointer_get_items",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_getter_native_*_cdesc_pointer",
-                        "stmt1": "f_getter_native_*_cdesc_pointer",
-                        "stmtc0": "c_getter_native_*_cdesc_pointer",
-                        "stmtc1": "c_getter_native_*_cdesc_pointer"
-                    }
                 }
             },
             {
                 "<FUNCTION>": "2 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -667,7 +634,8 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "SH_this": {
@@ -686,8 +654,7 @@
                             "cxx_var": "SHCXX_SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_in_struct_*",
-                            "stmt1": "c_in_struct_*"
+                            "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
@@ -697,10 +664,7 @@
                             "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_in_struct_*",
-                            "stmt1": "f_in_struct_*",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct_*"
+                            "stmtf": "f_in_struct_*"
                         }
                     }
                 },
@@ -712,14 +676,22 @@
                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_call": "c_data_pointer_get_items_bufferify",
                     "F_C_name": "c_data_pointer_get_items_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
                     "F_name_api": "data_pointer_get_items",
+                    "F_name_function": "data_pointer_get_items",
+                    "F_name_generic": "data_pointer_get_items",
+                    "F_name_impl": "data_pointer_get_items",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
+                    "f_c_suffix": "_bufferify",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
-                    "function_suffix": "_bufferify",
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
                 },
@@ -733,30 +705,34 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_int",
+                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                        "chelper_array_context": "array_context",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "hnamefunc0": "ShroudTypeDefines",
-                        "hnamefunc1": "array_context",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_getter_native_*_cdesc_pointer",
-                        "stmt1": "c_getter_native_*_cdesc_pointer"
+                        "stmtc": "f_getter_native_*_cdesc_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
-                        "f_array_allocate": "(nitems)",
+                        "cxx_type": "int",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "fhelper_array_context": "array_context",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtf": "f_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -858,8 +834,7 @@
                             "cxx_var": "SHCXX_SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_inout_struct_*",
-                            "stmt1": "c_inout_struct_*"
+                            "stmtc": "f_inout_struct_*"
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
@@ -869,10 +844,7 @@
                             "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_inout_struct_*",
-                            "stmt1": "f_inout_struct_*",
-                            "stmtc0": "c_inout_struct_*",
-                            "stmtc1": "c_inout_struct_*"
+                            "stmtf": "f_inout_struct_*"
                         }
                     },
                     "val": {
@@ -893,8 +865,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_setter_native_*",
-                            "stmt1": "c_setter_native_*"
+                            "stmtc": "f_setter_native_*"
                         },
                         "fmtf": {
                             "F_C_var": "val",
@@ -908,10 +879,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt0": "f_setter_native_*",
-                            "stmt1": "f_setter_native_*",
-                            "stmtc0": "c_setter_native_*",
-                            "stmtc1": "c_setter_native_*"
+                            "stmtf": "f_setter_native_*"
                         }
                     }
                 },
@@ -935,10 +903,8 @@
                     "F_subprogram": "subroutine",
                     "field_name": "items",
                     "function_name": "DataPointer_set_items",
-                    "stmt0": "f_setter",
-                    "stmt1": "f_setter",
-                    "stmtc0": "c_setter",
-                    "stmtc1": "c_setter",
+                    "stmtc": "f_setter",
+                    "stmtf": "f_setter",
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
                 }
@@ -1117,10 +1083,6 @@
                 "functions": [
                     {
                         "<FUNCTION>": "3 ****************************************",
-                        "C_generated_path": [
-                            "getter/setter",
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "5",
                         "_generated": "getter/setter",
                         "ast": {
@@ -1178,50 +1140,21 @@
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },
-                        "wrap": {
-                            "fortran": true
-                        },
+                        "wrap": {},
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_call": "c_data_pointer_get_items_bufferify",
-                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
-                            "F_arguments": "SH_this",
                             "F_name_api": "data_pointer_get_items",
-                            "F_name_function": "data_pointer_get_items",
-                            "F_name_generic": "data_pointer_get_items",
-                            "F_name_impl": "data_pointer_get_items",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "int",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_getter_native_*_cdesc_pointer",
-                                "stmt1": "f_getter_native_*_cdesc_pointer",
-                                "stmtc0": "c_getter_native_*_cdesc_pointer",
-                                "stmtc1": "c_getter_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "3",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -1283,7 +1216,8 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "SH_this": {
@@ -1302,8 +1236,7 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct_*"
+                                    "stmtc": "f_in_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -1313,10 +1246,7 @@
                                     "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_in_struct_*",
-                                    "stmt1": "f_in_struct_*",
-                                    "stmtc0": "c_in_struct_*",
-                                    "stmtc1": "c_in_struct_*"
+                                    "stmtf": "f_in_struct_*"
                                 }
                             }
                         },
@@ -1328,14 +1258,22 @@
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv",
+                            "F_C_call": "c_data_pointer_get_items_bufferify",
                             "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                            "F_arguments": "SH_this",
                             "F_name_api": "data_pointer_get_items",
+                            "F_name_function": "data_pointer_get_items",
+                            "F_name_generic": "data_pointer_get_items",
+                            "F_name_impl": "data_pointer_get_items",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "cxx_rv_decl": "int * SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
-                            "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },
@@ -1349,30 +1287,34 @@
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_int",
+                                "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                                "chelper_array_context": "array_context",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "hnamefunc0": "ShroudTypeDefines",
-                                "hnamefunc1": "array_context",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "c_getter_native_*_cdesc_pointer",
-                                "stmt1": "c_getter_native_*_cdesc_pointer"
+                                "stmtc": "f_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(nitems)",
+                                "cxx_type": "int",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
+                                "fhelper_array_context": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_INT"
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtf": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -1474,8 +1416,7 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_inout_struct_*",
-                                    "stmt1": "c_inout_struct_*"
+                                    "stmtc": "f_inout_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -1485,10 +1426,7 @@
                                     "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_inout_struct_*",
-                                    "stmt1": "f_inout_struct_*",
-                                    "stmtc0": "c_inout_struct_*",
-                                    "stmtc1": "c_inout_struct_*"
+                                    "stmtf": "f_inout_struct_*"
                                 }
                             },
                             "val": {
@@ -1509,8 +1447,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_setter_native_*",
-                                    "stmt1": "c_setter_native_*"
+                                    "stmtc": "f_setter_native_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -1524,10 +1461,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt0": "f_setter_native_*",
-                                    "stmt1": "f_setter_native_*",
-                                    "stmtc0": "c_setter_native_*",
-                                    "stmtc1": "c_setter_native_*"
+                                    "stmtf": "f_setter_native_*"
                                 }
                             }
                         },
@@ -1551,10 +1485,8 @@
                             "F_subprogram": "subroutine",
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
-                            "stmt0": "f_setter",
-                            "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc": "f_setter",
+                            "stmtf": "f_setter",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         }
@@ -1760,10 +1692,6 @@
                 "functions": [
                     {
                         "<FUNCTION>": "6 ****************************************",
-                        "C_generated_path": [
-                            "getter/setter",
-                            "arg_to_buffer"
-                        ],
                         "_PTR_F_C_index": "8",
                         "_generated": "getter/setter",
                         "ast": {
@@ -1821,50 +1749,21 @@
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },
-                        "wrap": {
-                            "fortran": true
-                        },
+                        "wrap": {},
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_call": "c_data_pointer_get_items_bufferify",
-                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
-                            "F_arguments": "SH_this",
                             "F_name_api": "data_pointer_get_items",
-                            "F_name_function": "data_pointer_get_items",
-                            "F_name_generic": "data_pointer_get_items",
-                            "F_name_impl": "data_pointer_get_items",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "int",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_var": "SHT_rv",
-                                "hnamefunc0": "array_context",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_getter_native_*_cdesc_pointer",
-                                "stmt1": "f_getter_native_*_cdesc_pointer",
-                                "stmtc0": "c_getter_native_*_cdesc_pointer",
-                                "stmtc1": "c_getter_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -1926,7 +1825,8 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtargs": {
                             "SH_this": {
@@ -1945,8 +1845,7 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct_*"
+                                    "stmtc": "f_in_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -1956,10 +1855,7 @@
                                     "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_in_struct_*",
-                                    "stmt1": "f_in_struct_*",
-                                    "stmtc0": "c_in_struct_*",
-                                    "stmtc1": "c_in_struct_*"
+                                    "stmtf": "f_in_struct_*"
                                 }
                             }
                         },
@@ -1971,14 +1867,22 @@
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv",
+                            "F_C_call": "c_data_pointer_get_items_bufferify",
                             "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                            "F_arguments": "SH_this",
                             "F_name_api": "data_pointer_get_items",
+                            "F_name_function": "data_pointer_get_items",
+                            "F_name_generic": "data_pointer_get_items",
+                            "F_name_impl": "data_pointer_get_items",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
                             "cxx_rv_decl": "int * SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
-                            "function_suffix": "_bufferify",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         },
@@ -1992,30 +1896,34 @@
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_int",
+                                "chelper_ShroudTypeDefines": "ShroudTypeDefines",
+                                "chelper_array_context": "array_context",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "hnamefunc0": "ShroudTypeDefines",
-                                "hnamefunc1": "array_context",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "c_getter_native_*_cdesc_pointer",
-                                "stmt1": "c_getter_native_*_cdesc_pointer"
+                                "stmtc": "f_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                "f_array_allocate": "(nitems)",
+                                "cxx_type": "int",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
+                                "fhelper_array_context": "array_context",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_INT"
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtf": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -2117,8 +2025,7 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_inout_struct_*",
-                                    "stmt1": "c_inout_struct_*"
+                                    "stmtc": "f_inout_struct_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
@@ -2128,10 +2035,7 @@
                                     "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_inout_struct_*",
-                                    "stmt1": "f_inout_struct_*",
-                                    "stmtc0": "c_inout_struct_*",
-                                    "stmtc1": "c_inout_struct_*"
+                                    "stmtf": "f_inout_struct_*"
                                 }
                             },
                             "val": {
@@ -2152,8 +2056,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_setter_native_*",
-                                    "stmt1": "c_setter_native_*"
+                                    "stmtc": "f_setter_native_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -2167,10 +2070,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt0": "f_setter_native_*",
-                                    "stmt1": "f_setter_native_*",
-                                    "stmtc0": "c_setter_native_*",
-                                    "stmtc1": "c_setter_native_*"
+                                    "stmtf": "f_setter_native_*"
                                 }
                             }
                         },
@@ -2194,10 +2094,8 @@
                             "F_subprogram": "subroutine",
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
-                            "stmt0": "f_setter",
-                            "stmt1": "f_setter",
-                            "stmtc0": "c_setter",
-                            "stmtc1": "c_setter",
+                            "stmtc": "f_setter",
+                            "stmtf": "f_setter",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
                         }

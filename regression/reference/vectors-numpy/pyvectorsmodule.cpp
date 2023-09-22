@@ -37,11 +37,11 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_in_vector_numpy
+// Statement: py_in_vector_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
 ;
@@ -98,11 +98,11 @@ fail:
 // ----------------------------------------
 // Function:  void vector_iota_out
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Exact:     py_out_vector_numpy
+// Statement: py_out_vector_numpy
 static char PY_vector_iota_out__doc__[] =
 "documentation"
 ;
@@ -159,11 +159,11 @@ fail:
 // ----------------------------------------
 // Function:  void vector_iota_out_d
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Exact:     py_out_vector_numpy
+// Statement: py_out_vector_numpy
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
 ;
@@ -220,11 +220,11 @@ fail:
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_vector_numpy_targ_native_scalar
+// Statement: py_function_vector_numpy_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -290,11 +290,11 @@ fail:
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Exact:     py_in_native_*_pointer_numpy
+// Statement: py_in_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value
 // Exact:     py_default

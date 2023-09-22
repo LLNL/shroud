@@ -25,7 +25,7 @@ module wrapped_inner1_mod
         ! ----------------------------------------
         ! Function:  void worker
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine worker() &
                 bind(C, name="WWW_inner1_worker")
             implicit none
@@ -42,9 +42,7 @@ contains
     ! ----------------------------------------
     ! Function:  void worker
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine worker()
         ! splicer begin namespace.inner1.function.worker
         call c_worker()

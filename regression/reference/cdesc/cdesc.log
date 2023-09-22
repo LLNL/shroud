@@ -6,6 +6,8 @@ C void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)
 C void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
 C int getData(void)  +intent(function)
 C double getData(void)  +intent(function)
+C void GetScalar2(std::string & name +intent(in), int * value +intent(out))  +intent(subroutine)
+C void GetScalar2(std::string & name +intent(in), double * value +intent(out))  +intent(subroutine)
 Close wrapcdesc.h
 Close wrapcdesc.cpp
 Fortran void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
@@ -22,6 +24,8 @@ C-interface void GetScalar1(std::string & name +intent(in), int * value +cdesc+i
 C-interface void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
 C-interface int getData(void)  +intent(function)
 C-interface double getData(void)  +intent(function)
+C-interface void GetScalar2(std::string & name +intent(in), int * value +intent(out))  +intent(subroutine)
+C-interface void GetScalar2(std::string & name +intent(in), double * value +intent(out))  +intent(subroutine)
 Close wrapfcdesc.f
 Close utilcdesc.cpp
 Close typescdesc.h

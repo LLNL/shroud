@@ -413,13 +413,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.parent = None
         self.cxx_header = cxx_header.split()
         self.fortran_header = fortran_header.split()
-        self.language = language.lower()
-        if self.language not in ["c", "c++"]:
-            raise RuntimeError("language must be 'c' or 'c++', found {}"
-                               .format(self.language))
-        if self.language == "c++":
-            # Use a form which can be used as a variable name
-            self.language = "cxx"
+        self.language = util.find_language(language)
         self.library = library
         self.name = library
         self.nodename = "library"
@@ -485,8 +479,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             self.wrap_namespace = ns
 
         self.ast = self.symtab.current  # declast.Global
-
-        statements.update_statements_for_language(self.language)
 
         self.setup = kwargs.get("setup", {}) # for setup.py
 
@@ -555,7 +547,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
             C_name_typedef_template="{C_prefix}{C_name_scope}{typedef_name}",
             C_memory_dtor_function_template=(
@@ -571,7 +563,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Fortran's names for C functions
             F_API_case="underscore",
             F_C_name_template=(
-                "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
             F_enum_member_template="{F_name_scope}{enum_member_lower}",
             F_name_impl_template=(
@@ -777,6 +769,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_pre_call="",
             C_post_call="",
             function_suffix="",  # assume no suffix
+            f_c_suffix="",
             template_suffix="",  # assume no suffix
             namespace_scope="",
         )

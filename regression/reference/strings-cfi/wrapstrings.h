@@ -58,7 +58,7 @@ void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getCharPtr3(void);
 
-void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getCharPtr4(void);
 
@@ -74,7 +74,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
@@ -88,7 +88,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefAsArg(void);
 
-void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefLenEmpty(void);
 

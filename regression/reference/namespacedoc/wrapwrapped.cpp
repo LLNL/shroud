@@ -21,7 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void worker3
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Statement: f_subroutine
 void WWW_inner3_worker3(void)
 {
     // splicer begin function.worker3
@@ -32,7 +32,7 @@ void WWW_inner3_worker3(void)
 // ----------------------------------------
 // Function:  void worker
 // Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Statement: f_subroutine
 void WWW_worker(void)
 {
     // splicer begin function.worker

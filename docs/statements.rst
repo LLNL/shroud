@@ -15,6 +15,15 @@ Combinations of language, type and attributes are used to select
 a statement entry.
 
 
+.. base - must be single name.
+          Applied after all of the others mixins as parent of Scope.
+          Cannot also have a *mixin* field.
+          Useful to define a group that varies slightly
+          such as pointer vs reference argument.
+
+.. mixin - list of single names, no alternative allowed such as allocatable/pointer
+           must not contain 'alias' or 'base'
+
 
 Passing function result as an argument
 --------------------------------------

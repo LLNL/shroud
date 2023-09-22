@@ -25,7 +25,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker3
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine inner3_worker3() &
                 bind(C, name="WWW_inner3_worker3")
             implicit none
@@ -34,7 +34,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine worker() &
                 bind(C, name="WWW_worker")
             implicit none
@@ -43,7 +43,7 @@ module wrapped_mod
         ! ----------------------------------------
         ! Function:  void worker4
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")
             implicit none
@@ -60,9 +60,7 @@ contains
     ! ----------------------------------------
     ! Function:  void worker3
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine inner3_worker3()
         ! splicer begin function.worker3
         call c_inner3_worker3()
@@ -75,9 +73,7 @@ contains
     ! ----------------------------------------
     ! Function:  void worker
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine worker()
         ! splicer begin function.worker
         call c_worker()
@@ -93,9 +89,7 @@ contains
     ! ----------------------------------------
     ! Function:  void worker4
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine inner4_worker4()
         ! splicer begin namespace.inner2.function.worker4
         call c_inner4_worker4()

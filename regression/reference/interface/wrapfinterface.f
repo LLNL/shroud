@@ -25,7 +25,7 @@ module interface_mod
         ! ----------------------------------------
         ! Function:  void Function1
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine function1() &
                 bind(C, name="Function1")
             implicit none
@@ -34,15 +34,15 @@ module interface_mod
         ! ----------------------------------------
         ! Function:  double Function2
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg1 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int arg2 +value
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_native_scalar
+        ! Statement: f_in_native_scalar
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")
@@ -64,9 +64,7 @@ contains
     ! ----------------------------------------
     ! Function:  void Function1
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine function1()
         ! splicer begin function.function1
         call c_function1()
@@ -79,21 +77,15 @@ contains
     ! ----------------------------------------
     ! Function:  double Function2
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_native_scalar
-    ! Attrs:     +intent(in)
-    ! Exact:     c_in_native_scalar
+    ! Statement: f_in_native_scalar
     function function2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT

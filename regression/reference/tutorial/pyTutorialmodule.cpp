@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
@@ -54,15 +54,15 @@ PY_NoReturnNoArguments(
 // ----------------------------------------
 // Function:  double PassByValue
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_PassByValue__doc__[] =
 "documentation"
 ;
@@ -98,15 +98,15 @@ PY_PassByValue(
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_scalar
+// Statement: py_function_string_scalar
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +intent(in)
-// Exact:     py_in_string_&
+// Statement: py_in_string_&
 // ----------------------------------------
 // Argument:  const std::string & arg2
 // Attrs:     +intent(in)
-// Exact:     py_in_string_&
+// Statement: py_in_string_&
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
@@ -153,15 +153,15 @@ PY_ConcatenateStrings(
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  bool arg2=true +value
 // Attrs:     +intent(in)
-// Exact:     py_in_bool_scalar
+// Statement: py_in_bool_scalar
 static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
 "documentation"
 ;
@@ -220,11 +220,11 @@ PY_UseDefaultArguments_arg1_arg2(
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     py_in_string_&
+// Statement: py_in_string_&
 static PyObject *
 PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
@@ -252,11 +252,11 @@ PY_OverloadedFunction_from_name(
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int indx +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_OverloadedFunction_from_index(
   PyObject *SHROUD_UNUSED(self),
@@ -281,11 +281,11 @@ PY_OverloadedFunction_from_index(
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_TemplateArgument_int(
   PyObject *SHROUD_UNUSED(self),
@@ -310,11 +310,11 @@ PY_TemplateArgument_int(
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_TemplateArgument_double(
   PyObject *SHROUD_UNUSED(self),
@@ -339,7 +339,7 @@ PY_TemplateArgument_double(
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 static PyObject *
 PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
@@ -355,15 +355,15 @@ PY_FortranGenericOverloaded_0(
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
-// Exact:     py_in_string_&
+// Statement: py_in_string_&
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_FortranGenericOverloaded_1(
   PyObject *SHROUD_UNUSED(self),
@@ -394,19 +394,19 @@ PY_FortranGenericOverloaded_1(
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_UseDefaultOverload_num_offset_stride(
   PyObject *SHROUD_UNUSED(self),
@@ -457,23 +457,23 @@ PY_UseDefaultOverload_num_offset_stride(
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int offset=0 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int stride=1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PY_UseDefaultOverload_5(
   PyObject *SHROUD_UNUSED(self),
@@ -527,11 +527,11 @@ PY_UseDefaultOverload_5(
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_typefunc__doc__[] =
 "documentation"
 ;
@@ -565,11 +565,11 @@ PY_typefunc(
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  EnumTypeID arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_enumfunc__doc__[] =
 "documentation"
 ;
@@ -607,11 +607,11 @@ PY_enumfunc(
 // ----------------------------------------
 // Function:  Color colorfunc
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  Color arg +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PY_colorfunc__doc__[] =
 "documentation"
 ;
@@ -648,15 +648,15 @@ PY_colorfunc(
 // ----------------------------------------
 // Function:  void getMinMax
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int & min +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_&
+// Statement: py_out_native_&
 // ----------------------------------------
 // Argument:  int & max +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_&
+// Statement: py_out_native_&
 static char PY_getMinMax__doc__[] =
 "documentation"
 ;
@@ -688,7 +688,7 @@ PY_getMinMax(
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

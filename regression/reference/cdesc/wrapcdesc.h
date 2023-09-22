@@ -44,6 +44,12 @@ int CDE_getData_int(void);
 
 double CDE_getData_double(void);
 
+void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
+    int * value);
+
+void CDE_GetScalar2_1_bufferify(char *name, int SHT_name_len,
+    double * value);
+
 #ifdef __cplusplus
 }
 #endif

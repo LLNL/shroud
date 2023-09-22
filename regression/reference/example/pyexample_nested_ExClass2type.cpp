@@ -152,11 +152,11 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +api(capptr)+intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +intent(in)
-// Exact:     py_in_string_*
+// Statement: py_in_string_*
 /**
  * \brief constructor
  *
@@ -193,7 +193,7 @@ PP_ExClass2_tp_init(
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(copy)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PP_getName__doc__[] =
 "documentation"
 ;
@@ -220,7 +220,7 @@ PP_getName(
 // ----------------------------------------
 // Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PP_getName2__doc__[] =
 "documentation"
 ;
@@ -247,7 +247,7 @@ PP_getName2(
 // ----------------------------------------
 // Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PP_getName3__doc__[] =
 "documentation"
 ;
@@ -274,7 +274,7 @@ PP_getName3(
 // ----------------------------------------
 // Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_string_&
+// Statement: py_function_string_&
 static char PP_getName4__doc__[] =
 "documentation"
 ;
@@ -301,7 +301,7 @@ PP_getName4(
 // ----------------------------------------
 // Function:  int GetNameLength
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
@@ -331,11 +331,11 @@ PP_GetNameLength(
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
 // Attrs:     +api(capptr)+intent(function)
-// Exact:     py_function_shadow_*
+// Statement: py_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in
 // Attrs:     +intent(in)
-// Exact:     py_in_shadow_*
+// Statement: py_in_shadow_*
 static char PP_get_class1__doc__[] =
 "documentation"
 ;
@@ -374,15 +374,15 @@ PP_get_class1(
 // ----------------------------------------
 // Function:  void * declare
 // Attrs:     +intent(function)
-// Exact:     py_function_void_*
+// Statement: py_function_void_*
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  SidreLength len=1 +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static char PP_declare_1__doc__[] =
 "documentation"
 ;
@@ -441,7 +441,7 @@ PP_declare_1(
 // ----------------------------------------
 // Function:  void destroyall
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 static char PP_destroyall__doc__[] =
 "documentation"
 ;
@@ -461,7 +461,7 @@ PP_destroyall(
 // ----------------------------------------
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static char PP_getTypeID__doc__[] =
 "documentation"
 ;
@@ -487,11 +487,11 @@ PP_getTypeID(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_int(
   PP_ExClass2 *self,
@@ -516,11 +516,11 @@ PP_setValue_int(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_long(
   PP_ExClass2 *self,
@@ -545,11 +545,11 @@ PP_setValue_long(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  float value +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_float(
   PP_ExClass2 *self,
@@ -574,11 +574,11 @@ PP_setValue_float(
 // ----------------------------------------
 // Function:  void setValue
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double value +value
 // Attrs:     +intent(in)
-// Exact:     py_in_native_scalar
+// Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_double(
   PP_ExClass2 *self,
@@ -603,7 +603,7 @@ PP_setValue_double(
 // ----------------------------------------
 // Function:  int getValue
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static PyObject *
 PP_getValue_int(
   PP_ExClass2 *self,
@@ -625,7 +625,7 @@ PP_getValue_int(
 // ----------------------------------------
 // Function:  double getValue
 // Attrs:     +intent(function)
-// Exact:     py_function_native_scalar
+// Statement: py_function_native_scalar
 static PyObject *
 PP_getValue_double(
   PP_ExClass2 *self,

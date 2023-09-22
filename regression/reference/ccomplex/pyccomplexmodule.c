@@ -34,11 +34,11 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Function:  void acceptDoubleComplexInoutPtr
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_native_*
+// Statement: py_inout_native_*
 static char PY_acceptDoubleComplexInoutPtr__doc__[] =
 "documentation"
 ;
@@ -76,11 +76,11 @@ PY_acceptDoubleComplexInoutPtr(
 // ----------------------------------------
 // Function:  void acceptDoubleComplexOutPtr
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 static char PY_acceptDoubleComplexOutPtr__doc__[] =
 "documentation"
 ;
@@ -107,15 +107,15 @@ PY_acceptDoubleComplexOutPtr(
 // ----------------------------------------
 // Function:  void acceptDoubleComplexInoutPtrFlag
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_inout_native_*
+// Statement: py_inout_native_*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 static char PY_acceptDoubleComplexInoutPtrFlag__doc__[] =
 "documentation"
 ;
@@ -159,15 +159,15 @@ PY_acceptDoubleComplexInoutPtrFlag(
 // ----------------------------------------
 // Function:  void acceptDoubleComplexOutPtrFlag
 // Attrs:     +intent(subroutine)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_out_native_*
+// Statement: py_out_native_*
 static char PY_acceptDoubleComplexOutPtrFlag__doc__[] =
 "documentation"
 ;

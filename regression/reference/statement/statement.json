@@ -84,8 +84,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function_native_scalar"
+                        "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -96,19 +95,13 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar",
-                        "stmt1": "f_function_native_scalar",
-                        "stmtc0": "c_function_native_scalar",
-                        "stmtc1": "c_function_native_scalar"
+                        "stmtf": "f_function_native_scalar"
                     }
                 }
             },
             {
                 "<FUNCTION>": "1 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_F_C_index": "2",
                 "ast": {
@@ -140,8 +133,7 @@
                 "name": "getNameErrorPattern",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STMT_getNameErrorPattern",
@@ -149,18 +141,10 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_name_error_pattern_bufferify",
                     "F_C_name": "c_get_name_error_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_name_error_pattern",
-                    "F_name_function": "get_name_error_pattern",
-                    "F_name_generic": "get_name_error_pattern",
-                    "F_name_impl": "get_name_error_pattern",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getNameErrorPattern"
                 },
@@ -180,30 +164,26 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_copy",
-                        "stmt1": "c_function_string_&_copy"
+                        "stmtc": "f_function_string_&_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cxx_type": "std::string",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_buf_copy",
-                        "stmt1": "f_function_string_&_buf_copy",
-                        "stmtc0": "c_function_string_&_buf_copy",
-                        "stmtc1": "c_function_string_&_buf_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
             {
                 "<FUNCTION>": "2 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
@@ -239,7 +219,8 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STMT_getNameErrorPattern_bufferify",
@@ -247,13 +228,21 @@
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                    "F_C_call": "c_get_name_error_pattern_bufferify",
                     "F_C_name": "c_get_name_error_pattern_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "",
                     "F_name_api": "get_name_error_pattern",
+                    "F_name_function": "get_name_error_pattern",
+                    "F_name_generic": "get_name_error_pattern",
+                    "F_name_impl": "get_name_error_pattern",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getNameErrorPattern",
-                    "function_suffix": "_bufferify"
+                    "f_c_suffix": "_bufferify",
+                    "function_name": "getNameErrorPattern"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -263,27 +252,28 @@
                         "c_var": "SHC_rv",
                         "c_var_len": "SHT_rv_len",
                         "cfi_type": "CFI_type_other",
+                        "chelper_ShroudStrCopy": "ShroudStrCopy",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrCopy",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_buf_copy",
-                        "stmt1": "c_function_string_&_buf_copy"
+                        "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtf": "f_function_string_&_buf_copy"
                     }
                 }
             }

@@ -11,7 +11,7 @@ C const std::string & LastFunctionCalled(void)  +api(cdesc)+deref(allocatable)+i
 C void One(void)  +intent(subroutine)
 Close wrapns.h
 Close wrapns.cpp
-Fortran const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
+Fortran const std::string & LastFunctionCalled(void)  +api(cdesc)+deref(allocatable)+intent(function)
 Fortran void One(void)  +intent(subroutine)
 C-interface const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
 C-interface const std::string & LastFunctionCalled(void)  +api(cdesc)+deref(allocatable)+intent(function)

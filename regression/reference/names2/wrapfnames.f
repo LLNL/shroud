@@ -25,7 +25,7 @@ module worker_names
         ! ----------------------------------------
         ! Function:  void AFunction
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         subroutine a_function() &
                 bind(C, name="NAM_AFunction")
             implicit none
@@ -42,9 +42,7 @@ contains
     ! ----------------------------------------
     ! Function:  void AFunction
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     subroutine a_function()
         ! splicer begin function.a_function
         call c_a_function()

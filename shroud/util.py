@@ -155,6 +155,20 @@ def as_yaml(obj, order, output):
             output.append("{}: {}".format(key, value))
 
 
+def find_language(language):
+    """Return the library language in a standard form"""
+    if language is None:
+        language = "c++"
+    language = language.lower()
+    if language not in ["c", "c++"]:
+        raise RuntimeError("language must be 'c' or 'c++', found {}"
+                           .format(language))
+    if language == "c++":
+        # Use a form which can be used as a variable name
+        language = "cxx"
+    return language
+            
+
 def extern_C(output, position):
     """Create extern "C" guards for C++
     """
@@ -498,7 +512,7 @@ class WrapperMixin(object):
         ))
         return "".join(decl)
         
-    def document_stmts(self, output, ast, stmt0, stmt1):
+    def document_stmts(self, output, ast, stmt0):
         """A comments to show which statements were used.
 
         Skip metaattributes which are objects.
@@ -507,14 +521,7 @@ class WrapperMixin(object):
         if dbg:
             output.append(self.comment + " Attrs:    " + dbg)
         
-        if stmt0 == stmt1:
-            output.append(
-                self.comment + " Exact:     " + stmt0)
-        else:
-            output.append(
-                self.comment + " Requested: " + stmt0)
-            output.append(
-                self.comment + " Match:     " + stmt1)
+        output.append(self.comment + " Statement: " + stmt0)
 
 
 class Header(object):

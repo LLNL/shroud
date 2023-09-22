@@ -576,13 +576,13 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}``
 
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
     
 F_C_name_template
-    ``{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}``
+    ``{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{f_c_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
@@ -1330,6 +1330,11 @@ F_result_clause
     `` result({F_result})`` for functions.
     Blank for subroutines.
 
+f_c_suffix
+    Set by Shroud to allow the Fortran wrapper to call a C wrapper
+    with additional mangling.  Usually set to the value of
+    *C_bufferify_suffix* or *C_cfi_suffix*.
+    
 function_name
     Name of function in the YAML file.
 
@@ -1412,6 +1417,12 @@ c_var_extents
 
 c_var_lower
 
+chelper_*
+    Helper name for a function.
+    Each name in statements *c_helper* will create a format name
+    which starts with *chelper_* and end with the helper name.
+    It will contain the name of the C function for the helper.
+    Used by statements *c_pre_call* and *c_post_call* statements.
 
 cxx_addr
     Syntax to take address of argument.
@@ -1528,11 +1539,12 @@ f_type
 f_var
     Fortran variable name for argument.
 
-hnamefunc
+fhelper_*
     Helper name for a function.
-    Each name in statements *f_helper* will set a suffix index.
-    The first helper will be *hnamefunc0*.
-    Used by statements *pre_call* and *post_call* statements.
+    Each name in statements *f_helper* will create a format name
+    which starts with *fhelper_* and end with the helper name.
+    It will contain the name of the Fortran function for the helper.
+    Used by statements *f_pre_call* and *f_post_call* statements.
 
 i_dimension
     Dimension used in ``bind(C)`` interface.

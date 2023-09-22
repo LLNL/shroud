@@ -32,11 +32,11 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Function:  int passStructByReference
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_struct_&
+        ! Statement: f_inout_struct_&
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReference")
@@ -50,11 +50,11 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Function:  int passStructByReferenceIn
         ! Attrs:     +intent(function)
-        ! Exact:     c_function_native_scalar
+        ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 & arg
         ! Attrs:     +intent(in)
-        ! Exact:     c_in_struct_&
+        ! Statement: f_in_struct_&
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
                 bind(C, name="CXX_structns_passStructByReferenceIn")
@@ -68,11 +68,11 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Function:  void passStructByReferenceInout
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
         ! Attrs:     +intent(inout)
-        ! Exact:     c_inout_struct_&
+        ! Statement: f_inout_struct_&
         subroutine pass_struct_by_reference_inout(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceInout")
             import :: cstruct1
@@ -83,11 +83,11 @@ module cxxlibrary_structns_mod
         ! ----------------------------------------
         ! Function:  void passStructByReferenceOut
         ! Attrs:     +intent(subroutine)
-        ! Exact:     c_subroutine_void_scalar
+        ! Statement: f_subroutine_void_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
         ! Attrs:     +intent(out)
-        ! Exact:     c_out_struct_&
+        ! Statement: f_out_struct_&
         subroutine pass_struct_by_reference_out(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceOut")
             import :: cstruct1
@@ -106,15 +106,11 @@ contains
     ! ----------------------------------------
     ! Function:  int passStructByReference
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
     ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_&
-    ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_&
+    ! Statement: f_inout_struct_&
     !>
     !! Argument is modified by library, defaults to intent(inout).
     !<
@@ -134,15 +130,11 @@ contains
     ! ----------------------------------------
     ! Function:  int passStructByReferenceIn
     ! Attrs:     +intent(function)
-    ! Exact:     f_function_native_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_native_scalar
+    ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_struct_&
-    ! Attrs:     +intent(in)
-    ! Exact:     c_in_struct_&
+    ! Statement: f_in_struct_&
     !>
     !! const defaults to intent(in)
     !<
@@ -162,15 +154,11 @@ contains
     ! ----------------------------------------
     ! Function:  void passStructByReferenceInout
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Exact:     f_inout_struct_&
-    ! Attrs:     +intent(inout)
-    ! Exact:     c_inout_struct_&
+    ! Statement: f_inout_struct_&
     subroutine pass_struct_by_reference_inout(arg)
         type(cstruct1), intent(INOUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_inout
@@ -184,15 +172,11 @@ contains
     ! ----------------------------------------
     ! Function:  void passStructByReferenceOut
     ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     f_out_struct_&
-    ! Attrs:     +intent(out)
-    ! Exact:     c_out_struct_&
+    ! Statement: f_out_struct_&
     subroutine pass_struct_by_reference_out(arg)
         type(cstruct1), intent(OUT) :: arg
         ! splicer begin namespace.structns.function.pass_struct_by_reference_out

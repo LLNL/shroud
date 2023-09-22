@@ -62,8 +62,8 @@ declarations:
   - decl: class Names
     options:
       none: foo
-      C_name_template: XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}
-      F_C_name_template: XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}
+      C_name_template: XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}
+      F_C_name_template: XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}{f_c_suffix}
     format:
       C_header_filename: foo.h
       C_impl_filename: foo.cpp
@@ -86,8 +86,8 @@ declarations:
 
 - block: True
   options:
-    C_name_template: YYY_{C_prefix}{C_name_api}{function_suffix}
-    F_C_name_template: YYY_{C_prefix}{F_name_api}{function_suffix}
+    C_name_template: YYY_{C_prefix}{C_name_api}{function_suffix}{f_c_suffix}
+    F_C_name_template: YYY_{C_prefix}{F_name_api}{function_suffix}{f_c_suffix}
     F_name_impl_template: "{library}_{F_name_scope}{F_name_api}{function_suffix}"
   declarations:
   - decl: void function1()

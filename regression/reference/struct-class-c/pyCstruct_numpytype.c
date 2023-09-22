@@ -50,19 +50,19 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // ----------------------------------------
 // Function:  Cstruct_numpy +name(Cstruct_numpy_ctor)
 // Attrs:     +intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  int nitems
 // Attrs:     +intent(in)
-// Exact:     py_ctor_native_scalar_numpy
+// Statement: py_ctor_native_scalar_numpy
 // ----------------------------------------
 // Argument:  int * ivalue +dimension(nitems)
 // Attrs:     +intent(in)
-// Exact:     py_ctor_native_*_numpy
+// Statement: py_ctor_native_*_numpy
 // ----------------------------------------
 // Argument:  double * dvalue +dimension(nitems)
 // Attrs:     +intent(in)
-// Exact:     py_ctor_native_*_numpy
+// Statement: py_ctor_native_*_numpy
 static int
 PY_Cstruct_numpy_tp_init(
   PY_Cstruct_numpy *self,
@@ -108,7 +108,7 @@ PY_Cstruct_numpy_tp_init(
 // splicer begin class.Cstruct_numpy.impl.after_methods
 // splicer end class.Cstruct_numpy.impl.after_methods
 
-// Exact:     py_descr_native_scalar
+// Statement: py_descr_native_scalar
 static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -116,7 +116,7 @@ static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
-// Exact:     py_descr_native_scalar
+// Statement: py_descr_native_scalar
 static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -128,7 +128,7 @@ static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *valu
     return 0;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -149,7 +149,7 @@ static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -166,7 +166,7 @@ static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *valu
     return 0;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -187,7 +187,7 @@ static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
-// Exact:     py_descr_native_*_numpy
+// Statement: py_descr_native_*_numpy
 static int PY_Cstruct_numpy_dvalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

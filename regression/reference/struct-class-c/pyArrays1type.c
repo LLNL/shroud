@@ -50,15 +50,15 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // ----------------------------------------
 // Function:  Arrays1 +name(Arrays1_ctor)
 // Attrs:     +intent(ctor)
-// Exact:     py_default
+// Statement: py_default
 // ----------------------------------------
 // Argument:  char name[20]
 // Attrs:     +intent(in)
-// Exact:     py_ctor_char_[]_numpy
+// Statement: py_ctor_char_[]_numpy
 // ----------------------------------------
 // Argument:  int count[10]
 // Attrs:     +intent(in)
-// Exact:     py_ctor_native_[]_numpy
+// Statement: py_ctor_native_[]_numpy
 static int
 PY_Arrays1_tp_init(
   PY_Arrays1 *self,
@@ -108,7 +108,7 @@ fail:
 // splicer begin class.Arrays1.impl.after_methods
 // splicer end class.Arrays1.impl.after_methods
 
-// Exact:     py_descr_char_[]_numpy
+// Statement: py_descr_char_[]_numpy
 static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -121,7 +121,7 @@ static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     return rv;
 }
 
-// Exact:     py_descr_char_[]_numpy
+// Statement: py_descr_char_[]_numpy
 static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -134,7 +134,7 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Statement: py_descr_native_[]_numpy
 static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -148,7 +148,7 @@ static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     return self->count_obj;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Statement: py_descr_native_[]_numpy
 static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
