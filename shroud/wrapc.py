@@ -208,8 +208,8 @@ class Wrapc(util.WrapperMixin):
 
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
-        c_helper = wformat(helpers, fmt)
-        for i, helper in enumerate(c_helper.split()):
+        for c_helper in helpers:
+            helper = wformat(c_helper, fmt)
             self.c_helper[helper] = True
             if helper not in whelpers.CHelpers:
                 raise RuntimeError("No such helper {}".format(helper))

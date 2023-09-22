@@ -122,10 +122,15 @@ These headers may include C++ code.
 c_helper
 ^^^^^^^^
 
-A blank delimited list of helper functions which will be added to the wrapper file.
+A list of helper functions which will be added to the wrapper file.
 The list will be formatted to allow for additional flexibility::
 
-    c_helper: capsule_data_helper vector_context vector_copy_{cxx_T}
+.. code-block:: yaml
+
+    c_helper:
+    - capsule_data_helper
+    - vector_context
+    - vector_copy_{cxx_T}
 
 These functions are defined in whelper.py.
 There is no current way to add additional functions.

@@ -48,10 +48,16 @@ additional arguments.
 f_helper
 ^^^^^^^^
 
-Blank delimited list of Fortran helper function names to add to generated
+A list of Fortran helper function names to add to generated
 Fortran code.
 These functions are defined in whelper.py.
 There is no current way to add user defined helper functions.
+
+.. code-block:: yaml
+
+    f_helper:
+    - array_context
+
 
 f_module
 ^^^^^^^^

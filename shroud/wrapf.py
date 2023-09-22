@@ -274,7 +274,7 @@ class Wrapf(util.WrapperMixin):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_f_helper("capsule_data_helper", fmt_class)
+        fileinfo.add_f_helper(["capsule_data_helper"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -2550,16 +2550,16 @@ class ModuleInfo(object):
 
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
-        c_helper = wformat(helpers, fmt)
-        for helper in c_helper.split():
+        for c_helper in helpers:
+            helper = wformat(c_helper, fmt)
             self.c_helper[helper] = True
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers.
         Add fmt.fhelper_X for use by pre_call and post_call.
         """
-        f_helper = wformat(helpers, fmt)
-        for i, helper in enumerate(f_helper.split()):
+        for f_helper in helpers:
+            helper = wformat(f_helper, fmt)
             self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
                 raise RuntimeError("No such helper {}".format(helper))
