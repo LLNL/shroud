@@ -607,6 +607,7 @@ root
           scalar
             cfi
               allocatable -- f_mixin_function_string_scalar_cfi_allocatable
+      function-to-subroutine -- f_mixin_function-to-subroutine
       in
         2d
           array
@@ -8365,6 +8366,11 @@ f_mixin_char_cdesc_allocate:
   - "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   intent: mixin
   name: f_mixin_char_cdesc_allocate
+  owner: library
+f_mixin_function-to-subroutine:
+  c_return_type: void
+  intent: mixin
+  name: f_mixin_function-to-subroutine
   owner: library
 f_mixin_function_buf_character-arg:
   c_arg_decl:

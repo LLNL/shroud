@@ -318,7 +318,8 @@ function.  This is useful for functions which return pointers but the
 pointer value is assigned to a subroutine argument which holds the
 pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
 would be return by the C wrapper is unneeded by the Fortran wrapper.
-   
+
+The Fortran wrapper is also changed to call the C wrapper as a subroutine.
  
 destructor_name
 ^^^^^^^^^^^^^^^

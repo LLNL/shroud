@@ -747,6 +747,9 @@ fc_statements = [
             "f_subroutine_void_scalar",
         ],
         f_arg_call=[],
+#        f_call=[
+#            "call {F_C_call}({F_arg_c_call})",
+#        ],
     ),
 
     dict(
@@ -766,6 +769,14 @@ fc_statements = [
     ),
 
     ########## mixin ##########
+    dict(
+        name="f_mixin_function-to-subroutine",
+        # Add this later then remove from wrapf.py
+#        f_call = [
+#            "call {F_C_call}({F_arg_c_call})",
+#        ],
+        c_return_type="void",
+    ),
     dict(
         # Return a C pointer directly.
         name="f_mixin_function_ptr",
@@ -805,6 +816,9 @@ fc_statements = [
     dict(
         # Pass array_type as argument to contain the function result.
         name="f_mixin_function_cdesc",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
         f_helper=["array_context"],
         f_declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
@@ -821,7 +835,6 @@ fc_statements = [
         ],
         i_arg_names=["{c_var}"],
         i_import=["{F_array_type}"],
-        c_return_type="void",  # Convert to function.
         c_temps=["cdesc"],
     ),
 
@@ -918,6 +931,9 @@ fc_statements = [
     # Convert function result to character argument
     dict(
         name="f_mixin_function_buf_character-arg",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
         f_result="subroutine",
         f_arg_name=["{F_string_result_as_arg}"],
         f_arg_decl=[
@@ -934,9 +950,6 @@ fc_statements = [
             "{F_string_result_as_arg}",
             "{c_var_len}",
         ],
-
-        # fc_mixin_function-to-subroutine
-        c_return_type = "void",
 
         c_arg_decl=[
             "char *{F_string_result_as_arg}",
@@ -1738,6 +1751,9 @@ fc_statements = [
 #    ),
     dict(
         name="f_function_char_scalar",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
         alias=[
             "c_function_char_scalar",
         ],
@@ -1757,7 +1773,6 @@ fc_statements = [
         ],
         i_arg_names=["{c_var}"],
         i_module=dict(iso_c_binding=["C_CHAR"]),
-        c_return_type="void",  # Convert to function.
     ),
 #    dict(
 #        # Blank fill result.
@@ -1857,6 +1872,7 @@ fc_statements = [
         #  char *getname() +len(30)
         name="f_function_char_*_buf_copy",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_in_character_buf",
             "c_mixin_in_character_buf",
         ],
@@ -1870,7 +1886,6 @@ fc_statements = [
             "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
         ],
-        c_return_type="void",
     ),
 
     dict(
@@ -2279,6 +2294,7 @@ fc_statements = [
         # TTT - is the buf version used?
         name="f_function_string_scalar_buf",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_in_character_buf",
             "c_mixin_in_character_buf",
         ],
@@ -2313,7 +2329,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
-        c_return_type="void",
     ),
 
     # similar to f_function_char_scalar_allocatable
@@ -2871,6 +2886,7 @@ fc_statements = [
     dict(
         name="f_function_shadow_*_capsule",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
         ],
@@ -2879,7 +2895,6 @@ fc_statements = [
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
-        c_return_type="void",
     ),
 
     dict(
@@ -2984,7 +2999,10 @@ fc_statements = [
     dict(
         # NULL in stddef.h
         name="f_dtor",
-        mixin=["c_mixin_noargs"],
+        mixin=[
+            "c_mixin_noargs",
+            "f_mixin_function-to-subroutine",
+        ],
         alias=[
             "f_dtor_void_scalar",  # Used with interface
             "c_dtor_void_scalar",
@@ -3000,7 +3018,6 @@ fc_statements = [
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
         ],
-        c_return_type="void",
     ),
 
     dict(
@@ -3034,6 +3051,9 @@ fc_statements = [
     # start function_struct_scalar
     dict(
         name="f_function_struct_scalar",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
         alias=[
             "c_function_struct_scalar",
         ],
@@ -3043,7 +3063,6 @@ fc_statements = [
         i_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
         i_arg_names=["{c_var}"],
         i_import=["{f_kind}"],
-        c_return_type="void",  # Convert to function.
         cxx_local_var="result",
         c_post_call=[
             "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
@@ -3150,6 +3169,7 @@ fc_statements = [
         # Return meta data to Fortran.
         name="f_getter_string_scalar_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
@@ -3164,7 +3184,6 @@ fc_statements = [
             "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
             "{c_var_cdesc}->rank = 0;"
         ],
-        c_return_type="void",  # Convert to function.
     ),
     dict(
         # Extract meta data and pass to C.
@@ -3206,6 +3225,7 @@ fc_statements = [
         # f_function_char_*_cfi_allocatable
         name="f_function_char_*_cfi_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_function_character",
         ],
         alias=[
@@ -3217,7 +3237,6 @@ fc_statements = [
         ],
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
-        c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
@@ -3239,6 +3258,7 @@ fc_statements = [
         # f_function_char_*_cfi_pointer
         name="f_function_char_scalar_cfi_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_function_character",
         ],
         alias=[
@@ -3250,7 +3270,6 @@ fc_statements = [
         ],
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
-        c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
@@ -3428,6 +3447,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="f_function_char_*_cfi_copy",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_arg_character_cfi",
         ],
         f_arg_call=["{f_var}"],
@@ -3446,7 +3466,6 @@ fc_statements = [
             "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
-        c_return_type="void",  # Convert to function.
     ),
     dict(
         # Change function result into an argument
@@ -3466,9 +3485,9 @@ fc_statements = [
 ##-    dict(
 ##-        name="c_function_char_*_cfi_pointer",
 ##-        mixin=[
+##-            "f_mixin_function-to-subroutine",
 ##-            "c_mixin_function_character",
 ##-        ],
-##-        c_return_type="void",  # Convert to function.
 ##-        i_arg_names=["{c_var}"],
 ##-        i_arg_decl=[        # replace mixin
 ##-            "character(len=:), intent({f_intent}), pointer :: {c_var}",
@@ -3598,6 +3617,7 @@ fc_statements = [
     dict(
         name="f_function_string_scalar_cfi_copy",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_arg_character_cfi",
         ],
         alias=[
@@ -3625,7 +3645,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
-        c_return_type="void",  # Convert to function.
     ),
     dict(
         # Change function result into an argument
@@ -3651,6 +3670,7 @@ fc_statements = [
     dict(
         name="f_shared_function_string_*_cfi_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_function_character",
         ],
         alias=[
@@ -3667,7 +3687,6 @@ fc_statements = [
         ],
         f_arg_call=["{f_var}"],
         
-        c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
         i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
@@ -3720,6 +3739,7 @@ fc_statements = [
         # f_function_string_&_cfi_allocatable_library
         name="f_function_string_*/&_cfi_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
             "c_mixin_function_character",
         ],
@@ -3729,7 +3749,6 @@ fc_statements = [
         i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        c_return_type="void",  # Convert to function.
         i_arg_names=["{c_var}"],
         lang_c=dict(
             impl_header=["<string.h>"],
@@ -3750,6 +3769,7 @@ fc_statements = [
     dict(
         name="f_function_string_scalar_cfi_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
             "c_mixin_function_character",
         ],
@@ -3757,7 +3777,6 @@ fc_statements = [
         i_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        c_return_type="void",  # convert to function
         cxx_local_var=None,  # replace mixin
         c_pre_call=[],         # replace mixin
         c_post_call=[
@@ -3912,6 +3931,7 @@ fc_statements = [
         # Convert to subroutine and pass result as an argument.
         # Return an allocated copy of data.
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable",  # c_post_call
         ],
@@ -3925,7 +3945,6 @@ fc_statements = [
         ],
 
         cxx_local_var="result",
-        c_return_type="void",  # Convert to function.
     ),
 
     dict(
@@ -3934,6 +3953,7 @@ fc_statements = [
         # Convert to subroutine and pass result as an argument.
         # Return Fortran pointer to data.
         mixin=[
+            "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer",  # c_post_call
         ],
@@ -3950,7 +3970,6 @@ fc_statements = [
         ],
 
         cxx_local_var="result",
-        c_return_type="void",  # Convert to function.
     ),
 
 ]
