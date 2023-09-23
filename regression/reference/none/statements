@@ -2833,6 +2833,7 @@ c_out_native_*&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - ShroudTypeDefines
   - array_context
   c_post_call:
@@ -2904,6 +2905,7 @@ c_out_native_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - ShroudTypeDefines
   - array_context
   c_post_call:
@@ -3671,6 +3673,7 @@ f_function_char_*_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -3935,6 +3938,7 @@ f_function_char_scalar_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -4913,6 +4917,7 @@ f_function_string_&_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -4948,6 +4953,7 @@ f_function_string_&_cdesc_allocatable_caller:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -4983,6 +4989,7 @@ f_function_string_&_cdesc_allocatable_library:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -5515,6 +5522,7 @@ f_function_string_*_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -5550,6 +5558,7 @@ f_function_string_*_cdesc_allocatable_caller:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -5585,6 +5594,7 @@ f_function_string_*_cdesc_allocatable_library:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -6127,6 +6137,7 @@ f_function_string_scalar_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -6169,6 +6180,7 @@ f_function_string_scalar_cdesc_allocatable_caller:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -6211,6 +6223,7 @@ f_function_string_scalar_cdesc_allocatable_library:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -6703,6 +6716,7 @@ f_getter_string_scalar_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper:
+  - array_context
   - copy_string
   - array_context
   f_need_wrapper: true
@@ -8708,6 +8722,7 @@ f_out_native_*&_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - ShroudTypeDefines
   - array_context
   c_post_call:
@@ -8775,6 +8790,7 @@ f_out_native_*&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - ShroudTypeDefines
   - array_context
   c_post_call:
@@ -8878,6 +8894,7 @@ f_out_native_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - ShroudTypeDefines
   - array_context
   c_post_call:

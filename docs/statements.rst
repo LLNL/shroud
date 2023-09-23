@@ -23,6 +23,9 @@ a statement entry.
 
 .. mixin - list of single names, no alternative allowed such as allocatable/pointer
            must not contain 'alias' or 'base'
+           List fields from the mixin group will be appended to the group
+           being defined.
+           Non-lists are assigned.
 
 .. fmtdict - A dictionary to replace default values
 

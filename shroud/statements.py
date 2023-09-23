@@ -327,8 +327,8 @@ def process_mixin(stmts, defaults, stmtdict):
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
-                node.update(mixins[mixin])
-#                append_mixin(node, mixins[mixin])
+#                node.update(mixins[mixin])
+                append_mixin(node, mixins[mixin])
         node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
