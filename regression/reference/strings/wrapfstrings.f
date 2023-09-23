@@ -1829,11 +1829,12 @@ contains
     !!
     !<
     subroutine get_const_string_as_arg(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_const_string_as_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_const_string_as_arg_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_as_arg_bufferify(output, noutput)
         ! splicer end function.get_const_string_as_arg
     end subroutine get_const_string_as_arg
 
@@ -1912,11 +1913,12 @@ contains
     !! The length of the output variable is declared by the caller.
     !<
     subroutine get_const_string_ref_as_arg(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_const_string_ref_as_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_const_string_ref_as_arg_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_ref_as_arg_bufferify(output, noutput)
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
 

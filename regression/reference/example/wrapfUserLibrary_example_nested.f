@@ -1349,13 +1349,13 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Statement: f_function_string_&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
+        use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
-        character(*), intent(OUT) :: name
+        character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(name, kind=C_INT)
-        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, &
-            SHT_rv_len)
+        integer(C_INT) nname
+        nname = len(name, kind=C_INT)
+        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, nname)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
     end subroutine ex_class1_get_name_arg
 

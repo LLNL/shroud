@@ -932,41 +932,6 @@ fc_statements = [
         i_module=dict(iso_c_binding=["C_PTR"]),
     ),
 
-    # Convert function result to character argument
-    dict(
-        name="f_mixin_function_buf_character-arg",
-        mixin=[
-            "f_mixin_function-to-subroutine",
-        ],
-        f_result="subroutine",
-        f_arg_name=["{F_string_result_as_arg}"],
-        f_arg_decl=[
-            "character(*), intent(OUT) :: {F_string_result_as_arg}",
-        ],
-        f_temps=["len"],
-        f_declare=[
-            "integer(C_INT) {c_var_len}",
-        ],
-        f_pre_call=[
-            "{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)",
-        ],
-        f_arg_call=[
-            "{F_string_result_as_arg}",
-            "{c_var_len}",
-        ],
-
-        c_arg_decl=[
-            "char *{F_string_result_as_arg}",
-            "int n{F_string_result_as_arg}",
-        ],
-        i_arg_names=["{F_string_result_as_arg}", "n{F_string_result_as_arg}"],
-        i_arg_decl=[
-            "character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)",
-            "integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}",
-        ],
-        i_module_line="iso_c_binding:C_CHAR,C_INT",
-    ),
-    
     ### destructors
     # Each destructor must have a unique name.
     dict(
@@ -1916,37 +1881,12 @@ fc_statements = [
         ],
     ),
 
-    dict(
-        name="f_function_char_*_cdesc_arg",
-        alias=[
-            "c_function_char_*_cdesc_arg",
-        ],
-    ),
-
-    dict(
-        name="f_function_string_scalar_buf_arg",
-        mixin=[
-            "f_mixin_function_buf_character-arg",
-        ],
-        alias=[
-            "c_function_string_scalar_buf_arg",
-
-            "f_function_string_&_buf_arg",
-            "c_function_string_&_buf_arg",
-        ],
-        # XXX make as a mixin.
-        c_helper=["ShroudStrCopy"],
-        c_post_call=[
-            "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
-            "\t {nullptr},\t 0);",
-            "-}} else {{+",
-            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
-            "\t {cxx_var}{cxx_member}data(),"
-            "\t {cxx_var}{cxx_member}size());",
-            "-}}",
-        ],
-    ),
+#    dict(
+#        name="f_function_char_*_cdesc_arg",
+#        alias=[
+#            "c_function_char_*_cdesc_arg",
+#        ],
+#    ),
 
     #####
     dict(
@@ -2339,6 +2279,32 @@ fc_statements = [
             "-}}",
         ],
     ),
+
+    dict(
+        # Change function result into an argument
+        # Use F_string_result_as_arg as the argument name.
+        name="f_function_string_scalar_buf_arg",
+        base="f_function_string_scalar_buf",
+        alias=[
+            "c_function_string_scalar_buf_arg",
+
+            "f_function_string_&_buf_arg",
+            "c_function_string_&_buf_arg",
+        ],
+
+        fmtdict=dict(
+            f_var="{F_string_result_as_arg}",
+            c_var="{F_string_result_as_arg}",
+#            f_var_len="n{F_string_result_as_arg}",
+            c_var_len="n{F_string_result_as_arg}",
+        ),
+        f_result="subroutine",
+        f_arg_name=["{f_var}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {f_var}",
+        ],
+    ),
+    
 
     # similar to f_function_char_scalar_allocatable
     dict(

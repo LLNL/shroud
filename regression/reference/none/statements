@@ -20,7 +20,6 @@ root
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
           cdesc
-            arg -- f_function_char_*_cdesc_arg
             pointer -- f_function_char_scalar_cdesc_pointer
           copy -- f_function_char_*
           pointer -- f_function_char_*
@@ -334,7 +333,6 @@ root
             copy -- f_function_char_*_buf_copy
           cdesc
             allocatable -- f_function_char_scalar_cdesc_allocatable
-            arg -- f_function_char_*_cdesc_arg
             pointer -- f_function_char_scalar_cdesc_pointer
           cfi
             allocatable -- f_function_char_*_cfi_allocatable
@@ -592,8 +590,6 @@ root
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
       function
-        buf
-          character-arg -- f_mixin_function_buf_character-arg
         c-ptr -- f_mixin_function_c-ptr
         cdesc -- f_mixin_function_cdesc
         native
@@ -890,10 +886,6 @@ c_function_char_*_buf_copy:
     - C_INT
   intent: function
   name: c_function_char_*_buf_copy
-  owner: library
-c_function_char_*_cdesc_arg:
-  intent: function
-  name: c_function_char_*_cdesc_arg
   owner: library
 c_function_char_*_cdesc_pointer:
   c_arg_decl:
@@ -1276,26 +1268,33 @@ c_function_string_&_allocatable:
   owner: library
 c_function_string_&_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {nullptr},\t\
-    \ 0);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
   c_return_type: void
+  c_temps:
+  - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: c_function_string_&_buf_arg
   owner: library
@@ -1537,26 +1536,33 @@ c_function_string_scalar:
   owner: library
 c_function_string_scalar_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {nullptr},\t\
-    \ 0);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
   c_return_type: void
+  c_temps:
+  - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: c_function_string_scalar_buf_arg
   owner: library
@@ -3759,10 +3765,6 @@ f_function_char_*_cdesc_allocatable:
   intent: function
   name: f_function_char_*_cdesc_allocatable
   owner: library
-f_function_char_*_cdesc_arg:
-  intent: function
-  name: f_function_char_*_cdesc_arg
-  owner: library
 f_function_char_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -4939,40 +4941,51 @@ f_function_string_&_buf:
   owner: library
 f_function_string_&_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {nullptr},\t\
-    \ 0);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
   c_return_type: void
+  c_temps:
+  - len
   f_arg_call:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   - '{c_var_len}'
   f_arg_decl:
-  - 'character(*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent(OUT) :: {f_var}'
   f_arg_name:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
   f_pre_call:
-  - '{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)'
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_result: subroutine
   f_temps:
   - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: f_function_string_&_buf_arg
   owner: library
@@ -6152,40 +6165,51 @@ f_function_string_scalar_buf:
   owner: library
 f_function_string_scalar_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {nullptr},\t\
-    \ 0);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {cxx_var}{cxx_member}data(),\t\
-    \ {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
   c_return_type: void
+  c_temps:
+  - len
   f_arg_call:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   - '{c_var_len}'
   f_arg_decl:
-  - 'character(*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent(OUT) :: {f_var}'
   f_arg_name:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
   f_pre_call:
-  - '{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)'
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_result: subroutine
   f_temps:
   - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: f_function_string_scalar_buf_arg
   owner: library
@@ -8415,35 +8439,6 @@ f_mixin_function-to-subroutine:
   c_return_type: void
   intent: mixin
   name: f_mixin_function-to-subroutine
-  owner: library
-f_mixin_function_buf_character-arg:
-  c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
-  c_return_type: void
-  f_arg_call:
-  - '{F_string_result_as_arg}'
-  - '{c_var_len}'
-  f_arg_decl:
-  - 'character(*), intent(OUT) :: {F_string_result_as_arg}'
-  f_arg_name:
-  - '{F_string_result_as_arg}'
-  f_declare:
-  - integer(C_INT) {c_var_len}
-  f_pre_call:
-  - '{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)'
-  f_result: subroutine
-  f_temps:
-  - len
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
-  i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
-  intent: mixin
-  name: f_mixin_function_buf_character-arg
   owner: library
 f_mixin_function_c-ptr:
   f_arg_decl:
