@@ -1250,7 +1250,6 @@ rv = .false.
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
-        statements.set_fmt_from_stmts(c_result_blk, fmt_result)
 
         if options.debug:
             generated = self.compute_generated_path(node)
@@ -1265,6 +1264,7 @@ rv = .false.
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, c_result_blk.name)
         self.name_temp_vars_c(fmt_func.C_result, c_result_blk, fmt_result)
+        statements.apply_fmtdict_from_stmts(c_result_blk, fmt_result)
 
         if c_result_blk.c_return_type == "void":
             # Change a function into a subroutine.
@@ -1312,7 +1312,6 @@ rv = .false.
                        meta["api"], deref_attr]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
-            statements.set_fmt_from_stmts(c_intent_blk, fmt_result)
 
             if options.debug:
                 stmts_comments.append(
@@ -1321,6 +1320,7 @@ rv = .false.
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, c_intent_blk.name)
             self.name_temp_vars_c(arg_name, c_intent_blk, fmt_arg)
+            statements.apply_fmtdict_from_stmts(c_intent_blk, fmt_result)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1753,7 +1753,7 @@ rv = .false.
         self.name_temp_vars_f(fmt_func.C_result, f_result_blk, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
-        statements.set_fmt_from_stmts(f_result_blk, fmt_result)
+        statements.apply_fmtdict_from_stmts(f_result_blk, fmt_result)
 
         if options.debug:
             if node.C_generated_path:
@@ -1852,7 +1852,7 @@ rv = .false.
             self.name_temp_vars_f(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
-            statements.set_fmt_from_stmts(f_intent_blk, fmt_result)
+            statements.apply_fmtdict_from_stmts(f_intent_blk, fmt_result)
 
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]

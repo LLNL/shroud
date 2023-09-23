@@ -1727,11 +1727,12 @@ contains
     !<
     ! start get_char_ptr3
     subroutine get_char_ptr3(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_char_ptr3
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_char_ptr3_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_char_ptr3_bufferify(output, noutput)
         ! splicer end function.get_char_ptr3
     end subroutine get_char_ptr3
     ! end get_char_ptr3

@@ -810,41 +810,59 @@ c_function_char_*_allocatable:
   owner: library
 c_function_char_*_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {c_var},\t\
-    \ -1);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
   c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: c_function_char_*_arg
   owner: library
 c_function_char_*_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {c_var},\t\
-    \ -1);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
   c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: c_function_char_*_buf_arg
   owner: library
@@ -3569,69 +3587,95 @@ f_function_char_*_allocatable:
   owner: library
 f_function_char_*_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {c_var},\t\
-    \ -1);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
   c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
   f_arg_call:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   - '{c_var_len}'
   f_arg_decl:
-  - 'character(*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent(OUT) :: {f_var}'
   f_arg_name:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
   f_pre_call:
-  - '{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)'
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_result: subroutine
   f_temps:
   - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: f_function_char_*_arg
   owner: library
 f_function_char_*_buf_arg:
   c_arg_decl:
-  - char *{F_string_result_as_arg}
-  - int n{F_string_result_as_arg}
+  - char *{c_var}
+  - int {c_var_len}
   c_helper:
   - ShroudStrCopy
   c_post_call:
-  - "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},\t {c_var},\t\
-    \ -1);"
+  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
   c_return_type: void
+  c_temps:
+  - len
+  cxx_local_var: result
   f_arg_call:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   - '{c_var_len}'
   f_arg_decl:
-  - 'character(*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent(OUT) :: {f_var}'
   f_arg_name:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {c_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
   f_pre_call:
-  - '{c_var_len} = len({F_string_result_as_arg}, kind=C_INT)'
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
   f_result: subroutine
   f_temps:
   - len
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {F_string_result_as_arg}(*)'
-  - 'integer(C_INT), value, intent(IN) :: n{F_string_result_as_arg}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
-  - n{F_string_result_as_arg}
-  i_module_line: iso_c_binding:C_CHAR,C_INT
+  - '{c_var}'
+  - '{c_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   intent: function
   name: f_function_char_*_buf_arg
   owner: library

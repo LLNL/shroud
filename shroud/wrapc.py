@@ -1019,6 +1019,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.c_const = ""
             self.name_temp_vars_c(fmt_result.C_result, result_blk, fmt_result)
+            statements.apply_fmtdict_from_stmts(result_blk, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1137,6 +1138,7 @@ class Wrapc(util.WrapperMixin):
             #       but set by set_fmt_fields
             self.name_temp_vars_c(arg_name, intent_blk, fmt_arg)
             self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
+            statements.apply_fmtdict_from_stmts(intent_blk, fmt_arg)
 
             if intent_blk.cxx_local_var:
                 # Explicit conversion must be in pre_call.

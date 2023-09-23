@@ -5888,6 +5888,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "GEN_StructAsClass",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",

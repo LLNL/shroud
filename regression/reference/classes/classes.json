@@ -166,6 +166,7 @@
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -368,6 +369,7 @@
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -1038,6 +1040,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -1240,6 +1243,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -1335,6 +1339,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -2873,6 +2878,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Singleton",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -3039,6 +3045,7 @@
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Shape",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -3329,6 +3336,7 @@
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Circle",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -3643,6 +3651,7 @@
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
+                                "c_local_ptr": "SHT_prv",
                                 "c_type": "CLA_Data",
                                 "c_var": "SHC_rv",
                                 "cfi_type": "CFI_type_other",
@@ -4894,6 +4903,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -4984,6 +4994,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -5268,6 +5279,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -5355,6 +5367,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -5508,6 +5521,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",

@@ -1372,7 +1372,7 @@
                     "fmtc": {
                         "c_const": "const ",
                         "c_type": "char",
-                        "c_var": "SHC_rv",
+                        "c_var": "output",
                         "c_var_cfi": "SHT_rv_cfi",
                         "cfi_type": "CFI_type_other",
                         "chelper_ShroudStrCopy": "ShroudStrCopy",
@@ -1381,6 +1381,7 @@
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
+                        "f_var": "output",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_char_*_cfi_arg"
@@ -2038,7 +2039,7 @@
                     "fmtc": {
                         "c_const": "const ",
                         "c_type": "char",
-                        "c_var": "SHC_rv",
+                        "c_var": "output",
                         "c_var_cfi": "SHT_rv_cfi",
                         "cfi_type": "CFI_type_other",
                         "chelper_ShroudStrCopy": "ShroudStrCopy",
@@ -2047,6 +2048,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "f_var": "output",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_scalar_cfi_arg"
@@ -2692,7 +2694,7 @@
                     "fmtc": {
                         "c_const": "const ",
                         "c_type": "char",
-                        "c_var": "SHC_rv",
+                        "c_var": "output",
                         "c_var_cfi": "SHT_rv_cfi",
                         "cfi_type": "CFI_type_other",
                         "chelper_ShroudStrCopy": "ShroudStrCopy",
@@ -2701,6 +2703,7 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "f_var": "output",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_&_cfi_arg"

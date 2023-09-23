@@ -393,8 +393,8 @@ const char * STR_getCharPtr3(void)
 void STR_getCharPtr3_bufferify(char *output, int noutput)
 {
     // splicer begin function.getCharPtr3_bufferify
-    const char * SHC_rv = getCharPtr3();
-    ShroudStrCopy(output, noutput, SHC_rv, -1);
+    const char * SHCXX_rv = getCharPtr3();
+    ShroudStrCopy(output, noutput, SHCXX_rv, -1);
     // splicer end function.getCharPtr3_bufferify
 }
 // end STR_getCharPtr3_bufferify

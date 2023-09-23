@@ -380,8 +380,8 @@ void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr3_CFI
     const char * SHCXX_rv = getCharPtr3();
-    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv, -1);
+    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
+    ShroudStrCopy(output, SHT_rv_cfi->elem_len, SHCXX_rv, -1);
     // splicer end function.getCharPtr3_CFI
 }
 // end STR_getCharPtr3_CFI
@@ -523,11 +523,11 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // C_error_pattern
     // Some error code for cfi
 
-    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
+    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
+        ShroudStrCopy(output, SHT_rv_cfi->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(output, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringAsArg_CFI
@@ -690,11 +690,11 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // C_error_pattern
     // Some error code for cfi
 
-    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
+    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
+        ShroudStrCopy(output, SHT_rv_cfi->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(output, SHT_rv_cfi->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringRefAsArg_CFI

@@ -120,8 +120,10 @@ def lookup_local_stmts(path, parent, node):
     return parent
 
 
-def set_fmt_from_stmts(stmts, fmt):
-    """Set fmt fields from statements.
+def apply_fmtdict_from_stmts(stmts, fmt):
+    """Apply fmtdict field from statements.
+    Should be done after other defaults are set to
+    allow the user to override any value.
 
     fmtdict:
        f_var: "{F_string_result_as_arg}"
@@ -311,6 +313,8 @@ def process_mixin(stmts, defaults, stmtdict):
 #        print("XXXXX", name)
         node = {}
         parts = name.split("_")
+        if parts[0] == "x":
+            continue
         if parts[1] == "mixin":
             if "base" in stmt:
                 print("XXXX - mixin should not have 'base' field: ", name)
@@ -1889,22 +1893,27 @@ fc_statements = [
     ),
 
     dict(
+        # Change function result into an argument
+        # Use F_string_result_as_arg as the argument name.
         name="f_function_char_*_arg",
-        mixin=[
-            "f_mixin_function_buf_character-arg",
-        ],
+        base="f_function_char_*_buf_copy",
         alias=[
             "c_function_char_*_arg",
             "f_function_char_*_buf_arg",
             "c_function_char_*_buf_arg",
         ],
 
-        c_helper=["ShroudStrCopy"],
-        c_post_call=[
-            # nsrc=-1 will call strlen({c_var_str})
-            "ShroudStrCopy({F_string_result_as_arg}, n{F_string_result_as_arg},"
-            "\t {c_var},\t -1);",
-        ]
+        fmtdict=dict(
+            f_var="{F_string_result_as_arg}",
+            c_var="{F_string_result_as_arg}",
+#            f_var_len="n{F_string_result_as_arg}",
+            c_var_len="n{F_string_result_as_arg}",
+        ),
+        f_result="subroutine",
+        f_arg_name=["{f_var}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {f_var}",
+        ],
     ),
 
     dict(

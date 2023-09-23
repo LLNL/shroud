@@ -3865,6 +3865,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -4045,6 +4046,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -4407,6 +4409,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_subclass",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",

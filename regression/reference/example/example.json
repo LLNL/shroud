@@ -97,6 +97,7 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -296,6 +297,7 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -476,6 +478,7 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -2067,6 +2070,7 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -2247,6 +2251,7 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -3456,6 +3461,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
