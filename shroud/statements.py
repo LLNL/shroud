@@ -321,9 +321,9 @@ def process_mixin(stmts, defaults, stmtdict):
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
-#                parts = mixin.split("_")
-#                if parts[1] != "mixin":
-#                    print("XXXX - mixin must have intent 'mixin': ", name)
+                parts = mixin.split("_")
+                if parts[1] != "mixin":
+                    print("XXXX - mixin must have intent 'mixin': ", name)
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
