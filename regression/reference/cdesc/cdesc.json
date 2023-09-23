@@ -199,6 +199,7 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_cdesc": "SHT_arg_cdesc",
                             "fhelper_ShroudTypeDefines": "ShroudTypeDefines",
                             "fhelper_array_context": "array_context",
                             "i_dimension": "(*)",
@@ -744,6 +745,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -779,6 +781,7 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "value",
+                            "f_var_cdesc": "SHT_value_cdesc",
                             "fhelper_ShroudTypeDefines": "ShroudTypeDefines",
                             "fhelper_array_context": "array_context",
                             "rank": "0",
@@ -1051,6 +1054,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -1086,6 +1090,7 @@
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
+                            "f_var_cdesc": "SHT_value_cdesc",
                             "fhelper_ShroudTypeDefines": "ShroudTypeDefines",
                             "fhelper_array_context": "array_context",
                             "rank": "0",
@@ -1825,6 +1830,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -2101,6 +2107,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }

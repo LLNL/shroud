@@ -97,7 +97,6 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -105,17 +104,18 @@
                                                 "cxx_member": ".",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -297,7 +297,6 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -305,16 +304,17 @@
                                                 "cxx_member": ".",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -444,6 +444,7 @@
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
+                                                    "f_var_len": "SHT_name_len",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmtf": "f_in_string_*_buf"
                                                 }
@@ -478,7 +479,6 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -486,17 +486,18 @@
                                                 "cxx_member": ".",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -970,6 +971,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
+                                                "f_var_cdesc": "SHT_rv_cdesc",
                                                 "fhelper_array_context": "array_context",
                                                 "fhelper_copy_string": "AA_SHROUD_copy_string_and_free",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -1174,6 +1176,7 @@
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
                                                 "f_var": "name",
+                                                "f_var_len": "nname",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_function_string_&_buf_arg"
@@ -1187,6 +1190,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "name",
+                                                "f_var_len": "nname",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_function_string_&_buf_arg"
                                             }
@@ -1642,11 +1646,11 @@
                                                 "fmtf": {
                                                     "F_C_var": "in",
                                                     "c_var": "in",
-                                                    "c_var_cxx": "SHT_in_cxx",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_BOOL",
                                                     "f_type": "logical",
                                                     "f_var": "in",
+                                                    "f_var_cxx": "SHT_in_cxx",
                                                     "sh_type": "SH_TYPE_BOOL",
                                                     "stmtf": "f_in_bool_scalar"
                                                 },
@@ -2072,7 +2076,6 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -2080,16 +2083,17 @@
                                                 "cxx_member": ".",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -2220,6 +2224,7 @@
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
+                                                    "f_var_len": "SHT_name_len",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmtf": "f_in_string_*_buf"
                                                 }
@@ -2253,7 +2258,6 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -2261,17 +2265,18 @@
                                                 "cxx_member": ".",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -2563,6 +2568,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
+                                                "f_var_len": "SHT_rv_len",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_function_string_&_buf_copy"
                                             }
@@ -2768,6 +2774,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
+                                                "f_var_cdesc": "SHT_rv_cdesc",
                                                 "fhelper_array_context": "array_context",
                                                 "fhelper_copy_string": "AA_SHROUD_copy_string_and_free",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -2976,6 +2983,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
+                                                "f_var_cdesc": "SHT_rv_cdesc",
                                                 "fhelper_array_context": "array_context",
                                                 "fhelper_copy_string": "AA_SHROUD_copy_string_and_free",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -3181,6 +3189,7 @@
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
+                                                "f_var_cdesc": "SHT_rv_cdesc",
                                                 "fhelper_array_context": "array_context",
                                                 "fhelper_copy_string": "AA_SHROUD_copy_string_and_free",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -3463,7 +3472,6 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_other",
@@ -3472,17 +3480,18 @@
                                                 "cxx_nonconst_ptr": "SHCXX_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
+                                                "f_local_ptr": "SHT_prv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtc": "f_function_shadow_*_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
-                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
+                                                "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "i_module_line": "--import--:AA_SHROUD_capsule_data",
@@ -6490,6 +6499,7 @@
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
+                                            "f_var_len": "SHT_name_len",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmtf": "f_in_string_&_buf"
                                         }
@@ -6874,6 +6884,7 @@
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
+                                            "f_var_len": "SHT_name_len",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmtf": "f_in_string_&_buf"
                                         }
@@ -7241,6 +7252,7 @@
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
+                                            "f_var_len": "SHT_name_len",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmtf": "f_in_string_&_buf"
                                         }

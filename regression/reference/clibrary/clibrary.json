@@ -824,11 +824,11 @@
                         "fmtf": {
                             "F_C_var": "arg1",
                             "c_var": "arg1",
-                            "c_var_cxx": "SHT_arg1_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "arg1",
+                            "f_var_cxx": "SHT_arg1_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_in_bool_scalar"
                         },
@@ -874,11 +874,11 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
-                            "c_var_cxx": "SHT_arg2_cxx",
                             "f_intent": "OUT",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "arg2",
+                            "f_var_cxx": "SHT_arg2_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_out_bool_*"
                         },
@@ -924,11 +924,11 @@
                         "fmtf": {
                             "F_C_var": "arg3",
                             "c_var": "arg3",
-                            "c_var_cxx": "SHT_arg3_cxx",
                             "f_intent": "INOUT",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "arg3",
+                            "f_var_cxx": "SHT_arg3_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_inout_bool_*"
                         },
@@ -1400,6 +1400,7 @@
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_buf_copy"
                     }
@@ -1732,6 +1733,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "s",
+                            "f_var_len": "SHT_s_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -1969,6 +1971,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name1",
+                            "f_var_len": "SHT_name1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2295,6 +2298,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name1",
+                            "f_var_len": "SHT_name1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2327,6 +2331,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name2",
+                            "f_var_len": "SHT_name2_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2671,6 +2676,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "text",
+                            "f_var_len": "SHT_text_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2808,11 +2814,11 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
-                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "flag",
+                            "f_var_cxx": "SHT_flag_cxx",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL"
                         },
@@ -3108,11 +3114,11 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
-                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "flag",
+                            "f_var_cxx": "SHT_flag_cxx",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL"
                         },
@@ -3368,11 +3374,11 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
-                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "flag",
+                            "f_var_cxx": "SHT_flag_cxx",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL"
                         },
@@ -3535,11 +3541,11 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "c_var": "flag",
-                            "c_var_cxx": "SHT_flag_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "flag",
+                            "f_var_cxx": "SHT_flag_cxx",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL"
                         },
@@ -3880,6 +3886,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
+                            "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -4618,6 +4625,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
+                            "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -5696,6 +5704,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
+                            "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }

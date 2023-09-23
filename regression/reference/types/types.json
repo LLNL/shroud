@@ -3628,11 +3628,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "c_var_cxx": "SHT_arg_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "arg",
+                            "f_var_cxx": "SHT_arg_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_in_bool_scalar"
                         },

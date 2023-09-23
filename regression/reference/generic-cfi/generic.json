@@ -6045,7 +6045,6 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_local_ptr": "SHT_prv",
                         "c_type": "GEN_StructAsClass",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -6054,17 +6053,18 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "StructAsClass",
                         "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_shadow_*_capptr"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHT_prv",
                         "c_var": "SHT_rv",
                         "cxx_type": "StructAsClass",
                         "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                         "f_intent": "OUT",
+                        "f_local_ptr": "SHT_prv",
                         "f_type": "type(struct_as_class)",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:GEN_SHROUD_capsule_data",

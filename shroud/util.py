@@ -495,13 +495,13 @@ class WrapperMixin(object):
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "c_var_{}".format(name),
+                        "f_var_{}".format(name),
                         "{}{}_{}".format(fmt.c_temp, rootname, name))
         names = stmts.get("f_local", None)
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "c_local_{}".format(name),
+                        "f_local_{}".format(name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
     def get_metaattrs(self, ast):

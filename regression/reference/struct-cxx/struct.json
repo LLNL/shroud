@@ -2410,6 +2410,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
+                            "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -3254,12 +3255,12 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
                         "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
+                        "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -3668,6 +3669,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
+                            "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -3714,12 +3716,12 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
                         "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
+                        "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -3796,12 +3798,12 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
                         "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct_list",
                         "f_intent": "OUT",
                         "f_kind": "cstruct_list",
+                        "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -3869,7 +3871,6 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -3878,17 +3879,18 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "Cstruct_as_class",
                         "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_shadow_*_capptr"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHT_prv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
                         "f_intent": "OUT",
+                        "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
@@ -4050,7 +4052,6 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -4059,17 +4060,18 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "Cstruct_as_class",
                         "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_shadow_*_capptr"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHT_prv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
                         "f_intent": "OUT",
+                        "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
@@ -4413,7 +4415,6 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_local_ptr": "SHT_prv",
                         "c_type": "STR_Cstruct_as_subclass",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
@@ -4422,17 +4423,18 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "Cstruct_as_subclass",
                         "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_shadow_*_capptr"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHT_prv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_subclass",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
                         "f_intent": "OUT",
+                        "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_subclass)",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
@@ -4991,6 +4993,7 @@
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
@@ -5419,6 +5422,7 @@
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_DOUBLE",

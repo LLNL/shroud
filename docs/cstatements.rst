@@ -371,19 +371,23 @@ A list of suffixes for temporary variable names.
 
     c_temps=["len"]
 
- Create variable names in the format dictionary using
- ``{fmt.c_temp}{rootname}_{name}``.
- For example, argument *foo* creates *SHT_foo_len*.
+Create variable names in the format dictionary using
+``{fmt.c_temp}{rootname}_{name}``.
+For example, argument *foo* creates *SHT_foo_len*.
+
+The format field is named *c_var_{name}*.
 
 c_local
 ^^^^^^^
 
- Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
- *temps* is intended for arguments and is typically used in a mixin
- group.  *local* is used by group to generate names for local
- variables.  This allows creating names without conflicting with
- *temps* from a *mixin* group.
- 
+Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+*temps* is intended for arguments and is typically used in a mixin
+group.  *local* is used by group to generate names for local
+variables.  This allows creating names without conflicting with
+*temps* from a *mixin* group.
+
+The format field is named *c_local_{name}*.
+
 
 
 lang_c and lang_cxx

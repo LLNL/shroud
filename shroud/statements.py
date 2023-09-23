@@ -142,6 +142,8 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     if meta["capsule"]:
         fmt.c_var_capsule = options.C_var_capsule_template.format(
             c_var=rootname)
+        fmt.f_var_capsule = options.C_var_capsule_template.format(
+            c_var=rootname)
     if attrs["cdesc"]:
         # XXX - c_var_cdesc is set via Stmts.temps=["cdesc"]
         # XXX   not sure if this is needed still.
@@ -802,13 +804,13 @@ fc_statements = [
             "{f_type}, pointer :: {f_var}",
         ],
         f_declare=[
-            "type(C_PTR) :: {c_local_ptr}",
+            "type(C_PTR) :: {f_local_ptr}",
         ],
         f_call=[
-            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+            "{f_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
         f_post_call=[
-            "call c_f_pointer({c_local_ptr}, {F_result})",
+            "call c_f_pointer({f_local_ptr}, {F_result})",
         ],
         f_local=["ptr"],
 
@@ -825,9 +827,9 @@ fc_statements = [
         ],
         f_helper=["array_context"],
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {f_var_cdesc}",
         ],
-        f_arg_call=["{c_var_cdesc}"],
+        f_arg_call=["{f_var_cdesc}"],
         f_temps=["cdesc"],
         f_need_wrapper=True,
 
@@ -851,8 +853,8 @@ fc_statements = [
             "character(len=:), allocatable :: {f_var}",
         ],
         f_post_call=[
-            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
+            "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
+            "call {fhelper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
         ],
     ),
     
@@ -909,20 +911,20 @@ fc_statements = [
         name="f_mixin_function_shadow_capptr",
         f_arg_decl=[
             "{f_type} :: {f_var}",
-            "type(C_PTR) :: {c_local_ptr}",
+            "type(C_PTR) :: {f_local_ptr}",
         ],
         f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_call=[
-            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+            "{f_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
         f_local=["ptr"],
         f_need_wrapper=True,
         fmtdict=dict(
             # Map back to standard name
-            c_local_ptr="{F_result_ptr}",
+            f_local_ptr="{F_result_ptr}",
         ),
 
         i_result_var="{F_result_ptr}",
@@ -1012,9 +1014,9 @@ fc_statements = [
         name="f_mixin_inout_array_cdesc",
         f_helper=["array_context"],
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {f_var_cdesc}",
         ],
-        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
+        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{f_var_cdesc}"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_temps=["cdesc"],
     ),
@@ -1046,9 +1048,9 @@ fc_statements = [
         name="f_mixin_out_array_cdesc",
         f_helper=["array_context"],
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {f_var_cdesc}",
         ],
-        f_arg_call=["{c_var_cdesc}"],
+        f_arg_call=["{f_var_cdesc}"],
         f_temps=["cdesc"],
     ),
     dict(
@@ -1120,12 +1122,12 @@ fc_statements = [
 
         f_temps=["len"],
         f_declare=[
-            "integer(C_INT) {c_var_len}",
+            "integer(C_INT) {f_var_len}",
         ],
         f_pre_call=[
-            "{c_var_len} = len({f_var}, kind=C_INT)",
+            "{f_var_len} = len({f_var}, kind=C_INT)",
         ],
-        f_arg_call=["{f_var}", "{c_var_len}"],
+        f_arg_call=["{f_var}", "{f_var_len}"],
 
         # XXX - statements.yaml getNameErrorPattern pgi reports an error
         # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
@@ -1238,10 +1240,10 @@ fc_statements = [
         name="f_mixin_local-logical-var",
         f_temps=["cxx"],
         f_declare=[
-            "logical(C_BOOL) :: {c_var_cxx}",
+            "logical(C_BOOL) :: {f_var_cxx}",
         ],
         f_arg_call=[
-            "{c_var_cxx}",
+            "{f_var_cxx}",
         ],
     ),
     dict(
@@ -1250,7 +1252,7 @@ fc_statements = [
         alias=[
             "c_in_bool_scalar",
         ],
-        f_pre_call=["{c_var_cxx} = {f_var}  ! coerce to C_BOOL"],
+        f_pre_call=["{f_var_cxx} = {f_var}  ! coerce to C_BOOL"],
     ),
     dict(
         name="f_out_bool_*",
@@ -1258,7 +1260,7 @@ fc_statements = [
         alias=[
             "c_out_bool_*",
         ],
-        f_post_call=["{f_var} = {c_var_cxx}  ! coerce to logical"],
+        f_post_call=["{f_var} = {f_var_cxx}  ! coerce to logical"],
     ),
     dict(
         name="f_inout_bool_*",
@@ -1266,8 +1268,8 @@ fc_statements = [
         alias=[
             "c_inout_bool_*",
         ],
-        f_pre_call=["{c_var_cxx} = {f_var}  ! coerce to C_BOOL"],
-        f_post_call=["{f_var} = {c_var_cxx}  ! coerce to logical"],
+        f_pre_call=["{f_var_cxx} = {f_var}  ! coerce to C_BOOL"],
+        f_post_call=["{f_var} = {f_var_cxx}  ! coerce to logical"],
     ),
     dict(
         name="f_function_bool_scalar",
@@ -1289,7 +1291,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
+            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(
@@ -1300,7 +1302,7 @@ fc_statements = [
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})",
+            "call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})",
         ],
     ),
 
@@ -1372,7 +1374,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1400,7 +1402,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1458,13 +1460,13 @@ fc_statements = [
         f_helper=["ShroudTypeDefines", "array_context"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_pre_call=[
-            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{c_var_cdesc}%type = {sh_type}",
-            "! {c_var_cdesc}%elem_len = C_SIZEOF()",
-#            "{c_var_cdesc}%size = size({f_var})",
-            "{c_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = {sh_type}",
+            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
+#            "{f_var_cdesc}%size = size({f_var})",
+            "{f_var_cdesc}%size = {size}",
             # Do not set shape for scalar via f_cdesc_shape
-            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
 
 #        c_helper=["ShroudTypeDefines"],
@@ -1600,7 +1602,7 @@ fc_statements = [
         f_post_call=[
             # XXX - allocate scalar
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1621,13 +1623,13 @@ fc_statements = [
             "{f_type}, pointer :: {f_var}",
         ],
         f_declare=[
-            "type(C_PTR) :: {c_local_ptr}",
+            "type(C_PTR) :: {f_local_ptr}",
         ],
         f_call=[
-            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+            "{f_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
         f_post_call=[
-            "call c_f_pointer({c_local_ptr}, {F_result})",
+            "call c_f_pointer({f_local_ptr}, {F_result})",
         ],
         f_local=["ptr"],
 
@@ -1654,14 +1656,14 @@ fc_statements = [
         ],
         f_helper=["capsule_helper"],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
-        f_arg_name=["{c_var_capsule}"],
+        f_arg_name=["{f_var_capsule}"],
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-            "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
+            "type({F_capsule_type}), intent(OUT) :: {f_var_capsule}",
         ],
         f_post_call=[
-            "call c_f_pointer(\t{c_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
-            "{c_var_capsule}%mem = {c_var_cdesc}%cxx",
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
+            "{f_var_capsule}%mem = {f_var_cdesc}%cxx",
         ],
     ),
     dict(
@@ -1871,7 +1873,7 @@ fc_statements = [
         fmtdict=dict(
             f_var="{F_string_result_as_arg}",
             c_var="{F_string_result_as_arg}",
-#            f_var_len="n{F_string_result_as_arg}",
+            f_var_len="n{F_string_result_as_arg}",
             c_var_len="n{F_string_result_as_arg}",
         ),
         f_result="subroutine",
@@ -1956,11 +1958,11 @@ fc_statements = [
         f_post_call=[
             # BLOCK is Fortran 2008
             #"block+",
-            #"character(len={c_var_cdesc}%elem_len), pointer :: {c_local_s}",
-            #"call c_f_pointer({c_var_cdesc}%base_addr, {c_local_s})",
-            #"{f_var} => {c_local_s}",
+            #"character(len={f_var_cdesc}%elem_len), pointer :: {f_local_s}",
+            #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
+            #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})",
+            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
     ),
     dict(
@@ -1987,11 +1989,11 @@ fc_statements = [
         f_post_call=[
             # BLOCK is Fortran 2008
             #"block+",
-            #"character(len={c_var_cdesc}%elem_len), pointer :: {c_local_s}",
-            #"call c_f_pointer({c_var_cdesc}%base_addr, {c_local_s})",
-            #"{f_var} => {c_local_s}",
+            #"character(len={f_var_cdesc}%elem_len), pointer :: {f_local_s}",
+            #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
+            #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{c_var_cdesc},\t {f_var})",
+            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
 
         # TTT - replace c_function_string_*/&_cdesc_allocatable_pointer
@@ -2295,7 +2297,7 @@ fc_statements = [
         fmtdict=dict(
             f_var="{F_string_result_as_arg}",
             c_var="{F_string_result_as_arg}",
-#            f_var_len="n{F_string_result_as_arg}",
+            f_var_len="n{F_string_result_as_arg}",
             c_var_len="n{F_string_result_as_arg}",
         ),
         f_result="subroutine",
@@ -2413,7 +2415,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
         f_post_call=[
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2452,8 +2454,8 @@ fc_statements = [
             "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "allocate({f_var}({c_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
         
         cxx_local_var="pointer",
@@ -2585,10 +2587,10 @@ fc_statements = [
         name="f_mixin_inout_char_array_cdesc",
         f_helper=["array_context"],
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
+            "type({F_array_type}) :: {f_var_cdesc}",
         ],
-#        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
-        f_arg_call=["{c_var_cdesc}"],
+#        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{f_var_cdesc}"],
+        f_arg_call=["{f_var_cdesc}"],
 #        f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_temps=["cdesc"],
     ),
@@ -2604,15 +2606,15 @@ fc_statements = [
         f_helper=["ShroudTypeDefines", "array_context"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_pre_call=[
-            "{c_var_cdesc}%cxx%addr = C_LOC({f_var})",
-            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{c_var_cdesc}%type = SH_TYPE_CHAR",
-            "{c_var_cdesc}%elem_len = len({f_var})",
-            "{c_var_cdesc}%size = size({f_var})",
-#            "{c_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%cxx%addr = C_LOC({f_var})",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = SH_TYPE_CHAR",
+            "{f_var_cdesc}%elem_len = len({f_var})",
+            "{f_var_cdesc}%size = size({f_var})",
+#            "{f_var_cdesc}%size = {size}",
             # Do not set shape for scalar via f_cdesc_shape
-            "{c_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
-#            "{c_var_cdesc}%rank = {rank}{f_cdesc_shape}",
+            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}",
+#            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
     ),
 
@@ -2655,17 +2657,17 @@ fc_statements = [
         c_helper=["vector_string_allocatable", "vector_string_out_len"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-            "type({F_array_type}) :: {c_var_out}",
+            "type({F_array_type}) :: {f_var_cdesc}",
+            "type({F_array_type}) :: {f_var_out}",
         ],
-        f_arg_call=["{c_var_out}"],
+        f_arg_call=["{f_var_out}"],
         f_post_call=[
-            "{c_var_cdesc}%size = {c_var_out}%size;",
-            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len",
-            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
-            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
-            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {fhelper_vector_string_allocatable}({c_var_cdesc}, {c_var_out})",
+            "{f_var_cdesc}%size = {f_var_out}%size;",
+            "{f_var_cdesc}%elem_len = {f_var_out}%elem_len",
+            "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
+            "{f_var_cdesc}%cxx%addr = C_LOC({f_var});",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {fhelper_vector_string_allocatable}({f_var_cdesc}, {f_var_out})",
         ],
         f_temps=["cdesc", "out"],
 
@@ -2726,7 +2728,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2765,8 +2767,8 @@ fc_statements = [
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "allocate({f_var}({c_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2780,8 +2782,8 @@ fc_statements = [
         ],
         f_post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({c_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{c_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 
@@ -3815,17 +3817,17 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-            "type({F_array_type}) :: {c_var_out}",
+            "type({F_array_type}) :: {f_var_cdesc}",
+            "type({F_array_type}) :: {f_var_out}",
         ],
-        f_arg_call=["{c_var_out}"],
+        f_arg_call=["{f_var_out}"],
         f_post_call=[
-            "{c_var_cdesc}%size = {c_var_out}%size;",
-            "{c_var_cdesc}%elem_len = {c_var_out}%elem_len;",
-            "allocate({f_char_type}{f_var}({c_var_cdesc}%size))",
-            "{c_var_cdesc}%cxx%addr = C_LOC({f_var});",
-            "{c_var_cdesc}%base_addr = C_LOC({f_var});",
-            "call {fhelper_array_string_allocatable}({c_var_cdesc}, {c_var_out})",
+            "{f_var_cdesc}%size = {f_var_out}%size;",
+            "{f_var_cdesc}%elem_len = {f_var_out}%elem_len;",
+            "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
+            "{f_var_cdesc}%cxx%addr = C_LOC({f_var});",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var});",
+            "call {fhelper_array_string_allocatable}({f_var_cdesc}, {f_var_out})",
         ],
         f_temps=["cdesc", "out"],
         f_helper=["array_string_allocatable", "array_context"],

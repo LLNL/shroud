@@ -1643,14 +1643,14 @@ rv = .false.
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
-                if hasattr(fmt, "c_var_cdesc"):
+                if hasattr(fmt, "f_var_cdesc"):
                     fmt.f_cdesc_shape = ""
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                if hasattr(fmt, "c_var_cdesc"):
-                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                if hasattr(fmt, "f_var_cdesc"):
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(dim)
@@ -1658,24 +1658,24 @@ rv = .false.
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                # XXX use c_var_cdesc since shape is assigned in C
+                # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if hasattr(fmt, "c_var_cdesc"):
-                    # XXX kludge, name is assumed to be c_var_cdesc.
-                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
-                    # XXX - maybe avoid {rank} with: {c_var_cdes}(:rank({f_var})) = shape({f_var})
+                if hasattr(fmt, "f_var_cdesc"):
+                    # XXX kludge, name is assumed to be f_var_cdesc.
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                    # XXX - maybe avoid {rank} with: {f_var_cdes}(:rank({f_var})) = shape({f_var})
                     fmt.f_array_allocate = "(" + ",".join(
-                        ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
+                        ["{0}%shape({1})".format(fmt.f_var_cdesc, r)
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
-                        ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
+                        ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
 
         if f_attrs["len"]:
             fmt.f_char_len = "len=%s" % f_attrs["len"];
-        elif hasattr(fmt, "c_var_cdesc"):
+        elif hasattr(fmt, "f_var_cdesc"):
             if f_attrs["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
-                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) ::\t ", fmt)
+                fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.

@@ -245,7 +245,12 @@ which will return the number of items copied into the result argument.
           f_post_call:
           -  "num = Darg%size"
 
-When set to **subroutine** it will treat the subprogram as a ``subroutine``.
+When set to **subroutine** it will treat the Fortran wrapper as a ``subroutine``.
+Used when the function result is passed as an argument to the Fortran wrapper
+instead of being returned as the Fortran wrapper result. Typically to avoid
+memory allocations by copying directly into the callers variable.
+
+.. deref(arg)
 
 f_temps
 ^^^^^^^
@@ -256,18 +261,22 @@ A list of suffixes for temporary variable names.
 
     f_temps=["len"]
 
- Create variable names in the format dictionary using
- ``{fmt.c_temp}{rootname}_{name}``.
- For example, argument *foo* creates *SHT_foo_len*.
+Create variable names in the format dictionary using
+``{fmt.c_temp}{rootname}_{name}``.
+For example, argument *foo* creates *SHT_foo_len*.
+
+The format field is named *f_var_{name}*.
 
 f_local
 ^^^^^^^
 
- Similar to *f_temps* but uses ``{fmt.C_local}{rootname}_{name}``.
- *temps* is intended for arguments and is typically used in a mixin
- group.  *f_local* is used by group to generate names for local
- variables.  This allows creating names without conflicting with
- *f_temps* from a *mixin* group.
+Similar to *f_temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+*temps* is intended for arguments and is typically used in a mixin
+group.  *f_local* is used by group to generate names for local
+variables.  This allows creating names without conflicting with
+*f_temps* from a *mixin* group.
+
+The format field is named *f_local_{name}*.
 
 notimplemented
 --------------

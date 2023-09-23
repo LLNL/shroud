@@ -682,6 +682,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg1",
+                            "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -714,6 +715,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg2",
+                            "f_var_len": "SHT_arg2_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -769,6 +771,7 @@
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
                         "fhelper_copy_string": "TUT_SHROUD_copy_string_and_free",
                         "sh_type": "SH_TYPE_OTHER",
@@ -1162,11 +1165,11 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
-                            "c_var_cxx": "SHT_arg2_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
                             "f_var": "arg2",
+                            "f_var_cxx": "SHT_arg2_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_in_bool_scalar"
                         },
@@ -1508,6 +1511,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -2942,6 +2946,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -3172,6 +3177,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -5864,6 +5870,7 @@
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }

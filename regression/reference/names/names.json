@@ -598,6 +598,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -1200,6 +1201,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "rv",
+                            "f_var_len": "SHT_rv_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -1627,6 +1629,7 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }
@@ -3168,7 +3171,6 @@
                                     "fmtc": {
                                         "c_const": "",
                                         "c_get_value": "",
-                                        "c_local_ptr": "SHT_prv",
                                         "c_type": "TES_ns0_Names",
                                         "c_var": "SHC_rv",
                                         "cfi_type": "CFI_type_other",
@@ -3176,17 +3178,18 @@
                                         "cxx_member": ".",
                                         "cxx_type": "ns0::Names",
                                         "cxx_var": "ARG_rv",
+                                        "f_local_ptr": "SHT_prv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
-                                        "c_local_ptr": "SHT_prv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
                                         "f_capsule_data_type": "TES_SHROUD_capsule_data",
                                         "f_intent": "OUT",
+                                        "f_local_ptr": "SHT_prv",
                                         "f_type": "type(FNames)",
                                         "f_var": "SHT_rv",
                                         "i_module_line": "--import--:TES_SHROUD_capsule_data",
