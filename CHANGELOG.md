@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   instead of **c**. They are intented to be used the Fortran wrapper
   and are based off of *f_var* name.
 
+### Removed
+- Removed attribute *+cdesc*. Replace by *+api(cdesc)*
+
 ## v0.13.0 - 2023-08-23
 ### Added
 - Python hello-world-python example for a simple library in examples directory.

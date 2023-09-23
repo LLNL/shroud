@@ -15,11 +15,11 @@ options:
   debug: True
 
 declarations:
-- decl: void Rank2In(int *arg +intent(in)+rank(2)+cdesc)
+- decl: void Rank2In(int *arg +intent(in)+rank(2)+api(cdesc))
 
 ######################################################################
 - decl: void GetScalar1(std::string & name+intent(in),
-                        void *value+intent(in)+rank(0)+cdesc)
+                        void *value+intent(in)+rank(0)+api(cdesc))
   doxygen:
     description: |
       Create several Fortran generic functions which call a single
@@ -55,10 +55,10 @@ declarations:
       }
   fortran_generic:
 #  # rank(0) needed for C_var_context
-  - decl: (int *value+intent(out)+rank(0)+cdesc)
-#  - decl: (long *value+intent(out)+rank(0)+cdesc)
-#  - decl: (float *value+intent(out)+rank(0)+cdesc)
-  - decl: (double *value+intent(out)+rank(0)+cdesc)
+  - decl: (int *value+intent(out)+rank(0)+api(cdesc))
+#  - decl: (long *value+intent(out)+rank(0)+api(cdesc))
+#  - decl: (float *value+intent(out)+rank(0)+api(cdesc))
+  - decl: (double *value+intent(out)+rank(0)+api(cdesc))
 
 ######################################################################
 

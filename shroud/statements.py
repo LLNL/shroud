@@ -144,11 +144,6 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
             c_var=rootname)
         fmt.f_var_capsule = options.C_var_capsule_template.format(
             c_var=rootname)
-    if attrs["cdesc"]:
-        # XXX - c_var_cdesc is set via Stmts.temps=["cdesc"]
-        # XXX   not sure if this is needed still.
-        fmt.c_var_cdesc2 = options.C_var_context_template.format(
-            c_var=rootname)
 
 
 def compute_return_prefix(arg):
