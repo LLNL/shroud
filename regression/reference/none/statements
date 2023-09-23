@@ -3778,17 +3778,20 @@ f_function_char_*_cfi_arg:
   - cfi
   cxx_local_var: result
   f_arg_call:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_arg_decl:
-  - 'character(len=*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent(OUT) :: {f_var}'
   f_arg_name:
-  - '{F_string_result_as_arg}'
+  - '{f_var}'
   f_need_wrapper: true
   f_result: subroutine
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    f_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(len=*), intent(OUT) :: {F_string_result_as_arg}'
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
   i_arg_names:
-  - '{F_string_result_as_arg}'
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function

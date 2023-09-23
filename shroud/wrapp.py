@@ -1211,9 +1211,7 @@ return 1;""",
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(stmts_comments, ast, result_blk.name)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
-        if result_blk.fmtdict is not None:
-            for key, value in result_blk.fmtdict.items():
-                setattr(fmt_result, key, wformat(value, fmt_result))
+        statements.set_fmt_from_stmts(result_blk, fmt_result)
 
         PY_code = []
 
@@ -1401,9 +1399,7 @@ return 1;""",
                               "{cxx_decl} =\t {cxx_val};", fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
-            if intent_blk.fmtdict is not None:
-                for key, value in intent_blk.fmtdict.items():
-                    setattr(fmt_arg, key, wformat(value, fmt_arg))
+            statements.set_fmt_from_stmts(intent_blk, fmt_arg)
 
             # Declare argument variable.
             if intent_blk.arg_declare is not None:

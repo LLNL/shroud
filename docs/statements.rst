@@ -24,6 +24,15 @@ a statement entry.
 .. mixin - list of single names, no alternative allowed such as allocatable/pointer
            must not contain 'alias' or 'base'
 
+.. fmtdict - A dictionary to replace default values
+
+        name="f_function_char_*_cfi_arg",
+        base="f_function_char_*_cfi_copy",
+        fmtdict=dict(
+            f_var="{F_string_result_as_arg}",
+            c_var="{F_string_result_as_arg}",
+        ),
+   
 
 Passing function result as an argument
 --------------------------------------

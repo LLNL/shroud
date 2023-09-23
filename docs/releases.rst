@@ -129,6 +129,14 @@ Unreleased
 
 .. And easier to use in a mixin group by appending lists.
        
+New Features
+^^^^^^^^^^^^
+
+* Added *fmtdict* field to Fortran and C statement groups. Similar to
+  *fmtdict* already in the Python statement groups. It allows format
+  fields to be set explicitly in the statement group to override the
+  any defaults.
+
 v0.13.0
 -------
 

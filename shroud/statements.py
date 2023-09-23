@@ -6,6 +6,8 @@
 
 """
 """
+from .util import wformat
+
 import yaml
 
 try:
@@ -118,6 +120,18 @@ def lookup_local_stmts(path, parent, node):
     return parent
 
 
+def set_fmt_from_stmts(stmts, fmt):
+    """Set fmt fields from statements.
+
+    fmtdict:
+       f_var: "{F_string_result_as_arg}"
+       c_var: "{F_string_result_as_arg}"
+    """
+    if stmts.fmtdict is not None:
+        for key, value in stmts.fmtdict.items():
+            setattr(fmt, key, wformat(value, fmt))
+
+    
 def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     """
     Transfer names from attribute to fmt.
@@ -178,7 +192,7 @@ def check_statements(stmts):
         lang = parts[0]
         intent = parts[1]
 
-        if lang not in ["c", "f", "fc", "lua", "py"]:
+        if lang not in ["c", "f", "fc", "lua", "py", "x"]:
             raise RuntimeError("Statement does not start with a language code: %s" % name)
 
         if intent not in [
@@ -350,6 +364,8 @@ def process_mixin(stmts, defaults, stmtdict):
         lang = parts[0]
         intent = parts[1]
         if "base" in stmt:
+            if stmt["base"] not in stmtdict:
+                print("XXX - base not found for", name, ":", stmt["base"])
             node = util.Scope(stmtdict[stmt["base"]])
         else:
             node = util.Scope(defaults[lang])
@@ -619,6 +635,7 @@ CStmts = util.Scope(
     None,
     name="c_default",
     intent=None,
+    fmtdict=None,
     iface_header=[],
     impl_header=[],
     c_helper=[],
@@ -676,11 +693,18 @@ FStmts = util.Scope(
 # Fortran/C Statements - both sets of defaults.
 FStmts.update(CStmts._to_dict())
 
+# Allow a group to be 'commented out' by setting langauge to 'x'.
+XStmts = util.Scope(
+    None,
+    name="x-undefined",
+)
+
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
+    x=XStmts,
 )
                 
         
@@ -3436,12 +3460,17 @@ fc_statements = [
     ),
     dict(
         # Change function result into an argument
-        # F_string_result_arg
+        # Use F_string_result_as_arg as the argument name.
         name="f_function_char_*_cfi_arg",
-        mixin=[
-            "f_function_char_*_cfi_copy",
-#            "c_mixin_arg_character_cfi",
-            "f_mixin_function_cfi_character-arg",
+        base="f_function_char_*_cfi_copy",
+        fmtdict=dict(
+            f_var="{F_string_result_as_arg}",
+            c_var="{F_string_result_as_arg}",
+        ),
+        f_result="subroutine",
+        f_arg_name=["{f_var}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {f_var}",
         ],
     ),
 ##-    dict(
