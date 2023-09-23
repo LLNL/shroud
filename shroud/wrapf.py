@@ -1573,7 +1573,6 @@ rv = .false.
         i_module_line = ntypemap.i_module_line or ntypemap.f_module_line
         if i_module_line:
             fmt.i_module_line = i_module_line
-        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,

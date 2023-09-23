@@ -134,18 +134,6 @@ def apply_fmtdict_from_stmts(stmts, fmt):
             setattr(fmt, key, wformat(value, fmt))
 
     
-def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
-    """
-    Transfer names from attribute to fmt.
-    """
-    # XXX - make sure they don't conflict with other names.
-    if meta["capsule"]:
-        fmt.c_var_capsule = options.C_var_capsule_template.format(
-            c_var=rootname)
-        fmt.f_var_capsule = options.C_var_capsule_template.format(
-            c_var=rootname)
-
-
 def compute_return_prefix(arg):
     """Compute how to access variable: dereference, address, as-is"""
     if arg.declarator.is_reference():
@@ -1644,12 +1632,14 @@ fc_statements = [
     ),
     dict(
         # +deref(pointer) +owner(caller)
+        # The capsule contains information used to delete the memory.
         name="f_function_native_*_cdesc_pointer_caller",
         mixin=[
             "f_mixin_function_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
         ],
         f_helper=["capsule_helper"],
+        f_temps=["cdesc", "capsule"], # XXX - add capsule, but repeat cdesc from mixin
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_name=["{f_var_capsule}"],
         f_arg_decl=[
@@ -1660,6 +1650,9 @@ fc_statements = [
             "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
             "{f_var_capsule}%mem = {f_var_cdesc}%cxx",
         ],
+        fmtdict=dict(
+            f_var_capsule="Crv",  # XXX C_var_capsule_template, compare with previous reference
+        ),
     ),
     dict(
         name="f_function_native_*_raw",

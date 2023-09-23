@@ -459,7 +459,6 @@ class VerifyAttrs(object):
                 "allocatable",
                 "assumedtype",
                 "blanknull",   # Treat blank string as NULL pointer.
-                "capsule",
                 "charlen",   # Assumed length of intent(out) char *.
                 "external",
                 "deref",
@@ -2059,12 +2058,6 @@ class Preprocess(object):
         """
         attrs = node.ast.declarator.attrs
         meta = node.ast.declarator.metaattrs
-        if attrs["owner"] == "caller" and \
-           meta["deref"] == "pointer":
-            meta["capsule"] = True
-
-#        for arg in node.ast.declarator.params:
-#   XXX - check for capsule on stuff like 'int **var +intent(out)+dimension(10)'
 
 
 def generate_functions(library, config):

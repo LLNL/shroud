@@ -825,7 +825,6 @@ class Wrapc(util.WrapperMixin):
         
         attrs = declarator.attrs
         meta = declarator.metaattrs
-        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
         
         if meta["dimension"]:
             fcn_struct = fcn.ast.declarator.metaattrs["struct"]

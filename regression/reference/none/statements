@@ -4343,6 +4343,9 @@ f_function_native_*_cdesc_pointer_caller:
   - '{f_var_capsule}%mem = {f_var_cdesc}%cxx'
   f_temps:
   - cdesc
+  - capsule
+  fmtdict:
+    f_var_capsule: Crv
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:

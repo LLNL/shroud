@@ -359,21 +359,6 @@ Used with ``const char *`` arguments to convert a blank string to a
 ``NULL`` pointer instead of an empty C string (``'\0'``).
 Can be applied to all arguments with the option **F_blanknull**.
 
-capsule
-^^^^^^^
-
-Name of capsule argument.
-Defaults to C_var_capsule_template.
-
-cdesc
-^^^^^
-
-Pass argument from Fortran to C wrapper as a pointer to a context type.
-This struct contains the address, type, rank and size of the argument.
-A 'bufferify' function will be created for the context type.
-
-.. XXX argument is named by context
-
 charlen
 ^^^^^^^
 
