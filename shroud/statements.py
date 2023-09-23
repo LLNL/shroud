@@ -944,22 +944,6 @@ fc_statements = [
         i_module_line="iso_c_binding:C_CHAR,C_INT",
     ),
     
-    # Convert function result to character argument
-    dict(
-        name="f_mixin_function_cfi_character-arg",
-        f_result = "subroutine",
-        f_arg_name=["{F_string_result_as_arg}"],
-        f_arg_decl=[
-            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
-        ],
-        f_arg_call=["{F_string_result_as_arg}"],
-        i_arg_names=["{F_string_result_as_arg}"],
-        i_arg_decl=[
-            "character(len=*), intent(OUT) :: {F_string_result_as_arg}",
-        ],
-#        c_arg_decl  XXX - consistency check wants this set
-    ),
-
     ### destructors
     # Each destructor must have a unique name.
     dict(
@@ -3606,9 +3590,13 @@ fc_statements = [
         c_local=["trim"],
     ),
     dict(
-        name="f_mixin_function_string_scalar_cfi_copy",
+        name="f_function_string_scalar_cfi_copy",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        alias=[
+            "f_function_string_*_cfi_copy",
+            "f_function_string_&_cfi_copy",
         ],
         # XXX - avoid calling C directly since the Fortran function
         # is returning an CHARACTER, which CFI can not do.
@@ -3633,23 +3621,22 @@ fc_statements = [
         ],
         c_return_type="void",  # Convert to function.
     ),
-    # f_function_string_scalar_cfi_copy
-    # f_function_string_*_cfi_copy
-    # f_function_string_&_cfi_copy
     dict(
-        name="f_function_string_scalar/*/&_cfi_copy",
-        mixin=[
-            "f_mixin_function_string_scalar_cfi_copy",
-        ],
-    ),
-    dict(
+        # Change function result into an argument
+        # Use F_string_result_as_arg as the argument name.
         name="f_function_string_scalar_cfi_arg",
-        mixin=[
-            "f_mixin_function_string_scalar_cfi_copy",
-            "f_mixin_function_cfi_character-arg",
-        ],
+        base="f_function_string_scalar_cfi_copy",
         alias=[
             "f_function_string_&_cfi_arg",
+        ],
+        fmtdict=dict(
+            f_var="{F_string_result_as_arg}",
+            c_var="{F_string_result_as_arg}",
+        ),
+        f_result="subroutine",
+        f_arg_name=["{f_var}"],
+        f_arg_decl=[
+            "character(len=*), intent(OUT) :: {f_var}",
         ],
     ),
 

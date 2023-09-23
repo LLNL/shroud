@@ -2053,13 +2053,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
+                        "c_var": "output",
                         "c_var_cfi": "SHT_rv_cfi",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
-                        "f_var": "SHT_rv",
+                        "f_var": "output",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_cfi_arg"
                     }
@@ -2707,13 +2707,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
+                        "c_var": "output",
                         "c_var_cfi": "SHT_rv_cfi",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
-                        "f_var": "SHT_rv",
+                        "f_var": "output",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_cfi_arg"
                     }
