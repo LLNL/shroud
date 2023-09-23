@@ -216,7 +216,8 @@ class Wrapf(util.WrapperMixin):
                 output.append(ast.gen_arg_as_fortran())
                 self.update_f_module(
                     fileinfo.module_use, {},
-                    ntypemap.i_module or ntypemap.f_module
+                    ntypemap.i_module or ntypemap.f_module,
+                    var.fmtdict
                 )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
@@ -432,7 +433,7 @@ class Wrapf(util.WrapperMixin):
         # Any USE statements for typedef value (ex. C_INT)
         self.update_f_module(
             fileinfo.module_use, {},
-            node.f_module)
+            node.f_module, fmtdict)
         
         output = fileinfo.typedef_impl
         output.append("")
@@ -789,8 +790,7 @@ rv = .false.
         fmt : Scope
         """
         if stmt.f_module:
-            self.update_f_module(
-                modules, imports, stmt.f_module)
+            self.update_f_module(modules, imports, stmt.f_module, fmt)
         if stmt.f_module_line:
             self.update_f_module_line(
                 modules, imports, stmt.f_module_line, fmt)
@@ -812,8 +812,7 @@ rv = .false.
         fmt : Scope
         """
         if stmt.i_module:
-            self.update_f_module(
-                modules, imports, stmt.i_module)
+            self.update_f_module(modules, imports, stmt.i_module, fmt)
         if stmt.i_module_line:
             self.update_f_module_line(
                 modules, imports, stmt.i_module_line, fmt)
@@ -863,7 +862,7 @@ rv = .false.
                 for sym in syms.split(","):
                     module[sym] = True
         
-    def update_f_module(self, modules, imports, f_module):
+    def update_f_module(self, modules, imports, f_module, fmt=util.Scope(None)):
         """Aggragate the information from f_module into modules.
 
         Parameters
@@ -875,6 +874,7 @@ rv = .false.
             Useful for interfaces.
         f_module : a dictionary of lists:
             dict(iso_c_binding=['C_INT'])
+        fmt : Scope
         """
         if f_module is not None:
             for mname, only in f_module.items():
@@ -887,7 +887,8 @@ rv = .false.
                     module = modules.setdefault(mname, {})
                     if only:  # Empty list means no ONLY clause
                         for oname in only:
-                            module[oname] = True
+                            wname = wformat(oname, fmt)
+                            module[wname] = True
 
     def set_f_module(self, modules, mname, *only):
         """Add a module to modules.
@@ -1057,6 +1058,7 @@ rv = .false.
                         modules,
                         imports,
                         arg_typemap.i_module or arg_typemap.f_module,
+                        fmt
                     )
 
                 if subprogram == "function":
@@ -1167,7 +1169,8 @@ rv = .false.
                     arg_typemap = ast.template_arguments[0].typemap
                 self.update_f_module(
                     modules, imports,
-                    arg_typemap.i_module or arg_typemap.f_module
+                    arg_typemap.i_module or arg_typemap.f_module,
+                    fmt
                 )
 
     def wrap_function_interface(self, cls, node, fileinfo):
@@ -1368,13 +1371,14 @@ rv = .false.
                 ntypemap = self.symtab.lookup_typemap(c_result_blk.c_return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
-                                     ntypemap.f_module)
+                                     ntypemap.f_module, fmt_result)
             else:
                 arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(
                     modules,
                     imports,
                     result_typemap.i_module or result_typemap.f_module,
+                    fmt_result
                 )
 
         arg_f_use = self.sort_module_info(
@@ -1471,7 +1475,7 @@ rv = .false.
                 need_wrapper = True
                 append_format(arg_c_call, arg_typemap.f_cast, fmt)
                 self.update_f_module(modules, imports,
-                                     arg_typemap.f_module)
+                                     arg_typemap.f_module, fmt)
             else:
                 arg_c_call.append(fmt.c_var)
         return need_wrapper
@@ -1904,7 +1908,7 @@ rv = .false.
                     arg_c_call.append(fmt_arg.pre_call_intent)
                 for helper in f_helper.split():
                     fileinfo.f_helper[helper] = True
-                self.update_f_module(modules, imports, f_arg.typemap.f_module)
+                self.update_f_module(modules, imports, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
                 continue
             elif hidden:
@@ -1937,7 +1941,7 @@ rv = .false.
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
-            self.update_f_module(modules, imports, arg_typemap.f_module)
+            self.update_f_module(modules, imports, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
@@ -2018,7 +2022,7 @@ rv = .false.
                 # If more than one level of indirection, will return
                 # a type(C_PTR).  i.e. int ** same as void *.
                 # So do not add type's f_module.
-                self.update_f_module(modules, imports, result_typemap.f_module)
+                self.update_f_module(modules, imports, result_typemap.f_module, fmt_result)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
@@ -2267,7 +2271,7 @@ rv = .false.
         ntypemap = self.newlibrary.file_code.get(fname)
         if ntypemap:
             self.update_f_module(fileinfo.module_use, {},
-                                 ntypemap.f_module)
+                                 ntypemap.f_module, fmt_node)
 
         # Write use statments (classes use iso_c_binding C_PTR)
         arg_f_use = self.sort_module_info(fileinfo.module_use, module_name)
