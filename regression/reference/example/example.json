@@ -109,8 +109,8 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
@@ -309,6 +309,7 @@
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
@@ -487,8 +488,8 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
@@ -2079,6 +2080,7 @@
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
@@ -2257,8 +2259,8 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
@@ -3467,8 +3469,8 @@
                                                 "stmtc": "f_function_shadow_*_capptr"
                                             },
                                             "fmtf": {
-                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
+                                                "c_local_ptr": "SHT_prv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",

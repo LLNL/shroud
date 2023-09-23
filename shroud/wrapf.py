@@ -2086,12 +2086,7 @@ rv = .false.
         elif f_result_blk.f_call:
             call_list = f_result_blk.f_call
         elif C_subprogram == "function":
-            if f_result_blk.c_result_var:
-                fmt_result.C_result = wformat(
-                    f_result_blk.c_result_var, fmt_result)
-                call_list = ["{C_result} = {F_C_call}({F_arg_c_call})"]
-            else:
-                call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
+            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
             call_list = ["call {F_C_call}({F_arg_c_call})"]
 

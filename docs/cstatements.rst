@@ -33,16 +33,16 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     {F_C_subprogram} {F_C_name}({F_C_arguments}) &
         {F_C_result_clause} &
         bind(C, name="{C_name}")
-        f_c_module / f_c_module_line
-        f_c_import
-        f_c_arg_decl
-        f_c_result_decl
+        i_module / i_module_line
+        i_import
+        i_arg_decl
+        i_result_decl
     end {F_C_subprogram} {F_C_name}
 
 Where
 F_C_clause =
-F_C_arguments     = f_c_arg_names
-F_C_result_clause = f_c_result_var
+F_C_arguments     = i_arg_names
+F_C_result_clause = i_result_var
 
 Lookup statements
 -----------------

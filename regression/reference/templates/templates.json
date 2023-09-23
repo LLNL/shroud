@@ -475,8 +475,8 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
+                                "c_local_ptr": "SHT_prv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<int>",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
@@ -1067,8 +1067,8 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
+                                "c_local_ptr": "SHT_prv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<double>",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
@@ -1675,8 +1675,8 @@
                         "stmtc": "f_function_shadow_scalar_capptr_targ_native_scalar"
                     },
                     "fmtf": {
-                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
+                        "c_local_ptr": "SHT_prv",
                         "c_var": "SHT_rv",
                         "cxx_type": "user<int>",
                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
@@ -2684,8 +2684,8 @@
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
+                                        "c_local_ptr": "SHT_prv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
@@ -3353,8 +3353,8 @@
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
+                                        "c_local_ptr": "SHT_prv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",

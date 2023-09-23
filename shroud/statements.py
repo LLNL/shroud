@@ -672,7 +672,6 @@ FStmts = util.Scope(
     None,
     name="f_default",
     intent=None,
-    c_result_var=None,
     f_helper=[],
     f_module=None,
     f_module_line=None,
@@ -893,14 +892,21 @@ fc_statements = [
         name="f_mixin_function_shadow_capptr",
         f_arg_decl=[
             "{f_type} :: {f_var}",
-            "type(C_PTR) :: {F_result_ptr}",
+            "type(C_PTR) :: {c_local_ptr}",
         ],
         f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
-        c_result_var="{F_result_ptr}",
+        f_call=[
+            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
+        ],
+        f_local=["ptr"],
         f_need_wrapper=True,
+        fmtdict=dict(
+            # Map back to standard name
+            c_local_ptr="{F_result_ptr}",
+        ),
 
         i_result_var="{F_result_ptr}",
         i_result_decl=[

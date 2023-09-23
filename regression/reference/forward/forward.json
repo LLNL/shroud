@@ -141,8 +141,8 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
+                                "c_local_ptr": "SHT_prv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "forward::Class2",
                                 "f_capsule_data_type": "FOR_SHROUD_capsule_data",
