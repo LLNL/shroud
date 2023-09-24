@@ -6064,6 +6064,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -6091,6 +6092,7 @@
                 ]
             },
             "f_module_line": "tutorial_mod:enum_type_id",
+            "f_module_name": "tutorial_mod",
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
             "i_module": {
@@ -6126,6 +6128,7 @@
                 ]
             },
             "f_module_line": "tutorial_mod:type_id",
+            "f_module_name": "tutorial_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {

@@ -991,6 +991,7 @@
                 ]
             },
             "f_module_line": "library_mod:custom_type",
+            "f_module_name": "library_mod",
             "f_type": "integer(custom_type)",
             "flat_name": "int",
             "i_module": {

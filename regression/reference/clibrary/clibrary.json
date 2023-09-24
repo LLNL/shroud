@@ -6122,6 +6122,7 @@
                 ]
             },
             "f_module_line": "clibrary_mod:enum_type_id",
+            "f_module_name": "clibrary_mod",
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
             "i_module": {
@@ -6157,6 +6158,7 @@
                 ]
             },
             "f_module_line": "clibrary_mod:type_id",
+            "f_module_name": "clibrary_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {

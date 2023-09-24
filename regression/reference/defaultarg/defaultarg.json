@@ -3607,6 +3607,7 @@
                 ]
             },
             "f_module_line": "defaultarg_mod:type_id",
+            "f_module_name": "defaultarg_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {

@@ -43,6 +43,7 @@ typemap:
       i_module:
         iso_c_binding:
         - C_INT
+      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: O
       LUA_type: LUA_TNONE
@@ -63,6 +64,7 @@ typemap:
       f_type: logical
       f_kind: C_BOOL
       i_type: logical(C_BOOL)
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_BOOL
@@ -89,6 +91,7 @@ typemap:
       i_module:
         iso_c_binding:
         - C_CHAR
+      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: s
       PY_ctor: PyString_FromString({ctor_expr})
@@ -108,6 +111,7 @@ typemap:
       c_type: double
       f_type: real(C_DOUBLE)
       f_kind: C_DOUBLE
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_DOUBLE
@@ -135,6 +139,7 @@ typemap:
       - <complex.h>
       f_type: complex(C_DOUBLE_COMPLEX)
       f_kind: C_DOUBLE_COMPLEX
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_DOUBLE_COMPLEX
@@ -164,6 +169,7 @@ typemap:
       c_type: float
       f_type: real(C_FLOAT)
       f_kind: C_FLOAT
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_FLOAT
@@ -191,6 +197,7 @@ typemap:
       - <complex.h>
       f_type: complex(C_FLOAT_COMPLEX)
       f_kind: C_FLOAT_COMPLEX
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_FLOAT_COMPLEX
@@ -220,6 +227,7 @@ typemap:
       c_type: int
       f_type: integer(C_INT)
       f_kind: C_INT
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT
@@ -247,6 +255,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT16_T)
       f_kind: C_INT16_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT16_T
@@ -274,6 +283,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT32_T)
       f_kind: C_INT32_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT32_T
@@ -301,6 +311,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT64_T)
       f_kind: C_INT64_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT64_T
@@ -328,6 +339,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT8_T)
       f_kind: C_INT8_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT8_T
@@ -351,6 +363,7 @@ typemap:
       c_type: long
       f_type: integer(C_LONG)
       f_kind: C_LONG
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_LONG
@@ -374,6 +387,7 @@ typemap:
       c_type: long long
       f_type: integer(C_LONG_LONG)
       f_kind: C_LONG_LONG
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_LONG_LONG
@@ -395,6 +409,7 @@ typemap:
       c_type: short
       f_type: integer(C_SHORT)
       f_kind: C_SHORT
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_SHORT
@@ -422,6 +437,7 @@ typemap:
       - <stddef.h>
       f_type: integer(C_SIZE_T)
       f_kind: C_SIZE_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_SIZE_T
@@ -448,6 +464,7 @@ typemap:
       i_module:
         iso_c_binding:
         - C_CHAR
+      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       impl_header:
       - <string>
@@ -492,6 +509,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT16_T)
       f_kind: C_INT16_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT16_T
@@ -519,6 +537,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT32_T)
       f_kind: C_INT32_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT32_T
@@ -546,6 +565,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT64_T)
       f_kind: C_INT64_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT64_T
@@ -573,6 +593,7 @@ typemap:
       - <stdint.h>
       f_type: integer(C_INT8_T)
       f_kind: C_INT8_T
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT8_T
@@ -596,6 +617,7 @@ typemap:
       c_type: unsigned int
       f_type: integer(C_INT)
       f_kind: C_INT
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_INT
@@ -619,6 +641,7 @@ typemap:
       c_type: unsigned long
       f_type: integer(C_LONG)
       f_kind: C_LONG
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_LONG
@@ -642,6 +665,7 @@ typemap:
       c_type: unsigned long long
       f_type: integer(C_LONG_LONG)
       f_kind: C_LONG_LONG
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_LONG_LONG
@@ -663,6 +687,7 @@ typemap:
       c_type: unsigned short
       f_type: integer(C_SHORT)
       f_kind: C_SHORT
+      f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
         - C_SHORT

@@ -11153,6 +11153,7 @@
                 ]
             },
             "f_module_line": "userlibrary_mod:sidre_length",
+            "f_module_name": "userlibrary_mod",
             "f_type": "integer(sidre_length)",
             "flat_name": "long",
             "i_module": {
@@ -11196,6 +11197,7 @@
                 ]
             },
             "f_module_line": "userlibrary_mod:type_id",
+            "f_module_name": "userlibrary_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {

@@ -687,6 +687,7 @@
                 ]
             },
             "f_module_line": "typedefs_mod:index_type",
+            "f_module_name": "typedefs_mod",
             "f_type": "integer(index_type)",
             "flat_name": "int32_t",
             "i_module": {
@@ -755,6 +756,7 @@
                 ]
             },
             "f_module_line": "typedefs_mod:type_id",
+            "f_module_name": "typedefs_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {

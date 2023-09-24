@@ -278,6 +278,7 @@
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_kind": "C_INT",
+            "f_module_name": "iso_c_binding",
             "f_type": "integer",
             "flat_name": "MPI_Comm",
             "i_module": {
@@ -306,6 +307,7 @@
                     "C_BOOL"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "logical",
             "flat_name": "bool",
             "i_type": "logical(C_BOOL)",
@@ -323,6 +325,7 @@
             "c_type": "char",
             "cxx_type": "char",
             "f_kind": "C_CHAR",
+            "f_module_name": "iso_c_binding",
             "f_type": "character(*)",
             "flat_name": "char",
             "i_module": {
@@ -352,6 +355,7 @@
                     "C_DOUBLE"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "real(C_DOUBLE)",
             "flat_name": "double",
             "sgroup": "native",
@@ -384,6 +388,7 @@
                     "C_DOUBLE_COMPLEX"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "complex(C_DOUBLE_COMPLEX)",
             "flat_name": "double_complex",
             "py_ctype": "Py_complex",
@@ -411,6 +416,7 @@
                     "C_FLOAT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "real(C_FLOAT)",
             "flat_name": "float",
             "sgroup": "native",
@@ -443,6 +449,7 @@
                     "C_FLOAT_COMPLEX"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "complex(C_FLOAT_COMPLEX)",
             "flat_name": "float_complex",
             "py_ctype": "Py_complex",
@@ -470,6 +477,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -500,6 +508,7 @@
                     "C_INT16_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT16_T)",
             "flat_name": "int16_t",
             "sgroup": "native",
@@ -530,6 +539,7 @@
                     "C_INT32_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT32_T)",
             "flat_name": "int32_t",
             "sgroup": "native",
@@ -560,6 +570,7 @@
                     "C_INT64_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT64_T)",
             "flat_name": "int64_t",
             "sgroup": "native",
@@ -590,6 +601,7 @@
                     "C_INT8_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT8_T)",
             "flat_name": "int8_t",
             "sgroup": "native",
@@ -614,6 +626,7 @@
                     "C_LONG"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_LONG)",
             "flat_name": "long",
             "sgroup": "native",
@@ -636,6 +649,7 @@
                     "C_LONG_LONG"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long",
             "sgroup": "native",
@@ -660,6 +674,7 @@
                     "C_SHORT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_SHORT)",
             "flat_name": "short",
             "sgroup": "native",
@@ -688,6 +703,7 @@
                     "C_SIZE_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_SIZE_T)",
             "flat_name": "size_t",
             "sgroup": "native",
@@ -706,6 +722,7 @@
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
             "f_kind": "C_CHAR",
+            "f_module_name": "iso_c_binding",
             "f_type": "character(*)",
             "flat_name": "std_string",
             "i_module": {
@@ -756,6 +773,7 @@
                     "C_INT16_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT16_T)",
             "flat_name": "uint16_t",
             "sgroup": "native",
@@ -786,6 +804,7 @@
                     "C_INT32_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT32_T)",
             "flat_name": "uint32_t",
             "sgroup": "native",
@@ -816,6 +835,7 @@
                     "C_INT64_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT64_T)",
             "flat_name": "uint64_t",
             "sgroup": "native",
@@ -846,6 +866,7 @@
                     "C_INT8_T"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT8_T)",
             "flat_name": "uint8_t",
             "sgroup": "native",
@@ -870,6 +891,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "unsigned_int",
             "sgroup": "native",
@@ -894,6 +916,7 @@
                     "C_LONG"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_LONG)",
             "flat_name": "unsigned_long",
             "sgroup": "native",
@@ -916,6 +939,7 @@
                     "C_LONG_LONG"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "unsigned_long_long",
             "sgroup": "native",
@@ -940,6 +964,7 @@
                     "C_SHORT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_SHORT)",
             "flat_name": "unsigned_short",
             "sgroup": "native",

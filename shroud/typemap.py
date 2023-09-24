@@ -122,10 +122,8 @@ class Typemap(object):
         ("i_type", None),  # Type for C interface    -- int
         ("i_module", None), # Fortran modules needed for interface  (dictionary)
         ("i_module_line", None),
-        (
-            "f_module_name",
-            None,
-        ),  # Name of module which contains f_derived_type and f_capsule_data_type
+        ("f_module_name", None), # Name of module which contains f_type
+                                 # and f_derived_type and f_capsule_data_type
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
@@ -344,6 +342,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SHORT)",
             f_type="integer(C_SHORT)",
             f_kind="C_SHORT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SHORT"]),
             PY_format="h",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -364,6 +363,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT)",
             f_type="integer(C_INT)",
             f_kind="C_INT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -384,6 +384,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG)",
             f_type="integer(C_LONG)",
             f_kind="C_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG"]),
             PY_format="l",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -404,6 +405,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG_LONG)",
             f_type="integer(C_LONG_LONG)",
             f_kind="C_LONG_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="L",
             # #- PY_ctor='PyInt_FromLong({ctor_expr})',
@@ -423,6 +425,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SHORT)",
             f_type="integer(C_SHORT)",
             f_kind="C_SHORT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SHORT"]),
             PY_format="H",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -443,6 +446,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT)",
             f_type="integer(C_INT)",
             f_kind="C_INT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT"]),
             PY_format="I",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -463,6 +467,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG)",
             f_type="integer(C_LONG)",
             f_kind="C_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG"]),
             PY_format="k",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -483,6 +488,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG_LONG)",
             f_type="integer(C_LONG_LONG)",
             f_kind="C_LONG_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="K",
             # #- PY_ctor='PyInt_FromLong({ctor_expr})',
@@ -504,6 +510,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SIZE_T)",
             f_type="integer(C_SIZE_T)",
             f_kind="C_SIZE_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SIZE_T"]),
             PY_format="n",
             PY_ctor="PyInt_FromSize_t({ctor_expr})",
@@ -525,6 +532,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT8_t)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT8_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -547,6 +555,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT16_t)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT16_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -569,6 +578,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT32_t)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT32_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -591,6 +601,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT64_t)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT64_T"]),
             PY_format="L",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -614,6 +625,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT8_t)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT8_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -636,6 +648,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT16_t)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT16_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -658,6 +671,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT32_t)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT32_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -680,6 +694,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT64_t)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT64_T"]),
             PY_format="L",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -700,6 +715,7 @@ def default_typemap():
             f_cast="real({f_var}, C_FLOAT)",
             f_type="real(C_FLOAT)",
             f_kind="C_FLOAT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_FLOAT"]),
             PY_format="f",
             PY_ctor="PyFloat_FromDouble({ctor_expr})",
@@ -720,6 +736,7 @@ def default_typemap():
             f_cast="real({f_var}, C_DOUBLE)",
             f_type="real(C_DOUBLE)",
             f_kind="C_DOUBLE",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_DOUBLE"]),
             PY_format="d",
             PY_ctor="PyFloat_FromDouble({ctor_expr})",
@@ -743,6 +760,7 @@ def default_typemap():
             f_cast="cmplx({f_var}, C_FLOAT_COMPLEX)",
             f_type="complex(C_FLOAT_COMPLEX)",
             f_kind="C_FLOAT_COMPLEX",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_FLOAT_COMPLEX"]),
             PY_format="D",
             py_ctype="Py_complex",
@@ -771,6 +789,7 @@ def default_typemap():
             f_cast="cmplx({f_var}, C_DOUBLE_COMPLEX)",
             f_type="complex(C_DOUBLE_COMPLEX)",
             f_kind="C_DOUBLE_COMPLEX",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_DOUBLE_COMPLEX"]),
             PY_format="D",
             PY_get="PyComplex_AsCComplex({py_var})",
@@ -801,6 +820,7 @@ def default_typemap():
             f_type="logical",
             f_kind="C_BOOL",
             i_type="logical(C_BOOL)",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_BOOL"]),
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
@@ -824,6 +844,7 @@ def default_typemap():
             c_type="char",  # XXX - char *
             f_type="character(*)",
             f_kind="C_CHAR",
+            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
@@ -845,6 +866,7 @@ def default_typemap():
             impl_header=["<string>"],
             f_type="character(*)",
             f_kind="C_CHAR",
+            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
@@ -886,6 +908,7 @@ def default_typemap():
             # usually, MPI_Fint will be equivalent to int
             f_type="integer",
             f_kind="C_INT",
+            f_module_name="iso_c_binding",
             i_type="integer(C_INT)",
             i_module=dict(iso_c_binding=["C_INT"]),
             cxx_to_c="MPI_Comm_c2f({cxx_var})",
@@ -1297,8 +1320,6 @@ def fill_struct_typemap(node, fields={}):
     if "i_module" not in fields:
         ntypemap.i_module = {"--import--": [ntypemap.f_derived_type]}
         
-# GGG - sets i_module_line and f_module_line which may or may not be needed
-##    ntypemap.finalize()
     if ntypemap.cxx_type and not ntypemap.flat_name:
             ntypemap.compute_flat_name()
 
@@ -1401,7 +1422,7 @@ def fill_typedef_typemap(node, fields={}):
         f_type = "{}({})".format(ntypemap.base, f_name),
         f_kind=f_name,
         #XXX f_cast  using f_name
-#        f_module_name=fmtdict.F_module_name,
+        f_module_name=fmtdict.F_module_name,
 #        f_derived_type=fmtdict.F_derived_name,
 #        f_capsule_data_type=fmtdict.F_capsule_data_type,
 #        f_module={fmtdict.F_module_name: [fmtdict.F_derived_name]},

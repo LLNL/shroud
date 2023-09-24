@@ -2224,6 +2224,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2284,6 +2285,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2310,6 +2312,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2336,6 +2339,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2362,6 +2366,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2415,6 +2420,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2468,6 +2474,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
