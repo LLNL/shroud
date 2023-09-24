@@ -1030,7 +1030,9 @@ c_function_native_*_raw:
   name: c_function_native_*_raw
   owner: library
 c_function_native_*_scalar:
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   i_result_decl:
   - '{f_type} :: {c_var}'
   intent: function
@@ -1725,7 +1727,11 @@ c_in_char_**_buf:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: c_in_char_**_buf
   owner: library
@@ -2033,7 +2039,10 @@ c_in_vector_&_buf_targ_native_*:
   - '{c_var}'
   - '{c_var_len}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: c_in_vector_&_buf_targ_native_*
   owner: library
@@ -2052,7 +2061,10 @@ c_in_vector_&_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: c_in_vector_&_buf_targ_native_scalar
   owner: library
@@ -2091,7 +2103,11 @@ c_in_vector_&_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: c_in_vector_&_buf_targ_string_scalar
   owner: library
@@ -2110,7 +2126,10 @@ c_in_vector_*_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: c_in_vector_*_buf_targ_native_scalar
   owner: library
@@ -2149,7 +2168,11 @@ c_in_vector_*_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: c_in_vector_*_buf_targ_string_scalar
   owner: library
@@ -2168,7 +2191,10 @@ c_in_vector_scalar_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: c_in_vector_scalar_buf_targ_native_scalar
   owner: library
@@ -2207,7 +2233,11 @@ c_in_vector_scalar_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: c_in_vector_scalar_buf_targ_string_scalar
   owner: library
@@ -2545,7 +2575,9 @@ c_mixin_arg_native_cfi:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: mixin
@@ -2634,7 +2666,10 @@ c_mixin_inout_array_cdesc:
   - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: mixin
   name: c_mixin_inout_array_cdesc
   owner: library
@@ -2676,7 +2711,10 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: mixin
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
@@ -4380,7 +4418,9 @@ f_function_native_*_cfi_allocatable:
   - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -4421,7 +4461,9 @@ f_function_native_*_cfi_pointer:
   - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -6949,7 +6991,11 @@ f_in_char_**_buf:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: f_in_char_**_buf
   owner: library
@@ -7137,7 +7183,9 @@ f_in_native_*_cfi:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -7476,7 +7524,10 @@ f_in_vector_&_buf_targ_native_*:
   - '{c_var}'
   - '{c_var_len}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: f_in_vector_&_buf_targ_native_*
   owner: library
@@ -7502,7 +7553,10 @@ f_in_vector_&_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: f_in_vector_&_buf_targ_native_scalar
   owner: library
@@ -7550,7 +7604,11 @@ f_in_vector_&_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: f_in_vector_&_buf_targ_string_scalar
   owner: library
@@ -7580,7 +7638,10 @@ f_in_vector_*_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: f_in_vector_*_buf_targ_native_scalar
   owner: library
@@ -7628,7 +7689,11 @@ f_in_vector_*_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: f_in_vector_*_buf_targ_string_scalar
   owner: library
@@ -7654,7 +7719,10 @@ f_in_vector_scalar_buf_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: in
   name: f_in_vector_scalar_buf_targ_native_scalar
   owner: library
@@ -7702,7 +7770,11 @@ f_in_vector_scalar_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: in
   name: f_in_vector_scalar_buf_targ_string_scalar
   owner: library
@@ -7948,7 +8020,9 @@ f_inout_native_*_cfi:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -8254,7 +8328,10 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: inout
   name: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
   owner: library
@@ -8314,7 +8391,10 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: inout
   name: f_inout_vector_&_cdesc_targ_native_scalar
   owner: library
@@ -8372,7 +8452,11 @@ f_inout_vector_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: inout
   name: f_inout_vector_buf_targ_string_scalar
   owner: library
@@ -8592,7 +8676,10 @@ f_mixin_in_2d_array_buf:
   - '{c_var}'
   - '{c_var_len}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: mixin
   name: f_mixin_in_2d_array_buf
   owner: library
@@ -8615,7 +8702,10 @@ f_mixin_in_array_buf:
   i_arg_names:
   - '{c_var}'
   - '{c_var_size}'
-  i_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
   intent: mixin
   name: f_mixin_in_array_buf
   owner: library
@@ -8661,7 +8751,11 @@ f_mixin_in_string_array_buf:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: mixin
   name: f_mixin_in_string_array_buf
   owner: library
@@ -9091,7 +9185,9 @@ f_out_native_**_cfi_allocatable:
   - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -9129,7 +9225,9 @@ f_out_native_**_cfi_pointer:
   - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: iso_c_binding:{f_kind}
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -9816,7 +9914,11 @@ f_out_vector_buf_targ_string_scalar:
   - '{c_var}'
   - '{c_var_size}'
   - '{c_var_len}'
-  i_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
   intent: out
   name: f_out_vector_buf_targ_string_scalar
   owner: library

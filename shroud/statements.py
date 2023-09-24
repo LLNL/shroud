@@ -961,7 +961,7 @@ fc_statements = [
             "{f_type}, intent(IN) :: {c_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
         c_temps=["size"],
     ),
     dict(
@@ -987,7 +987,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_len}",
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
-        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
         c_temps=["len", "size"],
     ),
 
@@ -1022,7 +1022,7 @@ fc_statements = [
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
         i_import=["{F_array_type}"],
-        i_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
         c_temps=["size", "cdesc"],
     ),
 
@@ -1092,7 +1092,7 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
             "integer(C_INT), intent(IN), value :: {c_var_len}",
         ],
-        i_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
+        i_module=dict(iso_c_binding=["C_CHAR", "C_SIZE_T", "C_INT"]),
         c_temps=["size", "len"],
     ),
 
@@ -1567,7 +1567,7 @@ fc_statements = [
         i_result_decl=[
             "{f_type} :: {c_var}",
         ],
-        i_module_line="iso_c_binding:{f_kind}",
+        i_module=dict(iso_c_binding=["{f_kind}"]),
     ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
@@ -3298,7 +3298,7 @@ fc_statements = [
         i_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
         ],
-        i_module_line="iso_c_binding:{f_kind}",
+        i_module=dict(iso_c_binding=["{f_kind}"]),
         i_arg_names=["{c_var}"],
 #        c_pre_call=[
 #            "{c_type} *{cxx_var} = "
