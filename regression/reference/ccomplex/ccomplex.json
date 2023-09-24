@@ -85,6 +85,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_FLOAT_COMPLEX",
                             "f_type": "complex(C_FLOAT_COMPLEX)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "stmtf": "f_inout_native_*"
@@ -184,6 +185,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_inout_native_*"
@@ -309,6 +311,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_out_native_*"
@@ -581,6 +584,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_out_native_*"
@@ -631,6 +635,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"

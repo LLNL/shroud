@@ -713,6 +713,7 @@ typemap:
       i_module:
         iso_c_binding:
         - C_PTR
+      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: O
       PY_ctor: PyCapsule_New({ctor_expr}, NULL, NULL)

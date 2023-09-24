@@ -328,6 +328,7 @@ def default_typemap():
             cxx_type="void",
             # fortran='subroutine',
             f_type="type(C_PTR)",
+            f_module_name="iso_c_binding",
             i_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",

@@ -729,6 +729,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -812,6 +813,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_setter_native_scalar"
@@ -930,6 +932,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1013,6 +1016,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_setter_native_scalar"
@@ -1227,6 +1231,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1310,6 +1315,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_setter_native_scalar"
@@ -1428,6 +1434,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1511,6 +1518,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_setter_native_scalar"
@@ -1629,6 +1637,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1712,6 +1721,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_setter_native_scalar"
@@ -1947,9 +1957,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_scalar"
@@ -2001,6 +2013,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2076,9 +2089,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -2130,6 +2145,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2230,6 +2246,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -2255,9 +2272,11 @@
                         "fmtf": {
                             "F_C_var": "s1",
                             "c_var": "s1",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT"
                         }
@@ -2299,6 +2318,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
@@ -2409,6 +2429,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2436,9 +2457,11 @@
                         "fmtf": {
                             "F_C_var": "s1",
                             "c_var": "s1",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -2491,6 +2514,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2566,9 +2590,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -2620,6 +2646,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2730,9 +2757,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "OUT",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_out_struct_*"
@@ -2762,6 +2791,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -2791,6 +2821,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -2888,9 +2919,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "INOUT",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
@@ -3002,6 +3035,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -3031,6 +3065,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -3078,9 +3113,11 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
+                        "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_function_struct_scalar"
@@ -3180,6 +3217,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -3209,6 +3247,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -3257,10 +3296,12 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
+                        "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct1)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_function_struct_*_pointer"
@@ -3381,6 +3422,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE"
                         }
@@ -3409,6 +3451,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -3437,6 +3480,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -3475,9 +3519,11 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
                     }
@@ -3605,6 +3651,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -3634,6 +3681,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -3666,6 +3714,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "f_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3716,10 +3765,12 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
+                        "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
                         "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct1)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_function_struct_*_pointer"
@@ -3797,10 +3848,12 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_list",
+                        "f_derived_type": "cstruct_list",
                         "f_intent": "OUT",
                         "f_kind": "cstruct_list",
                         "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "type(cstruct_list)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_function_struct_*_pointer"
@@ -3885,9 +3938,11 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                        "f_derived_type": "cstruct_as_class",
                         "f_intent": "OUT",
                         "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_class)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3987,6 +4042,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "x",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -4016,6 +4072,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "y",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -4066,9 +4123,11 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                        "f_derived_type": "cstruct_as_class",
                         "f_intent": "OUT",
                         "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_class)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
@@ -4153,8 +4212,10 @@
                             "F_C_var": "point",
                             "c_var": "point",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                            "f_derived_type": "cstruct_as_class",
                             "f_intent": "IN",
                             "f_type": "type(cstruct_as_class)",
+                            "f_type_module": "struct_mod",
                             "f_var": "point",
                             "i_module_line": "--import--:STR_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4207,6 +4268,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -4321,6 +4383,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "x",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -4350,6 +4413,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "y",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -4379,6 +4443,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "z",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -4429,9 +4494,11 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_subclass",
                         "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                        "f_derived_type": "cstruct_as_subclass",
                         "f_intent": "OUT",
                         "f_local_ptr": "SHT_prv",
                         "f_type": "type(cstruct_as_subclass)",
+                        "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
@@ -4523,9 +4590,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_ptr",
                             "f_intent": "IN",
                             "f_kind": "cstruct_ptr",
                             "f_type": "type(cstruct_ptr)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -4579,6 +4648,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmtf": "f_getter_native_*_pointer"
@@ -4683,9 +4753,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_ptr",
                             "f_intent": "INOUT",
                             "f_kind": "cstruct_ptr",
                             "f_type": "type(cstruct_ptr)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
@@ -4715,6 +4787,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_setter_native_*"
@@ -4919,9 +4992,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_list",
                             "f_intent": "IN",
                             "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -4988,6 +5063,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -5106,9 +5182,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_list",
                             "f_intent": "INOUT",
                             "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
@@ -5141,6 +5219,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "i_dimension": "(*)",
                             "rank": "1",
@@ -5348,9 +5427,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_list",
                             "f_intent": "IN",
                             "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -5417,6 +5498,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -5535,9 +5617,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "cstruct_list",
                             "f_intent": "INOUT",
                             "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
+                            "f_type_module": "struct_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
@@ -5570,6 +5654,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "i_dimension": "(*)",
                             "rank": "1",

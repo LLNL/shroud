@@ -1523,6 +1523,9 @@ f_declare_shape_prefix
 
 f_declare_shape_array
 
+f_derived_type
+   Derived type name for shadow class.
+
 f_get_shape_array
 
 f_kind
@@ -1535,7 +1538,10 @@ f_shape_var
 
 f_type
     Value from typemap.  ex ``integer(C_INT)``.
-    
+
+f_type_module
+    Module name for *f_type*.
+
 f_var
     Fortran variable name for argument.
 

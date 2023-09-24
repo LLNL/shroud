@@ -135,6 +135,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_scalar"
@@ -256,6 +257,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_scalar"
@@ -356,6 +358,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_scalar"
@@ -478,6 +481,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -526,6 +530,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -675,6 +680,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "f_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -705,6 +711,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -809,6 +816,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -938,6 +946,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "s",
                             "f_var_len": "SHT_s_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1041,6 +1050,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -1155,6 +1165,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -1241,6 +1252,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -1359,6 +1371,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
@@ -1442,6 +1455,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -1561,6 +1575,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
@@ -1651,6 +1666,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_raw"
@@ -1731,6 +1747,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
@@ -1830,6 +1847,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -1980,6 +1998,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -2137,6 +2156,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
@@ -2293,6 +2313,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
@@ -2433,6 +2454,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -2516,6 +2538,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -2630,6 +2653,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -2718,6 +2742,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -2836,6 +2861,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
@@ -2920,6 +2946,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -3039,6 +3066,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3124,6 +3152,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -3241,6 +3270,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3317,6 +3347,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -3426,6 +3457,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -3520,6 +3552,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -3644,6 +3677,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3723,6 +3757,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -3835,6 +3870,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -3919,6 +3955,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -4034,6 +4071,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -4119,6 +4157,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -4235,6 +4274,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -4317,6 +4357,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
@@ -4414,6 +4455,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
@@ -4497,6 +4539,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -4620,6 +4663,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4726,6 +4770,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -4851,6 +4896,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4956,6 +5002,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -5081,6 +5128,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5184,6 +5232,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -5306,6 +5355,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5408,6 +5458,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -5530,6 +5581,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5636,6 +5688,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -5761,6 +5814,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5885,6 +5939,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -5932,6 +5987,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT"
                         },
@@ -6076,6 +6132,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -6106,6 +6163,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
@@ -6232,6 +6290,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -6279,6 +6338,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT"
                         },
@@ -6425,6 +6485,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -6455,6 +6516,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
@@ -6554,6 +6616,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -6614,6 +6677,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     },
@@ -6716,6 +6780,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -6769,6 +6834,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -7006,6 +7072,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7038,6 +7105,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER"
@@ -7174,6 +7242,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7213,6 +7282,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "fhelper_ShroudTypeDefines": "ShroudTypeDefines",
@@ -7355,6 +7425,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7387,6 +7458,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER"
@@ -7524,6 +7596,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7565,6 +7638,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "f_var_out": "SHT_strs_out",
@@ -7709,6 +7783,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7743,6 +7818,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER"
@@ -7881,6 +7957,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "sh_type": "SH_TYPE_INT"
                         }
@@ -7923,6 +8000,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "f_var_out": "SHT_strs_out",
@@ -8091,6 +8169,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -8216,6 +8295,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -8323,6 +8403,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -8426,6 +8507,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_scalar"
@@ -8548,6 +8630,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_scalar"
@@ -8672,6 +8755,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -8701,6 +8785,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -8834,6 +8919,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "f_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -8871,6 +8957,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "f_var_len": "SHT_src_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -8999,6 +9086,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -9028,6 +9116,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -9157,6 +9246,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "f_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -9194,6 +9284,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "f_var_len": "SHT_src_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -9321,6 +9412,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_dimension": "(*)",
                             "rank": "1",
@@ -9373,6 +9465,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -9516,6 +9609,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_dimension": "(*)",
                             "rank": "1",
@@ -9552,6 +9646,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -9657,6 +9752,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -9698,6 +9794,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
@@ -9792,6 +9889,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "f_var_len": "SHT_src_len",
                             "sh_type": "SH_TYPE_OTHER",
@@ -9845,6 +9943,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -9951,6 +10050,7 @@
                             "c_var": "addr",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmtf": "f_in_void_*"
@@ -9980,6 +10080,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_capi"
@@ -10031,6 +10132,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -10136,6 +10238,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -10164,6 +10267,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_capi"
@@ -10215,6 +10319,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"

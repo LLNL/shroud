@@ -248,6 +248,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -467,6 +468,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"

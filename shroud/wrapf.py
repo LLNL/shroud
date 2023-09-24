@@ -1577,7 +1577,11 @@ rv = .false.
         i_module_line = ntypemap.i_module_line or ntypemap.f_module_line
         if i_module_line:
             fmt.i_module_line = i_module_line
-    
+        if ntypemap.f_derived_type:
+            fmt.f_derived_type = ntypemap.f_derived_type
+        if ntypemap.f_module_name:
+            fmt.f_type_module = ntypemap.f_module_name
+
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
                        ntypemap=None):

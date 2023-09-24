@@ -80,6 +80,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
@@ -174,6 +175,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
