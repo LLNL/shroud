@@ -1644,8 +1644,9 @@ c_function_struct_scalar:
   - '{f_type}, intent(OUT) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_import:
-  - '{f_kind}'
+  i_module:
+    '{f_type_module}':
+    - '{f_kind}'
   intent: function
   name: c_function_struct_scalar
   owner: library
@@ -6785,8 +6786,9 @@ f_function_struct_scalar:
   - '{f_type}, intent(OUT) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_import:
-  - '{f_kind}'
+  i_module:
+    '{f_type_module}':
+    - '{f_kind}'
   intent: function
   name: f_function_struct_scalar
   owner: library

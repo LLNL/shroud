@@ -3037,7 +3037,9 @@ fc_statements = [
         c_arg_decl=["{c_type} *{c_var}"],
         i_arg_decl=["{f_type}, intent(OUT) :: {c_var}"],
         i_arg_names=["{c_var}"],
-        i_import=["{f_kind}"],
+        i_module={
+            "{f_type_module}":["{f_kind}"],
+        },
         cxx_local_var="result",
         c_post_call=[
             "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
