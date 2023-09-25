@@ -269,6 +269,10 @@ def append_mixin(stmt, mixin):
                 stmt[key].extend(value)
             else:
                 stmt[key] = value[:]
+        elif isinstance(value, dict):
+            if key not in stmt:
+                stmt[key] = {}
+            append_mixin(stmt[key], value)
         else:
             stmt[key] = value
             
@@ -1215,6 +1219,10 @@ fc_statements = [
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",
         ],
+##-        i_module={
+##-            "{f_type_module}":["{f_kind}"],
+##-            "--import--":["{f_kind}"],
+##-        },
     ),
     
     ##########
@@ -2787,6 +2795,9 @@ fc_statements = [
         f_arg_call=[
             "{f_var}%{F_derived_member}",
         ],
+##-        f_module={
+##-            "{f_type_module}":["{f_derived_type}"],
+##-        },
         f_need_wrapper=True,
     ),
     
@@ -2799,7 +2810,10 @@ fc_statements = [
             "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
         ],
         i_arg_names=["{c_var}"],
-        i_module_line="{i_module_line}",
+        i_module={
+            "{f_type_module}":["{f_capsule_data_type}"],
+            "--import--": ["{F_capsule_data_type}"],
+        },
     ),
     
     dict(

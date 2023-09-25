@@ -71,6 +71,7 @@ module library_mod
         ! Statement: f_inout_shadow_*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
+            use library_three_mod, only : LIB_SHROUD_capsule_data
             import :: LIB_SHROUD_capsule_data
             implicit none
             type(LIB_SHROUD_capsule_data), intent(IN) :: self

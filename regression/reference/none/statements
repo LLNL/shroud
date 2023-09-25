@@ -749,9 +749,12 @@ c_ctor_shadow_scalar_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1058,9 +1061,12 @@ c_function_shadow_&_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1083,9 +1089,12 @@ c_function_shadow_&_capptr_caller:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1108,9 +1117,12 @@ c_function_shadow_&_capptr_library:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1133,9 +1145,12 @@ c_function_shadow_*_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1158,9 +1173,12 @@ c_function_shadow_*_capptr_caller:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1183,9 +1201,12 @@ c_function_shadow_*_capptr_library:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1211,9 +1232,12 @@ c_function_shadow_scalar_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1239,9 +1263,12 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1840,7 +1867,11 @@ c_in_shadow_&:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: c_in_shadow_&
   owner: library
@@ -1854,7 +1885,11 @@ c_in_shadow_*:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: c_in_shadow_*
   owner: library
@@ -1868,7 +1903,11 @@ c_in_shadow_scalar:
   - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: c_in_shadow_scalar
   owner: library
@@ -2383,7 +2422,11 @@ c_inout_shadow_&:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: inout
   name: c_inout_shadow_&
   owner: library
@@ -2397,7 +2440,11 @@ c_inout_shadow_*:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: inout
   name: c_inout_shadow_*
   owner: library
@@ -2842,7 +2889,11 @@ c_mixin_shadow:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: mixin
   name: c_mixin_shadow
   owner: library
@@ -3557,9 +3608,12 @@ f_ctor_shadow_scalar_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4543,9 +4597,12 @@ f_function_shadow_&_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4581,9 +4638,12 @@ f_function_shadow_&_capptr_caller:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4619,9 +4679,12 @@ f_function_shadow_&_capptr_library:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4657,9 +4720,12 @@ f_function_shadow_*_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4695,9 +4761,12 @@ f_function_shadow_*_capptr_caller:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4733,9 +4802,12 @@ f_function_shadow_*_capptr_library:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4759,7 +4831,11 @@ f_function_shadow_*_capsule:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: function
   name: f_function_shadow_*_capsule
   owner: library
@@ -4795,9 +4871,12 @@ f_function_shadow_scalar_capptr:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4836,9 +4915,12 @@ f_function_shadow_scalar_capptr_caller:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4877,9 +4959,12 @@ f_function_shadow_scalar_capptr_library:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -4918,9 +5003,12 @@ f_function_shadow_scalar_capptr_targ_native_scalar:
   i_arg_names:
   - '{c_var}'
   i_module:
+    --import--:
+    - '{F_capsule_data_type}'
     iso_c_binding:
     - C_PTR
-  i_module_line: '{i_module_line}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -7210,7 +7298,11 @@ f_in_shadow_&:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: f_in_shadow_&
   owner: library
@@ -7229,7 +7321,11 @@ f_in_shadow_*:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: f_in_shadow_*
   owner: library
@@ -7248,7 +7344,11 @@ f_in_shadow_scalar:
   - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
   name: f_in_shadow_scalar
   owner: library
@@ -8051,7 +8151,11 @@ f_inout_shadow_&:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: inout
   name: f_inout_shadow_&
   owner: library
@@ -8070,7 +8174,11 @@ f_inout_shadow_*:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   i_arg_names:
   - '{c_var}'
-  i_module_line: '{i_module_line}'
+  i_module:
+    --import--:
+    - '{F_capsule_data_type}'
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: inout
   name: f_inout_shadow_*
   owner: library
