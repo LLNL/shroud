@@ -11319,7 +11319,7 @@
             "f_type": "type(ex_class1)",
             "flat_name": "example_nested_ExClass1",
             "i_module": {
-                "--import--": [
+                "userlibrary_example_nested_mod": [
                     "AA_SHROUD_capsule_data"
                 ]
             },
@@ -11359,7 +11359,7 @@
             "f_type": "type(ex_class2)",
             "flat_name": "example_nested_ExClass2",
             "i_module": {
-                "--import--": [
+                "userlibrary_example_nested_mod": [
                     "AA_SHROUD_capsule_data"
                 ]
             },
@@ -11394,7 +11394,7 @@
             "f_type": "type(ex_class2_nested)",
             "flat_name": "example_nested_ExClass2Nested",
             "i_module": {
-                "--import--": [
+                "userlibrary_example_nested_mod": [
                     "AA_SHROUD_capsule_data"
                 ]
             },

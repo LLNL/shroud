@@ -2208,7 +2208,7 @@
             "f_type": "type(class1)",
             "flat_name": "Class1",
             "i_module": {
-                "--import--": [
+                "scope_mod": [
                     "SCO_SHROUD_capsule_data"
                 ]
             },
@@ -2267,7 +2267,7 @@
             "f_type": "type(class2)",
             "flat_name": "Class2",
             "i_module": {
-                "--import--": [
+                "scope_mod": [
                     "SCO_SHROUD_capsule_data"
                 ]
             },

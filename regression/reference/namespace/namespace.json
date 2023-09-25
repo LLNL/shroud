@@ -797,7 +797,7 @@
             "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
             "i_module": {
-                "--import--": [
+                "ns_nswork_mod": [
                     "NS_SHROUD_capsule_data"
                 ]
             },

@@ -3641,7 +3641,7 @@
             "f_type": "type(ArrayWrapper)",
             "flat_name": "ArrayWrapper",
             "i_module": {
-                "--import--": [
+                "arrayclass_mod": [
                     "ARR_SHROUD_capsule_data"
                 ]
             },

@@ -819,7 +819,7 @@
             "f_type": "type(class2)",
             "flat_name": "forward_Class2",
             "i_module": {
-                "--import--": [
+                "forward_mod": [
                     "FOR_SHROUD_capsule_data"
                 ]
             },
@@ -859,7 +859,7 @@
             "f_type": "type(class3)",
             "flat_name": "forward_Class3",
             "i_module": {
-                "--import--": [
+                "forward_mod": [
                     "FOR_SHROUD_capsule_data"
                 ]
             },

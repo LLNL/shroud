@@ -3935,7 +3935,7 @@
             "f_type": "type(class1)",
             "flat_name": "Class1",
             "i_module": {
-                "--import--": [
+                "ownership_mod": [
                     "OWN_SHROUD_capsule_data"
                 ]
             },

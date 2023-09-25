@@ -6104,7 +6104,7 @@
             "f_type": "type(circle)",
             "flat_name": "classes_Circle",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },
@@ -6144,7 +6144,7 @@
             "f_type": "type(class1)",
             "flat_name": "classes_Class1",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },
@@ -6211,7 +6211,7 @@
             "f_type": "type(class2)",
             "flat_name": "classes_Class2",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },
@@ -6245,7 +6245,7 @@
             "f_type": "type(data)",
             "flat_name": "classes_Data",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },
@@ -6285,7 +6285,7 @@
             "f_type": "type(shape)",
             "flat_name": "classes_Shape",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },
@@ -6325,7 +6325,7 @@
             "f_type": "type(singleton)",
             "flat_name": "classes_Singleton",
             "i_module": {
-                "--import--": [
+                "classes_mod": [
                     "CLA_SHROUD_capsule_data"
                 ]
             },

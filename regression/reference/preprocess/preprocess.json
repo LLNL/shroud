@@ -611,7 +611,7 @@
             "f_type": "type(user1)",
             "flat_name": "User1",
             "i_module": {
-                "--import--": [
+                "preprocess_mod": [
                     "PRE_SHROUD_capsule_data"
                 ]
             },
@@ -650,7 +650,7 @@
             "f_type": "type(user2)",
             "flat_name": "User2",
             "i_module": {
-                "--import--": [
+                "preprocess_mod": [
                     "PRE_SHROUD_capsule_data"
                 ]
             },

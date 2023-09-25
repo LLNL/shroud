@@ -6781,7 +6781,7 @@
             "f_type": "type(struct_as_class)",
             "flat_name": "StructAsClass",
             "i_module": {
-                "--import--": [
+                "generic_mod": [
                     "GEN_SHROUD_capsule_data"
                 ]
             },

@@ -951,7 +951,7 @@
             "f_type": "type(class2)",
             "flat_name": "Class2",
             "i_module": {
-                "--import--": [
+                "library_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
@@ -1026,7 +1026,7 @@
             "f_type": "type(class0)",
             "flat_name": "outer1_class0",
             "i_module": {
-                "--import--": [
+                "library_outer1_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
@@ -1060,7 +1060,7 @@
             "f_type": "type(class0)",
             "flat_name": "outer2_class0",
             "i_module": {
-                "--import--": [
+                "library_outer2_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
@@ -1095,7 +1095,7 @@
             "f_type": "type(class1)",
             "flat_name": "three_Class1",
             "i_module": {
-                "--import--": [
+                "library_three_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },

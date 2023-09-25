@@ -3587,7 +3587,7 @@
             "f_type": "type(class1)",
             "flat_name": "Class1",
             "i_module": {
-                "--import--": [
+                "defaultarg_mod": [
                     "DEF_SHROUD_capsule_data"
                 ]
             },

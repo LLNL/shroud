@@ -4393,7 +4393,7 @@
             "f_type": "type(class1)",
             "flat_name": "CAPI_Class1",
             "i_module": {
-                "--import--": [
+                "testnames_capi_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4457,7 +4457,7 @@
             "f_type": "type(Fstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4494,7 +4494,7 @@
             "f_type": "type(Fstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4531,7 +4531,7 @@
             "f_type": "type(names2)",
             "flat_name": "Names2",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4563,7 +4563,7 @@
             "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
             "i_module": {
-                "--import--": [
+                "testnames_internal_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4601,7 +4601,7 @@
             "f_type": "type(FNames)",
             "flat_name": "ns0_Names",
             "i_module": {
-                "--import--": [
+                "name_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4639,7 +4639,7 @@
             "f_type": "type(FFvvv1)",
             "flat_name": "std_vector_int",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4679,7 +4679,7 @@
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4718,7 +4718,7 @@
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4757,7 +4757,7 @@
             "f_type": "type(vector_instantiation3)",
             "flat_name": "std_vector_internal_ImplWorker1",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4796,7 +4796,7 @@
             "f_type": "type(vector_instantiation5)",
             "flat_name": "std_vector_long",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4834,7 +4834,7 @@
             "f_type": "type(two_ts)",
             "flat_name": "twoTs",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4871,7 +4871,7 @@
             "f_type": "type(two_ts_0)",
             "flat_name": "twoTs_int,_long",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
@@ -4908,7 +4908,7 @@
             "f_type": "type(two_ts_instantiation4)",
             "flat_name": "twoTs_float,_double",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },

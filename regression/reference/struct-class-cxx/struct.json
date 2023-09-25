@@ -3444,7 +3444,7 @@
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "STR_SHROUD_capsule_data"
                 ]
             },
@@ -3478,7 +3478,7 @@
             "f_type": "type(cstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "STR_SHROUD_capsule_data"
                 ]
             },
