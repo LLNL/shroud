@@ -1210,9 +1210,9 @@ rv = .false.
         spointer = ast.declarator.get_indirect_stmt()
         c_stmts = ["f", sintent, sgroup, spointer, result_api,
                    r_meta["deref"]] + specialize
-        c_result_blk = statements.lookup_fc_stmts(c_stmts)
-        c_result_blk = statements.lookup_local_stmts(
-            ["c", result_api], c_result_blk, node)
+        result_stmt = statements.lookup_fc_stmts(c_stmts)
+        result_stmt = statements.lookup_local_stmts(
+            ["c", result_api], result_stmt, node)
 
         if options.debug:
             generated = self.compute_generated_path(node)
@@ -1225,23 +1225,23 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
-            self.document_stmts(stmts_comments, ast, c_result_blk.name)
-        self.name_temp_vars_c(fmt_func.C_result, c_result_blk, fmt_result)
-        statements.apply_fmtdict_from_stmts(c_result_blk, fmt_result)
+            self.document_stmts(stmts_comments, ast, result_stmt.name)
+        self.name_temp_vars_c(fmt_func.C_result, result_stmt, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
-        if c_result_blk.c_return_type == "void":
+        if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
             fmt_func.F_C_subprogram = "subroutine"
             fmt_func.F_C_result_clause = ""
             subprogram = "subroutine"
-        elif c_result_blk.c_return_type:
+        elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        if c_result_blk.i_result_var:
+        if result_stmt.i_result_var:
             fmt_func.F_result = wformat(
-                c_result_blk.i_result_var, fmt_func)
+                result_stmt.i_result_var, fmt_func)
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1274,21 +1274,21 @@ rv = .false.
             c_stmts = ["f", intent, sgroup, spointer,
                        meta["api"], deref_attr]
             c_stmts.extend(specialize)
-            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+            arg_stmt = statements.lookup_fc_stmts(c_stmts)
 
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
-                self.document_stmts(stmts_comments, arg, c_intent_blk.name)
-            self.name_temp_vars_c(arg_name, c_intent_blk, fmt_arg)
-            statements.apply_fmtdict_from_stmts(c_intent_blk, fmt_result)
+                self.document_stmts(stmts_comments, arg, arg_stmt.name)
+            self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_result)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
                 arg,
-                c_intent_blk,
+                arg_stmt,
                 modules,
                 imports,
                 arg_c_names,
@@ -1300,7 +1300,7 @@ rv = .false.
             node, fileinfo,
             fmt_result,
             ast,
-            c_result_blk,
+            result_stmt,
             modules,
             imports,
             arg_c_names,
@@ -1322,13 +1322,13 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            if c_result_blk.i_result_decl is not None:
-                for arg in c_result_blk.i_result_decl:
+            if result_stmt.i_result_decl is not None:
+                for arg in result_stmt.i_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
-                self.add_i_module_from_stmts(c_result_blk, modules, imports, fmt_result)
-            elif c_result_blk.c_return_type:
+                self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
+            elif result_stmt.c_return_type:
                 # Return type changed by user.
-                ntypemap = self.symtab.lookup_typemap(c_result_blk.c_return_type)
+                ntypemap = self.symtab.lookup_typemap(result_stmt.c_return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
@@ -1701,16 +1701,14 @@ rv = .false.
                        return_deref_attr, r_attrs["owner"]] + specialize
         fmt_func.F_subprogram = subprogram
 
-        f_result_blk = statements.lookup_fc_stmts(f_stmts)
-        f_result_blk = statements.lookup_local_stmts("f", f_result_blk, node)
-        fmt_result.stmtf = f_result_blk.name
+        result_stmt = statements.lookup_fc_stmts(f_stmts)
+        result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
+        fmt_result.stmtf = result_stmt.name
 
-        c_result_blk = f_result_blk
-
-        self.name_temp_vars_f(fmt_func.C_result, f_result_blk, fmt_result)
+        self.name_temp_vars_f(fmt_func.C_result, result_stmt, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
-        statements.apply_fmtdict_from_stmts(f_result_blk, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         if options.debug:
             if node.C_generated_path:
@@ -1722,23 +1720,23 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
-            self.document_stmts(stmts_comments, ast, f_result_blk.name)
+            self.document_stmts(stmts_comments, ast, result_stmt.name)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
 
-        if c_result_blk.c_return_type == "void":
+        if result_stmt.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
-        if f_result_blk.f_result:
-            if f_result_blk.f_result == "subroutine":
+        if result_stmt.f_result:
+            if result_stmt.f_result == "subroutine":
                 fmt_func.F_subprogram = "subroutine"
                 fmt_func.F_result_clause = ""
             else:
                 # Change a subroutine into function.
                 fmt_func.F_subprogram = "function"
-                fmt_func.F_result = f_result_blk.f_result
+                fmt_func.F_result = result_stmt.f_result
                 fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         if cls:
@@ -1804,12 +1802,11 @@ rv = .false.
             f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
             f_stmts.extend(specialize)
 
-            f_intent_blk = statements.lookup_fc_stmts(f_stmts)
-            c_intent_blk = f_intent_blk
-            self.name_temp_vars_f(arg_name, f_intent_blk, fmt_arg)
+            arg_stmt = statements.lookup_fc_stmts(f_stmts)
+            self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
-            statements.apply_fmtdict_from_stmts(f_intent_blk, fmt_result)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_result)
 
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
@@ -1869,13 +1866,13 @@ rv = .false.
                 # Argument is not passed into Fortran.
                 # hidden value is used in C wrapper.
                 continue
-            elif f_intent_blk.f_arg_decl:
+            elif arg_stmt.f_arg_decl:
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
-                    f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
-                if not f_result_blk.f_arg_name:
+                    arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
+                if not result_stmt.f_arg_name:
                     arg_f_names.append(fmt_arg.f_var)
-                self.add_f_module_from_stmts(f_result_blk, modules, fmt_arg)
+                self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
                 if options.F_default_args == "optional" and c_arg.declarator.init is not None:
@@ -1884,13 +1881,13 @@ rv = .false.
                 arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
-            fmt_arg.stmtf = f_intent_blk.name
+            fmt_arg.stmtf = arg_stmt.name
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 f_decl = f_arg.gen_decl()
                 stmts_comments.append("! Argument:  " + f_decl)
-                self.document_stmts(stmts_comments, f_arg, f_intent_blk.name)
+                self.document_stmts(stmts_comments, f_arg, arg_stmt.name)
                 c_decl = c_arg.gen_decl()
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
@@ -1921,7 +1918,7 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
-                f_intent_blk,
+                arg_stmt,
                 modules,
                 arg_c_call,
                 need_wrapper,
@@ -1930,7 +1927,7 @@ rv = .false.
             need_wrapper = self.add_code_from_statements(
                 need_wrapper, fileinfo,
                 fmt_arg,
-                f_intent_blk,
+                arg_stmt,
                 modules,
                 declare,
                 pre_call,
@@ -1946,13 +1943,13 @@ rv = .false.
             C_node.ast,
             ast,
             result_typemap,
-            f_result_blk,
+            result_stmt,
             modules,
             arg_c_call,
             need_wrapper,
         )
         found_arg_decl_ret = self.add_stmt_declaration(
-            f_result_blk, arg_f_decl, arg_f_names, fmt_result)
+            result_stmt, arg_f_decl, arg_f_names, fmt_result)
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value
@@ -2037,8 +2034,8 @@ rv = .false.
         if "f" in node.splicer:
             need_wrapper = True
             F_force = node.splicer["f"]
-        elif f_result_blk.f_call:
-            call_list = f_result_blk.f_call
+        elif result_stmt.f_call:
+            call_list = result_stmt.f_call
         elif C_subprogram == "function":
             call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
@@ -2051,7 +2048,7 @@ rv = .false.
             need_wrapper = self.add_code_from_statements(
                 need_wrapper, fileinfo,
                 fmt_result,
-                f_result_blk,
+                result_stmt,
                 modules,
                 declare,
                 pre_call,
@@ -2072,7 +2069,7 @@ rv = .false.
             need_wrapper = self.add_code_from_statements(
                 need_wrapper, fileinfo,
                 fmt_result,
-                f_result_blk,
+                result_stmt,
                 modules,
                 declare,
                 pre_call,
