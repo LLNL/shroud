@@ -132,7 +132,7 @@ module forward_mod
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)
         ! Statement: f_in_struct_*
-        function c_pass_struct1(arg) &
+        function pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_passStruct1")
             use iso_c_binding, only : C_INT
@@ -140,7 +140,7 @@ module forward_mod
             implicit none
             type(cstruct1), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
-        end function c_pass_struct1
+        end function pass_struct1
     end interface
 
     interface class2
@@ -262,6 +262,8 @@ contains
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! Attrs:     +intent(function)
@@ -280,6 +282,7 @@ contains
         SHT_rv = c_pass_struct1(arg)
         ! splicer end function.pass_struct1
     end function pass_struct1
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

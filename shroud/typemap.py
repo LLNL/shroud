@@ -1207,7 +1207,6 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
         c_type=cxx_name,
         cxx_type=cxx_name,
         f_type = "type(%s)" % cxx_name,
-        f_to_c="{f_var}",
     )
     ntypemap.update(fields)
 

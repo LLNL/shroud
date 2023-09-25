@@ -702,7 +702,7 @@
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_pass_struct1",
-                    "F_C_name": "c_pass_struct1",
+                    "F_C_name": "pass_struct1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "arg",
@@ -785,7 +785,6 @@
                 ]
             },
             "f_module_name": "struct_mod",
-            "f_to_c": "{f_var}",
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "sgroup": "struct",
