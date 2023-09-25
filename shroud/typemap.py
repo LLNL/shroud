@@ -1293,7 +1293,7 @@ def fill_struct_typemap(node, fields={}):
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
     if "i_module" not in fields:
-        ntypemap.i_module = {"--import--": [ntypemap.f_derived_type]}
+        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
         
     if ntypemap.cxx_type and not ntypemap.flat_name:
             ntypemap.compute_flat_name()

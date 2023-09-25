@@ -797,7 +797,7 @@
             "f_type": "type(struct1_rename)",
             "flat_name": "s_Struct1",
             "i_module": {
-                "--import--": [
+                "typedefs_mod": [
                     "struct1_rename"
                 ]
             },

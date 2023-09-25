@@ -2406,7 +2406,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns1_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns1_mod": [
                     "data_pointer"
                 ]
             },
@@ -2460,7 +2460,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns2_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns2_mod": [
                     "data_pointer"
                 ]
             },
@@ -2514,7 +2514,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns3_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns3_mod": [
                     "data_pointer"
                 ]
             },

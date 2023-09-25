@@ -6266,7 +6266,7 @@
             "f_type": "type(array_info)",
             "flat_name": "array_info",
             "i_module": {
-                "--import--": [
+                "clibrary_mod": [
                     "array_info"
                 ]
             },

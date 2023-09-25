@@ -122,7 +122,8 @@ module scope_mod
         ! Statement: f_in_struct_*
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
                 bind(C, name="SCO_DataPointer_get_items_bufferify")
-            import :: SCO_SHROUD_array, data_pointer
+            use scope_ns3_mod, only : data_pointer
+            import :: SCO_SHROUD_array
             implicit none
             type(data_pointer), intent(IN) :: SH_this
             type(SCO_SHROUD_array), intent(OUT) :: SHT_rv
@@ -144,7 +145,7 @@ module scope_mod
         subroutine data_pointer_set_items(SH_this, val) &
                 bind(C, name="SCO_DataPointer_set_items")
             use iso_c_binding, only : C_INT
-            import :: data_pointer
+            use scope_ns3_mod, only : data_pointer
             implicit none
             type(data_pointer), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)

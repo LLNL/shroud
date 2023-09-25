@@ -835,7 +835,7 @@
             "f_type": "type(cstruct1)",
             "flat_name": "outer_Cstruct1",
             "i_module": {
-                "--import--": [
+                "ns_outer_mod": [
                     "cstruct1"
                 ]
             },

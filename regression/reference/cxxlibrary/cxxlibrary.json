@@ -2827,7 +2827,7 @@
             "f_type": "type(cstruct1_cls)",
             "flat_name": "Cstruct1_cls",
             "i_module": {
-                "--import--": [
+                "cxxlibrary_mod": [
                     "cstruct1_cls"
                 ]
             },
@@ -2859,7 +2859,7 @@
             "f_type": "type(cstruct1)",
             "flat_name": "structns_Cstruct1",
             "i_module": {
-                "--import--": [
+                "cxxlibrary_structns_mod": [
                     "cstruct1"
                 ]
             },

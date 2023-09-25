@@ -2332,7 +2332,7 @@
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "arrays1"
                 ]
             },
@@ -2364,7 +2364,7 @@
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct1"
                 ]
             },
@@ -2464,7 +2464,7 @@
             "f_type": "type(cstruct_list)",
             "flat_name": "Cstruct_list",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_list"
                 ]
             },
@@ -2496,7 +2496,7 @@
             "f_type": "type(cstruct_numpy)",
             "flat_name": "Cstruct_numpy",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_numpy"
                 ]
             },
@@ -2528,7 +2528,7 @@
             "f_type": "type(cstruct_ptr)",
             "flat_name": "Cstruct_ptr",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_ptr"
                 ]
             },

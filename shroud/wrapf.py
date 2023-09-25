@@ -1044,7 +1044,7 @@ rv = .false.
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
                 iface.append(1)
-                arg_f_use = self.sort_module_info(modules, None)
+                arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
                 iface.extend(arg_f_use)
                 if imports:
                     iface.append("import :: " + ",\t ".join(sorted(imports.keys())))
