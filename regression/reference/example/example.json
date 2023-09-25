@@ -120,7 +120,6 @@
                                                 "f_type": "type(ex_class1)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                                             },
@@ -322,7 +321,6 @@
                                                 "f_type": "type(ex_class1)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
@@ -508,7 +506,6 @@
                                                 "f_type": "type(ex_class1)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                                             }
@@ -2119,7 +2116,6 @@
                                                 "f_type": "type(ex_class2)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
@@ -2305,7 +2301,6 @@
                                                 "f_type": "type(ex_class2)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                                             }
@@ -3433,7 +3428,6 @@
                                                     "f_type": "type(ex_class1)",
                                                     "f_type_module": "userlibrary_example_nested_mod",
                                                     "f_var": "in",
-                                                    "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmtf": "f_in_shadow_*"
                                                 },
@@ -3533,7 +3527,6 @@
                                                 "f_type": "type(ex_class1)",
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmtf": "f_function_shadow_*_capptr"
                                             },
@@ -3854,7 +3847,6 @@
                                                     "f_type": "integer(type_id)",
                                                     "f_type_module": "userlibrary_mod",
                                                     "f_var": "type",
-                                                    "i_module_line": "--import--:type_id",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtf": "f_in_native_scalar"
                                                 }
@@ -4478,7 +4470,6 @@
                                                     "f_type": "integer(sidre_length)",
                                                     "f_type_module": "userlibrary_mod",
                                                     "f_var": "len",
-                                                    "i_module_line": "--import--:sidre_length",
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmtf": "f_in_native_scalar"
                                                 }
@@ -4511,7 +4502,6 @@
                                                     "f_type": "integer(type_id)",
                                                     "f_type_module": "userlibrary_mod",
                                                     "f_var": "type",
-                                                    "i_module_line": "--import--:type_id",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtf": "f_in_native_scalar"
                                                 }
@@ -4858,7 +4848,6 @@
                                                 "f_type": "integer(type_id)",
                                                 "f_type_module": "userlibrary_mod",
                                                 "f_var": "SHT_rv",
-                                                "i_module_line": "--import--:type_id",
                                                 "sh_type": "SH_TYPE_INT",
                                                 "stmtf": "f_function_native_scalar"
                                             },
@@ -11246,7 +11235,6 @@
                     "sidre_length"
                 ]
             },
-            "f_module_line": "userlibrary_mod:sidre_length",
             "f_module_name": "userlibrary_mod",
             "f_type": "integer(sidre_length)",
             "flat_name": "long",
@@ -11255,7 +11243,6 @@
                     "sidre_length"
                 ]
             },
-            "i_module_line": "--import--:sidre_length",
             "sgroup": "native",
             "sh_type": "SH_TYPE_LONG",
             "typedef": "long",
@@ -11290,7 +11277,6 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "userlibrary_mod:type_id",
             "f_module_name": "userlibrary_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
@@ -11299,7 +11285,6 @@
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -11329,7 +11314,6 @@
                     "ex_class1"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:ex_class1",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(ex_class1)",
@@ -11339,7 +11323,6 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:AA_SHROUD_capsule_data",
             "i_type": "type(AA_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -11371,7 +11354,6 @@
                     "ex_class2"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:ex_class2",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(ex_class2)",
@@ -11381,7 +11363,6 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:AA_SHROUD_capsule_data",
             "i_type": "type(AA_SHROUD_capsule_data)",
             "idtor": "2",
             "impl_header": [
@@ -11408,7 +11389,6 @@
                     "ex_class2_nested"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:ex_class2_nested",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(ex_class2_nested)",
@@ -11418,7 +11398,6 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:AA_SHROUD_capsule_data",
             "i_type": "type(AA_SHROUD_capsule_data)",
             "impl_header": [
                 "ExClass2.hpp"

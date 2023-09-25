@@ -792,7 +792,6 @@
                     "class_work"
                 ]
             },
-            "f_module_line": "ns_nswork_mod:class_work",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class_work)",
@@ -802,7 +801,6 @@
                     "NS_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:NS_SHROUD_capsule_data",
             "i_type": "type(NS_SHROUD_capsule_data)",
             "impl_header": [
                 "namespace.hpp"

@@ -2465,7 +2465,6 @@
                     ""
                 ]
             },
-            "f_module_line": "tutorial_mod:",
             "f_module_name": "tutorial_mod",
             "f_type": "integer()",
             "flat_name": "int",
@@ -2474,7 +2473,6 @@
                     ""
                 ]
             },
-            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -2501,7 +2499,6 @@
                     ""
                 ]
             },
-            "f_module_line": "tutorial_mod:",
             "f_module_name": "tutorial_mod",
             "f_type": "integer()",
             "flat_name": "int",
@@ -2510,7 +2507,6 @@
                     ""
                 ]
             },
-            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

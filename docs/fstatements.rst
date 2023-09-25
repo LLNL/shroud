@@ -172,21 +172,11 @@ Fortran modules used in the Fortran wrapper:
 
 .. code-block:: yaml
 
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        f_module:
+          iso_c_binding:
+          - C_PTR
 
-f_module_line
-^^^^^^^^^^^^^
-
-Fortran modules used in the Fortran wrapper as a single line
-which allows format strings to be used.
-
-.. code-block:: yaml
-
-        f_module_line="iso_c_binding:{f_kind}",
-
-The format is::
-
-     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
+Fields will be expanded using the format dictionary before being used.
 
 f_pre_call
 ^^^^^^^^^^

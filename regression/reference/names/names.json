@@ -2556,7 +2556,6 @@
                             "f_type": "type(Fstruct_as_class)",
                             "f_type_module": "top_module",
                             "f_var": "point",
-                            "i_module_line": "--import--:TES_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_shadow_*"
                         },
@@ -3220,7 +3219,6 @@
                                         "f_type": "type(FNames)",
                                         "f_type_module": "name_module",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TES_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -4390,7 +4388,6 @@
                     "class1"
                 ]
             },
-            "f_module_line": "testnames_capi_mod:class1",
             "f_module_name": "testnames_capi_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
@@ -4400,7 +4397,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4456,7 +4452,6 @@
                     "Fstruct_as_class"
                 ]
             },
-            "f_module_line": "top_module:Fstruct_as_class",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_class)",
@@ -4466,7 +4461,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4495,7 +4489,6 @@
                     "Fstruct_as_subclass"
                 ]
             },
-            "f_module_line": "top_module:Fstruct_as_subclass",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_subclass)",
@@ -4505,7 +4498,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4534,7 +4526,6 @@
                     "names2"
                 ]
             },
-            "f_module_line": "top_module:names2",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(names2)",
@@ -4544,7 +4535,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4568,7 +4558,6 @@
                     "impl_worker1"
                 ]
             },
-            "f_module_line": "testnames_internal_mod:impl_worker1",
             "f_module_name": "testnames_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker1)",
@@ -4578,7 +4567,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4608,7 +4596,6 @@
                     "FNames"
                 ]
             },
-            "f_module_line": "name_module:FNames",
             "f_module_name": "name_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FNames)",
@@ -4618,7 +4605,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [],
@@ -4648,7 +4634,6 @@
                     "FFvvv1"
                 ]
             },
-            "f_module_line": "testnames_std_mod:FFvvv1",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FFvvv1)",
@@ -4658,7 +4643,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4690,7 +4674,6 @@
                     "vector"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
@@ -4700,7 +4683,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4731,7 +4713,6 @@
                     "vector_double"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_double",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
@@ -4741,7 +4722,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4772,7 +4752,6 @@
                     "vector_instantiation3"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_instantiation3",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation3)",
@@ -4782,7 +4761,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4813,7 +4791,6 @@
                     "vector_instantiation5"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_instantiation5",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation5)",
@@ -4823,7 +4800,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4853,7 +4829,6 @@
                     "two_ts"
                 ]
             },
-            "f_module_line": "top_module:two_ts",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts)",
@@ -4863,7 +4838,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4892,7 +4866,6 @@
                     "two_ts_0"
                 ]
             },
-            "f_module_line": "top_module:two_ts_0",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts_0)",
@@ -4902,7 +4875,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4931,7 +4903,6 @@
                     "two_ts_instantiation4"
                 ]
             },
-            "f_module_line": "top_module:two_ts_instantiation4",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts_instantiation4)",
@@ -4941,7 +4912,6 @@
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",

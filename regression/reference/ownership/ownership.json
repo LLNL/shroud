@@ -3685,7 +3685,6 @@
                         "f_type": "type(class1)",
                         "f_type_module": "ownership_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_*_capptr_library"
                     },
@@ -3869,7 +3868,6 @@
                         "f_type": "type(class1)",
                         "f_type_module": "ownership_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_*_capptr_caller"
                     },
@@ -3932,7 +3930,6 @@
                     "class1"
                 ]
             },
-            "f_module_line": "ownership_mod:class1",
             "f_module_name": "ownership_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
@@ -3942,7 +3939,6 @@
                     "OWN_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:OWN_SHROUD_capsule_data",
             "i_type": "type(OWN_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [

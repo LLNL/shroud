@@ -190,7 +190,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
-                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -220,7 +219,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
-                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -393,7 +391,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
-                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_native_*"
                         }
@@ -578,7 +575,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
-                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_native_*"
                         }
@@ -752,7 +748,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
-                            "i_module_line": "typemap_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1009,7 +1004,6 @@
                             "f_type": "real(FLOATTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "f1",
-                            "i_module_line": "typemap_mod:FLOATTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }

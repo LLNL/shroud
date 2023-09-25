@@ -4818,7 +4818,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "tutorial_mod",
                             "f_var": "arg",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -4906,7 +4905,6 @@
                         "f_type": "integer(type_id)",
                         "f_type_module": "tutorial_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:type_id",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     },
@@ -5010,7 +5008,6 @@
                             "f_type": "integer(enum_type_id)",
                             "f_type_module": "tutorial_mod",
                             "f_var": "arg",
-                            "i_module_line": "--import--:enum_type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -5102,7 +5099,6 @@
                         "f_type": "integer(enum_type_id)",
                         "f_type_module": "tutorial_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:enum_type_id",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     },
@@ -6150,7 +6146,6 @@
                     "enum_type_id"
                 ]
             },
-            "f_module_line": "tutorial_mod:enum_type_id",
             "f_module_name": "tutorial_mod",
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
@@ -6159,7 +6154,6 @@
                     "enum_type_id"
                 ]
             },
-            "i_module_line": "--import--:enum_type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -6186,7 +6180,6 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "tutorial_mod:type_id",
             "f_module_name": "tutorial_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
@@ -6195,7 +6188,6 @@
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

@@ -182,7 +182,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -254,7 +253,6 @@
                         "f_type": "integer(type_id)",
                         "f_type_module": "typedefs_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:type_id",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     },
@@ -349,7 +347,6 @@
                             "f_type": "type(struct1_rename)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg1",
-                            "i_module_line": "--import--:struct1_rename",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
                         },
@@ -471,7 +468,6 @@
                             "f_type": "integer(index_type)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
-                            "i_module_line": "--import--:index_type",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -690,7 +686,6 @@
                     "index_type"
                 ]
             },
-            "f_module_line": "typedefs_mod:index_type",
             "f_module_name": "typedefs_mod",
             "f_type": "integer(index_type)",
             "flat_name": "int32_t",
@@ -699,7 +694,6 @@
                     "index_type"
                 ]
             },
-            "i_module_line": "--import--:index_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT32_T",
             "typedef": "int32_t",
@@ -726,7 +720,6 @@
                     "struct1_rename"
                 ]
             },
-            "f_module_line": "typedefs_mod:struct1_rename",
             "f_module_name": "typedefs_mod",
             "f_type": "type(struct1_rename)",
             "flat_name": "s_Struct1",
@@ -735,7 +728,6 @@
                     "struct1_rename"
                 ]
             },
-            "i_module_line": "--import--:struct1_rename",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT",
             "typedef": "s_Struct1",
@@ -762,7 +754,6 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "typedefs_mod:type_id",
             "f_module_name": "typedefs_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
@@ -771,7 +762,6 @@
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

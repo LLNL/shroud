@@ -488,7 +488,6 @@
                                 "f_type": "type(struct_as_class_int)",
                                 "f_type_module": "templates_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -1087,7 +1086,6 @@
                                 "f_type": "type(struct_as_class_double)",
                                 "f_type_module": "templates_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -1702,7 +1700,6 @@
                         "f_type": "type(user_int)",
                         "f_type_module": "templates_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_scalar_capptr_targ_native_scalar"
                     }
@@ -2720,7 +2717,6 @@
                                         "f_type": "type(vector_int)",
                                         "f_type_module": "templates_std_mod",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -3118,7 +3114,6 @@
                                             "f_type": "integer(vector_int_size_type)",
                                             "f_type_module": "templates_std_mod",
                                             "f_var": "n",
-                                            "i_module_line": "--import--:vector_int_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmtf": "f_in_native_scalar"
                                         },
@@ -3395,7 +3390,6 @@
                                         "f_type": "type(vector_double)",
                                         "f_type_module": "templates_std_mod",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -3793,7 +3787,6 @@
                                             "f_type": "integer(vector_double_size_type)",
                                             "f_type_module": "templates_std_mod",
                                             "f_var": "n",
-                                            "i_module_line": "--import--:vector_double_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmtf": "f_in_native_scalar"
                                         },
@@ -4174,7 +4167,6 @@
                     "worker"
                 ]
             },
-            "f_module_line": "templates_mod:worker",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(worker)",
@@ -4184,7 +4176,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4215,7 +4206,6 @@
                     "impl_worker1"
                 ]
             },
-            "f_module_line": "templates_internal_mod:impl_worker1",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker1)",
@@ -4225,7 +4215,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker1.hpp"
@@ -4256,7 +4245,6 @@
                     "impl_worker2"
                 ]
             },
-            "f_module_line": "templates_internal_mod:impl_worker2",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker2)",
@@ -4266,7 +4254,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker2.hpp"
@@ -4296,7 +4283,6 @@
                     "vector"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
@@ -4306,7 +4292,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4339,7 +4324,6 @@
                     "vector_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_size_type",
             "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_size_type)",
             "flat_name": "size_t",
@@ -4348,7 +4332,6 @@
                     "vector_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4379,7 +4362,6 @@
                     "vector_double_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_double_size_type",
             "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_double_size_type)",
             "flat_name": "size_t",
@@ -4388,7 +4370,6 @@
                     "vector_double_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_double_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4419,7 +4400,6 @@
                     "vector_int_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_int_size_type",
             "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_int_size_type)",
             "flat_name": "size_t",
@@ -4428,7 +4408,6 @@
                     "vector_int_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_int_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4457,7 +4436,6 @@
                     "vector_double"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_double",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
@@ -4467,7 +4445,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "2",
             "impl_header": [
@@ -4499,7 +4476,6 @@
                     "vector_int"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_int",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_int)",
@@ -4509,7 +4485,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -4540,7 +4515,6 @@
                     "struct_as_class"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class)",
@@ -4550,7 +4524,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4576,7 +4549,6 @@
                     "struct_as_class_double"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class_double",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_double)",
@@ -4586,7 +4558,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "4",
             "impl_header": [
@@ -4613,7 +4584,6 @@
                     "struct_as_class_int"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class_int",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_int)",
@@ -4623,7 +4593,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "3",
             "impl_header": [
@@ -4653,7 +4622,6 @@
                     "user"
                 ]
             },
-            "f_module_line": "templates_mod:user",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user)",
@@ -4663,7 +4631,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4694,7 +4661,6 @@
                     "user_int"
                 ]
             },
-            "f_module_line": "templates_mod:user_int",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user_int)",
@@ -4704,7 +4670,6 @@
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "5",
             "impl_header": [

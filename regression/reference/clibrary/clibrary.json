@@ -6194,7 +6194,6 @@
                     "enum_type_id"
                 ]
             },
-            "f_module_line": "clibrary_mod:enum_type_id",
             "f_module_name": "clibrary_mod",
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
@@ -6203,7 +6202,6 @@
                     "enum_type_id"
                 ]
             },
-            "i_module_line": "--import--:enum_type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -6230,7 +6228,6 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "clibrary_mod:type_id",
             "f_module_name": "clibrary_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
@@ -6239,7 +6236,6 @@
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

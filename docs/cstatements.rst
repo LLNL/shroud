@@ -33,7 +33,7 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     {F_C_subprogram} {F_C_name}({F_C_arguments}) &
         {F_C_result_clause} &
         bind(C, name="{C_name}")
-        i_module / i_module_line
+        i_module
         i_import
         i_arg_decl
         i_result_decl
@@ -226,22 +226,11 @@ Fortran modules used in the Fortran interface:
 
 .. code-block:: yaml
 
-        i_module=dict(iso_c_binding=["C_PTR"]),
+        i_module:
+          iso_c_binding:
+          - C_PTR
 
-i_module_line
-^^^^^^^^^^^^^
-
-Fortran modules used in the Fortran interface as a single line
-which allows format strings to be used.
-
-.. code-block:: yaml
-
-        i_module_line="iso_c_binding:{f_kind}",
-
-The format is::
-
-     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
-
+Fields will be expanded using the format dictionary before being used.
 
 c_arg_call
 ^^^^^^^^^^

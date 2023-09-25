@@ -606,7 +606,6 @@
                     "user1"
                 ]
             },
-            "f_module_line": "preprocess_mod:user1",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
@@ -616,7 +615,6 @@
                     "PRE_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
             "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "preprocess.hpp"
@@ -647,7 +645,6 @@
                     "user2"
                 ]
             },
-            "f_module_line": "preprocess_mod:user2",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",
@@ -657,7 +654,6 @@
                     "PRE_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
             "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "User2.hpp"

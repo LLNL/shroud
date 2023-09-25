@@ -38,28 +38,6 @@ except:
 
 void_typemap = None
 
-def flatten_modules_to_line(modules):
-    """Flatten modules dictionary into a line.
-
-    This line can then be used in fc_statements to add module info.
-    The flattend line looks like:
-        module ":" symbol [ "," symbol ]*
-        [ ";" module ":" symbol [ "," symbol ]* ]
-
-    Parameters
-    ----------
-    modules : dictionary of dictionaries:
-        modules['iso_c_bindings'] = ['C_INT', ...]
-    """
-    if modules is None:
-        return None
-    line = []
-    for mname, symbols in modules.items():
-        if mname == "__line__":
-            continue
-        symbolslst = ",".join(symbols)
-        line.append("{}:{}".format(mname, symbolslst))
-    return ";".join(line)
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -121,13 +99,11 @@ class Typemap(object):
         ("f_to_c", None),  # Expression to convert from Fortran to C
         ("i_type", None),  # Type for C interface    -- int
         ("i_module", None), # Fortran modules needed for interface  (dictionary)
-        ("i_module_line", None),
         ("f_module_name", None), # Name of module which contains f_type
                                  # and f_derived_type and f_capsule_data_type
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
-        ("f_module_line", None),
         ("f_cast", "{f_var}"),  # Expression to convert to type
                                 # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
@@ -216,8 +192,6 @@ class Typemap(object):
 
     def finalize(self):
         """Compute some fields based on other fields."""
-        self.i_module_line = flatten_modules_to_line(self.i_module or self.f_module)
-        self.f_module_line = flatten_modules_to_line(self.f_module)
         if self.cxx_type and not self.flat_name:
             # Do not override an explicitly set value.
             self.compute_flat_name()

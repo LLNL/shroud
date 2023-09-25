@@ -1492,10 +1492,6 @@ f_assumed_shape
    May also be set to ``(..)`` when attribute *+dimension(..)* is used
    and option *F_CFI* is True.
 
-f_c_module_line
-    Typemap.f_c_module in a format usable by FStmts.f_module_line.
-    The dictionary is converted into the string.
-
 f_capsule_data_type
     The name of the derived type used to share memory information with C or C++.
     *F_capsule_data_type* for the argument type.
@@ -1530,7 +1526,7 @@ f_get_shape_array
 
 f_kind
     Value from typemap.  ex ``C_INT``.
-    Can be used in *CStmts.f_module_line*.
+    Can be used in *CStmts.f_module*.
 
 f_pointer_shape
 
@@ -1555,9 +1551,6 @@ fhelper_*
 i_dimension
     Dimension used in ``bind(C)`` interface.
     May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
-
-i_module_line
-    Used with Fortran interface.
 
 i_type
     Used with Fortran interface.

@@ -654,7 +654,6 @@ CStmts = util.Scope(
     i_result_decl=None,
     i_result_var=None,
     i_module=None,
-    i_module_line=None,
     i_import=None,
 
     notimplemented=False,
@@ -667,7 +666,6 @@ FStmts = util.Scope(
     intent=None,
     f_helper=[],
     f_module=None,
-    f_module_line=None,
     f_import=None,
     f_need_wrapper=False,
     f_arg_name=None,

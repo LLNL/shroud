@@ -150,7 +150,6 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -344,7 +343,6 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -590,7 +588,6 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -1612,7 +1609,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1739,7 +1735,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1770,7 +1765,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1919,7 +1913,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1950,7 +1943,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1981,7 +1973,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2107,7 +2098,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2140,7 +2130,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2283,7 +2272,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2314,7 +2302,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2347,7 +2334,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2512,7 +2498,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2543,7 +2528,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2574,7 +2558,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2607,7 +2590,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2746,7 +2728,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2777,7 +2758,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2808,7 +2788,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2963,7 +2942,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2994,7 +2972,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3025,7 +3002,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3058,7 +3034,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3197,7 +3172,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3229,7 +3203,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3261,7 +3234,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3416,7 +3388,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3448,7 +3419,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3480,7 +3450,6 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3513,7 +3482,6 @@
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3614,7 +3582,6 @@
                     "class1"
                 ]
             },
-            "f_module_line": "defaultarg_mod:class1",
             "f_module_name": "defaultarg_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
@@ -3624,7 +3591,6 @@
                     "DEF_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:DEF_SHROUD_capsule_data",
             "i_type": "type(DEF_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -3656,7 +3622,6 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "defaultarg_mod:type_id",
             "f_module_name": "defaultarg_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
@@ -3665,7 +3630,6 @@
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

@@ -3948,7 +3948,6 @@
                         "f_type": "type(cstruct_as_class)",
                         "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_*_capptr"
                     }
@@ -4133,7 +4132,6 @@
                         "f_type": "type(cstruct_as_class)",
                         "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_*_capptr"
                     }
@@ -4221,7 +4219,6 @@
                             "f_type": "type(cstruct_as_class)",
                             "f_type_module": "struct_mod",
                             "f_var": "point",
-                            "i_module_line": "--import--:STR_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_shadow_*"
                         }
@@ -4504,7 +4501,6 @@
                         "f_type": "type(cstruct_as_subclass)",
                         "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:STR_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_*_capptr"
                     }
@@ -5797,7 +5793,6 @@
                     "cstruct_as_class"
                 ]
             },
-            "f_module_line": "struct_mod:cstruct_as_class",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
@@ -5807,7 +5802,6 @@
                     "STR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:STR_SHROUD_capsule_data",
             "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"
@@ -5833,7 +5827,6 @@
                     "cstruct_as_subclass"
                 ]
             },
-            "f_module_line": "struct_mod:cstruct_as_subclass",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_subclass)",
@@ -5843,7 +5836,6 @@
                     "STR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:STR_SHROUD_capsule_data",
             "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"

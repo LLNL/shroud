@@ -791,9 +791,6 @@ rv = .false.
         """
         if stmt.f_module:
             self.update_f_module(modules, imports, stmt.f_module, fmt)
-        if stmt.f_module_line:
-            self.update_f_module_line(
-                modules, imports, stmt.f_module_line, fmt)
         if stmt.f_import:
             for name in stmt.f_import:
                 iname = wformat(name, fmt)
@@ -813,55 +810,11 @@ rv = .false.
         """
         if stmt.i_module:
             self.update_f_module(modules, imports, stmt.i_module, fmt)
-        if stmt.i_module_line:
-            self.update_f_module_line(
-                modules, imports, stmt.i_module_line, fmt)
         if stmt.i_import:
             for name in stmt.i_import:
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
-    def update_f_module_line(self, modules, imports, line, fmt):
-        """Aggragate the information from f_module_line into modules.
-        
-        line will be formatted using fmt.
-
-        line of the form:
-           module ":" symbol [ "," symbol ]*
-           [ ";" module ":" symbol [ "," symbol ]* ]
-
-        ex: "iso_c_binding:{f_kind}"
-        where fmt.f_kind = 'C_INT'
-        expands to dict(iso_c_binding=['C_INT'])
-
-        Parameters
-        ----------
-        modules : dictionary of dictionaries:
-            modules['iso_c_bindings']['C_INT'] = True
-        imports: dict
-            If the module name is '--import--', add to imports.
-            Useful for interfaces.
-        line : str
-            module dictionary info as a string.
-            Will be formatted using fmt.
-            May be blank after format expansion.
-        fmt : Scope
-        """
-        wline = wformat(line, fmt)
-        wline = wline.replace(" ", "")
-        if not wline:
-            return
-        f_module = {}
-        for use in wline.split(";"):
-            mname, syms = use.split(":")
-            if mname == "--import--":
-                for sym in syms.split(","):
-                    imports[sym] = True
-            else:
-                module = modules.setdefault(mname, {})
-                for sym in syms.split(","):
-                    module[sym] = True
-        
     def update_f_module(self, modules, imports, f_module, fmt):
         """Aggragate the information from f_module into modules.
 
@@ -1593,9 +1546,6 @@ rv = .false.
             fmt.f_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
-        i_module_line = ntypemap.i_module_line or ntypemap.f_module_line
-        if i_module_line:
-            fmt.i_module_line = i_module_line
         if ntypemap.f_derived_type:
             fmt.f_derived_type = ntypemap.f_derived_type
         if ntypemap.f_module_name:
