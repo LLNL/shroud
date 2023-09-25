@@ -4328,7 +4328,7 @@
             "f_type": "integer(vector_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_size_type"
                 ]
             },
@@ -4366,7 +4366,7 @@
             "f_type": "integer(vector_double_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_double_size_type"
                 ]
             },
@@ -4404,7 +4404,7 @@
             "f_type": "integer(vector_int_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_int_size_type"
                 ]
             },

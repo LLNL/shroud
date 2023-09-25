@@ -2469,7 +2469,7 @@
             "f_type": "integer()",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "tutorial_mod": [
                     ""
                 ]
             },
@@ -2503,7 +2503,7 @@
             "f_type": "integer()",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "tutorial_mod": [
                     ""
                 ]
             },

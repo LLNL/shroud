@@ -11239,7 +11239,7 @@
             "f_type": "integer(sidre_length)",
             "flat_name": "long",
             "i_module": {
-                "--import--": [
+                "userlibrary_mod": [
                     "sidre_length"
                 ]
             },
@@ -11281,7 +11281,7 @@
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "userlibrary_mod": [
                     "type_id"
                 ]
             },

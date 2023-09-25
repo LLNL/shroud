@@ -578,7 +578,8 @@ module userlibrary_example_nested_mod
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
-            import :: AA_SHROUD_capsule_data, type_id
+            use userlibrary_mod, only : type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
@@ -599,7 +600,8 @@ module userlibrary_example_nested_mod
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
-            import :: AA_SHROUD_capsule_data, sidre_length, type_id
+            use userlibrary_mod, only : sidre_length, type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
@@ -624,7 +626,8 @@ module userlibrary_example_nested_mod
         pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
-            import :: AA_SHROUD_capsule_data, type_id
+            use userlibrary_mod, only : type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id) :: SHT_rv

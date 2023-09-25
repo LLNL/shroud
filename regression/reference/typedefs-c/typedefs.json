@@ -690,7 +690,7 @@
             "f_type": "integer(index_type)",
             "flat_name": "int32_t",
             "i_module": {
-                "--import--": [
+                "typedefs_mod": [
                     "index_type"
                 ]
             },
@@ -724,7 +724,7 @@
             "f_type": "type(struct1_rename)",
             "flat_name": "s_Struct1",
             "i_module": {
-                "--import--": [
+                "typedefs_mod": [
                     "struct1_rename"
                 ]
             },
@@ -758,7 +758,7 @@
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "typedefs_mod": [
                     "type_id"
                 ]
             },

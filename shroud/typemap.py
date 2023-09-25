@@ -1410,10 +1410,10 @@ def fill_typedef_typemap(node, fields={}):
     if ntypemap.base in ["shadow", "struct"]:
         ntypemap.f_type = "type({})".format(f_name)
     
-    # import names which are wrapped by this module
+    # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules
     ntypemap.f_module = {fmtdict.F_module_name: [f_name]}
-    ntypemap.i_module = {"--import--": [f_name]}
+    ntypemap.i_module = {fmtdict.F_module_name: [f_name]}
     ntypemap.update(fields)
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()

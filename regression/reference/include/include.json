@@ -994,7 +994,7 @@
             "f_type": "integer(custom_type)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "library_mod": [
                     "custom_type"
                 ]
             },

@@ -3626,7 +3626,7 @@
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "defaultarg_mod": [
                     "type_id"
                 ]
             },

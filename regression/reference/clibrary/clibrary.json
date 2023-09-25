@@ -6198,7 +6198,7 @@
             "f_type": "integer(enum_type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "clibrary_mod": [
                     "enum_type_id"
                 ]
             },
@@ -6232,7 +6232,7 @@
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "clibrary_mod": [
                     "type_id"
                 ]
             },
