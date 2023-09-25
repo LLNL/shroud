@@ -90,18 +90,18 @@ root
       bool
         scalar -- f_in_bool_scalar
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_in_char_*_buf
-          capi -- f_defaulttmp_native_scalar
+          capi -- f_shared_native_scalar
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
       native
-        & -- f_defaulttmp_native_scalar
-        * -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
+        * -- f_shared_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in_native_**
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
       shadow
         & -- f_in_shadow_&
         * -- f_in_shadow_*
@@ -114,11 +114,11 @@ root
         scalar -- f_in_string_scalar
           buf -- f_in_string_scalar_buf
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
-        scalar -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
+        scalar -- f_shared_struct
       unknown
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
       vector
         &
           buf
@@ -146,17 +146,17 @@ root
         * -- f_in_void_*
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
     inout
       bool
         * -- f_inout_bool_*
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_inout_char_*_buf
       native
-        & -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
           hidden -- f_out/inout_native_*_hidden
       shadow
@@ -168,8 +168,8 @@ root
         * -- f_inout_string_*/&
           buf -- f_inout_string_*/&_buf
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -225,10 +225,10 @@ root
       bool
         * -- f_out_bool_*
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_out_char_*_buf
       native
-        & -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
         &* -- c_defaulttmp
         * -- f_out_native_*
@@ -237,15 +237,15 @@ root
         *&
           cdesc
             pointer -- f_out_native_*&_cdesc
-          pointer -- f_defaulttmp_native_scalar
+          pointer -- f_shared_native_scalar
         **
-          allocatable -- f_defaulttmp_native_scalar
+          allocatable -- f_shared_native_scalar
           cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
-          pointer -- f_defaulttmp_native_scalar
+          pointer -- f_shared_native_scalar
           raw -- f_out_native_**_raw
-        *** -- f_defaulttmp_native_scalar
+        *** -- f_shared_native_scalar
       string
         & -- f_out_string_*/&
           buf -- f_out_string_*/&_buf
@@ -258,8 +258,8 @@ root
             copy -- f_out_string_**_cdesc_copy
           copy -- f_out_string_**_copy
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
       vector
         &
           cdesc
@@ -286,7 +286,7 @@ root
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
-        *& -- f_defaulttmp_native_scalar
+        *& -- f_shared_native_scalar
         ** -- f_in/out/inout_void_**
     setter -- f_setter
       native
@@ -311,13 +311,10 @@ root
         scalar
           capptr -- f_ctor_shadow_scalar_capptr
     defaulttmp -- f_defaulttmp
-      native
-        scalar -- f_defaulttmp_native_scalar
-      struct -- f_defaulttmp_struct
     dtor -- f_dtor
       void
         scalar -- f_dtor
-    function -- f_function
+    function
       bool
         scalar -- f_function_bool_scalar
       char
@@ -359,7 +356,7 @@ root
             pointer -- f_function_native_*_cfi_pointer
           pointer -- f_function_native_&
           raw -- f_function_native_*_raw
-          scalar -- f_defaulttmp_native_scalar
+          scalar -- f_function_native_scalar
         ** -- f_function_native_**
         scalar -- f_function_native_scalar
       shadow
@@ -468,21 +465,21 @@ root
       bool
         scalar -- f_in_bool_scalar
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_in_char_*_buf
-          capi -- f_defaulttmp_native_scalar
+          capi -- f_shared_native_scalar
           cfi -- f_in_char_*_cfi
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
           cfi -- f_in_char_**_cfi
         scalar -- f_in_char_scalar
       native
-        & -- f_defaulttmp_native_scalar
-        * -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
+        * -- f_shared_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi -- f_in/inout_native_*_cfi
         ** -- f_in_native_**
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
       shadow
         & -- f_in_shadow_&
         * -- f_in_shadow_*
@@ -498,11 +495,11 @@ root
           buf -- f_in_string_scalar_buf
           cfi -- f_in_string_scalar/*/&_cfi
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
-        scalar -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
+        scalar -- f_shared_struct
       unknown
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
       vector
         &
           buf
@@ -535,18 +532,18 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
           cfi -- f_in/out/inout_void_**
-        scalar -- f_defaulttmp_native_scalar
+        scalar -- f_shared_native_scalar
     inout
       bool
         * -- f_inout_bool_*
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_inout_char_*_buf
           cfi -- f_inout_char_*_cfi
       native
-        & -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi -- f_in/inout_native_*_cfi
           hidden -- f_out/inout_native_*_hidden
@@ -561,8 +558,8 @@ root
           buf -- f_inout_string_*/&_buf
           cfi -- f_inout_string_*/&_cfi
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
       vector
         &
           cdesc
@@ -585,7 +582,7 @@ root
       char
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
-      function
+      function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
         cdesc -- f_mixin_function_cdesc
         native
@@ -632,11 +629,11 @@ root
       bool
         * -- f_out_bool_*
       char
-        * -- f_defaulttmp_native_scalar
+        * -- f_shared_native_scalar
           buf -- f_out_char_*_buf
           cfi -- f_out_char_*_cfi
       native
-        & -- f_defaulttmp_native_scalar
+        & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
         * -- f_out_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -647,18 +644,18 @@ root
           cdesc -- f_out_native_*&_cdesc
             allocatable -- f_out_native_*&_cdesc_allocatable
             pointer -- f_out_native_*&_cdesc
-          pointer -- f_defaulttmp_native_scalar
+          pointer -- f_shared_native_scalar
         **
-          allocatable -- f_defaulttmp_native_scalar
+          allocatable -- f_shared_native_scalar
           cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
           cfi
             allocatable -- f_out_native_**_cfi_allocatable
             pointer -- f_out_native_**_cfi_pointer
-          pointer -- f_defaulttmp_native_scalar
+          pointer -- f_shared_native_scalar
           raw -- f_out_native_**_raw
-        *** -- f_defaulttmp_native_scalar
+        *** -- f_shared_native_scalar
       string
         & -- f_out_string_*/&
           buf -- f_out_string_*/&_buf
@@ -676,8 +673,8 @@ root
             copy -- f_out_string_**_copy
           copy -- f_out_string_**_copy
       struct
-        & -- f_defaulttmp_struct
-        * -- f_defaulttmp_struct
+        & -- f_shared_struct
+        * -- f_shared_struct
       vector
         &
           cdesc
@@ -708,7 +705,7 @@ root
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
-        *& -- f_defaulttmp_native_scalar
+        *& -- f_shared_native_scalar
         ** -- f_in/out/inout_void_**
     setter -- f_setter
       native
@@ -726,6 +723,9 @@ root
             cfi
               pointer -- f_shared_function_string_*_cfi_pointer
           scalar -- f_shared_function_string_scalar
+      native
+        scalar -- f_shared_native_scalar
+      struct -- f_shared_struct
     subroutine -- f_subroutine
       void
         scalar -- f_subroutine
@@ -3567,18 +3567,6 @@ f_defaulttmp:
   intent: defaulttmp
   name: f_defaulttmp
   owner: library
-f_defaulttmp_native_scalar:
-  intent: defaulttmp
-  name: f_defaulttmp_native_scalar
-  owner: library
-f_defaulttmp_struct:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
-  intent: defaulttmp
-  name: f_defaulttmp_struct
-  owner: library
 f_dtor:
   c_call:
   - delete {CXX_this};
@@ -3602,10 +3590,6 @@ f_dtor_void_scalar:
   - <cstddef>
   intent: dtor
   name: f_dtor_void_scalar
-  owner: library
-f_function:
-  intent: function
-  name: f_function
   owner: library
 f_function_bool_scalar:
   f_need_wrapper: true
@@ -8694,6 +8678,12 @@ f_mixin_char_cdesc_allocate:
   intent: mixin
   name: f_mixin_char_cdesc_allocate
   owner: library
+f_mixin_function:
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  intent: mixin
+  name: f_mixin_function
+  owner: library
 f_mixin_function-to-subroutine:
   c_return_type: void
   f_call:
@@ -10270,6 +10260,18 @@ f_shared_function_string_scalar:
   - type(C_PTR) {c_var}
   intent: shared
   name: f_shared_function_string_scalar
+  owner: library
+f_shared_native_scalar:
+  intent: shared
+  name: f_shared_native_scalar
+  owner: library
+f_shared_struct:
+  c_pre_call:
+  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
+    \ *>(\t{c_addr}{c_var}));"
+  cxx_local_var: pointer
+  intent: shared
+  name: f_shared_struct
   owner: library
 f_subroutine:
   f_call:

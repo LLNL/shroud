@@ -749,11 +749,16 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_function",
+        # This is the default in wrap_function_impl.
+        name="f_mixin_function",
+        f_call=[
+            "{F_result} = {F_C_call}({F_arg_c_call})",
+        ],
     ),
     dict(
         name="f_function_native_scalar",
         alias=[
+            "f_function_native_*_scalar",
             "c_function_native_scalar",
         ],
     ),
@@ -1160,10 +1165,8 @@ fc_statements = [
     ),
 
     dict(
-        name="f_defaulttmp_native_scalar",
+        name="f_shared_native_scalar",
         alias=[
-            "f_function_native_*_scalar",
-
             "f_in_native_scalar",
             "c_in_native_scalar",
 
@@ -2998,7 +3001,7 @@ fc_statements = [
     dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
-        name="f_defaulttmp_struct",
+        name="f_shared_struct",
         alias=[
             "f_in_struct_scalar",
             "f_in_struct_*",
