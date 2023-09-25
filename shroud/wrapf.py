@@ -862,7 +862,7 @@ rv = .false.
                 for sym in syms.split(","):
                     module[sym] = True
         
-    def update_f_module(self, modules, imports, f_module, fmt=util.Scope(None)):
+    def update_f_module(self, modules, imports, f_module, fmt):
         """Aggragate the information from f_module into modules.
 
         Parameters
@@ -878,17 +878,36 @@ rv = .false.
         """
         if f_module is not None:
             for mname, only in f_module.items():
+                mname = wformat(mname, fmt)
                 if mname == "__line__":
                     continue
                 if mname == "--import--":
                     for oname in only:
-                        imports[oname] = True
-                else:
+                        wname = wformat(oname, fmt)
+                        imports[wname] = True
+                else: #elif fmt.F_module_name != mname:
                     module = modules.setdefault(mname, {})
                     if only:  # Empty list means no ONLY clause
                         for oname in only:
                             wname = wformat(oname, fmt)
                             module[wname] = True
+
+    def update_f_module_helper(self, modules, f_module):
+        """Aggragate the information from helper["modules"] into modules.
+
+        Parameters
+        ----------
+        modules : dictionary of dictionaries:
+            modules['iso_c_bindings']['C_INT'] = True
+        f_module : a dictionary of lists:
+            dict(iso_c_binding=['C_INT'])
+        """
+        if f_module is None:
+            return
+        for mname, only in f_module.items():
+            module = modules.setdefault(mname, {})
+            for oname in only:
+                module[oname] = True
 
     def set_f_module(self, modules, mname, *only):
         """Add a module to modules.
@@ -2213,9 +2232,7 @@ rv = .false.
 
         mods = helper_info.get("modules", None)
         if mods:
-            self.update_f_module(
-                fileinfo.module_use, {}, mods
-            )  # XXX self.module_imports
+            self.update_f_module_helper(fileinfo.module_use, mods)
 
         if "private" in helper_info:
             if not self.private_lines:
