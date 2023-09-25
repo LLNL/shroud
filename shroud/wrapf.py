@@ -1417,22 +1417,17 @@ rv = .false.
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
-        elif stmts_blk.intent == "getter":
-            # Functions do not pass arguments by default.
-            pass
+        elif arg_typemap.f_to_c:
+            need_wrapper = True
+            append_format(arg_c_call, arg_typemap.f_to_c, fmt)
+        # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
+        elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
+            # Used with fortran_generic
+            need_wrapper = True
+            append_format(arg_c_call, arg_typemap.f_cast, fmt)
+            self.update_f_module(modules, arg_typemap.f_module, fmt)
         else:
-            # Attributes   None=skip, True=use default, else use value
-            if arg_typemap.f_to_c:
-                need_wrapper = True
-                append_format(arg_c_call, arg_typemap.f_to_c, fmt)
-            # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
-            elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
-                # Used with fortran_generic
-                need_wrapper = True
-                append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                self.update_f_module(modules, arg_typemap.f_module, fmt)
-            else:
-                arg_c_call.append(fmt.c_var)
+            arg_c_call.append(fmt.c_var)
         return need_wrapper
 
     def add_code_from_statements(

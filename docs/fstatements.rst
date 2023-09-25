@@ -141,6 +141,17 @@ to the end of the call list.
             "len({f_var}, kind=C_INT)",
         ],
 
+To specify no arguments, the list must be blank.
+Unless the function result has been changed into a C wrapper
+argument, it will pass no arguments.
+
+.. code-block:: text
+
+        f_arg_call=[ ],
+
+The value of *None* will pass the Fortran argument
+to the C wrapper.
+
 f_declare
 ^^^^^^^^^
 

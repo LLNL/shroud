@@ -749,8 +749,11 @@ fc_statements = [
         ],
     ),
     dict(
-        # This is the default in wrap_function_impl.
         name="f_mixin_function",
+        # Default in build_arg_list_impl.
+        f_arg_call=[
+        ],
+        # Default in wrap_function_impl.
         f_call=[
             "{F_result} = {F_C_call}({F_arg_c_call})",
         ],
@@ -3088,6 +3091,7 @@ fc_statements = [
             "f_getter_native_*_pointer",
             "c_getter_native_*_pointer",
         ],
+        f_arg_call=[],
         c_call=[
             "// skip call c_getter",
         ],

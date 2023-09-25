@@ -237,6 +237,12 @@ Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 c_arg_call
 ^^^^^^^^^^
 
+Arguments to pass from the C wrapper to the C++ function.
+
+The value of *None* will pass the C argument
+to the C++ function.
+The argument will be converted from C to C++ where required.
+
 c_pre_call
 ^^^^^^^^^^
 
