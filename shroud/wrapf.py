@@ -2042,6 +2042,7 @@ rv = .false.
         elif C_subprogram == "function":
             call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
+            # XXX - statements should set this explicitly
             call_list = ["call {F_C_call}({F_arg_c_call})"]
 
         for line in call_list:

@@ -737,9 +737,9 @@ fc_statements = [
             "f_subroutine_void_scalar",
         ],
         f_arg_call=[],
-#        f_call=[
-#            "call {F_C_call}({F_arg_c_call})",
-#        ],
+        f_call=[
+            "call {F_C_call}({F_arg_c_call})",
+        ],
     ),
 
     dict(
@@ -761,10 +761,10 @@ fc_statements = [
     ########## mixin ##########
     dict(
         name="f_mixin_function-to-subroutine",
-        # Add this later then remove from wrapf.py
-#        f_call = [
-#            "call {F_C_call}({F_arg_c_call})",
-#        ],
+        # wrapf.py sets f_call default for subroutines, this makes it explicit.
+        f_call = [
+            "call {F_C_call}({F_arg_c_call})",
+        ],
         c_return_type="void",
     ),
     dict(
@@ -3101,6 +3101,9 @@ fc_statements = [
             "c_setter_void_scalar",
         ],
         f_arg_call=[],
+        f_call=[
+            "call {F_C_call}({F_arg_c_call})",
+        ],
         c_call=[
             "// skip call c_setter",
         ],
@@ -3146,15 +3149,9 @@ fc_statements = [
         # Return meta data to Fortran.
         name="f_getter_string_scalar_cdesc_allocatable",
         mixin=[
-            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
-        alias=[
-            "c_getter_string_scalar_cdesc_allocatable",
-        ],
-##       c_helper=["ShroudStrToArray"],
-        
         c_call=[
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
