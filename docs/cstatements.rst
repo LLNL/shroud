@@ -231,6 +231,8 @@ Fortran modules used in the Fortran interface:
           - C_PTR
 
 Fields will be expanded using the format dictionary before being used.
+If unset, then *f_module* will be used when creating the interface.
+Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 
 c_arg_call
 ^^^^^^^^^^

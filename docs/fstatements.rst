@@ -26,7 +26,6 @@ A Fortran wrapper is created out of several segments.
 
       {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
         f_module
-        f_import
         f_arg_decl
         ! splicer begin
         f_declare
@@ -152,19 +151,6 @@ grouped together.
 Implies *f_need_wrapper*.
 Added within the splicer to make it easier to replace in the YAML file.
 
-f_import
-^^^^^^^^
-
-List of names to import into the Fortran wrapper.
-The names will be expanded before being used.
-
-In this example, Shroud creates *F_array_type* derived type in the
-module and it is used in the interface.
-
-.. code-block:: yaml
-
-        f_import=["{F_array_type}"],
-                
 f_module
 ^^^^^^^^
 

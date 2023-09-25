@@ -666,7 +666,6 @@ FStmts = util.Scope(
     intent=None,
     f_helper=[],
     f_module=None,
-    f_import=None,
     f_need_wrapper=False,
     f_arg_name=None,
     f_arg_decl=None,
