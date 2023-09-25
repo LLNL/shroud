@@ -2810,7 +2810,6 @@ fc_statements = [
         i_arg_names=["{c_var}"],
         i_module={
             "{f_type_module}":["{f_capsule_data_type}"],
-            "--import--": ["{F_capsule_data_type}"],
         },
     ),
     
