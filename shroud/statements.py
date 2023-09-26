@@ -1058,25 +1058,6 @@ fc_statements = [
         i_import=["{F_array_type}"],
         c_temps=["cdesc"],
     ),
-    dict(
-        # cdesc - array from argument
-        # out   - filled by C wrapper.
-        # Used to return a pointer to a non-fortran compatiable type
-        # such as std::vector or std::string.
-        name="c_mixin_out_array_cdesc-and-cdesc",
-        c_helper=["array_context"],
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
-            "{C_array_type} *{c_var_out}",
-        ],
-        i_arg_names=["{c_var_cdesc}", "{c_var_out}"],
-        i_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
-            "type({F_array_type}), intent(OUT) :: {c_var_out}",
-        ],
-        i_import=["{F_array_type}"],
-        c_temps=["cdesc", "out"],
-    ),
 
     dict(
         # Take f_var output, pack into cdesc, then allocate

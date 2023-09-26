@@ -207,8 +207,6 @@ root
           pointer -- c_mixin_native_cfi_pointer
       noargs -- c_mixin_noargs
       out
-        array
-          cdesc-and-cdesc -- c_mixin_out_array_cdesc-and-cdesc
         native
           ** -- c_mixin_out_native_**
         vector
@@ -2761,26 +2759,6 @@ c_mixin_native_cfi_pointer:
 c_mixin_noargs:
   intent: mixin
   name: c_mixin_noargs
-  owner: library
-c_mixin_out_array_cdesc-and-cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  - '{C_array_type} *{c_var_out}'
-  c_helper:
-  - array_context
-  c_temps:
-  - cdesc
-  - out
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_out}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_out}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: c_mixin_out_array_cdesc-and-cdesc
   owner: library
 c_mixin_out_native_**:
   c_arg_call:
