@@ -1046,10 +1046,7 @@ fc_statements = [
         ],
         f_arg_call=["{f_var_cdesc}"],
         f_temps=["cdesc"],
-    ),
-    dict(
-        # Pass array_type to C which will fill it in.
-        name="c_mixin_out_array_cdesc",
+
         c_helper=["array_context"],
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
@@ -1363,7 +1360,6 @@ fc_statements = [
         name="f_out_native_*&_cdesc",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "f_mixin_out_native_cdesc_pointer",
             "c_mixin_native_cdesc_fill-cdesc",
         ],
@@ -1405,7 +1401,6 @@ fc_statements = [
         name="f_out_native_**_cdesc_allocatable",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native_**",
         ],
@@ -1432,7 +1427,6 @@ fc_statements = [
         name="f_out_native_**_cdesc_pointer",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "f_mixin_out_native_cdesc_pointer",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native_**",
@@ -1458,7 +1452,6 @@ fc_statements = [
         name="f_in/out/inout_native_*_cdesc",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
         ],
         alias=[
             "c_in_native_*_cdesc",
@@ -2425,7 +2418,6 @@ fc_statements = [
         name="f_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar",
         ],
         alias=[
@@ -2648,7 +2640,6 @@ fc_statements = [
         mixin=[
             "f_mixin_str_array",
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
         ],
         alias=[
             "c_out_vector_&_cdesc_targ_string_scalar",
@@ -2671,7 +2662,6 @@ fc_statements = [
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "f_mixin_out_array_cdesc_allocatable",
         ],
         append=dict(
@@ -2765,7 +2755,6 @@ fc_statements = [
         name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
         ],
         alias=[
@@ -3791,7 +3780,6 @@ fc_statements = [
         mixin=[
             "f_mixin_str_array",
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
         ],
         alias=[
             "c_out_string_**_cdesc_copy",
@@ -3828,7 +3816,6 @@ fc_statements = [
         name="f_out_string_**_cdesc_allocatable",
         mixin=[
             "f_mixin_out_array_cdesc",
-            "c_mixin_out_array_cdesc",
             "f_mixin_out_array_cdesc_allocatable",
         ],
         append=dict(

@@ -208,7 +208,6 @@ root
       noargs -- c_mixin_noargs
       out
         array
-          cdesc -- c_mixin_out_array_cdesc
           cdesc-and-cdesc -- c_mixin_out_array_cdesc-and-cdesc
         native
           ** -- c_mixin_out_native_**
@@ -2762,22 +2761,6 @@ c_mixin_native_cfi_pointer:
 c_mixin_noargs:
   intent: mixin
   name: c_mixin_noargs
-  owner: library
-c_mixin_out_array_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: c_mixin_out_array_cdesc
   owner: library
 c_mixin_out_array_cdesc-and-cdesc:
   c_arg_decl:
@@ -8957,6 +8940,12 @@ f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
   owner: library
 f_mixin_out_array_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  c_temps:
+  - cdesc
   f_arg_call:
   - '{f_var_cdesc}'
   f_declare:
@@ -8965,6 +8954,12 @@ f_mixin_out_array_cdesc:
   - array_context
   f_temps:
   - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
   intent: mixin
   name: f_mixin_out_array_cdesc
   owner: library
