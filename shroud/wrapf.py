@@ -1283,7 +1283,7 @@ rv = .false.
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
-            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_result)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1801,7 +1801,7 @@ rv = .false.
             self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
-            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_result)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
