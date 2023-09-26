@@ -741,15 +741,15 @@ contains
         character(:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        type(VEC_SHROUD_array) :: SHT_arg_out
-        call c_vector_string_fill_allocatable_bufferify(SHT_arg_out)
-        SHT_arg_cdesc%size = SHT_arg_out%size;
-        SHT_arg_cdesc%elem_len = SHT_arg_out%elem_len
+        type(VEC_SHROUD_array) :: SHT_arg_alloc
+        call c_vector_string_fill_allocatable_bufferify(SHT_arg_cdesc)
+        SHT_arg_alloc%size = SHT_arg_cdesc%size;
+        SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
         allocate(character(len=SHT_arg_cdesc%elem_len) :: &
-            arg(SHT_arg_cdesc%size))
-        SHT_arg_cdesc%cxx%addr = C_LOC(arg);
-        SHT_arg_cdesc%base_addr = C_LOC(arg);
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_out)
+            arg(SHT_arg_alloc%size))
+        SHT_arg_alloc%cxx%addr = C_LOC(arg);
+        SHT_arg_alloc%base_addr = C_LOC(arg);
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
         ! splicer end function.vector_string_fill_allocatable
     end subroutine vector_string_fill_allocatable
 
@@ -767,14 +767,14 @@ contains
         character(len=20), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable_len
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        type(VEC_SHROUD_array) :: SHT_arg_out
-        call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_out)
-        SHT_arg_cdesc%size = SHT_arg_out%size;
-        SHT_arg_cdesc%elem_len = SHT_arg_out%elem_len
-        allocate(arg(SHT_arg_cdesc%size))
-        SHT_arg_cdesc%cxx%addr = C_LOC(arg);
-        SHT_arg_cdesc%base_addr = C_LOC(arg);
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_out)
+        type(VEC_SHROUD_array) :: SHT_arg_alloc
+        call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_cdesc)
+        SHT_arg_alloc%size = SHT_arg_cdesc%size;
+        SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
+        allocate(arg(SHT_arg_alloc%size))
+        SHT_arg_alloc%cxx%addr = C_LOC(arg);
+        SHT_arg_alloc%base_addr = C_LOC(arg);
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
         ! splicer end function.vector_string_fill_allocatable_len
     end subroutine vector_string_fill_allocatable_len
 

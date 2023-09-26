@@ -9566,12 +9566,12 @@ f_out_string_**_cdesc_allocatable:
   c_temps:
   - cdesc
   f_arg_call:
-  - '{f_var_out}'
+  - '{f_var_cdesc}'
   f_arg_decl:
   - 'character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_out}'
+  - 'type({F_array_type}) :: {f_var_alloc}'
   f_helper:
   - array_string_allocatable
   - array_context
@@ -9579,15 +9579,15 @@ f_out_string_**_cdesc_allocatable:
     iso_c_binding:
     - C_LOC
   f_post_call:
-  - '{f_var_cdesc}%size = {f_var_out}%size;'
-  - '{f_var_cdesc}%elem_len = {f_var_out}%elem_len;'
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var});'
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {fhelper_array_string_allocatable}({f_var_cdesc}, {f_var_out})
+  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
+  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len;'
+  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
+  - '{f_var_alloc}%cxx%addr = C_LOC({f_var});'
+  - '{f_var_alloc}%base_addr = C_LOC({f_var});'
+  - call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})
   f_temps:
+  - alloc
   - cdesc
-  - out
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -9804,29 +9804,28 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   c_temps:
   - cdesc
   f_arg_call:
-  - '{f_var_out}'
+  - '{f_var_cdesc}'
   f_arg_decl:
   - 'character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_out}'
+  - 'type({F_array_type}) :: {f_var_alloc}'
   f_helper:
   - vector_string_allocatable
-  - array_context
   - capsule_data_helper
   f_module:
     iso_c_binding:
     - C_LOC
   f_post_call:
-  - '{f_var_cdesc}%size = {f_var_out}%size;'
-  - '{f_var_cdesc}%elem_len = {f_var_out}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var});'
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var});'
-  - call {fhelper_vector_string_allocatable}({f_var_cdesc}, {f_var_out})
+  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
+  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
+  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
+  - '{f_var_alloc}%cxx%addr = C_LOC({f_var});'
+  - '{f_var_alloc}%base_addr = C_LOC({f_var});'
+  - call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})
   f_temps:
+  - alloc
   - cdesc
-  - out
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
