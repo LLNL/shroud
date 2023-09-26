@@ -1433,7 +1433,6 @@ rv = .false.
     def add_code_from_statements(
         self,
         need_wrapper,
-        fileinfo,
         fmt,
         intent_blk,
         modules,
@@ -1447,7 +1446,6 @@ rv = .false.
 
         Args:
             need_wrapper -
-            fileinfo - ModuleInfo
             fmt -
             intent_blk -
             modules -
@@ -1459,11 +1457,6 @@ rv = .false.
         A wrapper is needed if code is added.
         """
         self.add_f_module_from_stmts(intent_blk, modules, fmt)
-
-        if intent_blk.c_helper:
-            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
-        if intent_blk.f_helper:
-            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
 
         if declare is not None and intent_blk.f_declare:
             need_wrapper = True
@@ -1703,6 +1696,7 @@ rv = .false.
         self.name_temp_vars_f(fmt_func.C_result, result_stmt, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
+        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         if options.debug:
@@ -1801,6 +1795,7 @@ rv = .false.
             self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
+            fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
             implied = f_attrs["implied"]
@@ -1920,7 +1915,7 @@ rv = .false.
             )
 
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_arg,
                 arg_stmt,
                 modules,
@@ -2041,7 +2036,7 @@ rv = .false.
             append_format(call, line, fmt_result)
         if C_subprogram == "function":
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
                 result_stmt,
                 modules,
@@ -2052,7 +2047,7 @@ rv = .false.
         elif "f" in node.fstatements:
             # Result is an argument.
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
                 node.fstatements["f"],
                 modules,
@@ -2062,7 +2057,7 @@ rv = .false.
             )
         elif not have_f_arg:
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
                 result_stmt,
                 modules,
@@ -2489,6 +2484,10 @@ class ModuleInfo(object):
         output.append(-1)
         output.append("")
 
+    def apply_helpers_from_stmts(self, stmt, fmt):
+        self.add_c_helper(stmt.c_helper, fmt)
+        self.add_f_helper(stmt.f_helper, fmt)
+        
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
         for c_helper in helpers:

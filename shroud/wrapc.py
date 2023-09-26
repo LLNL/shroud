@@ -770,9 +770,6 @@ class Wrapc(util.WrapperMixin):
         self.header_impl.add_statements_headers("impl_header", intent_blk)
         self.header_iface.add_statements_headers("iface_header", intent_blk)
 
-        if intent_blk.c_helper:
-            self.add_c_helper(intent_blk.c_helper, fmt)
-
         if intent_blk.c_pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
@@ -1017,8 +1014,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
-            self.name_temp_vars_c(fmt_result.C_result, result_stmt, fmt_result)
-            statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1029,6 +1024,9 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_result
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
+        self.name_temp_vars_c(fmt_result.C_result, result_stmt, fmt_result)
+        self.add_c_helper(result_stmt.c_helper, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         notimplemented = notimplemented or result_stmt.notimplemented
         proto_list = []  # arguments for wrapper prototype
@@ -1137,6 +1135,7 @@ class Wrapc(util.WrapperMixin):
             #       but set by set_fmt_fields
             self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
             self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
+            self.add_c_helper(arg_stmt.c_helper, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
             if arg_stmt.cxx_local_var:

@@ -1076,6 +1076,7 @@ fc_statements = [
             "allocate({f_char_type}{f_var}({f_var_alloc}%size))",
             "{f_var_alloc}%cxx%addr = C_LOC({f_var})",
             "{f_var_alloc}%base_addr = C_LOC({f_var})",
+#            "call {copy_alloc}({f_var_alloc}, {f_var_cdesc})",
             # An append group adds a call to helper to copy data.
         ],
     ),
@@ -2648,6 +2649,9 @@ fc_statements = [
                 "call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
+#        fmtdict=dict(
+#            copy_alloc="{fhelper_vector_string_allocatable}",
+#        ),
         alias=[
             "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
         ],
@@ -3802,6 +3806,9 @@ fc_statements = [
                 "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
+#        fmtdict=dict(
+#            copy_alloc="{fhelper_array_string_allocatable}",
+#        ),
         alias=[
             "c_out_string_**_cdesc_allocatable",
         ],
