@@ -27,14 +27,33 @@ a statement entry.
            being defined.
            Non-lists are assigned.
 
+.. append - applied after mixins as a sort of one-off mixin to append to fields.
+      f_post_call is defined by the mixins but need to add one more line.
+
+        name="f_out_string_**_cdesc_allocatable",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "f_mixin_out_array_cdesc_allocatable",
+        ],
+        append=dict(
+            f_post_call=[
+                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+            ],
+        ),
+
+        or maybe with {copy_allocate} in the mixin.
+
+        fmtdict:
+           copy_allocate: "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
+   
+
 .. fmtdict - A dictionary to replace default values
 
-        name="f_function_char_*_cfi_arg",
-        base="f_function_char_*_cfi_copy",
-        fmtdict=dict(
-            f_var="{F_string_result_as_arg}",
-            c_var="{F_string_result_as_arg}",
-        ),
+        name: f_function_char_*_cfi_arg
+        base: f_function_char_*_cfi_copy
+        fmtdict:
+            f_var: "{F_string_result_as_arg}"
+            c_var: "{F_string_result_as_arg}"
    
 
 Passing function result as an argument

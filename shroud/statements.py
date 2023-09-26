@@ -322,6 +322,8 @@ def process_mixin(stmts, defaults, stmtdict):
 #                print("M    ", mixin)
 #                node.update(mixins[mixin])
                 append_mixin(node, mixins[mixin])
+        if "append" in stmt:
+            append_mixin(node, stmt["append"])
         node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
@@ -1077,6 +1079,29 @@ fc_statements = [
         ],
         i_import=["{F_array_type}"],
         c_temps=["cdesc", "out"],
+    ),
+
+    dict(
+        # Take f_var output, pack into cdesc, then allocate
+        name="f_mixin_out_array_cdesc_allocatable",
+        f_temps=["alloc"],
+        c_helper=["vector_string_allocatable"],
+        f_helper=["vector_string_allocatable"],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        f_arg_decl=[
+            "character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}",
+        ],
+        f_declare=[
+            "type({F_array_type}) :: {f_var_alloc}",
+        ],
+        f_post_call=[
+            "{f_var_alloc}%size = {f_var_cdesc}%size;",
+            "{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len",
+            "allocate({f_char_type}{f_var}({f_var_alloc}%size))",
+            "{f_var_alloc}%cxx%addr = C_LOC({f_var})",
+            "{f_var_alloc}%base_addr = C_LOC({f_var})",
+            # An append group adds a call to helper to copy data.
+        ],
     ),
 
     dict(
@@ -2644,32 +2669,20 @@ fc_statements = [
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         mixin=[
+            "f_mixin_out_array_cdesc",
             "c_mixin_out_array_cdesc",
+            "f_mixin_out_array_cdesc_allocatable",
         ],
+        append=dict(
+            f_post_call=[
+                "call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+            ],
+        ),
         alias=[
             "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
         ],
-        f_arg_decl=[
-            "character({f_char_len}), intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
-        ],
-        f_helper=["vector_string_allocatable", "capsule_data_helper"],
+        f_helper=["vector_string_allocatable"],
         c_helper=["vector_string_allocatable", "vector_string_out_len"],
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        f_declare=[
-            "type({F_array_type}) :: {f_var_cdesc}",
-            "type({F_array_type}) :: {f_var_alloc}",
-        ],
-        f_arg_call=["{f_var_cdesc}"],
-        f_post_call=[
-            "{f_var_alloc}%size = {f_var_cdesc}%size;",
-            "{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len",
-            "allocate({f_char_type}{f_var}({f_var_alloc}%size))",
-            "{f_var_alloc}%cxx%addr = C_LOC({f_var});",
-            "{f_var_alloc}%base_addr = C_LOC({f_var});",
-            "call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
-        ],
-        f_temps=["alloc", "cdesc"],
-
         c_pre_call=[
 #            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
             "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
@@ -3812,29 +3825,20 @@ fc_statements = [
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
         name="f_out_string_**_cdesc_allocatable",
+        mixin=[
+            "f_mixin_out_array_cdesc",
+            "c_mixin_out_array_cdesc",
+            "f_mixin_out_array_cdesc_allocatable",
+        ],
+        append=dict(
+            f_post_call=[
+                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+            ],
+        ),
         alias=[
             "c_out_string_**_cdesc_allocatable",
         ],
-        mixin=["c_mixin_out_array_cdesc"],
-        f_arg_decl=[
-            "character({f_char_len}), intent(out), allocatable, target :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        f_declare=[
-            "type({F_array_type}) :: {f_var_cdesc}",
-            "type({F_array_type}) :: {f_var_alloc}",
-        ],
-        f_arg_call=["{f_var_cdesc}"],
-        f_post_call=[
-            "{f_var_alloc}%size = {f_var_cdesc}%size;",
-            "{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len;",
-            "allocate({f_char_type}{f_var}({f_var_alloc}%size))",
-            "{f_var_alloc}%cxx%addr = C_LOC({f_var});",
-            "{f_var_alloc}%base_addr = C_LOC({f_var});",
-            "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
-        ],
-        f_temps=["alloc", "cdesc"],
-        f_helper=["array_string_allocatable", "array_context"],
+        f_helper=["array_string_allocatable"],
         c_helper=["array_string_allocatable", "array_string_out_len"],
         c_pre_call=[
             "std::string *{cxx_var};",

@@ -747,8 +747,8 @@ contains
         SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
         allocate(character(len=SHT_arg_cdesc%elem_len) :: &
             arg(SHT_arg_alloc%size))
-        SHT_arg_alloc%cxx%addr = C_LOC(arg);
-        SHT_arg_alloc%base_addr = C_LOC(arg);
+        SHT_arg_alloc%cxx%addr = C_LOC(arg)
+        SHT_arg_alloc%base_addr = C_LOC(arg)
         call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
         ! splicer end function.vector_string_fill_allocatable
     end subroutine vector_string_fill_allocatable
@@ -772,8 +772,8 @@ contains
         SHT_arg_alloc%size = SHT_arg_cdesc%size;
         SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
         allocate(arg(SHT_arg_alloc%size))
-        SHT_arg_alloc%cxx%addr = C_LOC(arg);
-        SHT_arg_alloc%base_addr = C_LOC(arg);
+        SHT_arg_alloc%cxx%addr = C_LOC(arg)
+        SHT_arg_alloc%base_addr = C_LOC(arg)
         call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
         ! splicer end function.vector_string_fill_allocatable_len
     end subroutine vector_string_fill_allocatable_len

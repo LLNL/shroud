@@ -2353,17 +2353,17 @@ contains
     !<
     subroutine fetch_array_string_alloc(strs)
         use iso_c_binding, only : C_LOC
-        character(:), intent(out), allocatable, target :: strs(:)
+        character(:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
         type(STR_SHROUD_array) :: SHT_strs_alloc
         call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc)
         SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len;
+        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
         allocate(character(len=SHT_strs_cdesc%elem_len) :: &
             strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs);
-        SHT_strs_alloc%base_addr = C_LOC(strs);
+        SHT_strs_alloc%cxx%addr = C_LOC(strs)
+        SHT_strs_alloc%base_addr = C_LOC(strs)
         call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
@@ -2387,16 +2387,16 @@ contains
     !<
     subroutine fetch_array_string_alloc_len(strs)
         use iso_c_binding, only : C_LOC
-        character(len=20), intent(out), allocatable, target :: strs(:)
+        character(len=20), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc_len
         type(STR_SHROUD_array) :: SHT_strs_cdesc
         type(STR_SHROUD_array) :: SHT_strs_alloc
         call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc)
         SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len;
+        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
         allocate(strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs);
-        SHT_strs_alloc%base_addr = C_LOC(strs);
+        SHT_strs_alloc%cxx%addr = C_LOC(strs)
+        SHT_strs_alloc%base_addr = C_LOC(strs)
         call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
         ! splicer end function.fetch_array_string_alloc_len
     end subroutine fetch_array_string_alloc_len
