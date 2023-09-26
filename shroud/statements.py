@@ -188,7 +188,7 @@ def check_statements(stmts):
                 "getter", "setter",
                 "ctor", "dtor",
                 "base", "descr",
-                "defaulttmp", "defaultstruct", "XXXin", "test", "shared",
+                "defaulttmp", "XXXin", "test", "shared",
                 "in/out/inout", "out/inout", "in/inout", "function/getter",
         ]:
             raise RuntimeError("Statement does not contain a valid intent: %s" % name)
@@ -320,7 +320,6 @@ def process_mixin(stmts, defaults, stmtdict):
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
-#                node.update(mixins[mixin])
                 append_mixin(node, mixins[mixin])
         if "append" in stmt:
             append_mixin(node, stmt["append"])
@@ -684,7 +683,7 @@ FStmts = util.Scope(
 # Fortran/C Statements - both sets of defaults.
 FStmts.update(CStmts._to_dict())
 
-# Allow a group to be 'commented out' by setting langauge to 'x'.
+# Allow a group to be 'commented out' by setting language to 'x'.
 XStmts = util.Scope(
     None,
     name="x-undefined",
@@ -753,8 +752,7 @@ fc_statements = [
     dict(
         name="f_mixin_function",
         # Default in build_arg_list_impl.
-        f_arg_call=[
-        ],
+        f_arg_call=[ ],
         # Default in wrap_function_impl.
         f_call=[
             "{F_result} = {F_C_call}({F_arg_c_call})",

@@ -40,6 +40,7 @@ a statement entry.
                 "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
+        f_post_call [ ]      # will replace the value instead of appending.
 
         or maybe with {copy_allocate} in the mixin.
 
