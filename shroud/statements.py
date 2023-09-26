@@ -1376,26 +1376,27 @@ fc_statements = [
         ],
         c_arg_call=["{cxx_var}"],
     ),
-    dict(
-        # deref(allocatable)
-        # A C function with a 'int **' argument associates it
-        # with a Fortran pointer.
-        # XXX - untested
-        name="f_out_native_*&_cdesc_allocatable",
-        mixin=["f_mixin_out_array_cdesc"],
-        c_helper=["copy_array"],
-        f_helper=["copy_array"],
-#XXX        f_helper=["copy_array_{c_type}"],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
-        f_post_call=[
-            # intent(out) ensure that it is already deallocated.
-            "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
-        ],
-    ),
+#    dict(
+# XXX - untested
+#        # deref(allocatable)
+#        # A C function with a 'int **' argument associates it
+#        # with a Fortran pointer.
+#        # XXX - untested
+#        name="f_out_native_*&_cdesc_allocatable",
+#        mixin=["f_mixin_out_array_cdesc"],
+#        c_helper=["copy_array"],
+#        f_helper=["copy_array"],
+##XXX        f_helper=["copy_array_{c_type}"],
+#        f_arg_decl=[
+#            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
+#        ],
+#        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
+#        f_post_call=[
+#            # intent(out) ensure that it is already deallocated.
+#            "allocate({f_var}{f_array_allocate})",
+#            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+#        ],
+#    ),
     dict(
         # deref(allocatable)
         # A C function with a 'int **' argument associates it

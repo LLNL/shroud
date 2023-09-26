@@ -643,7 +643,6 @@ root
           hidden -- f_out/inout_native_*_hidden
         *&
           cdesc -- f_out_native_*&_cdesc
-            allocatable -- f_out_native_*&_cdesc_allocatable
             pointer -- f_out_native_*&_cdesc
           pointer -- f_shared_native_scalar
         **
@@ -9170,29 +9169,6 @@ f_out_native_*&_cdesc:
   - '{F_array_type}'
   intent: out
   name: f_out_native_*&_cdesc
-  owner: library
-f_out_native_*&_cdesc_allocatable:
-  c_helper:
-  - copy_array
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  f_post_call:
-  - allocate({f_var}{f_array_allocate})
-  - "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
-  f_temps:
-  - cdesc
-  intent: out
-  name: f_out_native_*&_cdesc_allocatable
   owner: library
 f_out_native_*&_cdesc_pointer:
   c_arg_call:
