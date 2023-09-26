@@ -1754,7 +1754,6 @@ rv = .false.
         #
         f_args = ast.declarator.params
         f_index = -1  # index into f_args
-        have_f_arg = False
         for c_arg in C_node.ast.declarator.params:
             arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -2055,7 +2054,7 @@ rv = .false.
                 pre_call,
                 post_call,
             )
-        elif not have_f_arg:
+        else:
             need_wrapper = self.add_code_from_statements(
                 need_wrapper,
                 fmt_result,
