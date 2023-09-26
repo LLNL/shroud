@@ -81,6 +81,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_SHORT",
                             "stmtf": "f_in_native_scalar"
@@ -151,6 +152,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_SHORT",
                         "stmtf": "f_function_native_scalar"
@@ -241,6 +243,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -311,6 +314,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -401,6 +405,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -471,6 +476,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -563,6 +569,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -633,6 +640,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -727,6 +735,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_SHORT",
                             "stmtf": "f_in_native_scalar"
@@ -797,6 +806,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_SHORT",
                         "stmtf": "f_function_native_scalar"
@@ -889,6 +899,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -959,6 +970,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -1053,6 +1065,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -1123,6 +1136,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -1215,6 +1229,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
                             "stmtf": "f_in_native_scalar"
@@ -1285,6 +1300,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
                         "stmtf": "f_function_native_scalar"
@@ -1377,6 +1393,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_SHORT",
                             "stmtf": "f_in_native_scalar"
@@ -1447,6 +1464,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_SHORT",
                         "stmtf": "f_function_native_scalar"
@@ -1539,6 +1557,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
                             "stmtf": "f_in_native_scalar"
@@ -1609,6 +1628,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
                         "stmtf": "f_function_native_scalar"
@@ -1701,6 +1721,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -1771,6 +1792,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -1865,6 +1887,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -1935,6 +1958,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -2031,6 +2055,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -2101,6 +2126,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
                         "stmtf": "f_function_native_scalar"
@@ -2191,6 +2217,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT8_T",
                             "f_type": "integer(C_INT8_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT8_T",
                             "stmtf": "f_in_native_scalar"
@@ -2261,6 +2288,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT8_T",
                         "stmtf": "f_function_native_scalar"
@@ -2351,6 +2379,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT16_T",
                             "f_type": "integer(C_INT16_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT16_T",
                             "stmtf": "f_in_native_scalar"
@@ -2421,6 +2450,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT16_T",
                         "stmtf": "f_function_native_scalar"
@@ -2511,6 +2541,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT32_T",
                             "stmtf": "f_in_native_scalar"
@@ -2581,6 +2612,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT32_T",
                         "stmtf": "f_function_native_scalar"
@@ -2671,6 +2703,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT64_T",
                             "stmtf": "f_in_native_scalar"
@@ -2741,6 +2774,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT64_T",
                         "stmtf": "f_function_native_scalar"
@@ -2831,6 +2865,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT8_T",
                             "f_type": "integer(C_INT8_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UINT8_T",
                             "stmtf": "f_in_native_scalar"
@@ -2901,6 +2936,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UINT8_T",
                         "stmtf": "f_function_native_scalar"
@@ -2991,6 +3027,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT16_T",
                             "f_type": "integer(C_INT16_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UINT16_T",
                             "stmtf": "f_in_native_scalar"
@@ -3061,6 +3098,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UINT16_T",
                         "stmtf": "f_function_native_scalar"
@@ -3151,6 +3189,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UINT32_T",
                             "stmtf": "f_in_native_scalar"
@@ -3221,6 +3260,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UINT32_T",
                         "stmtf": "f_function_native_scalar"
@@ -3311,6 +3351,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_UINT64_T",
                             "stmtf": "f_in_native_scalar"
@@ -3381,6 +3422,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_UINT64_T",
                         "stmtf": "f_function_native_scalar"
@@ -3471,6 +3513,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "stmtf": "f_in_native_scalar"
@@ -3541,6 +3584,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_SIZE_T",
                         "f_type": "integer(C_SIZE_T)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_SIZE_T",
                         "stmtf": "f_function_native_scalar"
@@ -3628,11 +3672,12 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "c_var_cxx": "SHT_arg_cxx",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
+                            "f_var_cxx": "SHT_arg_cxx",
                             "sh_type": "SH_TYPE_BOOL",
                             "stmtf": "f_in_bool_scalar"
                         },
@@ -3704,6 +3749,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_BOOL",
                         "stmtf": "f_function_bool_scalar"
@@ -3804,6 +3850,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
@@ -3875,6 +3922,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_BOOL",
                         "stmtf": "f_function_bool_scalar"

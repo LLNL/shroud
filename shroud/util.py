@@ -32,6 +32,7 @@ def wformat(template, dct):
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError:
+        #return "===%s===" % template
         #raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
         raise SystemExit("Error with template: " + "%r" % template)
@@ -495,13 +496,13 @@ class WrapperMixin(object):
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "c_var_{}".format(name),
+                        "f_var_{}".format(name),
                         "{}{}_{}".format(fmt.c_temp, rootname, name))
         names = stmts.get("f_local", None)
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "c_local_{}".format(name),
+                        "f_local_{}".format(name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
     def get_metaattrs(self, ast):

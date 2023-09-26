@@ -335,7 +335,7 @@
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "arrays1"
                 ]
             },

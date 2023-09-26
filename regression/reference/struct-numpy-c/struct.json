@@ -2335,7 +2335,7 @@
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "arrays1"
                 ]
             },
@@ -2370,7 +2370,7 @@
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct1"
                 ]
             },
@@ -2393,17 +2393,15 @@
                     "cstruct_as_class"
                 ]
             },
-            "f_module_line": "struct_mod:cstruct_as_class",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "STR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:STR_SHROUD_capsule_data",
             "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"
@@ -2429,17 +2427,15 @@
                     "cstruct_as_subclass"
                 ]
             },
-            "f_module_line": "struct_mod:cstruct_as_subclass",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "STR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:STR_SHROUD_capsule_data",
             "i_type": "type(STR_SHROUD_capsule_data)",
             "impl_header": [
                 "struct.h"
@@ -2477,7 +2473,7 @@
             "f_type": "type(cstruct_list)",
             "flat_name": "Cstruct_list",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_list"
                 ]
             },
@@ -2512,7 +2508,7 @@
             "f_type": "type(cstruct_numpy)",
             "flat_name": "Cstruct_numpy",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_numpy"
                 ]
             },
@@ -2547,7 +2543,7 @@
             "f_type": "type(cstruct_ptr)",
             "flat_name": "Cstruct_ptr",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_ptr"
                 ]
             },

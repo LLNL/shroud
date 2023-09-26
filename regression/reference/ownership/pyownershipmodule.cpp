@@ -207,7 +207,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
-// Attrs:     +capsule+deref(pointer)+intent(function)
+// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
@@ -283,7 +283,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
-// Attrs:     +capsule+deref(pointer)+intent(function)
+// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)

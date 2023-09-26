@@ -92,6 +92,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -133,20 +134,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
+                                "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -252,6 +255,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -281,6 +285,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -322,20 +327,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
+                                "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -463,6 +470,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -492,6 +500,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -521,6 +530,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg3",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -562,20 +572,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
+                                "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:DEF_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -712,6 +724,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -837,6 +850,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -866,6 +880,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -1013,6 +1028,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -1042,6 +1058,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -1071,6 +1088,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg3",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -1187,6 +1205,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1276,6 +1295,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1365,6 +1385,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_scalar"
@@ -1586,8 +1607,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1712,8 +1733,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1742,8 +1763,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1890,8 +1911,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1920,8 +1941,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -1950,8 +1971,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2075,8 +2096,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2107,8 +2128,8 @@
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2249,8 +2270,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2279,8 +2300,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2311,8 +2332,8 @@
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2475,8 +2496,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2505,8 +2526,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2535,8 +2556,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2567,8 +2588,8 @@
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2705,8 +2726,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2735,8 +2756,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2765,8 +2786,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2919,8 +2940,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2949,8 +2970,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -2979,8 +3000,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3011,8 +3032,8 @@
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3149,8 +3170,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3180,8 +3201,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3211,8 +3232,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3365,8 +3386,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3396,8 +3417,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3427,8 +3448,8 @@
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
-                            "i_module_line": "defaultarg_mod:INDEXTYPE",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3459,8 +3480,8 @@
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
+                            "f_type_module": "defaultarg_mod",
                             "f_var": "type",
-                            "i_module_line": "--import--:type_id",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         }
@@ -3561,17 +3582,15 @@
                     "class1"
                 ]
             },
-            "f_module_line": "defaultarg_mod:class1",
             "f_module_name": "defaultarg_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
             "i_module": {
-                "--import--": [
+                "defaultarg_mod": [
                     "DEF_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:DEF_SHROUD_capsule_data",
             "i_type": "type(DEF_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -3603,15 +3622,14 @@
                     "type_id"
                 ]
             },
-            "f_module_line": "defaultarg_mod:type_id",
+            "f_module_name": "defaultarg_mod",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "defaultarg_mod": [
                     "type_id"
                 ]
             },
-            "i_module_line": "--import--:type_id",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

@@ -136,20 +136,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "forward::Class2",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "forward::Class2",
                                 "f_capsule_data_type": "FOR_SHROUD_capsule_data",
+                                "f_derived_type": "class2",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class2)",
+                                "f_type_module": "forward_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:FOR_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             },
@@ -320,10 +322,11 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_capsule_data_type": "SHROUD_class1_capsule",
+                                    "f_derived_type": "class1",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
+                                    "f_type_module": "tutorial_mod",
                                     "f_var": "arg",
-                                    "i_module_line": "tutorial_mod:SHROUD_class1_capsule",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_shadow_*"
                                 },
@@ -470,10 +473,11 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
+                                    "f_derived_type": "class3",
                                     "f_intent": "IN",
                                     "f_type": "type(class3)",
+                                    "f_type_module": "forward_mod",
                                     "f_var": "arg",
-                                    "i_module_line": "--import--:FOR_SHROUD_capsule_data",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_shadow_*"
                                 },
@@ -679,9 +683,11 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_struct_*"
@@ -696,7 +702,7 @@
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_pass_struct1",
-                    "F_C_name": "c_pass_struct1",
+                    "F_C_name": "pass_struct1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "arg",
@@ -733,6 +739,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -778,7 +785,6 @@
                 ]
             },
             "f_module_name": "struct_mod",
-            "f_to_c": "{f_var}",
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "sgroup": "struct",
@@ -807,17 +813,15 @@
                     "class2"
                 ]
             },
-            "f_module_line": "forward_mod:class2",
             "f_module_name": "forward_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "forward_Class2",
             "i_module": {
-                "--import--": [
+                "forward_mod": [
                     "FOR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:FOR_SHROUD_capsule_data",
             "i_type": "type(FOR_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -849,17 +853,15 @@
                     "class3"
                 ]
             },
-            "f_module_line": "forward_mod:class3",
             "f_module_name": "forward_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class3)",
             "flat_name": "forward_Class3",
             "i_module": {
-                "--import--": [
+                "forward_mod": [
                     "FOR_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:FOR_SHROUD_capsule_data",
             "i_type": "type(FOR_SHROUD_capsule_data)",
             "impl_header": [
                 "header1.hpp",
@@ -888,7 +890,6 @@
                     "class1"
                 ]
             },
-            "f_module_line": "tutorial_mod:class1",
             "f_module_name": "tutorial_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
@@ -898,7 +899,6 @@
                     "SHROUD_class1_capsule"
                 ]
             },
-            "i_module_line": "tutorial_mod:SHROUD_class1_capsule",
             "i_type": "type(SHROUD_class1_capsule)",
             "sgroup": "shadow",
             "wrap_header": [
@@ -921,7 +921,6 @@
                     "class2"
                 ]
             },
-            "f_module_line": "classes_mod:class2",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
@@ -931,7 +930,6 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "classes_mod:CLA_SHROUD_capsule_data",
             "i_type": "type(CLA_SHROUD_capsule_data)",
             "sgroup": "shadow",
             "wrap_header": [

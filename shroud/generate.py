@@ -120,7 +120,6 @@ class VerifyAttrs(object):
             if attr not in [
                 "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
-                "cdesc",
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
@@ -354,9 +353,9 @@ class VerifyAttrs(object):
         api = attrs["api"]
         if api is None:
             pass
-        elif api not in ["capi", "buf", "cfi"]:
+        elif api not in ["capi", "buf", "cdesc", "cfi"]:
                 raise RuntimeError(
-                    "'api' attribute must 'capi', 'buf', or 'cfi'"
+                    "'api' attribute must 'capi', 'buf', 'cdesc' or 'cfi'"
                 )
         else:
             meta["api"] = api
@@ -460,8 +459,6 @@ class VerifyAttrs(object):
                 "allocatable",
                 "assumedtype",
                 "blanknull",   # Treat blank string as NULL pointer.
-                "capsule",
-                "cdesc",
                 "charlen",   # Assumed length of intent(out) char *.
                 "external",
                 "deref",
@@ -1794,10 +1791,7 @@ class GenFunctions(object):
             meta = declarator.metaattrs
             if meta["api"]:
                 # API explicitly set by user.
-                continue
-            elif attrs["cdesc"]:
-                # User requested cdesc.
-                has_buf_arg = "cdesc"
+                pass
             elif arg_typemap.sgroup == "string":
                 if meta["deref"] in ["allocatable", "pointer", "copy"]:
                     has_buf_arg = "cdesc"
@@ -2064,12 +2058,6 @@ class Preprocess(object):
         """
         attrs = node.ast.declarator.attrs
         meta = node.ast.declarator.metaattrs
-        if attrs["owner"] == "caller" and \
-           meta["deref"] == "pointer":
-            meta["capsule"] = True
-
-#        for arg in node.ast.declarator.params:
-#   XXX - check for capsule on stuff like 'int **var +intent(out)+dimension(10)'
 
 
 def generate_functions(library, config):

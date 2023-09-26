@@ -33,16 +33,16 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     {F_C_subprogram} {F_C_name}({F_C_arguments}) &
         {F_C_result_clause} &
         bind(C, name="{C_name}")
-        f_c_module / f_c_module_line
-        f_c_import
-        f_c_arg_decl
-        f_c_result_decl
+        i_module
+        i_import
+        i_arg_decl
+        i_result_decl
     end {F_C_subprogram} {F_C_name}
 
 Where
 F_C_clause =
-F_C_arguments     = f_c_arg_names
-F_C_result_clause = f_c_result_var
+F_C_arguments     = i_arg_names
+F_C_result_clause = i_result_var
 
 Lookup statements
 -----------------
@@ -122,10 +122,15 @@ These headers may include C++ code.
 c_helper
 ^^^^^^^^
 
-A blank delimited list of helper functions which will be added to the wrapper file.
+A list of helper functions which will be added to the wrapper file.
 The list will be formatted to allow for additional flexibility::
 
-    c_helper: capsule_data_helper vector_context vector_copy_{cxx_T}
+.. code-block:: yaml
+
+    c_helper:
+    - capsule_data_helper
+    - vector_context
+    - vector_copy_{cxx_T}
 
 These functions are defined in whelper.py.
 There is no current way to add additional functions.
@@ -221,25 +226,22 @@ Fortran modules used in the Fortran interface:
 
 .. code-block:: yaml
 
-        i_module=dict(iso_c_binding=["C_PTR"]),
+        i_module:
+          iso_c_binding:
+          - C_PTR
 
-i_module_line
-^^^^^^^^^^^^^
-
-Fortran modules used in the Fortran interface as a single line
-which allows format strings to be used.
-
-.. code-block:: yaml
-
-        i_module_line="iso_c_binding:{f_kind}",
-
-The format is::
-
-     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
-
+Fields will be expanded using the format dictionary before being used.
+If unset, then *f_module* will be used when creating the interface.
+Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 
 c_arg_call
 ^^^^^^^^^^
+
+Arguments to pass from the C wrapper to the C++ function.
+
+The value of *None* will pass the C argument
+to the C++ function.
+The argument will be converted from C to C++ where required.
 
 c_pre_call
 ^^^^^^^^^^
@@ -313,7 +315,8 @@ function.  This is useful for functions which return pointers but the
 pointer value is assigned to a subroutine argument which holds the
 pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
 would be return by the C wrapper is unneeded by the Fortran wrapper.
-   
+
+The Fortran wrapper is also changed to call the C wrapper as a subroutine.
  
 destructor_name
 ^^^^^^^^^^^^^^^
@@ -365,19 +368,23 @@ A list of suffixes for temporary variable names.
 
     c_temps=["len"]
 
- Create variable names in the format dictionary using
- ``{fmt.c_temp}{rootname}_{name}``.
- For example, argument *foo* creates *SHT_foo_len*.
+Create variable names in the format dictionary using
+``{fmt.c_temp}{rootname}_{name}``.
+For example, argument *foo* creates *SHT_foo_len*.
+
+The format field is named *c_var_{name}*.
 
 c_local
 ^^^^^^^
 
- Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
- *temps* is intended for arguments and is typically used in a mixin
- group.  *local* is used by group to generate names for local
- variables.  This allows creating names without conflicting with
- *temps* from a *mixin* group.
- 
+Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+*temps* is intended for arguments and is typically used in a mixin
+group.  *local* is used by group to generate names for local
+variables.  This allows creating names without conflicting with
+*temps* from a *mixin* group.
+
+The format field is named *c_local_{name}*.
+
 
 
 lang_c and lang_cxx

@@ -578,7 +578,8 @@ module userlibrary_example_nested_mod
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
-            import :: AA_SHROUD_capsule_data, type_id
+            use userlibrary_mod, only : type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
@@ -599,7 +600,8 @@ module userlibrary_example_nested_mod
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
-            import :: AA_SHROUD_capsule_data, sidre_length, type_id
+            use userlibrary_mod, only : sidre_length, type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
@@ -624,7 +626,8 @@ module userlibrary_example_nested_mod
         pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
-            import :: AA_SHROUD_capsule_data, type_id
+            use userlibrary_mod, only : type_id
+            import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id) :: SHT_rv
@@ -1349,13 +1352,13 @@ contains
     ! Attrs:     +api(buf)+deref(arg)+intent(function)
     ! Statement: f_function_string_&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
+        use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
-        character(*), intent(OUT) :: name
+        character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(name, kind=C_INT)
-        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, &
-            SHT_rv_len)
+        integer(C_INT) nname
+        nname = len(name, kind=C_INT)
+        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, nname)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
     end subroutine ex_class1_get_name_arg
 

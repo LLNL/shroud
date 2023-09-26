@@ -539,7 +539,7 @@
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_as_class"
                 ]
             },
@@ -571,7 +571,7 @@
             "f_type": "type(cstruct_as_numpy)",
             "flat_name": "Cstruct_as_numpy",
             "i_module": {
-                "--import--": [
+                "struct_mod": [
                     "cstruct_as_numpy"
                 ]
             },

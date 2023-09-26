@@ -659,9 +659,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "data_pointer",
                             "f_intent": "IN",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
+                            "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
@@ -728,7 +730,9 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
@@ -839,9 +843,11 @@
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
+                            "f_derived_type": "data_pointer",
                             "f_intent": "INOUT",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
+                            "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
@@ -874,6 +880,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "i_dimension": "(*)",
                             "rank": "1",
@@ -1241,9 +1248,11 @@
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
+                                    "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
+                                    "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_in_struct_*"
@@ -1310,7 +1319,9 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
                                 "fhelper_array_context": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -1421,9 +1432,11 @@
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
+                                    "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
+                                    "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_inout_struct_*"
@@ -1456,6 +1469,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "i_dimension": "(*)",
                                     "rank": "1",
@@ -1850,9 +1864,11 @@
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
+                                    "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
+                                    "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_in_struct_*"
@@ -1919,7 +1935,9 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
                                 "fhelper_array_context": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -2030,9 +2048,11 @@
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
+                                    "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
+                                    "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_inout_struct_*"
@@ -2065,6 +2085,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "i_dimension": "(*)",
                                     "rank": "1",
@@ -2182,17 +2203,15 @@
                     "class1"
                 ]
             },
-            "f_module_line": "scope_mod:class1",
             "f_module_name": "scope_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
             "i_module": {
-                "--import--": [
+                "scope_mod": [
                     "SCO_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:SCO_SHROUD_capsule_data",
             "i_type": "type(SCO_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -2221,6 +2240,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2242,17 +2262,15 @@
                     "class2"
                 ]
             },
-            "f_module_line": "scope_mod:class2",
             "f_module_name": "scope_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "Class2",
             "i_module": {
-                "--import--": [
+                "scope_mod": [
                     "SCO_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:SCO_SHROUD_capsule_data",
             "i_type": "type(SCO_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -2281,6 +2299,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2307,6 +2326,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2333,6 +2353,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2359,6 +2380,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2384,7 +2406,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns1_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns1_mod": [
                     "data_pointer"
                 ]
             },
@@ -2412,6 +2434,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2437,7 +2460,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns2_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns2_mod": [
                     "data_pointer"
                 ]
             },
@@ -2465,6 +2488,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2490,7 +2514,7 @@
             "f_type": "type(data_pointer)",
             "flat_name": "ns3_DataPointer",
             "i_module": {
-                "--import--": [
+                "scope_ns3_mod": [
                     "data_pointer"
                 ]
             },

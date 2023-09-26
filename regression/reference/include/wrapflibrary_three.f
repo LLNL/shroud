@@ -50,7 +50,8 @@ module library_three_mod
         ! Statement: f_in_native_scalar
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
-            import :: LIB_SHROUD_capsule_data, custom_type
+            use library_mod, only : custom_type
+            import :: LIB_SHROUD_capsule_data
             implicit none
             type(LIB_SHROUD_capsule_data), intent(IN) :: self
             integer(custom_type), value, intent(IN) :: arg1

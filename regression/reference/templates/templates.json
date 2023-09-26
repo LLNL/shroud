@@ -245,6 +245,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -292,6 +293,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmtf": "f_in_native_scalar"
@@ -470,20 +472,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "structAsClass<int>",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<int>",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+                                "f_derived_type": "struct_as_class_int",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(struct_as_class_int)",
+                                "f_type_module": "templates_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -556,6 +560,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "n",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -661,6 +666,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_function_native_scalar"
@@ -783,6 +789,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "v",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -922,6 +929,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_function_native_scalar"
@@ -1062,20 +1070,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "structAsClass<double>",
                                 "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
                                 "idtor": "4",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<double>",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+                                "f_derived_type": "struct_as_class_double",
                                 "f_intent": "OUT",
+                                "f_local_ptr": "SHT_prv",
                                 "f_type": "type(struct_as_class_double)",
+                                "f_type_module": "templates_mod",
                                 "f_var": "SHT_rv",
-                                "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
@@ -1148,6 +1158,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "n",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -1253,6 +1264,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_function_native_scalar"
@@ -1375,6 +1387,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "v",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmtf": "f_in_native_scalar"
@@ -1514,6 +1527,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
+                                "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmtf": "f_function_native_scalar"
@@ -1670,20 +1684,22 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "user<int>",
                         "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
                         "idtor": "5",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_shadow_scalar_capptr_targ_native_scalar"
                     },
                     "fmtf": {
-                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "user<int>",
                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+                        "f_derived_type": "user_int",
                         "f_intent": "OUT",
+                        "f_local_ptr": "SHT_prv",
                         "f_type": "type(user_int)",
+                        "f_type_module": "templates_mod",
                         "f_var": "SHT_rv",
-                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_shadow_scalar_capptr_targ_native_scalar"
                     }
@@ -1931,6 +1947,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -1978,6 +1995,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -2166,6 +2184,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmtf": "f_in_native_scalar"
@@ -2213,6 +2232,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -2439,6 +2459,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2575,6 +2596,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2679,20 +2701,22 @@
                                         "cxx_member": ".",
                                         "cxx_type": "std::vector<int>",
                                         "cxx_var": "SHCXX_rv",
+                                        "f_local_ptr": "SHT_prv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+                                        "f_derived_type": "vector_int",
                                         "f_intent": "OUT",
+                                        "f_local_ptr": "SHT_prv",
                                         "f_type": "type(vector_int)",
+                                        "f_type_module": "templates_std_mod",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -2904,6 +2928,7 @@
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
+                                            "f_type_module": "iso_c_binding",
                                             "f_var": "value",
                                             "sh_type": "SH_TYPE_INT",
                                             "stmtf": "f_in_native_&"
@@ -3087,8 +3112,8 @@
                                             "f_intent": "IN",
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
+                                            "f_type_module": "templates_std_mod",
                                             "f_var": "n",
-                                            "i_module_line": "--import--:vector_int_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmtf": "f_in_native_scalar"
                                         },
@@ -3157,12 +3182,13 @@
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
-                                        "c_local_ptr": "SHC_rv_ptr",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "int",
                                         "f_intent": "OUT",
                                         "f_kind": "C_INT",
+                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_type": "integer(C_INT)",
+                                        "f_type_module": "iso_c_binding",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_INT",
                                         "stmtf": "f_function_native_&_pointer"
@@ -3348,20 +3374,22 @@
                                         "cxx_member": ".",
                                         "cxx_type": "std::vector<double>",
                                         "cxx_var": "SHCXX_rv",
+                                        "f_local_ptr": "SHT_prv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+                                        "f_derived_type": "vector_double",
                                         "f_intent": "OUT",
+                                        "f_local_ptr": "SHT_prv",
                                         "f_type": "type(vector_double)",
+                                        "f_type_module": "templates_std_mod",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TEM_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -3573,6 +3601,7 @@
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
                                             "f_type": "real(C_DOUBLE)",
+                                            "f_type_module": "iso_c_binding",
                                             "f_var": "value",
                                             "sh_type": "SH_TYPE_DOUBLE",
                                             "stmtf": "f_in_native_&"
@@ -3756,8 +3785,8 @@
                                             "f_intent": "IN",
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
+                                            "f_type_module": "templates_std_mod",
                                             "f_var": "n",
-                                            "i_module_line": "--import--:vector_double_size_type",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmtf": "f_in_native_scalar"
                                         },
@@ -3826,12 +3855,13 @@
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
-                                        "c_local_ptr": "SHC_rv_ptr",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "double",
                                         "f_intent": "OUT",
                                         "f_kind": "C_DOUBLE",
+                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_type": "real(C_DOUBLE)",
+                                        "f_type_module": "iso_c_binding",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "stmtf": "f_function_native_&_pointer"
@@ -4137,17 +4167,15 @@
                     "worker"
                 ]
             },
-            "f_module_line": "templates_mod:worker",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(worker)",
             "flat_name": "Worker",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4178,17 +4206,15 @@
                     "impl_worker1"
                 ]
             },
-            "f_module_line": "templates_internal_mod:impl_worker1",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
             "i_module": {
-                "--import--": [
+                "templates_internal_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker1.hpp"
@@ -4219,17 +4245,15 @@
                     "impl_worker2"
                 ]
             },
-            "f_module_line": "templates_internal_mod:impl_worker2",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker2)",
             "flat_name": "internal_ImplWorker2",
             "i_module": {
-                "--import--": [
+                "templates_internal_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "implworker2.hpp"
@@ -4259,17 +4283,15 @@
                     "vector"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4302,15 +4324,14 @@
                     "vector_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_size_type",
+            "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4341,15 +4362,14 @@
                     "vector_double_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_double_size_type",
+            "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_double_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_double_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_double_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4380,15 +4400,14 @@
                     "vector_int_size_type"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_int_size_type",
+            "f_module_name": "templates_std_mod",
             "f_type": "integer(vector_int_size_type)",
             "flat_name": "size_t",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "vector_int_size_type"
                 ]
             },
-            "i_module_line": "--import--:vector_int_size_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
             "typedef": "size_t",
@@ -4417,17 +4436,15 @@
                     "vector_double"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_double",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "2",
             "impl_header": [
@@ -4459,17 +4476,15 @@
                     "vector_int"
                 ]
             },
-            "f_module_line": "templates_std_mod:vector_int",
             "f_module_name": "templates_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_int)",
             "flat_name": "std_vector_int",
             "i_module": {
-                "--import--": [
+                "templates_std_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [
@@ -4500,17 +4515,15 @@
                     "struct_as_class"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class)",
             "flat_name": "structAsClass",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4536,17 +4549,15 @@
                     "struct_as_class_double"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class_double",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_double)",
             "flat_name": "structAsClass_double",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "4",
             "impl_header": [
@@ -4573,17 +4584,15 @@
                     "struct_as_class_int"
                 ]
             },
-            "f_module_line": "templates_mod:struct_as_class_int",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(struct_as_class_int)",
             "flat_name": "structAsClass_int",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "3",
             "impl_header": [
@@ -4613,17 +4622,15 @@
                     "user"
                 ]
             },
-            "f_module_line": "templates_mod:user",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user)",
             "flat_name": "user",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "impl_header": [
                 "templates.hpp"
@@ -4654,17 +4661,15 @@
                     "user_int"
                 ]
             },
-            "f_module_line": "templates_mod:user_int",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user_int)",
             "flat_name": "user_int",
             "i_module": {
-                "--import--": [
+                "templates_mod": [
                     "TEM_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TEM_SHROUD_capsule_data",
             "i_type": "type(TEM_SHROUD_capsule_data)",
             "idtor": "5",
             "impl_header": [

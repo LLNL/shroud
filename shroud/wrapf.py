@@ -215,8 +215,9 @@ class Wrapf(util.WrapperMixin):
             else:
                 output.append(ast.gen_arg_as_fortran())
                 self.update_f_module(
-                    fileinfo.module_use, {},
-                    ntypemap.i_module or ntypemap.f_module
+                    fileinfo.module_use,
+                    ntypemap.i_module or ntypemap.f_module,
+                    var.fmtdict
                 )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
@@ -274,7 +275,7 @@ class Wrapf(util.WrapperMixin):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_f_helper("capsule_data_helper", fmt_class)
+        fileinfo.add_f_helper(["capsule_data_helper"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -430,9 +431,7 @@ class Wrapf(util.WrapperMixin):
             F_force = None
             
         # Any USE statements for typedef value (ex. C_INT)
-        self.update_f_module(
-            fileinfo.module_use, {},
-            node.f_module)
+        self.update_f_module(fileinfo.module_use, node.f_module, fmtdict)
         
         output = fileinfo.typedef_impl
         output.append("")
@@ -776,7 +775,7 @@ rv = .false.
             append_format(lst, line, fmt)
         return True
 
-    def add_f_module_from_stmts(self, stmt, modules, imports, fmt):
+    def add_f_module_from_stmts(self, stmt, modules, fmt):
         """Add USE/IMPORT statements defined in stmt.
 
         Parameters
@@ -784,20 +783,10 @@ rv = .false.
         stmt : Scope
         modules : dict
             Indexed as [module][symbol]
-        imports : dict
-            Indexed as [symbol]
         fmt : Scope
         """
         if stmt.f_module:
-            self.update_f_module(
-                modules, imports, stmt.f_module)
-        if stmt.f_module_line:
-            self.update_f_module_line(
-                modules, imports, stmt.f_module_line, fmt)
-        if stmt.f_import:
-            for name in stmt.f_import:
-                iname = wformat(name, fmt)
-                imports[iname] = True
+            self.update_f_module(modules, stmt.f_module, fmt)
 
     def add_i_module_from_stmts(self, stmt, modules, imports, fmt):
         """Add USE/IMPORT statements defined in stmt for interface.
@@ -812,59 +801,16 @@ rv = .false.
         fmt : Scope
         """
         if stmt.i_module:
-            self.update_f_module(
-                modules, imports, stmt.i_module)
-        if stmt.i_module_line:
-            self.update_f_module_line(
-                modules, imports, stmt.i_module_line, fmt)
+            self.update_f_module(modules, stmt.i_module, fmt)
         if stmt.i_import:
             for name in stmt.i_import:
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
-    def update_f_module_line(self, modules, imports, line, fmt):
-        """Aggragate the information from f_module_line into modules.
-        
-        line will be formatted using fmt.
-
-        line of the form:
-           module ":" symbol [ "," symbol ]*
-           [ ";" module ":" symbol [ "," symbol ]* ]
-
-        ex: "iso_c_binding:{f_kind}"
-        where fmt.f_kind = 'C_INT'
-        expands to dict(iso_c_binding=['C_INT'])
-
-        Parameters
-        ----------
-        modules : dictionary of dictionaries:
-            modules['iso_c_bindings']['C_INT'] = True
-        imports: dict
-            If the module name is '--import--', add to imports.
-            Useful for interfaces.
-        line : str
-            module dictionary info as a string.
-            Will be formatted using fmt.
-            May be blank after format expansion.
-        fmt : Scope
-        """
-        wline = wformat(line, fmt)
-        wline = wline.replace(" ", "")
-        if not wline:
-            return
-        f_module = {}
-        for use in wline.split(";"):
-            mname, syms = use.split(":")
-            if mname == "--import--":
-                for sym in syms.split(","):
-                    imports[sym] = True
-            else:
-                module = modules.setdefault(mname, {})
-                for sym in syms.split(","):
-                    module[sym] = True
-        
-    def update_f_module(self, modules, imports, f_module):
+    def update_f_module(self, modules, f_module, fmt):
         """Aggragate the information from f_module into modules.
+
+        sort_module_info deals with IMPORT vs USE.
 
         Parameters
         ----------
@@ -875,19 +821,35 @@ rv = .false.
             Useful for interfaces.
         f_module : a dictionary of lists:
             dict(iso_c_binding=['C_INT'])
+        fmt : Scope
         """
         if f_module is not None:
             for mname, only in f_module.items():
+                mname = wformat(mname, fmt)
                 if mname == "__line__":
                     continue
-                if mname == "--import--":
+                module = modules.setdefault(mname, {})
+                if only:  # Empty list means no ONLY clause
                     for oname in only:
-                        imports[oname] = True
-                else:
-                    module = modules.setdefault(mname, {})
-                    if only:  # Empty list means no ONLY clause
-                        for oname in only:
-                            module[oname] = True
+                        wname = wformat(oname, fmt)
+                        module[wname] = True
+
+    def update_f_module_helper(self, modules, f_module):
+        """Aggragate the information from helper["modules"] into modules.
+
+        Parameters
+        ----------
+        modules : dictionary of dictionaries:
+            modules['iso_c_bindings']['C_INT'] = True
+        f_module : a dictionary of lists:
+            dict(iso_c_binding=['C_INT'])
+        """
+        if f_module is None:
+            return
+        for mname, only in f_module.items():
+            module = modules.setdefault(mname, {})
+            for oname in only:
+                module[oname] = True
 
     def set_f_module(self, modules, mname, *only):
         """Add a module to modules.
@@ -1038,7 +1000,6 @@ rv = .false.
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
-                imports = {}
                 for i, param in enumerate(arg.declarator.params):
                     name = param.declarator.user_name
                     if name is None:
@@ -1055,8 +1016,8 @@ rv = .false.
                     )
                     self.update_f_module(
                         modules,
-                        imports,
                         arg_typemap.i_module or arg_typemap.f_module,
+                        fmt
                     )
 
                 if subprogram == "function":
@@ -1070,7 +1031,8 @@ rv = .false.
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
                 iface.append(1)
-                arg_f_use = self.sort_module_info(modules, None)
+                imports = {}
+                arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
                 iface.extend(arg_f_use)
                 if imports:
                     iface.append("import :: " + ",\t ".join(sorted(imports.keys())))
@@ -1166,8 +1128,9 @@ rv = .false.
                     # If a template, use its type
                     arg_typemap = ast.template_arguments[0].typemap
                 self.update_f_module(
-                    modules, imports,
-                    arg_typemap.i_module or arg_typemap.f_module
+                    modules,
+                    arg_typemap.i_module or arg_typemap.f_module,
+                    fmt
                 )
 
     def wrap_function_interface(self, cls, node, fileinfo):
@@ -1247,9 +1210,9 @@ rv = .false.
         spointer = ast.declarator.get_indirect_stmt()
         c_stmts = ["f", sintent, sgroup, spointer, result_api,
                    r_meta["deref"]] + specialize
-        c_result_blk = statements.lookup_fc_stmts(c_stmts)
-        c_result_blk = statements.lookup_local_stmts(
-            ["c", result_api], c_result_blk, node)
+        result_stmt = statements.lookup_fc_stmts(c_stmts)
+        result_stmt = statements.lookup_local_stmts(
+            ["c", result_api], result_stmt, node)
 
         if options.debug:
             generated = self.compute_generated_path(node)
@@ -1262,22 +1225,23 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
-            self.document_stmts(stmts_comments, ast, c_result_blk.name)
-        self.name_temp_vars_c(fmt_func.C_result, c_result_blk, fmt_result)
+            self.document_stmts(stmts_comments, ast, result_stmt.name)
+        self.name_temp_vars_c(fmt_func.C_result, result_stmt, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
-        if c_result_blk.c_return_type == "void":
+        if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
             fmt_func.F_C_subprogram = "subroutine"
             fmt_func.F_C_result_clause = ""
             subprogram = "subroutine"
-        elif c_result_blk.c_return_type:
+        elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        if c_result_blk.i_result_var:
+        if result_stmt.i_result_var:
             fmt_func.F_result = wformat(
-                c_result_blk.i_result_var, fmt_func)
+                result_stmt.i_result_var, fmt_func)
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1310,20 +1274,21 @@ rv = .false.
             c_stmts = ["f", intent, sgroup, spointer,
                        meta["api"], deref_attr]
             c_stmts.extend(specialize)
-            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+            arg_stmt = statements.lookup_fc_stmts(c_stmts)
 
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
-                self.document_stmts(stmts_comments, arg, c_intent_blk.name)
-            self.name_temp_vars_c(arg_name, c_intent_blk, fmt_arg)
+                self.document_stmts(stmts_comments, arg, arg_stmt.name)
+            self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
                 arg,
-                c_intent_blk,
+                arg_stmt,
                 modules,
                 imports,
                 arg_c_names,
@@ -1335,7 +1300,7 @@ rv = .false.
             node, fileinfo,
             fmt_result,
             ast,
-            c_result_blk,
+            result_stmt,
             modules,
             imports,
             arg_c_names,
@@ -1357,22 +1322,21 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            if c_result_blk.i_result_decl is not None:
-                for arg in c_result_blk.i_result_decl:
+            if result_stmt.i_result_decl is not None:
+                for arg in result_stmt.i_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
-                self.add_i_module_from_stmts(c_result_blk, modules, imports, fmt_result)
-            elif c_result_blk.c_return_type:
+                self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
+            elif result_stmt.c_return_type:
                 # Return type changed by user.
-                ntypemap = self.symtab.lookup_typemap(c_result_blk.c_return_type)
+                ntypemap = self.symtab.lookup_typemap(result_stmt.c_return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
-                self.update_f_module(modules, imports,
-                                     ntypemap.f_module)
+                self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
                 arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(
                     modules,
-                    imports,
                     result_typemap.i_module or result_typemap.f_module,
+                    fmt_result
                 )
 
         arg_f_use = self.sort_module_info(
@@ -1421,14 +1385,13 @@ rv = .false.
         arg_typemap,
         stmts_blk,
         modules,
-        imports,
         arg_c_call,
         need_wrapper,
     ):
         """
         Build up code to call C wrapper.
         This includes arguments to the function in arg_c_call.
-        modules and imports may also be updated.
+        modules may also be updated.
 
         Add call arguments from stmts_blk if defined,
         This is used to override the C function arguments and used
@@ -1443,7 +1406,6 @@ rv = .false.
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
             stmts_blk - typemap.FStmts, fc_statements block.
             modules - Build up USE statement.
-            imports - Build up IMPORT statement.
             arg_c_call - Arguments to C wrapper.
 
         return need_wrapper
@@ -1455,33 +1417,25 @@ rv = .false.
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
-        elif stmts_blk.intent == "getter":
-            # Functions do not pass arguments by default.
-            pass
+        elif arg_typemap.f_to_c:
+            need_wrapper = True
+            append_format(arg_c_call, arg_typemap.f_to_c, fmt)
+        # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
+        elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
+            # Used with fortran_generic
+            need_wrapper = True
+            append_format(arg_c_call, arg_typemap.f_cast, fmt)
+            self.update_f_module(modules, arg_typemap.f_module, fmt)
         else:
-            # Attributes   None=skip, True=use default, else use value
-            if arg_typemap.f_to_c:
-                need_wrapper = True
-                append_format(arg_c_call, arg_typemap.f_to_c, fmt)
-            # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
-            elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
-                # Used with fortran_generic
-                need_wrapper = True
-                append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                self.update_f_module(modules, imports,
-                                     arg_typemap.f_module)
-            else:
-                arg_c_call.append(fmt.c_var)
+            arg_c_call.append(fmt.c_var)
         return need_wrapper
 
     def add_code_from_statements(
         self,
         need_wrapper,
-        fileinfo,
         fmt,
         intent_blk,
         modules,
-        imports,
         declare=None,
         pre_call=None,
         post_call=None,
@@ -1492,11 +1446,9 @@ rv = .false.
 
         Args:
             need_wrapper -
-            fileinfo - ModuleInfo
             fmt -
             intent_blk -
             modules -
-            imports -
             declare -
             pre_call -
             post_call -
@@ -1504,12 +1456,7 @@ rv = .false.
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.add_f_module_from_stmts(intent_blk, modules, imports, fmt)
-
-        if intent_blk.c_helper:
-            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
-        if intent_blk.f_helper:
-            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
+        self.add_f_module_from_stmts(intent_blk, modules, fmt)
 
         if declare is not None and intent_blk.f_declare:
             need_wrapper = True
@@ -1568,11 +1515,11 @@ rv = .false.
             fmt.f_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
-        i_module_line = ntypemap.i_module_line or ntypemap.f_module_line
-        if i_module_line:
-            fmt.i_module_line = i_module_line
-        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
-    
+        if ntypemap.f_derived_type:
+            fmt.f_derived_type = ntypemap.f_derived_type
+        if ntypemap.f_module_name:
+            fmt.f_type_module = ntypemap.f_module_name
+
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
                        ntypemap=None):
@@ -1641,14 +1588,14 @@ rv = .false.
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
-                if hasattr(fmt, "c_var_cdesc"):
+                if hasattr(fmt, "f_var_cdesc"):
                     fmt.f_cdesc_shape = ""
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                if hasattr(fmt, "c_var_cdesc"):
-                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                if hasattr(fmt, "f_var_cdesc"):
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(dim)
@@ -1656,24 +1603,24 @@ rv = .false.
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                # XXX use c_var_cdesc since shape is assigned in C
+                # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if hasattr(fmt, "c_var_cdesc"):
-                    # XXX kludge, name is assumed to be c_var_cdesc.
-                    fmt.f_cdesc_shape = wformat("\n{c_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
-                    # XXX - maybe avoid {rank} with: {c_var_cdes}(:rank({f_var})) = shape({f_var})
+                if hasattr(fmt, "f_var_cdesc"):
+                    # XXX kludge, name is assumed to be f_var_cdesc.
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                    # XXX - maybe avoid {rank} with: {f_var_cdes}(:rank({f_var})) = shape({f_var})
                     fmt.f_array_allocate = "(" + ",".join(
-                        ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
+                        ["{0}%shape({1})".format(fmt.f_var_cdesc, r)
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
-                        ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
+                        ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
 
         if f_attrs["len"]:
             fmt.f_char_len = "len=%s" % f_attrs["len"];
-        elif hasattr(fmt, "c_var_cdesc"):
+        elif hasattr(fmt, "f_var_cdesc"):
             if f_attrs["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
-                fmt.f_char_type = wformat("character(len={c_var_cdesc}%elem_len) ::\t ", fmt)
+                fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1742,15 +1689,15 @@ rv = .false.
                        return_deref_attr, r_attrs["owner"]] + specialize
         fmt_func.F_subprogram = subprogram
 
-        f_result_blk = statements.lookup_fc_stmts(f_stmts)
-        f_result_blk = statements.lookup_local_stmts("f", f_result_blk, node)
-        fmt_result.stmtf = f_result_blk.name
+        result_stmt = statements.lookup_fc_stmts(f_stmts)
+        result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
+        fmt_result.stmtf = result_stmt.name
 
-        c_result_blk = f_result_blk
-
-        self.name_temp_vars_f(fmt_func.C_result, f_result_blk, fmt_result)
+        self.name_temp_vars_f(fmt_func.C_result, result_stmt, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
+        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         if options.debug:
             if node.C_generated_path:
@@ -1762,23 +1709,23 @@ rv = .false.
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
-            self.document_stmts(stmts_comments, ast, f_result_blk.name)
+            self.document_stmts(stmts_comments, ast, result_stmt.name)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
 
-        if c_result_blk.c_return_type == "void":
+        if result_stmt.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
-        if f_result_blk.f_result:
-            if f_result_blk.f_result == "subroutine":
+        if result_stmt.f_result:
+            if result_stmt.f_result == "subroutine":
                 fmt_func.F_subprogram = "subroutine"
                 fmt_func.F_result_clause = ""
             else:
                 # Change a subroutine into function.
                 fmt_func.F_subprogram = "function"
-                fmt_func.F_result = f_result_blk.f_result
+                fmt_func.F_result = result_stmt.f_result
                 fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         if cls:
@@ -1807,7 +1754,6 @@ rv = .false.
         #
         f_args = ast.declarator.params
         f_index = -1  # index into f_args
-        have_f_arg = False
         for c_arg in C_node.ast.declarator.params:
             arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1844,11 +1790,12 @@ rv = .false.
             f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
             f_stmts.extend(specialize)
 
-            f_intent_blk = statements.lookup_fc_stmts(f_stmts)
-            c_intent_blk = f_intent_blk
-            self.name_temp_vars_f(arg_name, f_intent_blk, fmt_arg)
+            arg_stmt = statements.lookup_fc_stmts(f_stmts)
+            self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
+            fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
@@ -1901,20 +1848,20 @@ rv = .false.
                     arg_c_call.append(fmt_arg.pre_call_intent)
                 for helper in f_helper.split():
                     fileinfo.f_helper[helper] = True
-                self.update_f_module(modules, imports, f_arg.typemap.f_module)
+                self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
                 continue
             elif hidden:
                 # Argument is not passed into Fortran.
                 # hidden value is used in C wrapper.
                 continue
-            elif f_intent_blk.f_arg_decl:
+            elif arg_stmt.f_arg_decl:
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
-                    f_intent_blk, arg_f_decl, arg_f_names, fmt_arg)
-                if not f_result_blk.f_arg_name:
+                    arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
+                if not result_stmt.f_arg_name:
                     arg_f_names.append(fmt_arg.f_var)
-                self.add_f_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
+                self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
                 if options.F_default_args == "optional" and c_arg.declarator.init is not None:
@@ -1923,18 +1870,18 @@ rv = .false.
                 arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
-            fmt_arg.stmtf = f_intent_blk.name
+            fmt_arg.stmtf = arg_stmt.name
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 f_decl = f_arg.gen_decl()
                 stmts_comments.append("! Argument:  " + f_decl)
-                self.document_stmts(stmts_comments, f_arg, f_intent_blk.name)
+                self.document_stmts(stmts_comments, f_arg, arg_stmt.name)
                 c_decl = c_arg.gen_decl()
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
-            self.update_f_module(modules, imports, arg_typemap.f_module)
+            self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
@@ -1960,19 +1907,17 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
-                f_intent_blk,
+                arg_stmt,
                 modules,
-                imports,
                 arg_c_call,
                 need_wrapper,
             )
 
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_arg,
-                f_intent_blk,
+                arg_stmt,
                 modules,
-                imports,
                 declare,
                 pre_call,
                 post_call,
@@ -1987,14 +1932,13 @@ rv = .false.
             C_node.ast,
             ast,
             result_typemap,
-            f_result_blk,
+            result_stmt,
             modules,
-            imports,
             arg_c_call,
             need_wrapper,
         )
         found_arg_decl_ret = self.add_stmt_declaration(
-            f_result_blk, arg_f_decl, arg_f_names, fmt_result)
+            result_stmt, arg_f_decl, arg_f_names, fmt_result)
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value
@@ -2015,7 +1959,7 @@ rv = .false.
                 # If more than one level of indirection, will return
                 # a type(C_PTR).  i.e. int ** same as void *.
                 # So do not add type's f_module.
-                self.update_f_module(modules, imports, result_typemap.f_module)
+                self.update_f_module(modules, result_typemap.f_module, fmt_result)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
@@ -2079,27 +2023,22 @@ rv = .false.
         if "f" in node.splicer:
             need_wrapper = True
             F_force = node.splicer["f"]
-        elif f_result_blk.f_call:
-            call_list = f_result_blk.f_call
+        elif result_stmt.f_call:
+            call_list = result_stmt.f_call
         elif C_subprogram == "function":
-            if f_result_blk.c_result_var:
-                fmt_result.C_result = wformat(
-                    f_result_blk.c_result_var, fmt_result)
-                call_list = ["{C_result} = {F_C_call}({F_arg_c_call})"]
-            else:
-                call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
+            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
+            # XXX - statements should set this explicitly
             call_list = ["call {F_C_call}({F_arg_c_call})"]
 
         for line in call_list:
             append_format(call, line, fmt_result)
         if C_subprogram == "function":
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
-                f_result_blk,
+                result_stmt,
                 modules,
-                imports,
                 declare,
                 pre_call,
                 post_call,
@@ -2107,22 +2046,20 @@ rv = .false.
         elif "f" in node.fstatements:
             # Result is an argument.
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
                 node.fstatements["f"],
                 modules,
-                imports,
                 declare,
                 pre_call,
                 post_call,
             )
-        elif not have_f_arg:
+        else:
             need_wrapper = self.add_code_from_statements(
-                need_wrapper, fileinfo,
+                need_wrapper,
                 fmt_result,
-                f_result_blk,
+                result_stmt,
                 modules,
-                imports,
                 declare,
                 pre_call,
                 post_call,
@@ -2207,9 +2144,7 @@ rv = .false.
 
         mods = helper_info.get("modules", None)
         if mods:
-            self.update_f_module(
-                fileinfo.module_use, {}, mods
-            )  # XXX self.module_imports
+            self.update_f_module_helper(fileinfo.module_use, mods)
 
         if "private" in helper_info:
             if not self.private_lines:
@@ -2268,8 +2203,8 @@ rv = .false.
 
         ntypemap = self.newlibrary.file_code.get(fname)
         if ntypemap:
-            self.update_f_module(fileinfo.module_use, {},
-                                 ntypemap.f_module)
+            self.update_f_module(fileinfo.module_use,
+                                 ntypemap.f_module, fmt_node)
 
         # Write use statments (classes use iso_c_binding C_PTR)
         arg_f_use = self.sort_module_info(fileinfo.module_use, module_name)
@@ -2548,18 +2483,22 @@ class ModuleInfo(object):
         output.append(-1)
         output.append("")
 
+    def apply_helpers_from_stmts(self, stmt, fmt):
+        self.add_c_helper(stmt.c_helper, fmt)
+        self.add_f_helper(stmt.f_helper, fmt)
+        
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
-        c_helper = wformat(helpers, fmt)
-        for helper in c_helper.split():
+        for c_helper in helpers:
+            helper = wformat(c_helper, fmt)
             self.c_helper[helper] = True
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers.
         Add fmt.fhelper_X for use by pre_call and post_call.
         """
-        f_helper = wformat(helpers, fmt)
-        for i, helper in enumerate(f_helper.split()):
+        for f_helper in helpers:
+            helper = wformat(f_helper, fmt)
             self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
                 raise RuntimeError("No such helper {}".format(helper))

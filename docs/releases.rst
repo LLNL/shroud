@@ -112,7 +112,31 @@ Unreleased
   This makes it easier to match the corresponding helper and will help
   when using statement mixin groups since the order of names will no
   longer matter.
+
+* Changed statement fields *c_helper* and *f_helper* from a blank
+  delimited list, into a YAML list.  If they are used in a
+  *f_statements* section of a YAML file, they will need to be changed.
+  This makes them more consistent with *f_temps* and *c_temps* which
+  are also list of names.
+
+  For example, from ``generic.yaml``
+
+.. code-block:: yaml
+
+    -      c_helper: ShroudTypeDefines
+    +      c_helper:
+    +      - ShroudTypeDefines
+
+.. And easier to use in a mixin group by appending lists.
        
+New Features
+^^^^^^^^^^^^
+
+* Added *fmtdict* field to Fortran and C statement groups. Similar to
+  *fmtdict* already in the Python statement groups. It allows format
+  fields to be set explicitly in the statement group to override the
+  any defaults.
+
 v0.13.0
 -------
 

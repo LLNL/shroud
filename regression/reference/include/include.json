@@ -81,6 +81,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "comm",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_unknown_scalar"
@@ -180,10 +181,11 @@
                                     "F_C_var": "c2",
                                     "c_var": "c2",
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
                                     "f_intent": "INOUT",
                                     "f_type": "type(class1)",
+                                    "f_type_module": "library_three_mod",
                                     "f_var": "c2",
-                                    "i_module_line": "--import--:LIB_SHROUD_capsule_data",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_inout_shadow_*"
                                 }
@@ -446,8 +448,8 @@
                                             "f_intent": "IN",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",
+                                            "f_type_module": "library_mod",
                                             "f_var": "arg1",
-                                            "i_module_line": "--import--:custom_type",
                                             "sh_type": "SH_TYPE_INT",
                                             "stmtf": "f_in_native_scalar"
                                         }
@@ -944,17 +946,15 @@
                     "class2"
                 ]
             },
-            "f_module_line": "library_mod:class2",
             "f_module_name": "library_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "Class2",
             "i_module": {
-                "--import--": [
+                "library_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:LIB_SHROUD_capsule_data",
             "i_type": "type(LIB_SHROUD_capsule_data)",
             "impl_header": [
                 "zzheader.hpp",
@@ -990,15 +990,14 @@
                     "custom_type"
                 ]
             },
-            "f_module_line": "library_mod:custom_type",
+            "f_module_name": "library_mod",
             "f_type": "integer(custom_type)",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "library_mod": [
                     "custom_type"
                 ]
             },
-            "i_module_line": "--import--:custom_type",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -1022,17 +1021,15 @@
                     "class0"
                 ]
             },
-            "f_module_line": "library_outer1_mod:class0",
             "f_module_name": "library_outer1_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
             "flat_name": "outer1_class0",
             "i_module": {
-                "--import--": [
+                "library_outer1_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:LIB_SHROUD_capsule_data",
             "i_type": "type(LIB_SHROUD_capsule_data)",
             "impl_header": [
                 "outer1.hpp"
@@ -1058,17 +1055,15 @@
                     "class0"
                 ]
             },
-            "f_module_line": "library_outer2_mod:class0",
             "f_module_name": "library_outer2_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
             "flat_name": "outer2_class0",
             "i_module": {
-                "--import--": [
+                "library_outer2_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:LIB_SHROUD_capsule_data",
             "i_type": "type(LIB_SHROUD_capsule_data)",
             "impl_header": [
                 "classA.hpp",
@@ -1095,17 +1090,15 @@
                     "class1"
                 ]
             },
-            "f_module_line": "library_three_mod:class1",
             "f_module_name": "library_three_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "three_Class1",
             "i_module": {
-                "--import--": [
+                "library_three_mod": [
                     "LIB_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:LIB_SHROUD_capsule_data",
             "i_type": "type(LIB_SHROUD_capsule_data)",
             "impl_header": [
                 "class_header.hpp"

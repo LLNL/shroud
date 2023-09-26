@@ -248,6 +248,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -467,6 +468,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmtf": "f_in_native_scalar"
@@ -604,17 +606,15 @@
                     "user1"
                 ]
             },
-            "f_module_line": "preprocess_mod:user1",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
             "flat_name": "User1",
             "i_module": {
-                "--import--": [
+                "preprocess_mod": [
                     "PRE_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
             "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "preprocess.hpp"
@@ -645,17 +645,15 @@
                     "user2"
                 ]
             },
-            "f_module_line": "preprocess_mod:user2",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",
             "flat_name": "User2",
             "i_module": {
-                "--import--": [
+                "preprocess_mod": [
                     "PRE_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:PRE_SHROUD_capsule_data",
             "i_type": "type(PRE_SHROUD_capsule_data)",
             "impl_header": [
                 "User2.hpp"

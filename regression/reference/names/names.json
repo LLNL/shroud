@@ -469,6 +469,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -597,7 +598,9 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -798,6 +801,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -919,6 +923,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -1037,6 +1042,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "rv",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -1098,6 +1104,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     },
@@ -1199,7 +1206,9 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "rv",
+                            "f_var_len": "SHT_rv_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -1251,6 +1260,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -1418,6 +1428,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
@@ -1465,6 +1476,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_INT"
                         },
@@ -1626,7 +1638,9 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
+                            "f_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }
@@ -1655,6 +1669,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
@@ -1944,6 +1959,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
@@ -1991,6 +2007,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
@@ -2188,6 +2205,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmtf": "f_in_native_scalar"
@@ -2235,6 +2253,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
@@ -2435,6 +2454,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2531,10 +2551,11 @@
                             "F_C_var": "point",
                             "c_var": "point",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
+                            "f_derived_type": "Fstruct_as_class",
                             "f_intent": "IN",
                             "f_type": "type(Fstruct_as_class)",
+                            "f_type_module": "top_module",
                             "f_var": "point",
-                            "i_module_line": "--import--:TES_SHROUD_capsule_data",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_shadow_*"
                         },
@@ -2609,6 +2630,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
@@ -2929,6 +2951,7 @@
                             "c_var": "afree",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "afree",
                             "sh_type": "SH_TYPE_CPTR"
                         }
@@ -2956,6 +2979,7 @@
                             "c_var": "alloc",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "alloc",
                             "sh_type": "SH_TYPE_CPTR"
                         }
@@ -2983,6 +3007,7 @@
                             "c_var": "assoc",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "assoc",
                             "sh_type": "SH_TYPE_CPTR"
                         }
@@ -3011,6 +3036,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -3039,6 +3065,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "pkg",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -3067,6 +3094,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "rdbase",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -3175,20 +3203,22 @@
                                         "cxx_member": ".",
                                         "cxx_type": "ns0::Names",
                                         "cxx_var": "ARG_rv",
+                                        "f_local_ptr": "SHT_prv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
                                         "f_capsule_data_type": "TES_SHROUD_capsule_data",
+                                        "f_derived_type": "FNames",
                                         "f_intent": "OUT",
+                                        "f_local_ptr": "SHT_prv",
                                         "f_type": "type(FNames)",
+                                        "f_type_module": "name_module",
                                         "f_var": "SHT_rv",
-                                        "i_module_line": "--import--:TES_SHROUD_capsule_data",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },
@@ -4358,17 +4388,15 @@
                     "class1"
                 ]
             },
-            "f_module_line": "testnames_capi_mod:class1",
             "f_module_name": "testnames_capi_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "CAPI_Class1",
             "i_module": {
-                "--import--": [
+                "testnames_capi_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4397,6 +4425,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -4423,17 +4452,15 @@
                     "Fstruct_as_class"
                 ]
             },
-            "f_module_line": "top_module:Fstruct_as_class",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4462,17 +4489,15 @@
                     "Fstruct_as_subclass"
                 ]
             },
-            "f_module_line": "top_module:Fstruct_as_subclass",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4501,17 +4526,15 @@
                     "names2"
                 ]
             },
-            "f_module_line": "top_module:names2",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(names2)",
             "flat_name": "Names2",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4535,17 +4558,15 @@
                     "impl_worker1"
                 ]
             },
-            "f_module_line": "testnames_internal_mod:impl_worker1",
             "f_module_name": "testnames_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
             "i_module": {
-                "--import--": [
+                "testnames_internal_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4575,17 +4596,15 @@
                     "FNames"
                 ]
             },
-            "f_module_line": "name_module:FNames",
             "f_module_name": "name_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FNames)",
             "flat_name": "ns0_Names",
             "i_module": {
-                "--import--": [
+                "name_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "idtor": "1",
             "impl_header": [],
@@ -4615,17 +4634,15 @@
                     "FFvvv1"
                 ]
             },
-            "f_module_line": "testnames_std_mod:FFvvv1",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FFvvv1)",
             "flat_name": "std_vector_int",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4657,17 +4674,15 @@
                     "vector"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4698,17 +4713,15 @@
                     "vector_double"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_double",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4739,17 +4752,15 @@
                     "vector_instantiation3"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_instantiation3",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation3)",
             "flat_name": "std_vector_internal_ImplWorker1",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4780,17 +4791,15 @@
                     "vector_instantiation5"
                 ]
             },
-            "f_module_line": "testnames_std_mod:vector_instantiation5",
             "f_module_name": "testnames_std_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation5)",
             "flat_name": "std_vector_long",
             "i_module": {
-                "--import--": [
+                "testnames_std_mod": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [
                 "<vector>"
@@ -4820,17 +4829,15 @@
                     "two_ts"
                 ]
             },
-            "f_module_line": "top_module:two_ts",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts)",
             "flat_name": "twoTs",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4859,17 +4866,15 @@
                     "two_ts_0"
                 ]
             },
-            "f_module_line": "top_module:two_ts_0",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts_0)",
             "flat_name": "twoTs_int,_long",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4898,17 +4903,15 @@
                     "two_ts_instantiation4"
                 ]
             },
-            "f_module_line": "top_module:two_ts_instantiation4",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(two_ts_instantiation4)",
             "flat_name": "twoTs_float,_double",
             "i_module": {
-                "--import--": [
+                "top_module": [
                     "TES_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:TES_SHROUD_capsule_data",
             "i_type": "type(TES_SHROUD_capsule_data)",
             "impl_header": [],
             "sgroup": "shadow",

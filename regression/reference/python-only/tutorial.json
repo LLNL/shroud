@@ -2438,6 +2438,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",
@@ -2464,15 +2465,14 @@
                     ""
                 ]
             },
-            "f_module_line": "tutorial_mod:",
+            "f_module_name": "tutorial_mod",
             "f_type": "integer()",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "tutorial_mod": [
                     ""
                 ]
             },
-            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
@@ -2499,15 +2499,14 @@
                     ""
                 ]
             },
-            "f_module_line": "tutorial_mod:",
+            "f_module_name": "tutorial_mod",
             "f_type": "integer()",
             "flat_name": "int",
             "i_module": {
-                "--import--": [
+                "tutorial_mod": [
                     ""
                 ]
             },
-            "i_module_line": "--import--:",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",

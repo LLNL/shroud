@@ -19,6 +19,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   function result via an argument. Used when
   fmt.F_string_result_as_arg is defined.  Eliminated
   meta["is_result"].
+- Remove stmt.c_result_var. Remove custom code in wrapf and replaced
+  with data in FStmts.
+- *f_temps* and *f_local* now create format fields which start with **f**
+  instead of **c**. They are intented to be used the Fortran wrapper
+  and are based off of *f_var* name.
+
+### Removed
+- Removed attribute *+cdesc*. Replace by *+api(cdesc)*
+- Removed *f_module_line* and *c_module_line* from both statements and Typemap.
+- Remove *f_imports* from statements.
 
 ## v0.13.0 - 2023-08-23
 ### Added

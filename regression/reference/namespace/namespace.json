@@ -86,6 +86,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
@@ -195,7 +196,9 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
                         "fhelper_array_context": "array_context",
                         "fhelper_copy_string": "NS_SHROUD_copy_string_and_free",
                         "sh_type": "SH_TYPE_OTHER",
@@ -789,17 +792,15 @@
                     "class_work"
                 ]
             },
-            "f_module_line": "ns_nswork_mod:class_work",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
             "i_module": {
-                "--import--": [
+                "ns_nswork_mod": [
                     "NS_SHROUD_capsule_data"
                 ]
             },
-            "i_module_line": "--import--:NS_SHROUD_capsule_data",
             "i_type": "type(NS_SHROUD_capsule_data)",
             "impl_header": [
                 "namespace.hpp"
@@ -834,7 +835,7 @@
             "f_type": "type(cstruct1)",
             "flat_name": "outer_Cstruct1",
             "i_module": {
-                "--import--": [
+                "ns_outer_mod": [
                     "cstruct1"
                 ]
             },
@@ -862,6 +863,7 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "sgroup": "native",

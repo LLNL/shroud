@@ -1727,11 +1727,12 @@ contains
     !<
     ! start get_char_ptr3
     subroutine get_char_ptr3(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_char_ptr3
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_char_ptr3_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_char_ptr3_bufferify(output, noutput)
         ! splicer end function.get_char_ptr3
     end subroutine get_char_ptr3
     ! end get_char_ptr3
@@ -1828,11 +1829,12 @@ contains
     !!
     !<
     subroutine get_const_string_as_arg(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_const_string_as_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_const_string_as_arg_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_as_arg_bufferify(output, noutput)
         ! splicer end function.get_const_string_as_arg
     end subroutine get_const_string_as_arg
 
@@ -1911,11 +1913,12 @@ contains
     !! The length of the output variable is declared by the caller.
     !<
     subroutine get_const_string_ref_as_arg(output)
-        character(*), intent(OUT) :: output
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.get_const_string_ref_as_arg
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(output, kind=C_INT)
-        call c_get_const_string_ref_as_arg_bufferify(output, SHT_rv_len)
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_ref_as_arg_bufferify(output, noutput)
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
 
@@ -2350,18 +2353,18 @@ contains
     !<
     subroutine fetch_array_string_alloc(strs)
         use iso_c_binding, only : C_LOC
-        character(:), intent(out), allocatable, target :: strs(:)
+        character(:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_out
-        call c_fetch_array_string_alloc_bufferify(SHT_strs_out)
-        SHT_strs_cdesc%size = SHT_strs_out%size;
-        SHT_strs_cdesc%elem_len = SHT_strs_out%elem_len;
+        type(STR_SHROUD_array) :: SHT_strs_alloc
+        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc)
+        SHT_strs_alloc%size = SHT_strs_cdesc%size;
+        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
         allocate(character(len=SHT_strs_cdesc%elem_len) :: &
-            strs(SHT_strs_cdesc%size))
-        SHT_strs_cdesc%cxx%addr = C_LOC(strs);
-        SHT_strs_cdesc%base_addr = C_LOC(strs);
-        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_out)
+            strs(SHT_strs_alloc%size))
+        SHT_strs_alloc%cxx%addr = C_LOC(strs)
+        SHT_strs_alloc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
 
@@ -2384,17 +2387,17 @@ contains
     !<
     subroutine fetch_array_string_alloc_len(strs)
         use iso_c_binding, only : C_LOC
-        character(len=20), intent(out), allocatable, target :: strs(:)
+        character(len=20), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc_len
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_out
-        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_out)
-        SHT_strs_cdesc%size = SHT_strs_out%size;
-        SHT_strs_cdesc%elem_len = SHT_strs_out%elem_len;
-        allocate(strs(SHT_strs_cdesc%size))
-        SHT_strs_cdesc%cxx%addr = C_LOC(strs);
-        SHT_strs_cdesc%base_addr = C_LOC(strs);
-        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_out)
+        type(STR_SHROUD_array) :: SHT_strs_alloc
+        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc)
+        SHT_strs_alloc%size = SHT_strs_cdesc%size;
+        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
+        allocate(strs(SHT_strs_alloc%size))
+        SHT_strs_alloc%cxx%addr = C_LOC(strs)
+        SHT_strs_alloc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
         ! splicer end function.fetch_array_string_alloc_len
     end subroutine fetch_array_string_alloc_len
 
