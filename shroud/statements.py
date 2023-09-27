@@ -3269,11 +3269,10 @@ fc_statements = [
     dict(
         # Local character argument passed as CFI_desc_t.
         name="c_mixin_arg_character_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var_cfi}",
+        mixin=[
+            "c_mixin_arg_cfi",
         ],
+        cxx_local_var="pointer",
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}",
         ],
@@ -3282,16 +3281,14 @@ fc_statements = [
             "char *{cxx_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
-        c_temps=["cfi"],
     ),
     dict(
         # Native argument which use CFI_desc_t.
         name="c_mixin_arg_native_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var_cfi}",
+        mixin=[
+            "c_mixin_arg_cfi",
         ],
+        cxx_local_var="pointer",
         i_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
         ],
@@ -3301,7 +3298,7 @@ fc_statements = [
 #            "{c_type} *{cxx_var} = "
 #            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
 #        ],
-        c_temps=["cfi", "extents", "lower"],
+        c_temps=["cfi", "extents", "lower"],  # "cfi" from mixin
     ),
 
     dict(
