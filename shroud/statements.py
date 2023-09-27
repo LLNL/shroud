@@ -314,23 +314,27 @@ def process_mixin(stmts, defaults, stmtdict):
                 print("XXXX - mixin should not have 'base' field:", name)
             if "alias" in stmt:
                 print("XXXX - mixin should not have 'alias' field:", name)
+            if "append" in stmt:
+                print("XXXX - mixin should not have 'append' field:", name)
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
-                parts = mixin.split("_")
-                if parts[1] != "mixin":
+                mparts = mixin.split("_")
+                if mparts[1] != "mixin":
                     print("XXXX - mixin must have intent 'mixin': ", name)
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
+        if parts[1] == "mixin":
+            node.update(stmt)
 #            append_mixin(node, stmt)
-#        else:
-        if "append" in stmt:
-            append_mixin(node, stmt["append"])
-        node.update(stmt)
+        else:
+            if "append" in stmt:
+                append_mixin(node, stmt["append"])
+            node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
         out = compute_all_permutations(name)

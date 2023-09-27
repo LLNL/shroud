@@ -29,6 +29,7 @@ a statement entry.
 
 .. append - applied after mixins as a sort of one-off mixin to append to fields.
       f_post_call is defined by the mixins but need to add one more line.
+      Cannot be used in a mixin.
 
         name="f_out_string_**_cdesc_allocatable",
         mixin=[
