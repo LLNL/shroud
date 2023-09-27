@@ -1388,6 +1388,13 @@ c_deref
     Used to dereference *c_var*.
     ``*`` if it is a pointer, else blank.
 
+c_helper_*
+    Helper name for a function.
+    Each name in statements *c_helper* will create a format name
+    which starts with *c_helper_* and end with the helper name.
+    It will contain the name of the C function for the helper.
+    Used by statements *c_pre_call* and *c_post_call* statements.
+
 c_var
     The C name of the argument.
 
@@ -1416,13 +1423,6 @@ c_var_cdesc2
 c_var_extents
 
 c_var_lower
-
-chelper_*
-    Helper name for a function.
-    Each name in statements *c_helper* will create a format name
-    which starts with *chelper_* and end with the helper name.
-    It will contain the name of the C function for the helper.
-    Used by statements *c_pre_call* and *c_post_call* statements.
 
 cxx_addr
     Syntax to take address of argument.
@@ -1524,6 +1524,13 @@ f_derived_type
 
 f_get_shape_array
 
+f_helper_*
+    Helper name for a function.
+    Each name in statements *f_helper* will create a format name
+    which starts with *f_helper_* and end with the helper name.
+    It will contain the name of the Fortran function for the helper.
+    Used by statements *f_pre_call* and *f_post_call* statements.
+
 f_kind
     Value from typemap.  ex ``C_INT``.
     Can be used in *CStmts.f_module*.
@@ -1540,13 +1547,6 @@ f_type_module
 
 f_var
     Fortran variable name for argument.
-
-fhelper_*
-    Helper name for a function.
-    Each name in statements *f_helper* will create a format name
-    which starts with *fhelper_* and end with the helper name.
-    It will contain the name of the Fortran function for the helper.
-    Used by statements *f_pre_call* and *f_post_call* statements.
 
 i_dimension
     Dimension used in ``bind(C)`` interface.

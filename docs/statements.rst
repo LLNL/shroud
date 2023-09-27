@@ -39,7 +39,7 @@ a statement entry.
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
         f_post_call [ ]      # will replace the value instead of appending.
@@ -47,7 +47,7 @@ a statement entry.
         or maybe with {copy_allocate} in the mixin.
 
         fmtdict:
-           copy_allocate: "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
+           copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
    
 
 .. fmtdict - A dictionary to replace default values

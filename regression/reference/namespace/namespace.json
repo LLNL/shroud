@@ -173,12 +173,12 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_ShroudStrToArray": "ShroudStrToArray",
+                        "c_helper_copy_string": "NS_ShroudCopyStringAndFree",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_other",
-                        "chelper_ShroudStrToArray": "ShroudStrToArray",
-                        "chelper_copy_string": "NS_ShroudCopyStringAndFree",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -193,14 +193,14 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "std::string",
+                        "f_helper_array_context": "NS_SHROUD_array",
+                        "f_helper_copy_string": "NS_SHROUD_copy_string_and_free",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
-                        "fhelper_array_context": "NS_SHROUD_array",
-                        "fhelper_copy_string": "NS_SHROUD_copy_string_and_free",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_cdesc_allocatable"
                     }
@@ -707,7 +707,7 @@
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork",
                             "f_capsule_data_type": "NS_SHROUD_capsule_data",
-                            "fhelper_capsule_data_helper": "NS_SHROUD_capsule_data",
+                            "f_helper_capsule_data_helper": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork"
                         }
                     }

@@ -856,7 +856,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
+            "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
         ],
     ),
     
@@ -1380,7 +1380,7 @@ fc_statements = [
 #        f_post_call=[
 #            # intent(out) ensure that it is already deallocated.
 #            "allocate({f_var}{f_array_allocate})",
-#            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+#            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
 #        ],
 #    ),
     dict(
@@ -1407,7 +1407,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1605,7 +1605,7 @@ fc_statements = [
         f_post_call=[
             # XXX - allocate scalar
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1801,12 +1801,12 @@ fc_statements = [
         c_temps=["len", "str"],
         c_helper=["ShroudStrAlloc", "ShroudStrFree"],
         c_pre_call=[
-            "char * {c_var_str} = {chelper_ShroudStrAlloc}(\t"
+            "char * {c_var_str} = {c_helper_ShroudStrAlloc}(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         c_arg_call=["{c_var_str}"],
         c_post_call=[
-            "{chelper_ShroudStrFree}({c_var_str});"
+            "{c_helper_ShroudStrFree}({c_var_str});"
         ],
     ),
     dict(
@@ -1820,7 +1820,7 @@ fc_statements = [
         ],
         c_helper=["ShroudStrBlankFill"],
         c_post_call=[
-            "{chelper_ShroudStrBlankFill}({c_var}, {c_var_len});"
+            "{c_helper_ShroudStrBlankFill}({c_var}, {c_var_len});"
         ],
     ),
     dict(
@@ -1835,15 +1835,15 @@ fc_statements = [
         c_temps=["len", "str"],
         c_helper=["ShroudStrAlloc", "ShroudStrCopy", "ShroudStrFree"],
         c_pre_call=[
-            "char * {c_var_str} = {chelper_ShroudStrAlloc}(\t"
+            "char * {c_var_str} = {c_helper_ShroudStrAlloc}(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         c_arg_call=["{c_var_str}"],
         c_post_call=[
             # nsrc=-1 will call strlen({c_var_str})
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {c_var_str},\t -1);",
-            "{chelper_ShroudStrFree}({c_var_str});",
+            "{c_helper_ShroudStrFree}({c_var_str});",
         ],
     ),
     dict(
@@ -1862,7 +1862,7 @@ fc_statements = [
         c_helper=["ShroudStrCopy"],
         c_post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
         ],
     ),
@@ -1925,11 +1925,11 @@ fc_statements = [
         c_helper=["ShroudStrArrayAlloc", "ShroudStrArrayFree"],
         cxx_local_var="pointer",
         c_pre_call=[
-            "char **{cxx_var} = {chelper_ShroudStrArrayAlloc}("
+            "char **{cxx_var} = {c_helper_ShroudStrArrayAlloc}("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         c_post_call=[
-            "{chelper_ShroudStrArrayFree}({cxx_var}, {c_var_size});",
+            "{c_helper_ShroudStrArrayFree}({cxx_var}, {c_var_size});",
         ],
     ),
     #####
@@ -1970,7 +1970,7 @@ fc_statements = [
             #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
             #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
+            "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
     ),
     dict(
@@ -2000,7 +2000,7 @@ fc_statements = [
             #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
             #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
+            "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
 
         # TTT - replace c_function_string_*/&_cdesc_allocatable_pointer
@@ -2010,7 +2010,7 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         c_post_call=[
-            "{chelper_ShroudStrToArray}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "{c_helper_ShroudStrToArray}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -2080,7 +2080,7 @@ fc_statements = [
         c_helper=["ShroudLenTrim"],
         cxx_local_var="scalar",
         c_pre_call=[
-            "{c_const}std::string {cxx_var}({c_var},\t {chelper_ShroudLenTrim}({c_var}, {c_var_len}));",
+            "{c_const}std::string {cxx_var}({c_var},\t {c_helper_ShroudLenTrim}({c_var}, {c_var_len}));",
         ],
     ),
     dict(
@@ -2100,7 +2100,7 @@ fc_statements = [
             "std::string {cxx_var};",
         ],
         c_post_call=[
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2119,10 +2119,10 @@ fc_statements = [
         c_helper=["ShroudStrCopy", "ShroudLenTrim"],
         cxx_local_var="scalar",
         c_pre_call=[
-            "std::string {cxx_var}({c_var},\t {chelper_ShroudLenTrim}({c_var}, {c_var_len}));",
+            "std::string {cxx_var}({c_var},\t {c_helper_ShroudLenTrim}({c_var}, {c_var_len}));",
         ],
         c_post_call=[
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2236,7 +2236,7 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         c_post_call=[
-            "{chelper_ShroudStrToArray}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "{c_helper_ShroudStrToArray}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -2276,10 +2276,10 @@ fc_statements = [
         # into a Fortran variable before the string is deleted.
         c_post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -2340,7 +2340,7 @@ fc_statements = [
             "std::string * {cxx_var} = new std::string;",
         ],
         c_post_call=[
-            "{chelper_ShroudStrToArray}({c_var_cdesc}, {cxx_var}, {idtor});",
+            "{c_helper_ShroudStrToArray}({c_var_cdesc}, {cxx_var}, {idtor});",
         ],
     ),
     
@@ -2420,7 +2420,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
         f_post_call=[
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2459,7 +2459,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
         
         cxx_local_var="pointer",
@@ -2510,7 +2510,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back(\t"
-            "std::string({c_local_s},\t{chelper_ShroudLenTrim}({c_local_s}, {c_var_len})));",
+            "std::string({c_local_s},\t{c_helper_ShroudLenTrim}({c_local_s}, {c_var_len})));",
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
@@ -2535,7 +2535,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
-            "{chelper_ShroudStrCopy}("
+            "{c_helper_ShroudStrCopy}("
             "{c_local_s}, {c_var_len},"
             "\t {cxx_var}[{c_local_i}].data(),"
             "\t {cxx_var}[{c_local_i}].size());",
@@ -2563,7 +2563,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back"
-            "(std::string({c_local_s},\t{chelper_ShroudLenTrim}({c_local_s}, {c_var_len})));",
+            "(std::string({c_local_s},\t{c_helper_ShroudLenTrim}({c_local_s}, {c_var_len})));",
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
@@ -2576,7 +2576,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
             "for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
-            "{chelper_ShroudStrCopy}({c_local_s}, {c_var_len},"
+            "{c_helper_ShroudStrCopy}({c_local_s}, {c_var_len},"
             "\t {cxx_var}[{c_local_i}].data(),"
             "\t {cxx_var}[{c_local_i}].size());",
             "{c_local_s} += {c_var_len};",
@@ -2639,7 +2639,7 @@ fc_statements = [
         ],
         c_arg_call=["{cxx_var}"],
         c_post_call=[
-            "{chelper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});",
+            "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});",
         ],
     ),
 
@@ -2654,11 +2654,11 @@ fc_statements = [
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
 #        fmtdict=dict(
-#            copy_alloc="{fhelper_vector_string_allocatable}",
+#            copy_alloc="{f_helper_vector_string_allocatable}",
 #        ),
         alias=[
             "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
@@ -2674,7 +2674,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {chelper_vector_string_out_len}(*{cxx_var});",
+            "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
             "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
@@ -2690,7 +2690,7 @@ fc_statements = [
     #                            'if ({cxx_var}.empty()) {{+',
     #                            'std::memset({c_var}, \' \', {c_var_len});',
     #                            '-}} else {{+',
-    #                            '{chelper_ShroudStrCopy}({c_var}, {c_var_len}, '
+    #                            '{c_helper_ShroudStrCopy}({c_var}, {c_var_len}, '
     #                            '\t {cxx_var}{cxx_member}data(),'
     #                            '\t {cxx_var}{cxx_member}size());',
     #                            '-}}',
@@ -2725,7 +2725,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2739,7 +2739,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {fhelper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+            "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
@@ -2764,7 +2764,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2782,7 +2782,7 @@ fc_statements = [
         f_post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 
@@ -3381,11 +3381,11 @@ fc_statements = [
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{cxx_var} = {chelper_ShroudStrAlloc}(\t"
+            "char *{cxx_var} = {c_helper_ShroudStrAlloc}(\t"
             "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         c_post_call=[
-            "{chelper_ShroudStrFree}({cxx_var});",
+            "{c_helper_ShroudStrFree}({cxx_var});",
         ],
     ),
     dict(
@@ -3395,7 +3395,7 @@ fc_statements = [
         ],
         c_helper=["ShroudStrBlankFill"],
         c_post_call=[
-            "{chelper_ShroudStrBlankFill}({cxx_var}, {c_var_cfi}->elem_len);"
+            "{c_helper_ShroudStrBlankFill}({cxx_var}, {c_var_cfi}->elem_len);"
         ],
     ),
     dict(
@@ -3408,14 +3408,14 @@ fc_statements = [
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{cxx_var} = {chelper_ShroudStrAlloc}(\t"
+            "char *{cxx_var} = {c_helper_ShroudStrAlloc}(\t"
             "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         c_post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
-            "{chelper_ShroudStrFree}({cxx_var});",
+            "{c_helper_ShroudStrFree}({cxx_var});",
         ],
     ),
     dict(
@@ -3438,7 +3438,7 @@ fc_statements = [
             # nsrc=-1 will call strlen({cxx_var})
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
     ),
@@ -3512,7 +3512,7 @@ fc_statements = [
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "size_t {c_var_len} = {c_var_cfi}->elem_len;",
             "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
-            "char **{cxx_var} = {chelper_ShroudStrArrayAlloc}("
+            "char **{cxx_var} = {c_helper_ShroudStrArrayAlloc}("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         c_temps=["cfi", "len", "size"],
@@ -3520,7 +3520,7 @@ fc_statements = [
         c_helper=["ShroudStrArrayAlloc", "ShroudStrArrayFree"],
         cxx_local_var="pointer",
         c_post_call=[
-            "{chelper_ShroudStrArrayFree}({cxx_var}, {c_var_size});",
+            "{c_helper_ShroudStrArrayFree}({cxx_var}, {c_var_size});",
         ],
     ),
 
@@ -3540,7 +3540,7 @@ fc_statements = [
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {chelper_ShroudLenTrim}({c_var}, {c_var_cfi}->elem_len);",
+            "size_t {c_local_trim} = {c_helper_ShroudLenTrim}({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         c_local=["trim"],
@@ -3560,7 +3560,7 @@ fc_statements = [
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
         c_post_call=[
-            "{chelper_ShroudStrCopy}({c_var},"
+            "{c_helper_ShroudStrCopy}({c_var},"
             "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
@@ -3578,11 +3578,11 @@ fc_statements = [
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {chelper_ShroudLenTrim}({c_var}, {c_var_cfi}->elem_len);",
+            "size_t {c_local_trim} = {c_helper_ShroudLenTrim}({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         c_post_call=[
-            "{chelper_ShroudStrCopy}({c_var},"
+            "{c_helper_ShroudStrCopy}({c_var},"
             "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
@@ -3612,10 +3612,10 @@ fc_statements = [
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "{chelper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_ShroudStrCopy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -3842,7 +3842,7 @@ fc_statements = [
         ],
         c_arg_call=["&{cxx_var}"],
         c_post_call=[
-            "{chelper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
+            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
         ],
 
     ),
@@ -3870,11 +3870,11 @@ fc_statements = [
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
 #        fmtdict=dict(
-#            copy_alloc="{fhelper_array_string_allocatable}",
+#            copy_alloc="{f_helper_array_string_allocatable}",
 #        ),
         alias=[
             "c_out_string_**_cdesc_allocatable",
@@ -3894,7 +3894,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {chelper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
+            "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership

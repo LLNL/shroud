@@ -107,8 +107,8 @@ Unreleased
   statement fields **c_helper** and **f_helper**, each a blank
   delimited list of names. A format field was added for each name with
   a 0-based suffix corresponding to the position in the list.
-  Now, the format fields have the prefix of *chelper_* or *fhelper_*
-  followed by the helpers name. For example, *fhelper_copy_array*.
+  Now, the format fields have the prefix of *c_helper_* or *f_helper_*
+  followed by the helpers name. For example, *f_helper_copy_array*.
   This makes it easier to match the corresponding helper and will help
   when using statement mixin groups since the order of names will no
   longer matter.

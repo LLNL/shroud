@@ -59,8 +59,8 @@ flexibility.
 
 Each helper will add an entry into the format dictionary with
 the name of the function or type created by the helper.
-The format value is the helper name prefixed by *fhelper_*.
-For example,format field *fhelper_array_context* may be ``VEC_SHROUD_array``.
+The format value is the helper name prefixed by *f_helper_*.
+For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
 
 There is no current way to add user defined helper functions.
 

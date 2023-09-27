@@ -2504,6 +2504,6 @@ class ModuleInfo(object):
                 raise RuntimeError("No such helper {}".format(helper))
             name = whelpers.FHelpers[helper].get("name")
             if name:
-                setattr(fmt, "fhelper_" + helper, name)
+                setattr(fmt, "f_helper_" + helper, name)
             
         

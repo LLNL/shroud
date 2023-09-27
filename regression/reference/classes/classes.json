@@ -1194,12 +1194,12 @@
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
+                                    "c_helper_ShroudLenTrim": "ShroudLenTrim",
                                     "c_member": "->",
                                     "c_type": "char",
                                     "c_var": "name",
                                     "c_var_len": "SHT_name_len",
                                     "cfi_type": "CFI_type_other",
-                                    "chelper_ShroudLenTrim": "ShroudLenTrim",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&SHCXX_name",
@@ -1584,12 +1584,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "const ",
+                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
+                                "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_other",
-                                "chelper_ShroudStrToArray": "ShroudStrToArray",
-                                "chelper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1604,14 +1604,14 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_type": "std::string",
+                                "f_helper_array_context": "CLA_SHROUD_array",
+                                "f_helper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "CLA_SHROUD_array",
-                                "fhelper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_function_string_&_cdesc_allocatable"
                             }
@@ -2216,11 +2216,11 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_other",
-                                "chelper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "std::string",
@@ -2234,14 +2234,14 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_type": "std::string",
+                                "f_helper_array_context": "CLA_SHROUD_array",
+                                "f_helper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "CLA_SHROUD_array",
-                                "fhelper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_getter_string_scalar_cdesc_allocatable"
                             }
@@ -2566,7 +2566,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             },
@@ -2757,12 +2757,12 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "const ",
+                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
+                                "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_other",
-                                "chelper_ShroudStrToArray": "ShroudStrToArray",
-                                "chelper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2777,14 +2777,14 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_type": "std::string",
+                                "f_helper_array_context": "CLA_SHROUD_array",
+                                "f_helper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "CLA_SHROUD_array",
-                                "fhelper_copy_string": "CLA_SHROUD_copy_string_and_free",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_function_string_&_cdesc_allocatable"
                             }
@@ -2832,7 +2832,7 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class2"
                 }
             },
@@ -3000,7 +3000,7 @@
                     "cxx_class": "Singleton",
                     "cxx_type": "Singleton",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Singleton"
                 }
             },
@@ -3286,7 +3286,7 @@
                     "cxx_class": "Shape",
                     "cxx_type": "Shape",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Shape"
                 }
             },
@@ -3468,7 +3468,7 @@
                     "cxx_class": "Circle",
                     "cxx_type": "Circle",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Circle"
                 }
             },
@@ -4102,11 +4102,11 @@
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_array_size2": "SH_this->nitems",
                                 "c_const": "",
+                                "c_helper_array_context": "CLA_SHROUD_array",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_int",
-                                "chelper_array_context": "CLA_SHROUD_array",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "int",
@@ -4125,13 +4125,13 @@
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                "f_helper_array_context": "CLA_SHROUD_array",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "CLA_SHROUD_array",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -4374,7 +4374,7 @@
                     "cxx_class": "Data",
                     "cxx_type": "Data",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                     "file_scope": "Data"
                 }
             }
@@ -6023,11 +6023,11 @@
                     "fmtc": {
                         "c_char_len": "30",
                         "c_const": "const ",
+                        "c_helper_ShroudStrCopy": "ShroudStrCopy",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "SHT_rv_len",
                         "cfi_type": "CFI_type_other",
-                        "chelper_ShroudStrCopy": "ShroudStrCopy",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
