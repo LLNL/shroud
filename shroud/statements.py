@@ -262,7 +262,7 @@ def append_mixin(stmt, mixin):
     """Append each list from mixin to stmt.
     """
     for key, value in mixin.items():
-        if key in ["mixin", "name"]:
+        if key in ["alias", "base", "mixin", "name"]:
             pass
         elif isinstance(value, list):
             if key not in stmt:
@@ -311,9 +311,9 @@ def process_mixin(stmts, defaults, stmtdict):
             continue
         if parts[1] == "mixin":
             if "base" in stmt:
-                print("XXXX - mixin should not have 'base' field: ", name)
+                print("XXXX - mixin should not have 'base' field:", name)
             if "alias" in stmt:
-                print("XXXX - mixin should not have 'alias' field: ", name)
+                print("XXXX - mixin should not have 'alias' field:", name)
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
@@ -1978,7 +1978,6 @@ fc_statements = [
         name="f_function_string_*_cdesc_pointer",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_char_*_cdesc",   # XXX - maybe other mixing with string
         ],
         alias=[
             "f_function_string_&_cdesc_pointer",
@@ -2779,6 +2778,7 @@ fc_statements = [
     # convert C argument into a pointer to C++ type.
 
     dict(
+        # Pass a shadow type to C wrapper.
         name="f_mixin_shadow-arg",
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}",
