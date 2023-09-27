@@ -6512,6 +6512,8 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -6526,6 +6528,8 @@
                         "fmtf": {
                             "F_C_var": "strs",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6540,10 +6544,10 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t &nstrs",
+                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringArg_CFI",
                     "C_name_api": "fetchArrayStringArg",
-                    "C_prototype": "char * * strs",
+                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_arg_CFI",
@@ -6856,6 +6860,8 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -6870,6 +6876,8 @@
                         "fmtf": {
                             "F_C_var": "strs",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6884,10 +6892,10 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t &nstrs",
+                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringAlloc_CFI",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "C_prototype": "char * * strs",
+                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_alloc_CFI",
@@ -7205,6 +7213,8 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -7219,6 +7229,8 @@
                         "fmtf": {
                             "F_C_var": "strs",
                             "c_var": "strs",
+                            "c_var_cfi": "SHT_strs_cfi",
+                            "c_var_cxx": "SHT_strs_cxx",
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_char_len": "len=20",
@@ -7234,10 +7246,10 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t &nstrs",
+                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringAllocLen_CFI",
                     "C_name_api": "fetchArrayStringAllocLen",
-                    "C_prototype": "char * * strs",
+                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_alloc_len_CFI",

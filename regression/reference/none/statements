@@ -176,6 +176,7 @@ root
         ** -- f_in/out/inout_void_**
     mixin
       arg
+        cfi -- c_mixin_arg_cfi
         character
           cfi -- c_mixin_arg_character_cfi
         native
@@ -619,6 +620,9 @@ root
         native
           cdesc
             pointer -- f_mixin_out_native_cdesc_pointer
+        string
+          **
+            cfi -- f_mixin_out_string_**_cfi
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -666,8 +670,8 @@ root
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
           cfi
-            allocatable -- f_out_string_**_allocatable
-            copy -- f_out_string_**_copy
+            allocatable -- f_out_string_**_cfi_allocatable
+            copy -- f_out_string_**_cfi_copy
           copy -- f_out_string_**_copy
       struct
         & -- f_shared_struct
@@ -2536,6 +2540,16 @@ c_inout_void_*_cdesc:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   name: c_inout_void_*_cdesc
+  owner: library
+c_mixin_arg_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: mixin
+  name: c_mixin_arg_cfi
   owner: library
 c_mixin_arg_character_cfi:
   c_arg_decl:
@@ -8975,6 +8989,16 @@ f_mixin_out_native_cdesc_pointer:
   intent: mixin
   name: f_mixin_out_native_cdesc_pointer
   owner: library
+f_mixin_out_string_**_cfi:
+  c_arg_call:
+  - '&{c_var_cxx}'
+  c_pre_call:
+  - std::string *{c_var_cxx};
+  c_temps:
+  - cxx
+  intent: mixin
+  name: f_mixin_out_string_**_cfi
+  owner: library
 f_mixin_shadow-arg:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -9613,14 +9637,46 @@ f_out_string_**_cdesc_copy:
   name: f_out_string_**_cdesc_copy
   owner: library
 f_out_string_**_cfi_allocatable:
+  c_arg_call:
+  - '&{c_var_cxx}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - // Allocate and copy into {c_var}
+  c_pre_call:
+  - std::string *{c_var_cxx};
+  c_temps:
+  - cfi
+  - cxx
+  i_arg_decl:
+  - 'character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
   intent: out
   name: f_out_string_**_cfi_allocatable
-  notimplemented: true
   owner: library
 f_out_string_**_cfi_copy:
+  c_arg_call:
+  - '&{c_var_cxx}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - // Copy results into {c_var}
+  c_pre_call:
+  - std::string *{c_var_cxx};
+  c_temps:
+  - cfi
+  - cxx
+  i_arg_decl:
+  - 'character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  i_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
   intent: out
   name: f_out_string_**_cfi_copy
-  notimplemented: true
   owner: library
 f_out_string_**_copy:
   intent: out

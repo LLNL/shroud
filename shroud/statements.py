@@ -3173,6 +3173,15 @@ fc_statements = [
     ########################################
     # char arg
     dict(
+        # Make the argument a CFI_desc_t.
+        name="c_mixin_arg_cfi",
+        iface_header=["ISO_Fortran_binding.h"],
+        c_arg_decl=[
+            "CFI_cdesc_t *{c_var_cfi}",
+        ],
+        c_temps=["cfi"],
+    ),
+    dict(
         # XXX - needs a better name. function/arg
         # Function which return char * or std::string.
         name="c_mixin_function_character",
@@ -3754,6 +3763,66 @@ fc_statements = [
         ],
     ),
 
+    dict(
+        name="f_mixin_out_string_**_cfi",
+        c_temps=["cxx"],
+        c_pre_call=[
+            "std::string *{c_var_cxx};",
+        ],
+        c_arg_call=["&{c_var_cxx}"],
+    ),
+
+    dict(
+        #  std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
+        #  int *nstrs+intent(out)+hidden
+        name="f_out_string_**_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi",
+        ],
+#        alias=[
+#            "f_function_string_scalar_cfi_copy",
+#            "f_function_string_scalar_cfi_arg",
+#        ],
+        
+        i_arg_names=["{c_var}"],   # XXX -
+          # wrapf.py:1081
+          #  for name in stmts_blk.i_arg_names:
+          #  TypeError: 'NoneType' object is not iterable
+        i_arg_decl=[
+            "character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+
+        c_post_call=[
+            "// Allocate and copy into {c_var}",
+        ],
+    ),
+
+    dict(
+        name="f_out_string_**_cfi_copy",
+        mixin=[
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi",
+        ],
+#        alias=[
+#            "f_function_string_scalar_cfi_copy",
+#            "f_function_string_scalar_cfi_arg",
+#        ],
+        
+        i_arg_names=["{c_var}"],   # XXX -
+          # wrapf.py:1081
+          #  for name in stmts_blk.i_arg_names:
+          #  TypeError: 'NoneType' object is not iterable
+        i_arg_decl=[
+            "character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+
+        c_post_call=[
+            "// Copy results into {c_var}",
+        ],
+    ),
+
+    
     ##########
     # Pass a cdesc down to describe the memory and a capsule to hold the
     # C++ array. Copy into Fortran argument.
@@ -3786,7 +3855,6 @@ fc_statements = [
         name="f_out_string_**_copy",
         alias=[
             "c_out_string_**_copy",
-            "f_out_string_**_cfi_copy",
         ],
         notimplemented=True,
     ),
@@ -3841,7 +3909,6 @@ fc_statements = [
         name="f_out_string_**_allocatable",
         alias=[
             "c_out_string_**_allocatable",
-            "f_out_string_**_cfi_allocatable",
         ],
         notimplemented=True,
     ),

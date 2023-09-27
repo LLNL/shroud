@@ -1000,9 +1000,8 @@ module strings_mod
     interface
         subroutine fetch_array_string_arg(strs) &
                 bind(C, name="STR_fetchArrayStringArg_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            character(*), intent(OUT) :: strs(:)
         end subroutine fetch_array_string_arg
     end interface
 
@@ -1040,9 +1039,8 @@ module strings_mod
     interface
         subroutine fetch_array_string_alloc(strs) &
                 bind(C, name="STR_fetchArrayStringAlloc_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            character(*), intent(OUT) :: strs(:)
         end subroutine fetch_array_string_alloc
     end interface
 
@@ -1080,9 +1078,8 @@ module strings_mod
     interface
         subroutine fetch_array_string_alloc_len(strs) &
                 bind(C, name="STR_fetchArrayStringAllocLen_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            character(*), intent(OUT) :: strs(:)
         end subroutine fetch_array_string_alloc_len
     end interface
 

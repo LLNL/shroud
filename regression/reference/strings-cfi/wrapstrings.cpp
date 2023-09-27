@@ -1471,8 +1471,6 @@ void STR_fetchArrayStringArg(char * * strs, int * nstrs)
 }
 #endif
 
-#if 0
-! Not Implemented
 /**
  * Copy output into argument strs which must be large enough
  * to hold values.  Excess values will be truncated.
@@ -1493,14 +1491,15 @@ void STR_fetchArrayStringArg(char * * strs, int * nstrs)
 // Argument:  int * nstrs +hidden+intent(out)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
-void STR_fetchArrayStringArg_CFI(char * * strs)
+void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringArg_CFI
+    std::string *SHT_strs_cxx;
     int nstrs;
-    fetchArrayStringArg(strs, &nstrs);
+    fetchArrayStringArg(&SHT_strs_cxx, &nstrs);
+    // Copy results into strs
     // splicer end function.fetchArrayStringArg_CFI
 }
-#endif
 
 #if 0
 ! Not Implemented
@@ -1532,8 +1531,6 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 }
 #endif
 
-#if 0
-! Not Implemented
 /**
  * Copy output into argument strs which must be large enough
  * to hold values.  Excess values will be truncated.
@@ -1555,14 +1552,15 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 // Argument:  int * nstrs +hidden+intent(out)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
-void STR_fetchArrayStringAlloc_CFI(char * * strs)
+void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAlloc_CFI
+    std::string *SHT_strs_cxx;
     int nstrs;
-    fetchArrayStringAlloc(strs, &nstrs);
+    fetchArrayStringAlloc(&SHT_strs_cxx, &nstrs);
+    // Allocate and copy into strs
     // splicer end function.fetchArrayStringAlloc_CFI
 }
-#endif
 
 #if 0
 ! Not Implemented
@@ -1594,8 +1592,6 @@ void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 }
 #endif
 
-#if 0
-! Not Implemented
 /**
  * Copy output into argument strs which must be large enough
  * to hold values.  Excess values will be truncated.
@@ -1617,14 +1613,15 @@ void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 // Argument:  int * nstrs +hidden+intent(out)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
-void STR_fetchArrayStringAllocLen_CFI(char * * strs)
+void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAllocLen_CFI
+    std::string *SHT_strs_cxx;
     int nstrs;
-    fetchArrayStringAllocLen(strs, &nstrs);
+    fetchArrayStringAllocLen(&SHT_strs_cxx, &nstrs);
+    // Allocate and copy into strs
     // splicer end function.fetchArrayStringAllocLen_CFI
 }
-#endif
 
 // ----------------------------------------
 // Function:  void explicit1
