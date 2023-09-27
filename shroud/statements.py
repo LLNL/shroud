@@ -329,8 +329,7 @@ def process_mixin(stmts, defaults, stmtdict):
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
         if parts[1] == "mixin":
-            node.update(stmt)
-#            append_mixin(node, stmt)
+            append_mixin(node, stmt)
         else:
             if "append" in stmt:
                 append_mixin(node, stmt["append"])

@@ -2667,6 +2667,8 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
+  - ShroudTypeDefines
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -8383,6 +8385,8 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
+  - ShroudTypeDefines
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -8413,6 +8417,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
   - copy_array
   f_module:
     iso_c_binding:
@@ -8447,6 +8452,8 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
+  - ShroudTypeDefines
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
@@ -8477,6 +8484,7 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
   - copy_array
   f_module:
     iso_c_binding:
