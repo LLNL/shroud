@@ -2220,7 +2220,7 @@
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_other",
-                                "chelper_ShroudStrToArray": "ShroudStrToArray",
+                                "chelper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "std::string",
