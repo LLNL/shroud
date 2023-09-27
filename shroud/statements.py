@@ -265,10 +265,9 @@ def append_mixin(stmt, mixin):
         if key in ["mixin", "name"]:
             pass
         elif isinstance(value, list):
-            if key in stmt:
-                stmt[key].extend(value)
-            else:
-                stmt[key] = value[:]
+            if key not in stmt:
+                stmt[key] = []
+            stmt[key].extend(value)
         elif isinstance(value, dict):
             if key not in stmt:
                 stmt[key] = {}
