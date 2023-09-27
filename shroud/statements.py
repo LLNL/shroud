@@ -2428,9 +2428,8 @@ fc_statements = [
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc",
         ],
-        c_helper=["copy_array", "ShroudTypeDefines"],
+        c_helper=["copy_array"],
         f_helper=["copy_array"],
-        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         
         cxx_local_var="pointer",
         c_pre_call=[
@@ -2714,6 +2713,9 @@ fc_statements = [
         mixin=[
             "c_mixin_inout_vector_cdesc_targ_native_scalar",
         ],
+        append=dict(
+            f_module=dict(iso_c_binding=["C_LOC"]),
+        ),
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
@@ -2766,6 +2768,9 @@ fc_statements = [
         mixin=[
             "c_mixin_inout_vector_cdesc_targ_native_scalar",
         ],
+        append=dict(
+            f_module=dict(iso_c_binding=["C_LOC"]),
+        ),
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
@@ -3304,12 +3309,12 @@ fc_statements = [
 #            "{c_type} *{cxx_var} = "
 #            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
 #        ],
-        c_temps=["cfi", "extents", "lower"],  # "cfi" from mixin
     ),
 
     dict(
         # Allocate copy of C pointer (requires +dimension)
         name="c_mixin_native_cfi_allocatable",
+        c_temps=["extents", "lower"],
         c_post_call=[
             "if ({cxx_var} != {nullptr}) {{+",
             "{c_temp_lower_decl}"
@@ -3326,6 +3331,7 @@ fc_statements = [
     dict(
         # Convert C pointer to Fortran pointer
         name="c_mixin_native_cfi_pointer",
+        c_temps=["extents", "lower"],
         c_post_call=[
             "{{+",
             "CFI_CDESC_T({rank}) {c_local_fptr};",

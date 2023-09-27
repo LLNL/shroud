@@ -2572,8 +2572,6 @@ c_mixin_arg_native_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_temps:
   - cfi
-  - extents
-  - lower
   cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
@@ -2670,7 +2668,6 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
-  - ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2732,6 +2729,9 @@ c_mixin_native_cfi_allocatable:
   - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
+  c_temps:
+  - extents
+  - lower
   intent: mixin
   name: c_mixin_native_cfi_allocatable
   owner: library
@@ -2752,6 +2752,9 @@ c_mixin_native_cfi_pointer:
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
   - -}}
   - -}}
+  c_temps:
+  - extents
+  - lower
   intent: mixin
   name: c_mixin_native_cfi_pointer
   owner: library
@@ -7274,8 +7277,6 @@ f_in_native_*_cfi:
   - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_temps:
   - cfi
-  - extents
-  - lower
   cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
@@ -8117,8 +8118,6 @@ f_inout_native_*_cfi:
   - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_temps:
   - cfi
-  - extents
-  - lower
   cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
@@ -8385,7 +8384,6 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
-  - ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -8418,8 +8416,8 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - copy_array
   f_module:
     iso_c_binding:
-    - C_LOC
     - C_SIZE_T
+    - C_LOC
   f_post_call:
   - if (allocated({f_var})) deallocate({f_var})
   - allocate({f_var}({f_var_cdesc}%size))
@@ -8450,7 +8448,6 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
-  - ShroudTypeDefines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -8483,8 +8480,8 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - copy_array
   f_module:
     iso_c_binding:
-    - C_LOC
     - C_SIZE_T
+    - C_LOC
   f_post_call:
   - "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
