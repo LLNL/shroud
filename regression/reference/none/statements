@@ -1296,7 +1296,7 @@ c_function_string_&_buf_arg:
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -1324,7 +1324,7 @@ c_function_string_&_buf_copy:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -1442,7 +1442,7 @@ c_function_string_*_buf_copy:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -1565,7 +1565,7 @@ c_function_string_scalar_buf_arg:
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -1593,7 +1593,7 @@ c_function_string_scalar_buf_copy:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -4977,7 +4977,7 @@ f_function_string_&_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -5030,7 +5030,7 @@ f_function_string_&_buf_arg:
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -5073,7 +5073,7 @@ f_function_string_&_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -5667,7 +5667,7 @@ f_function_string_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -5710,7 +5710,7 @@ f_function_string_*_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -6266,7 +6266,7 @@ f_function_string_scalar_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -6319,7 +6319,7 @@ f_function_string_scalar_buf_arg:
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'
@@ -6362,7 +6362,7 @@ f_function_string_scalar_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
   i_arg_names:
   - '{c_var}'

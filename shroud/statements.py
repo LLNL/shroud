@@ -259,7 +259,7 @@ def post_mixin_check_statement(name, stmt):
 ##-                    "must all be same length in {}".format(name))
 
 def append_mixin(stmt, mixin):
-    """Append each mixin to stmt.
+    """Append each list from mixin to stmt.
     """
     for key, value in mixin.items():
         if key in ["mixin", "name"]:
@@ -267,6 +267,12 @@ def append_mixin(stmt, mixin):
         elif isinstance(value, list):
             if key not in stmt:
                 stmt[key] = []
+            if False:#True:
+                # Report the mixin name for debugging
+                if "name" in mixin:
+                    stmt[key].append("# " + mixin["name"])
+                else:
+                    stmt[key].append("# append")
             stmt[key].extend(value)
         elif isinstance(value, dict):
             if key not in stmt:
@@ -320,6 +326,8 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
+#            append_mixin(node, stmt)
+#        else:
         if "append" in stmt:
             append_mixin(node, stmt["append"])
         node.update(stmt)
@@ -2259,11 +2267,6 @@ fc_statements = [
             "c_function_string_scalar/*/&_buf_copy",
         ],
 
-        i_arg_decl=[
-            # Change to intent(OUT) from mixin.
-            "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
-            "integer(C_INT), value, intent(IN) :: {c_var_len}",
-        ],
         c_helper=["ShroudStrCopy"],
         # No need to allocate a local copy since the string is copied
         # into a Fortran variable before the string is deleted.
