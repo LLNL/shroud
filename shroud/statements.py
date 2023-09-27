@@ -3182,27 +3182,13 @@ fc_statements = [
         c_temps=["cfi"],
     ),
     dict(
-        # XXX - needs a better name. function/arg
-        # Function which return char * or std::string.
-        name="c_mixin_function_character",
-        iface_header=["ISO_Fortran_binding.h"],
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var_cfi}",
-        ],
-        i_arg_decl=[
-            "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
-        ],
-        i_arg_names=["{c_var}"],
-        c_temps=["cfi"],
-    ),
-    dict(
         # Add allocatable attribute to declaration.
         # f_function_char_scalar_cfi_allocatable
         # f_function_char_*_cfi_allocatable
         name="f_function_char_*_cfi_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_char_scalar_cfi_allocatable",
@@ -3214,7 +3200,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3235,7 +3221,7 @@ fc_statements = [
         name="f_function_char_scalar_cfi_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_char_*_cfi_pointer",
@@ -3247,7 +3233,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3462,7 +3448,7 @@ fc_statements = [
 ##-        name="c_function_char_*_cfi_pointer",
 ##-        mixin=[
 ##-            "f_mixin_function-to-subroutine",
-##-            "c_mixin_function_character",
+##-            "c_mixin_arg_cfi",
 ##-        ],
 ##-        i_arg_names=["{c_var}"],
 ##-        i_arg_decl=[        # replace mixin
@@ -3647,7 +3633,7 @@ fc_statements = [
         name="f_shared_function_string_*_cfi_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_pointer",
@@ -3664,7 +3650,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],
         
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3717,7 +3703,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
@@ -3747,10 +3733,10 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin

@@ -188,7 +188,6 @@ root
         char
           *
             cdesc -- c_mixin_function_char_*_cdesc
-        character -- c_mixin_function_character
       in
         character
           buf -- c_mixin_in_character_buf
@@ -2617,20 +2616,6 @@ c_mixin_function_char_*_cdesc:
   - '{c_var_cdesc}->rank = 0;'
   intent: mixin
   name: c_mixin_function_char_*_cdesc
-  owner: library
-c_mixin_function_character:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_temps:
-  - cfi
-  i_arg_decl:
-  - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: mixin
-  name: c_mixin_function_character
   owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
