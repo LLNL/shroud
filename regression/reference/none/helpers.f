@@ -51,7 +51,8 @@ integer, parameter, private :: &
             "C_INT",
             "C_LONG"
         ]
-    }
+    },
+    "name": "LIB_SHROUD_array"
 }
 
 ##### start array_context derived_type
@@ -104,7 +105,8 @@ end interface
             "C_INT",
             "C_NULL_PTR"
         ]
-    }
+    },
+    "name": "LIB_SHROUD_capsule_data"
 }
 
 ##### start capsule_data_helper derived_type

@@ -200,7 +200,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "fhelper_capsule_data_helper": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             },
@@ -294,7 +294,7 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "fhelper_capsule_data_helper": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class2"
                 }
             }
@@ -707,8 +707,7 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_int",
-                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
-                        "chelper_array_context": "array_context",
+                        "chelper_array_context": "SCO_SHROUD_array",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "int",
@@ -733,7 +732,7 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
-                        "fhelper_array_context": "array_context",
+                        "fhelper_array_context": "SCO_SHROUD_array",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -1296,8 +1295,7 @@
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_int",
-                                "chelper_ShroudTypeDefines": "ShroudTypeDefines",
-                                "chelper_array_context": "array_context",
+                                "chelper_array_context": "SCO_SHROUD_array",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "int",
@@ -1322,7 +1320,7 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "array_context",
+                                "fhelper_array_context": "SCO_SHROUD_array",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -1912,8 +1910,7 @@
                                 "c_var": "SHC_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cfi_type": "CFI_type_int",
-                                "chelper_ShroudTypeDefines": "ShroudTypeDefines",
-                                "chelper_array_context": "array_context",
+                                "chelper_array_context": "SCO_SHROUD_array",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "int",
@@ -1938,7 +1935,7 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
-                                "fhelper_array_context": "array_context",
+                                "fhelper_array_context": "SCO_SHROUD_array",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"

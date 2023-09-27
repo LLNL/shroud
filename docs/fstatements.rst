@@ -49,14 +49,22 @@ f_helper
 
 A list of Fortran helper function names to add to generated
 Fortran code.
-These functions are defined in whelper.py.
-There is no current way to add user defined helper functions.
+The format dictionary will be applied to the list for additional
+flexibility.
 
 .. code-block:: yaml
 
     f_helper:
     - array_context
 
+Each helper will add an entry into the format dictionary with
+the name of the function or type created by the helper.
+The format value is the helper name prefixed by *fhelper_*.
+For example,format field *fhelper_array_context* may be ``VEC_SHROUD_array``.
+
+There is no current way to add user defined helper functions.
+
+.. These functions are defined in whelper.py.
 
 f_module
 ^^^^^^^^

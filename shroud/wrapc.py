@@ -213,8 +213,9 @@ class Wrapc(util.WrapperMixin):
             self.c_helper[helper] = True
             if helper not in whelpers.CHelpers:
                 raise RuntimeError("No such helper {}".format(helper))
-            setattr(fmt, "chelper_" + helper,
-                    whelpers.CHelpers[helper].get("name", helper))
+            name = whelpers.CHelpers[helper].get("name")
+            if name:
+                setattr(fmt, "chelper_" + helper, name)
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.

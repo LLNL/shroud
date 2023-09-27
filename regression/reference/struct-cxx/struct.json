@@ -1140,7 +1140,7 @@
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "fhelper_capsule_data_helper": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class"
                 }
             },
@@ -1874,7 +1874,7 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "fhelper_capsule_data_helper": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass"
                 }
             }
@@ -5040,8 +5040,7 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_int",
-                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
-                        "chelper_array_context": "array_context",
+                        "chelper_array_context": "STR_SHROUD_array",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "int",
@@ -5066,7 +5065,7 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
-                        "fhelper_array_context": "array_context",
+                        "fhelper_array_context": "STR_SHROUD_array",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -5475,8 +5474,7 @@
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_double",
-                        "chelper_ShroudTypeDefines": "ShroudTypeDefines",
-                        "chelper_array_context": "array_context",
+                        "chelper_array_context": "STR_SHROUD_array",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "double",
@@ -5501,7 +5499,7 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
-                        "fhelper_array_context": "array_context",
+                        "fhelper_array_context": "STR_SHROUD_array",
                         "rank": "1",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "stmtf": "f_getter_native_*_cdesc_pointer"

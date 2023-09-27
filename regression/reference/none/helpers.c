@@ -33,7 +33,9 @@ typedef struct {
 ##### end PY_converter_type source
 
 ---------- ShroudLenTrim ----------
-{}
+{
+    "name": "ShroudLenTrim"
+}
 
 ##### start ShroudLenTrim source
 
@@ -91,7 +93,8 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
     ],
     "dependent_helpers": [
         "ShroudLenTrim"
-    ]
+    ],
+    "name": "ShroudStrAlloc"
 }
 
 ##### start ShroudStrAlloc c_source
@@ -148,7 +151,8 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
     ],
     "dependent_helpers": [
         "ShroudLenTrim"
-    ]
+    ],
+    "name": "ShroudStrArrayAlloc"
 }
 
 ##### start ShroudStrArrayAlloc c_source
@@ -200,7 +204,8 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     ],
     "cxx_include": [
         "<cstdlib>"
-    ]
+    ],
+    "name": "ShroudStrArrayFree"
 }
 
 ##### start ShroudStrArrayFree c_source
@@ -236,7 +241,8 @@ static void ShroudStrArrayFree(char **src, int nsrc)
     ],
     "cxx_include": [
         "<cstring>"
-    ]
+    ],
+    "name": "ShroudStrBlankFill"
 }
 
 ##### start ShroudStrBlankFill c_source
@@ -268,7 +274,8 @@ static void ShroudStrBlankFill(char *dest, int ndest)
     ],
     "cxx_include": [
         "<cstring>"
-    ]
+    ],
+    "name": "ShroudStrCopy"
 }
 
 ##### start ShroudStrCopy c_source
@@ -316,7 +323,8 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
     ],
     "cxx_include": [
         "<cstdlib>"
-    ]
+    ],
+    "name": "ShroudStrFree"
 }
 
 ##### start ShroudStrFree c_source
@@ -351,7 +359,8 @@ static void ShroudStrFree(char *src)
     ],
     "dependent_helpers": [
         "array_context"
-    ]
+    ],
+    "name": "ShroudStrToArray"
 }
 
 ##### start ShroudStrToArray source
@@ -433,6 +442,7 @@ static void ShroudStrToArray(LIB_SHROUD_array *array, const std::string * src, i
     "include": [
         "<stddef.h>"
     ],
+    "name": "LIB_SHROUD_array",
     "scope": "cwrap_include"
 }
 
@@ -621,6 +631,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
     "dependent_helpers": [
         "array_context"
     ],
+    "name": "LIB_ShroudCopyStringAndFree",
     "scope": "cwrap_impl"
 }
 

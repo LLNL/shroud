@@ -37,7 +37,7 @@
                     "cxx_class": "StructAsClass",
                     "cxx_type": "StructAsClass",
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "fhelper_capsule_data_helper": "GEN_SHROUD_capsule_data",
                     "file_scope": "StructAsClass"
                 }
             }
@@ -4113,7 +4113,6 @@
                     "F_C_name": "c_save_pointer2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "function_name": "SavePointer2",
                     "stmtc": "f_subroutine"
                 }
@@ -4438,7 +4437,6 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float1d",
                     "F_subprogram": "subroutine",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d",
@@ -4766,7 +4764,6 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float2d",
                     "F_subprogram": "subroutine",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d",

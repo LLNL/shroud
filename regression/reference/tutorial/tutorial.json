@@ -757,7 +757,7 @@
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cfi_type": "CFI_type_other",
                         "chelper_ShroudStrToArray": "ShroudStrToArray",
-                        "chelper_copy_string": "copy_string",
+                        "chelper_copy_string": "TUT_ShroudCopyStringAndFree",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -778,7 +778,7 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
-                        "fhelper_array_context": "array_context",
+                        "fhelper_array_context": "TUT_SHROUD_array",
                         "fhelper_copy_string": "TUT_SHROUD_copy_string_and_free",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_cdesc_allocatable"

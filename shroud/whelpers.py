@@ -8,12 +8,14 @@
 
  C helper functions which may be added to a implementation file.
 
- name        = Name of function created by the helper function.
+ name        = Name of function or type created by the helper.
                This allows the function name to be independent
                of the helper name so that it may include a prefix
                to help control namespace/scope.
-               Useful when to helpers create the same function.
+               Useful when two helpers create the same function.
                ex. SHROUD_get_from_object_char_{numpy,list}
+               Added to the wrapper's format dictionary to allow it to be 
+               used in statements.
  api         = "c" or "cxx". Defaults to "c".
                Must be set to "c" for helper functions which will be called
                from Fortran.
@@ -263,7 +265,10 @@ integer(C_SIZE_T), value :: c_var_size
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringAndFree", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
     CHelpers[name] = dict(
+        name=fmt.cnamefunc,
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         cxx_include=["<cstring>", "<cstddef>"],
@@ -273,7 +278,7 @@ integer(C_SIZE_T), value :: c_var_size
 {lstart}// helper {hname}
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
+void {cnamefunc}({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->elem_len < n) n = data->elem_len;
@@ -287,23 +292,22 @@ if (data->elem_len < n) n = data->elem_len;
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(context, c_var, c_var_size) &
+subroutine {fnamefunc}(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine {hnamefunc}
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
@@ -683,7 +687,9 @@ var => fptr
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
+    fmt.cnamefunc = "ShroudStrToArray"
     CHelpers[name] = dict(
+        name=fmt.cnamefunc,
         dependent_helpers=["array_context"],
         cxx_include=["<cstring>", "<cstddef>"],
         source=wformat(
@@ -691,7 +697,7 @@ var => fptr
 {lstart}// helper {hname}
 // Save str metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
+static void {cnamefunc}({C_array_type} *array, const std::string * src, int idtor)
 {{+
 array->cxx.addr = const_cast<std::string *>(src);
 array->cxx.idtor = idtor;
@@ -970,6 +976,7 @@ def add_capsule_helper():
         fmt.lend = ""
 
     helper = dict(
+        name=fmt.F_capsule_data_type,
         derived_type=wformat(
             """
 {lstart}! helper {hname}
@@ -1043,6 +1050,7 @@ call {__helper}(cap%mem)
         fmt.lstart = "{}{}\n".format(cstart, name)
         fmt.lend = "\n{}{}".format(cend, name)
     helper = dict(
+        name=fmt.C_array_type,
         scope="cwrap_include",
         include=["<stddef.h>"],
         # Create a union for addr to avoid some casts.
@@ -1077,6 +1085,7 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
         fmt.lstart = "{}{}\n".format(fstart, name)
         fmt.lend = "\n{}{}".format(fend, name)
     helper = dict(
+        name=fmt.F_array_type,
         derived_type=wformat(
             """
 {lstart}! helper {hname}
@@ -1710,6 +1719,7 @@ CHelpers = dict(
 #define SH_TYPE_OTHER      32""",
     ),
     ShroudStrCopy=dict(
+        name="ShroudStrCopy",
         c_include=["<string.h>"],
         c_source="""
 // helper ShroudStrCopy
@@ -1748,6 +1758,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 
     ########################################
     ShroudStrBlankFill=dict(
+        name="ShroudStrBlankFill",
         c_include=["<string.h>"],
         c_source="""
 // helper ShroudStrBlankFill
@@ -1772,6 +1783,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
     ShroudStrAlloc=dict(
+        name="ShroudStrAlloc",
         c_include=["<string.h>", "<stdlib.h>", "<stddef.h>"],
         c_source="""
 // helper ShroudStrAlloc
@@ -1814,6 +1826,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
     ),
 
     ShroudStrFree=dict(
+        name="ShroudStrFree",
         c_include=["<stdlib.h>"],
         c_source="""
 // helper ShroudStrFree
@@ -1838,6 +1851,7 @@ static void ShroudStrFree(char *src)
 
     ########################################
     ShroudLenTrim=dict(
+        name="ShroudLenTrim",
         source="""
 // helper ShroudLenTrim
 // Returns the length of character string src with length nsrc,
@@ -1858,6 +1872,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
     ########################################
     # Used with 'char **' arguments.
     ShroudStrArrayAlloc=dict(
+        name="ShroudStrArrayAlloc",
         dependent_helpers=["ShroudLenTrim"],
         c_include=["<string.h>", "<stdlib.h>"],
         c_source="""
@@ -1900,6 +1915,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     ),
     
     ShroudStrArrayFree=dict(
+        name="ShroudStrArrayFree",
         c_include=["<stdlib.h>"],
         c_source="""
 // helper ShroudStrArrayFree
