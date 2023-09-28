@@ -23,10 +23,26 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper ShroudCharCopy
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
+{
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
+}
+
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -39,38 +55,22 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = std::strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     std::memcpy(dest,src,nm);
-     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}
-
-// helper ShroudStrToArray
-// Save str metadata into array to allow Fortran to access values.
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, int idtor)
+static void ShroudStringToCdesc(AA_SHROUD_array *cdesc, const std::string * src, int idtor)
 {
-    array->cxx.addr = const_cast<std::string *>(src);
-    array->cxx.idtor = idtor;
+    cdesc->cxx.addr = const_cast<std::string *>(src);
+    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
-        array->addr.ccharp = NULL;
-        array->elem_len = 0;
+        cdesc->addr.ccharp = NULL;
+        cdesc->elem_len = 0;
     } else {
-        array->addr.ccharp = src->data();
-        array->elem_len = src->length();
+        cdesc->addr.ccharp = src->data();
+        cdesc->elem_len = src->length();
     }
-    array->size = 1;
-    array->rank = 0;  // scalar
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
 }
 // splicer begin namespace.example::nested.class.ExClass1.C_definitions
 // splicer end namespace.example::nested.class.ExClass1.C_definitions
@@ -142,7 +142,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
@@ -218,7 +218,7 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
 }
 
@@ -251,9 +251,9 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
     const std::string & SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(name, nname, nullptr, 0);
+        ShroudCharCopy(name, nname, nullptr, 0);
     } else {
-        ShroudStrCopy(name, nname, SHCXX_rv.data(), SHCXX_rv.size());
+        ShroudCharCopy(name, nname, SHCXX_rv.data(), SHCXX_rv.size());
     }
     // splicer end namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
 }

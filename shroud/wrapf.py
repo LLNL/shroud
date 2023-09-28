@@ -2378,7 +2378,7 @@ class ToImplied(todict.PrintNode):
         elif argname == "type":
             # type(arg)
             self.intermediate = True
-            self.helper = "ShroudTypeDefines"
+            self.helper = "type_defines"
             argname = node.args[0].name
             typearg = self.func.ast.declarator.find_arg_by_name(argname)
             arg_typemap = typearg.typemap

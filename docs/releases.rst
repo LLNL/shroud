@@ -128,7 +128,42 @@ Unreleased
     +      - ShroudTypeDefines
 
 .. And easier to use in a mixin group by appending lists.
-       
+
+* Renamed some helpers to have more consistent names.
+  Now the helpers and the function it defines may have different names.
+  Use snake case for all helpers names (before about half used camel case).
+  Continue to use camel case for function names.
+  Remove *Shroud* from the helper name since that's redundant.
+  Rename some functions from ``Str`` to ``Char`` to make clear when
+  it's dealing with C++ types ``char`` vs ``std::string``.
+
+.. Use the helper name in statements to make it easier to rename
+   functions without renaming helpers.
+
+.. list-table:: f statements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Old Name
+     - New Name
+   * - ShroudStrAlloc
+     - char_alloc
+   * - ShroudStrArrayAlloc
+     - char_array_alloc
+   * - ShroudStrArrayFree
+     - char_array_free
+   * - ShroudStrBlankFill
+     - char_blank_fill
+   * - ShroudStrCopy
+     - char_copy
+   * - ShroudStrFree
+     - char_free
+   * - ShroudStrToArray
+     - string_to_cdesc
+   * - ShroudTypeDefines
+     - type_defines
+
+  
 New Features
 ^^^^^^^^^^^^
 

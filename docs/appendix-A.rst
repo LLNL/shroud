@@ -1126,8 +1126,8 @@ copying all of the values:
 
 .. literalinclude:: ../regression/reference/none/helpers.c
    :language: c
-   :start-after: start ShroudStrArrayAlloc c_source
-   :end-before: end ShroudStrArrayAlloc c_source
+   :start-after: start char_array_alloc c_source
+   :end-before: end char_array_alloc c_source
 
 Fortran calls C via the following interface:
 

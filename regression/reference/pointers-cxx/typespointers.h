@@ -24,7 +24,14 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-/* helper ShroudTypeDefines */
+// helper capsule_data_helper
+struct s_POI_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_POI_SHROUD_capsule_data POI_SHROUD_capsule_data;
+
+/* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -64,13 +71,6 @@ extern "C" {
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
-
-// helper capsule_data_helper
-struct s_POI_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_POI_SHROUD_capsule_data POI_SHROUD_capsule_data;
 
 // start array_context
 // helper array_context

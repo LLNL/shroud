@@ -16,10 +16,10 @@
 #include "wrapClibrary.h"
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -32,13 +32,13 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrAlloc
+// helper char_alloc
 // Copy src into new memory and null terminate.
 // If ntrim is 0, return NULL pointer.
 // If blanknull is 1, return NULL when string is blank.
-static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
+static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 {
-   int ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudCharLenTrim(src, nsrc);
    if (ntrim == 0 && blanknull == 1) {
      return NULL;
    }
@@ -50,19 +50,19 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
    return rv;
 }
 
-// helper ShroudStrBlankFill
+// helper char_blank_fill
 // blank fill dest starting at trailing NULL.
-static void ShroudStrBlankFill(char *dest, int ndest)
+static void ShroudCharBlankFill(char *dest, int ndest)
 {
    int nm = strlen(dest);
    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }
 
-// helper ShroudStrCopy
+// helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
    if (src == NULL) {
      memset(dest,' ',ndest); // convert NULL pointer to blank filled string
@@ -74,9 +74,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    }
 }
 
-// helper ShroudStrFree
-// Release memory allocated by ShroudStrAlloc
-static void ShroudStrFree(char *src)
+// helper char_free
+// Release memory allocated by ShroudCharAlloc
+static void ShroudCharFree(char *src)
 {
    if (src != NULL) {
      free(src);
@@ -123,7 +123,7 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 {
     // splicer begin function.Function4a_bufferify
     char * SHCXX_rv = Function4a(arg1, arg2);
-    ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
     // splicer end function.Function4a_bufferify
 }
 
@@ -145,10 +145,10 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHT_s_str = ShroudStrAlloc(s, SHT_s_len, 0);
+    char * SHT_s_str = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHT_s_str);
-    ShroudStrCopy(s, SHT_s_len, SHT_s_str, -1);
-    ShroudStrFree(SHT_s_str);
+    ShroudCharCopy(s, SHT_s_len, SHT_s_str, -1);
+    ShroudCharFree(SHT_s_str);
     // splicer end function.passCharPtrInOut_bufferify
 }
 
@@ -173,7 +173,7 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
     // splicer begin function.returnOneName_bufferify
     returnOneName(name1);
-    ShroudStrBlankFill(name1, SHT_name1_len);
+    ShroudCharBlankFill(name1, SHT_name1_len);
     // splicer end function.returnOneName_bufferify
 }
 // end CLI_returnOneName_bufferify
@@ -203,8 +203,8 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 {
     // splicer begin function.returnTwoNames_bufferify
     returnTwoNames(name1, name2);
-    ShroudStrBlankFill(name1, SHT_name1_len);
-    ShroudStrBlankFill(name2, SHT_name2_len);
+    ShroudCharBlankFill(name1, SHT_name1_len);
+    ShroudCharBlankFill(name2, SHT_name2_len);
     // splicer end function.returnTwoNames_bufferify
 }
 
@@ -231,7 +231,7 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 {
     // splicer begin function.ImpliedTextLen_bufferify
     ImpliedTextLen(text, ltext);
-    ShroudStrBlankFill(text, SHT_text_len);
+    ShroudCharBlankFill(text, SHT_text_len);
     // splicer end function.ImpliedTextLen_bufferify
 }
 // end CLI_ImpliedTextLen_bufferify
@@ -254,7 +254,7 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.bindC2_bufferify
     bindC2(outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     // splicer end function.bindC2_bufferify
 }
 
@@ -283,7 +283,7 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 {
     // splicer begin function.passAssumedTypeBuf_bufferify
     int SHC_rv = passAssumedTypeBuf(arg, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.passAssumedTypeBuf_bufferify
 }
@@ -345,6 +345,6 @@ void CLI_callback3_bufferify(const char * type, void * in,
 {
     // splicer begin function.callback3_bufferify
     callback3(type, in, incr, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     // splicer end function.callback3_bufferify
 }

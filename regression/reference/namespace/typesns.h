@@ -24,6 +24,13 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
+// helper capsule_NS_nswork_ClassWork
+struct s_NS_nswork_ClassWork {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
+
 // helper capsule_data_helper
 struct s_NS_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
@@ -31,7 +38,7 @@ struct s_NS_SHROUD_capsule_data {
 };
 typedef struct s_NS_SHROUD_capsule_data NS_SHROUD_capsule_data;
 
-/* helper ShroudTypeDefines */
+/* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -86,13 +93,6 @@ struct s_NS_SHROUD_array {
     long shape[7];
 };
 typedef struct s_NS_SHROUD_array NS_SHROUD_array;
-
-// helper capsule_NS_nswork_ClassWork
-struct s_NS_nswork_ClassWork {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
 
 void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap);
 

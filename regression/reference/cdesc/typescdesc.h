@@ -31,7 +31,7 @@ struct s_CDE_SHROUD_capsule_data {
 };
 typedef struct s_CDE_SHROUD_capsule_data CDE_SHROUD_capsule_data;
 
-/* helper ShroudTypeDefines */
+/* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2

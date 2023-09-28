@@ -25,8 +25,35 @@ module generic_mod
     integer, parameter :: T_DOUBLE = 4
     ! splicer end module_top
 
-    ! helper ShroudTypeDefines
-    ! Shroud type defines from helper ShroudTypeDefines
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: GEN_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type GEN_SHROUD_capsule_data
+    ! end helper capsule_data_helper
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: GEN_SHROUD_array
+        ! address of C++ memory
+        type(GEN_SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type GEN_SHROUD_array
+    ! end array_context
+
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
     integer, parameter, private :: &
         SH_TYPE_SIGNED_CHAR= 1, &
         SH_TYPE_SHORT      = 2, &
@@ -57,33 +84,6 @@ module generic_mod
         SH_TYPE_CPTR      = 30, &
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
-
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
-    type, bind(C) :: GEN_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type GEN_SHROUD_capsule_data
-    ! end helper capsule_data_helper
-
-    ! start array_context
-    ! helper array_context
-    type, bind(C) :: GEN_SHROUD_array
-        ! address of C++ memory
-        type(GEN_SHROUD_capsule_data) :: cxx
-        ! address of data in cxx
-        type(C_PTR) :: base_addr = C_NULL_PTR
-        ! type of element
-        integer(C_INT) :: type
-        ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
-        ! size of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T
-        ! number of dimensions
-        integer(C_INT) :: rank = -1
-        integer(C_LONG) :: shape(7) = 0
-    end type GEN_SHROUD_array
-    ! end array_context
 
     type struct_as_class
         type(GEN_SHROUD_capsule_data) :: cxxmem

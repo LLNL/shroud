@@ -424,7 +424,7 @@
                                                     "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
-                                                    "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                                                    "c_helper_char_len_trim": "ShroudCharLenTrim",
                                                     "c_member": "->",
                                                     "c_type": "char",
                                                     "c_var": "name",
@@ -955,8 +955,8 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "const ",
-                                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
+                                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
@@ -1175,7 +1175,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "const ",
-                                                "c_helper_ShroudStrCopy": "ShroudStrCopy",
+                                                "c_helper_char_copy": "ShroudCharCopy",
                                                 "c_type": "char",
                                                 "c_var": "name",
                                                 "c_var_len": "nname",
@@ -2220,7 +2220,7 @@
                                                     "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
-                                                    "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                                                    "c_helper_char_len_trim": "ShroudCharLenTrim",
                                                     "c_member": "->",
                                                     "c_type": "char",
                                                     "c_var": "name",
@@ -2566,7 +2566,7 @@
                                             "fmtc": {
                                                 "c_char_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "c_const": "const ",
-                                                "c_helper_ShroudStrCopy": "ShroudStrCopy",
+                                                "c_helper_char_copy": "ShroudCharCopy",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
                                                 "c_var_len": "SHT_rv_len",
@@ -2774,8 +2774,8 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "const ",
-                                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
+                                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
@@ -2985,8 +2985,8 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
-                                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
+                                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
@@ -3193,8 +3193,8 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
-                                                "c_helper_ShroudStrToArray": "ShroudStrToArray",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
+                                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
@@ -6516,7 +6516,7 @@
                                             "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
-                                            "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                                            "c_helper_char_len_trim": "ShroudCharLenTrim",
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",
@@ -6905,7 +6905,7 @@
                                             "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
-                                            "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                                            "c_helper_char_len_trim": "ShroudCharLenTrim",
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",
@@ -7277,7 +7277,7 @@
                                             "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
-                                            "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                                            "c_helper_char_len_trim": "ShroudCharLenTrim",
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",

@@ -14,9 +14,9 @@
 #include "wrapstruct.h"
 
 
-// helper ShroudStrBlankFill
+// helper char_blank_fill
 // blank fill dest starting at trailing NULL.
-static void ShroudStrBlankFill(char *dest, int ndest)
+static void ShroudCharBlankFill(char *dest, int ndest)
 {
    int nm = strlen(dest);
    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
@@ -45,7 +45,7 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 {
     // splicer begin function.passStruct2_bufferify
     int SHC_rv = passStruct2(s1, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.passStruct2_bufferify
 }
@@ -97,7 +97,7 @@ Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
 {
     // splicer begin function.returnStructPtr2_bufferify
     Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.returnStructPtr2_bufferify
 }

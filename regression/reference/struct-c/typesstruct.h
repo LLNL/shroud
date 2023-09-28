@@ -17,7 +17,14 @@
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
-/* helper ShroudTypeDefines */
+// helper capsule_data_helper
+struct s_STR_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
+
+/* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -57,13 +64,6 @@
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
-
-// helper capsule_data_helper
-struct s_STR_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
 
 // start array_context
 // helper array_context

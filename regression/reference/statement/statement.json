@@ -250,7 +250,7 @@
                     "fmtc": {
                         "c_char_len": "get_name_length()",
                         "c_const": "const ",
-                        "c_helper_ShroudStrCopy": "ShroudStrCopy",
+                        "c_helper_char_copy": "ShroudCharCopy",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "SHT_rv_len",

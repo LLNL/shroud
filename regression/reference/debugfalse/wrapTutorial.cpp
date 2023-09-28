@@ -19,10 +19,26 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper ShroudCharCopy
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
+{
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
+}
+
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -35,41 +51,25 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = std::strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     std::memcpy(dest,src,nm);
-     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}
-
-// start helper ShroudStrToArray
-// helper ShroudStrToArray
-// Save str metadata into array to allow Fortran to access values.
+// start helper string_to_cdesc
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, int idtor)
+static void ShroudStringToCdesc(TUT_SHROUD_array *cdesc, const std::string * src, int idtor)
 {
-    array->cxx.addr = const_cast<std::string *>(src);
-    array->cxx.idtor = idtor;
+    cdesc->cxx.addr = const_cast<std::string *>(src);
+    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
-        array->addr.ccharp = NULL;
-        array->elem_len = 0;
+        cdesc->addr.ccharp = NULL;
+        cdesc->elem_len = 0;
     } else {
-        array->addr.ccharp = src->data();
-        array->elem_len = src->length();
+        cdesc->addr.ccharp = src->data();
+        cdesc->elem_len = src->length();
     }
-    array->size = 1;
-    array->rank = 0;  // scalar
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
 }
-// end helper ShroudStrToArray
+// end helper string_to_cdesc
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -99,12 +99,12 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
 {
     // splicer begin function.ConcatenateStrings_bufferify
     const std::string SHCXX_arg1(arg1,
-        ShroudLenTrim(arg1, SHT_arg1_len));
+        ShroudCharLenTrim(arg1, SHT_arg1_len));
     const std::string SHCXX_arg2(arg2,
-        ShroudLenTrim(arg2, SHT_arg2_len));
+        ShroudCharLenTrim(arg2, SHT_arg2_len));
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.ConcatenateStrings_bufferify
 }
 
@@ -151,7 +151,7 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 {
     // splicer begin function.OverloadedFunction_from_name_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     tutorial::OverloadedFunction(SHCXX_name);
     // splicer end function.OverloadedFunction_from_name_bufferify
 }
@@ -213,7 +213,7 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 {
     // splicer begin function.FortranGenericOverloaded_1_float_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.FortranGenericOverloaded_1_float_bufferify
 }
@@ -223,7 +223,7 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 {
     // splicer begin function.FortranGenericOverloaded_1_double_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.FortranGenericOverloaded_1_double_bufferify
 }
@@ -349,9 +349,9 @@ void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
     // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.LastFunctionCalled_bufferify

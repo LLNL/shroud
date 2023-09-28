@@ -108,7 +108,7 @@ declarations:
   fstatements:
     c:
       c_helper:
-      - ShroudTypeDefines
+      - type_defines
       c_pre_call:
       - // Test adding a blank line below.
       -

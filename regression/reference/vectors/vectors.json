@@ -2256,7 +2256,7 @@
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
-                            "c_helper_ShroudLenTrim": "ShroudLenTrim",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
                             "c_local_i": "SHC_arg_i",
                             "c_local_n": "SHC_arg_n",
                             "c_local_s": "SHC_arg_s",

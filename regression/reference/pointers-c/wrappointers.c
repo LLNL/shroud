@@ -15,10 +15,10 @@
 #include "wrappointers.h"
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -31,14 +31,14 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrArrayAlloc
+// helper char_array_alloc
 // Copy src into new memory and null terminate.
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
    char **rv = malloc(sizeof(char *) * nsrc);
    const char *src0 = src;
    for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudLenTrim(src0, len);
+      int ntrim = ShroudCharLenTrim(src0, len);
       char *tgt = malloc(ntrim+1);
       memcpy(tgt, src0, ntrim);
       tgt[ntrim] = '\0';
@@ -48,7 +48,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    return rv;
 }
 
-// helper ShroudStrArrayFree
+// helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {

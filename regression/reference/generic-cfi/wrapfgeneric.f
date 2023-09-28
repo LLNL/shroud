@@ -25,8 +25,16 @@ module generic_mod
     integer, parameter :: T_DOUBLE = 4
     ! splicer end module_top
 
-    ! helper ShroudTypeDefines
-    ! Shroud type defines from helper ShroudTypeDefines
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: GEN_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type GEN_SHROUD_capsule_data
+    ! end helper capsule_data_helper
+
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
     integer, parameter, private :: &
         SH_TYPE_SIGNED_CHAR= 1, &
         SH_TYPE_SHORT      = 2, &
@@ -57,14 +65,6 @@ module generic_mod
         SH_TYPE_CPTR      = 30, &
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
-
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
-    type, bind(C) :: GEN_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type GEN_SHROUD_capsule_data
-    ! end helper capsule_data_helper
 
     type struct_as_class
         type(GEN_SHROUD_capsule_data) :: cxxmem
