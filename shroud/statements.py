@@ -2873,7 +2873,6 @@ fc_statements = [
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
         ],
-        cxx_local_var="result",
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -2930,8 +2929,6 @@ fc_statements = [
     
     dict(
         # f_function_shadow_scalar_capptr
-        # f_function_shadow_*_capptr
-        # f_function_shadow_&_capptr
         # Return a instance by value.
         # Create memory in c_pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
