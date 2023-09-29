@@ -123,7 +123,8 @@ c_helper
 ^^^^^^^^
 
 A list of helper functions which will be added to the wrapper file.
-The list will be formatted to allow for additional flexibility::
+The format dictionary will be applied to the list for additional
+flexibility.
 
 .. code-block:: yaml
 
@@ -132,9 +133,14 @@ The list will be formatted to allow for additional flexibility::
     - vector_context
     - vector_copy_{cxx_T}
 
-These functions are defined in whelper.py.
-There is no current way to add additional functions.
+Each helper will add an entry into the format dictionary with
+the name of the function or type created by the helper.
+The format value is the helper name prefixed by *c_helper_*.
+For example, format field *c_helper_capsule_data_helper* may be ``TEM_SHROUD_capsule_data``.
 
+There is no current way to add additional helper functions.
+
+.. These functions are defined in whelper.py.
 
 cxx_local_var
 ^^^^^^^^^^^^^

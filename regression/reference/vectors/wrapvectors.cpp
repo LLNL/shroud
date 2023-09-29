@@ -20,10 +20,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -336,7 +336,7 @@ int VEC_vector_string_count_bufferify(const char *arg,
             SHC_arg_n = SHT_arg_size;
         for(; SHC_arg_i < SHC_arg_n; SHC_arg_i++) {
             SHCXX_arg.push_back(std::string(SHC_arg_s,
-                ShroudLenTrim(SHC_arg_s, SHT_arg_len)));
+                ShroudCharLenTrim(SHC_arg_s, SHT_arg_len)));
             SHC_arg_s += SHT_arg_len;
         }
     }

@@ -20,10 +20,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -36,13 +36,13 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrAlloc
+// helper char_alloc
 // Copy src into new memory and null terminate.
 // If ntrim is 0, return NULL pointer.
 // If blanknull is 1, return NULL when string is blank.
-static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
+static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 {
-   int ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudCharLenTrim(src, nsrc);
    if (ntrim == 0 && blanknull == 1) {
      return nullptr;
    }
@@ -54,7 +54,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
    return rv;
 }
 
-// helper ShroudStrArrayAlloc
+// helper char_array_alloc
 // Copy src into new memory and null terminate.
 // char **src +size(nsrc) +len(len)
 // CHARACTER(len) src(nsrc)
@@ -63,7 +63,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    char **rv = static_cast<char **>(std::malloc(sizeof(char *) * nsrc));
    const char *src0 = src;
    for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudLenTrim(src0, len);
+      int ntrim = ShroudCharLenTrim(src0, len);
       char *tgt = static_cast<char *>(std::malloc(ntrim+1));
       std::memcpy(tgt, src0, ntrim);
       tgt[ntrim] = '\0';
@@ -73,7 +73,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    return rv;
 }
 
-// helper ShroudStrArrayFree
+// helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
@@ -83,9 +83,9 @@ static void ShroudStrArrayFree(char **src, int nsrc)
    std::free(src);
 }
 
-// helper ShroudStrFree
-// Release memory allocated by ShroudStrAlloc
-static void ShroudStrFree(char *src)
+// helper char_free
+// Release memory allocated by ShroudCharAlloc
+static void ShroudCharFree(char *src)
 {
    if (src != NULL) {
      std::free(src);
@@ -1613,9 +1613,9 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.returnIntRawWithArgs_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
-    char *SHCXX_name = ShroudStrAlloc(name, SHT_name_cfi->elem_len, 0);
+    char *SHCXX_name = ShroudCharAlloc(name, SHT_name_cfi->elem_len, 0);
     int * SHC_rv = returnIntRawWithArgs(SHCXX_name);
-    ShroudStrFree(SHCXX_name);
+    ShroudCharFree(SHCXX_name);
     return SHC_rv;
     // splicer end function.returnIntRawWithArgs_CFI
 }

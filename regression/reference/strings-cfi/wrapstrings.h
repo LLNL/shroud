@@ -160,6 +160,12 @@ int STR_acceptStringInstance(char *arg1);
 
 int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
+void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi);
+
+void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi);
+
+void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi);
+
 void STR_explicit1(char * name);
 
 void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);

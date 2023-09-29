@@ -2378,7 +2378,7 @@ class ToImplied(todict.PrintNode):
         elif argname == "type":
             # type(arg)
             self.intermediate = True
-            self.helper = "ShroudTypeDefines"
+            self.helper = "type_defines"
             argname = node.args[0].name
             typearg = self.func.ast.declarator.find_arg_by_name(argname)
             arg_typemap = typearg.typemap
@@ -2502,7 +2502,8 @@ class ModuleInfo(object):
             self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
                 raise RuntimeError("No such helper {}".format(helper))
-            setattr(fmt, "fhelper_" + helper,
-                    whelpers.FHelpers[helper].get("name", helper))
+            name = whelpers.FHelpers[helper].get("name")
+            if name:
+                setattr(fmt, "f_helper_" + helper, name)
             
         

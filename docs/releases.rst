@@ -107,8 +107,8 @@ Unreleased
   statement fields **c_helper** and **f_helper**, each a blank
   delimited list of names. A format field was added for each name with
   a 0-based suffix corresponding to the position in the list.
-  Now, the format fields have the prefix of *chelper_* or *fhelper_*
-  followed by the helpers name. For example, *fhelper_copy_array*.
+  Now, the format fields have the prefix of *c_helper_* or *f_helper_*
+  followed by the helpers name. For example, *f_helper_copy_array*.
   This makes it easier to match the corresponding helper and will help
   when using statement mixin groups since the order of names will no
   longer matter.
@@ -128,7 +128,42 @@ Unreleased
     +      - ShroudTypeDefines
 
 .. And easier to use in a mixin group by appending lists.
-       
+
+* Renamed some helpers to have more consistent names.
+  Now the helpers and the function it defines may have different names.
+  Use snake case for all helpers names (before about half used camel case).
+  Continue to use camel case for function names.
+  Remove *Shroud* from the helper name since that's redundant.
+  Rename some functions from ``Str`` to ``Char`` to make clear when
+  it's dealing with C++ types ``char`` vs ``std::string``.
+
+.. Use the helper name in statements to make it easier to rename
+   functions without renaming helpers.
+
+.. list-table:: f statements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Old Name
+     - New Name
+   * - ShroudStrAlloc
+     - char_alloc
+   * - ShroudStrArrayAlloc
+     - char_array_alloc
+   * - ShroudStrArrayFree
+     - char_array_free
+   * - ShroudStrBlankFill
+     - char_blank_fill
+   * - ShroudStrCopy
+     - char_copy
+   * - ShroudStrFree
+     - char_free
+   * - ShroudStrToArray
+     - string_to_cdesc
+   * - ShroudTypeDefines
+     - type_defines
+
+  
 New Features
 ^^^^^^^^^^^^
 

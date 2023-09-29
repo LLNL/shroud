@@ -19,9 +19,9 @@
 extern "C" {
 
 
-// helper ShroudStrBlankFill
+// helper char_blank_fill
 // blank fill dest starting at trailing NULL.
-static void ShroudStrBlankFill(char *dest, int ndest)
+static void ShroudCharBlankFill(char *dest, int ndest)
 {
    int nm = std::strlen(dest);
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
@@ -117,7 +117,7 @@ int STR_passStruct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
     const Cstruct1 * SHCXX_s1 = static_cast<const Cstruct1 *>
         (static_cast<const void *>(s1));
     int SHC_rv = passStruct2(SHCXX_s1, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.passStruct2_bufferify
 }
@@ -290,7 +290,7 @@ STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
 {
     // splicer begin function.returnStructPtr2_bufferify
     Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
-    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
+    ShroudCharBlankFill(outbuf, SHT_outbuf_len);
     STR_cstruct1 * SHT_rv_c = static_cast<STR_cstruct1 *>(
         static_cast<void *>(SHC_rv));
     return SHT_rv_c;

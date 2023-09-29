@@ -47,7 +47,7 @@
                     "cxx_class": "Worker",
                     "cxx_type": "Worker",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                     "file_scope": "Worker"
                 }
             },
@@ -398,7 +398,7 @@
                     "cxx_class": "user_int",
                     "cxx_type": "user<int>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                     "file_scope": "user_int"
                 }
             },
@@ -996,7 +996,7 @@
                     "cxx_class": "structAsClass_int",
                     "cxx_type": "structAsClass<int>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_int"
                 }
             },
@@ -1594,7 +1594,7 @@
                     "cxx_class": "structAsClass_double",
                     "cxx_type": "structAsClass<double>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_double"
                 }
             }
@@ -3293,7 +3293,7 @@
                             "cxx_class": "vector_int",
                             "cxx_type": "vector<int>",
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                            "fhelper_capsule_data_helper": "capsule_data_helper",
+                            "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_int",
                             "fmtsample": "one"
                         }
@@ -3963,7 +3963,7 @@
                             "cxx_class": "vector_double",
                             "cxx_type": "vector<double>",
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-                            "fhelper_capsule_data_helper": "capsule_data_helper",
+                            "f_helper_capsule_data_helper": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
                             "fmtsample": "original"
                         }

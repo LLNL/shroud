@@ -22,10 +22,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -38,25 +38,25 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// start helper ShroudStrToArray
-// helper ShroudStrToArray
-// Save str metadata into array to allow Fortran to access values.
+// start helper string_to_cdesc
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, int idtor)
+static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc, const std::string * src, int idtor)
 {
-    array->cxx.addr = const_cast<std::string *>(src);
-    array->cxx.idtor = idtor;
+    cdesc->cxx.addr = const_cast<std::string *>(src);
+    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
-        array->addr.ccharp = NULL;
-        array->elem_len = 0;
+        cdesc->addr.ccharp = NULL;
+        cdesc->elem_len = 0;
     } else {
-        array->addr.ccharp = src->data();
-        array->elem_len = src->length();
+        cdesc->addr.ccharp = src->data();
+        cdesc->elem_len = src->length();
     }
-    array->size = 1;
-    array->rank = 0;  // scalar
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
 }
-// end helper ShroudStrToArray
+// end helper string_to_cdesc
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
@@ -235,7 +235,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer_bufferify
-    std::string SHCXX_name(name, ShroudLenTrim(name, SHT_name_len));
+    std::string SHCXX_name(name, ShroudCharLenTrim(name, SHT_name_len));
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
     SHC_rv->addr = SHCXX_rv;
@@ -306,7 +306,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
         (self->addr);
     // splicer begin class.Class1.method.getName_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end class.Class1.method.getName_bufferify
 }
 // end CLA_Class1_getName_bufferify

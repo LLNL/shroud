@@ -22,13 +22,15 @@ a statement entry.
           such as pointer vs reference argument.
 
 .. mixin - list of single names, no alternative allowed such as allocatable/pointer
-           must not contain 'alias' or 'base'
+           must not contain 'alias', 'append' or 'base'
            List fields from the mixin group will be appended to the group
            being defined.
            Non-lists are assigned.
+           Dictionaries are recursively appended (f_module).
 
 .. append - applied after mixins as a sort of one-off mixin to append to fields.
       f_post_call is defined by the mixins but need to add one more line.
+      Cannot be used in a mixin.
 
         name="f_out_string_**_cdesc_allocatable",
         mixin=[
@@ -37,7 +39,7 @@ a statement entry.
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
         f_post_call [ ]      # will replace the value instead of appending.
@@ -45,7 +47,7 @@ a statement entry.
         or maybe with {copy_allocate} in the mixin.
 
         fmtdict:
-           copy_allocate: "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
+           copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
    
 
 .. fmtdict - A dictionary to replace default values
@@ -55,6 +57,25 @@ a statement entry.
         fmtdict:
             f_var: "{F_string_result_as_arg}"
             c_var: "{F_string_result_as_arg}"
+
+
+.. code-block:: yaml
+
+    name: f_mixin_one
+    f_pre_call:
+    - "! comment f_mixin_one"
+
+    name: f_mixin_two
+    mixin:
+    - f_mixin_one
+    f_pre_call:
+    - "! comment f_mixin_two"    # appends
+
+    name: f_function_one
+    mixin:
+    - f_mixin_one
+    f_pre_call:
+    - "! comment two"            # replaces
    
 
 Passing function result as an argument

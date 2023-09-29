@@ -1,43 +1,4 @@
 
----------- ShroudTypeDefines ----------
-{}
-
-##### start ShroudTypeDefines derived_type
-
-! helper ShroudTypeDefines
-! Shroud type defines from helper ShroudTypeDefines
-integer, parameter, private :: &
-    SH_TYPE_SIGNED_CHAR= 1, &
-    SH_TYPE_SHORT      = 2, &
-    SH_TYPE_INT        = 3, &
-    SH_TYPE_LONG       = 4, &
-    SH_TYPE_LONG_LONG  = 5, &
-    SH_TYPE_SIZE_T     = 6, &
-    SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
-    SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
-    SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
-    SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
-    SH_TYPE_INT8_T    =  7, &
-    SH_TYPE_INT16_T   =  8, &
-    SH_TYPE_INT32_T   =  9, &
-    SH_TYPE_INT64_T   = 10, &
-    SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
-    SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
-    SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
-    SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
-    SH_TYPE_FLOAT       = 22, &
-    SH_TYPE_DOUBLE      = 23, &
-    SH_TYPE_LONG_DOUBLE = 24, &
-    SH_TYPE_FLOAT_COMPLEX      = 25, &
-    SH_TYPE_DOUBLE_COMPLEX     = 26, &
-    SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
-    SH_TYPE_BOOL      = 28, &
-    SH_TYPE_CHAR      = 29, &
-    SH_TYPE_CPTR      = 30, &
-    SH_TYPE_STRUCT    = 31, &
-    SH_TYPE_OTHER     = 32
-##### end ShroudTypeDefines derived_type
-
 ---------- array_context ----------
 {
     "dependent_helpers": [
@@ -51,7 +12,8 @@ integer, parameter, private :: &
             "C_INT",
             "C_LONG"
         ]
-    }
+    },
+    "name": "LIB_SHROUD_array"
 }
 
 ##### start array_context derived_type
@@ -104,7 +66,8 @@ end interface
             "C_INT",
             "C_NULL_PTR"
         ]
-    }
+    },
+    "name": "LIB_SHROUD_capsule_data"
 }
 
 ##### start capsule_data_helper derived_type
@@ -243,6 +206,45 @@ subroutine LIB_SHROUD_pointer_string(context, var)
     var => fptr
 end subroutine LIB_SHROUD_pointer_string
 ##### end pointer_string source
+
+---------- type_defines ----------
+{}
+
+##### start type_defines derived_type
+
+! helper type_defines
+! Shroud type defines from helper type_defines
+integer, parameter, private :: &
+    SH_TYPE_SIGNED_CHAR= 1, &
+    SH_TYPE_SHORT      = 2, &
+    SH_TYPE_INT        = 3, &
+    SH_TYPE_LONG       = 4, &
+    SH_TYPE_LONG_LONG  = 5, &
+    SH_TYPE_SIZE_T     = 6, &
+    SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+    SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+    SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+    SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+    SH_TYPE_INT8_T    =  7, &
+    SH_TYPE_INT16_T   =  8, &
+    SH_TYPE_INT32_T   =  9, &
+    SH_TYPE_INT64_T   = 10, &
+    SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+    SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+    SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+    SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+    SH_TYPE_FLOAT       = 22, &
+    SH_TYPE_DOUBLE      = 23, &
+    SH_TYPE_LONG_DOUBLE = 24, &
+    SH_TYPE_FLOAT_COMPLEX      = 25, &
+    SH_TYPE_DOUBLE_COMPLEX     = 26, &
+    SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+    SH_TYPE_BOOL      = 28, &
+    SH_TYPE_CHAR      = 29, &
+    SH_TYPE_CPTR      = 30, &
+    SH_TYPE_STRUCT    = 31, &
+    SH_TYPE_OTHER     = 32
+##### end type_defines derived_type
 
 ---------- vector_string_allocatable ----------
 {

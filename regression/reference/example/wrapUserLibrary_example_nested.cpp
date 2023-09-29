@@ -18,10 +18,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -121,7 +121,7 @@ void AA_example_nested_test_names_bufferify(char *name,
 {
     // splicer begin namespace.example::nested.function.test_names_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     example::nested::test_names(SHCXX_name);
     // splicer end namespace.example::nested.function.test_names_bufferify
 }
@@ -164,7 +164,7 @@ void AA_example_nested_test_names_flag_bufferify(char *name,
 {
     // splicer begin namespace.example::nested.function.test_names_flag_bufferify
     const std::string SHCXX_name(name,
-        ShroudLenTrim(name, SHT_name_len));
+        ShroudCharLenTrim(name, SHT_name_len));
     example::nested::test_names(SHCXX_name, flag);
     // splicer end namespace.example::nested.function.test_names_flag_bufferify
 }

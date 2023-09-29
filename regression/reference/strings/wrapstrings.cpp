@@ -24,10 +24,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -40,13 +40,13 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrAlloc
+// helper char_alloc
 // Copy src into new memory and null terminate.
 // If ntrim is 0, return NULL pointer.
 // If blanknull is 1, return NULL when string is blank.
-static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
+static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 {
-   int ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudCharLenTrim(src, nsrc);
    if (ntrim == 0 && blanknull == 1) {
      return nullptr;
    }
@@ -58,19 +58,19 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
    return rv;
 }
 
-// helper ShroudStrBlankFill
+// helper char_blank_fill
 // blank fill dest starting at trailing NULL.
-static void ShroudStrBlankFill(char *dest, int ndest)
+static void ShroudCharBlankFill(char *dest, int ndest)
 {
    int nm = std::strlen(dest);
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
 
-// helper ShroudStrCopy
+// helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
    if (src == NULL) {
      std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
@@ -82,34 +82,34 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    }
 }
 
-// helper ShroudStrFree
-// Release memory allocated by ShroudStrAlloc
-static void ShroudStrFree(char *src)
+// helper char_free
+// Release memory allocated by ShroudCharAlloc
+static void ShroudCharFree(char *src)
 {
    if (src != NULL) {
      std::free(src);
    }
 }
 
-// start helper ShroudStrToArray
-// helper ShroudStrToArray
-// Save str metadata into array to allow Fortran to access values.
+// start helper string_to_cdesc
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
+static void ShroudStringToCdesc(STR_SHROUD_array *cdesc, const std::string * src, int idtor)
 {
-    array->cxx.addr = const_cast<std::string *>(src);
-    array->cxx.idtor = idtor;
+    cdesc->cxx.addr = const_cast<std::string *>(src);
+    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
-        array->addr.ccharp = NULL;
-        array->elem_len = 0;
+        cdesc->addr.ccharp = NULL;
+        cdesc->elem_len = 0;
     } else {
-        array->addr.ccharp = src->data();
-        array->elem_len = src->length();
+        cdesc->addr.ccharp = src->data();
+        cdesc->elem_len = src->length();
     }
-    array->size = 1;
-    array->rank = 0;  // scalar
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
 }
-// end helper ShroudStrToArray
+// end helper string_to_cdesc
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -231,7 +231,7 @@ void STR_passCharPtr_bufferify(char *dest, int SHT_dest_len,
 {
     // splicer begin function.passCharPtr_bufferify
     passCharPtr(dest, src);
-    ShroudStrBlankFill(dest, SHT_dest_len);
+    ShroudCharBlankFill(dest, SHT_dest_len);
     // splicer end function.passCharPtr_bufferify
 }
 // end STR_passCharPtr_bufferify
@@ -275,10 +275,10 @@ void STR_passCharPtrInOut(char * s)
 void STR_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHT_s_str = ShroudStrAlloc(s, SHT_s_len, 0);
+    char * SHT_s_str = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHT_s_str);
-    ShroudStrCopy(s, SHT_s_len, SHT_s_str, -1);
-    ShroudStrFree(SHT_s_str);
+    ShroudCharCopy(s, SHT_s_len, SHT_s_str, -1);
+    ShroudCharFree(SHT_s_str);
     // splicer end function.passCharPtrInOut_bufferify
 }
 
@@ -357,7 +357,7 @@ void STR_getCharPtr2_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getCharPtr2_bufferify
     const char * SHCXX_rv = getCharPtr2();
-    ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
     // splicer end function.getCharPtr2_bufferify
 }
 // end STR_getCharPtr2_bufferify
@@ -394,7 +394,7 @@ void STR_getCharPtr3_bufferify(char *output, int noutput)
 {
     // splicer begin function.getCharPtr3_bufferify
     const char * SHCXX_rv = getCharPtr3();
-    ShroudStrCopy(output, noutput, SHCXX_rv, -1);
+    ShroudCharCopy(output, noutput, SHCXX_rv, -1);
     // splicer end function.getCharPtr3_bufferify
 }
 // end STR_getCharPtr3_bufferify
@@ -475,7 +475,7 @@ void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
     // C_error_pattern
     // Some error code for buf
 
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.getConstStringResult_bufferify
 }
 
@@ -496,9 +496,9 @@ void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len)
     // Some error code for buf
 
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringLen_bufferify
@@ -521,9 +521,9 @@ void STR_getConstStringAsArg_bufferify(char *output, int noutput)
     // Some error code for buf
 
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, noutput, nullptr, 0);
+        ShroudCharCopy(output, noutput, nullptr, 0);
     } else {
-        ShroudStrCopy(output, noutput, SHCXX_rv.data(),
+        ShroudCharCopy(output, noutput, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringAsArg_bufferify
@@ -539,7 +539,7 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
     // splicer begin function.getConstStringAlloc_bufferify
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = getConstStringAlloc();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.getConstStringAlloc_bufferify
 }
 
@@ -576,7 +576,7 @@ void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.getConstStringRefPure_bufferify
     const std::string & SHCXX_rv = getConstStringRefPure();
-    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end function.getConstStringRefPure_bufferify
 }
 // end STR_getConstStringRefPure_bufferify
@@ -626,9 +626,9 @@ void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len)
     // Some error code for buf
 
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringRefLen_bufferify
@@ -677,9 +677,9 @@ void STR_getConstStringRefAsArg_bufferify(char *output, int noutput)
     // Some error code for buf
 
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, noutput, nullptr, 0);
+        ShroudCharCopy(output, noutput, nullptr, 0);
     } else {
-        ShroudStrCopy(output, noutput, SHCXX_rv.data(),
+        ShroudCharCopy(output, noutput, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringRefAsArg_bufferify
@@ -725,9 +725,9 @@ void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
     // Some error code for buf
 
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getConstStringRefLenEmpty_bufferify
@@ -756,7 +756,7 @@ void STR_getConstStringRefAlloc_bufferify(
 {
     // splicer begin function.getConstStringRefAlloc_bufferify
     const std::string & SHCXX_rv = getConstStringRefAlloc();
-    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end function.getConstStringRefAlloc_bufferify
 }
 
@@ -799,9 +799,9 @@ void STR_getConstStringPtrLen_bufferify(char *SHC_rv, int SHT_rv_len)
     // splicer begin function.getConstStringPtrLen_bufferify
     const std::string * SHCXX_rv = getConstStringPtrLen();
     if (SHCXX_rv->empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv->data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv->data(),
             SHCXX_rv->size());
     }
     {
@@ -834,7 +834,7 @@ void STR_getConstStringPtrAlloc_bufferify(
 {
     // splicer begin function.getConstStringPtrAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 0);
     // splicer end function.getConstStringPtrAlloc_bufferify
 }
 
@@ -875,7 +875,7 @@ void STR_getConstStringPtrOwnsAlloc_bufferify(
 {
     // splicer begin function.getConstStringPtrOwnsAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 2);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 2);
     // splicer end function.getConstStringPtrOwnsAlloc_bufferify
 }
 
@@ -908,7 +908,7 @@ void STR_getConstStringPtrOwnsAllocPattern_bufferify(
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 3);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 3);
     // splicer end function.getConstStringPtrOwnsAllocPattern_bufferify
 }
 
@@ -938,7 +938,7 @@ void STR_getConstStringPtrPointer_bufferify(
 {
     // splicer begin function.getConstStringPtrPointer_bufferify
     const std::string * SHCXX_rv = getConstStringPtrPointer();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 0);
     // splicer end function.getConstStringPtrPointer_bufferify
 }
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
@@ -987,7 +987,7 @@ void STR_acceptStringConstReference_bufferify(char *arg1,
 {
     // splicer begin function.acceptStringConstReference_bufferify
     const std::string SHCXX_arg1(arg1,
-        ShroudLenTrim(arg1, SHT_arg1_len));
+        ShroudCharLenTrim(arg1, SHT_arg1_len));
     acceptStringConstReference(SHCXX_arg1);
     // splicer end function.acceptStringConstReference_bufferify
 }
@@ -1038,7 +1038,7 @@ void STR_acceptStringReferenceOut_bufferify(char *arg1,
     // splicer begin function.acceptStringReferenceOut_bufferify
     std::string SHCXX_arg1;
     acceptStringReferenceOut(SHCXX_arg1);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.acceptStringReferenceOut_bufferify
 }
@@ -1089,9 +1089,9 @@ void STR_acceptStringReference(char * arg1)
 void STR_acceptStringReference_bufferify(char *arg1, int SHT_arg1_len)
 {
     // splicer begin function.acceptStringReference_bufferify
-    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, SHT_arg1_len));
+    std::string SHCXX_arg1(arg1, ShroudCharLenTrim(arg1, SHT_arg1_len));
     acceptStringReference(SHCXX_arg1);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.acceptStringReference_bufferify
 }
@@ -1135,7 +1135,7 @@ void STR_acceptStringPointerConst_bufferify(char *arg1,
 {
     // splicer begin function.acceptStringPointerConst_bufferify
     const std::string SHCXX_arg1(arg1,
-        ShroudLenTrim(arg1, SHT_arg1_len));
+        ShroudCharLenTrim(arg1, SHT_arg1_len));
     acceptStringPointerConst(&SHCXX_arg1);
     // splicer end function.acceptStringPointerConst_bufferify
 }
@@ -1177,9 +1177,9 @@ void STR_acceptStringPointer(char * arg1)
 void STR_acceptStringPointer_bufferify(char *arg1, int SHT_arg1_len)
 {
     // splicer begin function.acceptStringPointer_bufferify
-    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, SHT_arg1_len));
+    std::string SHCXX_arg1(arg1, ShroudCharLenTrim(arg1, SHT_arg1_len));
     acceptStringPointer(&SHCXX_arg1);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.acceptStringPointer_bufferify
 }
@@ -1225,7 +1225,7 @@ void STR_fetchStringPointer_bufferify(char *arg1, int SHT_arg1_len)
     // splicer begin function.fetchStringPointer_bufferify
     std::string SHCXX_arg1;
     fetchStringPointer(&SHCXX_arg1);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.fetchStringPointer_bufferify
 }
@@ -1280,9 +1280,9 @@ void STR_acceptStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
     int * nlen)
 {
     // splicer begin function.acceptStringPointerLen_bufferify
-    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, SHT_arg1_len));
+    std::string SHCXX_arg1(arg1, ShroudCharLenTrim(arg1, SHT_arg1_len));
     acceptStringPointerLen(&SHCXX_arg1, nlen);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.acceptStringPointerLen_bufferify
 }
@@ -1341,7 +1341,7 @@ void STR_fetchStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
     // splicer begin function.fetchStringPointerLen_bufferify
     std::string SHCXX_arg1;
     fetchStringPointerLen(&SHCXX_arg1, nlen);
-    ShroudStrCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
     // splicer end function.fetchStringPointerLen_bufferify
 }
@@ -1382,7 +1382,7 @@ int STR_acceptStringInstance(char *arg1)
 int STR_acceptStringInstance_bufferify(char *arg1, int SHT_arg1_len)
 {
     // splicer begin function.acceptStringInstance_bufferify
-    int SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_len);
+    int SHC_arg1_trim = ShroudCharLenTrim(arg1, SHT_arg1_len);
     std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
@@ -1633,7 +1633,7 @@ void STR_explicit2_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.explicit2_bufferify
     explicit2(name);
-    ShroudStrBlankFill(name, SHT_name_len);
+    ShroudCharBlankFill(name, SHT_name_len);
     // splicer end function.explicit2_bufferify
 }
 
@@ -1677,10 +1677,10 @@ void STR_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
     int SHT_src_len)
 {
     // splicer begin function.CpassCharPtr_bufferify
-    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 1);
+    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtr(dest, SHT_src_str);
-    ShroudStrBlankFill(dest, SHT_dest_len);
-    ShroudStrFree(SHT_src_str);
+    ShroudCharBlankFill(dest, SHT_dest_len);
+    ShroudCharFree(SHT_src_str);
     // splicer end function.CpassCharPtr_bufferify
 }
 
@@ -1728,10 +1728,10 @@ void STR_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrBlank_bufferify
-    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 1);
+    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtrBlank(dest, SHT_src_str);
-    ShroudStrBlankFill(dest, SHT_dest_len);
-    ShroudStrFree(SHT_src_str);
+    ShroudCharBlankFill(dest, SHT_dest_len);
+    ShroudCharFree(SHT_src_str);
     // splicer end function.CpassCharPtrBlank_bufferify
 }
 
@@ -1785,9 +1785,9 @@ void STR_PostDeclare_bufferify(int * count, char *name,
     int SHT_name_len)
 {
     // splicer begin function.PostDeclare_bufferify
-    std::string SHCXX_name(name, ShroudLenTrim(name, SHT_name_len));
+    std::string SHCXX_name(name, ShroudCharLenTrim(name, SHT_name_len));
     PostDeclare(count, SHCXX_name);
-    ShroudStrCopy(name, SHT_name_len, SHCXX_name.data(),
+    ShroudCharCopy(name, SHT_name_len, SHCXX_name.data(),
         SHCXX_name.size());
     // splicer end function.PostDeclare_bufferify
 }
@@ -1828,9 +1828,9 @@ int STR_CpassCharPtrNotrim(const char * src)
 int STR_CpassCharPtrNotrim_bufferify(char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrNotrim_bufferify
-    char * SHT_src_str = ShroudStrAlloc(src, SHT_src_len, 0);
+    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHT_src_str);
-    ShroudStrFree(SHT_src_str);
+    ShroudCharFree(SHT_src_str);
     return SHC_rv;
     // splicer end function.CpassCharPtrNotrim_bufferify
 }

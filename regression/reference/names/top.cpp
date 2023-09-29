@@ -22,10 +22,10 @@
 extern "C" {
 
 
-// helper ShroudLenTrim
+// helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-static int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudCharLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {
@@ -38,13 +38,13 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper ShroudStrAlloc
+// helper char_alloc
 // Copy src into new memory and null terminate.
 // If ntrim is 0, return NULL pointer.
 // If blanknull is 1, return NULL when string is blank.
-static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
+static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 {
-   int ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudCharLenTrim(src, nsrc);
    if (ntrim == 0 && blanknull == 1) {
      return nullptr;
    }
@@ -56,11 +56,11 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
    return rv;
 }
 
-// helper ShroudStrCopy
+// helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
    if (src == NULL) {
      std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
@@ -72,9 +72,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    }
 }
 
-// helper ShroudStrFree
-// Release memory allocated by ShroudStrAlloc
-static void ShroudStrFree(char *src)
+// helper char_free
+// Release memory allocated by ShroudCharAlloc
+static void ShroudCharFree(char *src)
 {
    if (src != NULL) {
      std::free(src);
@@ -110,10 +110,10 @@ void TES_getName(char * name)
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.getName_bufferify
-    char * SHT_name_str = ShroudStrAlloc(name, SHT_name_len, 0);
+    char * SHT_name_str = ShroudCharAlloc(name, SHT_name_len, 0);
     getName(SHT_name_str);
-    ShroudStrCopy(name, SHT_name_len, SHT_name_str, -1);
-    ShroudStrFree(SHT_name_str);
+    ShroudCharCopy(name, SHT_name_len, SHT_name_str, -1);
+    ShroudCharFree(SHT_name_str);
     // splicer end function.getName_bufferify
 }
 
@@ -198,7 +198,7 @@ int YYY_TES_function4(const char * rv)
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 {
     // splicer begin function.function4_bufferify
-    const std::string ARG_rv(rv, ShroudLenTrim(rv, SHT_rv_len));
+    const std::string ARG_rv(rv, ShroudCharLenTrim(rv, SHT_rv_len));
     int SHC_rv = function4(ARG_rv);
     return SHC_rv;
     // splicer end function.function4_bufferify

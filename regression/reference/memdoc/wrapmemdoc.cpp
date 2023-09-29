@@ -20,25 +20,25 @@
 extern "C" {
 
 
-// start helper ShroudStrToArray
-// helper ShroudStrToArray
-// Save str metadata into array to allow Fortran to access values.
+// start helper string_to_cdesc
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
+static void ShroudStringToCdesc(STR_SHROUD_array *cdesc, const std::string * src, int idtor)
 {
-    array->cxx.addr = const_cast<std::string *>(src);
-    array->cxx.idtor = idtor;
+    cdesc->cxx.addr = const_cast<std::string *>(src);
+    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
-        array->addr.ccharp = NULL;
-        array->elem_len = 0;
+        cdesc->addr.ccharp = NULL;
+        cdesc->elem_len = 0;
     } else {
-        array->addr.ccharp = src->data();
-        array->elem_len = src->length();
+        cdesc->addr.ccharp = src->data();
+        cdesc->elem_len = src->length();
     }
-    array->size = 1;
-    array->rank = 0;  // scalar
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
 }
-// end helper ShroudStrToArray
+// end helper string_to_cdesc
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -68,7 +68,7 @@ void STR_getConstStringPtrAlloc_bufferify(
 {
     // splicer begin function.getConstStringPtrAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
-    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 0);
     // splicer end function.getConstStringPtrAlloc_bufferify
 }
 // end STR_getConstStringPtrAlloc_bufferify

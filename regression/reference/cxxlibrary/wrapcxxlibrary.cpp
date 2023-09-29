@@ -21,11 +21,11 @@
 extern "C" {
 
 
-// helper ShroudStrCopy
+// helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
-static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
    if (src == NULL) {
      std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
@@ -159,9 +159,9 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     // splicer begin function.getGroupName_int32_t_bufferify
     const std::string & SHCXX_rv = getGroupName(idx);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getGroupName_int32_t_bufferify
@@ -186,9 +186,9 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     // splicer begin function.getGroupName_int64_t_bufferify
     const std::string & SHCXX_rv = getGroupName(idx);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.getGroupName_int64_t_bufferify

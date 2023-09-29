@@ -259,16 +259,21 @@ def post_mixin_check_statement(name, stmt):
 ##-                    "must all be same length in {}".format(name))
 
 def append_mixin(stmt, mixin):
-    """Append each mixin to stmt.
+    """Append each list from mixin to stmt.
     """
     for key, value in mixin.items():
-        if key in ["mixin", "name"]:
+        if key in ["alias", "base", "mixin", "name"]:
             pass
         elif isinstance(value, list):
-            if key in stmt:
-                stmt[key].extend(value)
-            else:
-                stmt[key] = value[:]
+            if key not in stmt:
+                stmt[key] = []
+            if False:#True:
+                # Report the mixin name for debugging
+                if "name" in mixin:
+                    stmt[key].append("# " + mixin["name"])
+                else:
+                    stmt[key].append("# append")
+            stmt[key].extend(value)
         elif isinstance(value, dict):
             if key not in stmt:
                 stmt[key] = {}
@@ -306,24 +311,29 @@ def process_mixin(stmts, defaults, stmtdict):
             continue
         if parts[1] == "mixin":
             if "base" in stmt:
-                print("XXXX - mixin should not have 'base' field: ", name)
+                print("XXXX - mixin should not have 'base' field:", name)
             if "alias" in stmt:
-                print("XXXX - mixin should not have 'alias' field: ", name)
+                print("XXXX - mixin should not have 'alias' field:", name)
+            if "append" in stmt:
+                print("XXXX - mixin should not have 'append' field:", name)
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
-                parts = mixin.split("_")
-                if parts[1] != "mixin":
+                mparts = mixin.split("_")
+                if mparts[1] != "mixin":
                     print("XXXX - mixin must have intent 'mixin': ", name)
                 if mixin not in mixins:
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
-        if "append" in stmt:
-            append_mixin(node, stmt["append"])
-        node.update(stmt)
+        if parts[1] == "mixin":
+            append_mixin(node, stmt)
+        else:
+            if "append" in stmt:
+                append_mixin(node, stmt["append"])
+            node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
         out = compute_all_permutations(name)
@@ -839,14 +849,14 @@ fc_statements = [
     dict(
         # Allocate Fortran CHARACTER scalar, then fill from cdesc.
         name="f_mixin_char_cdesc_allocate",
-        c_helper=["ShroudStrToArray"],
-        f_helper=["copy_string", "array_context"],
+        c_helper=["copy_string"],
+        f_helper=["copy_string"],
         f_arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
         f_post_call=[
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
-            "call {fhelper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
+            "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
         ],
     ),
     
@@ -855,7 +865,7 @@ fc_statements = [
         # c_temp cdesc already added
         # assumes mixin=["f_mixin_function_cdesc"],
         name="c_mixin_native_cdesc_fill-cdesc",
-        c_helper=["ShroudTypeDefines", "array_context"],
+        c_helper=["type_defines", "array_context"],
         c_post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
@@ -871,7 +881,7 @@ fc_statements = [
         # Used with both deref allocatable and pointer.
         # assumes mixin=["f_mixin_function_cdesc"],
         name="c_mixin_function_char_*_cdesc",
-        c_helper=["ShroudTypeDefines"],
+        c_helper=["type_defines"],
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1370,7 +1380,7 @@ fc_statements = [
 #        f_post_call=[
 #            # intent(out) ensure that it is already deallocated.
 #            "allocate({f_var}{f_array_allocate})",
-#            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+#            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
 #        ],
 #    ),
     dict(
@@ -1387,7 +1397,7 @@ fc_statements = [
         alias=[
             "c_out_native_**_cdesc_allocatable",
         ],
-        c_helper=["copy_array", "ShroudTypeDefines", "array_context"],
+        c_helper=["copy_array", "type_defines", "array_context"],
         f_helper=["copy_array"],
 #XXX        f_helper=["copy_array_{c_type}"],
         f_arg_decl=[
@@ -1397,7 +1407,7 @@ fc_statements = [
         f_post_call=[
             # intent(out) ensure that it is already deallocated.
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1450,7 +1460,7 @@ fc_statements = [
         f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper=["ShroudTypeDefines", "array_context"],
+        f_helper=["type_defines", "array_context"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_pre_call=[
             "{f_var_cdesc}%base_addr = C_LOC({f_var})",
@@ -1462,7 +1472,7 @@ fc_statements = [
             "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}",
         ],
 
-#        c_helper=["ShroudTypeDefines"],
+#        c_helper=["type_defines"],
         lang_c=dict(
             c_pre_call=[
                 "{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;",
@@ -1585,7 +1595,7 @@ fc_statements = [
             "f_mixin_function_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
         ],
-        c_helper=["copy_array", "ShroudTypeDefines", "array_context"],
+        c_helper=["copy_array", "type_defines", "array_context"],
         # XXX - use case for append to c_helper, first two from mixin
         f_helper=["copy_array"],
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
@@ -1595,7 +1605,7 @@ fc_statements = [
         f_post_call=[
             # XXX - allocate scalar
             "allocate({f_var}{f_array_allocate})",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1789,14 +1799,14 @@ fc_statements = [
             "c_in_char_*_buf",
         ],
         c_temps=["len", "str"],
-        c_helper=["ShroudStrAlloc", "ShroudStrFree"],
+        c_helper=["char_alloc", "char_free"],
         c_pre_call=[
-            "char * {c_var_str} = ShroudStrAlloc(\t"
+            "char * {c_var_str} = {c_helper_char_alloc}(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         c_arg_call=["{c_var_str}"],
         c_post_call=[
-            "ShroudStrFree({c_var_str});"
+            "{c_helper_char_free}({c_var_str});"
         ],
     ),
     dict(
@@ -1808,9 +1818,9 @@ fc_statements = [
         alias=[
             "c_out_char_*_buf",
         ],
-        c_helper=["ShroudStrBlankFill"],
+        c_helper=["char_blank_fill"],
         c_post_call=[
-            "ShroudStrBlankFill({c_var}, {c_var_len});"
+            "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
         ],
     ),
     dict(
@@ -1823,17 +1833,17 @@ fc_statements = [
             "c_inout_char_*_buf",
         ],
         c_temps=["len", "str"],
-        c_helper=["ShroudStrAlloc", "ShroudStrCopy", "ShroudStrFree"],
+        c_helper=["char_alloc", "char_copy", "char_free"],
         c_pre_call=[
-            "char * {c_var_str} = ShroudStrAlloc(\t"
+            "char * {c_var_str} = {c_helper_char_alloc}(\t"
             "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         c_arg_call=["{c_var_str}"],
         c_post_call=[
             # nsrc=-1 will call strlen({c_var_str})
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {c_var_str},\t -1);",
-            "ShroudStrFree({c_var_str});",
+            "{c_helper_char_free}({c_var_str});",
         ],
     ),
     dict(
@@ -1849,10 +1859,10 @@ fc_statements = [
             "c_function_char_*_buf_copy",
         ],
         cxx_local_var="result",
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         c_post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
         ],
     ),
@@ -1912,14 +1922,14 @@ fc_statements = [
         alias=[
             'c_in_char_**_buf',
         ],
-        c_helper=["ShroudStrArrayAlloc", "ShroudStrArrayFree"],
+        c_helper=["char_array_alloc", "char_array_free"],
         cxx_local_var="pointer",
         c_pre_call=[
-            "char **{cxx_var} = ShroudStrArrayAlloc("
+            "char **{cxx_var} = {c_helper_char_array_alloc}("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         c_post_call=[
-            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+            "{c_helper_char_array_free}({cxx_var}, {c_var_size});",
         ],
     ),
     #####
@@ -1933,10 +1943,10 @@ fc_statements = [
         alias=[
             "f_function_char_*_cdesc_allocatable",
         ],
-        c_helper=["copy_string", "ShroudTypeDefines"],
+        c_helper=["copy_string"],
     ),
 
-    # XXX note: split by char/scalar - use of ShroudStrToArray
+    # XXX note: split by char/scalar - use of string_to_cdesc
     # allocatable - split by scalar (using new) and */& using library created memory
     dict(
         name="f_function_char_scalar_cdesc_pointer",
@@ -1960,7 +1970,7 @@ fc_statements = [
             #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
             #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
+            "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
     ),
     dict(
@@ -1971,7 +1981,6 @@ fc_statements = [
         name="f_function_string_*_cdesc_pointer",
         mixin=[
             "f_mixin_function_cdesc",
-            "c_mixin_function_char_*_cdesc",   # XXX - maybe other mixing with string
         ],
         alias=[
             "f_function_string_&_cdesc_pointer",
@@ -1991,17 +2000,17 @@ fc_statements = [
             #"call c_f_pointer({f_var_cdesc}%base_addr, {f_local_s})",
             #"{f_var} => {f_local_s}",
             #"-end block",
-            "call {fhelper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
+            "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})",
         ],
 
         # TTT - replace c_function_string_*/&_cdesc_allocatable_pointer
-        c_helper=["ShroudStrToArray"],
+        c_helper=["string_to_cdesc"],
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         c_post_call=[
-            "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -2068,10 +2077,10 @@ fc_statements = [
         alias=[
             "c_in_string_*/&_buf",
         ],
-        c_helper=["ShroudLenTrim"],
+        c_helper=["char_len_trim"],
         cxx_local_var="scalar",
         c_pre_call=[
-            "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));",
+            "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));",
         ],
     ),
     dict(
@@ -2085,13 +2094,13 @@ fc_statements = [
         alias=[
             "c_out_string_*/&_buf",
         ],
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         cxx_local_var="scalar",
         c_pre_call=[
             "std::string {cxx_var};",
         ],
         c_post_call=[
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2107,13 +2116,13 @@ fc_statements = [
         alias=[
             "c_inout_string_*/&_buf",
         ],
-        c_helper=["ShroudStrCopy", "ShroudLenTrim"],
+        c_helper=["char_copy", "char_len_trim"],
         cxx_local_var="scalar",
         c_pre_call=[
-            "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));",
+            "std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));",
         ],
         c_post_call=[
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2193,8 +2202,9 @@ fc_statements = [
             "character(len=*), intent({f_intent}) :: {f_var}",
         ],
         cxx_local_var="scalar",
+        c_helper=["char_len_trim"],
         c_pre_call=[
-            "int {c_local_trim} = ShroudLenTrim({c_var}, {c_var_len});",
+            "int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});",
             "std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         c_call=[
@@ -2219,13 +2229,15 @@ fc_statements = [
 
         ],
 
-        c_helper=["copy_string", "ShroudStrToArray"],
+        append=dict(
+            c_helper=["string_to_cdesc"],
+        ),
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         c_post_call=[
-            "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -2260,20 +2272,15 @@ fc_statements = [
             "c_function_string_scalar/*/&_buf_copy",
         ],
 
-        i_arg_decl=[
-            # Change to intent(OUT) from mixin.
-            "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
-            "integer(C_INT), value, intent(IN) :: {c_var_len}",
-        ],
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         # No need to allocate a local copy since the string is copied
         # into a Fortran variable before the string is deleted.
         c_post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "{c_helper_char_copy}({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -2322,7 +2329,9 @@ fc_statements = [
 
             # f_function_string_&_cdesc_allocatable
         ],
-        c_helper=["ShroudStrToArray", "copy_string"],
+        append=dict(
+            c_helper=["string_to_cdesc"],
+        ),
         cxx_local_var="pointer",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -2332,7 +2341,7 @@ fc_statements = [
             "std::string * {cxx_var} = new std::string;",
         ],
         c_post_call=[
-            "ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});",
+            "{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});",
         ],
     ),
     
@@ -2363,7 +2372,7 @@ fc_statements = [
         # Fill cdesc with vector information
         # Return address and size of vector data.
         name="c_mixin_vector_cdesc_fill-cdesc",
-        c_helper=["ShroudTypeDefines"],
+        c_helper=["type_defines"],
         c_post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
@@ -2404,7 +2413,7 @@ fc_statements = [
             "c_out_vector_*/&_cdesc_targ_native_scalar",
         ],
 
-        c_helper=["copy_array", "ShroudTypeDefines"],
+        c_helper=["copy_array", "type_defines"],
         f_helper=["copy_array"],
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
@@ -2412,7 +2421,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_SIZE_T", "C_LOC"]),
         f_post_call=[
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2423,9 +2432,8 @@ fc_statements = [
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc",
         ],
-        c_helper=["copy_array", "ShroudTypeDefines"],
+        c_helper=["copy_array"],
         f_helper=["copy_array"],
-        f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         
         cxx_local_var="pointer",
         c_pre_call=[
@@ -2444,7 +2452,7 @@ fc_statements = [
             "c_mixin_vector_cdesc_fill-cdesc",
         ],
 
-        c_helper=["copy_array", "ShroudTypeDefines"],
+        c_helper=["copy_array", "type_defines"],
         f_helper=["copy_array"],
         f_module=dict(iso_c_binding=["C_LOC", "C_SIZE_T"]),
         f_arg_decl=[
@@ -2452,7 +2460,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
         
         cxx_local_var="pointer",
@@ -2492,7 +2500,7 @@ fc_statements = [
         alias=[
             "c_in_vector_scalar/*/&_buf_targ_string_scalar",
         ],
-        c_helper=["ShroudLenTrim"],
+        c_helper=["char_len_trim"],
         cxx_local_var="scalar",
         c_pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
@@ -2503,7 +2511,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back(\t"
-            "std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));",
+            "std::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s}, {c_var_len})));",
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
@@ -2517,7 +2525,7 @@ fc_statements = [
             "f_mixin_in_string_array_buf",
         ],
 
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         cxx_local_var="scalar",
         c_pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
         c_post_call=[
@@ -2528,7 +2536,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
-            "ShroudStrCopy("
+            "{c_helper_char_copy}("
             "{c_local_s}, {c_var_len},"
             "\t {cxx_var}[{c_local_i}].data(),"
             "\t {cxx_var}[{c_local_i}].size());",
@@ -2546,6 +2554,7 @@ fc_statements = [
         ],
 
         cxx_local_var="scalar",
+        c_helper=["char_len_trim"],
         c_pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
@@ -2555,7 +2564,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back"
-            "(std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));",
+            "(std::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s}, {c_var_len})));",
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
@@ -2568,7 +2577,7 @@ fc_statements = [
             "{c_local_n} = {c_var_size};",
             "-{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
             "for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
-            "ShroudStrCopy({c_local_s}, {c_var_len},"
+            "{c_helper_char_copy}({c_local_s}, {c_var_len},"
             "\t {cxx_var}[{c_local_i}].data(),"
             "\t {cxx_var}[{c_local_i}].size());",
             "{c_local_s} += {c_var_len};",
@@ -2600,7 +2609,7 @@ fc_statements = [
         f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper=["ShroudTypeDefines", "array_context"],
+        f_helper=["type_defines", "array_context"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_pre_call=[
             "{f_var_cdesc}%cxx%addr = C_LOC({f_var})",
@@ -2624,14 +2633,14 @@ fc_statements = [
         alias=[
             "c_out_vector_&_cdesc_targ_string_scalar",
         ],
-        f_helper=["ShroudTypeDefines", "array_context"],  # TTT - append_mixin
+        f_helper=["type_defines", "array_context"],  # TTT - append_mixin
         c_helper=["vector_string_out"],
         c_pre_call=[
             "{c_const}std::vector<std::string> {cxx_var};"
         ],
         c_arg_call=["{cxx_var}"],
         c_post_call=[
-            "{chelper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});",
+            "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});",
         ],
     ),
 
@@ -2646,11 +2655,11 @@ fc_statements = [
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
 #        fmtdict=dict(
-#            copy_alloc="{fhelper_vector_string_allocatable}",
+#            copy_alloc="{f_helper_vector_string_allocatable}",
 #        ),
         alias=[
             "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
@@ -2666,7 +2675,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {chelper_vector_string_out_len}(*{cxx_var});",
+            "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
             "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
@@ -2677,12 +2686,12 @@ fc_statements = [
     ##########
     #                    dict(
     #                        name="c_function_vector_buf_string",
-    #                        c_helper=['ShroudStrCopy'],
+    #                        c_helper=['char_copy'],
     #                        c_post_call=[
     #                            'if ({cxx_var}.empty()) {{+',
     #                            'std::memset({c_var}, \' \', {c_var_len});',
     #                            '-}} else {{+',
-    #                            'ShroudStrCopy({c_var}, {c_var_len}, '
+    #                            '{c_helper_char_copy}({c_var}, {c_var_len}, '
     #                            '\t {cxx_var}{cxx_member}data(),'
     #                            '\t {cxx_var}{cxx_member}size());',
     #                            '-}}',
@@ -2709,12 +2718,15 @@ fc_statements = [
         mixin=[
             "c_mixin_inout_vector_cdesc_targ_native_scalar",
         ],
+        append=dict(
+            f_module=dict(iso_c_binding=["C_LOC"]),
+        ),
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2728,7 +2740,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
         f_post_call=[
-            "call {fhelper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+            "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
@@ -2753,7 +2765,7 @@ fc_statements = [
         ],
         f_post_call=[
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2761,6 +2773,9 @@ fc_statements = [
         mixin=[
             "c_mixin_inout_vector_cdesc_targ_native_scalar",
         ],
+        append=dict(
+            f_module=dict(iso_c_binding=["C_LOC"]),
+        ),
         # TARGET required for argument to C_LOC.
         f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}",
@@ -2768,7 +2783,7 @@ fc_statements = [
         f_post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({f_var_cdesc}%size))",
-            "call {fhelper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 
@@ -2777,6 +2792,7 @@ fc_statements = [
     # convert C argument into a pointer to C++ type.
 
     dict(
+        # Pass a shadow type to C wrapper.
         name="f_mixin_shadow-arg",
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {f_var}",
@@ -2857,7 +2873,6 @@ fc_statements = [
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
         ],
-        cxx_local_var="result",
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -2914,8 +2929,6 @@ fc_statements = [
     
     dict(
         # f_function_shadow_scalar_capptr
-        # f_function_shadow_*_capptr
-        # f_function_shadow_&_capptr
         # Return a instance by value.
         # Create memory in c_pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
@@ -3125,7 +3138,7 @@ fc_statements = [
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         
-        c_helper=["ShroudTypeDefines", "array_context"],
+        c_helper=["type_defines", "array_context"],
         c_call=[
             "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
@@ -3173,17 +3186,12 @@ fc_statements = [
     ########################################
     # char arg
     dict(
-        # XXX - needs a better name. function/arg
-        # Function which return char * or std::string.
-        name="c_mixin_function_character",
+        # Make the argument a CFI_desc_t.
+        name="c_mixin_arg_cfi",
         iface_header=["ISO_Fortran_binding.h"],
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
         ],
-        i_arg_decl=[
-            "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
-        ],
-        i_arg_names=["{c_var}"],
         c_temps=["cfi"],
     ),
     dict(
@@ -3193,7 +3201,7 @@ fc_statements = [
         name="f_function_char_*_cfi_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_char_scalar_cfi_allocatable",
@@ -3205,7 +3213,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3226,7 +3234,7 @@ fc_statements = [
         name="f_function_char_scalar_cfi_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_char_*_cfi_pointer",
@@ -3238,7 +3246,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],  # Pass result as an argument.
 
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3274,11 +3282,10 @@ fc_statements = [
     dict(
         # Local character argument passed as CFI_desc_t.
         name="c_mixin_arg_character_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var_cfi}",
+        mixin=[
+            "c_mixin_arg_cfi",
         ],
+        cxx_local_var="pointer",
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}",
         ],
@@ -3287,16 +3294,14 @@ fc_statements = [
             "char *{cxx_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
-        c_temps=["cfi"],
     ),
     dict(
         # Native argument which use CFI_desc_t.
         name="c_mixin_arg_native_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var_cfi}",
+        mixin=[
+            "c_mixin_arg_cfi",
         ],
+        cxx_local_var="pointer",
         i_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
         ],
@@ -3306,12 +3311,12 @@ fc_statements = [
 #            "{c_type} *{cxx_var} = "
 #            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
 #        ],
-        c_temps=["cfi", "extents", "lower"],
     ),
 
     dict(
         # Allocate copy of C pointer (requires +dimension)
         name="c_mixin_native_cfi_allocatable",
+        c_temps=["extents", "lower"],
         c_post_call=[
             "if ({cxx_var} != {nullptr}) {{+",
             "{c_temp_lower_decl}"
@@ -3328,6 +3333,7 @@ fc_statements = [
     dict(
         # Convert C pointer to Fortran pointer
         name="c_mixin_native_cfi_pointer",
+        c_temps=["extents", "lower"],
         c_post_call=[
             "{{+",
             "CFI_CDESC_T({rank}) {c_local_fptr};",
@@ -3369,15 +3375,15 @@ fc_statements = [
             "c_mixin_arg_character_cfi",
         ],
         # Null terminate string.
-        c_helper=["ShroudStrAlloc", "ShroudStrFree"],
+        c_helper=["char_alloc", "char_free"],
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{cxx_var} = ShroudStrAlloc(\t"
+            "char *{cxx_var} = {c_helper_char_alloc}(\t"
             "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         c_post_call=[
-            "ShroudStrFree({cxx_var});",
+            "{c_helper_char_free}({cxx_var});",
         ],
     ),
     dict(
@@ -3385,9 +3391,9 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        c_helper=["ShroudStrBlankFill"],
+        c_helper=["char_blank_fill"],
         c_post_call=[
-            "ShroudStrBlankFill({cxx_var}, {c_var_cfi}->elem_len);"
+            "{c_helper_char_blank_fill}({cxx_var}, {c_var_cfi}->elem_len);"
         ],
     ),
     dict(
@@ -3396,18 +3402,18 @@ fc_statements = [
             "c_mixin_arg_character_cfi",
         ],
         # Null terminate string.
-        c_helper=["ShroudStrAlloc", "ShroudStrCopy", "ShroudStrFree"],
+        c_helper=["char_alloc", "char_copy", "char_free"],
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{cxx_var} = ShroudStrAlloc(\t"
+            "char *{cxx_var} = {c_helper_char_alloc}(\t"
             "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         c_post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
-            "ShroudStrFree({cxx_var});",
+            "{c_helper_char_free}({cxx_var});",
         ],
     ),
     dict(
@@ -3424,13 +3430,13 @@ fc_statements = [
         # c_function_char_*_cfi_copy
         cxx_local_var="result",
         c_pre_call=[],         # undo mixin
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         c_post_call=[
             # XXX c_type is undefined
             # nsrc=-1 will call strlen({cxx_var})
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
     ),
@@ -3453,7 +3459,7 @@ fc_statements = [
 ##-        name="c_function_char_*_cfi_pointer",
 ##-        mixin=[
 ##-            "f_mixin_function-to-subroutine",
-##-            "c_mixin_function_character",
+##-            "c_mixin_arg_cfi",
 ##-        ],
 ##-        i_arg_names=["{c_var}"],
 ##-        i_arg_decl=[        # replace mixin
@@ -3504,15 +3510,15 @@ fc_statements = [
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "size_t {c_var_len} = {c_var_cfi}->elem_len;",
             "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
-            "char **{cxx_var} = ShroudStrArrayAlloc("
+            "char **{cxx_var} = {c_helper_char_array_alloc}("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         c_temps=["cfi", "len", "size"],
 
-        c_helper=["ShroudStrArrayAlloc", "ShroudStrArrayFree"],
+        c_helper=["char_array_alloc", "char_array_free"],
         cxx_local_var="pointer",
         c_post_call=[
-            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+            "{c_helper_char_array_free}({cxx_var}, {c_var_size});",
         ],
     ),
 
@@ -3526,13 +3532,13 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        c_helper=["ShroudLenTrim"],
+        c_helper=["char_len_trim"],
         cxx_local_var="scalar",   # replace mixin
         c_pre_call=[
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
+            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         c_local=["trim"],
@@ -3544,7 +3550,7 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         cxx_local_var="scalar",
         c_pre_call=[
             "std::string {cxx_var};",
@@ -3552,7 +3558,7 @@ fc_statements = [
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
         c_post_call=[
-            "ShroudStrCopy({c_var},"
+            "{c_helper_char_copy}({c_var},"
             "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
@@ -3565,16 +3571,16 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy", "char_len_trim"],
         cxx_local_var="scalar",
         c_pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
+            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         c_post_call=[
-            "ShroudStrCopy({c_var},"
+            "{c_helper_char_copy}({c_var},"
             "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
@@ -3599,15 +3605,15 @@ fc_statements = [
         
         cxx_local_var=None, # replace mixin
         c_pre_call=[],        # replace mixin
-        c_helper=["ShroudStrCopy"],
+        c_helper=["char_copy"],
         c_post_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -3638,7 +3644,7 @@ fc_statements = [
         name="f_shared_function_string_*_cfi_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_pointer",
@@ -3655,7 +3661,7 @@ fc_statements = [
         f_arg_call=["{f_var}"],
         
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), pointer :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3708,7 +3714,7 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         alias=[
             "f_function_string_scalar/*/&_cfi_allocatable_caller/library",
@@ -3738,10 +3744,10 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
-            "c_mixin_function_character",
+            "c_mixin_arg_cfi",
         ],
         i_arg_names=["{c_var}"],
-        i_arg_decl=[        # replace mixin
+        i_arg_decl=[
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         cxx_local_var=None,  # replace mixin
@@ -3754,6 +3760,66 @@ fc_statements = [
         ],
     ),
 
+    dict(
+        name="f_mixin_out_string_**_cfi",
+        c_temps=["cxx"],
+        c_pre_call=[
+            "std::string *{c_var_cxx};",
+        ],
+        c_arg_call=["&{c_var_cxx}"],
+    ),
+
+    dict(
+        #  std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
+        #  int *nstrs+intent(out)+hidden
+        name="f_out_string_**_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi",
+        ],
+#        alias=[
+#            "f_function_string_scalar_cfi_copy",
+#            "f_function_string_scalar_cfi_arg",
+#        ],
+        
+        i_arg_names=["{c_var}"],   # XXX -
+          # wrapf.py:1081
+          #  for name in stmts_blk.i_arg_names:
+          #  TypeError: 'NoneType' object is not iterable
+        i_arg_decl=[
+            "character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+
+        c_post_call=[
+            "// Allocate and copy into {c_var}",
+        ],
+    ),
+
+    dict(
+        name="f_out_string_**_cfi_copy",
+        mixin=[
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi",
+        ],
+#        alias=[
+#            "f_function_string_scalar_cfi_copy",
+#            "f_function_string_scalar_cfi_arg",
+#        ],
+        
+        i_arg_names=["{c_var}"],   # XXX -
+          # wrapf.py:1081
+          #  for name in stmts_blk.i_arg_names:
+          #  TypeError: 'NoneType' object is not iterable
+        i_arg_decl=[
+            "character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+
+        c_post_call=[
+            "// Copy results into {c_var}",
+        ],
+    ),
+
+    
     ##########
     # Pass a cdesc down to describe the memory and a capsule to hold the
     # C++ array. Copy into Fortran argument.
@@ -3767,14 +3833,14 @@ fc_statements = [
         alias=[
             "c_out_string_**_cdesc_copy",
         ],
-        f_helper=["ShroudTypeDefines", "array_context"],  # TTT - append_mixin
+        f_helper=["type_defines", "array_context"],  # TTT - append_mixin
         c_helper=["array_string_out"],
         c_pre_call=[
             "std::string *{cxx_var};"
         ],
         c_arg_call=["&{cxx_var}"],
         c_post_call=[
-            "{chelper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
+            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});",
         ],
 
     ),
@@ -3786,7 +3852,6 @@ fc_statements = [
         name="f_out_string_**_copy",
         alias=[
             "c_out_string_**_copy",
-            "f_out_string_**_cfi_copy",
         ],
         notimplemented=True,
     ),
@@ -3803,11 +3868,11 @@ fc_statements = [
         ],
         append=dict(
             f_post_call=[
-                "call {fhelper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+                "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
             ],
         ),
 #        fmtdict=dict(
-#            copy_alloc="{fhelper_array_string_allocatable}",
+#            copy_alloc="{f_helper_array_string_allocatable}",
 #        ),
         alias=[
             "c_out_string_**_cdesc_allocatable",
@@ -3827,7 +3892,7 @@ fc_statements = [
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {chelper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
+            "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
             "{c_var_cdesc}->cxx.addr  = {cxx_var};",
             "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership
@@ -3841,7 +3906,6 @@ fc_statements = [
         name="f_out_string_**_allocatable",
         alias=[
             "c_out_string_**_allocatable",
-            "f_out_string_**_cfi_allocatable",
         ],
         notimplemented=True,
     ),

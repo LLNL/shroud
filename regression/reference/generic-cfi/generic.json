@@ -37,7 +37,7 @@
                     "cxx_class": "StructAsClass",
                     "cxx_type": "StructAsClass",
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                    "fhelper_capsule_data_helper": "capsule_data_helper",
+                    "f_helper_capsule_data_helper": "GEN_SHROUD_capsule_data",
                     "file_scope": "StructAsClass"
                 }
             }
@@ -1334,8 +1334,6 @@
                             "c_type": "int",
                             "c_var": "values",
                             "c_var_cfi": "SHT_values_cfi",
-                            "c_var_extents": "SHT_values_extents",
-                            "c_var_lower": "SHT_values_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1351,8 +1349,6 @@
                             "F_C_var": "values",
                             "c_var": "values",
                             "c_var_cfi": "SHT_values_cfi",
-                            "c_var_extents": "SHT_values_extents",
-                            "c_var_lower": "SHT_values_lower",
                             "f_assumed_shape": "(..)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2452,8 +2448,6 @@
                             "c_type": "int",
                             "c_var": "to",
                             "c_var_cfi": "SHT_to_cfi",
-                            "c_var_extents": "SHT_to_extents",
-                            "c_var_lower": "SHT_to_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -2468,8 +2462,6 @@
                             "F_C_var": "to",
                             "c_var": "to",
                             "c_var_cfi": "SHT_to_cfi",
-                            "c_var_extents": "SHT_to_extents",
-                            "c_var_lower": "SHT_to_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -2744,8 +2736,6 @@
                             "c_type": "int",
                             "c_var": "from",
                             "c_var_cfi": "SHT_from_cfi",
-                            "c_var_extents": "SHT_from_extents",
-                            "c_var_lower": "SHT_from_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -2760,8 +2750,6 @@
                             "F_C_var": "from",
                             "c_var": "from",
                             "c_var_cfi": "SHT_from_cfi",
-                            "c_var_extents": "SHT_from_extents",
-                            "c_var_lower": "SHT_from_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2844,8 +2832,6 @@
                             "c_type": "int",
                             "c_var": "to",
                             "c_var_cfi": "SHT_to_cfi",
-                            "c_var_extents": "SHT_to_extents",
-                            "c_var_lower": "SHT_to_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -2860,8 +2846,6 @@
                             "F_C_var": "to",
                             "c_var": "to",
                             "c_var_cfi": "SHT_to_cfi",
-                            "c_var_extents": "SHT_to_extents",
-                            "c_var_lower": "SHT_to_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -3398,8 +3382,6 @@
                             "c_type": "float",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -3414,8 +3396,6 @@
                             "F_C_var": "addr",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -3705,8 +3685,6 @@
                             "c_type": "float",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -3721,8 +3699,6 @@
                             "F_C_var": "addr",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -4025,7 +4001,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": [
-                            "ShroudTypeDefines"
+                            "type_defines"
                         ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
@@ -4137,7 +4113,6 @@
                     "F_C_name": "c_save_pointer2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "function_name": "SavePointer2",
                     "stmtc": "f_subroutine"
                 }
@@ -4225,7 +4200,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": [
-                            "ShroudTypeDefines"
+                            "type_defines"
                         ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
@@ -4330,7 +4305,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": [
-                            "ShroudTypeDefines"
+                            "type_defines"
                         ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
@@ -4357,8 +4332,6 @@
                             "c_type": "float",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -4373,8 +4346,6 @@
                             "F_C_var": "addr",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -4466,7 +4437,6 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float1d",
                     "F_subprogram": "subroutine",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d",
@@ -4557,7 +4527,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": [
-                            "ShroudTypeDefines"
+                            "type_defines"
                         ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
@@ -4662,7 +4632,7 @@
                 "fstatements": {
                     "c": {
                         "c_helper": [
-                            "ShroudTypeDefines"
+                            "type_defines"
                         ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
@@ -4689,8 +4659,6 @@
                             "c_type": "float",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -4705,8 +4673,6 @@
                             "F_C_var": "addr",
                             "c_var": "addr",
                             "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -4798,7 +4764,6 @@
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float2d",
                     "F_subprogram": "subroutine",
-                    "chelper_ShroudTypeDefines": "ShroudTypeDefines",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d",
