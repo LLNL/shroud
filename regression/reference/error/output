@@ -1,0 +1,31 @@
+Wrote error_types.yaml
+Wrote wrapCstruct_as_subclass.h
+Wrote wrapCstruct_as_subclass.cpp
+
+----------------------------------------
+Phase: Wrapc.wrap_function
+----------------------------------------
+Node: BadFstatements
+Statement: f_subroutine
+Error with template: '{no_c_var} = 11;'
+Wrote wraperror.h
+Wrote wraperror.cpp
+
+----------------------------------------
+Phase: Wrapf.wrap_class
+----------------------------------------
+Node: Cstruct_as_subclass
+Unknown class 'Cstruct_as_class' in option.class_baseclass
+
+----------------------------------------
+Phase: Wrapf.wrap_function_impl
+----------------------------------------
+Node: BadFstatements
+Statement: f_subroutine
+Error with template: '{no_such_var} = 10'
+Wrote wrapferror.f
+Wrote utilerror.cpp
+Wrote typeserror.h
+Wrote pyerrormodule.cpp
+Wrote pyerrormodule.hpp
+Wrote setup.py

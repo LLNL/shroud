@@ -1,0 +1,42 @@
+copyright:
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error messages
+
+library: error
+cxx_header: error
+
+options:
+  debug: True
+  wrap_python: True
+  PY_write_helper_in_util: True
+
+declarations:
+
+- decl: struct Cstruct_as_subclass {
+          int x1;
+          int y1;
+          int z1;
+        };
+  options:
+    wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
+  doxygen:
+    description: |
+      Treat a struct as a subclass of another struct
+
+- decl: void BadFstatements(void)
+  fstatements:
+    f:
+      f_post_call:
+      - "{no_such_var} = 10"
+    c:
+      c_post_call:
+      - "{no_c_var} = 11;"
+
+######################################################################

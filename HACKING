@@ -139,7 +139,8 @@ ast.py
 declast.py
 whelpers.py
 typemap.py statements.py todict.py
-util.py visitor.py  # no dependencies
+util.py visitor.py
+error.py  # no dependencies
 metadata.py
 
 

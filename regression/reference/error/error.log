@@ -1,0 +1,36 @@
+Read yaml error.yaml
+Close error_types.yaml
+class Cstruct_as_subclass
+C int get_x1(void)  +intent(getter)
+C void set_x1(int val +intent(in)+value)  +intent(setter)
+C int get_y1(void)  +intent(getter)
+C void set_y1(int val +intent(in)+value)  +intent(setter)
+C int get_z1(void)  +intent(getter)
+C void set_z1(int val +intent(in)+value)  +intent(setter)
+Close wrapCstruct_as_subclass.h
+Close wrapCstruct_as_subclass.cpp
+C void BadFstatements(void)  +intent(subroutine)
+Close wraperror.h
+Close wraperror.cpp
+class Cstruct_as_subclass
+Fortran int get_x1(void)  +intent(getter)
+Fortran void set_x1(int val +intent(in)+value)  +intent(setter)
+Fortran int get_y1(void)  +intent(getter)
+Fortran void set_y1(int val +intent(in)+value)  +intent(setter)
+Fortran int get_z1(void)  +intent(getter)
+Fortran void set_z1(int val +intent(in)+value)  +intent(setter)
+C-interface int get_x1(void)  +intent(getter)
+C-interface void set_x1(int val +intent(in)+value)  +intent(setter)
+C-interface int get_y1(void)  +intent(getter)
+C-interface void set_y1(int val +intent(in)+value)  +intent(setter)
+C-interface int get_z1(void)  +intent(getter)
+C-interface void set_z1(int val +intent(in)+value)  +intent(setter)
+Fortran void BadFstatements(void)  +intent(subroutine)
+C-interface void BadFstatements(void)  +intent(subroutine)
+Close wrapferror.f
+Close utilerror.cpp
+Close typeserror.h
+Python function void BadFstatements(void)
+Close pyerrormodule.cpp
+Close pyerrormodule.hpp
+Close setup.py
