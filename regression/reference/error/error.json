@@ -826,6 +826,570 @@
                     "stmtc": "f_subroutine",
                     "stmtf": "f_subroutine"
                 }
+            },
+            {
+                "<FUNCTION>": "7 ****************************************",
+                "_gen_fortran_generic": true,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "AssumedRank",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssumedRank(int *data+dimension(..))",
+                "declgen": "void AssumedRank(int * data)",
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 0
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_0d",
+                        "generic": ""
+                    },
+                    {
+                        "decls": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_1d",
+                        "generic": ""
+                    },
+                    {
+                        "decls": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 2
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_2d",
+                        "generic": ""
+                    }
+                ],
+                "name": "AssumedRank",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "data": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "data",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "int",
+                            "cxx_var": "data",
+                            "idtor": "0",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_inout_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "data",
+                            "c_var": "data",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "data",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT"
+                        },
+                        "fmtpy": {
+                            "array_size": "===assumed-rank===",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "data",
+                            "ctor_expr": "data",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "int",
+                            "cxx_var": "data",
+                            "data_var": "SHData_data",
+                            "npy_dims_var": "SHD_data",
+                            "npy_intp_asgn": "SHD_data[0] = ===assumed-rank===;\n",
+                            "npy_intp_decl": "npy_intp SHD_data[0];\n",
+                            "npy_rank": "0",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_data",
+                            "rank": "0",
+                            "size_var": "SHSize_data",
+                            "stmt": "py_inout_native_*",
+                            "value_var": "SHValue_data"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "data",
+                    "C_name": "ERR_AssumedRank",
+                    "C_name_api": "AssumedRank",
+                    "C_prototype": "int * data",
+                    "C_return_type": "void",
+                    "F_C_arguments": "data",
+                    "F_C_name": "c_assumed_rank",
+                    "F_C_subprogram": "subroutine",
+                    "F_name_api": "assumed_rank",
+                    "PY_name_impl": "PY_AssumedRank",
+                    "function_name": "AssumedRank",
+                    "stmtc": "f_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "8 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "7",
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "AssumedRank",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 0
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssumedRank(int *data+dimension(..))",
+                "declgen": "void AssumedRank(int * data +rank(0))",
+                "name": "AssumedRank",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "data": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "data",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "int",
+                            "cxx_var": "data",
+                            "idtor": "0",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_inout_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "data",
+                            "c_var": "data",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "data",
+                            "rank": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "1",
+                            "stmtf": "f_inout_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "data",
+                    "C_name": "ERR_AssumedRank_0d",
+                    "C_name_api": "AssumedRank",
+                    "C_prototype": "int * data",
+                    "C_return_type": "void",
+                    "F_C_arguments": "data",
+                    "F_C_call": "c_assumed_rank_0d",
+                    "F_C_name": "c_assumed_rank_0d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "data",
+                    "F_arguments": "data",
+                    "F_name_api": "assumed_rank",
+                    "F_name_function": "assumed_rank_0d",
+                    "F_name_generic": "assumed_rank",
+                    "F_name_impl": "assumed_rank_0d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssumedRank",
+                    "function_suffix": "_0d",
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "9 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "7",
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "AssumedRank",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssumedRank(int *data+dimension(..))",
+                "declgen": "void AssumedRank(int * data +rank(1))",
+                "name": "AssumedRank",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "data": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "data",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "int",
+                            "cxx_var": "data",
+                            "idtor": "0",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_inout_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "data",
+                            "c_var": "data",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "data",
+                            "i_dimension": "(*)",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(data)",
+                            "stmtf": "f_inout_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "data",
+                    "C_name": "ERR_AssumedRank_1d",
+                    "C_name_api": "AssumedRank",
+                    "C_prototype": "int * data",
+                    "C_return_type": "void",
+                    "F_C_arguments": "data",
+                    "F_C_call": "c_assumed_rank_1d",
+                    "F_C_name": "c_assumed_rank_1d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "data",
+                    "F_arguments": "data",
+                    "F_name_api": "assumed_rank",
+                    "F_name_function": "assumed_rank_1d",
+                    "F_name_generic": "assumed_rank",
+                    "F_name_impl": "assumed_rank_1d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssumedRank",
+                    "function_suffix": "_1d",
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
+                }
+            },
+            {
+                "<FUNCTION>": "10 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "7",
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "AssumedRank",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 2
+                                    },
+                                    "metaattrs": {
+                                        "dimension": {
+                                            "assumedrank": true
+                                        },
+                                        "intent": "inout"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssumedRank(int *data+dimension(..))",
+                "declgen": "void AssumedRank(int * data +rank(2))",
+                "name": "AssumedRank",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "data": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "data",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "int",
+                            "cxx_var": "data",
+                            "idtor": "0",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_inout_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "data",
+                            "c_var": "data",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "data",
+                            "i_dimension": "(*)",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(data)",
+                            "stmtf": "f_inout_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "data",
+                    "C_name": "ERR_AssumedRank_2d",
+                    "C_name_api": "AssumedRank",
+                    "C_prototype": "int * data",
+                    "C_return_type": "void",
+                    "F_C_arguments": "data",
+                    "F_C_call": "c_assumed_rank_2d",
+                    "F_C_name": "c_assumed_rank_2d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "data",
+                    "F_arguments": "data",
+                    "F_name_api": "assumed_rank",
+                    "F_name_function": "assumed_rank_2d",
+                    "F_name_generic": "assumed_rank",
+                    "F_name_impl": "assumed_rank_2d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssumedRank",
+                    "function_suffix": "_2d",
+                    "stmtc": "f_subroutine",
+                    "stmtf": "f_subroutine"
+                }
             }
         ],
         "language": "cxx",

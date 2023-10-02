@@ -14,6 +14,7 @@ cxx_header: error
 options:
   debug: True
   wrap_python: True
+  F_assumed_rank_max: 2
   PY_write_helper_in_util: True
 
 declarations:
@@ -44,5 +45,7 @@ declarations:
       - no_c_helper2
       c_post_call:
       - "{no_c_var} = 11;"
+
+- decl: void AssumedRank(int *data+dimension(..))
 
 ######################################################################

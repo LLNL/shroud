@@ -54,9 +54,49 @@ PY_BadFstatements(
     Py_RETURN_NONE;
 // splicer end function.BadFstatements
 }
+
+// ----------------------------------------
+// Function:  void AssumedRank
+// Attrs:     +intent(subroutine)
+// Statement: py_default
+// ----------------------------------------
+// Argument:  int * data
+// Attrs:     +intent(inout)
+// Statement: py_inout_native_*
+static char PY_AssumedRank__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_AssumedRank(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.AssumedRank
+    int data;
+    const char *SHT_kwlist[] = {
+        "data",
+        nullptr };
+    PyObject * SHPy_data = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:AssumedRank",
+        const_cast<char **>(SHT_kwlist), &data))
+        return nullptr;
+
+    AssumedRank(&data);
+
+    // post_call
+    SHPy_data = PyInt_FromLong(data);
+
+    return (PyObject *) SHPy_data;
+// splicer end function.AssumedRank
+}
 static PyMethodDef PY_methods[] = {
 {"BadFstatements", (PyCFunction)PY_BadFstatements, METH_NOARGS,
     PY_BadFstatements__doc__},
+{"AssumedRank", (PyCFunction)PY_AssumedRank, METH_VARARGS|METH_KEYWORDS,
+    PY_AssumedRank__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

@@ -37,6 +37,7 @@ import collections
 import os
 import re
 
+from . import error
 from . import declast
 from . import todict
 from . import statements
@@ -124,6 +125,7 @@ class Wrapp(util.WrapperMixin):
         self.need_blah = False
         self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
+        self.cursor = error.get_cursor()
         update_statements_for_language(self.language)
 
     def XXX_begin_output_file(self):
@@ -368,6 +370,10 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
             node - ast.ClassNode.
             modinfo - ModuleTuple
         """
+        cursor = self.cursor
+        cursor.push_phase("Wrapp.wrap_class")
+        cursor.push_node(node)
+
         self.log.write("class {1.name}\n".format(self, node))
         fileinfo = FileTuple([], [], [], [])
         options = node.options
@@ -460,6 +466,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self._pop_splicer("method")
 
         self.write_extension_type(node, fileinfo)
+        cursor.pop_phase("Wrapp.wrap_class")
+        cursor.pop_node(node)
 
     def create_class_utility_functions(self, node):
         """Create some utility functions to convert to and from a PyObject.
@@ -1090,6 +1098,7 @@ return 1;""",
             functions -
             fileinfo - FileTuple
         """
+        self.cursor.push_phase("Wrapp.wrap_functions")
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods.setdefault(function.name, [])
@@ -1104,6 +1113,7 @@ return 1;""",
             self.wrap_function(cls, function, fileinfo)
 
         self.multi_dispatch(functions, fileinfo)
+        self.cursor.pop_phase("Wrapp.wrap_functions")
 
     def wrap_function(self, cls, node, fileinfo):
         """Write a Python wrapper for a C or C++ function.
@@ -1136,6 +1146,10 @@ return 1;""",
         options = node.options
         if not node.wrap.python:
             return
+
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        
         if options.PY_array_arg not in ["numpy", "list"]:
             linenumber = options.get("__line__", "?")
             raise RuntimeError(
@@ -1179,6 +1193,7 @@ return 1;""",
 
         if is_dtor:
             # Added in tp_del from write_tp_func.
+            cursor.pop_node(node)
             return
         elif is_ctor:
             fmt_func.PY_type_method = "tp_init"
@@ -1203,6 +1218,7 @@ return 1;""",
             fmt_result = fmt
             result_blk = default_scope
             fmt_result.stmt = result_blk.name
+        func_cursor.stmt = result_blk
         stmts_comments = []
         if options.debug:
             stmts_comments.append(
@@ -1260,6 +1276,7 @@ return 1;""",
         offset = 0
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
+            func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1368,6 +1385,7 @@ return 1;""",
                 stmts_comments.append(
                     self.comment + " Exact:     " + intent_blk.name)
 
+            func_cursor.stmt = result_blk
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             cxx_local_var = intent_blk.cxx_local_var
@@ -1518,6 +1536,8 @@ return 1;""",
             else:
                 cxx_call_list.append(pass_var)
         # end for arg in args:
+        func_cursor.arg = None
+        func_cursor.stmt = result_blk
 
         # Add implied argument initialization to pre_call_code
         for arg in arg_implied:
@@ -1820,6 +1840,7 @@ return 1;""",
         self.create_method(node, expose, is_ctor, fmt,
                            PY_force, PY_impl, stmts_comments,
                            fileinfo)
+        cursor.pop_node(node)
 
     def create_method(self, node, expose, is_ctor, fmt,
                       PY_force, PY_impl, stmts_comments,
@@ -3438,7 +3459,9 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
-        raise RuntimeError("wrapp.py: Detected assumed-rank dimension")
+        error.get_cursor().warning("Detected assumed-rank dimension")
+        self.shape.append("===assumed-rank===")
+        return "===assumed-rank==="
 
 ######################################################################
 

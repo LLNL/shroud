@@ -2353,9 +2353,10 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        # (..)
         self.rank = "assumed"
-        return "--assumed-rank--"
-        raise RuntimeError("wrapf.py: Detected assumed-rank dimension")
+        return "===assumed-rank==="
+        error.get_cursor().warning("Detected assumed-rank dimension")
 
 ######################################################################
 

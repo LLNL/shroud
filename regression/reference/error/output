@@ -38,6 +38,13 @@ Error with template: '{no_such_var} = 10'
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
+
+----------------------------------------
+Phase: Wrapp.wrap_functions
+----------------------------------------
+Node: AssumedRank
+Statement: py_default
+Detected assumed-rank dimension
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp
 Wrote setup.py
