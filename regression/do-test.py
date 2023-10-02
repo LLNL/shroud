@@ -524,6 +524,7 @@ if __name__ == "__main__":
                  ]),
         TestDesc("memdoc"),
         TestDesc("wrap"),
+        TestDesc("error"),
     ]
 
     if args.testname:

@@ -7,6 +7,10 @@ Phase: Wrapc.wrap_function
 ----------------------------------------
 Node: BadFstatements
 Statement: f_subroutine
+No such c_helper 'no_c_helper2'
+--------------------
+Node: BadFstatements
+Statement: f_subroutine
 Error with template: '{no_c_var} = 11;'
 Wrote wraperror.h
 Wrote wraperror.cpp
@@ -20,6 +24,14 @@ Unknown class 'Cstruct_as_class' in option.class_baseclass
 ----------------------------------------
 Phase: Wrapf.wrap_function_impl
 ----------------------------------------
+Node: BadFstatements
+Statement: f_subroutine
+No such c_helper 'no_c_helper'
+--------------------
+Node: BadFstatements
+Statement: f_subroutine
+No such f_helper 'no_f_helper'
+--------------------
 Node: BadFstatements
 Statement: f_subroutine
 Error with template: '{no_such_var} = 10'

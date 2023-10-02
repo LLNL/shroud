@@ -2521,7 +2521,10 @@ class ModuleInfo(object):
         """Add a list of C helpers."""
         for c_helper in helpers:
             helper = wformat(c_helper, fmt)
-            self.c_helper[helper] = True
+            if helper not in whelpers.CHelpers:
+                error.get_cursor().warning("No such c_helper '{}'".format(helper))
+            else:
+                self.c_helper[helper] = True
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers.
@@ -2529,11 +2532,12 @@ class ModuleInfo(object):
         """
         for f_helper in helpers:
             helper = wformat(f_helper, fmt)
-            self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
-                raise RuntimeError("No such helper {}".format(helper))
-            name = whelpers.FHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "f_helper_" + helper, name)
-            
+                error.get_cursor().warning("No such f_helper '{}'".format(helper))
+            else:
+                self.f_helper[helper] = True
+                name = whelpers.FHelpers[helper].get("name")
+                if name:
+                    setattr(fmt, "f_helper_" + helper, name)
+
         

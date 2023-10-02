@@ -33,9 +33,15 @@ declarations:
 - decl: void BadFstatements(void)
   fstatements:
     f:
+      c_helper:
+      - no_c_helper
+      f_helper:
+      - no_f_helper
       f_post_call:
       - "{no_such_var} = 10"
     c:
+      c_helper:
+      - no_c_helper2
       c_post_call:
       - "{no_c_var} = 11;"
 

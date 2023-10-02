@@ -214,12 +214,13 @@ class Wrapc(util.WrapperMixin):
         """Add a list of C helpers."""
         for c_helper in helpers:
             helper = wformat(c_helper, fmt)
-            self.c_helper[helper] = True
             if helper not in whelpers.CHelpers:
-                raise RuntimeError("No such helper {}".format(helper))
-            name = whelpers.CHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "c_helper_" + helper, name)
+                error.get_cursor().warning("No such c_helper '{}'".format(helper))
+            else:
+                self.c_helper[helper] = True
+                name = whelpers.CHelpers[helper].get("name")
+                if name:
+                    setattr(fmt, "c_helper_" + helper, name)
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
