@@ -67,7 +67,6 @@ class Cursor(object):
     def pop_node(self, node):
 #        print("XXXX pop_node:", node.name if node else "None")
         if node != self.current.node:
-#            import pdb;pdb.set_trace()
             raise RuntimeError("pop_node: does not match")
         self.node_list.pop()
         self.current = self.node_list[-1]
@@ -82,9 +81,24 @@ class Cursor(object):
             print("--------------------")
         self.current.print_context()
         self.last_phase = self.phase
+
+    def decl_line(self, node):
+        print("line {}".format(node.linenumber))
+        print(node.ast.gen_decl())
         
     def warning(self, message):
         self.nwarning += 1
         self.context()
         print(message)
+
+    def generate(self, message):
+        """
+        If there is a generate error, do not wrap.
+        """
+        node = self.node_list[-1].node
+        self.nwarning += 1
+        self.context()
+        self.decl_line(node)
+        print(message)
+        node.wrap.clear()
     

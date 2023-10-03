@@ -17,6 +17,7 @@ import copy
 
 from . import ast
 from . import declast
+from . import error
 from . import todict
 from . import statements
 from . import typemap
@@ -45,13 +46,16 @@ class VerifyAttrs(object):
         """
         self.newlibrary = newlibrary
         self.config = config
+        self.cursor = error.get_cursor()
 
     def verify_attrs(self):
         """Verify library attributes.
         Recurse through all declarations.
         Entry pointer for class VerifyAttrs.
         """
+        self.cursor.push_phase("verify attributes")
         self.verify_namespace_attrs(self.newlibrary.wrap_namespace)
+        self.cursor.pop_phase("verify attributes")
 
     def verify_namespace_attrs(self, node):
         """Verify attributes for a library or namespace.
@@ -59,17 +63,28 @@ class VerifyAttrs(object):
         Args:
             node - ast.LibraryNode, ast.NameSpaceNode
         """
+        cursor = self.cursor
         for cls in node.classes:
+            cursor.push_node(cls)
             for var in cls.variables:
+                cursor.push_node(var)
                 self.check_var_attrs(cls, var)
+                cursor.pop_node(var)
             for func in cls.functions:
+                cursor.push_node(func)
                 self.check_fcn_attrs(func)
+                cursor.pop_node(func)
+            cursor.pop_node(cls)
 
         for func in node.functions:
+            cursor.push_node(func)
             self.check_fcn_attrs(func)
+            cursor.pop_node(func)
 
         for ns in node.namespaces:
+            cursor.push_node(ns)
             self.verify_namespace_attrs(ns)
+            cursor.pop_node(ns)
 
     def check_var_attrs(self, cls, node):
         """Check attributes for variables.
@@ -87,20 +102,22 @@ class VerifyAttrs(object):
                 continue
             # XXX - deref on class/struct members
             if attr not in ["name", "readonly", "dimension", "deref"]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, node.name, node.linenumber
+                self.cursor.generate(
+                    "Illegal attribute '{}' for variable '{}'".format(
+                        attr, node.name
                     ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
                 )
 
-        is_ptr = declarator.is_indirect()
-        if attrs["dimension"] and not is_ptr:
-            raise RuntimeError(
-                "dimension attribute can only be "
-                "used on pointer and references"
-            )
-
-        self.parse_attrs(node, ast)
+        dim = attrs["dimension"]
+        if dim:
+            is_ptr = declarator.is_indirect()
+            if not is_ptr:
+                self.cursor.generate(
+                    "dimension attribute can only be "
+                    "used on pointer and references"
+                )
+            meta = declarator.metaattrs
+            self.parse_dim_attrs(dim, meta)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
@@ -108,13 +125,16 @@ class VerifyAttrs(object):
         Args:
             node - ast.FunctionNode
         """
+        cursor = self.cursor
         options = node.options
 
         ast = node.ast
         declarator = ast.declarator
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         node._has_found_default = False
 
-        for attr in declarator.attrs:
+        for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
@@ -129,13 +149,12 @@ class VerifyAttrs(object):
                 "pure",
                 "rank",
             ]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for function '{}' define at line {}".format(
-                        attr, node.name, node.linenumber
+                cursor.generate(
+                    "Illegal attribute '{}' for function '{}'".format(
+                        attr, node.name
                     )
                 )
 
-        meta = declarator.metaattrs
         if ast.typemap is None:
             print("XXXXXX typemap is None")
         if ast.typemap.sgroup == "shadow":
@@ -153,9 +172,9 @@ class VerifyAttrs(object):
         self.check_common_attrs(node.ast)
 
         for arg in declarator.params:
-            if arg.declarator is None:
-                raise RuntimeError("Argument must have name in {} at line {}".format(
-                    node.decl, node.linenumber))
+            if arg.declarator.name is None:
+                cursor.generate("Argument must have name in {}".format(
+                    node.decl))
             self.check_arg_attrs(node, arg)
 
         if node.fortran_generic:
@@ -166,8 +185,6 @@ class VerifyAttrs(object):
                 check_implied_attrs(node, generic.decls)
         else:
             check_implied_attrs(node, declarator.params)
-
-        self.parse_attrs(node, ast)
 
     def check_intent_attr(self, node, arg):
         """Set default intent meta-attribute.
@@ -198,13 +215,12 @@ class VerifyAttrs(object):
             # XXX - Do hidden arguments need intent?
         else:
             intent = intent.lower()
-            if intent in ["in", "out", "inout"]:
-                meta["intent"] = intent
-            else:
-                raise RuntimeError("Bad value for intent: " + attrs["intent"])
-            if not is_ptr and intent != "in":
+            if intent not in ["in", "out", "inout"]:
+                self.cursor.generate("Bad value for intent: " + attrs["intent"])
+                intent = "inout"
+            elif not is_ptr and intent != "in":
                 # Nonpointers can only be intent(in).
-                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
+                self.cursor.generate("Only pointer arguments may have intent of 'out' or 'inout'")
         meta["intent"] = intent
         return intent    
         
@@ -255,9 +271,8 @@ class VerifyAttrs(object):
                 mderef = "allocatable"
         elif nindirect > 1:
             if deref:
-                raise RuntimeError(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections in {}".
-                    format(node.decl))
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref:
@@ -272,11 +287,7 @@ class VerifyAttrs(object):
             else:
                 mderef = options.return_scalar_pointer
         elif deref:
-            raise RuntimeError(
-                "Cannot have attribute 'deref' on non-pointer in {}".format(
-                    node.decl
-                )
-            )
+            self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
         
     def check_deref_attr_var(self, node, ast):
@@ -298,11 +309,12 @@ class VerifyAttrs(object):
         deref = attrs["deref"]
         if deref is not None:
             if deref not in ["allocatable", "pointer", "raw", "scalar"]:
-                raise RuntimeError(
+                self.cursor.generate(
                     "Illegal value '{}' for deref attribute. "
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
+                return
             nindirect = declarator.is_indirect()
             if ntypemap.sgroup == "vector":
                 if deref:
@@ -311,14 +323,14 @@ class VerifyAttrs(object):
                     # Copy vector to new array.
                     mderef = "allocatable"
             elif nindirect != 2:
-                raise RuntimeError(
+                self.cursor.generate(
                     "Can only have attribute 'deref' on arguments which"
                     " return a pointer:"
-                    " '{}' at line {}".format(ast.name, node.linenumber))
+                    " '{}'".format(declarator.name))
             elif meta["intent"] == "in":
-                raise RuntimeError(
-                    "Cannot have attribute 'deref' on intent(in) argument:"
-                    " '{}' at line".format(ast.name, node.linenumber))
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on intent(in) argument"
+                    " '{}'".format(declarator.name))
             meta["deref"] = attrs["deref"]
             return
 
@@ -354,7 +366,7 @@ class VerifyAttrs(object):
         if api is None:
             pass
         elif api not in ["capi", "buf", "cdesc", "cfi"]:
-                raise RuntimeError(
+                self.cursor.generate(
                     "'api' attribute must 'capi', 'buf', 'cdesc' or 'cfi'"
                 )
         else:
@@ -365,44 +377,48 @@ class VerifyAttrs(object):
         rank = attrs["rank"]
         if rank:
             if rank is True:
-                raise RuntimeError(
+                self.cursor.generate(
                     "'rank' attribute must have an integer value"
                 )
-            try:
-                attrs["rank"] = int(attrs["rank"])
-            except ValueError:
-                raise RuntimeError(
-                    "'rank' attribute must have an integer value, not '{}'"
-                    .format(attrs["rank"])
-                )
-            if attrs["rank"] > 7:
-                raise RuntimeError(
-                    "'rank' attribute must be 0-7, not '{}'"
-                    .format(attrs["rank"])
-                )
+            else:
+                try:
+                    attrs["rank"] = int(attrs["rank"])
+                except ValueError:
+                    self.cursor.generate(
+                        "rank attribute must have an integer value, not '{}'"
+                        .format(attrs["rank"])
+                    )
+                else:
+                    if attrs["rank"] > 7:
+                        self.cursor.generate(
+                            "'rank' attribute must be 0-7, not '{}'"
+                            .format(attrs["rank"])
+                        )
             if not is_ptr:
-                raise RuntimeError(
+                self.cursor.generate(
                     "rank attribute can only be "
                     "used on pointer and references"
                 )
         if dimension:
             if dimension is True:
-                raise RuntimeError(
+                self.cursor.generate(
                     "dimension attribute must have a value."
                 )
+                dimension = None
             if attrs["value"]:
-                raise RuntimeError(
+                self.cursor.generate(
                     "argument may not have 'value' and 'dimension' attribute."
                 )
             if rank:
-                raise RuntimeError(
+                self.cursor.generate(
                     "argument may not have 'rank' and 'dimension' attribute."
                 )
             if not is_ptr:
-                raise RuntimeError(
+                self.cursor.generate(
                     "dimension attribute can only be "
                     "used on pointer and references"
                 )
+            self.parse_dim_attrs(dimension, meta)
         elif ntypemap:
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
@@ -414,7 +430,7 @@ class VerifyAttrs(object):
         owner = attrs["owner"]
         if owner is not None:
             if owner not in ["caller", "library"]:
-                raise RuntimeError(
+                self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)
                 )
@@ -444,6 +460,7 @@ class VerifyAttrs(object):
             arg  - declast.Declaration
             options -
         """
+        cursor = self.cursor
         if options is None:
             options = node.options
         declarator = arg.declarator
@@ -475,11 +492,10 @@ class VerifyAttrs(object):
                 "size",
                 "value",
             ]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for argument '{}' defined at line {}".format(
-                        attr, argname, node.linenumber
-                    )
-                )
+                cursor.generate(
+                    "Illegal attribute '{}' for argument '{}'".format(
+                        attr, argname))
+                continue
 
         arg_typemap = arg.typemap
         if arg_typemap is None:
@@ -500,9 +516,9 @@ class VerifyAttrs(object):
         assumedtype = attrs["assumedtype"]
         if assumedtype is not None:
             if attrs["value"]:
-                raise RuntimeError(
-                    "argument must not have value=True "
-                    "because it has the assumedtype attribute."
+                cursor.generate(
+                    "argument '{}' must not have value=True "
+                    "because it has the assumedtype attribute.".format(argname)
                 )
 
         # value
@@ -524,17 +540,17 @@ class VerifyAttrs(object):
         charlen = attrs["charlen"]
         if charlen:
             if arg_typemap.base != "string":
-                raise RuntimeError(
+                cursor.generate(
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if is_ptr != 1:
-                raise RuntimeError(
+            elif is_ptr != 1:
+                cursor.generate(
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if charlen is True:
-                raise RuntimeError("charlen attribute must have a value")
+            elif charlen is True:
+                cursor.generate("charlen attribute must have a value")
 
         char_ptr_in = (
             is_ptr == 1 and
@@ -544,7 +560,7 @@ class VerifyAttrs(object):
         blanknull = attrs["blanknull"]
         if blanknull is not None:
             if not char_ptr_in:
-                raise RuntimeError(
+                cursor.generate(
                     "blanknull attribute can only be "
                     "used on intent(in) 'char *'"
                 )
@@ -573,27 +589,28 @@ class VerifyAttrs(object):
                 raise RuntimeError("Expected default value for %s" % argname)
 
         # Check template attribute
+        # XXX - This should be part of typemap
         temp = arg.template_arguments
         if arg_typemap and arg_typemap.base == "vector":
             if not temp:
-                raise RuntimeError(
-                    "line {}: std::vector must have template argument: {}".format(
-                        node.linenumber, arg.gen_decl()
+                cursor.generate(
+                    "std::vector must have template argument: {}".format(
+                        arg.gen_decl()
                     )
                 )
-            arg_typemap = arg.template_arguments[0].typemap
-            if arg_typemap is None:
-                raise RuntimeError(
-                    "check_arg_attr: No such type %s for template: %s"
-                    % (temp, arg.gen_decl())
-                )
+            else:
+                arg_typemap = arg.template_arguments[0].typemap
+                if arg_typemap is None:
+                    # XXX - Not sure this can happen with current parser
+                    raise RuntimeError(
+                        "check_arg_attr: No such type %s for template: %s"
+                        % (temp, arg.gen_decl())
+                    )
         elif temp:
             raise RuntimeError(
                 "Type '%s' may not supply template argument: %s"
                 % (arg_typemap.name, arg.gen_decl())
             )
-
-        self.parse_attrs(node, arg)
 
         # Flag node if any argument is assumed-rank.
         if meta["assumed-rank"]:
@@ -603,27 +620,23 @@ class VerifyAttrs(object):
             for arg1 in declarator.params:
                 self.check_arg_attrs(None, arg1, options)
 
-    def parse_attrs(self, node, ast):
+    def parse_dim_attrs(self, dim, meta):
         """Parse dimension attributes and save the AST.
         This tree will be traversed by the wrapping classes
         to convert to language specific code.
 
         Parameters
         ----------
-        node : ast.FunctionNode, ast.FortranGeneric, ast.VariableNode
-            Used for line number in error messages.
-        ast : declast.Declaration
+        dim : dimension string
+        meta: Scope
         """
-        attrs = ast.declarator.attrs
-        meta = ast.declarator.metaattrs
-
-        dim = attrs["dimension"]
-        if dim:
-            try:
-                check_dimension(dim, meta)
-            except RuntimeError:
-                raise RuntimeError("Unable to parse dimension: {} at line {}"
-                                   .format(dim, node.linenumber))
+        if not dim:
+            return
+        try:
+            check_dimension(dim, meta)
+        except RuntimeError:
+            self.cursor.generate("Unable to parse dimension: {}"
+                                     .format(dim))
 
 
 def check_dimension(dim, meta, trace=False):
@@ -2158,32 +2171,28 @@ class CheckImplied(todict.PrintNode):
         elif node.name == "size":
             # size(arg)
             if len(node.args) > 2:
-                raise RuntimeError(
-                    "{}:Too many arguments to 'size': {}".format(
-                        self.context.linenumber, self.expr)
+                error.get_cursor().generate(
+                    "Too many arguments to 'size': {}".format(self.expr)
                 )
             # isinstance(node.args[0], declalst.Identifier)
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
-                raise RuntimeError(
-                    "{}:Unknown argument '{}': {}".format(
-                        self.context.linenumber, argname, self.expr)
+                error.get_cursor().generate(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
                 )
             return "size"
         elif node.name in ["len", "len_trim"]:
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
-                raise RuntimeError(
-                    "{}:Too many arguments to '{}': {}".format(
-                        self.context.linenumber, node.name, self.expr)
+                error.get_cursor().generate(
+                    "Too many arguments to '{}': {}".format(node.name, self.expr)
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
-                raise RuntimeError(
-                    "{}:Unknown argument '{}': {}".format(
-                        self.context.linenumber, argname, self.expr)
+                error.get_cursor().generate(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
                 )
             # XXX - Make sure character
 #            if arg.attrs["dimension"] is None:
@@ -2227,4 +2236,3 @@ def check_implied(context, expr, decls):
     node = declast.ExprParser(expr).expression()
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
-
