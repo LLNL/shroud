@@ -101,4 +101,23 @@ class Cursor(object):
         self.decl_line(node)
         print(message)
         node.wrap.clear()
-    
+
+    def ast(self, linenumber, decl, err=None):
+        """Error from decl field in YAML file."""
+        self.nwarning += 1
+        self.context()
+        print("line {}".format(linenumber))
+        if err:
+            print("Error in decl field")
+            print("".join(err.message))
+        else:
+            print(decl)
+        
+
+class ShroudError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+class ShroudParseError(ShroudError):
+    pass
+

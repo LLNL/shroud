@@ -10,6 +10,7 @@ Parse C++ declarations.
 from __future__ import print_function
 
 from shroud import declast
+from shroud import error
 from shroud import todict
 
 import unittest
@@ -19,6 +20,8 @@ import copy
 #import pprint
 #pp = pprint.PrettyPrinter(indent=4)
 #        print(pp.pprint(todict.to_dict(r)))
+
+ShroudParseError = error.ShroudParseError
 
 class CheckParse(unittest.TestCase):
     maxDiff = None
@@ -649,19 +652,19 @@ class CheckParse(unittest.TestCase):
         symtab.create_std_namespace()
         symtab.using_directive("std")
 
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             declast.check_decl("none var1", symtab)
         self.assertTrue(
             "Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception)
         )
 
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             declast.check_decl("std::int var1", symtab)
         self.assertTrue(
             "Expected ID, found TYPE_SPECIFIER" in str(context.exception)
         )
 
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             declast.check_decl("std::none var1", symtab)
         self.assertTrue(
             "Symbol 'none' is not in namespace 'std'" in str(context.exception)
@@ -1188,10 +1191,10 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r2),
         )
 
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             r2 = declast.check_decl("class Class3 : public public", symtab)
         self.assertTrue("Expected ID, found PUBLIC" in str(context.exception))
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             r2 = declast.check_decl("class Class3 : public int", symtab)
         self.assertTrue("Expected ID, found TYPE_SPECIFIER" in str(context.exception))
         
@@ -1686,7 +1689,7 @@ class CheckTypedef(unittest.TestCase):
 
     def test_typedef_errors(self):
         symtab = declast.SymbolTable()
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ShroudParseError) as context:
             r = declast.check_decl("typedef none TypeID;", symtab)
         self.assertTrue(
             "Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception)

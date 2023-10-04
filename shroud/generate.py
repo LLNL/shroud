@@ -634,7 +634,7 @@ class VerifyAttrs(object):
             return
         try:
             check_dimension(dim, meta)
-        except RuntimeError:
+        except error.ShroudParseError:
             self.cursor.generate("Unable to parse dimension: {}"
                                      .format(dim))
 

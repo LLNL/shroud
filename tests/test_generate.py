@@ -7,9 +7,31 @@
 from __future__ import print_function
 
 from shroud import ast
+from shroud import error
 from shroud import generate
 
 import unittest
+
+ShroudParseError = error.ShroudParseError
+
+class Cursor(object):
+    """Mock class for error.Cursor
+    Record last error message.
+    """
+    def __init__(self):
+        self.message = None
+    def push_phase(self, name):
+        pass
+    def pop_phase(self, name):
+        pass
+    def push_node(self, node):
+        pass
+    def pop_node(self, node):
+        pass
+    def generate(self, message):
+        self.message = message
+        
+error.cursor = Cursor()
 
 class Config(object):
     def __init__(self):
@@ -39,9 +61,8 @@ class CheckImplied(unittest.TestCase):
         config = Config()
         vfy = generate.VerifyAttrs(library, config)
 
-        with self.assertRaises(RuntimeError) as context:
-            vfy.check_fcn_attrs(node)
-        self.assertTrue("dimension attribute must have a value" in str(context.exception))
+        vfy.check_fcn_attrs(node)
+        self.assertTrue("dimension attribute must have a value" in str(error.cursor.message))
 
     def test_dimension_2(self):
         # Check bad dimension
@@ -53,9 +74,8 @@ class CheckImplied(unittest.TestCase):
         config = Config()
         vfy = generate.VerifyAttrs(library, config)
 
-        with self.assertRaises(RuntimeError) as context:
-            vfy.check_fcn_attrs(node)
-        self.assertTrue("Unable to parse dimension" in str(context.exception))
+        vfy.check_fcn_attrs(node)
+        self.assertTrue("Unable to parse dimension" in str(error.cursor.message))
 
     def test_implied_attrs(self):
         func = self.func1
@@ -74,13 +94,11 @@ class CheckImplied(unittest.TestCase):
 
         generate.check_implied(func, "size(array2,1)", decls)
 
-        with self.assertRaises(RuntimeError) as context:
-            generate.check_implied(func, "size(unknown)", decls)
-        self.assertTrue("Unknown argument" in str(context.exception))
+        generate.check_implied(func, "size(unknown)", decls)
+        self.assertTrue("Unknown argument" in str(error.cursor.message))
 
-        with self.assertRaises(RuntimeError) as context:
-            generate.check_implied(func, "len(scalar,1)", decls)
-        self.assertTrue("Too many arguments" in str(context.exception))
+        generate.check_implied(func, "len(scalar,1)", decls)
+        self.assertTrue("Too many arguments" in str(error.cursor.message))
 
 
 if __name__ == "__main__":

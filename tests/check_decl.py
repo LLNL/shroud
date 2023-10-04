@@ -18,6 +18,7 @@ make test-decl-replace
 """
 
 from shroud import declast
+from shroud import error
 from shroud import todict
 
 import yaml
@@ -208,7 +209,8 @@ def test_block(comments, code, symtab):
         print("XXXX SymbolTable")
         symbols = declast.symtab_to_dict(symtab.scope_stack[0])
         yaml.safe_dump(symbols, sys.stdout)
-    except RuntimeError as err:
+    except error.ShroudParseError as err:
+        print("Parse Error:")
         print(err)
 
 def test_file():

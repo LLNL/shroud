@@ -1,0 +1,51 @@
+
+----------------------------------------
+Phase: Create library
+----------------------------------------
+line 19
+typemap must have 'type' member
+--------------------
+line 20
+typemap must have 'fields' member
+--------------------
+line 22
+Unknown value for 'base' in 'typemap'
+--------------------
+line 28
+Error in decl field
+func99()
+^
+line 1: Expected TYPE_SPECIFIER, found ID 'func99'
+--------------------
+line 30
+Expected 'block' or 'decl' in group
+--------------------
+line 33
+field 'default_arg_suffix' must be a list
+--------------------
+line 36
+field 'cxx_template' must be a list
+--------------------
+line 40
+field 'cxx_template' must be a list of dictionaries
+--------------------
+line 45
+'instantation' must be defined for each dictionary in 'cxx_template'
+--------------------
+line 45
+'fields' must be a dictionary
+--------------------
+line 50
+field 'fortran_generic' must be a list
+--------------------
+line 53
+field 'fortran_generic' must be a list of dictionaries
+--------------------
+line 56
+'decl' must be defined for each dictionary in 'fortran_generic'
+Wrote wrapferror.f
+Wrote utilerror.cpp
+Wrote typeserror.h
+Wrote pyerrormodule.cpp
+Wrote pyerrormodule.hpp
+Wrote setup.py

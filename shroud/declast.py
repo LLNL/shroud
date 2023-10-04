@@ -15,6 +15,7 @@ import collections
 import copy
 import re
 
+from . import error
 from . import todict
 from . import typemap
 
@@ -169,7 +170,7 @@ class RecursiveDescent(object):
         lineno = self.token.line
         msg = "line {}: ".format(lineno) + format.format(*args)
         ptr = " " * (self.token.column-1) + "^"
-        raise RuntimeError("\n".join(["Parse Error:", lines[lineno-1], ptr, msg]))
+        raise error.ShroudParseError("\n".join([lines[lineno-1], ptr, msg]))
 
     def enter(self, name, *args):
         """Print message when entering a function."""
