@@ -692,10 +692,12 @@ class GenFunctions(object):
         self.config = config
         self.instantiate_scope = None
         self.language = newlibrary.language
+        self.cursor = error.get_cursor()
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
         """
+        self.cursor.push_phase("generate functions")
         newlibrary = self.newlibrary
         whelpers.add_all_helpers(newlibrary.symtab)
 
@@ -705,6 +707,7 @@ class GenFunctions(object):
         self.instantiate_all_classes(newlibrary.wrap_namespace)
         self.update_templated_typemaps(newlibrary.wrap_namespace)
         self.gen_namespace(newlibrary.wrap_namespace)
+        self.cursor.pop_phase("generate functions")
 
     def gen_namespace(self, node):
         """Process functions which are not in a class.
@@ -944,6 +947,7 @@ class GenFunctions(object):
         """
         clslist = []
         for cls in node.classes:
+            self.cursor.push_node(cls)
             if cls.wrap_as == "struct":
                 clslist.append(cls)
                 options = cls.options
@@ -1007,6 +1011,7 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+            self.cursor.pop_node(cls)
 
         node.classes = clslist
 
@@ -1076,8 +1081,9 @@ class GenFunctions(object):
         cls : ast.ClassNode
         """
         if cls.typemap.flat_name in self.class_map:
-            raise RuntimeError("process_class: class {} already exists in class_map"
+            self.cursor.generate("process_class: class {} already exists in class_map"
                                .format(cls.typemap.flat_name))
+            return
         self.class_map[cls.typemap.flat_name] = cls
         for var in cls.variables:
             self.add_var_getter_setter(parent, cls, var)

@@ -26,6 +26,11 @@ module error_mod
         integer(C_INT) :: arg1(10)
     end type struct1
 
+
+    type, bind(C) :: nested
+        integer(C_INT) :: sublevels
+    end type nested
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 

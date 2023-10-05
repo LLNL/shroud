@@ -1140,7 +1140,7 @@ class Node(object):
             raise RuntimeError("{} not found in namespace".format(name))
         if ns not in self.using:
             self.using.append(ns)
-        
+
 
 class Global(Node):
     """Represent the global namespace"""
@@ -2067,6 +2067,9 @@ class Struct(Node):
             self.newtypemap = ntypemap
             self.typemap = ntypemap
         symtab.push_scope(self)
+
+    def gen_decl(self, **kwargs):
+        return "struct " + self.name
 
 
 class Template(Node):

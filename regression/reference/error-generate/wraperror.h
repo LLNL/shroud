@@ -31,6 +31,12 @@ struct s_ERR_struct1 {
 };
 typedef struct s_ERR_struct1 ERR_struct1;
 
+
+struct s_ERR_nested {
+    int sublevels;
+};
+typedef struct s_ERR_nested ERR_nested;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 
