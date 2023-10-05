@@ -1149,17 +1149,17 @@ return 1;""",
 
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
-        
+
         if options.PY_array_arg not in ["numpy", "list"]:
             linenumber = options.get("__line__", "?")
-            raise RuntimeError(
-                "Illegal value for PY_array_arg around line {}: {}".
-                format(linenumber, options.PY_array_arg))
+            cursor.ast(linenumber,
+                       "Illegal value for PY_array_arg '{}'".
+                       format(options.PY_array_arg))
         if options.PY_struct_arg not in ["numpy", "list", "class"]:
             linenumber = options.get("__line__", "?")
-            raise RuntimeError(
-                "Illegal value for PY_struct_arg around line {}: {}".
-                format(linenumber, options.PY_struct_arg))
+            cursor.ast(linenumber,
+                       "Illegal value for PY_struct_arg '{}'".
+                       format(options.PY_struct_arg))
 
         if cls:
             cls_function = "method"

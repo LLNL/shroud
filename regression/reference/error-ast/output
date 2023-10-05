@@ -12,10 +12,10 @@ line 22
 Unknown value for 'base' in 'typemap'
 --------------------
 line 28
-Error in decl field
+Error in 'decl' field
 func99()
 ^
-line 1: Expected TYPE_SPECIFIER, found ID 'func99'
+Expected TYPE_SPECIFIER, found ID 'func99'
 --------------------
 line 30
 Expected 'block' or 'decl' in group
@@ -43,9 +43,33 @@ field 'fortran_generic' must be a list of dictionaries
 --------------------
 line 56
 'decl' must be defined for each dictionary in 'fortran_generic'
+--------------------
+Node: FortranGenericOverloaded3
+line 58
+Error in 'fortran_generic', argument 'arg3' not found
+--------------------
+Node: FortranGenericOverloaded3
+line 58
+Error in 'fortran_generic', argument 'arg3' not found
+--------------------
+Node: GoodFunction
+line 66
+void GoodFunction(void)
+Unexpected value of option C_API_case: none
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
+
+----------------------------------------
+Phase: Wrapp.wrap_functions
+----------------------------------------
+Node: PYGoodFunction
+line 73
+Illegal value for PY_array_arg 'none'
+--------------------
+Node: PYGoodFunction
+line 73
+Illegal value for PY_struct_arg 'none'
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp
 Wrote setup.py

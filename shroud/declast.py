@@ -168,9 +168,11 @@ class RecursiveDescent(object):
     def error_msg(self, format, *args):
         lines = self.decl.split("\n")
         lineno = self.token.line
-        msg = "line {}: ".format(lineno) + format.format(*args)
+#        msg = "line {}: ".format(lineno) + format.format(*args)
+        msg = format.format(*args)
         ptr = " " * (self.token.column-1) + "^"
-        raise error.ShroudParseError("\n".join([lines[lineno-1], ptr, msg]))
+        raise error.ShroudParseError("\n".join([lines[lineno-1], ptr, msg]),
+                                     lineno, self.token.column)
 
     def enter(self, name, *args):
         """Print message when entering a function."""

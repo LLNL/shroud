@@ -157,7 +157,7 @@ class AstNode(object):
         elif case == 'underscore':
             return util.un_camel(name)
         else:
-            raise RuntimeError(
+            raise error.ShroudError(
                 "Unexpected value of option {}: {}"
                 .format(optname, case))
 
@@ -1486,6 +1486,7 @@ class FunctionNode(AstNode):
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
+        error.cursor.push_node(self)
 
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
@@ -1541,11 +1542,10 @@ class FunctionNode(AstNode):
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.
-                    print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-                            garg.name, str(ast), generic.linenumber))
-#                    raise RuntimeError(
-#                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-#                            garg.name, str(new.ast), generic.linenumber))
+                    error.cursor.ast(self.linenumber,
+                                    "Error in 'fortran_generic', argument '{}' not found".format(
+                                        garg.declarator.user_name))
+                    self.wrap.clear()
                 else:
                     newparams[i] = garg
             generic.decls = newparams
@@ -1572,6 +1572,7 @@ class FunctionNode(AstNode):
                     self.fstatements[key] = util.Scope(None, **value)
 
         # XXX - waring about unused fields in attrs
+        error.cursor.pop_node(self)
 
     def default_format(self, parent, fmtdict, kwargs):
 
@@ -2343,6 +2344,10 @@ def add_declarations(parent, node, symtab):
             except error.ShroudParseError as err:
                 linenumber = dct.get("__line__", "?")
                 error.get_cursor().ast(linenumber, decl, err)
+            except error.ShroudError as err:
+                linenumber = dct.get("__line__", "?")
+#                error.get_cursor().warning(err.message)
+                error.get_cursor().generate(err.message)
             else:
                 add_declarations(declnode, subnode, symtab)
             symtab.restore_depth(old)

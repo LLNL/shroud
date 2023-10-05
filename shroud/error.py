@@ -93,7 +93,8 @@ class Cursor(object):
 
     def generate(self, message):
         """
-        If there is a generate error, do not wrap.
+        If there is a generate error,
+        do not create a wrapper for the node.
         """
         node = self.node_list[-1].node
         self.nwarning += 1
@@ -108,7 +109,7 @@ class Cursor(object):
         self.context()
         print("line {}".format(linenumber))
         if err:
-            print("Error in decl field")
+            print("Error in 'decl' field")
             print("".join(err.message))
         else:
             print(decl)
@@ -119,5 +120,8 @@ class ShroudError(Exception):
         self.message = message
 
 class ShroudParseError(ShroudError):
-    pass
+    def __init__(self, message, line, column):
+        self.message = message
+        self.line = line
+        self.column = column
 

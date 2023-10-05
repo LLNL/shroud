@@ -210,8 +210,8 @@ def test_block(comments, code, symtab):
         symbols = declast.symtab_to_dict(symtab.scope_stack[0])
         yaml.safe_dump(symbols, sys.stdout)
     except error.ShroudParseError as err:
-        print("Parse Error:")
-        print(err)
+        print("Parse Error line {}:".format(err.line))
+        print(err.message)
 
 def test_file():
     """Parse a group of lines
