@@ -1,0 +1,11 @@
+Read yaml error-generate.yaml
+Close error_types.yaml
+struct struct1
+Close wraperror.h
+class struct1
+Close wrapferror.f
+Close utilerror.cpp
+Close typeserror.h
+Close pyerrormodule.cpp
+Close pyerrormodule.hpp
+Close setup.py

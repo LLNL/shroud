@@ -12,11 +12,12 @@ from __future__ import absolute_import
 
 import copy
 
-from . import util
+from . import error
 from . import declast
 from . import statements
 from . import todict
 from . import typemap
+from . import util
 from . import visitor
 from .util import wformat
 
@@ -156,7 +157,7 @@ class AstNode(object):
         elif case == 'underscore':
             return util.un_camel(name)
         else:
-            raise RuntimeError(
+            raise error.ShroudError(
                 "Unexpected value of option {}: {}"
                 .format(optname, case))
 
@@ -1485,6 +1486,7 @@ class FunctionNode(AstNode):
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
+        error.cursor.push_node(self)
 
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
@@ -1540,11 +1542,10 @@ class FunctionNode(AstNode):
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.
-                    print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-                            garg.name, str(ast), generic.linenumber))
-#                    raise RuntimeError(
-#                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-#                            garg.name, str(new.ast), generic.linenumber))
+                    error.cursor.ast(self.linenumber,
+                                    "Error in 'fortran_generic', argument '{}' not found".format(
+                                        garg.declarator.user_name))
+                    self.wrap.clear()
                 else:
                     newparams[i] = garg
             generic.decls = newparams
@@ -1571,6 +1572,7 @@ class FunctionNode(AstNode):
                     self.fstatements[key] = util.Scope(None, **value)
 
         # XXX - waring about unused fields in attrs
+        error.cursor.pop_node(self)
 
     def default_format(self, parent, fmtdict, kwargs):
 
@@ -2096,15 +2098,19 @@ def promote_wrap(node):
 def clean_dictionary(ddct):
     """YAML converts some blank fields to None,
     but we want blank.
+    return True if no errors detected.
     """
+    ok = True
     for key in ["cxx_header", "namespace"]:
         if key in ddct and ddct[key] is None:
             ddct[key] = ""
 
+    linenumber=ddct.get("__line__", "?")
     if "default_arg_suffix" in ddct:
         default_arg_suffix = ddct["default_arg_suffix"]
         if not isinstance(default_arg_suffix, list):
-            raise RuntimeError("default_arg_suffix must be a list")
+            error.cursor.ast(linenumber, "field 'default_arg_suffix' must be a list")
+            ok = False
         for i, value in enumerate(ddct["default_arg_suffix"]):
             if value is None:
                 ddct["default_arg_suffix"][i] = ""
@@ -2122,25 +2128,29 @@ def clean_dictionary(ddct):
         # Convert to list of TemplateArgument instances
         cxx_template = ddct["cxx_template"]
         if not isinstance(cxx_template, list):
-            raise RuntimeError("cxx_template must be a list")
-        newlst = []
-        for dct in cxx_template:
-            if not isinstance(dct, dict):
-                raise RuntimeError(
-                    "cxx_template must be a list of dictionaries"
-                )
-            if "instantiation" not in dct:
-                raise RuntimeError(
-                    "instantation must be defined for each dictionary in cxx_template"
-                )
-            newlst.append(
-                TemplateArgument(
-                    dct["instantiation"],
-                    fmtdict=dct.get("format", None),
-                    options=dct.get("options", None),
-                )
-            )
-        ddct["cxx_template"] = newlst
+            error.cursor.ast(linenumber, "field 'cxx_template' must be a list")
+            ok = False
+        else:
+            newlst = []
+            for dct in cxx_template:
+                if not isinstance(dct, dict):
+                    error.cursor.ast(linenumber, "field 'cxx_template' must be a list of dictionaries")
+                    ok = False
+                elif "instantiation" not in dct:
+                    linenumber = dct.get("__line__", "?")
+                    error.cursor.ast(linenumber, 
+                        "'instantation' must be defined for each dictionary in 'cxx_template'"
+                    )
+                    ok = False
+                else:
+                    newlst.append(
+                        TemplateArgument(
+                            dct["instantiation"],
+                            fmtdict=dct.get("format", None),
+                            options=dct.get("options", None),
+                        )
+                    )
+            ddct["cxx_template"] = newlst
 
     #  fortran_generic:
     #  - decl: float arg
@@ -2153,34 +2163,43 @@ def clean_dictionary(ddct):
                 linenumber=fortran_generic.get("__line__", "?")
             else:
                 linenumber=ddct.get("__line__", "?")
-            raise RuntimeError("fortran_generic must be a list around line {}"
-                               .format(linenumber))
-        newlst = []
-        isuffix = 0
-        for dct in fortran_generic:
-            if not isinstance(dct, dict):
-                linenumber=ddct.get("__line__", "?")
-                raise RuntimeError(
-                    "fortran_generic must be a list of dictionaries around line {}"
-                    .format(linenumber)
-                )
-            linenumber=dct.get("__line__", "?")
-            if "decl" not in dct:
-                raise RuntimeError(
-                    "decl must be defined for each dictionary in fortran_generic at line {}"
-                    .format(linenumber)
-                )
-            newlst.append(
-                FortranGeneric(
-                    dct["decl"],
-                    fmtdict=dct.get("format", None),
-                    options=dct.get("options", None),
-                    function_suffix=dct.get("function_suffix", "_" + str(isuffix)),
-                    linenumber=linenumber,
-                )
-            )
-            isuffix += 1
-        ddct["fortran_generic"] = newlst
+            error.cursor.ast(linenumber, "field 'fortran_generic' must be a list")
+            ok = False
+        else:
+            newlst = []
+            isuffix = 0
+            for dct in fortran_generic:
+                if not isinstance(dct, dict):
+                    linenumber=ddct.get("__line__", "?")
+                    error.cursor.ast(
+                        linenumber,
+                        "field 'fortran_generic' must be a list of dictionaries")
+                    ok = False
+                elif "decl" not in dct:
+                    linenumber=dct.get("__line__", "?")
+                    error.cursor.ast(
+                        linenumber,
+                        "'decl' must be defined for each dictionary in 'fortran_generic'"
+                    )
+                else:
+                    newlst.append(
+                        FortranGeneric(
+                            dct["decl"],
+                            fmtdict=dct.get("format", None),
+                            options=dct.get("options", None),
+                            function_suffix=dct.get("function_suffix", "_" + str(isuffix)),
+                            linenumber=linenumber,
+                        )
+                    )
+                    isuffix += 1
+            ddct["fortran_generic"] = newlst
+
+    if "fields" in ddct:
+        fields = ddct["fields"]
+        if not isinstance(fields, dict):
+            error.cursor.ast(linenumber, "'fields' must be a dictionary")
+            ok = False
+    return ok
 
 
 def clean_list(lst):
@@ -2291,13 +2310,14 @@ def add_declarations(parent, node, symtab):
     for subnode in node["declarations"]:
         if "block" in subnode:
             dct = copy.copy(subnode)
-            clean_dictionary(dct)
-            blk = BlockNode(parent, **dct)
-            add_declarations(blk, subnode, symtab)
+            if clean_dictionary(dct):
+                blk = BlockNode(parent, **dct)
+                add_declarations(blk, subnode, symtab)
         elif "decl" in subnode:
             # copy before clean to avoid changing input dict
             dct = copy.copy(subnode)
-            clean_dictionary(dct)
+            if not clean_dictionary(dct):
+                continue
             decl = dct["decl"]
             del dct["decl"]
 
@@ -2317,22 +2337,24 @@ def add_declarations(parent, node, symtab):
                 dct["splicer"] = listify(
                     dct["splicer"],["c", "c_buf", "f", "py"]
                 )
-            old = symtab.save_depth()
 
-            fields = dct.get("fields", None)
-            if fields is not None:
-                if not isinstance(fields, dict):
-                    raise TypeError("fields must be a dictionary")
-            
-            declnode = parent.add_declaration(decl, **dct)
-            add_declarations(declnode, subnode, symtab)
+            old = symtab.save_depth()
+            try:
+                declnode = parent.add_declaration(decl, **dct)
+            except error.ShroudParseError as err:
+                linenumber = dct.get("__line__", "?")
+                error.get_cursor().ast(linenumber, decl, err)
+            except error.ShroudError as err:
+                linenumber = dct.get("__line__", "?")
+#                error.get_cursor().warning(err.message)
+                error.get_cursor().generate(err.message)
+            else:
+                add_declarations(declnode, subnode, symtab)
             symtab.restore_depth(old)
 
         else:
-            print(subnode)
-            raise RuntimeError(
-                "Expected 'block' or 'decl', found '{}'".format(sorted(subnode.keys()))
-            )
+            linenumber = subnode.get("__line__", "?")
+            error.get_cursor().ast(linenumber, "Expected 'block' or 'decl' in group")
 
 
 def create_library_from_dictionary(node, symtab):
@@ -2349,6 +2371,8 @@ def create_library_from_dictionary(node, symtab):
     Every class must have a name.
     """
 
+    cursor = error.get_cursor()
+    cursor.push_phase("Create library")
     if "copyright" in node:
         clean_list(node["copyright"])
 
@@ -2363,15 +2387,19 @@ def create_library_from_dictionary(node, symtab):
         for subnode in node["typemap"]:
             # Update fields for a type. For example, set cpp_if
             if "type" not in subnode:
-                raise RuntimeError("typemap must have 'type' member")
+                linenumber = subnode.get("__line__", "?")
+                error.cursor.ast(linenumber, "typemap must have 'type' member")
+                continue
+            if "fields" not in subnode:
+                linenumber = subnode.get("__line__", "?")
+                error.cursor.ast(linenumber, "typemap must have 'fields' member")
+                continue
             key = subnode["type"]  # XXX make sure fields exist
             fields = subnode.get("fields")
             ntypemap = typemaps.get(key, None)
             if ntypemap:
                 if fields:
                     ntypemap.update(fields)
-            elif not fields:
-                raise RuntimeError("fields must be defined for typemap {}".format(subnode["type"]))
             else:
                 # Create new typemap
                 base = fields.get("base", "")
@@ -2389,8 +2417,8 @@ def create_library_from_dictionary(node, symtab):
                     )
                     ntypemap.export = True
                 else:
-                    raise RuntimeError("base must be 'shadow' or 'struct'"
-                                       " otherwise use a typedef")
+                    linenumber = fields.get("__line__", "?")
+                    error.cursor.ast(linenumber, "Unknown value for 'base' in 'typemap'")
         symtab.restore_stack()
 
     add_declarations(library.wrap_namespace, node, library.symtab)
@@ -2401,5 +2429,6 @@ def create_library_from_dictionary(node, symtab):
             if key in ["c", "f", "py"]:
                 new[key] = listify_cleanup(value)
         node["splicer_code"] = new
+    cursor.pop_phase("Create library")
     
     return library

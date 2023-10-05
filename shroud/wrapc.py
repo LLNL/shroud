@@ -14,6 +14,7 @@ from __future__ import absolute_import
 import os
 from collections import OrderedDict
 
+from . import error
 from . import declast
 from . import todict
 from . import statements
@@ -58,6 +59,7 @@ class Wrapc(util.WrapperMixin):
         self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.cursor = error.get_cursor()
 
     def _begin_output_file(self):
         """Start a new class for output"""
@@ -201,21 +203,24 @@ class Wrapc(util.WrapperMixin):
             library - ast.LibraryNode
         """
         # worker function for write_file
+        self.cursor.push_phase("Wrapc.wrap_function")
         self._push_splicer("function")
         for node in library.functions:
             self.wrap_function(None, node)
         self._pop_splicer("function")
+        self.cursor.pop_phase("Wrapc.wrap_function")
 
     def add_c_helper(self, helpers, fmt):
         """Add a list of C helpers."""
         for c_helper in helpers:
             helper = wformat(c_helper, fmt)
-            self.c_helper[helper] = True
             if helper not in whelpers.CHelpers:
-                raise RuntimeError("No such helper {}".format(helper))
-            name = whelpers.CHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "c_helper_" + helper, name)
+                error.get_cursor().warning("No such c_helper '{}'".format(helper))
+            else:
+                self.c_helper[helper] = True
+                name = whelpers.CHelpers[helper].get("name")
+                if name:
+                    setattr(fmt, "c_helper_" + helper, name)
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
@@ -622,6 +627,9 @@ class Wrapc(util.WrapperMixin):
         Args:
             node - ast.ClassNode.
         """
+        cursor = self.cursor
+        cursor.push_node(node)
+
         self.log.write("class {}\n".format(node.name_instantiation or node.name))
 
         fmt_class = node.fmtdict
@@ -640,6 +648,7 @@ class Wrapc(util.WrapperMixin):
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer("method")
+        cursor.pop_node(node)
 
     def compute_idtor(self, node):
         """Create a capsule destructor for type.
@@ -915,6 +924,8 @@ class Wrapc(util.WrapperMixin):
         options = node.options
         if not node.wrap.c:
             return
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
 
         self.log.write("C {0.declgen} {1}\n".format(
             node, self.get_metaattrs(node.ast)))
@@ -1025,6 +1036,7 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_result
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
+        func_cursor.stmt = result_stmt
         self.name_temp_vars_c(fmt_result.C_result, result_stmt, fmt_result)
         self.add_c_helper(result_stmt.c_helper, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
@@ -1106,6 +1118,7 @@ class Wrapc(util.WrapperMixin):
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
+            func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1131,6 +1144,7 @@ class Wrapc(util.WrapperMixin):
             stmts = ["f", c_meta["intent"], sgroup, spointer,
                      sapi, c_meta["deref"]] + specialize
             arg_stmt = statements.lookup_fc_stmts(stmts)
+            func_cursor.stmt = arg_stmt
             fmt_arg.c_var = arg_name
             # XXX - order issue - c_var must be set before name_temp_vars_c,
             #       but set by set_fmt_fields
@@ -1219,6 +1233,8 @@ class Wrapc(util.WrapperMixin):
                     call_list.append(fmt_arg.cxx_var)
 
         # --- End loop over function parameters
+        func_cursor.arg = None
+        func_cursor.stmt = result_stmt
 
         self.build_proto_list(
             fmt_result,
@@ -1420,6 +1436,7 @@ class Wrapc(util.WrapperMixin):
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.declarator.name
+        cursor.pop_node(node)
 
     def set_capsule_headers(self, headers):
         """Headers used by C_memory_dtor_function.

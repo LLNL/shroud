@@ -1,0 +1,86 @@
+copyright:
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error messages from generate.py
+
+library: error
+cxx_header: error
+
+options:
+  debug: True
+  wrap_python: True
+  F_assumed_rank_max: 2
+  PY_write_helper_in_util: True
+
+declarations:
+
+# check_fcn_attrs
+- decl: void func0() +badfunc
+- decl: void func0a(int)
+- decl: int ***func0b() +deref(pointer)
+- decl: int func0c() +deref(pointer)
+#- decl: int *func0d() +deref(none)
+- decl: int *func0e() +dimension
+- decl: int func0f() +dimension(10)
+
+- decl: void func1(int arg1 +bad)
+
+- decl: void func2(int arg1 +assumedtype+value)
+
+- decl: void func3(int arg1 +charlen)
+- decl: void func3b(char arg1 +charlen)
+- decl: void func3c(char *arg1 +charlen)
+
+- decl: void func4(char *arg1 +blanknull)
+
+#- decl: void func5(int arg1=0, int arg2)
+
+- decl: void func6(vector *arg1)
+
+- decl: void func7(int *arg1 +dimension(n+=2))
+
+- decl: void func8(int arg1+intent(none))
+- decl: void func8a(int arg1+intent(out))
+
+- decl: void func9(int *arg1+deref(none))
+- decl: void func9b(int *arg1+deref(pointer))
+- decl: void func9c(int **arg1+deref(pointer)+intent(in))
+
+# check_common_attrs
+- decl: void func10(int arg1 +api(none))
+- decl: void func10b(int arg1+rank)
+- decl: void func10c(int *arg1+rank(nrank))
+- decl: void func10c(int *arg1+rank(30))
+
+- decl: void func11(int arg1 +dimension)
+- decl: void func11(int arg1 +dimension+value)
+- decl: void func11(int arg1 +dimension+rank(2))
+
+- decl: void func12(int **arg1 +intent(out)+owner(none))
+
+# CheckImplied
+- decl: void func13(double *in     +intent(in)  +rank(1),
+                    int     sizein +implied(size(in,2,3)))
+- decl: void func13b(double *in     +intent(in)  +rank(1),
+                    int     sizein +implied(size(none)))
+- decl: void func13c(const char *text,
+                     int ntext+implied(len(text,2)),
+                     int mtext+implied(len_trim(text,3)))
+- decl: void func13d(const char *text,
+                     int ntext+implied(len(text2)),
+                     int mtext+implied(len_trim(text3)))
+
+
+##########
+
+- decl: struct struct1
+  declarations:
+  - decl: int arg1+badvar+dimension(10)
+
+
+

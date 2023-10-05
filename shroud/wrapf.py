@@ -20,6 +20,7 @@ import copy
 import os
 import re
 
+from . import error
 from . import declast
 from . import statements
 from . import todict
@@ -71,6 +72,7 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_end = "!<"
         self.file_list = []
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
+        self.cursor = error.get_cursor()
         ModuleInfo.newlibrary = newlibrary
 
     def wrap_library(self):
@@ -232,6 +234,9 @@ class Wrapf(util.WrapperMixin):
             node - ast.ClassNode.
             fileinfo - ModuleInfo
         """
+        cursor = self.cursor
+        cursor.push_phase("Wrapf.wrap_class")
+        cursor.push_node(node)
 
         self.log.write("class {}\n".format(node.name_instantiation or node.name))
 
@@ -288,8 +293,10 @@ class Wrapf(util.WrapperMixin):
             # Used with wrap_struct_as=class.
             baseclass = node.parent.ast.unqualified_lookup(options.class_baseclass)
             if not baseclass:
-                raise RuntimeError("Unknown class '{}' in option.class_baseclass".format(options.class_baseclass))
-            fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
+                cursor.warning("Unknown class '{}' in option.class_baseclass".format(options.class_baseclass))
+                fmt_class.F_derived_member_base = "===>F_derived_member_base<==="
+            else:
+                fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
         if fmt_class.F_derived_member_base:
             append_format(
                 f_type_decl,
@@ -393,6 +400,8 @@ class Wrapf(util.WrapperMixin):
             fileinfo.operator_impl.append("#endif")
 
     #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
+        cursor.pop_node(node)
+        cursor.pop_phase("Wrapf.wrap_class")
 
     def wrap_typedefs(self, node, fileinfo):
         """Wrap all typedefs in a splicer block.
@@ -722,6 +731,7 @@ rv = .false.
         functions : list of ast.FunctionNode
         fileinfo : ModuleInfo
         """
+        cursor = self.cursor
 
         # Find which C functions are called.
         for node in functions:
@@ -736,18 +746,22 @@ rv = .false.
 #                node.eval_template("F_C_name")
 #                fmt_func = node.fmtdict
 #                fmt_func.F_C_name = fmt_func.F_C_name.lower()
-        
+
+        cursor.push_phase("Wrapf.wrap_function_impl")
         for node in functions:
             if node.wrap.fortran:
                 self.log.write("Fortran {0.declgen} {1}\n".format(
                     node, self.get_metaattrs(node.ast)))
                 self.wrap_function_impl(cls, node, fileinfo)
+        cursor.pop_phase("Wrapf.wrap_function_impl")
 
+        cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
             if node.wrap.c:
                 self.log.write("C-interface {0.declgen} {1}\n".format(
                     node, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface(cls, node, fileinfo)
+        cursor.pop_phase("Wrapf.wrap_function_interface")
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
@@ -1146,6 +1160,8 @@ rv = .false.
         multiple Fortran wrappers.
         XXX - xlf does not allow this.
         """
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
         options = node.options
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
@@ -1213,6 +1229,7 @@ rv = .false.
         result_stmt = statements.lookup_fc_stmts(c_stmts)
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
+        func_cursor.stmt = result_stmt
 
         if options.debug:
             generated = self.compute_generated_path(node)
@@ -1248,6 +1265,7 @@ rv = .false.
         for arg in ast.declarator.params:
             # default argument's intent
             # XXX look at const, ptr
+            func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1275,6 +1293,7 @@ rv = .false.
                        meta["api"], deref_attr]
             c_stmts.extend(specialize)
             arg_stmt = statements.lookup_fc_stmts(c_stmts)
+            func_cursor.stmt = arg_stmt
 
             if options.debug:
                 stmts_comments.append(
@@ -1295,6 +1314,8 @@ rv = .false.
                 arg_c_decl,
             )
         # --- End loop over function parameters
+        func_cursor.arg = None
+        func_cursor.stmt = result_stmt
 
         self.build_arg_list_interface(
             node, fileinfo,
@@ -1375,6 +1396,7 @@ rv = .false.
             append_format(c_interface, "! end {F_C_name}", fmt_func)
         if node.cpp_if:
             c_interface.append("#endif")
+        cursor.pop_node(node)
 
     def build_arg_list_impl(
         self,
@@ -1630,6 +1652,8 @@ rv = .false.
             node - ast.FunctionNode.
             fileinfo - ModuleInfo
         """
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
         options = node.options
         fmt_func = node.fmtdict
 
@@ -1692,6 +1716,7 @@ rv = .false.
         result_stmt = statements.lookup_fc_stmts(f_stmts)
         result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
         fmt_result.stmtf = result_stmt.name
+        func_cursor.stmt = result_stmt
 
         self.name_temp_vars_f(fmt_func.C_result, result_stmt, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
@@ -1755,6 +1780,7 @@ rv = .false.
         f_args = ast.declarator.params
         f_index = -1  # index into f_args
         for c_arg in C_node.ast.declarator.params:
+            func_cursor.arg = c_arg
             arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
@@ -1791,6 +1817,7 @@ rv = .false.
             f_stmts.extend(specialize)
 
             arg_stmt = statements.lookup_fc_stmts(f_stmts)
+            func_cursor.stmt = arg_stmt
             self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
@@ -1924,6 +1951,8 @@ rv = .false.
             )
         # --- End loop over function parameters
         #####
+        func_cursor.arg = None
+        func_cursor.stmt = result_stmt
 
         # Add function result argument.
         need_wrapper = self.build_arg_list_impl(
@@ -2108,6 +2137,7 @@ rv = .false.
                 fileinfo.impl.append("! Only the interface is needed")
                 fileinfo.impl.extend(impl)
                 fileinfo.impl.append("#endif")
+        cursor.pop_node(node)
 
     def _gather_helper_code(self, name, done, fileinfo):
         """Add code from helpers.
@@ -2323,9 +2353,10 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        # (..)
         self.rank = "assumed"
-        return "--assumed-rank--"
-        raise RuntimeError("wrapf.py: Detected assumed-rank dimension")
+        return "===assumed-rank==="
+        error.get_cursor().warning("Detected assumed-rank dimension")
 
 ######################################################################
 
@@ -2491,7 +2522,10 @@ class ModuleInfo(object):
         """Add a list of C helpers."""
         for c_helper in helpers:
             helper = wformat(c_helper, fmt)
-            self.c_helper[helper] = True
+            if helper not in whelpers.CHelpers:
+                error.get_cursor().warning("No such c_helper '{}'".format(helper))
+            else:
+                self.c_helper[helper] = True
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers.
@@ -2499,11 +2533,12 @@ class ModuleInfo(object):
         """
         for f_helper in helpers:
             helper = wformat(f_helper, fmt)
-            self.f_helper[helper] = True
             if helper not in whelpers.FHelpers:
-                raise RuntimeError("No such helper {}".format(helper))
-            name = whelpers.FHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "f_helper_" + helper, name)
-            
+                error.get_cursor().warning("No such f_helper '{}'".format(helper))
+            else:
+                self.f_helper[helper] = True
+                name = whelpers.FHelpers[helper].get("name")
+                if name:
+                    setattr(fmt, "f_helper_" + helper, name)
+
         
