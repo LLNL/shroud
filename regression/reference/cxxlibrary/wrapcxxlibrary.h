@@ -32,6 +32,12 @@
 extern "C" {
 #endif
 
+
+struct s_CXX_nested {
+    int sublevels;
+};
+typedef struct s_CXX_nested CXX_nested;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

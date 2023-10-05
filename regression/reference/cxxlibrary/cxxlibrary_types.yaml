@@ -14,6 +14,12 @@ typemap:
       c_type: CXX_cstruct1_cls
       f_module_name: cxxlibrary_mod
       f_derived_type: cstruct1_cls
+  - type: nested
+    fields:
+      base: struct
+      c_type: CXX_nested
+      f_module_name: cxxlibrary_mod
+      f_derived_type: nested
   - namespace: structns
     declarations: structns
     - type: Cstruct1

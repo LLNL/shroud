@@ -112,6 +112,11 @@ module struct_mod
     end type cstruct_as_subclass
     ! end derived-type cstruct_as_subclass
 
+
+    type, bind(C) :: s_nested
+        integer(C_INT) :: sublevels
+    end type s_nested
+
     interface operator (.eq.)
         module procedure cstruct_as_class_eq
         module procedure cstruct_as_subclass_eq

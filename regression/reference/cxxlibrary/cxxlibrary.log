@@ -7,6 +7,7 @@ C void passStructByReferenceInout(Cstruct1 & arg +intent(inout))  +intent(subrou
 C void passStructByReferenceOut(Cstruct1 & arg +intent(out))  +intent(subroutine)
 Close wrapcxxlibrary_structns.h
 Close wrapcxxlibrary_structns.cpp
+struct nested
 C bool defaultPtrIsNULL(void)  +intent(function)
 C bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
 C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)
@@ -16,6 +17,7 @@ C const std::string & getGroupName(int32_t idx +value) +len(30)  +api(buf)+deref
 C const std::string & getGroupName(int64_t idx +value) +len(30)  +api(buf)+deref(copy)+intent(function)
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
+class nested
 Fortran bool defaultPtrIsNULL(void)  +intent(function)
 Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
 Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)

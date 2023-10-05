@@ -57,5 +57,13 @@ void accept_complex(std::complex<double> *arg1);
 
 const std::string& getGroupName(long idx);
 
+//----------------------------------------------------------------------
+
+struct nested {
+    int sublevels;
+    nested *parent;
+    nested **child;
+};
+
 #endif // CXXLIBRARY_H
 

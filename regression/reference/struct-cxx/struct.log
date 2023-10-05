@@ -21,6 +21,7 @@ struct Cstruct_ptr
 struct Cstruct_list
 struct Cstruct_numpy
 struct Arrays1
+struct s_nested
 C int passStructByValue(Cstruct1 arg +value)  +intent(function)
 C int passStruct1(const Cstruct1 * arg)  +intent(function)
 C int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))  +intent(function)
@@ -72,6 +73,7 @@ C-interface int get_y1(void)  +intent(getter)
 C-interface void set_y1(int val +intent(in)+value)  +intent(setter)
 C-interface int get_z1(void)  +intent(getter)
 C-interface void set_z1(int val +intent(in)+value)  +intent(setter)
+class s_nested
 Fortran int passStructByValue(Cstruct1 arg +value)  +intent(function)
 Fortran int passStruct1(const Cstruct1 * arg)  +intent(function)
 Fortran int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))  +intent(function)

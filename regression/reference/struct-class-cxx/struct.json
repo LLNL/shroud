@@ -8,7 +8,8 @@
             "Cstruct_as_subclass",
             "Cstruct_list",
             "Cstruct_numpy",
-            "Cstruct_ptr"
+            "Cstruct_ptr",
+            "s_nested"
         ],
         "classes": [
             {
@@ -1889,6 +1890,61 @@
                     "cxx_type": "Cstruct_as_subclass",
                     "file_scope": "Cstruct_as_subclass"
                 }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "name": "s_nested",
+                "options": {
+                    "wrap_python": false
+                },
+                "parse_keyword": "struct",
+                "scope": "s_nested::",
+                "typemap_name": "s_nested",
+                "variables": [
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "sublevels",
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "sublevels",
+                        "options": {},
+                        "wrap": {},
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "sublevels",
+                            "variable_lower": "sublevels",
+                            "variable_name": "sublevels",
+                            "variable_upper": "SUBLEVELS"
+                        }
+                    }
+                ],
+                "wrap": {},
+                "zz_fmtdict": {
+                    "C_header_filename": "wraps_nested.h",
+                    "C_impl_filename": "wraps_nested.cpp",
+                    "C_name_api": "s_nested",
+                    "C_name_scope": "s_nested_",
+                    "C_type_name": "STR_s_nested",
+                    "F_derived_name": "s_nested",
+                    "F_name_api": "s_nested",
+                    "F_name_scope": "s_nested_",
+                    "PY_struct_array_descr_create": "PY_s_nested_create_array_descr",
+                    "PY_struct_array_descr_name": "s_nested_dtype",
+                    "PY_struct_array_descr_variable": "PY_s_nested_array_descr",
+                    "class_scope": "s_nested::",
+                    "cxx_class": "s_nested",
+                    "cxx_type": "s_nested",
+                    "file_scope": "s_nested"
+                }
             }
         ],
         "copyright": [
@@ -3350,13 +3406,15 @@
         "Cstruct_list": "struct-Cstruct_list",
         "Cstruct_numpy": "struct-Cstruct_numpy",
         "Cstruct_ptr": "struct-Cstruct_ptr",
+        "s_nested": "struct-s_nested",
         "struct-Arrays1": "Arrays1",
         "struct-Cstruct1": "Cstruct1",
         "struct-Cstruct_as_class": "Cstruct_as_class",
         "struct-Cstruct_as_subclass": "Cstruct_as_subclass",
         "struct-Cstruct_list": "Cstruct_list",
         "struct-Cstruct_numpy": "Cstruct_numpy",
-        "struct-Cstruct_ptr": "Cstruct_ptr"
+        "struct-Cstruct_ptr": "Cstruct_ptr",
+        "struct-s_nested": "s_nested"
     },
     "types": {
         "Arrays1": {
@@ -3582,6 +3640,33 @@
             "i_module": {
                 "struct_mod": [
                     "cstruct_ptr"
+                ]
+            },
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "s_nested": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_s_nested_array_descr",
+            "PY_struct_as": "class",
+            "base": "struct",
+            "c_type": "STR_s_nested",
+            "cfi_type": "CFI_type_struct",
+            "cxx_type": "s_nested",
+            "f_derived_type": "s_nested",
+            "f_kind": "s_nested",
+            "f_module": {
+                "struct_mod": [
+                    "s_nested"
+                ]
+            },
+            "f_module_name": "struct_mod",
+            "f_type": "type(s_nested)",
+            "flat_name": "s_nested",
+            "i_module": {
+                "struct_mod": [
+                    "s_nested"
                 ]
             },
             "sgroup": "struct",

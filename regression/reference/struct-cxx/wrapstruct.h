@@ -63,6 +63,12 @@ struct s_STR_arrays1 {
 };
 typedef struct s_STR_arrays1 STR_arrays1;
 
+
+struct s_STR_s_nested {
+    int sublevels;
+};
+typedef struct s_STR_s_nested STR_s_nested;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

@@ -58,3 +58,9 @@ typemap:
       c_type: STR_cstruct_ptr
       f_module_name: struct_mod
       f_derived_type: cstruct_ptr
+  - type: s_nested
+    fields:
+      base: struct
+      c_type: STR_s_nested
+      f_module_name: struct_mod
+      f_derived_type: s_nested
