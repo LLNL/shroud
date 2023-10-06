@@ -109,6 +109,15 @@ Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z);
 
 Cstruct_list *get_global_struct_list(void);
 
+/*----------------------------------------------------------------------*/
+// recursive struct
+
+typedef struct s_nested nested;
+struct s_nested {
+    int sublevels;
+    nested *parent;
+    nested **child;
+};
 
 
 #endif // STRUCT_H

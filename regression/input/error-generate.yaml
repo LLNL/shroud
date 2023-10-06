@@ -84,3 +84,14 @@ declarations:
 
 
 
+##########
+# generate functions
+
+- decl: struct nested
+  doxygen:
+    brief: A recursive struct (without using a typedef)
+  options:
+    wrap_python: False
+  declarations:
+  - decl: int sublevels
+  - decl: struct nested *parent

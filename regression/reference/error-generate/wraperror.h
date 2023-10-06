@@ -26,10 +26,16 @@ extern "C" {
 #endif
 
 
+typedef struct s_ERR_struct1 ERR_struct1;
 struct s_ERR_struct1 {
     int arg1;
 };
-typedef struct s_ERR_struct1 ERR_struct1;
+
+
+typedef struct s_ERR_nested ERR_nested;
+struct s_ERR_nested {
+    int sublevels;
+};
 
 // splicer begin C_declarations
 // splicer end C_declarations

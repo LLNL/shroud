@@ -26,42 +26,48 @@ extern "C" {
 #endif
 
 
+typedef struct s_STR_cstruct1 STR_cstruct1;
 struct s_STR_cstruct1 {
     int ifield;
     double dfield;
 };
-typedef struct s_STR_cstruct1 STR_cstruct1;
 
 
+typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 struct s_STR_cstruct_ptr {
     char * cfield;
     const double * const_dvalue;
 };
-typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 
 
+typedef struct s_STR_cstruct_list STR_cstruct_list;
 struct s_STR_cstruct_list {
     int nitems;
     int * ivalue;
     double * dvalue;
     char * * svalue;
 };
-typedef struct s_STR_cstruct_list STR_cstruct_list;
 
 
+typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 struct s_STR_cstruct_numpy {
     int nitems;
     int * ivalue;
     double * dvalue;
 };
-typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 
 
+typedef struct s_STR_arrays1 STR_arrays1;
 struct s_STR_arrays1 {
     char name[20];
     int count[10];
 };
-typedef struct s_STR_arrays1 STR_arrays1;
+
+
+typedef struct s_STR_s_nested STR_s_nested;
+struct s_STR_s_nested {
+    int sublevels;
+};
 
 // splicer begin C_declarations
 // splicer end C_declarations

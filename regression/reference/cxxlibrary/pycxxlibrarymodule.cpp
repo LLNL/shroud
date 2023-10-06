@@ -32,6 +32,7 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyObject *PY_init_cxxlibrary_structns(void);
+PyArray_Descr *PY_nested_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -369,6 +370,84 @@ static PyMethodDef PY_methods[] = {
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
+// Create PyArray_Descr for nested
+static PyArray_Descr *PY_nested_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(4);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(4);
+    if (ldescr == nullptr) goto fail;
+
+    // sublevels
+    obj = PyString_FromString("sublevels");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // parent
+    obj = PyString_FromString("parent");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+
+    // child
+    obj = PyString_FromString("child");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 2, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 2, obj);
+
+    // name
+    obj = PyString_FromString("name");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 3, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 3, obj);
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 4; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 4; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
 /*
  * initcxxlibrary - Initialization function for the module
  * *must* be called initcxxlibrary
@@ -461,6 +540,11 @@ initcxxlibrary(void)
         return RETVAL;
     Py_INCREF(&PY_Cstruct1_cls_Type);
     PyModule_AddObject(m, "Cstruct1_cls", (PyObject *)&PY_Cstruct1_cls_Type);
+
+    // Define PyArray_Descr for structs
+    PY_nested_array_descr = PY_nested_create_array_descr();
+    PyModule_AddObject(m, "nested_dtype", 
+        (PyObject *) PY_nested_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

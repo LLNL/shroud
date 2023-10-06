@@ -26,11 +26,11 @@ extern "C" {
 #endif
 
 
+typedef struct s_CXX_cstruct1 CXX_cstruct1;
 struct s_CXX_cstruct1 {
     int ifield;
     double dfield;
 };
-typedef struct s_CXX_cstruct1 CXX_cstruct1;
 
 // splicer begin namespace.structns.C_declarations
 // splicer end namespace.structns.C_declarations

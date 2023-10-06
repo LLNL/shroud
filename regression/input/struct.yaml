@@ -189,6 +189,18 @@ declarations:
     class_ctor: Cstruct_as_subclass
 
 ######################################################################
+# recursive struct
+# This wraps both a C and C++ library, so must use 'struct s_nested'
+
+- decl: struct s_nested
+  options:
+    wrap_python: False
+  declarations:
+  - decl: int sublevels
+#  - decl: struct s_nested *parent
+#  - decl: struct s_nested **child
+
+######################################################################
 splicer_code:
   f:
     module_top:

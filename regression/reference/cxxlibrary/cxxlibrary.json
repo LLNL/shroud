@@ -3,6 +3,7 @@
     "library": {
         "class_map": [
             "Cstruct1_cls",
+            "nested",
             "structns_Cstruct1"
         ],
         "classes": [
@@ -245,6 +246,176 @@
                     "cxx_class": "Cstruct1_cls",
                     "cxx_type": "Cstruct1_cls",
                     "file_scope": "Cstruct1_cls"
+                }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "name": "nested",
+                "options": {
+                    "F_struct_getter_setter": false
+                },
+                "parse_keyword": "struct",
+                "scope": "nested::",
+                "typemap_name": "nested",
+                "variables": [
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "sublevels",
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "sublevels",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "sublevels",
+                            "variable_lower": "sublevels",
+                            "variable_name": "sublevels",
+                            "variable_upper": "SUBLEVELS"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "parent",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "nested"
+                            },
+                            "specifier": [
+                                "nested"
+                            ],
+                            "typemap_name": "nested"
+                        },
+                        "name": "parent",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "CXX_nested",
+                            "cxx_type": "nested",
+                            "field_name": "parent",
+                            "variable_lower": "parent",
+                            "variable_name": "parent",
+                            "variable_upper": "PARENT"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "child",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "nested"
+                            },
+                            "specifier": [
+                                "nested"
+                            ],
+                            "typemap_name": "nested"
+                        },
+                        "name": "child",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "CXX_nested",
+                            "cxx_type": "nested",
+                            "field_name": "child",
+                            "variable_lower": "child",
+                            "variable_name": "child",
+                            "variable_upper": "CHILD"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name",
+                            "variable_lower": "name",
+                            "variable_name": "name",
+                            "variable_upper": "NAME"
+                        }
+                    }
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_header_filename": "wrapnested.h",
+                    "C_impl_filename": "wrapnested.cpp",
+                    "C_name_api": "nested",
+                    "C_name_scope": "nested_",
+                    "C_type_name": "CXX_nested",
+                    "F_derived_name": "nested",
+                    "F_name_api": "nested",
+                    "F_name_scope": "nested_",
+                    "PY_PyObject": "PY_nested",
+                    "PY_PyTypeObject": "PY_nested_Type",
+                    "PY_from_object_func": "PP_nested_from_Object",
+                    "PY_struct_array_descr_create": "PY_nested_create_array_descr",
+                    "PY_struct_array_descr_name": "nested_dtype",
+                    "PY_struct_array_descr_variable": "PY_nested_array_descr",
+                    "PY_to_object_func": "PP_nested_to_Object",
+                    "PY_to_object_idtor_func": "PP_nested_to_Object_idtor",
+                    "class_scope": "nested::",
+                    "cxx_class": "nested",
+                    "cxx_type": "nested",
+                    "file_scope": "nested"
                 }
             }
         ],
@@ -2795,7 +2966,9 @@
     },
     "symtab": {
         "Cstruct1_cls": "struct-Cstruct1_cls",
+        "nested": "struct-nested",
         "struct-Cstruct1_cls": "Cstruct1_cls",
+        "struct-nested": "nested",
         "structns": {
             "Cstruct1": "struct-Cstruct1",
             "struct-Cstruct1": "structns::Cstruct1"
@@ -2829,6 +3002,38 @@
             "i_module": {
                 "cxxlibrary_mod": [
                     "cstruct1_cls"
+                ]
+            },
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "nested": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_nested_array_descr",
+            "PY_PyObject": "PY_nested",
+            "PY_PyTypeObject": "PY_nested_Type",
+            "PY_from_object": "PP_nested_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_nested_to_Object",
+            "PY_to_object_idtor": "PP_nested_to_Object_idtor",
+            "base": "struct",
+            "c_type": "CXX_nested",
+            "cfi_type": "CFI_type_struct",
+            "cxx_type": "nested",
+            "f_derived_type": "nested",
+            "f_kind": "nested",
+            "f_module": {
+                "cxxlibrary_mod": [
+                    "nested"
+                ]
+            },
+            "f_module_name": "cxxlibrary_mod",
+            "f_type": "type(nested)",
+            "flat_name": "nested",
+            "i_module": {
+                "cxxlibrary_mod": [
+                    "nested"
                 ]
             },
             "sgroup": "struct",

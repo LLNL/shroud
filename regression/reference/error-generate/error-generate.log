@@ -1,8 +1,10 @@
 Read yaml error-generate.yaml
 Close error_types.yaml
 struct struct1
+struct nested
 Close wraperror.h
 class struct1
+class nested
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h

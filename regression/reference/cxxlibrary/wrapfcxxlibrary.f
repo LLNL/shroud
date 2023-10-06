@@ -13,12 +13,21 @@
 ! splicer begin file_top
 ! splicer end file_top
 module cxxlibrary_mod
+    use iso_c_binding, only : C_INT, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+
+    type, bind(C) :: nested
+        integer(C_INT) :: sublevels
+        type(C_PTR) :: parent
+        type(C_PTR) :: child
+        type(C_PTR) :: name
+    end type nested
 
     interface
 

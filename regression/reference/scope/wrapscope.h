@@ -47,11 +47,11 @@ enum SCO_ColorEnum {
 };
 
 
+typedef struct s_SCO_datapointer SCO_datapointer;
 struct s_SCO_datapointer {
     int nitems;
     int * items;
 };
-typedef struct s_SCO_datapointer SCO_datapointer;
 
 // splicer begin C_declarations
 // splicer end C_declarations

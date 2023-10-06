@@ -212,6 +212,14 @@ Node: func13d
 line 74
 void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)
 Unknown argument 'text3': len_trim(text3)
+
+----------------------------------------
+Phase: generate functions
+----------------------------------------
+Node: nested
+line 97
+struct nested
+process_class: class nested already exists in class_map
 Wrote error_types.yaml
 Wrote wraperror.h
 Wrote wrapferror.f
