@@ -6,6 +6,7 @@
 
 """
 """
+from . import error
 from .util import wformat
 
 import yaml
@@ -83,8 +84,7 @@ def lookup_fc_stmts(path):
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
         stmt = fc_dict.get("f_mixin_unknown")
-        print("Unknown fc statement: %s" % name)
-#        raise RuntimeError("Unknown fc statement: %s" % name)
+        error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
         
 def compute_name(path, char="_"):
