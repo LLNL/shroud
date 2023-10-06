@@ -26,11 +26,11 @@ extern "C" {
 #endif
 
 
+typedef struct s_NS_cstruct1 NS_cstruct1;
 struct s_NS_cstruct1 {
     int ifield;
     double dfield;
 };
-typedef struct s_NS_cstruct1 NS_cstruct1;
 
 // splicer begin namespace.outer.C_declarations
 // splicer end namespace.outer.C_declarations

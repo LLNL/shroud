@@ -33,11 +33,11 @@ enum SCO_ns2_Color {
 };
 
 
+typedef struct s_SCO_datapointer SCO_datapointer;
 struct s_SCO_datapointer {
     int nitems;
     int * items;
 };
-typedef struct s_SCO_datapointer SCO_datapointer;
 
 // splicer begin namespace.ns2.C_declarations
 // splicer end namespace.ns2.C_declarations

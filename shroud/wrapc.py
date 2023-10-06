@@ -590,7 +590,14 @@ class Wrapc(util.WrapperMixin):
         output = self.struct_impl
         output.append("")
         output.extend(
-            ["", "struct s_{C_type_name} {{".format(C_type_name=cname), 1]
+            [
+                "",
+                "typedef struct s_{C_type_name} {C_type_name};".format(
+                    C_type_name=cname
+                ),
+                "struct s_{C_type_name} {{".format(C_type_name=cname),
+                1
+            ]
         )
         for var in node.variables:
             ast = var.ast
@@ -599,9 +606,6 @@ class Wrapc(util.WrapperMixin):
             [
                 -1,
                 "};",
-                "typedef struct s_{C_type_name} {C_type_name};".format(
-                    C_type_name=cname
-                ),
             ]
         )
 
