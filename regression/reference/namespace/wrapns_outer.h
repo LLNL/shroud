@@ -25,12 +25,23 @@
 extern "C" {
 #endif
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using NS_cstruct1 = outer::Cstruct1;
+#else  // __cplusplus
 
 typedef struct s_NS_cstruct1 NS_cstruct1;
 struct s_NS_cstruct1 {
     int ifield;
     double dfield;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin namespace.outer.C_declarations
 // splicer end namespace.outer.C_declarations

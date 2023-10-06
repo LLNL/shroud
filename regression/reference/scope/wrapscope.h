@@ -46,12 +46,23 @@ enum SCO_ColorEnum {
     SCO_ColorEnum_WHITE
 };
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using SCO_datapointer = ns3::DataPointer;
+#else  // __cplusplus
 
 typedef struct s_SCO_datapointer SCO_datapointer;
 struct s_SCO_datapointer {
     int nitems;
     int * items;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations

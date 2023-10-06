@@ -57,12 +57,23 @@ typedef int32_t TYP_IndexType;
 // splicer end typedef.IndexType
 // end typedef IndexType
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using TYP_struct1rename = Struct1Rename;
+#else  // __cplusplus
 
 typedef struct s_TYP_struct1rename TYP_struct1rename;
 struct s_TYP_struct1rename {
     int i;
     double d;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations

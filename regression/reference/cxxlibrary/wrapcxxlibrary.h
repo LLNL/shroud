@@ -32,6 +32,12 @@
 extern "C" {
 #endif
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using CXX_nested = nested;
+#else  // __cplusplus
 
 typedef struct s_CXX_nested CXX_nested;
 struct s_CXX_nested {
@@ -40,6 +46,11 @@ struct s_CXX_nested {
     CXX_nested * * child;
     char * name;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations

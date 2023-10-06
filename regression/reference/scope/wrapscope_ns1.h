@@ -32,12 +32,23 @@ enum SCO_ns1_Color {
     SCO_ns1_WHITE
 };
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using SCO_datapointer = ns1::DataPointer;
+#else  // __cplusplus
 
 typedef struct s_SCO_datapointer SCO_datapointer;
 struct s_SCO_datapointer {
     int nitems;
     int * items;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin namespace.ns1.C_declarations
 // splicer end namespace.ns1.C_declarations
