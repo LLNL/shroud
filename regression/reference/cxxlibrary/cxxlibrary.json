@@ -252,7 +252,9 @@
                 "<CLASS>": "****************************************",
                 "cxx_header": [],
                 "name": "nested",
-                "options": {},
+                "options": {
+                    "F_struct_getter_setter": false
+                },
                 "parse_keyword": "struct",
                 "scope": "nested::",
                 "typemap_name": "nested",
@@ -283,6 +285,108 @@
                             "variable_lower": "sublevels",
                             "variable_name": "sublevels",
                             "variable_upper": "SUBLEVELS"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "parent",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "nested"
+                            },
+                            "specifier": [
+                                "nested"
+                            ],
+                            "typemap_name": "nested"
+                        },
+                        "name": "parent",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "CXX_nested",
+                            "cxx_type": "nested",
+                            "field_name": "parent",
+                            "variable_lower": "parent",
+                            "variable_name": "parent",
+                            "variable_upper": "PARENT"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "child",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "nested"
+                            },
+                            "specifier": [
+                                "nested"
+                            ],
+                            "typemap_name": "nested"
+                        },
+                        "name": "child",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "CXX_nested",
+                            "cxx_type": "nested",
+                            "field_name": "child",
+                            "variable_lower": "child",
+                            "variable_name": "child",
+                            "variable_upper": "CHILD"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name",
+                            "variable_lower": "name",
+                            "variable_name": "name",
+                            "variable_upper": "NAME"
                         }
                     }
                 ],
