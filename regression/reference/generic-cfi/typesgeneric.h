@@ -14,13 +14,6 @@
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
-// helper capsule_GEN_StructAsClass
-struct s_GEN_StructAsClass {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_GEN_StructAsClass GEN_StructAsClass;
-
 // helper capsule_data_helper
 struct s_GEN_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
@@ -68,6 +61,13 @@ typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
+
+// C capsule GEN_StructAsClass
+struct s_GEN_StructAsClass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_StructAsClass GEN_StructAsClass;
 
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap);
 

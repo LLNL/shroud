@@ -56,6 +56,8 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
+        self.capsule_impl_cxx = []
+        self.capsule_impl_c = []
         self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
@@ -406,6 +408,7 @@ class Wrapc(util.WrapperMixin):
             self._create_splicer('C_declarations', output)
 
         output.extend(self.helper_summary["c"]["cwrap_include"])
+        self.write_class_capsule_structs(output)
 
         proto = self.helper_summary["c"]["proto"]
         if proto:
@@ -644,6 +647,40 @@ class Wrapc(util.WrapperMixin):
                 ]
             )
 
+    def add_class_capsule_structs(self, node):
+        """Create the capsule structs for a class.
+        A C++ struct with the actual type,
+        and a C struct with void pointer.
+        """
+        fmt_class = node.fmtdict
+        literalinclude = node.options.literalinclude
+        cname = node.typemap.c_type
+
+        self.capsule_impl_cxx.append("// CXX capsule " + cname)
+
+        output = self.capsule_impl_c
+        output.append("")
+        if literalinclude:
+            output.append("// start C capsule " + cname)
+        output.append("// C capsule " + cname)
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        util.append_format(self.capsule_impl_c,
+"""struct s_{C_type_name} {{+
+void *addr;     /* address of C++ memory */
+int idtor;      /* index of destructor */
+-}};
+typedef struct s_{C_type_name} {C_type_name};""",
+                           fmt_class)
+        if node.cpp_if:
+            output.append("#endif  // " + node.cpp_if)
+        if literalinclude:
+            output.append("// end C capsule " + cname)
+
+    def write_class_capsule_structs(self, output):
+#        output.extend(self.capsule_impl_cxx)
+        output.extend(self.capsule_impl_c)
+        
     def wrap_class(self, node):
         """
         Args:
@@ -658,10 +695,8 @@ class Wrapc(util.WrapperMixin):
         # call method syntax
         fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
 
-        # create a forward declaration for this type
-        hname = whelpers.add_shadow_helper(node)
-        self.shared_helper[hname] = True
         self.compute_idtor(node)
+        self.add_class_capsule_structs(node)
 
         self.wrap_typedefs(node)
         self.wrap_enums(node)

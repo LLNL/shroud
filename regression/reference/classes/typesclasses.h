@@ -89,53 +89,53 @@ struct s_CLA_SHROUD_array {
 typedef struct s_CLA_SHROUD_array CLA_SHROUD_array;
 // end array_context
 
-// helper capsule_CLA_Circle
-struct s_CLA_Circle {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_CLA_Circle CLA_Circle;
-
-// start struct CLA_Class1
-// helper capsule_CLA_Class1
+// start C capsule CLA_Class1
+// C capsule CLA_Class1
 struct s_CLA_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Class1 CLA_Class1;
-// end struct CLA_Class1
+// end C capsule CLA_Class1
 
-// helper capsule_CLA_Class2
+// C capsule CLA_Class2
 struct s_CLA_Class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Class2 CLA_Class2;
 
-// start struct CLA_Data
-// helper capsule_CLA_Data
-struct s_CLA_Data {
+// start C capsule CLA_Singleton
+// C capsule CLA_Singleton
+struct s_CLA_Singleton {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_CLA_Data CLA_Data;
-// end struct CLA_Data
+typedef struct s_CLA_Singleton CLA_Singleton;
+// end C capsule CLA_Singleton
 
-// helper capsule_CLA_Shape
+// C capsule CLA_Shape
 struct s_CLA_Shape {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Shape CLA_Shape;
 
-// start struct CLA_Singleton
-// helper capsule_CLA_Singleton
-struct s_CLA_Singleton {
+// C capsule CLA_Circle
+struct s_CLA_Circle {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_CLA_Singleton CLA_Singleton;
-// end struct CLA_Singleton
+typedef struct s_CLA_Circle CLA_Circle;
+
+// start C capsule CLA_Data
+// C capsule CLA_Data
+struct s_CLA_Data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Data CLA_Data;
+// end C capsule CLA_Data
 
 void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap);
 

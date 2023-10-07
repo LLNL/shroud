@@ -87,14 +87,14 @@ struct s_SCO_SHROUD_array {
 };
 typedef struct s_SCO_SHROUD_array SCO_SHROUD_array;
 
-// helper capsule_SCO_Class1
+// C capsule SCO_Class1
 struct s_SCO_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_Class1 SCO_Class1;
 
-// helper capsule_SCO_Class2
+// C capsule SCO_Class2
 struct s_SCO_Class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

@@ -915,48 +915,6 @@ size_t size;
     
 ######################################################################
 
-def add_shadow_helper(node):
-    """
-    Add helper functions for each shadow type.
-
-    Args:
-        node -
-    """
-    cname = node.typemap.c_type
-
-    name = "capsule_{}".format(cname)
-    if name not in CHelpers:
-        if node.options.literalinclude:
-            lstart = "{}struct {}\n".format(cstart, cname)
-            lend = "\n{}struct {}".format(cend, cname)
-        else:
-            lstart = ""
-            lend = ""
-        if node.cpp_if:
-            cpp_if = "#" + node.cpp_if + "\n"
-            cpp_endif = "\n#endif  // " + node.cpp_if
-        else:
-            cpp_if = ""
-            cpp_endif = ""
-        helper = dict(
-            scope="cwrap_include",
-            # h_shared_code
-            source="""
-{lstart}// helper {hname}
-{cpp_if}struct s_{C_type_name} {{+
-void *addr;     /* address of C++ memory */
-int idtor;      /* index of destructor */
--}};
-typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
-                hname=name, C_type_name=cname,
-                cpp_if=cpp_if, cpp_endif=cpp_endif,
-                lstart=lstart, lend=lend,
-            )
-        )
-        CHelpers[name] = helper
-    return name
-
-
 def add_capsule_helper():
     """Share info with C++ to allow Fortran to release memory.
 

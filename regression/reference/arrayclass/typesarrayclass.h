@@ -87,7 +87,7 @@ struct s_ARR_SHROUD_array {
 };
 typedef struct s_ARR_SHROUD_array ARR_SHROUD_array;
 
-// helper capsule_ARR_ArrayWrapper
+// C capsule ARR_ArrayWrapper
 struct s_ARR_ArrayWrapper {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

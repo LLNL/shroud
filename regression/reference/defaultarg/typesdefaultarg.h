@@ -28,19 +28,19 @@ typedef int32_t IndexType;
 #endif
 // splicer end types.C_declarations
 
-// helper capsule_DEF_Class1
-struct s_DEF_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_DEF_Class1 DEF_Class1;
-
 // helper capsule_data_helper
 struct s_DEF_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_DEF_SHROUD_capsule_data DEF_SHROUD_capsule_data;
+
+// C capsule DEF_Class1
+struct s_DEF_Class1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_DEF_Class1 DEF_Class1;
 
 void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap);
 

@@ -87,7 +87,7 @@ struct s_OWN_SHROUD_array {
 };
 typedef struct s_OWN_SHROUD_array OWN_SHROUD_array;
 
-// helper capsule_OWN_Class1
+// C capsule OWN_Class1
 struct s_OWN_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

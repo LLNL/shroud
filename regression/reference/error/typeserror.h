@@ -21,19 +21,19 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_ERR_Cstruct_as_subclass
-struct s_ERR_Cstruct_as_subclass {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_ERR_Cstruct_as_subclass ERR_Cstruct_as_subclass;
-
 // helper capsule_data_helper
 struct s_ERR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_ERR_SHROUD_capsule_data ERR_SHROUD_capsule_data;
+
+// C capsule ERR_Cstruct_as_subclass
+struct s_ERR_Cstruct_as_subclass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_ERR_Cstruct_as_subclass ERR_Cstruct_as_subclass;
 
 void ERR_SHROUD_memory_destructor(ERR_SHROUD_capsule_data *cap);
 
