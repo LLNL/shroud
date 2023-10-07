@@ -1698,11 +1698,9 @@ class GenFunctions(object):
         elif result_typemap.sgroup == "string":
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif meta["deref"] in ["allocatable", "pointer"]:
             need_buf_result   = "cfi"
 
@@ -1871,7 +1869,6 @@ class GenFunctions(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 # Result default to "allocatable".
@@ -1879,7 +1876,6 @@ class GenFunctions(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
             need_buf_result = "cdesc"
         elif result_is_ptr:
