@@ -4660,7 +4660,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this",
                     "C_name": "STR_Cstruct_ptr_get_const_dvalue",
                     "C_name_api": "Cstruct_ptr_get_const_dvalue",
@@ -4853,7 +4852,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this,\t val",
                     "C_name": "STR_Cstruct_ptr_set_const_dvalue",
                     "C_name_api": "Cstruct_ptr_set_const_dvalue",
@@ -5062,7 +5060,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this",
                     "C_name": "STR_Cstruct_list_get_ivalue_bufferify",
                     "C_name_api": "Cstruct_list_get_ivalue",
@@ -5287,7 +5284,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this,\t val",
                     "C_name": "STR_Cstruct_list_set_ivalue",
                     "C_name_api": "Cstruct_list_set_ivalue",
@@ -5496,7 +5492,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this",
                     "C_name": "STR_Cstruct_list_get_dvalue_bufferify",
                     "C_name_api": "Cstruct_list_get_dvalue",
@@ -5721,7 +5716,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this,\t val",
                     "C_name": "STR_Cstruct_list_set_dvalue",
                     "C_name_api": "Cstruct_list_set_dvalue",

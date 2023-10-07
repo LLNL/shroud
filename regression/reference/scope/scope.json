@@ -671,7 +671,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this",
                     "C_name": "SCO_DataPointer_get_items_bufferify",
                     "C_name_api": "DataPointer_get_items",
@@ -890,7 +889,6 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SH_this",
                     "C_call_list": "SH_this,\t val",
                     "C_name": "SCO_DataPointer_set_items",
                     "C_name_api": "DataPointer_set_items",
@@ -1259,7 +1257,6 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SH_this",
                             "C_call_list": "SH_this",
                             "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
@@ -1478,7 +1475,6 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SH_this",
                             "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns1_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
@@ -1874,7 +1870,6 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SH_this",
                             "C_call_list": "SH_this",
                             "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
@@ -2093,7 +2088,6 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SH_this",
                             "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns2_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",

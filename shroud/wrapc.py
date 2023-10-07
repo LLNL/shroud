@@ -1199,11 +1199,6 @@ class Wrapc(util.WrapperMixin):
                 )
             compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
-            if c_meta["struct"]:
-                # This is a getter/setter 'this' argument.
-                # Need to use variable name for CXX_this to use with statements.
-                fmt_func.CXX_this = fmt_arg.cxx_var
-                
             fmt_arg.stmtc = arg_stmt.name
             notimplemented = notimplemented or arg_stmt.notimplemented
             if options.debug:
