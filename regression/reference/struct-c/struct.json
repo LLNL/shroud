@@ -4575,16 +4575,14 @@
                     "declarator": {
                         "metaattrs": {
                             "deref": "pointer",
-                            "intent": "getter",
-                            "struct": "Cstruct_ptr"
+                            "intent": "getter"
                         },
                         "name": "Cstruct_ptr_get_const_dvalue",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "Cstruct_ptr"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -4616,6 +4614,7 @@
                 "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
                 "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
+                "struct_parent": "Cstruct_ptr",
                 "user_fmt": {
                     "field_name": "const_dvalue",
                     "struct_name": "Cstruct_ptr",
@@ -4728,8 +4727,7 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "Cstruct_ptr"
+                                        "intent": "inout"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -4895,16 +4893,14 @@
                                     }
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "Cstruct_list"
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "Cstruct_list"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -4936,6 +4932,7 @@
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
                 "name": "Cstruct_list_get_ivalue",
                 "options": {},
+                "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "ivalue",
                     "struct_name": "Cstruct_list",
@@ -4974,16 +4971,14 @@
                                     }
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "Cstruct_list"
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "Cstruct_list"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -5016,6 +5011,7 @@
                 "name": "Cstruct_list_get_ivalue",
                 "options": {},
                 "splicer_group": "buf",
+                "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "ivalue",
                     "struct_name": "Cstruct_list",
@@ -5143,8 +5139,7 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "Cstruct_list"
+                                        "intent": "inout"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -5327,16 +5322,14 @@
                                     }
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "Cstruct_list"
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "Cstruct_list"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -5368,6 +5361,7 @@
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
                 "name": "Cstruct_list_get_dvalue",
                 "options": {},
+                "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "dvalue",
                     "struct_name": "Cstruct_list",
@@ -5406,16 +5400,14 @@
                                     }
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "Cstruct_list"
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "Cstruct_list"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -5448,6 +5440,7 @@
                 "name": "Cstruct_list_get_dvalue",
                 "options": {},
                 "splicer_group": "buf",
+                "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "dvalue",
                     "struct_name": "Cstruct_list",
@@ -5575,8 +5568,7 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "Cstruct_list"
+                                        "intent": "inout"
                                     },
                                     "name": "SH_this",
                                     "pointer": [

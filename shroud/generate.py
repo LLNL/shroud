@@ -879,9 +879,7 @@ class GenFunctions(object):
         meta["intent"] = "getter"
         meta["deref"] = deref
         if is_struct:
-            meta["struct"] = cls.typemap.flat_name
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
-            meta["struct"] = cls.typemap.flat_name
             meta["intent"] = "in"
             fcn.struct_parent = cls
         fcn.wrap.lua = False
@@ -912,7 +910,6 @@ class GenFunctions(object):
         if is_struct:
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
             meta["intent"] = "inout"
-            meta["struct"] = cls.typemap.flat_name
             iarg = 1
         meta = fcn.ast.declarator.params[iarg].declarator.metaattrs
         meta.update(declarator.metaattrs)

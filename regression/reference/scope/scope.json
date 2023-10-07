@@ -513,16 +513,14 @@
                                     "name": "nitems"
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "ns3_DataPointer"
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -554,6 +552,7 @@
                 "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "name": "DataPointer_get_items",
                 "options": {},
+                "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
                     "struct_name": "DataPointer",
@@ -585,16 +584,14 @@
                                     "name": "nitems"
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "ns3_DataPointer"
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -627,6 +624,7 @@
                 "name": "DataPointer_get_items",
                 "options": {},
                 "splicer_group": "buf",
+                "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
                     "struct_name": "DataPointer",
@@ -754,8 +752,7 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "inout"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -1098,16 +1095,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns1_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1139,6 +1134,7 @@
                         "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "name": "DataPointer_get_items",
                         "options": {},
+                        "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1171,16 +1167,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns1_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1213,6 +1207,7 @@
                         "name": "DataPointer_get_items",
                         "options": {},
                         "splicer_group": "buf",
+                        "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1340,8 +1335,7 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "inout",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "inout"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1711,16 +1705,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns2_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1752,6 +1744,7 @@
                         "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "name": "DataPointer_get_items",
                         "options": {},
+                        "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1784,16 +1777,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns2_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1826,6 +1817,7 @@
                         "name": "DataPointer_get_items",
                         "options": {},
                         "splicer_group": "buf",
+                        "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1953,8 +1945,7 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "inout",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "inout"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
