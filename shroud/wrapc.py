@@ -856,15 +856,12 @@ class Wrapc(util.WrapperMixin):
         meta = declarator.metaattrs
         
         if meta["dimension"]:
-            fcn_struct = fcn.ast.declarator.metaattrs["struct"]
             if cls is not None:
                 parent = cls
-                cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
-            elif fcn_struct:
-                # metaattr set in add_var_getter_setter
-                parent = self.newlibrary.class_map[fcn_struct]
-                parent.create_node_map()
+            elif fcn.struct_parent:
+                # struct_parent is set in add_var_getter_setter
+                parent = fcn.struct_parent
                 class_context = wformat("{CXX_this}->", fmt)
             else:
                 parent = None

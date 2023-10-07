@@ -883,6 +883,7 @@ class GenFunctions(object):
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
             meta["struct"] = cls.typemap.flat_name
             meta["intent"] = "in"
+            fcn.struct_parent = cls
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
@@ -1085,6 +1086,7 @@ class GenFunctions(object):
                                .format(cls.typemap.flat_name))
             return
         self.class_map[cls.typemap.flat_name] = cls
+        cls.create_node_map()
         for var in cls.variables:
             self.add_var_getter_setter(parent, cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
