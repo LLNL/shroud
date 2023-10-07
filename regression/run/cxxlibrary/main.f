@@ -18,6 +18,7 @@ program tester
   call test_struct
   call test_default_args
   call test_generic
+  call test_nested
 
   call fruit_summary
   call fruit_finalize
@@ -34,7 +35,7 @@ contains
     type(cstruct1) str1, str2
     integer(C_INT) rvi
 
-    call set_case_name("test_struct")
+    call set_case_name("struct")
 
     str1 = cstruct1(2, 2.0)
     call assert_equals(2_C_INT, str1%ifield, "cstruct1 constructor ifield")
@@ -64,6 +65,8 @@ contains
     real(C_DOUBLE) :: some_var(2)
     integer(C_INT) :: out1, out2
     
+    call set_case_name("default_args")
+
     call assert_true(default_ptr_is_null())
     call assert_false(default_ptr_is_null(some_var))
 
@@ -81,6 +84,8 @@ contains
     use cxxlibrary_mod
     character(30) rv
 
+    call set_case_name("generic")
+
     rv = get_group_name(1)
     call assert_equals("global-string", rv, "getGroupName");
     rv = get_group_name(1_C_INT)
@@ -93,5 +98,35 @@ contains
     call assert_equals("global-string", rv, "getGroupName");
     
   end subroutine test_generic
+
+  subroutine test_nested
+    use cxxlibrary_mod
+
+    type(nested) pnode
+    type(nested) n1, kids(3)
+    type(nested), pointer :: parent
+!    type(nested), pointer :: child(:)
+
+    call set_case_name("nested")
+
+    pnode%index = 1
+    n1%index = 2
+    kids(1)%index = 31
+    kids(2)%index = 32
+    kids(3)%index = 33
+    
+    call nested_set_parent(n1, pnode)
+    
+    parent => nested_get_parent(n1)
+    call assert_equals(pnode%index, parent%index, "nested_get_parent 1");
+
+!    n1%sublevels = size(kids)
+!    call nested_set_child(n1, kids)
+!    child = nested_get_child(n1)
+!    call assert_equals(child(1)%index, kids(1)%index, "nested_get_child 1 1");
+!    call assert_equals(child(2)%index, kids(2)%index, "nested_get_child 1 2");
+!    call assert_equals(child(3)%index, kids(3)%index, "nested_get_child 1 3");
+    
+  end subroutine test_nested
   
 end program tester

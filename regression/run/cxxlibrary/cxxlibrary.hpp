@@ -60,6 +60,7 @@ const std::string& getGroupName(long idx);
 //----------------------------------------------------------------------
 
 struct nested {
+    int index;
     int sublevels;
     nested *parent;
     nested **child;

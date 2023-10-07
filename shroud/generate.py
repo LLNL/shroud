@@ -797,11 +797,6 @@ class GenFunctions(object):
         Must explicitly set metaattrs for arguments since that was
         done earlier when validating attributes.
 
-        The 'struct' meta attribute is set on the getter so member
-        names in the dimension attribute can be looked up. And set on
-        the 'this' argument to help set CXX_this properly in the C
-        wrapper.
-
         Parameters
         ----------
         parent : ast.LibraryNode, ast.ClassNode
@@ -816,6 +811,7 @@ class GenFunctions(object):
         ast = var.ast
         declarator = ast.declarator
         sgroup = ast.typemap.sgroup
+        meta = declarator.metaattrs
 
         fmt = util.Scope(var.fmtdict)
         fmt_func = dict(
@@ -827,12 +823,18 @@ class GenFunctions(object):
 
         is_struct = cls.wrap_as == "struct"
         if is_struct:
+            nptr = declarator.is_pointer()
             if not options.F_struct_getter_setter:
                 return
-            if declarator.is_pointer() != 1:
+            elif sgroup == "struct":
+                if nptr != 1 and nptr != 2:
+                    # Array of pointers
+                    return
+            elif nptr != 1:
+                # Do not write getter for scalar fields since they can be accessed directly
                 # Skip scalar and char**.
                 return
-            if sgroup in ["char", "string"]:
+            elif sgroup in ["char", "string"]:
                 # No strings for now.
                 return
             # Explicity add the 'this' argument. Added automatically for classes.
@@ -852,6 +854,7 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
+        api = None
         deref = None
         if sgroup in ["char", "string"]:
             value = None
@@ -859,9 +862,15 @@ class GenFunctions(object):
         elif sgroup == "vector":
             value = None
             deref = "pointer"
+        elif sgroup == "struct":
+            value = None
+            deref = "pointer"
+            api = "cdesc"
         elif declarator.is_pointer():
             value = None
             deref = "pointer"
+#            if meta["dimension"] is None:
+#                api = "fapi" 
         else:
             value = True
             deref = None
@@ -878,11 +887,11 @@ class GenFunctions(object):
         meta.update(declarator.metaattrs)
         meta["intent"] = "getter"
         meta["deref"] = deref
+        meta["api"] = api
         if is_struct:
-            meta["struct"] = cls.typemap.flat_name
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
-            meta["struct"] = cls.typemap.flat_name
             meta["intent"] = "in"
+            fcn.struct_parent = cls
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
@@ -891,7 +900,8 @@ class GenFunctions(object):
         # setter
         if declarator.attrs["readonly"]:
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name="val",
+                                          continuation=True)
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         attrs = dict(
@@ -911,7 +921,6 @@ class GenFunctions(object):
         if is_struct:
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
             meta["intent"] = "inout"
-            meta["struct"] = cls.typemap.flat_name
             iarg = 1
         meta = fcn.ast.declarator.params[iarg].declarator.metaattrs
         meta.update(declarator.metaattrs)
@@ -1085,6 +1094,7 @@ class GenFunctions(object):
                                .format(cls.typemap.flat_name))
             return
         self.class_map[cls.typemap.flat_name] = cls
+        cls.create_node_map()
         for var in cls.variables:
             self.add_var_getter_setter(parent, cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
@@ -1688,11 +1698,9 @@ class GenFunctions(object):
         elif result_typemap.sgroup == "string":
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif meta["deref"] in ["allocatable", "pointer"]:
             need_buf_result   = "cfi"
 
@@ -1861,7 +1869,6 @@ class GenFunctions(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 # Result default to "allocatable".
@@ -1869,7 +1876,6 @@ class GenFunctions(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
             need_buf_result = "cdesc"
         elif result_is_ptr:

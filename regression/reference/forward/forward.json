@@ -668,14 +668,14 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_type": "STR_cstruct1",
+                            "c_type": "Cstruct1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(SHCXX_arg)",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
                             "cxx_type": "Cstruct1",
-                            "cxx_var": "SHCXX_arg",
+                            "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtc": "f_in_struct_*"
@@ -695,10 +695,10 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg",
+                    "C_call_list": "arg",
                     "C_name": "FOR_passStruct1",
                     "C_name_api": "passStruct1",
-                    "C_prototype": "const STR_cstruct1 * arg",
+                    "C_prototype": "const Cstruct1 * arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_pass_struct1",
@@ -772,7 +772,7 @@
     "types": {
         "Cstruct1": {
             "base": "struct",
-            "c_type": "STR_cstruct1",
+            "c_type": "Cstruct1",
             "cxx_header": [
                 "struct.hpp"
             ],

@@ -34,9 +34,7 @@ extern "C" {
 int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReference
-    structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
-        (static_cast<void *>(arg));
-    int SHC_rv = structns::passStructByReference(*SHCXX_arg);
+    int SHC_rv = structns::passStructByReference(*arg);
     return SHC_rv;
     // splicer end namespace.structns.function.passStructByReference
 }
@@ -55,10 +53,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceIn
-    const structns::Cstruct1 * SHCXX_arg = 
-        static_cast<const structns::Cstruct1 *>
-        (static_cast<const void *>(arg));
-    int SHC_rv = structns::passStructByReferenceIn(*SHCXX_arg);
+    int SHC_rv = structns::passStructByReferenceIn(*arg);
     return SHC_rv;
     // splicer end namespace.structns.function.passStructByReferenceIn
 }
@@ -74,9 +69,7 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceInout
-    structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
-        (static_cast<void *>(arg));
-    structns::passStructByReferenceInout(*SHCXX_arg);
+    structns::passStructByReferenceInout(*arg);
     // splicer end namespace.structns.function.passStructByReferenceInout
 }
 
@@ -91,9 +84,7 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceOut
-    structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
-        (static_cast<void *>(arg));
-    structns::passStructByReferenceOut(*SHCXX_arg);
+    structns::passStructByReferenceOut(*arg);
     // splicer end namespace.structns.function.passStructByReferenceOut
 }
 

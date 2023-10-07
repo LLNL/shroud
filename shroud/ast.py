@@ -1467,6 +1467,7 @@ class FunctionNode(AstNode):
         self.splicer = {}
         self.fstatements = {}
         self.splicer_group = None
+        self.struct_parent = None         # Function is a getter/setter for a struct
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper

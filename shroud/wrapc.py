@@ -76,7 +76,8 @@ class Wrapc(util.WrapperMixin):
         self.impl = []
         self.typedef_impl = []
         self.enum_impl = []
-        self.struct_impl = []
+        self.struct_impl_cxx = []
+        self.struct_impl_c = []
         self.c_helper = {}
         self.c_helper_include = {}  # include files in generated C header
 
@@ -472,7 +473,16 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             if self._create_splicer("CXX_declarations", output):
                 write_file = True
-            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+            start_cxx = ["#ifdef __cplusplus"]
+            else_cxx = ["#else  // __cplusplus"]
+            end_cxx = ["#endif  // __cplusplus"]
+            end_extern_c = ["", "#ifdef __cplusplus", "}", "#endif"]
+            start_extern_c = ["", "#ifdef __cplusplus", 'extern "C" {', "#endif"]
+            end_extern_c = ["", "#ifdef __cplusplus", "}", "#endif"]
+        else:
+            start_extern_c = []
+            end_extern_c = []
+        output.extend(start_extern_c)
 
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
@@ -485,9 +495,15 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(self.enum_impl)
 
-        if self.struct_impl:
+        if self.struct_impl_c:
             write_file = True
-            output.extend(self.struct_impl)
+            output.extend(end_extern_c)
+            output.extend(start_cxx)
+            output.extend(self.struct_impl_cxx)
+            output.extend(else_cxx)
+            output.extend(self.struct_impl_c)
+            output.extend(end_cxx)
+            output.extend(start_extern_c)
 
         output.append("")
         if self._create_splicer("C_declarations", output):
@@ -495,8 +511,7 @@ class Wrapc(util.WrapperMixin):
         if self.header_proto_c:
             write_file = True
             output.extend(self.header_proto_c)
-        if self.language == "cxx":
-            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+        output.extend(end_extern_c)
         if cls and cls.cpp_if:
             output.append("#endif  // " + node.cpp_if)
         output.extend(["", "#endif  // " + guard])
@@ -586,9 +601,12 @@ class Wrapc(util.WrapperMixin):
             return
         self.log.write("struct {1.name}\n".format(self, node))
         cname = node.typemap.c_type
+        cxxname = node.typemap.cxx_type
 
-        output = self.struct_impl
-        output.append("")
+        output = self.struct_impl_cxx
+        output.append("using {} = {};".format(cname, cxxname))
+    
+        output = self.struct_impl_c
         output.extend(
             [
                 "",
@@ -838,15 +856,12 @@ class Wrapc(util.WrapperMixin):
         meta = declarator.metaattrs
         
         if meta["dimension"]:
-            fcn_struct = fcn.ast.declarator.metaattrs["struct"]
             if cls is not None:
                 parent = cls
-                cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
-            elif fcn_struct:
-                # metaattr set in add_var_getter_setter
-                parent = self.newlibrary.class_map[fcn_struct]
-                parent.create_node_map()
+            elif fcn.struct_parent:
+                # struct_parent is set in add_var_getter_setter
+                parent = fcn.struct_parent
                 class_context = wformat("{CXX_this}->", fmt)
             else:
                 parent = None
@@ -1181,11 +1196,6 @@ class Wrapc(util.WrapperMixin):
                 )
             compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
-            if c_meta["struct"]:
-                # This is a getter/setter 'this' argument.
-                # Need to use variable name for CXX_this to use with statements.
-                fmt_func.CXX_this = fmt_arg.cxx_var
-                
             fmt_arg.stmtc = arg_stmt.name
             notimplemented = notimplemented or arg_stmt.notimplemented
             if options.debug:

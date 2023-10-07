@@ -28,12 +28,10 @@ extern "C" {
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
 // Statement: f_in_struct_*
-int FOR_passStruct1(const STR_cstruct1 * arg)
+int FOR_passStruct1(const Cstruct1 * arg)
 {
     // splicer begin function.passStruct1
-    const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>
-        (static_cast<const void *>(arg));
-    int SHC_rv = forward::passStruct1(SHCXX_arg);
+    int SHC_rv = forward::passStruct1(arg);
     return SHC_rv;
     // splicer end function.passStruct1
 }

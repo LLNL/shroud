@@ -458,6 +458,15 @@ root
         scalar
           cdesc
             allocatable -- f_getter_string_scalar_cdesc_allocatable
+      struct
+        *
+          cdesc
+            pointer -- f_getter_native_*_cdesc_pointer
+          fapi
+            pointer -- f_getter_struct_*_fapi_pointer
+        **
+          cdesc
+            pointer -- f_getter_native_*_cdesc_pointer
     in
       bool
         scalar -- f_in_bool_scalar
@@ -714,6 +723,10 @@ root
       string
         scalar
           buf -- f_setter_string_scalar_buf
+      struct
+        * -- f_setter_struct_*_pointer
+          pointer -- f_setter_struct_*_pointer
+        ** -- f_setter_struct_*_pointer
       void
         scalar -- f_setter
     shared
@@ -1606,27 +1619,12 @@ c_function_string_scalar_buf_copy:
   name: c_function_string_scalar_buf_copy
   owner: library
 c_function_struct_*_pointer:
-  c_post_call:
-  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
-    \ *>(\t{cxx_addr}{cxx_var}));"
-  c_return:
-  - return {c_var_c};
-  c_temps:
-  - c
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {c_var}
   intent: function
-  lang_cxx:
-    c_post_call:
-    - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
-      \ *>(\t{cxx_addr}{cxx_var}));"
-    c_return:
-    - return {c_var_c};
-    c_temps:
-    - c
   name: c_function_struct_*_pointer
   owner: library
 c_function_struct_scalar:
@@ -1967,42 +1965,15 @@ c_in_string_scalar_buf:
   name: c_in_string_scalar_buf
   owner: library
 c_in_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_&
   owner: library
 c_in_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_*
   owner: library
 c_in_struct_scalar:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_scalar
   owner: library
 c_in_unknown_scalar:
@@ -2483,29 +2454,11 @@ c_inout_string_*_buf:
   name: c_inout_string_*_buf
   owner: library
 c_inout_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_inout_struct_&
   owner: library
 c_inout_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_inout_struct_*
   owner: library
 c_inout_void_**:
@@ -3164,29 +3117,11 @@ c_out_string_*_buf:
   name: c_out_string_*_buf
   owner: library
 c_out_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_out_struct_&
   owner: library
 c_out_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_out_struct_*
   owner: library
 c_out_vector_&_cdesc_allocatable_targ_native_scalar:
@@ -6794,13 +6729,6 @@ f_function_string_scalar_cfi_pointer_library:
   name: f_function_string_scalar_cfi_pointer_library
   owner: library
 f_function_struct_*_pointer:
-  c_post_call:
-  - "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void\
-    \ *>(\t{cxx_addr}{cxx_var}));"
-  c_return:
-  - return {c_var_c};
-  c_temps:
-  - c
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -7021,6 +6949,106 @@ f_getter_string_scalar_cdesc_allocatable:
   - '{F_array_type}'
   intent: getter
   name: f_getter_string_scalar_cdesc_allocatable
+  owner: library
+f_getter_struct_**_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_helper:
+  - type_defines
+  - array_context
+  c_return_type: void
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  f_post_call:
+  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: getter
+  name: f_getter_struct_**_cdesc_pointer
+  owner: library
+f_getter_struct_*_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_helper:
+  - type_defines
+  - array_context
+  c_return_type: void
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  f_post_call:
+  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: getter
+  name: f_getter_struct_*_cdesc_pointer
+  owner: library
+f_getter_struct_*_fapi_pointer:
+  f_arg_decl:
+  - '{f_type}, pointer :: {F_result}'
+  f_call:
+  - call c_f_pointer({CXX_this}%{field_name}, {F_result})
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  intent: getter
+  name: f_getter_struct_*_fapi_pointer
   owner: library
 f_in_bool_scalar:
   f_arg_call:
@@ -7565,26 +7593,14 @@ f_in_string_scalar_cfi:
   name: f_in_string_scalar_cfi
   owner: library
 f_in_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_&
   owner: library
 f_in_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_*
   owner: library
 f_in_struct_scalar:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_scalar
   owner: library
@@ -8363,18 +8379,10 @@ f_inout_string_*_cfi:
   name: f_inout_string_*_cfi
   owner: library
 f_inout_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
   name: f_inout_struct_&
   owner: library
 f_inout_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
   name: f_inout_struct_*
   owner: library
@@ -9738,18 +9746,10 @@ f_out_string_*_cfi:
   name: f_out_string_*_cfi
   owner: library
 f_out_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
   name: f_out_struct_&
   owner: library
 f_out_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
   name: f_out_struct_*
   owner: library
@@ -10217,6 +10217,36 @@ f_setter_string_scalar_buf:
   intent: setter
   name: f_setter_string_scalar_buf
   owner: library
+f_setter_struct_*:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_struct_*
+  owner: library
+f_setter_struct_**:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_struct_**
+  owner: library
+f_setter_struct_*_pointer:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  i_arg_names:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_struct_*_pointer
+  owner: library
 f_setter_void_scalar:
   c_call:
   - // skip call c_setter
@@ -10285,10 +10315,6 @@ f_shared_native_scalar:
   name: f_shared_native_scalar
   owner: library
 f_shared_struct:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: shared
   name: f_shared_struct
   owner: library

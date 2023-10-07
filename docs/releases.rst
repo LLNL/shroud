@@ -94,11 +94,11 @@ Unreleased
      - f_local
 
 * Added format field *f_c_suffix*. Used in format fields
-  **C_name_template* and F_C_name_template* to allow Fortran wrapper
+  *C_name_template* and *F_C_name_template* to allow Fortran wrapper
   *to call a C function with additional mangling such as
-  **C_cfi_suffix* and *C_bufferify_suffix*.  Previously this was
+  *C_cfi_suffix* and *C_bufferify_suffix*.  Previously this was
   *appended directly to format field *function_suffix*. If
-  **C_name_template* or F_C_name_template* are explicitly set in the
+  *C_name_template* or F_C_name_template* are explicitly set in the
   *YAML file then *f_c_suffix* should be included in the value.
 
 .. See names.yaml
@@ -163,6 +163,12 @@ Unreleased
    * - ShroudTypeDefines
      - type_defines
 
+
+.. Structs in the C++ wrappers now accessed via  a ``using`` statement.
+   The C structs which are created are only used by users of the header,
+   not the implementation.
+   As a side effect of this, the forward.yaml test no longer needs to define
+   the *c_type* field since the C++ type will be used.
   
 New Features
 ^^^^^^^^^^^^
@@ -171,6 +177,9 @@ New Features
   *fmtdict* already in the Python statement groups. It allows format
   fields to be set explicitly in the statement group to override the
   any defaults.
+
+* Support recursive structs. Allows trees to be build in structs.
+* Add getter/setter for ``struct`` pointer fields in a struct.
 
 v0.13.0
 -------

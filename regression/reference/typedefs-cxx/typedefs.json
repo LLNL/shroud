@@ -331,9 +331,9 @@
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg1",
+                            "cxx_nonconst_ptr": "arg1",
                             "cxx_type": "Struct1Rename",
-                            "cxx_var": "SHCXX_arg1",
+                            "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtc": "f_inout_struct_*"
@@ -375,7 +375,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
+                    "C_call_list": "arg1",
                     "C_name": "TYP_typestruct",
                     "C_name_api": "typestruct",
                     "C_prototype": "TYP_Struct1Rename * arg1",

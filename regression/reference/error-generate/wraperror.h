@@ -25,17 +25,28 @@
 extern "C" {
 #endif
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using ERR_struct1 = struct1;
+using ERR_nested = nested;
+#else  // __cplusplus
 
 typedef struct s_ERR_struct1 ERR_struct1;
 struct s_ERR_struct1 {
     int arg1;
 };
 
-
 typedef struct s_ERR_nested ERR_nested;
 struct s_ERR_nested {
     int sublevels;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations

@@ -94,10 +94,8 @@ declarations:
 - decl: struct nested
   doxygen:
     brief: A recursive struct (without using a typedef)
-  options:
-    F_struct_getter_setter: False
   declarations:
+  - decl: int index
   - decl: int sublevels
   - decl: nested *parent
-  - decl: nested **child
-  - decl: char *name
+  - decl: nested **child +dimension(sublevels)

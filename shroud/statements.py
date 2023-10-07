@@ -6,6 +6,7 @@
 
 """
 """
+from . import error
 from .util import wformat
 
 import yaml
@@ -83,8 +84,7 @@ def lookup_fc_stmts(path):
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
         stmt = fc_dict.get("f_mixin_unknown")
-        print("Unknown fc statement: %s" % name)
-#        raise RuntimeError("Unknown fc statement: %s" % name)
+        error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
         
 def compute_name(path, char="_"):
@@ -3020,12 +3020,6 @@ fc_statements = [
             "c_inout_struct_*",
             "c_inout_struct_&",
         ],
-        lang_cxx=dict(
-            cxx_local_var="pointer", # cxx_local_var only used with C++
-            c_pre_call=[
-                "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-            ],
-        ),
     ),
 
     # start function_struct_scalar
@@ -3061,16 +3055,35 @@ fc_statements = [
         alias=[
             "c_function_struct_*_pointer",
         ],
+    ),
 
-        lang_cxx=dict(
-            c_temps=["c"],
-            c_post_call=[
-                "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
-            ],
-            c_return=[
-                "return {c_var_c};",
-            ]
-        ),
+    dict(
+        # XXX - unused - the getter does not need a C wrapper if api(fapi)
+        # The getter can be done totally from Fortran for a pointer to a scalar.
+        # Return value a function result
+        name="f_getter_struct_*_fapi_pointer",
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        f_arg_decl=[
+            "{f_type}, pointer :: {F_result}",
+        ],
+        f_call=[
+            "call c_f_pointer({CXX_this}%{field_name}, {F_result})",
+        ],
+        f_need_wrapper=True,
+    ),
+    dict(
+        name="f_setter_struct_*_pointer",
+        alias=[
+            "f_setter_struct_*",
+            "f_setter_struct_**",
+        ],
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}{i_dimension}",
+        ],
+        c_post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
     ),
 
     ########################################
@@ -3135,6 +3148,10 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
+        ],
+        alias=[
+            "f_getter_struct_*_cdesc_pointer",
+            "f_getter_struct_**_cdesc_pointer",
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         

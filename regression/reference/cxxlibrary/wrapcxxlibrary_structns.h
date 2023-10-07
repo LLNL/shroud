@@ -25,12 +25,23 @@
 extern "C" {
 #endif
 
+#ifdef __cplusplus
+}
+#endif
+#ifdef __cplusplus
+using CXX_cstruct1 = structns::Cstruct1;
+#else  // __cplusplus
 
 typedef struct s_CXX_cstruct1 CXX_cstruct1;
 struct s_CXX_cstruct1 {
     int ifield;
     double dfield;
 };
+#endif  // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // splicer begin namespace.structns.C_declarations
 // splicer end namespace.structns.C_declarations

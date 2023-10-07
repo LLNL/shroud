@@ -513,16 +513,14 @@
                                     "name": "nitems"
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "ns3_DataPointer"
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -554,6 +552,7 @@
                 "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "name": "DataPointer_get_items",
                 "options": {},
+                "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
                     "struct_name": "DataPointer",
@@ -585,16 +584,14 @@
                                     "name": "nitems"
                                 }
                             ],
-                            "intent": "getter",
-                            "struct": "ns3_DataPointer"
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "in"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -627,6 +624,7 @@
                 "name": "DataPointer_get_items",
                 "options": {},
                 "splicer_group": "buf",
+                "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
                     "struct_name": "DataPointer",
@@ -649,9 +647,9 @@
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_SH_this",
+                            "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
-                            "cxx_var": "SHCXX_SH_this",
+                            "cxx_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtc": "f_in_struct_*"
@@ -671,8 +669,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SHCXX_SH_this",
-                    "C_call_list": "SHCXX_SH_this",
+                    "C_call_list": "SH_this",
                     "C_name": "SCO_DataPointer_get_items_bufferify",
                     "C_name_api": "DataPointer_get_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -755,8 +752,7 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "ns3_DataPointer"
+                                        "intent": "inout"
                                     },
                                     "name": "SH_this",
                                     "pointer": [
@@ -832,9 +828,9 @@
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_SH_this",
+                            "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
-                            "cxx_var": "SHCXX_SH_this",
+                            "cxx_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtc": "f_inout_struct_*"
@@ -890,8 +886,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SHCXX_SH_this",
-                    "C_call_list": "SHCXX_SH_this,\t val",
+                    "C_call_list": "SH_this,\t val",
                     "C_name": "SCO_DataPointer_set_items",
                     "C_name_api": "DataPointer_set_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1100,16 +1095,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns1_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1141,6 +1134,7 @@
                         "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "name": "DataPointer_get_items",
                         "options": {},
+                        "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1173,16 +1167,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns1_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1215,6 +1207,7 @@
                         "name": "DataPointer_get_items",
                         "options": {},
                         "splicer_group": "buf",
+                        "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1237,9 +1230,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_in_struct_*"
@@ -1259,8 +1252,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this",
+                            "C_call_list": "SH_this",
                             "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -1343,8 +1335,7 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "inout",
-                                                "struct": "ns1_DataPointer"
+                                                "intent": "inout"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1420,9 +1411,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_*"
@@ -1478,8 +1469,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this,\t val",
+                            "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns1_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1715,16 +1705,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns2_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1756,6 +1744,7 @@
                         "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "name": "DataPointer_get_items",
                         "options": {},
+                        "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1788,16 +1777,14 @@
                                             "name": "nitems"
                                         }
                                     ],
-                                    "intent": "getter",
-                                    "struct": "ns2_DataPointer"
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "in"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -1830,6 +1817,7 @@
                         "name": "DataPointer_get_items",
                         "options": {},
                         "splicer_group": "buf",
+                        "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "DataPointer",
@@ -1852,9 +1840,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_in_struct_*"
@@ -1874,8 +1862,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this",
+                            "C_call_list": "SH_this",
                             "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -1958,8 +1945,7 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "inout",
-                                                "struct": "ns2_DataPointer"
+                                                "intent": "inout"
                                             },
                                             "name": "SH_this",
                                             "pointer": [
@@ -2035,9 +2021,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_*"
@@ -2093,8 +2079,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this,\t val",
+                            "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns2_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
