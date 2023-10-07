@@ -797,11 +797,6 @@ class GenFunctions(object):
         Must explicitly set metaattrs for arguments since that was
         done earlier when validating attributes.
 
-        The 'struct' meta attribute is set on the getter so member
-        names in the dimension attribute can be looked up. And set on
-        the 'this' argument to help set CXX_this properly in the C
-        wrapper.
-
         Parameters
         ----------
         parent : ast.LibraryNode, ast.ClassNode
@@ -828,12 +823,18 @@ class GenFunctions(object):
 
         is_struct = cls.wrap_as == "struct"
         if is_struct:
+            nptr = declarator.is_pointer()
             if not options.F_struct_getter_setter:
                 return
-            if declarator.is_pointer() != 1:
+            elif sgroup == "struct":
+                if nptr != 1 and nptr != 2:
+                    # Array of pointers
+                    return
+            elif nptr != 1:
+                # Do not write getter for scalar fields since they can be accessed directly
                 # Skip scalar and char**.
                 return
-            if sgroup in ["char", "string"]:
+            elif sgroup in ["char", "string"]:
                 # No strings for now.
                 return
             # Explicity add the 'this' argument. Added automatically for classes.
@@ -855,7 +856,6 @@ class GenFunctions(object):
 
         api = None
         deref = None
-        force_ptr = False
         if sgroup in ["char", "string"]:
             value = None
             deref = "allocatable"
@@ -865,7 +865,6 @@ class GenFunctions(object):
         elif sgroup == "struct":
             value = None
             deref = "pointer"
-            force_ptr = True
             api = "cdesc"
         elif declarator.is_pointer():
             value = None
@@ -902,7 +901,6 @@ class GenFunctions(object):
         if declarator.attrs["readonly"]:
             return
         argdecl = ast.gen_arg_as_language(lang=lang, name="val",
-                                          force_ptr=force_ptr,
                                           continuation=True)
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 

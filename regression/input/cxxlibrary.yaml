@@ -98,4 +98,4 @@ declarations:
   - decl: int index
   - decl: int sublevels
   - decl: nested *parent
-  - decl: nested **child
+  - decl: nested **child +dimension(sublevels)

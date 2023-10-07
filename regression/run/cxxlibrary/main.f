@@ -103,18 +103,29 @@ contains
     use cxxlibrary_mod
 
     type(nested) pnode
-    type(nested) n1
+    type(nested) n1, kids(3)
     type(nested), pointer :: parent
+!    type(nested), pointer :: child(:)
 
     call set_case_name("nested")
 
     pnode%index = 1
     n1%index = 2
+    kids(1)%index = 31
+    kids(2)%index = 32
+    kids(3)%index = 33
     
     call nested_set_parent(n1, pnode)
     
     parent => nested_get_parent(n1)
     call assert_equals(pnode%index, parent%index, "nested_get_parent 1");
+
+!    n1%sublevels = size(kids)
+!    call nested_set_child(n1, kids)
+!    child = nested_get_child(n1)
+!    call assert_equals(child(1)%index, kids(1)%index, "nested_get_child 1 1");
+!    call assert_equals(child(2)%index, kids(2)%index, "nested_get_child 1 2");
+!    call assert_equals(child(3)%index, kids(3)%index, "nested_get_child 1 3");
     
   end subroutine test_nested
   

@@ -17,6 +17,8 @@ C const std::string & getGroupName(int32_t idx +value) +len(30)  +api(buf)+deref
 C const std::string & getGroupName(int64_t idx +value) +len(30)  +api(buf)+deref(copy)+intent(function)
 C nested * nested_get_parent(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 C void nested_set_parent(nested * SH_this, nested * val +intent(in))  +intent(setter)
+C nested * * nested_get_child(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))  +intent(setter)
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
 class nested
@@ -28,6 +30,8 @@ Fortran const std::string & getGroupName(int32_t idx +value) +len(30)  +api(buf)
 Fortran const std::string & getGroupName(int64_t idx +value) +len(30)  +api(buf)+deref(copy)+intent(function)
 Fortran nested * nested_get_parent(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 Fortran void nested_set_parent(nested * SH_this, nested * val +intent(in))  +intent(setter)
+Fortran nested * * nested_get_child(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+Fortran void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))  +intent(setter)
 C-interface bool defaultPtrIsNULL(void)  +intent(function)
 C-interface bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
 C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)
@@ -37,6 +41,8 @@ C-interface const std::string & getGroupName(int32_t idx +value) +len(30)  +api(
 C-interface const std::string & getGroupName(int64_t idx +value) +len(30)  +api(buf)+deref(copy)+intent(function)
 C-interface nested * nested_get_parent(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 C-interface void nested_set_parent(nested * SH_this, nested * val +intent(in))  +intent(setter)
+C-interface nested * * nested_get_child(nested * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C-interface void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))  +intent(setter)
 class Cstruct1
 Fortran int passStructByReference(Cstruct1 & arg)  +intent(function)
 Fortran int passStructByReferenceIn(const Cstruct1 & arg)  +intent(function)

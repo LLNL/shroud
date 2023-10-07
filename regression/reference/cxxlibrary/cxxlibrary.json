@@ -350,6 +350,16 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "sublevels"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "sublevels"
+                                        }
+                                    ]
+                                },
                                 "name": "child",
                                 "pointer": [
                                     {
@@ -778,7 +788,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -861,7 +871,7 @@
             {
                 "<FUNCTION>": "5 ****************************************",
                 "_default_funcs": [
-                    10
+                    12
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -1046,7 +1056,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "13 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -1252,7 +1262,7 @@
             {
                 "<FUNCTION>": "6 ****************************************",
                 "_default_funcs": [
-                    11
+                    13
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -1763,10 +1773,10 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "14 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
-                "_PTR_F_C_index": "14",
+                "_PTR_F_C_index": "16",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1828,12 +1838,12 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "16 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_C_CXX_index": "12",
+                "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
                 "ast": {
@@ -1985,10 +1995,10 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "15 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
-                "_PTR_F_C_index": "15",
+                "_PTR_F_C_index": "17",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -2050,12 +2060,12 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "17 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_C_CXX_index": "13",
+                "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
                 "ast": {
@@ -2521,6 +2531,429 @@
                     "struct_name": "nested",
                     "wrapped_name": "parent"
                 }
+            },
+            {
+                "<FUNCTION>": "10 ****************************************",
+                "_PTR_F_C_index": "18",
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "sublevels"
+                                }
+                            ],
+                            "intent": "getter"
+                        },
+                        "name": "nested_get_child",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "nested"
+                                },
+                                "specifier": [
+                                    "nested"
+                                ],
+                                "typemap_name": "nested"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            },
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "nested"
+                    },
+                    "specifier": [
+                        "nested"
+                    ],
+                    "typemap_name": "nested"
+                },
+                "decl": "nested * * nested_get_child(nested *SH_this)",
+                "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "name": "nested_get_child",
+                "options": {},
+                "struct_parent": "nested",
+                "user_fmt": {
+                    "field_name": "child",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "C_name_api": "nested_get_child",
+                    "F_name_api": "nested_get_child",
+                    "field_name": "child",
+                    "function_name": "nested_get_child",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                }
+            },
+            {
+                "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_C_CXX_index": "10",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "sublevels"
+                                }
+                            ],
+                            "intent": "getter"
+                        },
+                        "name": "nested_get_child",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "nested"
+                                },
+                                "specifier": [
+                                    "nested"
+                                ],
+                                "typemap_name": "nested"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            },
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "nested"
+                    },
+                    "specifier": [
+                        "nested"
+                    ],
+                    "typemap_name": "nested"
+                },
+                "decl": "nested * * nested_get_child(nested *SH_this)",
+                "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "name": "nested_get_child",
+                "options": {},
+                "splicer_group": "buf",
+                "struct_parent": "nested",
+                "user_fmt": {
+                    "field_name": "child",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "CXX_nested",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "nested",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "f_in_struct_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_derived_type": "nested",
+                            "f_intent": "IN",
+                            "f_kind": "nested",
+                            "f_type": "type(nested)",
+                            "f_type_module": "cxxlibrary_mod",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtf": "f_in_struct_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "CXX_nested_get_child_bufferify",
+                    "C_name_api": "nested_get_child",
+                    "C_prototype": "CXX_nested * SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_call": "c_nested_get_child_bufferify",
+                    "F_C_name": "c_nested_get_child_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
+                    "F_name_api": "nested_get_child",
+                    "F_name_function": "nested_get_child",
+                    "F_name_generic": "nested_get_child",
+                    "F_name_impl": "nested_get_child",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "nested * * SHC_rv",
+                    "f_c_suffix": "_bufferify",
+                    "field_name": "child",
+                    "function_name": "nested_get_child",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->sublevels;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_array_size2": "SH_this->sublevels",
+                        "c_const": "",
+                        "c_helper_array_context": "CXX_SHROUD_array",
+                        "c_type": "CXX_nested",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_struct",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "nested",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "stmtc": "f_getter_struct_**_cdesc_pointer"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "nested",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                        "f_derived_type": "nested",
+                        "f_helper_array_context": "CXX_SHROUD_array",
+                        "f_intent": "OUT",
+                        "f_kind": "nested",
+                        "f_type": "type(nested)",
+                        "f_type_module": "cxxlibrary_mod",
+                        "f_var": "SHT_rv",
+                        "f_var_cdesc": "SHT_rv_cdesc",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "stmtf": "f_getter_struct_**_cdesc_pointer"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "11 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "setter"
+                        },
+                        "name": "nested_set_child",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "nested"
+                                },
+                                "specifier": [
+                                    "nested"
+                                ],
+                                "typemap_name": "nested"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "sublevels"
+                                            }
+                                        ],
+                                        "intent": "setter"
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "nested"
+                                },
+                                "specifier": [
+                                    "nested"
+                                ],
+                                "typemap_name": "nested"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void nested_set_child(nested *SH_this,nested * * val)",
+                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))",
+                "name": "nested_set_child",
+                "options": {},
+                "user_fmt": {
+                    "field_name": "child",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "CXX_nested",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "nested",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "f_inout_struct_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_derived_type": "nested",
+                            "f_intent": "INOUT",
+                            "f_kind": "nested",
+                            "f_type": "type(nested)",
+                            "f_type_module": "cxxlibrary_mod",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtf": "f_inout_struct_*"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_size2": "sublevels",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "CXX_nested",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "nested",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "f_setter_struct_**"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_derived_type": "nested",
+                            "f_intent": "IN",
+                            "f_kind": "nested",
+                            "f_type": "type(nested)",
+                            "f_type_module": "cxxlibrary_mod",
+                            "f_var": "val",
+                            "i_dimension": "(*)",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "size": "size(val)",
+                            "stmtf": "f_setter_struct_**"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "CXX_nested_set_child",
+                    "C_name_api": "nested_set_child",
+                    "C_prototype": "CXX_nested * SH_this,\t CXX_nested * * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_nested_set_child",
+                    "F_C_name": "nested_set_child",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_api": "nested_set_child",
+                    "F_name_function": "nested_set_child",
+                    "F_name_generic": "nested_set_child",
+                    "F_name_impl": "nested_set_child",
+                    "F_subprogram": "subroutine",
+                    "field_name": "child",
+                    "function_name": "nested_set_child",
+                    "stmtc": "f_setter",
+                    "stmtf": "f_setter",
+                    "struct_name": "nested",
+                    "wrapped_name": "child"
+                }
             }
         ],
         "language": "cxx",
@@ -2627,7 +3060,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "16 ****************************************",
+                        "<FUNCTION>": "19 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2801,7 +3234,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "17 ****************************************",
+                        "<FUNCTION>": "20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2976,7 +3409,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "18 ****************************************",
+                        "<FUNCTION>": "21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3104,7 +3537,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "19 ****************************************",
+                        "<FUNCTION>": "22 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

@@ -3075,6 +3075,11 @@ fc_statements = [
         name="f_setter_struct_*_pointer",
         alias=[
             "f_setter_struct_*",
+            "f_setter_struct_**",
+        ],
+        i_arg_names=["{c_var}"],
+        i_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}{i_dimension}",
         ],
         c_post_call=[
             "{CXX_this}->{field_name} = val;",
@@ -3146,6 +3151,7 @@ fc_statements = [
         ],
         alias=[
             "f_getter_struct_*_cdesc_pointer",
+            "f_getter_struct_**_cdesc_pointer",
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         
