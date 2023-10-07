@@ -3020,12 +3020,6 @@ fc_statements = [
             "c_inout_struct_*",
             "c_inout_struct_&",
         ],
-        lang_cxx=dict(
-            cxx_local_var="pointer", # cxx_local_var only used with C++
-            c_pre_call=[
-                "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-            ],
-        ),
     ),
 
     # start function_struct_scalar

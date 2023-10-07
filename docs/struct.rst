@@ -617,6 +617,12 @@ All creation and access of members can be done using Fortran.
 
 .. *wrap_class_as* also exists and defaults to *class*.
 
+C
+^
+
+A C wrapper creates a ``struct`` with the same fields as the C++ struct.
+The name of the ``struct`` is mangled so that any struct defined within
+a namespace will be accessable as a global symbol for C.
 
 Python
 ^^^^^^

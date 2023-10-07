@@ -2375,11 +2375,11 @@
                                     "c_type": "CXX_cstruct1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_struct",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_arg",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg",
                                     "cxx_type": "structns::Cstruct1",
-                                    "cxx_var": "SHCXX_arg",
+                                    "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_&"
@@ -2423,7 +2423,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "*SHCXX_arg",
+                            "C_call_list": "*arg",
                             "C_name": "CXX_structns_passStructByReference",
                             "C_name_api": "passStructByReference",
                             "C_prototype": "CXX_cstruct1 * arg",
@@ -2550,11 +2550,11 @@
                                     "c_type": "CXX_cstruct1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_struct",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<structns::Cstruct1 *>\t(SHCXX_arg)",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "const_cast<structns::Cstruct1 *>\t(&arg)",
                                     "cxx_type": "structns::Cstruct1",
-                                    "cxx_var": "SHCXX_arg",
+                                    "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_in_struct_&"
@@ -2598,7 +2598,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "*SHCXX_arg",
+                            "C_call_list": "*arg",
                             "C_name": "CXX_structns_passStructByReferenceIn",
                             "C_name_api": "passStructByReferenceIn",
                             "C_prototype": "const CXX_cstruct1 * arg",
@@ -2724,11 +2724,11 @@
                                     "c_type": "CXX_cstruct1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_struct",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_arg",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg",
                                     "cxx_type": "structns::Cstruct1",
-                                    "cxx_var": "SHCXX_arg",
+                                    "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_&"
@@ -2772,7 +2772,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "*SHCXX_arg",
+                            "C_call_list": "*arg",
                             "C_name": "CXX_structns_passStructByReferenceInout",
                             "C_name_api": "passStructByReferenceInout",
                             "C_prototype": "CXX_cstruct1 * arg",
@@ -2852,11 +2852,11 @@
                                     "c_type": "CXX_cstruct1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_struct",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_arg",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg",
                                     "cxx_type": "structns::Cstruct1",
-                                    "cxx_var": "SHCXX_arg",
+                                    "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_out_struct_&"
@@ -2899,7 +2899,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "*SHCXX_arg",
+                            "C_call_list": "*arg",
                             "C_name": "CXX_structns_passStructByReferenceOut",
                             "C_name_api": "passStructByReferenceOut",
                             "C_prototype": "CXX_cstruct1 * arg",

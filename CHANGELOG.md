@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - *f_temps* and *f_local* now create format fields which start with **f**
   instead of **c**. They are intented to be used the Fortran wrapper
   and are based off of *f_var* name.
+- Structs now create a ``using`` statement to set the C struct name to the
+  C++ struct name.  This is used when compiling the wrapper implementation
+  to avoid adding `static_casts` in the wrappers.  The users will continue
+  to use the generated C structs which parallel the C++ structs.
 
 ### Removed
 - Removed attribute *+cdesc*. Replace by *+api(cdesc)*

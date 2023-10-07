@@ -649,9 +649,9 @@
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_SH_this",
+                            "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
-                            "cxx_var": "SHCXX_SH_this",
+                            "cxx_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtc": "f_in_struct_*"
@@ -671,8 +671,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SHCXX_SH_this",
-                    "C_call_list": "SHCXX_SH_this",
+                    "CXX_this": "SH_this",
+                    "C_call_list": "SH_this",
                     "C_name": "SCO_DataPointer_get_items_bufferify",
                     "C_name_api": "DataPointer_get_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -832,9 +832,9 @@
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_SH_this",
+                            "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
-                            "cxx_var": "SHCXX_SH_this",
+                            "cxx_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtc": "f_inout_struct_*"
@@ -890,8 +890,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "CXX_this": "SHCXX_SH_this",
-                    "C_call_list": "SHCXX_SH_this,\t val",
+                    "CXX_this": "SH_this",
+                    "C_call_list": "SH_this,\t val",
                     "C_name": "SCO_DataPointer_set_items",
                     "C_name_api": "DataPointer_set_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1237,9 +1237,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_in_struct_*"
@@ -1259,8 +1259,8 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this",
+                            "CXX_this": "SH_this",
+                            "C_call_list": "SH_this",
                             "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -1420,9 +1420,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_*"
@@ -1478,8 +1478,8 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this,\t val",
+                            "CXX_this": "SH_this",
+                            "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns1_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1852,9 +1852,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_in_struct_*"
@@ -1874,8 +1874,8 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this",
+                            "CXX_this": "SH_this",
+                            "C_call_list": "SH_this",
                             "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -2035,9 +2035,9 @@
                                     "cfi_type": "CFI_type_struct",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_SH_this",
+                                    "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
-                                    "cxx_var": "SHCXX_SH_this",
+                                    "cxx_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtc": "f_inout_struct_*"
@@ -2093,8 +2093,8 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "CXX_this": "SHCXX_SH_this",
-                            "C_call_list": "SHCXX_SH_this,\t val",
+                            "CXX_this": "SH_this",
+                            "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_ns2_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",

@@ -31,11 +31,9 @@ void SCO_ns1_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin namespace.ns1.function.DataPointer_get_items_bufferify
-    ns1::DataPointer * SHCXX_SH_this = static_cast<ns1::DataPointer *>
-        (static_cast<void *>(SH_this));
-    SHT_rv_cdesc->cxx.addr  = SHCXX_SH_this->items;
+    SHT_rv_cdesc->cxx.addr  = SH_this->items;
     SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHCXX_SH_this->items;
+    SHT_rv_cdesc->addr.base = SH_this->items;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
@@ -60,10 +58,8 @@ void SCO_ns1_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
 void SCO_ns1_DataPointer_set_items(SCO_datapointer * SH_this, int * val)
 {
     // splicer begin namespace.ns1.function.DataPointer_set_items
-    ns1::DataPointer * SHCXX_SH_this = static_cast<ns1::DataPointer *>
-        (static_cast<void *>(SH_this));
     // skip call c_setter
-    SHCXX_SH_this->items = val;
+    SH_this->items = val;
     // splicer end namespace.ns1.function.DataPointer_set_items
 }
 

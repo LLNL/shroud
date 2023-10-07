@@ -1967,42 +1967,15 @@ c_in_string_scalar_buf:
   name: c_in_string_scalar_buf
   owner: library
 c_in_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_&
   owner: library
 c_in_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_*
   owner: library
 c_in_struct_scalar:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_in_struct_scalar
   owner: library
 c_in_unknown_scalar:
@@ -2483,29 +2456,11 @@ c_inout_string_*_buf:
   name: c_inout_string_*_buf
   owner: library
 c_inout_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_inout_struct_&
   owner: library
 c_inout_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_inout_struct_*
   owner: library
 c_inout_void_**:
@@ -3164,29 +3119,11 @@ c_out_string_*_buf:
   name: c_out_string_*_buf
   owner: library
 c_out_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_out_struct_&
   owner: library
 c_out_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
-  lang_cxx:
-    c_pre_call:
-    - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-      \ *>(\t{c_addr}{c_var}));"
-    cxx_local_var: pointer
   name: c_out_struct_*
   owner: library
 c_out_vector_&_cdesc_allocatable_targ_native_scalar:
@@ -7565,26 +7502,14 @@ f_in_string_scalar_cfi:
   name: f_in_string_scalar_cfi
   owner: library
 f_in_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_&
   owner: library
 f_in_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_*
   owner: library
 f_in_struct_scalar:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: in
   name: f_in_struct_scalar
   owner: library
@@ -8363,18 +8288,10 @@ f_inout_string_*_cfi:
   name: f_inout_string_*_cfi
   owner: library
 f_inout_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
   name: f_inout_struct_&
   owner: library
 f_inout_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: inout
   name: f_inout_struct_*
   owner: library
@@ -9738,18 +9655,10 @@ f_out_string_*_cfi:
   name: f_out_string_*_cfi
   owner: library
 f_out_struct_&:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
   name: f_out_struct_&
   owner: library
 f_out_struct_*:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: out
   name: f_out_struct_*
   owner: library
@@ -10285,10 +10194,6 @@ f_shared_native_scalar:
   name: f_shared_native_scalar
   owner: library
 f_shared_struct:
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
-    \ *>(\t{c_addr}{c_var}));"
-  cxx_local_var: pointer
   intent: shared
   name: f_shared_struct
   owner: library
