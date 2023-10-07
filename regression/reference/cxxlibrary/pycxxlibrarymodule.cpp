@@ -385,32 +385,32 @@ static PyArray_Descr *PY_nested_create_array_descr()
     ldescr = PyList_New(4);
     if (ldescr == nullptr) goto fail;
 
-    // sublevels
-    obj = PyString_FromString("sublevels");
+    // index
+    obj = PyString_FromString("index");
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(lnames, 0, obj);
     obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(ldescr, 0, obj);
 
-    // parent
-    obj = PyString_FromString("parent");
+    // sublevels
+    obj = PyString_FromString("sublevels");
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(lnames, 1, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(ldescr, 1, obj);
 
-    // child
-    obj = PyString_FromString("child");
+    // parent
+    obj = PyString_FromString("parent");
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(lnames, 2, obj);
     obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(ldescr, 2, obj);
 
-    // name
-    obj = PyString_FromString("name");
+    // child
+    obj = PyString_FromString("child");
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(lnames, 3, obj);
     obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);

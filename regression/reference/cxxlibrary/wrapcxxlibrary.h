@@ -41,10 +41,10 @@ using CXX_nested = nested;
 
 typedef struct s_CXX_nested CXX_nested;
 struct s_CXX_nested {
+    int index;
     int sublevels;
     CXX_nested * parent;
     CXX_nested * * child;
-    char * name;
 };
 #endif  // __cplusplus
 
@@ -70,6 +70,11 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len);
+
+void CXX_nested_get_parent(CXX_nested * SH_this,
+    CXX_SHROUD_array *SHT_rv_cdesc);
+
+void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val);
 
 #ifdef __cplusplus
 }

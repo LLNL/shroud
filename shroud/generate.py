@@ -816,6 +816,7 @@ class GenFunctions(object):
         ast = var.ast
         declarator = ast.declarator
         sgroup = ast.typemap.sgroup
+        meta = declarator.metaattrs
 
         fmt = util.Scope(var.fmtdict)
         fmt_func = dict(
@@ -852,16 +853,25 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
+        api = None
         deref = None
+        force_ptr = False
         if sgroup in ["char", "string"]:
             value = None
             deref = "allocatable"
         elif sgroup == "vector":
             value = None
             deref = "pointer"
+        elif sgroup == "struct":
+            value = None
+            deref = "pointer"
+            force_ptr = True
+            api = "cdesc"
         elif declarator.is_pointer():
             value = None
             deref = "pointer"
+#            if meta["dimension"] is None:
+#                api = "fapi" 
         else:
             value = True
             deref = None
@@ -878,6 +888,7 @@ class GenFunctions(object):
         meta.update(declarator.metaattrs)
         meta["intent"] = "getter"
         meta["deref"] = deref
+        meta["api"] = api
         if is_struct:
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
             meta["intent"] = "in"
@@ -890,7 +901,9 @@ class GenFunctions(object):
         # setter
         if declarator.attrs["readonly"]:
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name="val",
+                                          force_ptr=force_ptr,
+                                          continuation=True)
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         attrs = dict(

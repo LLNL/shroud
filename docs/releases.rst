@@ -178,6 +178,9 @@ New Features
   fields to be set explicitly in the statement group to override the
   any defaults.
 
+* Support recursive structs. Allows trees to be build in structs.
+* Add getter/setter for ``struct`` pointer fields in a struct.
+
 v0.13.0
 -------
 

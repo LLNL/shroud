@@ -3057,6 +3057,30 @@ fc_statements = [
         ],
     ),
 
+    dict(
+        # XXX - unused - the getter does not need a C wrapper if api(fapi)
+        # The getter can be done totally from Fortran for a pointer to a scalar.
+        # Return value a function result
+        name="f_getter_struct_*_fapi_pointer",
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        f_arg_decl=[
+            "{f_type}, pointer :: {F_result}",
+        ],
+        f_call=[
+            "call c_f_pointer({CXX_this}%{field_name}, {F_result})",
+        ],
+        f_need_wrapper=True,
+    ),
+    dict(
+        name="f_setter_struct_*_pointer",
+        alias=[
+            "f_setter_struct_*",
+        ],
+        c_post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
+    ),
+
     ########################################
     # getter/setter
     # getters are functions.
@@ -3119,6 +3143,9 @@ fc_statements = [
         mixin=[
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
+        ],
+        alias=[
+            "f_getter_struct_*_cdesc_pointer",
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
         

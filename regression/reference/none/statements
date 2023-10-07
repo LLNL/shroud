@@ -458,6 +458,12 @@ root
         scalar
           cdesc
             allocatable -- f_getter_string_scalar_cdesc_allocatable
+      struct
+        *
+          cdesc
+            pointer -- f_getter_native_*_cdesc_pointer
+          fapi
+            pointer -- f_getter_struct_*_fapi_pointer
     in
       bool
         scalar -- f_in_bool_scalar
@@ -714,6 +720,9 @@ root
       string
         scalar
           buf -- f_setter_string_scalar_buf
+      struct
+        * -- f_setter_struct_*_pointer
+          pointer -- f_setter_struct_*_pointer
       void
         scalar -- f_setter
     shared
@@ -6937,6 +6946,62 @@ f_getter_string_scalar_cdesc_allocatable:
   intent: getter
   name: f_getter_string_scalar_cdesc_allocatable
   owner: library
+f_getter_struct_*_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_helper:
+  - type_defines
+  - array_context
+  c_return_type: void
+  c_temps:
+  - cdesc
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  f_post_call:
+  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: getter
+  name: f_getter_struct_*_cdesc_pointer
+  owner: library
+f_getter_struct_*_fapi_pointer:
+  f_arg_decl:
+  - '{f_type}, pointer :: {F_result}'
+  f_call:
+  - call c_f_pointer({CXX_this}%{field_name}, {F_result})
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  intent: getter
+  name: f_getter_struct_*_fapi_pointer
+  owner: library
 f_in_bool_scalar:
   f_arg_call:
   - '{f_var_cxx}'
@@ -10103,6 +10168,18 @@ f_setter_string_scalar_buf:
     - C_INT
   intent: setter
   name: f_setter_string_scalar_buf
+  owner: library
+f_setter_struct_*:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  intent: setter
+  name: f_setter_struct_*
+  owner: library
+f_setter_struct_*_pointer:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  intent: setter
+  name: f_setter_struct_*_pointer
   owner: library
 f_setter_void_scalar:
   c_call:
