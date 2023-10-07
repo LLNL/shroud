@@ -3341,9 +3341,9 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -3357,7 +3357,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct1",
                         "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
@@ -3566,9 +3565,9 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -3582,7 +3581,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_c": "SHT_rv_c",
                         "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
@@ -3812,9 +3810,9 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -3828,7 +3826,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct1",
                         "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
@@ -3896,9 +3893,9 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "STR_cstruct_list",
                         "c_var": "SHC_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -3912,7 +3909,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_c": "SHT_rv_c",
                         "cxx_type": "Cstruct_list",
                         "f_derived_type": "cstruct_list",
                         "f_intent": "OUT",

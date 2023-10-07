@@ -3055,16 +3055,6 @@ fc_statements = [
         alias=[
             "c_function_struct_*_pointer",
         ],
-
-        lang_cxx=dict(
-            c_temps=["c"],
-            c_post_call=[
-                "{c_const}{c_type} * {c_var_c} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
-            ],
-            c_return=[
-                "return {c_var_c};",
-            ]
-        ),
     ),
 
     ########################################
