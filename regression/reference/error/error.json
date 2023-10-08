@@ -756,7 +756,7 @@
             ""
         ],
         "cxx_header": [
-            "error"
+            "error.hpp"
         ],
         "functions": [
             {
@@ -1439,7 +1439,7 @@
             },
             "i_type": "type(ERR_SHROUD_capsule_data)",
             "impl_header": [
-                "error"
+                "error.hpp"
             ],
             "sgroup": "shadow",
             "wrap_header": [

@@ -12,7 +12,7 @@
 #include <Python.h>
 
 // cxx_header
-#include "error"
+#include "error.hpp"
 
 // splicer begin header.include
 // splicer end header.include

@@ -83,8 +83,8 @@ Shroud refers to this as a capsule.
 
 .. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c
-   :start-after: start struct CLA_Class1
-   :end-before: end struct CLA_Class1
+   :start-after: start C capsule CLA_Class1
+   :end-before: end C capsule CLA_Class1
 
 The C wrapper will extract the address of the instance then call the
 method.

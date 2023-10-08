@@ -81,24 +81,44 @@ struct s_STR_SHROUD_array {
 };
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 // end array_context
+#if 0
 
-// start struct STR_Cstruct_as_class
-// helper capsule_STR_Cstruct_as_class
+// start C++ capsule STR_Cstruct_as_class
+// C++ capsule STR_Cstruct_as_class
+struct s_STR_Cstruct_as_class {
+    Cstruct_as_class *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
+// end C++ capsule STR_Cstruct_as_class
+
+// start C++ capsule STR_Cstruct_as_subclass
+// C++ capsule STR_Cstruct_as_subclass
+struct s_STR_Cstruct_as_subclass {
+    Cstruct_as_subclass *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
+// end C++ capsule STR_Cstruct_as_subclass
+#endif
+
+// start C capsule STR_Cstruct_as_class
+// C capsule STR_Cstruct_as_class
 struct s_STR_Cstruct_as_class {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
-// end struct STR_Cstruct_as_class
+// end C capsule STR_Cstruct_as_class
 
-// start struct STR_Cstruct_as_subclass
-// helper capsule_STR_Cstruct_as_subclass
+// start C capsule STR_Cstruct_as_subclass
+// C capsule STR_Cstruct_as_subclass
 struct s_STR_Cstruct_as_subclass {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
-// end struct STR_Cstruct_as_subclass
+// end C capsule STR_Cstruct_as_subclass
 
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 

@@ -8,7 +8,7 @@
 //
 
 // cxx_header
-#include "error"
+#include "error.hpp"
 // shroud
 #include "wrapCstruct_as_subclass.h"
 

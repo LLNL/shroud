@@ -21,14 +21,39 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_PRE_User1
+// helper capsule_data_helper
+struct s_PRE_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_PRE_SHROUD_capsule_data PRE_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule PRE_User1
+struct s_PRE_User1 {
+    User1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_PRE_User1 PRE_User1;
+
+// C++ capsule PRE_User2
+#ifdef USE_USER2
+struct s_PRE_User2 {
+    User2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_PRE_User2 PRE_User2;
+#endif  // ifdef USE_USER2
+#endif
+
+// C capsule PRE_User1
 struct s_PRE_User1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_PRE_User1 PRE_User1;
 
-// helper capsule_PRE_User2
+// C capsule PRE_User2
 #ifdef USE_USER2
 struct s_PRE_User2 {
     void *addr;     /* address of C++ memory */
@@ -36,13 +61,6 @@ struct s_PRE_User2 {
 };
 typedef struct s_PRE_User2 PRE_User2;
 #endif  // ifdef USE_USER2
-
-// helper capsule_data_helper
-struct s_PRE_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_PRE_SHROUD_capsule_data PRE_SHROUD_capsule_data;
 
 void PRE_SHROUD_memory_destructor(PRE_SHROUD_capsule_data *cap);
 

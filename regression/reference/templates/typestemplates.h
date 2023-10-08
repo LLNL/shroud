@@ -21,68 +21,126 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_TEM_Worker
-struct s_TEM_Worker {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_Worker TEM_Worker;
-
-// helper capsule_TEM_internal_ImplWorker1
-struct s_TEM_internal_ImplWorker1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
-
-// helper capsule_TEM_internal_ImplWorker2
-struct s_TEM_internal_ImplWorker2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
-
-// helper capsule_TEM_structAsClass_double
-struct s_TEM_structAsClass_double {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_structAsClass_double TEM_structAsClass_double;
-
-// helper capsule_TEM_structAsClass_int
-struct s_TEM_structAsClass_int {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_structAsClass_int TEM_structAsClass_int;
-
-// helper capsule_TEM_user_int
-struct s_TEM_user_int {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_user_int TEM_user_int;
-
-// helper capsule_TEM_vector_double
-struct s_TEM_vector_double {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_vector_double TEM_vector_double;
-
-// helper capsule_TEM_vector_int
-struct s_TEM_vector_int {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_vector_int TEM_vector_int;
-
 // helper capsule_data_helper
 struct s_TEM_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_SHROUD_capsule_data TEM_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule TEM_vector_int
+struct s_TEM_vector_int {
+    std::vector<int> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_vector_int TEM_vector_int;
+
+// C++ capsule TEM_vector_double
+struct s_TEM_vector_double {
+    std::vector<double> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_vector_double TEM_vector_double;
+
+// C++ capsule TEM_internal_ImplWorker1
+struct s_TEM_internal_ImplWorker1 {
+    internal::ImplWorker1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
+
+// C++ capsule TEM_internal_ImplWorker2
+struct s_TEM_internal_ImplWorker2 {
+    internal::ImplWorker2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
+
+// C++ capsule TEM_Worker
+struct s_TEM_Worker {
+    Worker *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_Worker TEM_Worker;
+
+// C++ capsule TEM_user_int
+struct s_TEM_user_int {
+    user<int> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_user_int TEM_user_int;
+
+// C++ capsule TEM_structAsClass_int
+struct s_TEM_structAsClass_int {
+    structAsClass<int> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_int TEM_structAsClass_int;
+
+// C++ capsule TEM_structAsClass_double
+struct s_TEM_structAsClass_double {
+    structAsClass<double> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_double TEM_structAsClass_double;
+#endif
+
+// C capsule TEM_vector_int
+struct s_TEM_vector_int {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_vector_int TEM_vector_int;
+
+// C capsule TEM_vector_double
+struct s_TEM_vector_double {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_vector_double TEM_vector_double;
+
+// C capsule TEM_internal_ImplWorker1
+struct s_TEM_internal_ImplWorker1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
+
+// C capsule TEM_internal_ImplWorker2
+struct s_TEM_internal_ImplWorker2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
+
+// C capsule TEM_Worker
+struct s_TEM_Worker {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_Worker TEM_Worker;
+
+// C capsule TEM_user_int
+struct s_TEM_user_int {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_user_int TEM_user_int;
+
+// C capsule TEM_structAsClass_int
+struct s_TEM_structAsClass_int {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_int TEM_structAsClass_int;
+
+// C capsule TEM_structAsClass_double
+struct s_TEM_structAsClass_double {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_double TEM_structAsClass_double;
 
 void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap);
 

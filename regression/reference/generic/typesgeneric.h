@@ -81,8 +81,17 @@ struct s_GEN_SHROUD_array {
 };
 typedef struct s_GEN_SHROUD_array GEN_SHROUD_array;
 // end array_context
+#if 0
 
-// helper capsule_GEN_StructAsClass
+// C++ capsule GEN_StructAsClass
+struct s_GEN_StructAsClass {
+    StructAsClass *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_StructAsClass GEN_StructAsClass;
+#endif
+
+// C capsule GEN_StructAsClass
 struct s_GEN_StructAsClass {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

@@ -573,12 +573,17 @@ class Header(object):
         for name in node.find_header():
             self.header_impl_include_order["cxx_header"][name] = True
 
+    def add_cxx_header_list(self, nodes):
+        for node in nodes:
+            self.add_cxx_header(node)
+
     def add_file_code_header(self, fname, library):
         """Add the headers from file_code for fname.
 
         Parameters
         ----------
-        node : ast.LibraryNode, ast.NamespaceNode
+        fname : str
+        library : ast.LibraryNode, ast.NamespaceNode
         """
         ntypemap = library.file_code.get(fname)
         if ntypemap:
@@ -639,7 +644,7 @@ class Header(object):
         for name in getattr(intent_blk, lang):
             self.header_impl_include_order["shroud"][name] = True
 
-    def write_headers(self, output):
+    def write_headers(self, output, is_header=False):
         """Preserve header order, avoid duplicates.
 
         Args:
@@ -651,6 +656,8 @@ class Header(object):
         found = {} # dictionary of header files found.
         for category in ["cxx_header", "file_code", "typemap", "shroud"]:
             lines = []
+            start_cxx = []
+            end_cxx = []
             if category == "file_code":
                 self.write_includes_for_header(self.file_code, lines, found)
             elif category == "typemap":
@@ -658,6 +665,10 @@ class Header(object):
                     self.write_headers_nodes(lines, found)
                 else:
                     self.write_includes_for_header(self.typemaps, lines, found)
+            elif category == "cxx_header":
+                if is_header and self.newlibrary.language == "cxx":
+                    start_cxx = ["#if __cplusplus"]
+                    end_cxx = ["#endif"]
             for header in headers[category].keys():
                 if header in found:
                     continue
@@ -674,7 +685,9 @@ class Header(object):
                 if debug:
                     # Only print label if there are unique entries.
                     output.append("// " + category)
+                output.extend(start_cxx)
                 output.extend(lines)
+                output.extend(end_cxx)
 
     def write_headers_nodes(self, output, skip):
         """Write out headers required by typemaps.
