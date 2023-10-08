@@ -11,7 +11,7 @@ No such c_helper 'no_c_helper2'
 --------------------
 Node: BadFstatements
 Statement: f_subroutine
-Error with template: '{no_c_var} = 11;'
+No value for 'no_c_var' in '{no_c_var} = 11;'
 Wrote wraperror.h
 Wrote wraperror.cpp
 
@@ -34,7 +34,7 @@ No such f_helper 'no_f_helper'
 --------------------
 Node: BadFstatements
 Statement: f_subroutine
-Error with template: '{no_such_var} = 10'
+No value for 'no_such_var' in '{no_such_var} = 10'
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
