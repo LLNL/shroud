@@ -33,9 +33,11 @@ def wformat(template, dct):
     assert template is not None
     try:
         return fmt.vformat(template, None, dct)
-    except AttributeError:
+    except AttributeError as err:
+        # err.args ("'Scope' object has no attribute 'c_var_len'",)
+        name = err.args[0].split()[-1]
         cursor = error.get_cursor()
-        cursor.warning("Error with template: " + "%r" % template)
+        cursor.warning("No value for %s in %r" % (name, template))
         return "===>%s<===" % template
         #raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
