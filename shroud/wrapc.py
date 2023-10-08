@@ -12,7 +12,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import os
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
 
 from . import error
 from . import declast
@@ -27,6 +27,8 @@ default_owner = "library"
 
 lang_map = {"c": "C", "cxx": "C++"}
 
+CPlusPlus = namedtuple("CPlusPlus", "start_cxx, else_cxx, end_cxx start_extern_c end_extern_c")
+cplusplus = CPlusPlus([], [], [], [], [])
 
 class Wrapc(util.WrapperMixin):
     """Generate C bindings and Fortran helpers for C++ library.
@@ -62,6 +64,16 @@ class Wrapc(util.WrapperMixin):
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         self.cursor = error.get_cursor()
+
+        global cplusplus
+        if self.language == "cxx":
+            cplusplus = CPlusPlus(
+                ["#ifdef __cplusplus"],      # start_cxx
+                ["#else  // __cplusplus"],   # else_cxx
+                ["#endif  // __cplusplus"],  # end_cxx
+                ["", "#ifdef __cplusplus", 'extern "C" {', "#endif"], # start_extern_c
+                ["", "#ifdef __cplusplus", "}", "#endif"],            # end_extern_c
+            )
 
     def _begin_output_file(self):
         """Start a new class for output"""
@@ -341,7 +353,7 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             #            if self._create_splicer('CXX_declarations', output):
             #                write_file = True
-            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+        output.extend(cplusplus.start_extern_c)
 
         source = self.helper_summary["c"]["cwrap_impl"]
         if source:
@@ -352,8 +364,7 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(capsule_code)
 
-        if self.language == "cxx":
-            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+        output.extend(cplusplus.end_extern_c)
 
         source = self.helper_summary["cxx"]["cwrap_impl"]
         if source:
@@ -403,7 +414,7 @@ class Wrapc(util.WrapperMixin):
         self._create_splicer('CXX_declarations', output)
         
         if self.language == "cxx":
-            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+            output.extend(cplusplus.start_extern_c)
             output.append("")
             self._create_splicer('C_declarations', output)
 
@@ -476,16 +487,7 @@ class Wrapc(util.WrapperMixin):
             output.append("")
             if self._create_splicer("CXX_declarations", output):
                 write_file = True
-            start_cxx = ["#ifdef __cplusplus"]
-            else_cxx = ["#else  // __cplusplus"]
-            end_cxx = ["#endif  // __cplusplus"]
-            end_extern_c = ["", "#ifdef __cplusplus", "}", "#endif"]
-            start_extern_c = ["", "#ifdef __cplusplus", 'extern "C" {', "#endif"]
-            end_extern_c = ["", "#ifdef __cplusplus", "}", "#endif"]
-        else:
-            start_extern_c = []
-            end_extern_c = []
-        output.extend(start_extern_c)
+        output.extend(cplusplus.start_extern_c)
 
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
@@ -500,13 +502,13 @@ class Wrapc(util.WrapperMixin):
 
         if self.struct_impl_c:
             write_file = True
-            output.extend(end_extern_c)
-            output.extend(start_cxx)
+            output.extend(cplusplus.end_extern_c)
+            output.extend(cplusplus.start_cxx)
             output.extend(self.struct_impl_cxx)
-            output.extend(else_cxx)
+            output.extend(cplusplus.else_cxx)
             output.extend(self.struct_impl_c)
-            output.extend(end_cxx)
-            output.extend(start_extern_c)
+            output.extend(cplusplus.end_cxx)
+            output.extend(cplusplus.start_extern_c)
 
         output.append("")
         if self._create_splicer("C_declarations", output):
@@ -514,7 +516,7 @@ class Wrapc(util.WrapperMixin):
         if self.header_proto_c:
             write_file = True
             output.extend(self.header_proto_c)
-        output.extend(end_extern_c)
+        output.extend(cplusplus.end_extern_c)
         if cls and cls.cpp_if:
             output.append("#endif  // " + node.cpp_if)
         output.extend(["", "#endif  // " + guard])
@@ -647,6 +649,22 @@ class Wrapc(util.WrapperMixin):
                 ]
             )
 
+    def add_class_capsule_worker(self, output, fmt, literalinclude):
+        output.append("")
+        if literalinclude:
+            append_format(output, "// start {lang} capsule {cname}", fmt)
+        append_format(
+            output,
+            """// {lang} capsule {cname}
+{cpp_if}struct s_{C_type_name} {{+
+{capsule_type} *addr;     /* address of C++ memory */
+int idtor;      /* index of destructor */
+-}};
+typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
+            fmt)
+        if literalinclude:
+            append_format(output, "// end {lang} capsule {cname}", fmt)
+           
     def add_class_capsule_structs(self, node):
         """Create the capsule structs for a class.
         A C++ struct with the actual type,
@@ -654,31 +672,29 @@ class Wrapc(util.WrapperMixin):
         """
         fmt_class = node.fmtdict
         literalinclude = node.options.literalinclude
-        cname = node.typemap.c_type
 
-        self.capsule_impl_cxx.append("// CXX capsule " + cname)
+        fmt = util.Scope(node.fmtdict)
+        fmt.cname = node.typemap.c_type
+        if node.cpp_if:
+            fmt.cpp_if = "#" + node.cpp_if + "\n"
+            fmt.cpp_endif = "\n#endif  // " + node.cpp_if
+        else:
+            fmt.cpp_if = ""
+            fmt.cpp_endif = ""
+            
+        fmt.lang = "C"
+        fmt.capsule_type = "void"
+        self.add_class_capsule_worker(self.capsule_impl_c, fmt, literalinclude)
 
-        output = self.capsule_impl_c
-        output.append("")
-        if literalinclude:
-            output.append("// start C capsule " + cname)
-        output.append("// C capsule " + cname)
-        if node.cpp_if:
-            output.append("#" + node.cpp_if)
-        util.append_format(self.capsule_impl_c,
-"""struct s_{C_type_name} {{+
-void *addr;     /* address of C++ memory */
-int idtor;      /* index of destructor */
--}};
-typedef struct s_{C_type_name} {C_type_name};""",
-                           fmt_class)
-        if node.cpp_if:
-            output.append("#endif  // " + node.cpp_if)
-        if literalinclude:
-            output.append("// end C capsule " + cname)
+        fmt.lang = "C++"
+        fmt.capsule_type = node.typemap.cxx_type
+#        self.add_class_capsule_worker(self.capsule_impl_cxx, fmt, literalinclude)
 
     def write_class_capsule_structs(self, output):
-#        output.extend(self.capsule_impl_cxx)
+#        output.append("")
+#        output.append("#if 0")
+        output.extend(self.capsule_impl_cxx)
+#        output.append("#endif")
         output.extend(self.capsule_impl_c)
         
     def wrap_class(self, node):
