@@ -86,6 +86,22 @@ struct s_SCO_SHROUD_array {
     long shape[7];
 };
 typedef struct s_SCO_SHROUD_array SCO_SHROUD_array;
+#if 0
+
+// C++ capsule SCO_Class1
+struct s_SCO_Class1 {
+    Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_SCO_Class1 SCO_Class1;
+
+// C++ capsule SCO_Class2
+struct s_SCO_Class2 {
+    Class2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_SCO_Class2 SCO_Class2;
+#endif
 
 // C capsule SCO_Class1
 struct s_SCO_Class1 {

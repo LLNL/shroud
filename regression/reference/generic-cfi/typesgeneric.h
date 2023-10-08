@@ -61,6 +61,15 @@ typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
+#if 0
+
+// C++ capsule GEN_StructAsClass
+struct s_GEN_StructAsClass {
+    StructAsClass *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_StructAsClass GEN_StructAsClass;
+#endif
 
 // C capsule GEN_StructAsClass
 struct s_GEN_StructAsClass {

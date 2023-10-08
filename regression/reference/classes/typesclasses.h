@@ -88,6 +88,56 @@ struct s_CLA_SHROUD_array {
 };
 typedef struct s_CLA_SHROUD_array CLA_SHROUD_array;
 // end array_context
+#if 0
+
+// start C++ capsule CLA_Class1
+// C++ capsule CLA_Class1
+struct s_CLA_Class1 {
+    classes::Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Class1 CLA_Class1;
+// end C++ capsule CLA_Class1
+
+// C++ capsule CLA_Class2
+struct s_CLA_Class2 {
+    classes::Class2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Class2 CLA_Class2;
+
+// start C++ capsule CLA_Singleton
+// C++ capsule CLA_Singleton
+struct s_CLA_Singleton {
+    classes::Singleton *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Singleton CLA_Singleton;
+// end C++ capsule CLA_Singleton
+
+// C++ capsule CLA_Shape
+struct s_CLA_Shape {
+    classes::Shape *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Shape CLA_Shape;
+
+// C++ capsule CLA_Circle
+struct s_CLA_Circle {
+    classes::Circle *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Circle CLA_Circle;
+
+// start C++ capsule CLA_Data
+// C++ capsule CLA_Data
+struct s_CLA_Data {
+    classes::Data *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Data CLA_Data;
+// end C++ capsule CLA_Data
+#endif
 
 // start C capsule CLA_Class1
 // C capsule CLA_Class1

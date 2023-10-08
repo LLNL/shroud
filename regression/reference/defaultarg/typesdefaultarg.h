@@ -34,6 +34,15 @@ struct s_DEF_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_DEF_SHROUD_capsule_data DEF_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule DEF_Class1
+struct s_DEF_Class1 {
+    Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_DEF_Class1 DEF_Class1;
+#endif
 
 // C capsule DEF_Class1
 struct s_DEF_Class1 {

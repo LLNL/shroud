@@ -27,6 +27,92 @@ struct s_TES_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_SHROUD_capsule_data TES_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule TES_ns0_Names
+struct s_TES_ns0_Names {
+    ns0::Names *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_ns0_Names TES_ns0_Names;
+
+// C++ capsule TES_internal_ImplWorker1
+struct s_TES_internal_ImplWorker1 {
+    internal::ImplWorker1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_internal_ImplWorker1 TES_internal_ImplWorker1;
+
+// C++ capsule TES_std_Vvv1
+struct s_TES_std_Vvv1 {
+    std::vector<int> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_std_Vvv1 TES_std_Vvv1;
+
+// C++ capsule TES_std_vector_double
+struct s_TES_std_vector_double {
+    std::vector<double> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_std_vector_double TES_std_vector_double;
+
+// C++ capsule TES_std_vector_instantiation5
+struct s_TES_std_vector_instantiation5 {
+    std::vector<long> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_std_vector_instantiation5 TES_std_vector_instantiation5;
+
+// C++ capsule TES_std_vector_instantiation3
+struct s_TES_std_vector_instantiation3 {
+    std::vector<internal::ImplWorker1> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_std_vector_instantiation3 TES_std_vector_instantiation3;
+
+// C++ capsule TES_capi_class1
+struct s_TES_capi_class1 {
+    CAPI::Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_capi_class1 TES_capi_class1;
+
+// C++ capsule TES_Names2
+struct s_TES_Names2 {
+    Names2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_Names2 TES_Names2;
+
+// C++ capsule TES_twoTs_0
+struct s_TES_twoTs_0 {
+    twoTs<int, long> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_twoTs_0 TES_twoTs_0;
+
+// C++ capsule TES_twoTs_instantiation4
+struct s_TES_twoTs_instantiation4 {
+    twoTs<float, double> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_twoTs_instantiation4 TES_twoTs_instantiation4;
+
+// C++ capsule TES_Cstruct_as_class
+struct s_TES_Cstruct_as_class {
+    Cstruct_as_class *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_Cstruct_as_class TES_Cstruct_as_class;
+
+// C++ capsule TES_Cstruct_as_subclass
+struct s_TES_Cstruct_as_subclass {
+    Cstruct_as_subclass *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_Cstruct_as_subclass TES_Cstruct_as_subclass;
+#endif
 
 // C capsule TES_ns0_Names
 struct s_TES_ns0_Names {

@@ -27,7 +27,7 @@ default_owner = "library"
 
 lang_map = {"c": "C", "cxx": "C++"}
 
-CPlusPlus = namedtuple("CPlusPlus", "start_cxx, else_cxx, end_cxx start_extern_c end_extern_c")
+CPlusPlus = namedtuple("CPlusPlus", "start_cxx else_cxx end_cxx start_extern_c end_extern_c")
 cplusplus = CPlusPlus([], [], [], [], [])
 
 class Wrapc(util.WrapperMixin):
@@ -60,6 +60,7 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         self.capsule_impl_cxx = []
         self.capsule_impl_c = []
+        self.header_types = util.Header(self.newlibrary) # shared type header
         self.helper_summary = None
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
@@ -405,7 +406,7 @@ class Wrapc(util.WrapperMixin):
             ]
         )
 
-        headers = util.Header(self.newlibrary)
+        headers = self.header_types
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
         headers.write_headers(output)
 
@@ -688,14 +689,25 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmt.lang = "C++"
         fmt.capsule_type = node.typemap.cxx_type
-#        self.add_class_capsule_worker(self.capsule_impl_cxx, fmt, literalinclude)
+        self.add_class_capsule_worker(self.capsule_impl_cxx, fmt, literalinclude)
+
+#        self.header_types.add_cxx_header(node)
 
     def write_class_capsule_structs(self, output):
-#        output.append("")
-#        output.append("#if 0")
-        output.extend(self.capsule_impl_cxx)
-#        output.append("#endif")
+        if self.capsule_impl_cxx:
+            output.append("#if 0")
+            #        output.extend(cplusplus.start_cxx)
+            output.extend(self.capsule_impl_cxx)
+            output.append("#endif")
+#        output.extend(cplusplus.end_extern_c)
+
+#        output.extend(cplusplus.start_cxx)
+#        output.extend(self.capsule_impl_cxx)
+#        output.extend(cplusplus.else_cxx)
         output.extend(self.capsule_impl_c)
+#        output.extend(cplusplus.end_cxx)
+
+#        output.extend(cplusplus.start_extern_c)
         
     def wrap_class(self, node):
         """

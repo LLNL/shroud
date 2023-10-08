@@ -27,6 +27,22 @@ struct s_FOR_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_FOR_SHROUD_capsule_data FOR_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule FOR_Class3
+struct s_FOR_Class3 {
+    forward::Class3 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_FOR_Class3 FOR_Class3;
+
+// C++ capsule FOR_Class2
+struct s_FOR_Class2 {
+    forward::Class2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_FOR_Class2 FOR_Class2;
+#endif
 
 // C capsule FOR_Class3
 struct s_FOR_Class3 {

@@ -86,6 +86,22 @@ struct s_AA_SHROUD_array {
     long shape[7];
 };
 typedef struct s_AA_SHROUD_array AA_SHROUD_array;
+#if 0
+
+// C++ capsule AA_example_nested_ExClass1
+struct s_AA_example_nested_ExClass1 {
+    example::nested::ExClass1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_AA_example_nested_ExClass1 AA_example_nested_ExClass1;
+
+// C++ capsule AA_example_nested_ExClass2
+struct s_AA_example_nested_ExClass2 {
+    example::nested::ExClass2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_AA_example_nested_ExClass2 AA_example_nested_ExClass2;
+#endif
 
 // C capsule AA_example_nested_ExClass1
 struct s_AA_example_nested_ExClass1 {

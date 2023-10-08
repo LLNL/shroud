@@ -23,6 +23,36 @@ struct s_LIB_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule LIB_three_Class1
+struct s_LIB_three_Class1 {
+    three::Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_three_Class1 LIB_three_Class1;
+
+// C++ capsule LIB_outer1_class0
+struct s_LIB_outer1_class0 {
+    outer1::class0 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_outer1_class0 LIB_outer1_class0;
+
+// C++ capsule LIB_outer2_class0
+struct s_LIB_outer2_class0 {
+    outer2::class0 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_outer2_class0 LIB_outer2_class0;
+
+// C++ capsule LIB_Class2
+struct s_LIB_Class2 {
+    Class2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_Class2 LIB_Class2;
+#endif
 
 // C capsule LIB_three_Class1
 struct s_LIB_three_Class1 {

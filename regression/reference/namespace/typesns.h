@@ -86,6 +86,15 @@ struct s_NS_SHROUD_array {
     long shape[7];
 };
 typedef struct s_NS_SHROUD_array NS_SHROUD_array;
+#if 0
+
+// C++ capsule NS_nswork_ClassWork
+struct s_NS_nswork_ClassWork {
+    nswork::ClassWork *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
+#endif
 
 // C capsule NS_nswork_ClassWork
 struct s_NS_nswork_ClassWork {
