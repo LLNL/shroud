@@ -28,7 +28,13 @@ default_owner = "library"
 lang_map = {"c": "C", "cxx": "C++"}
 
 CPlusPlus = namedtuple("CPlusPlus", "start_cxx else_cxx end_cxx start_extern_c end_extern_c")
-cplusplus = CPlusPlus([], [], [], [], [])
+cplusplus = CPlusPlus(
+    ["#ifdef __cplusplus"],      # start_cxx
+    ["#else  // __cplusplus"],   # else_cxx
+    ["#endif  // __cplusplus"],  # end_cxx
+    ["", "#ifdef __cplusplus", 'extern "C" {', "#endif"], # start_extern_c
+    ["", "#ifdef __cplusplus", "}", "#endif"],            # end_extern_c
+)
 
 class Wrapc(util.WrapperMixin):
     """Generate C bindings and Fortran helpers for C++ library.
@@ -67,14 +73,8 @@ class Wrapc(util.WrapperMixin):
         self.cursor = error.get_cursor()
 
         global cplusplus
-        if self.language == "cxx":
-            cplusplus = CPlusPlus(
-                ["#ifdef __cplusplus"],      # start_cxx
-                ["#else  // __cplusplus"],   # else_cxx
-                ["#endif  // __cplusplus"],  # end_cxx
-                ["", "#ifdef __cplusplus", 'extern "C" {', "#endif"], # start_extern_c
-                ["", "#ifdef __cplusplus", "}", "#endif"],            # end_extern_c
-            )
+        if self.language == "c":
+            cplusplus = CPlusPlus([], [], [], [], [])
 
     def _begin_output_file(self):
         """Start a new class for output"""
@@ -408,7 +408,7 @@ class Wrapc(util.WrapperMixin):
 
         headers = self.header_types
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
-        headers.write_headers(output)
+        headers.write_headers(output, is_header=True)
 
         output.append("")
         self._push_splicer("types")
@@ -482,7 +482,7 @@ class Wrapc(util.WrapperMixin):
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
         headers.add_file_code_header(fname, library)
-        headers.write_headers(output)
+        headers.write_headers(output, is_header=True)
         
         if self.language == "cxx":
             output.append("")
@@ -705,6 +705,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 #        output.extend(self.capsule_impl_cxx)
 #        output.extend(cplusplus.else_cxx)
         output.extend(self.capsule_impl_c)
+#        if self.capsule_impl_c:
+#            output.append("#ifndef __cplusplus")
+#            output.append("// C version of class capsules")
+#            output.extend(self.capsule_impl_c)
+#            output.append("#endif")
 #        output.extend(cplusplus.end_cxx)
 
 #        output.extend(cplusplus.start_extern_c)
