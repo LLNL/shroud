@@ -9,7 +9,7 @@ copyright:
 # Test error messages
 
 library: error
-cxx_header: error
+cxx_header: error.hpp
 
 options:
   debug: True

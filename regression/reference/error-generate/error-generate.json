@@ -179,7 +179,7 @@
             ""
         ],
         "cxx_header": [
-            "error"
+            "error.hpp"
         ],
         "functions": [
             {

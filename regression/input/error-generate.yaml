@@ -9,7 +9,7 @@ copyright:
 # Test error messages from generate.py
 
 library: error
-cxx_header: error
+cxx_header: error.hpp
 
 options:
   debug: True
