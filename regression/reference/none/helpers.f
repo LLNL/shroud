@@ -184,6 +184,30 @@ interface
 end interface
 ##### end copy_string interface
 
+---------- copy_string_capsule ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_SHROUD_copy_string_capsule"
+}
+
+##### start copy_string_capsule interface
+
+interface
+    ! helper copy_string_capsule
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_copy_string_capsule(capsule, c_var, c_var_size) &
+         bind(c,name="LIB_ShroudCopyStringCapsule")
+        use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+        import LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_capsule_data), intent(IN) :: capsule
+        character(kind=C_CHAR), intent(OUT) :: c_var(*)
+        integer(C_SIZE_T), value :: c_var_size
+    end subroutine LIB_SHROUD_copy_string_capsule
+end interface
+##### end copy_string_capsule interface
+
 ---------- pointer_string ----------
 {
     "dependent_helpers": [
@@ -206,6 +230,27 @@ subroutine LIB_SHROUD_pointer_string(context, var)
     var => fptr
 end subroutine LIB_SHROUD_pointer_string
 ##### end pointer_string source
+
+---------- string_capsule_size ----------
+{
+    "name": "LIB_SHROUD_string_capsule_size"
+}
+
+##### start string_capsule_size interface
+
+interface
+    ! helper string_capsule_size
+    ! Return size of std::string
+    function LIB_SHROUD_string_capsule_size(capsule) &
+         result(strsize) &
+         bind(c,name="LIB_ShroudStringCapsuleSize")
+        use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+        import LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_capsule_data), intent(IN) :: capsule
+        integer(C_SIZE_T) :: strsize
+    end function LIB_SHROUD_string_capsule_size
+end interface
+##### end string_capsule_size interface
 
 ---------- type_defines ----------
 {}

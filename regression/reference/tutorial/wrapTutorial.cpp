@@ -58,7 +58,8 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // helper string_to_cdesc
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStringToCdesc(TUT_SHROUD_array *cdesc, const std::string * src, int idtor)
+static void ShroudStringToCdesc(TUT_SHROUD_array *cdesc,
+    const std::string * src, int idtor)
 {
     cdesc->cxx.addr = const_cast<std::string *>(src);
     cdesc->cxx.idtor = idtor;

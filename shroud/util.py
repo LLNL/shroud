@@ -42,6 +42,10 @@ def wformat(template, dct):
         #raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
         raise SystemExit("Error with template: " + "%r" % template)
+    except ValueError as err:
+        cursor = error.get_cursor()
+        cursor.warning("%s in %r" % (err.args[0], template))
+        return "===>%s<===" % template
 
 
 def append_format(lstout, template, fmt):
