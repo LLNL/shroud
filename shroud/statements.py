@@ -845,6 +845,29 @@ fc_statements = [
         i_import=["{F_array_type}"],
         c_temps=["cdesc"],
     ),
+    dict(
+        # Pass array_type as argument to contain the function result.
+        name="f_mixin_function_capsule",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
+        f_helper=["array_context"],
+        f_declare=[
+            "type({F_capsule_data_type}) :: {f_var_capsule}",
+        ],
+        f_arg_call=["{f_var_capsule}"],
+        f_temps=["capsule"],
+        f_need_wrapper=True,
+
+        c_arg_decl=[
+            "{C_capsule_data_type} *{c_var}",
+        ],
+        i_arg_decl=[
+            "type({F_capsule_data_type}), intent(OUT) :: {c_var}",
+        ],
+        i_arg_names=["{c_var}"],
+        i_import=["{F_capsule_data_type}"],
+    ),
 
     dict(
         # Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -857,6 +880,26 @@ fc_statements = [
         f_post_call=[
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
             "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)",
+        ],
+    ),
+    dict(
+        # Allocate Fortran CHARACTER scalar, then fill from capsule.
+        name="f_mixin_char_capsule_allocate",
+        c_helper=["string_capsule_size", "copy_string_capsule"],
+        f_helper=["string_capsule_size", "copy_string_capsule", "capsule_dtor"],
+        f_temps=["len"],
+        f_arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_declare=[
+            "integer(C_SIZE_T) :: {f_var_len}",
+        ],
+        f_post_call=[
+            "{f_var_len} = {f_helper_string_capsule_size}({f_var_capsule})",
+            "allocate(character(len={f_var_len}):: {f_var})",
+            "call {f_helper_copy_string_capsule}(\t{f_var_capsule},\t {f_var},\t {f_var_len})",
+            "call {f_helper_capsule_dtor}({f_var_capsule})",
         ],
     ),
     
@@ -2240,6 +2283,27 @@ fc_statements = [
             "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
+    dict(
+        # f_function_string_*_cdesc_allocatable_caller
+        # f_function_string_&_cdesc_allocatable_caller
+        # f_function_string_*_cdesc_allocatable_library
+        # f_function_string_&_cdesc_allocatable_library
+        # XXX - capsule
+        name="x_function_string_*_cdesc_allocatable",
+        mixin=[
+            "f_mixin_function_capsule",
+            "f_mixin_char_capsule_allocate",
+        ],
+        alias=[
+            "f_function_string_&_cdesc_allocatable",
+            "f_function_string_*/&_cdesc_allocatable_caller/library",
+
+        ],
+        c_post_call=[
+            "{c_var}->addr = static_cast<void *>(const_cast<std::string *>(\t{cxx_addr}{cxx_var}));",
+            "{c_var}->idtor = {idtor};",
+        ],
+    ),
 
     dict(
         # f_function_string_scalar_buf
@@ -3157,6 +3221,7 @@ fc_statements = [
         
         c_helper=["type_defines", "array_context"],
         c_call=[
+            # XXX - capsule
             "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
             "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name};",

@@ -269,8 +269,8 @@ integer(C_SIZE_T), value :: c_var_size
     CHelpers[name] = dict(
         name=fmt.cnamefunc,
         scope="cwrap_impl",
-#        dependent_helpers=["array_context"],
-        cxx_include=["<cstring>", "<cstddef>"],
+        dependent_helpers=["capsule_data_helper"],
+        cxx_include=["<string>"],
         # XXX - mangle name
         source=wformat(
             """
@@ -278,8 +278,7 @@ integer(C_SIZE_T), value :: c_var_size
 // Extract the length of the std::string in the capsule.
 // Called by Fortran to deal with allocatable character.
 size_t {cnamefunc}(\t{C_capsule_data_type} *capsule) {{+
-//std::string *src = const_cast<std::string *>(capsule->addr);
-std::string *src = static_cast<std::string *>(const_cast<void *>(capsule->addr));
+const std::string *src = static_cast<const std::string *>(capsule->addr);
 return src->size();
 -}}{lend}
 """,
@@ -290,7 +289,7 @@ return src->size();
     # Fortran interface for above function.
     # Deal with allocatable character
     FHelpers[name] = dict(
-#        dependent_helpers=["array_context"],
+        dependent_helpers=["capsule_data_helper"],
         name=fmt.fnamefunc,
         interface=wformat(
             """
@@ -321,8 +320,8 @@ integer(C_SIZE_T) :: strsize
     CHelpers[name] = dict(
         name=fmt.cnamefunc,
         scope="cwrap_impl",
-        dependent_helpers=["array_context"],
-        cxx_include=["<cstring>", "<cstddef>"],
+        dependent_helpers=["capsule_data_helper"],
+        cxx_include=["<string>", "<cstring>"],
         # XXX - mangle name
         source=wformat(
             """
@@ -330,9 +329,7 @@ integer(C_SIZE_T) :: strsize
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {cnamefunc}(\t{C_capsule_data_type} *capsule,\t char *c_var,\t size_t c_var_len) {{+
-// See string_to_cdesc
-//std::string *src = const_cast<std::string *>(capsule->addr);
-std::string *src = static_cast<std::string *>(const_cast<void *>(capsule->addr));
+const std::string *src = static_cast<const std::string *>(capsule->addr);
 if (src->empty()) {{+
 c_var[0] = '\\0';
 -}} else {{+
@@ -347,7 +344,7 @@ std::strncpy(c_var, src->data(), src->length());
     # Fortran interface for above function.
     # Deal with allocatable character
     FHelpers[name] = dict(
-        dependent_helpers=["array_context"],
+        dependent_helpers=["capsule_data_helper"],
         name=fmt.fnamefunc,
         interface=wformat(
             """

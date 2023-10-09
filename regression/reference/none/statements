@@ -586,10 +586,13 @@ root
         ** -- f_in/out/inout_void_**
     mixin
       char
+        capsule
+          allocate -- f_mixin_char_capsule_allocate
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
+        capsule -- f_mixin_function_capsule
         cdesc -- f_mixin_function_cdesc
         native
           cdesc
@@ -8640,6 +8643,31 @@ f_inout_void_*_cdesc:
   intent: inout
   name: f_inout_void_*_cdesc
   owner: library
+f_mixin_char_capsule_allocate:
+  c_helper:
+  - string_capsule_size
+  - copy_string_capsule
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_declare:
+  - 'integer(C_SIZE_T) :: {f_var_len}'
+  f_helper:
+  - string_capsule_size
+  - copy_string_capsule
+  - capsule_dtor
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_post_call:
+  - '{f_var_len} = {f_helper_string_capsule_size}({f_var_capsule})'
+  - 'allocate(character(len={f_var_len}):: {f_var})'
+  - "call {f_helper_copy_string_capsule}(\t{f_var_capsule},\t {f_var},\t {f_var_len})"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
+  f_temps:
+  - len
+  intent: mixin
+  name: f_mixin_char_capsule_allocate
+  owner: library
 f_mixin_char_cdesc_allocate:
   c_helper:
   - copy_string
@@ -8688,6 +8716,30 @@ f_mixin_function_c-ptr:
   - type(C_PTR) {c_var}
   intent: mixin
   name: f_mixin_function_c-ptr
+  owner: library
+f_mixin_function_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var}'
+  c_return_type: void
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  f_temps:
+  - capsule
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_function_capsule
   owner: library
 f_mixin_function_cdesc:
   c_arg_decl:

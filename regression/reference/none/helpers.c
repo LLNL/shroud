@@ -548,11 +548,11 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var,
 ---------- copy_string_capsule ----------
 {
     "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
+        "<string>",
+        "<cstring>"
     ],
     "dependent_helpers": [
-        "array_context"
+        "capsule_data_helper"
     ],
     "name": "LIB_ShroudCopyStringCapsule",
     "scope": "cwrap_impl"
@@ -565,9 +565,7 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var,
 // Called by Fortran to deal with allocatable character.
 void LIB_ShroudCopyStringCapsule(LIB_SHROUD_capsule_data *capsule,
     char *c_var, size_t c_var_len) {
-    // See string_to_cdesc
-    //std::string *src = const_cast<std::string *>(capsule->addr);
-    std::string *src = static_cast<std::string *>(const_cast<void *>(capsule->addr));
+    const std::string *src = static_cast<const std::string *>(capsule->addr);
     if (src->empty()) {
         c_var[0] = '\0';
     } else {
@@ -5203,8 +5201,10 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 ---------- string_capsule_size ----------
 {
     "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
+        "<string>"
+    ],
+    "dependent_helpers": [
+        "capsule_data_helper"
     ],
     "name": "LIB_ShroudStringCapsuleSize",
     "scope": "cwrap_impl"
@@ -5216,8 +5216,7 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 // Extract the length of the std::string in the capsule.
 // Called by Fortran to deal with allocatable character.
 size_t LIB_ShroudStringCapsuleSize(LIB_SHROUD_capsule_data *capsule) {
-    //std::string *src = const_cast<std::string *>(capsule->addr);
-    std::string *src = static_cast<std::string *>(const_cast<void *>(capsule->addr));
+    const std::string *src = static_cast<const std::string *>(capsule->addr);
     return src->size();
 }
 

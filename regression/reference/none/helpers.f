@@ -187,7 +187,7 @@ end interface
 ---------- copy_string_capsule ----------
 {
     "dependent_helpers": [
-        "array_context"
+        "capsule_data_helper"
     ],
     "name": "LIB_SHROUD_copy_string_capsule"
 }
@@ -233,6 +233,9 @@ end subroutine LIB_SHROUD_pointer_string
 
 ---------- string_capsule_size ----------
 {
+    "dependent_helpers": [
+        "capsule_data_helper"
+    ],
     "name": "LIB_SHROUD_string_capsule_size"
 }
 
