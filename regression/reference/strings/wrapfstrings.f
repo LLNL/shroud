@@ -1115,11 +1115,11 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(copy)+intent(out)
     ! Statement: f_out_string_**_cdesc_copy
     interface
-        subroutine c_fetch_array_string_arg_bufferify(SHT_strs_cdesc) &
+        subroutine c_fetch_array_string_arg_bufferify(strs) &
                 bind(C, name="STR_fetchArrayStringArg_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_array), intent(OUT) :: strs
         end subroutine c_fetch_array_string_arg_bufferify
     end interface
 
@@ -1155,11 +1155,11 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
-        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc) &
+        subroutine c_fetch_array_string_alloc_bufferify(strs) &
                 bind(C, name="STR_fetchArrayStringAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_array), intent(OUT) :: strs
         end subroutine c_fetch_array_string_alloc_bufferify
     end interface
 
@@ -1195,12 +1195,11 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
-        subroutine c_fetch_array_string_alloc_len_bufferify( &
-                SHT_strs_cdesc) &
+        subroutine c_fetch_array_string_alloc_len_bufferify(strs) &
                 bind(C, name="STR_fetchArrayStringAllocLen_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_array), intent(OUT) :: strs
         end subroutine c_fetch_array_string_alloc_len_bufferify
     end interface
 

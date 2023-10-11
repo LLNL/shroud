@@ -1824,6 +1824,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
@@ -1973,6 +1974,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -2429,6 +2431,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -2628,6 +2631,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -3432,6 +3436,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -3845,6 +3850,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -4046,6 +4052,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -4249,6 +4256,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
@@ -4431,6 +4439,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -7297,7 +7306,7 @@
                     "C_name_api": "fetchArrayStringArg",
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_arg_bufferify",
                     "F_C_name": "c_fetch_array_string_arg_bufferify",
                     "F_C_subprogram": "subroutine",
@@ -7653,7 +7662,7 @@
                     "C_name_api": "fetchArrayStringAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_alloc_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
@@ -8014,7 +8023,7 @@
                     "C_name_api": "fetchArrayStringAllocLen",
                     "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_strs_cdesc",
+                    "F_C_arguments": "strs",
                     "F_C_call": "c_fetch_array_string_alloc_len_bufferify",
                     "F_C_name": "c_fetch_array_string_alloc_len_bufferify",
                     "F_C_subprogram": "subroutine",

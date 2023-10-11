@@ -838,6 +838,7 @@ fc_statements = [
         f_temps=["cdesc"],
         f_need_wrapper=True,
 
+        c_helper=["array_context"],
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -1206,28 +1207,6 @@ fc_statements = [
     ),
 
     dict(
-        # Pass array_type to C which will fill it in.
-        name="f_mixin_out_array_cdesc",
-        f_helper=["array_context"],
-        f_declare=[
-            "type({F_array_type}) :: {f_var_cdesc}",
-        ],
-        f_arg_call=["{f_var_cdesc}"],
-        f_temps=["cdesc"],
-
-        c_helper=["array_context"],
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
-        ],
-        i_arg_names=["{c_var_cdesc}"],
-        i_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
-        ],
-        i_import=["{F_array_type}"],
-        c_temps=["cdesc"],
-    ),
-
-    dict(
         # Take f_var output, pack into cdesc, then allocate
         name="f_mixin_out_array_cdesc_allocatable",
         f_temps=["alloc"],
@@ -1509,7 +1488,7 @@ fc_statements = [
     dict(
         name="f_out_native_*&_cdesc",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer",
         ],
@@ -1529,7 +1508,7 @@ fc_statements = [
 #        # with a Fortran pointer.
 #        # XXX - untested
 #        name="f_out_native_*&_cdesc_allocatable",
-#        mixin=["f_mixin_out_array_cdesc"],
+#        mixin=["f_mixin_pass_cdesc"],
 #        c_helper=["copy_array"],
 #        f_helper=["copy_array"],
 ##XXX        f_helper=["copy_array_{c_type}"],
@@ -1550,7 +1529,7 @@ fc_statements = [
 #TTT        name="f_out_native_**/*&_cdesc_allocatable",
         name="f_out_native_**_cdesc_allocatable",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native_**",
             "f_mixin_out_native_cdesc_allocate",
@@ -1565,7 +1544,7 @@ fc_statements = [
         # with a Fortran pointer.
         name="f_out_native_**_cdesc_pointer",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_out_native_**",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer",
@@ -1590,7 +1569,7 @@ fc_statements = [
     dict(
         name="f_in/out/inout_native_*_cdesc",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
         ],
         alias=[
             "c_in_native_*_cdesc",
@@ -2510,7 +2489,7 @@ fc_statements = [
         # f_out_vector_&_cdesc_targ_native_scalar
         name="f_out_vector_*/&_cdesc_targ_native_scalar",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar",
         ],
         alias=[
@@ -2733,7 +2712,7 @@ fc_statements = [
         name="f_out_vector_&_cdesc_targ_string_scalar",
         mixin=[
             "f_mixin_str_array",
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
         ],
         alias=[
             "c_out_vector_&_cdesc_targ_string_scalar",
@@ -2755,7 +2734,7 @@ fc_statements = [
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "f_mixin_out_array_cdesc_allocatable",
         ],
         append=dict(
@@ -2806,7 +2785,7 @@ fc_statements = [
 #        # f_out_vector_*_cdesc_targ_native_scalar
 #        # f_out_vector_&_cdesc_targ_native_scalar
 #        name="f_out_vector_*/&_cdesc_targ_native_scalar",
-#        mixin=["f_mixin_out_array_cdesc"],
+#        mixin=["f_mixin_pass_cdesc"],
 #        c_helper="copy_array",
 #        f_helper="copy_array",
 #        # TARGET required for argument to C_LOC.
@@ -2854,7 +2833,7 @@ fc_statements = [
         # f_out_vector_&_cdesc_allocatable_targ_native_scalar
         name="f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
         ],
         alias=[
@@ -3953,7 +3932,7 @@ fc_statements = [
         name="f_out_string_**_cdesc_copy",
         mixin=[
             "f_mixin_str_array",
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
         ],
         alias=[
             "c_out_string_**_cdesc_copy",
@@ -3988,7 +3967,7 @@ fc_statements = [
     dict(
         name="f_out_string_**_cdesc_allocatable",
         mixin=[
-            "f_mixin_out_array_cdesc",
+            "f_mixin_pass_cdesc",
             "f_mixin_out_array_cdesc_allocatable",
         ],
         append=dict(

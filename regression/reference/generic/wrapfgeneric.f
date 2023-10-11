@@ -665,12 +665,11 @@ module generic_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     interface
-        subroutine c_get_pointer_as_pointer_float1d_bufferify( &
-                SHT_addr_cdesc) &
+        subroutine c_get_pointer_as_pointer_float1d_bufferify(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float1d_bufferify")
             import :: GEN_SHROUD_array
             implicit none
-            type(GEN_SHROUD_array), intent(OUT) :: SHT_addr_cdesc
+            type(GEN_SHROUD_array), intent(OUT) :: addr
         end subroutine c_get_pointer_as_pointer_float1d_bufferify
     end interface
 #endif
@@ -686,12 +685,11 @@ module generic_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     interface
-        subroutine c_get_pointer_as_pointer_float2d_bufferify( &
-                SHT_addr_cdesc) &
+        subroutine c_get_pointer_as_pointer_float2d_bufferify(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float2d_bufferify")
             import :: GEN_SHROUD_array
             implicit none
-            type(GEN_SHROUD_array), intent(OUT) :: SHT_addr_cdesc
+            type(GEN_SHROUD_array), intent(OUT) :: addr
         end subroutine c_get_pointer_as_pointer_float2d_bufferify
     end interface
 #endif

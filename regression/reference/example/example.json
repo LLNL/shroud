@@ -955,6 +955,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "const ",
+                                                "c_helper_array_context": "AA_SHROUD_array",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
                                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
@@ -2774,6 +2775,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "const ",
+                                                "c_helper_array_context": "AA_SHROUD_array",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
                                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
@@ -2985,6 +2987,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
+                                                "c_helper_array_context": "AA_SHROUD_array",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
                                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",
@@ -3193,6 +3196,7 @@
                                         "zz_fmtresult": {
                                             "fmtc": {
                                                 "c_const": "",
+                                                "c_helper_array_context": "AA_SHROUD_array",
                                                 "c_helper_copy_string": "AA_ShroudCopyStringAndFree",
                                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                 "c_type": "char",

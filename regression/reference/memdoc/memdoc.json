@@ -152,6 +152,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",

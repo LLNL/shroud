@@ -1584,6 +1584,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "const ",
+                                "c_helper_array_context": "CLA_SHROUD_array",
                                 "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                 "c_type": "char",
@@ -2216,6 +2217,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
+                                "c_helper_array_context": "CLA_SHROUD_array",
                                 "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
@@ -2757,6 +2759,7 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "const ",
+                                "c_helper_array_context": "CLA_SHROUD_array",
                                 "c_helper_copy_string": "CLA_ShroudCopyStringAndFree",
                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                 "c_type": "char",

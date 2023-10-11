@@ -497,11 +497,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_scalar_bufferify
     interface
-        subroutine c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc) &
+        subroutine c_get_ptr_to_scalar_bufferify(nitems) &
                 bind(C, name="POI_getPtrToScalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: nitems
         end subroutine c_get_ptr_to_scalar_bufferify
     end interface
     ! end c_get_ptr_to_scalar_bufferify
@@ -536,11 +536,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
-        subroutine c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc) &
+        subroutine c_get_ptr_to_fixed_array_bufferify(count) &
                 bind(C, name="POI_getPtrToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_ptr_to_fixed_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_array_bufferify
@@ -580,11 +580,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
+        subroutine c_get_ptr_to_dynamic_array_bufferify(count) &
                 bind(C, name="POI_getPtrToDynamicArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_array_bufferify
@@ -619,11 +619,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_func_array_bufferify
     interface
-        subroutine c_get_ptr_to_func_array_bufferify(SHT_count_cdesc) &
+        subroutine c_get_ptr_to_func_array_bufferify(count) &
                 bind(C, name="POI_getPtrToFuncArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_ptr_to_func_array_bufferify
     end interface
     ! end c_get_ptr_to_func_array_bufferify
@@ -658,11 +658,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
-        subroutine c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc) &
+        subroutine c_get_ptr_to_const_scalar_bufferify(nitems) &
                 bind(C, name="POI_getPtrToConstScalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: nitems
         end subroutine c_get_ptr_to_const_scalar_bufferify
     end interface
     ! end c_get_ptr_to_const_scalar_bufferify
@@ -697,12 +697,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
-        subroutine c_get_ptr_to_fixed_const_array_bufferify( &
-                SHT_count_cdesc) &
+        subroutine c_get_ptr_to_fixed_const_array_bufferify(count) &
                 bind(C, name="POI_getPtrToFixedConstArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_const_array_bufferify
@@ -742,12 +741,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
-                SHT_count_cdesc) &
+        subroutine c_get_ptr_to_dynamic_const_array_bufferify(count) &
                 bind(C, name="POI_getPtrToDynamicConstArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_ptr_to_dynamic_const_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_const_array_bufferify
@@ -917,11 +915,11 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_allocatable
     ! start c_get_alloc_to_fixed_array_bufferify
     interface
-        subroutine c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc) &
+        subroutine c_get_alloc_to_fixed_array_bufferify(count) &
                 bind(C, name="POI_getAllocToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_array), intent(OUT) :: count
         end subroutine c_get_alloc_to_fixed_array_bufferify
     end interface
     ! end c_get_alloc_to_fixed_array_bufferify

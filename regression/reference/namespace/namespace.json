@@ -173,6 +173,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
+                        "c_helper_array_context": "NS_SHROUD_array",
                         "c_helper_copy_string": "NS_ShroudCopyStringAndFree",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",

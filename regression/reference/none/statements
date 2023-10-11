@@ -633,7 +633,7 @@ root
           pointer -- f_mixin_native_cdesc_pointer
       out
         array
-          cdesc -- f_mixin_out_array_cdesc
+          cdesc
             allocatable -- f_mixin_out_array_cdesc_allocatable
         native
           cdesc
@@ -925,6 +925,7 @@ c_function_char_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
@@ -1386,6 +1387,7 @@ c_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1411,6 +1413,7 @@ c_function_string_&_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1436,6 +1439,7 @@ c_function_string_&_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1524,6 +1528,7 @@ c_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1549,6 +1554,7 @@ c_function_string_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1574,6 +1580,7 @@ c_function_string_*_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -1870,10 +1877,12 @@ c_in_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -2310,10 +2319,12 @@ c_in_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -2393,10 +2404,12 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -2560,10 +2573,12 @@ c_inout_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -2940,11 +2955,12 @@ c_out_native_*&_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -2983,13 +2999,14 @@ c_out_native_**_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3015,11 +3032,12 @@ c_out_native_**_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3042,10 +3060,12 @@ c_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3146,10 +3166,12 @@ c_out_string_**_cdesc_allocatable:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3168,10 +3190,12 @@ c_out_string_**_cdesc_copy:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3234,15 +3258,17 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3269,10 +3295,12 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3297,15 +3325,17 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3324,10 +3354,12 @@ c_out_vector_&_cdesc_targ_string_scalar:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3351,15 +3383,17 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3384,15 +3418,17 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3424,10 +3460,12 @@ c_out_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3817,6 +3855,7 @@ f_function_char_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
@@ -4111,6 +4150,7 @@ f_function_char_scalar_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
@@ -4312,6 +4352,7 @@ f_function_native_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -4364,6 +4405,8 @@ f_function_native_*_cdesc_allocatable:
 f_function_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -4409,6 +4452,8 @@ f_function_native_*_cdesc_pointer:
 f_function_native_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -5189,6 +5234,7 @@ f_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -5233,6 +5279,7 @@ f_function_string_&_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -5277,6 +5324,7 @@ f_function_string_&_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -5321,6 +5369,7 @@ f_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -5365,6 +5414,7 @@ f_function_string_&_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -5409,6 +5459,7 @@ f_function_string_&_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -5882,6 +5933,7 @@ f_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -5926,6 +5978,7 @@ f_function_string_*_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -5970,6 +6023,7 @@ f_function_string_*_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -6014,6 +6068,7 @@ f_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -6058,6 +6113,7 @@ f_function_string_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -6102,6 +6158,7 @@ f_function_string_*_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -6590,6 +6647,7 @@ f_function_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -6641,6 +6699,7 @@ f_function_string_scalar_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -6692,6 +6751,7 @@ f_function_string_scalar_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
@@ -7243,6 +7303,7 @@ f_getter_string_scalar_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
   - '{c_var_cdesc}->rank = 0;'
   c_helper:
+  - array_context
   - copy_string
   c_return_type: void
   c_temps:
@@ -7596,6 +7657,8 @@ f_in_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7608,6 +7671,7 @@ f_in_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -7617,9 +7681,9 @@ f_in_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -8285,6 +8349,8 @@ f_in_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8297,6 +8363,7 @@ f_in_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8306,9 +8373,9 @@ f_in_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -8431,6 +8498,8 @@ f_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8443,6 +8512,7 @@ f_inout_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8452,9 +8522,9 @@ f_inout_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -8945,6 +9015,8 @@ f_inout_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8957,6 +9029,7 @@ f_inout_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8966,9 +9039,9 @@ f_inout_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -9338,30 +9411,6 @@ f_mixin_native_cdesc_pointer:
   intent: mixin
   name: f_mixin_native_cdesc_pointer
   owner: library
-f_mixin_out_array_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_temps:
-  - cdesc
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: f_mixin_out_array_cdesc
-  owner: library
 f_mixin_out_array_cdesc_allocatable:
   c_helper:
   - vector_string_allocatable
@@ -9452,6 +9501,8 @@ f_mixin_pass_capsule:
 f_mixin_pass_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
   c_temps:
   - cdesc
   comments:
@@ -9617,6 +9668,7 @@ f_out_native_*&_cdesc:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9629,14 +9681,15 @@ f_out_native_*&_cdesc:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -9662,6 +9715,7 @@ f_out_native_*&_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9674,14 +9728,15 @@ f_out_native_*&_cdesc_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -9720,6 +9775,7 @@ f_out_native_**_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
@@ -9736,15 +9792,16 @@ f_out_native_**_cdesc_allocatable:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -9770,6 +9827,7 @@ f_out_native_**_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9782,14 +9840,15 @@ f_out_native_**_cdesc_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -9889,6 +9948,8 @@ f_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9901,6 +9962,7 @@ f_out_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -9910,9 +9972,9 @@ f_out_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10041,6 +10103,8 @@ f_out_string_**_cdesc_allocatable:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10053,6 +10117,7 @@ f_out_string_**_cdesc_allocatable:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - '{f_var_alloc}%size = {f_var_cdesc}%size;'
   - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
@@ -10064,9 +10129,9 @@ f_out_string_**_cdesc_allocatable:
   - cdesc
   - alloc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10085,6 +10150,8 @@ f_out_string_**_cdesc_copy:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10097,6 +10164,7 @@ f_out_string_**_cdesc_copy:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -10107,9 +10175,9 @@ f_out_string_**_cdesc_copy:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10250,6 +10318,8 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -10267,15 +10337,16 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10302,6 +10373,8 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10314,6 +10387,7 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - '{f_var_alloc}%size = {f_var_cdesc}%size;'
   - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
@@ -10325,9 +10399,9 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - cdesc
   - alloc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10352,6 +10426,8 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -10369,14 +10445,15 @@ f_out_vector_&_cdesc_targ_native_scalar:
     iso_c_binding:
     - C_SIZE_T
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10395,6 +10472,8 @@ f_out_vector_&_cdesc_targ_string_scalar:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10407,6 +10486,7 @@ f_out_vector_&_cdesc_targ_string_scalar:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -10417,9 +10497,9 @@ f_out_vector_&_cdesc_targ_string_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10443,6 +10523,8 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -10460,15 +10542,16 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10493,6 +10576,8 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -10510,14 +10595,15 @@ f_out_vector_*_cdesc_targ_native_scalar:
     iso_c_binding:
     - C_SIZE_T
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10609,6 +10695,8 @@ f_out_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10621,6 +10709,7 @@ f_out_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -10630,9 +10719,9 @@ f_out_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{c_var}'
   i_import:
   - '{F_array_type}'
   intent: out
