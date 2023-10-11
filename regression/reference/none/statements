@@ -597,8 +597,6 @@ root
           pointer -- f_mixin_char_cdesc_pointer
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
-        capsule -- f_mixin_function_capsule
-        cdesc -- f_mixin_function_cdesc
         native
           cdesc
             pointer -- f_mixin_function_native_cdesc_pointer
@@ -644,6 +642,9 @@ root
         string
           **
             cfi -- f_mixin_out_string_**_cfi
+      pass
+        capsule -- f_mixin_pass_capsule
+        cdesc -- f_mixin_pass_cdesc
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -9090,54 +9091,6 @@ f_mixin_function_c-ptr:
   intent: mixin
   name: f_mixin_function_c-ptr
   owner: library
-f_mixin_function_capsule:
-  c_arg_decl:
-  - '{C_capsule_data_type} *{c_var}'
-  comments:
-  - Pass capsule as argument to C wrapper.
-  f_arg_call:
-  - '{f_var_capsule}'
-  f_declare:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
-  f_helper:
-  - array_context
-  f_need_wrapper: true
-  f_temps:
-  - capsule
-  i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_capsule_data_type}'
-  intent: mixin
-  name: f_mixin_function_capsule
-  owner: library
-f_mixin_function_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  f_need_wrapper: true
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: f_mixin_function_cdesc
-  owner: library
 f_mixin_function_native_cdesc_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
@@ -9472,6 +9425,54 @@ f_mixin_out_string_**_cfi:
   - cxx
   intent: mixin
   name: f_mixin_out_string_**_cfi
+  owner: library
+f_mixin_pass_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var}'
+  comments:
+  - Pass capsule as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  f_temps:
+  - capsule
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_pass_capsule
+  owner: library
+f_mixin_pass_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_temps:
+  - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  i_arg_names:
+  - '{c_var}'
+  i_import:
+  - '{F_array_type}'
+  intent: mixin
+  name: f_mixin_pass_cdesc
   owner: library
 f_mixin_shadow-arg:
   f_arg_call:

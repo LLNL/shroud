@@ -826,7 +826,7 @@ fc_statements = [
         i_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        name="f_mixin_function_cdesc",
+        name="f_mixin_pass_cdesc",
         comments=[
             "Pass cdesc as argument to C wrapper.",
         ],
@@ -850,7 +850,7 @@ fc_statements = [
     ),
     dict(
         # Pass array_type as argument to contain the function result.
-        name="f_mixin_function_capsule",
+        name="f_mixin_pass_capsule",
         comments=[
             "Pass capsule as argument to C wrapper.",
         ],
@@ -1007,7 +1007,7 @@ fc_statements = [
     dict(
         # Add function result to cdesc. Used with pointer and allocatable
         # c_temp cdesc already added
-        # assumes mixin=["f_mixin_function_cdesc"],
+        # assumes mixin=["f_mixin_pass_cdesc"],
         name="c_mixin_native_cdesc_fill-cdesc",
         comments=[
             "Fill cdesc from native in the C wrapper.",
@@ -1025,7 +1025,7 @@ fc_statements = [
     ),
     dict(
         # Used with both deref allocatable and pointer.
-        # assumes mixin=["f_mixin_function_cdesc"],
+        # assumes mixin=["f_mixin_pass_cdesc"],
         name="c_mixin_function_char_*_cdesc",
         comments=[
             "Fill cdesc from char * in the C wrapper.",
@@ -1742,7 +1742,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_allocate",
         ],
@@ -1785,7 +1785,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_function_native_cdesc_pointer",
         ],
@@ -1796,7 +1796,7 @@ fc_statements = [
         name="f_function_native_*_cdesc_pointer_caller",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_pointer",
             "f_mixin_arg_capsule",
@@ -2065,7 +2065,7 @@ fc_statements = [
         name="f_function_char_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "f_mixin_char_cdesc_allocate",
             "c_mixin_function_char_*_cdesc",
         ],
@@ -2080,7 +2080,7 @@ fc_statements = [
         name="f_function_char_scalar_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_function_char_*_cdesc",
             "f_mixin_char_cdesc_pointer",
         ],
@@ -2097,7 +2097,7 @@ fc_statements = [
         name="f_function_string_*_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_pointer",
         ],
@@ -2316,7 +2316,7 @@ fc_statements = [
         name="f_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
@@ -2335,7 +2335,7 @@ fc_statements = [
         name="x_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_capsule",
+            "f_mixin_pass_capsule",
             "f_mixin_char_capsule_allocate",
         ],
         alias=[
@@ -2429,7 +2429,7 @@ fc_statements = [
         name="f_function_string_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
@@ -2552,7 +2552,7 @@ fc_statements = [
         name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc",
         ],
@@ -3252,7 +3252,7 @@ fc_statements = [
         name="f_getter_native_*_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "f_mixin_function_native_cdesc_pointer",
         ],
         alias=[
@@ -3280,7 +3280,7 @@ fc_statements = [
         name="f_getter_string_scalar_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_cdesc",
+            "f_mixin_pass_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
         c_call=[
