@@ -638,7 +638,7 @@ def print_tree_statements(fp, statements, defaults):
 CStmts = util.Scope(
     None,
     name="c_default",
-#    comments=[],
+    comments=[],
     intent=None,
     fmtdict=None,
     iface_header=[],
