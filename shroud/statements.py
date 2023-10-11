@@ -913,10 +913,12 @@ fc_statements = [
     ),
     
     dict(
+        # Make result a Fortran pointer
         name="f_mixin_native_cdesc_pointer",
         comments=[
             "Set Fortran pointer to native array.",
         ],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -1439,17 +1441,6 @@ fc_statements = [
             "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
-    dict(
-        # Make result a Fortran pointer
-        name="f_mixin_function_native_cdesc_pointer",
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        f_arg_decl=[
-            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-        ],
-        f_post_call=[
-            "call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})",
-        ],
-    ),
 
     dict(
         name="f_out_native_*",
@@ -1766,7 +1757,7 @@ fc_statements = [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
-            "f_mixin_function_native_cdesc_pointer",
+            "f_mixin_native_cdesc_pointer",
         ],
     ),
     dict(
@@ -3232,13 +3223,13 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
-            "f_mixin_function_native_cdesc_pointer",
+            "f_mixin_native_cdesc_pointer",
         ],
         alias=[
             "f_getter_struct_*_cdesc_pointer",
             "f_getter_struct_**_cdesc_pointer",
         ],
-        # See f_function_native_*_cdesc_pointer  f_mixin_function_native_cdesc_pointer
+        # See f_function_native_*_cdesc_pointer  f_mixin_native_cdesc_pointer
         
         c_helper=["type_defines", "array_context"],
         c_call=[
