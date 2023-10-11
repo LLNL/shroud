@@ -926,6 +926,20 @@ fc_statements = [
             "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
         ],
     ),
+    dict(
+        # Make argument a Fortran pointer
+        name="f_mixin_out_native_cdesc_pointer",
+        comments=[
+            "Set Fortran pointer to native array.",
+        ],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
+        ],
+        f_post_call=[
+            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})",
+        ],
+    ),
 
     dict(
         name="f_mixin_arg_capsule",
@@ -1429,18 +1443,6 @@ fc_statements = [
 
     ##########
     # native
-
-    dict(
-        # Make argument a Fortran pointer
-        name="f_mixin_out_native_cdesc_pointer",
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
-        ],
-        f_post_call=[
-            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})",
-        ],
-    ),
 
     dict(
         name="f_out_native_*",
