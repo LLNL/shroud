@@ -928,6 +928,10 @@ c_function_char_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1372,6 +1376,11 @@ c_function_string_&_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1391,6 +1400,11 @@ c_function_string_&_cdesc_pointer_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1410,6 +1424,11 @@ c_function_string_&_cdesc_pointer_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1490,6 +1509,11 @@ c_function_string_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1509,6 +1533,11 @@ c_function_string_*_cdesc_pointer_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1528,6 +1557,11 @@ c_function_string_*_cdesc_pointer_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -2583,6 +2617,8 @@ c_mixin_function_char_*_cdesc:
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
+  comments:
+  - Fill cdesc from char * in the C wrapper.
   intent: mixin
   name: c_mixin_function_char_*_cdesc
   owner: library
@@ -2591,6 +2627,9 @@ c_mixin_function_string_cdesc:
   - string_to_cdesc
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  comments:
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
   intent: mixin
   name: c_mixin_function_string_cdesc
   owner: library
@@ -2695,6 +2734,8 @@ c_mixin_native_cdesc_fill-cdesc:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  comments:
+  - Fill cdesc from native in the C wrapper.
   intent: mixin
   name: c_mixin_native_cdesc_fill-cdesc
   owner: library
@@ -2868,6 +2909,8 @@ c_out_native_*&_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2909,6 +2952,10 @@ c_out_native_**_cdesc_allocatable:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2937,6 +2984,8 @@ c_out_native_**_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -3692,6 +3741,11 @@ f_function_char_*_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Fill cdesc from char * in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -3734,6 +3788,10 @@ f_function_char_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -3965,6 +4023,11 @@ f_function_char_scalar_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Fill cdesc from char * in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4007,6 +4070,10 @@ f_function_char_scalar_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4199,6 +4266,11 @@ f_function_native_*_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4244,6 +4316,9 @@ f_function_native_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4285,6 +4360,11 @@ f_function_native_*_cdesc_pointer_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
+  - Add a capsule argument to the Fortran wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5043,6 +5123,12 @@ f_function_string_&_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5080,6 +5166,12 @@ f_function_string_&_cdesc_allocatable_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5117,6 +5209,12 @@ f_function_string_&_cdesc_allocatable_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5153,6 +5251,11 @@ f_function_string_&_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5191,6 +5294,11 @@ f_function_string_&_cdesc_pointer_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5229,6 +5337,11 @@ f_function_string_&_cdesc_pointer_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5677,6 +5790,12 @@ f_function_string_*_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5714,6 +5833,12 @@ f_function_string_*_cdesc_allocatable_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5751,6 +5876,12 @@ f_function_string_*_cdesc_allocatable_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5787,6 +5918,11 @@ f_function_string_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5825,6 +5961,11 @@ f_function_string_*_cdesc_pointer_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5863,6 +6004,11 @@ f_function_string_*_cdesc_pointer_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6328,6 +6474,12 @@ f_function_string_scalar_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6372,6 +6524,12 @@ f_function_string_scalar_cdesc_allocatable_caller:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6416,6 +6574,12 @@ f_function_string_scalar_cdesc_allocatable_library:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6815,6 +6979,8 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -6875,6 +7041,8 @@ f_getter_native_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6931,6 +7099,10 @@ f_getter_string_scalar_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6974,6 +7146,8 @@ f_getter_struct_**_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7018,6 +7192,8 @@ f_getter_struct_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8648,6 +8824,8 @@ f_inout_void_*_cdesc:
   name: f_inout_void_*_cdesc
   owner: library
 f_mixin_arg_capsule:
+  comments:
+  - Add a capsule argument to the Fortran wrapper.
   f_arg_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
   f_arg_name:
@@ -8670,6 +8848,8 @@ f_mixin_char_capsule_allocate:
   c_helper:
   - string_capsule_size
   - copy_string_capsule
+  comments:
+  - Allocate Fortran CHARACTER scalar, then fill from capsule.
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_declare:
@@ -8694,6 +8874,9 @@ f_mixin_char_capsule_allocate:
 f_mixin_char_cdesc_allocate:
   c_helper:
   - copy_string
+  comments:
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_helper:
@@ -8705,6 +8888,8 @@ f_mixin_char_cdesc_allocate:
   name: f_mixin_char_cdesc_allocate
   owner: library
 f_mixin_char_cdesc_pointer:
+  comments:
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_decl:
   - 'character(len=:), pointer :: {f_var}'
   f_helper:
@@ -8783,6 +8968,8 @@ f_mixin_function_cdesc:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper for function result.
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
@@ -9022,6 +9209,9 @@ f_mixin_local-logical-var:
 f_mixin_native_cdesc_allocate:
   c_helper:
   - copy_array
+  comments:
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
   f_arg_decl:
   - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   f_helper:
@@ -9038,6 +9228,8 @@ f_mixin_native_cdesc_allocate:
   name: f_mixin_native_cdesc_allocate
   owner: library
 f_mixin_native_cdesc_pointer:
+  comments:
+  - Set Fortran pointer to native array.
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   f_post_call:
@@ -9095,6 +9287,9 @@ f_mixin_out_array_cdesc_allocatable:
 f_mixin_out_native_cdesc_allocate:
   c_helper:
   - copy_array
+  comments:
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
   f_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_helper:
@@ -9272,6 +9467,8 @@ f_out_native_*&_cdesc:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9315,6 +9512,8 @@ f_out_native_*&_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9371,6 +9570,10 @@ f_out_native_**_cdesc_allocatable:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9417,6 +9620,8 @@ f_out_native_**_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
