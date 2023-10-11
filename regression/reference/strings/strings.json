@@ -3752,7 +3752,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_allocatable"
+                        "stmtc": "f_function_string_*_allocatable_library"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3864,7 +3864,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_allocatable"
+                        "stmtc": "f_function_string_*_cdesc_allocatable_library"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3951,7 +3951,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_allocatable"
+                        "stmtc": "f_function_string_*_allocatable_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4066,7 +4066,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_allocatable"
+                        "stmtc": "f_function_string_*_cdesc_allocatable_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4154,7 +4154,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_allocatable"
+                        "stmtc": "f_function_string_*_allocatable_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4270,7 +4270,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_allocatable"
+                        "stmtc": "f_function_string_*_cdesc_allocatable_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4355,7 +4355,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_pointer"
+                        "stmtc": "f_function_string_*_pointer_library"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4452,7 +4452,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_pointer"
+                        "stmtc": "f_function_string_*_cdesc_pointer_library"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

@@ -46,7 +46,7 @@ static void ShroudStringToCdesc(STR_SHROUD_array *cdesc,
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_string_*_allocatable
+// Statement: f_function_string_*_allocatable_library
 // start STR_getConstStringPtrAlloc
 const char * STR_getConstStringPtrAlloc(void)
 {
@@ -62,7 +62,7 @@ const char * STR_getConstStringPtrAlloc(void)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Statement: f_function_string_*_cdesc_allocatable
+// Statement: f_function_string_*_cdesc_allocatable_library
 // start STR_getConstStringPtrAlloc_bufferify
 void STR_getConstStringPtrAlloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)

@@ -52,7 +52,6 @@ root
                 scalar -- f_function_shadow_scalar_capptr
       string
         & -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -62,7 +61,6 @@ root
               library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
           buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -70,7 +68,6 @@ root
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
-          pointer -- f_shared_function_string_scalar
         scalar -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
@@ -346,6 +343,7 @@ root
           pointer -- f_function_native_&
         *
           allocatable -- f_function_native_**
+            caller -- f_function_native_**
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
@@ -354,6 +352,7 @@ root
             allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
           pointer -- f_function_native_&
+            caller -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- f_function_native_scalar
         ** -- f_function_native_**
@@ -400,6 +399,8 @@ root
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
           allocatable -- f_shared_function_string_scalar
+            caller -- f_shared_function_string_scalar
+            library -- f_shared_function_string_scalar
           buf -- f_function_string_scalar_buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -419,6 +420,8 @@ root
               library -- f_shared_function_string_*_cfi_pointer
           copy -- f_shared_function_string_scalar
           pointer -- f_shared_function_string_scalar
+            caller -- f_shared_function_string_scalar
+            library -- f_shared_function_string_scalar
         scalar -- f_shared_function_string_scalar
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
@@ -1308,17 +1311,6 @@ c_function_string_&:
   intent: function
   name: c_function_string_&
   owner: library
-c_function_string_&_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_&_allocatable
-  owner: library
 c_function_string_&_buf_arg:
   c_arg_decl:
   - char *{c_var}
@@ -1484,17 +1476,6 @@ c_function_string_*:
   intent: function
   name: c_function_string_*
   owner: library
-c_function_string_*_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_*_allocatable
-  owner: library
 c_function_string_*_buf_copy:
   c_arg_decl:
   - char *{c_var}
@@ -1613,17 +1594,6 @@ c_function_string_*_copy:
   - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_*_copy
-  owner: library
-c_function_string_*_pointer:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_*_pointer
   owner: library
 c_function_string_scalar:
   c_return:
@@ -4357,6 +4327,20 @@ f_function_native_*_allocatable:
   intent: function
   name: f_function_native_*_allocatable
   owner: library
+f_function_native_*_allocatable_caller:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_native_*_allocatable_caller
+  owner: library
 f_function_native_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -4625,6 +4609,31 @@ f_function_native_*_pointer:
   - type(C_PTR) {c_var}
   intent: function
   name: f_function_native_*_pointer
+  owner: library
+f_function_native_*_pointer_caller:
+  comments:
+  - Return a C pointer as a type(C_PTR).
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_call:
+  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  f_declare:
+  - 'type(C_PTR) :: {f_local_ptr}'
+  f_local:
+  - ptr
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({f_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_native_*_pointer_caller
   owner: library
 f_function_native_*_raw:
   f_arg_decl:
@@ -5852,6 +5861,28 @@ f_function_string_*_allocatable:
   intent: function
   name: f_function_string_*_allocatable
   owner: library
+f_function_string_*_allocatable_caller:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_allocatable_caller
+  owner: library
+f_function_string_*_allocatable_library:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_allocatable_library
+  owner: library
 f_function_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -6499,6 +6530,28 @@ f_function_string_*_pointer:
   - type(C_PTR) {c_var}
   intent: function
   name: f_function_string_*_pointer
+  owner: library
+f_function_string_*_pointer_caller:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_pointer_caller
+  owner: library
+f_function_string_*_pointer_library:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_pointer_library
   owner: library
 f_function_string_scalar:
   c_return:

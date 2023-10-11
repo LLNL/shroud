@@ -830,7 +830,7 @@ void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_string_*_allocatable
+// Statement: f_function_string_*_allocatable_library
 const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
@@ -844,7 +844,7 @@ const char * STR_getConstStringPtrAlloc(void)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-// Statement: f_function_string_*_cfi_allocatable
+// Statement: f_function_string_*_cfi_allocatable_library
 void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrAlloc_CFI
@@ -868,7 +868,7 @@ void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_string_*_allocatable
+// Statement: f_function_string_*_allocatable_caller
 const char * STR_getConstStringPtrOwnsAlloc(void)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc
@@ -889,7 +889,7 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
 // Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-// Statement: f_function_string_*_cfi_allocatable
+// Statement: f_function_string_*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc_CFI
@@ -909,7 +909,7 @@ void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_string_*_allocatable
+// Statement: f_function_string_*_allocatable_caller
 const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern
@@ -926,7 +926,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-// Statement: f_function_string_*_cfi_allocatable
+// Statement: f_function_string_*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern_CFI
@@ -944,7 +944,7 @@ void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_string_*_pointer
+// Statement: f_function_string_*_pointer_library
 const char * STR_getConstStringPtrPointer(void)
 {
     // splicer begin function.getConstStringPtrPointer
@@ -960,7 +960,7 @@ const char * STR_getConstStringPtrPointer(void)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
 // Attrs:     +api(cfi)+deref(pointer)+intent(function)
-// Statement: f_function_string_*_cfi_pointer
+// Statement: f_function_string_*_cfi_pointer_library
 void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrPointer_CFI

@@ -1731,6 +1731,7 @@ fc_statements = [
         ],
         alias=[
             "f_function_native_*_pointer",   # XXX - change base to &?
+            "f_function_native_*_pointer_caller",
             "c_function_native_*_pointer",
             "f_function_native_&_pointer",
             "c_function_native_&_pointer",
@@ -1778,6 +1779,7 @@ fc_statements = [
             "c_function_native_**",
 
             "f_function_native_*_allocatable",
+            "f_function_native_*_allocatable_caller",
             "c_function_native_*_allocatable",
         ],
     ),
@@ -2190,13 +2192,14 @@ fc_statements = [
             "f_function_string_scalar/*/&",
             "c_function_string_scalar/*/&",
             "f_function_string_*_allocatable",
-            "c_function_string_*_allocatable",
+            "f_function_string_*_allocatable_caller",
+            "f_function_string_*_allocatable_library",
             "f_function_string_*_copy",
             "c_function_string_*_copy",
             "f_function_string_*_pointer",
-            "c_function_string_*_pointer",
+            "f_function_string_*_pointer_caller",
+            "f_function_string_*_pointer_library",
             "f_function_string_&_allocatable",
-            "c_function_string_&_allocatable",
             "f_function_string_&_copy",
             "c_function_string_&_copy",
         ],

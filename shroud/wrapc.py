@@ -1050,10 +1050,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         # C return type
         ast = node.ast
         declarator = ast.declarator
-        meta = declarator.metaattrs
+        r_attrs = declarator.attrs
+        r_meta = declarator.metaattrs
         C_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        result_api = meta["api"]
+        result_api = r_meta["api"]
 
         result_is_const = ast.const
         is_ctor = CXX_ast.declarator.is_ctor()
@@ -1067,7 +1068,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        sintent = meta["intent"]
+        sintent = r_meta["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -1083,7 +1084,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # intent will be "function", "ctor", "getter"
             junk, specialize = statements.lookup_c_statements(ast)
             stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                     result_api, meta["deref"]] + specialize
+                     result_api, r_meta["deref"], r_attrs["owner"]] + specialize
             result_stmt = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -1229,7 +1230,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if c_attrs["hidden"] and node._generated:
                 sapi = "hidden"
             stmts = ["f", c_meta["intent"], sgroup, spointer,
-                     sapi, c_meta["deref"]] + specialize
+                     sapi, c_meta["deref"], c_attrs["owner"]] + specialize
             arg_stmt = statements.lookup_fc_stmts(stmts)
             func_cursor.stmt = arg_stmt
             fmt_arg.c_var = arg_name

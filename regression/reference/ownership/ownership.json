@@ -1872,7 +1872,7 @@
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
+                        "stmtc": "f_function_native_*_pointer_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2036,7 +2036,7 @@
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
+                        "stmtc": "f_function_native_*_pointer_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2218,10 +2218,11 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
+                        "f_var_capsule": "Crv",
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer"
+                        "stmtc": "f_function_native_*_cdesc_pointer_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2393,7 +2394,7 @@
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_allocatable"
+                        "stmtc": "f_function_native_*_allocatable_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2578,7 +2579,7 @@
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
+                        "stmtc": "f_function_native_*_pointer_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -2759,10 +2760,11 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
+                        "f_var_capsule": "Crv",
                         "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer"
+                        "stmtc": "f_function_native_*_cdesc_pointer_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3668,7 +3670,7 @@
                         "f_local_ptr": "SHT_prv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr"
+                        "stmtc": "f_function_shadow_*_capptr_library"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3851,7 +3853,7 @@
                         "f_local_ptr": "SHT_prv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr"
+                        "stmtc": "f_function_shadow_*_capptr_caller"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

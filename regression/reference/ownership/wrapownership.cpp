@@ -208,7 +208,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native_*_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -224,7 +224,7 @@ int * OWN_ReturnIntPtrDimRawNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native_*_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -241,7 +241,7 @@ int * OWN_ReturnIntPtrDimPointerNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native_*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -266,7 +266,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_native_*_allocatable
+// Statement: f_function_native_*_allocatable_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -282,7 +282,7 @@ int * OWN_ReturnIntPtrDimAllocNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native_*_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -299,7 +299,7 @@ int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native_*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -339,7 +339,7 @@ void OWN_createClassStatic(int flag)
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: f_function_shadow_*_capptr_library
 OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.getClassStatic
@@ -357,7 +357,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: f_function_shadow_*_capptr_caller
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

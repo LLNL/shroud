@@ -1201,6 +1201,7 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
+        r_attrs = ast.declarator.metaattrs
         r_meta = ast.declarator.metaattrs
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
@@ -1225,7 +1226,7 @@ rv = .false.
         sgroup = result_typemap.sgroup
         spointer = ast.declarator.get_indirect_stmt()
         c_stmts = ["f", sintent, sgroup, spointer, result_api,
-                   r_meta["deref"]] + specialize
+                   r_meta["deref"], r_attrs["owner"]] + specialize
         result_stmt = statements.lookup_fc_stmts(c_stmts)
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
@@ -1286,11 +1287,10 @@ rv = .false.
             intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
-            deref_attr = meta["deref"]
 
             spointer = declarator.get_indirect_stmt()
             c_stmts = ["f", intent, sgroup, spointer,
-                       meta["api"], deref_attr]
+                       meta["api"], meta["deref"], attrs["owner"]]
             c_stmts.extend(specialize)
             arg_stmt = statements.lookup_fc_stmts(c_stmts)
             func_cursor.stmt = arg_stmt
@@ -1675,7 +1675,6 @@ rv = .false.
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
         C_subprogram = C_node.ast.declarator.get_subprogram()
-        c_result_api = C_node.ast.declarator.metaattrs["api"]
         is_ctor = declarator.is_ctor()
         is_static = False
 
@@ -1707,10 +1706,9 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.declarator.get_indirect_stmt()
-            return_deref_attr = r_meta["deref"]
             junk, specialize = statements.lookup_c_statements(ast)
-            f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr, r_attrs["owner"]] + specialize
+            f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
+                       r_meta["deref"], r_attrs["owner"]] + specialize
         fmt_func.F_subprogram = subprogram
 
         result_stmt = statements.lookup_fc_stmts(f_stmts)
@@ -1806,14 +1804,12 @@ rv = .false.
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_declarator.get_indirect_stmt()
-            c_api = c_meta["api"]
-            c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_declarator.get_indirect_stmt()
-            f_deref_attr = f_meta["deref"]
             # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
             # Fortran need to know how the C function is being called.
-            f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
+            f_stmts = ["f", intent, f_sgroup, f_spointer, c_meta["api"],
+                       c_meta["deref"], c_attrs["owner"]]
             f_stmts.extend(specialize)
 
             arg_stmt = statements.lookup_fc_stmts(f_stmts)
