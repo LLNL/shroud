@@ -1004,6 +1004,8 @@ c_function_native_&:
   name: c_function_native_&
   owner: library
 c_function_native_&_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1049,6 +1051,8 @@ c_function_native_*_allocatable:
   name: c_function_native_*_allocatable
   owner: library
 c_function_native_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1698,6 +1702,8 @@ c_function_string_scalar_buf_copy:
   name: c_function_string_scalar_buf_copy
   owner: library
 c_function_struct_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4274,6 +4280,8 @@ f_function_char_scalar_cfi_pointer:
   name: f_function_char_scalar_cfi_pointer
   owner: library
 f_function_native_&:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -4297,6 +4305,8 @@ f_function_native_&:
   name: f_function_native_&
   owner: library
 f_function_native_&_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -4592,6 +4602,8 @@ f_function_native_*_cfi_pointer:
   name: f_function_native_*_cfi_pointer
   owner: library
 f_function_native_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -7105,6 +7117,8 @@ f_function_string_scalar_cfi_pointer_library:
   name: f_function_string_scalar_cfi_pointer_library
   owner: library
 f_function_struct_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -9146,6 +9160,8 @@ f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
   owner: library
 f_mixin_function_c-ptr:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:

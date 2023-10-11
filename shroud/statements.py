@@ -803,8 +803,10 @@ fc_statements = [
         
     ),
     dict(
-        # Return a C pointer as a type(C_PTR)
         name="f_mixin_function_c-ptr",
+        comments=[
+            "Return a C pointer as a type(C_PTR).",
+        ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1724,6 +1726,9 @@ fc_statements = [
         # Pointer to scalar.
         # type(C_PTR) is returned instead of a cdesc argument.
         name="f_function_native_&",
+        mixin=[
+            "f_mixin_function_c-ptr",
+        ],
         alias=[
             "f_function_native_*_pointer",   # XXX - change base to &?
             "c_function_native_*_pointer",
@@ -1731,27 +1736,6 @@ fc_statements = [
             "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
         ],
-        # mixin f_mixin_function_c-ptr
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        f_arg_decl=[
-            "{f_type}, pointer :: {f_var}",
-        ],
-        f_declare=[
-            "type(C_PTR) :: {f_local_ptr}",
-        ],
-        f_call=[
-            "{f_local_ptr} = {F_C_call}({F_arg_c_call})",
-        ],
-        f_post_call=[
-            "call c_f_pointer({f_local_ptr}, {F_result})",
-        ],
-        f_local=["ptr"],
-
-        i_result_decl=[
-            "type(C_PTR) {c_var}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
-        
     ),
     dict(
         name="f_function_native_*_cdesc_pointer",
