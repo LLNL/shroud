@@ -790,6 +790,8 @@ c_dtor_void_scalar:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   impl_header:
   - <cstddef>
   intent: dtor
@@ -838,6 +840,8 @@ c_function_char_*_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
@@ -868,6 +872,8 @@ c_function_char_*_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
@@ -898,6 +904,8 @@ c_function_char_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
@@ -929,7 +937,8 @@ c_function_char_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
@@ -974,6 +983,8 @@ c_function_char_scalar:
   c_call:
   - '*{c_var} = {function_name}({C_call_list});'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -1320,6 +1331,8 @@ c_function_string_&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -1353,6 +1366,8 @@ c_function_string_&_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1377,7 +1392,8 @@ c_function_string_&_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1401,7 +1417,8 @@ c_function_string_&_cdesc_pointer_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1425,7 +1442,8 @@ c_function_string_&_cdesc_pointer_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1486,6 +1504,8 @@ c_function_string_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1510,7 +1530,8 @@ c_function_string_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1534,7 +1555,8 @@ c_function_string_*_cdesc_pointer_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1558,7 +1580,8 @@ c_function_string_*_cdesc_pointer_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -1619,6 +1642,8 @@ c_function_string_scalar_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -1652,6 +1677,8 @@ c_function_string_scalar_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1680,6 +1707,8 @@ c_function_struct_scalar:
   c_post_call:
   - memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
   - '{f_type}, intent(OUT) :: {c_var}'
@@ -3539,6 +3568,8 @@ f_dtor:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   impl_header:
@@ -3551,6 +3582,8 @@ f_dtor_void_scalar:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   impl_header:
@@ -3596,6 +3629,8 @@ f_function_char_*_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3646,6 +3681,8 @@ f_function_char_*_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3696,6 +3733,8 @@ f_function_char_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3742,7 +3781,8 @@ f_function_char_*_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
   - Fill cdesc from char * in the C wrapper.
@@ -3789,7 +3829,8 @@ f_function_char_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
@@ -3834,6 +3875,8 @@ f_function_char_*_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -3861,6 +3904,8 @@ f_function_char_*_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3895,6 +3940,8 @@ f_function_char_*_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3938,6 +3985,8 @@ f_function_char_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -3993,6 +4042,8 @@ f_function_char_scalar:
   c_call:
   - '*{c_var} = {function_name}({C_call_list});'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{c_var}'
   f_call:
@@ -4024,7 +4075,8 @@ f_function_char_scalar_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
   - Fill cdesc from char * in the C wrapper.
@@ -4071,7 +4123,8 @@ f_function_char_scalar_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
@@ -4116,6 +4169,8 @@ f_function_char_scalar_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -4160,6 +4215,8 @@ f_function_char_scalar_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -4267,7 +4324,8 @@ f_function_native_*_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
@@ -4317,7 +4375,8 @@ f_function_native_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
@@ -4361,7 +4420,8 @@ f_function_native_*_cdesc_pointer_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   - Add a capsule argument to the Fortran wrapper.
@@ -4416,6 +4476,8 @@ f_function_native_*_cfi_allocatable:
   - cfi
   - extents
   - lower
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -4459,6 +4521,8 @@ f_function_native_*_cfi_pointer:
   - cfi
   - extents
   - lower
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -4766,6 +4830,8 @@ f_function_shadow_*_capsule:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -4988,6 +5054,8 @@ f_function_string_&_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5031,6 +5099,8 @@ f_function_string_&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5084,6 +5154,8 @@ f_function_string_&_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5124,7 +5196,8 @@ f_function_string_&_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5167,7 +5240,8 @@ f_function_string_&_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5210,7 +5284,8 @@ f_function_string_&_cdesc_allocatable_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5252,7 +5327,8 @@ f_function_string_&_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -5295,7 +5371,8 @@ f_function_string_&_cdesc_pointer_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -5338,7 +5415,8 @@ f_function_string_&_cdesc_pointer_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -5382,6 +5460,8 @@ f_function_string_&_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5412,6 +5492,8 @@ f_function_string_&_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5442,6 +5524,8 @@ f_function_string_&_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5476,6 +5560,8 @@ f_function_string_&_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5514,6 +5600,8 @@ f_function_string_&_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -5556,6 +5644,8 @@ f_function_string_&_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5600,6 +5690,8 @@ f_function_string_&_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5644,6 +5736,8 @@ f_function_string_&_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5708,6 +5802,8 @@ f_function_string_*_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5751,6 +5847,8 @@ f_function_string_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5791,7 +5889,8 @@ f_function_string_*_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5834,7 +5933,8 @@ f_function_string_*_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5877,7 +5977,8 @@ f_function_string_*_cdesc_allocatable_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -5919,7 +6020,8 @@ f_function_string_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -5962,7 +6064,8 @@ f_function_string_*_cdesc_pointer_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -6005,7 +6108,8 @@ f_function_string_*_cdesc_pointer_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -6049,6 +6153,8 @@ f_function_string_*_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6079,6 +6185,8 @@ f_function_string_*_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6109,6 +6217,8 @@ f_function_string_*_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6143,6 +6253,8 @@ f_function_string_*_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6185,6 +6297,8 @@ f_function_string_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6229,6 +6343,8 @@ f_function_string_*_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6273,6 +6389,8 @@ f_function_string_*_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6337,6 +6455,8 @@ f_function_string_scalar_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6380,6 +6500,8 @@ f_function_string_scalar_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6433,6 +6555,8 @@ f_function_string_scalar_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6475,7 +6599,8 @@ f_function_string_scalar_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -6525,7 +6650,8 @@ f_function_string_scalar_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -6575,7 +6701,8 @@ f_function_string_scalar_cdesc_allocatable_library:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -6623,6 +6750,8 @@ f_function_string_scalar_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6651,6 +6780,8 @@ f_function_string_scalar_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6681,6 +6812,8 @@ f_function_string_scalar_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6715,6 +6848,8 @@ f_function_string_scalar_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6753,6 +6888,8 @@ f_function_string_scalar_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6795,6 +6932,8 @@ f_function_string_scalar_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6839,6 +6978,8 @@ f_function_string_scalar_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6883,6 +7024,8 @@ f_function_string_scalar_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6928,6 +7071,8 @@ f_function_struct_scalar:
   c_post_call:
   - memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -6980,7 +7125,8 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -7042,7 +7188,8 @@ f_getter_native_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7100,7 +7247,8 @@ f_getter_string_scalar_cdesc_allocatable:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
   f_arg_call:
@@ -7147,7 +7295,8 @@ f_getter_struct_**_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7193,7 +7342,8 @@ f_getter_struct_*_cdesc_pointer:
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8910,6 +9060,8 @@ f_mixin_function:
   owner: library
 f_mixin_function-to-subroutine:
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   intent: mixin
@@ -8941,11 +9093,10 @@ f_mixin_function_c-ptr:
 f_mixin_function_capsule:
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var}'
-  c_return_type: void
+  comments:
+  - Pass capsule as argument to C wrapper.
   f_arg_call:
   - '{f_var_capsule}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
@@ -8965,15 +9116,12 @@ f_mixin_function_capsule:
 f_mixin_function_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_return_type: void
   c_temps:
   - cdesc
   comments:
-  - Pass cdesc as argument to C wrapper for function result.
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -10613,6 +10761,8 @@ f_shared_function_string_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:

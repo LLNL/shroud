@@ -781,6 +781,9 @@ fc_statements = [
     dict(
         name="f_mixin_function-to-subroutine",
         # wrapf.py sets f_call default for subroutines, this makes it explicit.
+        comments=[
+            "Call the C wrapper as a subroutine.",
+        ],
         f_call = [
             "call {F_C_call}({F_arg_c_call})",
         ],
@@ -825,10 +828,7 @@ fc_statements = [
     dict(
         name="f_mixin_function_cdesc",
         comments=[
-            "Pass cdesc as argument to C wrapper for function result.",
-        ],
-        mixin=[
-            "f_mixin_function-to-subroutine",
+            "Pass cdesc as argument to C wrapper.",
         ],
         f_helper=["array_context"],
         f_declare=[
@@ -851,8 +851,8 @@ fc_statements = [
     dict(
         # Pass array_type as argument to contain the function result.
         name="f_mixin_function_capsule",
-        mixin=[
-            "f_mixin_function-to-subroutine",
+        comments=[
+            "Pass capsule as argument to C wrapper.",
         ],
         f_helper=["array_context"],
         f_declare=[
@@ -1741,6 +1741,7 @@ fc_statements = [
     dict(
         name="f_function_native_*_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_allocate",
@@ -1783,6 +1784,7 @@ fc_statements = [
     dict(
         name="f_function_native_*_cdesc_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_function_native_cdesc_pointer",
@@ -1793,6 +1795,7 @@ fc_statements = [
         # The capsule contains information used to delete the memory.
         name="f_function_native_*_cdesc_pointer_caller",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_pointer",
@@ -2061,6 +2064,7 @@ fc_statements = [
     dict(
         name="f_function_char_scalar_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
             "c_mixin_function_char_*_cdesc",
@@ -2075,6 +2079,7 @@ fc_statements = [
     dict(
         name="f_function_char_scalar_cdesc_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_function_char_*_cdesc",
             "f_mixin_char_cdesc_pointer",
@@ -2091,6 +2096,7 @@ fc_statements = [
         # c_function_string_&_cdesc_pointer
         name="f_function_string_*_cdesc_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_pointer",
@@ -2309,6 +2315,7 @@ fc_statements = [
         # f_function_string_&_cdesc_allocatable_library
         name="f_function_string_*_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
@@ -2327,6 +2334,7 @@ fc_statements = [
         # XXX - capsule
         name="x_function_string_*_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_capsule",
             "f_mixin_char_capsule_allocate",
         ],
@@ -2420,6 +2428,7 @@ fc_statements = [
         # f_function_string_scalar_cdesc_allocatable_library
         name="f_function_string_scalar_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
@@ -2542,6 +2551,7 @@ fc_statements = [
     dict(
         name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc",
@@ -3241,6 +3251,7 @@ fc_statements = [
         # Similar to calling a function, but save field pointer instead.
         name="f_getter_native_*_cdesc_pointer",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "f_mixin_function_native_cdesc_pointer",
         ],
@@ -3268,6 +3279,7 @@ fc_statements = [
         # Return meta data to Fortran.
         name="f_getter_string_scalar_cdesc_allocatable",
         mixin=[
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_cdesc",
             "f_mixin_char_cdesc_allocate",
         ],
