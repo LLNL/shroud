@@ -188,6 +188,8 @@ root
         char
           *
             cdesc -- c_mixin_function_char_*_cdesc
+        string
+          cdesc -- c_mixin_function_string_cdesc
       in
         character
           buf -- c_mixin_in_character_buf
@@ -585,11 +587,14 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
     mixin
+      arg
+        capsule -- f_mixin_arg_capsule
       char
         capsule
           allocate -- f_mixin_char_capsule_allocate
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
+          pointer -- f_mixin_char_cdesc_pointer
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
         capsule -- f_mixin_function_capsule
@@ -624,12 +629,17 @@ root
           array
             cdesc -- f_mixin_inout_char_array_cdesc
       local-logical-var -- f_mixin_local-logical-var
+      native
+        cdesc
+          allocate -- f_mixin_native_cdesc_allocate
+          pointer -- f_mixin_native_cdesc_pointer
       out
         array
           cdesc -- f_mixin_out_array_cdesc
             allocatable -- f_mixin_out_array_cdesc_allocatable
         native
           cdesc
+            allocate -- f_mixin_out_native_cdesc_allocate
             pointer -- f_mixin_out_native_cdesc_pointer
         string
           **
@@ -2576,6 +2586,14 @@ c_mixin_function_char_*_cdesc:
   intent: mixin
   name: c_mixin_function_char_*_cdesc
   owner: library
+c_mixin_function_string_cdesc:
+  c_helper:
+  - string_to_cdesc
+  c_post_call:
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  intent: mixin
+  name: c_mixin_function_string_cdesc
+  owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
@@ -2669,9 +2687,6 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
 c_mixin_native_cdesc_fill-cdesc:
-  c_helper:
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2841,8 +2856,6 @@ c_out_native_*&_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2882,9 +2895,8 @@ c_out_native_**_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_array
-  - type_defines
   - array_context
+  - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -2912,8 +2924,6 @@ c_out_native_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - array_context
-  - type_defines
   - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -3733,8 +3743,8 @@ f_function_char_*_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -4006,8 +4016,8 @@ f_function_char_scalar_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -4178,8 +4188,6 @@ f_function_native_*_cdesc_allocatable:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -4200,6 +4208,7 @@ f_function_native_*_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
   - copy_array
   f_module:
     iso_c_binding:
@@ -4224,9 +4233,6 @@ f_function_native_*_cdesc_allocatable:
 f_function_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -4268,9 +4274,6 @@ f_function_native_*_cdesc_pointer:
 f_function_native_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -4294,6 +4297,7 @@ f_function_native_*_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
   - capsule_helper
   f_module:
     iso_c_binding:
@@ -5032,8 +5036,8 @@ f_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5069,8 +5073,8 @@ f_function_string_&_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5106,8 +5110,8 @@ f_function_string_&_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5158,8 +5162,8 @@ f_function_string_&_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5196,8 +5200,8 @@ f_function_string_&_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5234,8 +5238,8 @@ f_function_string_&_cdesc_pointer_library:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5666,8 +5670,8 @@ f_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5703,8 +5707,8 @@ f_function_string_*_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5740,8 +5744,8 @@ f_function_string_*_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_return_type: void
@@ -5792,8 +5796,8 @@ f_function_string_*_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5830,8 +5834,8 @@ f_function_string_*_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5868,8 +5872,8 @@ f_function_string_*_cdesc_pointer_library:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -6315,10 +6319,10 @@ f_function_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
@@ -6359,10 +6363,10 @@ f_function_string_scalar_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
@@ -6403,10 +6407,10 @@ f_function_string_scalar_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_string
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
@@ -8643,6 +8647,25 @@ f_inout_void_*_cdesc:
   intent: inout
   name: f_inout_void_*_cdesc
   owner: library
+f_mixin_arg_capsule:
+  f_arg_decl:
+  - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
+  f_arg_name:
+  - '{f_var_capsule}'
+  f_helper:
+  - capsule_helper
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - '{f_var_capsule}%mem = {f_var_cdesc}%cxx'
+  f_temps:
+  - capsule
+  fmtdict:
+    f_var_capsule: Crv
+  intent: mixin
+  name: f_mixin_arg_capsule
+  owner: library
 f_mixin_char_capsule_allocate:
   c_helper:
   - string_capsule_size
@@ -8680,6 +8703,19 @@ f_mixin_char_cdesc_allocate:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   intent: mixin
   name: f_mixin_char_cdesc_allocate
+  owner: library
+f_mixin_char_cdesc_pointer:
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_helper:
+  - pointer_string
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  intent: mixin
+  name: f_mixin_char_cdesc_pointer
   owner: library
 f_mixin_function:
   f_call:
@@ -8983,6 +9019,32 @@ f_mixin_local-logical-var:
   intent: mixin
   name: f_mixin_local-logical-var
   owner: library
+f_mixin_native_cdesc_allocate:
+  c_helper:
+  - copy_array
+  f_arg_decl:
+  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+    \ kind=C_SIZE_T))"
+  intent: mixin
+  name: f_mixin_native_cdesc_allocate
+  owner: library
+f_mixin_native_cdesc_pointer:
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  intent: mixin
+  name: f_mixin_native_cdesc_pointer
+  owner: library
 f_mixin_out_array_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -9029,6 +9091,23 @@ f_mixin_out_array_cdesc_allocatable:
   - alloc
   intent: mixin
   name: f_mixin_out_array_cdesc_allocatable
+  owner: library
+f_mixin_out_native_cdesc_allocate:
+  c_helper:
+  - copy_array
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+  intent: mixin
+  name: f_mixin_out_native_cdesc_allocate
   owner: library
 f_mixin_out_native_cdesc_pointer:
   f_arg_decl:
@@ -9181,8 +9260,6 @@ f_out_native_*&_cdesc:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -9225,8 +9302,6 @@ f_out_native_*&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - array_context
-  - type_defines
   - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -9282,9 +9357,8 @@ f_out_native_**_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - copy_array
-  - type_defines
   - array_context
+  - copy_array
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -9304,6 +9378,7 @@ f_out_native_**_cdesc_allocatable:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
   - copy_array
   f_module:
     iso_c_binding:
@@ -9329,8 +9404,6 @@ f_out_native_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - array_context
-  - type_defines
   - array_context
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
