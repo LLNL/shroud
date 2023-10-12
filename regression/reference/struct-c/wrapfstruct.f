@@ -770,12 +770,13 @@ module struct_mod
     ! Attrs:     +intent(in)
     ! Statement: f_in_struct_*
     interface
-        subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv) &
+        subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, &
+                SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_ivalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_cstruct_list_get_ivalue_bufferify
     end interface
 
@@ -813,12 +814,13 @@ module struct_mod
     ! Attrs:     +intent(in)
     ! Statement: f_in_struct_*
     interface
-        subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv) &
+        subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, &
+                SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_dvalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_cstruct_list_get_dvalue_bufferify
     end interface
 

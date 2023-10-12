@@ -266,12 +266,12 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
         subroutine c_ex_class1_get_name_error_check_bufferify(self, &
-                SHT_rv) &
+                SHT_rv_cdesc) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ex_class1_get_name_error_check_bufferify
 
         ! ----------------------------------------
@@ -471,12 +471,12 @@ module userlibrary_example_nested_mod
         ! Function:  const string & getName2
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ex_class2_get_name2_bufferify
 
         ! ----------------------------------------
@@ -498,12 +498,12 @@ module userlibrary_example_nested_mod
         ! Function:  string & getName3
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ex_class2_get_name3_bufferify
 
         ! ----------------------------------------
@@ -525,12 +525,12 @@ module userlibrary_example_nested_mod
         ! Function:  string & getName4
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ex_class2_get_name4_bufferify
 
         ! ----------------------------------------

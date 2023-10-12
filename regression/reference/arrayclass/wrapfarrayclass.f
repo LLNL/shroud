@@ -174,12 +174,12 @@ module arrayclass_mod
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv) &
+        subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ArrayWrapper_getArray_bufferify
 
         ! ----------------------------------------
@@ -201,12 +201,13 @@ module arrayclass_mod
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_ArrayWrapper_getArrayConst_bufferify(self, SHT_rv) &
+        subroutine c_ArrayWrapper_getArrayConst_bufferify(self, &
+                SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ArrayWrapper_getArrayConst_bufferify
 
         ! ----------------------------------------
@@ -228,12 +229,13 @@ module arrayclass_mod
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_ArrayWrapper_getArrayC_bufferify(self, SHT_rv) &
+        subroutine c_ArrayWrapper_getArrayC_bufferify(self, &
+                SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ArrayWrapper_getArrayC_bufferify
 
         ! ----------------------------------------
@@ -255,12 +257,13 @@ module arrayclass_mod
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, SHT_rv) &
+        subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, &
+                SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_ArrayWrapper_getArrayConstC_bufferify
 
         ! ----------------------------------------
@@ -294,12 +297,13 @@ module arrayclass_mod
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Statement: f_out_native_**_cdesc_pointer
-        subroutine c_ArrayWrapper_fetchArrayPtr_bufferify(self, array) &
+        subroutine c_ArrayWrapper_fetchArrayPtr_bufferify(self, &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtr_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
         end subroutine c_ArrayWrapper_fetchArrayPtr_bufferify
 
         ! ----------------------------------------
@@ -333,12 +337,13 @@ module arrayclass_mod
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Statement: f_out_native_*&_cdesc_pointer
-        subroutine c_ArrayWrapper_fetchArrayRef_bufferify(self, array) &
+        subroutine c_ArrayWrapper_fetchArrayRef_bufferify(self, &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRef_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
         end subroutine c_ArrayWrapper_fetchArrayRef_bufferify
 
         ! ----------------------------------------
@@ -373,12 +378,12 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Statement: f_out_native_**_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayPtrConst_bufferify(self, &
-                array) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
         end subroutine c_ArrayWrapper_fetchArrayPtrConst_bufferify
 
         ! ----------------------------------------
@@ -413,12 +418,12 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Statement: f_out_native_*&_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayRefConst_bufferify(self, &
-                array) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
         end subroutine c_ArrayWrapper_fetchArrayRefConst_bufferify
 
         ! ----------------------------------------

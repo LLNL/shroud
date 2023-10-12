@@ -71,11 +71,11 @@ module memdoc_mod
     ! Statement: f_function_string_*_cdesc_allocatable_library
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
-        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_getConstStringPtrAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
     ! end c_get_const_string_ptr_alloc_bufferify

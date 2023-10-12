@@ -381,12 +381,12 @@ module classes_mod
     ! Statement: f_function_string_&_cdesc_allocatable
     ! start c_class1_get_name_bufferify
     interface
-        subroutine c_class1_get_name_bufferify(self, SHT_rv) &
+        subroutine c_class1_get_name_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="CLA_Class1_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_class1_get_name_bufferify
     end interface
     ! end c_class1_get_name_bufferify
@@ -481,12 +481,12 @@ module classes_mod
     ! Statement: f_getter_string_scalar_cdesc_allocatable
     ! start c_class1_get_m_name_bufferify
     interface
-        subroutine c_class1_get_m_name_bufferify(self, SHT_rv) &
+        subroutine c_class1_get_m_name_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="CLA_Class1_get_m_name_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_class1_get_m_name_bufferify
     end interface
     ! end c_class1_get_m_name_bufferify
@@ -536,12 +536,12 @@ module classes_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_string_&_cdesc_allocatable
     interface
-        subroutine c_class2_get_name_bufferify(self, SHT_rv) &
+        subroutine c_class2_get_name_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="CLA_Class2_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_class2_get_name_bufferify
     end interface
 
@@ -728,12 +728,12 @@ module classes_mod
     ! Statement: f_getter_native_*_cdesc_pointer
     ! start c_data_get_items_bufferify
     interface
-        subroutine c_data_get_items_bufferify(self, SHT_rv) &
+        subroutine c_data_get_items_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="CLA_Data_get_items_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_data_get_items_bufferify
     end interface
     ! end c_data_get_items_bufferify

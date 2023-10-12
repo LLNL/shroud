@@ -845,9 +845,9 @@ fc_statements = [
             "{C_array_type} *{c_var_cdesc}",
         ],
         i_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var}",
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        i_arg_names=["{c_var}"],
+        i_arg_names=["{c_var_cdesc}"],
         i_import=["{F_array_type}"],
         c_temps=["cdesc"],
     ),
@@ -866,13 +866,14 @@ fc_statements = [
         f_need_wrapper=True,
 
         c_arg_decl=[
-            "{C_capsule_data_type} *{c_var}",
+            "{C_capsule_data_type} *{c_var_capsule}",
         ],
         i_arg_decl=[
-            "type({F_capsule_data_type}), intent(OUT) :: {c_var}",
+            "type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}",
         ],
-        i_arg_names=["{c_var}"],
+        i_arg_names=["{c_var_capsule}"],
         i_import=["{F_capsule_data_type}"],
+        c_temps=["capsule"],
     ),
     dict(
         # Pass array_type as argument to contain the function result.
@@ -1011,6 +1012,17 @@ fc_statements = [
         ],
     ),
     dict(
+        name="f_mixin_capsule_dtor",
+        comments=[
+            "Release memory from capsule.",
+        ],
+        f_helper=["capsule_dtor"],
+        f_post_call=[
+            "call {f_helper_capsule_dtor}({f_var_capsule})",
+        ],
+    ),
+    
+    dict(
         name="f_mixin_char_cdesc_pointer",
         comments=[
             "Assign Fortran pointer from cdesc using helper pointer_string.",
@@ -1075,6 +1087,7 @@ fc_statements = [
         ],
     ),
     dict(
+        # XXX - capsule - remove function from name
         name="c_mixin_function_string_cdesc",
         comments=[
             "Fill cdesc from std::string using helper string_to_cdesc",
@@ -2316,17 +2329,18 @@ fc_statements = [
         name="x_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
             "f_mixin_pass_capsule",
-            "f_mixin_char_capsule_allocate",
+            "c_mixin_function_string_cdesc",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_char_cdesc_allocate",
+#            "f_mixin_char_capsule_allocate",
+            "f_mixin_capsule_dtor",  # if library owns memory
         ],
         alias=[
             "f_function_string_&_cdesc_allocatable",
             "f_function_string_*/&_cdesc_allocatable_caller/library",
 
-        ],
-        c_post_call=[
-            "{c_var}->addr = static_cast<void *>(const_cast<std::string *>(\t{cxx_addr}{cxx_var}));",
-            "{c_var}->idtor = {idtor};",
         ],
     ),
 

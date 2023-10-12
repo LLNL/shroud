@@ -153,7 +153,7 @@
                     "C_name_api": "LastFunctionCalled",
                     "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
+                    "F_C_arguments": "SHT_rv_cdesc",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called_bufferify",
                     "F_C_result_clause": "",

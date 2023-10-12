@@ -87,11 +87,11 @@ module ns_mod
         ! Function:  const std::string & LastFunctionCalled
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_last_function_called_bufferify(SHT_rv) &
+        subroutine c_last_function_called_bufferify(SHT_rv_cdesc) &
                 bind(C, name="NS_LastFunctionCalled_bufferify")
             import :: NS_SHROUD_array
             implicit none
-            type(NS_SHROUD_array), intent(OUT) :: SHT_rv
+            type(NS_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_last_function_called_bufferify
 
         ! ----------------------------------------

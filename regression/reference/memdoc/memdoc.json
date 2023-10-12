@@ -132,7 +132,7 @@
                     "C_name_api": "getConstStringPtrAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
+                    "F_C_arguments": "SHT_rv_cdesc",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_result_clause": "",

@@ -97,7 +97,7 @@ module tutorial_mod
 
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
-                arg2, SHT_arg2_len, SHT_rv) &
+                arg2, SHT_arg2_len, SHT_rv_cdesc) &
                 bind(C, name="TUT_ConcatenateStrings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
@@ -106,7 +106,7 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: SHT_arg1_len
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: SHT_arg2_len
-            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
+            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_concatenate_strings_bufferify
     end interface
 

@@ -115,11 +115,11 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_bufferify
     interface
-        subroutine c_vector_iota_out_bufferify(arg) &
+        subroutine c_vector_iota_out_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_iota_out_bufferify
     end interface
     ! end c_vector_iota_out_bufferify
@@ -135,13 +135,13 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num_bufferify
     interface
-        function c_vector_iota_out_with_num_bufferify(arg) &
+        function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
                 result(num) &
                 bind(C, name="VEC_vector_iota_out_with_num_bufferify")
             use iso_c_binding, only : C_LONG
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
             integer(C_LONG) num
         end function c_vector_iota_out_with_num_bufferify
     end interface
@@ -158,11 +158,11 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_targ_native_scalar
     ! start c_vector_iota_out_with_num2_bufferify
     interface
-        subroutine c_vector_iota_out_with_num2_bufferify(arg) &
+        subroutine c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_with_num2_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_iota_out_with_num2_bufferify
     end interface
     ! end c_vector_iota_out_with_num2_bufferify
@@ -178,11 +178,11 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_allocatable_targ_native_scalar
     ! start c_vector_iota_out_alloc_bufferify
     interface
-        subroutine c_vector_iota_out_alloc_bufferify(arg) &
+        subroutine c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_alloc_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_iota_out_alloc_bufferify
     end interface
     ! end c_vector_iota_out_alloc_bufferify
@@ -243,11 +243,11 @@ module vectors_mod
     ! Attrs:     +api(cdesc)+intent(out)
     ! Statement: f_out_vector_&_cdesc_targ_native_scalar
     interface
-        subroutine c_vector_iota_out_d_bufferify(arg) &
+        subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_iota_out_d_bufferify
     end interface
 
@@ -312,11 +312,11 @@ module vectors_mod
     ! Attrs:     +api(cdesc)+intent(out)
     ! Statement: f_out_vector_&_cdesc_targ_string_scalar
     interface
-        subroutine c_vector_string_fill_bufferify(arg) &
+        subroutine c_vector_string_fill_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_string_fill_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_string_fill_bufferify
     end interface
 
@@ -330,11 +330,12 @@ module vectors_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
     interface
-        subroutine c_vector_string_fill_allocatable_bufferify(arg) &
+        subroutine c_vector_string_fill_allocatable_bufferify( &
+                SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_string_fill_allocatable_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_string_fill_allocatable_bufferify
     end interface
 
@@ -348,11 +349,12 @@ module vectors_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
     interface
-        subroutine c_vector_string_fill_allocatable_len_bufferify(arg) &
+        subroutine c_vector_string_fill_allocatable_len_bufferify( &
+                SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_string_fill_allocatable_len_bufferify")
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: arg
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_vector_string_fill_allocatable_len_bufferify
     end interface
 
@@ -366,13 +368,13 @@ module vectors_mod
     ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     interface
-        subroutine c_return_vector_alloc_bufferify(n, SHT_rv) &
+        subroutine c_return_vector_alloc_bufferify(n, SHT_rv_cdesc) &
                 bind(C, name="VEC_ReturnVectorAlloc_bufferify")
             use iso_c_binding, only : C_INT
             import :: VEC_SHROUD_array
             implicit none
             integer(C_INT), value, intent(IN) :: n
-            type(VEC_SHROUD_array), intent(OUT) :: SHT_rv
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_return_vector_alloc_bufferify
     end interface
 

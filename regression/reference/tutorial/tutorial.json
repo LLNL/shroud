@@ -732,7 +732,7 @@
                     "C_name_api": "ConcatenateStrings",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv",
+                    "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc",
                     "F_C_call": "c_concatenate_strings_bufferify",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "F_C_result_clause": "",
