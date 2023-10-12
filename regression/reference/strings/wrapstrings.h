@@ -77,8 +77,8 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
 
 const char * STR_getConstStringRefPure(void);
 
-void STR_getConstStringRefPure_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 const char * STR_getConstStringRefLen(void);
 
@@ -96,7 +96,8 @@ void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
 const char * STR_getConstStringRefAlloc(void);
 
 void STR_getConstStringRefAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 const char * STR_getConstStringPtrLen(void);
 
@@ -105,17 +106,20 @@ void STR_getConstStringPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
 const char * STR_getConstStringPtrAlloc(void);
 
 void STR_getConstStringPtrAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 const char * STR_getConstStringPtrOwnsAlloc(void);
 
 void STR_getConstStringPtrOwnsAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 const char * STR_getConstStringPtrOwnsAllocPattern(void);
 
 void STR_getConstStringPtrOwnsAllocPattern_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 const char * STR_getConstStringPtrPointer(void);

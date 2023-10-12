@@ -990,28 +990,6 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_mixin_char_capsule_allocate",
-        comments=[
-            "Allocate Fortran CHARACTER scalar, then fill from capsule.",
-        ],
-        c_helper=["string_capsule_size", "copy_string_capsule"],
-        f_helper=["string_capsule_size", "copy_string_capsule", "capsule_dtor"],
-        f_temps=["len"],
-        f_arg_decl=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        f_declare=[
-            "integer(C_SIZE_T) :: {f_var_len}",
-        ],
-        f_post_call=[
-            "{f_var_len} = {f_helper_string_capsule_size}({f_var_capsule})",
-            "allocate(character(len={f_var_len}):: {f_var})",
-            "call {f_helper_copy_string_capsule}(\t{f_var_capsule},\t {f_var},\t {f_var_len})",
-            "call {f_helper_capsule_dtor}({f_var_capsule})",
-        ],
-    ),
-    dict(
         name="f_mixin_capsule_dtor",
         comments=[
             "Release memory from capsule.",
@@ -2065,7 +2043,6 @@ fc_statements = [
         alias=[
             "f_function_char_*_cdesc_allocatable",
         ],
-        c_helper=["copy_string"],
     ),
 
     # allocatable - split by scalar (using new) and */& using library created memory
@@ -2307,26 +2284,8 @@ fc_statements = [
         # f_function_string_&_cdesc_allocatable_caller
         # f_function_string_*_cdesc_allocatable_library
         # f_function_string_&_cdesc_allocatable_library
-        name="f_function_string_*_cdesc_allocatable",
-        mixin=[
-            "f_mixin_function-to-subroutine",
-            "f_mixin_pass_cdesc",
-            "c_mixin_function_string_cdesc",
-            "f_mixin_char_cdesc_allocate",
-        ],
-        alias=[
-            "f_function_string_&_cdesc_allocatable",
-            "f_function_string_*/&_cdesc_allocatable_caller/library",
-
-        ],
-    ),
-    dict(
-        # f_function_string_*_cdesc_allocatable_caller
-        # f_function_string_&_cdesc_allocatable_caller
-        # f_function_string_*_cdesc_allocatable_library
-        # f_function_string_&_cdesc_allocatable_library
         # XXX - capsule
-        name="x_function_string_*_cdesc_allocatable",
+        name="f_function_string_*_cdesc_allocatable",
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -2334,13 +2293,11 @@ fc_statements = [
             "c_mixin_function_string_cdesc",
             "c_mixin_native_capsule_fill",
             "f_mixin_char_cdesc_allocate",
-#            "f_mixin_char_capsule_allocate",
-            "f_mixin_capsule_dtor",  # if library owns memory
+            "f_mixin_capsule_dtor",  # XXX - if library owns memory
         ],
         alias=[
             "f_function_string_&_cdesc_allocatable",
             "f_function_string_*/&_cdesc_allocatable_caller/library",
-
         ],
     ),
 

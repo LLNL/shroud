@@ -597,8 +597,6 @@ root
       capsule
         dtor -- f_mixin_capsule_dtor
       char
-        capsule
-          allocate -- f_mixin_char_capsule_allocate
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
@@ -3795,7 +3793,9 @@ f_function_char_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - copy_string
+  - type_defines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -4090,7 +4090,9 @@ f_function_char_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - copy_string
+  - type_defines
   c_post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->cxx.idtor = {idtor};'
@@ -5277,135 +5279,183 @@ f_function_string_&_buf_copy:
 f_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable
   owner: library
 f_function_string_&_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable_caller
   owner: library
 f_function_string_&_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable_library
   owner: library
@@ -5998,135 +6048,183 @@ f_function_string_*_buf_copy:
 f_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable
   owner: library
 f_function_string_*_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable_caller
   owner: library
 f_function_string_*_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
+  - Assign to capsule in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable_library
   owner: library
@@ -9180,33 +9278,6 @@ f_mixin_capsule_dtor:
   - call {f_helper_capsule_dtor}({f_var_capsule})
   intent: mixin
   name: f_mixin_capsule_dtor
-  owner: library
-f_mixin_char_capsule_allocate:
-  c_helper:
-  - string_capsule_size
-  - copy_string_capsule
-  comments:
-  - Allocate Fortran CHARACTER scalar, then fill from capsule.
-  f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
-  f_declare:
-  - 'integer(C_SIZE_T) :: {f_var_len}'
-  f_helper:
-  - string_capsule_size
-  - copy_string_capsule
-  - capsule_dtor
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_post_call:
-  - '{f_var_len} = {f_helper_string_capsule_size}({f_var_capsule})'
-  - 'allocate(character(len={f_var_len}):: {f_var})'
-  - "call {f_helper_copy_string_capsule}(\t{f_var_capsule},\t {f_var},\t {f_var_len})"
-  - call {f_helper_capsule_dtor}({f_var_capsule})
-  f_temps:
-  - len
-  intent: mixin
-  name: f_mixin_char_capsule_allocate
   owner: library
 f_mixin_char_cdesc_allocate:
   c_helper:

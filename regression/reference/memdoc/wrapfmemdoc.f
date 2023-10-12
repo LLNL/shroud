@@ -71,14 +71,27 @@ module memdoc_mod
     ! Statement: f_function_string_*_cdesc_allocatable_library
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
-        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc) &
+        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringPtrAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
     ! end c_get_const_string_ptr_alloc_bufferify
+
+    interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine STR_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="STR_SHROUD_memory_destructor")
+            import STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine STR_SHROUD_capsule_dtor
+    end interface
 
     interface
         ! helper copy_string
@@ -109,10 +122,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
     ! end get_const_string_ptr_alloc

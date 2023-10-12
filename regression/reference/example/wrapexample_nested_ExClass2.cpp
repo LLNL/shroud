@@ -207,13 +207,16 @@ const char * AA_example_nested_ExClass2_getName2(
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName2_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc,
+    AA_SHROUD_capsule_data *SHT_rv_capsule)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName2_bufferify
     const std::string & SHCXX_rv = SH_this->getName2();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.getName2_bufferify
 }
 
@@ -240,13 +243,16 @@ char * AA_example_nested_ExClass2_getName3(
 // Statement: f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName3_bufferify(
     const AA_example_nested_ExClass2 * self,
-    AA_SHROUD_array *SHT_rv_cdesc)
+    AA_SHROUD_array *SHT_rv_cdesc,
+    AA_SHROUD_capsule_data *SHT_rv_capsule)
 {
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName3_bufferify
     std::string & SHCXX_rv = SH_this->getName3();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = &SHCXX_rv;
+    SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.getName3_bufferify
 }
 
@@ -272,13 +278,16 @@ char * AA_example_nested_ExClass2_getName4(
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_getName4_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc,
+    AA_SHROUD_capsule_data *SHT_rv_capsule)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName4_bufferify
     std::string & SHCXX_rv = SH_this->getName4();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = &SHCXX_rv;
+    SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.getName4_bufferify
 }
 

@@ -44,7 +44,6 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var,
     size_t n = c_var_len;
     if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
-    STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 // end helper copy_string
 

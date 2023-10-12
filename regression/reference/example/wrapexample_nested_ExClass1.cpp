@@ -213,13 +213,16 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
 // Statement: f_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const AA_example_nested_ExClass1 * self,
-    AA_SHROUD_array *SHT_rv_cdesc)
+    AA_SHROUD_array *SHT_rv_cdesc,
+    AA_SHROUD_capsule_data *SHT_rv_capsule)
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
 }
 

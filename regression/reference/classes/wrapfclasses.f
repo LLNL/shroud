@@ -381,12 +381,14 @@ module classes_mod
     ! Statement: f_function_string_&_cdesc_allocatable
     ! start c_class1_get_name_bufferify
     interface
-        subroutine c_class1_get_name_bufferify(self, SHT_rv_cdesc) &
+        subroutine c_class1_get_name_bufferify(self, SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="CLA_Class1_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_class1_get_name_bufferify
     end interface
     ! end c_class1_get_name_bufferify
@@ -536,12 +538,14 @@ module classes_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_string_&_cdesc_allocatable
     interface
-        subroutine c_class2_get_name_bufferify(self, SHT_rv_cdesc) &
+        subroutine c_class2_get_name_bufferify(self, SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="CLA_Class2_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_class2_get_name_bufferify
     end interface
 
@@ -1009,6 +1013,17 @@ module classes_mod
     end interface shape
 
     interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine CLA_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="CLA_SHROUD_memory_destructor")
+            import CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine CLA_SHROUD_capsule_dtor
+    end interface
+
+    interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
         subroutine CLA_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
@@ -1213,10 +1228,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_name
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
-        call c_class1_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        type(CLA_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_class1_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call CLA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call CLA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
@@ -1379,10 +1397,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class2.method.get_name
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
-        call c_class2_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        type(CLA_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_class2_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call CLA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call CLA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end class.Class2.method.get_name
     end function class2_get_name
 

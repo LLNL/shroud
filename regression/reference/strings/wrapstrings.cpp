@@ -573,11 +573,14 @@ const char * STR_getConstStringRefPure(void)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
 // start STR_getConstStringRefPure_bufferify
-void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
+void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringRefPure_bufferify
     const std::string & SHCXX_rv = getConstStringRefPure();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.getConstStringRefPure_bufferify
 }
 // end STR_getConstStringRefPure_bufferify
@@ -753,11 +756,14 @@ const char * STR_getConstStringRefAlloc(void)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
 void STR_getConstStringRefAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc)
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringRefAlloc_bufferify
     const std::string & SHCXX_rv = getConstStringRefAlloc();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.getConstStringRefAlloc_bufferify
 }
 
@@ -831,11 +837,14 @@ const char * STR_getConstStringPtrAlloc(void)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_*_cdesc_allocatable_library
 void STR_getConstStringPtrAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc)
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringPtrAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.getConstStringPtrAlloc_bufferify
 }
 
@@ -872,11 +881,14 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_*_cdesc_allocatable_caller
 void STR_getConstStringPtrOwnsAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc)
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
     ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 2);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    SHT_rv_capsule->idtor = 2;
     // splicer end function.getConstStringPtrOwnsAlloc_bufferify
 }
 
@@ -905,11 +917,14 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_*_cdesc_allocatable_caller
 void STR_getConstStringPtrOwnsAllocPattern_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc)
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
     ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 3);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    SHT_rv_capsule->idtor = 3;
     // splicer end function.getConstStringPtrOwnsAllocPattern_bufferify
 }
 

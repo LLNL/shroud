@@ -61,11 +61,14 @@ const char * NS_LastFunctionCalled(void)
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
-void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
+void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,
+    NS_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.LastFunctionCalled_bufferify
 }
 

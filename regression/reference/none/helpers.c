@@ -540,40 +540,9 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var,
     size_t n = c_var_len;
     if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
-    LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
 ##### end copy_string source
-
----------- copy_string_capsule ----------
-{
-    "cxx_include": [
-        "<string>",
-        "<cstring>"
-    ],
-    "dependent_helpers": [
-        "capsule_data_helper"
-    ],
-    "name": "LIB_ShroudCopyStringCapsule",
-    "scope": "cwrap_impl"
-}
-
-##### start copy_string_capsule source
-
-// helper copy_string_capsule
-// Copy the char* or std::string in context into c_var.
-// Called by Fortran to deal with allocatable character.
-void LIB_ShroudCopyStringCapsule(LIB_SHROUD_capsule_data *capsule,
-    char *c_var, size_t c_var_len) {
-    const std::string *src = static_cast<const std::string *>(capsule->addr);
-    if (src->empty()) {
-        c_var[0] = '\0';
-    } else {
-        std::strncpy(c_var, src->data(), src->length());
-    }
-}
-
-##### end copy_string_capsule source
 
 ---------- create_from_PyObject_vector_double ----------
 {
@@ -5197,30 +5166,6 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
     return nitems;
 }
 ##### end size_CFI source
-
----------- string_capsule_size ----------
-{
-    "cxx_include": [
-        "<string>"
-    ],
-    "dependent_helpers": [
-        "capsule_data_helper"
-    ],
-    "name": "LIB_ShroudStringCapsuleSize",
-    "scope": "cwrap_impl"
-}
-
-##### start string_capsule_size source
-
-// helper string_capsule_size
-// Extract the length of the std::string in the capsule.
-// Called by Fortran to deal with allocatable character.
-size_t LIB_ShroudStringCapsuleSize(LIB_SHROUD_capsule_data *capsule) {
-    const std::string *src = static_cast<const std::string *>(capsule->addr);
-    return src->size();
-}
-
-##### end string_capsule_size source
 
 ---------- string_to_cdesc ----------
 {
