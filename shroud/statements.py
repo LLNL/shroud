@@ -2703,7 +2703,54 @@ fc_statements = [
 
     ##########
     # As above but +deref(allocatable)
-    # 
+    #
+    dict(
+        name="c_mixin_vector_cdesc_targ_string_scalar",
+        comments=[
+            "Allocate a vector<string> variable",
+            "Save its value into a cdesc",
+        ],
+        c_pre_call=[
+#            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
+            "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
+        ],
+        c_helper=["vector_string_out_len"],
+        c_arg_call=["*{cxx_var}"],
+        c_post_call=[
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
+            "-}}",
+            "{c_var_cdesc}->size      = {cxx_var}->size();",
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+        ],
+    ),
+    dict(
+        name="f_mixin_22",
+        f_helper=["vector_string_allocatable2"],
+        c_helper=["vector_string_allocatable2"],
+        f_post_call=[
+            "call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+        ],
+    ),
+    dict(
+        name="x_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        mixin=[
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "c_mixin_vector_cdesc_targ_string_scalar",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_22",
+            "f_mixin_capsule_dtor",
+        ],
+        alias=[
+            "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        ],
+    ),
+
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         mixin=[
