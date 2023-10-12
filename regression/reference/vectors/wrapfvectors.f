@@ -331,11 +331,12 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable_bufferify( &
-                SHT_arg_cdesc) &
+                SHT_arg_cdesc, SHT_arg_capsule) &
                 bind(C, name="VEC_vector_string_fill_allocatable_bufferify")
-            import :: VEC_SHROUD_array
+            import :: VEC_SHROUD_array, VEC_SHROUD_capsule_data
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+            type(VEC_SHROUD_capsule_data), intent(OUT) :: SHT_arg_capsule
         end subroutine c_vector_string_fill_allocatable_bufferify
     end interface
 
@@ -350,11 +351,12 @@ module vectors_mod
     ! Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable_len_bufferify( &
-                SHT_arg_cdesc) &
+                SHT_arg_cdesc, SHT_arg_capsule) &
                 bind(C, name="VEC_vector_string_fill_allocatable_len_bufferify")
-            import :: VEC_SHROUD_array
+            import :: VEC_SHROUD_array, VEC_SHROUD_capsule_data
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+            type(VEC_SHROUD_capsule_data), intent(OUT) :: SHT_arg_capsule
         end subroutine c_vector_string_fill_allocatable_len_bufferify
     end interface
 
@@ -403,6 +405,17 @@ module vectors_mod
     end interface
 
     interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine VEC_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="VEC_SHROUD_memory_destructor")
+            import VEC_SHROUD_capsule_data
+            implicit none
+            type(VEC_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine VEC_SHROUD_capsule_dtor
+    end interface
+
+    interface
         ! helper copy_array
         ! Copy contents of context into c_var.
         subroutine VEC_SHROUD_copy_array(context, c_var, c_var_size) &
@@ -418,11 +431,11 @@ module vectors_mod
     interface
         ! helper vector_string_allocatable
         ! Copy the char* or std::string in context into c_var.
-        subroutine VEC_SHROUD_vector_string_allocatable(out, in) &
+        subroutine VEC_SHROUD_vector_string_allocatable(dest, src) &
              bind(c,name="VEC_ShroudVectorStringAllocatable")
-            import VEC_SHROUD_array
-            type(VEC_SHROUD_array), intent(IN) :: out
-            type(VEC_SHROUD_array), intent(IN) :: in
+            import VEC_SHROUD_capsule_data, VEC_SHROUD_array
+            type(VEC_SHROUD_array), intent(IN) :: dest
+            type(VEC_SHROUD_capsule_data), intent(IN) :: src
         end subroutine VEC_SHROUD_vector_string_allocatable
     end interface
 
@@ -741,15 +754,14 @@ contains
         character(:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        type(VEC_SHROUD_array) :: SHT_arg_alloc
-        call c_vector_string_fill_allocatable_bufferify(SHT_arg_cdesc)
-        SHT_arg_alloc%size = SHT_arg_cdesc%size;
-        SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
+        type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
+        call c_vector_string_fill_allocatable_bufferify(SHT_arg_cdesc, &
+            SHT_arg_capsule)
         allocate(character(len=SHT_arg_cdesc%elem_len) :: &
-            arg(SHT_arg_alloc%size))
-        SHT_arg_alloc%cxx%addr = C_LOC(arg)
-        SHT_arg_alloc%base_addr = C_LOC(arg)
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
+            arg(SHT_arg_cdesc%size))
+        SHT_arg_cdesc%base_addr = C_LOC(arg)
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
+        call VEC_SHROUD_capsule_dtor(SHT_arg_capsule)
         ! splicer end function.vector_string_fill_allocatable
     end subroutine vector_string_fill_allocatable
 
@@ -767,14 +779,13 @@ contains
         character(len=20), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable_len
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        type(VEC_SHROUD_array) :: SHT_arg_alloc
-        call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_cdesc)
-        SHT_arg_alloc%size = SHT_arg_cdesc%size;
-        SHT_arg_alloc%elem_len = SHT_arg_cdesc%elem_len
-        allocate(arg(SHT_arg_alloc%size))
-        SHT_arg_alloc%cxx%addr = C_LOC(arg)
-        SHT_arg_alloc%base_addr = C_LOC(arg)
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_alloc, SHT_arg_cdesc)
+        type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
+        call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_cdesc, &
+            SHT_arg_capsule)
+        allocate(arg(SHT_arg_cdesc%size))
+        SHT_arg_cdesc%base_addr = C_LOC(arg)
+        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
+        call VEC_SHROUD_capsule_dtor(SHT_arg_capsule)
         ! splicer end function.vector_string_fill_allocatable_len
     end subroutine vector_string_fill_allocatable_len
 

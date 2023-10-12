@@ -89,7 +89,7 @@ struct s_STR_SHROUD_array {
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 // end array_context
 
-void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *outdesc, STR_SHROUD_array *indesc);
+void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule_data *src);
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus

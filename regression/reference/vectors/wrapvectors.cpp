@@ -379,19 +379,20 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc)
+    VEC_SHROUD_array *SHT_arg_cdesc,
+    VEC_SHROUD_capsule_data *SHT_arg_capsule)
 {
     // splicer begin function.vector_string_fill_allocatable_bufferify
-    std::vector<std::string> *arg = new std::vector<std::string>;
-    vector_string_fill_allocatable(*arg);
+    std::vector<std::string> *SHCXX_arg = new std::vector<std::string>;
+    vector_string_fill_allocatable(*SHCXX_arg);
     if (0 > 0) {
         SHT_arg_cdesc->elem_len = 0;
     } else {
-        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHCXX_arg);
     }
-    SHT_arg_cdesc->size      = arg->size();
-    SHT_arg_cdesc->cxx.addr  = arg;
-    SHT_arg_cdesc->cxx.idtor = 0;
+    SHT_arg_cdesc->size      = SHCXX_arg->size();
+    SHT_arg_capsule->addr  = SHCXX_arg;
+    SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_bufferify
 }
 
@@ -405,19 +406,20 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc)
+    VEC_SHROUD_array *SHT_arg_cdesc,
+    VEC_SHROUD_capsule_data *SHT_arg_capsule)
 {
     // splicer begin function.vector_string_fill_allocatable_len_bufferify
-    std::vector<std::string> *arg = new std::vector<std::string>;
-    vector_string_fill_allocatable_len(*arg);
+    std::vector<std::string> *SHCXX_arg = new std::vector<std::string>;
+    vector_string_fill_allocatable_len(*SHCXX_arg);
     if (20 > 0) {
         SHT_arg_cdesc->elem_len = 20;
     } else {
-        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHCXX_arg);
     }
-    SHT_arg_cdesc->size      = arg->size();
-    SHT_arg_cdesc->cxx.addr  = arg;
-    SHT_arg_cdesc->cxx.idtor = 0;
+    SHT_arg_cdesc->size      = SHCXX_arg->size();
+    SHT_arg_capsule->addr  = SHCXX_arg;
+    SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 

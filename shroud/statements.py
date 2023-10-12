@@ -1239,24 +1239,17 @@ fc_statements = [
     dict(
         # Take f_var output, pack into cdesc, then allocate
         name="f_mixin_out_array_cdesc_allocatable",
-        f_temps=["alloc"],
-        c_helper=["vector_string_allocatable"],
-        f_helper=["vector_string_allocatable"],
+        comments=[
+            "Allocate Fortran array from cdesc.",
+        ],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_arg_decl=[
             "character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}",
         ],
-        f_declare=[
-            "type({F_array_type}) :: {f_var_alloc}",
-        ],
         f_post_call=[
-            "{f_var_alloc}%size = {f_var_cdesc}%size;",
-            "{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len",
-            "allocate({f_char_type}{f_var}({f_var_alloc}%size))",
-            "{f_var_alloc}%cxx%addr = C_LOC({f_var})",
-            "{f_var_alloc}%base_addr = C_LOC({f_var})",
-#            "call {copy_alloc}({f_var_alloc}, {f_var_cdesc})",
-            # An append group adds a call to helper to copy data.
+            "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            # Another mixin group adds a call to helper to copy data.
         ],
     ),
 
@@ -2705,85 +2698,45 @@ fc_statements = [
     # As above but +deref(allocatable)
     #
     dict(
-        name="c_mixin_vector_cdesc_targ_string_scalar",
+        name="f_mixin_helper_vector_string_allocatable",
         comments=[
-            "Allocate a vector<string> variable",
-            "Save its value into a cdesc",
+            "Allocate a vector<string> variable.",
+            "Copy into Fortran allocated memory.",
         ],
+        f_helper=["vector_string_allocatable"],
+        c_helper=["vector_string_allocatable", "vector_string_out_len"],
+        cxx_local_var="pointer",
         c_pre_call=[
 #            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
             "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
         ],
-        c_helper=["vector_string_out_len"],
         c_arg_call=["*{cxx_var}"],
         c_post_call=[
+            # If size from caller, use it. Else compute.
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
             "-}}",
             "{c_var_cdesc}->size      = {cxx_var}->size();",
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
         ],
-    ),
-    dict(
-        name="f_mixin_22",
-        f_helper=["vector_string_allocatable2"],
-        c_helper=["vector_string_allocatable2"],
         f_post_call=[
-            "call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
+            "call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})",
         ],
     ),
-    dict(
-        name="x_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        mixin=[
-            "f_mixin_pass_cdesc",
-            "f_mixin_pass_capsule",
-            "c_mixin_vector_cdesc_targ_string_scalar",
-            "c_mixin_native_capsule_fill",
-            "f_mixin_out_array_cdesc_allocatable",
-            "f_mixin_22",
-            "f_mixin_capsule_dtor",
-        ],
-        alias=[
-            "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        ],
-    ),
-
     dict(
         name="f_out_vector_&_cdesc_allocatable_targ_string_scalar",
         mixin=[
             "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+#            "c_mixin_vector_cdesc_targ_string_scalar",
             "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_helper_vector_string_allocatable",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor",
         ],
-        append=dict(
-            f_post_call=[
-                "call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
-            ],
-        ),
-#        fmtdict=dict(
-#            copy_alloc="{f_helper_vector_string_allocatable}",
-#        ),
         alias=[
             "c_out_vector_&_cdesc_allocatable_targ_string_scalar",
-        ],
-        f_helper=["vector_string_allocatable"],
-        c_helper=["vector_string_allocatable", "vector_string_out_len"],
-        c_pre_call=[
-#            "std::vector<std::string> *{cxx_var} = new {cxx_type};"  XXX cxx_tye=std::string
-            "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
-        ],
-        c_arg_call=["*{cxx_var}"],
-        c_post_call=[
-            "if ({c_char_len} > 0) {{+",
-            "{c_var_cdesc}->elem_len = {c_char_len};",
-            "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
-            "-}}",
-            "{c_var_cdesc}->size      = {cxx_var}->size();",
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
         ],
     ),
 
@@ -3985,21 +3938,11 @@ fc_statements = [
     # C++ array. Allocate in fortran, fill from C.
     # [see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]
     dict(
-        name="f_out_string_**_cdesc_allocatable",
-        mixin=[
-            "f_mixin_pass_cdesc",
-            "f_mixin_out_array_cdesc_allocatable",
-        ],
-        append=dict(
-            f_post_call=[
-                "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})",
-            ],
-        ),
-#        fmtdict=dict(
-#            copy_alloc="{f_helper_array_string_allocatable}",
-#        ),
-        alias=[
-            "c_out_string_**_cdesc_allocatable",
+        name="f_mixin_helper_array_string_allocatable",
+        comments=[
+            "Allocate a vector<string> variable.",
+            "Assign to std::string pointer from C++ function.",
+            "Copy into Fortran allocated memory.",
         ],
         f_helper=["array_string_allocatable"],
         c_helper=["array_string_allocatable", "array_string_out_len"],
@@ -4011,15 +3954,28 @@ fc_statements = [
             "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
             "{c_var_cdesc}->size     = {c_array_size};",
-            # XXX - assume a sufficiently smart compiler will only use one clause
-            #  if c_char_len is a constant.
             "if ({c_char_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {c_char_len};",
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}",
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = 0;",  # XXX - check ownership
+        ],
+        f_post_call=[
+            "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})",
+        ],
+    ),
+    dict(
+        name="f_out_string_**_cdesc_allocatable",
+        mixin=[
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_helper_array_string_allocatable",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor",
+        ],
+        alias=[
+            "c_out_string_**_cdesc_allocatable",
         ],
     ),
 

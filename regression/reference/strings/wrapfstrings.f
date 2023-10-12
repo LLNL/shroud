@@ -1165,11 +1165,13 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
-        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc) &
+        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
+                SHT_strs_capsule) &
                 bind(C, name="STR_fetchArrayStringAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_strs_capsule
         end subroutine c_fetch_array_string_alloc_bufferify
     end interface
 
@@ -1206,11 +1208,12 @@ module strings_mod
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_len_bufferify( &
-                SHT_strs_cdesc) &
+                SHT_strs_cdesc, SHT_strs_capsule) &
                 bind(C, name="STR_fetchArrayStringAllocLen_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_strs_capsule
         end subroutine c_fetch_array_string_alloc_len_bufferify
     end interface
 
@@ -1529,12 +1532,11 @@ module strings_mod
 
     interface
         ! helper array_string_allocatable
-        ! Copy the char* or std::string in context into c_var.
-        subroutine STR_SHROUD_array_string_allocatable(out, in) &
+        subroutine STR_SHROUD_array_string_allocatable(dest, src) &
              bind(c,name="STR_ShroudArrayStringAllocatable")
             import STR_SHROUD_array, STR_SHROUD_capsule_data
-            type(STR_SHROUD_array), intent(IN) :: out
-            type(STR_SHROUD_array), intent(IN) :: in
+            type(STR_SHROUD_array), intent(IN) :: dest
+            type(STR_SHROUD_capsule_data), intent(IN) :: src
         end subroutine STR_SHROUD_array_string_allocatable
     end interface
 
@@ -2392,15 +2394,14 @@ contains
         character(:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_alloc
-        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc)
-        SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
+        type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
+        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
+            SHT_strs_capsule)
         allocate(character(len=SHT_strs_cdesc%elem_len) :: &
-            strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs)
-        SHT_strs_alloc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
+            strs(SHT_strs_cdesc%size))
+        SHT_strs_cdesc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
 
@@ -2426,14 +2427,13 @@ contains
         character(len=20), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc_len
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_alloc
-        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc)
-        SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
-        allocate(strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs)
-        SHT_strs_alloc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
+        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc, &
+            SHT_strs_capsule)
+        allocate(strs(SHT_strs_cdesc%size))
+        SHT_strs_cdesc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc_len
     end subroutine fetch_array_string_alloc_len
 

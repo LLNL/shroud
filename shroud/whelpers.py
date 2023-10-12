@@ -500,18 +500,18 @@ dest += outdesc->elem_len;
     # which is copied into the cdesc.
     name = "array_string_allocatable"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
-    fmt.chnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_array_string_allocatable", fmt)
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
+        "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="c",
         scope="cwrap_impl",
-        dependent_helpers=["array_context", "array_string_out"],
+        dependent_helpers=["capsule_data_helper", "array_context", "array_string_out"],
         proto=fmt.hnameproto + ";",
         source=wformat(
             """
@@ -521,9 +521,8 @@ dest += outdesc->elem_len;
 // out is already blank filled.
 {hnameproto}
 {{+
-std::string *cxxvec =\t static_cast< std::string * >\t(indesc->cxx.addr);
-{hnamefunc_array_string_out}(outdesc, cxxvec, indesc->size);
-{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
+std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);
+{hnamefunc_array_string_out}(dest, cxxvec, dest->size);
 -}}{lend}
 """,
             fmt,
@@ -532,21 +531,19 @@ std::string *cxxvec =\t static_cast< std::string * >\t(indesc->cxx.addr);
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_array_string_allocatable", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
-! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(out, in) &
-     bind(c,name="{chnamefunc}")+
+subroutine {fnamefunc}(dest, src) &
+     bind(c,name="{cnamefunc}")+
 import {F_array_type}, {F_capsule_data_type}
-type({F_array_type}), intent(IN) :: out
-type({F_array_type}), intent(IN) :: in
--end subroutine {hnamefunc}
+type({F_array_type}), intent(IN) :: dest
+type({F_capsule_data_type}), intent(IN) :: src
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
@@ -596,15 +593,16 @@ return len;
     # Only used with std::string and thus C++.
     name = "vector_string_out"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
-    fmt.hnamefunc_vector_string_out = fmt.hnamefunc
+    fmt.cnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}shroud_vector_string_out", fmt)
+    fmt.hnamefunc_vector_string_out = fmt.cnamefunc
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
+        "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="cxx",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
@@ -621,7 +619,7 @@ return len;
 {{+
 size_t nvect = outdesc->size;
 size_t len = outdesc->elem_len;
-char *dest = static_cast<char *>(outdesc->cxx.addr);
+char *dest = static_cast<char *>(const_cast<void *>(outdesc->addr.base));
 // Clear user memory
 std::memset(dest, ' ', nvect*len);
 
@@ -638,6 +636,28 @@ dest += outdesc->elem_len;
             fmt,
         ),
     )
+
+    # Fortran interface for above function.
+    FHelpers[name] = dict(
+        dependent_helpers=["array_context"],
+        name=fmt.fnamefunc,
+        interface=wformat(
+            """
+interface+
+! helper {hname}
+subroutine {fnamefunc}(out, in) &
+     bind(c,name="{cnamefunc}")+
+use, intrinsic :: iso_c_binding, only : C_PTR
+import {F_array_type}
+type({F_array_type}), intent(IN) :: out
+type(C_PTR), intent(IN) :: in
+-end subroutine {fnamefunc}
+-end interface""",
+            fmt,
+        ),
+    )
+
+    ########################################
 
     # Fortran interface for above function.
     # Deal with allocatable character
@@ -671,18 +691,18 @@ dest += outdesc->elem_len;
     # which is copied into the cdesc.
     name = "vector_string_allocatable"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
-    fmt.chnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_vector_string_allocatable", fmt)
     fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
+        "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="c",
         scope="cwrap_impl",
-        dependent_helpers=["array_context", "vector_string_out"],
+        dependent_helpers=["capsule_data_helper", "array_context", "vector_string_out"],
         proto=fmt.hnameproto + ";",
         source=wformat(
             """
@@ -692,9 +712,8 @@ dest += outdesc->elem_len;
 // out is already blank filled.
 {hnameproto}
 {{+
-std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(indesc->cxx.addr);
-{hnamefunc_vector_string_out}(outdesc, *cxxvec);
-{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
+std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);
+{hnamefunc_vector_string_out}(dest, *cxxvec);
 -}}{lend}
 """,
             fmt,
@@ -703,21 +722,20 @@ std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_vector_string_allocatable", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(out, in) &
-     bind(c,name="{chnamefunc}")+
-import {F_array_type}
-type({F_array_type}), intent(IN) :: out
-type({F_array_type}), intent(IN) :: in
--end subroutine {hnamefunc}
+subroutine {fnamefunc}(dest, src) &
+     bind(c,name="{cnamefunc}")+
+import {F_capsule_data_type}, {F_array_type}
+type({F_array_type}), intent(IN) :: dest
+type({F_capsule_data_type}), intent(IN) :: src
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),

@@ -1516,7 +1516,8 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 void STR_fetchArrayStringAlloc_bufferify(
-    STR_SHROUD_array *SHT_strs_cdesc)
+    STR_SHROUD_array *SHT_strs_cdesc,
+    STR_SHROUD_capsule_data *SHT_strs_capsule)
 {
     // splicer begin function.fetchArrayStringAlloc_bufferify
     std::string *strs;
@@ -1530,8 +1531,8 @@ void STR_fetchArrayStringAlloc_bufferify(
     } else {
         SHT_strs_cdesc->elem_len = STR_ShroudArrayStringOutSize(strs, SHT_strs_cdesc->size);
     }
-    SHT_strs_cdesc->cxx.addr  = strs;
-    SHT_strs_cdesc->cxx.idtor = 0;
+    SHT_strs_capsule->addr  = strs;
+    SHT_strs_capsule->idtor = 0;
     // splicer end function.fetchArrayStringAlloc_bufferify
 }
 
@@ -1587,7 +1588,8 @@ void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 void STR_fetchArrayStringAllocLen_bufferify(
-    STR_SHROUD_array *SHT_strs_cdesc)
+    STR_SHROUD_array *SHT_strs_cdesc,
+    STR_SHROUD_capsule_data *SHT_strs_capsule)
 {
     // splicer begin function.fetchArrayStringAllocLen_bufferify
     std::string *strs;
@@ -1601,8 +1603,8 @@ void STR_fetchArrayStringAllocLen_bufferify(
     } else {
         SHT_strs_cdesc->elem_len = STR_ShroudArrayStringOutSize(strs, SHT_strs_cdesc->size);
     }
-    SHT_strs_cdesc->cxx.addr  = strs;
-    SHT_strs_cdesc->cxx.idtor = 0;
+    SHT_strs_capsule->addr  = strs;
+    SHT_strs_capsule->idtor = 0;
     // splicer end function.fetchArrayStringAllocLen_bufferify
 }
 

@@ -175,10 +175,12 @@ void STR_fetchArrayStringArg_bufferify(
     STR_SHROUD_array *SHT_strs_cdesc);
 
 void STR_fetchArrayStringAlloc_bufferify(
-    STR_SHROUD_array *SHT_strs_cdesc);
+    STR_SHROUD_array *SHT_strs_cdesc,
+    STR_SHROUD_capsule_data *SHT_strs_capsule);
 
 void STR_fetchArrayStringAllocLen_bufferify(
-    STR_SHROUD_array *SHT_strs_cdesc);
+    STR_SHROUD_array *SHT_strs_cdesc,
+    STR_SHROUD_capsule_data *SHT_strs_capsule);
 
 void STR_explicit1(char * name);
 

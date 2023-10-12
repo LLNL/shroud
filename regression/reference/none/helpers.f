@@ -48,12 +48,11 @@ end type LIB_SHROUD_array
 
 interface
     ! helper array_string_allocatable
-    ! Copy the char* or std::string in context into c_var.
-    subroutine LIB_SHROUD_array_string_allocatable(out, in) &
+    subroutine LIB_SHROUD_array_string_allocatable(dest, src) &
          bind(c,name="LIB_ShroudArrayStringAllocatable")
         import LIB_SHROUD_array, LIB_SHROUD_capsule_data
-        type(LIB_SHROUD_array), intent(IN) :: out
-        type(LIB_SHROUD_array), intent(IN) :: in
+        type(LIB_SHROUD_array), intent(IN) :: dest
+        type(LIB_SHROUD_capsule_data), intent(IN) :: src
     end subroutine LIB_SHROUD_array_string_allocatable
 end interface
 ##### end array_string_allocatable interface
@@ -259,11 +258,33 @@ integer, parameter, private :: &
 interface
     ! helper vector_string_allocatable
     ! Copy the char* or std::string in context into c_var.
-    subroutine LIB_SHROUD_vector_string_allocatable(out, in) &
+    subroutine LIB_SHROUD_vector_string_allocatable(dest, src) &
          bind(c,name="LIB_ShroudVectorStringAllocatable")
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: out
-        type(LIB_SHROUD_array), intent(IN) :: in
+        import LIB_SHROUD_capsule_data, LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: dest
+        type(LIB_SHROUD_capsule_data), intent(IN) :: src
     end subroutine LIB_SHROUD_vector_string_allocatable
 end interface
 ##### end vector_string_allocatable interface
+
+---------- vector_string_out ----------
+{
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "name": "LIB_shroud_vector_string_out"
+}
+
+##### start vector_string_out interface
+
+interface
+    ! helper vector_string_out
+    subroutine LIB_shroud_vector_string_out(out, in) &
+         bind(c,name="LIB_ShroudVectorStringOut")
+        use, intrinsic :: iso_c_binding, only : C_PTR
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: out
+        type(C_PTR), intent(IN) :: in
+    end subroutine LIB_shroud_vector_string_out
+end interface
+##### end vector_string_out interface

@@ -40,12 +40,11 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 // Copy the std::vector<std::string> into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *outdesc, VEC_SHROUD_array *indesc)
+void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *dest, VEC_SHROUD_capsule_data *src)
 {
     std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> * >(indesc->cxx.addr);
-    VEC_ShroudVectorStringOut(outdesc, *cxxvec);
-    VEC_SHROUD_memory_destructor(&indesc->cxx); // delete data->cxx.addr
+        static_cast< std::vector<std::string> * >(src->addr);
+    VEC_ShroudVectorStringOut(dest, *cxxvec);
 }
 // end helper vector_string_allocatable
 
@@ -98,7 +97,7 @@ void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::strin
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = static_cast<char *>(outdesc->cxx.addr);
+    char *dest = static_cast<char *>(const_cast<void *>(outdesc->addr.base));
     // Clear user memory
     std::memset(dest, ' ', nvect*len);
 

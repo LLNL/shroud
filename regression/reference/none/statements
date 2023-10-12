@@ -219,9 +219,6 @@ root
       vector
         cdesc
           fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
-          targ
-            string
-              scalar -- c_mixin_vector_cdesc_targ_string_scalar
     out
       bool
         * -- f_out_bool_*
@@ -595,7 +592,6 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
     mixin
-      22 -- f_mixin_22
       arg
         capsule -- f_mixin_arg_capsule
       capsule
@@ -615,6 +611,13 @@ root
             cfi
               allocatable -- f_mixin_function_string_scalar_cfi_allocatable
       function-to-subroutine -- f_mixin_function-to-subroutine
+      helper
+        array
+          string
+            allocatable -- f_mixin_helper_array_string_allocatable
+        vector
+          string
+            allocatable -- f_mixin_helper_vector_string_allocatable
       in
         2d
           array
@@ -2872,28 +2875,6 @@ c_mixin_vector_cdesc_fill-cdesc:
   intent: mixin
   name: c_mixin_vector_cdesc_fill-cdesc
   owner: library
-c_mixin_vector_cdesc_targ_string_scalar:
-  c_arg_call:
-  - '*{cxx_var}'
-  c_helper:
-  - vector_string_out_len
-  c_post_call:
-  - if ({c_char_len} > 0) {{+
-  - '{c_var_cdesc}->elem_len = {c_char_len};'
-  - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
-  - -}}
-  - '{c_var_cdesc}->size      = {cxx_var}->size();'
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  c_pre_call:
-  - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
-  comments:
-  - Allocate a vector<string> variable
-  - Save its value into a cdesc
-  intent: mixin
-  name: c_mixin_vector_cdesc_targ_string_scalar
-  owner: library
 c_out_bool_*:
   intent: out
   name: c_out_bool_*
@@ -3161,7 +3142,9 @@ c_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - array_string_allocatable
   - array_string_out_len
   c_post_call:
@@ -3172,20 +3155,31 @@ c_out_string_**_cdesc_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = 0;'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: c_out_string_**_cdesc_allocatable
   owner: library
@@ -3291,7 +3285,9 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - vector_string_allocatable
   - vector_string_out_len
   c_post_call:
@@ -3301,20 +3297,31 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  cxx_local_var: pointer
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: c_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
@@ -9264,16 +9271,6 @@ f_inout_void_*_cdesc:
   intent: inout
   name: f_inout_void_*_cdesc
   owner: library
-f_mixin_22:
-  c_helper:
-  - vector_string_allocatable2
-  f_helper:
-  - vector_string_allocatable2
-  f_post_call:
-  - call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})
-  intent: mixin
-  name: f_mixin_22
-  owner: library
 f_mixin_arg_capsule:
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -9442,6 +9439,59 @@ f_mixin_function_string_scalar_cfi_allocatable:
   f_need_wrapper: true
   intent: mixin
   name: f_mixin_function_string_scalar_cfi_allocatable
+  owner: library
+f_mixin_helper_array_string_allocatable:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_helper:
+  - array_string_allocatable
+  - array_string_out_len
+  c_post_call:
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size     = {c_array_size};'
+  - if ({c_char_len} > 0) {{+
+  - '{c_var_cdesc}->elem_len = {c_char_len};'
+  - -}} else {{+
+  - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
+  - -}}
+  c_pre_call:
+  - std::string *{cxx_var};
+  comments:
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  f_helper:
+  - array_string_allocatable
+  f_post_call:
+  - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  intent: mixin
+  name: f_mixin_helper_array_string_allocatable
+  owner: library
+f_mixin_helper_vector_string_allocatable:
+  c_arg_call:
+  - '*{cxx_var}'
+  c_helper:
+  - vector_string_allocatable
+  - vector_string_out_len
+  c_post_call:
+  - if ({c_char_len} > 0) {{+
+  - '{c_var_cdesc}->elem_len = {c_char_len};'
+  - -}} else {{+
+  - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
+  - -}}
+  - '{c_var_cdesc}->size      = {cxx_var}->size();'
+  c_pre_call:
+  - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
+  comments:
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  cxx_local_var: pointer
+  f_helper:
+  - vector_string_allocatable
+  f_post_call:
+  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  intent: mixin
+  name: f_mixin_helper_vector_string_allocatable
   owner: library
 f_mixin_in_2d_array_buf:
   c_arg_decl:
@@ -9626,25 +9676,16 @@ f_mixin_native_cdesc_pointer:
   name: f_mixin_native_cdesc_pointer
   owner: library
 f_mixin_out_array_cdesc_allocatable:
-  c_helper:
-  - vector_string_allocatable
+  comments:
+  - Allocate Fortran array from cdesc.
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_alloc}'
-  f_helper:
-  - vector_string_allocatable
   f_module:
     iso_c_binding:
     - C_LOC
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  f_temps:
-  - alloc
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   intent: mixin
   name: f_mixin_out_array_cdesc_allocatable
   owner: library
@@ -10307,7 +10348,9 @@ f_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - array_string_allocatable
   - array_string_out_len
   c_post_call:
@@ -10318,43 +10361,56 @@ f_out_string_**_cdesc_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = 0;'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_alloc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
+  - array_context
   - array_string_allocatable
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
   f_need_wrapper: true
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  - call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
-  - alloc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: f_out_string_**_cdesc_allocatable
   owner: library
@@ -10578,7 +10634,9 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - vector_string_allocatable
   - vector_string_out_len
   c_post_call:
@@ -10588,43 +10646,56 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_alloc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
+  - array_context
   - vector_string_allocatable
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
   f_need_wrapper: true
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  - call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
-  - alloc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: f_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library

@@ -24,12 +24,10 @@ extern "C" {
 // Copy the std::string array into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *outdesc, STR_SHROUD_array *indesc)
+void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule_data *src)
 {
-    std::string *cxxvec = static_cast< std::string * >
-        (indesc->cxx.addr);
-    STR_ShroudArrayStringOut(outdesc, cxxvec, indesc->size);
-    STR_SHROUD_memory_destructor(&indesc->cxx); // delete data->cxx.addr
+    std::string *cxxvec = static_cast< std::string *>(src->addr);
+    STR_ShroudArrayStringOut(dest, cxxvec, dest->size);
 }
 // end helper array_string_allocatable
 
