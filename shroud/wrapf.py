@@ -1201,7 +1201,7 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
-        r_attrs = ast.declarator.metaattrs
+        r_attrs = ast.declarator.attrs
         r_meta = ast.declarator.metaattrs
         result_api = r_meta["api"]
         sintent = r_meta["intent"]

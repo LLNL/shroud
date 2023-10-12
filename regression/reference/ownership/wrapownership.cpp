@@ -247,7 +247,8 @@ int * OWN_ReturnIntPtrDimPointerNew(int * len)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc)
+    OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ReturnIntPtrDimPointerNew_bufferify
     int len;
@@ -260,6 +261,8 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    SHT_rv_capsule->addr  = SHC_rv;
+    SHT_rv_capsule->idtor = 2;
     // splicer end function.ReturnIntPtrDimPointerNew_bufferify
 }
 
@@ -305,7 +308,8 @@ int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc)
+    OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ReturnIntPtrDimDefaultNew_bufferify
     int len;
@@ -318,6 +322,8 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    SHT_rv_capsule->addr  = SHC_rv;
+    SHT_rv_capsule->idtor = 2;
     // splicer end function.ReturnIntPtrDimDefaultNew_bufferify
 }
 

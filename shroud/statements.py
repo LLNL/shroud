@@ -855,7 +855,7 @@ fc_statements = [
         # Pass array_type as argument to contain the function result.
         name="f_mixin_pass_capsule",
         comments=[
-            "Pass capsule as argument to C wrapper.",
+            "Pass local capsule as argument to C wrapper.",
         ],
         f_helper=["array_context"],
         f_declare=[
@@ -874,7 +874,35 @@ fc_statements = [
         i_arg_names=["{c_var}"],
         i_import=["{F_capsule_data_type}"],
     ),
+    dict(
+        # Pass array_type as argument to contain the function result.
+        name="f_mixin_arg_capsule",
+        comments=[
+            "Add a capsule argument to the Fortran wrapper.",
+            "Pass the capsule as argument to C wrapper.",
+        ],
+        f_helper=["array_context", "capsule_helper"],
+        f_arg_name=["{f_var_capsule}"],
+        f_arg_decl=[
+            "type({F_capsule_type}), intent(OUT) :: {f_var_capsule}",
+        ],
+        f_arg_call=["{f_var_capsule}%mem"],
+        f_temps=["capsule"],
+        f_need_wrapper=True,
 
+        c_temps=["capsule"],
+        c_arg_decl=[
+            "{C_capsule_data_type} *{c_var_capsule}",
+        ],
+        i_arg_decl=[
+            "type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}",
+        ],
+        i_arg_names=["{c_var_capsule}"],
+        i_import=["{F_capsule_data_type}"],
+        fmtdict=dict(
+            f_var_capsule="Crv",  # XXX C_var_capsule_template, compare with previous reference
+        ),
+    ),
 
     dict(
         name="f_mixin_native_cdesc_allocate",
@@ -943,25 +971,6 @@ fc_statements = [
         ],
     ),
 
-    dict(
-        name="f_mixin_arg_capsule",
-        comments=[
-            "Add a capsule argument to the Fortran wrapper."
-        ],
-        f_helper=["capsule_helper"],
-        f_temps=["capsule"],
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        f_arg_name=["{f_var_capsule}"],
-        f_arg_decl=[
-            "type({F_capsule_type}), intent(OUT) :: {f_var_capsule}",
-        ],
-        f_post_call=[
-            "{f_var_capsule}%mem = {f_var_cdesc}%cxx",
-        ],
-        fmtdict=dict(
-            f_var_capsule="Crv",  # XXX C_var_capsule_template, compare with previous reference
-        ),
-    ),
     
     dict(
         name="f_mixin_char_cdesc_allocate",
@@ -1023,6 +1032,7 @@ fc_statements = [
     ),
 
     ##########
+    # cdesc
     dict(
         # Add function result to cdesc. Used with pointer and allocatable
         # c_temp cdesc already added
@@ -1073,6 +1083,17 @@ fc_statements = [
         c_helper=["string_to_cdesc"],
         c_post_call=[
             "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+        ],
+    ),
+
+    dict(
+        name="c_mixin_native_capsule_fill",
+        comments=[
+            "Assign to capsule in C wrapper.",
+        ],
+        c_post_call=[
+            "{c_var_capsule}->addr  = {cxx_nonconst_ptr};",
+            "{c_var_capsule}->idtor = {idtor};",
         ],
     ),
 
@@ -1754,9 +1775,10 @@ fc_statements = [
         mixin=[
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
-            "c_mixin_native_cdesc_fill-cdesc",
-            "f_mixin_native_cdesc_pointer",
             "f_mixin_arg_capsule",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_native_cdesc_pointer",
         ],
     ),
     dict(

@@ -199,6 +199,8 @@ root
               native
                 scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
       native
+        capsule
+          fill -- c_mixin_native_capsule_fill
         cdesc
           fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
         cfi
@@ -2743,6 +2745,15 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   intent: mixin
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
+c_mixin_native_capsule_fill:
+  c_post_call:
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  comments:
+  - Assign to capsule in C wrapper.
+  intent: mixin
+  name: c_mixin_native_capsule_fill
+  owner: library
 c_mixin_native_cdesc_fill-cdesc:
   c_post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -4446,6 +4457,7 @@ f_function_native_*_cdesc_pointer:
 f_function_native_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   c_post_call:
@@ -4456,20 +4468,26 @@ f_function_native_*_cdesc_pointer_caller:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
   - Add a capsule argument to the Fortran wrapper.
+  - Pass the capsule as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}%mem'
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   f_arg_name:
   - '{f_var_capsule}'
   f_call:
@@ -4478,15 +4496,14 @@ f_function_native_*_cdesc_pointer_caller:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
   - array_context
+  - array_context
   - capsule_helper
   f_module:
     iso_c_binding:
     - c_f_pointer
-    - c_f_pointer
   f_need_wrapper: true
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
-  - '{f_var_capsule}%mem = {f_var_cdesc}%cxx'
   f_temps:
   - cdesc
   - capsule
@@ -4494,10 +4511,13 @@ f_function_native_*_cdesc_pointer_caller:
     f_var_capsule: Crv
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_native_*_cdesc_pointer_caller
   owner: library
@@ -9119,23 +9139,33 @@ f_inout_void_*_cdesc:
   name: f_inout_void_*_cdesc
   owner: library
 f_mixin_arg_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
   comments:
   - Add a capsule argument to the Fortran wrapper.
+  - Pass the capsule as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_capsule}%mem'
   f_arg_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
   f_arg_name:
   - '{f_var_capsule}'
   f_helper:
+  - array_context
   - capsule_helper
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
-  f_post_call:
-  - '{f_var_capsule}%mem = {f_var_cdesc}%cxx'
+  f_need_wrapper: true
   f_temps:
   - capsule
   fmtdict:
     f_var_capsule: Crv
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  i_arg_names:
+  - '{c_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
   intent: mixin
   name: f_mixin_arg_capsule
   owner: library
@@ -9546,7 +9576,7 @@ f_mixin_pass_capsule:
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var}'
   comments:
-  - Pass capsule as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
   f_arg_call:
   - '{f_var_capsule}'
   f_declare:

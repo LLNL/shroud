@@ -55,14 +55,16 @@ int * OWN_ReturnIntPtrDimRawNew(int * len);
 int * OWN_ReturnIntPtrDimPointerNew(int * len);
 
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc);
+    OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule);
 
 int * OWN_ReturnIntPtrDimAllocNew(int * len);
 
 int * OWN_ReturnIntPtrDimDefaultNew(int * len);
 
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc);
+    OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule);
 
 void OWN_createClassStatic(int flag);
 

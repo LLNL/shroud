@@ -254,7 +254,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer
+        ! Statement: f_function_native_*_pointer_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -271,7 +271,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer
+        ! Statement: f_function_native_*_pointer_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -289,18 +289,20 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv) &
+        ! Statement: f_function_native_*_cdesc_pointer_caller
+        subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv, &
+                SHT_rv_capsule) &
                 bind(C, name="OWN_ReturnIntPtrDimPointerNew_bufferify")
-            import :: OWN_SHROUD_array
+            import :: OWN_SHROUD_array, OWN_SHROUD_capsule_data
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_return_int_ptr_dim_pointer_new_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_native_*_allocatable
+        ! Statement: f_function_native_*_allocatable_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -317,7 +319,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer
+        ! Statement: f_function_native_*_pointer_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -335,12 +337,14 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_cdesc_pointer
-        subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv) &
+        ! Statement: f_function_native_*_cdesc_pointer_caller
+        subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv, &
+                SHT_rv_capsule) &
                 bind(C, name="OWN_ReturnIntPtrDimDefaultNew_bufferify")
-            import :: OWN_SHROUD_array
+            import :: OWN_SHROUD_array, OWN_SHROUD_capsule_data
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_return_int_ptr_dim_default_new_bufferify
 
         ! ----------------------------------------
@@ -361,7 +365,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
         ! Attrs:     +api(capptr)+intent(function)
-        ! Statement: f_function_shadow_*_capptr
+        ! Statement: f_function_shadow_*_capptr_library
         function c_get_class_static(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="OWN_getClassStatic")
@@ -375,7 +379,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
         ! Attrs:     +api(capptr)+intent(function)
-        ! Statement: f_function_shadow_*_capptr
+        ! Statement: f_function_shadow_*_capptr_caller
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
@@ -568,14 +572,14 @@ contains
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
+        integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_pointer_new
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_cdesc)
+        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_cdesc, &
+            Crv%mem)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
-        Crv%mem = SHT_rv_cdesc%cxx
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
 
@@ -587,14 +591,14 @@ contains
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
+        integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_default_new
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_cdesc)
+        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_cdesc, &
+            Crv%mem)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
-        Crv%mem = SHT_rv_cdesc%cxx
         ! splicer end function.return_int_ptr_dim_default_new
     end function return_int_ptr_dim_default_new
 
