@@ -348,7 +348,7 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
     int type;
     size_t size;
     GetPointerAsPointer(&addr, &type, &size);
-    SHT_addr_cdesc->addr.base = addr;
+    SHT_addr_cdesc->base_addr = addr;
     SHT_addr_cdesc->type = SH_TYPE_FLOAT;
     SHT_addr_cdesc->elem_len = sizeof(float);
     SHT_addr_cdesc->rank = 0;
@@ -383,7 +383,7 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
     int type;
     size_t size;
     GetPointerAsPointer(&addr, &type, &size);
-    SHT_addr_cdesc->addr.base = addr;
+    SHT_addr_cdesc->base_addr = addr;
     SHT_addr_cdesc->type = SH_TYPE_FLOAT;
     SHT_addr_cdesc->elem_len = sizeof(float);
     SHT_addr_cdesc->rank = 0;

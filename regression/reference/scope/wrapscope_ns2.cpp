@@ -31,7 +31,7 @@ void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin namespace.ns2.function.DataPointer_get_items_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->items;
+    SHT_rv_cdesc->base_addr = SH_this->items;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;

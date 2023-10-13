@@ -36,19 +36,19 @@ declarations:
     c_buf: |
       switch(SHT_value_cdesc->type) {
       case SH_TYPE_INT: {
-        *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
+        *static_cast<int *>(SHT_value_cdesc->base_addr) = getData<int>();
         break;
       }
       case SH_TYPE_LONG: {
-        *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
+        *static_cast<long *>(SHT_value_cdesc->base_addr) = getData<long>();
         break;
       }
       case SH_TYPE_FLOAT: {
-        *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
+        *static_cast<float *>(SHT_value_cdesc->base_addr) = getData<float>();
         break;
       }
       case SH_TYPE_DOUBLE: {
-        *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
+        *static_cast<double *>(SHT_value_cdesc->base_addr) = getData<double>();
         break;
       }
       // default:

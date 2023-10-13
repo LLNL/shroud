@@ -99,10 +99,10 @@ static void ShroudStringToCdesc(STR_SHROUD_array *cdesc,
     const std::string * src)
 {
     if (src->empty()) {
-        cdesc->addr.ccharp = NULL;
+        cdesc->base_addr = NULL;
         cdesc->elem_len = 0;
     } else {
-        cdesc->addr.ccharp = src->data();
+        cdesc->base_addr = const_cast<char *>(src->data());
         cdesc->elem_len = src->length();
     }
     cdesc->size = 1;
@@ -313,7 +313,7 @@ void STR_getCharPtr1_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.getCharPtr1_bufferify
     const char * SHC_rv = getCharPtr1();
-    SHT_rv_cdesc->addr.ccharp = SHC_rv;
+    SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
     SHT_rv_cdesc->type = SH_TYPE_OTHER;
     SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
     SHT_rv_cdesc->size = 1;
@@ -444,7 +444,7 @@ void STR_getCharPtr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.getCharPtr5_bufferify
     const char * SHC_rv = getCharPtr5();
-    SHT_rv_cdesc->addr.ccharp = SHC_rv;
+    SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
     SHT_rv_cdesc->type = SH_TYPE_OTHER;
     SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
     SHT_rv_cdesc->size = 1;

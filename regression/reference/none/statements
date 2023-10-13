@@ -939,7 +939,7 @@ c_function_char_*_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -1856,7 +1856,7 @@ c_in_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -1870,10 +1870,10 @@ c_in_native_*_cdesc:
   intent: in
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_in_native_*_cdesc
   owner: library
 c_in_native_scalar:
@@ -2298,7 +2298,7 @@ c_in_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -2312,10 +2312,10 @@ c_in_void_*_cdesc:
   intent: in
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_in_void_*_cdesc
   owner: library
 c_in_void_scalar:
@@ -2383,7 +2383,7 @@ c_inout_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -2397,10 +2397,10 @@ c_inout_native_*_cdesc:
   intent: inout
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_inout_native_*_cdesc
   owner: library
 c_inout_native_*_hidden:
@@ -2552,7 +2552,7 @@ c_inout_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -2566,10 +2566,10 @@ c_inout_void_*_cdesc:
   intent: inout
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_inout_void_*_cdesc
   owner: library
 c_mixin_arg_cfi:
@@ -2637,7 +2637,7 @@ c_mixin_function_char_*_cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -2714,7 +2714,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -2759,7 +2759,7 @@ c_mixin_native_capsule_fill:
   owner: library
 c_mixin_native_cdesc_fill-cdesc:
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -2823,7 +2823,7 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -2856,7 +2856,7 @@ c_mixin_vector_cdesc_fill-cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -2924,7 +2924,7 @@ c_out_native_*&_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -2968,7 +2968,7 @@ c_out_native_**_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -3008,7 +3008,7 @@ c_out_native_**_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -3044,7 +3044,7 @@ c_out_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -3058,10 +3058,10 @@ c_out_native_*_cdesc:
   intent: out
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_out_native_*_cdesc
   owner: library
 c_out_native_*_hidden:
@@ -3246,7 +3246,7 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -3324,7 +3324,7 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -3380,7 +3380,7 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -3413,7 +3413,7 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -3462,7 +3462,7 @@ c_out_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -3476,10 +3476,10 @@ c_out_void_*_cdesc:
   intent: out
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;'
+    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   name: c_out_void_*_cdesc
   owner: library
 c_setter:
@@ -3816,7 +3816,7 @@ f_function_char_*_cdesc_allocatable:
   - copy_string
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -3863,7 +3863,7 @@ f_function_char_*_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -4109,7 +4109,7 @@ f_function_char_scalar_cdesc_allocatable:
   - copy_string
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -4156,7 +4156,7 @@ f_function_char_scalar_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
@@ -4375,7 +4375,7 @@ f_function_native_*_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -4441,7 +4441,7 @@ f_function_native_*_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -4488,7 +4488,7 @@ f_function_native_*_cdesc_pointer_caller:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -7429,7 +7429,7 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -7490,7 +7490,7 @@ f_getter_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -7552,7 +7552,7 @@ f_getter_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();'
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());"
   - '{c_var_cdesc}->type = 0; // SH_CHAR;'
   - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
   - '{c_var_cdesc}->rank = 0;'
@@ -7597,7 +7597,7 @@ f_getter_struct_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -7643,7 +7643,7 @@ f_getter_struct_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -7906,7 +7906,7 @@ f_in_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -8598,7 +8598,7 @@ f_in_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -8747,7 +8747,7 @@ f_inout_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -9052,7 +9052,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -9117,7 +9117,7 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -9260,7 +9260,7 @@ f_inout_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -9971,7 +9971,7 @@ f_out_native_*&_cdesc:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -10017,7 +10017,7 @@ f_out_native_*&_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -10077,7 +10077,7 @@ f_out_native_**_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -10142,7 +10142,7 @@ f_out_native_**_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
@@ -10271,7 +10271,7 @@ f_out_native_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:
@@ -10646,7 +10646,7 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -10767,7 +10767,7 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -10861,7 +10861,7 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -10912,7 +10912,7 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
@@ -11038,7 +11038,7 @@ f_out_void_*_cdesc:
   c_helper:
   - array_context
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_temps:
   - cdesc
   comments:

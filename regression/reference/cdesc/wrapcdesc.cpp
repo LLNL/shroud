@@ -50,7 +50,7 @@ void CDE_Rank2In(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In
     int * arg = static_cast<int *>
-        (const_cast<void *>(SHT_arg_cdesc->addr.base));
+        (const_cast<void *>(SHT_arg_cdesc->base_addr));
     Rank2In(arg);
     // splicer end function.Rank2In
 }
@@ -84,7 +84,7 @@ void CDE_GetScalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
     // splicer begin function.GetScalar1
     std::string SHCXX_name(name);
     void * value = static_cast<void *>
-        (const_cast<void *>(SHT_value_cdesc->addr.base));
+        (const_cast<void *>(SHT_value_cdesc->base_addr));
     GetScalar1(SHCXX_name, value);
     // splicer end function.GetScalar1
 }
@@ -120,19 +120,19 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     // splicer begin function.GetScalar1_0_bufferify
     switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
-      *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
+      *static_cast<int *>(SHT_value_cdesc->base_addr) = getData<int>();
       break;
     }
     case SH_TYPE_LONG: {
-      *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
+      *static_cast<long *>(SHT_value_cdesc->base_addr) = getData<long>();
       break;
     }
     case SH_TYPE_FLOAT: {
-      *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
+      *static_cast<float *>(SHT_value_cdesc->base_addr) = getData<float>();
       break;
     }
     case SH_TYPE_DOUBLE: {
-      *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
+      *static_cast<double *>(SHT_value_cdesc->base_addr) = getData<double>();
       break;
     }
     // default:
@@ -171,19 +171,19 @@ void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     // splicer begin function.GetScalar1_1_bufferify
     switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
-      *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
+      *static_cast<int *>(SHT_value_cdesc->base_addr) = getData<int>();
       break;
     }
     case SH_TYPE_LONG: {
-      *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
+      *static_cast<long *>(SHT_value_cdesc->base_addr) = getData<long>();
       break;
     }
     case SH_TYPE_FLOAT: {
-      *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
+      *static_cast<float *>(SHT_value_cdesc->base_addr) = getData<float>();
       break;
     }
     case SH_TYPE_DOUBLE: {
-      *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
+      *static_cast<double *>(SHT_value_cdesc->base_addr) = getData<double>();
       break;
     }
     // default:

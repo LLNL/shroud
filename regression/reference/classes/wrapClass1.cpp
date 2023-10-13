@@ -46,10 +46,10 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
     const std::string * src)
 {
     if (src->empty()) {
-        cdesc->addr.ccharp = NULL;
+        cdesc->base_addr = NULL;
         cdesc->elem_len = 0;
     } else {
-        cdesc->addr.ccharp = src->data();
+        cdesc->base_addr = const_cast<char *>(src->data());
         cdesc->elem_len = src->length();
     }
     cdesc->size = 1;
@@ -404,7 +404,8 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_name_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->m_name.data();
+    SHT_rv_cdesc->base_addr = const_cast<char *>(
+        SH_this->m_name.data());
     SHT_rv_cdesc->type = 0; // SH_CHAR;
     SHT_rv_cdesc->elem_len = SH_this->m_name.size();
     SHT_rv_cdesc->rank = 0;
