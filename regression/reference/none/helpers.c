@@ -127,7 +127,6 @@ void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //LIB_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 
 ##### end array_string_out source
@@ -7029,7 +7028,6 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //LIB_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 
 ##### end vector_string_out source

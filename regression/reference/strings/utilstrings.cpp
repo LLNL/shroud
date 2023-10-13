@@ -111,7 +111,6 @@ void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in, size_t
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //STR_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 // end helper array_string_out
 

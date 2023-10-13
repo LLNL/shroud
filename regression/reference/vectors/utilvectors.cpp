@@ -107,7 +107,6 @@ void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::strin
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
     }
-    //VEC_SHROUD_memory_destructor(&in->cxx); // delete data->cxx.addr
 }
 // end helper vector_string_out
 
