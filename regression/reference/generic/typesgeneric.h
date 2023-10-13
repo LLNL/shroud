@@ -17,13 +17,6 @@
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
-// helper capsule_data_helper
-struct s_GEN_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
-
 /* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
@@ -68,7 +61,6 @@ typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 // start array_context
 // helper array_context
 struct s_GEN_SHROUD_array {
-    GEN_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
         const void * base;
         const char * ccharp;
@@ -81,6 +73,13 @@ struct s_GEN_SHROUD_array {
 };
 typedef struct s_GEN_SHROUD_array GEN_SHROUD_array;
 // end array_context
+
+// helper capsule_data_helper
+struct s_GEN_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 #if 0
 
 // C++ capsule GEN_StructAsClass

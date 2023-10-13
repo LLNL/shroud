@@ -2,7 +2,7 @@
 ---------- array_context ----------
 {
     "dependent_helpers": [
-        "capsule_data_helper"
+        "type_defines"
     ],
     "modules": {
         "iso_c_binding": [
@@ -20,9 +20,7 @@
 
 ! helper array_context
 type, bind(C) :: LIB_SHROUD_array
-    ! address of C++ memory
-    type(LIB_SHROUD_capsule_data) :: cxx
-    ! address of data in cxx
+    ! address of data
     type(C_PTR) :: base_addr = C_NULL_PTR
     ! type of element
     integer(C_INT) :: type

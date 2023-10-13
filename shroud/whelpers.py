@@ -1132,12 +1132,10 @@ call {__helper}(cap%mem)
         include=["<stddef.h>"],
         # Create a union for addr to avoid some casts.
         # And help with debugging since ccharp will display contents.
-# XXX - capsule
         source=wformat(
             """
 {lstart}// helper {hname}
 struct s_{C_array_type} {{+
-{C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * base;
 const char * ccharp;
@@ -1151,7 +1149,7 @@ long shape[7];
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
             fmt,
         ),
-        dependent_helpers=["capsule_data_helper", "type_defines"],
+        dependent_helpers=["type_defines"], # used with type field
     )
     CHelpers[name] = helper
 
@@ -1165,13 +1163,10 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
     helper = dict(
         name=fmt.F_array_type,
         derived_type=wformat(
-# XXX - capsule
             """
 {lstart}! helper {hname}
 type, bind(C) :: {F_array_type}+
-! address of C++ memory
-type({F_capsule_data_type}) :: cxx
-! address of data in cxx
+! address of data
 type(C_PTR) :: base_addr = C_NULL_PTR
 ! type of element
 integer(C_INT) :: type
@@ -1187,7 +1182,7 @@ integer(C_LONG) :: shape(7) = 0
         ),
         modules=dict(iso_c_binding=[
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
-        dependent_helpers=["capsule_data_helper"],
+        dependent_helpers=["type_defines"], # used with type field
     )
     FHelpers[name] = helper
 

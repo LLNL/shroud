@@ -35,7 +35,6 @@ typedef struct {
 ---------- array_context ----------
 {
     "dependent_helpers": [
-        "capsule_data_helper",
         "type_defines"
     ],
     "include": [
@@ -49,7 +48,6 @@ typedef struct {
 
 // helper array_context
 struct s_LIB_SHROUD_array {
-    LIB_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
         const void * base;
         const char * ccharp;
