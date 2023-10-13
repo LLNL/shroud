@@ -131,7 +131,7 @@ void CLA_Data_get_items_bufferify(CLA_Data * self,
 {
     classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
     // splicer begin class.Data.method.get_items_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->items;
+    SHT_rv_cdesc->base_addr = SH_this->items;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;

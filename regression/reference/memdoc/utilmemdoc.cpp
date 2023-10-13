@@ -23,10 +23,10 @@ extern "C" {
 // Called by Fortran to deal with allocatable character.
 void STR_ShroudCopyString(STR_SHROUD_array *data, char *c_var,
     size_t c_var_len) {
-    const char *cxx_var = data->addr.ccharp;
+    const void *cxx_var = data->base_addr;
     size_t n = c_var_len;
     if (data->elem_len < n) n = data->elem_len;
-    std::strncpy(c_var, cxx_var, n);
+    std::memcpy(c_var, cxx_var, n);
 }
 // end helper copy_string
 

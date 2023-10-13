@@ -77,7 +77,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     // splicer begin function.vector_iota_out_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -110,7 +110,7 @@ long VEC_vector_iota_out_with_num_bufferify(
     // splicer begin function.vector_iota_out_with_num_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_with_num(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -144,7 +144,7 @@ void VEC_vector_iota_out_with_num2_bufferify(
     // splicer begin function.vector_iota_out_with_num2_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_with_num2(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -174,7 +174,7 @@ void VEC_vector_iota_out_alloc_bufferify(
     // splicer begin function.vector_iota_out_alloc_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_alloc(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -205,7 +205,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     std::vector<int> *SHCXX_arg = new std::vector<int>(
         arg, arg + SHT_arg_size);
     vector_iota_inout_alloc(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -231,7 +231,7 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     std::vector<int> *SHCXX_arg = new std::vector<int>(
         arg, arg + SHT_arg_size);
     vector_increment(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -258,7 +258,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     // splicer begin function.vector_iota_out_d_bufferify
     std::vector<double> *SHCXX_arg = new std::vector<double>;
     vector_iota_out_d(*SHCXX_arg);
-    SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
+    SHT_arg_cdesc->base_addr = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_DOUBLE;
     SHT_arg_cdesc->elem_len = sizeof(double);
     SHT_arg_cdesc->size = SHCXX_arg->size();
@@ -429,7 +429,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
     // splicer begin function.ReturnVectorAlloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
-    SHT_rv_cdesc->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
+    SHT_rv_cdesc->base_addr = SHC_rv->empty() ? nullptr : &SHC_rv->front();
     SHT_rv_cdesc->type = SH_TYPE_OTHER;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->size = SHC_rv->size();

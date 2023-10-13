@@ -1035,7 +1035,7 @@ fc_statements = [
             # XXX - capsule
 #            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
 #            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var};",
+            "{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
             "{c_var_cdesc}->rank = {rank};"
@@ -1059,7 +1059,7 @@ fc_statements = [
             # XXX - capsule
 #            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
 #            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_cdesc}->size = 1;",
@@ -1615,15 +1615,15 @@ fc_statements = [
 #        c_helper=["type_defines"],
         lang_c=dict(
             c_pre_call=[
-                "{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;",
+                "{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;",
             ],
         ),
         lang_cxx=dict(
             c_pre_call=[
 #            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-#            "({c_var_cdesc}->addr.base);",
+#            "({c_var_cdesc}->base_addr);",
                 "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-                "(const_cast<void *>({c_var_cdesc}->addr.base));",
+                "(const_cast<void *>({c_var_cdesc}->base_addr));",
             ],
         ),
     ),
@@ -2439,7 +2439,7 @@ fc_statements = [
             # XXX - capsule
 #            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
 #            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
+            "{c_var_cdesc}->base_addr = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
@@ -3231,7 +3231,7 @@ fc_statements = [
             # XXX - capsule
 #            "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
 #            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
             "{c_var_cdesc}->rank = {rank};"
@@ -3250,7 +3250,7 @@ fc_statements = [
 #            "f_mixin_use_capsule",  # XXX - capsule, cxx_nonconst_ptr
         ],
         c_call=[
-            "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
             "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
             "{c_var_cdesc}->rank = 0;"

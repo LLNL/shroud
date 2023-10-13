@@ -38,10 +38,10 @@ void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule
 // Called by Fortran to deal with allocatable character.
 void STR_ShroudCopyString(STR_SHROUD_array *data, char *c_var,
     size_t c_var_len) {
-    const char *cxx_var = data->addr.ccharp;
+    const void *cxx_var = data->base_addr;
     size_t n = c_var_len;
     if (data->elem_len < n) n = data->elem_len;
-    std::strncpy(c_var, cxx_var, n);
+    std::memcpy(c_var, cxx_var, n);
 }
 // end helper copy_string
 
@@ -100,13 +100,12 @@ void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in, size_t
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
     std::memset(dest, ' ', nvect*len);
 
     // Copy into user memory
     nvect = std::min(nvect, nsize);
-    //char *dest = static_cast<char *>(outdesc->cxx.addr);
     for (size_t i = 0; i < nvect; ++i) {
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;

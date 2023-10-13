@@ -207,7 +207,7 @@ void CXX_nested_get_parent(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.nested_get_parent
-    SHT_rv_cdesc->addr.base = SH_this->parent;
+    SHT_rv_cdesc->base_addr = SH_this->parent;
     SHT_rv_cdesc->type = SH_TYPE_STRUCT;
     SHT_rv_cdesc->elem_len = sizeof(nested);
     SHT_rv_cdesc->rank = 0;
@@ -249,7 +249,7 @@ void CXX_nested_get_child_bufferify(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.nested_get_child_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->child;
+    SHT_rv_cdesc->base_addr = SH_this->child;
     SHT_rv_cdesc->type = SH_TYPE_STRUCT;
     SHT_rv_cdesc->elem_len = sizeof(nested);
     SHT_rv_cdesc->rank = 1;

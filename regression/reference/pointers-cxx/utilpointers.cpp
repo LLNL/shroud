@@ -25,7 +25,7 @@ extern "C" {
 void POI_ShroudCopyArray(POI_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const void *cxx_var = data->addr.base;
+    const void *cxx_var = data->base_addr;
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);

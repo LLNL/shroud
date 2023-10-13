@@ -27,7 +27,7 @@ extern "C" {
 void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const void *cxx_var = data->addr.base;
+    const void *cxx_var = data->base_addr;
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
@@ -96,7 +96,7 @@ void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::strin
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = static_cast<char *>(const_cast<void *>(outdesc->addr.base));
+    char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
     std::memset(dest, ' ', nvect*len);
 

@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Class capsule structs are now created by explicit code instead of a
   helper.  This removes a layer of abstraction to understand how
   they're written.
+- Removed the *C_capsule_data_type* from *C_array_type*.
+  It must now be passed explicitly to the C wrapper.
+- The *C_array_type* changed to ``void *`` instead of union with
+  ``const void *``.
 
 ### Removed
 - Removed attribute *+cdesc*. Replace by *+api(cdesc)*

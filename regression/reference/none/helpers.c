@@ -48,10 +48,7 @@ typedef struct {
 
 // helper array_context
 struct s_LIB_SHROUD_array {
-    union {
-        const void * base;
-        const char * ccharp;
-    } addr;
+    void * base_addr;
     int type;        /* type of element */
     size_t elem_len; /* bytes-per-item or character len in c++ */
     size_t size;     /* size of data in c++ */
@@ -116,13 +113,12 @@ void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = const_cast<char *>(outdesc->addr.ccharp);
+    char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
     std::memset(dest, ' ', nvect*len);
 
     // Copy into user memory
     nvect = std::min(nvect, nsize);
-    //char *dest = static_cast<char *>(outdesc->cxx.addr);
     for (size_t i = 0; i < nvect; ++i) {
         std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
         dest += outdesc->elem_len;
@@ -504,7 +500,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const void *cxx_var = data->addr.base;
+    const void *cxx_var = data->base_addr;
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
@@ -531,10 +527,10 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
 // Called by Fortran to deal with allocatable character.
 void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,
     size_t c_var_len) {
-    const char *cxx_var = data->addr.ccharp;
+    const void *cxx_var = data->base_addr;
     size_t n = c_var_len;
     if (data->elem_len < n) n = data->elem_len;
-    std::strncpy(c_var, cxx_var, n);
+    std::memcpy(c_var, cxx_var, n);
 }
 
 ##### end copy_string source
@@ -5183,10 +5179,10 @@ static void ShroudStringToCdesc(LIB_SHROUD_array *cdesc,
     const std::string * src)
 {
     if (src->empty()) {
-        cdesc->addr.ccharp = NULL;
+        cdesc->base_addr = NULL;
         cdesc->elem_len = 0;
     } else {
-        cdesc->addr.ccharp = src->data();
+        cdesc->base_addr = const_cast<char *>(src->data());
         cdesc->elem_len = src->length();
     }
     cdesc->size = 1;
@@ -7017,7 +7013,7 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
 {
     size_t nvect = outdesc->size;
     size_t len = outdesc->elem_len;
-    char *dest = static_cast<char *>(const_cast<void *>(outdesc->addr.base));
+    char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
     std::memset(dest, ' ', nvect*len);
 

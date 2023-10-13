@@ -428,7 +428,7 @@ void STR_Cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.Cstruct_list_get_ivalue_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->ivalue;
+    SHT_rv_cdesc->base_addr = SH_this->ivalue;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
@@ -471,7 +471,7 @@ void STR_Cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.Cstruct_list_get_dvalue_bufferify
-    SHT_rv_cdesc->addr.base = SH_this->dvalue;
+    SHT_rv_cdesc->base_addr = SH_this->dvalue;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
     SHT_rv_cdesc->rank = 1;

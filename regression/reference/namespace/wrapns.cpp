@@ -29,10 +29,10 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
     const std::string * src)
 {
     if (src->empty()) {
-        cdesc->addr.ccharp = NULL;
+        cdesc->base_addr = NULL;
         cdesc->elem_len = 0;
     } else {
-        cdesc->addr.ccharp = src->data();
+        cdesc->base_addr = const_cast<char *>(src->data());
         cdesc->elem_len = src->length();
     }
     cdesc->size = 1;
