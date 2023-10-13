@@ -299,7 +299,8 @@ void POI_getPtrToDynamicConstArray_bufferify(
 // Statement: f_out_native_**_cdesc_allocatable
 // start POI_getAllocToFixedArray_bufferify
 void POI_getAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+    POI_SHROUD_array *SHT_count_cdesc,
+    POI_SHROUD_capsule_data *SHT_count_capsule)
 {
     // splicer begin function.getAllocToFixedArray_bufferify
     int *count;
@@ -310,6 +311,8 @@ void POI_getAllocToFixedArray_bufferify(
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = 10;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
+    SHT_count_capsule->addr  = count;
+    SHT_count_capsule->idtor = 0;
     // splicer end function.getAllocToFixedArray_bufferify
 }
 // end POI_getAllocToFixedArray_bufferify
@@ -377,7 +380,8 @@ int POI_returnIntScalar(void)
 // Statement: f_function_native_*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc)
+    POI_SHROUD_array *SHT_rv_cdesc,
+    POI_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.returnIntAllocToFixedArray_bufferify
     int * SHC_rv = returnIntAllocToFixedArray();
@@ -387,6 +391,8 @@ void POI_returnIntAllocToFixedArray_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = 10;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    SHT_rv_capsule->addr  = SHC_rv;
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.returnIntAllocToFixedArray_bufferify
 }
 // end POI_returnIntAllocToFixedArray_bufferify

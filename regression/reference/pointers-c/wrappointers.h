@@ -44,7 +44,8 @@ void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_getAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+    POI_SHROUD_array *SHT_count_cdesc,
+    POI_SHROUD_capsule_data *SHT_count_capsule);
 
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
@@ -55,6 +56,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 int POI_returnIntScalar(void);
 
 void POI_returnIntAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc);
+    POI_SHROUD_array *SHT_rv_cdesc,
+    POI_SHROUD_capsule_data *SHT_rv_capsule);
 
 #endif  // WRAPPOINTERS_H

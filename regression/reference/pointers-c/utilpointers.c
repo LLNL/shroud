@@ -25,7 +25,6 @@ void POI_ShroudCopyArray(POI_SHROUD_array *data, void *c_var,
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->elem_len;
     memcpy(c_var, cxx_var, n);
-    POI_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 // end helper copy_array
 

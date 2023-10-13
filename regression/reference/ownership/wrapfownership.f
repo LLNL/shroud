@@ -214,11 +214,13 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_native_*_cdesc_allocatable
         ! start c_return_int_ptr_dim_alloc_bufferify
-        subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc) &
+        subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="OWN_ReturnIntPtrDimAlloc_bufferify")
-            import :: OWN_SHROUD_array
+            import :: OWN_SHROUD_array, OWN_SHROUD_capsule_data
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_return_int_ptr_dim_alloc_bufferify
         ! end c_return_int_ptr_dim_alloc_bufferify
 
@@ -539,10 +541,13 @@ contains
         integer(C_INT), allocatable, target :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_alloc
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc)
+        type(OWN_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
         call OWN_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
             size(SHT_rv, kind=C_SIZE_T))
+        call OWN_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc
     ! end return_int_ptr_dim_alloc

@@ -917,11 +917,13 @@ module pointers_mod
     ! Statement: f_out_native_**_cdesc_allocatable
     ! start c_get_alloc_to_fixed_array_bufferify
     interface
-        subroutine c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc) &
+        subroutine c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc, &
+                SHT_count_capsule) &
                 bind(C, name="POI_getAllocToFixedArray_bufferify")
-            import :: POI_SHROUD_array
+            import :: POI_SHROUD_array, POI_SHROUD_capsule_data
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+            type(POI_SHROUD_capsule_data), intent(OUT) :: SHT_count_capsule
         end subroutine c_get_alloc_to_fixed_array_bufferify
     end interface
     ! end c_get_alloc_to_fixed_array_bufferify
@@ -1218,14 +1220,26 @@ module pointers_mod
     ! start c_return_int_alloc_to_fixed_array_bufferify
     interface
         subroutine c_return_int_alloc_to_fixed_array_bufferify( &
-                SHT_rv_cdesc) &
+                SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="POI_returnIntAllocToFixedArray_bufferify")
-            import :: POI_SHROUD_array
+            import :: POI_SHROUD_array, POI_SHROUD_capsule_data
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(POI_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_return_int_alloc_to_fixed_array_bufferify
     end interface
     ! end c_return_int_alloc_to_fixed_array_bufferify
+
+    interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine POI_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="POI_SHROUD_memory_destructor")
+            import POI_SHROUD_capsule_data
+            implicit none
+            type(POI_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine POI_SHROUD_capsule_dtor
+    end interface
 
     interface
         ! helper copy_array
@@ -2023,10 +2037,13 @@ contains
         integer(C_INT), intent(OUT), allocatable, target :: count(:)
         ! splicer begin function.get_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc)
+        type(POI_SHROUD_capsule_data) :: SHT_count_capsule
+        call c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc, &
+            SHT_count_capsule)
         allocate(count(SHT_count_cdesc%shape(1)))
         call POI_SHROUD_copy_array(SHT_count_cdesc, C_LOC(count), &
             SHT_count_cdesc%size)
+        call POI_SHROUD_capsule_dtor(SHT_count_capsule)
         ! splicer end function.get_alloc_to_fixed_array
     end subroutine get_alloc_to_fixed_array
     ! end get_alloc_to_fixed_array
@@ -2295,10 +2312,13 @@ contains
         integer(C_INT), allocatable, target :: SHT_rv(:)
         ! splicer begin function.return_int_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_alloc_to_fixed_array_bufferify(SHT_rv_cdesc)
+        type(POI_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_return_int_alloc_to_fixed_array_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
         call POI_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
             size(SHT_rv, kind=C_SIZE_T))
+        call POI_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.return_int_alloc_to_fixed_array
     end function return_int_alloc_to_fixed_array
     ! end return_int_alloc_to_fixed_array

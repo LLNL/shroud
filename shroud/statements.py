@@ -1091,6 +1091,15 @@ fc_statements = [
     ),
 
     dict(
+        name="f_mixin_use_capsule",
+        mixin=[
+            "f_mixin_pass_capsule",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor",  # XXX - if library owns memory
+        ],
+    ),
+
+    dict(
         # Pass function result as a capsule argument from Fortran to C.
         name="f_mixin_function_shadow_capsule",
         f_arg_decl=[
@@ -1535,6 +1544,7 @@ fc_statements = [
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native_**",
             "f_mixin_out_native_cdesc_allocate",
+            "f_mixin_use_capsule",
         ],
         alias=[
             "c_out_native_**_cdesc_allocatable",
@@ -1726,6 +1736,7 @@ fc_statements = [
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_allocate",
+            "f_mixin_use_capsule",
         ],
     ),
 
@@ -2364,16 +2375,6 @@ fc_statements = [
         f_arg_name=["{f_var}"],
         f_arg_decl=[
             "character(len=*), intent(OUT) :: {f_var}",
-        ],
-    ),
-
-
-    dict(
-        name="f_mixin_use_capsule",
-        mixin=[
-            "f_mixin_pass_capsule",
-            "c_mixin_native_capsule_fill",
-            "f_mixin_capsule_dtor",  # XXX - if library owns memory
         ],
     ),
 

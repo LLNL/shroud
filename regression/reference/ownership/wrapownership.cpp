@@ -144,7 +144,8 @@ int * OWN_ReturnIntPtrDimAlloc(int * len)
 // Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 // start OWN_ReturnIntPtrDimAlloc_bufferify
-void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
+void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ReturnIntPtrDimAlloc_bufferify
     int len;
@@ -155,6 +156,8 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    SHT_rv_capsule->addr  = SHC_rv;
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.ReturnIntPtrDimAlloc_bufferify
 }
 // end OWN_ReturnIntPtrDimAlloc_bufferify

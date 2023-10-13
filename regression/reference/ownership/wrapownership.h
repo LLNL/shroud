@@ -43,7 +43,8 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 
 int * OWN_ReturnIntPtrDimAlloc(int * len);
 
-void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc);
+void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
+    OWN_SHROUD_capsule_data *SHT_rv_capsule);
 
 int * OWN_ReturnIntPtrDimDefault(int * len);
 

@@ -229,7 +229,6 @@ const void *cxx_var = data->addr.base;
 int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->elem_len;
 {stdlib}memcpy(c_var, cxx_var, n);
-{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}""",
             fmt,
         ),
