@@ -2676,7 +2676,6 @@ fc_statements = [
         f_helper=["type_defines", "array_context"],
         f_module=dict(iso_c_binding=["C_LOC"]),
         f_pre_call=[
-            "{f_var_cdesc}%cxx%addr = C_LOC({f_var})",
             "{f_var_cdesc}%base_addr = C_LOC({f_var})",
             "{f_var_cdesc}%type = SH_TYPE_CHAR",
             "{f_var_cdesc}%elem_len = len({f_var})",

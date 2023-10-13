@@ -9827,7 +9827,6 @@ f_mixin_str_array:
     iso_c_binding:
     - C_LOC
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
@@ -10508,7 +10507,6 @@ f_out_string_**_cdesc_copy:
     - C_LOC
   f_need_wrapper: true
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
@@ -10841,7 +10839,6 @@ f_out_vector_&_cdesc_targ_string_scalar:
     - C_LOC
   f_need_wrapper: true
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'

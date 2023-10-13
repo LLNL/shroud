@@ -2371,7 +2371,6 @@ contains
         character(*), intent(OUT), target :: strs(:)
         ! splicer begin function.fetch_array_string_arg
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        SHT_strs_cdesc%cxx%addr = C_LOC(strs)
         SHT_strs_cdesc%base_addr = C_LOC(strs)
         SHT_strs_cdesc%type = SH_TYPE_CHAR
         SHT_strs_cdesc%elem_len = len(strs)

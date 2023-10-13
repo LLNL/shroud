@@ -729,7 +729,6 @@ contains
         character(*), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_string_fill
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        SHT_arg_cdesc%cxx%addr = C_LOC(arg)
         SHT_arg_cdesc%base_addr = C_LOC(arg)
         SHT_arg_cdesc%type = SH_TYPE_CHAR
         SHT_arg_cdesc%elem_len = len(arg)
