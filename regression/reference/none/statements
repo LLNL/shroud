@@ -658,6 +658,8 @@ root
       str
         array -- f_mixin_str_array
       unknown -- f_mixin_unknown
+      use
+        capsule -- f_mixin_use_capsule
     out
       bool
         * -- f_out_bool_*
@@ -937,8 +939,6 @@ c_function_char_*_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -1392,7 +1392,7 @@ c_function_string_&_cdesc_pointer:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -1418,7 +1418,7 @@ c_function_string_&_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -1444,7 +1444,7 @@ c_function_string_&_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -1522,7 +1522,7 @@ c_function_string_*_cdesc_pointer:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -1548,7 +1548,7 @@ c_function_string_*_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -1574,7 +1574,7 @@ c_function_string_*_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -2637,8 +2637,6 @@ c_mixin_function_char_*_cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -2653,7 +2651,7 @@ c_mixin_function_string_cdesc:
   c_helper:
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   comments:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
@@ -2716,8 +2714,6 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2763,8 +2759,6 @@ c_mixin_native_capsule_fill:
   owner: library
 c_mixin_native_cdesc_fill-cdesc:
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -2829,8 +2823,6 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2864,8 +2856,6 @@ c_mixin_vector_cdesc_fill-cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2934,8 +2924,6 @@ c_out_native_*&_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -2979,8 +2967,6 @@ c_out_native_**_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -3012,8 +2998,6 @@ c_out_native_**_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -3252,8 +3236,6 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3332,8 +3314,6 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3390,8 +3370,6 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3425,8 +3403,6 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3830,8 +3806,6 @@ f_function_char_*_cdesc_allocatable:
   - copy_string
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -3879,8 +3853,6 @@ f_function_char_*_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -4127,8 +4099,6 @@ f_function_char_scalar_cdesc_allocatable:
   - copy_string
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -4176,8 +4146,6 @@ f_function_char_scalar_cdesc_pointer:
   - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -4396,8 +4364,6 @@ f_function_native_*_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -4449,8 +4415,6 @@ f_function_native_*_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -4498,8 +4462,6 @@ f_function_native_*_cdesc_pointer_caller:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -5318,7 +5280,7 @@ f_function_string_&_cdesc_allocatable:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -5379,7 +5341,7 @@ f_function_string_&_cdesc_allocatable_caller:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -5440,7 +5402,7 @@ f_function_string_&_cdesc_allocatable_library:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -5499,7 +5461,7 @@ f_function_string_&_cdesc_pointer:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -5544,7 +5506,7 @@ f_function_string_&_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -5589,7 +5551,7 @@ f_function_string_&_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -6087,7 +6049,7 @@ f_function_string_*_cdesc_allocatable:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -6148,7 +6110,7 @@ f_function_string_*_cdesc_allocatable_caller:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -6209,7 +6171,7 @@ f_function_string_*_cdesc_allocatable_library:
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
@@ -6268,7 +6230,7 @@ f_function_string_*_cdesc_pointer:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -6313,7 +6275,7 @@ f_function_string_*_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -6358,7 +6320,7 @@ f_function_string_*_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
@@ -6865,17 +6827,21 @@ f_function_string_scalar_buf_copy:
 f_function_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
@@ -6883,6 +6849,9 @@ f_function_string_scalar_cdesc_allocatable:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6890,44 +6859,57 @@ f_function_string_scalar_cdesc_allocatable:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable
   owner: library
 f_function_string_scalar_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
@@ -6935,6 +6917,9 @@ f_function_string_scalar_cdesc_allocatable_caller:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6942,44 +6927,57 @@ f_function_string_scalar_cdesc_allocatable_caller:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable_caller
   owner: library
 f_function_string_scalar_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
@@ -6987,6 +6985,9 @@ f_function_string_scalar_cdesc_allocatable_library:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
   - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6994,27 +6995,36 @@ f_function_string_scalar_cdesc_allocatable_library:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable_library
   owner: library
@@ -7393,8 +7403,6 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -7456,8 +7464,6 @@ f_getter_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -7565,8 +7571,6 @@ f_getter_struct_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -7613,8 +7617,6 @@ f_getter_struct_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -9024,8 +9026,6 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -9091,8 +9091,6 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -9816,6 +9814,39 @@ f_mixin_unknown:
   intent: mixin
   name: f_mixin_unknown
   owner: library
+f_mixin_use_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_post_call:
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_temps:
+  - capsule
+  comments:
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_helper:
+  - array_context
+  - capsule_dtor
+  f_need_wrapper: true
+  f_post_call:
+  - call {f_helper_capsule_dtor}({f_var_capsule})
+  f_temps:
+  - capsule
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  i_arg_names:
+  - '{c_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_use_capsule
+  owner: library
 f_out_bool_*:
   f_arg_call:
   - '{f_var_cxx}'
@@ -9915,8 +9946,6 @@ f_out_native_*&_cdesc:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -9963,8 +9992,6 @@ f_out_native_*&_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -10024,8 +10051,6 @@ f_out_native_**_cdesc_allocatable:
   - array_context
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -10076,8 +10101,6 @@ f_out_native_**_cdesc_pointer:
   c_helper:
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -10583,8 +10606,6 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -10706,8 +10727,6 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -10803,8 +10822,6 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -10856,8 +10873,6 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'

@@ -106,8 +106,6 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
     // splicer begin function.ReturnIntPtrDimPointer_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimPointer(&len);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -151,8 +149,6 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
     // splicer begin function.ReturnIntPtrDimAlloc_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimAlloc(&len);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -194,8 +190,6 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
     // splicer begin function.ReturnIntPtrDimDefault_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimDefault(&len);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -253,8 +247,6 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
     // splicer begin function.ReturnIntPtrDimPointerNew_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 2;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -314,8 +306,6 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     // splicer begin function.ReturnIntPtrDimDefaultNew_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimDefaultNew(&len);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 2;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);

@@ -370,8 +370,8 @@ integer(C_SIZE_T), value :: c_var_size
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
-    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringAndFree", fmt)
-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyString", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string", fmt)
     CHelpers[name] = dict(
         name=fmt.cnamefunc,
         scope="cwrap_impl",
@@ -390,7 +390,6 @@ if (data->elem_len < n) n = data->elem_len;
 {stdlib}strncpy(c_var, cxx_var, n);
 -}}{lend}
 """,
-# XXX - capsule  dtor
             fmt,
         ),
     )
@@ -820,10 +819,8 @@ var => fptr
 {lstart}// helper {hname}
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src,\t int idtor)
+static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)
 {{+
-cdesc->cxx.addr = const_cast<std::string *>(src);
-cdesc->cxx.idtor = idtor;
 if (src->empty()) {{+
 cdesc->addr.ccharp = NULL;
 cdesc->elem_len = 0;

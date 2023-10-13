@@ -524,7 +524,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_ShroudCopyStringAndFree",
+    "name": "LIB_ShroudCopyString",
     "scope": "cwrap_impl"
 }
 
@@ -533,7 +533,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
 // helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var,
+void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,
     size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
@@ -5184,10 +5184,8 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(LIB_SHROUD_array *cdesc,
-    const std::string * src, int idtor)
+    const std::string * src)
 {
-    cdesc->cxx.addr = const_cast<std::string *>(src);
-    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
         cdesc->addr.ccharp = NULL;
         cdesc->elem_len = 0;

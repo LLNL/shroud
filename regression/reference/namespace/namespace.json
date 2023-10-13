@@ -174,7 +174,7 @@
                     "fmtc": {
                         "c_const": "const ",
                         "c_helper_array_context": "NS_SHROUD_array",
-                        "c_helper_copy_string": "NS_ShroudCopyStringAndFree",
+                        "c_helper_copy_string": "NS_ShroudCopyString",
                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -198,7 +198,7 @@
                         "cxx_type": "std::string",
                         "f_helper_array_context": "NS_SHROUD_array",
                         "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
-                        "f_helper_copy_string": "NS_SHROUD_copy_string_and_free",
+                        "f_helper_copy_string": "NS_SHROUD_copy_string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",

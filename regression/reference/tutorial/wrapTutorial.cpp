@@ -59,10 +59,8 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(TUT_SHROUD_array *cdesc,
-    const std::string * src, int idtor)
+    const std::string * src)
 {
-    cdesc->cxx.addr = const_cast<std::string *>(src);
-    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
         cdesc->addr.ccharp = NULL;
         cdesc->elem_len = 0;
@@ -128,7 +126,8 @@ double TUT_PassByValue(double arg1, int arg2)
 // Attrs:     +api(buf)+intent(in)
 // Statement: f_in_string_&_buf
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
-    char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc)
+    char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc,
+    TUT_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ConcatenateStrings_bufferify
     const std::string SHCXX_arg1(arg1,
@@ -137,7 +136,9 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
         ShroudCharLenTrim(arg2, SHT_arg2_len));
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv, 1);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    SHT_rv_capsule->idtor = 1;
     // splicer end function.ConcatenateStrings_bufferify
 }
 

@@ -23,7 +23,7 @@ extern "C" {
 // helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var,
+void AA_ShroudCopyString(AA_SHROUD_array *data, char *c_var,
     size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;

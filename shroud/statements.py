@@ -1032,8 +1032,9 @@ fc_statements = [
             "Fill cdesc from native in the C wrapper.",
         ],
         c_post_call=[
-            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            # XXX - capsule
+#            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
+#            "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {cxx_var};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
@@ -1055,8 +1056,9 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         c_post_call=[
-            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            # XXX - capsule
+#            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
+#            "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.ccharp = {cxx_var};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
@@ -1073,7 +1075,7 @@ fc_statements = [
         ],
         c_helper=["string_to_cdesc"],
         c_post_call=[
-            "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});",
         ],
     ),
 
@@ -2364,7 +2366,16 @@ fc_statements = [
             "character(len=*), intent(OUT) :: {f_var}",
         ],
     ),
-    
+
+
+    dict(
+        name="f_mixin_use_capsule",
+        mixin=[
+            "f_mixin_pass_capsule",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor",  # XXX - if library owns memory
+        ],
+    ),
 
     # similar to f_function_char_scalar_allocatable
     dict(
@@ -2378,6 +2389,7 @@ fc_statements = [
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
+            "f_mixin_use_capsule",
         ],
         alias=[
             "f_function_string_scalar_cdesc_allocatable_caller/library",
@@ -2423,8 +2435,9 @@ fc_statements = [
         name="c_mixin_vector_cdesc_fill-cdesc",
         c_helper=["type_defines"],
         c_post_call=[
-            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            # XXX - capsule
+#            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+#            "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
             "{c_var_cdesc}->type = {sh_type};",
@@ -3216,8 +3229,8 @@ fc_statements = [
         c_helper=["type_defines", "array_context"],
         c_call=[
             # XXX - capsule
-            "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
+#            "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
+#            "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
@@ -3234,6 +3247,7 @@ fc_statements = [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
             "f_mixin_char_cdesc_allocate",
+#            "f_mixin_use_capsule",  # XXX - capsule, cxx_nonconst_ptr
         ],
         c_call=[
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
