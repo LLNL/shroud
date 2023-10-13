@@ -21,20 +21,43 @@ module tutorial_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
-    type, bind(C) :: TUT_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TUT_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
 
     ! start array_context
     ! helper array_context
     type, bind(C) :: TUT_SHROUD_array
-        ! address of C++ memory
-        type(TUT_SHROUD_capsule_data) :: cxx
-        ! address of data in cxx
+        ! address of data
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
         integer(C_INT) :: type
@@ -47,6 +70,14 @@ module tutorial_mod
         integer(C_LONG) :: shape(7) = 0
     end type TUT_SHROUD_array
     ! end array_context
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: TUT_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type TUT_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
     ! typedef tutorial::TypeID
     ! splicer begin typedef.TypeID
@@ -97,16 +128,17 @@ module tutorial_mod
 
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
-                arg2, SHT_arg2_len, SHT_rv) &
+                arg2, SHT_arg2_len, SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="TUT_ConcatenateStrings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: TUT_SHROUD_array
+            import :: TUT_SHROUD_array, TUT_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: SHT_arg1_len
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: SHT_arg2_len
-            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
+            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(TUT_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -447,16 +479,27 @@ module tutorial_mod
     end interface use_default_overload
 
     interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine TUT_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="TUT_SHROUD_memory_destructor")
+            import TUT_SHROUD_capsule_data
+            implicit none
+            type(TUT_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine TUT_SHROUD_capsule_dtor
+    end interface
+
+    interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine TUT_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
-             bind(c,name="TUT_ShroudCopyStringAndFree")
+        subroutine TUT_SHROUD_copy_string(context, c_var, c_var_size) &
+             bind(c,name="TUT_ShroudCopyString")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import TUT_SHROUD_array
             type(TUT_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine TUT_SHROUD_copy_string_and_free
+        end subroutine TUT_SHROUD_copy_string
     end interface
 
     ! splicer begin additional_declarations
@@ -484,13 +527,15 @@ contains
         integer(C_INT) SHT_arg1_len
         integer(C_INT) SHT_arg2_len
         type(TUT_SHROUD_array) :: SHT_rv_cdesc
+        type(TUT_SHROUD_capsule_data) :: SHT_rv_capsule
         SHT_arg1_len = len(arg1, kind=C_INT)
         SHT_arg2_len = len(arg2, kind=C_INT)
         call c_concatenate_strings_bufferify(arg1, SHT_arg1_len, arg2, &
-            SHT_arg2_len, SHT_rv_cdesc)
+            SHT_arg2_len, SHT_rv_cdesc, SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call TUT_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call TUT_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call TUT_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.concatenate_strings
     end function concatenate_strings
 

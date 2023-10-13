@@ -520,7 +520,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_library
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -535,7 +535,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cfi_allocatable
+    ! Statement: f_function_string_*_cfi_allocatable_library
     interface
         subroutine c_get_const_string_ptr_alloc_CFI(SHT_rv) &
                 bind(C, name="STR_getConstStringPtrAlloc_CFI")
@@ -547,7 +547,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_caller
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -562,7 +562,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cfi_allocatable
+    ! Statement: f_function_string_*_cfi_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_CFI(SHT_rv) &
                 bind(C, name="STR_getConstStringPtrOwnsAlloc_CFI")
@@ -574,7 +574,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_caller
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
@@ -589,7 +589,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cfi_allocatable
+    ! Statement: f_function_string_*_cfi_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_CFI(SHT_rv) &
                 bind(C, name="STR_getConstStringPtrOwnsAllocPattern_CFI")
@@ -602,7 +602,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_string_*_pointer
+    ! Statement: f_function_string_*_pointer_library
     interface
         function c_get_const_string_ptr_pointer() &
                 result(SHT_rv) &
@@ -619,7 +619,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
-    ! Statement: f_function_string_*_cfi_pointer
+    ! Statement: f_function_string_*_cfi_pointer_library
     interface
         subroutine c_get_const_string_ptr_pointer_CFI(SHT_rv) &
                 bind(C, name="STR_getConstStringPtrPointer_CFI")

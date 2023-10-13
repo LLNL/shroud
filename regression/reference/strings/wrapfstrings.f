@@ -22,33 +22,6 @@ module strings_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
-    type, bind(C) :: STR_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type STR_SHROUD_capsule_data
-    ! end helper capsule_data_helper
-
-    ! start array_context
-    ! helper array_context
-    type, bind(C) :: STR_SHROUD_array
-        ! address of C++ memory
-        type(STR_SHROUD_capsule_data) :: cxx
-        ! address of data in cxx
-        type(C_PTR) :: base_addr = C_NULL_PTR
-        ! type of element
-        integer(C_INT) :: type
-        ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
-        ! size of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T
-        ! number of dimensions
-        integer(C_INT) :: rank = -1
-        integer(C_LONG) :: shape(7) = 0
-    end type STR_SHROUD_array
-    ! end array_context
-
     ! helper type_defines
     ! Shroud type defines from helper type_defines
     integer, parameter, private :: &
@@ -81,6 +54,31 @@ module strings_mod
         SH_TYPE_CPTR      = 30, &
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: STR_SHROUD_array
+        ! address of data
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type STR_SHROUD_array
+    ! end array_context
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: STR_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type STR_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
     ! ----------------------------------------
     ! Function:  void init_test
@@ -249,11 +247,11 @@ module strings_mod
     ! Statement: f_function_char_*_cdesc_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
-        subroutine c_get_char_ptr1_bufferify(SHT_rv) &
+        subroutine c_get_char_ptr1_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_getCharPtr1_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_get_char_ptr1_bufferify
     end interface
     ! end c_get_char_ptr1_bufferify
@@ -361,11 +359,11 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Statement: f_function_char_*_cdesc_pointer
     interface
-        subroutine c_get_char_ptr5_bufferify(SHT_rv) &
+        subroutine c_get_char_ptr5_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_getCharPtr5_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_get_char_ptr5_bufferify
     end interface
 #endif
@@ -376,11 +374,13 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_string_scalar_cdesc_allocatable
     interface
-        subroutine c_get_const_string_result_bufferify(SHT_rv) &
+        subroutine c_get_const_string_result_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringResult_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_result_bufferify
     end interface
 
@@ -420,11 +420,13 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_string_scalar_cdesc_allocatable
     interface
-        subroutine c_get_const_string_alloc_bufferify(SHT_rv) &
+        subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_alloc_bufferify
     end interface
 
@@ -451,11 +453,13 @@ module strings_mod
     ! Statement: f_function_string_&_cdesc_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
-        subroutine c_get_const_string_ref_pure_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringRefPure_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ref_pure_bufferify
     end interface
     ! end c_get_const_string_ref_pure_bufferify
@@ -570,11 +574,13 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_string_&_cdesc_allocatable
     interface
-        subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringRefAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
 
@@ -611,7 +617,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_library
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -626,20 +632,22 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cdesc_allocatable
+    ! Statement: f_function_string_*_cdesc_allocatable_library
     interface
-        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringPtrAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_caller
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -654,20 +662,22 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cdesc_allocatable
+    ! Statement: f_function_string_*_cdesc_allocatable_caller
     interface
-        subroutine c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ptr_owns_alloc_bufferify( &
+                SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringPtrOwnsAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ptr_owns_alloc_bufferify
     end interface
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_allocatable
+    ! Statement: f_function_string_*_allocatable_caller
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
@@ -682,14 +692,15 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Statement: f_function_string_*_cdesc_allocatable
+    ! Statement: f_function_string_*_cdesc_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
-                SHT_rv) &
+                SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="STR_getConstStringPtrOwnsAllocPattern_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify
     end interface
 
@@ -697,7 +708,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_string_*_pointer
+    ! Statement: f_function_string_*_pointer_library
     interface
         function c_get_const_string_ptr_pointer() &
                 result(SHT_rv) &
@@ -714,13 +725,14 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-    ! Statement: f_function_string_*_cdesc_pointer
+    ! Statement: f_function_string_*_cdesc_pointer_library
     interface
-        subroutine c_get_const_string_ptr_pointer_bufferify(SHT_rv) &
+        subroutine c_get_const_string_ptr_pointer_bufferify( &
+                SHT_rv_cdesc) &
                 bind(C, name="STR_getConstStringPtrPointer_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_get_const_string_ptr_pointer_bufferify
     end interface
 #endif
@@ -1155,11 +1167,13 @@ module strings_mod
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
-        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc) &
+        subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
+                SHT_strs_capsule) &
                 bind(C, name="STR_fetchArrayStringAlloc_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_strs_capsule
         end subroutine c_fetch_array_string_alloc_bufferify
     end interface
 
@@ -1196,11 +1210,12 @@ module strings_mod
     ! Statement: f_out_string_**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_len_bufferify( &
-                SHT_strs_cdesc) &
+                SHT_strs_cdesc, SHT_strs_capsule) &
                 bind(C, name="STR_fetchArrayStringAllocLen_bufferify")
-            import :: STR_SHROUD_array
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_strs_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_strs_capsule
         end subroutine c_fetch_array_string_alloc_len_bufferify
     end interface
 
@@ -1519,26 +1534,36 @@ module strings_mod
 
     interface
         ! helper array_string_allocatable
-        ! Copy the char* or std::string in context into c_var.
-        subroutine STR_SHROUD_array_string_allocatable(out, in) &
+        subroutine STR_SHROUD_array_string_allocatable(dest, src) &
              bind(c,name="STR_ShroudArrayStringAllocatable")
             import STR_SHROUD_array, STR_SHROUD_capsule_data
-            type(STR_SHROUD_array), intent(IN) :: out
-            type(STR_SHROUD_array), intent(IN) :: in
+            type(STR_SHROUD_array), intent(IN) :: dest
+            type(STR_SHROUD_capsule_data), intent(IN) :: src
         end subroutine STR_SHROUD_array_string_allocatable
+    end interface
+
+    interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine STR_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="STR_SHROUD_memory_destructor")
+            import STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine STR_SHROUD_capsule_dtor
     end interface
 
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine STR_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
-             bind(c,name="STR_ShroudCopyStringAndFree")
+        subroutine STR_SHROUD_copy_string(context, c_var, c_var_size) &
+             bind(c,name="STR_ShroudCopyString")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import STR_SHROUD_array
             type(STR_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine STR_SHROUD_copy_string_and_free
+        end subroutine STR_SHROUD_copy_string
     end interface
 
     ! splicer begin additional_declarations
@@ -1688,7 +1713,7 @@ contains
         type(STR_SHROUD_array) :: SHT_rv_cdesc
         call c_get_char_ptr1_bufferify(SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
@@ -1792,10 +1817,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_result
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_result_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_result_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1848,10 +1876,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_alloc_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1870,10 +1901,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_pure
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1953,10 +1987,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1994,10 +2031,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -2018,10 +2058,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -2038,10 +2081,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
         type(STR_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 
@@ -2323,7 +2369,6 @@ contains
         character(*), intent(OUT), target :: strs(:)
         ! splicer begin function.fetch_array_string_arg
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        SHT_strs_cdesc%cxx%addr = C_LOC(strs)
         SHT_strs_cdesc%base_addr = C_LOC(strs)
         SHT_strs_cdesc%type = SH_TYPE_CHAR
         SHT_strs_cdesc%elem_len = len(strs)
@@ -2356,15 +2401,14 @@ contains
         character(:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_alloc
-        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc)
-        SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
+        type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
+        call c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
+            SHT_strs_capsule)
         allocate(character(len=SHT_strs_cdesc%elem_len) :: &
-            strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs)
-        SHT_strs_alloc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
+            strs(SHT_strs_cdesc%size))
+        SHT_strs_cdesc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
 
@@ -2390,14 +2434,13 @@ contains
         character(len=20), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc_len
         type(STR_SHROUD_array) :: SHT_strs_cdesc
-        type(STR_SHROUD_array) :: SHT_strs_alloc
-        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc)
-        SHT_strs_alloc%size = SHT_strs_cdesc%size;
-        SHT_strs_alloc%elem_len = SHT_strs_cdesc%elem_len
-        allocate(strs(SHT_strs_alloc%size))
-        SHT_strs_alloc%cxx%addr = C_LOC(strs)
-        SHT_strs_alloc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_alloc, SHT_strs_cdesc)
+        type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
+        call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc, &
+            SHT_strs_capsule)
+        allocate(strs(SHT_strs_cdesc%size))
+        SHT_strs_cdesc%base_addr = C_LOC(strs)
+        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc_len
     end subroutine fetch_array_string_alloc_len
 

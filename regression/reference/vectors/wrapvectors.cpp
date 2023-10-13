@@ -77,8 +77,6 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     // splicer begin function.vector_iota_out_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -112,8 +110,6 @@ long VEC_vector_iota_out_with_num_bufferify(
     // splicer begin function.vector_iota_out_with_num_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_with_num(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -148,8 +144,6 @@ void VEC_vector_iota_out_with_num2_bufferify(
     // splicer begin function.vector_iota_out_with_num2_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_with_num2(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -180,8 +174,6 @@ void VEC_vector_iota_out_alloc_bufferify(
     // splicer begin function.vector_iota_out_alloc_bufferify
     std::vector<int> *SHCXX_arg = new std::vector<int>;
     vector_iota_out_alloc(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -213,8 +205,6 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     std::vector<int> *SHCXX_arg = new std::vector<int>(
         arg, arg + SHT_arg_size);
     vector_iota_inout_alloc(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -241,8 +231,6 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     std::vector<int> *SHCXX_arg = new std::vector<int>(
         arg, arg + SHT_arg_size);
     vector_increment(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 1;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_INT;
     SHT_arg_cdesc->elem_len = sizeof(int);
@@ -270,8 +258,6 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     // splicer begin function.vector_iota_out_d_bufferify
     std::vector<double> *SHCXX_arg = new std::vector<double>;
     vector_iota_out_d(*SHCXX_arg);
-    SHT_arg_cdesc->cxx.addr  = SHCXX_arg;
-    SHT_arg_cdesc->cxx.idtor = 2;
     SHT_arg_cdesc->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     SHT_arg_cdesc->type = SH_TYPE_DOUBLE;
     SHT_arg_cdesc->elem_len = sizeof(double);
@@ -379,19 +365,20 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc)
+    VEC_SHROUD_array *SHT_arg_cdesc,
+    VEC_SHROUD_capsule_data *SHT_arg_capsule)
 {
     // splicer begin function.vector_string_fill_allocatable_bufferify
-    std::vector<std::string> *arg = new std::vector<std::string>;
-    vector_string_fill_allocatable(*arg);
+    std::vector<std::string> *SHCXX_arg = new std::vector<std::string>;
+    vector_string_fill_allocatable(*SHCXX_arg);
     if (0 > 0) {
         SHT_arg_cdesc->elem_len = 0;
     } else {
-        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHCXX_arg);
     }
-    SHT_arg_cdesc->size      = arg->size();
-    SHT_arg_cdesc->cxx.addr  = arg;
-    SHT_arg_cdesc->cxx.idtor = 0;
+    SHT_arg_cdesc->size      = SHCXX_arg->size();
+    SHT_arg_capsule->addr  = SHCXX_arg;
+    SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_bufferify
 }
 
@@ -405,19 +392,20 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len_bufferify(
-    VEC_SHROUD_array *SHT_arg_cdesc)
+    VEC_SHROUD_array *SHT_arg_cdesc,
+    VEC_SHROUD_capsule_data *SHT_arg_capsule)
 {
     // splicer begin function.vector_string_fill_allocatable_len_bufferify
-    std::vector<std::string> *arg = new std::vector<std::string>;
-    vector_string_fill_allocatable_len(*arg);
+    std::vector<std::string> *SHCXX_arg = new std::vector<std::string>;
+    vector_string_fill_allocatable_len(*SHCXX_arg);
     if (20 > 0) {
         SHT_arg_cdesc->elem_len = 20;
     } else {
-        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*arg);
+        SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHCXX_arg);
     }
-    SHT_arg_cdesc->size      = arg->size();
-    SHT_arg_cdesc->cxx.addr  = arg;
-    SHT_arg_cdesc->cxx.idtor = 0;
+    SHT_arg_cdesc->size      = SHCXX_arg->size();
+    SHT_arg_capsule->addr  = SHCXX_arg;
+    SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 
@@ -441,8 +429,6 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
     // splicer begin function.ReturnVectorAlloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 1;
     SHT_rv_cdesc->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
     SHT_rv_cdesc->type = SH_TYPE_OTHER;
     SHT_rv_cdesc->elem_len = sizeof(int);

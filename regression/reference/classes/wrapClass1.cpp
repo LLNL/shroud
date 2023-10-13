@@ -42,10 +42,9 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // helper string_to_cdesc
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc, const std::string * src, int idtor)
+static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
+    const std::string * src)
 {
-    cdesc->cxx.addr = const_cast<std::string *>(src);
-    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
         cdesc->addr.ccharp = NULL;
         cdesc->elem_len = 0;
@@ -300,13 +299,16 @@ const char * CLA_Class1_getName(CLA_Class1 * self)
 // Statement: f_function_string_&_cdesc_allocatable
 // start CLA_Class1_getName_bufferify
 void CLA_Class1_getName_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *SHT_rv_cdesc)
+    CLA_SHROUD_array *SHT_rv_cdesc,
+    CLA_SHROUD_capsule_data *SHT_rv_capsule)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.getName_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end class.Class1.method.getName_bufferify
 }
 // end CLA_Class1_getName_bufferify

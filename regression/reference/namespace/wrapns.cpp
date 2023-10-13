@@ -25,10 +25,9 @@ extern "C" {
 // helper string_to_cdesc
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void ShroudStringToCdesc(NS_SHROUD_array *cdesc, const std::string * src, int idtor)
+static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
+    const std::string * src)
 {
-    cdesc->cxx.addr = const_cast<std::string *>(src);
-    cdesc->cxx.idtor = idtor;
     if (src->empty()) {
         cdesc->addr.ccharp = NULL;
         cdesc->elem_len = 0;
@@ -60,11 +59,14 @@ const char * NS_LastFunctionCalled(void)
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_string_&_cdesc_allocatable
-void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
+void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,
+    NS_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv, 0);
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    SHT_rv_capsule->idtor = 0;
     // splicer end function.LastFunctionCalled_bufferify
 }
 

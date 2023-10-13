@@ -120,8 +120,13 @@ contains
     call obj0%set_m_name("changed_name")
     name = obj0%get_m_name()
     call assert_true(allocated(name), "get_m_name changed")
-    call assert_equals(len(name), 12, "get_m_name changed len")
-    call assert_equals(name, "changed_name", "get_m_name changed value")
+    call assert_equals(12, len(name), "get_m_name changed len")
+    call assert_equals("changed_name", name, "get_m_name changed value")
+
+    name = obj0%get_name()
+    call assert_true(allocated(name), "get_name allocated")
+    call assert_equals(6, len(name), "get_name len")
+    call assert_equals("Class1", name, "get_name value")
 
     obj1 = class1(1)
     ptr = obj1%get_instance()

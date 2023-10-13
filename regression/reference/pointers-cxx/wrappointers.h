@@ -121,7 +121,8 @@ void POI_DimensionIn(const int * arg);
 void POI_getAllocToFixedArray(int * * count);
 
 void POI_getAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+    POI_SHROUD_array *SHT_count_cdesc,
+    POI_SHROUD_capsule_data *SHT_count_capsule);
 
 void * POI_returnAddress1(int flag);
 
@@ -158,7 +159,8 @@ int * * POI_returnRawPtrToInt2d(void);
 int * POI_returnIntAllocToFixedArray(void);
 
 void POI_returnIntAllocToFixedArray_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc);
+    POI_SHROUD_array *SHT_rv_cdesc,
+    POI_SHROUD_capsule_data *SHT_rv_capsule);
 
 #ifdef __cplusplus
 }

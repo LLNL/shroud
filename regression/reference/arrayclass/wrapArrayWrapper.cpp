@@ -116,8 +116,6 @@ void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArray_bufferify
     double * SHC_rv = SH_this->getArray();
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -153,8 +151,6 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConst_bufferify
     double * SHC_rv = SH_this->getArrayConst();
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -188,8 +184,6 @@ void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayC_bufferify
     const double * SHC_rv = SH_this->getArrayC();
-    SHT_rv_cdesc->cxx.addr  = const_cast<double *>(SHC_rv);
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -226,8 +220,6 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConstC_bufferify
     const double * SHC_rv = SH_this->getArrayConstC();
-    SHT_rv_cdesc->cxx.addr  = const_cast<double *>(SHC_rv);
-    SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -279,8 +271,6 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
     double *array;
     int isize;
     SH_this->fetchArrayPtr(&array, &isize);
-    SHT_array_cdesc->cxx.addr  = array;
-    SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
@@ -332,8 +322,6 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
     double *array;
     int isize;
     SH_this->fetchArrayRef(array, isize);
-    SHT_array_cdesc->cxx.addr  = array;
-    SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
@@ -385,8 +373,6 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
     const double *array;
     int isize;
     SH_this->fetchArrayPtrConst(&array, &isize);
-    SHT_array_cdesc->cxx.addr  = const_cast<double *>(array);
-    SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
@@ -438,8 +424,6 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
     const double *array;
     int isize;
     SH_this->fetchArrayRefConst(array, isize);
-    SHT_array_cdesc->cxx.addr  = const_cast<double *>(array);
-    SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);

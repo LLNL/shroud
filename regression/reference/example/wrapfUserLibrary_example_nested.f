@@ -22,17 +22,42 @@ module userlibrary_example_nested_mod
     top of module namespace example splicer  3
     ! splicer end namespace.example::nested.module_top
 
-    ! helper capsule_data_helper
-    type, bind(C) :: AA_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type AA_SHROUD_capsule_data
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
 
     ! helper array_context
     type, bind(C) :: AA_SHROUD_array
-        ! address of C++ memory
-        type(AA_SHROUD_capsule_data) :: cxx
-        ! address of data in cxx
+        ! address of data
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
         integer(C_INT) :: type
@@ -44,6 +69,12 @@ module userlibrary_example_nested_mod
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
     end type AA_SHROUD_array
+
+    ! helper capsule_data_helper
+    type, bind(C) :: AA_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type AA_SHROUD_capsule_data
 
     type ex_class1
         type(AA_SHROUD_capsule_data) :: cxxmem
@@ -266,12 +297,13 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
         subroutine c_ex_class1_get_name_error_check_bufferify(self, &
-                SHT_rv) &
+                SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_ex_class1_get_name_error_check_bufferify
 
         ! ----------------------------------------
@@ -471,12 +503,14 @@ module userlibrary_example_nested_mod
         ! Function:  const string & getName2
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_ex_class2_get_name2_bufferify
 
         ! ----------------------------------------
@@ -498,12 +532,14 @@ module userlibrary_example_nested_mod
         ! Function:  string & getName3
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_ex_class2_get_name3_bufferify
 
         ! ----------------------------------------
@@ -525,12 +561,14 @@ module userlibrary_example_nested_mod
         ! Function:  string & getName4
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Statement: f_function_string_&_cdesc_allocatable
-        subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv_cdesc, &
+                SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_ex_class2_get_name4_bufferify
 
         ! ----------------------------------------
@@ -1230,16 +1268,27 @@ module userlibrary_example_nested_mod
     end interface testoptional
 
     interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine AA_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="AA_SHROUD_memory_destructor")
+            import AA_SHROUD_capsule_data
+            implicit none
+            type(AA_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine AA_SHROUD_capsule_dtor
+    end interface
+
+    interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine AA_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
-             bind(c,name="AA_ShroudCopyStringAndFree")
+        subroutine AA_SHROUD_copy_string(context, c_var, c_var_size) &
+             bind(c,name="AA_ShroudCopyString")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import AA_SHROUD_array
             type(AA_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine AA_SHROUD_copy_string_and_free
+        end subroutine AA_SHROUD_copy_string
     end interface
 
     ! splicer begin namespace.example::nested.additional_declarations
@@ -1338,11 +1387,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         type(AA_SHROUD_array) :: SHT_rv_cdesc
+        type(AA_SHROUD_capsule_data) :: SHT_rv_capsule
         call c_ex_class1_get_name_error_check_bufferify(obj%cxxmem, &
-            SHT_rv_cdesc)
+            SHT_rv_cdesc, SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call AA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call AA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function ex_class1_get_name_error_check
 
@@ -1522,10 +1573,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_ex_class2_get_name2_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        type(AA_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_ex_class2_get_name2_bufferify(obj%cxxmem, SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call AA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call AA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function ex_class2_get_name2
 
@@ -1540,10 +1594,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_ex_class2_get_name3_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        type(AA_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_ex_class2_get_name3_bufferify(obj%cxxmem, SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call AA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call AA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function ex_class2_get_name3
 
@@ -1558,10 +1615,13 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_ex_class2_get_name4_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        type(AA_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_ex_class2_get_name4_bufferify(obj%cxxmem, SHT_rv_cdesc, &
+            SHT_rv_capsule)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+        call AA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
+        call AA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function ex_class2_get_name4
 

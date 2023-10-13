@@ -164,29 +164,29 @@ def add_external_helpers(symtab):
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
-    fmt.hnamefunc = fmt.C_memory_dtor_function
-    fmt.hnameproto = wformat("void {hnamefunc}\t({C_capsule_data_type} *cap)",fmt)
+    fmt.cnamefunc = fmt.C_memory_dtor_function
+    fmt.cnameproto = wformat("void {cnamefunc}\t({C_capsule_data_type} *cap)",fmt)
     # Add the C prototype. The body is created Wrapc.write_capsule_code.
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="c",
         dependent_helpers=["capsule_data_helper"],
-        proto=fmt.hnameproto + ";",
+        proto=fmt.cnameproto + ";",
     )
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Delete memory in a capsule.
-subroutine {hnamefunc}(ptr)\tbind(C, name="{C_memory_dtor_function}")+
+subroutine {fnamefunc}(ptr)\tbind(C, name="{cnamefunc}")+
 import {F_capsule_data_type}
 implicit none
 type({F_capsule_data_type}), intent(INOUT) :: ptr
--end subroutine {hnamefunc}
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
@@ -204,12 +204,13 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     
     name = "copy_array"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudCopyArray", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyArray", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
@@ -222,51 +223,154 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 // Called from Fortran.
-void {hnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+void {cnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.base;
 int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->elem_len;
 {stdlib}memcpy(c_var, cxx_var, n);
-{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}""",
             fmt,
         ),
     )
 
-    fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
     FHelpers[name] = dict(
         # XXX when f_kind == C_SIZE_T
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine {hnamefunc}(context, c_var, c_var_size) &+
-bind(C, name="{C_prefix}ShroudCopyArray")
+subroutine {fnamefunc}(context, c_var, c_var_size) &+
+bind(C, name="{cnamefunc}")
 use iso_c_binding, only : C_PTR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 type(C_PTR), intent(IN), value :: c_var
 integer(C_SIZE_T), value :: c_var_size
--end subroutine {hnamefunc}
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
     )
     
-    ########################################
-    # Only used with std::string and thus C++.
+##-    ########################################
+##-    # Only used with std::string and thus C++.
+##-    name = "string_capsule_size"
+##-    fmt.hname = name
+##-    if literalinclude:
+##-        fmt.lstart = "{}helper {}\n".format(cstart, name)
+##-        fmt.lend = "\n{}helper {}".format(cend, name)
+##-    fmt.cnamefunc = wformat("{C_prefix}ShroudStringCapsuleSize", fmt)
+##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_string_capsule_size", fmt)
+##-    CHelpers[name] = dict(
+##-        name=fmt.cnamefunc,
+##-        scope="cwrap_impl",
+##-        dependent_helpers=["capsule_data_helper"],
+##-        cxx_include=["<string>"],
+##-        # XXX - mangle name
+##-        source=wformat(
+##-            """
+##-{lstart}// helper {hname}
+##-// Extract the length of the std::string in the capsule.
+##-// Called by Fortran to deal with allocatable character.
+##-size_t {cnamefunc}(\t{C_capsule_data_type} *capsule) {{+
+##-const std::string *src = static_cast<const std::string *>(capsule->addr);
+##-return src->size();
+##--}}{lend}
+##-""",
+##-            fmt,
+##-        ),
+##-    )
+##-    
+##-    # Fortran interface for above function.
+##-    # Deal with allocatable character
+##-    FHelpers[name] = dict(
+##-        dependent_helpers=["capsule_data_helper"],
+##-        name=fmt.fnamefunc,
+##-        interface=wformat(
+##-            """
+##-interface+
+##-! helper {hname}
+##-! Return size of std::string
+##-function {fnamefunc}(capsule) &
+##-     result(strsize) &
+##-     bind(c,name="{cnamefunc}")+
+##-use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+##-import {F_capsule_data_type}
+##-type({F_capsule_data_type}), intent(IN) :: capsule
+##-integer(C_SIZE_T) :: strsize
+##--end function {fnamefunc}
+##--end interface""",
+##-            fmt,
+##-        ),
+##-    )
+##-
+##-    ##########
+##-    name = "copy_string_capsule"
+##-    fmt.hname = name
+##-    if literalinclude:
+##-        fmt.lstart = "{}helper {}\n".format(cstart, name)
+##-        fmt.lend = "\n{}helper {}".format(cend, name)
+##-    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringCapsule", fmt)
+##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_capsule", fmt)
+##-    CHelpers[name] = dict(
+##-        name=fmt.cnamefunc,
+##-        scope="cwrap_impl",
+##-        dependent_helpers=["capsule_data_helper"],
+##-        cxx_include=["<string>", "<cstring>"],
+##-        # XXX - mangle name
+##-        source=wformat(
+##-            """
+##-{lstart}// helper {hname}
+##-// Copy the char* or std::string in context into c_var.
+##-// Called by Fortran to deal with allocatable character.
+##-void {cnamefunc}(\t{C_capsule_data_type} *capsule,\t char *c_var,\t size_t c_var_len) {{+
+##-const std::string *src = static_cast<const std::string *>(capsule->addr);
+##-if (src->empty()) {{+
+##-c_var[0] = '\\0';
+##--}} else {{+
+##-std::strncpy(c_var, src->data(), src->length());
+##--}}
+##--}}{lend}
+##-""",
+##-            fmt,
+##-        ),
+##-    )
+##-
+##-    # Fortran interface for above function.
+##-    # Deal with allocatable character
+##-    FHelpers[name] = dict(
+##-        dependent_helpers=["capsule_data_helper"],
+##-        name=fmt.fnamefunc,
+##-        interface=wformat(
+##-            """
+##-interface+
+##-! helper {hname}
+##-! Copy the char* or std::string in context into c_var.
+##-subroutine {fnamefunc}(capsule, c_var, c_var_size) &
+##-     bind(c,name="{cnamefunc}")+
+##-use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+##-import {F_capsule_data_type}
+##-type({F_capsule_data_type}), intent(IN) :: capsule
+##-character(kind=C_CHAR), intent(OUT) :: c_var(*)
+##-integer(C_SIZE_T), value :: c_var_size
+##--end subroutine {fnamefunc}
+##--end interface""",
+##-            fmt,
+##-        ),
+##-    )
+
+    ##########
     name = "copy_string"
     fmt.hname = name
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
-    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringAndFree", fmt)
-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyString", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string", fmt)
     CHelpers[name] = dict(
         name=fmt.cnamefunc,
         scope="cwrap_impl",
@@ -278,12 +382,11 @@ integer(C_SIZE_T), value :: c_var_size
 {lstart}// helper {hname}
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void {cnamefunc}({C_array_type} *data, char *c_var, size_t c_var_len) {{+
+void {cnamefunc}(\t{C_array_type} *data,\t char *c_var,\t size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->elem_len < n) n = data->elem_len;
 {stdlib}strncpy(c_var, cxx_var, n);
-{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -301,7 +404,7 @@ interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
 subroutine {fnamefunc}(context, c_var, c_var_size) &
-     bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
+     bind(c,name="{cnamefunc}")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
@@ -320,20 +423,20 @@ integer(C_SIZE_T), value :: c_var_size
     # Only used with std::string and thus C++.
     name = "array_string_out"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringOut", fmt)
-    fmt.hnamefunc_array_string_out = fmt.hnamefunc
-    fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudArrayStringOut", fmt)
+    fmt.cnamefunc_array_string_out = fmt.cnamefunc
+    fmt.cnameproto = wformat(
+        "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="cxx",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         proto_include=["<string>", "<vector>"],
-        proto=fmt.hnameproto + ";",
+        proto=fmt.cnameproto + ";",
         cxx_include=["<cstring>", "<cstddef>"],
         # XXX - mangle name
         source=wformat(
@@ -341,7 +444,7 @@ integer(C_SIZE_T), value :: c_var_size
 {lstart}// helper {hname}
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-{hnameproto}
+{cnameproto}
 {{+
 size_t nvect = outdesc->size;
 size_t len = outdesc->elem_len;
@@ -356,7 +459,6 @@ for (size_t i = 0; i < nvect; ++i) {{+
 std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
 dest += outdesc->elem_len;
 -}}
-//{C_memory_dtor_function}(&in->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -365,7 +467,7 @@ dest += outdesc->elem_len;
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_array_string_and_free", fmt)
+##-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_array_string_and_free", fmt)
 ##-    FHelpers[name] = dict(
 ##-        dependent_helpers=["array_context"],
 ##-        name=fmt.hnamefunc,
@@ -395,30 +497,29 @@ dest += outdesc->elem_len;
     # which is copied into the cdesc.
     name = "array_string_allocatable"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
-    fmt.chnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
-    fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudArrayStringAllocatable", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_array_string_allocatable", fmt)
+    fmt.cnameproto = wformat(
+        "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="c",
         scope="cwrap_impl",
-        dependent_helpers=["array_context", "array_string_out"],
-        proto=fmt.hnameproto + ";",
+        dependent_helpers=["capsule_data_helper", "array_context", "array_string_out"],
+        proto=fmt.cnameproto + ";",
         source=wformat(
             """
 {lstart}// helper {hname}
 // Copy the std::string array into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-{hnameproto}
+{cnameproto}
 {{+
-std::string *cxxvec =\t static_cast< std::string * >\t(indesc->cxx.addr);
-{hnamefunc_array_string_out}(outdesc, cxxvec, indesc->size);
-{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
+std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);
+{cnamefunc_array_string_out}(dest, cxxvec, dest->size);
 -}}{lend}
 """,
             fmt,
@@ -427,21 +528,19 @@ std::string *cxxvec =\t static_cast< std::string * >\t(indesc->cxx.addr);
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_array_string_allocatable", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
-! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(out, in) &
-     bind(c,name="{chnamefunc}")+
+subroutine {fnamefunc}(dest, src) &
+     bind(c,name="{cnamefunc}")+
 import {F_array_type}, {F_capsule_data_type}
-type({F_array_type}), intent(IN) :: out
-type({F_array_type}), intent(IN) :: in
--end subroutine {hnamefunc}
+type({F_array_type}), intent(IN) :: dest
+type({F_capsule_data_type}), intent(IN) :: src
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
@@ -451,23 +550,23 @@ type({F_array_type}), intent(IN) :: in
     ########################################
     name = "array_string_out_len"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudArrayStringOutSize", fmt)
-    fmt.hnameproto = wformat(
-        "size_t {hnamefunc}(std::string *in, size_t nsize)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudArrayStringOutSize", fmt)
+    fmt.cnameproto = wformat(
+        "size_t {cnamefunc}(std::string *in, size_t nsize)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="cxx",
         scope="cwrap_impl",
         proto_include=["<string>", "<vector>"],
-        proto=fmt.hnameproto + ";",
+        proto=fmt.cnameproto + ";",
         source=wformat(
             """
 {lstart}// helper {hname}
 // Return the maximum string length in a std::vector<std::string>.
-{hnameproto}
+{cnameproto}
 {{+
 size_t len = 0;
 for (size_t i = 0; i < nsize; ++i) {{+
@@ -491,20 +590,21 @@ return len;
     # Only used with std::string and thus C++.
     name = "vector_string_out"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
-    fmt.hnamefunc_vector_string_out = fmt.hnamefunc
-    fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudVectorStringOut", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}shroud_vector_string_out", fmt)
+    fmt.cnamefunc_vector_string_out = fmt.cnamefunc
+    fmt.cnameproto = wformat(
+        "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="cxx",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         proto_include=["<string>", "<vector>"],
-        proto=fmt.hnameproto + ";",
+        proto=fmt.cnameproto + ";",
         cxx_include=["<cstring>", "<cstddef>"],
         # XXX - mangle name
         source=wformat(
@@ -512,11 +612,11 @@ return len;
 {lstart}// helper {hname}
 // Copy the std::vector<std::string> into Fortran array argument.
 // Called by C++.
-{hnameproto}
+{cnameproto}
 {{+
 size_t nvect = outdesc->size;
 size_t len = outdesc->elem_len;
-char *dest = static_cast<char *>(outdesc->cxx.addr);
+char *dest = static_cast<char *>(const_cast<void *>(outdesc->addr.base));
 // Clear user memory
 std::memset(dest, ' ', nvect*len);
 
@@ -527,7 +627,6 @@ for (size_t i = 0; i < nvect; ++i) {{+
 std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
 dest += outdesc->elem_len;
 -}}
-//{C_memory_dtor_function}(&in->cxx); // delete data->cxx.addr
 -}}{lend}
 """,
             fmt,
@@ -535,8 +634,30 @@ dest += outdesc->elem_len;
     )
 
     # Fortran interface for above function.
+    FHelpers[name] = dict(
+        dependent_helpers=["array_context"],
+        name=fmt.fnamefunc,
+        interface=wformat(
+            """
+interface+
+! helper {hname}
+subroutine {fnamefunc}(out, in) &
+     bind(c,name="{cnamefunc}")+
+use, intrinsic :: iso_c_binding, only : C_PTR
+import {F_array_type}
+type({F_array_type}), intent(IN) :: out
+type(C_PTR), intent(IN) :: in
+-end subroutine {fnamefunc}
+-end interface""",
+            fmt,
+        ),
+    )
+
+    ########################################
+
+    # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_vector_string_and_free", fmt)
+##-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_vector_string_and_free", fmt)
 ##-    FHelpers[name] = dict(
 ##-        dependent_helpers=["array_context"],
 ##-        name=fmt.hnamefunc,
@@ -566,30 +687,29 @@ dest += outdesc->elem_len;
     # which is copied into the cdesc.
     name = "vector_string_allocatable"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
-    fmt.chnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
-    fmt.hnameproto = wformat(
-        "void {hnamefunc}({C_array_type} *outdesc, {C_array_type} *indesc)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudVectorStringAllocatable", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_vector_string_allocatable", fmt)
+    fmt.cnameproto = wformat(
+        "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="c",
         scope="cwrap_impl",
-        dependent_helpers=["array_context", "vector_string_out"],
-        proto=fmt.hnameproto + ";",
+        dependent_helpers=["capsule_data_helper", "array_context", "vector_string_out"],
+        proto=fmt.cnameproto + ";",
         source=wformat(
             """
 {lstart}// helper {hname}
 // Copy the std::vector<std::string> into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-{hnameproto}
+{cnameproto}
 {{+
-std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(indesc->cxx.addr);
-{hnamefunc_vector_string_out}(outdesc, *cxxvec);
-{C_memory_dtor_function}(&indesc->cxx); // delete data->cxx.addr
+std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);
+{cnamefunc_vector_string_out}(dest, *cxxvec);
 -}}{lend}
 """,
             fmt,
@@ -598,21 +718,20 @@ std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_vector_string_allocatable", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine {hnamefunc}(out, in) &
-     bind(c,name="{chnamefunc}")+
-import {F_array_type}
-type({F_array_type}), intent(IN) :: out
-type({F_array_type}), intent(IN) :: in
--end subroutine {hnamefunc}
+subroutine {fnamefunc}(dest, src) &
+     bind(c,name="{cnamefunc}")+
+import {F_capsule_data_type}, {F_array_type}
+type({F_array_type}), intent(IN) :: dest
+type({F_capsule_data_type}), intent(IN) :: src
+-end subroutine {fnamefunc}
 -end interface""",
             fmt,
         ),
@@ -622,23 +741,23 @@ type({F_array_type}), intent(IN) :: in
     ########################################
     name = "vector_string_out_len"
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}ShroudVectorStringOutSize", fmt)
-    fmt.hnameproto = wformat(
-        "size_t {hnamefunc}(std::vector<std::string> &in)", fmt)
+    fmt.cnamefunc = wformat("{C_prefix}ShroudVectorStringOutSize", fmt)
+    fmt.cnameproto = wformat(
+        "size_t {cnamefunc}(std::vector<std::string> &in)", fmt)
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        name=fmt.hnamefunc,
+        name=fmt.cnamefunc,
         api="cxx",
         scope="cwrap_impl",
         proto_include=["<string>", "<vector>"],
-        proto=fmt.hnameproto + ";",
+        proto=fmt.cnameproto + ";",
         source=wformat(
             """
 {lstart}// helper {hname}
 // Return the maximum string length in a std::vector<std::string>.
-{hnameproto}
+{cnameproto}
 {{+
 size_t nvect = in.size();
 size_t len = 0;
@@ -660,15 +779,15 @@ return len;
     # Must be a function (or a F2008 BLOCK) since fptr must
     # be declared after the string length is known.
     fmt.hname = name
-    fmt.hnamefunc = wformat("{C_prefix}SHROUD_pointer_string", fmt)
+    fmt.fnamefunc = wformat("{C_prefix}SHROUD_pointer_string", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        name=fmt.hnamefunc,
+        name=fmt.fnamefunc,
         source=wformat(
             """
 ! helper {hname}
 ! Assign context to an assumed-length character pointer
-subroutine {hnamefunc}(context, var)+
+subroutine {fnamefunc}(context, var)+
 use iso_c_binding, only : c_f_pointer, C_PTR
 implicit none
 type({F_array_type}), intent(IN) :: context
@@ -676,7 +795,7 @@ character(len=:), pointer, intent(OUT) :: var
 character(len=context%elem_len), pointer :: fptr
 call c_f_pointer(context%base_addr, fptr)
 var => fptr
--end subroutine {hnamefunc}""",
+-end subroutine {fnamefunc}""",
             fmt,
         ),
     )
@@ -697,10 +816,8 @@ var => fptr
 {lstart}// helper {hname}
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
-static void {cnamefunc}({C_array_type} *cdesc, const std::string * src, int idtor)
+static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)
 {{+
-cdesc->cxx.addr = const_cast<std::string *>(src);
-cdesc->cxx.idtor = idtor;
 if (src->empty()) {{+
 cdesc->addr.ccharp = NULL;
 cdesc->elem_len = 0;
@@ -1017,7 +1134,6 @@ call {__helper}(cap%mem)
             """
 {lstart}// helper {hname}
 struct s_{C_array_type} {{+
-{C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * base;
 const char * ccharp;
@@ -1031,7 +1147,7 @@ long shape[7];
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
             fmt,
         ),
-        dependent_helpers=["capsule_data_helper", "type_defines"],
+        dependent_helpers=["type_defines"], # used with type field
     )
     CHelpers[name] = helper
 
@@ -1048,9 +1164,7 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
             """
 {lstart}! helper {hname}
 type, bind(C) :: {F_array_type}+
-! address of C++ memory
-type({F_capsule_data_type}) :: cxx
-! address of data in cxx
+! address of data
 type(C_PTR) :: base_addr = C_NULL_PTR
 ! type of element
 integer(C_INT) :: type
@@ -1066,7 +1180,7 @@ integer(C_LONG) :: shape(7) = 0
         ),
         modules=dict(iso_c_binding=[
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
-        dependent_helpers=["capsule_data_helper"],
+        dependent_helpers=["type_defines"], # used with type field
     )
     FHelpers[name] = helper
 

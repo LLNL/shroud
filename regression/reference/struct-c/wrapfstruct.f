@@ -22,20 +22,43 @@ module struct_mod
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
-    type, bind(C) :: STR_SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type STR_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
 
     ! start array_context
     ! helper array_context
     type, bind(C) :: STR_SHROUD_array
-        ! address of C++ memory
-        type(STR_SHROUD_capsule_data) :: cxx
-        ! address of data in cxx
+        ! address of data
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
         integer(C_INT) :: type
@@ -48,6 +71,14 @@ module struct_mod
         integer(C_LONG) :: shape(7) = 0
     end type STR_SHROUD_array
     ! end array_context
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: STR_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type STR_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
 
     ! start derived-type cstruct1
@@ -770,12 +801,13 @@ module struct_mod
     ! Attrs:     +intent(in)
     ! Statement: f_in_struct_*
     interface
-        subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv) &
+        subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, &
+                SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_ivalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_cstruct_list_get_ivalue_bufferify
     end interface
 
@@ -813,12 +845,13 @@ module struct_mod
     ! Attrs:     +intent(in)
     ! Statement: f_in_struct_*
     interface
-        subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv) &
+        subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, &
+                SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_dvalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_cstruct_list_get_dvalue_bufferify
     end interface
 

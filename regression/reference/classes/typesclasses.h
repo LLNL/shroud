@@ -24,13 +24,6 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_data_helper
-struct s_CLA_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_CLA_SHROUD_capsule_data CLA_SHROUD_capsule_data;
-
 /* helper type_defines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
@@ -75,7 +68,6 @@ typedef struct s_CLA_SHROUD_capsule_data CLA_SHROUD_capsule_data;
 // start array_context
 // helper array_context
 struct s_CLA_SHROUD_array {
-    CLA_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
         const void * base;
         const char * ccharp;
@@ -88,6 +80,13 @@ struct s_CLA_SHROUD_array {
 };
 typedef struct s_CLA_SHROUD_array CLA_SHROUD_array;
 // end array_context
+
+// helper capsule_data_helper
+struct s_CLA_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_SHROUD_capsule_data CLA_SHROUD_capsule_data;
 #if 0
 
 // start C++ capsule CLA_Class1

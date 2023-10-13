@@ -52,7 +52,6 @@ root
                 scalar -- f_function_shadow_scalar_capptr
       string
         & -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -62,7 +61,6 @@ root
               library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
           buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -70,7 +68,6 @@ root
               caller -- f_function_string_*_cdesc_pointer
               library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
-          pointer -- f_shared_function_string_scalar
         scalar -- f_shared_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
@@ -188,6 +185,8 @@ root
         char
           *
             cdesc -- c_mixin_function_char_*_cdesc
+        string
+          cdesc -- c_mixin_function_string_cdesc
       in
         character
           buf -- c_mixin_in_character_buf
@@ -200,6 +199,8 @@ root
               native
                 scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
       native
+        capsule
+          fill -- c_mixin_native_capsule_fill
         cdesc
           fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
         cfi
@@ -344,6 +345,7 @@ root
           pointer -- f_function_native_&
         *
           allocatable -- f_function_native_**
+            caller -- f_function_native_**
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
@@ -352,6 +354,7 @@ root
             allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
           pointer -- f_function_native_&
+            caller -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- f_function_native_scalar
         ** -- f_function_native_**
@@ -398,6 +401,8 @@ root
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
           allocatable -- f_shared_function_string_scalar
+            caller -- f_shared_function_string_scalar
+            library -- f_shared_function_string_scalar
           buf -- f_function_string_scalar_buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -417,6 +422,8 @@ root
               library -- f_shared_function_string_*_cfi_pointer
           copy -- f_shared_function_string_scalar
           pointer -- f_shared_function_string_scalar
+            caller -- f_shared_function_string_scalar
+            library -- f_shared_function_string_scalar
         scalar -- f_shared_function_string_scalar
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
@@ -585,15 +592,16 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in/out/inout_void_**
     mixin
+      arg
+        capsule -- f_mixin_arg_capsule
+      capsule
+        dtor -- f_mixin_capsule_dtor
       char
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
+          pointer -- f_mixin_char_cdesc_pointer
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
-        cdesc -- f_mixin_function_cdesc
-        native
-          cdesc
-            pointer -- f_mixin_function_native_cdesc_pointer
         ptr -- f_mixin_function_ptr
         shadow
           capptr -- f_mixin_function_shadow_capptr
@@ -603,6 +611,13 @@ root
             cfi
               allocatable -- f_mixin_function_string_scalar_cfi_allocatable
       function-to-subroutine -- f_mixin_function-to-subroutine
+      helper
+        array
+          string
+            allocatable -- f_mixin_helper_array_string_allocatable
+        vector
+          string
+            allocatable -- f_mixin_helper_vector_string_allocatable
       in
         2d
           array
@@ -621,20 +636,30 @@ root
           array
             cdesc -- f_mixin_inout_char_array_cdesc
       local-logical-var -- f_mixin_local-logical-var
+      native
+        cdesc
+          allocate -- f_mixin_native_cdesc_allocate
+          pointer -- f_mixin_native_cdesc_pointer
       out
         array
-          cdesc -- f_mixin_out_array_cdesc
+          cdesc
             allocatable -- f_mixin_out_array_cdesc_allocatable
         native
           cdesc
+            allocate -- f_mixin_out_native_cdesc_allocate
             pointer -- f_mixin_out_native_cdesc_pointer
         string
           **
             cfi -- f_mixin_out_string_**_cfi
+      pass
+        capsule -- f_mixin_pass_capsule
+        cdesc -- f_mixin_pass_cdesc
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
       unknown -- f_mixin_unknown
+      use
+        capsule -- f_mixin_use_capsule
     out
       bool
         * -- f_out_bool_*
@@ -777,6 +802,8 @@ c_dtor_void_scalar:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   impl_header:
   - <cstddef>
   intent: dtor
@@ -825,6 +852,8 @@ c_function_char_*_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
@@ -855,6 +884,8 @@ c_function_char_*_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
@@ -885,6 +916,8 @@ c_function_char_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
@@ -903,10 +936,9 @@ c_function_char_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -915,10 +947,15 @@ c_function_char_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -957,6 +994,8 @@ c_function_char_scalar:
   c_call:
   - '*{c_var} = {function_name}({C_call_list});'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
   i_arg_names:
@@ -977,6 +1016,8 @@ c_function_native_&:
   name: c_function_native_&
   owner: library
 c_function_native_&_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1022,6 +1063,8 @@ c_function_native_*_allocatable:
   name: c_function_native_*_allocatable
   owner: library
 c_function_native_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1277,17 +1320,6 @@ c_function_string_&:
   intent: function
   name: c_function_string_&
   owner: library
-c_function_string_&_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_&_allocatable
-  owner: library
 c_function_string_&_buf_arg:
   c_arg_decl:
   - char *{c_var}
@@ -1303,6 +1335,8 @@ c_function_string_&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -1336,6 +1370,8 @@ c_function_string_&_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1353,16 +1389,23 @@ c_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1372,16 +1415,23 @@ c_function_string_&_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1391,16 +1441,23 @@ c_function_string_&_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1428,17 +1485,6 @@ c_function_string_*:
   intent: function
   name: c_function_string_*
   owner: library
-c_function_string_*_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_*_allocatable
-  owner: library
 c_function_string_*_buf_copy:
   c_arg_decl:
   - char *{c_var}
@@ -1454,6 +1500,8 @@ c_function_string_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1471,16 +1519,23 @@ c_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1490,16 +1545,23 @@ c_function_string_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1509,16 +1571,23 @@ c_function_string_*_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1534,17 +1603,6 @@ c_function_string_*_copy:
   - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_*_copy
-  owner: library
-c_function_string_*_pointer:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {c_var}
-  intent: function
-  name: c_function_string_*_pointer
   owner: library
 c_function_string_scalar:
   c_return:
@@ -1572,6 +1630,8 @@ c_function_string_scalar_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -1605,6 +1665,8 @@ c_function_string_scalar_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   i_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -1619,6 +1681,8 @@ c_function_string_scalar_buf_copy:
   name: c_function_string_scalar_buf_copy
   owner: library
 c_function_struct_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1633,6 +1697,8 @@ c_function_struct_scalar:
   c_post_call:
   - memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
   - '{f_type}, intent(OUT) :: {c_var}'
@@ -1793,6 +1859,8 @@ c_in_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2233,6 +2301,8 @@ c_in_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2316,6 +2386,8 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2483,6 +2555,8 @@ c_inout_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2563,15 +2637,26 @@ c_mixin_function_char_*_cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
+  comments:
+  - Fill cdesc from char * in the C wrapper.
   intent: mixin
   name: c_mixin_function_char_*_cdesc
+  owner: library
+c_mixin_function_string_cdesc:
+  c_helper:
+  - string_to_cdesc
+  c_post_call:
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  comments:
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  intent: mixin
+  name: c_mixin_function_string_cdesc
   owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
@@ -2629,8 +2714,6 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2665,18 +2748,24 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   intent: mixin
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
-c_mixin_native_cdesc_fill-cdesc:
-  c_helper:
-  - type_defines
-  - array_context
+c_mixin_native_capsule_fill:
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  comments:
+  - Assign to capsule in C wrapper.
+  intent: mixin
+  name: c_mixin_native_capsule_fill
+  owner: library
+c_mixin_native_cdesc_fill-cdesc:
+  c_post_call:
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  comments:
+  - Fill cdesc from native in the C wrapper.
   intent: mixin
   name: c_mixin_native_cdesc_fill-cdesc
   owner: library
@@ -2734,8 +2823,6 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2769,8 +2856,6 @@ c_mixin_vector_cdesc_fill-cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -2838,11 +2923,7 @@ c_out_native_*&_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -2852,6 +2933,10 @@ c_out_native_*&_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2878,28 +2963,40 @@ c_out_native_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_array
-  - type_defines
   - array_context
+  - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: c_out_native_**_cdesc_allocatable
   owner: library
@@ -2910,11 +3007,7 @@ c_out_native_**_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -2924,6 +3017,10 @@ c_out_native_**_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -2950,6 +3047,8 @@ c_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -3037,7 +3136,9 @@ c_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - array_string_allocatable
   - array_string_out_len
   c_post_call:
@@ -3048,18 +3149,31 @@ c_out_string_**_cdesc_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = 0;'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: c_out_string_**_cdesc_allocatable
   owner: library
@@ -3076,6 +3190,8 @@ c_out_string_**_cdesc_copy:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -3130,8 +3246,6 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3142,6 +3256,8 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -3161,7 +3277,9 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - vector_string_allocatable
   - vector_string_out_len
   c_post_call:
@@ -3171,18 +3289,31 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  cxx_local_var: pointer
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: c_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
@@ -3193,8 +3324,6 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3205,6 +3334,8 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -3232,6 +3363,8 @@ c_out_vector_&_cdesc_targ_string_scalar:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -3247,8 +3380,6 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3259,6 +3390,8 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -3280,8 +3413,6 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -3292,6 +3423,8 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -3332,6 +3465,8 @@ c_out_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
@@ -3477,6 +3612,8 @@ f_dtor:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   impl_header:
@@ -3489,6 +3626,8 @@ f_dtor_void_scalar:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   impl_header:
@@ -3534,6 +3673,8 @@ f_function_char_*_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3584,6 +3725,8 @@ f_function_char_*_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3634,6 +3777,8 @@ f_function_char_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3667,10 +3812,10 @@ f_function_char_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - copy_string
+  - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -3679,6 +3824,12 @@ f_function_char_*_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Fill cdesc from char * in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -3697,9 +3848,9 @@ f_function_char_*_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -3709,10 +3860,9 @@ f_function_char_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -3721,6 +3871,11 @@ f_function_char_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -3730,8 +3885,8 @@ f_function_char_*_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -3741,9 +3896,9 @@ f_function_char_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -3763,6 +3918,8 @@ f_function_char_*_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -3790,6 +3947,8 @@ f_function_char_*_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3824,6 +3983,8 @@ f_function_char_*_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -3867,6 +4028,8 @@ f_function_char_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -3922,6 +4085,8 @@ f_function_char_scalar:
   c_call:
   - '*{c_var} = {function_name}({C_call_list});'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{c_var}'
   f_call:
@@ -3940,10 +4105,10 @@ f_function_char_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - copy_string
+  - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -3952,6 +4117,12 @@ f_function_char_scalar_cdesc_allocatable:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Fill cdesc from char * in the C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -3970,9 +4141,9 @@ f_function_char_scalar_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -3982,10 +4153,9 @@ f_function_char_scalar_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
@@ -3994,6 +4164,11 @@ f_function_char_scalar_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4003,8 +4178,8 @@ f_function_char_scalar_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -4014,9 +4189,9 @@ f_function_char_scalar_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -4036,6 +4211,8 @@ f_function_char_scalar_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -4080,6 +4257,8 @@ f_function_char_scalar_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -4097,6 +4276,8 @@ f_function_char_scalar_cfi_pointer:
   name: f_function_char_scalar_cfi_pointer
   owner: library
 f_function_native_&:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -4120,6 +4301,8 @@ f_function_native_&:
   name: f_function_native_&
   owner: library
 f_function_native_&_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -4170,34 +4353,63 @@ f_function_native_*_allocatable:
   intent: function
   name: f_function_native_*_allocatable
   owner: library
+f_function_native_*_allocatable_caller:
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_native_*_allocatable_caller
+  owner: library
 f_function_native_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_array
-  - type_defines
   - array_context
+  - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
   - copy_array
+  - array_context
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
@@ -4207,14 +4419,19 @@ f_function_native_*_cdesc_allocatable:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
     \ kind=C_SIZE_T))"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_native_*_cdesc_allocatable
   owner: library
@@ -4222,11 +4439,8 @@ f_function_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
-  - type_defines
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -4235,6 +4449,11 @@ f_function_native_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -4250,13 +4469,13 @@ f_function_native_*_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -4265,25 +4484,35 @@ f_function_native_*_cdesc_pointer:
 f_function_native_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - type_defines
   - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Add a capsule argument to the Fortran wrapper.
+  - Pass the capsule as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}%mem'
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   f_arg_name:
   - '{f_var_capsule}'
   f_call:
@@ -4291,6 +4520,8 @@ f_function_native_*_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
+  - array_context
+  - array_context
   - capsule_helper
   f_module:
     iso_c_binding:
@@ -4298,18 +4529,20 @@ f_function_native_*_cdesc_pointer_caller:
   f_need_wrapper: true
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
-  - '{f_var_capsule}%mem = {f_var_cdesc}%cxx'
   f_temps:
   - cdesc
   - capsule
   fmtdict:
     f_var_capsule: Crv
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_native_*_cdesc_pointer_caller
   owner: library
@@ -4329,6 +4562,8 @@ f_function_native_*_cfi_allocatable:
   - cfi
   - extents
   - lower
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -4372,6 +4607,8 @@ f_function_native_*_cfi_pointer:
   - cfi
   - extents
   - lower
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -4394,6 +4631,8 @@ f_function_native_*_cfi_pointer:
   name: f_function_native_*_cfi_pointer
   owner: library
 f_function_native_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -4415,6 +4654,31 @@ f_function_native_*_pointer:
   - type(C_PTR) {c_var}
   intent: function
   name: f_function_native_*_pointer
+  owner: library
+f_function_native_*_pointer_caller:
+  comments:
+  - Return a C pointer as a type(C_PTR).
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_call:
+  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  f_declare:
+  - 'type(C_PTR) :: {f_local_ptr}'
+  f_local:
+  - ptr
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_post_call:
+  - call c_f_pointer({f_local_ptr}, {F_result})
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_native_*_pointer_caller
   owner: library
 f_function_native_*_raw:
   f_arg_decl:
@@ -4679,6 +4943,8 @@ f_function_shadow_*_capsule:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -4901,6 +5167,8 @@ f_function_string_&_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -4944,6 +5212,8 @@ f_function_string_&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -4997,6 +5267,8 @@ f_function_string_&_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5028,111 +5300,183 @@ f_function_string_&_buf_copy:
 f_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable
   owner: library
 f_function_string_&_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable_caller
   owner: library
 f_function_string_&_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_&_cdesc_allocatable_library
   owner: library
@@ -5140,12 +5484,19 @@ f_function_string_&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5155,8 +5506,8 @@ f_function_string_&_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5166,9 +5517,9 @@ f_function_string_&_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5178,12 +5529,19 @@ f_function_string_&_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5193,8 +5551,8 @@ f_function_string_&_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5204,9 +5562,9 @@ f_function_string_&_cdesc_pointer_caller:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5216,12 +5574,19 @@ f_function_string_&_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5231,8 +5596,8 @@ f_function_string_&_cdesc_pointer_library:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5242,9 +5607,9 @@ f_function_string_&_cdesc_pointer_library:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5262,6 +5627,8 @@ f_function_string_&_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5292,6 +5659,8 @@ f_function_string_&_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5322,6 +5691,8 @@ f_function_string_&_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5356,6 +5727,8 @@ f_function_string_&_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5394,6 +5767,8 @@ f_function_string_&_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -5436,6 +5811,8 @@ f_function_string_&_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5480,6 +5857,8 @@ f_function_string_&_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5524,6 +5903,8 @@ f_function_string_&_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5573,6 +5954,28 @@ f_function_string_*_allocatable:
   intent: function
   name: f_function_string_*_allocatable
   owner: library
+f_function_string_*_allocatable_caller:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_allocatable_caller
+  owner: library
+f_function_string_*_allocatable_library:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_allocatable_library
+  owner: library
 f_function_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -5588,6 +5991,8 @@ f_function_string_*_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5631,6 +6036,8 @@ f_function_string_*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -5662,111 +6069,183 @@ f_function_string_*_buf_copy:
 f_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable
   owner: library
 f_function_string_*_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable_caller
   owner: library
 f_function_string_*_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign to capsule in C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
+  - array_context
   - copy_string
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_*_cdesc_allocatable_library
   owner: library
@@ -5774,12 +6253,19 @@ f_function_string_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5789,8 +6275,8 @@ f_function_string_*_cdesc_pointer:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5800,9 +6286,9 @@ f_function_string_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5812,12 +6298,19 @@ f_function_string_*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5827,8 +6320,8 @@ f_function_string_*_cdesc_pointer_caller:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5838,9 +6331,9 @@ f_function_string_*_cdesc_pointer_caller:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5850,12 +6343,19 @@ f_function_string_*_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
+  - array_context
   - string_to_cdesc
   c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -5865,8 +6365,8 @@ f_function_string_*_cdesc_pointer_library:
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
-  - pointer_string
   - array_context
+  - pointer_string
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -5876,9 +6376,9 @@ f_function_string_*_cdesc_pointer_library:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5896,6 +6396,8 @@ f_function_string_*_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5926,6 +6428,8 @@ f_function_string_*_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5956,6 +6460,8 @@ f_function_string_*_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -5990,6 +6496,8 @@ f_function_string_*_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6032,6 +6540,8 @@ f_function_string_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6076,6 +6586,8 @@ f_function_string_*_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6120,6 +6632,8 @@ f_function_string_*_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6158,6 +6672,28 @@ f_function_string_*_pointer:
   intent: function
   name: f_function_string_*_pointer
   owner: library
+f_function_string_*_pointer_caller:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_pointer_caller
+  owner: library
+f_function_string_*_pointer_library:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {c_var}
+  intent: function
+  name: f_function_string_*_pointer_library
+  owner: library
 f_function_string_scalar:
   c_return:
   - return {c_var};
@@ -6184,6 +6720,8 @@ f_function_string_scalar_buf:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6227,6 +6765,8 @@ f_function_string_scalar_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6280,6 +6820,8 @@ f_function_string_scalar_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -6311,16 +6853,31 @@ f_function_string_scalar_buf_copy:
 f_function_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6328,43 +6885,67 @@ f_function_string_scalar_cdesc_allocatable:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable
   owner: library
 f_function_string_scalar_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6372,43 +6953,67 @@ f_function_string_scalar_cdesc_allocatable_caller:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable_caller
   owner: library
 f_function_string_scalar_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_string
+  - array_context
   - string_to_cdesc
+  - copy_string
   c_post_call:
-  - '{c_helper_string_to_cdesc}({c_var_cdesc}, {cxx_var}, {idtor});'
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string * {cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -6416,27 +7021,36 @@ f_function_string_scalar_cdesc_allocatable_library:
   destructor_name: new_string
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
   - array_context
   - copy_string
+  - array_context
+  - capsule_dtor
   f_need_wrapper: true
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: function
   name: f_function_string_scalar_cdesc_allocatable_library
   owner: library
@@ -6452,6 +7066,8 @@ f_function_string_scalar_cfi_allocatable:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6480,6 +7096,8 @@ f_function_string_scalar_cfi_allocatable_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6510,6 +7128,8 @@ f_function_string_scalar_cfi_allocatable_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6544,6 +7164,8 @@ f_function_string_scalar_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6582,6 +7204,8 @@ f_function_string_scalar_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6624,6 +7248,8 @@ f_function_string_scalar_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6668,6 +7294,8 @@ f_function_string_scalar_cfi_pointer_caller:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6712,6 +7340,8 @@ f_function_string_scalar_cfi_pointer_library:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -6729,6 +7359,8 @@ f_function_string_scalar_cfi_pointer_library:
   name: f_function_string_scalar_cfi_pointer_library
   owner: library
 f_function_struct_*_pointer:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -6757,6 +7389,8 @@ f_function_struct_scalar:
   c_post_call:
   - memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   cxx_local_var: result
   f_arg_call:
   - '{f_var}'
@@ -6795,8 +7429,6 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -6808,6 +7440,9 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -6834,9 +7469,9 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -6855,8 +7490,6 @@ f_getter_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -6868,6 +7501,10 @@ f_getter_native_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6883,13 +7520,13 @@ f_getter_native_*_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -6920,10 +7557,16 @@ f_getter_string_scalar_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
   - '{c_var_cdesc}->rank = 0;'
   c_helper:
+  - array_context
   - copy_string
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6942,9 +7585,9 @@ f_getter_string_scalar_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -6954,8 +7597,6 @@ f_getter_struct_**_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -6967,6 +7608,10 @@ f_getter_struct_**_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -6982,13 +7627,13 @@ f_getter_struct_**_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -6998,8 +7643,6 @@ f_getter_struct_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -7011,6 +7654,10 @@ f_getter_struct_*_cdesc_pointer:
   c_return_type: void
   c_temps:
   - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7026,13 +7673,13 @@ f_getter_struct_*_cdesc_pointer:
     - c_f_pointer
   f_need_wrapper: true
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
+  - '{c_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -7262,6 +7909,8 @@ f_in_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7274,6 +7923,7 @@ f_in_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -7951,6 +8601,8 @@ f_in_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -7963,6 +8615,7 @@ f_in_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8097,6 +8750,8 @@ f_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8109,6 +8764,7 @@ f_inout_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8396,8 +9052,6 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -8463,8 +9117,6 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   - type_defines
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -8611,6 +9263,8 @@ f_inout_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -8623,6 +9277,7 @@ f_inout_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -8640,9 +9295,53 @@ f_inout_void_*_cdesc:
   intent: inout
   name: f_inout_void_*_cdesc
   owner: library
+f_mixin_arg_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
+  comments:
+  - Add a capsule argument to the Fortran wrapper.
+  - Pass the capsule as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_capsule}%mem'
+  f_arg_decl:
+  - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
+  f_arg_name:
+  - '{f_var_capsule}'
+  f_helper:
+  - array_context
+  - capsule_helper
+  f_need_wrapper: true
+  f_temps:
+  - capsule
+  fmtdict:
+    f_var_capsule: Crv
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  i_arg_names:
+  - '{c_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_arg_capsule
+  owner: library
+f_mixin_capsule_dtor:
+  comments:
+  - Release memory from capsule.
+  f_helper:
+  - capsule_dtor
+  f_post_call:
+  - call {f_helper_capsule_dtor}({f_var_capsule})
+  intent: mixin
+  name: f_mixin_capsule_dtor
+  owner: library
 f_mixin_char_cdesc_allocate:
   c_helper:
   - copy_string
+  comments:
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_helper:
@@ -8653,6 +9352,21 @@ f_mixin_char_cdesc_allocate:
   intent: mixin
   name: f_mixin_char_cdesc_allocate
   owner: library
+f_mixin_char_cdesc_pointer:
+  comments:
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_helper:
+  - pointer_string
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  intent: mixin
+  name: f_mixin_char_cdesc_pointer
+  owner: library
 f_mixin_function:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
@@ -8661,12 +9375,16 @@ f_mixin_function:
   owner: library
 f_mixin_function-to-subroutine:
   c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
   f_call:
   - call {F_C_call}({F_arg_c_call})
   intent: mixin
   name: f_mixin_function-to-subroutine
   owner: library
 f_mixin_function_c-ptr:
+  comments:
+  - Return a C pointer as a type(C_PTR).
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
   f_call:
@@ -8688,43 +9406,6 @@ f_mixin_function_c-ptr:
   - type(C_PTR) {c_var}
   intent: mixin
   name: f_mixin_function_c-ptr
-  owner: library
-f_mixin_function_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  f_need_wrapper: true
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  i_arg_names:
-  - '{c_var}'
-  i_import:
-  - '{F_array_type}'
-  intent: mixin
-  name: f_mixin_function_cdesc
-  owner: library
-f_mixin_function_native_cdesc_pointer:
-  f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
-  f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {F_result}{f_array_shape})
-  intent: mixin
-  name: f_mixin_function_native_cdesc_pointer
   owner: library
 f_mixin_function_ptr:
   f_arg_decl:
@@ -8782,6 +9463,59 @@ f_mixin_function_string_scalar_cfi_allocatable:
   f_need_wrapper: true
   intent: mixin
   name: f_mixin_function_string_scalar_cfi_allocatable
+  owner: library
+f_mixin_helper_array_string_allocatable:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_helper:
+  - array_string_allocatable
+  - array_string_out_len
+  c_post_call:
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size     = {c_array_size};'
+  - if ({c_char_len} > 0) {{+
+  - '{c_var_cdesc}->elem_len = {c_char_len};'
+  - -}} else {{+
+  - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
+  - -}}
+  c_pre_call:
+  - std::string *{cxx_var};
+  comments:
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  f_helper:
+  - array_string_allocatable
+  f_post_call:
+  - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  intent: mixin
+  name: f_mixin_helper_array_string_allocatable
+  owner: library
+f_mixin_helper_vector_string_allocatable:
+  c_arg_call:
+  - '*{cxx_var}'
+  c_helper:
+  - vector_string_allocatable
+  - vector_string_out_len
+  c_post_call:
+  - if ({c_char_len} > 0) {{+
+  - '{c_var_cdesc}->elem_len = {c_char_len};'
+  - -}} else {{+
+  - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
+  - -}}
+  - '{c_var_cdesc}->size      = {cxx_var}->size();'
+  c_pre_call:
+  - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
+  comments:
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  cxx_local_var: pointer
+  f_helper:
+  - vector_string_allocatable
+  f_post_call:
+  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  intent: mixin
+  name: f_mixin_helper_vector_string_allocatable
   owner: library
 f_mixin_in_2d_array_buf:
   c_arg_decl:
@@ -8931,54 +9665,77 @@ f_mixin_local-logical-var:
   intent: mixin
   name: f_mixin_local-logical-var
   owner: library
-f_mixin_out_array_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
+f_mixin_native_cdesc_allocate:
   c_helper:
-  - array_context
-  c_temps:
-  - cdesc
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
+  - copy_array
+  comments:
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
+  f_arg_decl:
+  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   f_helper:
-  - array_context
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  i_arg_names:
-  - '{c_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+    \ kind=C_SIZE_T))"
   intent: mixin
-  name: f_mixin_out_array_cdesc
+  name: f_mixin_native_cdesc_allocate
+  owner: library
+f_mixin_native_cdesc_pointer:
+  comments:
+  - Set Fortran pointer to native array.
+  f_arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  intent: mixin
+  name: f_mixin_native_cdesc_pointer
   owner: library
 f_mixin_out_array_cdesc_allocatable:
-  c_helper:
-  - vector_string_allocatable
+  comments:
+  - Allocate Fortran array from cdesc.
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_alloc}'
-  f_helper:
-  - vector_string_allocatable
   f_module:
     iso_c_binding:
     - C_LOC
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  f_temps:
-  - alloc
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   intent: mixin
   name: f_mixin_out_array_cdesc_allocatable
   owner: library
+f_mixin_out_native_cdesc_allocate:
+  c_helper:
+  - copy_array
+  comments:
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+  intent: mixin
+  name: f_mixin_out_native_cdesc_allocate
+  owner: library
 f_mixin_out_native_cdesc_pointer:
+  comments:
+  - Set Fortran pointer to native array.
   f_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
   f_module:
@@ -8999,6 +9756,58 @@ f_mixin_out_string_**_cfi:
   intent: mixin
   name: f_mixin_out_string_**_cfi
   owner: library
+f_mixin_pass_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
+  comments:
+  - Pass local capsule as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  f_temps:
+  - capsule
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  i_arg_names:
+  - '{c_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_pass_capsule
+  owner: library
+f_mixin_pass_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  c_temps:
+  - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  i_arg_names:
+  - '{c_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: mixin
+  name: f_mixin_pass_cdesc
+  owner: library
 f_mixin_shadow-arg:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
@@ -9018,7 +9827,6 @@ f_mixin_str_array:
     iso_c_binding:
     - C_LOC
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
@@ -9030,6 +9838,39 @@ f_mixin_str_array:
 f_mixin_unknown:
   intent: mixin
   name: f_mixin_unknown
+  owner: library
+f_mixin_use_capsule:
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_post_call:
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_temps:
+  - capsule
+  comments:
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_helper:
+  - array_context
+  - capsule_dtor
+  f_need_wrapper: true
+  f_post_call:
+  - call {f_helper_capsule_dtor}({f_var_capsule})
+  f_temps:
+  - capsule
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  i_arg_names:
+  - '{c_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  intent: mixin
+  name: f_mixin_use_capsule
   owner: library
 f_out_bool_*:
   f_arg_call:
@@ -9129,11 +9970,7 @@ f_out_native_*&_cdesc:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -9143,6 +9980,10 @@ f_out_native_*&_cdesc:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9154,6 +9995,7 @@ f_out_native_*&_cdesc:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
@@ -9174,11 +10016,7 @@ f_out_native_*&_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -9188,6 +10026,10 @@ f_out_native_*&_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9199,6 +10041,7 @@ f_out_native_*&_cdesc_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
@@ -9229,45 +10072,65 @@ f_out_native_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
-  - copy_array
-  - type_defines
   - array_context
+  - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
+  - Pass local capsule as argument to C wrapper.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
   - copy_array
+  - array_context
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: f_out_native_**_cdesc_allocatable
   owner: library
@@ -9278,11 +10141,7 @@ f_out_native_**_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - array_context
-  - type_defines
-  - array_context
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
@@ -9292,6 +10151,10 @@ f_out_native_**_cdesc_pointer:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9303,6 +10166,7 @@ f_out_native_**_cdesc_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  f_need_wrapper: true
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_temps:
@@ -9410,6 +10274,8 @@ f_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9422,6 +10288,7 @@ f_out_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -9545,7 +10412,9 @@ f_out_string_**_cdesc_allocatable:
   - '&{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - array_string_allocatable
   - array_string_out_len
   c_post_call:
@@ -9556,40 +10425,56 @@ f_out_string_**_cdesc_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = 0;'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Assign to std::string pointer from C++ function.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_alloc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
+  - array_context
   - array_string_allocatable
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  - call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
-  - alloc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: f_out_string_**_cdesc_allocatable
   owner: library
@@ -9606,6 +10491,8 @@ f_out_string_**_cdesc_copy:
   - std::string *{cxx_var};
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9618,8 +10505,8 @@ f_out_string_**_cdesc_copy:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
@@ -9759,8 +10646,6 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -9771,6 +10656,8 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -9788,6 +10675,7 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
@@ -9807,7 +10695,9 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '*{cxx_var}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  - '{C_capsule_data_type} *{c_var_capsule}'
   c_helper:
+  - array_context
   - vector_string_allocatable
   - vector_string_out_len
   c_post_call:
@@ -9817,40 +10707,56 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});'
   - -}}
   - '{c_var_cdesc}->size      = {cxx_var}->size();'
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
   - std::vector<std::string> *{cxx_var} = new std::vector<std::string>;
   c_temps:
   - cdesc
+  - capsule
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Pass local capsule as argument to C wrapper.
+  - Allocate Fortran array from cdesc.
+  - Allocate a vector<string> variable.
+  - Copy into Fortran allocated memory.
+  - Assign to capsule in C wrapper.
+  - Release memory from capsule.
+  cxx_local_var: pointer
   f_arg_call:
   - '{f_var_cdesc}'
+  - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_array_type}) :: {f_var_alloc}'
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_helper:
+  - array_context
+  - array_context
   - vector_string_allocatable
+  - capsule_dtor
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
-  - '{f_var_alloc}%size = {f_var_cdesc}%size;'
-  - '{f_var_alloc}%elem_len = {f_var_cdesc}%elem_len'
-  - allocate({f_char_type}{f_var}({f_var_alloc}%size))
-  - '{f_var_alloc}%cxx%addr = C_LOC({f_var})'
-  - '{f_var_alloc}%base_addr = C_LOC({f_var})'
-  - call {f_helper_vector_string_allocatable}({f_var_alloc}, {f_var_cdesc})
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - cdesc
-  - alloc
+  - capsule
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
   i_arg_names:
   - '{c_var_cdesc}'
+  - '{c_var_capsule}'
   i_import:
   - '{F_array_type}'
+  - '{F_capsule_data_type}'
   intent: out
   name: f_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
@@ -9861,8 +10767,6 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -9873,6 +10777,8 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -9890,6 +10796,7 @@ f_out_vector_&_cdesc_targ_native_scalar:
     iso_c_binding:
     - C_SIZE_T
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
@@ -9916,6 +10823,8 @@ f_out_vector_&_cdesc_targ_string_scalar:
   - '{c_const}std::vector<std::string> {cxx_var};'
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -9928,8 +10837,8 @@ f_out_vector_&_cdesc_targ_string_scalar:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
-  - '{f_var_cdesc}%cxx%addr = C_LOC({f_var})'
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
@@ -9952,8 +10861,6 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   c_helper:
   - copy_array
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -9964,6 +10871,8 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -9981,6 +10890,7 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
+  f_need_wrapper: true
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
@@ -10002,8 +10912,6 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - copy_array
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_var};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
   - '{c_var_cdesc}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
@@ -10014,6 +10922,8 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -10031,6 +10941,7 @@ f_out_vector_*_cdesc_targ_native_scalar:
     iso_c_binding:
     - C_SIZE_T
     - C_LOC
+  f_need_wrapper: true
   f_post_call:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
@@ -10130,6 +11041,8 @@ f_out_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   c_temps:
   - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
@@ -10142,6 +11055,7 @@ f_out_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  f_need_wrapper: true
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {sh_type}'
@@ -10283,6 +11197,8 @@ f_shared_function_string_*_cfi_pointer:
   c_return_type: void
   c_temps:
   - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
   f_arg_call:
   - '{f_var}'
   f_arg_decl:

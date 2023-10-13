@@ -31,7 +31,8 @@ extern "C" {
 const char * STR_getConstStringPtrAlloc(void);
 
 void STR_getConstStringPtrAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc);
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 #ifdef __cplusplus
 }

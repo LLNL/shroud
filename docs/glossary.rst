@@ -23,10 +23,17 @@ C wrapper
 
 capsule
 
-   Holds a pointer to a C++ class instance and some
+   Struct to hold a pointer to a C++ class instance and some
    memory management flags.
    The name was inspired by the Python ``PyCapsule`` type.
 
+cdesc
+
+   Struct used to contain information used to describe memory.
+   The address, type, shape, element size.
+   Similar to ``CFI_desc_t`` from Fortran's
+   *Further Interoperability with C*.
+   
 Fortran wrapper
 
    Fortran functions which call the C wrapper functions.

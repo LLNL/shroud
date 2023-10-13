@@ -30,7 +30,6 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
-    OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
 // Release library allocated memory.

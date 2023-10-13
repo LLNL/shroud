@@ -12,6 +12,10 @@ No such c_helper 'no_c_helper2'
 Node: BadFstatements
 Statement: f_subroutine
 No value for 'no_c_var' in '{no_c_var} = 11;'
+--------------------
+Node: BadFstatements
+Statement: f_subroutine
+expected '}' before end of string in '{bad_format = 12;'
 Wrote wraperror.h
 Wrote wraperror.cpp
 
