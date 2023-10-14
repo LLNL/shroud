@@ -8,11 +8,11 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Cstruct1_cls ****************************************",
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "0 ****************************************",
+                        "<FUNCTION>": "Cstruct1_cls_ctor  0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
                             "declarator": {
@@ -161,7 +161,7 @@
                 "typemap_name": "Cstruct1_cls",
                 "variables": [
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "ifield ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "ifield",
@@ -190,7 +190,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "dfield ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "dfield",
@@ -249,7 +249,7 @@
                 }
             },
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "nested ****************************************",
                 "cxx_header": [],
                 "name": "nested",
                 "options": {},
@@ -258,7 +258,7 @@
                 "typemap_name": "nested",
                 "variables": [
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "index ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "index",
@@ -286,7 +286,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "sublevels ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "sublevels",
@@ -314,7 +314,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "parent ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "parent",
@@ -347,7 +347,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "child ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -435,7 +435,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "passStructByReferenceCls  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -530,7 +530,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "passStructByReferenceInCls  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -629,7 +629,7 @@
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "passStructByReferenceInoutCls  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -709,7 +709,7 @@
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "passStructByReferenceOutCls  4 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -788,7 +788,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "defaultPtrIsNULL  12 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -869,7 +869,7 @@
                 }
             },
             {
-                "<FUNCTION>": "5 ****************************************",
+                "<FUNCTION>": "defaultPtrIsNULL  5 ****************************************",
                 "_default_funcs": [
                     12
                 ],
@@ -1056,7 +1056,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "defaultArgsInOut  13 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -1260,7 +1260,7 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "defaultArgsInOut  6 ****************************************",
                 "_default_funcs": [
                     13
                 ],
@@ -1595,7 +1595,7 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "getGroupName  7 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -1773,7 +1773,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "getGroupName  14 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "16",
@@ -1838,7 +1838,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "getGroupName  16 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -1995,7 +1995,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "getGroupName  15 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "17",
@@ -2060,7 +2060,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "getGroupName  17 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -2217,7 +2217,7 @@
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "nested_get_parent  8 ****************************************",
                 "C_generated_path": [
                     "getter/setter"
                 ],
@@ -2370,7 +2370,7 @@
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "nested_set_parent  9 ****************************************",
                 "C_generated_path": [
                     "getter/setter"
                 ],
@@ -2533,7 +2533,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "nested_get_child  10 ****************************************",
                 "_PTR_F_C_index": "18",
                 "_generated": "getter/setter",
                 "ast": {
@@ -2605,7 +2605,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "nested_get_child  18 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -2778,7 +2778,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "nested_set_child  11 ****************************************",
                 "C_generated_path": [
                     "getter/setter"
                 ],
@@ -2959,10 +2959,10 @@
         "language": "cxx",
         "namespaces": [
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "structns ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "Cstruct1 ****************************************",
                         "cxx_header": [],
                         "name": "Cstruct1",
                         "options": {
@@ -2973,7 +2973,7 @@
                         "typemap_name": "structns::Cstruct1",
                         "variables": [
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "ifield ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "ifield",
@@ -3001,7 +3001,7 @@
                                 }
                             },
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "dfield ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "dfield",
@@ -3060,7 +3060,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "19 ****************************************",
+                        "<FUNCTION>": "passStructByReference  19 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3234,7 +3234,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "20 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceIn  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3409,7 +3409,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "21 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceInout  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3537,7 +3537,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "22 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceOut  22 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

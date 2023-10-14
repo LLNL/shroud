@@ -6,7 +6,7 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "StructAsClass ****************************************",
                 "cxx_header": [],
                 "name": "StructAsClass",
                 "options": {
@@ -56,7 +56,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "UpdateAsFloat  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -157,7 +157,7 @@
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "UpdateAsDouble  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -258,7 +258,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "GetGlobalDouble  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -333,7 +333,7 @@
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "GenericReal  3 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -472,7 +472,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "GenericReal  13 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -538,7 +538,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "GenericReal  14 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -604,7 +604,7 @@
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "GenericReal2  4 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -848,7 +848,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "GenericReal2  15 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -942,7 +942,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "GenericReal2  16 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -1036,7 +1036,7 @@
                 }
             },
             {
-                "<FUNCTION>": "5 ****************************************",
+                "<FUNCTION>": "SumValues  5 ****************************************",
                 "_gen_fortran_generic": true,
                 "_overloaded": true,
                 "ast": {
@@ -1352,7 +1352,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "SumValues  17 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -1550,7 +1550,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "SumValues  18 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -1750,7 +1750,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "SumValues  19 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -1950,7 +1950,7 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "AssignValues  6 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2415,7 +2415,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "AssignValues  20 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -2665,7 +2665,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "AssignValues  21 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -2922,7 +2922,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "AssignValues  22 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -3186,7 +3186,7 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "SavePointer  7 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3493,7 +3493,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "SavePointer  23 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -3701,7 +3701,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "SavePointer  24 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -3909,7 +3909,7 @@
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "SavePointer2  8 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4229,7 +4229,7 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "SavePointer2  25 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -4449,7 +4449,7 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "SavePointer2  26 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -4669,7 +4669,7 @@
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "GetPointer  9 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4874,7 +4874,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  10 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5225,7 +5225,7 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  27 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "31",
@@ -5330,7 +5330,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  31 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -5560,7 +5560,7 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  28 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "32",
@@ -5665,7 +5665,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  32 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -5895,7 +5895,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "CreateStructAsClass  11 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5982,7 +5982,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "UpdateStructAsClass  12 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -6226,7 +6226,7 @@
                 }
             },
             {
-                "<FUNCTION>": "29 ****************************************",
+                "<FUNCTION>": "UpdateStructAsClass  29 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -6409,7 +6409,7 @@
                 }
             },
             {
-                "<FUNCTION>": "30 ****************************************",
+                "<FUNCTION>": "UpdateStructAsClass  30 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"

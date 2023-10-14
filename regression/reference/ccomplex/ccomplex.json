@@ -14,7 +14,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "acceptFloatComplexInoutPtr  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -115,7 +115,7 @@
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "acceptDoubleComplexInoutPtr  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -238,7 +238,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "acceptDoubleComplexOutPtr  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -363,7 +363,7 @@
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "acceptDoubleComplexInoutPtrFlag  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -487,7 +487,7 @@
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "acceptDoubleComplexOutPtrFlag  4 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

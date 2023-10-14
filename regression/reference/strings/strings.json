@@ -18,7 +18,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "init_test  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -65,7 +65,7 @@
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "passChar  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -185,7 +185,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "passCharForce  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -287,7 +287,7 @@
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "returnChar  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -382,7 +382,7 @@
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "passCharPtr  4 ****************************************",
                 "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
@@ -571,7 +571,7 @@
                 }
             },
             {
-                "<FUNCTION>": "49 ****************************************",
+                "<FUNCTION>": "passCharPtr  49 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -741,7 +741,7 @@
                 }
             },
             {
-                "<FUNCTION>": "5 ****************************************",
+                "<FUNCTION>": "passCharPtrInOut  5 ****************************************",
                 "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
@@ -857,7 +857,7 @@
                 }
             },
             {
-                "<FUNCTION>": "50 ****************************************",
+                "<FUNCTION>": "passCharPtrInOut  50 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -978,7 +978,7 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "getCharPtr1  6 ****************************************",
                 "_PTR_F_C_index": "51",
                 "ast": {
                     "const": true,
@@ -1074,7 +1074,7 @@
                 }
             },
             {
-                "<FUNCTION>": "51 ****************************************",
+                "<FUNCTION>": "getCharPtr1  51 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1176,7 +1176,7 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "getCharPtr2  7 ****************************************",
                 "_PTR_F_C_index": "52",
                 "ast": {
                     "const": true,
@@ -1276,7 +1276,7 @@
                 }
             },
             {
-                "<FUNCTION>": "52 ****************************************",
+                "<FUNCTION>": "getCharPtr2  52 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1380,7 +1380,7 @@
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "getCharPtr3  8 ****************************************",
                 "_PTR_F_C_index": "53",
                 "ast": {
                     "const": true,
@@ -1479,7 +1479,7 @@
                 }
             },
             {
-                "<FUNCTION>": "53 ****************************************",
+                "<FUNCTION>": "getCharPtr3  53 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1584,7 +1584,7 @@
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "getCharPtr4  9 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1674,7 +1674,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "getCharPtr5  10 ****************************************",
                 "_PTR_F_C_index": "54",
                 "ast": {
                     "const": true,
@@ -1754,7 +1754,7 @@
                 }
             },
             {
-                "<FUNCTION>": "54 ****************************************",
+                "<FUNCTION>": "getCharPtr5  54 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1858,7 +1858,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "getConstStringResult  11 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "55",
                 "ast": {
@@ -1913,7 +1913,7 @@
                 }
             },
             {
-                "<FUNCTION>": "55 ****************************************",
+                "<FUNCTION>": "getConstStringResult  55 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -2014,7 +2014,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "getConstStringLen  12 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "56",
                 "ast": {
@@ -2072,7 +2072,7 @@
                 }
             },
             {
-                "<FUNCTION>": "56 ****************************************",
+                "<FUNCTION>": "getConstStringLen  56 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -2170,7 +2170,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "getConstStringAsArg  13 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "57",
                 "ast": {
@@ -2228,7 +2228,7 @@
                 }
             },
             {
-                "<FUNCTION>": "57 ****************************************",
+                "<FUNCTION>": "getConstStringAsArg  57 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -2327,7 +2327,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "getConstStringAlloc  14 ****************************************",
                 "_PTR_F_C_index": "58",
                 "ast": {
                     "const": true,
@@ -2378,7 +2378,7 @@
                 }
             },
             {
-                "<FUNCTION>": "58 ****************************************",
+                "<FUNCTION>": "getConstStringAlloc  58 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -2475,7 +2475,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "getConstStringRefPure  15 ****************************************",
                 "_PTR_F_C_index": "59",
                 "ast": {
                     "const": true,
@@ -2572,7 +2572,7 @@
                 }
             },
             {
-                "<FUNCTION>": "59 ****************************************",
+                "<FUNCTION>": "getConstStringRefPure  59 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -2679,7 +2679,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "getConstStringRefLen  16 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "60",
                 "ast": {
@@ -2781,7 +2781,7 @@
                 }
             },
             {
-                "<FUNCTION>": "60 ****************************************",
+                "<FUNCTION>": "getConstStringRefLen  60 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -2885,7 +2885,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "getConstStringRefAsArg  17 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "61",
                 "ast": {
@@ -2985,7 +2985,7 @@
                 }
             },
             {
-                "<FUNCTION>": "61 ****************************************",
+                "<FUNCTION>": "getConstStringRefAsArg  61 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -3090,7 +3090,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "getConstStringRefLenEmpty  18 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "_PTR_F_C_index": "62",
                 "ast": {
@@ -3191,7 +3191,7 @@
                 }
             },
             {
-                "<FUNCTION>": "62 ****************************************",
+                "<FUNCTION>": "getConstStringRefLenEmpty  62 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "C_generated_path": [
                     "arg_to_buffer"
@@ -3294,7 +3294,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "getConstStringRefAlloc  19 ****************************************",
                 "_PTR_F_C_index": "63",
                 "ast": {
                     "const": true,
@@ -3386,7 +3386,7 @@
                 }
             },
             {
-                "<FUNCTION>": "63 ****************************************",
+                "<FUNCTION>": "getConstStringRefAlloc  63 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -3488,7 +3488,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "getConstStringPtrLen  20 ****************************************",
                 "_PTR_F_C_index": "64",
                 "ast": {
                     "const": true,
@@ -3596,7 +3596,7 @@
                 }
             },
             {
-                "<FUNCTION>": "64 ****************************************",
+                "<FUNCTION>": "getConstStringPtrLen  64 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -3706,7 +3706,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  21 ****************************************",
                 "_PTR_F_C_index": "65",
                 "ast": {
                     "const": true,
@@ -3801,7 +3801,7 @@
                 }
             },
             {
-                "<FUNCTION>": "65 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  65 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -3906,7 +3906,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAlloc  22 ****************************************",
                 "_PTR_F_C_index": "66",
                 "ast": {
                     "const": true,
@@ -4004,7 +4004,7 @@
                 }
             },
             {
-                "<FUNCTION>": "66 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAlloc  66 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -4112,7 +4112,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  23 ****************************************",
                 "_PTR_F_C_index": "67",
                 "ast": {
                     "const": true,
@@ -4211,7 +4211,7 @@
                 }
             },
             {
-                "<FUNCTION>": "67 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  67 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -4320,7 +4320,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "getConstStringPtrPointer  24 ****************************************",
                 "_PTR_F_C_index": "68",
                 "ast": {
                     "const": true,
@@ -4399,7 +4399,7 @@
                 }
             },
             {
-                "<FUNCTION>": "68 ****************************************",
+                "<FUNCTION>": "getConstStringPtrPointer  68 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -4502,7 +4502,7 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "acceptStringConstReference  25 ****************************************",
                 "_PTR_F_C_index": "69",
                 "ast": {
                     "declarator": {
@@ -4616,7 +4616,7 @@
                 }
             },
             {
-                "<FUNCTION>": "69 ****************************************",
+                "<FUNCTION>": "acceptStringConstReference  69 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -4731,7 +4731,7 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "acceptStringReferenceOut  26 ****************************************",
                 "_PTR_F_C_index": "70",
                 "ast": {
                     "declarator": {
@@ -4847,7 +4847,7 @@
                 }
             },
             {
-                "<FUNCTION>": "70 ****************************************",
+                "<FUNCTION>": "acceptStringReferenceOut  70 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -4964,7 +4964,7 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "acceptStringReference  27 ****************************************",
                 "_PTR_F_C_index": "71",
                 "ast": {
                     "declarator": {
@@ -5079,7 +5079,7 @@
                 }
             },
             {
-                "<FUNCTION>": "71 ****************************************",
+                "<FUNCTION>": "acceptStringReference  71 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -5196,7 +5196,7 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "acceptStringPointerConst  28 ****************************************",
                 "_PTR_F_C_index": "72",
                 "ast": {
                     "declarator": {
@@ -5309,7 +5309,7 @@
                 }
             },
             {
-                "<FUNCTION>": "72 ****************************************",
+                "<FUNCTION>": "acceptStringPointerConst  72 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -5423,7 +5423,7 @@
                 }
             },
             {
-                "<FUNCTION>": "29 ****************************************",
+                "<FUNCTION>": "acceptStringPointer  29 ****************************************",
                 "_PTR_F_C_index": "73",
                 "ast": {
                     "declarator": {
@@ -5535,7 +5535,7 @@
                 }
             },
             {
-                "<FUNCTION>": "73 ****************************************",
+                "<FUNCTION>": "acceptStringPointer  73 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -5649,7 +5649,7 @@
                 }
             },
             {
-                "<FUNCTION>": "30 ****************************************",
+                "<FUNCTION>": "fetchStringPointer  30 ****************************************",
                 "_PTR_F_C_index": "74",
                 "ast": {
                     "declarator": {
@@ -5765,7 +5765,7 @@
                 }
             },
             {
-                "<FUNCTION>": "74 ****************************************",
+                "<FUNCTION>": "fetchStringPointer  74 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -5882,7 +5882,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "acceptStringPointerLen  31 ****************************************",
                 "_PTR_F_C_index": "75",
                 "ast": {
                     "declarator": {
@@ -6064,7 +6064,7 @@
                 }
             },
             {
-                "<FUNCTION>": "75 ****************************************",
+                "<FUNCTION>": "acceptStringPointerLen  75 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -6230,7 +6230,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "fetchStringPointerLen  32 ****************************************",
                 "_PTR_F_C_index": "76",
                 "ast": {
                     "declarator": {
@@ -6415,7 +6415,7 @@
                 }
             },
             {
-                "<FUNCTION>": "76 ****************************************",
+                "<FUNCTION>": "fetchStringPointerLen  76 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -6583,7 +6583,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "acceptStringInstance  33 ****************************************",
                 "_PTR_F_C_index": "77",
                 "ast": {
                     "declarator": {
@@ -6736,7 +6736,7 @@
                 }
             },
             {
-                "<FUNCTION>": "77 ****************************************",
+                "<FUNCTION>": "acceptStringInstance  77 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -6879,7 +6879,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "returnStrings  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7002,7 +7002,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "fetchArrayStringArg  35 ****************************************",
                 "_PTR_F_C_index": "78",
                 "ast": {
                     "declarator": {
@@ -7164,7 +7164,7 @@
                 }
             },
             {
-                "<FUNCTION>": "78 ****************************************",
+                "<FUNCTION>": "fetchArrayStringArg  78 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -7353,7 +7353,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAlloc  36 ****************************************",
                 "_PTR_F_C_index": "79",
                 "ast": {
                     "declarator": {
@@ -7516,7 +7516,7 @@
                 }
             },
             {
-                "<FUNCTION>": "79 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAlloc  79 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -7714,7 +7714,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAllocLen  37 ****************************************",
                 "_PTR_F_C_index": "80",
                 "ast": {
                     "declarator": {
@@ -7880,7 +7880,7 @@
                 }
             },
             {
-                "<FUNCTION>": "80 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAllocLen  80 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -8080,7 +8080,7 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "returnMany  38 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8136,7 +8136,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "explicit1  39 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8263,7 +8263,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "explicit2  40 ****************************************",
                 "_PTR_F_C_index": "81",
                 "ast": {
                     "declarator": {
@@ -8360,7 +8360,7 @@
                 }
             },
             {
-                "<FUNCTION>": "81 ****************************************",
+                "<FUNCTION>": "explicit2  81 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -8479,7 +8479,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "CpassChar  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8601,7 +8601,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "CreturnChar  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8698,7 +8698,7 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "CpassCharPtr  43 ****************************************",
                 "_PTR_F_C_index": "82",
                 "ast": {
                     "declarator": {
@@ -8850,7 +8850,7 @@
                 }
             },
             {
-                "<FUNCTION>": "82 ****************************************",
+                "<FUNCTION>": "CpassCharPtr  82 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -9033,7 +9033,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "CpassCharPtrBlank  44 ****************************************",
                 "_PTR_F_C_index": "83",
                 "ast": {
                     "declarator": {
@@ -9181,7 +9181,7 @@
                 }
             },
             {
-                "<FUNCTION>": "83 ****************************************",
+                "<FUNCTION>": "CpassCharPtrBlank  83 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -9360,7 +9360,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "PostDeclare  45 ****************************************",
                 "_PTR_F_C_index": "84",
                 "ast": {
                     "declarator": {
@@ -9550,7 +9550,7 @@
                 }
             },
             {
-                "<FUNCTION>": "84 ****************************************",
+                "<FUNCTION>": "PostDeclare  84 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -9722,7 +9722,7 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "CpassCharPtrNotrim  46 ****************************************",
                 "_PTR_F_C_index": "85",
                 "ast": {
                     "declarator": {
@@ -9845,7 +9845,7 @@
                 }
             },
             {
-                "<FUNCTION>": "85 ****************************************",
+                "<FUNCTION>": "CpassCharPtrNotrim  85 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -9995,7 +9995,7 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
+                "<FUNCTION>": "CpassCharPtrCAPI  47 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -10184,7 +10184,7 @@
                 }
             },
             {
-                "<FUNCTION>": "48 ****************************************",
+                "<FUNCTION>": "CpassCharPtrCAPI2  48 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

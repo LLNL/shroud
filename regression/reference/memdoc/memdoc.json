@@ -11,7 +11,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  0 ****************************************",
                 "_PTR_F_C_index": "1",
                 "ast": {
                     "const": true,
@@ -87,7 +87,7 @@
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  1 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],

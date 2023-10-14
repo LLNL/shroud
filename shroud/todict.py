@@ -34,6 +34,53 @@ def add_comment(dct, label, name=None):
     else:
         dct[key] = str(name) + " ****************************************"
 
+######################################################################
+
+class Helpers:
+    def visit_bool(self, node):
+        return str(node)
+
+    def visit_int(self, node):
+        return str(node)
+
+    def visit_str(self, node):
+        return str(node)
+
+    def visit_list(self, node):
+        return [self.visit(n) for n in node]
+
+    def visit_dict(self, node):
+        return {key: "" if value is None else self.visit(value) for (key, value) in node.items()}
+
+    ######################################################################
+
+    def visit_Scope(self, node):
+        d = {}
+        skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
+        for key, value in node.__dict__.items():
+            if not key.startswith(skip):
+                d[key] = value
+        return d
+
+    def add_visit_fields(self, node, d, fields):
+        """Update dict d with fields which must be visited.
+
+        Parameters
+        ----------
+        node : 
+        d : dict
+           Dictionary being filled.
+        fields: list of str or tuple
+            Attribute or node or tuple of attribute, d key.
+        """
+        for key in fields:
+            dkey = self.rename_fields.get(key, key)
+            value = getattr(node, key)
+            if value:
+                d[dkey] = self.visit(value)
+
+######################################################################
+    
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
@@ -302,7 +349,7 @@ class ToDict(visitor.Visitor):
             typemap_name=node.typemap.name,  # Only print name to avoid too much nesting.
             parse_keyword=node.parse_keyword,
         )
-        add_comment(d, "class")
+        add_comment(d, "class", node.name)
         add_non_none_fields(node, d, ["linenumber"])
         add_true_fields(
             node, d, [
@@ -339,7 +386,7 @@ class ToDict(visitor.Visitor):
 
     def visit_FunctionNode(self, node):
         d = dict(ast=self.visit(node.ast), decl=node.decl, name=node.name)
-        add_comment(d, "function", node._function_index)
+        add_comment(d, "function", "{}  {}".format(node.name, node._function_index))
         self.add_visit_fields(
             node,
             d,
@@ -418,7 +465,7 @@ class ToDict(visitor.Visitor):
             ast=self.visit(node.ast),
             decl=node.decl,
         )
-        add_comment(d, "enum")
+        add_comment(d, "enum", node.name)
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, [
             "_fmtmembers",
@@ -431,7 +478,7 @@ class ToDict(visitor.Visitor):
 
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
-        add_comment(d, "namespace")
+        add_comment(d, "namespace", node.name)
         self.add_visit_fields(node, d, [
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
             "user_fmt", "fmtdict", "options", "wrap"])
@@ -442,7 +489,7 @@ class ToDict(visitor.Visitor):
 
     def visit_TypedefNode(self, node):
         d = dict(name=node.name)
-        add_comment(d, "typedef")
+        add_comment(d, "typedef", node.name)
         self.add_visit_fields(node, d, [
             "ast",
             "user_fmt",
@@ -458,7 +505,7 @@ class ToDict(visitor.Visitor):
 
     def visit_VariableNode(self, node):
         d = dict(name=node.name, ast=self.visit(node.ast))
-        add_comment(d, "variable")
+        add_comment(d, "variable", node.name)
         self.add_visit_fields(node, d, [
             "user_fmt",
             "fmtdict",
@@ -685,6 +732,112 @@ def print_node(node):
     """Convert node to original string.
     """
     visitor = PrintNode()
+    return visitor.visit(node)
+
+######################################################################
+
+class PrintFmt(Helpers, visitor.Visitor):
+    """Collect fmtdict members.
+    Used for development of statements.
+    """
+
+    rename_fields = dict()
+    
+    def visit_ClassNode(self, node):
+        d = dict()
+        add_comment(d, "class", node.name)
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "classes",
+                "enums",
+                "functions",
+                "variables",
+#                "user_fields",
+#                "user_fmt",
+                "fmtdict",
+            ],
+        )
+        return d
+
+    def visit_EnumNode(self, node):
+        d = dict()
+        add_comment(d, "enum", node.name)
+        self.add_visit_fields(node, d, [
+#            "_fmtmembers",
+#            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    def visit_FunctionNode(self, node):
+        d = dict()
+        add_comment(d, "function", node.name)
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "_fmtargs",
+                "_fmtresult",
+#                "user_fmt",
+                "fmtdict",
+            ],
+        )
+        return d
+
+    def visit_LibraryNode(self, node):
+        d = dict()
+        self.add_visit_fields( # TEMP  deal with wrap_namespace
+            node, d, [ "fmtdict"])
+        node = node.wrap_namespace   # XXXX TEMP kludge
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "classes",
+                "enums",
+                "functions",
+                "namespaces",
+                "typedefs",
+                "variables",
+#                "user_fmt",
+            ],
+        )
+        return d
+
+    def visit_NamespaceNode(self, node):
+        d = dict()
+        add_comment(d, "namespace", node.name)
+        self.add_visit_fields(node, d, [
+            "classes", "enums", "functions", "namespaces", "typedefs", "variables",
+#            "user_fmt",
+            "fmtdict"])
+        return d
+
+    def visit_TypedefNode(self, node):
+        d = dict()
+        add_comment(d, "typedef", node.name)
+        self.add_visit_fields(node, d, [
+#            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    def visit_VariableNode(self, node):
+        d = dict()
+        add_comment(d, "variable", node.name)
+        self.add_visit_fields(node, d, [
+            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    
+def print_fmt(node):
+    """Dump format strings of nodes.
+    """
+    visitor = PrintFmt()
     return visitor.visit(node)
 
 ######################################################################
