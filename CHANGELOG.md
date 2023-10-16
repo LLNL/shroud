@@ -35,7 +35,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed the *C_capsule_data_type* from *C_array_type*.
   It must now be passed explicitly to the C wrapper.
 - The *C_array_type* changed to ``void *`` instead of union with
-  ``const void *``.
+  ``const void *`` and ``const char *``.
+- Only use the *fmtf* field in ``FunctionNode._fmtresult`` and
+  ``_fmtargs``.  This will eventually allow the fields to be computed
+  once for Fortran, interface and C. *fmtc* will return with true C
+  wrappers.
 
 ### Removed
 - Removed attribute *+cdesc*. Replace by *+api(cdesc)*

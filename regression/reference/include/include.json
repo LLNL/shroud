@@ -56,7 +56,7 @@
                         },
                         "zz_fmtargs": {
                             "comm": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -71,11 +71,6 @@
                                     "cxx_type": "MPI_Comm",
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_unknown_scalar"
-                                },
-                                "fmtf": {
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
@@ -83,7 +78,9 @@
                                     "f_var": "comm",
                                     "fc_var": "comm",
                                     "i_var": "comm",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "stmtc": "f_in_unknown_scalar",
                                     "stmtf": "f_in_unknown_scalar"
                                 }
                             }
@@ -160,7 +157,7 @@
                         },
                         "zz_fmtargs": {
                             "c2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -173,11 +170,6 @@
                                     "cxx_nonconst_ptr": "SHCXX_c2",
                                     "cxx_type": "three::Class1",
                                     "cxx_var": "SHCXX_c2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_inout_shadow_*"
-                                },
-                                "fmtf": {
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "INOUT",
@@ -186,7 +178,9 @@
                                     "f_var": "c2",
                                     "fc_var": "c2",
                                     "i_var": "c2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "stmtc": "f_inout_shadow_*",
                                     "stmtf": "f_inout_shadow_*"
                                 }
                             }
@@ -425,7 +419,7 @@
                                 },
                                 "zz_fmtargs": {
                                     "arg1": {
-                                        "fmtc": {
+                                        "fmtf": {
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -438,11 +432,6 @@
                                             "cxx_nonconst_ptr": "&arg1",
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_INT",
-                                            "stmtc": "f_in_native_scalar"
-                                        },
-                                        "fmtf": {
                                             "f_intent": "IN",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",
@@ -450,7 +439,9 @@
                                             "f_var": "arg1",
                                             "fc_var": "arg1",
                                             "i_var": "arg1",
+                                            "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
+                                            "stmtc": "f_in_native_scalar",
                                             "stmtf": "f_in_native_scalar"
                                         }
                                     }

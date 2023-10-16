@@ -58,7 +58,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -71,11 +71,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_SHORT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
@@ -83,7 +78,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -130,7 +127,7 @@
                     "function_name": "short_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "short",
@@ -141,11 +138,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_SHORT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -153,7 +145,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_SHORT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -219,7 +213,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -232,11 +226,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -244,7 +233,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -291,7 +282,7 @@
                     "function_name": "int_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -302,11 +293,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -314,7 +300,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -380,7 +368,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -393,11 +381,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -405,7 +388,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -452,7 +437,7 @@
                     "function_name": "long_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "long",
@@ -463,11 +448,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -475,7 +455,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -543,7 +525,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -556,11 +538,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
@@ -568,7 +545,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -615,7 +594,7 @@
                     "function_name": "long_long_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "long long",
@@ -626,11 +605,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_LONG_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -638,7 +612,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_LONG_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -708,7 +684,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -721,11 +697,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_SHORT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
@@ -733,7 +704,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -780,7 +753,7 @@
                     "function_name": "short_int_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "short",
@@ -791,11 +764,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_SHORT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -803,7 +771,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_SHORT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -871,7 +841,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -884,11 +854,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -896,7 +861,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -943,7 +910,7 @@
                     "function_name": "long_int_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "long",
@@ -954,11 +921,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -966,7 +928,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1036,7 +1000,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1049,11 +1013,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
@@ -1061,7 +1020,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1108,7 +1069,7 @@
                     "function_name": "long_long_int_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "long long",
@@ -1119,11 +1080,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_LONG_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -1131,7 +1087,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_LONG_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1199,7 +1157,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1212,11 +1170,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1224,7 +1177,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1271,7 +1226,7 @@
                     "function_name": "unsigned_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned int",
@@ -1282,11 +1237,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_INT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1294,7 +1244,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1362,7 +1314,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1375,11 +1327,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned short",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
@@ -1387,7 +1334,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_SHORT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1434,7 +1383,7 @@
                     "function_name": "ushort_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned short",
@@ -1445,11 +1394,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -1457,7 +1401,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_SHORT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1525,7 +1471,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1538,11 +1484,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1550,7 +1491,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1597,7 +1540,7 @@
                     "function_name": "uint_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned int",
@@ -1608,11 +1551,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_INT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1620,7 +1558,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1688,7 +1628,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1701,11 +1641,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -1713,7 +1648,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1760,7 +1697,7 @@
                     "function_name": "ulong_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long",
@@ -1771,11 +1708,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -1783,7 +1715,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -1853,7 +1787,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1866,11 +1800,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG_LONG",
                             "f_type": "integer(C_LONG_LONG)",
@@ -1878,7 +1807,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -1925,7 +1856,7 @@
                     "function_name": "ulong_long_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long long",
@@ -1936,11 +1867,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -1948,7 +1874,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2020,7 +1948,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2033,11 +1961,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -2045,7 +1968,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2092,7 +2017,7 @@
                     "function_name": "ulong_int_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long",
@@ -2103,11 +2028,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "unsigned long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -2115,7 +2035,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2181,7 +2103,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2194,11 +2116,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int8_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT8_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT8_T",
                             "f_type": "integer(C_INT8_T)",
@@ -2206,7 +2123,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT8_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2253,7 +2172,7 @@
                     "function_name": "int8_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int8_t",
@@ -2264,11 +2183,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int8_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT8_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
@@ -2276,7 +2190,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT8_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2342,7 +2258,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2355,11 +2271,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int16_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT16_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT16_T",
                             "f_type": "integer(C_INT16_T)",
@@ -2367,7 +2278,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT16_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2414,7 +2327,7 @@
                     "function_name": "int16_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int16_t",
@@ -2425,11 +2338,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int16_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT16_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
@@ -2437,7 +2345,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT16_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2503,7 +2413,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2516,11 +2426,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int32_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT32_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
@@ -2528,7 +2433,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2575,7 +2482,7 @@
                     "function_name": "int32_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int32_t",
@@ -2586,11 +2493,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int32_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT32_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
@@ -2598,7 +2500,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT32_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2664,7 +2568,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2677,11 +2581,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int64_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT64_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
@@ -2689,7 +2588,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2736,7 +2637,7 @@
                     "function_name": "int64_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int64_t",
@@ -2747,11 +2648,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int64_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT64_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
@@ -2759,7 +2655,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT64_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2825,7 +2723,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2838,11 +2736,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint8_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UINT8_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT8_T",
                             "f_type": "integer(C_INT8_T)",
@@ -2850,7 +2743,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UINT8_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -2897,7 +2792,7 @@
                     "function_name": "uint8_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint8_t",
@@ -2908,11 +2803,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "uint8_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UINT8_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
@@ -2920,7 +2810,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UINT8_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -2986,7 +2878,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2999,11 +2891,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint16_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UINT16_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT16_T",
                             "f_type": "integer(C_INT16_T)",
@@ -3011,7 +2898,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UINT16_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3058,7 +2947,7 @@
                     "function_name": "uint16_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint16_t",
@@ -3069,11 +2958,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "uint16_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UINT16_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
@@ -3081,7 +2965,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UINT16_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -3147,7 +3033,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3160,11 +3046,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint32_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UINT32_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
@@ -3172,7 +3053,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UINT32_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3219,7 +3102,7 @@
                     "function_name": "uint32_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint32_t",
@@ -3230,11 +3113,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "uint32_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UINT32_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
@@ -3242,7 +3120,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UINT32_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -3308,7 +3188,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3321,11 +3201,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint64_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_UINT64_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
@@ -3333,7 +3208,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_UINT64_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3380,7 +3257,7 @@
                     "function_name": "uint64_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint64_t",
@@ -3391,11 +3268,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "uint64_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_UINT64_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
@@ -3403,7 +3275,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_UINT64_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -3469,7 +3343,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3482,11 +3356,6 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "size_t",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_SIZE_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -3494,7 +3363,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3541,7 +3412,7 @@
                     "function_name": "size_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "size_t",
@@ -3552,11 +3423,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "size_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_SIZE_T",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_SIZE_T",
                         "f_type": "integer(C_SIZE_T)",
@@ -3564,7 +3430,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_SIZE_T",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {
@@ -3630,7 +3498,7 @@
                 },
                 "zz_fmtargs": {
                     "arg": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3643,11 +3511,6 @@
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "bool",
                             "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_BOOL",
-                            "stmtc": "f_in_bool_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3656,7 +3519,9 @@
                             "f_var_cxx": "SHT_arg_cxx",
                             "fc_var": "arg",
                             "i_var": "arg",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
+                            "stmtc": "f_in_bool_scalar",
                             "stmtf": "f_in_bool_scalar"
                         },
                         "fmtpy": {
@@ -3705,7 +3570,7 @@
                     "function_name": "bool_func"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -3716,11 +3581,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -3728,7 +3588,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "f_function_bool_scalar",
                         "stmtf": "f_function_bool_scalar"
                     },
                     "fmtpy": {
@@ -3804,7 +3666,7 @@
                 },
                 "zz_fmtargs": {
                     "flag": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3817,11 +3679,6 @@
                             "cxx_nonconst_ptr": "flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3829,7 +3686,9 @@
                             "f_var": "flag",
                             "fc_var": "flag",
                             "i_var": "flag",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         },
                         "fmtpy": {
@@ -3877,7 +3736,7 @@
                     "function_name": "returnBoolAndOthers"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -3888,11 +3747,6 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    },
-                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -3900,7 +3754,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "f_function_bool_scalar",
                         "stmtf": "f_function_bool_scalar"
                     },
                     "fmtpy": {

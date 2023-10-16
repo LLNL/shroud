@@ -62,7 +62,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -75,11 +75,6 @@
                             "cxx_nonconst_ptr": "arg1",
                             "cxx_type": "std::complex<float>",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmtc": "f_inout_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_FLOAT_COMPLEX",
                             "f_type": "complex(C_FLOAT_COMPLEX)",
@@ -87,7 +82,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
+                            "stmtc": "f_inout_native_*",
                             "stmtf": "f_inout_native_*"
                         }
                     }
@@ -162,7 +159,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -175,11 +172,6 @@
                             "cxx_nonconst_ptr": "arg1",
                             "cxx_type": "std::complex<double>",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_inout_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -187,7 +179,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_inout_native_*",
                             "stmtf": "f_inout_native_*"
                         },
                         "fmtpy": {
@@ -288,7 +282,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -301,11 +295,6 @@
                             "cxx_nonconst_ptr": "arg1",
                             "cxx_type": "std::complex<double>",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -313,7 +302,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         },
                         "fmtpy": {
@@ -561,7 +552,7 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -574,11 +565,6 @@
                             "cxx_nonconst_ptr": "arg1",
                             "cxx_type": "std::complex<double>",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -586,7 +572,9 @@
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         },
                         "fmtpy": {
@@ -612,7 +600,7 @@
                         }
                     },
                     "flag": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -625,11 +613,6 @@
                             "cxx_nonconst_ptr": "flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -637,7 +620,9 @@
                             "f_var": "flag",
                             "fc_var": "flag",
                             "i_var": "flag",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         },
                         "fmtpy": {
