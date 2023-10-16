@@ -852,7 +852,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_in_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -862,6 +861,7 @@
                             "fc_var": "in",
                             "i_dimension": "(*)",
                             "i_var": "in",
+                            "i_var_cfi": "SHT_in_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
@@ -1295,7 +1295,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_in_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -1305,6 +1304,7 @@
                             "fc_var": "in",
                             "i_dimension": "(*)",
                             "i_var": "in",
+                            "i_var_cfi": "SHT_in_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
@@ -2270,7 +2270,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_values_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2280,6 +2279,7 @@
                             "fc_var": "values",
                             "i_dimension": "(*)",
                             "i_var": "values",
+                            "i_var_cfi": "SHT_values_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(values)",
@@ -2664,7 +2664,6 @@
                             "stmtc": "f_inout_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_array_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -2674,6 +2673,7 @@
                             "fc_var": "array",
                             "i_dimension": "(*)",
                             "i_var": "array",
+                            "i_var_cfi": "SHT_array_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(array)",
@@ -2965,7 +2965,6 @@
                             "stmtc": "f_inout_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_x_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE",
@@ -2975,6 +2974,7 @@
                             "fc_var": "x",
                             "i_dimension": "(*)",
                             "i_var": "x",
+                            "i_var_cfi": "SHT_x_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(x)",
@@ -3295,7 +3295,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_arr_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -3305,6 +3304,7 @@
                             "fc_var": "arr",
                             "i_dimension": "(*)",
                             "i_var": "arr",
+                            "i_var_cfi": "SHT_arr_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arr)",
@@ -3608,9 +3608,6 @@
                             "stmtc": "f_in_char_**_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_names_cfi",
-                            "c_var_len": "SHT_names_len",
-                            "c_var_size": "SHT_names_size",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -3620,6 +3617,9 @@
                             "fc_var": "names",
                             "i_dimension": "(*)",
                             "i_var": "names",
+                            "i_var_cfi": "SHT_names_cfi",
+                            "i_var_len": "SHT_names_len",
+                            "i_var_size": "SHT_names_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
@@ -4035,20 +4035,20 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_nitems_cdesc",
-                            "c_local_cptr": "SHC_nitems_cptr",
-                            "c_local_err": "SHC_nitems_err",
-                            "c_local_fptr": "SHC_nitems_fptr",
-                            "c_var_cfi": "SHT_nitems_cfi",
-                            "c_var_extents": "SHT_nitems_extents",
-                            "c_var_lower": "SHT_nitems_lower",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nitems",
                             "fc_var": "nitems",
+                            "i_local_cdesc": "SHC_nitems_cdesc",
+                            "i_local_cptr": "SHC_nitems_cptr",
+                            "i_local_err": "SHC_nitems_err",
+                            "i_local_fptr": "SHC_nitems_fptr",
                             "i_var": "nitems",
+                            "i_var_cfi": "SHT_nitems_cfi",
+                            "i_var_extents": "SHT_nitems_extents",
+                            "i_var_lower": "SHT_nitems_lower",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
                         }
@@ -4285,13 +4285,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_count_cdesc",
-                            "c_local_cptr": "SHC_count_cptr",
-                            "c_local_err": "SHC_count_err",
-                            "c_local_fptr": "SHC_count_fptr",
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4300,7 +4293,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "fc_var": "count",
+                            "i_local_cdesc": "SHC_count_cdesc",
+                            "i_local_cptr": "SHC_count_cptr",
+                            "i_local_err": "SHC_count_err",
+                            "i_local_fptr": "SHC_count_fptr",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
@@ -4610,13 +4610,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_count_cdesc",
-                            "c_local_cptr": "SHC_count_cptr",
-                            "c_local_err": "SHC_count_err",
-                            "c_local_fptr": "SHC_count_fptr",
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4625,7 +4618,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "fc_var": "count",
+                            "i_local_cdesc": "SHC_count_cdesc",
+                            "i_local_cptr": "SHC_count_cptr",
+                            "i_local_err": "SHC_count_err",
+                            "i_local_fptr": "SHC_count_fptr",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
@@ -4894,13 +4894,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_count_cdesc",
-                            "c_local_cptr": "SHC_count_cptr",
-                            "c_local_err": "SHC_count_err",
-                            "c_local_fptr": "SHC_count_fptr",
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(getLen())",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4909,7 +4902,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "fc_var": "count",
+                            "i_local_cdesc": "SHC_count_cdesc",
+                            "i_local_cptr": "SHC_count_cptr",
+                            "i_local_err": "SHC_count_err",
+                            "i_local_fptr": "SHC_count_fptr",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
@@ -5124,20 +5124,20 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_nitems_cdesc",
-                            "c_local_cptr": "SHC_nitems_cptr",
-                            "c_local_err": "SHC_nitems_err",
-                            "c_local_fptr": "SHC_nitems_fptr",
-                            "c_var_cfi": "SHT_nitems_cfi",
-                            "c_var_extents": "SHT_nitems_extents",
-                            "c_var_lower": "SHT_nitems_lower",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nitems",
                             "fc_var": "nitems",
+                            "i_local_cdesc": "SHC_nitems_cdesc",
+                            "i_local_cptr": "SHC_nitems_cptr",
+                            "i_local_err": "SHC_nitems_err",
+                            "i_local_fptr": "SHC_nitems_fptr",
                             "i_var": "nitems",
+                            "i_var_cfi": "SHT_nitems_cfi",
+                            "i_var_extents": "SHT_nitems_extents",
+                            "i_var_lower": "SHT_nitems_lower",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
                         }
@@ -5370,13 +5370,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_count_cdesc",
-                            "c_local_cptr": "SHC_count_cptr",
-                            "c_local_err": "SHC_count_err",
-                            "c_local_fptr": "SHC_count_fptr",
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -5385,7 +5378,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "fc_var": "count",
+                            "i_local_cdesc": "SHC_count_cdesc",
+                            "i_local_cptr": "SHC_count_cptr",
+                            "i_local_err": "SHC_count_err",
+                            "i_local_fptr": "SHC_count_fptr",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
@@ -5691,13 +5691,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_count_cdesc",
-                            "c_local_cptr": "SHC_count_cptr",
-                            "c_local_err": "SHC_count_err",
-                            "c_local_fptr": "SHC_count_fptr",
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -5706,7 +5699,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "fc_var": "count",
+                            "i_local_cdesc": "SHC_count_cdesc",
+                            "i_local_cptr": "SHC_count_cptr",
+                            "i_local_err": "SHC_count_err",
+                            "i_local_fptr": "SHC_count_fptr",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_pointer"
@@ -6788,9 +6788,6 @@
                             "stmtc": "f_out_native_**_cfi_allocatable"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_count_cfi",
-                            "c_var_extents": "SHT_count_extents",
-                            "c_var_lower": "SHT_count_lower",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6800,6 +6797,9 @@
                             "f_var": "count",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cfi": "SHT_count_cfi",
+                            "i_var_extents": "SHT_count_extents",
+                            "i_var_lower": "SHT_count_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cfi_allocatable"
@@ -7724,20 +7724,20 @@
                         "stmtc": "f_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
-                        "c_local_cdesc": "SHC_rv_cdesc",
-                        "c_local_cptr": "SHC_rv_cptr",
-                        "c_local_err": "SHC_rv_err",
-                        "c_local_fptr": "SHC_rv_fptr",
-                        "c_var_cfi": "SHT_rv_cfi",
-                        "c_var_extents": "SHT_rv_extents",
-                        "c_var_lower": "SHT_rv_lower",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
+                        "i_local_cdesc": "SHC_rv_cdesc",
+                        "i_local_cptr": "SHC_rv_cptr",
+                        "i_local_err": "SHC_rv_err",
+                        "i_local_fptr": "SHC_rv_fptr",
                         "i_var": "SHT_rv",
+                        "i_var_cfi": "SHT_rv_cfi",
+                        "i_var_extents": "SHT_rv_extents",
+                        "i_var_lower": "SHT_rv_lower",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cfi_pointer"
                     }
@@ -7923,13 +7923,6 @@
                         "stmtc": "f_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
-                        "c_local_cdesc": "SHC_rv_cdesc",
-                        "c_local_cptr": "SHC_rv_cptr",
-                        "c_local_err": "SHC_rv_err",
-                        "c_local_fptr": "SHC_rv_fptr",
-                        "c_var_cfi": "SHT_rv_cfi",
-                        "c_var_extents": "SHT_rv_extents",
-                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -7938,7 +7931,14 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
+                        "i_local_cdesc": "SHC_rv_cdesc",
+                        "i_local_cptr": "SHC_rv_cptr",
+                        "i_local_err": "SHC_rv_err",
+                        "i_local_fptr": "SHC_rv_fptr",
                         "i_var": "SHT_rv",
+                        "i_var_cfi": "SHT_rv_cfi",
+                        "i_var_extents": "SHT_rv_extents",
+                        "i_var_lower": "SHT_rv_lower",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cfi_pointer"
@@ -8100,20 +8100,20 @@
                         "stmtc": "f_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
-                        "c_local_cdesc": "SHC_rv_cdesc",
-                        "c_local_cptr": "SHC_rv_cptr",
-                        "c_local_err": "SHC_rv_err",
-                        "c_local_fptr": "SHC_rv_fptr",
-                        "c_var_cfi": "SHT_rv_cfi",
-                        "c_var_extents": "SHT_rv_extents",
-                        "c_var_lower": "SHT_rv_lower",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
+                        "i_local_cdesc": "SHC_rv_cdesc",
+                        "i_local_cptr": "SHC_rv_cptr",
+                        "i_local_err": "SHC_rv_err",
+                        "i_local_fptr": "SHC_rv_fptr",
                         "i_var": "SHT_rv",
+                        "i_var_cfi": "SHT_rv_cfi",
+                        "i_var_extents": "SHT_rv_extents",
+                        "i_var_lower": "SHT_rv_lower",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cfi_pointer"
                     }
@@ -8301,13 +8301,6 @@
                         "stmtc": "f_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
-                        "c_local_cdesc": "SHC_rv_cdesc",
-                        "c_local_cptr": "SHC_rv_cptr",
-                        "c_local_err": "SHC_rv_err",
-                        "c_local_fptr": "SHC_rv_fptr",
-                        "c_var_cfi": "SHT_rv_cfi",
-                        "c_var_extents": "SHT_rv_extents",
-                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8316,7 +8309,14 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
+                        "i_local_cdesc": "SHC_rv_cdesc",
+                        "i_local_cptr": "SHC_rv_cptr",
+                        "i_local_err": "SHC_rv_err",
+                        "i_local_fptr": "SHC_rv_fptr",
                         "i_var": "SHT_rv",
+                        "i_var_cfi": "SHT_rv_cfi",
+                        "i_var_extents": "SHT_rv_extents",
+                        "i_var_lower": "SHT_rv_lower",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cfi_pointer"
@@ -8711,7 +8711,6 @@
                             "stmtc": "f_in_char_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_name_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -8719,6 +8718,7 @@
                             "f_var": "name",
                             "fc_var": "name",
                             "i_var": "name",
+                            "i_var_cfi": "SHT_name_cfi",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_cfi"
                         }
@@ -9046,9 +9046,6 @@
                         "stmtc": "f_function_native_*_cfi_allocatable"
                     },
                     "fmtf": {
-                        "c_var_cfi": "SHT_rv_cfi",
-                        "c_var_extents": "SHT_rv_extents",
-                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -9058,6 +9055,9 @@
                         "f_var": "SHT_rv",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cfi": "SHT_rv_cfi",
+                        "i_var_extents": "SHT_rv_extents",
+                        "i_var_lower": "SHT_rv_lower",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cfi_allocatable"

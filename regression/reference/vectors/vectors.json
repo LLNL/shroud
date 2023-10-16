@@ -168,7 +168,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
@@ -179,6 +178,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_size": "SHT_arg_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -401,7 +401,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -415,6 +414,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -668,7 +668,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -682,6 +681,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -914,7 +914,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -928,6 +927,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -1129,7 +1129,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -1144,6 +1143,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -1345,8 +1345,6 @@
                             "stmtc": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
-                            "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -1362,6 +1360,8 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
+                            "i_var_size": "SHT_arg_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -1549,8 +1549,6 @@
                             "stmtc": "f_inout_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
-                            "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -1565,6 +1563,8 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
+                            "i_var_size": "SHT_arg_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
@@ -1756,7 +1756,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "double",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -1770,6 +1769,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
@@ -2007,8 +2007,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_native_*"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
-                            "c_var_size": "SHT_arg1_size",
                             "cxx_T": "const double * ",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
@@ -2019,6 +2017,8 @@
                             "fc_var": "arg1",
                             "i_dimension": "(*)",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
+                            "i_var_size": "SHT_arg1_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg1)",
@@ -2275,11 +2275,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_string_scalar"
                         },
                         "fmtf": {
-                            "c_local_i": "SHC_arg_i",
-                            "c_local_n": "SHC_arg_n",
-                            "c_local_s": "SHC_arg_s",
-                            "c_var_len": "SHT_arg_len",
-                            "c_var_size": "SHT_arg_size",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
@@ -2289,7 +2284,12 @@
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_i": "SHC_arg_i",
+                            "i_local_n": "SHC_arg_n",
+                            "i_local_s": "SHC_arg_s",
                             "i_var": "arg",
+                            "i_var_len": "SHT_arg_len",
+                            "i_var_size": "SHT_arg_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
@@ -2514,7 +2514,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_string_scalar"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -2528,6 +2527,7 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
@@ -2722,8 +2722,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
-                            "c_var_capsule": "SHT_arg_capsule",
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -2741,6 +2739,8 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_capsule": "SHT_arg_capsule",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
@@ -2938,8 +2938,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
-                            "c_var_capsule": "SHT_arg_capsule",
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -2957,6 +2955,8 @@
                             "fc_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
+                            "i_var_capsule": "SHT_arg_capsule",
+                            "i_var_cdesc": "SHT_arg_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
@@ -3260,7 +3260,6 @@
                         "stmtc": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_T": "int",
                         "f_assumed_shape": "(:)",
                         "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
@@ -3274,6 +3273,7 @@
                         "fc_var": "SHT_rv",
                         "i_dimension": "(*)",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "size": "size(SHT_rv)",

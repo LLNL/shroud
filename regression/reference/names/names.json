@@ -589,8 +589,6 @@
                             "stmtc": "f_inout_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name_len",
-                            "c_var_str": "SHT_name_str",
                             "f_char_len": "len=worklen",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
@@ -600,6 +598,8 @@
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
                             "i_var": "name",
+                            "i_var_len": "SHT_name_len",
+                            "i_var_str": "SHT_name_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -1197,7 +1197,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_rv_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1206,6 +1205,7 @@
                             "f_var_len": "SHT_rv_len",
                             "fc_var": "rv",
                             "i_var": "rv",
+                            "i_var_len": "SHT_rv_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -1626,7 +1626,6 @@
                             "stmtc": "f_inout_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1635,6 +1634,7 @@
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
                             "i_var": "name",
+                            "i_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }

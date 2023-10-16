@@ -1006,7 +1006,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1020,6 +1019,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer"
@@ -1361,8 +1361,6 @@
                         "stmtc": "f_function_native_*_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1380,6 +1378,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_allocatable"
@@ -1715,7 +1715,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1729,6 +1728,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer"
@@ -2211,8 +2211,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer_caller"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -2227,6 +2225,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer_caller"
@@ -2750,8 +2750,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer_caller"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -2766,6 +2764,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer_caller"

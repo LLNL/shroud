@@ -1974,7 +1974,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1984,6 +1983,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }
@@ -2195,7 +2195,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2205,6 +2204,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }
@@ -2346,7 +2346,6 @@
                         "stmtc": "f_getter_struct_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_derived_type": "nested",
                         "f_helper_array_context": "CXX_SHROUD_array",
                         "f_intent": "OUT",
@@ -2357,6 +2356,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_getter_struct_*_cdesc_pointer"
                     }
@@ -2748,7 +2748,6 @@
                         "stmtc": "f_getter_struct_**_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -2763,6 +2762,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmtf": "f_getter_struct_**_cdesc_pointer"

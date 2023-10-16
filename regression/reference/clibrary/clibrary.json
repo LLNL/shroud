@@ -1401,7 +1401,6 @@
                         "stmtc": "f_function_char_*_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1411,6 +1410,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_buf_copy"
                     }
@@ -1736,8 +1736,6 @@
                             "stmtc": "f_inout_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_s_len",
-                            "c_var_str": "SHT_s_str",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1746,6 +1744,8 @@
                             "f_var_len": "SHT_s_len",
                             "fc_var": "s",
                             "i_var": "s",
+                            "i_var_len": "SHT_s_len",
+                            "i_var_str": "SHT_s_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -1976,7 +1976,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1985,6 +1984,7 @@
                             "f_var_len": "SHT_name1_len",
                             "fc_var": "name1",
                             "i_var": "name1",
+                            "i_var_len": "SHT_name1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2304,7 +2304,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2313,6 +2312,7 @@
                             "f_var_len": "SHT_name1_len",
                             "fc_var": "name1",
                             "i_var": "name1",
+                            "i_var_len": "SHT_name1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2338,7 +2338,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name2_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2347,6 +2346,7 @@
                             "f_var_len": "SHT_name2_len",
                             "fc_var": "name2",
                             "i_var": "name2",
+                            "i_var_len": "SHT_name2_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -2685,7 +2685,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_text_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2694,6 +2693,7 @@
                             "f_var_len": "SHT_text_len",
                             "fc_var": "text",
                             "i_var": "text",
+                            "i_var_len": "SHT_text_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -3904,7 +3904,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -3913,6 +3912,7 @@
                             "f_var_len": "SHT_outbuf_len",
                             "fc_var": "outbuf",
                             "i_var": "outbuf",
+                            "i_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -4649,7 +4649,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4658,6 +4657,7 @@
                             "f_var_len": "SHT_outbuf_len",
                             "fc_var": "outbuf",
                             "i_var": "outbuf",
+                            "i_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -5738,7 +5738,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5747,6 +5746,7 @@
                             "f_var_len": "SHT_outbuf_len",
                             "fc_var": "outbuf",
                             "i_var": "outbuf",
+                            "i_var_len": "SHT_outbuf_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }

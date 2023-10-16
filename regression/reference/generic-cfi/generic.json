@@ -1339,7 +1339,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_values_cfi",
                             "f_assumed_shape": "(..)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1349,6 +1348,7 @@
                             "fc_var": "values",
                             "i_dimension": "(..)",
                             "i_var": "values",
+                            "i_var_cfi": "SHT_values_cfi",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_*_cfi"
                         }
@@ -2447,7 +2447,6 @@
                             "stmtc": "f_inout_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_to_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -2457,6 +2456,7 @@
                             "fc_var": "to",
                             "i_dimension": "(*)",
                             "i_var": "to",
+                            "i_var_cfi": "SHT_to_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
@@ -2735,7 +2735,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_from_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2745,6 +2744,7 @@
                             "fc_var": "from",
                             "i_dimension": "(*)",
                             "i_var": "from",
+                            "i_var_cfi": "SHT_from_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(from)",
@@ -2831,7 +2831,6 @@
                             "stmtc": "f_inout_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_to_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -2841,6 +2840,7 @@
                             "fc_var": "to",
                             "i_dimension": "(*)",
                             "i_var": "to",
+                            "i_var_cfi": "SHT_to_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
@@ -3378,7 +3378,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_addr_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -3388,6 +3387,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -3681,7 +3681,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_addr_cfi",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -3691,6 +3690,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -4325,7 +4325,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_addr_cfi",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -4335,6 +4334,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -4652,7 +4652,6 @@
                             "stmtc": "f_in_native_*_cfi"
                         },
                         "fmtf": {
-                            "c_var_cfi": "SHT_addr_cfi",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -4662,6 +4661,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -5544,13 +5544,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_addr_cdesc",
-                            "c_local_cptr": "SHC_addr_cptr",
-                            "c_local_err": "SHC_addr_err",
-                            "c_local_fptr": "SHC_addr_fptr",
-                            "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_FLOAT",
@@ -5559,7 +5552,14 @@
                             "f_var": "addr",
                             "fc_var": "addr",
                             "i_dimension": "(*)",
+                            "i_local_cdesc": "SHC_addr_cdesc",
+                            "i_local_cptr": "SHC_addr_cptr",
+                            "i_local_err": "SHC_addr_err",
+                            "i_local_fptr": "SHC_addr_fptr",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
+                            "i_var_extents": "SHT_addr_extents",
+                            "i_var_lower": "SHT_addr_lower",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -5887,13 +5887,6 @@
                             "stmtc": "f_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
-                            "c_local_cdesc": "SHC_addr_cdesc",
-                            "c_local_cptr": "SHC_addr_cptr",
-                            "c_local_err": "SHC_addr_err",
-                            "c_local_fptr": "SHC_addr_fptr",
-                            "c_var_cfi": "SHT_addr_cfi",
-                            "c_var_extents": "SHT_addr_extents",
-                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "OUT",
                             "f_kind": "C_FLOAT",
@@ -5902,7 +5895,14 @@
                             "f_var": "addr",
                             "fc_var": "addr",
                             "i_dimension": "(*)",
+                            "i_local_cdesc": "SHC_addr_cdesc",
+                            "i_local_cptr": "SHC_addr_cptr",
+                            "i_local_err": "SHC_addr_err",
+                            "i_local_fptr": "SHC_addr_fptr",
                             "i_var": "addr",
+                            "i_var_cfi": "SHT_addr_cfi",
+                            "i_var_extents": "SHT_addr_extents",
+                            "i_var_lower": "SHT_addr_lower",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",

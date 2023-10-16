@@ -263,7 +263,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -273,6 +272,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }

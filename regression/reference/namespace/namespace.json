@@ -190,8 +190,6 @@
                         "stmtc": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "NS_SHROUD_array",
                         "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "NS_SHROUD_copy_string",
@@ -204,6 +202,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_cdesc_allocatable"
                     }

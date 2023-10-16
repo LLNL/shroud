@@ -380,6 +380,9 @@ For example, argument *foo* creates *SHT_foo_len*.
 
 The format field is named *c_var_{name}*.
 
+This field is also used to create names for the Fortran interface.
+In this case the format field is named *i_var_{name}*.
+
 c_local
 ^^^^^^^
 

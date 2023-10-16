@@ -2489,8 +2489,6 @@
                             "stmtc": "f_in_char_**_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_names_len",
-                            "c_var_size": "SHT_names_size",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -2500,6 +2498,8 @@
                             "fc_var": "names",
                             "i_dimension": "(*)",
                             "i_var": "names",
+                            "i_var_len": "SHT_names_len",
+                            "i_var_size": "SHT_names_size",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
@@ -2910,7 +2910,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_nitems_cdesc",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -2920,6 +2919,7 @@
                             "f_var_cdesc": "SHT_nitems_cdesc",
                             "fc_var": "nitems",
                             "i_var": "nitems",
+                            "i_var_cdesc": "SHT_nitems_cdesc",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
                         }
@@ -3149,7 +3149,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -3163,6 +3162,7 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
@@ -3465,7 +3465,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -3479,6 +3478,7 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
@@ -3740,7 +3740,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -3754,6 +3753,7 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
@@ -3963,7 +3963,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_nitems_cdesc",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -3973,6 +3972,7 @@
                             "f_var_cdesc": "SHT_nitems_cdesc",
                             "fc_var": "nitems",
                             "i_var": "nitems",
+                            "i_var_cdesc": "SHT_nitems_cdesc",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
                         }
@@ -4198,7 +4198,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -4212,6 +4211,7 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
@@ -4510,7 +4510,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -4524,6 +4523,7 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_pointer"
@@ -5604,8 +5604,6 @@
                             "stmtc": "f_out_native_**_cdesc_allocatable"
                         },
                         "fmtf": {
-                            "c_var_capsule": "SHT_count_capsule",
-                            "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -5623,6 +5621,8 @@
                             "f_var_cdesc": "SHT_count_cdesc",
                             "fc_var": "count",
                             "i_var": "count",
+                            "i_var_capsule": "SHT_count_capsule",
+                            "i_var_cdesc": "SHT_count_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_**_cdesc_allocatable"
@@ -6514,7 +6514,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -6528,6 +6527,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer"
@@ -6791,7 +6791,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -6805,6 +6804,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_pointer"
@@ -7392,8 +7392,6 @@
                         "stmtc": "f_function_native_*_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -7411,6 +7409,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_*_cdesc_allocatable"

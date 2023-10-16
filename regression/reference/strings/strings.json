@@ -671,7 +671,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_dest_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -680,6 +679,7 @@
                             "f_var_len": "SHT_dest_len",
                             "fc_var": "dest",
                             "i_var": "dest",
+                            "i_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -935,8 +935,6 @@
                             "stmtc": "f_inout_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_s_len",
-                            "c_var_str": "SHT_s_str",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -945,6 +943,8 @@
                             "f_var_len": "SHT_s_len",
                             "fc_var": "s",
                             "i_var": "s",
+                            "i_var_len": "SHT_s_len",
+                            "i_var_str": "SHT_s_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -1153,7 +1153,6 @@
                         "stmtc": "f_function_char_*_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
                         "f_intent": "OUT",
@@ -1164,6 +1163,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_cdesc_allocatable"
                     }
@@ -1356,7 +1356,6 @@
                         "stmtc": "f_function_char_*_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1366,6 +1365,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_buf_copy"
                     }
@@ -1555,6 +1555,7 @@
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_char_*_buf_arg"
@@ -1570,6 +1571,7 @@
                         "f_var_len": "noutput",
                         "fc_var": "SHT_rv",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_buf_arg"
                     }
@@ -1830,7 +1832,6 @@
                         "stmtc": "f_function_char_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_pointer_string": "STR_SHROUD_pointer_string",
                         "f_intent": "OUT",
@@ -1841,6 +1842,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_char_*_cdesc_pointer"
                     }
@@ -1982,8 +1984,6 @@
                         "stmtc": "f_function_string_scalar_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -1996,6 +1996,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_cdesc_allocatable"
                     }
@@ -2141,7 +2143,6 @@
                         "stmtc": "f_function_string_scalar_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2151,6 +2152,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_buf_copy"
                     }
@@ -2294,6 +2296,7 @@
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_scalar_buf_arg"
@@ -2309,6 +2312,7 @@
                         "f_var_len": "noutput",
                         "fc_var": "SHT_rv",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_buf_arg"
                     }
@@ -2442,8 +2446,6 @@
                         "stmtc": "f_function_string_scalar_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -2456,6 +2458,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_scalar_cdesc_allocatable"
                     }
@@ -2644,8 +2648,6 @@
                         "stmtc": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -2658,6 +2660,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_cdesc_allocatable"
                     }
@@ -2852,7 +2856,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2862,6 +2865,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }
@@ -3052,6 +3056,7 @@
                         "f_var": "output",
                         "f_var_len": "noutput",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtc": "f_function_string_&_buf_arg"
@@ -3067,6 +3072,7 @@
                         "f_var_len": "noutput",
                         "fc_var": "SHT_rv",
                         "i_var": "output",
+                        "i_var_len": "noutput",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_arg"
                     }
@@ -3259,7 +3265,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3269,6 +3274,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_buf_copy"
                     }
@@ -3447,8 +3453,6 @@
                         "stmtc": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3461,6 +3465,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_&_cdesc_allocatable"
                     }
@@ -3667,7 +3673,6 @@
                         "stmtc": "f_function_string_*_buf_copy"
                     },
                     "fmtf": {
-                        "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3677,6 +3682,7 @@
                         "f_var_len": "SHT_rv_len",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_len": "SHT_rv_len",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_*_buf_copy"
                     }
@@ -3861,8 +3867,6 @@
                         "stmtc": "f_function_string_*_cdesc_allocatable_library"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3875,6 +3879,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_*_cdesc_allocatable_library"
                     }
@@ -4065,8 +4071,6 @@
                         "stmtc": "f_function_string_*_cdesc_allocatable_caller"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4079,6 +4083,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_*_cdesc_allocatable_caller"
                     }
@@ -4271,8 +4277,6 @@
                         "stmtc": "f_function_string_*_cdesc_allocatable_caller"
                     },
                     "fmtf": {
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4285,6 +4289,8 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_*_cdesc_allocatable_caller"
                     }
@@ -4454,7 +4460,6 @@
                         "stmtc": "f_function_string_*_cdesc_pointer_library"
                     },
                     "fmtf": {
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_pointer_string": "STR_SHROUD_pointer_string",
                         "f_intent": "OUT",
@@ -4465,6 +4470,7 @@
                         "f_var_cdesc": "SHT_rv_cdesc",
                         "fc_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmtf": "f_function_string_*_cdesc_pointer_library"
                     }
@@ -4661,7 +4667,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4670,6 +4675,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -4893,7 +4899,6 @@
                             "stmtc": "f_out_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4902,6 +4907,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_&_buf"
                         }
@@ -5124,7 +5130,6 @@
                             "stmtc": "f_inout_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5133,6 +5138,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }
@@ -5350,7 +5356,6 @@
                             "stmtc": "f_in_string_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5359,6 +5364,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_*_buf"
                         }
@@ -5575,7 +5581,6 @@
                             "stmtc": "f_inout_string_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5584,6 +5589,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_*_buf"
                         }
@@ -5807,7 +5813,6 @@
                             "stmtc": "f_out_string_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5816,6 +5821,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_*_buf"
                         }
@@ -6123,7 +6129,6 @@
                             "stmtc": "f_inout_string_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6132,6 +6137,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_*_buf"
                         }
@@ -6474,7 +6480,6 @@
                             "stmtc": "f_out_string_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6483,6 +6488,7 @@
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_*_buf"
                         }
@@ -6767,8 +6773,6 @@
                             "stmtc": "f_in_string_scalar_buf"
                         },
                         "fmtf": {
-                            "c_local_trim": "SHC_arg1_trim",
-                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6776,7 +6780,9 @@
                             "f_var": "arg1",
                             "f_var_len": "SHT_arg1_len",
                             "fc_var": "arg1",
+                            "i_local_trim": "SHC_arg1_trim",
                             "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_scalar_buf"
                         }
@@ -7263,7 +7269,6 @@
                             "stmtc": "f_out_string_**_cdesc_copy"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_strs_cdesc",
                             "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -7277,6 +7282,7 @@
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "fc_var": "strs",
                             "i_var": "strs",
+                            "i_var_cdesc": "SHT_strs_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_**_cdesc_copy"
@@ -7617,8 +7623,6 @@
                             "stmtc": "f_out_string_**_cdesc_allocatable"
                         },
                         "fmtf": {
-                            "c_var_capsule": "SHT_strs_capsule",
-                            "c_var_cdesc": "SHT_strs_cdesc",
                             "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -7636,6 +7640,8 @@
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "fc_var": "strs",
                             "i_var": "strs",
+                            "i_var_capsule": "SHT_strs_capsule",
+                            "i_var_cdesc": "SHT_strs_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_**_cdesc_allocatable"
@@ -7981,8 +7987,6 @@
                             "stmtc": "f_out_string_**_cdesc_allocatable"
                         },
                         "fmtf": {
-                            "c_var_capsule": "SHT_strs_capsule",
-                            "c_var_cdesc": "SHT_strs_cdesc",
                             "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
@@ -8000,6 +8004,8 @@
                             "f_var_cdesc": "SHT_strs_cdesc",
                             "fc_var": "strs",
                             "i_var": "strs",
+                            "i_var_capsule": "SHT_strs_capsule",
+                            "i_var_cdesc": "SHT_strs_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_string_**_cdesc_allocatable"
@@ -8389,7 +8395,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name_len",
                             "f_char_len": "len=AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -8399,6 +8404,7 @@
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
                             "i_var": "name",
+                            "i_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -8903,7 +8909,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_dest_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -8912,6 +8917,7 @@
                             "f_var_len": "SHT_dest_len",
                             "fc_var": "dest",
                             "i_var": "dest",
+                            "i_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -8940,8 +8946,6 @@
                             "stmtc": "f_in_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_src_len",
-                            "c_var_str": "SHT_src_str",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -8950,6 +8954,8 @@
                             "f_var_len": "SHT_src_len",
                             "fc_var": "src",
                             "i_var": "src",
+                            "i_var_len": "SHT_src_len",
+                            "i_var_str": "SHT_src_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_buf"
                         }
@@ -9228,7 +9234,6 @@
                             "stmtc": "f_out_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_dest_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -9237,6 +9242,7 @@
                             "f_var_len": "SHT_dest_len",
                             "fc_var": "dest",
                             "i_var": "dest",
+                            "i_var_len": "SHT_dest_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_out_char_*_buf"
                         }
@@ -9265,8 +9271,6 @@
                             "stmtc": "f_in_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_src_len",
-                            "c_var_str": "SHT_src_str",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -9275,6 +9279,8 @@
                             "f_var_len": "SHT_src_len",
                             "fc_var": "src",
                             "i_var": "src",
+                            "i_var_len": "SHT_src_len",
+                            "i_var_str": "SHT_src_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_buf"
                         }
@@ -9626,7 +9632,6 @@
                             "stmtc": "f_inout_string_&_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_name_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -9635,6 +9640,7 @@
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
                             "i_var": "name",
+                            "i_var_len": "SHT_name_len",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }
@@ -9866,8 +9872,6 @@
                             "stmtc": "f_in_char_*_buf"
                         },
                         "fmtf": {
-                            "c_var_len": "SHT_src_len",
-                            "c_var_str": "SHT_src_str",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -9876,6 +9880,8 @@
                             "f_var_len": "SHT_src_len",
                             "fc_var": "src",
                             "i_var": "src",
+                            "i_var_len": "SHT_src_len",
+                            "i_var_str": "SHT_src_str",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_char_*_buf"
                         }

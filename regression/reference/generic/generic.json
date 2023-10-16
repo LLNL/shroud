@@ -5434,7 +5434,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_addr_cdesc",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_addr_cdesc%shape(1:1) = shape(addr)",
                             "f_helper_array_context": "GEN_SHROUD_array",
@@ -5447,6 +5446,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cdesc": "SHT_addr_cdesc",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
@@ -5769,7 +5769,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "c_var_cdesc": "SHT_addr_cdesc",
                             "f_assumed_shape": "(:,:)",
                             "f_cdesc_shape": "\nSHT_addr_cdesc%shape(1:2) = shape(addr)",
                             "f_helper_array_context": "GEN_SHROUD_array",
@@ -5782,6 +5781,7 @@
                             "fc_var": "addr",
                             "i_dimension": "(*)",
                             "i_var": "addr",
+                            "i_var_cdesc": "SHT_addr_cdesc",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",

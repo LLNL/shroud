@@ -1241,7 +1241,7 @@ rv = .false.
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
-        self.name_temp_vars_c(fmt_func.C_result, result_stmt, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "c", "i")
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         if result_stmt.c_return_type == "void":
@@ -1297,7 +1297,7 @@ rv = .false.
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
-            self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
+            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
