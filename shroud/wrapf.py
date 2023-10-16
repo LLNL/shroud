@@ -42,9 +42,9 @@ fortran_ranks = [
 ]
 
 default_arg_template = """if (present({f_var})) then
-+{c_var} = {f_var}-
++{fc_var} = {f_var}-
 else
-+{c_var} = {default_value}-
++{fc_var} = {default_value}-
 endif"""
 
 # force : boolean
@@ -1191,7 +1191,7 @@ rv = .false.
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
-            fmt_result.c_var = fmt_func.F_result
+            fmt_result.i_var = fmt_func.F_result
             fmt_result.f_var = fmt_func.F_result
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
@@ -1274,7 +1274,7 @@ rv = .false.
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
-            fmt_arg.c_var = arg_name
+            fmt_arg.i_var = arg_name
             fmt_arg.f_var = arg_name
             fmt_arg.F_C_var = arg_name
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
@@ -1449,7 +1449,7 @@ rv = .false.
             append_format(arg_c_call, arg_typemap.f_cast, fmt)
             self.update_f_module(modules, arg_typemap.f_module, fmt)
         else:
-            arg_c_call.append(fmt.c_var)
+            arg_c_call.append(fmt.fc_var)
         return need_wrapper
 
     def add_code_from_statements(
@@ -1701,7 +1701,7 @@ rv = .false.
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
-            fmt_result.c_var = fmt_func.F_result
+            fmt_result.fc_var = fmt_func.F_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.declarator.get_indirect_stmt()
@@ -1769,7 +1769,7 @@ rv = .false.
         # Fortran and C arguments may have different types (fortran generic)
         #
         # f_var - argument to Fortran function (wrapper function)
-        # c_var - argument to C function (wrapped function)
+        # fc_var - argument to C function (wrapped function)
         #
         # May be one more argument to C function than Fortran function
         # (the result)
@@ -1782,7 +1782,7 @@ rv = .false.
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
-            fmt_arg.c_var = arg_name
+            fmt_arg.fc_var = arg_name
 
             c_declarator = c_arg.declarator
             c_attrs = c_declarator.attrs
@@ -1861,11 +1861,11 @@ rv = .false.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
                     implied, node, f_arg)
                 if intermediate:
-                    fmt_arg.c_var = "SH_" + fmt_arg.f_var
+                    fmt_arg.fc_var = "SH_" + fmt_arg.f_var
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(
-                        name=fmt_arg.c_var, local=True, bindc=True))
-                    append_format(pre_call, "{c_var} = {pre_call_intent}", fmt_arg)
-                    arg_c_call.append(fmt_arg.c_var)
+                        name=fmt_arg.fc_var, local=True, bindc=True))
+                    append_format(pre_call, "{fc_var} = {pre_call_intent}", fmt_arg)
+                    arg_c_call.append(fmt_arg.fc_var)
                 else:
                     arg_c_call.append(fmt_arg.pre_call_intent)
                 for helper in f_helper.split():
@@ -1911,13 +1911,13 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(c_arg)
 
             # Create a local variable for C if necessary.
-            # The local variable c_var is used in fc_statements. 
+            # The local variable fc_var is used in fc_statements. 
             if optattr:
-                fmt_arg.c_var = "SH_" + fmt_arg.f_var
+                fmt_arg.fc_var = "SH_" + fmt_arg.f_var
                 declare.append(
                     "{} {}".format(
                         arg_typemap.i_type or arg_typemap.f_type,
-                        fmt_arg.c_var,
+                        fmt_arg.fc_var,
                     )
                 )
                 # XXX - Reusing c_local_var logic, would have issues with bool

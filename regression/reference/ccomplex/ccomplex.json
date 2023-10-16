@@ -81,12 +81,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_FLOAT_COMPLEX",
                             "f_type": "complex(C_FLOAT_COMPLEX)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "stmtf": "f_inout_native_*"
                         }
@@ -181,12 +182,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_inout_native_*"
                         },
@@ -307,12 +309,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_out_native_*"
                         },
@@ -580,12 +583,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmtf": "f_out_native_*"
                         },
@@ -631,12 +635,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "flag",
-                            "c_var": "flag",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "flag",
+                            "fc_var": "flag",
+                            "i_var": "flag",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
                         },

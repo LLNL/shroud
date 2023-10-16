@@ -77,12 +77,13 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "comm",
-                                    "c_var": "comm",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "comm",
+                                    "fc_var": "comm",
+                                    "i_var": "comm",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_unknown_scalar"
                                 }
@@ -179,13 +180,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "c2",
-                                    "c_var": "c2",
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "INOUT",
                                     "f_type": "type(class1)",
                                     "f_type_module": "library_three_mod",
                                     "f_var": "c2",
+                                    "fc_var": "c2",
+                                    "i_var": "c2",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_inout_shadow_*"
                                 }
@@ -444,12 +446,13 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "arg1",
-                                            "c_var": "arg1",
                                             "f_intent": "IN",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",
                                             "f_type_module": "library_mod",
                                             "f_var": "arg1",
+                                            "fc_var": "arg1",
+                                            "i_var": "arg1",
                                             "sh_type": "SH_TYPE_INT",
                                             "stmtf": "f_in_native_scalar"
                                         }

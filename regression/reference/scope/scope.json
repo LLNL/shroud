@@ -656,13 +656,14 @@
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
-                            "c_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "IN",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
                             "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_in_struct_*"
                         }
@@ -716,7 +717,6 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -729,6 +729,8 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -836,13 +838,14 @@
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
-                            "c_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "INOUT",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
                             "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmtf": "f_inout_struct_*"
                         }
@@ -869,14 +872,15 @@
                         },
                         "fmtf": {
                             "F_C_var": "val",
-                            "c_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "val",
+                            "fc_var": "val",
                             "i_dimension": "(*)",
+                            "i_var": "val",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
@@ -1238,13 +1242,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_in_struct_*"
                                 }
@@ -1298,7 +1303,6 @@
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1311,6 +1315,8 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -1418,13 +1424,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_inout_struct_*"
                                 }
@@ -1451,14 +1458,15 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "c_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "val",
+                                    "fc_var": "val",
                                     "i_dimension": "(*)",
+                                    "i_var": "val",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
@@ -1847,13 +1855,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_in_struct_*"
                                 }
@@ -1907,7 +1916,6 @@
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1920,6 +1928,8 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
@@ -2027,13 +2037,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmtf": "f_inout_struct_*"
                                 }
@@ -2060,14 +2071,15 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "c_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "val",
+                                    "fc_var": "val",
                                     "i_dimension": "(*)",
+                                    "i_var": "val",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",

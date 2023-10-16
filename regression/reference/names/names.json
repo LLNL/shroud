@@ -464,13 +464,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
                             "f_char_len": "len=worklen",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
+                            "i_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -591,7 +591,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "c_var_str": "SHT_name_str",
                             "f_char_len": "len=worklen",
@@ -601,6 +600,8 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "i_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_char_*_buf"
                         }
@@ -797,12 +798,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "i",
-                            "c_var": "i",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "i",
+                            "fc_var": "i",
+                            "i_var": "i",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -919,12 +921,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "i",
-                            "c_var": "i",
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "i",
+                            "fc_var": "i",
+                            "i_var": "i",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -1038,12 +1041,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "rv",
-                            "c_var": "rv",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "rv",
+                            "i_var": "rv",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -1100,12 +1103,12 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     },
                     "fmtpy": {
@@ -1201,7 +1204,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "rv",
-                            "c_var": "rv",
                             "c_var_len": "SHT_rv_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -1209,6 +1211,8 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "rv",
                             "f_var_len": "SHT_rv_len",
+                            "fc_var": "rv",
+                            "i_var": "rv",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_string_&_buf"
                         }
@@ -1255,12 +1259,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     }
@@ -1423,12 +1428,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
+                            "i_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -1471,12 +1476,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "value",
-                            "c_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
+                            "i_var": "value",
                             "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
@@ -1632,7 +1637,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
@@ -1640,6 +1644,8 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "i_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_inout_string_&_buf"
                         }
@@ -1664,12 +1670,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "value",
-                            "c_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
+                            "fc_var": "value",
+                            "i_var": "value",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_out_native_*"
                         }
@@ -1954,12 +1961,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -2002,12 +2010,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
+                            "fc_var": "arg2",
+                            "i_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -2200,12 +2209,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -2248,12 +2258,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
+                            "fc_var": "arg2",
+                            "i_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
                         },
@@ -2448,12 +2459,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     },
@@ -2547,13 +2559,14 @@
                         },
                         "fmtf": {
                             "F_C_var": "point",
-                            "c_var": "point",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "f_derived_type": "Fstruct_as_class",
                             "f_intent": "IN",
                             "f_type": "type(Fstruct_as_class)",
                             "f_type_module": "top_module",
                             "f_var": "point",
+                            "fc_var": "point",
+                            "i_var": "point",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_shadow_*"
                         },
@@ -2623,12 +2636,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     },
@@ -2945,11 +2959,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "afree",
-                            "c_var": "afree",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "afree",
+                            "fc_var": "afree",
+                            "i_var": "afree",
                             "sh_type": "SH_TYPE_CPTR"
                         }
                     },
@@ -2973,11 +2988,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "alloc",
-                            "c_var": "alloc",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "alloc",
+                            "fc_var": "alloc",
+                            "i_var": "alloc",
                             "sh_type": "SH_TYPE_CPTR"
                         }
                     },
@@ -3001,11 +3017,12 @@
                         },
                         "fmtf": {
                             "F_C_var": "assoc",
-                            "c_var": "assoc",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "assoc",
+                            "fc_var": "assoc",
+                            "i_var": "assoc",
                             "sh_type": "SH_TYPE_CPTR"
                         }
                     },
@@ -3029,12 +3046,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
+                            "fc_var": "name",
+                            "i_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -3058,12 +3076,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "pkg",
-                            "c_var": "pkg",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "pkg",
+                            "fc_var": "pkg",
+                            "i_var": "pkg",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -3087,12 +3106,13 @@
                         },
                         "fmtf": {
                             "F_C_var": "rdbase",
-                            "c_var": "rdbase",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "rdbase",
+                            "fc_var": "rdbase",
+                            "i_var": "rdbase",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -3207,7 +3227,6 @@
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
-                                        "c_var": "SHT_rv",
                                         "f_capsule_data_type": "TES_SHROUD_capsule_data",
                                         "f_derived_type": "FNames",
                                         "f_intent": "OUT",
@@ -3215,6 +3234,8 @@
                                         "f_type": "type(FNames)",
                                         "f_type_module": "name_module",
                                         "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmtf": "f_ctor_shadow_scalar_capptr"
                                     },

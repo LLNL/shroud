@@ -143,7 +143,6 @@
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
                                 "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                 "f_derived_type": "class2",
                                 "f_intent": "OUT",
@@ -151,6 +150,8 @@
                                 "f_type": "type(class2)",
                                 "f_type_module": "forward_mod",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             },
@@ -319,13 +320,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "c_var": "arg",
                                     "f_capsule_data_type": "SHROUD_class1_capsule",
                                     "f_derived_type": "class1",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
                                     "f_type_module": "tutorial_mod",
                                     "f_var": "arg",
+                                    "fc_var": "arg",
+                                    "i_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_shadow_*"
                                 },
@@ -470,13 +472,14 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "c_var": "arg",
                                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                     "f_derived_type": "class3",
                                     "f_intent": "IN",
                                     "f_type": "type(class3)",
                                     "f_type_module": "forward_mod",
                                     "f_var": "arg",
+                                    "fc_var": "arg",
+                                    "i_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmtf": "f_in_shadow_*"
                                 },
@@ -681,13 +684,14 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "c_var": "arg",
                             "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_type_module": "struct_mod",
                             "f_var": "arg",
+                            "fc_var": "arg",
+                            "i_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtf": "f_in_struct_*"
                         }
@@ -733,12 +737,13 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmtf": "f_function_native_scalar"
                     }

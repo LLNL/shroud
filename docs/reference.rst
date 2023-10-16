@@ -1463,13 +1463,6 @@ fmtf
 Format strings used with Fortran wrappers.
 Set for each argument.
 
-c_var
-    The name of the argument passed to the C wrapper.
-    This is initially the same as *f_var* but when the
-    statement field *c_local_var* is true, another name
-    will be generated of the form ``SH_{f_var}``.
-    A declaration will also be added using typemap.i_type.
-
 default_value
     The value of a C++ default value argument.
 
@@ -1546,7 +1539,14 @@ f_type_module
     Module name for *f_type*.
 
 f_var
-    Fortran variable name for argument.
+    Fortran variable name for argument in Fortran wrapper.
+
+fc_var
+    The name of the argument passed to the C wrapper.
+    This is initially the same as *f_var* but when the
+    statement field *c_local_var* is true, another name
+    will be generated of the form ``SH_{f_var}``.
+    Use with statement field *f_arg_call*.
 
 i_dimension
     Dimension used in ``bind(C)`` interface.
@@ -1554,6 +1554,10 @@ i_dimension
 
 i_type
     Used with Fortran interface.
+
+i_var
+    Fortran variable name for argument in interface.
+    Used with statement fields *i_result_decl*, *_iarg_names* and *i_arg_decl*.
 
 size
     Expression to compute size of array argument using ``SIZE`` intrinsic.
