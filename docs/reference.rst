@@ -1468,7 +1468,7 @@ c_var
     This is initially the same as *f_var* but when the
     statement field *c_local_var* is true, another name
     will be generated of the form ``SH_{f_var}``.
-    A declaration will also be added using typemap.f_c_type.
+    A declaration will also be added using typemap.i_type.
 
 default_value
     The value of a C++ default value argument.

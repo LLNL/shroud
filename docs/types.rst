@@ -38,7 +38,7 @@ type expected by the C++ function.
 Bool
 ----
 
-The first thing to notice is that **f_c_type** is defined.  This is
+The first thing to notice is that **i_type** is defined.  This is
 the type used in the Fortran interface for the C wrapper.  The type
 is ``logical(C_BOOL)`` while **f_type**, the type of the Fortran
 wrapper argument, is ``logical``.
@@ -166,8 +166,8 @@ how to use these routines:
             c_type: MPI_Fint
             f_type: integer
             f_kind: C_INT
-            f_c_type: integer(C_INT)
-            f_c_module:
+            i_type: integer(C_INT)
+            i_module:
                 iso_c_binding:
                   - C_INT
             cxx_to_c: MPI_Comm_c2f({cxx_var})
