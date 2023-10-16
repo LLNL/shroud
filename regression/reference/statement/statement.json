@@ -87,7 +87,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -168,7 +167,6 @@
                         "stmtc": "f_function_string_&_copy"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -265,7 +263,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",

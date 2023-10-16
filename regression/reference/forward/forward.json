@@ -142,7 +142,6 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                 "f_derived_type": "class2",
                                 "f_intent": "OUT",
@@ -319,7 +318,6 @@
                                     "stmtc": "f_in_shadow_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_capsule_data_type": "SHROUD_class1_capsule",
                                     "f_derived_type": "class1",
                                     "f_intent": "IN",
@@ -471,7 +469,6 @@
                                     "stmtc": "f_in_shadow_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                     "f_derived_type": "class3",
                                     "f_intent": "IN",
@@ -683,7 +680,6 @@
                             "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
@@ -736,7 +732,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",

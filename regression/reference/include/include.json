@@ -76,7 +76,6 @@
                                     "stmtc": "f_in_unknown_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "comm",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
@@ -179,7 +178,6 @@
                                     "stmtc": "f_inout_shadow_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "c2",
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "INOUT",
@@ -445,7 +443,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "arg1",
                                             "f_intent": "IN",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",

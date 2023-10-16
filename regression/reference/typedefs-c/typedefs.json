@@ -175,7 +175,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
@@ -246,7 +245,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "type_id",
                         "f_type": "integer(type_id)",
@@ -340,7 +338,6 @@
                             "stmtc": "f_inout_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_derived_type": "s_struct1",
                             "f_intent": "INOUT",
                             "f_kind": "struct1_rename",
@@ -463,7 +460,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "index_type",
                             "f_type": "integer(index_type)",
@@ -515,7 +511,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",

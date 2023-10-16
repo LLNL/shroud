@@ -277,7 +277,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "in",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -350,7 +349,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",

@@ -80,7 +80,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_FLOAT_COMPLEX",
                             "f_type": "complex(C_FLOAT_COMPLEX)",
@@ -181,7 +180,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -308,7 +306,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -582,7 +579,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
@@ -634,7 +630,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "flag",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",

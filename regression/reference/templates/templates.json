@@ -240,7 +240,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -289,7 +288,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
@@ -480,7 +478,6 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_derived_type": "struct_as_class_int",
                                 "f_intent": "OUT",
@@ -557,7 +554,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "n",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -663,7 +659,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -787,7 +782,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "v",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -927,7 +921,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1080,7 +1073,6 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_derived_type": "struct_as_class_double",
                                 "f_intent": "OUT",
@@ -1157,7 +1149,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "n",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -1263,7 +1254,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1387,7 +1377,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "v",
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
@@ -1527,7 +1516,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
@@ -1696,7 +1684,6 @@
                         "stmtc": "f_function_shadow_scalar_capptr_targ_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                         "f_derived_type": "user_int",
                         "f_intent": "OUT",
@@ -1948,7 +1935,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1997,7 +1983,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -2187,7 +2172,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
@@ -2236,7 +2220,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
@@ -2463,7 +2446,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2600,7 +2582,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2717,7 +2698,6 @@
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_derived_type": "vector_int",
                                         "f_intent": "OUT",
@@ -2933,7 +2913,6 @@
                                             "stmtc": "f_in_native_&"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "value",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -3118,7 +3097,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
@@ -3193,7 +3171,6 @@
                                         "stmtc": "f_function_native_&_pointer"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_INT",
                                         "f_local_ptr": "SHC_rv_ptr",
@@ -3392,7 +3369,6 @@
                                         "stmtc": "f_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_derived_type": "vector_double",
                                         "f_intent": "OUT",
@@ -3608,7 +3584,6 @@
                                             "stmtc": "f_in_native_&"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "value",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
                                             "f_type": "real(C_DOUBLE)",
@@ -3793,7 +3768,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
@@ -3868,7 +3842,6 @@
                                         "stmtc": "f_function_native_&_pointer"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_DOUBLE",
                                         "f_local_ptr": "SHC_rv_ptr",

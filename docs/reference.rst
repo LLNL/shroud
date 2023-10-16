@@ -1307,9 +1307,6 @@ F_C_subprogram
     The C wrapper funtion may be different Fortran wrapper function since
     some function results may be converted into arguments.
 
-F_C_var
-    Name of dummy argument in the ``bind(C)`` interface.
-
 F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 
     the function is ``const`` and all arguments are ``intent(in)``.

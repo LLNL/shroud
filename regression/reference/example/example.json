@@ -110,7 +110,6 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -232,7 +231,6 @@
                                                     "stmtc": "f_in_string_*"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
@@ -312,7 +310,6 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -440,7 +437,6 @@
                                                     "stmtc": "f_in_string_*_buf"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name",
                                                     "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
@@ -497,7 +493,6 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -648,7 +643,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "incr",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
                                                     "f_type": "integer(C_INT)",
@@ -739,7 +733,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -851,7 +844,6 @@
                                                 "stmtc": "f_function_string_&_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -975,7 +967,6 @@
                                                 "stmtc": "f_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_helper_array_context": "AA_SHROUD_array",
@@ -1072,7 +1063,6 @@
                                                 "stmtc": "f_function_string_&"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -1200,7 +1190,6 @@
                                                 "stmtc": "f_function_string_&_buf_arg"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var": "name",
                                                 "c_var_len": "nname",
                                                 "f_intent": "OUT",
@@ -1284,7 +1273,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
                                                     "f_type": "integer(C_INT)",
@@ -1376,7 +1364,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -1479,7 +1466,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_LONG",
                                                     "f_type": "integer(C_LONG)",
@@ -1568,7 +1554,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_LONG",
                                                 "f_type": "integer(C_LONG)",
@@ -1670,7 +1655,6 @@
                                                     "stmtc": "f_in_bool_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "in",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_BOOL",
                                                     "f_type": "logical",
@@ -1764,7 +1748,6 @@
                                                 "stmtc": "f_function_bool_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_BOOL",
                                                 "f_type": "logical",
@@ -2037,7 +2020,6 @@
                                                     "stmtc": "f_in_string_*"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
@@ -2119,7 +2101,6 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class2",
                                                 "f_intent": "OUT",
@@ -2248,7 +2229,6 @@
                                                     "stmtc": "f_in_string_*_buf"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name",
                                                     "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
@@ -2304,7 +2284,6 @@
                                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class2",
                                                 "f_intent": "OUT",
@@ -2468,7 +2447,6 @@
                                                 "stmtc": "f_function_string_&_copy"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -2594,7 +2572,6 @@
                                                 "stmtc": "f_function_string_&_buf_copy"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
@@ -2682,7 +2659,6 @@
                                                 "stmtc": "f_function_string_&_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -2805,7 +2781,6 @@
                                                 "stmtc": "f_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_helper_array_context": "AA_SHROUD_array",
@@ -2898,7 +2873,6 @@
                                                 "stmtc": "f_function_string_&_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -3021,7 +2995,6 @@
                                                 "stmtc": "f_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_helper_array_context": "AA_SHROUD_array",
@@ -3112,7 +3085,6 @@
                                                 "stmtc": "f_function_string_&_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -3234,7 +3206,6 @@
                                                 "stmtc": "f_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_helper_array_context": "AA_SHROUD_array",
@@ -3337,7 +3308,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -3448,7 +3418,6 @@
                                                     "stmtc": "f_in_shadow_*"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "in",
                                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                     "f_derived_type": "ex_class1",
                                                     "f_intent": "IN",
@@ -3546,7 +3515,6 @@
                                                 "stmtc": "f_function_shadow_*_capptr"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -3869,7 +3837,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "type",
                                                     "f_intent": "IN",
                                                     "f_kind": "type_id",
                                                     "f_type": "integer(type_id)",
@@ -4493,7 +4460,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "len",
                                                     "f_intent": "IN",
                                                     "f_kind": "sidre_length",
                                                     "f_type": "integer(sidre_length)",
@@ -4526,7 +4492,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "type",
                                                     "f_intent": "IN",
                                                     "f_kind": "type_id",
                                                     "f_type": "integer(type_id)",
@@ -4872,7 +4837,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "type_id",
                                                 "f_type": "integer(type_id)",
@@ -5131,7 +5095,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
                                                     "f_type": "integer(C_INT)",
@@ -5331,7 +5294,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_LONG",
                                                     "f_type": "integer(C_LONG)",
@@ -5528,7 +5490,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_FLOAT",
                                                     "f_type": "real(C_FLOAT)",
@@ -5731,7 +5692,6 @@
                                                     "stmtc": "f_in_native_scalar"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_DOUBLE",
                                                     "f_type": "real(C_DOUBLE)",
@@ -5980,7 +5940,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -6129,7 +6088,6 @@
                                                 "stmtc": "f_function_native_scalar"
                                             },
                                             "fmtf": {
-                                                "F_C_var": "SHT_rv",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_type": "real(C_DOUBLE)",
@@ -6368,7 +6326,6 @@
                                             "stmtc": "f_in_string_&"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -6446,7 +6403,6 @@
                                         "stmtc": "f_function_bool_scalar"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
@@ -6568,7 +6524,6 @@
                                             "stmtc": "f_in_string_&_buf"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
@@ -6623,7 +6578,6 @@
                                         "stmtc": "f_function_bool_scalar"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
@@ -6704,7 +6658,6 @@
                                         "stmtc": "f_function_bool_scalar"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
@@ -6813,7 +6766,6 @@
                                             "stmtc": "f_in_string_&"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -6958,7 +6910,6 @@
                                             "stmtc": "f_in_string_&_buf"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
@@ -7083,7 +7034,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "flag",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -7143,7 +7093,6 @@
                                             "stmtc": "f_in_string_&"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -7299,7 +7248,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "flag",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -7332,7 +7280,6 @@
                                             "stmtc": "f_in_string_&_buf"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
@@ -7490,7 +7437,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "i",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -7618,7 +7564,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "i",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -7680,7 +7625,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "j",
                                             "f_intent": "IN",
                                             "f_kind": "C_LONG",
                                             "f_type": "integer(C_LONG)",
@@ -7825,7 +7769,6 @@
                                         "stmtc": "f_function_native_scalar"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_SIZE_T",
                                         "f_type": "integer(C_SIZE_T)",
@@ -7933,7 +7876,6 @@
                                             "stmtc": "f_in_unknown_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "comm",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer",
@@ -8146,7 +8088,6 @@
                                             "stmtc": "f_in_void_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "get",
                                             "f_intent": "IN",
                                             "f_type": "type(C_PTR)",
                                             "f_type_module": "iso_c_binding",
@@ -8297,7 +8238,6 @@
                                             "stmtc": "f_in_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
                                             "f_type": "real(C_DOUBLE)",
@@ -8476,7 +8416,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
                                             "f_type": "real(C_DOUBLE)",
@@ -8655,7 +8594,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
                                             "f_type": "real(C_DOUBLE)",
@@ -8894,7 +8832,6 @@
                                             "stmtc": "f_in_void_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "get",
                                             "f_intent": "IN",
                                             "f_type": "type(C_PTR)",
                                             "f_type_module": "iso_c_binding",
@@ -9226,7 +9163,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname1",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9289,7 +9225,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname10",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9352,7 +9287,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname2",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9415,7 +9349,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname3",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9478,7 +9411,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname4",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9541,7 +9473,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname5",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9604,7 +9535,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname6",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9667,7 +9597,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname7",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9730,7 +9659,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname8",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -9793,7 +9721,6 @@
                                             "stmtc": "f_inout_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname9",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10081,7 +10008,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname1",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10143,7 +10069,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname10",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10205,7 +10130,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname2",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10267,7 +10191,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname3",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10329,7 +10252,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname4",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10391,7 +10313,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname5",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10453,7 +10374,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname6",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10515,7 +10435,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname7",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10577,7 +10496,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname8",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10639,7 +10557,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "verylongname9",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
@@ -10726,7 +10643,6 @@
                                         "stmtc": "f_function_native_scalar"
                                     },
                                     "fmtf": {
-                                        "F_C_var": "SHT_rv",
                                         "f_intent": "OUT",
                                         "f_kind": "C_INT",
                                         "f_type": "integer(C_INT)",
@@ -10888,7 +10804,6 @@
                                             "stmtc": "f_in_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "in",
                                             "f_assumed_shape": "(:,:)",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
@@ -10958,7 +10873,6 @@
                                             "stmtc": "f_out_native_*"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "out",
                                             "f_array_allocate": "(shape(in))",
                                             "f_assumed_shape": "(:)",
                                             "f_intent": "OUT",
@@ -11028,7 +10942,6 @@
                                             "stmtc": "f_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "sizein",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",

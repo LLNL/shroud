@@ -85,7 +85,6 @@
                                 "stmtc": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                                 "f_derived_type": "ArrayWrapper",
                                 "f_intent": "OUT",
@@ -184,7 +183,6 @@
                                     "stmtc": "f_in_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "size",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -313,7 +311,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -410,7 +407,6 @@
                                     "stmtc": "f_out_native_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "size",
                                     "f_intent": "OUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -598,7 +594,6 @@
                                 "stmtc": "f_function_native_*_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -729,7 +724,6 @@
                                 "stmtc": "f_function_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -829,7 +823,6 @@
                                 "stmtc": "f_function_native_*_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -961,7 +954,6 @@
                                 "stmtc": "f_function_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1060,7 +1052,6 @@
                                 "stmtc": "f_function_native_*_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -1192,7 +1183,6 @@
                                 "stmtc": "f_function_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1293,7 +1283,6 @@
                                 "stmtc": "f_function_native_*_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -1426,7 +1415,6 @@
                                 "stmtc": "f_function_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1547,7 +1535,6 @@
                                     "stmtc": "f_out_native_**_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -1603,7 +1590,6 @@
                                     "stmtc": "f_inout_native_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -1763,7 +1749,6 @@
                                     "stmtc": "f_out_native_**_cdesc_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
@@ -1802,7 +1787,6 @@
                                     "stmtc": "f_inout_native_*_hidden"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -1941,7 +1925,6 @@
                                     "stmtc": "f_out_native_*&_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -1997,7 +1980,6 @@
                                     "stmtc": "f_inout_native_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -2157,7 +2139,6 @@
                                     "stmtc": "f_out_native_*&_cdesc_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
@@ -2196,7 +2177,6 @@
                                     "stmtc": "f_inout_native_&_hidden"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -2336,7 +2316,6 @@
                                     "stmtc": "f_out_native_**_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -2392,7 +2371,6 @@
                                     "stmtc": "f_inout_native_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -2553,7 +2531,6 @@
                                     "stmtc": "f_out_native_**_cdesc_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
@@ -2592,7 +2569,6 @@
                                     "stmtc": "f_inout_native_*_hidden"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -2732,7 +2708,6 @@
                                     "stmtc": "f_out_native_*&_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -2788,7 +2763,6 @@
                                     "stmtc": "f_inout_native_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -2949,7 +2923,6 @@
                                     "stmtc": "f_out_native_*&_cdesc_pointer"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(SHT_array_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
@@ -2988,7 +2961,6 @@
                                     "stmtc": "f_inout_native_&_hidden"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -3098,7 +3070,6 @@
                                     "stmtc": "f_out_void_**"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_intent": "OUT",
                                     "f_type": "type(C_PTR)",
                                     "f_type_module": "iso_c_binding",
@@ -3227,7 +3198,6 @@
                                     "stmtc": "f_out_void_*&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_intent": "OUT",
                                     "f_type": "type(C_PTR)",
                                     "f_type_module": "iso_c_binding",
@@ -3353,7 +3323,6 @@
                                     "stmtc": "f_in_void_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array",
                                     "f_intent": "IN",
                                     "f_type": "type(C_PTR)",
                                     "f_type_module": "iso_c_binding",
@@ -3429,7 +3398,6 @@
                                 "stmtc": "f_function_bool_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
@@ -3528,7 +3496,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",

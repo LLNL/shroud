@@ -183,7 +183,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
@@ -212,7 +211,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
@@ -254,7 +252,6 @@
                         "stmtc": "f_function_bool_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -354,7 +351,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
@@ -385,7 +381,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
@@ -438,7 +433,6 @@
                         "stmtc": "f_function_bool_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -540,7 +534,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
@@ -571,7 +564,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
@@ -624,7 +616,6 @@
                         "stmtc": "f_function_bool_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -745,7 +736,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
@@ -1002,7 +992,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "f1",
                             "f_intent": "IN",
                             "f_kind": "FLOATTYPE",
                             "f_type": "real(FLOATTYPE)",

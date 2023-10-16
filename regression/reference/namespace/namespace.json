@@ -81,7 +81,6 @@
                         "stmtc": "f_function_string_&_allocatable"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -191,7 +190,6 @@
                         "stmtc": "f_function_string_&_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_capsule": "SHT_rv_capsule",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_helper_array_context": "NS_SHROUD_array",

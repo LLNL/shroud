@@ -1130,10 +1130,8 @@ rv = .false.
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
                 # 'char **' uses c_char_**_in as a special case.
-                intent = ast.declarator.metaattrs["intent"].upper()
-                arg_c_decl.append(
-                    "type(C_PTR), intent({}) :: {}".format(
-                        intent, fmt.F_C_var))
+                append_format(arg_c_decl,
+                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
                 arg_c_decl.append(ast.bind_c())
@@ -1193,7 +1191,6 @@ rv = .false.
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.i_var = fmt_func.F_result
             fmt_result.f_var = fmt_func.F_result
-            fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
@@ -1276,7 +1273,6 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.i_var = arg_name
             fmt_arg.f_var = arg_name
-            fmt_arg.F_C_var = arg_name
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
             self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             

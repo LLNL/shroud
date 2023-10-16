@@ -86,7 +86,6 @@
                                 "stmtc": "f_getter_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -171,7 +170,6 @@
                                     "stmtc": "f_setter_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "val",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -290,7 +288,6 @@
                                 "stmtc": "f_getter_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -375,7 +372,6 @@
                                     "stmtc": "f_setter_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "val",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -494,7 +490,6 @@
                                 "stmtc": "f_getter_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -579,7 +574,6 @@
                                     "stmtc": "f_setter_native_scalar"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "val",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
@@ -992,7 +986,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "data",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1122,7 +1115,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "data",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1239,7 +1231,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "data",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -1358,7 +1349,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "data",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",

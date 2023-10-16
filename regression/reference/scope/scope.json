@@ -655,7 +655,6 @@
                             "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "IN",
                             "f_kind": "data_pointer",
@@ -716,7 +715,6 @@
                         "stmtc": "f_getter_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -837,7 +835,6 @@
                             "stmtc": "f_inout_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "INOUT",
                             "f_kind": "data_pointer",
@@ -871,7 +868,6 @@
                             "stmtc": "f_setter_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1241,7 +1237,6 @@
                                     "stmtc": "f_in_struct_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
@@ -1302,7 +1297,6 @@
                                 "stmtc": "f_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -1423,7 +1417,6 @@
                                     "stmtc": "f_inout_struct_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
@@ -1457,7 +1450,6 @@
                                     "stmtc": "f_setter_native_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -1854,7 +1846,6 @@
                                     "stmtc": "f_in_struct_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
@@ -1915,7 +1906,6 @@
                                 "stmtc": "f_getter_native_*_cdesc_pointer"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -2036,7 +2026,6 @@
                                     "stmtc": "f_inout_struct_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
@@ -2070,7 +2059,6 @@
                                     "stmtc": "f_setter_native_*"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",

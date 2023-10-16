@@ -85,7 +85,6 @@
                             "stmtc": "f_in_native_*_cdesc"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "f_assumed_shape": "(:,:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:2) = shape(arg)",
@@ -349,7 +348,6 @@
                             "stmtc": "f_in_string_&"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -380,7 +378,6 @@
                             "stmtc": "f_in_void_*_cdesc"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "c_var_cdesc": "SHT_value_cdesc",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
@@ -640,7 +637,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -675,7 +671,6 @@
                             "stmtc": "f_out_native_*_cdesc"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "c_var_cdesc": "SHT_value_cdesc",
                             "f_cdesc_shape": "",
                             "f_helper_array_context": "CDE_SHROUD_array",
@@ -951,7 +946,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -986,7 +980,6 @@
                             "stmtc": "f_out_native_*_cdesc"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "c_var_cdesc": "SHT_value_cdesc",
                             "f_cdesc_shape": "",
                             "f_helper_array_context": "CDE_SHROUD_array",
@@ -1195,7 +1188,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1314,7 +1306,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
@@ -1730,7 +1721,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -1763,7 +1753,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2011,7 +2000,6 @@
                             "stmtc": "f_in_string_&_buf"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -2044,7 +2032,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",

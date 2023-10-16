@@ -168,7 +168,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
@@ -227,7 +226,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -403,7 +401,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
@@ -671,7 +668,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
@@ -918,7 +914,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
@@ -1134,7 +1129,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
@@ -1351,7 +1345,6 @@
                             "stmtc": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
@@ -1556,7 +1549,6 @@
                             "stmtc": "f_inout_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
@@ -1764,7 +1756,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "double",
                             "f_assumed_shape": "(:)",
@@ -2016,7 +2007,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "c_var_size": "SHT_arg1_size",
                             "cxx_T": "const double * ",
@@ -2054,7 +2044,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "num",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2107,7 +2096,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2287,7 +2275,6 @@
                             "stmtc": "f_in_vector_&_buf_targ_string_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_local_i": "SHC_arg_i",
                             "c_local_n": "SHC_arg_n",
                             "c_local_s": "SHC_arg_s",
@@ -2350,7 +2337,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2528,7 +2514,6 @@
                             "stmtc": "f_out_vector_&_cdesc_targ_string_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
@@ -2737,7 +2722,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_capsule": "SHT_arg_capsule",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
@@ -2954,7 +2938,6 @@
                             "stmtc": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "c_var_capsule": "SHT_arg_capsule",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "std::string",
@@ -3223,7 +3206,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "n",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3278,7 +3260,6 @@
                         "stmtc": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_T": "int",
                         "f_assumed_shape": "(:)",
@@ -3385,7 +3366,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -3420,7 +3400,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "len",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3472,7 +3451,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",

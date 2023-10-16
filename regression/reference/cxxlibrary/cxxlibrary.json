@@ -855,7 +855,6 @@
                         "stmtc": "f_function_bool_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -947,7 +946,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "data",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -1026,7 +1024,6 @@
                         "stmtc": "f_function_bool_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -1165,7 +1162,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "in1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1196,7 +1192,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out1",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1227,7 +1222,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out2",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1394,7 +1388,6 @@
                             "stmtc": "f_in_bool_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -1446,7 +1439,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "in1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1495,7 +1487,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out1",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1545,7 +1536,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out2",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1724,7 +1714,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "idx",
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -1768,7 +1757,6 @@
                         "stmtc": "f_function_string_&_copy"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1931,7 +1919,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "idx",
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
@@ -1987,7 +1974,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
@@ -2154,7 +2140,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "idx",
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
@@ -2210,7 +2195,6 @@
                         "stmtc": "f_function_string_&_buf_copy"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
@@ -2307,7 +2291,6 @@
                             "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "nested",
                             "f_intent": "IN",
                             "f_kind": "nested",
@@ -2363,7 +2346,6 @@
                         "stmtc": "f_getter_struct_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_derived_type": "nested",
                         "f_helper_array_context": "CXX_SHROUD_array",
@@ -2474,7 +2456,6 @@
                             "stmtc": "f_inout_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "nested",
                             "f_intent": "INOUT",
                             "f_kind": "nested",
@@ -2506,7 +2487,6 @@
                             "stmtc": "f_setter_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "val",
                             "f_derived_type": "nested",
                             "f_intent": "IN",
                             "f_kind": "nested",
@@ -2708,7 +2688,6 @@
                             "stmtc": "f_in_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "nested",
                             "f_intent": "IN",
                             "f_kind": "nested",
@@ -2769,7 +2748,6 @@
                         "stmtc": "f_getter_struct_**_cdesc_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -2894,7 +2872,6 @@
                             "stmtc": "f_inout_struct_*"
                         },
                         "fmtf": {
-                            "F_C_var": "SH_this",
                             "f_derived_type": "nested",
                             "f_intent": "INOUT",
                             "f_kind": "nested",
@@ -2928,7 +2905,6 @@
                             "stmtc": "f_setter_struct_**"
                         },
                         "fmtf": {
-                            "F_C_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_derived_type": "nested",
                             "f_intent": "IN",
@@ -3143,7 +3119,6 @@
                                     "stmtc": "f_inout_struct_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_derived_type": "cstruct1",
                                     "f_intent": "INOUT",
                                     "f_kind": "cstruct1",
@@ -3221,7 +3196,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -3319,7 +3293,6 @@
                                     "stmtc": "f_in_struct_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_derived_type": "cstruct1",
                                     "f_intent": "IN",
                                     "f_kind": "cstruct1",
@@ -3397,7 +3370,6 @@
                                 "stmtc": "f_function_native_scalar"
                             },
                             "fmtf": {
-                                "F_C_var": "SHT_rv",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -3494,7 +3466,6 @@
                                     "stmtc": "f_inout_struct_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_derived_type": "cstruct1",
                                     "f_intent": "INOUT",
                                     "f_kind": "cstruct1",
@@ -3623,7 +3594,6 @@
                                     "stmtc": "f_out_struct_&"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "arg",
                                     "f_derived_type": "cstruct1",
                                     "f_intent": "OUT",
                                     "f_kind": "cstruct1",

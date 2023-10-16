@@ -78,7 +78,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -180,7 +179,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -282,7 +280,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -423,7 +420,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "argin",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -454,7 +450,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arginout",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -485,7 +480,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "argout",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -641,7 +635,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -678,7 +671,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out",
                             "f_array_allocate": "(size(in))",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -712,7 +704,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -868,7 +859,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -905,7 +895,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out",
                             "f_array_allocate": "(size(in))",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -939,7 +928,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1072,7 +1060,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "nvalues",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1105,7 +1092,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "values",
                             "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -1249,7 +1235,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1",
                             "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -1285,7 +1270,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg2",
                             "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -1412,7 +1396,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "nvar",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1445,7 +1428,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "values",
                             "f_array_allocate": "(nvar)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -1591,7 +1573,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "len",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1622,7 +1603,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "result",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1653,7 +1633,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "values",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1770,7 +1749,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "out",
                             "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -1896,7 +1874,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "array",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
@@ -1931,7 +1908,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2050,7 +2026,6 @@
                             "stmtc": "f_inout_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "x",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE",
@@ -2085,7 +2060,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "x_length",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2205,7 +2179,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arr",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2240,7 +2213,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "len",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -2292,7 +2264,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2378,7 +2349,6 @@
                             "stmtc": "f_in_char_**"
                         },
                         "fmtf": {
-                            "F_C_var": "names",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -2424,7 +2394,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2520,7 +2489,6 @@
                             "stmtc": "f_in_char_**_buf"
                         },
                         "fmtf": {
-                            "F_C_var": "names",
                             "c_var_len": "SHT_names_len",
                             "c_var_size": "SHT_names_size",
                             "f_assumed_shape": "(:)",
@@ -2579,7 +2547,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2654,7 +2621,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "value",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2754,7 +2720,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2839,7 +2804,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2946,7 +2910,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "c_var_cdesc": "SHT_nitems_cdesc",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -3066,7 +3029,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3187,7 +3149,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
@@ -3334,7 +3295,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3366,7 +3326,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3506,7 +3465,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
@@ -3545,7 +3503,6 @@
                             "stmtc": "f_out_native_*_hidden"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3662,7 +3619,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(getLen())",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3784,7 +3740,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
@@ -3901,7 +3856,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4009,7 +3963,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "c_var_cdesc": "SHT_nitems_cdesc",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -4127,7 +4080,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4246,7 +4198,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
@@ -4391,7 +4342,6 @@
                             "stmtc": "f_out_native_**_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4423,7 +4373,6 @@
                             "stmtc": "f_out_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4561,7 +4510,6 @@
                             "stmtc": "f_out_native_**_cdesc_pointer"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
@@ -4600,7 +4548,6 @@
                             "stmtc": "f_out_native_*_hidden"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4710,7 +4657,6 @@
                             "stmtc": "f_out_native_**_raw"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4823,7 +4769,6 @@
                             "stmtc": "f_out_native_**_raw"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4933,7 +4878,6 @@
                             "stmtc": "f_out_native_**_raw"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5046,7 +4990,6 @@
                             "stmtc": "f_out_native_**_raw"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5159,7 +5102,6 @@
                             "stmtc": "f_out_native_***"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5269,7 +5211,6 @@
                             "stmtc": "f_in_native_**"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5321,7 +5262,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -5418,7 +5358,6 @@
                             "stmtc": "f_in_native_*"
                         },
                         "fmtf": {
-                            "F_C_var": "arg",
                             "f_array_allocate": "(10,20)",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
@@ -5540,7 +5479,6 @@
                             "stmtc": "f_out_native_**_allocatable"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -5666,7 +5604,6 @@
                             "stmtc": "f_out_native_**_cdesc_allocatable"
                         },
                         "fmtf": {
-                            "F_C_var": "count",
                             "c_var_capsule": "SHT_count_capsule",
                             "c_var_cdesc": "SHT_count_cdesc",
                             "f_array_allocate": "(SHT_count_cdesc%shape(1))",
@@ -5782,7 +5719,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5834,7 +5770,6 @@
                         "stmtc": "f_function_void_*"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "type(C_PTR)",
                         "f_type_module": "iso_c_binding",
@@ -5915,7 +5850,6 @@
                             "stmtc": "f_in_native_scalar"
                         },
                         "fmtf": {
-                            "F_C_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5967,7 +5901,6 @@
                         "stmtc": "f_function_void_*"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "type(C_PTR)",
                         "f_type_module": "iso_c_binding",
@@ -6049,7 +5982,6 @@
                             "stmtc": "f_out_void_**"
                         },
                         "fmtf": {
-                            "F_C_var": "addr",
                             "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -6156,7 +6088,6 @@
                             "stmtc": "f_inout_void_**"
                         },
                         "fmtf": {
-                            "F_C_var": "addr",
                             "f_intent": "INOUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -6263,7 +6194,6 @@
                             "stmtc": "f_in_void_**"
                         },
                         "fmtf": {
-                            "F_C_var": "addr",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
@@ -6318,7 +6248,6 @@
                         "stmtc": "f_function_native_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -6399,7 +6328,6 @@
                         "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_local_ptr": "SHC_rv_ptr",
@@ -6483,7 +6411,6 @@
                         "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -6587,7 +6514,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -6677,7 +6603,6 @@
                         "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_local_ptr": "SHC_rv_ptr",
@@ -6762,7 +6687,6 @@
                         "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -6867,7 +6791,6 @@
                         "stmtc": "f_function_native_*_cdesc_pointer"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
@@ -6958,7 +6881,6 @@
                         "stmtc": "f_function_native_*_scalar"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7047,7 +6969,6 @@
                         "stmtc": "f_function_native_*_raw"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7140,7 +7061,6 @@
                             "stmtc": "f_in_char_*"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7191,7 +7111,6 @@
                         "stmtc": "f_function_native_*_raw"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7280,7 +7199,6 @@
                         "stmtc": "f_function_native_**"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7366,7 +7284,6 @@
                         "stmtc": "f_function_native_*_allocatable"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -7475,7 +7392,6 @@
                         "stmtc": "f_function_native_*_cdesc_allocatable"
                     },
                     "fmtf": {
-                        "F_C_var": "SHT_rv",
                         "c_var_capsule": "SHT_rv_capsule",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
