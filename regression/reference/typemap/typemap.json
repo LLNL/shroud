@@ -438,7 +438,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -622,7 +621,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",

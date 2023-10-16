@@ -1256,7 +1256,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2450,7 +2449,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2626,7 +2624,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -3211,7 +3208,6 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "ns0::Names",
                                         "f_capsule_data_type": "TES_SHROUD_capsule_data",
                                         "f_derived_type": "FNames",
                                         "f_intent": "OUT",

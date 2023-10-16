@@ -112,7 +112,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -498,7 +497,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -739,7 +737,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "int",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -977,7 +974,6 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_helper_array_context": "AA_SHROUD_array",
                                                 "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                 "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -1200,7 +1196,6 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "name",
                                                 "c_var_len": "nname",
-                                                "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
@@ -1373,7 +1368,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "int",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -1564,7 +1558,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "long",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_LONG",
                                                 "f_type": "integer(C_LONG)",
@@ -1759,7 +1752,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "bool",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_BOOL",
                                                 "f_type": "logical",
@@ -2298,7 +2290,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass2",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class2",
                                                 "f_intent": "OUT",
@@ -2589,7 +2580,6 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
-                                                "cxx_type": "std::string",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -2801,7 +2791,6 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_helper_array_context": "AA_SHROUD_array",
                                                 "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                 "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3017,7 +3006,6 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_helper_array_context": "AA_SHROUD_array",
                                                 "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                 "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3230,7 +3218,6 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_capsule": "SHT_rv_capsule",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
-                                                "cxx_type": "std::string",
                                                 "f_helper_array_context": "AA_SHROUD_array",
                                                 "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                 "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3331,7 +3318,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "int",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -3539,7 +3525,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "example::nested::ExClass1",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -4862,7 +4847,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "TypeID",
                                                 "f_intent": "OUT",
                                                 "f_kind": "type_id",
                                                 "f_type": "integer(type_id)",
@@ -5966,7 +5950,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "int",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
@@ -6115,7 +6098,6 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
-                                                "cxx_type": "double",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_type": "real(C_DOUBLE)",
@@ -6608,7 +6590,6 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "bool",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
@@ -6689,7 +6670,6 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "bool",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
@@ -7804,7 +7784,6 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "size_t",
                                         "f_intent": "OUT",
                                         "f_kind": "C_SIZE_T",
                                         "f_type": "integer(C_SIZE_T)",
@@ -10679,7 +10658,6 @@
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
-                                        "cxx_type": "int",
                                         "f_intent": "OUT",
                                         "f_kind": "C_INT",
                                         "f_type": "integer(C_INT)",

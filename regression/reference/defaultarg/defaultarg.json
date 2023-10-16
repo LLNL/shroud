@@ -142,7 +142,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -335,7 +334,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -580,7 +578,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -1201,7 +1198,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1291,7 +1287,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1381,7 +1376,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",

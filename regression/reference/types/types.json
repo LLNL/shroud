@@ -148,7 +148,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "short",
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -310,7 +309,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -472,7 +470,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -636,7 +633,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "long long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -802,7 +798,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "short",
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -966,7 +961,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -1132,7 +1126,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "long long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -1296,7 +1289,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1460,7 +1452,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned short",
                         "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
@@ -1624,7 +1615,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1788,7 +1778,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -1954,7 +1943,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned long long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
@@ -2122,7 +2110,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "unsigned long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
@@ -2284,7 +2271,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int8_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
@@ -2446,7 +2432,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int16_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
@@ -2608,7 +2593,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int32_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
@@ -2770,7 +2754,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int64_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
@@ -2932,7 +2915,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "uint8_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
@@ -3094,7 +3076,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "uint16_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
@@ -3256,7 +3237,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "uint32_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
@@ -3418,7 +3398,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "uint64_t",
                         "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
@@ -3580,7 +3559,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "size_t",
                         "f_intent": "OUT",
                         "f_kind": "C_SIZE_T",
                         "f_type": "integer(C_SIZE_T)",
@@ -3745,7 +3723,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -3918,7 +3895,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",

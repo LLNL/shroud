@@ -144,7 +144,6 @@
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
-                                "cxx_type": "forward::Class2",
                                 "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                 "f_derived_type": "class2",
                                 "f_intent": "OUT",
@@ -735,7 +734,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
