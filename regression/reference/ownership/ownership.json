@@ -6,11 +6,11 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Class1 ****************************************",
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "0 ****************************************",
+                        "<FUNCTION>": "dtor  0 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -75,7 +75,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "1 ****************************************",
+                        "<FUNCTION>": "get_flag  1 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -137,7 +137,7 @@
                             "wrapped_name": "flag"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -146,20 +146,16 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_scalar",
                                 "stmtf": "f_getter_native_scalar"
                             }
                         }
@@ -172,7 +168,7 @@
                 "typemap_name": "Class1",
                 "variables": [
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "flag ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -262,7 +258,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrRaw  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -311,7 +307,7 @@
                     "function_name": "ReturnIntPtrRaw"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -322,24 +318,20 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_raw"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_raw"
                     }
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrScalar  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -397,7 +389,7 @@
                     "function_name": "ReturnIntPtrScalar"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -407,20 +399,16 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_scalar",
                         "stmtf": "f_function_native_*_scalar"
                     },
                     "fmtpy": {
@@ -443,7 +431,7 @@
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrPointer  4 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -501,7 +489,7 @@
                     "function_name": "ReturnIntPtrPointer"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -512,21 +500,17 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_local_ptr": "SHC_rv_ptr",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer",
                         "stmtf": "f_function_native_*_pointer"
                     },
                     "fmtpy": {
@@ -549,7 +533,7 @@
                 }
             },
             {
-                "<FUNCTION>": "5 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimRaw  5 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -608,7 +592,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -621,19 +605,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         }
                     }
                 },
@@ -652,7 +632,7 @@
                     "function_name": "ReturnIntPtrDimRaw"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -663,24 +643,20 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_raw"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_raw"
                     }
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimPointer  6 ****************************************",
                 "_PTR_F_C_index": "24",
                 "ast": {
                     "declarator": {
@@ -747,7 +723,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -760,19 +736,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -811,7 +783,7 @@
                     "function_name": "ReturnIntPtrDimPointer"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -823,14 +795,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -838,8 +802,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -866,7 +833,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimPointer  24 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -940,7 +907,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -953,19 +920,16 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "fc_var": "len",
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -993,7 +957,7 @@
                     "function_name": "ReturnIntPtrDimPointer"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "len",
@@ -1008,16 +972,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1029,14 +983,19 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_cdesc_pointer",
                         "stmtf": "f_function_native_*_cdesc_pointer"
                     }
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimAlloc  7 ****************************************",
                 "_PTR_F_C_index": "25",
                 "ast": {
                     "declarator": {
@@ -1103,7 +1062,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1116,19 +1075,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1167,7 +1122,7 @@
                     "function_name": "ReturnIntPtrDimAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -1179,14 +1134,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_allocatable"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -1194,8 +1141,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1222,7 +1172,7 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimAlloc  25 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1296,7 +1246,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1309,19 +1259,16 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "fc_var": "len",
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -1349,7 +1296,7 @@
                     "function_name": "ReturnIntPtrDimAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "len",
@@ -1366,17 +1313,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_allocatable"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1392,14 +1328,20 @@
                         "f_var": "SHT_rv",
                         "f_var_capsule": "SHT_rv_capsule",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_cdesc_allocatable",
                         "stmtf": "f_function_native_*_cdesc_allocatable"
                     }
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimDefault  8 ****************************************",
                 "_PTR_F_C_index": "26",
                 "ast": {
                     "declarator": {
@@ -1464,7 +1406,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1477,19 +1419,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1528,7 +1466,7 @@
                     "function_name": "ReturnIntPtrDimDefault"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -1540,14 +1478,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -1555,8 +1485,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1583,7 +1516,7 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimDefault  26 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -1655,7 +1588,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1668,19 +1601,16 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "fc_var": "len",
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -1708,7 +1638,7 @@
                     "function_name": "ReturnIntPtrDimDefault"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "len",
@@ -1723,16 +1653,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -1744,14 +1664,19 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_cdesc_pointer",
                         "stmtf": "f_function_native_*_cdesc_pointer"
                     }
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimRawNew  9 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1817,7 +1742,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1830,19 +1755,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         }
                     }
                 },
@@ -1861,7 +1782,7 @@
                     "function_name": "ReturnIntPtrDimRawNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -1873,14 +1794,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -1888,13 +1801,16 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "2",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer_caller"
                     }
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimPointerNew  10 ****************************************",
                 "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
@@ -1961,7 +1877,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1974,19 +1890,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2025,7 +1937,7 @@
                     "function_name": "ReturnIntPtrDimPointerNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -2037,14 +1949,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -2052,8 +1956,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "2",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer_caller"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2080,7 +1987,7 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimPointerNew  27 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -2154,7 +2061,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2167,19 +2074,16 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "fc_var": "len",
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -2207,7 +2111,7 @@
                     "function_name": "ReturnIntPtrDimPointerNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "len",
@@ -2223,18 +2127,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "f_var_capsule": "Crv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -2247,14 +2139,20 @@
                         "f_var": "SHT_rv",
                         "f_var_capsule": "Crv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_cdesc_pointer_caller",
                         "stmtf": "f_function_native_*_cdesc_pointer_caller"
                     }
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimAllocNew  11 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -2321,7 +2219,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2334,19 +2232,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2385,7 +2279,7 @@
                     "function_name": "ReturnIntPtrDimAllocNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -2397,14 +2291,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_allocatable_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -2412,8 +2298,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "2",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_allocatable_caller"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2440,7 +2329,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimDefaultNew  12 ****************************************",
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
@@ -2506,7 +2395,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2519,19 +2408,15 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2570,7 +2455,7 @@
                     "function_name": "ReturnIntPtrDimDefaultNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_size2": "len",
                         "c_const": "",
                         "c_get_value": "",
@@ -2582,14 +2467,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_array_allocate": "(len)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -2597,8 +2474,11 @@
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "2",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_pointer_caller"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2625,7 +2505,7 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "ReturnIntPtrDimDefaultNew  28 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -2698,7 +2578,7 @@
                 },
                 "zz_fmtargs": {
                     "len": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2711,19 +2591,16 @@
                             "cxx_nonconst_ptr": "len",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "c_var": "len",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT"
+                            "fc_var": "len",
+                            "i_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -2751,7 +2628,7 @@
                     "function_name": "ReturnIntPtrDimDefaultNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "len",
@@ -2767,18 +2644,6 @@
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "f_var_capsule": "Crv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -2791,14 +2656,20 @@
                         "f_var": "SHT_rv",
                         "f_var_capsule": "Crv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "2",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_*_cdesc_pointer_caller",
                         "stmtf": "f_function_native_*_cdesc_pointer_caller"
                     }
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "IntPtrDimRaw  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2879,7 +2750,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "IntPtrDimPointer  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2967,7 +2838,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "IntPtrDimAlloc  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3055,7 +2926,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "IntPtrDimDefault  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3142,7 +3013,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "IntPtrDimRawNew  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3224,7 +3095,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "IntPtrDimPointerNew  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3312,7 +3183,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "IntPtrDimAllocNew  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3400,7 +3271,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "IntPtrDimDefaultNew  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3487,7 +3358,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "createClassStatic  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3533,7 +3404,7 @@
                 },
                 "zz_fmtargs": {
                     "flag": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3546,19 +3417,16 @@
                             "cxx_nonconst_ptr": "&flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "flag",
-                            "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "flag",
+                            "fc_var": "flag",
+                            "i_var": "flag",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3605,7 +3473,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "getClassStatic  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -3665,7 +3533,7 @@
                     "function_name": "getClassStatic"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
@@ -3675,15 +3543,6 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "Class1",
                         "cxx_var": "SHCXX_rv",
-                        "f_local_ptr": "SHT_prv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr_library"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "Class1",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_derived_type": "class1",
                         "f_intent": "OUT",
@@ -3691,7 +3550,11 @@
                         "f_type": "type(class1)",
                         "f_type_module": "ownership_mod",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "f_function_shadow_*_capptr_library",
                         "stmtf": "f_function_shadow_*_capptr_library"
                     },
                     "fmtpy": {
@@ -3717,7 +3580,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "getClassNew  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -3775,7 +3638,7 @@
                 },
                 "zz_fmtargs": {
                     "flag": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3788,19 +3651,16 @@
                             "cxx_nonconst_ptr": "&flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "flag",
-                            "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "flag",
+                            "fc_var": "flag",
+                            "i_var": "flag",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -3848,7 +3708,7 @@
                     "function_name": "getClassNew"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
@@ -3858,15 +3718,6 @@
                         "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "Class1",
                         "cxx_var": "SHCXX_rv",
-                        "f_local_ptr": "SHT_prv",
-                        "idtor": "1",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr_caller"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "Class1",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_derived_type": "class1",
                         "f_intent": "OUT",
@@ -3874,7 +3725,11 @@
                         "f_type": "type(class1)",
                         "f_type_module": "ownership_mod",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "f_function_shadow_*_capptr_caller",
                         "stmtf": "f_function_shadow_*_capptr_caller"
                     },
                     "fmtpy": {

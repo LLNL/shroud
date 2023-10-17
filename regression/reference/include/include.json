@@ -9,11 +9,11 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Class2 ****************************************",
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "0 ****************************************",
+                        "<FUNCTION>": "method1  0 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -56,7 +56,7 @@
                         },
                         "zz_fmtargs": {
                             "comm": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -71,19 +71,16 @@
                                     "cxx_type": "MPI_Comm",
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_unknown_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "comm",
-                                    "c_var": "comm",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "comm",
+                                    "fc_var": "comm",
+                                    "i_var": "comm",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "stmtc": "f_in_unknown_scalar",
                                     "stmtf": "f_in_unknown_scalar"
                                 }
                             }
@@ -115,7 +112,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "1 ****************************************",
+                        "<FUNCTION>": "method2  1 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -160,7 +157,7 @@
                         },
                         "zz_fmtargs": {
                             "c2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -173,20 +170,17 @@
                                     "cxx_nonconst_ptr": "SHCXX_c2",
                                     "cxx_type": "three::Class1",
                                     "cxx_var": "SHCXX_c2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_inout_shadow_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "c2",
-                                    "c_var": "c2",
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "INOUT",
                                     "f_type": "type(class1)",
                                     "f_type_module": "library_three_mod",
                                     "f_var": "c2",
+                                    "fc_var": "c2",
+                                    "i_var": "c2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "stmtc": "f_inout_shadow_*",
                                     "stmtf": "f_inout_shadow_*"
                                 }
                             }
@@ -261,14 +255,14 @@
         "language": "cxx",
         "namespaces": [
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "one ****************************************",
                 "name": "one",
                 "namespaces": [
                     {
-                        "<NAMESPACE>": "****************************************",
+                        "<NAMESPACE>": "two ****************************************",
                         "functions": [
                             {
-                                "<FUNCTION>": "5 ****************************************",
+                                "<FUNCTION>": "function1  5 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -373,16 +367,16 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "three ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "Class1 ****************************************",
                         "cxx_header": [
                             "class_header.hpp"
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "2 ****************************************",
+                                "<FUNCTION>": "method1  2 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -425,7 +419,7 @@
                                 },
                                 "zz_fmtargs": {
                                     "arg1": {
-                                        "fmtc": {
+                                        "fmtf": {
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -438,19 +432,16 @@
                                             "cxx_nonconst_ptr": "&arg1",
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_INT",
-                                            "stmtc": "f_in_native_scalar"
-                                        },
-                                        "fmtf": {
-                                            "F_C_var": "arg1",
-                                            "c_var": "arg1",
                                             "f_intent": "IN",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",
                                             "f_type_module": "library_mod",
                                             "f_var": "arg1",
+                                            "fc_var": "arg1",
+                                            "i_var": "arg1",
+                                            "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
+                                            "stmtc": "f_in_native_scalar",
                                             "stmtf": "f_in_native_scalar"
                                         }
                                     }
@@ -540,14 +531,14 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "outer1 ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "class0 ****************************************",
                         "cxx_header": [],
                         "functions": [
                             {
-                                "<FUNCTION>": "3 ****************************************",
+                                "<FUNCTION>": "method  3 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -627,7 +618,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "6 ****************************************",
+                        "<FUNCTION>": "outer_func  6 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -702,17 +693,17 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "outer2 ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "class0 ****************************************",
                         "cxx_header": [
                             "classA.hpp",
                             "classAb.hpp"
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "4 ****************************************",
+                                "<FUNCTION>": "method  4 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -792,7 +783,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "7 ****************************************",
+                        "<FUNCTION>": "outer_func  7 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -872,7 +863,7 @@
         ],
         "typedefs": [
             {
-                "<TYPEDEF>": "****************************************",
+                "<TYPEDEF>": "CustomType ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CustomType",

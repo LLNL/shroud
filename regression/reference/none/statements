@@ -779,9 +779,9 @@ c_ctor_shadow_scalar_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -828,7 +828,7 @@ c_function_char_*:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_char_*
   owner: library
@@ -837,7 +837,7 @@ c_function_char_*_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_char_*_allocatable
   owner: library
@@ -860,12 +860,14 @@ c_function_char_*_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -892,12 +894,14 @@ c_function_char_*_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -920,11 +924,11 @@ c_function_char_*_buf_copy:
   - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -953,9 +957,9 @@ c_function_char_*_cdesc_pointer:
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -966,7 +970,7 @@ c_function_char_*_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_char_*_copy
   owner: library
@@ -975,7 +979,7 @@ c_function_char_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_char_*_pointer
   owner: library
@@ -984,7 +988,7 @@ c_function_char_*_raw:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_char_*_raw
   owner: library
@@ -997,9 +1001,9 @@ c_function_char_scalar:
   comments:
   - Call the C wrapper as a subroutine.
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1011,7 +1015,7 @@ c_function_native_&:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_&
   owner: library
@@ -1022,7 +1026,7 @@ c_function_native_&_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_&_pointer
   owner: library
@@ -1031,7 +1035,7 @@ c_function_native_*:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_*
   owner: library
@@ -1040,7 +1044,7 @@ c_function_native_**:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_**
   owner: library
@@ -1049,7 +1053,7 @@ c_function_native_**_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_**_pointer
   owner: library
@@ -1058,7 +1062,7 @@ c_function_native_*_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_*_allocatable
   owner: library
@@ -1069,7 +1073,7 @@ c_function_native_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_*_pointer
   owner: library
@@ -1078,7 +1082,7 @@ c_function_native_*_raw:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_native_*_raw
   owner: library
@@ -1087,7 +1091,7 @@ c_function_native_*_scalar:
     iso_c_binding:
     - '{f_kind}'
   i_result_decl:
-  - '{f_type} :: {c_var}'
+  - '{f_type} :: {i_var}'
   intent: function
   name: c_function_native_*_scalar
   owner: library
@@ -1107,9 +1111,9 @@ c_function_shadow_&_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1133,9 +1137,9 @@ c_function_shadow_&_capptr_caller:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1159,9 +1163,9 @@ c_function_shadow_&_capptr_library:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1185,9 +1189,9 @@ c_function_shadow_*_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1211,9 +1215,9 @@ c_function_shadow_*_capptr_caller:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1237,9 +1241,9 @@ c_function_shadow_*_capptr_library:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1266,9 +1270,9 @@ c_function_shadow_scalar_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1295,9 +1299,9 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1316,7 +1320,7 @@ c_function_string_&:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_string_&
   owner: library
@@ -1342,12 +1346,14 @@ c_function_string_&_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1373,11 +1379,11 @@ c_function_string_&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1403,9 +1409,9 @@ c_function_string_&_cdesc_pointer:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1429,9 +1435,9 @@ c_function_string_&_cdesc_pointer_caller:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1455,9 +1461,9 @@ c_function_string_&_cdesc_pointer_library:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1470,7 +1476,7 @@ c_function_string_&_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_string_&_copy
   owner: library
@@ -1481,7 +1487,7 @@ c_function_string_*:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_string_*
   owner: library
@@ -1503,11 +1509,11 @@ c_function_string_*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1533,9 +1539,9 @@ c_function_string_*_cdesc_pointer:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1559,9 +1565,9 @@ c_function_string_*_cdesc_pointer_caller:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1585,9 +1591,9 @@ c_function_string_*_cdesc_pointer_library:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -1600,7 +1606,7 @@ c_function_string_*_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_string_*_copy
   owner: library
@@ -1611,7 +1617,7 @@ c_function_string_scalar:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_string_scalar
   owner: library
@@ -1637,12 +1643,14 @@ c_function_string_scalar_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1668,11 +1676,11 @@ c_function_string_scalar_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1687,7 +1695,7 @@ c_function_struct_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: c_function_struct_*_pointer
   owner: library
@@ -1701,9 +1709,9 @@ c_function_struct_scalar:
   - Call the C wrapper as a subroutine.
   cxx_local_var: result
   i_arg_decl:
-  - '{f_type}, intent(OUT) :: {c_var}'
+  - '{f_type}, intent(OUT) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_kind}'
@@ -1742,9 +1750,9 @@ c_in_char_**:
   c_arg_decl:
   - char **{c_var}
   i_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {c_var}(*)'
+  - 'type(C_PTR), intent(IN) :: {i_var}(*)'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1768,13 +1776,13 @@ c_in_char_**_buf:
   - len
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1800,11 +1808,11 @@ c_in_char_*_buf:
   - len
   - str
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1820,9 +1828,9 @@ c_in_char_scalar:
   c_arg_decl:
   - char {c_var}
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {c_var}'
+  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1841,9 +1849,9 @@ c_in_native_**:
   c_arg_decl:
   - '{cxx_type} **{cxx_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN), value :: {c_var}'
+  - 'type(C_PTR), intent(IN), value :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1862,9 +1870,9 @@ c_in_native_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -1887,9 +1895,9 @@ c_in_shadow_&:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -1903,9 +1911,9 @@ c_in_shadow_*:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -1919,9 +1927,9 @@ c_in_shadow_scalar:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -1947,11 +1955,11 @@ c_in_string_&_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1978,11 +1986,11 @@ c_in_string_*_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -1994,9 +2002,9 @@ c_in_string_scalar:
   c_arg_decl:
   - char *{c_var}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2020,11 +2028,11 @@ c_in_string_scalar_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2063,13 +2071,13 @@ c_in_vector_&_buf_targ_native_*:
   - size
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_len}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -2087,11 +2095,11 @@ c_in_vector_&_buf_targ_native_scalar:
   - size
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -2128,13 +2136,13 @@ c_in_vector_&_buf_targ_string_scalar:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2153,11 +2161,11 @@ c_in_vector_*_buf_targ_native_scalar:
   - size
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -2194,13 +2202,13 @@ c_in_vector_*_buf_targ_string_scalar:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2219,11 +2227,11 @@ c_in_vector_scalar_buf_targ_native_scalar:
   - size
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -2260,13 +2268,13 @@ c_in_vector_scalar_buf_targ_string_scalar:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2283,9 +2291,9 @@ c_in_void_**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2304,9 +2312,9 @@ c_in_void_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -2349,11 +2357,11 @@ c_inout_char_*_buf:
   - len
   - str
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2389,9 +2397,9 @@ c_inout_native_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -2418,9 +2426,9 @@ c_inout_shadow_&:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -2434,9 +2442,9 @@ c_inout_shadow_*:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -2472,11 +2480,11 @@ c_inout_string_&_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2513,11 +2521,11 @@ c_inout_string_*_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2537,9 +2545,9 @@ c_inout_void_**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2558,9 +2566,9 @@ c_inout_void_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -2591,9 +2599,9 @@ c_mixin_arg_character_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: mixin
@@ -2606,9 +2614,9 @@ c_mixin_arg_native_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}) :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -2665,11 +2673,11 @@ c_mixin_in_character_buf:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2688,13 +2696,13 @@ c_mixin_inout_array_cdesc:
   - size
   - cdesc
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   i_module:
@@ -2732,13 +2740,13 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   i_module:
@@ -2843,9 +2851,9 @@ c_mixin_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -2884,11 +2892,11 @@ c_out_char_*_buf:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -2938,9 +2946,9 @@ c_out_native_*&_cdesc_pointer:
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -2989,11 +2997,11 @@ c_out_native_**_cdesc_allocatable:
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -3022,9 +3030,9 @@ c_out_native_**_cdesc_pointer:
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3050,9 +3058,9 @@ c_out_native_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3100,11 +3108,11 @@ c_out_string_&_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3166,11 +3174,11 @@ c_out_string_**_cdesc_allocatable:
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -3193,9 +3201,9 @@ c_out_string_**_cdesc_copy:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3220,11 +3228,11 @@ c_out_string_*_buf:
   - len
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3264,9 +3272,9 @@ c_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3306,11 +3314,11 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - Release memory from capsule.
   cxx_local_var: pointer
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -3342,9 +3350,9 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3366,9 +3374,9 @@ c_out_vector_&_cdesc_targ_string_scalar:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3398,9 +3406,9 @@ c_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3431,9 +3439,9 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3447,9 +3455,9 @@ c_out_void_**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -3468,9 +3476,9 @@ c_out_void_*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -3509,11 +3517,11 @@ c_setter_string_scalar_buf:
   c_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3589,9 +3597,9 @@ f_ctor_shadow_scalar_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -3647,7 +3655,7 @@ f_function_char_*:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_char_*
   owner: library
@@ -3658,7 +3666,7 @@ f_function_char_*_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_char_*_allocatable
   owner: library
@@ -3701,12 +3709,14 @@ f_function_char_*_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3753,12 +3763,14 @@ f_function_char_*_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3796,11 +3808,11 @@ f_function_char_*_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -3848,9 +3860,9 @@ f_function_char_*_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -3896,9 +3908,9 @@ f_function_char_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -3928,9 +3940,9 @@ f_function_char_*_cfi_allocatable:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -3963,10 +3975,11 @@ f_function_char_*_cfi_arg:
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     f_var: '{F_string_result_as_arg}'
+    i_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -3992,9 +4005,9 @@ f_function_char_*_cfi_copy:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -4038,9 +4051,9 @@ f_function_char_*_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -4053,7 +4066,7 @@ f_function_char_*_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_char_*_copy
   owner: library
@@ -4064,7 +4077,7 @@ f_function_char_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_char_*_pointer
   owner: library
@@ -4075,7 +4088,7 @@ f_function_char_*_raw:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_char_*_raw
   owner: library
@@ -4088,13 +4101,13 @@ f_function_char_scalar:
   comments:
   - Call the C wrapper as a subroutine.
   f_arg_call:
-  - '{c_var}'
+  - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -4141,9 +4154,9 @@ f_function_char_scalar_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -4189,9 +4202,9 @@ f_function_char_scalar_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -4221,9 +4234,9 @@ f_function_char_scalar_cfi_allocatable:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -4267,9 +4280,9 @@ f_function_char_scalar_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -4296,7 +4309,7 @@ f_function_native_&:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_&
   owner: library
@@ -4321,7 +4334,7 @@ f_function_native_&_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_&_pointer
   owner: library
@@ -4335,7 +4348,7 @@ f_function_native_**:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_**
   owner: library
@@ -4349,7 +4362,7 @@ f_function_native_*_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_*_allocatable
   owner: library
@@ -4363,7 +4376,7 @@ f_function_native_*_allocatable_caller:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_*_allocatable_caller
   owner: library
@@ -4424,11 +4437,11 @@ f_function_native_*_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -4473,9 +4486,9 @@ f_function_native_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -4535,11 +4548,11 @@ f_function_native_*_cdesc_pointer_caller:
   fmtdict:
     f_var_capsule: Crv
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -4572,9 +4585,9 @@ f_function_native_*_cfi_allocatable:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   i_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -4619,9 +4632,9 @@ f_function_native_*_cfi_pointer:
   f_pre_call:
   - nullify({f_var})
   i_arg_decl:
-  - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -4651,7 +4664,7 @@ f_function_native_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_*_pointer
   owner: library
@@ -4676,7 +4689,7 @@ f_function_native_*_pointer_caller:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_*_pointer_caller
   owner: library
@@ -4690,7 +4703,7 @@ f_function_native_*_raw:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_native_*_raw
   owner: library
@@ -4727,9 +4740,9 @@ f_function_shadow_&_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4766,9 +4779,9 @@ f_function_shadow_&_capptr_caller:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4805,9 +4818,9 @@ f_function_shadow_&_capptr_library:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4844,9 +4857,9 @@ f_function_shadow_*_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4883,9 +4896,9 @@ f_function_shadow_*_capptr_caller:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4922,9 +4935,9 @@ f_function_shadow_*_capptr_library:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4953,9 +4966,9 @@ f_function_shadow_*_capsule:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -4990,9 +5003,9 @@ f_function_shadow_scalar_capptr:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5032,9 +5045,9 @@ f_function_shadow_scalar_capptr_caller:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5074,9 +5087,9 @@ f_function_shadow_scalar_capptr_library:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5116,9 +5129,9 @@ f_function_shadow_scalar_capptr_targ_native_scalar:
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5137,7 +5150,7 @@ f_function_string_&:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_&
   owner: library
@@ -5148,7 +5161,7 @@ f_function_string_&_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_&_allocatable
   owner: library
@@ -5185,11 +5198,11 @@ f_function_string_&_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -5239,12 +5252,14 @@ f_function_string_&_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -5285,11 +5300,11 @@ f_function_string_&_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -5347,11 +5362,11 @@ f_function_string_&_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -5408,11 +5423,11 @@ f_function_string_&_cdesc_allocatable_caller:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -5469,11 +5484,11 @@ f_function_string_&_cdesc_allocatable_library:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -5517,9 +5532,9 @@ f_function_string_&_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5562,9 +5577,9 @@ f_function_string_&_cdesc_pointer_caller:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5607,9 +5622,9 @@ f_function_string_&_cdesc_pointer_library:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -5637,9 +5652,9 @@ f_function_string_&_cfi_allocatable:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -5669,9 +5684,9 @@ f_function_string_&_cfi_allocatable_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -5701,9 +5716,9 @@ f_function_string_&_cfi_allocatable_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -5742,10 +5757,11 @@ f_function_string_&_cfi_arg:
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     f_var: '{F_string_result_as_arg}'
+    i_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -5775,9 +5791,9 @@ f_function_string_&_cfi_copy:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -5821,9 +5837,9 @@ f_function_string_&_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -5867,9 +5883,9 @@ f_function_string_&_cfi_pointer_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -5913,9 +5929,9 @@ f_function_string_&_cfi_pointer_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -5928,7 +5944,7 @@ f_function_string_&_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_&_copy
   owner: library
@@ -5939,7 +5955,7 @@ f_function_string_*:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*
   owner: library
@@ -5950,7 +5966,7 @@ f_function_string_*_allocatable:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_allocatable
   owner: library
@@ -5961,7 +5977,7 @@ f_function_string_*_allocatable_caller:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_allocatable_caller
   owner: library
@@ -5972,7 +5988,7 @@ f_function_string_*_allocatable_library:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_allocatable_library
   owner: library
@@ -6009,11 +6025,11 @@ f_function_string_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -6054,11 +6070,11 @@ f_function_string_*_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -6116,11 +6132,11 @@ f_function_string_*_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -6177,11 +6193,11 @@ f_function_string_*_cdesc_allocatable_caller:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -6238,11 +6254,11 @@ f_function_string_*_cdesc_allocatable_library:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -6286,9 +6302,9 @@ f_function_string_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -6331,9 +6347,9 @@ f_function_string_*_cdesc_pointer_caller:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -6376,9 +6392,9 @@ f_function_string_*_cdesc_pointer_library:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -6406,9 +6422,9 @@ f_function_string_*_cfi_allocatable:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -6438,9 +6454,9 @@ f_function_string_*_cfi_allocatable_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -6470,9 +6486,9 @@ f_function_string_*_cfi_allocatable_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -6504,9 +6520,9 @@ f_function_string_*_cfi_copy:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -6550,9 +6566,9 @@ f_function_string_*_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -6596,9 +6612,9 @@ f_function_string_*_cfi_pointer_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -6642,9 +6658,9 @@ f_function_string_*_cfi_pointer_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -6657,7 +6673,7 @@ f_function_string_*_copy:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_copy
   owner: library
@@ -6668,7 +6684,7 @@ f_function_string_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_pointer
   owner: library
@@ -6679,7 +6695,7 @@ f_function_string_*_pointer_caller:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_pointer_caller
   owner: library
@@ -6690,7 +6706,7 @@ f_function_string_*_pointer_library:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_*_pointer_library
   owner: library
@@ -6701,7 +6717,7 @@ f_function_string_scalar:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_string_scalar
   owner: library
@@ -6738,11 +6754,11 @@ f_function_string_scalar_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -6792,12 +6808,14 @@ f_function_string_scalar_buf_arg:
     c_var_len: n{F_string_result_as_arg}
     f_var: '{F_string_result_as_arg}'
     f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -6838,11 +6856,11 @@ f_function_string_scalar_buf_copy:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -6907,11 +6925,11 @@ f_function_string_scalar_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -6975,11 +6993,11 @@ f_function_string_scalar_cdesc_allocatable_caller:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -7043,11 +7061,11 @@ f_function_string_scalar_cdesc_allocatable_library:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -7076,9 +7094,9 @@ f_function_string_scalar_cfi_allocatable:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7106,9 +7124,9 @@ f_function_string_scalar_cfi_allocatable_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -7138,9 +7156,9 @@ f_function_string_scalar_cfi_allocatable_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -7179,10 +7197,11 @@ f_function_string_scalar_cfi_arg:
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     f_var: '{F_string_result_as_arg}'
+    i_var: '{F_string_result_as_arg}'
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7212,9 +7231,9 @@ f_function_string_scalar_cfi_copy:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7258,9 +7277,9 @@ f_function_string_scalar_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7304,9 +7323,9 @@ f_function_string_scalar_cfi_pointer_caller:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7350,9 +7369,9 @@ f_function_string_scalar_cfi_pointer_library:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -7379,7 +7398,7 @@ f_function_struct_*_pointer:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: function
   name: f_function_struct_*_pointer
   owner: library
@@ -7397,9 +7416,9 @@ f_function_struct_scalar:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   i_arg_decl:
-  - '{f_type}, intent(OUT) :: {c_var}'
+  - '{f_type}, intent(OUT) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_kind}'
@@ -7469,9 +7488,9 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: function
@@ -7524,9 +7543,9 @@ f_getter_native_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -7585,9 +7604,9 @@ f_getter_string_scalar_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -7631,9 +7650,9 @@ f_getter_struct_**_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -7677,9 +7696,9 @@ f_getter_struct_*_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: getter
@@ -7717,9 +7736,9 @@ f_in_char_**:
   c_arg_decl:
   - char **{c_var}
   i_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {c_var}(*)'
+  - 'type(C_PTR), intent(IN) :: {i_var}(*)'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -7752,13 +7771,13 @@ f_in_char_**_buf:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -7786,9 +7805,9 @@ f_in_char_**_cfi:
   - size
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}(:)'
+  - 'character(len=*), intent({f_intent}) :: {i_var}(:)'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -7824,11 +7843,11 @@ f_in_char_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -7856,9 +7875,9 @@ f_in_char_*_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -7870,9 +7889,9 @@ f_in_char_scalar:
   f_arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {c_var}'
+  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -7891,9 +7910,9 @@ f_in_native_**:
   c_arg_decl:
   - '{cxx_type} **{cxx_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN), value :: {c_var}'
+  - 'type(C_PTR), intent(IN), value :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -7933,9 +7952,9 @@ f_in_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -7950,9 +7969,9 @@ f_in_native_*_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}) :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -7977,9 +7996,9 @@ f_in_shadow_&:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -7998,9 +8017,9 @@ f_in_shadow_*:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -8019,9 +8038,9 @@ f_in_shadow_scalar:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -8060,11 +8079,11 @@ f_in_string_&_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8087,9 +8106,9 @@ f_in_string_&_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -8127,11 +8146,11 @@ f_in_string_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8154,9 +8173,9 @@ f_in_string_*_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -8166,9 +8185,9 @@ f_in_string_scalar:
   c_arg_decl:
   - char *{c_var}
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8207,11 +8226,11 @@ f_in_string_scalar_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8234,9 +8253,9 @@ f_in_string_scalar_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -8283,13 +8302,13 @@ f_in_vector_&_buf_targ_native_*:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_len}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8314,11 +8333,11 @@ f_in_vector_&_buf_targ_native_scalar:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8364,13 +8383,13 @@ f_in_vector_&_buf_targ_string_scalar:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8400,11 +8419,11 @@ f_in_vector_*_buf_targ_native_scalar:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8450,13 +8469,13 @@ f_in_vector_*_buf_targ_string_scalar:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8482,11 +8501,11 @@ f_in_vector_scalar_buf_targ_native_scalar:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8532,13 +8551,13 @@ f_in_vector_scalar_buf_targ_string_scalar:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8565,9 +8584,9 @@ f_in_void_**:
     iso_c_binding:
     - C_PTR
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -8583,9 +8602,9 @@ f_in_void_**_cfi:
     iso_c_binding:
     - C_PTR
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -8625,9 +8644,9 @@ f_in_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: in
@@ -8687,11 +8706,11 @@ f_inout_char_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8717,9 +8736,9 @@ f_inout_char_*_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -8774,9 +8793,9 @@ f_inout_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -8791,9 +8810,9 @@ f_inout_native_*_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}) :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8822,9 +8841,9 @@ f_inout_shadow_&:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -8843,9 +8862,9 @@ f_inout_shadow_*:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
   i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
@@ -8904,11 +8923,11 @@ f_inout_string_&_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -8935,9 +8954,9 @@ f_inout_string_&_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -8995,11 +9014,11 @@ f_inout_string_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9026,9 +9045,9 @@ f_inout_string_*_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -9091,13 +9110,13 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   i_module:
@@ -9154,13 +9173,13 @@ f_inout_vector_&_cdesc_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_cdesc}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   i_module:
@@ -9221,13 +9240,13 @@ f_inout_vector_buf_targ_string_scalar:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9245,9 +9264,9 @@ f_inout_void_**:
     iso_c_binding:
     - C_PTR
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -9287,9 +9306,9 @@ f_inout_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: inout
@@ -9318,9 +9337,9 @@ f_mixin_arg_capsule:
   fmtdict:
     f_var_capsule: Crv
   i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_capsule}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_capsule_data_type}'
   intent: mixin
@@ -9403,7 +9422,7 @@ f_mixin_function_c-ptr:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: mixin
   name: f_mixin_function_c-ptr
   owner: library
@@ -9417,7 +9436,7 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: mixin
   name: f_mixin_function_ptr
   owner: library
@@ -9536,13 +9555,13 @@ f_mixin_in_2d_array_buf:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_len}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -9564,11 +9583,11 @@ f_mixin_in_array_buf:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
+  - '{i_var}'
+  - '{i_var_size}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -9611,13 +9630,13 @@ f_mixin_in_string_array_buf:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9773,9 +9792,9 @@ f_mixin_pass_capsule:
   f_temps:
   - capsule
   i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_capsule}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_capsule_data_type}'
   intent: mixin
@@ -9800,9 +9819,9 @@ f_mixin_pass_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: mixin
@@ -9864,9 +9883,9 @@ f_mixin_use_capsule:
   f_temps:
   - capsule
   i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_capsule}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_capsule_data_type}'
   intent: mixin
@@ -9912,11 +9931,11 @@ f_out_char_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9937,9 +9956,9 @@ f_out_char_*_cfi:
   - cfi
   cxx_local_var: pointer
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -10001,9 +10020,9 @@ f_out_native_*&_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10047,9 +10066,9 @@ f_out_native_*&_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10123,11 +10142,11 @@ f_out_native_**_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -10172,9 +10191,9 @@ f_out_native_**_cdesc_pointer:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10201,9 +10220,9 @@ f_out_native_**_cfi_allocatable:
   - lower
   cxx_local_var: pointer
   i_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -10241,9 +10260,9 @@ f_out_native_**_cfi_pointer:
   - lower
   cxx_local_var: pointer
   i_arg_decl:
-  - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
+  - '{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -10298,9 +10317,9 @@ f_out_native_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10356,11 +10375,11 @@ f_out_string_&_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -10383,9 +10402,9 @@ f_out_string_&_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -10467,11 +10486,11 @@ f_out_string_**_cdesc_allocatable:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -10515,9 +10534,9 @@ f_out_string_**_cdesc_copy:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10536,9 +10555,9 @@ f_out_string_**_cfi_allocatable:
   - cfi
   - cxx
   i_arg_decl:
-  - 'character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  - 'character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -10557,9 +10576,9 @@ f_out_string_**_cfi_copy:
   - cfi
   - cxx
   i_arg_decl:
-  - 'character(*), intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  - 'character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -10597,11 +10616,11 @@ f_out_string_*_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -10624,9 +10643,9 @@ f_out_string_*_cfi:
   - cfi
   cxx_local_var: scalar
   i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -10682,9 +10701,9 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10749,11 +10768,11 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - cdesc
   - capsule
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {c_var_capsule}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_arg_names:
-  - '{c_var_cdesc}'
-  - '{c_var_capsule}'
+  - '{i_var_cdesc}'
+  - '{i_var_capsule}'
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
@@ -10802,9 +10821,9 @@ f_out_vector_&_cdesc_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10847,9 +10866,9 @@ f_out_vector_&_cdesc_targ_string_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10897,9 +10916,9 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10947,9 +10966,9 @@ f_out_vector_*_cdesc_targ_native_scalar:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -10995,13 +11014,13 @@ f_out_vector_buf_targ_string_scalar:
     - C_INT
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_size}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -11023,9 +11042,9 @@ f_out_void_**:
     iso_c_binding:
     - C_PTR
   i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {c_var}{i_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11065,9 +11084,9 @@ f_out_void_*_cdesc:
   f_temps:
   - cdesc
   i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
-  - '{c_var_cdesc}'
+  - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
   intent: out
@@ -11085,7 +11104,7 @@ f_setter_native_*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
-  - '{c_var}'
+  - '{fc_var}'
   intent: setter
   name: f_setter_native_*
   owner: library
@@ -11093,7 +11112,7 @@ f_setter_native_scalar:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
-  - '{c_var}'
+  - '{fc_var}'
   intent: setter
   name: f_setter_native_scalar
   owner: library
@@ -11119,11 +11138,11 @@ f_setter_string_scalar_buf:
   f_temps:
   - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
   i_arg_names:
-  - '{c_var}'
-  - '{c_var_len}'
+  - '{i_var}'
+  - '{i_var_len}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -11135,9 +11154,9 @@ f_setter_struct_*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   intent: setter
   name: f_setter_struct_*
   owner: library
@@ -11145,9 +11164,9 @@ f_setter_struct_**:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   intent: setter
   name: f_setter_struct_**
   owner: library
@@ -11155,9 +11174,9 @@ f_setter_struct_*_pointer:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {c_var}{i_dimension}'
+  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   intent: setter
   name: f_setter_struct_*_pointer
   owner: library
@@ -11207,9 +11226,9 @@ f_shared_function_string_*_cfi_pointer:
   - call {F_C_call}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: shared
@@ -11222,7 +11241,7 @@ f_shared_function_string_scalar:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {c_var}
+  - type(C_PTR) {i_var}
   intent: shared
   name: f_shared_function_string_scalar
   owner: library

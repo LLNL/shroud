@@ -14,7 +14,7 @@
         ],
         "enums": [
             {
-                "<ENUM>": "****************************************",
+                "<ENUM>": "Color ****************************************",
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "ENU_BLUE",
@@ -76,7 +76,7 @@
                 }
             },
             {
-                "<ENUM>": "****************************************",
+                "<ENUM>": "val ****************************************",
                 "_fmtmembers": {
                     "a1": {
                         "C_enum_member": "ENU_a1",
@@ -213,7 +213,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "convert_to_int  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -257,7 +257,7 @@
                 },
                 "zz_fmtargs": {
                     "in": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -270,19 +270,16 @@
                             "cxx_nonconst_ptr": "&in",
                             "cxx_type": "enum Color",
                             "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "in",
-                            "c_var": "in",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "in",
+                            "fc_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -331,7 +328,7 @@
                     "function_name": "convert_to_int"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -342,20 +339,16 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_function_native_scalar",
                         "stmtf": "f_function_native_scalar"
                     },
                     "fmtpy": {

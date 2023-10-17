@@ -207,7 +207,21 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
     json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
     fp.close()
 
+def dump_fmt(config, logdir, basename, newlibrary):
+    """Write a JSON file for debugging.
+    """
+    jsonpath = os.path.join(logdir, basename + ".fmt.json")
+    fp = open(jsonpath, "w")
 
+    out = dict(
+        library=todict.print_fmt(newlibrary),
+        # yaml=all,
+    )
+
+    json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
+    fp.close()
+
+    
 # https://thisdataguy.com/2017/07/03/no-options-with-argparse-and-python/
 class BooleanAction(argparse.Action):
     def __init__(self, option_strings, dest, nargs=None, **kwargs):
@@ -542,6 +556,7 @@ def main_with_args(args):
     finally:
         # Write a debug dump even if there was an exception.
         dump_jsonfile(config, args.logdir, basename, newlibrary)
+#        dump_fmt(config, args.logdir, basename, newlibrary)
 
     # Write list of output files.  May be useful for build systems
     if args.cfiles:

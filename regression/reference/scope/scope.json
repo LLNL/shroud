@@ -10,7 +10,7 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "DataPointer ****************************************",
                 "cxx_header": [],
                 "name": "DataPointer",
                 "options": {},
@@ -19,7 +19,7 @@
                 "typemap_name": "ns3::DataPointer",
                 "variables": [
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "nitems ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "nitems",
@@ -46,7 +46,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "items ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -111,11 +111,11 @@
                 }
             },
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Class1 ****************************************",
                 "cxx_header": [],
                 "enums": [
                     {
-                        "<ENUM>": "****************************************",
+                        "<ENUM>": "Color ****************************************",
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_Class1_BLUE",
@@ -205,11 +205,11 @@
                 }
             },
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Class2 ****************************************",
                 "cxx_header": [],
                 "enums": [
                     {
-                        "<ENUM>": "****************************************",
+                        "<ENUM>": "Color ****************************************",
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_Class2_BLUE",
@@ -309,7 +309,7 @@
         ],
         "enums": [
             {
-                "<ENUM>": "****************************************",
+                "<ENUM>": "Color ****************************************",
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_BLUE",
@@ -370,7 +370,7 @@
                 }
             },
             {
-                "<ENUM>": "****************************************",
+                "<ENUM>": "Color ****************************************",
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_ns3_BLUE",
@@ -431,7 +431,7 @@
                 }
             },
             {
-                "<ENUM>": "****************************************",
+                "<ENUM>": "ColorEnum ****************************************",
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_ColorEnum_BLUE",
@@ -501,7 +501,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "DataPointer_get_items  0 ****************************************",
                 "_PTR_F_C_index": "2",
                 "_generated": "getter/setter",
                 "ast": {
@@ -569,7 +569,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "DataPointer_get_items  2 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -637,7 +637,7 @@
                 },
                 "zz_fmtargs": {
                     "SH_this": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -650,20 +650,17 @@
                             "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
                             "cxx_var": "SH_this",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "f_in_struct_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SH_this",
-                            "c_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "IN",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
                             "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "f_in_struct_*",
                             "stmtf": "f_in_struct_*"
                         }
                     }
@@ -695,7 +692,7 @@
                     "wrapped_name": "items"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_array_size2": "SH_this->nitems",
@@ -709,16 +706,6 @@
                         "cxx_member": "->",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_getter_native_*_cdesc_pointer"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "int",
                         "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
@@ -730,14 +717,19 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
+                        "stmtc": "f_getter_native_*_cdesc_pointer",
                         "stmtf": "f_getter_native_*_cdesc_pointer"
                     }
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "DataPointer_set_items  1 ****************************************",
                 "C_generated_path": [
                     "getter/setter"
                 ],
@@ -818,7 +810,7 @@
                 },
                 "zz_fmtargs": {
                     "SH_this": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -831,25 +823,22 @@
                             "cxx_nonconst_ptr": "SH_this",
                             "cxx_type": "ns3::DataPointer",
                             "cxx_var": "SH_this",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "f_inout_struct_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SH_this",
-                            "c_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "INOUT",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
                             "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "f_inout_struct_*",
                             "stmtf": "f_inout_struct_*"
                         }
                     },
                     "val": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "nitems",
                             "c_const": "",
@@ -863,24 +852,20 @@
                             "cxx_nonconst_ptr": "val",
                             "cxx_type": "int",
                             "cxx_var": "val",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_setter_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "val",
-                            "c_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "val",
+                            "fc_var": "val",
                             "i_dimension": "(*)",
+                            "i_var": "val",
+                            "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
+                            "stmtc": "f_setter_native_*",
                             "stmtf": "f_setter_native_*"
                         }
                     }
@@ -914,10 +899,10 @@
         "language": "cxx",
         "namespaces": [
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "ns1 ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "DataPointer ****************************************",
                         "cxx_header": [],
                         "name": "DataPointer",
                         "options": {},
@@ -926,7 +911,7 @@
                         "typemap_name": "ns1::DataPointer",
                         "variables": [
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "nitems ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "nitems",
@@ -953,7 +938,7 @@
                                 }
                             },
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "items ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
@@ -1020,7 +1005,7 @@
                 ],
                 "enums": [
                     {
-                        "<ENUM>": "****************************************",
+                        "<ENUM>": "Color ****************************************",
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_ns1_BLUE",
@@ -1083,7 +1068,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "3 ****************************************",
+                        "<FUNCTION>": "DataPointer_get_items  3 ****************************************",
                         "_PTR_F_C_index": "5",
                         "_generated": "getter/setter",
                         "ast": {
@@ -1151,7 +1136,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "5 ****************************************",
+                        "<FUNCTION>": "DataPointer_get_items  5 ****************************************",
                         "C_generated_path": [
                             "arg_to_buffer"
                         ],
@@ -1220,7 +1205,7 @@
                         },
                         "zz_fmtargs": {
                             "SH_this": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1233,20 +1218,17 @@
                                     "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
                                     "cxx_var": "SH_this",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_in_struct_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
+                                    "stmtc": "f_in_struct_*",
                                     "stmtf": "f_in_struct_*"
                                 }
                             }
@@ -1278,7 +1260,7 @@
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_array_size2": "SH_this->nitems",
@@ -1292,16 +1274,6 @@
                                 "cxx_member": "->",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_*_cdesc_pointer"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "int",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
@@ -1313,14 +1285,19 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_*_cdesc_pointer",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "4 ****************************************",
+                        "<FUNCTION>": "DataPointer_set_items  4 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -1401,7 +1378,7 @@
                         },
                         "zz_fmtargs": {
                             "SH_this": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1414,25 +1391,22 @@
                                     "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns1::DataPointer",
                                     "cxx_var": "SH_this",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_inout_struct_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
+                                    "stmtc": "f_inout_struct_*",
                                     "stmtf": "f_inout_struct_*"
                                 }
                             },
                             "val": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_array_size2": "nitems",
                                     "c_const": "",
@@ -1446,24 +1420,20 @@
                                     "cxx_nonconst_ptr": "val",
                                     "cxx_type": "int",
                                     "cxx_var": "val",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_setter_native_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "val",
-                                    "c_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "val",
+                                    "fc_var": "val",
                                     "i_dimension": "(*)",
+                                    "i_var": "val",
+                                    "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
+                                    "stmtc": "f_setter_native_*",
                                     "stmtf": "f_setter_native_*"
                                 }
                             }
@@ -1524,10 +1494,10 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "ns2 ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "DataPointer ****************************************",
                         "cxx_header": [],
                         "name": "DataPointer",
                         "options": {},
@@ -1536,7 +1506,7 @@
                         "typemap_name": "ns2::DataPointer",
                         "variables": [
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "nitems ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "nitems",
@@ -1563,7 +1533,7 @@
                                 }
                             },
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "items ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
@@ -1630,7 +1600,7 @@
                 ],
                 "enums": [
                     {
-                        "<ENUM>": "****************************************",
+                        "<ENUM>": "Color ****************************************",
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_ns2_BLUE",
@@ -1693,7 +1663,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "6 ****************************************",
+                        "<FUNCTION>": "DataPointer_get_items  6 ****************************************",
                         "_PTR_F_C_index": "8",
                         "_generated": "getter/setter",
                         "ast": {
@@ -1761,7 +1731,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "8 ****************************************",
+                        "<FUNCTION>": "DataPointer_get_items  8 ****************************************",
                         "C_generated_path": [
                             "arg_to_buffer"
                         ],
@@ -1830,7 +1800,7 @@
                         },
                         "zz_fmtargs": {
                             "SH_this": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1843,20 +1813,17 @@
                                     "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
                                     "cxx_var": "SH_this",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_in_struct_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
+                                    "stmtc": "f_in_struct_*",
                                     "stmtf": "f_in_struct_*"
                                 }
                             }
@@ -1888,7 +1855,7 @@
                             "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
                                 "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_array_size2": "SH_this->nitems",
@@ -1902,16 +1869,6 @@
                                 "cxx_member": "->",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_*_cdesc_pointer"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cxx_type": "int",
                                 "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
@@ -1923,14 +1880,19 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_*_cdesc_pointer",
                                 "stmtf": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "7 ****************************************",
+                        "<FUNCTION>": "DataPointer_set_items  7 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -2011,7 +1973,7 @@
                         },
                         "zz_fmtargs": {
                             "SH_this": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -2024,25 +1986,22 @@
                                     "cxx_nonconst_ptr": "SH_this",
                                     "cxx_type": "ns2::DataPointer",
                                     "cxx_var": "SH_this",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_inout_struct_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SH_this",
-                                    "c_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
                                     "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
+                                    "fc_var": "SH_this",
+                                    "i_var": "SH_this",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
+                                    "stmtc": "f_inout_struct_*",
                                     "stmtf": "f_inout_struct_*"
                                 }
                             },
                             "val": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "",
                                     "c_array_size2": "nitems",
                                     "c_const": "",
@@ -2056,24 +2015,20 @@
                                     "cxx_nonconst_ptr": "val",
                                     "cxx_type": "int",
                                     "cxx_var": "val",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_setter_native_*"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "val",
-                                    "c_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "val",
+                                    "fc_var": "val",
                                     "i_dimension": "(*)",
+                                    "i_var": "val",
+                                    "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
+                                    "stmtc": "f_setter_native_*",
                                     "stmtf": "f_setter_native_*"
                                 }
                             }

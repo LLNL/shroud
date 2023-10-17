@@ -11,7 +11,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  0 ****************************************",
                 "_PTR_F_C_index": "1",
                 "ast": {
                     "const": true,
@@ -58,7 +58,7 @@
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -70,24 +70,20 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_allocatable_library"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "f_function_string_*_allocatable_library"
                     }
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  1 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
@@ -150,7 +146,7 @@
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "const ",
                         "c_helper_array_context": "STR_SHROUD_array",
                         "c_helper_copy_string": "STR_ShroudCopyString",
@@ -165,16 +161,6 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_allocatable_library"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
                         "f_helper_array_context": "STR_SHROUD_array",
                         "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                         "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -185,7 +171,13 @@
                         "f_var": "SHT_rv",
                         "f_var_capsule": "SHT_rv_capsule",
                         "f_var_cdesc": "SHT_rv_cdesc",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "i_var_capsule": "SHT_rv_capsule",
+                        "i_var_cdesc": "SHT_rv_cdesc",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "f_function_string_*_cdesc_allocatable_library",
                         "stmtf": "f_function_string_*_cdesc_allocatable_library"
                     }
                 }

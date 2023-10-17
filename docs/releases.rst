@@ -169,6 +169,17 @@ Unreleased
    not the implementation.
    As a side effect of this, the forward.yaml test no longer needs to define
    the *c_type* field since the C++ type will be used.
+
+* Renamed some format fields to allow more control of argument names
+  in wrappers.  The C wrapper continues to use *c_var* and *cxx_var*.
+  The Fortran wrapper continues to use *f_var*, but if a different
+  argument is needed to be passed to the C wrapper it is now *fc_var*
+  instead of *c_var*.  The interface uses *i_var* instead of reusing
+  *c_var*. Remove format field *F_C_var* since it is redundant with
+  *i_var*.
+
+.. The fmtc and fmtf dictionaries will be merged and needed unique names
+   instead of overloading c_var.
   
 New Features
 ^^^^^^^^^^^^

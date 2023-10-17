@@ -14,7 +14,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "passIndex  0 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -165,7 +165,7 @@
                 },
                 "zz_fmtargs": {
                     "i1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -178,23 +178,19 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "IndexType",
                             "cxx_var": "i1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i1",
-                            "c_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "i_var": "i1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar"
                         }
                     },
                     "i2": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -207,19 +203,15 @@
                             "cxx_nonconst_ptr": "i2",
                             "cxx_type": "IndexType",
                             "cxx_var": "i2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i2",
-                            "c_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "i_var": "i2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_out_native_*"
                         }
                     }
                 },
@@ -238,7 +230,7 @@
                     "function_name": "passIndex"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -249,24 +241,20 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_BOOL"
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "f_function_bool_scalar"
                     }
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
+                "<FUNCTION>": "passIndex  3 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -336,7 +324,7 @@
                 },
                 "zz_fmtargs": {
                     "i1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -349,24 +337,21 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "int32_t",
                             "cxx_var": "i1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT32_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i1",
-                            "c_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "C_INT32_T",
                             "f_type": "integer(C_INT32_T)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "i1",
+                            "fc_var": "i1",
+                            "i_var": "i1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "i2": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -379,19 +364,16 @@
                             "cxx_nonconst_ptr": "i2",
                             "cxx_type": "IndexType",
                             "cxx_var": "i2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i2",
-                            "c_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
+                            "fc_var": "i2",
+                            "i_var": "i2",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         }
                     }
@@ -420,7 +402,7 @@
                     "function_suffix": "_32"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -431,26 +413,22 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "f_function_bool_scalar",
                         "stmtf": "f_function_bool_scalar"
                     }
                 }
             },
             {
-                "<FUNCTION>": "4 ****************************************",
+                "<FUNCTION>": "passIndex  4 ****************************************",
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
@@ -520,7 +498,7 @@
                 },
                 "zz_fmtargs": {
                     "i1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -533,24 +511,21 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "int64_t",
                             "cxx_var": "i1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT64_T",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i1",
-                            "c_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "C_INT64_T",
                             "f_type": "integer(C_INT64_T)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "i1",
+                            "fc_var": "i1",
+                            "i_var": "i1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "i2": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -563,19 +538,16 @@
                             "cxx_nonconst_ptr": "i2",
                             "cxx_type": "IndexType",
                             "cxx_var": "i2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i2",
-                            "c_var": "i2",
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
+                            "fc_var": "i2",
+                            "i_var": "i2",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_out_native_*",
                             "stmtf": "f_out_native_*"
                         }
                     }
@@ -604,7 +576,7 @@
                     "function_suffix": "_64"
                 },
                 "zz_fmtresult": {
-                    "fmtc": {
+                    "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -615,26 +587,22 @@
                         "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "cxx_type": "bool",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
+                        "fc_var": "SHT_rv",
+                        "i_var": "SHT_rv",
+                        "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "f_function_bool_scalar",
                         "stmtf": "f_function_bool_scalar"
                     }
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "passIndex2  1 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -723,7 +691,7 @@
                 },
                 "zz_fmtargs": {
                     "i1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -736,19 +704,16 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "IndexType",
                             "cxx_var": "i1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "i1",
-                            "c_var": "i1",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
+                            "fc_var": "i1",
+                            "i_var": "i1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -768,7 +733,7 @@
                 }
             },
             {
-                "<FUNCTION>": "5 ****************************************",
+                "<FUNCTION>": "passIndex2  5 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -829,7 +794,7 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "passIndex2  6 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -890,7 +855,7 @@
                 }
             },
             {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "passFloat  2 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -979,7 +944,7 @@
                 },
                 "zz_fmtargs": {
                     "f1": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -992,19 +957,16 @@
                             "cxx_nonconst_ptr": "&f1",
                             "cxx_type": "FloatType",
                             "cxx_var": "f1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "f1",
-                            "c_var": "f1",
                             "f_intent": "IN",
                             "f_kind": "FLOATTYPE",
                             "f_type": "real(FLOATTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "f1",
+                            "fc_var": "f1",
+                            "i_var": "f1",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -1024,7 +986,7 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "passFloat  7 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
@@ -1085,7 +1047,7 @@
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "passFloat  8 ****************************************",
                 "C_generated_path": [
                     "fortran_generic"
                 ],

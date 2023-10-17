@@ -7,11 +7,11 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "User1 ****************************************",
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "0 ****************************************",
+                        "<FUNCTION>": "method1  0 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -63,7 +63,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "1 ****************************************",
+                        "<FUNCTION>": "method2  1 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -115,7 +115,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "3 ****************************************",
+                        "<FUNCTION>": "method3def  3 ****************************************",
                         "C_generated_path": [
                             "has_default_arg"
                         ],
@@ -171,7 +171,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "2 ****************************************",
+                        "<FUNCTION>": "method3def  2 ****************************************",
                         "_default_funcs": [
                             3
                         ],
@@ -225,7 +225,7 @@
                         },
                         "zz_fmtargs": {
                             "i": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -238,19 +238,16 @@
                                     "cxx_nonconst_ptr": "&i",
                                     "cxx_type": "int",
                                     "cxx_var": "i",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "i",
-                                    "c_var": "i",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "i",
+                                    "fc_var": "i",
+                                    "i_var": "i",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 },
                                 "fmtpy": {
@@ -340,13 +337,13 @@
                 }
             },
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "User2 ****************************************",
                 "cxx_header": [
                     "User2.hpp"
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "4 ****************************************",
+                        "<FUNCTION>": "exfunc  4 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -400,7 +397,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "5 ****************************************",
+                        "<FUNCTION>": "exfunc  5 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -445,7 +442,7 @@
                         },
                         "zz_fmtargs": {
                             "flag": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -458,19 +455,16 @@
                                     "cxx_nonconst_ptr": "&flag",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "flag",
-                                    "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
+                                    "fc_var": "flag",
+                                    "i_var": "flag",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 },
                                 "fmtpy": {

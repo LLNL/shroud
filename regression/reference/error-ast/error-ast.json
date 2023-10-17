@@ -14,7 +14,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "0 ****************************************",
+                "<FUNCTION>": "FortranGenericOverloaded3  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -104,7 +104,7 @@
                 }
             },
             {
-                "<FUNCTION>": "1 ****************************************",
+                "<FUNCTION>": "PYGoodFunction  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

@@ -6,11 +6,11 @@
         ],
         "classes": [
             {
-                "<CLASS>": "****************************************",
+                "<CLASS>": "Class1 ****************************************",
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "6 ****************************************",
+                        "<FUNCTION>": "new  6 ****************************************",
                         "C_generated_path": [
                             "has_default_arg"
                         ],
@@ -69,7 +69,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -82,19 +82,16 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -124,7 +121,7 @@
                             "function_suffix": "_0"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "DEF_Class1",
@@ -134,15 +131,6 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -150,13 +138,17 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "f_ctor_shadow_scalar_capptr",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "7 ****************************************",
+                        "<FUNCTION>": "new  7 ****************************************",
                         "C_generated_path": [
                             "has_default_arg"
                         ],
@@ -232,7 +224,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -245,24 +237,21 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -275,19 +264,16 @@
                                     "cxx_nonconst_ptr": "&arg2",
                                     "cxx_type": "int",
                                     "cxx_var": "arg2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg2",
-                                    "c_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
+                                    "fc_var": "arg2",
+                                    "i_var": "arg2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -317,7 +303,7 @@
                             "function_suffix": "_1"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "DEF_Class1",
@@ -327,15 +313,6 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -343,13 +320,17 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "f_ctor_shadow_scalar_capptr",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "0 ****************************************",
+                        "<FUNCTION>": "new  0 ****************************************",
                         "_default_funcs": [
                             6,
                             7
@@ -447,7 +428,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -460,24 +441,21 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -490,24 +468,21 @@
                                     "cxx_nonconst_ptr": "&arg2",
                                     "cxx_type": "int",
                                     "cxx_var": "arg2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg2",
-                                    "c_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
+                                    "fc_var": "arg2",
+                                    "i_var": "arg2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg3": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -520,19 +495,16 @@
                                     "cxx_nonconst_ptr": "&arg3",
                                     "cxx_type": "int",
                                     "cxx_var": "arg3",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg3",
-                                    "c_var": "arg3",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg3",
+                                    "fc_var": "arg3",
+                                    "i_var": "arg3",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -562,7 +534,7 @@
                             "function_suffix": "_2"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "DEF_Class1",
@@ -572,15 +544,6 @@
                                 "cxx_member": ".",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "Class1",
                                 "f_capsule_data_type": "DEF_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
@@ -588,13 +551,17 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "defaultarg_mod",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "f_ctor_shadow_scalar_capptr",
                                 "stmtf": "f_ctor_shadow_scalar_capptr"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "1 ****************************************",
+                        "<FUNCTION>": "delete  1 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -650,7 +617,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "8 ****************************************",
+                        "<FUNCTION>": "DefaultArguments  8 ****************************************",
                         "C_generated_path": [
                             "has_default_arg"
                         ],
@@ -701,7 +668,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -714,19 +681,16 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -759,7 +723,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "9 ****************************************",
+                        "<FUNCTION>": "DefaultArguments  9 ****************************************",
                         "C_generated_path": [
                             "has_default_arg"
                         ],
@@ -827,7 +791,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -840,24 +804,21 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -870,19 +831,16 @@
                                     "cxx_nonconst_ptr": "&arg2",
                                     "cxx_type": "int",
                                     "cxx_var": "arg2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg2",
-                                    "c_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
+                                    "fc_var": "arg2",
+                                    "i_var": "arg2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -915,7 +873,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "2 ****************************************",
+                        "<FUNCTION>": "DefaultArguments  2 ****************************************",
                         "_default_funcs": [
                             8,
                             9
@@ -1005,7 +963,7 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1018,24 +976,21 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg1",
-                                    "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg1",
+                                    "fc_var": "arg1",
+                                    "i_var": "arg1",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1048,24 +1003,21 @@
                                     "cxx_nonconst_ptr": "&arg2",
                                     "cxx_type": "int",
                                     "cxx_var": "arg2",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg2",
-                                    "c_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg2",
+                                    "fc_var": "arg2",
+                                    "i_var": "arg2",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             },
                             "arg3": {
-                                "fmtc": {
+                                "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1078,19 +1030,16 @@
                                     "cxx_nonconst_ptr": "&arg3",
                                     "cxx_type": "int",
                                     "cxx_var": "arg3",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "arg3",
-                                    "c_var": "arg3",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "arg3",
+                                    "fc_var": "arg3",
+                                    "i_var": "arg3",
+                                    "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
                                     "stmtf": "f_in_native_scalar"
                                 }
                             }
@@ -1123,7 +1072,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "3 ****************************************",
+                        "<FUNCTION>": "get_field1  3 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -1185,7 +1134,7 @@
                             "wrapped_name": "field1"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1194,26 +1143,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_scalar",
                                 "stmtf": "f_getter_native_scalar"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "4 ****************************************",
+                        "<FUNCTION>": "get_field2  4 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -1275,7 +1220,7 @@
                             "wrapped_name": "field2"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1284,26 +1229,22 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_scalar",
                                 "stmtf": "f_getter_native_scalar"
                             }
                         }
                     },
                     {
-                        "<FUNCTION>": "5 ****************************************",
+                        "<FUNCTION>": "get_field3  5 ****************************************",
                         "C_generated_path": [
                             "getter/setter"
                         ],
@@ -1365,7 +1306,7 @@
                             "wrapped_name": "field3"
                         },
                         "zz_fmtresult": {
-                            "fmtc": {
+                            "fmtf": {
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1374,20 +1315,16 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar"
-                            },
-                            "fmtf": {
-                                "F_C_var": "SHT_rv",
-                                "c_var": "SHT_rv",
-                                "cxx_type": "int",
                                 "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_getter_native_scalar",
                                 "stmtf": "f_getter_native_scalar"
                             }
                         }
@@ -1400,7 +1337,7 @@
                 "typemap_name": "Class1",
                 "variables": [
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "field1 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1431,7 +1368,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "field2 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1462,7 +1399,7 @@
                         }
                     },
                     {
-                        "<VARIABLE>": "****************************************",
+                        "<VARIABLE>": "field3 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1529,7 +1466,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "apply_generic  16 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -1584,7 +1521,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1597,19 +1534,16 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -1638,7 +1572,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "apply_generic  17 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -1710,7 +1644,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1723,24 +1657,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1753,19 +1684,16 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -1794,7 +1722,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "apply_generic  10 ****************************************",
                 "_default_funcs": [
                     16,
                     17
@@ -1888,7 +1816,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1901,24 +1829,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1931,24 +1856,21 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1961,19 +1883,16 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -2002,7 +1921,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "apply_generic  18 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -2073,7 +1992,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2086,24 +2005,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2118,19 +2034,16 @@
                             "cxx_type": "TypeID",
                             "cxx_val": "static_cast<TypeID>(type)",
                             "cxx_var": "SHCXX_type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -2159,7 +2072,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "apply_generic  19 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -2247,7 +2160,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2260,24 +2173,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2290,24 +2200,21 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2322,19 +2229,16 @@
                             "cxx_type": "TypeID",
                             "cxx_val": "static_cast<TypeID>(type)",
                             "cxx_var": "SHCXX_type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -2363,7 +2267,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "apply_generic  11 ****************************************",
                 "_default_funcs": [
                     18,
                     19
@@ -2473,7 +2377,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2486,24 +2390,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2516,24 +2417,21 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2546,24 +2444,21 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2578,19 +2473,16 @@
                             "cxx_type": "TypeID",
                             "cxx_val": "static_cast<TypeID>(type)",
                             "cxx_var": "SHCXX_type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -2619,7 +2511,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "apply_require  12 ****************************************",
                 "_has_default_arg": true,
                 "_overloaded": true,
                 "ast": {
@@ -2703,7 +2595,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2716,24 +2608,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2746,24 +2635,21 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2776,19 +2662,16 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -2817,7 +2700,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "apply_require  13 ****************************************",
                 "_has_default_arg": true,
                 "_overloaded": true,
                 "ast": {
@@ -2917,7 +2800,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2930,24 +2813,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2960,24 +2840,21 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2990,24 +2867,21 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3022,19 +2896,16 @@
                             "cxx_type": "TypeID",
                             "cxx_val": "static_cast<TypeID>(type)",
                             "cxx_var": "SHCXX_type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -3063,7 +2934,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "apply_optional  14 ****************************************",
                 "_has_default_arg": true,
                 "_overloaded": true,
                 "ast": {
@@ -3147,7 +3018,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3160,24 +3031,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3190,25 +3058,22 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "default_value": 0,
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "SH_offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3221,20 +3086,17 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "default_value": 1,
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "SH_stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -3263,7 +3125,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "apply_optional  15 ****************************************",
                 "_has_default_arg": true,
                 "_overloaded": true,
                 "ast": {
@@ -3363,7 +3225,7 @@
                 },
                 "zz_fmtargs": {
                     "num_elems": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3376,24 +3238,21 @@
                             "cxx_nonconst_ptr": "&num_elems",
                             "cxx_type": "IndexType",
                             "cxx_var": "num_elems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "num_elems",
-                            "c_var": "num_elems",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "num_elems",
+                            "fc_var": "num_elems",
+                            "i_var": "num_elems",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "offset": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3406,25 +3265,22 @@
                             "cxx_nonconst_ptr": "&offset",
                             "cxx_type": "IndexType",
                             "cxx_var": "offset",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "offset",
-                            "c_var": "offset",
                             "default_value": 0,
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "offset",
+                            "fc_var": "SH_offset",
+                            "i_var": "offset",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "stride": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3437,25 +3293,22 @@
                             "cxx_nonconst_ptr": "&stride",
                             "cxx_type": "IndexType",
                             "cxx_var": "stride",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "stride",
-                            "c_var": "stride",
                             "default_value": 1,
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "stride",
+                            "fc_var": "SH_stride",
+                            "i_var": "stride",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     },
                     "type": {
-                        "fmtc": {
+                        "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3470,19 +3323,16 @@
                             "cxx_type": "TypeID",
                             "cxx_val": "static_cast<TypeID>(type)",
                             "cxx_var": "SHCXX_type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
                             "f_type_module": "defaultarg_mod",
                             "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -3517,7 +3367,7 @@
         ],
         "typedefs": [
             {
-                "<TYPEDEF>": "****************************************",
+                "<TYPEDEF>": "TypeID ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "TypeID",
