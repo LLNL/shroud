@@ -1125,7 +1125,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
         func_cursor.stmt = result_stmt
-        self.name_temp_vars_c(fmt_result.C_result, result_stmt, fmt_result)
+        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
         self.add_c_helper(result_stmt.c_helper, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
@@ -1234,9 +1234,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             arg_stmt = statements.lookup_fc_stmts(stmts)
             func_cursor.stmt = arg_stmt
             fmt_arg.c_var = arg_name
-            # XXX - order issue - c_var must be set before name_temp_vars_c,
+            # XXX - order issue - c_var must be set before name_temp_vars,
             #       but set by set_fmt_fields
-            self.name_temp_vars_c(arg_name, arg_stmt, fmt_arg)
+            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
             self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
             self.add_c_helper(arg_stmt.c_helper, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)

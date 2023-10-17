@@ -1711,7 +1711,7 @@ rv = .false.
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
 
-        self.name_temp_vars_f(fmt_func.C_result, result_stmt, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
         fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
@@ -1809,7 +1809,7 @@ rv = .false.
 
             arg_stmt = statements.lookup_fc_stmts(f_stmts)
             func_cursor.stmt = arg_stmt
-            self.name_temp_vars_f(arg_name, arg_stmt, fmt_arg)
+            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
             fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
