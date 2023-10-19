@@ -256,10 +256,10 @@
             {
                 "<FUNCTION>": "passIndex  3 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
+                "_generated": "fortran_generic",
+                "_generated_path": [
                     "fortran_generic"
                 ],
-                "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -430,10 +430,10 @@
             {
                 "<FUNCTION>": "passIndex  4 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
+                "_generated": "fortran_generic",
+                "_generated_path": [
                     "fortran_generic"
                 ],
-                "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -734,11 +734,11 @@
             },
             {
                 "<FUNCTION>": "passIndex2  5 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
                 "_PTR_F_C_index": "1",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -795,11 +795,11 @@
             },
             {
                 "<FUNCTION>": "passIndex2  6 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
                 "_PTR_F_C_index": "1",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -987,11 +987,11 @@
             },
             {
                 "<FUNCTION>": "passFloat  7 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
                 "_PTR_F_C_index": "2",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1048,11 +1048,11 @@
             },
             {
                 "<FUNCTION>": "passFloat  8 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
                 "_PTR_F_C_index": "2",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

@@ -11,10 +11,10 @@
                 "functions": [
                     {
                         "<FUNCTION>": "new  6 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
                             "has_default_arg"
                         ],
-                        "_generated": "has_default_arg",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -149,10 +149,10 @@
                     },
                     {
                         "<FUNCTION>": "new  7 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
                             "has_default_arg"
                         ],
-                        "_generated": "has_default_arg",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -618,10 +618,10 @@
                     },
                     {
                         "<FUNCTION>": "DefaultArguments  8 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
                             "has_default_arg"
                         ],
-                        "_generated": "has_default_arg",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -724,10 +724,10 @@
                     },
                     {
                         "<FUNCTION>": "DefaultArguments  9 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
                             "has_default_arg"
                         ],
-                        "_generated": "has_default_arg",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -1073,10 +1073,10 @@
                     },
                     {
                         "<FUNCTION>": "get_field1  3 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1159,10 +1159,10 @@
                     },
                     {
                         "<FUNCTION>": "get_field2  4 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1245,10 +1245,10 @@
                     },
                     {
                         "<FUNCTION>": "get_field3  5 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1467,10 +1467,10 @@
         "functions": [
             {
                 "<FUNCTION>": "apply_generic  16 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1573,10 +1573,10 @@
             },
             {
                 "<FUNCTION>": "apply_generic  17 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1922,10 +1922,10 @@
             },
             {
                 "<FUNCTION>": "apply_generic  18 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2073,10 +2073,10 @@
             },
             {
                 "<FUNCTION>": "apply_generic  19 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

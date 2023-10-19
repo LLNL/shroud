@@ -107,11 +107,11 @@
             },
             {
                 "<FUNCTION>": "LastFunctionCalled  3 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -346,6 +346,9 @@
                             {
                                 "<FUNCTION>": "Cstruct1_ctor  0 ****************************************",
                                 "_generated": "struct_as_class_ctor",
+                                "_generated_path": [
+                                    "struct_as_class_ctor"
+                                ],
                                 "ast": {
                                     "declarator": {
                                         "attrs": {

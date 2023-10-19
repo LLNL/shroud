@@ -138,10 +138,10 @@
                     },
                     {
                         "<FUNCTION>": "nested  1 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "cxx_template",
+                        "_generated_path": [
                             "cxx_template"
                         ],
-                        "_generated": "cxx_template",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -701,10 +701,10 @@
                     },
                     {
                         "<FUNCTION>": "set_value  7 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "cxx_template",
+                        "_generated_path": [
                             "cxx_template"
                         ],
-                        "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -830,10 +830,10 @@
                     },
                     {
                         "<FUNCTION>": "get_value  8 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "cxx_template",
+                        "_generated_path": [
                             "cxx_template"
                         ],
-                        "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1280,10 +1280,10 @@
                     },
                     {
                         "<FUNCTION>": "set_value  14 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "cxx_template",
+                        "_generated_path": [
                             "cxx_template"
                         ],
-                        "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1409,10 +1409,10 @@
                     },
                     {
                         "<FUNCTION>": "get_value  15 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "cxx_template",
+                        "_generated_path": [
                             "cxx_template"
                         ],
-                        "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1767,10 +1767,10 @@
             },
             {
                 "<FUNCTION>": "FunctionTU  31 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1992,10 +1992,10 @@
             },
             {
                 "<FUNCTION>": "FunctionTU  32 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2290,10 +2290,10 @@
             },
             {
                 "<FUNCTION>": "UseImplWorker  33 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2419,10 +2419,10 @@
             },
             {
                 "<FUNCTION>": "UseImplWorker  34 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2777,10 +2777,10 @@
                             },
                             {
                                 "<FUNCTION>": "push_back  20 ****************************************",
-                                "C_generated_path": [
+                                "_generated": "cxx_template",
+                                "_generated_path": [
                                     "cxx_template"
                                 ],
-                                "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -2956,10 +2956,10 @@
                             },
                             {
                                 "<FUNCTION>": "at  21 ****************************************",
-                                "C_generated_path": [
+                                "_generated": "cxx_template",
+                                "_generated_path": [
                                     "cxx_template"
                                 ],
-                                "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3435,10 +3435,10 @@
                             },
                             {
                                 "<FUNCTION>": "push_back  26 ****************************************",
-                                "C_generated_path": [
+                                "_generated": "cxx_template",
+                                "_generated_path": [
                                     "cxx_template"
                                 ],
-                                "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3614,10 +3614,10 @@
                             },
                             {
                                 "<FUNCTION>": "at  27 ****************************************",
-                                "C_generated_path": [
+                                "_generated": "cxx_template",
+                                "_generated_path": [
                                     "cxx_template"
                                 ],
-                                "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {

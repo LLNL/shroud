@@ -1455,11 +1455,11 @@ class FunctionNode(AstNode):
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
-        self._function_index = None
         self._fmtargs = {}
         self._fmtresult = {}
         self._function_index = None
         self._generated = False
+        self._generated_path = []
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
@@ -1471,7 +1471,6 @@ class FunctionNode(AstNode):
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
-        self.C_generated_path = []
         self.C_force_wrapper = False
 
         # self.function_index = []
@@ -1648,6 +1647,7 @@ class FunctionNode(AstNode):
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
+        new._generated_path = copy.deepcopy(self._generated_path)
 
         return new
 

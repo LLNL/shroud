@@ -673,6 +673,7 @@ class GenFunctions(object):
             define_function_suffix
               has_default_args
               template_function
+              process_return_this
               define_fortran_generic_functions
               define_bufferify_functions
                 arg_to_CFI
@@ -895,6 +896,7 @@ class GenFunctions(object):
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
+        fcn._generated_path.append("getter/setter")
 
         ##########
         # setter
@@ -928,6 +930,7 @@ class GenFunctions(object):
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
+        fcn._generated_path.append("getter/setter")
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
@@ -1079,6 +1082,7 @@ class GenFunctions(object):
         node = cls.add_function(name, ast, options=opt)
         node.declgen = node.ast.gen_decl()
         node._generated = "struct_as_class_ctor"
+        node._generated_path.append("struct_as_class_ctor")
 
     def process_class(self, parent, cls):
         """Process variables and functions for a class/struct.
@@ -1246,6 +1250,7 @@ class GenFunctions(object):
             self.append_function_index(new)
 
             new._generated = "cxx_template"
+            new._generated_path.append("cxx_template")
 
             fmt = new.fmtdict
             if targs.fmtdict:
@@ -1327,6 +1332,7 @@ class GenFunctions(object):
         self.append_function_index(new)
 
         new._generated = "cxx_template"
+        new._generated_path.append("cxx_template")
 
         new.cxx_template = {}
         #        fmt.CXX_template = targs.instantiation   # ex. <int>
@@ -1448,6 +1454,7 @@ class GenFunctions(object):
             ordered_functions.append(new)
             self.append_function_index(new)
             new._generated = "fortran_generic"
+            new._generated_path.append("fortran_generic")
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
@@ -1522,6 +1529,7 @@ class GenFunctions(object):
             new = node.clone()
             self.append_function_index(new)
             new._generated = "has_default_arg"
+            new._generated_path.append("has_default_arg")
             del new.ast.declarator.params[i:]  # remove trailing arguments
             new._has_default_arg = False
             # Python and Lua both deal with default args in their own way
@@ -1598,6 +1606,7 @@ class GenFunctions(object):
         ordered_functions.append(new)
         self.append_function_index(new)
         new._generated = "return_this"
+        new._generated_path.append("return_this")
 
         # Only wrap for C and Fortran, transfer values from node.
         new.wrap.clear()
@@ -1716,6 +1725,7 @@ class GenFunctions(object):
 
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
+        C_new._generated_path.append("arg_to_cfi")
         C_new.splicer_group = "cfi"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
@@ -1901,6 +1911,7 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
+        C_new._generated_path.append("arg_to_buffer")
         C_new.splicer_group = "buf"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result

@@ -735,6 +735,9 @@
             {
                 "<FUNCTION>": "TemplateArgument  18 ****************************************",
                 "_generated": "cxx_template",
+                "_generated_path": [
+                    "cxx_template"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -836,6 +839,9 @@
             {
                 "<FUNCTION>": "TemplateArgument  19 ****************************************",
                 "_generated": "cxx_template",
+                "_generated_path": [
+                    "cxx_template"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1005,6 +1011,9 @@
             {
                 "<FUNCTION>": "TemplateReturn  20 ****************************************",
                 "_generated": "cxx_template",
+                "_generated_path": [
+                    "cxx_template"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1068,6 +1077,9 @@
             {
                 "<FUNCTION>": "TemplateReturn  21 ****************************************",
                 "_generated": "cxx_template",
+                "_generated_path": [
+                    "cxx_template"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

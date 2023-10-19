@@ -401,6 +401,9 @@
                 "_PTR_C_CXX_index": "1",
                 "_PTR_F_C_index": "10",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -503,11 +506,12 @@
             {
                 "<FUNCTION>": "GetScalar1  10 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -704,6 +708,9 @@
                 "_PTR_C_CXX_index": "1",
                 "_PTR_F_C_index": "11",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -806,11 +813,12 @@
             {
                 "<FUNCTION>": "GetScalar1  11 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1067,10 +1075,10 @@
             },
             {
                 "<FUNCTION>": "getData  4 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1178,10 +1186,10 @@
             },
             {
                 "<FUNCTION>": "getData  5 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1490,6 +1498,9 @@
                 "_PTR_C_CXX_index": "3",
                 "_PTR_F_C_index": "12",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1581,11 +1592,12 @@
             {
                 "<FUNCTION>": "GetScalar2  12 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1763,6 +1775,9 @@
                 "_PTR_C_CXX_index": "3",
                 "_PTR_F_C_index": "13",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1854,11 +1869,12 @@
             {
                 "<FUNCTION>": "GetScalar2  13 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

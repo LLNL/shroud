@@ -504,6 +504,9 @@
                 "<FUNCTION>": "DataPointer_get_items  0 ****************************************",
                 "_PTR_F_C_index": "2",
                 "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -570,10 +573,11 @@
             },
             {
                 "<FUNCTION>": "DataPointer_get_items  2 ****************************************",
-                "C_generated_path": [
+                "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "getter/setter",
                     "arg_to_buffer"
                 ],
-                "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -730,10 +734,10 @@
             },
             {
                 "<FUNCTION>": "DataPointer_set_items  1 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1071,6 +1075,9 @@
                         "<FUNCTION>": "DataPointer_get_items  3 ****************************************",
                         "_PTR_F_C_index": "5",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1137,11 +1144,12 @@
                     },
                     {
                         "<FUNCTION>": "DataPointer_get_items  5 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "3",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1298,10 +1306,10 @@
                     },
                     {
                         "<FUNCTION>": "DataPointer_set_items  4 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1666,6 +1674,9 @@
                         "<FUNCTION>": "DataPointer_get_items  6 ****************************************",
                         "_PTR_F_C_index": "8",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1732,11 +1743,12 @@
                     },
                     {
                         "<FUNCTION>": "DataPointer_get_items  8 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1893,10 +1905,10 @@
                     },
                     {
                         "<FUNCTION>": "DataPointer_set_items  7 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

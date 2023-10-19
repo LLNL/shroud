@@ -2306,11 +2306,11 @@
             },
             {
                 "<FUNCTION>": "acceptCharArrayIn  46 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2715,11 +2715,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToScalar  47 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2936,11 +2936,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedArray  48 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3219,11 +3219,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicArray  49 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3504,11 +3504,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFuncArray  50 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3731,11 +3731,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToConstScalar  51 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3951,11 +3951,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedConstArray  52 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4230,11 +4230,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicConstArray  53 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5303,11 +5303,11 @@
             },
             {
                 "<FUNCTION>": "getAllocToFixedArray  54 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6186,11 +6186,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedArray  55 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -6451,11 +6451,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedConstArray  56 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "40",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7025,11 +7025,11 @@
             },
             {
                 "<FUNCTION>": "returnIntAllocToFixedArray  57 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {

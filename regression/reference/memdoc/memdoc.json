@@ -84,10 +84,10 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrAlloc  1 ****************************************",
-                "C_generated_path": [
+                "_generated": "arg_to_buffer",
+                "_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_generated": "arg_to_buffer",
                 "ast": {
                     "const": true,
                     "declarator": {

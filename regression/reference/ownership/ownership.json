@@ -76,10 +76,10 @@
                     },
                     {
                         "<FUNCTION>": "get_flag  1 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -834,11 +834,11 @@
             },
             {
                 "<FUNCTION>": "ReturnIntPtrDimPointer  24 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1173,11 +1173,11 @@
             },
             {
                 "<FUNCTION>": "ReturnIntPtrDimAlloc  25 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1517,11 +1517,11 @@
             },
             {
                 "<FUNCTION>": "ReturnIntPtrDimDefault  26 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1988,11 +1988,11 @@
             },
             {
                 "<FUNCTION>": "ReturnIntPtrDimPointerNew  27 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -2506,11 +2506,11 @@
             },
             {
                 "<FUNCTION>": "ReturnIntPtrDimDefaultNew  28 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {

@@ -808,10 +808,10 @@
                     },
                     {
                         "<FUNCTION>": "returnThis  15 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "return_this",
+                        "_generated_path": [
                             "return_this"
                         ],
-                        "_generated": "return_this",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1040,11 +1040,11 @@
                     },
                     {
                         "<FUNCTION>": "returnThisBuffer  16 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1458,11 +1458,11 @@
                     },
                     {
                         "<FUNCTION>": "getName  17 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "8",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1754,10 +1754,10 @@
                     },
                     {
                         "<FUNCTION>": "get_m_flag  10 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1840,10 +1840,10 @@
                     },
                     {
                         "<FUNCTION>": "get_test  11 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1926,10 +1926,10 @@
                     },
                     {
                         "<FUNCTION>": "set_test  12 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2038,6 +2038,9 @@
                         "<FUNCTION>": "get_m_name  13 ****************************************",
                         "_PTR_F_C_index": "18",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2074,11 +2077,12 @@
                     },
                     {
                         "<FUNCTION>": "get_m_name  18 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "13",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2174,6 +2178,9 @@
                         "<FUNCTION>": "set_m_name  14 ****************************************",
                         "_PTR_F_C_index": "19",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2226,11 +2233,12 @@
                     },
                     {
                         "<FUNCTION>": "set_m_name  19 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "14",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2604,11 +2612,11 @@
                     },
                     {
                         "<FUNCTION>": "getName  21 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "20",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -3660,10 +3668,10 @@
                     },
                     {
                         "<FUNCTION>": "get_nitems  30 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3746,10 +3754,10 @@
                     },
                     {
                         "<FUNCTION>": "set_nitems  31 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3858,6 +3866,9 @@
                         "<FUNCTION>": "get_items  32 ****************************************",
                         "_PTR_F_C_index": "34",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3904,11 +3915,12 @@
                     },
                     {
                         "<FUNCTION>": "get_items  34 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
                         "_PTR_C_CXX_index": "32",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4018,10 +4030,10 @@
                     },
                     {
                         "<FUNCTION>": "set_items  33 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5767,11 +5779,11 @@
             },
             {
                 "<FUNCTION>": "LastFunctionCalled  48 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "47",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "const": true,
                     "declarator": {

@@ -697,11 +697,11 @@
             },
             {
                 "<FUNCTION>": "cos_doubles  46 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1120,11 +1120,11 @@
             },
             {
                 "<FUNCTION>": "truncate_to_int  47 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2007,11 +2007,11 @@
             },
             {
                 "<FUNCTION>": "Sum  48 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2462,11 +2462,11 @@
             },
             {
                 "<FUNCTION>": "incrementIntArray  49 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2755,11 +2755,11 @@
             },
             {
                 "<FUNCTION>": "fill_with_zeros  50 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3069,11 +3069,11 @@
             },
             {
                 "<FUNCTION>": "accumulate  51 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3374,11 +3374,11 @@
             },
             {
                 "<FUNCTION>": "acceptCharArrayIn  52 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3785,11 +3785,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToScalar  53 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4015,11 +4015,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedArray  54 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4307,11 +4307,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicArray  55 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4601,11 +4601,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFuncArray  56 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4837,11 +4837,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToConstScalar  57 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5066,11 +5066,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedConstArray  58 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5354,11 +5354,11 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicConstArray  59 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6436,11 +6436,11 @@
             },
             {
                 "<FUNCTION>": "getAllocToFixedArray  60 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7143,11 +7143,11 @@
             },
             {
                 "<FUNCTION>": "VoidPtrArray  61 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7351,11 +7351,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToScalar  62 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7529,11 +7529,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedArray  63 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7712,11 +7712,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToConstScalar  64 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7892,11 +7892,11 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedConstArray  65 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "40",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8295,11 +8295,11 @@
             },
             {
                 "<FUNCTION>": "returnIntRawWithArgs  66 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -8610,11 +8610,11 @@
             },
             {
                 "<FUNCTION>": "returnIntAllocToFixedArray  67 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {

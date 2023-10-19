@@ -14,6 +14,9 @@
                     {
                         "<FUNCTION>": "Cstruct1_cls_ctor  0 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -789,10 +792,10 @@
             },
             {
                 "<FUNCTION>": "defaultPtrIsNULL  12 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1046,10 +1049,10 @@
             },
             {
                 "<FUNCTION>": "defaultArgsInOut  13 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1738,6 +1741,9 @@
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "16",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -1800,11 +1806,12 @@
             {
                 "<FUNCTION>": "getGroupName  16 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -1953,6 +1960,9 @@
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "17",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2015,11 +2025,12 @@
             {
                 "<FUNCTION>": "getGroupName  17 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2164,10 +2175,10 @@
             },
             {
                 "<FUNCTION>": "nested_get_parent  8 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2310,10 +2321,10 @@
             },
             {
                 "<FUNCTION>": "nested_set_parent  9 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2469,6 +2480,9 @@
                 "<FUNCTION>": "nested_get_child  10 ****************************************",
                 "_PTR_F_C_index": "18",
                 "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2539,11 +2553,12 @@
             },
             {
                 "<FUNCTION>": "nested_get_child  18 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2704,10 +2719,10 @@
             },
             {
                 "<FUNCTION>": "nested_set_child  11 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

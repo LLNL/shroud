@@ -80,10 +80,10 @@
             },
             {
                 "<FUNCTION>": "vector_sum  16 ****************************************",
-                "C_generated_path": [
+                "_generated": "arg_to_buffer",
+                "_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -301,11 +301,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out  17 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -534,11 +534,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_with_num  18 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -788,11 +788,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_with_num2  19 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "3",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1014,11 +1014,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_alloc  20 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1224,11 +1224,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_inout_alloc  21 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1431,11 +1431,11 @@
             },
             {
                 "<FUNCTION>": "vector_increment  22 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1633,11 +1633,11 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_d  23 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1857,11 +1857,11 @@
             },
             {
                 "<FUNCTION>": "vector_of_pointers  24 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2133,11 +2133,11 @@
             },
             {
                 "<FUNCTION>": "vector_string_count  25 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2368,11 +2368,11 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill  26 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2571,11 +2571,11 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill_allocatable  27 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2781,11 +2781,11 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill_allocatable_len  28 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3057,11 +3057,11 @@
             },
             {
                 "<FUNCTION>": "ReturnVectorAlloc  29 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "ast": {
                     "declarator": {
                         "attrs": {

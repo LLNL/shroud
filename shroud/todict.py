@@ -403,7 +403,6 @@ class ToDict(visitor.Visitor):
                 "fstatements",
                 "splicer",
                 "wrap",
-                "C_generated_path",
                 "C_force_wrapper",
             ],
         )
@@ -424,6 +423,7 @@ class ToDict(visitor.Visitor):
                 "PY_error_pattern",
                 "_default_funcs",
                 "_generated",
+                "_generated_path",
                 "_has_default_arg",
                 "_nargs",
                 "_overloaded",
