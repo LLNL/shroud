@@ -1185,6 +1185,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 5,
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1606,6 +1607,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 7,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1840,6 +1842,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 8,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2138,6 +2141,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 9,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2482,6 +2486,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 10,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3700,6 +3705,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 16,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4372,6 +4378,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 20,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5328,6 +5335,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 24,
                 "ast": {
                     "declarator": {
                         "metaattrs": {

@@ -120,6 +120,7 @@
                         "_generated_path": [
                             "has_default_arg"
                         ],
+                        "_orig_node_index": 2,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {

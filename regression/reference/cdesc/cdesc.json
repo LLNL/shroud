@@ -404,6 +404,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 1,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -512,6 +513,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 1,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -711,6 +713,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 1,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -819,6 +822,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 1,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1079,6 +1083,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 2,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1190,6 +1195,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 2,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1501,6 +1507,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1598,6 +1605,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1778,6 +1786,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1875,6 +1884,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

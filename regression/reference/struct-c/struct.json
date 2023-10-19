@@ -2332,6 +2332,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 12,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3472,6 +3473,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 18,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4766,6 +4768,7 @@
                     "getter/setter",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 26,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5184,6 +5187,7 @@
                     "getter/setter",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 28,
                 "ast": {
                     "declarator": {
                         "metaattrs": {

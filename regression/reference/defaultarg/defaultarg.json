@@ -15,6 +15,7 @@
                         "_generated_path": [
                             "has_default_arg"
                         ],
+                        "_orig_node_index": 0,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -153,6 +154,7 @@
                         "_generated_path": [
                             "has_default_arg"
                         ],
+                        "_orig_node_index": 0,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -622,6 +624,7 @@
                         "_generated_path": [
                             "has_default_arg"
                         ],
+                        "_orig_node_index": 2,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -728,6 +731,7 @@
                         "_generated_path": [
                             "has_default_arg"
                         ],
+                        "_orig_node_index": 2,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -1471,6 +1475,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1577,6 +1582,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1926,6 +1932,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 11,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2077,6 +2084,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 11,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

@@ -346,6 +346,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 1,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -860,6 +861,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 4,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -1073,6 +1075,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 5,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2083,6 +2086,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 13,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -2416,6 +2420,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 15,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2621,6 +2626,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 16,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2829,6 +2835,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 17,
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -3035,6 +3042,7 @@
                                         "_generated_path": [
                                             "arg_to_buffer"
                                         ],
+                                        "_orig_node_index": 18,
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
@@ -3458,6 +3466,7 @@
                                         "_generated_path": [
                                             "has_default_arg"
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -3595,6 +3604,7 @@
                                             "has_default_arg",
                                             "return_this"
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -3775,6 +3785,7 @@
                                             "return_this",
                                             "fortran_generic"
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -3856,6 +3867,7 @@
                                             "return_this",
                                             "fortran_generic"
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -4205,6 +4217,7 @@
                                             1,
                                             2
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -4436,6 +4449,7 @@
                                             1,
                                             2
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -4524,6 +4538,7 @@
                                             1,
                                             2
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -4876,6 +4891,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5072,6 +5088,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5265,6 +5282,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5458,6 +5476,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5718,6 +5737,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 25,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5862,6 +5882,7 @@
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
+                                        "_orig_node_index": 25,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6316,6 +6337,7 @@
                                 "_generated_path": [
                                     "arg_to_buffer"
                                 ],
+                                "_orig_node_index": 45,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6697,6 +6719,7 @@
                                 "_generated_path": [
                                     "arg_to_buffer"
                                 ],
+                                "_orig_node_index": 47,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7012,6 +7035,7 @@
                                 "_generated_path": [
                                     "arg_to_buffer"
                                 ],
+                                "_orig_node_index": 48,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7167,6 +7191,7 @@
                                 "_generated_path": [
                                     "has_default_arg"
                                 ],
+                                "_orig_node_index": 49,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7218,6 +7243,7 @@
                                 "_generated_path": [
                                     "has_default_arg"
                                 ],
+                                "_orig_node_index": 49,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {

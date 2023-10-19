@@ -796,6 +796,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 5,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1053,6 +1054,7 @@
                 "_generated_path": [
                     "has_default_arg"
                 ],
+                "_orig_node_index": 6,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1744,6 +1746,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -1812,6 +1815,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -1963,6 +1967,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2031,6 +2036,7 @@
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2559,6 +2565,7 @@
                     "getter/setter",
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 10,
                 "ast": {
                     "declarator": {
                         "metaattrs": {

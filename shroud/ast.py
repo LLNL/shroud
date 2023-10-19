@@ -1416,6 +1416,8 @@ class FunctionNode(AstNode):
     _function_index  - sequence number function,
                        used in lieu of a pointer
     _generated       - which method generated this function
+    _generated_path  - list of generated functions
+    _orig_node       - Original YAML node for generated functions.
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
@@ -1460,6 +1462,7 @@ class FunctionNode(AstNode):
         self._function_index = None
         self._generated = False
         self._generated_path = []
+        self._orig_node = None
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
@@ -1648,6 +1651,8 @@ class FunctionNode(AstNode):
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
         new._generated_path = copy.deepcopy(self._generated_path)
+        if new._orig_node is None:
+            new._orig_node = self
 
         return new
 

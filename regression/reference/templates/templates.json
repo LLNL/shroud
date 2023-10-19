@@ -57,6 +57,7 @@
                 "functions": [
                     {
                         "<FUNCTION>": "nested  1 ****************************************",
+                        "_orig_node_index": 0,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -142,6 +143,7 @@
                         "_generated_path": [
                             "cxx_template"
                         ],
+                        "_orig_node_index": 0,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -402,6 +404,7 @@
                 "functions": [
                     {
                         "<FUNCTION>": "ctor  8 ****************************************",
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -484,6 +487,7 @@
                     },
                     {
                         "<FUNCTION>": "set_npts  9 ****************************************",
+                        "_orig_node_index": 4,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -581,6 +585,7 @@
                     },
                     {
                         "<FUNCTION>": "get_npts  10 ****************************************",
+                        "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -657,6 +662,7 @@
                     },
                     {
                         "<FUNCTION>": "set_value  11 ****************************************",
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -705,6 +711,7 @@
                         "_generated_path": [
                             "cxx_template"
                         ],
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -803,6 +810,7 @@
                     },
                     {
                         "<FUNCTION>": "get_value  12 ****************************************",
+                        "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -834,6 +842,7 @@
                         "_generated_path": [
                             "cxx_template"
                         ],
+                        "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -981,6 +990,7 @@
                 "functions": [
                     {
                         "<FUNCTION>": "ctor  15 ****************************************",
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -1063,6 +1073,7 @@
                     },
                     {
                         "<FUNCTION>": "set_npts  16 ****************************************",
+                        "_orig_node_index": 4,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1160,6 +1171,7 @@
                     },
                     {
                         "<FUNCTION>": "get_npts  17 ****************************************",
+                        "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1236,6 +1248,7 @@
                     },
                     {
                         "<FUNCTION>": "set_value  18 ****************************************",
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1284,6 +1297,7 @@
                         "_generated_path": [
                             "cxx_template"
                         ],
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1382,6 +1396,7 @@
                     },
                     {
                         "<FUNCTION>": "get_value  19 ****************************************",
+                        "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1413,6 +1428,7 @@
                         "_generated_path": [
                             "cxx_template"
                         ],
+                        "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1771,6 +1787,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 39,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1996,6 +2013,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 39,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2294,6 +2312,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 40,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2423,6 +2442,7 @@
                 "_generated_path": [
                     "cxx_template"
                 ],
+                "_orig_node_index": 40,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2564,6 +2584,7 @@
                         "functions": [
                             {
                                 "<FUNCTION>": "ctor  26 ****************************************",
+                                "_orig_node_index": 22,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -2671,6 +2692,7 @@
                             },
                             {
                                 "<FUNCTION>": "dtor  27 ****************************************",
+                                "_orig_node_index": 23,
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
@@ -2727,6 +2749,7 @@
                             },
                             {
                                 "<FUNCTION>": "push_back  28 ****************************************",
+                                "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -2781,6 +2804,7 @@
                                 "_generated_path": [
                                     "cxx_template"
                                 ],
+                                "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -2906,6 +2930,7 @@
                             },
                             {
                                 "<FUNCTION>": "at  29 ****************************************",
+                                "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -2960,6 +2985,7 @@
                                 "_generated_path": [
                                     "cxx_template"
                                 ],
+                                "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3222,6 +3248,7 @@
                         "functions": [
                             {
                                 "<FUNCTION>": "ctor  32 ****************************************",
+                                "_orig_node_index": 22,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -3329,6 +3356,7 @@
                             },
                             {
                                 "<FUNCTION>": "dtor  33 ****************************************",
+                                "_orig_node_index": 23,
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
@@ -3385,6 +3413,7 @@
                             },
                             {
                                 "<FUNCTION>": "push_back  34 ****************************************",
+                                "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3439,6 +3468,7 @@
                                 "_generated_path": [
                                     "cxx_template"
                                 ],
+                                "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3564,6 +3594,7 @@
                             },
                             {
                                 "<FUNCTION>": "at  35 ****************************************",
+                                "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -3618,6 +3649,7 @@
                                 "_generated_path": [
                                     "cxx_template"
                                 ],
+                                "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {

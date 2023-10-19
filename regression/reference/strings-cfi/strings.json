@@ -476,6 +476,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 4,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -735,6 +736,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 5,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -923,6 +925,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 6,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1093,6 +1096,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 7,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1268,6 +1272,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 8,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1528,6 +1533,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 10,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1669,6 +1675,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 11,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1793,6 +1800,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 12,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1923,6 +1931,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 13,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2044,6 +2053,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 14,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2201,6 +2211,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 15,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2374,6 +2385,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 16,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2550,6 +2562,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 17,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2726,6 +2739,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 18,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2892,6 +2906,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 19,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3065,6 +3080,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 20,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3242,6 +3258,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 21,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3408,6 +3425,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 22,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3578,6 +3596,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 23,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3748,6 +3767,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 24,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3941,6 +3961,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 25,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4145,6 +4166,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 26,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4348,6 +4370,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 27,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4551,6 +4574,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 28,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4750,6 +4774,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 29,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4953,6 +4978,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 30,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5200,6 +5226,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 31,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5498,6 +5525,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 32,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5768,6 +5796,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 33,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6132,6 +6161,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 35,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6463,6 +6493,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 36,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6798,6 +6829,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 37,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7127,6 +7159,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 39,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7335,6 +7368,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 40,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7767,6 +7801,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 43,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8080,6 +8115,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 44,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8389,6 +8425,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 45,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8674,6 +8711,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 46,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9155,6 +9193,7 @@
                 "_generated_path": [
                     "arg_to_cfi"
                 ],
+                "_orig_node_index": 48,
                 "ast": {
                     "declarator": {
                         "metaattrs": {

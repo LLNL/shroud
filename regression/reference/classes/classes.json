@@ -812,6 +812,7 @@
                         "_generated_path": [
                             "return_this"
                         ],
+                        "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1045,6 +1046,7 @@
                         "_generated_path": [
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1463,6 +1465,7 @@
                         "_generated_path": [
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 8,
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -2083,6 +2086,7 @@
                             "getter/setter",
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 13,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2239,6 +2243,7 @@
                             "getter/setter",
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 14,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2617,6 +2622,7 @@
                         "_generated_path": [
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 20,
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -3921,6 +3927,7 @@
                             "getter/setter",
                             "arg_to_buffer"
                         ],
+                        "_orig_node_index": 32,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5784,6 +5791,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 47,
                 "ast": {
                     "const": true,
                     "declarator": {

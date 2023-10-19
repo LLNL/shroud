@@ -2311,6 +2311,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 14,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2720,6 +2721,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 17,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2941,6 +2943,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 18,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3224,6 +3227,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 19,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3509,6 +3513,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 20,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3736,6 +3741,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 21,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3956,6 +3962,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 22,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4235,6 +4242,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 23,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5308,6 +5316,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 31,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6191,6 +6200,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 38,
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -6456,6 +6466,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 40,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7030,6 +7041,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 45,
                 "ast": {
                     "declarator": {
                         "attrs": {

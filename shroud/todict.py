@@ -430,6 +430,9 @@ class ToDict(visitor.Visitor):
                 "_gen_fortran_generic",
             ],
         )
+        if node._orig_node is not None:
+            d["_orig_node_index"] = node._orig_node._function_index
+#            d["_orig_node_name"] = node._orig_node.name
         if node.options.debug_index:
             add_non_none_fields(
                 node,

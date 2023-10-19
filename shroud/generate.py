@@ -671,6 +671,7 @@ class GenFunctions(object):
           process_class
             add_var_getter_setter
             define_function_suffix
+              append_function_index
               has_default_args
               template_function
               process_return_this

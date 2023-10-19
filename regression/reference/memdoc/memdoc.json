@@ -88,6 +88,7 @@
                 "_generated_path": [
                     "arg_to_buffer"
                 ],
+                "_orig_node_index": 0,
                 "ast": {
                     "const": true,
                     "declarator": {

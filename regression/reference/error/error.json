@@ -1023,6 +1023,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1135,6 +1136,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1249,6 +1251,7 @@
                 "_generated_path": [
                     "fortran_generic"
                 ],
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
