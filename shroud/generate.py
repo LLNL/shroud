@@ -970,6 +970,8 @@ class GenFunctions(object):
                 orig_typemap = cls.typemap
                 if orig_typemap.cxx_instantiation is None:
                     orig_typemap.cxx_instantiation = {}
+                for function in cls.functions:
+                    self.append_function_index(function)
                 # Replace class with new class for each template instantiation.
                 # targs -> ast.TemplateArgument
                 for i, targs in enumerate(cls.template_arguments):
