@@ -81,7 +81,7 @@ public:
     };
 
     // test return_this
-    Class1* declare(int length = 1)
+    Class1* declare(int flag, int length = 1)
     {
         m_length = length;
         return this;

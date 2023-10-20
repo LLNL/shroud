@@ -149,15 +149,15 @@ contains
     length = obj%get_length()
     call assert_equals(99, length, "ctor length");
     
-    call obj%declare()
+    call obj%declare(5)
     length = obj%get_length()
     call assert_equals(1, length, "default length");
 
-    call obj%declare(33_C_INT)
+    call obj%declare(5, 33_C_INT)
     length = obj%get_length()
     call assert_equals(33, length, "explicit length in");
 
-    call obj%declare(44_C_LONG)
+    call obj%declare(5, 44_C_LONG)
     length = obj%get_length()
     call assert_equals(44, length, "explicit length long");
     

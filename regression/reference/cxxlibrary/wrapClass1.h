@@ -34,9 +34,9 @@ int CXX_Class1_check_length_0(CXX_Class1 * self);
 
 int CXX_Class1_check_length_1(CXX_Class1 * self, int length);
 
-void CXX_Class1_declare_0(CXX_Class1 * self);
+void CXX_Class1_declare_0(CXX_Class1 * self, int flag);
 
-void CXX_Class1_declare_1(CXX_Class1 * self, int length);
+void CXX_Class1_declare_1(CXX_Class1 * self, int flag, int length);
 
 int CXX_Class1_get_length(CXX_Class1 * self);
 

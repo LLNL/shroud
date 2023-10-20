@@ -121,7 +121,7 @@ declarations:
     -  decl: (long length=1)
        function_suffix: _long
 
-  - decl: Class1* declare(int length = 1)
+  - decl: Class1* declare(int flag, int length = 1)
     return_this: True
     fortran_generic:
     -  decl: (int length=1)
