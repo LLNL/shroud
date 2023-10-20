@@ -12,26 +12,24 @@ C Statements
 
 .. code-block:: text
 
-    extern "C" {
-
-    {C_return_type} {C_name}({C_prototype})
+    extern "C"
+    {C_return_type} {C_name}(c_arg_decl)
     {
         {c_pre_call}
-        {c_call_code}   {call}    arg_call
+        {c_call_code}
+        {c_call}    c_arg_call
         {post_call_pattern}
         {c_post_call}
         {c_final}
         {c_return}
     }
 
-C_prototype -> c_arg_decl
-
 A corresponding ``bind(C)`` interface can be created for Fortran.
     
 .. code-block:: text
 
-    {F_C_subprogram} {F_C_name}({F_C_arguments}) &
-        {F_C_result_clause} &
+    {F_C_subprogram} {F_C_name}({i_arg_names}) &
+        [result({i_result_var}) & ]
         bind(C, name="{C_name}")
         i_module
         i_import
@@ -39,10 +37,13 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
         i_result_decl
     end {F_C_subprogram} {F_C_name}
 
-Where
-F_C_clause =
-F_C_arguments     = i_arg_names
-F_C_result_clause = i_result_var
+Format fields
+-------------
+
+* C_prototype -> c_arg_decl
+* F_C_clause =
+* F_C_arguments     = i_arg_names
+* F_C_result_clause = i_result_var
 
 Lookup statements
 -----------------
@@ -72,8 +73,8 @@ template
 Each template argument is appended to the initial statement name.
 ``targ``, *group* and *pointer*
     
-c_statements
-------------
+statements
+----------
 
 ..        name="c_default",
 

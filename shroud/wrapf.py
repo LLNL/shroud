@@ -1710,6 +1710,7 @@ rv = .false.
             need_wrapper = True
         if result_stmt.f_result:
             if result_stmt.f_result == "subroutine":
+                subprogram = "subroutine"
                 fmt_func.F_subprogram = "subroutine"
                 fmt_func.F_result_clause = ""
             else:

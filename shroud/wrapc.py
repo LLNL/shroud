@@ -845,7 +845,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             for arg in stmts_blk.c_arg_decl:
                 append_format(proto_list, arg, fmt)
         elif stmts_blk.intent == "function":
-            # Functions do not pass arguments by default.
+            # Functions do not pass an argument by default.
             pass
         else:
             # vector<int> -> int *
@@ -1397,7 +1397,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 # Probably assigned to an argument.
                 pass
             elif len(result_stmt.c_post_call):
-                # c_var is created by the post_call clause or
+                # c_var is created by the c_post_call clause or
                 # it may be passed in as an argument.
                 # For example, with struct and shadow.
                 pass
