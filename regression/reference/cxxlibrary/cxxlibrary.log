@@ -7,6 +7,13 @@ C void passStructByReferenceInout(Cstruct1 & arg +intent(inout))  +intent(subrou
 C void passStructByReferenceOut(Cstruct1 & arg +intent(out))  +intent(subroutine)
 Close wrapcxxlibrary_structns.h
 Close wrapcxxlibrary_structns.cpp
+class Class1
+C Class1(void)  +api(capptr)+intent(ctor)
+C void declare(void)  +api(capptr)+intent(subroutine)
+C void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
+C int get_length(void)  +intent(getter)
+Close wrapClass1.h
+Close wrapClass1.cpp
 struct nested
 C bool defaultPtrIsNULL(void)  +intent(function)
 C bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
@@ -22,6 +29,15 @@ C void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))  +
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
 class nested
+class Class1
+Fortran Class1(void)  +api(capptr)+intent(ctor)
+Fortran void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
+Fortran void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
+Fortran int get_length(void)  +intent(getter)
+C-interface Class1(void)  +api(capptr)+intent(ctor)
+C-interface void declare(void)  +api(capptr)+intent(subroutine)
+C-interface void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
+C-interface int get_length(void)  +intent(getter)
 Fortran bool defaultPtrIsNULL(void)  +intent(function)
 Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
 Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)

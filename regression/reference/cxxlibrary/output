@@ -1,6 +1,8 @@
 Wrote cxxlibrary_types.yaml
 Wrote wrapcxxlibrary_structns.h
 Wrote wrapcxxlibrary_structns.cpp
+Wrote wrapClass1.h
+Wrote wrapClass1.cpp
 Wrote wrapcxxlibrary.h
 Wrote wrapcxxlibrary.cpp
 Wrote wrapfcxxlibrary_structns.f

@@ -26,6 +26,7 @@ OBJS = \
     wrapfcxxlibrary_structns.o \
     wrapcxxlibrary.o \
     wrapcxxlibrary_structns.o \
+    wrapClass1.o \
     utilcxxlibrary.o \
     fruit.o \
     main.o
@@ -38,4 +39,6 @@ clean :
 
 cxxlibrary.o : cxxlibrary.hpp
 wrapcxxlibrary.o : wrapcxxlibrary.h cxxlibrary.hpp
+wrapClass1.o : wrapClass1.cpp cxxlibrary.hpp
+wrapClass1.h : cxxlibrary.hpp
 main.o : fruit.o wrapfcxxlibrary.o

@@ -66,5 +66,19 @@ struct nested {
     nested **child;
 };
 
+//----------------------------------------------------------------------
+
+class Class1
+{
+public:
+    int m_length;
+    Class1() : m_length(99) {};
+    Class1* declare(int length = 1)
+    {
+        m_length = length;
+        return this;
+    };
+};
+
 #endif // CXXLIBRARY_H
 
