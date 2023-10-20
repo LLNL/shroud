@@ -1465,6 +1465,9 @@ class GenFunctions(object):
             fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
             new.wrap.assign(fortran=True)
+#            if len(new.ast.declarator.params) != len(generic.decls):
+#                raise RuntimeError("internal: generic_function: length mismatch: "
+#                                   + node.name)
             new.ast.declarator.params = generic.decls
 
             # Try to call original C function if possible.
@@ -1510,6 +1513,10 @@ class GenFunctions(object):
           void func(int i, int j)
         In Fortran, these are added to a generic interface.
 
+        It is also necessary to trim fortran_generic.
+        For example, func() will not have any generic variations
+        since it has no arguments.
+
         Args:
             node -
             ordered_functions -
@@ -1535,6 +1542,8 @@ class GenFunctions(object):
             new._generated_path.append("has_default_arg")
             del new.ast.declarator.params[i:]  # remove trailing arguments
             new._has_default_arg = False
+            if node.fortran_generic:
+                new.fortran_generic = node.fortran_generic[:i]
             # Python and Lua both deal with default args in their own way
             new.wrap.assign(c=True, fortran=True)
             fmt = new.fmtdict

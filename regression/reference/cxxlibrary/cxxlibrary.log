@@ -9,6 +9,8 @@ Close wrapcxxlibrary_structns.h
 Close wrapcxxlibrary_structns.cpp
 class Class1
 C Class1(void)  +api(capptr)+intent(ctor)
+C int check_length(void)  +intent(function)
+C int check_length(int length=1 +value)  +intent(function)
 C void declare(void)  +api(capptr)+intent(subroutine)
 C void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
 C int get_length(void)  +intent(getter)
@@ -31,10 +33,16 @@ Close wrapcxxlibrary.cpp
 class nested
 class Class1
 Fortran Class1(void)  +api(capptr)+intent(ctor)
+Fortran int check_length(void)  +intent(function)
+Fortran int check_length(int length=1 +value)  +intent(function)
+Fortran int check_length(long length=1 +value)  +intent(function)
+Fortran void declare(void)  +api(capptr)+intent(subroutine)
 Fortran void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
-Fortran void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
+Fortran void declare(long length=1 +value)  +api(capptr)+intent(subroutine)
 Fortran int get_length(void)  +intent(getter)
 C-interface Class1(void)  +api(capptr)+intent(ctor)
+C-interface int check_length(void)  +intent(function)
+C-interface int check_length(int length=1 +value)  +intent(function)
 C-interface void declare(void)  +api(capptr)+intent(subroutine)
 C-interface void declare(int length=1 +value)  +api(capptr)+intent(subroutine)
 C-interface int get_length(void)  +intent(getter)

@@ -512,12 +512,444 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "declare  4 ****************************************",
+                        "<FUNCTION>": "check_length  5 ****************************************",
                         "_generated": "has_default_arg",
                         "_generated_path": [
                             "has_default_arg"
                         ],
                         "_orig_node_index": 2,
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "check_length",
+                                "params": [],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int check_length(int length = 1)",
+                        "declgen": "int check_length(void)",
+                        "doxygen": {
+                            "brief": "Test fortran_generic with default arguments."
+                        },
+                        "name": "check_length",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "CXX_Class1_check_length_0",
+                            "C_name_api": "check_length",
+                            "C_prototype": "CXX_Class1 * self",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_class1_check_length_0",
+                            "F_C_name": "c_class1_check_length_0",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_api": "check_length",
+                            "F_name_function": "check_length_0",
+                            "F_name_generic": "check_length",
+                            "F_name_impl": "class1_check_length_0",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "check_length",
+                            "function_suffix": "_0"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_function_native_scalar",
+                                "stmtf": "f_function_native_scalar"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "check_length  2 ****************************************",
+                        "_default_funcs": [
+                            5
+                        ],
+                        "_has_default_arg": true,
+                        "_nargs": [
+                            0,
+                            1
+                        ],
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "check_length",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int check_length(int length = 1)",
+                        "declgen": "int check_length(int length=1 +value)",
+                        "doxygen": {
+                            "brief": "Test fortran_generic with default arguments."
+                        },
+                        "fortran_generic": [
+                            {
+                                "decls": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "function_suffix": "_int",
+                                "generic": "(int length=1)"
+                            },
+                            {
+                                "decls": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "long"
+                                        },
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "function_suffix": "_long",
+                                "generic": "(long length=1)"
+                            }
+                        ],
+                        "name": "check_length",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true
+                        },
+                        "zz_fmtargs": {
+                            "length": {
+                                "fmtf": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "length",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&length",
+                                    "cxx_type": "int",
+                                    "cxx_var": "length",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "length",
+                                    "fc_var": "length",
+                                    "i_var": "length",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar",
+                                    "stmtf": "f_in_native_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "length",
+                            "C_name": "CXX_Class1_check_length_1",
+                            "C_name_api": "check_length",
+                            "C_prototype": "CXX_Class1 * self,\t int length",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self,\t length",
+                            "F_C_name": "c_class1_check_length_1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_name_api": "check_length",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "check_length",
+                            "function_suffix": "_1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtc": "f_function_native_scalar"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "check_length  9 ****************************************",
+                        "_PTR_F_C_index": "2",
+                        "_default_funcs": [
+                            5
+                        ],
+                        "_generated": "fortran_generic",
+                        "_generated_path": [
+                            "fortran_generic"
+                        ],
+                        "_has_default_arg": true,
+                        "_nargs": [
+                            0,
+                            1
+                        ],
+                        "_orig_node_index": 2,
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "check_length",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int check_length(int length = 1)",
+                        "declgen": "int check_length(int length=1 +value)",
+                        "doxygen": {
+                            "brief": "Test fortran_generic with default arguments."
+                        },
+                        "name": "check_length",
+                        "options": {},
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "check_length",
+                            "F_C_call": "c_class1_check_length_1",
+                            "F_arg_c_call": "obj%cxxmem,\t length",
+                            "F_arguments": "obj,\t length",
+                            "F_name_api": "check_length",
+                            "F_name_function": "check_length_1_int",
+                            "F_name_generic": "check_length",
+                            "F_name_impl": "class1_check_length_1_int",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "function_name": "check_length",
+                            "function_suffix": "_1_int"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtf": "f_function_native_scalar"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "check_length  10 ****************************************",
+                        "_PTR_F_C_index": "2",
+                        "_default_funcs": [
+                            5
+                        ],
+                        "_generated": "fortran_generic",
+                        "_generated_path": [
+                            "fortran_generic"
+                        ],
+                        "_has_default_arg": true,
+                        "_nargs": [
+                            0,
+                            1
+                        ],
+                        "_orig_node_index": 2,
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "check_length",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "long"
+                                        },
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int check_length(int length = 1)",
+                        "declgen": "int check_length(long length=1 +value)",
+                        "doxygen": {
+                            "brief": "Test fortran_generic with default arguments."
+                        },
+                        "name": "check_length",
+                        "options": {},
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "check_length",
+                            "F_C_call": "c_class1_check_length_1",
+                            "F_arg_c_call": "obj%cxxmem,\t int(length, C_INT)",
+                            "F_arguments": "obj,\t length",
+                            "F_name_api": "check_length",
+                            "F_name_function": "check_length_1_long",
+                            "F_name_generic": "check_length",
+                            "F_name_impl": "class1_check_length_1_long",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "function_name": "check_length",
+                            "function_suffix": "_1_long"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_type_module": "iso_c_binding",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtf": "f_function_native_scalar"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "declare  6 ****************************************",
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
+                            "has_default_arg"
+                        ],
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -541,31 +973,6 @@
                         },
                         "decl": "Class1* declare(int length = 1)",
                         "declgen": "Class1 * declare(void)",
-                        "fortran_generic": [
-                            {
-                                "decls": [
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "name": "length",
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "function_suffix": "_int",
-                                "generic": "(int length=1)"
-                            }
-                        ],
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -578,13 +985,13 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "declare  5 ****************************************",
+                        "<FUNCTION>": "declare  7 ****************************************",
                         "_generated": "return_this",
                         "_generated_path": [
                             "has_default_arg",
                             "return_this"
                         ],
-                        "_orig_node_index": 2,
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -603,37 +1010,13 @@
                         },
                         "decl": "Class1* declare(int length = 1)",
                         "declgen": "void declare(void)",
-                        "fortran_generic": [
-                            {
-                                "decls": [
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "name": "length",
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "function_suffix": "_int",
-                                "generic": "(int length=1)"
-                            }
-                        ],
                         "name": "declare",
                         "options": {},
                         "return_this": true,
                         "wrap": {
                             "c": true,
-                            "f_c": true
+                            "f_c": true,
+                            "fortran": true
                         },
                         "zz_fmtdict": {
                             "C_name": "CXX_Class1_declare_0",
@@ -641,89 +1024,30 @@
                             "C_prototype": "CXX_Class1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
+                            "F_C_call": "c_class1_declare_0",
                             "F_C_name": "c_class1_declare_0",
                             "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
                             "F_name_api": "declare",
+                            "F_name_function": "declare_0",
+                            "F_name_generic": "declare",
+                            "F_name_impl": "class1_declare_0",
+                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "declare",
                             "function_suffix": "_0",
-                            "stmtc": "f_subroutine"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "declare  7 ****************************************",
-                        "_PTR_F_C_index": "5",
-                        "_generated": "fortran_generic",
-                        "_generated_path": [
-                            "has_default_arg",
-                            "return_this",
-                            "fortran_generic"
-                        ],
-                        "_orig_node_index": 2,
-                        "_overloaded": true,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "api": "capptr",
-                                    "intent": "subroutine"
-                                },
-                                "name": "declare",
-                                "params": [
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "name": "length",
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "Class1* declare(int length = 1)",
-                        "declgen": "void declare(int length=1 +value)",
-                        "name": "declare",
-                        "options": {},
-                        "return_this": true,
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "declare",
-                            "F_C_call": "c_class1_declare_0",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
-                            "F_name_api": "declare",
-                            "F_name_function": "declare_0_int",
-                            "F_name_generic": "declare",
-                            "F_name_impl": "class1_declare_0_int",
-                            "F_subprogram": "subroutine",
-                            "function_name": "declare",
-                            "function_suffix": "_0_int",
+                            "stmtc": "f_subroutine",
                             "stmtf": "f_subroutine"
                         }
                     },
                     {
-                        "<FUNCTION>": "declare  2 ****************************************",
+                        "<FUNCTION>": "declare  3 ****************************************",
                         "_default_funcs": [
-                            4
+                            6
                         ],
                         "_has_default_arg": true,
                         "_nargs": [
@@ -794,6 +1118,29 @@
                                 ],
                                 "function_suffix": "_int",
                                 "generic": "(int length=1)"
+                            },
+                            {
+                                "decls": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "long"
+                                        },
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "function_suffix": "_long",
+                                "generic": "(long length=1)"
                             }
                         ],
                         "name": "declare",
@@ -808,9 +1155,9 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "declare  6 ****************************************",
+                        "<FUNCTION>": "declare  8 ****************************************",
                         "_default_funcs": [
-                            4
+                            6
                         ],
                         "_generated": "return_this",
                         "_generated_path": [
@@ -821,7 +1168,7 @@
                             0,
                             1
                         ],
-                        "_orig_node_index": 2,
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -881,6 +1228,29 @@
                                 ],
                                 "function_suffix": "_int",
                                 "generic": "(int length=1)"
+                            },
+                            {
+                                "decls": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "long"
+                                        },
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "function_suffix": "_long",
+                                "generic": "(long length=1)"
                             }
                         ],
                         "name": "declare",
@@ -939,10 +1309,10 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "declare  8 ****************************************",
-                        "_PTR_F_C_index": "6",
+                        "<FUNCTION>": "declare  11 ****************************************",
+                        "_PTR_F_C_index": "8",
                         "_default_funcs": [
-                            4
+                            6
                         ],
                         "_generated": "fortran_generic",
                         "_generated_path": [
@@ -954,7 +1324,7 @@
                             0,
                             1
                         ],
-                        "_orig_node_index": 2,
+                        "_orig_node_index": 3,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -1013,7 +1383,81 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_length  3 ****************************************",
+                        "<FUNCTION>": "declare  12 ****************************************",
+                        "_PTR_F_C_index": "8",
+                        "_default_funcs": [
+                            6
+                        ],
+                        "_generated": "fortran_generic",
+                        "_generated_path": [
+                            "return_this",
+                            "fortran_generic"
+                        ],
+                        "_has_default_arg": true,
+                        "_nargs": [
+                            0,
+                            1
+                        ],
+                        "_orig_node_index": 3,
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "subroutine"
+                                },
+                                "name": "declare",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "length",
+                                            "typemap_name": "long"
+                                        },
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "Class1* declare(int length = 1)",
+                        "declgen": "void declare(long length=1 +value)",
+                        "name": "declare",
+                        "options": {},
+                        "return_this": true,
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "declare",
+                            "F_C_call": "c_class1_declare_1",
+                            "F_arg_c_call": "obj%cxxmem,\t int(length, C_INT)",
+                            "F_arguments": "obj,\t length",
+                            "F_name_api": "declare",
+                            "F_name_function": "declare_1_long",
+                            "F_name_generic": "declare",
+                            "F_name_impl": "class1_declare_1_long",
+                            "F_subprogram": "subroutine",
+                            "function_name": "declare",
+                            "function_suffix": "_1_long",
+                            "stmtf": "f_subroutine"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "get_length  4 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -1175,7 +1619,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "passStructByReferenceCls  9 ****************************************",
+                "<FUNCTION>": "passStructByReferenceCls  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1270,7 +1714,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStructByReferenceInCls  10 ****************************************",
+                "<FUNCTION>": "passStructByReferenceInCls  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1369,7 +1813,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStructByReferenceInoutCls  11 ****************************************",
+                "<FUNCTION>": "passStructByReferenceInoutCls  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1449,7 +1893,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStructByReferenceOutCls  12 ****************************************",
+                "<FUNCTION>": "passStructByReferenceOutCls  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1528,12 +1972,12 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultPtrIsNULL  20 ****************************************",
+                "<FUNCTION>": "defaultPtrIsNULL  24 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
                 ],
-                "_orig_node_index": 13,
+                "_orig_node_index": 17,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1606,9 +2050,9 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultPtrIsNULL  13 ****************************************",
+                "<FUNCTION>": "defaultPtrIsNULL  17 ****************************************",
                 "_default_funcs": [
-                    20
+                    24
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -1786,12 +2230,12 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultArgsInOut  21 ****************************************",
+                "<FUNCTION>": "defaultArgsInOut  25 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
                 ],
-                "_orig_node_index": 14,
+                "_orig_node_index": 18,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1982,9 +2426,9 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultArgsInOut  14 ****************************************",
+                "<FUNCTION>": "defaultArgsInOut  18 ****************************************",
                 "_default_funcs": [
-                    21
+                    25
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -2305,7 +2749,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  15 ****************************************",
+                "<FUNCTION>": "getGroupName  19 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2475,15 +2919,15 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  22 ****************************************",
+                "<FUNCTION>": "getGroupName  26 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "15",
-                "_PTR_F_C_index": "24",
+                "_PTR_C_CXX_index": "19",
+                "_PTR_F_C_index": "28",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 15,
+                "_orig_node_index": 19,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2544,15 +2988,15 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  24 ****************************************",
+                "<FUNCTION>": "getGroupName  28 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "22",
+                "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_buffer",
                 "_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_orig_node_index": 15,
+                "_orig_node_index": 19,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2696,15 +3140,15 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  23 ****************************************",
+                "<FUNCTION>": "getGroupName  27 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "15",
-                "_PTR_F_C_index": "25",
+                "_PTR_C_CXX_index": "19",
+                "_PTR_F_C_index": "29",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 15,
+                "_orig_node_index": 19,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2765,15 +3209,15 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  25 ****************************************",
+                "<FUNCTION>": "getGroupName  29 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "23",
+                "_PTR_C_CXX_index": "27",
                 "_generated": "arg_to_buffer",
                 "_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_orig_node_index": 15,
+                "_orig_node_index": 19,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -2917,7 +3361,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_parent  16 ****************************************",
+                "<FUNCTION>": "nested_get_parent  20 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3063,7 +3507,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_set_parent  17 ****************************************",
+                "<FUNCTION>": "nested_set_parent  21 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3220,8 +3664,8 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_child  18 ****************************************",
-                "_PTR_F_C_index": "26",
+                "<FUNCTION>": "nested_get_child  22 ****************************************",
+                "_PTR_F_C_index": "30",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3295,14 +3739,14 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_child  26 ****************************************",
-                "_PTR_C_CXX_index": "18",
+                "<FUNCTION>": "nested_get_child  30 ****************************************",
+                "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_buffer",
                 "_generated_path": [
                     "getter/setter",
                     "arg_to_buffer"
                 ],
-                "_orig_node_index": 18,
+                "_orig_node_index": 22,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3462,7 +3906,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_set_child  19 ****************************************",
+                "<FUNCTION>": "nested_set_child  23 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3737,7 +4181,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "passStructByReference  27 ****************************************",
+                        "<FUNCTION>": "passStructByReference  31 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3904,7 +4348,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceIn  28 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceIn  32 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4072,7 +4516,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceInout  29 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceInout  33 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4197,7 +4641,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceOut  30 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceOut  34 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

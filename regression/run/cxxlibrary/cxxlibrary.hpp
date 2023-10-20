@@ -73,6 +73,14 @@ class Class1
 public:
     int m_length;
     Class1() : m_length(99) {};
+
+    // Test fortran_generic with default arguments.
+    int check_length(int length = 1)
+    {
+        return length;
+    };
+
+    // test return_this
     Class1* declare(int length = 1)
     {
         m_length = length;

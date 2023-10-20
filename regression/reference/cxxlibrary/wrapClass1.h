@@ -30,6 +30,10 @@ extern "C" {
 
 CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv);
 
+int CXX_Class1_check_length_0(CXX_Class1 * self);
+
+int CXX_Class1_check_length_1(CXX_Class1 * self, int length);
+
 void CXX_Class1_declare_0(CXX_Class1 * self);
 
 void CXX_Class1_declare_1(CXX_Class1 * self, int length);

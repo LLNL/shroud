@@ -111,11 +111,20 @@ declarations:
   declarations:
   - decl: int m_length +readonly +name(length);
   - decl: Class1()
+
+  - decl: int check_length(int length = 1)
+    doxygen:
+       brief: Test fortran_generic with default arguments.
+    fortran_generic:
+    -  decl: (int length=1)
+       function_suffix: _int
+    -  decl: (long length=1)
+       function_suffix: _long
+
   - decl: Class1* declare(int length = 1)
     return_this: True
     fortran_generic:
     -  decl: (int length=1)
        function_suffix: _int
-# XXX - Ambiguous interfaces in generic interface 
-#    -  decl: (long length=1)
-#       function_suffix: _long
+    -  decl: (long length=1)
+       function_suffix: _long
