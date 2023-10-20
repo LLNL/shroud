@@ -1954,6 +1954,9 @@ class Declaration(Node):
 
         return "".join(decl)
 
+    def __repr__(self):
+        return "<Declaration('{}')>".format(str(self))
+    
 
 class CXXClass(Node):
     """A C++ class statement.
@@ -2501,7 +2504,7 @@ def find_arg_by_name(decls, name):
     return None
 
 def find_arg_index_by_name(decls, name):
-    """Return index of argument in decls with name.
+    """Return offset of argument in decls with name.
     Does not check name attribute.
 
     Args:

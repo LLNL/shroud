@@ -106,7 +106,7 @@ Fortran string & getName3(void) const  +api(cdesc)+deref(allocatable)+intent(fun
 Fortran string & getName4(void)  +api(cdesc)+deref(allocatable)+intent(function)
 Fortran int GetNameLength(void) const  +intent(function)
 Fortran ExClass1 * get_class1(const ExClass1 * in)  +api(capptr)+intent(function)
-Fortran void declare(TypeID type +value, int len=1 +value)  +api(capptr)+intent(subroutine)
+Fortran void declare(TypeID type +value)  +api(capptr)+intent(subroutine)
 Fortran void declare(TypeID type +value, int len=1 +value)  +api(capptr)+intent(subroutine)
 Fortran void declare(TypeID type +value, long len=1 +value)  +api(capptr)+intent(subroutine)
 Fortran void destroyall(void)  +intent(subroutine)

@@ -1552,6 +1552,7 @@ class FunctionNode(AstNode):
         for generic in self.fortran_generic:
             generic.parse_generic(self.symtab)
             newparams = copy.deepcopy(declarator.params)
+            first = len(newparams) + 1
             for garg in generic.decls:
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
@@ -1561,8 +1562,10 @@ class FunctionNode(AstNode):
                                         garg.declarator.user_name))
                     self.wrap.clear()
                 else:
+                    first = min(first, i + 1)
                     newparams[i] = garg
             generic.decls = newparams
+            generic.first = first
 
         # add any attributes from YAML files to the ast
         if "attrs" in kwargs:
@@ -2019,6 +2022,7 @@ class FortranGeneric(object):
         self.function_suffix = function_suffix
         self.linenumber = linenumber
         self.decls = decls
+        self.first = 0      # First decl which is generic, 0=no arguments.
 
     def parse_generic(self, symtab):
         """Parse argument list (ex. int arg1, float *arg2)
@@ -2027,8 +2031,23 @@ class FortranGeneric(object):
         self.decls = parser.parameter_list()
 
     def __repr__(self):
-        return self.generic
+        return "<FortranGeneric({}>".format(self.generic)
 
+
+def trim_fortran_generic_decls(fortran_generic, nargs):
+    """When generating a function with default arguments,
+    return a new list of FortranGeneric with the decls trimmed
+    to match the number of arguments.
+    """
+    newlst = []
+    for generic in fortran_generic:
+        if nargs < generic.first:
+            continue
+        new = copy.copy(generic)
+        new.decls = generic.decls[:nargs]
+        newlst.append(new)
+    return newlst
+    
 ######################################################################
 
 class PromoteWrap(visitor.Visitor):
