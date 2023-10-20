@@ -158,7 +158,9 @@ class VerifyAttrs(object):
         if ast.typemap is None:
             print("XXXXXX typemap is None")
         if ast.typemap.sgroup == "shadow":
-            if options.C_shadow_result:
+            if node.return_this:
+                meta["api"] = "this"
+            elif options.C_shadow_result:
                 meta["api"] = "capptr"
             else:
                 meta["api"] = "capsule"
@@ -674,7 +676,6 @@ class GenFunctions(object):
               append_function_index
               has_default_args
               template_function
-              process_return_this
               define_fortran_generic_functions
               define_bufferify_functions
                 arg_to_CFI
@@ -1210,14 +1211,7 @@ class GenFunctions(object):
                     if not function.fmtdict.inlocal("function_suffix"):
                         function.fmtdict.function_suffix = "_{}".format(i)
 
-        # return_this
-        ordered2 = []
-        for method in ordered_functions:
-            ordered2.append(method)
-            if method.return_this:
-                self.process_return_this(method, ordered2)
-                
-        ordered3 = self.define_fortran_generic_functions(ordered2)
+        ordered3 = self.define_fortran_generic_functions(ordered_functions)
         ordered4 = self.define_bufferify_functions(ordered3)
 
         self.gen_functions_decl(ordered4)
@@ -1473,7 +1467,9 @@ class GenFunctions(object):
             # Try to call original C function if possible.
             # All arguments are native scalar.
             need_wrapper = False
-            if new.ast.declarator.is_indirect():
+            if new.return_this:
+                pass
+            elif new.ast.declarator.is_indirect():
                 need_wrapper = True
             
             for arg in new.ast.declarator.params:
@@ -1593,44 +1589,6 @@ class GenFunctions(object):
                 attrs[name] = c_attrs[name]
                 del c_attrs[name]
 
-    def process_return_this(self, node, ordered_functions):
-        """Deal with return_this feature.
-
-        If a function is marked return_this, convert it into a 
-        subroutine for the C and Fortran wrappers.
-        Return this allows chaining of function calls.
-        For example in C++:   obj->doA()->doB();
-        Python:   obj.doA().doB()
-        However, there is no way to chain in C or Fortran.
-
-        Clone the function and wrap for C and Fortran.
-        Turn off C and Fortran wrapper on original node.
-        Remove the function result.
-        
-        Parameters
-        ----------
-        node : FunctionNode
-        ordered_functions : list of FunctionNode
-        """
-        if node.wrap.c == False and node.wrap.fortran == False:
-            return
-        new = node.clone()
-        ordered_functions.append(new)
-        self.append_function_index(new)
-        new._generated = "return_this"
-        new._generated_path.append("return_this")
-
-        # Only wrap for C and Fortran, transfer values from node.
-        new.wrap.clear()
-        new.wrap.c = node.wrap.c
-        new.wrap.fortran = node.wrap.fortran
-        node.wrap.c = False
-        node.wrap.fortran = False
-
-        # Do not return C++ this instance.
-        new.ast.set_return_to_void()
-        new.ast.declarator.metaattrs["intent"] = "subroutine"
-    
     def arg_to_CFI(self, node, ordered_functions):
         """Look for functions which can use TS29113
         Futher interoperability with C.

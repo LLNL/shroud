@@ -426,7 +426,7 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
 // ExClass2 * declare(TypeID type +value, SidreLength len=1 +value)
 // ----------------------------------------
 // Function:  ExClass2 * declare
-// Attrs:     +api(capptr)+intent(function)
+// Attrs:     +api(this)+intent(function)
 // Statement: lua_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value
@@ -434,7 +434,7 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  ExClass2 * declare
-// Attrs:     +api(capptr)+intent(function)
+// Attrs:     +api(this)+intent(function)
 // Statement: lua_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value

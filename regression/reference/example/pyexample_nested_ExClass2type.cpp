@@ -373,7 +373,7 @@ PP_get_class1(
 
 // ----------------------------------------
 // Function:  ExClass2 * declare
-// Attrs:     +api(capptr)+intent(function)
+// Attrs:     +api(this)+intent(function)
 // Statement: py_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value

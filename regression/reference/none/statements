@@ -369,6 +369,7 @@ root
             caller -- f_function_shadow_*/&_capptr
             library -- f_function_shadow_*/&_capptr
           capsule -- f_function_shadow_*_capsule
+          this -- f_function_shadow_*_this
         scalar
           capptr -- f_function_shadow_scalar_capptr
             caller -- f_function_shadow_scalar_capptr
@@ -4974,6 +4975,18 @@ f_function_shadow_*_capsule:
     - '{f_capsule_data_type}'
   intent: function
   name: f_function_shadow_*_capsule
+  owner: library
+f_function_shadow_*_this:
+  c_call:
+  - '{CXX_this_call}{function_name}{CXX_template}({C_call_list});'
+  c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_result: subroutine
+  intent: function
+  name: f_function_shadow_*_this
   owner: library
 f_function_shadow_scalar_capptr:
   c_arg_decl:

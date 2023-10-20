@@ -337,10 +337,11 @@ argument such as another argument with the explicit length.
 .. In the future a user settable api might be useful to do custom
    actions in the wrappers.
 
-.. Set internally to api(cdesc) with +cdesc or
+.. Set internally to api(cdesc) with
    deref set to allocatable or pointer.
    api(buf) adds extra arguments for metadata like LEN or SIZE.
    api(cdesc) replaces argument with F_array_type.
+   api(this) set by return_this
    
 assumedtype
 ^^^^^^^^^^^

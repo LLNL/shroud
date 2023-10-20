@@ -2940,8 +2940,8 @@ fc_statements = [
         ],
     ),
 
-    # Return a C_capsule_data_type.
     dict(
+        # Return a C_capsule_data_type.
         name="f_function_shadow_*_capsule",
         mixin=[
             "f_mixin_function-to-subroutine",
@@ -2951,6 +2951,18 @@ fc_statements = [
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
+        ],
+    ),
+    dict(
+        # Input set return_this.
+        # Do not return anything.
+        name="f_function_shadow_*_this",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+        ],
+        f_result="subroutine",
+        c_call=[
+            "{CXX_this_call}{function_name}{CXX_template}({C_call_list});",
         ],
     ),
 
