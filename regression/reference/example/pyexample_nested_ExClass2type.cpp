@@ -372,9 +372,9 @@ PP_get_class1(
 }
 
 // ----------------------------------------
-// Function:  void * declare
-// Attrs:     +intent(function)
-// Statement: py_function_void_*
+// Function:  ExClass2 * declare
+// Attrs:     +api(capptr)+intent(function)
+// Statement: py_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -401,8 +401,7 @@ PP_declare_1(
         "type",
         "len",
         nullptr };
-    void * SHCXX_rv;
-    PyObject * SHTPy_rv = nullptr;
+    example::nested::ExClass2 * SHCXX_rv;
 
     if (args != nullptr) SH_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SH_nargs += PyDict_Size(args);
@@ -432,7 +431,9 @@ PP_declare_1(
     }
 
     // post_call
-    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
+    PP_ExClass2 * SHTPy_rv =
+        PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
+    SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass2.method.declare

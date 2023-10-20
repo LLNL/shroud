@@ -214,9 +214,11 @@ options
    Described in `Options`_
 
 return_this
-   If true, the method returns a reference to ``this``.  This idiom can be used
-   to chain calls in C++.  This idiom does not translate to C and Fortran.
-   Instead the *C_return_type* format is set to ``void``.
+   If true, the C++ function returns a reference to ``this``.
+   This feature can be used to chain calls.
+   This idiom does not translate to C and Fortran.
+   This can only be set on class methods which return a pointer
+   to the class instance.
 
 
 Options

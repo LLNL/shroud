@@ -158,7 +158,7 @@ declarations:
       - decl: ExClass1 *get_class1(const ExClass1 *in)
 
       # typedefs that require modules
-      - decl: void* declare(TypeID type, SidreLength len = 1)
+      - decl: ExClass2 * declare(TypeID type, SidreLength len = 1)
         # by returning this,the C++ function allows chaining.
         # make them subroutines in Fortran.
         return_this: True

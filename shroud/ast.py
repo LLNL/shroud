@@ -1526,6 +1526,17 @@ class FunctionNode(AstNode):
         self.user_fmt = format
         self.default_format(parent, format, kwargs)
 
+        if self.return_this:
+            if not isinstance(self.parent, ClassNode):
+                raise error.ShroudError(
+                    "return_this can only be set for class methods")
+            if self.parent.typemap is not ast.typemap:
+                raise error.ShroudError(
+                    "return_this must return a pointer to the class")
+            if ast.declarator.is_pointer() != 1:
+                raise error.ShroudError(
+                    "return_this must return a pointer to the class")
+
         # Look for any template (include class template) arguments.
         self.have_template_args = False
         if ast.typemap.base == "template":
