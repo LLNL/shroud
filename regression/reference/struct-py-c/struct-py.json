@@ -13,6 +13,9 @@
                     {
                         "<FUNCTION>": "Cstruct_as_class_ctor  0 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {

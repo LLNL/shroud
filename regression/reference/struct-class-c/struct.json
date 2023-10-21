@@ -19,6 +19,9 @@
                     {
                         "<FUNCTION>": "Cstruct1_ctor  0 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -260,6 +263,9 @@
                     {
                         "<FUNCTION>": "Cstruct_ptr_ctor  1 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -533,6 +539,9 @@
                     {
                         "<FUNCTION>": "Cstruct_list_ctor  2 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1051,6 +1060,9 @@
                     {
                         "<FUNCTION>": "Cstruct_numpy_ctor  3 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1436,6 +1448,9 @@
                     {
                         "<FUNCTION>": "Arrays1_ctor  4 ****************************************",
                         "_generated": "struct_as_class_ctor",
+                        "_generated_path": [
+                            "struct_as_class_ctor"
+                        ],
                         "ast": {
                             "declarator": {
                                 "attrs": {

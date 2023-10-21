@@ -1416,6 +1416,8 @@ class FunctionNode(AstNode):
     _function_index  - sequence number function,
                        used in lieu of a pointer
     _generated       - which method generated this function
+    _generated_path  - list of generated functions
+    _orig_node       - Original YAML node for generated functions.
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
@@ -1455,11 +1457,12 @@ class FunctionNode(AstNode):
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
-        self._function_index = None
         self._fmtargs = {}
         self._fmtresult = {}
         self._function_index = None
         self._generated = False
+        self._generated_path = []
+        self._orig_node = None
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
@@ -1471,7 +1474,6 @@ class FunctionNode(AstNode):
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
-        self.C_generated_path = []
         self.C_force_wrapper = False
 
         # self.function_index = []
@@ -1524,6 +1526,17 @@ class FunctionNode(AstNode):
         self.user_fmt = format
         self.default_format(parent, format, kwargs)
 
+        if self.return_this:
+            if not isinstance(self.parent, ClassNode):
+                raise error.ShroudError(
+                    "return_this can only be set for class methods")
+            if self.parent.typemap is not ast.typemap:
+                raise error.ShroudError(
+                    "return_this must return a pointer to the class")
+            if ast.declarator.is_pointer() != 1:
+                raise error.ShroudError(
+                    "return_this must return a pointer to the class")
+
         # Look for any template (include class template) arguments.
         self.have_template_args = False
         if ast.typemap.base == "template":
@@ -1539,6 +1552,7 @@ class FunctionNode(AstNode):
         for generic in self.fortran_generic:
             generic.parse_generic(self.symtab)
             newparams = copy.deepcopy(declarator.params)
+            first = len(newparams) + 1
             for garg in generic.decls:
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
@@ -1548,8 +1562,10 @@ class FunctionNode(AstNode):
                                         garg.declarator.user_name))
                     self.wrap.clear()
                 else:
+                    first = min(first, i + 1)
                     newparams[i] = garg
             generic.decls = newparams
+            generic.first = first
 
         # add any attributes from YAML files to the ast
         if "attrs" in kwargs:
@@ -1648,6 +1664,9 @@ class FunctionNode(AstNode):
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
+        new._generated_path = copy.deepcopy(self._generated_path)
+        if new._orig_node is None:
+            new._orig_node = self
 
         return new
 
@@ -2003,6 +2022,7 @@ class FortranGeneric(object):
         self.function_suffix = function_suffix
         self.linenumber = linenumber
         self.decls = decls
+        self.first = 0      # First decl which is generic, 0=no arguments.
 
     def parse_generic(self, symtab):
         """Parse argument list (ex. int arg1, float *arg2)
@@ -2011,8 +2031,23 @@ class FortranGeneric(object):
         self.decls = parser.parameter_list()
 
     def __repr__(self):
-        return self.generic
+        return "<FortranGeneric({}>".format(self.generic)
 
+
+def trim_fortran_generic_decls(fortran_generic, nargs):
+    """When generating a function with default arguments,
+    return a new list of FortranGeneric with the decls trimmed
+    to match the number of arguments.
+    """
+    newlst = []
+    for generic in fortran_generic:
+        if nargs < generic.first:
+            continue
+        new = copy.copy(generic)
+        new.decls = generic.decls[:nargs]
+        newlst.append(new)
+    return newlst
+    
 ######################################################################
 
 class PromoteWrap(visitor.Visitor):

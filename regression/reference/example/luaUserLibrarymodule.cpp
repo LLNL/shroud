@@ -423,19 +423,19 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
     // splicer end class.ExClass2.method.get_class1
 }
 
-// void * declare(TypeID type +value, SidreLength len=1 +value)
+// ExClass2 * declare(TypeID type +value, SidreLength len=1 +value)
 // ----------------------------------------
-// Function:  void * declare
-// Attrs:     +intent(function)
-// Statement: lua_function_void_*
+// Function:  ExClass2 * declare
+// Attrs:     +api(this)+intent(function)
+// Statement: lua_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Function:  void * declare
-// Attrs:     +intent(function)
-// Statement: lua_function_void_*
+// Function:  ExClass2 * declare
+// Attrs:     +api(this)+intent(function)
+// Statement: lua_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -457,7 +457,9 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             TypeID type = getTypeID(lua_tointeger(L, 1));
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            void * SHCXX_rv = SH_this->self->declare(type);
+            example::nested::ExClass2 * SHCXX_rv =
+                SH_this->self->declare(type);
+            PUSH;
             SH_nresult = 1;
         }
         else {
@@ -471,7 +473,9 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             SidreLength len = lua_tointeger(L, 2);
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            void * SHCXX_rv = SH_this->self->declare(type, len);
+            example::nested::ExClass2 * SHCXX_rv =
+                SH_this->self->declare(type, len);
+            PUSH;
             SH_nresult = 1;
         }
         else {

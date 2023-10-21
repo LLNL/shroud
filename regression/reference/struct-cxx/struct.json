@@ -649,10 +649,10 @@
                 "functions": [
                     {
                         "<FUNCTION>": "get_x1  0 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -735,10 +735,10 @@
                     },
                     {
                         "<FUNCTION>": "set_x1  1 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -845,10 +845,10 @@
                     },
                     {
                         "<FUNCTION>": "get_y1  2 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -931,10 +931,10 @@
                     },
                     {
                         "<FUNCTION>": "set_y1  3 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1137,10 +1137,10 @@
                 "functions": [
                     {
                         "<FUNCTION>": "get_x1  4 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1223,10 +1223,10 @@
                     },
                     {
                         "<FUNCTION>": "set_x1  5 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1333,10 +1333,10 @@
                     },
                     {
                         "<FUNCTION>": "get_y1  6 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1419,10 +1419,10 @@
                     },
                     {
                         "<FUNCTION>": "set_y1  7 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1529,10 +1529,10 @@
                     },
                     {
                         "<FUNCTION>": "get_z1  8 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1615,10 +1615,10 @@
                     },
                     {
                         "<FUNCTION>": "set_z1  9 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2327,11 +2327,12 @@
             },
             {
                 "<FUNCTION>": "passStruct2  30 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 12,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3467,11 +3468,12 @@
             },
             {
                 "<FUNCTION>": "returnStructPtr2  31 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 18,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4386,10 +4388,10 @@
             },
             {
                 "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  24 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4526,10 +4528,10 @@
             },
             {
                 "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  25 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4685,6 +4687,9 @@
                 "<FUNCTION>": "Cstruct_list_get_ivalue  26 ****************************************",
                 "_PTR_F_C_index": "32",
                 "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4757,11 +4762,13 @@
             },
             {
                 "<FUNCTION>": "Cstruct_list_get_ivalue  32 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 26,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4924,10 +4931,10 @@
             },
             {
                 "<FUNCTION>": "Cstruct_list_set_ivalue  27 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5099,6 +5106,9 @@
                 "<FUNCTION>": "Cstruct_list_get_dvalue  28 ****************************************",
                 "_PTR_F_C_index": "33",
                 "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5171,11 +5181,13 @@
             },
             {
                 "<FUNCTION>": "Cstruct_list_get_dvalue  33 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 28,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5338,10 +5350,10 @@
             },
             {
                 "<FUNCTION>": "Cstruct_list_set_dvalue  29 ****************************************",
-                "C_generated_path": [
+                "_generated": "getter/setter",
+                "_generated_path": [
                     "getter/setter"
                 ],
-                "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
                         "metaattrs": {

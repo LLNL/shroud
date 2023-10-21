@@ -17,14 +17,11 @@ The statements work together to pass variables and metadata between
 Fortran and C.
 
 
-fc_statements
--------------
-
 A Fortran wrapper is created out of several segments.
 
 .. code-block:: text
 
-      {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
+      {F_subprogram} {F_name_impl}(f_arg_name)[result (f_result)]
         f_module
         f_arg_decl
         ! splicer begin
@@ -43,6 +40,18 @@ additional arguments.
 
 ..        name="f_default",
 ..        c_helper="",
+
+Format fields
+-------------
+
+* F_subprogram
+* F_name_impl
+* F_arguments
+* F_result_clause
+
+
+statements
+----------
 
 f_helper
 ^^^^^^^^

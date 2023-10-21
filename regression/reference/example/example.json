@@ -341,11 +341,12 @@
                                     },
                                     {
                                         "<FUNCTION>": "ctor  10 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
                                         "_PTR_C_CXX_index": "1",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 1,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -855,11 +856,12 @@
                                     },
                                     {
                                         "<FUNCTION>": "getNameErrorCheck  11 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
                                         "_PTR_C_CXX_index": "4",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 4,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -1068,11 +1070,12 @@
                                     },
                                     {
                                         "<FUNCTION>": "getNameArg  12 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
                                         "_PTR_C_CXX_index": "5",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 5,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -1884,7 +1887,7 @@
                                 "functions": [
                                     {
                                         "<FUNCTION>": "ctor  13 ****************************************",
-                                        "_PTR_F_C_index": "39",
+                                        "_PTR_F_C_index": "35",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -2077,12 +2080,13 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "ctor  39 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
+                                        "<FUNCTION>": "ctor  35 ****************************************",
                                         "_PTR_C_CXX_index": "13",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 13,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -2299,7 +2303,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "getName  15 ****************************************",
-                                        "_PTR_F_C_index": "40",
+                                        "_PTR_F_C_index": "36",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2410,12 +2414,13 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName  40 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
+                                        "<FUNCTION>": "getName  36 ****************************************",
                                         "_PTR_C_CXX_index": "15",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 15,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2511,7 +2516,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "getName2  16 ****************************************",
-                                        "_PTR_F_C_index": "41",
+                                        "_PTR_F_C_index": "37",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2615,12 +2620,13 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName2  41 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
+                                        "<FUNCTION>": "getName2  37 ****************************************",
                                         "_PTR_C_CXX_index": "16",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 16,
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -2718,7 +2724,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "getName3  17 ****************************************",
-                                        "_PTR_F_C_index": "42",
+                                        "_PTR_F_C_index": "38",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -2823,12 +2829,13 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName3  42 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
+                                        "<FUNCTION>": "getName3  38 ****************************************",
                                         "_PTR_C_CXX_index": "17",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 17,
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -2926,7 +2933,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "getName4  18 ****************************************",
-                                        "_PTR_F_C_index": "43",
+                                        "_PTR_F_C_index": "39",
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
@@ -3029,12 +3036,13 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName4  43 ****************************************",
-                                        "C_generated_path": [
-                                            "arg_to_buffer"
-                                        ],
+                                        "<FUNCTION>": "getName4  39 ****************************************",
                                         "_PTR_C_CXX_index": "18",
                                         "_generated": "arg_to_buffer",
+                                        "_generated_path": [
+                                            "arg_to_buffer"
+                                        ],
+                                        "_orig_node_index": 18,
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
@@ -3455,10 +3463,15 @@
                                     {
                                         "<FUNCTION>": "declare  26 ****************************************",
                                         "_generated": "has_default_arg",
+                                        "_generated_path": [
+                                            "has_default_arg"
+                                        ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
+                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",
@@ -3485,229 +3498,22 @@
                                                         "ptr": "*"
                                                     }
                                                 ],
-                                                "typemap_name": "void"
+                                                "typemap_name": "example::nested::ExClass2"
                                             },
                                             "specifier": [
-                                                "void"
+                                                "ExClass2"
                                             ],
-                                            "typemap_name": "void"
+                                            "typemap_name": "example::nested::ExClass2"
                                         },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +value)",
-                                        "fortran_generic": [
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "int"
-                                                        },
-                                                        "specifier": [
-                                                            "int"
-                                                        ],
-                                                        "typemap_name": "int"
-                                                    }
-                                                ],
-                                                "function_suffix": "_int",
-                                                "generic": "(int len=1)"
-                                            },
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "long"
-                                                        },
-                                                        "specifier": [
-                                                            "long"
-                                                        ],
-                                                        "typemap_name": "long"
-                                                    }
-                                                ],
-                                                "function_suffix": "_long",
-                                                "generic": "(long len=1)"
-                                            }
-                                        ],
-                                        "name": "declare",
-                                        "options": {},
-                                        "return_this": true,
-                                        "wrap": {},
-                                        "zz_fmtdict": {
-                                            "C_name_api": "declare",
-                                            "F_name_api": "declare",
-                                            "function_name": "declare",
-                                            "function_suffix": "_0"
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "declare  33 ****************************************",
-                                        "_generated": "return_this",
-                                        "_overloaded": true,
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
-                                                "name": "declare",
-                                                "params": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value)",
-                                        "fortran_generic": [
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "int"
-                                                        },
-                                                        "specifier": [
-                                                            "int"
-                                                        ],
-                                                        "typemap_name": "int"
-                                                    }
-                                                ],
-                                                "function_suffix": "_int",
-                                                "generic": "(int len=1)"
-                                            },
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "long"
-                                                        },
-                                                        "specifier": [
-                                                            "long"
-                                                        ],
-                                                        "typemap_name": "long"
-                                                    }
-                                                ],
-                                                "function_suffix": "_long",
-                                                "generic": "(long len=1)"
-                                            }
-                                        ],
+                                        "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "ExClass2 * declare(TypeID type +value)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "fortran": true
                                         },
                                         "zz_fmtargs": {
                                             "type": {
@@ -3747,176 +3553,49 @@
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t type",
+                                            "F_C_call": "c_ex_class2_declare_0",
                                             "F_C_name": "c_ex_class2_declare_0",
+                                            "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t type",
+                                            "F_arguments": "obj,\t type",
                                             "F_name_api": "declare",
+                                            "F_name_function": "declare_0",
+                                            "F_name_generic": "declare",
+                                            "F_name_impl": "ex_class2_declare_0",
+                                            "F_result_clause": "",
+                                            "F_subprogram": "subroutine",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "cxx_rv_decl": "example::nested::ExClass2 * SHCXX_rv",
                                             "function_name": "declare",
-                                            "function_suffix": "_0",
-                                            "stmtc": "f_subroutine"
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "declare  35 ****************************************",
-                                        "C_generated_path": [
-                                            "fortran_generic",
-                                            "return_this"
-                                        ],
-                                        "_PTR_F_C_index": "33",
-                                        "_generated": "fortran_generic",
-                                        "_overloaded": true,
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
-                                                "name": "declare",
-                                                "params": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "int"
-                                                        },
-                                                        "specifier": [
-                                                            "int"
-                                                        ],
-                                                        "typemap_name": "int"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
+                                            "function_suffix": "_0"
                                         },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value, int len=1 +value)",
-                                        "name": "declare",
-                                        "options": {},
-                                        "return_this": true,
-                                        "wrap": {
-                                            "fortran": true
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name_api": "declare",
-                                            "F_C_call": "c_ex_class2_declare_0",
-                                            "F_arg_c_call": "obj%cxxmem,\t type",
-                                            "F_arguments": "obj,\t type",
-                                            "F_name_api": "declare",
-                                            "F_name_function": "declare_0_int",
-                                            "F_name_generic": "declare",
-                                            "F_name_impl": "ex_class2_declare_0_int",
-                                            "F_subprogram": "subroutine",
-                                            "function_name": "declare",
-                                            "function_suffix": "_0_int",
-                                            "stmtf": "f_subroutine"
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "declare  36 ****************************************",
-                                        "C_generated_path": [
-                                            "fortran_generic",
-                                            "return_this"
-                                        ],
-                                        "_PTR_F_C_index": "33",
-                                        "_generated": "fortran_generic",
-                                        "_overloaded": true,
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
-                                                "name": "declare",
-                                                "params": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "long"
-                                                        },
-                                                        "specifier": [
-                                                            "long"
-                                                        ],
-                                                        "typemap_name": "long"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value, long len=1 +value)",
-                                        "name": "declare",
-                                        "options": {},
-                                        "return_this": true,
-                                        "wrap": {
-                                            "fortran": true
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name_api": "declare",
-                                            "F_C_call": "c_ex_class2_declare_0",
-                                            "F_arg_c_call": "obj%cxxmem,\t type",
-                                            "F_arguments": "obj,\t type",
-                                            "F_name_api": "declare",
-                                            "F_name_function": "declare_0_long",
-                                            "F_name_generic": "declare",
-                                            "F_name_impl": "ex_class2_declare_0_long",
-                                            "F_subprogram": "subroutine",
-                                            "function_name": "declare",
-                                            "function_suffix": "_0_long",
-                                            "stmtf": "f_subroutine"
+                                        "zz_fmtresult": {
+                                            "fmtf": {
+                                                "c_const": "",
+                                                "c_type": "AA_example_nested_ExClass2",
+                                                "c_var": "SHC_rv",
+                                                "cfi_type": "CFI_type_other",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_type": "example::nested::ExClass2",
+                                                "cxx_var": "SHCXX_rv",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
+                                                "f_derived_type": "ex_class2",
+                                                "f_intent": "OUT",
+                                                "f_type": "type(ex_class2)",
+                                                "f_type_module": "userlibrary_example_nested_mod",
+                                                "f_var": "SHT_rv",
+                                                "fc_var": "SHT_rv",
+                                                "i_var": "SHT_rv",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "f_function_shadow_*_this",
+                                                "stmtf": "f_function_shadow_*_this"
+                                            }
                                         }
                                     },
                                     {
@@ -3933,6 +3612,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
+                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",
@@ -3976,274 +3656,15 @@
                                                         "ptr": "*"
                                                     }
                                                 ],
-                                                "typemap_name": "void"
+                                                "typemap_name": "example::nested::ExClass2"
                                             },
                                             "specifier": [
-                                                "void"
+                                                "ExClass2"
                                             ],
-                                            "typemap_name": "void"
+                                            "typemap_name": "example::nested::ExClass2"
                                         },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +value, SidreLength len=1 +value)",
-                                        "fortran_generic": [
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "int"
-                                                        },
-                                                        "specifier": [
-                                                            "int"
-                                                        ],
-                                                        "typemap_name": "int"
-                                                    }
-                                                ],
-                                                "function_suffix": "_int",
-                                                "generic": "(int len=1)"
-                                            },
-                                            {
-                                                "decls": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "long"
-                                                        },
-                                                        "specifier": [
-                                                            "long"
-                                                        ],
-                                                        "typemap_name": "long"
-                                                    }
-                                                ],
-                                                "function_suffix": "_long",
-                                                "generic": "(long len=1)"
-                                            }
-                                        ],
-                                        "name": "declare",
-                                        "options": {},
-                                        "return_this": true,
-                                        "wrap": {
-                                            "lua": true,
-                                            "python": true
-                                        },
-                                        "zz_fmtargs": {
-                                            "len": {
-                                                "fmtl": {
-                                                    "LUA_index": 2,
-                                                    "c_deref": "",
-                                                    "c_member": ".",
-                                                    "c_var": "len",
-                                                    "c_var_len": "Llen",
-                                                    "cxx_member": ".",
-                                                    "cxx_type": "SidreLength",
-                                                    "cxx_var": "len",
-                                                    "lua_var": "SH_Lua_len",
-                                                    "pop_expr": "lua_tointeger(L, 2)",
-                                                    "stmt": "lua_in_native_scalar"
-                                                },
-                                                "fmtpy": {
-                                                    "c_const": "",
-                                                    "c_deref": "",
-                                                    "c_type": "SIDRE_SidreLength",
-                                                    "c_var": "len",
-                                                    "ctor_expr": "len",
-                                                    "cxx_addr": "&",
-                                                    "cxx_member": ".",
-                                                    "cxx_nonconst_ptr": "&len",
-                                                    "cxx_type": "SidreLength",
-                                                    "cxx_var": "len",
-                                                    "data_var": "SHData_len",
-                                                    "numpy_type": "NPY_LONG",
-                                                    "py_var": "SHPy_len",
-                                                    "size_var": "SHSize_len",
-                                                    "stmt": "py_in_native_scalar",
-                                                    "value_var": "SHValue_len"
-                                                }
-                                            },
-                                            "type": {
-                                                "fmtl": {
-                                                    "LUA_index": 1,
-                                                    "c_deref": "",
-                                                    "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
-                                                    "c_var_len": "Ltype",
-                                                    "cxx_member": ".",
-                                                    "cxx_type": "TypeID",
-                                                    "cxx_var": "type",
-                                                    "lua_var": "SH_Lua_type",
-                                                    "pop_expr": "getTypeID(lua_tointeger(L, 1))",
-                                                    "stmt": "lua_in_native_scalar"
-                                                },
-                                                "fmtpy": {
-                                                    "c_const": "",
-                                                    "c_deref": "",
-                                                    "c_type": "AA_TypeID",
-                                                    "c_var": "type",
-                                                    "ctor_expr": "type",
-                                                    "cxx_addr": "&",
-                                                    "cxx_decl": "TypeID SH_type",
-                                                    "cxx_member": ".",
-                                                    "cxx_nonconst_ptr": "&type",
-                                                    "cxx_type": "TypeID",
-                                                    "cxx_val": "getTypeID(type)",
-                                                    "cxx_var": "SH_type",
-                                                    "data_var": "SHData_type",
-                                                    "numpy_type": "NPY_INT",
-                                                    "py_var": "SHPy_type",
-                                                    "size_var": "SHSize_type",
-                                                    "stmt": "py_in_native_scalar",
-                                                    "value_var": "SHValue_type"
-                                                }
-                                            }
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name_api": "declare",
-                                            "F_name_api": "declare",
-                                            "LUA_name": "declare",
-                                            "LUA_name_api": "declare",
-                                            "LUA_name_impl": "l_example_nested_ExClass2_declare",
-                                            "PY_cleanup_decref": "Py_XDECREF",
-                                            "PY_name_impl": "PP_declare_1",
-                                            "function_name": "declare",
-                                            "function_suffix": "_1"
-                                        },
-                                        "zz_fmtresult": {
-                                            "fmtl": {
-                                                "c_var": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_var": "SHCXX_rv",
-                                                "push_arg": "SHCXX_rv",
-                                                "push_expr": "PUSH",
-                                                "stmt": "lua_function_void_*"
-                                            },
-                                            "fmtpy": {
-                                                "array_size": "1",
-                                                "c_deref": "*",
-                                                "c_var": "SHCXX_rv",
-                                                "ctor_expr": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_nonconst_ptr": "SHCXX_rv",
-                                                "cxx_type": "void",
-                                                "cxx_var": "SHCXX_rv",
-                                                "data_var": "SHData_rv",
-                                                "numpy_type": null,
-                                                "py_var": "SHTPy_rv",
-                                                "size_var": "SHSize_rv",
-                                                "stmt": "py_function_void_*",
-                                                "value_var": "SHValue_rv"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "declare  34 ****************************************",
-                                        "_default_funcs": [
-                                            26
-                                        ],
-                                        "_generated": "return_this",
-                                        "_has_default_arg": true,
-                                        "_nargs": [
-                                            1,
-                                            2
-                                        ],
-                                        "_overloaded": true,
-                                        "ast": {
-                                            "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
-                                                "name": "declare",
-                                                "params": [
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "type",
-                                                            "typemap_name": "TypeID"
-                                                        },
-                                                        "specifier": [
-                                                            "TypeID"
-                                                        ],
-                                                        "typemap_name": "TypeID"
-                                                    },
-                                                    {
-                                                        "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
-                                                            "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
-                                                            "name": "len",
-                                                            "typemap_name": "SidreLength"
-                                                        },
-                                                        "specifier": [
-                                                            "SidreLength"
-                                                        ],
-                                                        "typemap_name": "SidreLength"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value, SidreLength len=1 +value)",
+                                        "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "ExClass2 * declare(TypeID type +value, SidreLength len=1 +value)",
                                         "fortran_generic": [
                                             {
                                                 "decls": [
@@ -4329,7 +3750,9 @@
                                         "return_this": true,
                                         "wrap": {
                                             "c": true,
-                                            "f_c": true
+                                            "f_c": true,
+                                            "lua": true,
+                                            "python": true
                                         },
                                         "zz_fmtargs": {
                                             "len": {
@@ -4357,6 +3780,37 @@
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmtc": "f_in_native_scalar",
                                                     "stmtf": "f_in_native_scalar"
+                                                },
+                                                "fmtl": {
+                                                    "LUA_index": 2,
+                                                    "c_deref": "",
+                                                    "c_member": ".",
+                                                    "c_var": "len",
+                                                    "c_var_len": "Llen",
+                                                    "cxx_member": ".",
+                                                    "cxx_type": "SidreLength",
+                                                    "cxx_var": "len",
+                                                    "lua_var": "SH_Lua_len",
+                                                    "pop_expr": "lua_tointeger(L, 2)",
+                                                    "stmt": "lua_in_native_scalar"
+                                                },
+                                                "fmtpy": {
+                                                    "c_const": "",
+                                                    "c_deref": "",
+                                                    "c_type": "SIDRE_SidreLength",
+                                                    "c_var": "len",
+                                                    "ctor_expr": "len",
+                                                    "cxx_addr": "&",
+                                                    "cxx_member": ".",
+                                                    "cxx_nonconst_ptr": "&len",
+                                                    "cxx_type": "SidreLength",
+                                                    "cxx_var": "len",
+                                                    "data_var": "SHData_len",
+                                                    "numpy_type": "NPY_LONG",
+                                                    "py_var": "SHPy_len",
+                                                    "size_var": "SHSize_len",
+                                                    "stmt": "py_in_native_scalar",
+                                                    "value_var": "SHValue_len"
                                                 }
                                             },
                                             "type": {
@@ -4386,6 +3840,39 @@
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtc": "f_in_native_scalar",
                                                     "stmtf": "f_in_native_scalar"
+                                                },
+                                                "fmtl": {
+                                                    "LUA_index": 1,
+                                                    "c_deref": "",
+                                                    "c_member": ".",
+                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var_len": "Ltype",
+                                                    "cxx_member": ".",
+                                                    "cxx_type": "TypeID",
+                                                    "cxx_var": "type",
+                                                    "lua_var": "SH_Lua_type",
+                                                    "pop_expr": "getTypeID(lua_tointeger(L, 1))",
+                                                    "stmt": "lua_in_native_scalar"
+                                                },
+                                                "fmtpy": {
+                                                    "c_const": "",
+                                                    "c_deref": "",
+                                                    "c_type": "AA_TypeID",
+                                                    "c_var": "type",
+                                                    "ctor_expr": "type",
+                                                    "cxx_addr": "&",
+                                                    "cxx_decl": "TypeID SH_type",
+                                                    "cxx_member": ".",
+                                                    "cxx_nonconst_ptr": "&type",
+                                                    "cxx_type": "TypeID",
+                                                    "cxx_val": "getTypeID(type)",
+                                                    "cxx_var": "SH_type",
+                                                    "data_var": "SHData_type",
+                                                    "numpy_type": "NPY_INT",
+                                                    "py_var": "SHPy_type",
+                                                    "size_var": "SHSize_type",
+                                                    "stmt": "py_in_native_scalar",
+                                                    "value_var": "SHValue_type"
                                                 }
                                             }
                                         },
@@ -4397,38 +3884,96 @@
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t type,\t len",
                                             "F_C_name": "c_ex_class2_declare_1",
+                                            "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
                                             "F_name_api": "declare",
+                                            "LUA_name": "declare",
+                                            "LUA_name_api": "declare",
+                                            "LUA_name_impl": "l_example_nested_ExClass2_declare",
+                                            "PY_cleanup_decref": "Py_XDECREF",
+                                            "PY_name_impl": "PP_declare_1",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "cxx_rv_decl": "example::nested::ExClass2 * SHCXX_rv",
                                             "function_name": "declare",
-                                            "function_suffix": "_1",
-                                            "stmtc": "f_subroutine"
+                                            "function_suffix": "_1"
+                                        },
+                                        "zz_fmtresult": {
+                                            "fmtf": {
+                                                "c_const": "",
+                                                "c_type": "AA_example_nested_ExClass2",
+                                                "c_var": "SHC_rv",
+                                                "cfi_type": "CFI_type_other",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_type": "example::nested::ExClass2",
+                                                "cxx_var": "SHCXX_rv",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
+                                                "f_derived_type": "ex_class2",
+                                                "f_intent": "OUT",
+                                                "f_type": "type(ex_class2)",
+                                                "f_type_module": "userlibrary_example_nested_mod",
+                                                "f_var": "SHT_rv",
+                                                "i_var": "SHT_rv",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "f_function_shadow_*_this"
+                                            },
+                                            "fmtl": {
+                                                "c_var": "static_cast<void *>(\tSHCXX_rv)",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_var": "SHCXX_rv",
+                                                "push_arg": "static_cast<void *>(\tSHCXX_rv)",
+                                                "push_expr": "PUSH",
+                                                "stmt": "lua_function_shadow_*"
+                                            },
+                                            "fmtpy": {
+                                                "PY_to_object_idtor_func": "PP_ExClass2_to_Object_idtor",
+                                                "PyObject": "PP_ExClass2",
+                                                "PyTypeObject": "PP_ExClass2_Type",
+                                                "array_size": "1",
+                                                "c_deref": "*",
+                                                "c_var": "SHCXX_rv",
+                                                "ctor_expr": "*SHCXX_rv",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "SHCXX_rv",
+                                                "cxx_type": "example::nested::ExClass2",
+                                                "cxx_var": "SHCXX_rv",
+                                                "data_var": "SHData_rv",
+                                                "numpy_type": null,
+                                                "py_var": "SHTPy_rv",
+                                                "size_var": "SHSize_rv",
+                                                "stmt": "py_function_shadow_*",
+                                                "value_var": "SHValue_rv"
+                                            }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "declare  37 ****************************************",
-                                        "C_generated_path": [
-                                            "fortran_generic",
-                                            "return_this"
-                                        ],
-                                        "_PTR_F_C_index": "34",
+                                        "<FUNCTION>": "declare  33 ****************************************",
+                                        "_PTR_F_C_index": "21",
                                         "_default_funcs": [
                                             26
                                         ],
                                         "_generated": "fortran_generic",
+                                        "_generated_path": [
+                                            "fortran_generic"
+                                        ],
                                         "_has_default_arg": true,
                                         "_nargs": [
                                             1,
                                             2
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "intent": "subroutine"
+                                                    "api": "this",
+                                                    "intent": "function"
                                                 },
                                                 "name": "declare",
                                                 "params": [
@@ -4466,15 +4011,20 @@
                                                         "typemap_name": "int"
                                                     }
                                                 ],
-                                                "typemap_name": "void"
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "example::nested::ExClass2"
                                             },
                                             "specifier": [
-                                                "void"
+                                                "ExClass2"
                                             ],
-                                            "typemap_name": "void"
+                                            "typemap_name": "example::nested::ExClass2"
                                         },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value, int len=1 +value)",
+                                        "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "ExClass2 * declare(TypeID type +value, int len=1 +value)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -4490,33 +4040,47 @@
                                             "F_name_function": "declare_1_int",
                                             "F_name_generic": "declare",
                                             "F_name_impl": "ex_class2_declare_1_int",
+                                            "F_result_clause": "",
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
-                                            "function_suffix": "_1_int",
-                                            "stmtf": "f_subroutine"
+                                            "function_suffix": "_1_int"
+                                        },
+                                        "zz_fmtresult": {
+                                            "fmtf": {
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
+                                                "f_derived_type": "ex_class2",
+                                                "f_intent": "OUT",
+                                                "f_type": "type(ex_class2)",
+                                                "f_type_module": "userlibrary_example_nested_mod",
+                                                "f_var": "SHT_rv",
+                                                "fc_var": "SHT_rv",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtf": "f_function_shadow_*_this"
+                                            }
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "declare  38 ****************************************",
-                                        "C_generated_path": [
-                                            "fortran_generic",
-                                            "return_this"
-                                        ],
-                                        "_PTR_F_C_index": "34",
+                                        "<FUNCTION>": "declare  34 ****************************************",
+                                        "_PTR_F_C_index": "21",
                                         "_default_funcs": [
                                             26
                                         ],
                                         "_generated": "fortran_generic",
+                                        "_generated_path": [
+                                            "fortran_generic"
+                                        ],
                                         "_has_default_arg": true,
                                         "_nargs": [
                                             1,
                                             2
                                         ],
+                                        "_orig_node_index": 21,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "intent": "subroutine"
+                                                    "api": "this",
+                                                    "intent": "function"
                                                 },
                                                 "name": "declare",
                                                 "params": [
@@ -4554,15 +4118,20 @@
                                                         "typemap_name": "long"
                                                     }
                                                 ],
-                                                "typemap_name": "void"
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "example::nested::ExClass2"
                                             },
                                             "specifier": [
-                                                "void"
+                                                "ExClass2"
                                             ],
-                                            "typemap_name": "void"
+                                            "typemap_name": "example::nested::ExClass2"
                                         },
-                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +value, long len=1 +value)",
+                                        "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "ExClass2 * declare(TypeID type +value, long len=1 +value)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -4578,10 +4147,23 @@
                                             "F_name_function": "declare_1_long",
                                             "F_name_generic": "declare",
                                             "F_name_impl": "ex_class2_declare_1_long",
+                                            "F_result_clause": "",
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
-                                            "function_suffix": "_1_long",
-                                            "stmtf": "f_subroutine"
+                                            "function_suffix": "_1_long"
+                                        },
+                                        "zz_fmtresult": {
+                                            "fmtf": {
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
+                                                "f_derived_type": "ex_class2",
+                                                "f_intent": "OUT",
+                                                "f_type": "type(ex_class2)",
+                                                "f_type_module": "userlibrary_example_nested_mod",
+                                                "f_var": "SHT_rv",
+                                                "fc_var": "SHT_rv",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtf": "f_function_shadow_*_this"
+                                            }
                                         }
                                     },
                                     {
@@ -4860,10 +4442,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "setValue  27 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5056,10 +4639,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "setValue  28 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5249,10 +4833,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "setValue  29 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5442,10 +5027,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "setValue  30 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 24,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5702,10 +5288,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "getValue  31 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 25,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5846,10 +5433,11 @@
                                     },
                                     {
                                         "<FUNCTION>": "getValue  32 ****************************************",
-                                        "C_generated_path": [
+                                        "_generated": "cxx_template",
+                                        "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_generated": "cxx_template",
+                                        "_orig_node_index": 25,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6058,7 +5646,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "local_function1  44 ****************************************",
+                                "<FUNCTION>": "local_function1  40 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6114,8 +5702,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "isNameValid  45 ****************************************",
-                                "_PTR_F_C_index": "63",
+                                "<FUNCTION>": "isNameValid  41 ****************************************",
+                                "_PTR_F_C_index": "59",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6298,12 +5886,13 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "isNameValid  63 ****************************************",
-                                "C_generated_path": [
+                                "<FUNCTION>": "isNameValid  59 ****************************************",
+                                "_PTR_C_CXX_index": "41",
+                                "_generated": "arg_to_buffer",
+                                "_generated_path": [
                                     "arg_to_buffer"
                                 ],
-                                "_PTR_C_CXX_index": "45",
-                                "_generated": "arg_to_buffer",
+                                "_orig_node_index": 41,
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6443,7 +6032,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "isInitialized  46 ****************************************",
+                                "<FUNCTION>": "isInitialized  42 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -6546,8 +6135,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  47 ****************************************",
-                                "_PTR_F_C_index": "64",
+                                "<FUNCTION>": "test_names  43 ****************************************",
+                                "_PTR_F_C_index": "60",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -6679,12 +6268,13 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  64 ****************************************",
-                                "C_generated_path": [
+                                "<FUNCTION>": "test_names  60 ****************************************",
+                                "_PTR_C_CXX_index": "43",
+                                "_generated": "arg_to_buffer",
+                                "_generated_path": [
                                     "arg_to_buffer"
                                 ],
-                                "_PTR_C_CXX_index": "47",
-                                "_generated": "arg_to_buffer",
+                                "_orig_node_index": 43,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -6792,8 +6382,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  48 ****************************************",
-                                "_PTR_F_C_index": "65",
+                                "<FUNCTION>": "test_names  44 ****************************************",
+                                "_PTR_F_C_index": "61",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -6994,12 +6584,13 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  65 ****************************************",
-                                "C_generated_path": [
+                                "<FUNCTION>": "test_names  61 ****************************************",
+                                "_PTR_C_CXX_index": "44",
+                                "_generated": "arg_to_buffer",
+                                "_generated_path": [
                                     "arg_to_buffer"
                                 ],
-                                "_PTR_C_CXX_index": "48",
-                                "_generated": "arg_to_buffer",
+                                "_orig_node_index": 44,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7150,11 +6741,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  61 ****************************************",
-                                "C_generated_path": [
+                                "<FUNCTION>": "testoptional  57 ****************************************",
+                                "_generated": "has_default_arg",
+                                "_generated_path": [
                                     "has_default_arg"
                                 ],
-                                "_generated": "has_default_arg",
+                                "_orig_node_index": 45,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7201,11 +6793,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  62 ****************************************",
-                                "C_generated_path": [
+                                "<FUNCTION>": "testoptional  58 ****************************************",
+                                "_generated": "has_default_arg",
+                                "_generated_path": [
                                     "has_default_arg"
                                 ],
-                                "_generated": "has_default_arg",
+                                "_orig_node_index": 45,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7301,10 +6894,10 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  49 ****************************************",
+                                "<FUNCTION>": "testoptional  45 ****************************************",
                                 "_default_funcs": [
-                                    61,
-                                    62
+                                    57,
+                                    58
                                 ],
                                 "_has_default_arg": true,
                                 "_nargs": [
@@ -7524,7 +7117,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_size_t  50 ****************************************",
+                                "<FUNCTION>": "test_size_t  46 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -7626,7 +7219,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testmpi  51 ****************************************",
+                                "<FUNCTION>": "testmpi  47 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7770,7 +7363,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testmpi  52 ****************************************",
+                                "<FUNCTION>": "testmpi  48 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -7828,7 +7421,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr1  53 ****************************************",
+                                "<FUNCTION>": "FuncPtr1  49 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -7973,7 +7566,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr2  54 ****************************************",
+                                "<FUNCTION>": "FuncPtr2  50 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8122,7 +7715,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr3  55 ****************************************",
+                                "<FUNCTION>": "FuncPtr3  51 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8296,7 +7889,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr4  56 ****************************************",
+                                "<FUNCTION>": "FuncPtr4  52 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8432,7 +8025,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr5  57 ****************************************",
+                                "<FUNCTION>": "FuncPtr5  53 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -8705,7 +8298,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "verylongfunctionname1  58 ****************************************",
+                                "<FUNCTION>": "verylongfunctionname1  54 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -9568,7 +9161,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "verylongfunctionname2  59 ****************************************",
+                                "<FUNCTION>": "verylongfunctionname2  55 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
@@ -10419,7 +10012,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "cos_doubles  60 ****************************************",
+                                "<FUNCTION>": "cos_doubles  56 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {

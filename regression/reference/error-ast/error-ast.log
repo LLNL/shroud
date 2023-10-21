@@ -1,4 +1,7 @@
 Read yaml error-ast.yaml
+Close error_types.yaml
+class Class1
+class Class1
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h

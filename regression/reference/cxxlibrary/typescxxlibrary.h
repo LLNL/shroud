@@ -82,6 +82,22 @@ struct s_CXX_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_CXX_SHROUD_capsule_data CXX_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule CXX_Class1
+struct s_CXX_Class1 {
+    Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CXX_Class1 CXX_Class1;
+#endif
+
+// C capsule CXX_Class1
+struct s_CXX_Class1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CXX_Class1 CXX_Class1;
 
 void CXX_SHROUD_memory_destructor(CXX_SHROUD_capsule_data *cap);
 

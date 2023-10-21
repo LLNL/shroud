@@ -190,12 +190,13 @@ format
    Described in `Format Fields`_.
 
 fortran_generic
-    A dictionary of lists that define generic functions which will be
+    A list of dictionaries that define generic functions which will be
     created.  This allows different types to be passed to the function.
-    This feature is provided by C which will promote arguments.
+    This feature is provided by the C language which will promote arguments.
+    However, Fortran requires that the exact type-kind-rank argument be passed.
     Each generic function will have a suffix which defaults to an underscore
     plus a sequence number.
-    This change be changed by adding *function_suffix* for a declaration.
+    This can be changed by adding *function_suffix* for a declaration.
 
 .. code-block:: yaml
 
@@ -213,9 +214,11 @@ options
    Described in `Options`_
 
 return_this
-   If true, the method returns a reference to ``this``.  This idiom can be used
-   to chain calls in C++.  This idiom does not translate to C and Fortran.
-   Instead the *C_return_type* format is set to ``void``.
+   If true, the C++ function returns a reference to ``this``.
+   This feature can be used to chain calls.
+   This idiom does not translate to C and Fortran.
+   This can only be set on class methods which return a pointer
+   to the class instance.
 
 
 Options

@@ -56,6 +56,22 @@ Node: GoodFunction
 line 66
 void GoodFunction(void)
 Unexpected value of option C_API_case: none
+--------------------
+Node: returnThis
+line 79
+void * returnThis(void)
+return_this can only be set for class methods
+--------------------
+Node: returnThis
+line 88
+void * returnThis(void)
+return_this must return a pointer to the class
+--------------------
+Node: returnThis2
+line 90
+Class1 returnThis2(void)
+return_this must return a pointer to the class
+Wrote error_types.yaml
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h

@@ -270,7 +270,7 @@ Additional fields can be added to the splicer for custom behavior.
 Chained functions
 -----------------
 
-C++ allows function calls to be chained by returning the ``this`` argument.
+C++ allows class methods to be chained by returning the ``this`` argument.
 Several functions can be called in succession on the same object.
 
 .. code-block:: c++

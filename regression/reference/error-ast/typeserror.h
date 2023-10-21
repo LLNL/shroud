@@ -27,6 +27,22 @@ struct s_ERR_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_ERR_SHROUD_capsule_data ERR_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule ERR_Class1
+struct s_ERR_Class1 {
+    Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_ERR_Class1 ERR_Class1;
+#endif
+
+// C capsule ERR_Class1
+struct s_ERR_Class1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_ERR_Class1 ERR_Class1;
 
 void ERR_SHROUD_memory_destructor(ERR_SHROUD_capsule_data *cap);
 

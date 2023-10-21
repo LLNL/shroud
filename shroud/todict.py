@@ -403,7 +403,6 @@ class ToDict(visitor.Visitor):
                 "fstatements",
                 "splicer",
                 "wrap",
-                "C_generated_path",
                 "C_force_wrapper",
             ],
         )
@@ -424,12 +423,16 @@ class ToDict(visitor.Visitor):
                 "PY_error_pattern",
                 "_default_funcs",
                 "_generated",
+                "_generated_path",
                 "_has_default_arg",
                 "_nargs",
                 "_overloaded",
                 "_gen_fortran_generic",
             ],
         )
+        if node._orig_node is not None:
+            d["_orig_node_index"] = node._orig_node._function_index
+#            d["_orig_node_name"] = node._orig_node.name
         if node.options.debug_index:
             add_non_none_fields(
                 node,

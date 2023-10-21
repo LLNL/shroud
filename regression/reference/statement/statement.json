@@ -175,12 +175,13 @@
             {
                 "<FUNCTION>": "getNameErrorPattern  2 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 1,
                 "ast": {
                     "const": true,
                     "declarator": {

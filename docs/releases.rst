@@ -192,6 +192,13 @@ New Features
 * Support recursive structs. Allows trees to be build in structs.
 * Add getter/setter for ``struct`` pointer fields in a struct.
 
+Fixed
+^^^^^
+
+* Fixed the case of mixing default arguments with *fortran_generic*.
+  The *fortran_generic* was restore arguments in the Fortran wrapper
+  which were being trimmed by default arguments.
+
 v0.13.0
 -------
 

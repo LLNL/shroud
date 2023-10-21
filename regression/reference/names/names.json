@@ -507,11 +507,12 @@
             },
             {
                 "<FUNCTION>": "getName  19 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 4,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1107,11 +1108,12 @@
             },
             {
                 "<FUNCTION>": "function4  20 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 9,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1482,11 +1484,12 @@
             },
             {
                 "<FUNCTION>": "TestMultilineSplicer  21 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 11,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1777,10 +1780,11 @@
             },
             {
                 "<FUNCTION>": "FunctionTU  16 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 12,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2011,10 +2015,11 @@
             },
             {
                 "<FUNCTION>": "FunctionTU  17 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 12,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2303,10 +2308,11 @@
             },
             {
                 "<FUNCTION>": "UseImplWorker  18 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 13,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

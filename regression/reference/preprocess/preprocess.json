@@ -116,10 +116,11 @@
                     },
                     {
                         "<FUNCTION>": "method3def  3 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "has_default_arg",
+                        "_generated_path": [
                             "has_default_arg"
                         ],
-                        "_generated": "has_default_arg",
+                        "_orig_node_index": 2,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {

@@ -771,7 +771,7 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "capptr",
+                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "returnThis",
@@ -799,45 +799,6 @@
                             "wrap_python": false
                         },
                         "return_this": true,
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "C_name_api": "returnThis",
-                            "F_name_api": "return_this",
-                            "function_name": "returnThis"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "returnThis  15 ****************************************",
-                        "C_generated_path": [
-                            "return_this"
-                        ],
-                        "_generated": "return_this",
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "api": "capptr",
-                                    "intent": "subroutine"
-                                },
-                                "name": "returnThis",
-                                "params": [],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "Class1 * returnThis();",
-                        "declgen": "void returnThis(void)",
-                        "doxygen": {
-                            "brief": "Return pointer to 'this' to allow chaining calls"
-                        },
-                        "name": "returnThis",
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
-                        "return_this": true,
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -851,6 +812,7 @@
                             "F_C_arguments": "self",
                             "F_C_call": "c_class1_return_this",
                             "F_C_name": "c_class1_return_this",
+                            "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
@@ -858,19 +820,43 @@
                             "F_name_function": "return_this",
                             "F_name_generic": "return_this",
                             "F_name_impl": "class1_return_this",
+                            "F_result_clause": "",
                             "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "returnThis",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
+                            "function_name": "returnThis"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "c_const": "",
+                                "c_type": "CLA_Class1",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "classes::Class1",
+                                "cxx_var": "SHCXX_rv",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
+                                "f_intent": "OUT",
+                                "f_type": "type(class1)",
+                                "f_type_module": "classes_mod",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "f_function_shadow_*_this",
+                                "stmtf": "f_function_shadow_*_this"
+                            }
                         }
                     },
                     {
                         "<FUNCTION>": "returnThisBuffer  6 ****************************************",
-                        "_PTR_F_C_index": "16",
+                        "_PTR_F_C_index": "15",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1039,12 +1025,13 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "returnThisBuffer  16 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
+                        "<FUNCTION>": "returnThisBuffer  15 ****************************************",
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "arg_to_buffer"
+                        ],
+                        "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1350,7 +1337,7 @@
                     },
                     {
                         "<FUNCTION>": "getName  8 ****************************************",
-                        "_PTR_F_C_index": "17",
+                        "_PTR_F_C_index": "16",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1457,12 +1444,13 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getName  17 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
+                        "<FUNCTION>": "getName  16 ****************************************",
                         "_PTR_C_CXX_index": "8",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "arg_to_buffer"
+                        ],
+                        "_orig_node_index": 8,
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1754,10 +1742,10 @@
                     },
                     {
                         "<FUNCTION>": "get_m_flag  10 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1840,10 +1828,10 @@
                     },
                     {
                         "<FUNCTION>": "get_test  11 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1926,10 +1914,10 @@
                     },
                     {
                         "<FUNCTION>": "set_test  12 ****************************************",
-                        "C_generated_path": [
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2036,8 +2024,11 @@
                     },
                     {
                         "<FUNCTION>": "get_m_name  13 ****************************************",
-                        "_PTR_F_C_index": "18",
+                        "_PTR_F_C_index": "17",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2073,12 +2064,14 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_name  18 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
+                        "<FUNCTION>": "get_m_name  17 ****************************************",
                         "_PTR_C_CXX_index": "13",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
+                        "_orig_node_index": 13,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2172,8 +2165,11 @@
                     },
                     {
                         "<FUNCTION>": "set_m_name  14 ****************************************",
-                        "_PTR_F_C_index": "19",
+                        "_PTR_F_C_index": "18",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2225,12 +2221,14 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_m_name  19 ****************************************",
-                        "C_generated_path": [
-                            "arg_to_buffer"
-                        ],
+                        "<FUNCTION>": "set_m_name  18 ****************************************",
                         "_PTR_C_CXX_index": "14",
                         "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
+                            "arg_to_buffer"
+                        ],
+                        "_orig_node_index": 14,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2495,8 +2493,8 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getName  20 ****************************************",
-                        "_PTR_F_C_index": "21",
+                        "<FUNCTION>": "getName  19 ****************************************",
+                        "_PTR_F_C_index": "20",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -2603,12 +2601,13 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getName  21 ****************************************",
-                        "C_generated_path": [
+                        "<FUNCTION>": "getName  20 ****************************************",
+                        "_PTR_C_CXX_index": "19",
+                        "_generated": "arg_to_buffer",
+                        "_generated_path": [
                             "arg_to_buffer"
                         ],
-                        "_PTR_C_CXX_index": "20",
-                        "_generated": "arg_to_buffer",
+                        "_orig_node_index": 19,
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -2758,7 +2757,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getReference  22 ****************************************",
+                        "<FUNCTION>": "getReference  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2921,7 +2920,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  23 ****************************************",
+                        "<FUNCTION>": "ctor  22 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -3039,7 +3038,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_ivar  24 ****************************************",
+                        "<FUNCTION>": "get_ivar  23 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -3205,7 +3204,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  25 ****************************************",
+                        "<FUNCTION>": "ctor  24 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -3375,7 +3374,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "allocate  26 ****************************************",
+                        "<FUNCTION>": "allocate  25 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3472,7 +3471,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "free  27 ****************************************",
+                        "<FUNCTION>": "free  26 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3522,7 +3521,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  28 ****************************************",
+                        "<FUNCTION>": "ctor  27 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -3604,7 +3603,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  29 ****************************************",
+                        "<FUNCTION>": "dtor  28 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -3659,11 +3658,11 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_nitems  30 ****************************************",
-                        "C_generated_path": [
+                        "<FUNCTION>": "get_nitems  29 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3745,11 +3744,11 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_nitems  31 ****************************************",
-                        "C_generated_path": [
+                        "<FUNCTION>": "set_nitems  30 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3855,9 +3854,12 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  32 ****************************************",
-                        "_PTR_F_C_index": "34",
+                        "<FUNCTION>": "get_items  31 ****************************************",
+                        "_PTR_F_C_index": "33",
                         "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3903,12 +3905,14 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  34 ****************************************",
-                        "C_generated_path": [
+                        "<FUNCTION>": "get_items  33 ****************************************",
+                        "_PTR_C_CXX_index": "31",
+                        "_generated": "arg_to_buffer",
+                        "_generated_path": [
+                            "getter/setter",
                             "arg_to_buffer"
                         ],
-                        "_PTR_C_CXX_index": "32",
-                        "_generated": "arg_to_buffer",
+                        "_orig_node_index": 31,
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4017,11 +4021,11 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_items  33 ****************************************",
-                        "C_generated_path": [
+                        "<FUNCTION>": "set_items  32 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
                             "getter/setter"
                         ],
-                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4266,7 +4270,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "directionFunc  35 ****************************************",
+                "<FUNCTION>": "directionFunc  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4453,7 +4457,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passClassByValue  36 ****************************************",
+                "<FUNCTION>": "passClassByValue  35 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4576,7 +4580,7 @@
                 }
             },
             {
-                "<FUNCTION>": "useclass  37 ****************************************",
+                "<FUNCTION>": "useclass  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4742,7 +4746,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2  38 ****************************************",
+                "<FUNCTION>": "getclass2  37 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4829,7 +4833,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3  39 ****************************************",
+                "<FUNCTION>": "getclass3  38 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4936,7 +4940,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2_void  40 ****************************************",
+                "<FUNCTION>": "getclass2_void  39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5022,7 +5026,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3_void  41 ****************************************",
+                "<FUNCTION>": "getclass3_void  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5107,7 +5111,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstClassReference  42 ****************************************",
+                "<FUNCTION>": "getConstClassReference  41 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5191,7 +5195,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassReference  43 ****************************************",
+                "<FUNCTION>": "getClassReference  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5295,7 +5299,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassCopy  44 ****************************************",
+                "<FUNCTION>": "getClassCopy  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5423,7 +5427,7 @@
                 }
             },
             {
-                "<FUNCTION>": "set_global_flag  45 ****************************************",
+                "<FUNCTION>": "set_global_flag  44 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5558,7 +5562,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_flag  46 ****************************************",
+                "<FUNCTION>": "get_global_flag  45 ****************************************",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5660,8 +5664,8 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  47 ****************************************",
-                "_PTR_F_C_index": "48",
+                "<FUNCTION>": "LastFunctionCalled  46 ****************************************",
+                "_PTR_F_C_index": "47",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5766,12 +5770,13 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  48 ****************************************",
-                "C_generated_path": [
+                "<FUNCTION>": "LastFunctionCalled  47 ****************************************",
+                "_PTR_C_CXX_index": "46",
+                "_generated": "arg_to_buffer",
+                "_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_C_CXX_index": "47",
-                "_generated": "arg_to_buffer",
+                "_orig_node_index": 46,
                 "ast": {
                     "const": true,
                     "declarator": {

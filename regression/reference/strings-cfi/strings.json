@@ -471,11 +471,12 @@
             },
             {
                 "<FUNCTION>": "passCharPtr  49 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 4,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -730,11 +731,12 @@
             },
             {
                 "<FUNCTION>": "passCharPtrInOut  50 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 5,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -918,11 +920,12 @@
             },
             {
                 "<FUNCTION>": "getCharPtr1  51 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 6,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1088,11 +1091,12 @@
             },
             {
                 "<FUNCTION>": "getCharPtr2  52 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 7,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1263,11 +1267,12 @@
             },
             {
                 "<FUNCTION>": "getCharPtr3  53 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 8,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1523,11 +1528,12 @@
             },
             {
                 "<FUNCTION>": "getCharPtr5  54 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 10,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1664,11 +1670,12 @@
             {
                 "<FUNCTION>": "getConstStringResult  55 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 11,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1788,11 +1795,12 @@
             {
                 "<FUNCTION>": "getConstStringLen  56 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 12,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1918,11 +1926,12 @@
             {
                 "<FUNCTION>": "getConstStringAsArg  57 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 13,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2039,11 +2048,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringAlloc  58 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 14,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2196,11 +2206,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringRefPure  59 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 15,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2369,11 +2380,12 @@
             {
                 "<FUNCTION>": "getConstStringRefLen  60 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "16",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 16,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2545,11 +2557,12 @@
             {
                 "<FUNCTION>": "getConstStringRefAsArg  61 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 17,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2721,11 +2734,12 @@
             {
                 "<FUNCTION>": "getConstStringRefLenEmpty  62 ****************************************",
                 "C_error_pattern": "C_invalid_name",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 18,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2887,11 +2901,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringRefAlloc  63 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 19,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3060,11 +3075,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrLen  64 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 20,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3237,11 +3253,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrAlloc  65 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 21,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3403,11 +3420,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrOwnsAlloc  66 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 22,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3573,11 +3591,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  67 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 23,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3743,11 +3762,12 @@
             },
             {
                 "<FUNCTION>": "getConstStringPtrPointer  68 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "24",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 24,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3936,11 +3956,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringConstReference  69 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "25",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 25,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4140,11 +4161,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringReferenceOut  70 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "26",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 26,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4343,11 +4365,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringReference  71 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "27",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 27,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4546,11 +4569,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringPointerConst  72 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 28,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4745,11 +4769,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringPointer  73 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 29,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4948,11 +4973,12 @@
             },
             {
                 "<FUNCTION>": "fetchStringPointer  74 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "30",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 30,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5195,11 +5221,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringPointerLen  75 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 31,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5493,11 +5520,12 @@
             },
             {
                 "<FUNCTION>": "fetchStringPointerLen  76 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "32",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 32,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5763,11 +5791,12 @@
             },
             {
                 "<FUNCTION>": "acceptStringInstance  77 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "33",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 33,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6127,11 +6156,12 @@
             },
             {
                 "<FUNCTION>": "fetchArrayStringArg  78 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "35",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 35,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6458,11 +6488,12 @@
             },
             {
                 "<FUNCTION>": "fetchArrayStringAlloc  79 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 36,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6793,11 +6824,12 @@
             },
             {
                 "<FUNCTION>": "fetchArrayStringAllocLen  80 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 37,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7122,11 +7154,12 @@
             },
             {
                 "<FUNCTION>": "explicit1  81 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 39,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7330,11 +7363,12 @@
             },
             {
                 "<FUNCTION>": "explicit2  82 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "40",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 40,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -7762,11 +7796,12 @@
             },
             {
                 "<FUNCTION>": "CpassCharPtr  83 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 43,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8075,11 +8110,12 @@
             },
             {
                 "<FUNCTION>": "CpassCharPtrBlank  84 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "44",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 44,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8384,11 +8420,12 @@
             },
             {
                 "<FUNCTION>": "PostDeclare  85 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "45",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 45,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -8669,11 +8706,12 @@
             },
             {
                 "<FUNCTION>": "CpassCharPtrNotrim  86 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "46",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 46,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -9150,11 +9188,12 @@
             },
             {
                 "<FUNCTION>": "CpassCharPtrCAPI2  87 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
                 "_PTR_C_CXX_index": "48",
                 "_generated": "arg_to_cfi",
+                "_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_orig_node_index": 48,
                 "ast": {
                     "declarator": {
                         "metaattrs": {

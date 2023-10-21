@@ -570,11 +570,12 @@
             },
             {
                 "<FUNCTION>": "ConcatenateStrings  30 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 2,
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -772,10 +773,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultArguments  18 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -856,10 +858,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultArguments  19 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 3,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1401,11 +1404,12 @@
             },
             {
                 "<FUNCTION>": "OverloadedFunction  31 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 4,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1729,10 +1733,11 @@
             },
             {
                 "<FUNCTION>": "TemplateArgument  20 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 6,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1899,10 +1904,11 @@
             },
             {
                 "<FUNCTION>": "TemplateArgument  21 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 6,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2134,10 +2140,11 @@
             },
             {
                 "<FUNCTION>": "TemplateReturn  22 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2244,10 +2251,11 @@
             },
             {
                 "<FUNCTION>": "TemplateReturn  23 ****************************************",
-                "C_generated_path": [
+                "_generated": "cxx_template",
+                "_generated_path": [
                     "cxx_template"
                 ],
-                "_generated": "cxx_template",
+                "_orig_node_index": 7,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2704,6 +2712,10 @@
                 "_PTR_C_CXX_index": "9",
                 "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2772,11 +2784,13 @@
             {
                 "<FUNCTION>": "FortranGenericOverloaded  32 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "28",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2931,6 +2945,10 @@
                 "_PTR_C_CXX_index": "9",
                 "_PTR_F_C_index": "33",
                 "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2999,11 +3017,13 @@
             {
                 "<FUNCTION>": "FortranGenericOverloaded  33 ****************************************",
                 "C_force_wrapper": "True",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3154,10 +3174,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultOverload  24 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3284,10 +3305,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultOverload  25 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3806,10 +3828,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultOverload  26 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 11,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3974,10 +3997,11 @@
             },
             {
                 "<FUNCTION>": "UseDefaultOverload  27 ****************************************",
-                "C_generated_path": [
+                "_generated": "has_default_arg",
+                "_generated_path": [
                     "has_default_arg"
                 ],
-                "_generated": "has_default_arg",
+                "_orig_node_index": 11,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5644,11 +5668,12 @@
             },
             {
                 "<FUNCTION>": "LastFunctionCalled  34 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 17,
                 "ast": {
                     "const": true,
                     "declarator": {

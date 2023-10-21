@@ -99,3 +99,32 @@ declarations:
   - decl: int sublevels
   - decl: nested *parent
   - decl: nested **child +dimension(sublevels)
+
+######################################################################
+# by returning this,the C++ function allows chaining.
+# make them subroutines in Fortran.
+# Mix return_this, and default arguments.
+
+- decl: class Class1
+  options:
+    wrap_python: False
+  declarations:
+  - decl: int m_length +readonly +name(length);
+  - decl: Class1()
+
+  - decl: int check_length(int length = 1)
+    doxygen:
+       brief: Test fortran_generic with default arguments.
+    fortran_generic:
+    -  decl: (int length=1)
+       function_suffix: _int
+    -  decl: (long length=1)
+       function_suffix: _long
+
+  - decl: Class1* declare(int flag, int length = 1)
+    return_this: True
+    fortran_generic:
+    -  decl: (int length=1)
+       function_suffix: _int
+    -  decl: (long length=1)
+       function_suffix: _long

@@ -19,6 +19,7 @@ program tester
   call test_default_args
   call test_generic
   call test_nested
+  call test_return_this
 
   call fruit_summary
   call fruit_finalize
@@ -128,5 +129,39 @@ contains
 !    call assert_equals(child(3)%index, kids(3)%index, "nested_get_child 1 3");
     
   end subroutine test_nested
+
+  subroutine test_return_this
+    use cxxlibrary_mod
+    type(class1) obj
+    integer(C_INT) length
+
+    call set_case_name("return_this")
+
+    obj = class1()
+
+    length = obj%check_length()
+    call assert_equals(1, length, "check_length no args");
+    length = obj%check_length(12_C_INT)
+    call assert_equals(12, length, "check_length int");
+    length = obj%check_length(13_C_LONG)
+    call assert_equals(13, length, "check_length long");
+    
+    length = obj%get_length()
+    call assert_equals(99, length, "ctor length");
+    
+    call obj%declare(5)
+    length = obj%get_length()
+    call assert_equals(1, length, "default length");
+
+    call obj%declare(5, 33_C_INT)
+    length = obj%get_length()
+    call assert_equals(33, length, "explicit length in");
+
+    call obj%declare(5, 44_C_LONG)
+    length = obj%get_length()
+    call assert_equals(44, length, "explicit length long");
+    
+  end subroutine test_return_this
+
   
 end program tester

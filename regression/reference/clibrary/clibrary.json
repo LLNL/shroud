@@ -1180,11 +1180,12 @@
             },
             {
                 "<FUNCTION>": "Function4a  26 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 5,
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1601,11 +1602,12 @@
             },
             {
                 "<FUNCTION>": "passCharPtrInOut  27 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 7,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1835,11 +1837,12 @@
             },
             {
                 "<FUNCTION>": "returnOneName  28 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 8,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2133,11 +2136,12 @@
             },
             {
                 "<FUNCTION>": "returnTwoNames  29 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 9,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2477,11 +2481,12 @@
             },
             {
                 "<FUNCTION>": "ImpliedTextLen  30 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 10,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3695,11 +3700,12 @@
             },
             {
                 "<FUNCTION>": "bindC2  31 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "16",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 16,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4367,11 +4373,12 @@
             },
             {
                 "<FUNCTION>": "passAssumedTypeBuf  32 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 20,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5323,11 +5330,12 @@
             },
             {
                 "<FUNCTION>": "callback3  33 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
                 "_PTR_C_CXX_index": "24",
                 "_generated": "arg_to_buffer",
+                "_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_orig_node_index": 24,
                 "ast": {
                     "declarator": {
                         "metaattrs": {
