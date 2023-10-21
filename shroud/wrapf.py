@@ -53,6 +53,37 @@ endif"""
 #    List of function nodes in generic interface.
 GenericFunction = collections.namedtuple("GenericTuple", ["force", "cls", "functions"])
 
+
+class FillFormat(object):
+    """Loop over Nodes and fill fmt dictionaries.
+    """
+    def __init__(self, newlibrary):
+        self.newlibrary = newlibrary
+
+    def fmt_library(self):
+        self.fmt_namespace(self.newlibrary.wrap_namespace)
+
+    def fmt_namespace(self, node):
+        for cls in node.classes:
+            for func in cls.functions:
+                self.fmt_function(cls, func)
+
+        for func in node.functions:
+            self.fmt_function(None, func)
+
+        for ns in node.namespaces:
+            self.fmt_namespace(ns)
+
+    def fmt_function(self, cls, node):
+        if node.wrap.c:
+            node.eval_template("C_name")
+            node.eval_template("F_C_name")
+        if node.wrap.fortran:
+            node.eval_template("F_name_impl")
+            node.eval_template("F_name_function")
+            node.eval_template("F_name_generic")
+        
+
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
     """

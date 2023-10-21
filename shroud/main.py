@@ -535,6 +535,9 @@ def main_with_args(args):
     try:
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
+
+        wrapf.FillFormat(newlibrary).fmt_library()
+        
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.

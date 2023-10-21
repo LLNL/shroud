@@ -1976,102 +1976,10 @@ class GenFunctions(object):
         for node in functions:
             node.declgen = node.ast.gen_decl()
 
-
-class Namify(object):
-    """Compute names of functions in library.
-    Need to compute F_name and F_C_name since they interact.
-    Compute all C names first, then Fortran.
-    A Fortran function may call a generated C function via
-    _PTR_F_C_index
-    Also compute number which may be controlled by options.
-
-    C_name - Name of C function
-    F_C_name - Fortran function for C interface
-    F_name_impl - Name of Fortran function implementation
-    """
-
-    def __init__(self, newlibrary, config):
-        """
-        Args:
-            newlibrary - ast.LibraryNode
-            config -
-        """
-        self.newlibrary = newlibrary
-        self.config = config
-
-    def name_library(self):
-        """entry pointer for library"""
-        self.name_language(self.newlibrary.wrap_namespace)
-        self.name_language(self.newlibrary.wrap_namespace)
-
-    def iter_decl(self, node):
-        """Loop over members of a Namespace, class"""
-        for func in node.functions:
-            func.update_names()
-        
-    def name_language(self, node):
-        """
-        Args:
-            handler - function.
-            node - ast.LibraryNode, ast.NamespaceNode
-        """
-        for cls in node.classes:
-            self.iter_decl(cls)
-
-        self.iter_decl(node)
-
-        for ns in node.namespaces:
-            self.name_language(ns)
-
-
-class Preprocess(object):
-    """Compute some state for functions."""
-
-    def __init__(self, newlibrary, config):
-        """
-        Args:
-            newlibrary - ast.LibraryNode
-            config -
-        """
-        self.newlibrary = newlibrary
-        self.config = config
-
-    def process_library(self):
-        """entry pointer for library"""
-        self.process_namespace(self.newlibrary.wrap_namespace)
-
-    def process_namespace(self, node):
-        """Process a namespace.
-
-        Args:
-            node - ast.LibraryNode, ast.NamespaceNode
-        """
-        for cls in node.classes:
-            for func in cls.functions:
-                self.process_function(cls, func)
-
-        for func in node.functions:
-            self.process_function(None, func)
-
-        for ns in node.namespaces:
-            self.process_namespace(ns)
-
-    def process_function(self, cls, node):
-        """
-         Args:
-            cls -
-            node -
-        """
-        attrs = node.ast.declarator.attrs
-        meta = node.ast.declarator.metaattrs
-
-
 def generate_functions(library, config):
     whelpers.set_library(library)
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
-    Namify(library, config).name_library()
-    Preprocess(library, config).process_library()
     ast.promote_wrap(library)
 
 ######################################################################
