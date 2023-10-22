@@ -106,9 +106,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "method1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "method1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -206,9 +210,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "method2",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "method2"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -301,9 +309,13 @@
                                     "F_name_generic": "function1",
                                     "F_name_impl": "function1",
                                     "F_subprogram": "subroutine",
-                                    "function_name": "function1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "function1"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -467,9 +479,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "method1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "method1"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -582,9 +598,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "method",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "method"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -657,9 +677,13 @@
                             "F_name_generic": "outer_func",
                             "F_name_impl": "outer_func",
                             "F_subprogram": "subroutine",
-                            "function_name": "outer_func",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "outer_func"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -747,9 +771,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "method",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "method"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -822,9 +850,13 @@
                             "F_name_generic": "outer_func",
                             "F_name_impl": "outer_func",
                             "F_subprogram": "subroutine",
-                            "function_name": "outer_func",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "outer_func"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

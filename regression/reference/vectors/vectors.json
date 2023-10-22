@@ -431,9 +431,13 @@
                     "F_name_impl": "vector_iota_out",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_out",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_out"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -698,9 +702,13 @@
                     "F_result_clause": "\fresult(num)",
                     "F_subprogram": "function",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_out_with_num",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_out_with_num"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -940,9 +948,13 @@
                     "F_result_clause": "\fresult(num)",
                     "F_subprogram": "function",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_out_with_num2",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_out_with_num2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1151,9 +1163,13 @@
                     "F_name_impl": "vector_iota_out_alloc",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_out_alloc",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_out_alloc"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1366,9 +1382,13 @@
                     "F_name_impl": "vector_iota_inout_alloc",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_inout_alloc",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_inout_alloc"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1566,9 +1586,13 @@
                     "F_name_impl": "vector_increment",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_increment",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_increment"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1768,9 +1792,13 @@
                     "F_name_impl": "vector_iota_out_d",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_iota_out_d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_iota_out_d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2508,9 +2536,13 @@
                     "F_name_impl": "vector_string_fill",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_string_fill",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_string_fill"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2718,9 +2750,13 @@
                     "F_name_impl": "vector_string_fill_allocatable",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_string_fill_allocatable",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_string_fill_allocatable"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2931,9 +2967,13 @@
                     "F_name_impl": "vector_string_fill_allocatable_len",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "vector_string_fill_allocatable_len",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "vector_string_fill_allocatable_len"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {

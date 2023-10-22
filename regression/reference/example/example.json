@@ -552,11 +552,13 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
-                                            "function_name": "dtor",
-                                            "stmtc": "f_dtor",
-                                            "stmtf": "f_dtor"
+                                            "function_name": "dtor"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_dtor",
+                                                "stmtf": "f_dtor"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_dtor_scalar"
                                             }
@@ -1782,11 +1784,13 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
-                                            "function_name": "SplicerSpecial",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine"
+                                            "function_name": "SplicerSpecial"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -2291,11 +2295,13 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
-                                            "function_name": "dtor",
-                                            "stmtc": "f_dtor",
-                                            "stmtf": "f_dtor"
+                                            "function_name": "dtor"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_dtor",
+                                                "stmtf": "f_dtor"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_dtor_scalar"
                                             }
@@ -4217,11 +4223,13 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
-                                            "function_name": "destroyall",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine"
+                                            "function_name": "destroyall"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -4627,11 +4635,13 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine",
                                             "template_suffix": "_int"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -4821,11 +4831,13 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine",
                                             "template_suffix": "_long"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -5015,11 +5027,13 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine",
                                             "template_suffix": "_float"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -5215,11 +5229,13 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "stmtc": "f_subroutine",
-                                            "stmtf": "f_subroutine",
                                             "template_suffix": "_double"
                                         },
                                         "zz_fmtresult": {
+                                            "fmtf": {
+                                                "stmtc": "f_subroutine",
+                                                "stmtf": "f_subroutine"
+                                            },
                                             "fmtl": {
                                                 "stmt": "lua_subroutine"
                                             }
@@ -5691,11 +5707,13 @@
                                     "LUA_name_api": "local_function1",
                                     "LUA_name_impl": "l_example_nested_local_function1",
                                     "PY_name_impl": "PP_local_function1",
-                                    "function_name": "local_function1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "local_function1"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -6258,10 +6276,12 @@
                                     "LUA_name_impl": "l_example_nested_test_names",
                                     "PY_name_impl": "PP_test_names",
                                     "function_name": "test_names",
-                                    "function_suffix": "",
-                                    "stmtc": "f_subroutine"
+                                    "function_suffix": ""
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -6376,9 +6396,13 @@
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
-                                    "function_suffix": "",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": ""
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -6574,10 +6598,12 @@
                                     "F_name_api": "test_names",
                                     "PY_name_impl": "PP_test_names_flag",
                                     "function_name": "test_names",
-                                    "function_suffix": "_flag",
-                                    "stmtc": "f_subroutine"
+                                    "function_suffix": "_flag"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -6735,9 +6761,13 @@
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
                                     "function_name": "test_names",
-                                    "function_suffix": "_flag",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_flag"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -6787,9 +6817,13 @@
                                     "F_name_impl": "testoptional_0",
                                     "F_subprogram": "subroutine",
                                     "function_name": "testoptional",
-                                    "function_suffix": "_0",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_0"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -6888,9 +6922,13 @@
                                     "F_name_impl": "testoptional_1",
                                     "F_subprogram": "subroutine",
                                     "function_name": "testoptional",
-                                    "function_suffix": "_1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_1"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -7106,11 +7144,13 @@
                                     "PY_cleanup_decref": "Py_XDECREF",
                                     "PY_name_impl": "PP_testoptional_2",
                                     "function_name": "testoptional",
-                                    "function_suffix": "_2",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_2"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -7352,11 +7392,13 @@
                                     "LUA_name_impl": "l_example_nested_testmpi",
                                     "PY_name_impl": "PP_testmpi_mpi",
                                     "function_name": "testmpi",
-                                    "function_suffix": "_mpi",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_mpi"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -7410,11 +7452,13 @@
                                     "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_testmpi_serial",
                                     "function_name": "testmpi",
-                                    "function_suffix": "_serial",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_suffix": "_serial"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -7555,11 +7599,13 @@
                                     "LUA_name_api": "FuncPtr1",
                                     "LUA_name_impl": "l_example_nested_FuncPtr1",
                                     "PY_name_impl": "PP_FuncPtr1",
-                                    "function_name": "FuncPtr1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "FuncPtr1"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -7704,11 +7750,13 @@
                                     "LUA_name_api": "FuncPtr2",
                                     "LUA_name_impl": "l_example_nested_FuncPtr2",
                                     "PY_name_impl": "PP_FuncPtr2",
-                                    "function_name": "FuncPtr2",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "FuncPtr2"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -7878,11 +7926,13 @@
                                     "LUA_name_api": "FuncPtr3",
                                     "LUA_name_impl": "l_example_nested_FuncPtr3",
                                     "PY_name_impl": "PP_FuncPtr3",
-                                    "function_name": "FuncPtr3",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "FuncPtr3"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -8019,9 +8069,13 @@
                                     "F_name_generic": "func_ptr4",
                                     "F_name_impl": "func_ptr4",
                                     "F_subprogram": "subroutine",
-                                    "function_name": "FuncPtr4",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "FuncPtr4"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -8287,11 +8341,13 @@
                                     "LUA_name_api": "FuncPtr5",
                                     "LUA_name_impl": "l_example_nested_FuncPtr5",
                                     "PY_name_impl": "PP_FuncPtr5",
-                                    "function_name": "FuncPtr5",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "FuncPtr5"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -9150,11 +9206,13 @@
                                     "LUA_name_api": "verylongfunctionname1",
                                     "LUA_name_impl": "l_example_nested_verylongfunctionname1",
                                     "PY_name_impl": "PP_verylongfunctionname1",
-                                    "function_name": "verylongfunctionname1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "verylongfunctionname1"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }
@@ -10327,11 +10385,13 @@
                                     "LUA_name_api": "cos_doubles",
                                     "LUA_name_impl": "l_example_nested_cos_doubles",
                                     "PY_name_impl": "PP_cos_doubles",
-                                    "function_name": "cos_doubles",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "cos_doubles"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
                                     }

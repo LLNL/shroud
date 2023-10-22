@@ -2509,9 +2509,13 @@
                     "F_name_impl": "default_args_in_out_0",
                     "F_subprogram": "subroutine",
                     "function_name": "defaultArgsInOut",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2832,9 +2836,13 @@
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_defaultArgsInOut_1",
                     "function_name": "defaultArgsInOut",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3746,10 +3754,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "parent",
                     "function_name": "nested_set_parent",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "nested",
                     "wrapped_name": "parent"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             },
             {
@@ -4159,10 +4171,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "child",
                     "function_name": "nested_set_child",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "nested",
                     "wrapped_name": "child"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             }
         ],
@@ -4724,9 +4740,13 @@
                             "F_name_impl": "pass_struct_by_reference_inout",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_passStructByReferenceInout",
-                            "function_name": "passStructByReferenceInout",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "passStructByReferenceInout"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -4848,9 +4868,13 @@
                             "F_name_impl": "pass_struct_by_reference_out",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_passStructByReferenceOut",
-                            "function_name": "passStructByReferenceOut",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "passStructByReferenceOut"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

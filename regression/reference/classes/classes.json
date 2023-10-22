@@ -470,11 +470,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "delete",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "delete"
                         },
                         "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_dtor",
+                                "stmtf": "f_dtor"
+                            },
                             "fmtl": {
                                 "stmt": "lua_dtor_scalar"
                             }
@@ -2016,10 +2018,14 @@
                             "c_var": "self",
                             "field_name": "m_test",
                             "function_name": "set_test",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Class1",
                             "wrapped_name": "test"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -2332,10 +2338,14 @@
                             "f_c_suffix": "_bufferify",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Class1",
                             "wrapped_name": "m_name"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -3465,9 +3475,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "allocate",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "allocate"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -3515,9 +3529,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "free",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "free"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -3652,9 +3670,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "dtor",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "dtor"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_dtor",
+                                "stmtf": "f_dtor"
+                            }
                         }
                     },
                     {
@@ -3847,10 +3869,14 @@
                             "c_var": "self",
                             "field_name": "nitems",
                             "function_name": "set_nitems",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Data",
                             "wrapped_name": "nitems"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -4139,10 +4165,14 @@
                             "c_var": "self",
                             "field_name": "items",
                             "function_name": "set_items",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Data",
                             "wrapped_name": "items"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -4574,9 +4604,13 @@
                     "F_name_impl": "pass_class_by_value",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passClassByValue",
-                    "function_name": "passClassByValue",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passClassByValue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5551,11 +5585,13 @@
                     "LUA_name_api": "set_global_flag",
                     "LUA_name_impl": "l_set_global_flag",
                     "PY_name_impl": "PY_set_global_flag",
-                    "function_name": "set_global_flag",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "set_global_flag"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }

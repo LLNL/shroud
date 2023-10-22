@@ -59,22 +59,31 @@ class FillFormat(object):
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
+        self.cursor = error.get_cursor()
 
     def fmt_library(self):
         self.fmt_namespace(self.newlibrary.wrap_namespace)
 
     def fmt_namespace(self, node):
+        cursor = self.cursor
+        
         for cls in node.classes:
+            cursor.push_phase("FillFormat class function")
             for func in cls.functions:
                 self.fmt_function(cls, func)
+            cursor.pop_phase("FillFormat class function")
 
+        cursor.push_phase("FillFormat function")
         for func in node.functions:
             self.fmt_function(None, func)
+        cursor.pop_phase("FillFormat function")
 
         for ns in node.namespaces:
             self.fmt_namespace(ns)
 
     def fmt_function(self, cls, node):
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
         if node.wrap.c:
             node.eval_template("C_name")
             node.eval_template("F_C_name")
@@ -82,7 +91,55 @@ class FillFormat(object):
             node.eval_template("F_name_impl")
             node.eval_template("F_name_function")
             node.eval_template("F_name_generic")
-        
+
+        if not node.wrap.fortran:
+            cursor.pop_node(node)
+            return
+        cursor.pop_node(node)
+        return
+
+        locate_c_function(self.newlibrary, node)
+            
+        fmt_func = node.fmtdict
+        fmt_func = util.Scope(node.fmtdict)
+        node.fmtdict2 = fmt_func  # XXX - migration
+
+        C_node = node.C_node  # C wrapper to call.
+
+        fmt_func.F_C_call = C_node.fmtdict.F_C_name
+        fmtargs = C_node._fmtargs
+
+        ast = node.ast
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
+        result_typemap = ast.typemap
+
+        r_attrs = declarator.attrs
+        r_meta = declarator.metaattrs
+        sintent = r_meta["intent"]
+        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+        if subprogram == "subroutine":
+            # intent will be "subroutine" or "dtor".
+            f_stmts = ["f", sintent]
+        else:
+            fmt_result.f_var = fmt_func.F_result
+            fmt_result.fc_var = fmt_func.F_result
+            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            sgroup = result_typemap.sgroup
+            spointer = C_node.ast.declarator.get_indirect_stmt()
+            junk, specialize = statements.lookup_c_statements(ast)
+            f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
+                       r_meta["deref"], r_attrs["owner"]] + specialize
+        fmt_func.F_subprogram = subprogram
+
+        result_stmt = statements.lookup_fc_stmts(f_stmts)
+        result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
+        fmt_result.stmtf = result_stmt.name
+        func_cursor.stmt = result_stmt
+
+
+        cursor.pop_node(node)
+
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -1185,14 +1242,12 @@ rv = .false.
 
         # find subprogram type
         # compute first to get order of arguments correct.
+        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         if subprogram == "subroutine":
             fmt_func.F_C_subprogram = "subroutine"
-            fmt_result = fmt_func
         else:
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.i_var = fmt_func.F_result
             fmt_result.f_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
@@ -1692,13 +1747,11 @@ rv = .false.
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
+        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         if subprogram == "subroutine":
-            fmt_result = fmt_func
             # intent will be "subroutine" or "dtor".
             f_stmts = ["f", sintent]
         else:
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
             fmt_result.fc_var = fmt_func.F_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
@@ -2535,5 +2588,19 @@ class ModuleInfo(object):
                 name = whelpers.FHelpers[helper].get("name")
                 if name:
                     setattr(fmt, "f_helper_" + helper, name)
-
         
+######################################################################
+
+def locate_c_function(library, node):
+    """Look for C routine to wrap.
+         Usually the same node unless it is a generated.
+    
+        The C wrapper will not be the same as the Fortran wrapper when
+        there are generated function involved.
+        """
+    C_node = node
+    while C_node._PTR_F_C_index is not None:
+        assert C_node._PTR_F_C_index != C_node._function_index
+        C_node = library.function_index[C_node._PTR_F_C_index]
+    node.C_node = C_node
+    C_node.wrap.f_c = True

@@ -613,9 +613,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "delete",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "delete"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_dtor",
+                                "stmtf": "f_dtor"
+                            }
                         }
                     },
                     {
@@ -720,9 +724,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_0",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_0"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -871,9 +879,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -1070,9 +1082,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_2",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_2"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -1571,9 +1587,13 @@
                     "F_name_impl": "apply_generic_nelems",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1722,9 +1742,13 @@
                     "F_name_impl": "apply_generic_nelems_offset",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems_offset",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems_offset"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1921,9 +1945,13 @@
                     "F_name_impl": "apply_generic_nelems_offset_stride",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems_offset_stride",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems_offset_stride"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2073,9 +2101,13 @@
                     "F_name_impl": "apply_generic_type_nelems",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2269,9 +2301,13 @@
                     "F_name_impl": "apply_generic_type_nelems_offset",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems_offset",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems_offset"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2513,9 +2549,13 @@
                     "F_name_impl": "apply_generic_type_nelems_offset_stride",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems_offset_stride",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems_offset_stride"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2702,9 +2742,13 @@
                     "F_name_impl": "apply_require_0",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_require",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2936,9 +2980,13 @@
                     "F_name_impl": "apply_require_1",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_require",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3127,9 +3175,13 @@
                     "F_name_impl": "apply_optional_0",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_optional",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3363,9 +3415,13 @@
                     "F_name_impl": "apply_optional_1",
                     "F_subprogram": "subroutine",
                     "function_name": "apply_optional",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

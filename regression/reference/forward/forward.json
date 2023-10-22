@@ -235,11 +235,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "dtor",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "dtor"
                         },
                         "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_dtor",
+                                "stmtf": "f_dtor"
+                            },
                             "fmtl": {
                                 "stmt": "lua_dtor_scalar"
                             }
@@ -383,11 +385,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "func1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "func1"
                         },
                         "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            },
                             "fmtl": {
                                 "stmt": "lua_subroutine"
                             }
@@ -533,11 +537,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "acceptClass3",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "acceptClass3"
                         },
                         "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            },
                             "fmtl": {
                                 "stmt": "lua_subroutine"
                             }

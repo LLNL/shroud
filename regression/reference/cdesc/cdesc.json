@@ -119,9 +119,13 @@
                     "F_name_generic": "rank2_in",
                     "F_name_impl": "rank2_in",
                     "F_subprogram": "subroutine",
-                    "function_name": "Rank2In",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "Rank2In"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -391,8 +395,12 @@
                     "F_C_name": "c_get_scalar1",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_scalar1",
-                    "function_name": "GetScalar1",
-                    "stmtc": "f_subroutine"
+                    "function_name": "GetScalar1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -699,9 +707,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1008,9 +1020,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1772,9 +1788,13 @@
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "stype": "int"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2051,9 +2071,13 @@
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "stype": "double"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

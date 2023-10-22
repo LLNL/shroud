@@ -59,9 +59,13 @@
                     "F_name_impl": "init_test",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_init_test",
-                    "function_name": "init_test",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "init_test"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -176,9 +180,13 @@
                     "F_name_impl": "pass_char",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passChar",
-                    "function_name": "passChar",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passChar"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -275,9 +283,13 @@
                     "F_name_generic": "pass_char_force",
                     "F_name_impl": "pass_char_force",
                     "F_subprogram": "subroutine",
-                    "function_name": "passCharForce",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passCharForce"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -548,8 +560,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr",
                     "PY_name_impl": "PY_passCharPtr",
-                    "function_name": "passCharPtr",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passCharPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -712,9 +728,13 @@
                     "F_name_impl": "pass_char_ptr",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "passCharPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passCharPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -825,8 +845,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
-                    "function_name": "passCharPtrInOut",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passCharPtrInOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -943,9 +967,13 @@
                     "F_name_impl": "pass_char_ptr_in_out",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "passCharPtrInOut",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passCharPtrInOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4458,8 +4486,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_const_reference",
                     "PY_name_impl": "PY_acceptStringConstReference",
-                    "function_name": "acceptStringConstReference",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringConstReference"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4570,9 +4602,13 @@
                     "F_name_impl": "accept_string_const_reference",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringConstReference",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringConstReference"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4683,8 +4719,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference_out",
                     "PY_name_impl": "PY_acceptStringReferenceOut",
-                    "function_name": "acceptStringReferenceOut",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringReferenceOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4797,9 +4837,13 @@
                     "F_name_impl": "accept_string_reference_out",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringReferenceOut",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringReferenceOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4909,8 +4953,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference",
                     "PY_name_impl": "PY_acceptStringReference",
-                    "function_name": "acceptStringReference",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringReference"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5023,9 +5071,13 @@
                     "F_name_impl": "accept_string_reference",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringReference",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringReference"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5133,8 +5185,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_const",
                     "PY_name_impl": "PY_acceptStringPointerConst",
-                    "function_name": "acceptStringPointerConst",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringPointerConst"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5244,9 +5300,13 @@
                     "F_name_impl": "accept_string_pointer_const",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringPointerConst",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringPointerConst"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5353,8 +5413,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer",
                     "PY_name_impl": "PY_acceptStringPointer",
-                    "function_name": "acceptStringPointer",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5464,9 +5528,13 @@
                     "F_name_impl": "accept_string_pointer",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringPointer",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5577,8 +5645,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer",
                     "PY_name_impl": "PY_fetchStringPointer",
-                    "function_name": "fetchStringPointer",
-                    "stmtc": "f_subroutine"
+                    "function_name": "fetchStringPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5691,9 +5763,13 @@
                     "F_name_impl": "fetch_string_pointer",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "fetchStringPointer",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fetchStringPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5866,8 +5942,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_len",
                     "PY_name_impl": "PY_acceptStringPointerLen",
-                    "function_name": "acceptStringPointerLen",
-                    "stmtc": "f_subroutine"
+                    "function_name": "acceptStringPointerLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -6026,9 +6106,13 @@
                     "F_name_impl": "accept_string_pointer_len",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "acceptStringPointerLen",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStringPointerLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -6204,8 +6288,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer_len",
                     "PY_name_impl": "PY_fetchStringPointerLen",
-                    "function_name": "fetchStringPointerLen",
-                    "stmtc": "f_subroutine"
+                    "function_name": "fetchStringPointerLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -6366,9 +6454,13 @@
                     "F_name_impl": "fetch_string_pointer_len",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "fetchStringPointerLen",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fetchStringPointerLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -6925,8 +7017,12 @@
                     "F_C_name": "c_fetch_array_string_arg",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_arg",
-                    "function_name": "fetchArrayStringArg",
-                    "stmtc": "f_subroutine"
+                    "function_name": "fetchArrayStringArg"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7107,9 +7203,13 @@
                     "F_name_impl": "fetch_array_string_arg",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "fetchArrayStringArg",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fetchArrayStringArg"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7262,8 +7362,12 @@
                     "F_C_name": "c_fetch_array_string_alloc",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc",
-                    "function_name": "fetchArrayStringAlloc",
-                    "stmtc": "f_subroutine"
+                    "function_name": "fetchArrayStringAlloc"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7453,9 +7557,13 @@
                     "F_name_impl": "fetch_array_string_alloc",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "fetchArrayStringAlloc",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fetchArrayStringAlloc"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7611,8 +7719,12 @@
                     "F_C_name": "c_fetch_array_string_alloc_len",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc_len",
-                    "function_name": "fetchArrayStringAllocLen",
-                    "stmtc": "f_subroutine"
+                    "function_name": "fetchArrayStringAllocLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7804,9 +7916,13 @@
                     "F_name_impl": "fetch_array_string_alloc_len",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "fetchArrayStringAllocLen",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fetchArrayStringAllocLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -7984,9 +8100,13 @@
                     "F_name_impl": "explicit1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_explicit1",
-                    "function_name": "explicit1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "explicit1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8078,8 +8198,12 @@
                     "F_C_name": "c_explicit2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "explicit2",
-                    "function_name": "explicit2",
-                    "stmtc": "f_subroutine"
+                    "function_name": "explicit2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8194,9 +8318,13 @@
                     "F_name_impl": "explicit2",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "explicit2",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "explicit2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8313,9 +8441,13 @@
                     "F_name_impl": "cpass_char",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_CpassChar",
-                    "function_name": "CpassChar",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "CpassChar"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8551,8 +8683,12 @@
                     "F_C_name": "c_cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr",
-                    "function_name": "CpassCharPtr",
-                    "stmtc": "f_subroutine"
+                    "function_name": "CpassCharPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8728,9 +8864,13 @@
                     "F_name_impl": "cpass_char_ptr",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "CpassCharPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "CpassCharPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -8869,8 +9009,12 @@
                     "F_C_name": "c_cpass_char_ptr_blank",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr_blank",
-                    "function_name": "CpassCharPtrBlank",
-                    "stmtc": "f_subroutine"
+                    "function_name": "CpassCharPtrBlank"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -9042,9 +9186,13 @@
                     "F_name_impl": "cpass_char_ptr_blank",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "CpassCharPtrBlank",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "CpassCharPtrBlank"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -9225,8 +9373,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "post_declare",
                     "PY_name_impl": "PY_PostDeclare",
-                    "function_name": "PostDeclare",
-                    "stmtc": "f_subroutine"
+                    "function_name": "PostDeclare"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -9391,9 +9543,13 @@
                     "F_name_impl": "post_declare",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "PostDeclare",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "PostDeclare"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {

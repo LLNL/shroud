@@ -124,9 +124,13 @@
                     "F_name_impl": "no_return_no_arguments",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_NoReturnNoArguments",
-                    "function_name": "NoReturnNoArguments",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "NoReturnNoArguments"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -530,9 +534,13 @@
                     "F_name_impl": "pass_by_reference",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_PassByReference",
-                    "function_name": "PassByReference",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "PassByReference"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -951,9 +959,13 @@
                     "F_name_impl": "check_bool",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_checkBool",
-                    "function_name": "checkBool",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "checkBool"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1483,9 +1495,13 @@
                     "F_name_impl": "accept_name",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptName",
-                    "function_name": "acceptName",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptName"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1596,8 +1612,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
-                    "function_name": "passCharPtrInOut",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passCharPtrInOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1714,9 +1734,13 @@
                     "F_name_impl": "pass_char_ptr_in_out",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "passCharPtrInOut",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passCharPtrInOut"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1831,8 +1855,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_one_name",
                     "PY_name_impl": "PY_returnOneName",
-                    "function_name": "returnOneName",
-                    "stmtc": "f_subroutine"
+                    "function_name": "returnOneName"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1948,9 +1976,13 @@
                     "F_name_impl": "return_one_name",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "returnOneName",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "returnOneName"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2130,8 +2162,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "return_two_names",
                     "PY_name_impl": "PY_returnTwoNames",
-                    "function_name": "returnTwoNames",
-                    "stmtc": "f_subroutine"
+                    "function_name": "returnTwoNames"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2299,9 +2335,13 @@
                     "F_name_impl": "return_two_names",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "returnTwoNames",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "returnTwoNames"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2475,8 +2515,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "implied_text_len",
                     "PY_name_impl": "PY_ImpliedTextLen",
-                    "function_name": "ImpliedTextLen",
-                    "stmtc": "f_subroutine"
+                    "function_name": "ImpliedTextLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2635,9 +2679,13 @@
                     "F_name_impl": "implied_text_len",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "ImpliedTextLen",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "ImpliedTextLen"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3596,9 +3644,13 @@
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
                     "F_subprogram": "subroutine",
-                    "function_name": "bindC1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "bindC1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3694,8 +3746,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
-                    "function_name": "bindC2",
-                    "stmtc": "f_subroutine"
+                    "function_name": "bindC2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3813,9 +3869,13 @@
                     "F_name_impl": "Fortran_bindC2a",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "bindC2",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "bindC2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3968,9 +4028,13 @@
                     "F_name_generic": "pass_void_star_star",
                     "F_name_impl": "pass_void_star_star",
                     "F_subprogram": "subroutine",
-                    "function_name": "passVoidStarStar",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passVoidStarStar"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4204,9 +4268,13 @@
                     "F_name_generic": "pass_assumed_type_dim",
                     "F_name_impl": "pass_assumed_type_dim",
                     "F_subprogram": "subroutine",
-                    "function_name": "passAssumedTypeDim",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "passAssumedTypeDim"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4707,9 +4775,13 @@
                     "F_name_generic": "callback1",
                     "F_name_impl": "callback1",
                     "F_subprogram": "subroutine",
-                    "function_name": "callback1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "callback1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4861,9 +4933,13 @@
                     "F_name_generic": "callback1a",
                     "F_name_impl": "callback1a",
                     "F_subprogram": "subroutine",
-                    "function_name": "callback1a",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "callback1a"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5073,9 +5149,13 @@
                     "F_name_generic": "callback2",
                     "F_name_impl": "callback2",
                     "F_subprogram": "subroutine",
-                    "function_name": "callback2",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "callback2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5324,8 +5404,12 @@
                     "F_C_name": "c_callback3",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "callback3",
-                    "function_name": "callback3",
-                    "stmtc": "f_subroutine"
+                    "function_name": "callback3"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5600,9 +5684,13 @@
                     "F_name_impl": "callback3",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "callback3",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "callback3"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5838,9 +5926,13 @@
                     "F_name_generic": "callback_set_alloc",
                     "F_name_impl": "callback_set_alloc",
                     "F_subprogram": "subroutine",
-                    "function_name": "callback_set_alloc",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "callback_set_alloc"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

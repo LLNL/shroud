@@ -199,10 +199,14 @@
                             "c_var": "self",
                             "field_name": "x1",
                             "function_name": "set_x1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "x1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -395,10 +399,14 @@
                             "c_var": "self",
                             "field_name": "y1",
                             "function_name": "set_y1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "y1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -591,10 +599,14 @@
                             "c_var": "self",
                             "field_name": "z1",
                             "function_name": "set_z1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "z1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -802,9 +814,13 @@
                     "F_name_impl": "bad_fstatements",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_BadFstatements",
-                    "function_name": "BadFstatements",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "BadFstatements"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1010,8 +1026,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assumed_rank",
                     "PY_name_impl": "PY_AssumedRank",
-                    "function_name": "AssumedRank",
-                    "stmtc": "f_subroutine"
+                    "function_name": "AssumedRank"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1122,9 +1142,13 @@
                     "F_name_impl": "assumed_rank_0d",
                     "F_subprogram": "subroutine",
                     "function_name": "AssumedRank",
-                    "function_suffix": "_0d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1237,9 +1261,13 @@
                     "F_name_impl": "assumed_rank_1d",
                     "F_subprogram": "subroutine",
                     "function_name": "AssumedRank",
-                    "function_suffix": "_1d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1352,9 +1380,13 @@
                     "F_name_impl": "assumed_rank_2d",
                     "F_subprogram": "subroutine",
                     "function_name": "AssumedRank",
-                    "function_suffix": "_2d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_2d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

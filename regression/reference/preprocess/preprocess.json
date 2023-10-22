@@ -57,9 +57,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "method1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "method1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -109,9 +113,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "method2",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "method2"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -166,9 +174,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method3def",
-                            "function_suffix": "_0",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_0"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -295,9 +307,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method3def",
-                            "function_suffix": "_1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -392,9 +408,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "exfunc",
-                            "function_suffix": "_0",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_0"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -511,9 +531,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "exfunc",
-                            "function_suffix": "_1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

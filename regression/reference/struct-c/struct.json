@@ -837,10 +837,14 @@
                             "c_var": "self",
                             "field_name": "x1",
                             "function_name": "set_x1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_class",
                             "wrapped_name": "x1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -1033,10 +1037,14 @@
                             "c_var": "self",
                             "field_name": "y1",
                             "function_name": "set_y1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_class",
                             "wrapped_name": "y1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -1325,10 +1333,14 @@
                             "c_var": "self",
                             "field_name": "x1",
                             "function_name": "set_x1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "x1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -1521,10 +1533,14 @@
                             "c_var": "self",
                             "field_name": "y1",
                             "function_name": "set_y1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "y1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     },
                     {
@@ -1717,10 +1733,14 @@
                             "c_var": "self",
                             "field_name": "z1",
                             "function_name": "set_z1",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "z1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -2821,9 +2841,13 @@
                     "F_name_generic": "accept_struct_out_ptr",
                     "F_name_impl": "accept_struct_out_ptr",
                     "F_subprogram": "subroutine",
-                    "function_name": "acceptStructOutPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStructOutPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2920,9 +2944,13 @@
                     "F_name_generic": "accept_struct_in_out_ptr",
                     "F_name_impl": "accept_struct_in_out_ptr",
                     "F_subprogram": "subroutine",
-                    "function_name": "acceptStructInOutPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptStructInOutPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4677,10 +4705,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "const_dvalue",
                     "function_name": "Cstruct_ptr_set_const_dvalue",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "Cstruct_ptr",
                     "wrapped_name": "const_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             },
             {
@@ -5096,10 +5128,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_set_ivalue",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "ivalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             },
             {
@@ -5515,10 +5551,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_set_dvalue",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "Cstruct_list",
                     "wrapped_name": "dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             }
         ],

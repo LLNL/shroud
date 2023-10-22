@@ -501,8 +501,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_name",
                     "PY_name_impl": "PY_getName",
-                    "function_name": "getName",
-                    "stmtc": "f_subroutine"
+                    "function_name": "getName"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -618,9 +622,13 @@
                     "F_name_impl": "get_name",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "getName",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "getName"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -665,9 +673,13 @@
                     "F_name_impl": "testnames_function1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function1",
-                    "function_name": "function1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "function1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -717,9 +729,13 @@
                     "F_name_impl": "f_name_special",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function2",
-                    "function_name": "function2",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "function2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -836,9 +852,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function3a_0",
                     "function_name": "function3a",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -955,9 +975,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function3a_1",
                     "function_name": "function3a",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1286,9 +1310,13 @@
                     "F_name_impl": "testnames_fiveplus",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_fiveplus",
-                    "function_name": "fiveplus",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "fiveplus"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1478,8 +1506,12 @@
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "test_multiline_splicer",
                     "PY_name_impl": "PY_TestMultilineSplicer",
-                    "function_name": "TestMultilineSplicer",
-                    "stmtc": "f_subroutine"
+                    "function_name": "TestMultilineSplicer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1655,9 +1687,13 @@
                     "F_name_impl": "test_multiline_splicer",
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
-                    "function_name": "TestMultilineSplicer",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "TestMultilineSplicer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2008,9 +2044,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_name_instantiation1",
                     "function_name": "FunctionTU",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2249,9 +2289,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_instantiation2",
                     "function_name": "FunctionTU",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_instantiation2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3040,9 +3084,13 @@
                     "F_name_generic": "external_funcs",
                     "F_name_impl": "external_funcs",
                     "F_subprogram": "subroutine",
-                    "function_name": "external_funcs",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "external_funcs"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],
@@ -3213,9 +3261,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "method1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "method1"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -3273,9 +3325,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self2",
-                                    "function_name": "method2",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "method2"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -3445,9 +3501,13 @@
                             "F_name_impl": "testnames_init_ns1",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_init_ns1",
-                            "function_name": "init_ns1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "init_ns1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -4047,9 +4107,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "Member1",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "Member1"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             }
                         ],
@@ -4122,9 +4186,13 @@
                             "F_name_generic": "worker1",
                             "F_name_impl": "worker1",
                             "F_subprogram": "subroutine",
-                            "function_name": "Worker1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "Worker1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -4203,9 +4271,13 @@
                             "F_name_generic": "worker1",
                             "F_name_impl": "worker1",
                             "F_subprogram": "subroutine",
-                            "function_name": "Worker1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "Worker1"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

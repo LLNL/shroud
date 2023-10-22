@@ -246,9 +246,13 @@
                     "F_name_impl": "one",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_One",
-                    "function_name": "One",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "One"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],
@@ -632,9 +636,13 @@
                             "F_name_impl": "one",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_One",
-                            "function_name": "One",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "One"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

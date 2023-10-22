@@ -730,8 +730,12 @@
                     "F_C_name": "c_pass_index2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_index2",
-                    "function_name": "passIndex2",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passIndex2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -792,8 +796,12 @@
                     "F_name_impl": "pass_index2_32",
                     "F_subprogram": "subroutine",
                     "function_name": "passIndex2",
-                    "function_suffix": "_32",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_32"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -854,8 +862,12 @@
                     "F_name_impl": "pass_index2_64",
                     "F_subprogram": "subroutine",
                     "function_name": "passIndex2",
-                    "function_suffix": "_64",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_64"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -985,8 +997,12 @@
                     "F_C_name": "c_pass_float",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_float",
-                    "function_name": "passFloat",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passFloat"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1047,8 +1063,12 @@
                     "F_name_impl": "pass_float_float",
                     "F_subprogram": "subroutine",
                     "function_name": "passFloat",
-                    "function_suffix": "_float",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1109,8 +1129,12 @@
                     "F_name_impl": "pass_float_double",
                     "F_subprogram": "subroutine",
                     "function_name": "passFloat",
-                    "function_suffix": "_double",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_double"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

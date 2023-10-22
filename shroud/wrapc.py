@@ -1064,15 +1064,13 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         header_typedef_nodes = OrderedDict()
 
         sintent = r_meta["intent"]
+        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         if CXX_subprogram == "subroutine":
-            fmt_result = fmt_func
             fmt_pattern = fmt_func
             # intent will be "subroutine", "dtor", "setter"
             stmts = ["f", sintent]
             result_stmt = statements.lookup_fc_stmts(stmts)
         else:
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = declarator.get_indirect_stmt()

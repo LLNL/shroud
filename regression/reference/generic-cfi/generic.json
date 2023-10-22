@@ -148,9 +148,13 @@
                     "F_name_generic": "update_real",
                     "F_name_impl": "update_as_float",
                     "F_subprogram": "subroutine",
-                    "function_name": "UpdateAsFloat",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "UpdateAsFloat"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -246,9 +250,13 @@
                     "F_name_generic": "update_real",
                     "F_name_impl": "update_as_double",
                     "F_subprogram": "subroutine",
-                    "function_name": "UpdateAsDouble",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "UpdateAsDouble"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -454,8 +462,12 @@
                     "F_C_name": "c_generic_real",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "generic_real",
-                    "function_name": "GenericReal",
-                    "stmtc": "f_subroutine"
+                    "function_name": "GenericReal"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -521,8 +533,12 @@
                     "F_name_impl": "generic_real_float",
                     "F_subprogram": "subroutine",
                     "function_name": "GenericReal",
-                    "function_suffix": "_float",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -588,8 +604,12 @@
                     "F_name_impl": "generic_real_double",
                     "F_subprogram": "subroutine",
                     "function_name": "GenericReal",
-                    "function_suffix": "_double",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_double"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1817,8 +1837,12 @@
                     "F_C_name": "c_assign_values",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
-                    "function_name": "AssignValues",
-                    "stmtc": "f_subroutine"
+                    "function_name": "AssignValues"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2055,9 +2079,13 @@
                     "F_name_impl": "assign_values_scalar",
                     "F_subprogram": "subroutine",
                     "function_name": "AssignValues",
-                    "function_suffix": "_scalar",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_scalar"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2420,9 +2448,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
-                    "function_suffix": "_broadcast",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_broadcast"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2798,9 +2830,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
-                    "function_suffix": "_copy",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_copy"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3094,8 +3130,12 @@
                     "F_C_name": "c_save_pointer",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
-                    "function_name": "SavePointer",
-                    "stmtc": "f_subroutine"
+                    "function_name": "SavePointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3393,9 +3433,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
-                    "function_suffix": "_float1d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float1d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3693,9 +3737,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
-                    "function_suffix": "_float2d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float2d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4002,8 +4050,12 @@
                     "F_C_name": "c_save_pointer2",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
-                    "function_name": "SavePointer2",
-                    "stmtc": "f_subroutine"
+                    "function_name": "SavePointer2"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4325,9 +4377,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
-                    "function_suffix": "_float1d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float1d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4649,9 +4705,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
-                    "function_suffix": "_float2d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float2d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -4845,9 +4905,13 @@
                     "F_name_generic": "get_pointer",
                     "F_name_impl": "get_pointer",
                     "F_subprogram": "subroutine",
-                    "function_name": "GetPointer",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "GetPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5185,8 +5249,12 @@
                     "F_C_name": "c_get_pointer_as_pointer",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
-                    "function_name": "GetPointerAsPointer",
-                    "stmtc": "f_subroutine"
+                    "function_name": "GetPointerAsPointer"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5524,9 +5592,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float1d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5864,9 +5936,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float2d"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {

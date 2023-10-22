@@ -106,9 +106,13 @@
                     "F_name_generic": "accept_float_complex_inout_ptr",
                     "F_name_impl": "accept_float_complex_inout_ptr",
                     "F_subprogram": "subroutine",
-                    "function_name": "acceptFloatComplexInoutPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptFloatComplexInoutPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -226,9 +230,13 @@
                     "F_name_impl": "accept_double_complex_inout_ptr",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
-                    "function_name": "acceptDoubleComplexInoutPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptDoubleComplexInoutPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -348,9 +356,13 @@
                     "F_name_impl": "accept_double_complex_out_ptr",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtr",
-                    "function_name": "acceptDoubleComplexOutPtr",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptDoubleComplexOutPtr"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -664,9 +676,13 @@
                     "F_name_impl": "accept_double_complex_out_ptr_flag",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtrFlag",
-                    "function_name": "acceptDoubleComplexOutPtrFlag",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "acceptDoubleComplexOutPtrFlag"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

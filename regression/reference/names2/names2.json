@@ -50,9 +50,13 @@
                     "F_name_generic": "a_function",
                     "F_name_impl": "a_function",
                     "F_subprogram": "subroutine",
-                    "function_name": "AFunction",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "AFunction"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],

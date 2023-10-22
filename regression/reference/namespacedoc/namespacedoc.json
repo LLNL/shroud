@@ -52,9 +52,13 @@
                     "F_name_impl": "inner3_worker3",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_worker3",
-                    "function_name": "worker3",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "worker3"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -99,9 +103,13 @@
                     "F_name_impl": "worker",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_worker",
-                    "function_name": "worker",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "worker"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             }
         ],
@@ -152,9 +160,13 @@
                             "F_name_impl": "worker",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker",
-                            "function_name": "worker",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "worker"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -235,9 +247,13 @@
                             "F_name_impl": "worker",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker",
-                            "function_name": "worker",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "worker"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -318,9 +334,13 @@
                             "F_name_impl": "inner4_worker4",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker4",
-                            "function_name": "worker4",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "worker4"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],

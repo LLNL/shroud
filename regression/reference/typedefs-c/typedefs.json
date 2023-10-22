@@ -382,9 +382,13 @@
                     "F_name_impl": "typestruct",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_typestruct",
-                    "function_name": "typestruct",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "typestruct"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {

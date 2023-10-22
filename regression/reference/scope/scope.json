@@ -894,10 +894,14 @@
                     "F_subprogram": "subroutine",
                     "field_name": "items",
                     "function_name": "DataPointer_set_items",
-                    "stmtc": "f_setter",
-                    "stmtf": "f_setter",
                     "struct_name": "DataPointer",
                     "wrapped_name": "items"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_setter",
+                        "stmtf": "f_setter"
+                    }
                 }
             }
         ],
@@ -1467,10 +1471,14 @@
                             "F_subprogram": "subroutine",
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],
@@ -2067,10 +2075,14 @@
                             "F_subprogram": "subroutine",
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
-                            "stmtc": "f_setter",
-                            "stmtf": "f_setter",
                             "struct_name": "DataPointer",
                             "wrapped_name": "items"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_setter",
+                                "stmtf": "f_setter"
+                            }
                         }
                     }
                 ],

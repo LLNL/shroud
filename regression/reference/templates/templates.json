@@ -338,9 +338,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "nested",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine",
                             "template_suffix": "_double"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     }
                 ],
@@ -578,9 +582,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "set_npts",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "set_npts"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -803,9 +811,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "set_value",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "set_value"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -1164,9 +1176,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "set_npts",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "set_npts"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -1389,9 +1405,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "set_value",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_name": "set_value"
+                        },
+                        "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_subroutine",
+                                "stmtf": "f_subroutine"
+                            }
                         }
                     },
                     {
@@ -2002,9 +2022,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_0",
                     "function_name": "FunctionTU",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_0"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2234,9 +2258,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_1",
                     "function_name": "FunctionTU",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_1"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -2742,9 +2770,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "dtor",
-                                    "stmtc": "f_dtor",
-                                    "stmtf": "f_dtor"
+                                    "function_name": "dtor"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_dtor",
+                                        "stmtf": "f_dtor"
+                                    }
                                 }
                             },
                             {
@@ -2923,9 +2955,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "push_back",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "push_back"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {
@@ -3406,9 +3442,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "dtor",
-                                    "stmtc": "f_dtor",
-                                    "stmtf": "f_dtor"
+                                    "function_name": "dtor"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_dtor",
+                                        "stmtf": "f_dtor"
+                                    }
                                 }
                             },
                             {
@@ -3587,9 +3627,13 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
-                                    "function_name": "push_back",
-                                    "stmtc": "f_subroutine",
-                                    "stmtf": "f_subroutine"
+                                    "function_name": "push_back"
+                                },
+                                "zz_fmtresult": {
+                                    "fmtf": {
+                                        "stmtc": "f_subroutine",
+                                        "stmtf": "f_subroutine"
+                                    }
                                 }
                             },
                             {

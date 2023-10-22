@@ -64,11 +64,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "dtor",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "dtor"
                         },
                         "zz_fmtresult": {
+                            "fmtf": {
+                                "stmtc": "f_dtor",
+                                "stmtf": "f_dtor"
+                            },
                             "fmtl": {
                                 "stmt": "lua_dtor_scalar"
                             }
@@ -3472,9 +3474,13 @@
                     "F_name_impl": "create_class_static",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_createClassStatic",
-                    "function_name": "createClassStatic",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "createClassStatic"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {

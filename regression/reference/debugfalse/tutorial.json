@@ -127,11 +127,13 @@
                     "LUA_name_api": "NoReturnNoArguments",
                     "LUA_name_impl": "l_NoReturnNoArguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
-                    "function_name": "NoReturnNoArguments",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "NoReturnNoArguments"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -1393,10 +1395,12 @@
                     "LUA_name_impl": "l_OverloadedFunction",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
-                    "function_suffix": "_from_name",
-                    "stmtc": "f_subroutine"
+                    "function_suffix": "_from_name"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -1511,9 +1515,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "OverloadedFunction",
-                    "function_suffix": "_from_name",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_from_name"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -1643,11 +1651,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
                     "function_name": "OverloadedFunction",
-                    "function_suffix": "_from_index",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_from_index"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -1892,11 +1902,13 @@
                     "LUA_name_impl": "l_TemplateArgument",
                     "PY_name_impl": "PY_TemplateArgument_int",
                     "function_name": "TemplateArgument",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_int"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -2064,11 +2076,13 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_TemplateArgument_double",
                     "function_name": "TemplateArgument",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "template_suffix": "_double"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -2412,11 +2426,13 @@
                     "LUA_name_impl": "l_FortranGenericOverloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_0",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -2697,10 +2713,12 @@
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine"
+                    "function_suffix": "_1"
                 },
                 "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine"
+                    },
                     "fmtl": {
                         "stmt": "lua_subroutine"
                     }
@@ -2934,9 +2952,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_float",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1_float"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -3167,9 +3189,13 @@
                     "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_double",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1_double"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
@@ -5364,9 +5390,13 @@
                     "F_name_impl": "get_min_max",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_getMinMax",
-                    "function_name": "getMinMax",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "getMinMax"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "stmtc": "f_subroutine",
+                        "stmtf": "f_subroutine"
+                    }
                 }
             },
             {
