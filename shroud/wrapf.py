@@ -96,7 +96,7 @@ class FillFormat(object):
             cursor.pop_node(node)
             return
         cursor.pop_node(node)
-        return
+        return  # <--- work in progress
 
         locate_c_function(self.newlibrary, node)
             
@@ -117,7 +117,7 @@ class FillFormat(object):
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
-        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+        fmt_result = node._fmtresult.setdefault("fmtf2", util.Scope(fmt_func))
         if subprogram == "subroutine":
             # intent will be "subroutine" or "dtor".
             f_stmts = ["f", sintent]
@@ -137,9 +137,227 @@ class FillFormat(object):
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
 
+        self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
+        self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
+                            subprogram, result_typemap)
+#        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+
+        for c_arg in C_node.ast.declarator.params:
+            func_cursor.arg = c_arg
+            arg_name = c_arg.declarator.user_name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault("fmtf2", util.Scope(fmt_func))
+            fmt_arg.f_var = arg_name
+            fmt_arg.fc_var = arg_name
+
+            c_declarator = c_arg.declarator
+            c_attrs = c_declarator.attrs
+            c_meta = c_declarator.metaattrs
+#            hidden = c_attrs["hidden"]
+            intent = c_meta["intent"]
+#            optattr = False
+
+            junk, specialize = statements.lookup_c_statements(c_arg)
+            
+            # An argument to the C and Fortran function
+#            f_index += 1
+#            f_arg = f_args[f_index]
+#            f_declarator = f_arg.declarator
+#            f_name = f_declarator.user_name
+#            f_attrs = f_declarator.attrs
+
+            c_sgroup = c_arg.typemap.sgroup
+            c_spointer = c_declarator.get_indirect_stmt()
+            # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
+            # Fortran need to know how the C function is being called.
+            f_stmts = ["f", intent, c_sgroup, c_spointer, c_meta["api"],
+                       c_meta["deref"], c_attrs["owner"]]
+            f_stmts.extend(specialize)
+
+            arg_stmt = statements.lookup_fc_stmts(f_stmts)
+            func_cursor.stmt = arg_stmt
+            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
+            arg_typemap = self.set_fmt_fields(
+                cls, C_node, f_arg, c_arg, fmt_arg)
+ #           fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+        # --- End loop over function parameters
+        #####
+        func_cursor.arg = None
+        func_cursor.stmt = result_stmt
 
         cursor.pop_node(node)
 
+# From util.py
+    def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):
+        """Compute names of temporary C variables.
+
+        Create stmts.temps and stmts.local variables.
+
+        lang - "c", "f"
+        prefix - "c", "f", "i"
+        """
+        if prefix is None:
+            prefix = lang
+
+        names = stmts.get(lang + "_temps", None)
+        if names is not None:
+            for name in names:
+                setattr(fmt,
+                        "{}_var_{}".format(prefix, name),
+                        "{}{}_{}".format(fmt.c_temp, rootname, name))
+        names = stmts.get(lang + "_local", None)
+        if names is not None:
+            for name in names:
+                setattr(fmt,
+                        "{}_local_{}".format(prefix, name),
+                        "{}{}_{}".format(fmt.C_local, rootname, name))
+
+    def set_fmt_fields_iface(self, fcn, ast, fmt, rootname,
+                             ntypemap, subprogram=None):
+        """Set format fields for interface.
+
+        Transfer info from Typemap to fmt for use by statements.
+
+        Parameters
+        ----------
+        fcn : ast.FunctionNode
+        ast : declast.Declaration
+        fmt : util.Scope
+        rootname : str
+        ntypemap : typemap.Typemap
+            The typemap has already resolved template arguments.
+            For example, std::vector<int>.  ntypemap will be 'int'.
+        subprogram : str
+            "function" or "subroutine" or None
+        """
+        attrs = ast.declarator.attrs
+        meta = ast.declarator.metaattrs
+
+        if subprogram == "subroutine":
+            pass
+        elif subprogram == "function":
+            # XXX this also gets set for subroutines
+            fmt.f_intent = "OUT"
+        else:
+            fmt.f_intent = meta["intent"].upper()
+            if fmt.f_intent == "SETTER":
+                fmt.f_intent = "IN"
+        
+        fmt.f_type = ntypemap.f_type
+        fmt.sh_type = ntypemap.sh_type
+        if ntypemap.f_kind:
+            fmt.f_kind = ntypemap.f_kind
+        if ntypemap.f_capsule_data_type:
+            fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
+        if ntypemap.f_derived_type:
+            fmt.f_derived_type = ntypemap.f_derived_type
+        if ntypemap.f_module_name:
+            fmt.f_type_module = ntypemap.f_module_name
+
+    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
+                       subprogram=None,
+                       ntypemap=None):
+        """
+        Set format fields for ast.
+        Used with arguments and results.
+
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration - Fortran argument
+        c_ast : declast.Declaration - C argument
+              Abstract Syntax Tree of argument or result
+        fmt : format dictionary
+        subprogram : str
+        ntypemap : typemap.Typemap
+        """
+        c_attrs = c_ast.declarator.attrs
+        c_meta = c_ast.declarator.metaattrs
+
+        if subprogram == "subroutine":
+            # XXX - no need to set f_type and sh_type
+            pass
+            rootname = fmt.C_result
+        elif subprogram == "function":
+            # XXX this also gets set for subroutines
+            rootname = fmt.C_result
+        else:
+            ntypemap = f_ast.typemap
+            rootname = c_ast.declarator.user_name
+        if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
+            # XXX - need to add an argument for each template arg
+            ntypemap = c_ast.template_arguments[0].typemap
+            fmt.cxx_T = ','.join([str(targ) for targ in c_ast.template_arguments])
+        if subprogram != "subroutine":
+            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
+                                      ntypemap, subprogram)
+            if c_attrs["pass"]:
+                # Used with wrap_struct_as=class for passed-object dummy argument.
+                fmt.f_type = ntypemap.f_class
+        self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
+        return ntypemap
+
+    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
+        """Set fmt fields based on dimension attribute.
+
+        f_assumed_shape is used in both implementation and interface.
+
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration
+        fmt: util.Scope
+        """
+        f_attrs = f_ast.declarator.attrs
+        f_meta = f_ast.declarator.metaattrs
+        dim = f_meta["dimension"]
+        rank = f_attrs["rank"]
+        if f_meta["assumed-rank"]:
+            fmt.i_dimension = "(..)"
+            fmt.f_assumed_shape = "(..)"
+        elif rank is not None:
+            fmt.rank = str(rank)
+            if rank == 0:
+                # Assigned to cdesc to pass metadata to C wrapper.
+                fmt.size = "1"
+                if hasattr(fmt, "f_var_cdesc"):
+                    fmt.f_cdesc_shape = ""
+            else:
+                fmt.size = wformat("size({f_var})", fmt)
+                fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.i_dimension = "(*)"
+                if hasattr(fmt, "f_var_cdesc"):
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+        elif dim:
+            visitor = ToDimension(cls, fcn, fmt)
+            visitor.visit(dim)
+            rank = visitor.rank
+            fmt.rank = str(rank)
+            if rank != "assumed" and rank > 0:
+                fmt.f_assumed_shape = fortran_ranks[rank]
+                # XXX use f_var_cdesc since shape is assigned in C
+                fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
+                if hasattr(fmt, "f_var_cdesc"):
+                    # XXX kludge, name is assumed to be f_var_cdesc.
+                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
+                    # XXX - maybe avoid {rank} with: {f_var_cdes}(:rank({f_var})) = shape({f_var})
+                    fmt.f_array_allocate = "(" + ",".join(
+                        ["{0}%shape({1})".format(fmt.f_var_cdesc, r)
+                         for r in range(1, rank+1)]) + ")"
+                    fmt.f_array_shape = wformat(
+                        ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
+
+        if f_attrs["len"]:
+            fmt.f_char_len = "len=%s" % f_attrs["len"];
+        elif hasattr(fmt, "f_var_cdesc"):
+            if f_attrs["deref"] == "allocatable":
+                # Use elem_len from the C wrapper.
+                fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
+                
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -1852,15 +2070,12 @@ rv = .false.
             f_declarator = f_arg.declarator
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
-            f_meta = f_declarator.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_declarator.get_indirect_stmt()
-            f_sgroup = f_arg.typemap.sgroup
-            f_spointer = f_declarator.get_indirect_stmt()
             # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
             # Fortran need to know how the C function is being called.
-            f_stmts = ["f", intent, f_sgroup, f_spointer, c_meta["api"],
+            f_stmts = ["f", intent, c_sgroup, c_spointer, c_meta["api"],
                        c_meta["deref"], c_attrs["owner"]]
             f_stmts.extend(specialize)
 
