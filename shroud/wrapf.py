@@ -140,6 +140,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
+        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
 #        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
@@ -180,6 +181,7 @@ class FillFormat(object):
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
+            self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
  #           fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
         # --- End loop over function parameters
@@ -263,6 +265,8 @@ class FillFormat(object):
         Set format fields for ast.
         Used with arguments and results.
 
+        f_ast and c_ast may be different for fortran_generic.
+
         Parameters
         ----------
         cls : ast.ClassNode or None of enclosing class.
@@ -297,7 +301,6 @@ class FillFormat(object):
             if c_attrs["pass"]:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
-        self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
         return ntypemap
 
     def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
@@ -1821,6 +1824,8 @@ rv = .false.
         Set format fields for ast.
         Used with arguments and results.
 
+        f_ast and c_ast may be different for fortran_generic.
+
         Parameters
         ----------
         cls : ast.ClassNode or None of enclosing class.
@@ -1855,7 +1860,6 @@ rv = .false.
             if c_attrs["pass"]:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
-        self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
         return ntypemap
 
     def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
@@ -1988,6 +1992,7 @@ rv = .false.
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
+        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
         fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
@@ -2084,6 +2089,7 @@ rv = .false.
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg)
+            self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
             fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
