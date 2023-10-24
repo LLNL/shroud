@@ -59,6 +59,7 @@ class FillFormat(object):
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
+        self.language = newlibrary.language
         self.cursor = error.get_cursor()
 
     def fmt_library(self):
@@ -118,10 +119,68 @@ class FillFormat(object):
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf2", util.Scope(fmt_func))
+
+        # wrap c
+        result_api = r_meta["api"]
+        result_is_const = ast.const
+        sintent = r_meta["intent"]
+        
         if subprogram == "subroutine":
+            # C wrapper
+            fmt_pattern = fmt_func
+            # intent will be "subroutine", "dtor", "setter"
+            stmts = ["f", sintent]
+            result_stmt = statements.lookup_fc_stmts(stmts)
+            # Fortran impl
             # intent will be "subroutine" or "dtor".
             f_stmts = ["f", sintent]
+            # interface
+            fmt_func.F_C_subprogram = "subroutine"
         else:
+            ## C wrapper
+            spointer = declarator.get_indirect_stmt()
+            # intent will be "function", "ctor", "getter"
+            junk, specialize = statements.lookup_c_statements(ast)
+            stmts = ["f", sintent, result_typemap.sgroup, spointer,
+                     result_api, r_meta["deref"], r_attrs["owner"]] + specialize
+            result_stmt = statements.lookup_fc_stmts(stmts)
+
+            fmt_result.idtor = "0"  # no destructor
+            fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+            fmt_result.c_type = result_typemap.c_type
+            fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.sh_type = result_typemap.sh_type
+            fmt_result.cfi_type = result_typemap.cfi_type
+            if ast.template_arguments:
+                fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+#                for targ in ast.template_arguments:
+#                    header_typedef_nodes[targ.typemap.name] = targ.typemap
+#            else:
+#                header_typedef_nodes[result_typemap.name] = result_typemap
+            if result_stmt.cxx_local_var == "result":
+                # C result is passed in as an argument. Create local C++ name.
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            elif self.language == "c":
+                fmt_result.cxx_var = fmt_result.c_var
+            elif result_typemap.cxx_to_c is None:
+                # C and C++ are compatible
+                fmt_result.cxx_var = fmt_result.c_var
+            else:
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
+            if result_is_const:
+                fmt_result.c_const = "const "
+            else:
+                fmt_result.c_const = ""
+
+            fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True
+            )
+
+ #           compute_cxx_deref(
+ #               CXX_ast, result_stmt.cxx_local_var, fmt_result)
+ #           fmt_pattern = fmt_result
+            ## F impl
             fmt_result.f_var = fmt_func.F_result
             fmt_result.fc_var = fmt_func.F_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
@@ -130,6 +189,27 @@ class FillFormat(object):
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
                        r_meta["deref"], r_attrs["owner"]] + specialize
+            ## interface
+            fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+            fmt_result.i_var = fmt_func.F_result
+            fmt_result.f_var = fmt_func.F_result
+            fmt_result.f_intent = "OUT"
+            fmt_result.f_type = result_typemap.f_type
+            self.set_fmt_fields_iface(node, ast, fmt_result,
+                                      fmt_func.F_result, result_typemap,
+                                      "function")
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
+
+        ## C wrapper
+#        result_stmt = statements.lookup_local_stmts(
+#            ["c", result_api], result_stmt, node)
+#        func_cursor.stmt = result_stmt
+#        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
+#        self.add_c_helper(result_stmt.c_helper, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+        
+        ## Fortran impl
         fmt_func.F_subprogram = subprogram
 
         result_stmt = statements.lookup_fc_stmts(f_stmts)
@@ -144,11 +224,90 @@ class FillFormat(object):
 #        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
+        # interface
+        r_attrs = ast.declarator.attrs
+        r_meta = ast.declarator.metaattrs
+        result_api = r_meta["api"]
+        sintent = r_meta["intent"]
+        
+        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
+        junk, specialize = statements.lookup_c_statements(ast)
+        sgroup = result_typemap.sgroup
+        spointer = ast.declarator.get_indirect_stmt()
+        c_stmts = ["f", sintent, sgroup, spointer, result_api,
+                   r_meta["deref"], r_attrs["owner"]] + specialize
+        result_stmt = statements.lookup_fc_stmts(c_stmts)
+        result_stmt = statements.lookup_local_stmts(
+            ["c", result_api], result_stmt, node)
+        
+
+        f_args = ast.declarator.params
+        f_index = -1  # index into f_args
         for c_arg in C_node.ast.declarator.params:
             func_cursor.arg = c_arg
             arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf2", util.Scope(fmt_func))
+
+            ## C wrapper
+            arg = c_arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+            c_attrs = declarator.attrs
+            c_meta = declarator.metaattrs
+
+            arg_typemap = arg.typemap  # XXX - look up vector
+            sgroup = arg_typemap.sgroup
+
+#            self.header_impl.add_typemap_list(arg_typemap.impl_header)
+                    
+            arg_typemap, specialize = statements.lookup_c_statements(arg)
+#            header_typedef_nodes[arg_typemap.name] = arg_typemap
+            cxx_local_var = ""
+            sapi = c_meta["api"]
+
+            # regular argument (not function result)
+            arg_call = arg
+            spointer = declarator.get_indirect_stmt()
+            if c_attrs["hidden"] and node._generated:
+                sapi = "hidden"
+            stmts = ["f", c_meta["intent"], sgroup, spointer,
+                     sapi, c_meta["deref"], c_attrs["owner"]] + specialize
+            arg_stmt = statements.lookup_fc_stmts(stmts)
+            func_cursor.stmt = arg_stmt
+            fmt_arg.c_var = arg_name
+            # XXX - order issue - c_var must be set before name_temp_vars,
+            #       but set by set_fmt_fields
+#            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
+#            self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
+#            self.add_c_helper(arg_stmt.c_helper, fmt_arg)
+            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+
+            if arg_stmt.cxx_local_var:
+                # Explicit conversion must be in pre_call.
+                cxx_local_var = arg_stmt.cxx_local_var
+                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+            elif self.language == "c":
+                fmt_arg.cxx_var = fmt_arg.c_var
+            elif arg_typemap.c_to_cxx is None:
+                # Compatible
+                fmt_arg.cxx_var = fmt_arg.c_var
+            else:
+                # convert C argument to C++
+                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var,
+                    params=None,
+                    as_ptr=True,
+                    continuation=True,
+                )
+#                append_format(
+#                    pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+#                )
+#            compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+
+            ## F impl
             fmt_arg.f_var = arg_name
             fmt_arg.fc_var = arg_name
 
@@ -162,8 +321,8 @@ class FillFormat(object):
             junk, specialize = statements.lookup_c_statements(c_arg)
             
             # An argument to the C and Fortran function
-#            f_index += 1
-#            f_arg = f_args[f_index]
+            f_index += 1
+            f_arg = f_args[f_index]
 #            f_declarator = f_arg.declarator
 #            f_name = f_declarator.user_name
 #            f_attrs = f_declarator.attrs
@@ -184,6 +343,12 @@ class FillFormat(object):
             self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
  #           fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+
+            ## interface
+            fmt_arg.i_var = arg_name
+            fmt_arg.f_var = arg_name
+            self.set_fmt_fields_iface(node, c_arg, fmt_arg, arg_name, arg_typemap)
+            self.set_fmt_fields_dimension(cls, node, c_arg, fmt_arg)
         # --- End loop over function parameters
         #####
         func_cursor.arg = None
