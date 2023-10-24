@@ -165,7 +165,7 @@ module scope_mod
         ! ----------------------------------------
         ! Function:  void DataPointer_set_items
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  ns3::DataPointer * SH_this
         ! Attrs:     +intent(inout)

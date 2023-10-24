@@ -238,7 +238,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Statement: f_dtor_void_scalar
+    ! Statement: f_dtor
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -488,7 +488,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_test
     ! Attrs:     +intent(setter)
-    ! Statement: f_setter_void_scalar
+    ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -527,7 +527,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_m_name
     ! Attrs:     +intent(setter)
-    ! Statement: f_setter_void_scalar
+    ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
@@ -648,7 +648,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void allocate
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -669,7 +669,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void free
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! start c_data_free
     interface
         subroutine c_data_free(self) &
@@ -702,7 +702,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Data
     ! Attrs:     +intent(dtor)
-    ! Statement: f_dtor_void_scalar
+    ! Statement: f_dtor
     ! start c_data_dtor
     interface
         subroutine c_data_dtor(self) &
@@ -737,7 +737,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_nitems
     ! Attrs:     +intent(setter)
-    ! Statement: f_setter_void_scalar
+    ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
@@ -776,7 +776,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_items
     ! Attrs:     +intent(setter)
-    ! Statement: f_setter_void_scalar
+    ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(in)+rank(1)
     ! Attrs:     +intent(setter)
@@ -816,7 +816,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void passClassByValue
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
@@ -964,7 +964,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void set_global_flag
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)

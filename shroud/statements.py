@@ -731,23 +731,12 @@ fc_statements = [
         i_arg_names=[],
     ),
     dict(
-        name="f_subroutine_void_scalar_capptr",
-        mixin=[
-            "c_mixin_noargs",
-        ],
-        alias=[
-            "c_subroutine_void_scalar",
-            "c_subroutine_void_scalar_capptr",
-        ],
-    ),
-    dict(
         name="f_subroutine",
         mixin=[
             "c_mixin_noargs",
         ],
         alias=[
             "c_subroutine",
-            "f_subroutine_void_scalar",
         ],
         f_arg_call=[],
         f_call=[
@@ -3070,10 +3059,6 @@ fc_statements = [
             "c_mixin_noargs",
             "f_mixin_function-to-subroutine",
         ],
-        alias=[
-            "f_dtor_void_scalar",  # Used with interface
-            "c_dtor_void_scalar",
-        ],
         lang_c=dict(
             impl_header=["<stddef.h>"],
         ),
@@ -3203,8 +3188,6 @@ fc_statements = [
         mixin=["c_mixin_noargs"],
         alias=[
             "c_setter",
-            "f_setter_void_scalar",  # for interface
-            "c_setter_void_scalar",
         ],
         f_arg_call=[],
         f_call=[

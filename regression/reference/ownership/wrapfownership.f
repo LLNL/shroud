@@ -111,7 +111,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  ~Class1
         ! Attrs:     +intent(dtor)
-        ! Statement: f_dtor_void_scalar
+        ! Statement: f_dtor
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data
@@ -383,7 +383,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  void createClassStatic
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)

@@ -1626,9 +1626,29 @@ rv = .false.
         imports = {}  # indexed as [name]
         stmts_comments = []
 
+        r_attrs = ast.declarator.attrs
+        r_meta = ast.declarator.metaattrs
+        result_api = r_meta["api"]
+        sintent = r_meta["intent"]
+        
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+        if subprogram == "subroutine":
+            # intent will be "subroutine" or "dtor".
+            c_stmts = ["f", sintent]
+        else:
+        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
+            junk, specialize = statements.lookup_c_statements(ast)
+            sgroup = result_typemap.sgroup
+            spointer = ast.declarator.get_indirect_stmt()
+            c_stmts = ["f", sintent, sgroup, spointer, result_api,
+                       r_meta["deref"], r_attrs["owner"]] + specialize
+        result_stmt = statements.lookup_fc_stmts(c_stmts)
+        result_stmt = statements.lookup_local_stmts(
+            ["c", result_api], result_stmt, node)
+        func_cursor.stmt = result_stmt
+            
         if subprogram == "subroutine":
             fmt_func.F_C_subprogram = "subroutine"
         else:
@@ -1642,11 +1662,6 @@ rv = .false.
                                       fmt_func.F_result, result_typemap,
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
-
-        r_attrs = ast.declarator.attrs
-        r_meta = ast.declarator.metaattrs
-        result_api = r_meta["api"]
-        sintent = r_meta["intent"]
 
         if cls:
             is_static = "static" in ast.storage
@@ -1662,17 +1677,6 @@ rv = .false.
                     line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
-
-        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
-        junk, specialize = statements.lookup_c_statements(ast)
-        sgroup = result_typemap.sgroup
-        spointer = ast.declarator.get_indirect_stmt()
-        c_stmts = ["f", sintent, sgroup, spointer, result_api,
-                   r_meta["deref"], r_attrs["owner"]] + specialize
-        result_stmt = statements.lookup_fc_stmts(c_stmts)
-        result_stmt = statements.lookup_local_stmts(
-            ["c", result_api], result_stmt, node)
-        func_cursor.stmt = result_stmt
 
         if options.debug:
             if node._generated_path:

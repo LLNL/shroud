@@ -25,7 +25,7 @@ module wrapped_inner1_mod
         ! ----------------------------------------
         ! Function:  void worker
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine worker() &
                 bind(C, name="WWW_inner1_worker")
             implicit none

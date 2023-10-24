@@ -6,9 +6,6 @@ root
         scalar
           capptr -- f_ctor_shadow_scalar_capptr
     defaulttmp -- c_defaulttmp
-    dtor
-      void
-        scalar -- f_dtor
     function -- c_function
       bool
         scalar -- f_function_bool_scalar
@@ -293,12 +290,7 @@ root
       string
         scalar
           buf -- f_setter_string_scalar_buf
-      void
-        scalar -- f_setter
     subroutine -- f_subroutine
-      void
-        scalar -- f_subroutine_void_scalar_capptr
-          capptr -- f_subroutine_void_scalar_capptr
     test -- c_test
   f
     XXXin
@@ -310,8 +302,6 @@ root
           capptr -- f_ctor_shadow_scalar_capptr
     defaulttmp -- f_defaulttmp
     dtor -- f_dtor
-      void
-        scalar -- f_dtor
     function
       bool
         scalar -- f_function_bool_scalar
@@ -753,8 +743,6 @@ root
         * -- f_setter_struct_*_pointer
           pointer -- f_setter_struct_*_pointer
         ** -- f_setter_struct_*_pointer
-      void
-        scalar -- f_setter
     shared
       function
         string
@@ -766,9 +754,6 @@ root
         scalar -- f_shared_native_scalar
       struct -- f_shared_struct
     subroutine -- f_subroutine
-      void
-        scalar -- f_subroutine
-          capptr -- f_subroutine_void_scalar_capptr
     test -- f_test
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
@@ -797,24 +782,6 @@ c_ctor_shadow_scalar_capptr:
 c_defaulttmp:
   intent: defaulttmp
   name: c_defaulttmp
-  owner: library
-c_dtor_void_scalar:
-  c_call:
-  - delete {CXX_this};
-  - '{C_this}->addr = {nullptr};'
-  c_return_type: void
-  comments:
-  - Call the C wrapper as a subroutine.
-  impl_header:
-  - <cstddef>
-  intent: dtor
-  lang_c:
-    impl_header:
-    - <stddef.h>
-  lang_cxx:
-    impl_header:
-    - <cstddef>
-  name: c_dtor_void_scalar
   owner: library
 c_function:
   intent: function
@@ -3530,23 +3497,9 @@ c_setter_string_scalar_buf:
   intent: setter
   name: c_setter_string_scalar_buf
   owner: library
-c_setter_void_scalar:
-  c_call:
-  - // skip call c_setter
-  intent: setter
-  name: c_setter_void_scalar
-  owner: library
 c_subroutine:
   intent: subroutine
   name: c_subroutine
-  owner: library
-c_subroutine_void_scalar:
-  intent: subroutine
-  name: c_subroutine_void_scalar
-  owner: library
-c_subroutine_void_scalar_capptr:
-  intent: subroutine
-  name: c_subroutine_void_scalar_capptr
   owner: library
 c_test:
   intent: test
@@ -3629,20 +3582,6 @@ f_dtor:
   - <cstddef>
   intent: dtor
   name: f_dtor
-  owner: library
-f_dtor_void_scalar:
-  c_call:
-  - delete {CXX_this};
-  - '{C_this}->addr = {nullptr};'
-  c_return_type: void
-  comments:
-  - Call the C wrapper as a subroutine.
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  impl_header:
-  - <cstddef>
-  intent: dtor
-  name: f_dtor_void_scalar
   owner: library
 f_function_bool_scalar:
   f_need_wrapper: true
@@ -11193,14 +11132,6 @@ f_setter_struct_*_pointer:
   intent: setter
   name: f_setter_struct_*_pointer
   owner: library
-f_setter_void_scalar:
-  c_call:
-  - // skip call c_setter
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  intent: setter
-  name: f_setter_void_scalar
-  owner: library
 f_shared_function_string_*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11271,16 +11202,6 @@ f_subroutine:
   - call {F_C_call}({F_arg_c_call})
   intent: subroutine
   name: f_subroutine
-  owner: library
-f_subroutine_void_scalar:
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  intent: subroutine
-  name: f_subroutine_void_scalar
-  owner: library
-f_subroutine_void_scalar_capptr:
-  intent: subroutine
-  name: f_subroutine_void_scalar_capptr
   owner: library
 f_test:
   intent: test

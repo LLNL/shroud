@@ -73,7 +73,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -106,7 +106,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -139,7 +139,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_z1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -156,7 +156,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void BadFstatements
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine c_bad_fstatements() &
                 bind(C, name="ERR_BadFstatements")
             implicit none
@@ -165,7 +165,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data
         ! Attrs:     +intent(inout)
@@ -181,7 +181,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(0)
         ! Attrs:     +intent(inout)
@@ -197,7 +197,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(1)
         ! Attrs:     +intent(inout)
@@ -213,7 +213,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(2)
         ! Attrs:     +intent(inout)

@@ -68,7 +68,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine XXX_TES_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
@@ -79,7 +79,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine XXX_TES_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data

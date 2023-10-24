@@ -32,7 +32,7 @@ module ns_outer_mod
         ! ----------------------------------------
         ! Function:  void One
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine one() &
                 bind(C, name="NS_outer_One")
             implicit none

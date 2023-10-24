@@ -252,7 +252,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -277,7 +277,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -380,7 +380,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void nested_set_parent
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
         ! Attrs:     +intent(inout)
@@ -418,7 +418,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void nested_set_child
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
         ! Attrs:     +intent(inout)
