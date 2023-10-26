@@ -22,6 +22,7 @@ from yaml.constructor import Constructor
 
 from . import ast
 from . import declast
+from . import fcfmt
 from . import generate
 from . import metadata
 from . import splicer
@@ -536,7 +537,7 @@ def main_with_args(args):
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
 
-        wrapf.FillFormat(newlibrary).fmt_library()
+        fcfmt.FillFormat(newlibrary).fmt_library()
         
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
