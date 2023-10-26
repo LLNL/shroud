@@ -1509,8 +1509,8 @@ rv = .false.
                 fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
-        self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
-                            subprogram, result_typemap)
+        self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,
+                              subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
         fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
@@ -1595,8 +1595,7 @@ rv = .false.
             arg_stmt = statements.lookup_fc_arg_stmt(node, c_arg)
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
-            arg_typemap = self.set_fmt_fields(
-                cls, C_node, f_arg, c_arg, fmt_arg)
+            arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
             self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
             fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)

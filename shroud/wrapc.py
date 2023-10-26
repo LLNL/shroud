@@ -16,6 +16,7 @@ from collections import OrderedDict, namedtuple
 
 from . import error
 from . import declast
+from . import fcfmt
 from . import todict
 from . import statements
 from . import typemap
@@ -36,7 +37,7 @@ cplusplus = CPlusPlus(
     ["", "#ifdef __cplusplus", "}", "#endif"],            # end_extern_c
 )
 
-class Wrapc(util.WrapperMixin):
+class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     """Generate C bindings and Fortran helpers for C++ library.
 
     """
@@ -883,103 +884,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         return need_wrapper
 
-    def set_fmt_fields(self, cls, fcn, ast, ntypemap, fmt, is_func):
-        """
-        Set format fields for ast.
-        Used with arguments and results.
-
-        Args:
-            cls      - ast.ClassNode or None of enclosing class.
-            fcn      - ast.FunctionNode of calling function.
-            ast      - declast.Declaration
-            ntypemap - typemap.Typemap
-            fmt      - scope.Util
-            is_func  - True if function.
-        """
-
-        declarator = ast.declarator
-        if is_func:
-            rootname = fmt.C_result
-        else:
-            rootname = declarator.user_name
-            if ast.const:
-                fmt.c_const = "const "
-            else:
-                fmt.c_const = ""
-            compute_c_deref(ast, None, fmt)
-            fmt.c_type = ntypemap.c_type
-            fmt.cxx_type = ntypemap.cxx_type
-            fmt.sh_type = ntypemap.sh_type
-            fmt.cfi_type = ntypemap.cfi_type
-            fmt.idtor = "0"
-
-            if ntypemap.base != "shadow" and ast.template_arguments:
-                fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
-            
-            if ast.blanknull:
-                # Argument to helper ShroudStrAlloc via attr[blanknull].
-                fmt.c_blanknull = "1"
-        
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        
-        if meta["dimension"]:
-            if cls is not None:
-                parent = cls
-                class_context = wformat("{CXX_this}->", fmt)
-            elif fcn.struct_parent:
-                # struct_parent is set in add_var_getter_setter
-                parent = fcn.struct_parent
-                class_context = wformat("{CXX_this}->", fmt)
-            else:
-                parent = None
-                class_context = ""
-            visitor = ToDimension(parent, fcn, fmt, class_context)
-            visitor.visit(meta["dimension"])
-            fmt.rank = str(visitor.rank)
-            if fmt.rank != "assumed":
-                fmtdim = []
-                for dim in visitor.shape:
-                    fmtdim.append(dim)
-                if fmtdim:
-                    # Multiply dimensions together to get size.
-                    fmt.c_array_size2 = "*\t".join(fmtdim)
-
-                if hasattr(fmt, "c_var_cdesc"):
-                    # array_type is assumed to be c_var_cdesc.
-                    # Assign each rank of dimension.
-                    fmtshape = []
-                    fmtsize = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtshape.append("{}->shape[{}] = {};".format(
-                            fmt.c_var_cdesc, i, dim))
-                        fmtsize.append("{}->shape[{}]".format(
-                            fmt.c_var_cdesc, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtshape)
-                    if fmtsize:
-                        # Multiply extents together to get size.
-                        fmt.c_array_size = "*\t".join(fmtsize)
-                if hasattr(fmt, "c_var_extents"):
-                    # Used with CFI_establish
-                    fmtextent = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtextent.append("{}[{}] = {};\n".format(
-                            fmt.c_var_extents, i, dim))
-                    fmt.c_temp_extents_decl = (
-                        "CFI_index_t {0}[{1}];\n{2}".
-                        format(fmt.c_var_extents, fmt.rank,
-                               "".join(fmtextent)))
-                    # Used with CFI_setpointer to set lower bound to 1.
-                    fmt.c_temp_lower_decl = (
-                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
-                        format(fmt.c_var_lower, fmt.rank,
-                               ",".join(["1" for x in range(visitor.rank)])))
-                    fmt.c_temp_extents_use = fmt.c_var_extents
-                    fmt.c_temp_lower_use = fmt.c_var_lower
-
-        if attrs["len"]:
-            fmt.c_char_len = attrs["len"];
-
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.
         A non-const pointer to cxx_var (which may be same as c_var).
@@ -1105,7 +1009,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 name=fmt_result.cxx_var, params=None, continuation=True
             )
 
-            compute_cxx_deref(
+            fcfmt.compute_cxx_deref(
                 CXX_ast, result_stmt.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
 
@@ -1135,7 +1039,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.add_c_helper(result_stmt.c_helper, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
-        self.set_fmt_fields(cls, node, ast, result_typemap, fmt_result, True)
+        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
 
         stmts_comments = []
         if options.debug:
@@ -1232,7 +1136,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # XXX - order issue - c_var must be set before name_temp_vars,
             #       but set by set_fmt_fields
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-            self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
+            self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
             self.add_c_helper(arg_stmt.c_helper, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
@@ -1258,7 +1162,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 append_format(
                     pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                 )
-            compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+            fcfmt.compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             fmt_arg.stmtc = arg_stmt.name
             notimplemented = notimplemented or arg_stmt.notimplemented
@@ -1699,126 +1603,3 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 ntypemap,
             )
             ntypemap.idtor = fmt.idtor
-
-######################################################################
-
-class ToDimension(todict.PrintNode):
-    """Convert dimension expression to C wrapper code.
-
-    expression has already been checked for errors by generate.check_implied.
-    Convert functions:
-      size  -  PyArray_SIZE
-    """
-
-    def __init__(self, cls, fcn, fmt, context):
-        """
-        cls is the class which contains fcn.  It may also be the
-        struct associated with a getter.  It will be used to find
-        variable names used in dimension expression.
-
-        Args:
-            cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
-            fmt  - util.Scope
-            context - how to access Identifiers in cls.
-                      Different for function arguments and
-                      class/struct members.
-
-        """
-        super(ToDimension, self).__init__()
-        self.cls = cls
-        self.fcn = fcn
-        self.fmt = fmt
-        self.context = context
-
-        self.rank = 0
-        self.shape = []
-
-    def visit_list(self, node):
-        # list of dimension expressions
-        self.rank = len(node)
-        for dim in node:
-            sh = self.visit(dim)
-            self.shape.append(sh)
-
-    def visit_Identifier(self, node):
-        argname = node.name
-        # Look for members of class/struct.
-        if self.cls is not None and argname in self.cls.map_name_to_node:
-            # This name is in the same class as the dimension.
-            # Make name relative to the class.
-            member = self.cls.map_name_to_node[argname]
-            if member.may_have_args():
-                if node.args is None:
-                    print("{} must have arguments".format(argname))
-                else:
-                    return "{}{}({})".format(
-                        self.context, argname, self.comma_list(node.args))
-            else:
-                if node.args is not None:
-                    print("{} must not have arguments".format(argname))
-                else:
-                    return "{}{}".format(self.context, argname)
-        else:
-            deref = ''
-            arg = self.fcn.ast.declarator.find_arg_by_name(argname)
-            if arg:
-                declarator = arg.declarator
-                if declarator.attrs["hidden"]:
-                    # (int *arg +intent(out)+hidden)
-                    # c_out_native_*_hidden creates a local scalar.
-                    deref = ''
-                elif declarator.is_indirect():
-                    # If argument is a pointer, then dereference it.
-                    # i.e.  (int *arg +intent(out))
-                    deref = '*'
-            if node.args is None:
-                return deref + argname  # variable
-            else:
-                return deref + self.param_list(node) # function
-        return "--??--"
-
-    def visit_AssumedRank(self, node):
-        self.rank = "assumed"
-        return "--assumed-rank--"
-        raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
-
-######################################################################
-
-def compute_c_deref(arg, local_var, fmt):
-    """Compute format fields to dereference C argument."""
-    if local_var == "scalar":
-        fmt.c_deref = ""
-        fmt.c_member = "."
-        fmt.c_addr = "&"
-    elif local_var == "pointer":
-        fmt.c_deref = "*"
-        fmt.c_member = "->"
-        fmt.c_addr = ""
-    elif arg.declarator.is_indirect(): #pointer():
-        fmt.c_deref = "*"
-        fmt.c_member = "->"
-        fmt.c_addr = ""
-    else:
-        fmt.c_deref = ""
-        fmt.c_member = "."
-        fmt.c_addr = "&"
-
-def compute_cxx_deref(arg, local_var, fmt):
-    """Compute format fields to dereference C++ variable."""
-    if local_var == "scalar":
-#        fmt.cxx_deref = ""
-        fmt.cxx_member = "."
-        fmt.cxx_addr = "&"
-    elif local_var == "pointer":
-#        fmt.cxx_deref = "*"
-        fmt.cxx_member = "->"
-        fmt.cxx_addr = ""
-    elif arg.declarator.is_pointer():
-#        fmt.cxx_deref = "*"
-        fmt.cxx_member = "->"
-        fmt.cxx_addr = ""
-    else:
-#        fmt.cxx_deref = ""
-        fmt.cxx_member = "."
-        fmt.cxx_addr = "&"
