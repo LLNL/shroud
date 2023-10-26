@@ -392,7 +392,6 @@ class FillFormat(object):
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
-            pass
             rootname = fmt.C_result
         elif subprogram == "function":
             # XXX this also gets set for subroutines

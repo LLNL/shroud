@@ -1505,6 +1505,21 @@ rv = .false.
             fmt_result.fc_var = fmt_func.F_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
 
+        if result_stmt.c_return_type == "void":
+            # Convert C wrapper from function to subroutine.
+            C_subprogram = "subroutine"
+            need_wrapper = True
+        if result_stmt.f_result:
+            if result_stmt.f_result == "subroutine":
+                subprogram = "subroutine"
+                fmt_func.F_subprogram = "subroutine"
+                fmt_func.F_result_clause = ""
+            else:
+                # Change a subroutine into function.
+                fmt_func.F_subprogram = "function"
+                fmt_func.F_result = result_stmt.f_result
+                fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+        
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             subprogram, result_typemap)
@@ -1527,21 +1542,6 @@ rv = .false.
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
 
-        if result_stmt.c_return_type == "void":
-            # Convert C wrapper from function to subroutine.
-            C_subprogram = "subroutine"
-            need_wrapper = True
-        if result_stmt.f_result:
-            if result_stmt.f_result == "subroutine":
-                subprogram = "subroutine"
-                fmt_func.F_subprogram = "subroutine"
-                fmt_func.F_result_clause = ""
-            else:
-                # Change a subroutine into function.
-                fmt_func.F_subprogram = "function"
-                fmt_func.F_result = result_stmt.f_result
-                fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-        
         if cls:
             need_wrapper = True
             is_static = "static" in ast.storage
