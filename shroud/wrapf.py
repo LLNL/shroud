@@ -119,7 +119,8 @@ class FillFormat(object):
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf2", util.Scope(fmt_func))
-
+        result_stmt = statements.lookup_fc_function(node)
+        
         # wrap c
         result_api = r_meta["api"]
         result_is_const = ast.const
@@ -128,23 +129,10 @@ class FillFormat(object):
         if subprogram == "subroutine":
             # C wrapper
             fmt_pattern = fmt_func
-            # intent will be "subroutine", "dtor", "setter"
-            stmts = ["f", sintent]
-            result_stmt = statements.lookup_fc_stmts(stmts)
-            # Fortran impl
-            # intent will be "subroutine" or "dtor".
-            f_stmts = ["f", sintent]
             # interface
             fmt_func.F_C_subprogram = "subroutine"
         else:
             ## C wrapper
-            spointer = declarator.get_indirect_stmt()
-            # intent will be "function", "ctor", "getter"
-            junk, specialize = statements.lookup_c_statements(ast)
-            stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                     result_api, r_meta["deref"], r_attrs["owner"]] + specialize
-            result_stmt = statements.lookup_fc_stmts(stmts)
-
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
@@ -184,11 +172,6 @@ class FillFormat(object):
             fmt_result.f_var = fmt_func.F_result
             fmt_result.fc_var = fmt_func.F_result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            sgroup = result_typemap.sgroup
-            spointer = C_node.ast.declarator.get_indirect_stmt()
-            junk, specialize = statements.lookup_c_statements(ast)
-            f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
-                       r_meta["deref"], r_attrs["owner"]] + specialize
             ## interface
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
@@ -211,8 +194,6 @@ class FillFormat(object):
         
         ## Fortran impl
         fmt_func.F_subprogram = subprogram
-
-        result_stmt = statements.lookup_fc_stmts(f_stmts)
         result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
@@ -230,13 +211,6 @@ class FillFormat(object):
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
         
-        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
-        junk, specialize = statements.lookup_c_statements(ast)
-        sgroup = result_typemap.sgroup
-        spointer = ast.declarator.get_indirect_stmt()
-        c_stmts = ["f", sintent, sgroup, spointer, result_api,
-                   r_meta["deref"], r_attrs["owner"]] + specialize
-        result_stmt = statements.lookup_fc_stmts(c_stmts)
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
         
@@ -1634,16 +1608,7 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        if subprogram == "subroutine":
-            # intent will be "subroutine" or "dtor".
-            c_stmts = ["f", sintent]
-        else:
-            junk, specialize = statements.lookup_c_statements(ast)
-            sgroup = result_typemap.sgroup
-            spointer = ast.declarator.get_indirect_stmt()
-            c_stmts = ["f", sintent, sgroup, spointer, result_api,
-                       r_meta["deref"], r_attrs["owner"]] + specialize
-        result_stmt = statements.lookup_fc_stmts(c_stmts)
+        result_stmt = statements.lookup_fc_function(node)
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
         func_cursor.stmt = result_stmt
@@ -1993,16 +1958,7 @@ rv = .false.
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        if subprogram == "subroutine":
-            # intent will be "subroutine" or "dtor".
-            f_stmts = ["f", sintent]
-        else:
-            sgroup = result_typemap.sgroup
-            spointer = C_node.ast.declarator.get_indirect_stmt()
-            junk, specialize = statements.lookup_c_statements(ast)
-            f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
-                       r_meta["deref"], r_attrs["owner"]] + specialize
-        result_stmt = statements.lookup_fc_stmts(f_stmts)
+        result_stmt = statements.lookup_fc_function(node)
         result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt

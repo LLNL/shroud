@@ -1064,19 +1064,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         header_typedef_nodes = OrderedDict()
 
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-
-        sintent = r_meta["intent"]
-        if C_subprogram == "subroutine":
-            # intent will be "subroutine", "dtor", "setter"
-            stmts = ["f", sintent]
-        else:
-            #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
-            spointer = declarator.get_indirect_stmt()
-            # intent will be "function", "ctor", "getter"
-            junk, specialize = statements.lookup_c_statements(ast)
-            stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                     result_api, r_meta["deref"], r_attrs["owner"]] + specialize
-        result_stmt = statements.lookup_fc_stmts(stmts)
+        result_stmt = statements.lookup_fc_function(node)
 
         if CXX_subprogram == "subroutine":
             fmt_pattern = fmt_func

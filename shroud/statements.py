@@ -86,7 +86,29 @@ def lookup_fc_stmts(path):
         stmt = fc_dict.get("f_mixin_unknown")
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
-        
+
+def lookup_fc_function(node):
+    """Lookup the statements for a function."""
+    ast = node.ast
+    declarator = ast.declarator
+    subprogram = declarator.get_subprogram()
+    r_meta = declarator.metaattrs
+    sintent = r_meta["intent"]
+    if subprogram == "subroutine":
+        # intent will be "subroutine", "dtor", "setter"
+        stmts = ["f", sintent]
+        result_stmt = lookup_fc_stmts(stmts)
+    else:
+        r_attrs = declarator.attrs
+        result_typemap = ast.typemap
+        spointer = declarator.get_indirect_stmt()
+        # intent will be "function", "ctor", "getter"
+        junk, specialize = lookup_c_statements(ast)
+        stmts = ["f", sintent, result_typemap.sgroup, spointer,
+                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
+    result_stmt = lookup_fc_stmts(stmts)
+    return result_stmt
+
 def compute_name(path, char="_"):
     """
     Compute a name from a list of components.
