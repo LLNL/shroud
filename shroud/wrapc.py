@@ -1205,8 +1205,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             cxx_local_var = ""
             hidden = c_attrs["hidden"] and node._generated
 
-            # regular argument (not function result)
-            arg_call = arg
             arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
             fmt_arg.c_var = arg_name
@@ -1265,31 +1263,29 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 fmt_arg, arg_stmt, pre_call, post_call, need_wrapper
             )
 
-            if arg_call:
-                # Collect arguments to pass to wrapped function.
-                # Skips result_as_arg argument.
-                if arg_stmt.c_arg_call:
-                    for arg_call in arg_stmt.c_arg_call:
-                        append_format(call_list, arg_call, fmt_arg)
-                elif cxx_local_var == "scalar":
-                    if declarator.is_pointer():
-                        call_list.append("&" + fmt_arg.cxx_var)
-                    else:
-                        call_list.append(fmt_arg.cxx_var)
-                elif cxx_local_var == "pointer":
-                    if declarator.is_pointer():
-                        call_list.append(fmt_arg.cxx_var)
-                    else:
-                        call_list.append("*" + fmt_arg.cxx_var)
-                elif declarator.is_reference():
-                    # reference to scalar  i.e. double &max
-                    # void tutorial::getMinMax(int &min);
-                    # wrapper(int *min) {
-                    #   tutorial::getMinMax(*min);
-                    #}
-                    call_list.append("*" + fmt_arg.cxx_var)
+            # Collect arguments to pass to wrapped function.
+            if arg_stmt.c_arg_call:
+                for arg_call in arg_stmt.c_arg_call:
+                    append_format(call_list, arg_call, fmt_arg)
+            elif cxx_local_var == "scalar":
+                if declarator.is_pointer():
+                    call_list.append("&" + fmt_arg.cxx_var)
                 else:
                     call_list.append(fmt_arg.cxx_var)
+            elif cxx_local_var == "pointer":
+                if declarator.is_pointer():
+                    call_list.append(fmt_arg.cxx_var)
+                else:
+                    call_list.append("*" + fmt_arg.cxx_var)
+            elif declarator.is_reference():
+                # reference to scalar  i.e. double &max
+                # void tutorial::getMinMax(int &min);
+                # wrapper(int *min) {
+                #   tutorial::getMinMax(*min);
+                #}
+                call_list.append("*" + fmt_arg.cxx_var)
+            else:
+                call_list.append(fmt_arg.cxx_var)
 
         # --- End loop over function parameters
         func_cursor.arg = None

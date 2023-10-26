@@ -1567,25 +1567,6 @@ class Declaration(Node):
         new.declarator.typemap = new.declarator.typemap
         return new
 
-    def set_return_to_void(self):
-        """Change function to void"""
-        self.specifier = ["void"]
-        self.typemap = typemap.void_typemap
-        self.const = False
-        self.volatile = False
-        self.declarator.pointer = []
-        self.declarator.typemap = typemap.void_typemap
-        self.template_arguments = []
-
-    def result_as_arg(self, name):
-        """Pass the function result as an argument.
-        Change function result to 'void'.
-        """
-        newarg = self._as_arg(name)
-        self.declarator.params.append(newarg)
-        self.set_return_to_void()
-        return newarg
-
     def instantiate(self, node):
         """Instantiate a template argument.
         node - Declaration node of template argument.
