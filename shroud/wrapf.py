@@ -1638,7 +1638,6 @@ rv = .false.
             # intent will be "subroutine" or "dtor".
             c_stmts = ["f", sintent]
         else:
-        # TTT - avoid c_subroutine_void_scalar and c_setter_void_scalars
             junk, specialize = statements.lookup_c_statements(ast)
             sgroup = result_typemap.sgroup
             spointer = ast.declarator.get_indirect_stmt()
@@ -1998,20 +1997,21 @@ rv = .false.
             # intent will be "subroutine" or "dtor".
             f_stmts = ["f", sintent]
         else:
-            fmt_result.f_var = fmt_func.F_result
-            fmt_result.fc_var = fmt_func.F_result
-            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.declarator.get_indirect_stmt()
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, r_meta["api"],
                        r_meta["deref"], r_attrs["owner"]] + specialize
-        fmt_func.F_subprogram = subprogram
-
         result_stmt = statements.lookup_fc_stmts(f_stmts)
         result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
+
+        fmt_func.F_subprogram = subprogram
+        if subprogram == "function":
+            fmt_result.f_var = fmt_func.F_result
+            fmt_result.fc_var = fmt_func.F_result
+            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
