@@ -71,7 +71,6 @@ class FillFormat(object):
 
         cursor.pop_node(node)
 
-# From util.py
     def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):
         """Compute names of temporary C variables.
 
