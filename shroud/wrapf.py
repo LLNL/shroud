@@ -1475,8 +1475,6 @@ rv = .false.
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
         C_subprogram = C_node.ast.declarator.get_subprogram()
-        is_ctor = declarator.is_ctor()
-        is_static = False
 
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
@@ -1544,6 +1542,7 @@ rv = .false.
 
         if cls:
             need_wrapper = True
+            is_ctor = declarator.is_ctor()
             is_static = "static" in ast.storage
             if is_ctor or is_static:
                 pass
@@ -1557,6 +1556,9 @@ rv = .false.
                 arg_c_call.append(
                     wformat("{F_this}%{F_derived_member}", fmt_func)
                 )
+        else:
+            is_ctor = False
+            is_static = False
 
         # Fortran and C arguments may have different types (fortran generic)
         #
