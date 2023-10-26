@@ -1472,7 +1472,7 @@ rv = .false.
         declarator = ast.declarator
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        C_subprogram = C_node.ast.declarator.get_subprogram()
+        C_subprogram = subprogram
 
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
