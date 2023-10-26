@@ -1197,23 +1197,17 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             c_meta = declarator.metaattrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
-            sgroup = arg_typemap.sgroup
 
             self.header_impl.add_typemap_list(arg_typemap.impl_header)
                     
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
-            sapi = c_meta["api"]
+            hidden = c_attrs["hidden"] and node._generated
 
             # regular argument (not function result)
             arg_call = arg
-            spointer = declarator.get_indirect_stmt()
-            if c_attrs["hidden"] and node._generated:
-                sapi = "hidden"
-            stmts = ["f", c_meta["intent"], sgroup, spointer,
-                     sapi, c_meta["deref"], c_attrs["owner"]] + specialize
-            arg_stmt = statements.lookup_fc_stmts(stmts)
+            arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
             fmt_arg.c_var = arg_name
             # XXX - order issue - c_var must be set before name_temp_vars,
@@ -1256,7 +1250,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
 
-            if sapi != "hidden":
+            if not hidden:
                 self.build_proto_list(
                     fmt_arg,
                     arg,

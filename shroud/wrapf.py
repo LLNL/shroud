@@ -1680,8 +1680,6 @@ rv = .false.
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
-            arg_typemap = arg.typemap
-            sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.i_var = arg_name
             fmt_arg.f_var = arg_name
@@ -1696,11 +1694,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            spointer = declarator.get_indirect_stmt()
-            c_stmts = ["f", intent, sgroup, spointer,
-                       meta["api"], meta["deref"], attrs["owner"]]
-            c_stmts.extend(specialize)
-            arg_stmt = statements.lookup_fc_stmts(c_stmts)
+            arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
 
             if options.debug:
@@ -2043,12 +2037,12 @@ rv = .false.
             c_declarator = c_arg.declarator
             c_attrs = c_declarator.attrs
             c_meta = c_declarator.metaattrs
-            hidden = c_attrs["hidden"]
-            intent = c_meta["intent"]
+            if c_attrs["hidden"]:
+                # Argument is not passed into Fortran.
+                # hidden value is only in the C wrapper.
+                continue
             optattr = False
 
-            junk, specialize = statements.lookup_c_statements(c_arg)
-            
             # An argument to the C and Fortran function
             f_index += 1
             f_arg = f_args[f_index]
@@ -2056,15 +2050,7 @@ rv = .false.
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
 
-            c_sgroup = c_arg.typemap.sgroup
-            c_spointer = c_declarator.get_indirect_stmt()
-            # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
-            # Fortran need to know how the C function is being called.
-            f_stmts = ["f", intent, c_sgroup, c_spointer, c_meta["api"],
-                       c_meta["deref"], c_attrs["owner"]]
-            f_stmts.extend(specialize)
-
-            arg_stmt = statements.lookup_fc_stmts(f_stmts)
+            arg_stmt = statements.lookup_fc_arg_stmt(node, c_arg)
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields(
@@ -2126,10 +2112,6 @@ rv = .false.
                     fileinfo.f_helper[helper] = True
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
-                continue
-            elif hidden:
-                # Argument is not passed into Fortran.
-                # hidden value is used in C wrapper.
                 continue
             elif arg_stmt.f_arg_decl:
                 # Explicit declarations from fc_statements.

@@ -109,6 +109,24 @@ def lookup_fc_function(node):
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
+def lookup_fc_arg_stmt(node, arg):
+    """Lookup the statements for an argument."""
+    declarator = arg.declarator
+    c_attrs = declarator.attrs
+    c_meta = declarator.metaattrs
+    arg_typemap = arg.typemap  # XXX - look up vector
+    sgroup = arg_typemap.sgroup
+    junk, specialize = lookup_c_statements(arg)
+    spointer = declarator.get_indirect_stmt()
+    sapi = c_meta["api"]
+    if c_attrs["hidden"] and node._generated:
+        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+        sapi = "hidden"
+    stmts = ["f", c_meta["intent"], sgroup, spointer,
+             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
+    arg_stmt = lookup_fc_stmts(stmts)
+    return arg_stmt
+
 def compute_name(path, char="_"):
     """
     Compute a name from a list of components.
