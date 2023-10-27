@@ -937,19 +937,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         # C return type
         ast = node.ast
         declarator = ast.declarator
+        C_subprogram = declarator.get_subprogram()
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
-        C_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        result_api = r_meta["api"]
-
-        result_is_const = ast.const
-        is_ctor = CXX_ast.declarator.is_ctor()
-        is_dtor = CXX_ast.declarator.is_dtor()
-        is_static = False
-        is_pointer = CXX_ast.declarator.is_pointer()
-        is_const = declarator.func_const
-        notimplemented = False
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
@@ -957,6 +948,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         result_stmt = statements.lookup_fc_function(node)
+        result_api = r_meta["api"]
         result_stmt = statements.lookup_local_stmts(
             ["c", result_api], result_stmt, node)
         func_cursor.stmt = result_stmt
@@ -988,7 +980,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if result_is_const:
+            if ast.const:
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
@@ -1044,7 +1036,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
         
-        notimplemented = notimplemented or result_stmt.notimplemented
+        notimplemented = result_stmt.notimplemented
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
@@ -1058,10 +1050,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if cls:
             # Add 'this' argument
             need_wrapper = True
+            is_ctor = CXX_ast.declarator.is_ctor()
             is_static = "static" in ast.storage
             if is_ctor:
                 pass
             else:
+                is_const = declarator.func_const
                 if is_const:
                     fmt_func.c_const = "const "
                 else:
