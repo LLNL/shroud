@@ -133,6 +133,9 @@ Additional declarations can be added within the splicer via *f_declare*.
 .. result declaration is added before arguments
    but default declaration are after declarations.
 
+It is also used to declare a result defined with *f_result* when
+converting a subroutine into a function.
+
 f_arg_call
 ^^^^^^^^^^
 
@@ -235,6 +238,9 @@ Can be used to change a subroutine into a function.
 
 In this example, the subroutine is converted into a function
 which will return the number of items copied into the result argument.
+*f_arg_decl* is used to declare the result variable.
+
+.. example from vectors.yaml
 
 .. code-block:: yaml
 
@@ -244,10 +250,10 @@ which will return the number of items copied into the result argument.
           f_result: num
           f_module:
             iso_c_binding: ["C_LONG"]
-          f_declare:
+          f_arg_decl:
           -  "integer(C_LONG) :: num"
           f_post_call:
-          -  "num = Darg%size"
+          -  "num = SHT_arg_cdesc%size"
 
 When set to **subroutine** it will treat the Fortran wrapper as a ``subroutine``.
 Used when the function result is passed as an argument to the Fortran wrapper

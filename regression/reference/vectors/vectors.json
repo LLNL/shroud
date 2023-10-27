@@ -511,11 +511,11 @@
                         "c_return_type": "long"
                     },
                     "f": {
+                        "f_arg_decl": [
+                            "integer(C_LONG) :: {F_result}"
+                        ],
                         "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
-                        ],
-                        "f_declare": [
-                            "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
                             "iso_c_binding": [
@@ -615,11 +615,11 @@
                         "c_return_type": "long"
                     },
                     "f": {
+                        "f_arg_decl": [
+                            "integer(C_LONG) :: {F_result}"
+                        ],
                         "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
-                        ],
-                        "f_declare": [
-                            "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
                             "iso_c_binding": [
@@ -770,7 +770,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "f_declare": [
+                        "f_arg_decl": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {
@@ -862,7 +862,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "f_declare": [
+                        "f_arg_decl": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {

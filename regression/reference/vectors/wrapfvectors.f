@@ -510,9 +510,9 @@ contains
             result(num)
         use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
+        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        integer(C_LONG) :: num
         num = c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
@@ -541,9 +541,9 @@ contains
             result(num)
         use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
+        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num2
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        integer(C_LONG) :: num
         call c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
