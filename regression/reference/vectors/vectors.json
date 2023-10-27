@@ -706,6 +706,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "f_intent": "OUT",
+                        "f_type": "type(C_PTR)",
+                        "f_type_module": "iso_c_binding",
+                        "f_var": "num",
+                        "fc_var": "num",
+                        "sh_type": "SH_TYPE_CPTR",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -952,6 +958,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "f_intent": "OUT",
+                        "f_type": "type(C_PTR)",
+                        "f_type_module": "iso_c_binding",
+                        "f_var": "num",
+                        "fc_var": "num",
+                        "sh_type": "SH_TYPE_CPTR",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }

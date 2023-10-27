@@ -1470,9 +1470,7 @@ rv = .false.
         # Fortran return type
         ast = node.ast
         declarator = ast.declarator
-        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        C_subprogram = subprogram
 
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
@@ -1482,26 +1480,23 @@ rv = .false.
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
 
-        fmt_func.F_subprogram = subprogram
-        if subprogram == "function":
-            fmt_result.f_var = fmt_func.F_result
-            fmt_result.fc_var = fmt_func.F_result
-            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-
+        subprogram = declarator.get_subprogram()
+        C_subprogram = subprogram
         if result_stmt.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
-        if result_stmt.f_result:
-            if result_stmt.f_result == "subroutine":
-                subprogram = "subroutine"
-                fmt_func.F_subprogram = "subroutine"
-                fmt_func.F_result_clause = ""
-            else:
-                # Change a subroutine into function.
-                fmt_func.F_subprogram = "function"
-                fmt_func.F_result = result_stmt.f_result
-                fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            # XXX - reset result_typemap based on c_return_type?
+        if result_stmt.f_result == "subroutine":
+            subprogram = "subroutine"
+        elif result_stmt.f_result is not None:
+            subprogram = "function"
+            fmt_func.F_result = result_stmt.f_result
+        if subprogram == "function":
+            fmt_result.f_var = fmt_func.F_result
+            fmt_result.fc_var = fmt_func.F_result
+            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+        fmt_func.F_subprogram = subprogram
         
         self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,

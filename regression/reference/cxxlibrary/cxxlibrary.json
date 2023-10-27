@@ -1044,7 +1044,6 @@
                             "F_name_function": "declare_0",
                             "F_name_generic": "declare",
                             "F_name_impl": "class1_declare_0",
-                            "F_result_clause": "",
                             "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
@@ -1070,7 +1069,6 @@
                                 "f_type": "type(class1)",
                                 "f_type_module": "cxxlibrary_mod",
                                 "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1419,15 +1417,12 @@
                             "F_name_function": "declare_1_int",
                             "F_name_generic": "declare",
                             "F_name_impl": "class1_declare_1_int",
-                            "F_result_clause": "",
                             "F_subprogram": "subroutine",
                             "function_name": "declare",
                             "function_suffix": "_1_int"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
                                 "stmtf": "f_function_shadow_*_this"
                             }
                         }
@@ -1520,15 +1515,12 @@
                             "F_name_function": "declare_1_long",
                             "F_name_generic": "declare",
                             "F_name_impl": "class1_declare_1_long",
-                            "F_result_clause": "",
                             "F_subprogram": "subroutine",
                             "function_name": "declare",
                             "function_suffix": "_1_long"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
                                 "stmtf": "f_function_shadow_*_this"
                             }
                         }
