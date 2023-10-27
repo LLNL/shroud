@@ -10,6 +10,7 @@ Fill the fmtdict for C and Fortran wrappers.
 
 from . import error
 from . import todict
+from . import whelpers
 from .util import wformat, append_format
 
 # convert rank to f_assumed_shape.
@@ -335,6 +336,36 @@ class FillFormat(object):
             if f_attrs["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
+
+    def apply_helpers_from_stmts(self, node, stmt, fmt):
+        node_helpers = node.helpers.setdefault("c", {})
+        add_c_helper(node_helpers, stmt.c_helper, fmt)
+        node_helpers = node.helpers.setdefault("f", {})
+        add_f_helper(node_helpers, stmt.f_helper, fmt)
+        
+def add_c_helper(node_helpers, helpers, fmt):
+    """Add a list of C helpers."""
+    for c_helper in helpers:
+        helper = wformat(c_helper, fmt)
+        if helper not in whelpers.CHelpers:
+            error.get_cursor().warning("No such c_helper '{}'".format(helper))
+        else:
+            node_helpers[helper] = True
+
+def add_f_helper(node_helpers, helpers, fmt):
+    """Add a list of Fortran helpers.
+    Add fmt.fhelper_X for use by pre_call and post_call.
+    """
+    for f_helper in helpers:
+        helper = wformat(f_helper, fmt)
+        if helper not in whelpers.FHelpers:
+            error.get_cursor().warning("No such f_helper '{}'".format(helper))
+        else:
+            node_helpers[helper] = True
+            name = whelpers.FHelpers[helper].get("name")
+            if name:
+                setattr(fmt, "f_helper_" + helper, name)
+
 
 ######################################################################
 

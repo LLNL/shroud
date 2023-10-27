@@ -1502,8 +1502,10 @@ rv = .false.
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
-        fileinfo.apply_helpers_from_stmts(result_stmt, fmt_result)
+        self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+
+        fileinfo.apply_helpers_from_stmts(node)
 
         stmts_comments = []
         if options.debug:
@@ -1591,9 +1593,11 @@ rv = .false.
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
             self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
-            fileinfo.apply_helpers_from_stmts(arg_stmt, fmt_arg)
+            self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
+            fileinfo.apply_helpers_from_stmts(node)
+            
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
 
@@ -2207,33 +2211,14 @@ class ModuleInfo(object):
 
         output.append(-1)
         output.append("")
-
-    def apply_helpers_from_stmts(self, stmt, fmt):
-        self.add_c_helper(stmt.c_helper, fmt)
-        self.add_f_helper(stmt.f_helper, fmt)
         
-    def add_c_helper(self, helpers, fmt):
-        """Add a list of C helpers."""
-        for c_helper in helpers:
-            helper = wformat(c_helper, fmt)
-            if helper not in whelpers.CHelpers:
-                error.get_cursor().warning("No such c_helper '{}'".format(helper))
-            else:
-                self.c_helper[helper] = True
+    def apply_helpers_from_stmts(self, node):
+        self.c_helper.update(node.helpers.get("c", {}))
+        self.f_helper.update(node.helpers.get("f", {}))
 
     def add_f_helper(self, helpers, fmt):
-        """Add a list of Fortran helpers.
-        Add fmt.fhelper_X for use by pre_call and post_call.
-        """
-        for f_helper in helpers:
-            helper = wformat(f_helper, fmt)
-            if helper not in whelpers.FHelpers:
-                error.get_cursor().warning("No such f_helper '{}'".format(helper))
-            else:
-                self.f_helper[helper] = True
-                name = whelpers.FHelpers[helper].get("name")
-                if name:
-                    setattr(fmt, "f_helper_" + helper, name)
+        """Add a list of Fortran helpers"""
+        fcfmt.add_f_helper(self.f_helper, helpers, fmt)
         
 ######################################################################
 

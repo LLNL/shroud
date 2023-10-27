@@ -461,6 +461,14 @@ class ToDict(visitor.Visitor):
         if hasattr(node, "fmtdict2"):
             d["zz_fmtdict2"] = self.visit(node.fmtdict2)
 
+        if node.helpers:
+            helpers = {}
+            for key, values in node.helpers.items():
+                if values:
+                    helpers[key] = list(values.keys())
+#            if helpers:
+#                d["helpers"] = self.visit(helpers)
+
         return d
 
     def visit_EnumNode(self, node):

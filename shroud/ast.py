@@ -1433,6 +1433,14 @@ class FunctionNode(AstNode):
     fortran_generic = [ FortranGeneric('double arg'),
                         FortranGeneric('float arg') ]
 
+    A list of helpers for the function derived from statements.
+    helpers = {
+      'c': {
+            name = True,
+           }
+      'f': {},
+    }
+
     """
 
     def __init__(
@@ -1486,6 +1494,7 @@ class FunctionNode(AstNode):
         self.doxygen = kwargs.get("doxygen", {})
         self.fortran_generic = kwargs.get("fortran_generic", [])
         self.return_this = kwargs.get("return_this", False)
+        self.helpers = {}
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
