@@ -43,6 +43,18 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "string_to_cdesc",
+                        "copy_string"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
@@ -137,6 +149,18 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "string_to_cdesc",
+                        "copy_string"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",

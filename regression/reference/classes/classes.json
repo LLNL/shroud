@@ -920,6 +920,11 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
+                        "helpers": {
+                            "c": [
+                                "char_len_trim"
+                            ]
+                        },
                         "name": "returnThisBuffer",
                         "options": {
                             "wrap_lua": false,
@@ -1095,6 +1100,11 @@
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
+                        },
+                        "helpers": {
+                            "c": [
+                                "char_len_trim"
+                            ]
                         },
                         "name": "returnThisBuffer",
                         "options": {
@@ -1364,6 +1374,18 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "string_to_cdesc",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string",
+                                "capsule_dtor"
+                            ]
+                        },
                         "name": "getName",
                         "options": {},
                         "wrap": {
@@ -1477,6 +1499,18 @@
                         "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
+                        },
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "string_to_cdesc",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string",
+                                "capsule_dtor"
+                            ]
                         },
                         "name": "getName",
                         "options": {},
@@ -2050,6 +2084,16 @@
                         },
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void)",
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string"
+                            ]
+                        },
                         "name": "get_m_name",
                         "options": {},
                         "user_fmt": {
@@ -2094,6 +2138,16 @@
                         },
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void)",
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string"
+                            ]
+                        },
                         "name": "get_m_name",
                         "options": {},
                         "splicer_group": "buf",
@@ -2529,6 +2583,18 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "string_to_cdesc",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string",
+                                "capsule_dtor"
+                            ]
+                        },
                         "name": "getName",
                         "options": {},
                         "wrap": {
@@ -2642,6 +2708,18 @@
                         "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
+                        },
+                        "helpers": {
+                            "c": [
+                                "array_context",
+                                "string_to_cdesc",
+                                "copy_string"
+                            ],
+                            "f": [
+                                "array_context",
+                                "copy_string",
+                                "capsule_dtor"
+                            ]
                         },
                         "name": "getName",
                         "options": {},
@@ -3911,6 +3989,15 @@
                         },
                         "decl": "int * get_items()",
                         "declgen": "int * get_items(void)",
+                        "helpers": {
+                            "c": [
+                                "type_defines",
+                                "array_context"
+                            ],
+                            "f": [
+                                "array_context"
+                            ]
+                        },
                         "name": "get_items",
                         "options": {},
                         "user_fmt": {
@@ -3965,6 +4052,15 @@
                         },
                         "decl": "int * get_items()",
                         "declgen": "int * get_items(void)",
+                        "helpers": {
+                            "c": [
+                                "type_defines",
+                                "array_context"
+                            ],
+                            "f": [
+                                "array_context"
+                            ]
+                        },
                         "name": "get_items",
                         "options": {},
                         "splicer_group": "buf",
@@ -5726,6 +5822,11 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
@@ -5838,6 +5939,11 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",

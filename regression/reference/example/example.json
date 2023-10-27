@@ -198,6 +198,11 @@
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
                                         },
+                                        "helpers": {
+                                            "c": [
+                                                "char_len_trim"
+                                            ]
+                                        },
                                         "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
@@ -394,6 +399,11 @@
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
+                                        },
+                                        "helpers": {
+                                            "c": [
+                                                "char_len_trim"
+                                            ]
                                         },
                                         "name": "ctor",
                                         "options": {
@@ -776,6 +786,18 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getNameErrorCheck",
                                         "options": {},
                                         "wrap": {
@@ -889,6 +911,18 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getNameErrorCheck",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -986,6 +1020,11 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string & getNameArg(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "char_copy"
+                                            ]
+                                        },
                                         "name": "getNameArg",
                                         "options": {},
                                         "user_fmt": {
@@ -1103,6 +1142,11 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string & getNameArg(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "char_copy"
+                                            ]
+                                        },
                                         "name": "getNameArg",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -1938,6 +1982,11 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
+                                        "helpers": {
+                                            "c": [
+                                                "char_len_trim"
+                                            ]
+                                        },
                                         "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
@@ -2138,6 +2187,11 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
+                                        "helpers": {
+                                            "c": [
+                                                "char_len_trim"
+                                            ]
+                                        },
                                         "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
@@ -2335,6 +2389,11 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "helpers": {
+                                            "c": [
+                                                "char_copy"
+                                            ]
+                                        },
                                         "name": "getName",
                                         "options": {},
                                         "wrap": {
@@ -2453,6 +2512,11 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "helpers": {
+                                            "c": [
+                                                "char_copy"
+                                            ]
+                                        },
                                         "name": "getName",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -2544,6 +2608,18 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName2",
                                         "options": {},
                                         "wrap": {
@@ -2655,6 +2731,18 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName2",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -2752,6 +2840,18 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName3",
                                         "options": {},
                                         "wrap": {
@@ -2864,6 +2964,18 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName3",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -2960,6 +3072,18 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName4",
                                         "options": {},
                                         "wrap": {
@@ -3070,6 +3194,18 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
+                                        "helpers": {
+                                            "c": [
+                                                "array_context",
+                                                "string_to_cdesc",
+                                                "copy_string"
+                                            ],
+                                            "f": [
+                                                "array_context",
+                                                "copy_string",
+                                                "capsule_dtor"
+                                            ]
+                                        },
                                         "name": "getName4",
                                         "options": {},
                                         "splicer_group": "buf",
@@ -5736,6 +5872,11 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "isNameValid",
                                 "options": {},
                                 "splicer": {
@@ -5926,6 +6067,11 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "isNameValid",
                                 "options": {},
                                 "splicer": {
@@ -6170,6 +6316,11 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "test_names",
                                 "options": {},
                                 "user_fmt": {
@@ -6311,6 +6462,11 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "test_names",
                                 "options": {},
                                 "splicer_group": "buf",
@@ -6439,6 +6595,11 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "test_names",
                                 "options": {},
                                 "user_fmt": {
@@ -6649,6 +6810,11 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
+                                "helpers": {
+                                    "c": [
+                                        "char_len_trim"
+                                    ]
+                                },
                                 "name": "test_names",
                                 "options": {},
                                 "splicer_group": "buf",

@@ -39,6 +39,18 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "string_to_cdesc",
+                        "copy_string"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "getConstStringPtrAlloc",
                 "options": {},
                 "wrap": {
@@ -116,6 +128,18 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "string_to_cdesc",
+                        "copy_string"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "getConstStringPtrAlloc",
                 "options": {},
                 "splicer_group": "buf",

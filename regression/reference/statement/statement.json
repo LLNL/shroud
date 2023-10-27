@@ -127,6 +127,11 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getNameErrorPattern",
                 "options": {},
                 "wrap": {
@@ -209,6 +214,11 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getNameErrorPattern",
                 "options": {},
                 "splicer_group": "buf",

@@ -288,6 +288,15 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_out",
                 "options": {
                     "literalinclude": true,
@@ -361,6 +370,15 @@
                 "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_out",
                 "options": {
@@ -525,6 +543,15 @@
                         "f_result": "num"
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_out_with_num",
                 "options": {
                     "literalinclude": true,
@@ -628,6 +655,15 @@
                         },
                         "f_result": "num"
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_out_with_num",
                 "options": {
@@ -790,6 +826,15 @@
                         "f_result": "num"
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_out_with_num2",
                 "options": {
                     "literalinclude": true,
@@ -881,6 +926,15 @@
                         ],
                         "f_result": "num"
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_out_with_num2",
                 "options": {
@@ -1027,6 +1081,14 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_out_alloc",
                 "options": {
                     "literalinclude": true,
@@ -1103,6 +1165,14 @@
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_out_alloc",
                 "options": {
@@ -1242,6 +1312,17 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "type_defines",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_inout_alloc",
                 "options": {
                     "literalinclude": true,
@@ -1318,6 +1399,17 @@
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "type_defines",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_inout_alloc",
                 "options": {
@@ -1455,6 +1547,17 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "type_defines",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_increment",
                 "options": {
                     "wrap_lua": false,
@@ -1525,6 +1628,17 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "type_defines",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_increment",
                 "options": {
                     "wrap_lua": false,
@@ -1663,6 +1777,15 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "vector_iota_out_d",
                 "options": {
                     "wrap_lua": false
@@ -1735,6 +1858,15 @@
                 "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "vector_iota_out_d",
                 "options": {
@@ -2169,6 +2301,11 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "vector_string_count",
                 "options": {
                     "wrap_python": false
@@ -2242,6 +2379,11 @@
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "vector_string_count",
                 "options": {
@@ -2404,6 +2546,15 @@
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "vector_string_out"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "vector_string_fill",
                 "options": {
                     "wrap_lua": false,
@@ -2478,6 +2629,15 @@
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "vector_string_out"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
                 },
                 "name": "vector_string_fill",
                 "options": {
@@ -2612,6 +2772,18 @@
                 },
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "vector_string_out_len"
+                    ],
+                    "f": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "vector_string_fill_allocatable",
                 "options": {
                     "wrap_lua": false,
@@ -2685,6 +2857,18 @@
                 },
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "vector_string_out_len"
+                    ],
+                    "f": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "vector_string_fill_allocatable",
                 "options": {
                     "wrap_lua": false,
@@ -2827,6 +3011,18 @@
                 },
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "vector_string_out_len"
+                    ],
+                    "f": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "vector_string_fill_allocatable_len",
                 "options": {
                     "wrap_lua": false,
@@ -2901,6 +3097,18 @@
                 },
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1))",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "vector_string_out_len"
+                    ],
+                    "f": [
+                        "array_context",
+                        "vector_string_allocatable",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "vector_string_fill_allocatable_len",
                 "options": {
                     "wrap_lua": false,
@@ -3111,6 +3319,15 @@
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
+                },
                 "name": "ReturnVectorAlloc",
                 "options": {},
                 "wrap": {},
@@ -3179,6 +3396,15 @@
                 "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "copy_array",
+                        "type_defines"
+                    ],
+                    "f": [
+                        "copy_array"
+                    ]
                 },
                 "name": "ReturnVectorAlloc",
                 "options": {},

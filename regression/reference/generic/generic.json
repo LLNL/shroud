@@ -4028,6 +4028,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
+                },
                 "name": "SavePointer2",
                 "options": {},
                 "wrap": {
@@ -4221,6 +4226,11 @@
                             "type = convert_type(type);"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
                 },
                 "name": "SavePointer2",
                 "options": {},
@@ -4437,6 +4447,11 @@
                             "type = convert_type(type);"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
                 },
                 "name": "SavePointer2",
                 "options": {},
@@ -5003,6 +5018,14 @@
                         "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5201,6 +5224,14 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {},
@@ -5311,6 +5342,14 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "splicer_group": "buf",
@@ -5537,6 +5576,14 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {},
@@ -5647,6 +5694,14 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "splicer_group": "buf",

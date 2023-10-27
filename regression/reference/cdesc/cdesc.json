@@ -56,6 +56,15 @@
                 },
                 "decl": "void Rank2In(int *arg +intent(in)+rank(2)+api(cdesc))",
                 "declgen": "void Rank2In(int * arg +api(cdesc)+intent(in)+rank(2))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "Rank2In",
                 "options": {},
                 "wrap": {
@@ -301,6 +310,16 @@
                         "generic": "(double *value+intent(out)+rank(0)+api(cdesc))"
                     }
                 ],
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -479,6 +498,16 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -588,6 +617,16 @@
                 "declgen": "void GetScalar1(std::string & name +intent(in), int * value +api(cdesc)+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
                 },
                 "name": "GetScalar1",
                 "options": {},
@@ -792,6 +831,16 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -901,6 +950,16 @@
                 "declgen": "void GetScalar1(std::string & name +intent(in), double * value +api(cdesc)+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
                 },
                 "name": "GetScalar1",
                 "options": {},
@@ -1498,6 +1557,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
@@ -1593,6 +1657,11 @@
                             "value = c_get_data_{stype}()"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "GetScalar2",
                 "options": {
@@ -1692,6 +1761,11 @@
                             "value = c_get_data_{stype}()"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "GetScalar2",
                 "options": {
@@ -1877,6 +1951,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
@@ -1975,6 +2054,11 @@
                             "value = c_get_data_{stype}()"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "GetScalar2",
                 "options": {

@@ -2249,6 +2249,11 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "passStruct2",
                 "options": {},
                 "wrap": {
@@ -2414,6 +2419,11 @@
                 "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "passStruct2",
                 "options": {},
@@ -3373,6 +3383,11 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
@@ -3583,6 +3598,11 @@
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "returnStructPtr2",
                 "options": {},
@@ -4774,6 +4794,15 @@
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "Cstruct_list_get_ivalue",
                 "options": {},
                 "struct_parent": "Cstruct_list",
@@ -4854,6 +4883,15 @@
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "Cstruct_list_get_ivalue",
                 "options": {},
                 "splicer_group": "buf",
@@ -5197,6 +5235,15 @@
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "Cstruct_list_get_dvalue",
                 "options": {},
                 "struct_parent": "Cstruct_list",
@@ -5277,6 +5324,15 @@
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "Cstruct_list_get_dvalue",
                 "options": {},
                 "splicer_group": "buf",

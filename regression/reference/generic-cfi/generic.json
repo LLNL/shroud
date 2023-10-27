@@ -3959,6 +3959,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
+                },
                 "name": "SavePointer2",
                 "options": {},
                 "wrap": {
@@ -4154,6 +4159,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
+                },
                 "name": "SavePointer2",
                 "options": {},
                 "wrap": {},
@@ -4260,6 +4270,11 @@
                             "type = convert_type(type);"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
                 },
                 "name": "SavePointer2",
                 "options": {},
@@ -4482,6 +4497,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
+                },
                 "name": "SavePointer2",
                 "options": {},
                 "wrap": {},
@@ -4588,6 +4608,11 @@
                             "type = convert_type(type);"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "type_defines"
+                    ]
                 },
                 "name": "SavePointer2",
                 "options": {},

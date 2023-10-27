@@ -436,6 +436,13 @@
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_copy",
+                        "char_free"
+                    ]
+                },
                 "name": "getName",
                 "options": {},
                 "wrap": {
@@ -557,6 +564,13 @@
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_copy",
+                        "char_free"
+                    ]
+                },
                 "name": "getName",
                 "options": {},
                 "splicer_group": "buf",
@@ -1023,6 +1037,11 @@
                 },
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv)",
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "function4",
                 "options": {},
                 "wrap": {
@@ -1175,6 +1194,11 @@
                 },
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv)",
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "function4",
                 "options": {},
                 "splicer_group": "buf",
@@ -1381,6 +1405,12 @@
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_copy",
+                        "char_len_trim"
+                    ]
+                },
                 "name": "TestMultilineSplicer",
                 "options": {},
                 "splicer": {
@@ -1581,6 +1611,12 @@
                 "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_copy",
+                        "char_len_trim"
+                    ]
                 },
                 "name": "TestMultilineSplicer",
                 "options": {},

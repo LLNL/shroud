@@ -2920,6 +2920,11 @@
                         "generic": "(int64_t idx)"
                     }
                 ],
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getGroupName",
                 "options": {
                     "wrap_python": false
@@ -3052,6 +3057,11 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getGroupName",
                 "options": {
                     "wrap_python": false
@@ -3121,6 +3131,11 @@
                 "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
+                },
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
                 },
                 "name": "getGroupName",
                 "options": {
@@ -3273,6 +3288,11 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getGroupName",
                 "options": {
                     "wrap_python": false
@@ -3342,6 +3362,11 @@
                 "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
+                },
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
                 },
                 "name": "getGroupName",
                 "options": {
@@ -3485,6 +3510,15 @@
                 },
                 "decl": "nested * nested_get_parent(nested *SH_this)",
                 "declgen": "nested * nested_get_parent(nested * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "nested_get_parent",
                 "options": {},
                 "struct_parent": "nested",
@@ -3801,6 +3835,15 @@
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this)",
                 "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "nested_get_child",
                 "options": {},
                 "struct_parent": "nested",
@@ -3878,6 +3921,15 @@
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this)",
                 "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "nested_get_child",
                 "options": {},
                 "splicer_group": "buf",

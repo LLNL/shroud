@@ -466,8 +466,8 @@ class ToDict(visitor.Visitor):
             for key, values in node.helpers.items():
                 if values:
                     helpers[key] = list(values.keys())
-#            if helpers:
-#                d["helpers"] = self.visit(helpers)
+            if helpers:
+                d["helpers"] = self.visit(helpers)
 
         return d
 

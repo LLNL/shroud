@@ -3376,6 +3376,12 @@
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_array_alloc",
+                        "char_array_free"
+                    ]
+                },
                 "name": "acceptCharArrayIn",
                 "options": {},
                 "wrap": {
@@ -3503,6 +3509,12 @@
                 "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_array_alloc",
+                        "char_array_free"
+                    ]
                 },
                 "name": "acceptCharArrayIn",
                 "options": {},
@@ -8413,6 +8425,12 @@
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_function_native_*_raw.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_free"
+                    ]
+                },
                 "name": "returnIntRawWithArgs",
                 "options": {
                     "wrap_python": false
@@ -8541,6 +8559,12 @@
                 "declgen": "int * returnIntRawWithArgs(const char * name) +deref(raw)",
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_function_native_*_raw.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_free"
+                    ]
                 },
                 "name": "returnIntRawWithArgs",
                 "options": {

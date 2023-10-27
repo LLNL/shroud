@@ -2282,6 +2282,12 @@
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_array_alloc",
+                        "char_array_free"
+                    ]
+                },
                 "name": "acceptCharArrayIn",
                 "options": {},
                 "wrap": {
@@ -2409,6 +2415,12 @@
                 "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_array_alloc",
+                        "char_array_free"
+                    ]
                 },
                 "name": "acceptCharArrayIn",
                 "options": {},
@@ -2722,6 +2734,14 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
@@ -2825,6 +2845,14 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
@@ -2950,6 +2978,14 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -3063,6 +3099,14 @@
                 "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
                 },
                 "name": "getPtrToFixedArray",
                 "options": {},
@@ -3216,6 +3260,14 @@
                 "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
                 },
                 "name": "getPtrToDynamicArray",
                 "options": {},
@@ -3378,6 +3430,14 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToDynamicArray",
                 "options": {},
                 "splicer_group": "buf",
@@ -3536,6 +3596,14 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToFuncArray",
                 "options": {},
                 "wrap": {
@@ -3650,6 +3718,14 @@
                 "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
                 },
                 "name": "getPtrToFuncArray",
                 "options": {},
@@ -3774,6 +3850,14 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
@@ -3878,6 +3962,14 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
@@ -4001,6 +4093,14 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -4113,6 +4213,14 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "splicer_group": "buf",
@@ -4264,6 +4372,14 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
@@ -4423,6 +4539,14 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "splicer_group": "buf",
@@ -5393,6 +5517,17 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "getAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -5509,6 +5644,17 @@
                 "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
                 },
                 "name": "getAllocToFixedArray",
                 "options": {
@@ -6299,6 +6445,14 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -6384,6 +6538,14 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "splicer_group": "buf",
@@ -6565,6 +6727,14 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -6651,6 +6821,14 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "splicer_group": "buf",
@@ -7138,6 +7316,17 @@
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -7226,6 +7415,17 @@
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false

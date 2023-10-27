@@ -1037,6 +1037,11 @@
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "Function4a",
                 "options": {},
                 "wrap": {
@@ -1265,6 +1270,11 @@
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "Function4a",
                 "options": {},
                 "splicer_group": "buf",
@@ -1549,6 +1559,13 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_copy",
+                        "char_free"
+                    ]
+                },
                 "name": "passCharPtrInOut",
                 "options": {},
                 "wrap": {
@@ -1671,6 +1688,13 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_alloc",
+                        "char_copy",
+                        "char_free"
+                    ]
+                },
                 "name": "passCharPtrInOut",
                 "options": {},
                 "splicer_group": "buf",
@@ -1788,6 +1812,11 @@
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "returnOneName",
                 "options": {
@@ -1914,6 +1943,11 @@
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "returnOneName",
                 "options": {
@@ -2052,6 +2086,11 @@
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "returnTwoNames",
                 "options": {},
@@ -2245,6 +2284,11 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "returnTwoNames",
                 "options": {},
                 "splicer_group": "buf",
@@ -2405,6 +2449,11 @@
                 "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "ImpliedTextLen",
                 "options": {
@@ -2590,6 +2639,11 @@
                 "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "ImpliedTextLen",
                 "options": {
@@ -3698,6 +3752,11 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "bindC2",
                 "options": {
                     "wrap_python": false
@@ -3804,6 +3863,11 @@
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "bindC2",
                 "options": {
@@ -4343,6 +4407,11 @@
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "passAssumedTypeBuf",
                 "options": {
                     "wrap_python": false
@@ -4510,6 +4579,11 @@
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "passAssumedTypeBuf",
                 "options": {
@@ -5286,6 +5360,11 @@
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
+                },
                 "name": "callback3",
                 "options": {
                     "wrap_lua": false,
@@ -5545,6 +5624,11 @@
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "char_blank_fill"
+                    ]
                 },
                 "name": "callback3",
                 "options": {
