@@ -337,6 +337,10 @@ class FillFormat(object):
                 # Use elem_len from the C wrapper.
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
+    def apply_c_helpers_from_stmts(self, node, stmt, fmt):
+        node_helpers = node.helpers.setdefault("c", {})
+        add_c_helper(node_helpers, stmt.c_helper, fmt)
+
     def apply_helpers_from_stmts(self, node, stmt, fmt):
         node_helpers = node.helpers.setdefault("c", {})
         add_c_helper(node_helpers, stmt.c_helper, fmt)
@@ -351,6 +355,9 @@ def add_c_helper(node_helpers, helpers, fmt):
             error.get_cursor().warning("No such c_helper '{}'".format(helper))
         else:
             node_helpers[helper] = True
+            name = whelpers.CHelpers[helper].get("name")
+            if name:
+                setattr(fmt, "c_helper_" + helper, name)
 
 def add_f_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran helpers.

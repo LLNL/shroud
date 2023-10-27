@@ -227,18 +227,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self._pop_splicer("function")
         self.cursor.pop_phase("Wrapc.wrap_function")
 
-    def add_c_helper(self, helpers, fmt):
-        """Add a list of C helpers."""
-        for c_helper in helpers:
-            helper = wformat(c_helper, fmt)
-            if helper not in whelpers.CHelpers:
-                error.get_cursor().warning("No such c_helper '{}'".format(helper))
-            else:
-                self.c_helper[helper] = True
-                name = whelpers.CHelpers[helper].get("name")
-                if name:
-                    setattr(fmt, "c_helper_" + helper, name)
-        
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
 
@@ -1036,11 +1024,13 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             )
             
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
-        self.add_c_helper(result_stmt.c_helper, fmt_result)
+        self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
         self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
 
+        self.c_helper.update(node.helpers.get("c", {}))
+        
         stmts_comments = []
         if options.debug:
             if node._generated_path:
@@ -1137,7 +1127,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             #       but set by set_fmt_fields
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
             self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
-            self.add_c_helper(arg_stmt.c_helper, fmt_arg)
+            self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
             statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
             if arg_stmt.cxx_local_var:
@@ -1163,6 +1153,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                 )
             fcfmt.compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+
+            self.c_helper.update(node.helpers.get("c", {}))
 
             fmt_arg.stmtc = arg_stmt.name
             notimplemented = notimplemented or arg_stmt.notimplemented
