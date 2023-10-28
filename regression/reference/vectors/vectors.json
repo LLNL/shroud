@@ -522,13 +522,11 @@
                         ],
                         "c_return_type": "long"
                     },
-                    "c_buf": {
+                    "f": {
                         "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "c_return_type": "long"
-                    },
-                    "f": {
+                        "c_return_type": "long",
                         "f_arg_decl": [
                             "integer(C_LONG) :: {F_result}"
                         ],
@@ -635,13 +633,11 @@
                         ],
                         "c_return_type": "long"
                     },
-                    "c_buf": {
+                    "f": {
                         "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "c_return_type": "long"
-                    },
-                    "f": {
+                        "c_return_type": "long",
                         "f_arg_decl": [
                             "integer(C_LONG) :: {F_result}"
                         ],

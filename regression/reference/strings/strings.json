@@ -3661,7 +3661,7 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fstatements": {
-                    "c_buf": {
+                    "f": {
                         "c_final": [
                             "delete {cxx_var};"
                         ]
@@ -3776,7 +3776,7 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fstatements": {
-                    "c_buf": {
+                    "f": {
                         "c_final": [
                             "delete {cxx_var};"
                         ]

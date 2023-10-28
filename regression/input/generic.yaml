@@ -107,6 +107,15 @@ declarations:
 - decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
   fstatements:
     c:
+      # The void * case
+      c_helper:
+      - type_defines
+      c_pre_call:
+      - // Test adding a blank line below.
+      -
+      - type = convert_type(type);
+    f:
+      # The fortran_generic case
       c_helper:
       - type_defines
       c_pre_call:

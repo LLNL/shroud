@@ -1142,8 +1142,7 @@ rv = .false.
         # compute first to get order of arguments correct.
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         result_stmt = statements.lookup_fc_function(node)
-        result_stmt = statements.lookup_local_stmts(
-            ["c", result_api], result_stmt, node)
+        result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         func_cursor.stmt = result_stmt
             
         if subprogram == "subroutine":
@@ -1476,7 +1475,7 @@ rv = .false.
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         result_stmt = statements.lookup_fc_function(node)
-        result_stmt = statements.lookup_local_stmts("f", result_stmt, node)
+        result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
 

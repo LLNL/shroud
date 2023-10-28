@@ -180,6 +180,12 @@ Unreleased
 
 .. The fmtc and fmtf dictionaries will be merged and needed unique names
    instead of overloading c_var.
+
+.. As part of creating better C specific wrappers (not intented to be
+   called by Fortran, but need a modified API. For example, returning
+   vectors), the fstatements field of a function in the YAML file has
+   changed.  `c_buf` and `f` fields need to be merged.  A fstatements
+   now has both the C and Fortran variables.
   
 New Features
 ^^^^^^^^^^^^

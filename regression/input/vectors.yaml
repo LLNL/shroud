@@ -52,11 +52,10 @@ declarations:
       c_return_type: long
       c_return:
       - return SHT_arg_cdesc->size;
-    c_buf:
+    f:
       c_return_type: long
       c_return:
       - return SHT_arg_cdesc->size;
-    f:
       f_result: num
       f_module:
         iso_c_binding: ["C_LONG"]

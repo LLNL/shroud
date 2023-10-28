@@ -948,9 +948,15 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
         result_stmt = statements.lookup_fc_function(node)
+
+        # XXX - this kludge is still a work in progress
+        #  to be replace by better decision when wrapping C vs wrapping Fortran callable C.
         result_api = r_meta["api"]
-        result_stmt = statements.lookup_local_stmts(
-            ["c", result_api], result_stmt, node)
+        if result_api == "buf":
+            result_lang = "f"
+        else:
+            result_lang = "c"
+        result_stmt = statements.lookup_local_stmts([result_lang], result_stmt, node)
         func_cursor.stmt = result_stmt
         fmt_result.stmtc = result_stmt.name
 
