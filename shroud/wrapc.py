@@ -946,9 +946,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        result_stmt = statements.lookup_fc_function(node)
-
         # XXX - this kludge is still a work in progress
         #  to be replace by better decision when wrapping C vs wrapping Fortran callable C.
         result_api = r_meta["api"]
@@ -956,9 +953,18 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             result_lang = "f"
         else:
             result_lang = "c"
+
+        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+#        search, result_stmt = statements.lookup_fc_function_stmt(result_lang, node)
+        search, result_stmt = statements.lookup_fc_function_stmt("f", node)
+
         result_stmt = statements.lookup_local_stmts([result_lang], result_stmt, node)
         func_cursor.stmt = result_stmt
         fmt_result.stmtc = result_stmt.name
+#        if search != result_stmt.name:
+#            print ("XXXX mismatch", search, result_stmt.name)
+#            fmt_result.stmtd = search
+#        fmt_result.stmt_lang_result = result_lang
 
         if CXX_subprogram == "subroutine":
             fmt_pattern = fmt_func
