@@ -955,6 +955,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             result_lang = "c"
 
+        stmt_indexes = []
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
 #        search, result_stmt = statements.lookup_fc_function_stmt(result_lang, node)
         search, result_stmt = statements.lookup_fc_function_stmt("f", node)
@@ -962,6 +963,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         result_stmt = statements.lookup_local_stmts([result_lang], result_stmt, node)
         func_cursor.stmt = result_stmt
         fmt_result.stmtc = result_stmt.name
+        stmt_indexes.append(result_stmt.index)
 #        if search != result_stmt.name:
 #            print ("XXXX mismatch", search, result_stmt.name)
 #            fmt_result.stmtd = search
@@ -1129,6 +1131,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
+            stmt_indexes.append(arg_stmt.index)
             fmt_arg.c_var = arg_name
             # XXX - order issue - c_var must be set before name_temp_vars,
             #       but set by set_fmt_fields
@@ -1344,6 +1347,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             C_force = None
             C_code = pre_call + call_code + post_call_pattern + \
                      post_call + final_code + return_code
+
+        signature = ":".join(stmt_indexes)
+#        if options.debug:
+#            stmts_comments.append("// Signature: " + signature)
 
         if need_wrapper:
             impl = []
