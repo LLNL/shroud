@@ -223,7 +223,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.cursor.push_phase("Wrapc.wrap_function")
         self._push_splicer("function")
         for node in library.functions:
-            self.wrap_function(None, node)
+            if node.wrap.c:
+                self.wrap_function("c", None, node)
         self._pop_splicer("function")
         self.cursor.pop_phase("Wrapc.wrap_function")
 
@@ -725,7 +726,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self._push_splicer("method")
         for method in node.functions:
-            self.wrap_function(node, method)
+            if method.wrap.c:
+                self.wrap_function("c", node, method)
         self._pop_splicer("method")
         cursor.pop_node(node)
 
@@ -893,16 +895,15 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
         
-    def wrap_function(self, cls, node):
+    def wrap_function(self, wlang, cls, node):
         """Wrap a C++ function with C.
 
         Args:
+            wlang - "c" or "f"
             cls  - ast.ClassNode or None for functions.
             node - ast.FunctionNode.
         """
         options = node.options
-        if not node.wrap.c:
-            return
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
