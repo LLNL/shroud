@@ -51,7 +51,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -156,7 +155,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -291,7 +289,6 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtdict": {
@@ -426,7 +423,6 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtargs": {
@@ -575,7 +571,6 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtdict": {
@@ -659,7 +654,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -748,7 +742,6 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
-                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtdict": {
@@ -832,7 +825,6 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {

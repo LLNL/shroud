@@ -27,27 +27,27 @@ class WrapFlags(object):
     """
     def __init__(self, options):
         self.fortran = options.wrap_fortran
-        self.f_c = False
         self.c = options.wrap_c
+        self.f_or_c = self.fortran or self.c
         self.lua = options.wrap_lua
         self.python = options.wrap_python
 
     def clear(self):
         self.fortran = False
-        self.f_c = False
         self.c = False
+        self.f_or_c = False
         self.lua = False
         self.python = False
 
-    def assign(self, fortran=False, f_c=False, c=False, lua=False, python=False):
+    def assign(self, fortran=False, c=False, lua=False, python=False):
         """Assign wrap flags to wrap.
 
         Used when generating new FunctionNodes as part of function
         overload, generic, default args.
         """
         self.fortran = fortran
-        self.f_c = f_c
         self.c = c
+        self.f_or_c = self.fortran or self.c
         self.lua = lua
         self.python = python
 
@@ -59,8 +59,8 @@ class WrapFlags(object):
         wrap : WrapFlags
         """
         self.fortran = self.fortran or wrap.fortran
-        self.f_c = self.f_c or wrap.f_c
         self.c = self.c or wrap.c
+        self.f_or_c = self.fortran or self.c
         self.lua = self.lua or wrap.lua
         self.python = self.python or wrap.python
 
@@ -69,8 +69,6 @@ class WrapFlags(object):
         flags = []
         if self.fortran:
             flags.append("fortran")
-        if self.f_c:
-            flags.append("f_c")
         if self.c:
             flags.append("c")
         if self.lua:

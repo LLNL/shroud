@@ -1706,7 +1706,7 @@ class GenFunctions(object):
         fmt_func = C_new.fmtdict
         fmt_func.f_c_suffix = fmt_func.C_cfi_suffix
 
-        C_new.wrap.assign(c=True, fortran=True)  # XXX - f_c
+        C_new.wrap.assign(c=True, fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
@@ -1896,7 +1896,7 @@ class GenFunctions(object):
         fmt_func.f_c_suffix = fmt_func.C_bufferify_suffix
 
         options = C_new.options
-        C_new.wrap.assign(c=True, fortran=True)  # XXX - f_c
+        C_new.wrap.assign(c=True, fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:

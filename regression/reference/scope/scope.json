@@ -655,7 +655,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -828,7 +827,6 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1250,7 +1248,6 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1423,7 +1420,6 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1872,7 +1868,6 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -2045,7 +2040,6 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {

@@ -145,7 +145,6 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {

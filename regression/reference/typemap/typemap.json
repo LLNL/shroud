@@ -320,7 +320,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -495,7 +494,6 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -688,8 +686,7 @@
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "i1": {
@@ -955,8 +952,7 @@
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "f1": {

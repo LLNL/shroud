@@ -676,7 +676,6 @@ rv = .false.
             assert C_node._PTR_F_C_index != C_node._function_index
             C_node = self.newlibrary.function_index[C_node._PTR_F_C_index]
         node.C_node = C_node
-        C_node.wrap.f_c = True
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions in list
@@ -2233,4 +2232,3 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
-    C_node.wrap.f_c = True
