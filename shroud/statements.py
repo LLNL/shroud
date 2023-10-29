@@ -341,6 +341,9 @@ def process_mixin(stmts, defaults, stmtdict):
         "c_function_native_*_allocatable/raw",
         "c_function_native_*/&/**_pointer",
     ],
+
+    Set an index field for each statement.
+    variants (ex in/out) and aliases all have the same index.
     """
     # Apply base and mixin
     # This allows mixins to propagate
@@ -348,20 +351,27 @@ def process_mixin(stmts, defaults, stmtdict):
     # Save by name permutations into mixins  (in/out/inout)
     mixins = OrderedDict()
     aliases = []
+    index = 0
     for stmt in stmts:
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
         parts = name.split("_")
-        if parts[0] == "x":
+        if len(parts) < 2:
+            print("XXXX - a group names needs at least lang_intent_other*:", name)
             continue
-        if parts[1] == "mixin":
+        lang = parts[0]
+        intent = parts[1]
+        # Check length of name
+        if lang == "x":
+            continue
+        if intent == "mixin":
             if "base" in stmt:
-                print("XXXX - mixin should not have 'base' field:", name)
+                print("XXXX - intent mixin group should not have 'base' field:", name)
             if "alias" in stmt:
-                print("XXXX - mixin should not have 'alias' field:", name)
+                print("XXXX - intent mixin group should not have 'alias' field:", name)
             if "append" in stmt:
-                print("XXXX - mixin should not have 'append' field:", name)
+                print("XXXX - intent mixin group should not have 'append' field:", name)
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
@@ -374,7 +384,7 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
-        if parts[1] == "mixin":
+        if intent == "mixin":
             append_mixin(node, stmt)
         else:
             if "append" in stmt:
@@ -384,6 +394,8 @@ def process_mixin(stmts, defaults, stmtdict):
         node["orig"] = name
         out = compute_all_permutations(name)
         firstname = "_".join(out[0])
+        node["index"] = str(index)
+        index += 1
         if len(out) == 1:
             if name in mixins:
                 raise RuntimeError("process_mixin: key already exists {}".format(name))
@@ -685,6 +697,7 @@ CStmts = util.Scope(
     None,
     name="c_default",
     comments=[],
+    index="X",
     intent=None,
     fmtdict=None,
     iface_header=[],
