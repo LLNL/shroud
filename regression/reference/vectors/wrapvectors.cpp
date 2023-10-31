@@ -441,7 +441,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // ----------------------------------------
 // Function:  int returnDim2
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)

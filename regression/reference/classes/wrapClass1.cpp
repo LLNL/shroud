@@ -62,7 +62,7 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // start CLA_Class1_ctor_default
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 {
@@ -78,7 +78,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -98,7 +98,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Statement: f_dtor
+// Statement: c_dtor
 // start CLA_Class1_delete
 void CLA_Class1_delete(CLA_Class1 * self)
 {
@@ -118,7 +118,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  int Method1
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // start CLA_Class1_Method1
 int CLA_Class1_Method1(CLA_Class1 * self)
 {
@@ -138,7 +138,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  bool equivalent
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
@@ -164,7 +164,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 // ----------------------------------------
 // Function:  Class1 * returnThis
 // Attrs:     +api(this)+intent(function)
-// Statement: f_function_shadow_*_this
+// Statement: c_function_shadow_*_this
 // start CLA_Class1_returnThis
 void CLA_Class1_returnThis(CLA_Class1 * self)
 {
@@ -183,7 +183,7 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
@@ -250,7 +250,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHC_rv)
@@ -273,7 +273,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // ----------------------------------------
 // Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_string_&_allocatable
+// Statement: c_function_string_&
 // start CLA_Class1_getName
 const char * CLA_Class1_getName(CLA_Class1 * self)
 {
@@ -315,7 +315,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)

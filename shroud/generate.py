@@ -895,8 +895,7 @@ class GenFunctions(object):
             meta = fcn.ast.declarator.params[0].declarator.metaattrs
             meta["intent"] = "in"
             fcn.struct_parent = cls
-        fcn.wrap.lua = False
-        fcn.wrap.python = False
+        fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
         fcn._generated_path.append("getter/setter")
 
@@ -929,8 +928,7 @@ class GenFunctions(object):
         meta = fcn.ast.declarator.params[iarg].declarator.metaattrs
         meta.update(declarator.metaattrs)
         meta["intent"] = "setter"
-        fcn.wrap.lua = False
-        fcn.wrap.python = False
+        fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
         fcn._generated_path.append("getter/setter")
 
@@ -1452,6 +1450,7 @@ class GenFunctions(object):
             self.append_function_index(new)
             new._generated = "fortran_generic"
             new._generated_path.append("fortran_generic")
+            new.wrap.assign(fortran=True)
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
@@ -1486,9 +1485,9 @@ class GenFunctions(object):
                 # The C wrapper is required to cast constants.
                 # generic.yaml: GenericReal
                 new.C_force_wrapper = True
-                new.wrap.c = True
                 new._PTR_C_CXX_index = node._function_index
             else:
+                new.C_fortran_generic = True
                 new._PTR_F_C_index = node._function_index
         
         # Do not process templated node, instead process
@@ -1706,7 +1705,7 @@ class GenFunctions(object):
         fmt_func = C_new.fmtdict
         fmt_func.f_c_suffix = fmt_func.C_cfi_suffix
 
-        C_new.wrap.assign(c=True, fortran=True)
+        C_new.wrap.assign(fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
@@ -1744,11 +1743,7 @@ class GenFunctions(object):
         options = node.options
         fmt_func = node.fmtdict
 
-        if node.wrap.c is False:
-#        if options.wrap_c is False:  # XXX cdesc.yaml GetScalar2
-            # The user does not require a C wrapper.
-            # This can be the case if the Fortran wrapper is doing all
-            # the work via splicer or fstatements.
+        if node.wrap.fortran is False:
             return
 
         # If a C++ function returns a std::string instance,
@@ -1896,7 +1891,7 @@ class GenFunctions(object):
         fmt_func.f_c_suffix = fmt_func.C_bufferify_suffix
 
         options = C_new.options
-        C_new.wrap.assign(c=True, fortran=True)
+        C_new.wrap.assign(fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:

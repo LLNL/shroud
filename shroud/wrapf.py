@@ -699,15 +699,6 @@ rv = .false.
         for node in functions:
             if node.wrap.fortran:
                 self.locate_c_function(node)
-#                node.eval_template("F_name_impl")
-#                node.eval_template("F_name_function")
-#                node.eval_template("F_name_generic")
-#        for node in functions:
-#            if node.wrap.f_c:
-#                node.eval_template("C_name")
-#                node.eval_template("F_C_name")
-#                fmt_func = node.fmtdict
-#                fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
         cursor.push_phase("Wrapf.wrap_function_impl")
         for node in functions:
@@ -719,8 +710,12 @@ rv = .false.
 
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
-            if node.wrap.c:
-                self.log.write("C-interface {0.declgen} {1}\n".format(
+            if node.wrap.fortran:
+                self.log.write("C-interface f {0.declgen} {1}\n".format(
+                    node, self.get_metaattrs(node.ast)))
+                self.wrap_function_interface(cls, node, fileinfo)
+            elif node.wrap.c:
+                self.log.write("C-interface c {0.declgen} {1}\n".format(
                     node, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface(cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
@@ -1120,6 +1115,9 @@ rv = .false.
         multiple Fortran wrappers.
         XXX - xlf does not allow this.
         """
+        if node.C_fortran_generic:
+            return
+
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
@@ -1140,7 +1138,7 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        result_stmt = statements.lookup_fc_function(node)
+        result_stmt = statements.lookup_f_function_stmt(node)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         func_cursor.stmt = result_stmt
             
@@ -1473,7 +1471,7 @@ rv = .false.
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        result_stmt = statements.lookup_fc_function(node)
+        result_stmt = statements.lookup_f_function_stmt(node)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt

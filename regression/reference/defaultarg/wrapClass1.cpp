@@ -29,7 +29,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -52,7 +52,7 @@ DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -78,7 +78,7 @@ DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 +name(new)
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -105,7 +105,7 @@ DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Statement: f_dtor
+// Statement: c_dtor
 void DEF_Class1_delete(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -123,7 +123,7 @@ void DEF_Class1_delete(DEF_Class1 * self)
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -144,7 +144,7 @@ void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -169,7 +169,7 @@ void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
 // ----------------------------------------
 // Function:  void DefaultArguments
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)

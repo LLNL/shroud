@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void BadFstatements
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void ERR_BadFstatements(void)
 {
     // splicer begin function.BadFstatements
@@ -36,7 +36,7 @@ void ERR_BadFstatements(void)
 // ----------------------------------------
 // Function:  void AssumedRank
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * data
 // Attrs:     +intent(inout)

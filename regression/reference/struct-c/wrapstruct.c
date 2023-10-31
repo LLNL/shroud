@@ -53,7 +53,7 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
 // Attrs:     +intent(function)
-// Statement: f_function_struct_scalar
+// Statement: c_function_struct_scalar
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -105,7 +105,7 @@ Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // start STR_Create_Cstruct_as_class
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
@@ -122,7 +122,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
@@ -145,7 +145,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
@@ -163,7 +163,7 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)

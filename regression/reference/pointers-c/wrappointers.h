@@ -55,6 +55,8 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 
 int POI_returnIntScalar(void);
 
+int POI_returnIntScalar_extrawrapper(void);
+
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc,
     POI_SHROUD_capsule_data *SHT_rv_capsule);

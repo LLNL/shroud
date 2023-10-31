@@ -25,7 +25,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void exfunc
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void PRE_User2_exfunc_0(PRE_User2 * self)
 {
     User2 *SH_this = static_cast<User2 *>(self->addr);
@@ -39,7 +39,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // ----------------------------------------
 // Function:  void exfunc
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

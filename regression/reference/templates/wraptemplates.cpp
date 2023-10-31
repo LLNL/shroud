@@ -26,7 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  user<int> returnUserType
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_scalar_capptr_targ_native_scalar
+// Statement: c_function_shadow_scalar_capptr_targ_native_scalar
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
     // splicer begin function.returnUserType
@@ -46,7 +46,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -70,7 +70,7 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
@@ -94,7 +94,7 @@ void TEM_FunctionTU_1(float arg1, double arg2)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int TEM_UseImplWorker_internal_ImplWorker1(void)
 {
     // splicer begin function.UseImplWorker_internal_ImplWorker1
@@ -111,7 +111,7 @@ int TEM_UseImplWorker_internal_ImplWorker1(void)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int TEM_UseImplWorker_internal_ImplWorker2(void)
 {
     // splicer begin function.UseImplWorker_internal_ImplWorker2

@@ -76,7 +76,7 @@
                     "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
+                    "fmtc": {
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -88,15 +88,18 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
+                    },
+                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_allocatable"
+                        "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -165,7 +168,6 @@
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -271,6 +273,9 @@
                     "function_name": "One"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -481,7 +486,9 @@
                                     }
                                 },
                                 "zz_fmtdict": {
+                                    "C_name": "NS_outer_Cstruct1_Cstruct1_ctor",
                                     "C_name_api": "Cstruct1_ctor",
+                                    "F_C_name": "c_cstruct1_cstruct1_ctor",
                                     "F_name_api": "cstruct1_ctor",
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",
@@ -660,6 +667,9 @@
                             "function_name": "One"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"

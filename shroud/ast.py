@@ -1439,6 +1439,10 @@ class FunctionNode(AstNode):
       'f': {},
     }
 
+    C_signature - statement.index signature of C wrapper.
+       Used to avoid writing the same function twice. 
+    C_fortran_generic = if True, multiple version of the Fortran
+       wrappers will call a single C wrapper.
     """
 
     def __init__(
@@ -1481,6 +1485,8 @@ class FunctionNode(AstNode):
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
         self.C_force_wrapper = False
+        self.C_signature = None
+        self.C_fortran_generic = False
 
         # self.function_index = []
 

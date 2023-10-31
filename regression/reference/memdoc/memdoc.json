@@ -70,7 +70,7 @@
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
+                    "fmtc": {
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -82,15 +82,18 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*_library"
+                    },
+                    "fmtf": {
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_allocatable_library"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
@@ -144,7 +147,6 @@
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {

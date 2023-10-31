@@ -32,7 +32,7 @@ static void ShroudCharBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Function:  int passStructByValue
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
 // Attrs:     +intent(in)
@@ -50,7 +50,7 @@ int STR_passStructByValue(STR_cstruct1 arg)
 // ----------------------------------------
 // Function:  int passStruct1
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
@@ -71,7 +71,7 @@ int STR_passStruct1(const STR_cstruct1 * arg)
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -117,7 +117,7 @@ int STR_passStruct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
 // ----------------------------------------
 // Function:  int acceptStructInPtr
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Attrs:     +intent(in)
@@ -136,7 +136,7 @@ int STR_acceptStructInPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void acceptStructOutPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
 // Attrs:     +intent(out)
@@ -159,7 +159,7 @@ void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d)
 // ----------------------------------------
 // Function:  void acceptStructInOutPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
 // Attrs:     +intent(inout)
@@ -174,7 +174,7 @@ void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
 // Attrs:     +intent(function)
-// Statement: f_function_struct_scalar
+// Statement: c_function_struct_scalar
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -199,7 +199,7 @@ void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_struct_*_pointer
+// Statement: c_function_struct_*
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -224,7 +224,7 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_struct_*_pointer
+// Statement: c_function_struct_*
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -280,7 +280,7 @@ STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_struct_*_pointer
+// Statement: c_function_struct_*
 STR_cstruct_list * STR_get_global_struct_list(void)
 {
     // splicer begin function.get_global_struct_list
@@ -292,7 +292,7 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // start STR_Create_Cstruct_as_class
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
@@ -309,7 +309,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
@@ -332,7 +332,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
@@ -350,7 +350,7 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)

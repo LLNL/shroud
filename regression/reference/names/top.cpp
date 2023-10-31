@@ -86,7 +86,7 @@ static void ShroudCharFree(char *src)
 // ----------------------------------------
 // Function:  void getName
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +intent(inout)
@@ -120,7 +120,7 @@ void TES_getName_bufferify(char *name, int SHT_name_len)
 // ----------------------------------------
 // Function:  void function1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void YYY_TES_function1(void)
 {
     // splicer begin function.function1
@@ -131,7 +131,7 @@ void YYY_TES_function1(void)
 // ----------------------------------------
 // Function:  void function2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void c_name_special(void)
 {
     // splicer begin function.function2
@@ -142,7 +142,7 @@ void c_name_special(void)
 // ----------------------------------------
 // Function:  void function3a
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -157,7 +157,7 @@ void YYY_TES_function3a_0(int i)
 // ----------------------------------------
 // Function:  void function3a
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  long i +value
 // Attrs:     +intent(in)
@@ -172,7 +172,7 @@ void YYY_TES_function3a_1(long i)
 // ----------------------------------------
 // Function:  int function4
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +intent(in)
@@ -207,7 +207,7 @@ int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 // ----------------------------------------
 // Function:  void function5 +name(fiveplus)
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void YYY_TES_fiveplus(void)
 {
     // splicer begin function.fiveplus
@@ -221,7 +221,7 @@ void YYY_TES_fiveplus(void)
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name
 // Attrs:     +intent(inout)
@@ -271,7 +271,7 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
@@ -295,7 +295,7 @@ void c_name_instantiation1(int arg1, long arg2)
 // ----------------------------------------
 // Function:  void FunctionTU
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
@@ -319,7 +319,7 @@ void TES_FunctionTU_instantiation2(float arg1, double arg2)
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int TES_UseImplWorker_instantiation3(void)
 {
     // splicer begin function.UseImplWorker_instantiation3
@@ -331,7 +331,7 @@ int TES_UseImplWorker_instantiation3(void)
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
@@ -349,7 +349,7 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // ----------------------------------------
 // Function:  void external_funcs
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const char * rdbase
 // Attrs:     +intent(in)

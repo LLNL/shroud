@@ -70,6 +70,21 @@
                     "function_name": "GetNameLength"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
@@ -150,7 +165,7 @@
                     "function_name": "getNameErrorPattern"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
+                    "fmtc": {
                         "c_char_len": "get_name_length()",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -163,6 +178,11 @@
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
+                    },
+                    "fmtf": {
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -170,9 +190,7 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_copy"
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
@@ -222,7 +240,6 @@
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {

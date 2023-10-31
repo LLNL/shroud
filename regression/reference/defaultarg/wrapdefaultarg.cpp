@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems +value
 // Attrs:     +intent(in)
@@ -40,7 +40,7 @@ void DEF_apply_generic_nelems(IndexType num_elems)
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems +value
 // Attrs:     +intent(in)
@@ -60,7 +60,7 @@ void DEF_apply_generic_nelems_offset(IndexType num_elems,
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems +value
 // Attrs:     +intent(in)
@@ -86,7 +86,7 @@ void DEF_apply_generic_nelems_offset_stride(IndexType num_elems,
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -109,7 +109,7 @@ void DEF_apply_generic_type_nelems(DEF_TypeID type, IndexType num_elems)
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -136,7 +136,7 @@ void DEF_apply_generic_type_nelems_offset(DEF_TypeID type,
 // ----------------------------------------
 // Function:  void apply_generic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -166,7 +166,7 @@ void DEF_apply_generic_type_nelems_offset_stride(DEF_TypeID type,
 // ----------------------------------------
 // Function:  void apply_require
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems +value
 // Attrs:     +intent(in)
@@ -190,7 +190,7 @@ void DEF_apply_require_0(IndexType num_elems, IndexType offset,
 // ----------------------------------------
 // Function:  void apply_require
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)
@@ -219,7 +219,7 @@ void DEF_apply_require_1(DEF_TypeID type, IndexType num_elems,
 // ----------------------------------------
 // Function:  void apply_optional
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems +value
 // Attrs:     +intent(in)
@@ -244,7 +244,7 @@ void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
 // ----------------------------------------
 // Function:  void apply_optional
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type +value
 // Attrs:     +intent(in)

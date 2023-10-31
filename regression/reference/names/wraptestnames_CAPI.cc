@@ -21,7 +21,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void Worker1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void TES_capi_worker1(void)
 {
     // splicer begin namespace.CAPI.function.Worker1

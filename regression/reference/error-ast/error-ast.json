@@ -135,7 +135,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_FortranGenericOverloaded3",
                     "C_name_api": "FortranGenericOverloaded3",
+                    "F_C_name": "c_fortran_generic_overloaded3",
                     "F_name_api": "fortran_generic_overloaded3",
                     "function_name": "FortranGenericOverloaded3"
                 }
@@ -169,7 +171,9 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name": "ERR_PYGoodFunction",
                     "C_name_api": "PYGoodFunction",
+                    "F_C_name": "c_py_good_function",
                     "F_name_api": "py_good_function",
                     "PY_name_impl": "PY_PYGoodFunction",
                     "function_name": "PYGoodFunction"

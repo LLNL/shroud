@@ -6,16 +6,20 @@ Wrote wrapCstruct_as_subclass.cpp
 Phase: Wrapc.wrap_function
 ----------------------------------------
 Node: BadFstatements
-Statement: f_subroutine
+Statement: c_subroutine
 No such c_helper 'no_c_helper2'
 --------------------
 Node: BadFstatements
-Statement: f_subroutine
+Statement: c_subroutine
 No value for 'no_c_var' in '{no_c_var} = 11;'
 --------------------
 Node: BadFstatements
-Statement: f_subroutine
+Statement: c_subroutine
 expected '}' before end of string in '{bad_format = 12;'
+--------------------
+Node: BadFstatements
+Statement: f_subroutine
+No such c_helper 'no_c_helper'
 Wrote wraperror.h
 Wrote wraperror.cpp
 

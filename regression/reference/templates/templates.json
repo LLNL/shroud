@@ -132,7 +132,9 @@
                         ],
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "TEM_user_int_nested",
                             "C_name_api": "nested",
+                            "F_C_name": "c_user_int_nested",
                             "F_name_api": "nested",
                             "function_name": "nested"
                         }
@@ -223,6 +225,23 @@
                         },
                         "zz_fmtargs": {
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -268,6 +287,23 @@
                                 }
                             },
                             "arg2": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "double",
+                                    "c_var": "arg2",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg2",
+                                    "cxx_type": "double",
+                                    "cxx_var": "arg2",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -340,6 +376,9 @@
                             "template_suffix": "_double"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -461,6 +500,21 @@
                             "function_name": "ctor"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "TEM_structAsClass_int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "structAsClass<int>",
+                                "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
+                                "idtor": "3",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "c_ctor_shadow_scalar_capptr"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -531,6 +585,23 @@
                         },
                         "zz_fmtargs": {
                             "n": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "n",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&n",
+                                    "cxx_type": "int",
+                                    "cxx_var": "n",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -582,6 +653,9 @@
                             "function_name": "set_npts"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -639,6 +713,21 @@
                             "function_name": "get_npts"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtc": "c_function_native_scalar"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -704,7 +793,9 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_int_set_value",
                             "C_name_api": "set_value",
+                            "F_C_name": "c_struct_as_class_int_set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value"
                         }
@@ -758,6 +849,23 @@
                         },
                         "zz_fmtargs": {
                             "v": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "v",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&v",
+                                    "cxx_type": "int",
+                                    "cxx_var": "v",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -809,6 +917,9 @@
                             "function_name": "set_value"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -838,7 +949,9 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_int_get_value",
                             "C_name_api": "get_value",
+                            "F_C_name": "c_struct_as_class_int_get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value"
                         }
@@ -901,6 +1014,21 @@
                             "function_name": "get_value"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtc": "c_function_native_scalar"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -1050,6 +1178,21 @@
                             "function_name": "ctor"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "TEM_structAsClass_double",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "structAsClass<double>",
+                                "cxx_var": "SHCXX_rv",
+                                "f_local_ptr": "SHT_prv",
+                                "idtor": "4",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmtc": "c_ctor_shadow_scalar_capptr"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -1120,6 +1263,23 @@
                         },
                         "zz_fmtargs": {
                             "n": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "n",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&n",
+                                    "cxx_type": "int",
+                                    "cxx_var": "n",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -1171,6 +1331,9 @@
                             "function_name": "set_npts"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -1228,6 +1391,21 @@
                             "function_name": "get_npts"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmtc": "c_function_native_scalar"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -1293,7 +1471,9 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_double_set_value",
                             "C_name_api": "set_value",
+                            "F_C_name": "c_struct_as_class_double_set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value"
                         }
@@ -1347,6 +1527,23 @@
                         },
                         "zz_fmtargs": {
                             "v": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "double",
+                                    "c_var": "v",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&v",
+                                    "cxx_type": "double",
+                                    "cxx_var": "v",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "f_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -1398,6 +1595,9 @@
                             "function_name": "set_value"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -1427,7 +1627,9 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_double_get_value",
                             "C_name_api": "get_value",
+                            "F_C_name": "c_struct_as_class_double_get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value"
                         }
@@ -1490,6 +1692,21 @@
                             "function_name": "get_value"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "double",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "double",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmtc": "c_function_native_scalar"
+                            },
                             "fmtf": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -1653,6 +1870,22 @@
                     "function_name": "returnUserType"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "TEM_user_int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_T": "int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "user<int>",
+                        "cxx_var": "SHCXX_rv",
+                        "f_local_ptr": "SHT_prv",
+                        "idtor": "5",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_shadow_scalar_capptr_targ_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_type": "TEM_user_int",
@@ -1784,7 +2017,9 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "TEM_FunctionTU",
                     "C_name_api": "FunctionTU",
+                    "F_C_name": "c_function_tu",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU"
                 }
@@ -1899,6 +2134,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1944,6 +2196,23 @@
                         }
                     },
                     "arg2": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "long",
+                            "c_var": "arg2",
+                            "cfi_type": "CFI_type_long",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg2",
+                            "cxx_type": "long",
+                            "cxx_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_LONG",
+                            "stmtc": "f_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2012,6 +2281,9 @@
                     "template_suffix": "_0"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -2134,6 +2406,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "float",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_float",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
+                            "cxx_type": "float",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "stmtc": "f_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2179,6 +2468,23 @@
                         }
                     },
                     "arg2": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "double",
+                            "c_var": "arg2",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg2",
+                            "cxx_type": "double",
+                            "cxx_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmtc": "f_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2247,6 +2553,9 @@
                     "template_suffix": "_1"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -2315,7 +2624,9 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "TEM_UseImplWorker",
                     "C_name_api": "UseImplWorker",
+                    "F_C_name": "c_use_impl_worker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker"
                 }
@@ -2408,6 +2719,21 @@
                     "template_suffix": "_internal_ImplWorker1"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
@@ -2541,6 +2867,21 @@
                     "template_suffix": "_internal_ImplWorker2"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
@@ -2654,6 +2995,21 @@
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "TEM_vector_int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::vector<int>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_local_ptr": "SHT_prv",
+                                        "idtor": "1",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmtc": "c_ctor_shadow_scalar_capptr"
+                                    },
                                     "fmtf": {
                                         "c_const": "",
                                         "c_get_value": "",
@@ -2755,6 +3111,9 @@
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "stmtc": "c_dtor"
+                                    },
                                     "fmtf": {
                                         "stmtc": "f_dtor",
                                         "stmtf": "f_dtor"
@@ -2807,7 +3166,9 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name": "TEM_vector_int_push_back",
                                     "C_name_api": "push_back",
+                                    "F_C_name": "c_vector_int_push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back"
                                 }
@@ -2868,6 +3229,23 @@
                                 },
                                 "zz_fmtargs": {
                                     "value": {
+                                        "fmtc": {
+                                            "c_addr": "",
+                                            "c_const": "const ",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_type": "int",
+                                            "c_var": "value",
+                                            "cfi_type": "CFI_type_int",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "const_cast<int *>\t(&value)",
+                                            "cxx_type": "int",
+                                            "cxx_var": "value",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_INT",
+                                            "stmtc": "f_in_native_&"
+                                        },
                                         "fmtf": {
                                             "c_addr": "",
                                             "c_const": "const ",
@@ -2939,6 +3317,9 @@
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "stmtc": "c_subroutine"
+                                    },
                                     "fmtf": {
                                         "stmtc": "f_subroutine",
                                         "stmtf": "f_subroutine"
@@ -2991,7 +3372,9 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name": "TEM_vector_int_at",
                                     "C_name_api": "at",
+                                    "F_C_name": "c_vector_int_at",
                                     "F_name_api": "at",
                                     "function_name": "at"
                                 }
@@ -3054,6 +3437,23 @@
                                 },
                                 "zz_fmtargs": {
                                     "n": {
+                                        "fmtc": {
+                                            "c_addr": "&",
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_type": "TEM_vector_int_size_type",
+                                            "c_var": "n",
+                                            "cfi_type": "CFI_type_size_t",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "&n",
+                                            "cxx_type": "std::vector<int>::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmtc": "f_in_native_scalar"
+                                        },
                                         "fmtf": {
                                             "c_addr": "&",
                                             "c_const": "",
@@ -3127,6 +3527,21 @@
                                     "function_name": "at"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "&",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmtc": "c_function_native_&"
+                                    },
                                     "fmtf": {
                                         "c_const": "",
                                         "c_get_value": "&",
@@ -3322,6 +3737,21 @@
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "TEM_vector_double",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::vector<double>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_local_ptr": "SHT_prv",
+                                        "idtor": "2",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmtc": "c_ctor_shadow_scalar_capptr"
+                                    },
                                     "fmtf": {
                                         "c_const": "",
                                         "c_get_value": "",
@@ -3423,6 +3853,9 @@
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "stmtc": "c_dtor"
+                                    },
                                     "fmtf": {
                                         "stmtc": "f_dtor",
                                         "stmtf": "f_dtor"
@@ -3475,7 +3908,9 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name": "TEM_vector_double_push_back",
                                     "C_name_api": "push_back",
+                                    "F_C_name": "c_vector_double_push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back"
                                 }
@@ -3536,6 +3971,23 @@
                                 },
                                 "zz_fmtargs": {
                                     "value": {
+                                        "fmtc": {
+                                            "c_addr": "",
+                                            "c_const": "const ",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_type": "double",
+                                            "c_var": "value",
+                                            "cfi_type": "CFI_type_double",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "const_cast<double *>\t(&value)",
+                                            "cxx_type": "double",
+                                            "cxx_var": "value",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_DOUBLE",
+                                            "stmtc": "f_in_native_&"
+                                        },
                                         "fmtf": {
                                             "c_addr": "",
                                             "c_const": "const ",
@@ -3607,6 +4059,9 @@
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "stmtc": "c_subroutine"
+                                    },
                                     "fmtf": {
                                         "stmtc": "f_subroutine",
                                         "stmtf": "f_subroutine"
@@ -3659,7 +4114,9 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name": "TEM_vector_double_at",
                                     "C_name_api": "at",
+                                    "F_C_name": "c_vector_double_at",
                                     "F_name_api": "at",
                                     "function_name": "at"
                                 }
@@ -3722,6 +4179,23 @@
                                 },
                                 "zz_fmtargs": {
                                     "n": {
+                                        "fmtc": {
+                                            "c_addr": "&",
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_type": "TEM_vector_double_size_type",
+                                            "c_var": "n",
+                                            "cfi_type": "CFI_type_size_t",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "&n",
+                                            "cxx_type": "std::vector<double>::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmtc": "f_in_native_scalar"
+                                        },
                                         "fmtf": {
                                             "c_addr": "&",
                                             "c_const": "",
@@ -3795,6 +4269,21 @@
                                     "function_name": "at"
                                 },
                                 "zz_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "&",
+                                        "c_type": "double",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_double",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "double",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_DOUBLE",
+                                        "stmtc": "c_function_native_&"
+                                    },
                                     "fmtf": {
                                         "c_const": "",
                                         "c_get_value": "&",

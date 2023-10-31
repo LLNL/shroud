@@ -207,7 +207,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0",
                     "C_name_api": "func0",
+                    "F_C_name": "c_func0",
                     "F_name_api": "func0",
                     "function_name": "func0"
                 }
@@ -250,7 +252,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0a",
                     "C_name_api": "func0a",
+                    "F_C_name": "c_func0a",
                     "F_name_api": "func0a",
                     "function_name": "func0a"
                 }
@@ -291,7 +295,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0b",
                     "C_name_api": "func0b",
+                    "F_C_name": "c_func0b",
                     "F_name_api": "func0b",
                     "function_name": "func0b"
                 }
@@ -321,7 +327,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0c",
                     "C_name_api": "func0c",
+                    "F_C_name": "c_func0c",
                     "F_name_api": "func0c",
                     "function_name": "func0c"
                 }
@@ -357,7 +365,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0e",
                     "C_name_api": "func0e",
+                    "F_C_name": "c_func0e",
                     "F_name_api": "func0e",
                     "function_name": "func0e"
                 }
@@ -392,7 +402,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func0f",
                     "C_name_api": "func0f",
+                    "F_C_name": "c_func0f",
                     "F_name_api": "func0f",
                     "function_name": "func0f"
                 }
@@ -437,7 +449,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func1",
                     "C_name_api": "func1",
+                    "F_C_name": "c_func1",
                     "F_name_api": "func1",
                     "function_name": "func1"
                 }
@@ -482,7 +496,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func2",
                     "C_name_api": "func2",
+                    "F_C_name": "c_func2",
                     "F_name_api": "func2",
                     "function_name": "func2"
                 }
@@ -527,7 +543,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func3",
                     "C_name_api": "func3",
+                    "F_C_name": "c_func3",
                     "F_name_api": "func3",
                     "function_name": "func3"
                 }
@@ -572,7 +590,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func3b",
                     "C_name_api": "func3b",
+                    "F_C_name": "c_func3b",
                     "F_name_api": "func3b",
                     "function_name": "func3b"
                 }
@@ -621,7 +641,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func3c",
                     "C_name_api": "func3c",
+                    "F_C_name": "c_func3c",
                     "F_name_api": "func3c",
                     "function_name": "func3c"
                 }
@@ -670,7 +692,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func4",
                     "C_name_api": "func4",
+                    "F_C_name": "c_func4",
                     "F_name_api": "func4",
                     "function_name": "func4"
                 }
@@ -719,7 +743,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func6",
                     "C_name_api": "func6",
+                    "F_C_name": "c_func6",
                     "F_name_api": "func6",
                     "function_name": "func6"
                 }
@@ -768,7 +794,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func7",
                     "C_name_api": "func7",
+                    "F_C_name": "c_func7",
                     "F_name_api": "func7",
                     "function_name": "func7"
                 }
@@ -813,7 +841,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func8",
                     "C_name_api": "func8",
+                    "F_C_name": "c_func8",
                     "F_name_api": "func8",
                     "function_name": "func8"
                 }
@@ -858,7 +888,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func8a",
                     "C_name_api": "func8a",
+                    "F_C_name": "c_func8a",
                     "F_name_api": "func8a",
                     "function_name": "func8a"
                 }
@@ -907,7 +939,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func9",
                     "C_name_api": "func9",
+                    "F_C_name": "c_func9",
                     "F_name_api": "func9",
                     "function_name": "func9"
                 }
@@ -957,7 +991,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func9b",
                     "C_name_api": "func9b",
+                    "F_C_name": "c_func9b",
                     "F_name_api": "func9b",
                     "function_name": "func9b"
                 }
@@ -1011,7 +1047,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func9c",
                     "C_name_api": "func9c",
+                    "F_C_name": "c_func9c",
                     "F_name_api": "func9c",
                     "function_name": "func9c"
                 }
@@ -1056,7 +1094,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func10",
                     "C_name_api": "func10",
+                    "F_C_name": "c_func10",
                     "F_name_api": "func10",
                     "function_name": "func10"
                 }
@@ -1101,7 +1141,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func10b",
                     "C_name_api": "func10b",
+                    "F_C_name": "c_func10b",
                     "F_name_api": "func10b",
                     "function_name": "func10b"
                 }
@@ -1151,7 +1193,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func10c_0",
                     "C_name_api": "func10c",
+                    "F_C_name": "c_func10c_0",
                     "F_name_api": "func10c",
                     "function_name": "func10c",
                     "function_suffix": "_0"
@@ -1202,7 +1246,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func10c_1",
                     "C_name_api": "func10c",
+                    "F_C_name": "c_func10c_1",
                     "F_name_api": "func10c",
                     "function_name": "func10c",
                     "function_suffix": "_1"
@@ -1249,7 +1295,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func11_0",
                     "C_name_api": "func11",
+                    "F_C_name": "c_func11_0",
                     "F_name_api": "func11",
                     "function_name": "func11",
                     "function_suffix": "_0"
@@ -1296,7 +1344,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func11_1",
                     "C_name_api": "func11",
+                    "F_C_name": "c_func11_1",
                     "F_name_api": "func11",
                     "function_name": "func11",
                     "function_suffix": "_1"
@@ -1344,7 +1394,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func11_2",
                     "C_name_api": "func11",
+                    "F_C_name": "c_func11_2",
                     "F_name_api": "func11",
                     "function_name": "func11",
                     "function_suffix": "_2"
@@ -1399,7 +1451,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func12",
                     "C_name_api": "func12",
+                    "F_C_name": "c_func12",
                     "F_name_api": "func12",
                     "function_name": "func12"
                 }
@@ -1466,7 +1520,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func13",
                     "C_name_api": "func13",
+                    "F_C_name": "c_func13",
                     "F_name_api": "func13",
                     "function_name": "func13"
                 }
@@ -1533,7 +1589,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func13b",
                     "C_name_api": "func13b",
+                    "F_C_name": "c_func13b",
                     "F_name_api": "func13b",
                     "function_name": "func13b"
                 }
@@ -1615,7 +1673,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func13c",
                     "C_name_api": "func13c",
+                    "F_C_name": "c_func13c",
                     "F_name_api": "func13c",
                     "function_name": "func13c"
                 }
@@ -1697,7 +1757,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "ERR_func13d",
                     "C_name_api": "func13d",
+                    "F_C_name": "c_func13d",
                     "F_name_api": "func13d",
                     "function_name": "func13d"
                 }

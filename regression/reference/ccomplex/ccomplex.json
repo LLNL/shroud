@@ -61,6 +61,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "float complex",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_float_Complex",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::complex<float>",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT_COMPLEX",
+                            "stmtc": "f_inout_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -108,6 +125,9 @@
                     "function_name": "acceptFloatComplexInoutPtr"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -161,6 +181,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double complex",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_double_Complex",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::complex<double>",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_inout_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -231,6 +268,9 @@
                     "function_name": "acceptDoubleComplexInoutPtr"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -287,6 +327,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double complex",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_double_Complex",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::complex<double>",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_out_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -356,6 +413,9 @@
                     "function_name": "acceptDoubleComplexOutPtr"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -480,7 +540,9 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name": "CCO_acceptDoubleComplexInoutPtrFlag",
                     "C_name_api": "acceptDoubleComplexInoutPtrFlag",
+                    "F_C_name": "c_accept_double_complex_inout_ptr_flag",
                     "F_name_api": "accept_double_complex_inout_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
                     "function_name": "acceptDoubleComplexInoutPtrFlag"
@@ -560,6 +622,23 @@
                 },
                 "zz_fmtargs": {
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double complex",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_double_Complex",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::complex<double>",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "stmtc": "f_out_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -608,6 +687,23 @@
                         }
                     },
                     "flag": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "flag",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_out_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -675,6 +771,9 @@
                     "function_name": "acceptDoubleComplexOutPtrFlag"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"

@@ -1166,7 +1166,7 @@ module pointers_mod
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar")
+                bind(C, name="POI_returnIntScalar_extrawrapper")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -2265,7 +2265,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_scalar
-        SHT_rv = c_return_int_scalar()
+        SHT_rv = c_return_int_scalar_extrawrapper()
         ! splicer end function.return_int_scalar
     end function return_int_scalar
     ! end return_int_scalar

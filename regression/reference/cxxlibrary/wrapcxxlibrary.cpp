@@ -43,7 +43,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 bool CXX_defaultPtrIsNULL_0(void)
 {
     // splicer begin function.defaultPtrIsNULL_0
@@ -55,7 +55,7 @@ bool CXX_defaultPtrIsNULL_0(void)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
@@ -72,7 +72,7 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
@@ -95,7 +95,7 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
@@ -126,7 +126,7 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // ----------------------------------------
 // Function:  const std::string & getGroupName +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Statement: f_function_string_&_copy
+// Statement: c_function_string_&
 // ----------------------------------------
 // Argument:  long idx +value
 // Attrs:     +intent(in)

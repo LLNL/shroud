@@ -92,7 +92,7 @@ static void ShroudCharFree(char *src)
 // ----------------------------------------
 // Function:  double PassByValueMacro
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
@@ -296,7 +296,7 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // ----------------------------------------
 // Function:  void callback1a
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)

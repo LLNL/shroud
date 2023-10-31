@@ -1166,7 +1166,7 @@ module pointers_mod
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar")
+                bind(C, name="POI_returnIntScalar_extrawrapper")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -1182,7 +1182,7 @@ module pointers_mod
     interface
         function return_int_raw() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRaw")
+                bind(C, name="POI_returnIntRaw_extrawrapper")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -1198,18 +1198,18 @@ module pointers_mod
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
     ! Statement: f_in_char_*
-    ! start c_return_int_raw_with_args
+    ! start c_return_int_raw_with_args_extrawrapper
     interface
-        function c_return_int_raw_with_args(name) &
+        function c_return_int_raw_with_args_extrawrapper(name) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRawWithArgs")
+                bind(C, name="POI_returnIntRawWithArgs_extrawrapper")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(C_PTR) SHT_rv
-        end function c_return_int_raw_with_args
+        end function c_return_int_raw_with_args_extrawrapper
     end interface
-    ! end c_return_int_raw_with_args
+    ! end c_return_int_raw_with_args_extrawrapper
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
@@ -2265,7 +2265,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_scalar
-        SHT_rv = c_return_int_scalar()
+        SHT_rv = c_return_int_scalar_extrawrapper()
         ! splicer end function.return_int_scalar
     end function return_int_scalar
     ! end return_int_scalar
@@ -2286,7 +2286,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw
-        SHT_rv = c_return_int_raw()
+        SHT_rv = c_return_int_raw_extrawrapper()
         ! splicer end function.return_int_raw
     end function return_int_raw
     ! end return_int_raw
@@ -2307,7 +2307,7 @@ contains
         character(len=*), intent(IN) :: name
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args
-        SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
+        SHT_rv = c_return_int_raw_with_args_extrawrapper(trim(name)//C_NULL_CHAR)
         ! splicer end function.return_int_raw_with_args
     end function return_int_raw_with_args
     ! end return_int_raw_with_args

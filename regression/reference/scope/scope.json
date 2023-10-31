@@ -572,7 +572,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "SCO_DataPointer_get_items",
                     "C_name_api": "DataPointer_get_items",
+                    "F_C_name": "c_data_pointer_get_items",
                     "F_name_api": "data_pointer_get_items",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
@@ -654,7 +656,6 @@
                     "wrapped_name": "items"
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -826,7 +827,6 @@
                     "wrapped_name": "items"
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1164,7 +1164,9 @@
                         },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "SCO_ns1_DataPointer_get_items",
                             "C_name_api": "DataPointer_get_items",
+                            "F_C_name": "c_data_pointer_get_items",
                             "F_name_api": "data_pointer_get_items",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
@@ -1247,7 +1249,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1419,7 +1420,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1784,7 +1784,9 @@
                         },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name": "SCO_ns2_DataPointer_get_items",
                             "C_name_api": "DataPointer_get_items",
+                            "F_C_name": "c_data_pointer_get_items",
                             "F_name_api": "data_pointer_get_items",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
@@ -1867,7 +1869,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -2039,7 +2040,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {

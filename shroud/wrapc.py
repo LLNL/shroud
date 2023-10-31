@@ -225,6 +225,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         for node in library.functions:
             if node.wrap.c:
                 self.wrap_function("c", None, node)
+            if node.wrap.fortran:
+                self.wrap_function("f", None, node)
         self._pop_splicer("function")
         self.cursor.pop_phase("Wrapc.wrap_function")
 
@@ -728,6 +730,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         for method in node.functions:
             if method.wrap.c:
                 self.wrap_function("c", node, method)
+            if method.wrap.fortran:
+                self.wrap_function("f", node, method)
         self._pop_splicer("method")
         cursor.pop_node(node)
 
@@ -907,8 +911,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        self.log.write("C {0.declgen} {1}\n".format(
-            node, self.get_metaattrs(node.ast)))
+        fmtlang = "fmt" + wlang
+
+        self.log.write("C {2} {0.declgen} {1}\n".format(
+            node, self.get_metaattrs(node.ast), wlang))
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
@@ -947,27 +953,16 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        # XXX - this kludge is still a work in progress
-        #  to be replace by better decision when wrapping C vs wrapping Fortran callable C.
-        result_api = r_meta["api"]
-        if result_api == "buf":
-            result_lang = "f"
-        else:
-            result_lang = "c"
-
         stmt_indexes = []
-        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-#        search, result_stmt = statements.lookup_fc_function_stmt(result_lang, node)
-        search, result_stmt = statements.lookup_fc_function_stmt("f", node)
-
-        result_stmt = statements.lookup_local_stmts([result_lang], result_stmt, node)
+        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        if wlang == "c":
+            result_stmt = statements.lookup_c_function_stmt(node)
+        else:
+            result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
         fmt_result.stmtc = result_stmt.name
         stmt_indexes.append(result_stmt.index)
-#        if search != result_stmt.name:
-#            print ("XXXX mismatch", search, result_stmt.name)
-#            fmt_result.stmtd = search
-#        fmt_result.stmt_lang_result = result_lang
 
         if CXX_subprogram == "subroutine":
             fmt_pattern = fmt_func
@@ -1116,7 +1111,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
+            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
             c_attrs = declarator.attrs
             c_meta = declarator.metaattrs
 
@@ -1352,13 +1347,24 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 #        if options.debug:
 #            stmts_comments.append("// Signature: " + signature)
 
-        if need_wrapper:
+        if node.C_fortran_generic:
+            # Use a previously generated C wrapper
+            need_wrapper = False
+
+        if need_wrapper: # or options.debug:
             impl = []
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 impl.append("#" + node.cpp_if)
             impl.extend(stmts_comments)
+
+            if node.C_signature != None and node.C_signature != signature:
+                # The Fortran wrapper has different signature, change name
+                fmt_func.f_c_suffix = "_extrawrapper"
+                node.reeval_template("C_name")
+                node.reeval_template("F_C_name")
+            
             if options.literalinclude:
                 append_format(impl, "// start {C_name}", fmt_func)
             append_format(
@@ -1375,7 +1381,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
 
-            if notimplemented:
+            if node.C_signature == signature:
+                # Use the wrapper which has already been written
+                notimplemented = True
+                
+            elif notimplemented:
                 self.impl.append("")
                 self.impl.append("#if 0")
                 self.impl.append("! Not Implemented")
@@ -1396,6 +1406,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 )
                 if node.cpp_if:
                     self.header_proto_c.append("#endif")
+                node.C_signature = signature
                 
         else:
             # There is no C wrapper, have Fortran call the function directly.

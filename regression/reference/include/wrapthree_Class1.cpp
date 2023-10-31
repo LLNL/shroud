@@ -19,7 +19,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void method1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  CustomType arg1 +value
 // Attrs:     +intent(in)

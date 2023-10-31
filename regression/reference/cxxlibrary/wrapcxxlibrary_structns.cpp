@@ -26,7 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int passStructByReference
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Attrs:     +intent(inout)
@@ -45,7 +45,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Attrs:     +intent(in)
@@ -61,7 +61,7 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void passStructByReferenceInout
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
 // Attrs:     +intent(inout)
@@ -76,7 +76,7 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // ----------------------------------------
 // Function:  void passStructByReferenceOut
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
 // Attrs:     +intent(out)

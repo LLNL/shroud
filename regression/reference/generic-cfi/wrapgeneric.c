@@ -203,7 +203,7 @@ void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // ----------------------------------------
 // Function:  void SavePointer2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * addr +value
 // Attrs:     +intent(in)
@@ -367,7 +367,7 @@ void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 // ----------------------------------------
 // Function:  StructAsClass * CreateStructAsClass
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass
@@ -381,7 +381,7 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Function:  long UpdateStructAsClass
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)

@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  int * ReturnIntPtrRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Statement: f_function_native_*_raw
+// Statement: c_function_native_*
 int * OWN_ReturnIntPtrRaw(void)
 {
     // splicer begin function.ReturnIntPtrRaw
@@ -35,7 +35,7 @@ int * OWN_ReturnIntPtrRaw(void)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Statement: f_function_native_*_scalar
+// Statement: c_function_native_*
 int OWN_ReturnIntPtrScalar(void)
 {
     // splicer begin function.ReturnIntPtrScalar
@@ -45,9 +45,21 @@ int OWN_ReturnIntPtrScalar(void)
 }
 
 // ----------------------------------------
+// Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(function)
+// Statement: f_function_native_*_scalar
+int OWN_ReturnIntPtrScalar_extrawrapper(void)
+{
+    // splicer begin function.ReturnIntPtrScalar_extrawrapper
+    int * SHC_rv = ReturnIntPtrScalar();
+    return *SHC_rv;
+    // splicer end function.ReturnIntPtrScalar_extrawrapper
+}
+
+// ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 int * OWN_ReturnIntPtrPointer(void)
 {
     // splicer begin function.ReturnIntPtrPointer
@@ -59,7 +71,7 @@ int * OWN_ReturnIntPtrPointer(void)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Statement: f_function_native_*_raw
+// Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +intent(out)
 // Attrs:     +intent(out)
@@ -75,7 +87,7 @@ int * OWN_ReturnIntPtrDimRaw(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -119,7 +131,7 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_native_*_allocatable
+// Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -165,7 +177,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -205,7 +217,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer_caller
+// Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -221,7 +233,7 @@ int * OWN_ReturnIntPtrDimRawNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer_caller
+// Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -264,7 +276,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_native_*_allocatable_caller
+// Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -280,7 +292,7 @@ int * OWN_ReturnIntPtrDimAllocNew(int * len)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer_caller
+// Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -323,7 +335,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 // ----------------------------------------
 // Function:  void createClassStatic
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -338,7 +350,7 @@ void OWN_createClassStatic(int flag)
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr_library
+// Statement: c_function_shadow_*_capptr_library
 OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.getClassStatic
@@ -356,7 +368,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr_caller
+// Statement: c_function_shadow_*_capptr_caller
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

@@ -73,6 +73,25 @@
                 },
                 "zz_fmtargs": {
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_helper_array_context": "CDE_SHROUD_array",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_*_cdesc"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -130,6 +149,9 @@
                     "function_name": "Rank2In"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -349,7 +371,7 @@
                 },
                 "zz_fmtargs": {
                     "name": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -362,19 +384,22 @@
                             "cxx_nonconst_ptr": "&SHCXX_name",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "f_in_string_&"
+                        },
+                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&"
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "value": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -389,17 +414,20 @@
                             "cxx_nonconst_ptr": "value",
                             "cxx_type": "void",
                             "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmtc": "f_in_void_*_cdesc"
+                        },
+                        "fmtf": {
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
                             "i_var_cdesc": "SHT_value_cdesc",
-                            "idtor": "0",
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "size": "1",
-                            "stmtc": "f_in_void_*_cdesc"
+                            "size": "1"
                         }
                     }
                 },
@@ -416,9 +444,10 @@
                     "function_name": "GetScalar1"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "stmtc": "f_subroutine"
-                    }
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
+                    "fmtf": {}
                 }
             },
             {
@@ -534,7 +563,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_GetScalar1_0",
                     "C_name_api": "GetScalar1",
+                    "F_C_name": "c_get_scalar1_0",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1",
                     "function_suffix": "_0"
@@ -654,7 +685,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -866,7 +896,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_GetScalar1_1",
                     "C_name_api": "GetScalar1",
+                    "F_C_name": "c_get_scalar1_1",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1",
                     "function_suffix": "_1"
@@ -986,7 +1018,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1144,7 +1175,9 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_getData",
                     "C_name_api": "getData",
+                    "F_C_name": "c_get_data",
                     "F_name_api": "get_data",
                     "function_name": "getData"
                 }
@@ -1235,6 +1268,21 @@
                     "template_suffix": "_int"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1350,6 +1398,21 @@
                     "template_suffix": "_double"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "double",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_double",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "double",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1568,7 +1631,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_GetScalar2",
                     "C_name_api": "GetScalar2",
+                    "F_C_name": "c_get_scalar2",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2"
                 }
@@ -1669,7 +1734,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_GetScalar2_0",
                     "C_name_api": "GetScalar2",
+                    "F_C_name": "c_get_scalar2_0",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
@@ -1773,7 +1840,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1961,7 +2027,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "CDE_GetScalar2_1",
                     "C_name_api": "GetScalar2",
+                    "F_C_name": "c_get_scalar2_1",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
@@ -2065,7 +2133,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {

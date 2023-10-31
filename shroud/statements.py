@@ -87,8 +87,8 @@ def lookup_fc_stmts(path):
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
-def lookup_fc_function_stmt(lang, node):
-    """Lookup the statements for a function."""
+def lookup_c_function_stmt(node):
+    """Lookup the C statements for a function."""
     ast = node.ast
     declarator = ast.declarator
     subprogram = declarator.get_subprogram()
@@ -96,7 +96,7 @@ def lookup_fc_function_stmt(lang, node):
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
-        stmts = [lang, sintent]
+        stmts = ["c", sintent]
         result_stmt = lookup_fc_stmts(stmts)
     else:
         r_attrs = declarator.attrs
@@ -104,14 +104,34 @@ def lookup_fc_function_stmt(lang, node):
         spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
         junk, specialize = lookup_c_statements(ast)
-        stmts = [lang, sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
-    search = compute_name(stmts)
+        stmts = ["c", sintent, result_typemap.sgroup, spointer,
+                 r_meta["api"],
+#                 r_meta["deref"],   # XXX - No deref for C wrapper
+                 r_attrs["owner"]
+        ] + specialize
     result_stmt = lookup_fc_stmts(stmts)
-    return search, result_stmt
+    return result_stmt
 
-def lookup_fc_function(node):
-    name, result_stmt = lookup_fc_function_stmt("f", node)
+def lookup_f_function_stmt(node):
+    """Lookup the Fortran statements for a function."""
+    ast = node.ast
+    declarator = ast.declarator
+    subprogram = declarator.get_subprogram()
+    r_meta = declarator.metaattrs
+    sintent = r_meta["intent"]
+    if subprogram == "subroutine":
+        # intent will be "subroutine", "dtor", "setter"
+        stmts = ["f", sintent]
+        result_stmt = lookup_fc_stmts(stmts)
+    else:
+        r_attrs = declarator.attrs
+        result_typemap = ast.typemap
+        spointer = declarator.get_indirect_stmt()
+        # intent will be "function", "ctor", "getter"
+        junk, specialize = lookup_c_statements(ast)
+        stmts = ["f", sintent, result_typemap.sgroup, spointer,
+                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
+    result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
 def lookup_fc_arg_stmt(node, arg):
@@ -804,9 +824,6 @@ fc_statements = [
 
     dict(
         name="c_function",
-        alias=[
-            "c_function_void_*",
-        ],
     ),
     dict(
         name="f_mixin_function",
@@ -1210,6 +1227,8 @@ fc_statements = [
     dict(
         # Default returned by lookup_fc_stmts when group is not found.
         name="f_mixin_unknown",
+        # Point out where there are problems in the wrapper...
+        c_arg_decl=["===>{c_var}<==="],
     ),
 
     ##########
@@ -1721,6 +1740,9 @@ fc_statements = [
     dict(
         # return a type(C_PTR)
         name="f_function_void_*",
+        alias=[
+            "c_function_void_*",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
@@ -1757,20 +1779,6 @@ fc_statements = [
     ),
     
     dict(
-        # Works with deref allocatable and pointer.
-        # c_function_native_*
-        # c_function_native_&
-        name="c_function_native_*/&",
-        # f_mixin_function_ptr
-        alias=[
-            "c_function_native_**_pointer",
-        ],
-        i_result_decl=[
-            "type(C_PTR) {i_var}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
         name="c_function_native_*_scalar",
         i_result_decl=[
             "{f_type} :: {i_var}",
@@ -1802,6 +1810,8 @@ fc_statements = [
             "f_function_native_&_pointer",
             "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
+            "c_function_native_*/&",
+            "c_function_native_*_caller",
         ],
     ),
     dict(
@@ -2263,6 +2273,7 @@ fc_statements = [
             "f_function_string_*_allocatable_caller",
             "f_function_string_*_allocatable_library",
             "f_function_string_*_copy",
+            "c_function_string_*_caller/library",
             "c_function_string_*_copy",
             "f_function_string_*_pointer",
             "f_function_string_*_pointer_caller",
@@ -2995,6 +3006,9 @@ fc_statements = [
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
         ],
+        alias=[
+            "c_function_shadow_*_capsule",
+        ],
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -3006,6 +3020,9 @@ fc_statements = [
         name="f_function_shadow_*_this",
         mixin=[
             "f_mixin_function-to-subroutine",
+        ],
+        alias=[
+            "c_function_shadow_*_this",
         ],
         f_result="subroutine",
         c_call=[
@@ -3117,6 +3134,9 @@ fc_statements = [
             "c_mixin_noargs",
             "f_mixin_function-to-subroutine",
         ],
+        alias=[
+            "c_dtor",
+        ],
         lang_c=dict(
             impl_header=["<stddef.h>"],
         ),
@@ -3183,7 +3203,7 @@ fc_statements = [
             "f_mixin_function_c-ptr",
         ],
         alias=[
-            "c_function_struct_*_pointer",
+            "c_function_struct_*",
         ],
     ),
 
@@ -3231,7 +3251,7 @@ fc_statements = [
         alias=[
             "c_getter_native_scalar",
             "f_getter_native_*_pointer",
-            "c_getter_native_*_pointer",
+            "c_getter_native_*",
         ],
         f_arg_call=[],
         c_call=[

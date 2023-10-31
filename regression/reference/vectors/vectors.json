@@ -73,7 +73,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_sum",
                     "C_name_api": "vector_sum",
+                    "F_C_name": "c_vector_sum",
                     "F_name_api": "vector_sum",
                     "function_name": "vector_sum"
                 }
@@ -143,7 +145,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -303,7 +304,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_out",
                     "C_name_api": "vector_iota_out",
+                    "F_C_name": "c_vector_iota_out",
                     "F_name_api": "vector_iota_out",
                     "function_name": "vector_iota_out"
                 }
@@ -386,7 +389,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -556,7 +558,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_out_with_num",
                     "C_name_api": "vector_iota_out_with_num",
+                    "F_C_name": "c_vector_iota_out_with_num",
                     "F_name_api": "vector_iota_out_with_num",
                     "function_name": "vector_iota_out_with_num"
                 }
@@ -667,7 +671,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -836,7 +839,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_out_with_num2",
                     "C_name_api": "vector_iota_out_with_num2",
+                    "F_C_name": "c_vector_iota_out_with_num2",
                     "F_name_api": "vector_iota_out_with_num2",
                     "function_name": "vector_iota_out_with_num2"
                 }
@@ -937,7 +942,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1089,7 +1093,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_out_alloc",
                     "C_name_api": "vector_iota_out_alloc",
+                    "F_C_name": "c_vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
                     "function_name": "vector_iota_out_alloc"
                 }
@@ -1174,7 +1180,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1322,7 +1327,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_inout_alloc",
                     "C_name_api": "vector_iota_inout_alloc",
+                    "F_C_name": "c_vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",
                     "function_name": "vector_iota_inout_alloc"
                 }
@@ -1410,7 +1417,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1555,7 +1561,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_increment",
                     "C_name_api": "vector_increment",
+                    "F_C_name": "c_vector_increment",
                     "F_name_api": "vector_increment",
                     "function_name": "vector_increment"
                 }
@@ -1636,7 +1644,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1781,7 +1788,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_iota_out_d",
                     "C_name_api": "vector_iota_out_d",
+                    "F_C_name": "c_vector_iota_out_d",
                     "F_name_api": "vector_iota_out_d",
                     "function_name": "vector_iota_out_d"
                 }
@@ -1863,7 +1872,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2018,7 +2026,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_of_pointers",
                     "C_name_api": "vector_of_pointers",
+                    "F_C_name": "c_vector_of_pointers",
                     "F_name_api": "vector_of_pointers",
                     "function_name": "vector_of_pointers"
                 }
@@ -2114,7 +2124,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2299,7 +2308,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_string_count",
                     "C_name_api": "vector_string_count",
+                    "F_C_name": "c_vector_string_count",
                     "F_name_api": "vector_string_count",
                     "function_name": "vector_string_count"
                 }
@@ -2378,7 +2389,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2548,7 +2558,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_string_fill",
                     "C_name_api": "vector_string_fill",
+                    "F_C_name": "c_vector_string_fill",
                     "F_name_api": "vector_string_fill",
                     "function_name": "vector_string_fill"
                 }
@@ -2632,7 +2644,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2776,7 +2787,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_string_fill_allocatable",
                     "C_name_api": "vector_string_fill_allocatable",
+                    "F_C_name": "c_vector_string_fill_allocatable",
                     "F_name_api": "vector_string_fill_allocatable",
                     "function_name": "vector_string_fill_allocatable"
                 }
@@ -2861,7 +2874,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3014,7 +3026,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_string_fill_allocatable_len",
                     "C_name_api": "vector_string_fill_allocatable_len",
+                    "F_C_name": "c_vector_string_fill_allocatable_len",
                     "F_name_api": "vector_string_fill_allocatable_len",
                     "function_name": "vector_string_fill_allocatable_len"
                 }
@@ -3100,7 +3114,6 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3243,7 +3256,9 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_vector_string_append",
                     "C_name_api": "vector_string_append",
+                    "F_C_name": "c_vector_string_append",
                     "F_name_api": "vector_string_append",
                     "function_name": "vector_string_append"
                 }
@@ -3315,7 +3330,9 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name": "VEC_ReturnVectorAlloc",
                     "C_name_api": "ReturnVectorAlloc",
+                    "F_C_name": "c_return_vector_alloc",
                     "F_name_api": "return_vector_alloc",
                     "function_name": "ReturnVectorAlloc"
                 }
@@ -3393,7 +3410,6 @@
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3550,6 +3566,23 @@
                 },
                 "zz_fmtargs": {
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3581,6 +3614,23 @@
                         }
                     },
                     "len": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3631,6 +3681,21 @@
                     "function_name": "returnDim2"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
+                    },
                     "fmtf": {
                         "c_const": "",
                         "c_get_value": "",

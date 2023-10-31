@@ -27,7 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor
@@ -41,7 +41,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 // ----------------------------------------
 // Function:  ~Class2
 // Attrs:     +intent(dtor)
-// Statement: f_dtor
+// Statement: c_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
@@ -55,7 +55,7 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 // ----------------------------------------
 // Function:  void func1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Attrs:     +intent(in)
@@ -74,7 +74,7 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // ----------------------------------------
 // Function:  void acceptClass3
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)

@@ -54,6 +54,9 @@
                     "function_name": "worker3"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -104,6 +107,9 @@
                     "function_name": "worker"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -160,6 +166,9 @@
                             "function_name": "worker"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -246,6 +255,9 @@
                             "function_name": "worker"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
@@ -332,6 +344,9 @@
                             "function_name": "worker4"
                         },
                         "zz_fmtresult": {
+                            "fmtc": {
+                                "stmtc": "c_subroutine"
+                            },
                             "fmtf": {
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"

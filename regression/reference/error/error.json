@@ -39,7 +39,6 @@
                             "wrapped_name": "x1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -142,7 +141,6 @@
                             "wrapped_name": "x1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -237,7 +235,6 @@
                             "wrapped_name": "y1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -340,7 +337,6 @@
                             "wrapped_name": "y1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -435,7 +431,6 @@
                             "wrapped_name": "z1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -538,7 +533,6 @@
                             "wrapped_name": "z1"
                         },
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -810,6 +804,9 @@
                     "function_name": "BadFstatements"
                 },
                 "zz_fmtresult": {
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
                     "fmtf": {
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
@@ -958,7 +955,7 @@
                 },
                 "zz_fmtargs": {
                     "data": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -971,16 +968,20 @@
                             "cxx_nonconst_ptr": "data",
                             "cxx_type": "int",
                             "cxx_var": "data",
+                            "idtor": "0",
+                            "rank": "assumed",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "f_inout_native_*"
+                        },
+                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "i_var": "data",
-                            "idtor": "0",
                             "rank": "assumed",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_inout_native_*"
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "array_size": "===assumed-rank===",
@@ -1022,9 +1023,10 @@
                     "function_name": "AssumedRank"
                 },
                 "zz_fmtresult": {
-                    "fmtf": {
-                        "stmtc": "f_subroutine"
-                    }
+                    "fmtc": {
+                        "stmtc": "c_subroutine"
+                    },
+                    "fmtf": {}
                 }
             },
             {
@@ -1082,7 +1084,6 @@
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1198,7 +1199,6 @@
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1316,7 +1316,6 @@
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {

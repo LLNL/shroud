@@ -121,7 +121,9 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name": "STR_Cstruct_as_class_Cstruct_as_class_ctor",
                             "C_name_api": "Cstruct_as_class_ctor",
+                            "F_C_name": "c_cstruct_as_class_cstruct_as_class_ctor",
                             "F_name_api": "cstruct_as_class_ctor",
                             "PY_name_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_impl": "PY_Cstruct_as_class_tp_init",
@@ -474,7 +476,9 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name": "STR_acceptBothStructs",
                     "C_name_api": "acceptBothStructs",
+                    "F_C_name": "c_accept_both_structs",
                     "F_name_api": "accept_both_structs",
                     "PY_name_impl": "PY_acceptBothStructs",
                     "function_name": "acceptBothStructs"

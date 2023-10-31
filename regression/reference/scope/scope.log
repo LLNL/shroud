@@ -1,13 +1,13 @@
 Read yaml scope.yaml
 Close scope_types.yaml
 struct DataPointer
-C int * DataPointer_get_items(ns1::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C f int * DataPointer_get_items(ns1::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C f void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Close wrapscope_ns1.h
 Close wrapscope_ns1.cpp
 struct DataPointer
-C int * DataPointer_get_items(ns2::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C f int * DataPointer_get_items(ns2::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C f void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Close wrapscope_ns2.h
 Close wrapscope_ns2.cpp
 class Class1
@@ -15,8 +15,8 @@ Close wrapClass1.h
 class Class2
 Close wrapClass2.h
 struct DataPointer
-C int * DataPointer_get_items(ns3::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C f int * DataPointer_get_items(ns3::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C f void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Close wrapscope.h
 Close wrapscope.cpp
 class DataPointer
@@ -24,19 +24,19 @@ class Class1
 class Class2
 Fortran int * DataPointer_get_items(ns3::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 Fortran void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-C-interface int * DataPointer_get_items(ns3::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C-interface void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C-interface f int * DataPointer_get_items(ns3::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C-interface f void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 class DataPointer
 Fortran int * DataPointer_get_items(ns1::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 Fortran void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-C-interface int * DataPointer_get_items(ns1::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C-interface void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C-interface f int * DataPointer_get_items(ns1::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C-interface f void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Close wrapfscope_ns1.f
 class DataPointer
 Fortran int * DataPointer_get_items(ns2::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
 Fortran void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-C-interface int * DataPointer_get_items(ns2::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
-C-interface void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
+C-interface f int * DataPointer_get_items(ns2::DataPointer * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)
+C-interface f void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Close wrapfscope_ns2.f
 Close wrapfscope.f
 Close utilscope.cpp

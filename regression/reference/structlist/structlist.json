@@ -136,7 +136,9 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name": "STR_Arrays1_Arrays1_ctor",
                             "C_name_api": "Arrays1_ctor",
+                            "F_C_name": "c_arrays1_arrays1_ctor",
                             "F_name_api": "arrays1_ctor",
                             "PY_name_impl": "PY_Arrays1_tp_init",
                             "PY_type_impl": "PY_Arrays1_tp_init",

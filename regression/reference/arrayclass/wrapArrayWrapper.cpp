@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
@@ -37,7 +37,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 // ----------------------------------------
 // Function:  void setSize
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int size +value
 // Attrs:     +intent(in)
@@ -53,7 +53,7 @@ void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size)
 // ----------------------------------------
 // Function:  int getSize
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -67,7 +67,7 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  void fillSize
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int & size +intent(out)
 // Attrs:     +intent(out)
@@ -83,7 +83,7 @@ void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int * size)
 // ----------------------------------------
 // Function:  void allocate
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -95,7 +95,7 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 double * ARR_ArrayWrapper_getArray(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -128,7 +128,7 @@ void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 double * ARR_ArrayWrapper_getArrayConst(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -163,7 +163,7 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 const double * ARR_ArrayWrapper_getArrayC(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -196,7 +196,7 @@ void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 const double * ARR_ArrayWrapper_getArrayConstC(
     const ARR_ArrayWrapper * self)
 {
@@ -232,7 +232,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 // ----------------------------------------
 // Function:  void fetchArrayPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -283,7 +283,7 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayRef
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -334,7 +334,7 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -385,7 +385,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
@@ -436,7 +436,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
 // ----------------------------------------
 // Function:  void fetchVoidPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
 // Attrs:     +intent(out)
@@ -453,7 +453,7 @@ void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  void fetchVoidRef
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
 // Attrs:     +intent(out)
@@ -470,7 +470,7 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  bool checkPtr
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  void * array +value
 // Attrs:     +intent(in)
@@ -487,7 +487,7 @@ bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
 // ----------------------------------------
 // Function:  double sumArray
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 double ARR_ArrayWrapper_sumArray(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);

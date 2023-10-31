@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.ctor
@@ -42,7 +42,7 @@ CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  int check_length
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int CXX_Class1_check_length_0(CXX_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -59,7 +59,7 @@ int CXX_Class1_check_length_0(CXX_Class1 * self)
 // ----------------------------------------
 // Function:  int check_length
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int length=1 +value
 // Attrs:     +intent(in)
@@ -77,7 +77,7 @@ int CXX_Class1_check_length_1(CXX_Class1 * self, int length)
 // ----------------------------------------
 // Function:  Class1 * declare
 // Attrs:     +api(this)+intent(function)
-// Statement: f_function_shadow_*_this
+// Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -93,7 +93,7 @@ void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 // ----------------------------------------
 // Function:  Class1 * declare
 // Attrs:     +api(this)+intent(function)
-// Statement: f_function_shadow_*_this
+// Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

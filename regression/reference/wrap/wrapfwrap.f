@@ -48,6 +48,16 @@ module wrap_mod
         module procedure class1_ne
     end interface
 
+    interface
+
+        subroutine c_class1_func_in_class(self) &
+                bind(C, name="WRA_Class1_FuncInClass")
+            import :: WRA_SHROUD_capsule_data
+            implicit none
+            type(WRA_SHROUD_capsule_data), intent(IN) :: self
+        end subroutine c_class1_func_in_class
+    end interface
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -56,7 +66,7 @@ contains
     subroutine class1_func_in_class(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.func_in_class
-        call -F_C_name-(obj%cxxmem)
+        call c_class1_func_in_class(obj%cxxmem)
         ! splicer end class.Class1.method.func_in_class
     end subroutine class1_func_in_class
 

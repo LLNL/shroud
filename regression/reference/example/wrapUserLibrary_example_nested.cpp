@@ -39,7 +39,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  void local_function1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void AA_example_nested_local_function1(void)
 {
     // splicer begin namespace.example::nested.function.local_function1
@@ -50,7 +50,7 @@ void AA_example_nested_local_function1(void)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -82,7 +82,7 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 // ----------------------------------------
 // Function:  bool isInitialized
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.isInitialized
@@ -94,7 +94,7 @@ bool AA_example_nested_isInitialized(void)
 // ----------------------------------------
 // Function:  void test_names
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -129,7 +129,7 @@ void AA_example_nested_test_names_bufferify(char *name,
 // ----------------------------------------
 // Function:  void test_names
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
@@ -173,7 +173,7 @@ void AA_example_nested_test_names_flag_bufferify(char *name,
 // ----------------------------------------
 // Function:  void testoptional
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void AA_example_nested_testoptional_0(void)
 {
     // splicer begin namespace.example::nested.function.testoptional_0
@@ -185,7 +185,7 @@ void AA_example_nested_testoptional_0(void)
 // ----------------------------------------
 // Function:  void testoptional
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
 // Attrs:     +intent(in)
@@ -200,7 +200,7 @@ void AA_example_nested_testoptional_1(int i)
 // ----------------------------------------
 // Function:  void testoptional
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
 // Attrs:     +intent(in)
@@ -219,7 +219,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 // ----------------------------------------
 // Function:  size_t test_size_t
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
@@ -232,7 +232,7 @@ size_t AA_example_nested_test_size_t(void)
 // ----------------------------------------
 // Function:  void testmpi
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
@@ -250,7 +250,7 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm)
 // ----------------------------------------
 // Function:  void testmpi
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void AA_example_nested_testmpi_serial(void)
 {
     // splicer begin namespace.example::nested.function.testmpi_serial
@@ -266,7 +266,7 @@ void AA_example_nested_testmpi_serial(void)
 // ----------------------------------------
 // Function:  void FuncPtr1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
 // Attrs:     +intent(in)
@@ -285,7 +285,7 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
 // Attrs:     +intent(in)
@@ -304,7 +304,7 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr3
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +value
 // Attrs:     +intent(in)
@@ -323,7 +323,7 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // ----------------------------------------
 // Function:  void FuncPtr4
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(double +value, int +value) +value
 // Attrs:     +intent(in)
@@ -338,7 +338,7 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // ----------------------------------------
 // Function:  void FuncPtr5
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
 // Attrs:     +intent(in)
@@ -356,7 +356,7 @@ void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
 // ----------------------------------------
 // Function:  void verylongfunctionname1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
 // Attrs:     +intent(inout)
@@ -412,7 +412,7 @@ void AA_example_nested_verylongfunctionname1(int * verylongname1,
 // ----------------------------------------
 // Function:  int verylongfunctionname2
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int verylongname1 +value
 // Attrs:     +intent(in)
@@ -474,7 +474,7 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // ----------------------------------------
 // Function:  void cos_doubles
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
 // Attrs:     +intent(in)

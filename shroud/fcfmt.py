@@ -56,9 +56,8 @@ class FillFormat(object):
     def fmt_function(self, cls, node):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
-        if node.wrap.c:
-            node.eval_template("C_name")
-            node.eval_template("F_C_name")
+        node.eval_template("C_name")
+        node.eval_template("F_C_name")
         if node.wrap.fortran:
             node.eval_template("F_name_impl")
             node.eval_template("F_name_function")
