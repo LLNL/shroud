@@ -362,20 +362,6 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Statement: c_function_native_*
-// start POI_returnIntScalar
-int POI_returnIntScalar(void)
-{
-    // splicer begin function.returnIntScalar
-    int * SHC_rv = returnIntScalar();
-    return *SHC_rv;
-    // splicer end function.returnIntScalar
-}
-// end POI_returnIntScalar
-
-// ----------------------------------------
-// Function:  int * returnIntScalar +deref(scalar)
-// Attrs:     +deref(scalar)+intent(function)
 // Statement: f_function_native_*_scalar
 // start POI_returnIntScalar_extrawrapper
 int POI_returnIntScalar_extrawrapper(void)

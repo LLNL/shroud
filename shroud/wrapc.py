@@ -964,6 +964,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         fmt_result.stmtc = result_stmt.name
         stmt_indexes.append(result_stmt.index)
 
+        stmt_need_wrapper = result_stmt.c_need_wrapper
+        
         if CXX_subprogram == "subroutine":
             fmt_pattern = fmt_func
         else:
@@ -1008,12 +1010,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Override return type.
             fmt_func.C_return_type = wformat(
                 result_stmt.c_return_type, fmt_result)
-        elif return_deref_attr == "scalar":
-            # Need a wrapper since it will dereference the return pointer.
-            need_wrapper = True
-            fmt_func.C_return_type = ast.gen_arg_as_c(
-                name=None, as_scalar=True, params=None, continuation=True
-            )
         elif result_typemap.sgroup == "shadow":
             # The const does not apply to the capsule.
             fmt_func.C_return_type = ast.gen_arg_as_c(
@@ -1184,6 +1180,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, arg_stmt, pre_call, post_call, need_wrapper
             )
+            stmt_need_wrapper = stmt_need_wrapper or arg_stmt.c_need_wrapper
 
             # Collect arguments to pass to wrapped function.
             if arg_stmt.c_arg_call:
@@ -1316,9 +1313,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             raw_return_code = result_stmt.c_return
         elif return_deref_attr == "copy":
             raw_return_code = ["return {cxx_var};"]
-        elif return_deref_attr == "scalar":
-            # dereference pointer to return scalar
-            raw_return_code = ["return *{cxx_var};"]
         elif C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
@@ -1351,7 +1345,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Use a previously generated C wrapper
             need_wrapper = False
 
-        if need_wrapper: # or options.debug:
+        need_wrapper = need_wrapper or stmt_need_wrapper
+            
+        if need_wrapper:
             impl = []
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
@@ -1361,6 +1357,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             if node.C_signature != None and node.C_signature != signature:
                 # The Fortran wrapper has different signature, change name
+                fmt_func.f_c_suffix = "_extrawrapper"
+                node.reeval_template("C_name")
+                node.reeval_template("F_C_name")
+            elif stmt_need_wrapper:
+                # The statements requires a wrapper (usually the Fortran statements)
                 fmt_func.f_c_suffix = "_extrawrapper"
                 node.reeval_template("C_name")
                 node.reeval_template("F_C_name")

@@ -186,6 +186,16 @@ Unreleased
    vectors), the fstatements field of a function in the YAML file has
    changed.  `c_buf` and `f` fields need to be merged.  A fstatements
    now has both the C and Fortran variables.
+
+* The *deref* attribute is no longer applied to the C wrapper.  When
+  the function result had *+deref(scalar)* on a pointer result, a
+  scalar was returned. The C wrapper will now return a pointer giving
+  it the same prototype as the C++ library function.
+
+.. The C wrapper used by the Fortran wrapper will return a scalar to
+   avoid having to dereference it in the Fortran wrapper via
+   c_f_pointer. And in the simpliest case, eliminates the need
+   for the Fortran wrapper entirely.
   
 New Features
 ^^^^^^^^^^^^

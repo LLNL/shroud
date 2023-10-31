@@ -43,6 +43,13 @@ No such f_helper 'no_f_helper'
 Node: BadFstatements
 Statement: f_subroutine
 No value for 'no_such_var' in '{no_such_var} = 10'
+
+----------------------------------------
+Phase: Wrapf.wrap_function_interface
+----------------------------------------
+Node: BadFstatements
+Statement: f_subroutine
+Unknown type in c_return_type: no-such-type
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h

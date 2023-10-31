@@ -1203,11 +1203,11 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // Attrs:     +deref(scalar)+intent(function)
 // Statement: c_function_native_*
 // start POI_returnIntScalar
-int POI_returnIntScalar(void)
+int * POI_returnIntScalar(void)
 {
     // splicer begin function.returnIntScalar
     int * SHC_rv = returnIntScalar();
-    return *SHC_rv;
+    return SHC_rv;
     // splicer end function.returnIntScalar
 }
 // end POI_returnIntScalar

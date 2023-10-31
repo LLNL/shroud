@@ -140,7 +140,7 @@ module vectors_mod
             import :: VEC_SHROUD_array
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
-            integer(C_LONG) num
+            integer(C_LONG) :: num
         end function c_vector_iota_out_with_num_bufferify
     end interface
     ! end c_vector_iota_out_with_num_bufferify

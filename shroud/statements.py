@@ -722,6 +722,7 @@ CStmts = util.Scope(
     fmtdict=None,
     iface_header=[],
     impl_header=[],
+    c_need_wrapper=False,
     c_helper=[],
     cxx_local_var=None,
     c_arg_call=[],
@@ -837,9 +838,19 @@ fc_statements = [
     dict(
         name="f_function_native_scalar",
         alias=[
-            "f_function_native_*_scalar",
             "c_function_native_scalar",
         ],
+    ),
+    dict(
+        name="f_function_native_*_scalar",
+        comments=[
+            "Return a scalar to avoid doing the deref in Fortran.",
+        ],
+        c_return_type="{c_type}",
+        c_return=[
+            "return *{cxx_var};",
+        ],
+        c_need_wrapper=True,
     ),
 
     ########## mixin ##########

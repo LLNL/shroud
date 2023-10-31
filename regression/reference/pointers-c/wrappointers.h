@@ -53,8 +53,6 @@ void POI_returnIntPtrToFixedArray_bufferify(
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
-int POI_returnIntScalar(void);
-
 int POI_returnIntScalar_extrawrapper(void);
 
 void POI_returnIntAllocToFixedArray_bufferify(

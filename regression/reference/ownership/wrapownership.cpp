@@ -36,11 +36,11 @@ int * OWN_ReturnIntPtrRaw(void)
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
 // Statement: c_function_native_*
-int OWN_ReturnIntPtrScalar(void)
+int * OWN_ReturnIntPtrScalar(void)
 {
     // splicer begin function.ReturnIntPtrScalar
     int * SHC_rv = ReturnIntPtrScalar();
-    return *SHC_rv;
+    return SHC_rv;
     // splicer end function.ReturnIntPtrScalar
 }
 

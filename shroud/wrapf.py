@@ -1287,9 +1287,13 @@ rv = .false.
                 self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
             elif result_stmt.c_return_type:
                 # Return type changed by user.
-                ntypemap = self.symtab.lookup_typemap(result_stmt.c_return_type)
-                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
-                self.update_f_module(modules, ntypemap.f_module, fmt_result)
+                c_return_type = wformat(result_stmt.c_return_type, fmt_result)
+                ntypemap = self.symtab.lookup_typemap(c_return_type)
+                if ntypemap is None:
+                    cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
+                else:
+                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_func.F_result))
+                    self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
                 arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(

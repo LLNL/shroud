@@ -770,6 +770,7 @@
                         "c_helper": [
                             "no_c_helper"
                         ],
+                        "c_return_type": "no-such-type",
                         "f_helper": [
                             "no_f_helper"
                         ],
@@ -789,11 +790,12 @@
                     "C_name": "ERR_BadFstatements",
                     "C_name_api": "BadFstatements",
                     "C_prototype": "void",
-                    "C_return_type": "void",
+                    "C_return_type": "no-such-type",
                     "F_C_arguments": "",
                     "F_C_call": "c_bad_fstatements",
                     "F_C_name": "c_bad_fstatements",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
                     "F_arguments": "",
                     "F_name_api": "bad_fstatements",
                     "F_name_function": "bad_fstatements",

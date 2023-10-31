@@ -148,7 +148,7 @@ const int * POI_returnIntPtrToFixedConstArray(void);
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
-int POI_returnIntScalar(void);
+int * POI_returnIntScalar(void);
 
 int POI_returnIntScalar_extrawrapper(void);
 

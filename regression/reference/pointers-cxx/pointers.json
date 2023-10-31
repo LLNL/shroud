@@ -7859,6 +7859,7 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_int",

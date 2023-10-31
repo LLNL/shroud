@@ -157,10 +157,11 @@ module error_mod
         ! Function:  void BadFstatements
         ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
-        subroutine c_bad_fstatements() &
+        function c_bad_fstatements() &
+                result(SHT_rv) &
                 bind(C, name="ERR_BadFstatements")
             implicit none
-        end subroutine c_bad_fstatements
+        end function c_bad_fstatements
 
         ! ----------------------------------------
         ! Function:  void AssumedRank
