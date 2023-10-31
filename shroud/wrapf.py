@@ -1280,7 +1280,7 @@ rv = .false.
             "F_C_arguments", ",\t ".join(arg_c_names)
         )
 
-        if fmt_func.F_C_subprogram == "function":
+        if fmt_result.F_C_subprogram == "function":
             if result_stmt.i_result_decl is not None:
                 for arg in result_stmt.i_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
@@ -1292,10 +1292,10 @@ rv = .false.
                 if ntypemap is None:
                     cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
                 else:
-                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_func.F_result))
+                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
+                arg_c_decl.append(ast.bind_c(name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,
@@ -1303,7 +1303,7 @@ rv = .false.
                 )
 
         arg_f_use = self.sort_module_info(
-            modules, fmt_func.F_module_name, imports
+            modules, fmt_result.F_module_name, imports
         )
 
         c_interface = fileinfo.c_interface
@@ -1313,7 +1313,7 @@ rv = .false.
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
         if options.literalinclude:
-            append_format(c_interface, "! start {F_C_name}", fmt_func)
+            append_format(c_interface, "! start {F_C_name}", fmt_result)
         if self.newlibrary.options.literalinclude2:
             c_interface.append("interface+")
         c_interface.append(
@@ -1321,7 +1321,7 @@ rv = .false.
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
                 "(\t{F_C_arguments}){F_C_result_clause}"
                 '\fbind(C, name="{C_name}")',
-                fmt_func,
+                fmt_result,
             )
         )
         c_interface.append(1)
@@ -1331,11 +1331,11 @@ rv = .false.
         c_interface.append("implicit none")
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
-        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt_func))
+        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt_result))
         if self.newlibrary.options.literalinclude2:
             c_interface.append("-end interface")
         if options.literalinclude:
-            append_format(c_interface, "! end {F_C_name}", fmt_func)
+            append_format(c_interface, "! end {F_C_name}", fmt_result)
         if node.cpp_if:
             c_interface.append("#endif")
         cursor.pop_node(node)
@@ -1874,12 +1874,12 @@ rv = .false.
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if options.literalinclude:
-                append_format(impl, "! start {F_name_impl}", fmt_func)
+                append_format(impl, "! start {F_name_impl}", fmt_result)
             append_format(
                 impl,
                 "\r{F_subprogram} {F_name_impl}(\t"
                 "{F_arguments}){F_result_clause}",
-                fmt_func,
+                fmt_result,
             )
             impl.append(1)
             impl.extend(arg_f_use)
@@ -1888,9 +1888,9 @@ rv = .false.
                 F_code = declare + optional + pre_call + call + post_call
             self._create_splicer(sname, impl, F_code, F_force)
             impl.append(-1)
-            append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
+            append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_result)
             if options.literalinclude:
-                append_format(impl, "! end {F_name_impl}", fmt_func)
+                append_format(impl, "! end {F_name_impl}", fmt_result)
             if node.cpp_if:
                 impl.append("#endif")
 

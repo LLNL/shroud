@@ -1361,18 +1361,18 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 node.reeval_template("F_C_name")
             
             if options.literalinclude:
-                append_format(impl, "// start {C_name}", fmt_func)
+                append_format(impl, "// start {C_name}", fmt_result)
             append_format(
-                impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
+                impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_result
             )
             impl.append("{+")
             impl.extend(setup_this)
             sname = wformat("{function_name}{function_suffix}{f_c_suffix}{template_suffix}",
-                            fmt_func)
+                            fmt_result)
             self._create_splicer(sname, impl, C_code, C_force)
             impl.append("-}")
             if options.literalinclude:
-                append_format(impl, "// end {C_name}", fmt_func)
+                append_format(impl, "// end {C_name}", fmt_result)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
 
@@ -1397,7 +1397,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 append_format(
                     self.header_proto_c,
                     "{C_return_type} {C_name}(\t{C_prototype});",
-                    fmt_func,
+                    fmt_result,
                 )
                 if node.cpp_if:
                     self.header_proto_c.append("#endif")
