@@ -563,9 +563,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar1_0",
                     "C_name_api": "GetScalar1",
-                    "F_C_name": "c_get_scalar1_0",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1",
                     "function_suffix": "_0"
@@ -896,9 +894,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar1_1",
                     "C_name_api": "GetScalar1",
-                    "F_C_name": "c_get_scalar1_1",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1",
                     "function_suffix": "_1"
@@ -1175,9 +1171,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_getData",
                     "C_name_api": "getData",
-                    "F_C_name": "c_get_data",
                     "F_name_api": "get_data",
                     "function_name": "getData"
                 }
@@ -1631,9 +1625,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar2",
                     "C_name_api": "GetScalar2",
-                    "F_C_name": "c_get_scalar2",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2"
                 }
@@ -1734,9 +1726,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar2_0",
                     "C_name_api": "GetScalar2",
-                    "F_C_name": "c_get_scalar2_0",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
@@ -2027,9 +2017,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar2_1",
                     "C_name_api": "GetScalar2",
-                    "F_C_name": "c_get_scalar2_1",
                     "F_name_api": "get_scalar2",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",

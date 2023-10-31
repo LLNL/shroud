@@ -486,9 +486,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "NS_outer_Cstruct1_Cstruct1_ctor",
                                     "C_name_api": "Cstruct1_ctor",
-                                    "F_C_name": "c_cstruct1_cstruct1_ctor",
                                     "F_name_api": "cstruct1_ctor",
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",

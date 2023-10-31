@@ -104,9 +104,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_sum",
                     "C_name_api": "vector_sum",
-                    "F_C_name": "c_vector_sum",
                     "F_name_api": "vector_sum",
                     "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum"
@@ -223,9 +221,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_out",
                     "C_name_api": "vector_iota_out",
-                    "F_C_name": "c_vector_iota_out",
                     "F_name_api": "vector_iota_out",
                     "PY_name_impl": "PY_vector_iota_out",
                     "function_name": "vector_iota_out"
@@ -321,9 +317,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_out_with_num",
                     "C_name_api": "vector_iota_out_with_num",
-                    "F_C_name": "c_vector_iota_out_with_num",
                     "F_name_api": "vector_iota_out_with_num",
                     "function_name": "vector_iota_out_with_num"
                 }
@@ -408,9 +402,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_out_with_num2",
                     "C_name_api": "vector_iota_out_with_num2",
-                    "F_C_name": "c_vector_iota_out_with_num2",
                     "F_name_api": "vector_iota_out_with_num2",
                     "function_name": "vector_iota_out_with_num2"
                 }
@@ -480,9 +472,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_out_alloc",
                     "C_name_api": "vector_iota_out_alloc",
-                    "F_C_name": "c_vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
                     "function_name": "vector_iota_out_alloc"
                 }
@@ -552,9 +542,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_inout_alloc",
                     "C_name_api": "vector_iota_inout_alloc",
-                    "F_C_name": "c_vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",
                     "function_name": "vector_iota_inout_alloc"
                 }
@@ -617,9 +605,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_increment",
                     "C_name_api": "vector_increment",
-                    "F_C_name": "c_vector_increment",
                     "F_name_api": "vector_increment",
                     "function_name": "vector_increment"
                 }
@@ -716,9 +702,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_iota_out_d",
                     "C_name_api": "vector_iota_out_d",
-                    "F_C_name": "c_vector_iota_out_d",
                     "F_name_api": "vector_iota_out_d",
                     "PY_name_impl": "PY_vector_iota_out_d",
                     "function_name": "vector_iota_out_d"
@@ -808,9 +792,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_of_pointers",
                     "C_name_api": "vector_of_pointers",
-                    "F_C_name": "c_vector_of_pointers",
                     "F_name_api": "vector_of_pointers",
                     "function_name": "vector_of_pointers"
                 }
@@ -877,9 +859,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_string_count",
                     "C_name_api": "vector_string_count",
-                    "F_C_name": "c_vector_string_count",
                     "F_name_api": "vector_string_count",
                     "function_name": "vector_string_count"
                 }
@@ -947,9 +927,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_string_fill",
                     "C_name_api": "vector_string_fill",
-                    "F_C_name": "c_vector_string_fill",
                     "F_name_api": "vector_string_fill",
                     "function_name": "vector_string_fill"
                 }
@@ -1015,9 +993,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_string_fill_allocatable",
                     "C_name_api": "vector_string_fill_allocatable",
-                    "F_C_name": "c_vector_string_fill_allocatable",
                     "F_name_api": "vector_string_fill_allocatable",
                     "function_name": "vector_string_fill_allocatable"
                 }
@@ -1084,9 +1060,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_string_fill_allocatable_len",
                     "C_name_api": "vector_string_fill_allocatable_len",
-                    "F_C_name": "c_vector_string_fill_allocatable_len",
                     "F_name_api": "vector_string_fill_allocatable_len",
                     "function_name": "vector_string_fill_allocatable_len"
                 }
@@ -1155,9 +1129,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "VEC_vector_string_append",
                     "C_name_api": "vector_string_append",
-                    "F_C_name": "c_vector_string_append",
                     "F_name_api": "vector_string_append",
                     "function_name": "vector_string_append"
                 }
@@ -1243,9 +1215,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VEC_ReturnVectorAlloc",
                     "C_name_api": "ReturnVectorAlloc",
-                    "F_C_name": "c_return_vector_alloc",
                     "F_name_api": "return_vector_alloc",
                     "PY_name_impl": "PY_ReturnVectorAlloc",
                     "function_name": "ReturnVectorAlloc"
@@ -1384,9 +1354,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VEC_returnDim2",
                     "C_name_api": "returnDim2",
-                    "F_C_name": "c_return_dim2",
                     "F_name_api": "return_dim2",
                     "PY_name_impl": "PY_returnDim2",
                     "function_name": "returnDim2"

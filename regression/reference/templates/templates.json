@@ -132,9 +132,7 @@
                         ],
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "TEM_user_int_nested",
                             "C_name_api": "nested",
-                            "F_C_name": "c_user_int_nested",
                             "F_name_api": "nested",
                             "function_name": "nested"
                         }
@@ -793,9 +791,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_set_value",
                             "C_name_api": "set_value",
-                            "F_C_name": "c_struct_as_class_int_set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value"
                         }
@@ -949,9 +945,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_get_value",
                             "C_name_api": "get_value",
-                            "F_C_name": "c_struct_as_class_int_get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value"
                         }
@@ -1471,9 +1465,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_set_value",
                             "C_name_api": "set_value",
-                            "F_C_name": "c_struct_as_class_double_set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value"
                         }
@@ -1627,9 +1619,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_get_value",
                             "C_name_api": "get_value",
-                            "F_C_name": "c_struct_as_class_double_get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value"
                         }
@@ -2017,9 +2007,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TEM_FunctionTU",
                     "C_name_api": "FunctionTU",
-                    "F_C_name": "c_function_tu",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU"
                 }
@@ -2624,9 +2612,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TEM_UseImplWorker",
                     "C_name_api": "UseImplWorker",
-                    "F_C_name": "c_use_impl_worker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker"
                 }
@@ -3166,9 +3152,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_push_back",
                                     "C_name_api": "push_back",
-                                    "F_C_name": "c_vector_int_push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back"
                                 }
@@ -3372,9 +3356,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_at",
                                     "C_name_api": "at",
-                                    "F_C_name": "c_vector_int_at",
                                     "F_name_api": "at",
                                     "function_name": "at"
                                 }
@@ -3908,9 +3890,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_push_back",
                                     "C_name_api": "push_back",
-                                    "F_C_name": "c_vector_double_push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back"
                                 }
@@ -4114,9 +4094,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_at",
                                     "C_name_api": "at",
-                                    "F_C_name": "c_vector_double_at",
                                     "F_name_api": "at",
                                     "function_name": "at"
                                 }

@@ -2446,9 +2446,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_AssignValues_broadcast",
                     "C_name_api": "AssignValues",
-                    "F_C_name": "c_assign_values_broadcast",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast"
@@ -2818,9 +2816,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_AssignValues_copy",
                     "C_name_api": "AssignValues",
-                    "F_C_name": "c_assign_values_copy",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
                     "function_suffix": "_copy"
@@ -3487,9 +3483,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_SavePointer_float1d",
                     "C_name_api": "SavePointer",
-                    "F_C_name": "c_save_pointer_float1d",
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
                     "function_suffix": "_float1d"
@@ -3791,9 +3785,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_SavePointer_float2d",
                     "C_name_api": "SavePointer",
-                    "F_C_name": "c_save_pointer_float2d",
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
                     "function_suffix": "_float2d"
@@ -4459,9 +4451,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_SavePointer2_float1d",
                     "C_name_api": "SavePointer2",
-                    "F_C_name": "c_save_pointer2_float1d",
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d"
@@ -4817,9 +4807,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_SavePointer2_float2d",
                     "C_name_api": "SavePointer2",
-                    "F_C_name": "c_save_pointer2_float2d",
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d"
@@ -5769,9 +5757,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_GetPointerAsPointer_float1d",
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_name": "c_get_pointer_as_pointer_float1d",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d"
@@ -6113,9 +6099,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_GetPointerAsPointer_float2d",
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_name": "c_get_pointer_as_pointer_float2d",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d"

@@ -2027,9 +2027,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringResult",
                     "C_name_api": "getConstStringResult",
-                    "F_C_name": "c_get_const_string_result",
                     "F_name_api": "get_const_string_result",
                     "PY_name_impl": "PY_getConstStringResult",
                     "function_name": "getConstStringResult"
@@ -2200,9 +2198,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringLen",
                     "C_name_api": "getConstStringLen",
-                    "F_C_name": "c_get_const_string_len",
                     "F_name_api": "get_const_string_len",
                     "PY_name_impl": "PY_getConstStringLen",
                     "function_name": "getConstStringLen"
@@ -2362,9 +2358,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAsArg",
                     "C_name_api": "getConstStringAsArg",
-                    "F_C_name": "c_get_const_string_as_arg",
                     "F_name_api": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
@@ -2523,9 +2517,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAlloc",
                     "C_name_api": "getConstStringAlloc",
-                    "F_C_name": "c_get_const_string_alloc",
                     "F_name_api": "get_const_string_alloc",
                     "PY_name_impl": "PY_getConstStringAlloc",
                     "function_name": "getConstStringAlloc"
@@ -7400,9 +7392,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_returnStrings",
                     "C_name_api": "returnStrings",
-                    "F_C_name": "c_return_strings",
                     "F_name_api": "return_strings",
                     "PY_name_impl": "PY_returnStrings",
                     "function_name": "returnStrings"
@@ -8600,9 +8590,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_returnMany",
                     "C_name_api": "returnMany",
-                    "F_C_name": "c_return_many",
                     "F_name_api": "return_many",
                     "function_name": "returnMany"
                 }

@@ -80,9 +80,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_in",
                     "C_name_api": "intargs_in",
-                    "F_C_name": "c_intargs_in",
                     "F_name_api": "intargs_in",
                     "PY_name_impl": "PY_intargs_in",
                     "function_name": "intargs_in"
@@ -157,9 +155,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_inout",
                     "C_name_api": "intargs_inout",
-                    "F_C_name": "c_intargs_inout",
                     "F_name_api": "intargs_inout",
                     "PY_name_impl": "PY_intargs_inout",
                     "function_name": "intargs_inout"
@@ -234,9 +230,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_out",
                     "C_name_api": "intargs_out",
-                    "F_C_name": "c_intargs_out",
                     "F_name_api": "intargs_out",
                     "PY_name_impl": "PY_intargs_out",
                     "function_name": "intargs_out"
@@ -391,9 +385,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs",
                     "C_name_api": "intargs",
-                    "F_C_name": "c_intargs",
                     "F_name_api": "intargs",
                     "PY_name_impl": "PY_intargs",
                     "function_name": "intargs"
@@ -571,9 +563,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_cos_doubles",
                     "C_name_api": "cos_doubles",
-                    "F_C_name": "c_cos_doubles",
                     "F_name_api": "cos_doubles",
                     "PY_name_impl": "PY_cos_doubles",
                     "function_name": "cos_doubles"
@@ -751,9 +741,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_truncate_to_int",
                     "C_name_api": "truncate_to_int",
-                    "F_C_name": "c_truncate_to_int",
                     "F_name_api": "truncate_to_int",
                     "PY_name_impl": "PY_truncate_to_int",
                     "function_name": "truncate_to_int"
@@ -886,9 +874,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_get_values",
                     "C_name_api": "get_values",
-                    "F_C_name": "c_get_values",
                     "F_name_api": "get_values",
                     "PY_name_impl": "PY_get_values",
                     "function_name": "get_values"
@@ -1033,9 +1019,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_get_values2",
                     "C_name_api": "get_values2",
-                    "F_C_name": "c_get_values2",
                     "F_name_api": "get_values2",
                     "PY_name_impl": "PY_get_values2",
                     "function_name": "get_values2"
@@ -1158,9 +1142,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_iota_dimension",
                     "C_name_api": "iota_dimension",
-                    "F_C_name": "c_iota_dimension",
                     "F_name_api": "iota_dimension",
                     "PY_name_impl": "PY_iota_dimension",
                     "function_name": "iota_dimension"
@@ -1319,9 +1301,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_Sum",
                     "C_name_api": "Sum",
-                    "F_C_name": "c_sum",
                     "F_name_api": "sum",
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum"
@@ -1411,9 +1391,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fillIntArray",
                     "C_name_api": "fillIntArray",
-                    "F_C_name": "c_fill_int_array",
                     "F_name_api": "fill_int_array",
                     "PY_name_impl": "PY_fillIntArray",
                     "function_name": "fillIntArray"
@@ -1532,9 +1510,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_incrementIntArray",
                     "C_name_api": "incrementIntArray",
-                    "F_C_name": "c_increment_int_array",
                     "F_name_api": "increment_int_array",
                     "PY_name_impl": "PY_incrementIntArray",
                     "function_name": "incrementIntArray"
@@ -1649,9 +1625,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fill_with_zeros",
                     "C_name_api": "fill_with_zeros",
-                    "F_C_name": "c_fill_with_zeros",
                     "F_name_api": "fill_with_zeros",
                     "PY_name_impl": "PY_fill_with_zeros",
                     "function_name": "fill_with_zeros"
@@ -1766,9 +1740,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_accumulate",
                     "C_name_api": "accumulate",
-                    "F_C_name": "c_accumulate",
                     "F_name_api": "accumulate",
                     "PY_name_impl": "PY_accumulate",
                     "function_name": "accumulate"
@@ -1870,9 +1842,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_acceptCharArrayIn",
                     "C_name_api": "acceptCharArrayIn",
-                    "F_C_name": "c_accept_char_array_in",
                     "F_name_api": "accept_char_array_in",
                     "PY_name_impl": "PY_acceptCharArrayIn",
                     "function_name": "acceptCharArrayIn"
@@ -1959,9 +1929,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_setGlobalInt",
                     "C_name_api": "setGlobalInt",
-                    "F_C_name": "c_set_global_int",
                     "F_name_api": "set_global_int",
                     "PY_name_impl": "PY_setGlobalInt",
                     "function_name": "setGlobalInt"
@@ -1994,9 +1962,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_sumFixedArray",
                     "C_name_api": "sumFixedArray",
-                    "F_C_name": "c_sum_fixed_array",
                     "F_name_api": "sum_fixed_array",
                     "PY_name_impl": "PY_sumFixedArray",
                     "function_name": "sumFixedArray"
@@ -2070,9 +2036,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToScalar",
                     "C_name_api": "getPtrToScalar",
-                    "F_C_name": "c_get_ptr_to_scalar",
                     "F_name_api": "get_ptr_to_scalar",
                     "function_name": "getPtrToScalar"
                 }
@@ -2165,9 +2129,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFixedArray",
                     "C_name_api": "getPtrToFixedArray",
-                    "F_C_name": "c_get_ptr_to_fixed_array",
                     "F_name_api": "get_ptr_to_fixed_array",
                     "PY_name_impl": "PY_getPtrToFixedArray",
                     "function_name": "getPtrToFixedArray"
@@ -2304,9 +2266,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToDynamicArray",
                     "C_name_api": "getPtrToDynamicArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_array",
                     "F_name_api": "get_ptr_to_dynamic_array",
                     "PY_name_impl": "PY_getPtrToDynamicArray",
                     "function_name": "getPtrToDynamicArray"
@@ -2401,9 +2361,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFuncArray",
                     "C_name_api": "getPtrToFuncArray",
-                    "F_C_name": "c_get_ptr_to_func_array",
                     "F_name_api": "get_ptr_to_func_array",
                     "PY_name_impl": "PY_getPtrToFuncArray",
                     "function_name": "getPtrToFuncArray"
@@ -2460,9 +2418,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToConstScalar",
                     "C_name_api": "getPtrToConstScalar",
-                    "F_C_name": "c_get_ptr_to_const_scalar",
                     "F_name_api": "get_ptr_to_const_scalar",
                     "function_name": "getPtrToConstScalar"
                 }
@@ -2553,9 +2509,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFixedConstArray",
                     "C_name_api": "getPtrToFixedConstArray",
-                    "F_C_name": "c_get_ptr_to_fixed_const_array",
                     "F_name_api": "get_ptr_to_fixed_const_array",
                     "PY_name_impl": "PY_getPtrToFixedConstArray",
                     "function_name": "getPtrToFixedConstArray"
@@ -2690,9 +2644,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToDynamicConstArray",
                     "C_name_api": "getPtrToDynamicConstArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_const_array",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
                     "PY_name_impl": "PY_getPtrToDynamicConstArray",
                     "function_name": "getPtrToDynamicConstArray"
@@ -2775,9 +2727,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToScalar",
                     "C_name_api": "getRawPtrToScalar",
-                    "F_C_name": "c_get_raw_ptr_to_scalar",
                     "F_name_api": "get_raw_ptr_to_scalar",
                     "PY_name_impl": "PY_getRawPtrToScalar",
                     "function_name": "getRawPtrToScalar"
@@ -2838,9 +2788,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToScalarForce",
                     "C_name_api": "getRawPtrToScalarForce",
-                    "F_C_name": "c_get_raw_ptr_to_scalar_force",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
                     "function_name": "getRawPtrToScalarForce"
                 }
@@ -2922,9 +2870,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToFixedArray",
                     "C_name_api": "getRawPtrToFixedArray",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array",
                     "F_name_api": "get_raw_ptr_to_fixed_array",
                     "PY_name_impl": "PY_getRawPtrToFixedArray",
                     "function_name": "getRawPtrToFixedArray"
@@ -2985,9 +2931,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToFixedArrayForce",
                     "C_name_api": "getRawPtrToFixedArrayForce",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
                     "function_name": "getRawPtrToFixedArrayForce"
                 }
@@ -3047,9 +2991,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToInt2d",
                     "C_name_api": "getRawPtrToInt2d",
-                    "F_C_name": "c_get_raw_ptr_to_int2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
                     "function_name": "getRawPtrToInt2d"
                 }
@@ -3106,9 +3048,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_checkInt2d",
                     "C_name_api": "checkInt2d",
-                    "F_C_name": "c_check_int2d",
                     "F_name_api": "check_int2d",
                     "function_name": "checkInt2d"
                 }
@@ -3172,9 +3112,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_DimensionIn",
                     "C_name_api": "DimensionIn",
-                    "F_C_name": "c_dimension_in",
                     "F_name_api": "dimension_in",
                     "function_name": "DimensionIn"
                 }
@@ -3239,9 +3177,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_getAllocToFixedArray",
                     "C_name_api": "getAllocToFixedArray",
-                    "F_C_name": "c_get_alloc_to_fixed_array",
                     "F_name_api": "get_alloc_to_fixed_array",
                     "function_name": "getAllocToFixedArray"
                 }
@@ -3314,9 +3250,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnAddress1",
                     "C_name_api": "returnAddress1",
-                    "F_C_name": "c_return_address1",
                     "F_name_api": "return_address1",
                     "PY_name_impl": "PY_returnAddress1",
                     "function_name": "returnAddress1"
@@ -3411,9 +3345,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnAddress2",
                     "C_name_api": "returnAddress2",
-                    "F_C_name": "c_return_address2",
                     "F_name_api": "return_address2",
                     "PY_name_impl": "PY_returnAddress2",
                     "function_name": "returnAddress2"
@@ -3510,9 +3442,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fetchVoidPtr",
                     "C_name_api": "fetchVoidPtr",
-                    "F_C_name": "c_fetch_void_ptr",
                     "F_name_api": "fetch_void_ptr",
                     "PY_name_impl": "PY_fetchVoidPtr",
                     "function_name": "fetchVoidPtr"
@@ -3568,9 +3498,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_updateVoidPtr",
                     "C_name_api": "updateVoidPtr",
-                    "F_C_name": "c_update_void_ptr",
                     "F_name_api": "update_void_ptr",
                     "function_name": "updateVoidPtr"
                 }
@@ -3625,9 +3553,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_VoidPtrArray",
                     "C_name_api": "VoidPtrArray",
-                    "F_C_name": "c_void_ptr_array",
                     "F_name_api": "void_ptr_array",
                     "function_name": "VoidPtrArray"
                 }
@@ -3662,9 +3588,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToScalar",
                     "C_name_api": "returnIntPtrToScalar",
-                    "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_name_api": "return_int_ptr_to_scalar",
                     "PY_name_impl": "PY_returnIntPtrToScalar",
                     "function_name": "returnIntPtrToScalar"
@@ -3728,9 +3652,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToFixedArray",
                     "C_name_api": "returnIntPtrToFixedArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_array",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
                     "function_name": "returnIntPtrToFixedArray"
@@ -3792,9 +3714,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToConstScalar",
                     "C_name_api": "returnIntPtrToConstScalar",
-                    "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "PY_name_impl": "PY_returnIntPtrToConstScalar",
                     "function_name": "returnIntPtrToConstScalar"
@@ -3859,9 +3779,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToFixedConstArray",
                     "C_name_api": "returnIntPtrToFixedConstArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "PY_name_impl": "PY_returnIntPtrToFixedConstArray",
                     "function_name": "returnIntPtrToFixedConstArray"
@@ -3925,9 +3843,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntScalar",
                     "C_name_api": "returnIntScalar",
-                    "F_C_name": "c_return_int_scalar",
                     "F_name_api": "return_int_scalar",
                     "PY_name_impl": "PY_returnIntScalar",
                     "function_name": "returnIntScalar"
@@ -3988,9 +3904,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntRaw",
                     "C_name_api": "returnIntRaw",
-                    "F_C_name": "c_return_int_raw",
                     "F_name_api": "return_int_raw",
                     "function_name": "returnIntRaw"
                 }
@@ -4052,9 +3966,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntRawWithArgs",
                     "C_name_api": "returnIntRawWithArgs",
-                    "F_C_name": "c_return_int_raw_with_args",
                     "F_name_api": "return_int_raw_with_args",
                     "function_name": "returnIntRawWithArgs"
                 }
@@ -4095,9 +4007,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_returnRawPtrToInt2d",
                     "C_name_api": "returnRawPtrToInt2d",
-                    "F_C_name": "c_return_raw_ptr_to_int2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
                     "function_name": "returnRawPtrToInt2d"
                 }
@@ -4141,9 +4051,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntAllocToFixedArray",
                     "C_name_api": "returnIntAllocToFixedArray",
-                    "F_C_name": "c_return_int_alloc_to_fixed_array",
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "function_name": "returnIntAllocToFixedArray"
                 }

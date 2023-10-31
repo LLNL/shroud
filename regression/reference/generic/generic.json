@@ -5585,9 +5585,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_GetPointerAsPointer_float1d",
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_name": "c_get_pointer_as_pointer_float1d",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d"
@@ -5937,9 +5935,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "GEN_GetPointerAsPointer_float2d",
                     "C_name_api": "GetPointerAsPointer",
-                    "F_C_name": "c_get_pointer_as_pointer_float2d",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d"

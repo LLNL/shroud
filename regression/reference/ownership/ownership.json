@@ -2918,9 +2918,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimRaw",
                     "C_name_api": "IntPtrDimRaw",
-                    "F_C_name": "c_int_ptr_dim_raw",
                     "F_name_api": "int_ptr_dim_raw",
                     "function_name": "IntPtrDimRaw"
                 }
@@ -3008,9 +3006,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimPointer",
                     "C_name_api": "IntPtrDimPointer",
-                    "F_C_name": "c_int_ptr_dim_pointer",
                     "F_name_api": "int_ptr_dim_pointer",
                     "function_name": "IntPtrDimPointer"
                 }
@@ -3098,9 +3094,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimAlloc",
                     "C_name_api": "IntPtrDimAlloc",
-                    "F_C_name": "c_int_ptr_dim_alloc",
                     "F_name_api": "int_ptr_dim_alloc",
                     "function_name": "IntPtrDimAlloc"
                 }
@@ -3187,9 +3181,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimDefault",
                     "C_name_api": "IntPtrDimDefault",
-                    "F_C_name": "c_int_ptr_dim_default",
                     "F_name_api": "int_ptr_dim_default",
                     "function_name": "IntPtrDimDefault"
                 }
@@ -3271,9 +3263,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimRawNew",
                     "C_name_api": "IntPtrDimRawNew",
-                    "F_C_name": "c_int_ptr_dim_raw_new",
                     "F_name_api": "int_ptr_dim_raw_new",
                     "function_name": "IntPtrDimRawNew"
                 }
@@ -3361,9 +3351,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimPointerNew",
                     "C_name_api": "IntPtrDimPointerNew",
-                    "F_C_name": "c_int_ptr_dim_pointer_new",
                     "F_name_api": "int_ptr_dim_pointer_new",
                     "function_name": "IntPtrDimPointerNew"
                 }
@@ -3451,9 +3439,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimAllocNew",
                     "C_name_api": "IntPtrDimAllocNew",
-                    "F_C_name": "c_int_ptr_dim_alloc_new",
                     "F_name_api": "int_ptr_dim_alloc_new",
                     "function_name": "IntPtrDimAllocNew"
                 }
@@ -3540,9 +3526,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "OWN_IntPtrDimDefaultNew",
                     "C_name_api": "IntPtrDimDefaultNew",
-                    "F_C_name": "c_int_ptr_dim_default_new",
                     "F_name_api": "int_ptr_dim_default_new",
                     "function_name": "IntPtrDimDefaultNew"
                 }

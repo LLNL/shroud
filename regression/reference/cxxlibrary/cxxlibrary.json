@@ -123,9 +123,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Cstruct1_cls_Cstruct1_cls_ctor",
                             "C_name_api": "Cstruct1_cls_ctor",
-                            "F_C_name": "c_cstruct1_cls_cstruct1_cls_ctor",
                             "F_name_api": "cstruct1_cls_ctor",
                             "PY_name_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_impl": "PY_Cstruct1_cls_tp_init",
@@ -2036,9 +2034,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_passStructByReferenceCls",
                     "C_name_api": "passStructByReferenceCls",
-                    "F_C_name": "c_pass_struct_by_reference_cls",
                     "F_name_api": "pass_struct_by_reference_cls",
                     "PY_name_impl": "PY_passStructByReferenceCls",
                     "function_name": "passStructByReferenceCls"
@@ -2137,9 +2133,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_passStructByReferenceInCls",
                     "C_name_api": "passStructByReferenceInCls",
-                    "F_C_name": "c_pass_struct_by_reference_in_cls",
                     "F_name_api": "pass_struct_by_reference_in_cls",
                     "PY_name_impl": "PY_passStructByReferenceInCls",
                     "function_name": "passStructByReferenceInCls"
@@ -2237,9 +2231,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_passStructByReferenceInoutCls",
                     "C_name_api": "passStructByReferenceInoutCls",
-                    "F_C_name": "c_pass_struct_by_reference_inout_cls",
                     "F_name_api": "pass_struct_by_reference_inout_cls",
                     "PY_name_impl": "PY_passStructByReferenceInoutCls",
                     "function_name": "passStructByReferenceInoutCls"
@@ -2318,9 +2310,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_passStructByReferenceOutCls",
                     "C_name_api": "passStructByReferenceOutCls",
-                    "F_C_name": "c_pass_struct_by_reference_out_cls",
                     "F_name_api": "pass_struct_by_reference_out_cls",
                     "PY_name_impl": "PY_passStructByReferenceOutCls",
                     "function_name": "passStructByReferenceOutCls"
@@ -3528,9 +3518,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CXX_getGroupName_int32_t",
                     "C_name_api": "getGroupName",
-                    "F_C_name": "c_get_group_name_int32_t",
                     "F_name_api": "get_group_name",
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t"
@@ -3759,9 +3747,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CXX_getGroupName_int64_t",
                     "C_name_api": "getGroupName",
-                    "F_C_name": "c_get_group_name_int64_t",
                     "F_name_api": "get_group_name",
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t"
@@ -4310,9 +4296,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "CXX_nested_get_child",
                     "C_name_api": "nested_get_child",
-                    "F_C_name": "c_nested_get_child",
                     "F_name_api": "nested_get_child",
                     "field_name": "child",
                     "function_name": "nested_get_child",

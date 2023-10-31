@@ -540,9 +540,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CCO_acceptDoubleComplexInoutPtrFlag",
                     "C_name_api": "acceptDoubleComplexInoutPtrFlag",
-                    "F_C_name": "c_accept_double_complex_inout_ptr_flag",
                     "F_name_api": "accept_double_complex_inout_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
                     "function_name": "acceptDoubleComplexInoutPtrFlag"

@@ -597,9 +597,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_ConcatenateStrings",
                     "C_name_api": "ConcatenateStrings",
-                    "F_C_name": "c_concatenate_strings",
                     "F_name_api": "concatenate_strings",
                     "LUA_name": "ConcatenateStrings",
                     "LUA_name_api": "ConcatenateStrings",
@@ -1936,9 +1934,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_TemplateArgument",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument",
                     "F_name_api": "template_argument",
                     "function_name": "TemplateArgument"
                 }
@@ -2387,9 +2383,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_TemplateReturn",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return",
                     "F_name_api": "template_return",
                     "function_name": "TemplateReturn"
                 }
@@ -3082,9 +3076,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_float",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_float",
                     "F_name_api": "fortran_generic_overloaded",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float"
@@ -3329,9 +3321,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_double",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_double",
                     "F_name_api": "fortran_generic_overloaded",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double"

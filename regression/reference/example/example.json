@@ -4945,9 +4945,7 @@
                                         ],
                                         "wrap": {},
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_setValue",
                                             "C_name_api": "setValue",
-                                            "F_C_name": "c_ex_class2_set_value",
                                             "F_name_api": "set_value",
                                             "function_name": "setValue"
                                         }
@@ -5877,9 +5875,7 @@
                                         ],
                                         "wrap": {},
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getValue",
                                             "C_name_api": "getValue",
-                                            "F_C_name": "c_ex_class2_get_value",
                                             "F_name_api": "get_value",
                                             "function_name": "getValue"
                                         }

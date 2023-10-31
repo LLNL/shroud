@@ -10,6 +10,7 @@ Fill the fmtdict for C and Fortran wrappers.
 
 from . import error
 from . import todict
+from . import util
 from . import whelpers
 from .util import wformat, append_format
 
@@ -41,31 +42,49 @@ class FillFormat(object):
         
         for cls in node.classes:
             cursor.push_phase("FillFormat class function")
-            for func in cls.functions:
-                self.fmt_function(cls, func)
+            self.fmt_functions(cls, cls.functions)
             cursor.pop_phase("FillFormat class function")
 
         cursor.push_phase("FillFormat function")
-        for func in node.functions:
-            self.fmt_function(None, func)
+        self.fmt_functions(None, node.functions)
         cursor.pop_phase("FillFormat function")
 
         for ns in node.namespaces:
             self.fmt_namespace(ns)
 
-    def fmt_function(self, cls, node):
+    def fmt_functions(self, cls, functions):
+        for node in functions:
+            if node.wrap.c:
+                self.fmt_function("c", cls, node)
+            if node.wrap.fortran:
+                self.fmt_function("f", cls, node)
+
+    def fmt_function(self, wlang, cls, node):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
+
+        fmtlang = "fmt" + wlang
+
+        fmt_func = node.fmtdict
+        fmtargs = node._fmtargs
+        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        
         node.eval_template("C_name")
         node.eval_template("F_C_name")
-        if node.wrap.fortran:
+
+        if wlang == "f":
             node.eval_template("F_name_impl")
             node.eval_template("F_name_function")
             node.eval_template("F_name_generic")
 
-        if not node.wrap.fortran:
-            cursor.pop_node(node)
-            return
+#        node.eval_template("C_name", fmt=fmt_result)
+#        node.eval_template("F_C_name", fmt=fmt_result)
+
+#        if wlang == "f":
+#            node.eval_template("F_name_impl", fmt=fmt_result)
+#            node.eval_template("F_name_function", fmt=fmt_result)
+#            node.eval_template("F_name_generic", fmt=fmt_result)
+
         cursor.pop_node(node)
         return  # <--- work in progress
 

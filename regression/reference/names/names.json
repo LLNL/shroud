@@ -1900,9 +1900,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TES_FunctionTU",
                     "C_name_api": "FunctionTU",
-                    "F_C_name": "c_function_tu",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU"
                 }
@@ -2510,9 +2508,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TES_UseImplWorker",
                     "C_name_api": "UseImplWorker",
-                    "F_C_name": "c_use_impl_worker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker"
                 }

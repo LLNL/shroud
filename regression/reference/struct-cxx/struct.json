@@ -5238,9 +5238,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_get_ivalue",
                     "C_name_api": "Cstruct_list_get_ivalue",
-                    "F_C_name": "c_cstruct_list_get_ivalue",
                     "F_name_api": "cstruct_list_get_ivalue",
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_get_ivalue",
@@ -5677,9 +5675,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_get_dvalue",
                     "C_name_api": "Cstruct_list_get_dvalue",
-                    "F_C_name": "c_cstruct_list_get_dvalue",
                     "F_name_api": "cstruct_list_get_dvalue",
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_get_dvalue",

@@ -2259,9 +2259,7 @@
                         },
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_get_m_name",
                             "C_name_api": "get_m_name",
-                            "F_C_name": "c_class1_get_m_name",
                             "F_name_api": "get_m_name",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
@@ -2426,9 +2424,7 @@
                         },
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_set_m_name",
                             "C_name_api": "set_m_name",
-                            "F_C_name": "c_class1_set_m_name",
                             "F_name_api": "set_m_name",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
@@ -4253,9 +4249,7 @@
                         },
                         "wrap": {},
                         "zz_fmtdict": {
-                            "C_name": "CLA_Data_get_items",
                             "C_name_api": "get_items",
-                            "F_C_name": "c_data_get_items",
                             "F_name_api": "get_items",
                             "field_name": "items",
                             "function_name": "get_items",

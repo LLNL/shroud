@@ -101,9 +101,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_NoReturnNoArguments",
                     "C_name_api": "NoReturnNoArguments",
-                    "F_C_name": "c_no_return_no_arguments",
                     "F_name_api": "no_return_no_arguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
                     "function_name": "NoReturnNoArguments"
@@ -208,9 +206,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_PassByValue",
                     "C_name_api": "PassByValue",
-                    "F_C_name": "c_pass_by_value",
                     "F_name_api": "pass_by_value",
                     "PY_name_impl": "PY_PassByValue",
                     "function_name": "PassByValue"
@@ -346,9 +342,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_ConcatenateStrings",
                     "C_name_api": "ConcatenateStrings",
-                    "F_C_name": "c_concatenate_strings",
                     "F_name_api": "concatenate_strings",
                     "PY_name_impl": "PY_ConcatenateStrings",
                     "function_name": "ConcatenateStrings"
@@ -483,9 +477,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments",
                     "F_name_api": "use_default_arguments",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultArguments",
@@ -581,9 +573,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_name",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_name",
                     "F_name_api": "overloaded_function",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
@@ -657,9 +647,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_index",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_index",
                     "F_name_api": "overloaded_function",
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
                     "function_name": "OverloadedFunction",
@@ -739,9 +727,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_TemplateArgument",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument",
                     "F_name_api": "template_argument",
                     "function_name": "TemplateArgument"
                 }
@@ -844,9 +830,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateArgument_int",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_int",
                     "F_name_api": "template_argument",
                     "PY_name_impl": "PY_TemplateArgument_int",
                     "function_name": "TemplateArgument",
@@ -955,9 +939,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateArgument_double",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_double",
                     "F_name_api": "template_argument",
                     "PY_name_impl": "PY_TemplateArgument_double",
                     "function_name": "TemplateArgument",
@@ -1023,9 +1005,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_TemplateReturn",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return",
                     "F_name_api": "template_return",
                     "function_name": "TemplateReturn"
                 }
@@ -1091,9 +1071,7 @@
                 "wrap": {},
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateReturn_int",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_int",
                     "F_name_api": "template_return",
                     "function_name": "TemplateReturn",
                     "template_suffix": "_int"
@@ -1164,9 +1142,7 @@
                 "wrap": {},
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateReturn_double",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_double",
                     "F_name_api": "template_return",
                     "function_name": "TemplateReturn",
                     "template_suffix": "_double"
@@ -1197,9 +1173,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_0",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_0",
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_0",
                     "function_name": "FortranGenericOverloaded",
@@ -1396,9 +1370,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1",
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
@@ -1549,9 +1521,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_0",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_0",
                     "F_name_api": "use_default_overload",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultOverload_0",
@@ -1752,9 +1722,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_1",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_1",
                     "F_name_api": "use_default_overload",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultOverload_1",
@@ -1843,9 +1811,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_typefunc",
                     "C_name_api": "typefunc",
-                    "F_C_name": "c_typefunc",
                     "F_name_api": "typefunc",
                     "PY_name_impl": "PY_typefunc",
                     "function_name": "typefunc"
@@ -1934,9 +1900,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_enumfunc",
                     "C_name_api": "enumfunc",
-                    "F_C_name": "c_enumfunc",
                     "F_name_api": "enumfunc",
                     "PY_name_impl": "PY_enumfunc",
                     "function_name": "enumfunc"
@@ -2025,9 +1989,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_colorfunc",
                     "C_name_api": "colorfunc",
-                    "F_C_name": "c_colorfunc",
                     "F_name_api": "colorfunc",
                     "PY_name_impl": "PY_colorfunc",
                     "function_name": "colorfunc"
@@ -2168,9 +2130,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_getMinMax",
                     "C_name_api": "getMinMax",
-                    "F_C_name": "c_get_min_max",
                     "F_name_api": "get_min_max",
                     "PY_name_impl": "PY_getMinMax",
                     "function_name": "getMinMax"
@@ -2261,9 +2221,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "TUT_callback1",
                     "C_name_api": "callback1",
-                    "F_C_name": "c_callback1",
                     "F_name_api": "callback1",
                     "function_name": "callback1"
                 }
@@ -2302,9 +2260,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_LastFunctionCalled",
                     "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called",
                     "F_name_api": "last_function_called",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "function_name": "LastFunctionCalled"

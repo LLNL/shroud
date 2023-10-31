@@ -1814,9 +1814,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringResult",
                     "C_name_api": "getConstStringResult",
-                    "F_C_name": "c_get_const_string_result",
                     "F_name_api": "get_const_string_result",
                     "function_name": "getConstStringResult"
                 }
@@ -1944,9 +1942,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringLen",
                     "C_name_api": "getConstStringLen",
-                    "F_C_name": "c_get_const_string_len",
                     "F_name_api": "get_const_string_len",
                     "function_name": "getConstStringLen"
                 }
@@ -2084,9 +2080,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAsArg",
                     "C_name_api": "getConstStringAsArg",
-                    "F_C_name": "c_get_const_string_as_arg",
                     "F_name_api": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "function_name": "getConstStringAsArg"
@@ -2211,9 +2205,7 @@
                 "options": {},
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAlloc",
                     "C_name_api": "getConstStringAlloc",
-                    "F_C_name": "c_get_const_string_alloc",
                     "F_name_api": "get_const_string_alloc",
                     "function_name": "getConstStringAlloc"
                 }
@@ -6400,9 +6392,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_returnStrings",
                     "C_name_api": "returnStrings",
-                    "F_C_name": "c_return_strings",
                     "F_name_api": "return_strings",
                     "function_name": "returnStrings"
                 }
@@ -7503,9 +7493,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
-                    "C_name": "STR_returnMany",
                     "C_name_api": "returnMany",
-                    "F_C_name": "c_return_many",
                     "F_name_api": "return_many",
                     "function_name": "returnMany"
                 }
