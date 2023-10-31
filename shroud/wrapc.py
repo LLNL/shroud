@@ -1010,12 +1010,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Override return type.
             fmt_func.C_return_type = wformat(
                 result_stmt.c_return_type, fmt_result)
-        elif result_typemap.sgroup == "shadow":
-            # The const does not apply to the capsule.
-            fmt_func.C_return_type = ast.gen_arg_as_c(
-                name=None, params=None, continuation=True,
-                remove_const=True
-            )
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True

@@ -3083,7 +3083,8 @@ fc_statements = [
             "{c_var}->idtor = {idtor};",
         ],
         
-        c_return_type=None,
+        # Remove const from return type
+        c_return_type="{c_type} *",
         c_return=[
             "return {c_var};",
         ],
