@@ -328,7 +328,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*"
+                                    "stmtc": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -497,7 +497,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*"
+                                    "stmtc": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -726,7 +726,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_struct_*"
+                            "stmtc": "c_in_struct_*"
                         },
                         "fmtf": {
                             "c_addr": "",

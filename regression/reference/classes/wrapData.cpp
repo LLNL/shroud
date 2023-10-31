@@ -28,7 +28,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {

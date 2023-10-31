@@ -180,7 +180,7 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -208,7 +208,7 @@
                             "cxx_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*"
+                            "stmtc": "c_out_native_*"
                         },
                         "fmtf": {
                             "f_intent": "OUT",
@@ -712,7 +712,7 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -1036,7 +1036,7 @@
                             "cxx_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",

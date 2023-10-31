@@ -258,7 +258,7 @@
                                     "cxx_var": "i",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
+                                    "stmtc": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -504,7 +504,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar"
+                                    "stmtc": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",

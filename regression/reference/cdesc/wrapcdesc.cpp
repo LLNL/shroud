@@ -45,7 +45,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
 // Attrs:     +api(cdesc)+intent(in)
-// Statement: f_in_native_*_cdesc
+// Statement: c_in_native_*_cdesc
 void CDE_Rank2In(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In
@@ -74,11 +74,11 @@ void CDE_Rank2In(CDE_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
-// Statement: f_in_string_&
+// Statement: c_in_string_&
 // ----------------------------------------
 // Argument:  void * value +api(cdesc)+intent(in)+rank(0)+value
 // Attrs:     +api(cdesc)+intent(in)
-// Statement: f_in_void_*_cdesc
+// Statement: c_in_void_*_cdesc
 void CDE_GetScalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.GetScalar1

@@ -1230,7 +1230,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
+            arg_stmt = statements.lookup_f_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
 
             if options.debug:
@@ -1588,7 +1588,7 @@ rv = .false.
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
 
-            arg_stmt = statements.lookup_fc_arg_stmt(node, c_arg)
+            arg_stmt = statements.lookup_f_arg_stmt(node, c_arg)
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)

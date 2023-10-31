@@ -90,7 +90,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_*_cdesc"
+                            "stmtc": "c_in_native_*_cdesc"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -386,7 +386,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&"
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -416,7 +416,7 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmtc": "f_in_void_*_cdesc"
+                            "stmtc": "c_in_void_*_cdesc"
                         },
                         "fmtf": {
                             "f_intent": "IN",

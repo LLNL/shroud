@@ -1113,7 +1113,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             cxx_local_var = ""
             hidden = c_attrs["hidden"] and node._generated
 
-            arg_stmt = statements.lookup_fc_arg_stmt(node, arg)
+            if wlang == "c":
+                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
+            else:
+                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             fmt_arg.c_var = arg_name

@@ -59,7 +59,7 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_*
+// Statement: c_in_shadow_*
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
@@ -78,7 +78,7 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_*
+// Statement: c_in_shadow_*
 void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>

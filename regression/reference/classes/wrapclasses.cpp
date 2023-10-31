@@ -46,7 +46,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 int CLA_directionFunc(int arg)
 {
     // splicer begin function.directionFunc
@@ -70,7 +70,7 @@ int CLA_directionFunc(int arg)
 // ----------------------------------------
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_scalar
+// Statement: c_in_shadow_scalar
 void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.passClassByValue
@@ -87,7 +87,7 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_*
+// Statement: c_in_shadow_*
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
@@ -208,7 +208,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
@@ -227,7 +227,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag

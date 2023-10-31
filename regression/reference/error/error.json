@@ -973,7 +973,7 @@
                             "idtor": "0",
                             "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_inout_native_*"
+                            "stmtc": "c_inout_native_*"
                         },
                         "fmtf": {
                             "f_intent": "INOUT",

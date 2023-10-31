@@ -217,7 +217,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -292,7 +292,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1020,7 +1020,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1208,7 +1208,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1283,7 +1283,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmtc": "f_in_bool_scalar"
+                            "stmtc": "c_in_bool_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1512,7 +1512,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&"
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -1769,7 +1769,7 @@
                             "cxx_var": "indx",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2037,7 +2037,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2233,7 +2233,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2880,7 +2880,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -2939,7 +2939,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&"
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtf": {
                             "f_intent": "IN",
@@ -3571,7 +3571,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3750,7 +3750,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3794,7 +3794,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3996,7 +3996,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4071,7 +4071,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4146,7 +4146,7 @@
                             "cxx_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4380,7 +4380,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4424,7 +4424,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4614,7 +4614,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4658,7 +4658,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4702,7 +4702,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4915,7 +4915,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4990,7 +4990,7 @@
                             "cxx_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5065,7 +5065,7 @@
                             "cxx_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5140,7 +5140,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5351,7 +5351,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5565,7 +5565,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5787,7 +5787,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -6038,7 +6038,7 @@
                             "cxx_var": "max",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_&"
+                            "stmtc": "c_out_native_&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6101,7 +6101,7 @@
                             "cxx_var": "min",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_&"
+                            "stmtc": "c_out_native_&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6283,7 +6283,7 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -6327,7 +6327,7 @@
                             "cxx_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar"
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",

@@ -50,11 +50,11 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void TEM_FunctionTU_0(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -74,11 +74,11 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void TEM_FunctionTU_1(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_1

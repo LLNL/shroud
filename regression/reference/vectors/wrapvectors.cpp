@@ -445,11 +445,11 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 int VEC_returnDim2(int * arg, int len)
 {
     // splicer begin function.returnDim2

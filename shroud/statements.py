@@ -134,8 +134,27 @@ def lookup_f_function_stmt(node):
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
-def lookup_fc_arg_stmt(node, arg):
-    """Lookup the statements for an argument."""
+def lookup_c_arg_stmt(node, arg):
+    """Lookup the C statements for an argument."""
+    declarator = arg.declarator
+    c_attrs = declarator.attrs
+    c_meta = declarator.metaattrs
+    arg_typemap = arg.typemap  # XXX - look up vector
+    sgroup = arg_typemap.sgroup
+    junk, specialize = lookup_c_statements(arg)
+    spointer = declarator.get_indirect_stmt()
+    sapi = c_meta["api"]
+    if c_attrs["hidden"] and node._generated:
+        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+        sapi = "hidden"
+    stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
+#             c_meta["deref"],   # XXX - No deref for C wrapper
+             c_attrs["owner"]] + specialize
+    arg_stmt = lookup_fc_stmts(stmts)
+    return arg_stmt
+
+def lookup_f_arg_stmt(node, arg):
+    """Lookup the Fortran statements for an argument."""
     declarator = arg.declarator
     c_attrs = declarator.attrs
     c_meta = declarator.metaattrs
@@ -1449,7 +1468,7 @@ fc_statements = [
             "c_out_native_&",
 
             "f_out_native_*&_pointer",
-            "c_out_native_*&_pointer",
+            "c_out_native_*&",
 
             "f_inout_native_*",
             "c_inout_native_*",
@@ -1458,10 +1477,7 @@ fc_statements = [
             "c_inout_native_&",
             
             "f_out_native_**_allocatable",
-            "c_out_native_**_allocatable",
-
             "f_out_native_**_pointer",
-            "c_out_native_**_pointer",
 
             "f_out_native_***",
             "c_out_native_***",
@@ -1648,6 +1664,7 @@ fc_statements = [
         name="f_out_native_**_raw",
         alias=[
             "c_out_native_**_raw",
+            "c_out_native_**",
         ],
         f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
@@ -4034,7 +4051,7 @@ fc_statements = [
         # for the C interface.  Fortran calls the +api(cdesc) variant.
         name="f_out_string_**_copy",
         alias=[
-            "c_out_string_**_copy",
+            "c_out_string_**",
         ],
         notimplemented=True,
     ),

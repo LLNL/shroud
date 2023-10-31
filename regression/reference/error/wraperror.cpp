@@ -40,7 +40,7 @@ void ERR_BadFstatements(void)
 // ----------------------------------------
 // Argument:  int * data
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 void ERR_AssumedRank(int * data)
 {
     // splicer begin function.AssumedRank

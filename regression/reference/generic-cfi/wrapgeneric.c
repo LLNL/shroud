@@ -207,15 +207,15 @@ void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // ----------------------------------------
 // Argument:  void * addr +value
 // Attrs:     +intent(in)
-// Statement: f_in_void_*
+// Statement: c_in_void_*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void GEN_SavePointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.SavePointer2
@@ -385,11 +385,11 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Statement: f_inout_shadow_*
+// Statement: c_inout_shadow_*
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.UpdateStructAsClass

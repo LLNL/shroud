@@ -232,16 +232,13 @@ root
         * -- f_out_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
           hidden -- f_out/inout_native_*_hidden
-        *&
+        *& -- f_shared_native_scalar
           cdesc
             pointer -- f_out_native_*&_cdesc
-          pointer -- f_shared_native_scalar
-        **
-          allocatable -- f_shared_native_scalar
+        ** -- f_out_native_**_raw
           cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
-          pointer -- f_shared_native_scalar
           raw -- f_out_native_**_raw
         *** -- f_shared_native_scalar
       string
@@ -249,12 +246,11 @@ root
           buf -- f_out_string_*/&_buf
         * -- f_out_string_*/&
           buf -- f_out_string_*/&_buf
-        **
+        ** -- f_out_string_**_copy
           allocatable -- f_out_string_**_allocatable
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
-          copy -- f_out_string_**_copy
       struct
         & -- f_shared_struct
         * -- f_shared_struct
@@ -3113,6 +3109,11 @@ c_out_native_*:
   intent: out
   name: c_out_native_*
   owner: library
+c_out_native_*&:
+  index: '39'
+  intent: out
+  name: c_out_native_*&
+  owner: library
 c_out_native_*&_cdesc_pointer:
   c_arg_call:
   - '{cxx_var}'
@@ -3144,20 +3145,15 @@ c_out_native_*&_cdesc_pointer:
   intent: out
   name: c_out_native_*&_cdesc_pointer
   owner: library
-c_out_native_*&_pointer:
-  index: '39'
+c_out_native_**:
+  index: '51'
   intent: out
-  name: c_out_native_*&_pointer
+  name: c_out_native_**
   owner: library
 c_out_native_***:
   index: '39'
   intent: out
   name: c_out_native_***
-  owner: library
-c_out_native_**_allocatable:
-  index: '39'
-  intent: out
-  name: c_out_native_**_allocatable
   owner: library
 c_out_native_**_cdesc_allocatable:
   c_arg_call:
@@ -3232,11 +3228,6 @@ c_out_native_**_cdesc_pointer:
   index: '50'
   intent: out
   name: c_out_native_**_cdesc_pointer
-  owner: library
-c_out_native_**_pointer:
-  index: '39'
-  intent: out
-  name: c_out_native_**_pointer
   owner: library
 c_out_native_**_raw:
   index: '51'
@@ -3336,6 +3327,12 @@ c_out_string_*:
     - <cstring>
   name: c_out_string_*
   owner: library
+c_out_string_**:
+  index: '160'
+  intent: out
+  name: c_out_string_**
+  notimplemented: true
+  owner: library
 c_out_string_**_allocatable:
   index: '163'
   intent: out
@@ -3413,12 +3410,6 @@ c_out_string_**_cdesc_copy:
   index: '159'
   intent: out
   name: c_out_string_**_cdesc_copy
-  owner: library
-c_out_string_**_copy:
-  index: '160'
-  intent: out
-  name: c_out_string_**_copy
-  notimplemented: true
   owner: library
 c_out_string_*_buf:
   c_arg_decl:

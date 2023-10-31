@@ -36,7 +36,7 @@ static void ShroudCharBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_struct_scalar
+// Statement: c_in_struct_scalar
 // start STR_passStructByValue
 int STR_passStructByValue(STR_cstruct1 arg)
 {
@@ -54,7 +54,7 @@ int STR_passStructByValue(STR_cstruct1 arg)
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
-// Statement: f_in_struct_*
+// Statement: c_in_struct_*
 // start STR_passStruct1
 int STR_passStruct1(const STR_cstruct1 * arg)
 {
@@ -75,11 +75,11 @@ int STR_passStruct1(const STR_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
-// Statement: f_in_struct_*
+// Statement: c_in_struct_*
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_char_*
+// Statement: c_out_char_*
 int STR_passStruct2(const STR_cstruct1 * s1, char * outbuf)
 {
     // splicer begin function.passStruct2
@@ -121,7 +121,7 @@ int STR_passStruct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Attrs:     +intent(in)
-// Statement: f_in_struct_*
+// Statement: c_in_struct_*
 int STR_acceptStructInPtr(STR_cstruct1 * arg)
 {
     // splicer begin function.acceptStructInPtr
@@ -140,15 +140,15 @@ int STR_acceptStructInPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_struct_*
+// Statement: c_out_struct_*
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d)
 {
     // splicer begin function.acceptStructOutPtr
@@ -163,7 +163,7 @@ void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d)
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
 // Attrs:     +intent(inout)
-// Statement: f_inout_struct_*
+// Statement: c_inout_struct_*
 void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 {
     // splicer begin function.acceptStructInOutPtr
@@ -178,11 +178,11 @@ void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 {
     // splicer begin function.returnStructByValue
@@ -203,11 +203,11 @@ void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 {
     // splicer begin function.returnStructPtr1
@@ -228,15 +228,15 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_char_*
+// Statement: c_out_char_*
 STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
 {
     // splicer begin function.returnStructPtr2
@@ -313,11 +313,11 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
@@ -336,7 +336,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_*
+// Statement: c_in_shadow_*
 int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum
@@ -354,15 +354,15 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int z +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
