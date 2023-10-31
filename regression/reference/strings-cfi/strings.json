@@ -44,25 +44,27 @@
                 "zz_fmtdict": {
                     "C_name": "STR_init_test",
                     "C_name_api": "init_test",
-                    "C_prototype": "void",
-                    "C_return_type": "void",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_init_test",
                     "F_C_name": "init_test",
-                    "F_C_subprogram": "subroutine",
-                    "F_arguments": "",
                     "F_name_api": "init_test",
                     "F_name_function": "init_test",
                     "F_name_generic": "init_test",
                     "F_name_impl": "init_test",
-                    "F_subprogram": "subroutine",
                     "function_name": "init_test"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
+                        "F_C_arguments": "",
+                        "F_C_call": "c_init_test",
+                        "F_C_subprogram": "subroutine",
+                        "F_arguments": "",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -159,29 +161,32 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "status",
                     "C_name": "STR_passChar",
                     "C_name_api": "passChar",
-                    "C_prototype": "char status",
-                    "C_return_type": "void",
-                    "F_C_arguments": "status",
-                    "F_C_call": "c_pass_char",
                     "F_C_name": "pass_char",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "status",
-                    "F_arguments": "status",
                     "F_name_api": "pass_char",
                     "F_name_function": "pass_char",
                     "F_name_generic": "pass_char",
                     "F_name_impl": "pass_char",
-                    "F_subprogram": "subroutine",
                     "function_name": "passChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
+                        "F_C_arguments": "status",
+                        "F_C_call": "c_pass_char",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "status",
+                        "F_arguments": "status",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -281,29 +286,32 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "status",
                     "C_name": "STR_passCharForce",
                     "C_name_api": "passCharForce",
-                    "C_prototype": "char status",
-                    "C_return_type": "void",
-                    "F_C_arguments": "status",
-                    "F_C_call": "c_pass_char_force",
                     "F_C_name": "c_pass_char_force",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "status",
-                    "F_arguments": "status",
                     "F_name_api": "pass_char_force",
                     "F_name_function": "pass_char_force",
                     "F_name_generic": "pass_char_force",
                     "F_name_impl": "pass_char_force",
-                    "F_subprogram": "subroutine",
                     "function_name": "passCharForce"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
+                        "F_C_arguments": "status",
+                        "F_C_call": "c_pass_char_force",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "status",
+                        "F_arguments": "status",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -339,32 +347,24 @@
                 "zz_fmtdict": {
                     "C_name": "STR_returnChar",
                     "C_name_api": "returnChar",
-                    "C_prototype": "char *SHC_rv",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_return_char",
                     "F_C_name": "c_return_char",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "return_char",
                     "F_name_function": "return_char",
                     "F_name_generic": "return_char",
                     "F_name_impl": "return_char",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "char SHC_rv",
                     "function_name": "returnChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "char *SHC_rv",
+                        "C_return_type": "void",
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_rv_decl": "char SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -372,12 +372,23 @@
                         "stmtc": "c_function_char_scalar"
                     },
                     "fmtf": {
+                        "C_prototype": "char *SHC_rv",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_return_char",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_rv_decl": "char SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -533,22 +544,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "dest,\t src",
                     "C_name": "STR_passCharPtr",
                     "C_name_api": "passCharPtr",
-                    "C_prototype": "char * dest,\t const char * src",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
                     "F_C_name": "c_pass_char_ptr",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr",
                     "function_name": "passCharPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "dest,\t src",
+                        "C_prototype": "char * dest,\t const char * src",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -703,27 +715,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_dest,\t SHCXX_src",
                     "C_name": "STR_passCharPtr_CFI",
                     "C_name_api": "passCharPtr",
-                    "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_pass_char_ptr_CFI",
                     "F_C_name": "pass_char_ptr",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t src",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "pass_char_ptr",
                     "F_name_function": "pass_char_ptr",
                     "F_name_generic": "pass_char_ptr",
                     "F_name_impl": "pass_char_ptr",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "passCharPtr"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_dest,\t SHCXX_src",
+                        "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_call": "c_pass_char_ptr_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "dest,\t src",
+                        "F_arguments": "dest,\t src",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -817,22 +829,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "s",
                     "C_name": "STR_passCharPtrInOut",
                     "C_name_api": "passCharPtrInOut",
-                    "C_prototype": "char * s",
-                    "C_return_type": "void",
-                    "F_C_arguments": "s",
                     "F_C_name": "c_pass_char_ptr_in_out",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_char_ptr_in_out",
                     "function_name": "passCharPtrInOut"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "s",
+                        "C_prototype": "char * s",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "s",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -934,27 +947,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_s",
                     "C_name": "STR_passCharPtrInOut_CFI",
                     "C_name_api": "passCharPtrInOut",
-                    "C_prototype": "CFI_cdesc_t *SHT_s_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "s",
-                    "F_C_call": "c_pass_char_ptr_in_out_CFI",
                     "F_C_name": "pass_char_ptr_in_out",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "s",
-                    "F_arguments": "s",
                     "F_name_api": "pass_char_ptr_in_out",
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "passCharPtrInOut"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_s",
+                        "C_prototype": "CFI_cdesc_t *SHT_s_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "s",
+                        "F_C_call": "c_pass_char_ptr_in_out_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "s",
+                        "F_arguments": "s",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -999,18 +1012,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr1",
                     "C_name_api": "getCharPtr1",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_char_ptr1",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_char_ptr1",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1019,6 +1028,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1026,6 +1036,9 @@
                         "stmtc": "c_function_char_*"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1082,27 +1095,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr1_CFI",
                     "C_name_api": "getCharPtr1",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_char_ptr1_CFI",
                     "F_C_name": "c_get_char_ptr1_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr1",
                     "F_name_function": "get_char_ptr1",
                     "F_name_generic": "get_char_ptr1",
                     "F_name_impl": "get_char_ptr1",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getCharPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_char_ptr1_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -1111,6 +1123,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -1175,18 +1188,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr2",
                     "C_name_api": "getCharPtr2",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_char_ptr2",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_char_ptr2",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_char_len": "30",
                         "c_const": "const ",
                         "c_get_value": "",
@@ -1196,6 +1205,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1203,6 +1213,9 @@
                         "stmtc": "c_function_char_*"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1268,27 +1281,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr2_CFI",
                     "C_name_api": "getCharPtr2",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_char_ptr2_CFI",
                     "F_C_name": "c_get_char_ptr2_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr2",
                     "F_name_function": "get_char_ptr2",
                     "F_name_generic": "get_char_ptr2",
                     "F_name_impl": "get_char_ptr2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const char * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getCharPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_char_ptr2_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_char_len": "30",
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
@@ -1299,6 +1311,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const char * SHCXX_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
                         "f_char_len": "len=30",
@@ -1363,19 +1376,15 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr3",
                     "C_name_api": "getCharPtr3",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_char_ptr3",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1384,6 +1393,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1391,6 +1401,9 @@
                         "stmtc": "c_function_char_*"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1455,27 +1468,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr3_CFI",
                     "C_name_api": "getCharPtr3",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "output",
-                    "F_C_call": "c_get_char_ptr3_CFI",
                     "F_C_name": "c_get_char_ptr3_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "output",
-                    "F_arguments": "output",
                     "F_name_api": "get_char_ptr3",
                     "F_name_function": "get_char_ptr3",
                     "F_name_generic": "get_char_ptr3",
                     "F_name_impl": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "cxx_rv_decl": "const char * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getCharPtr3"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "output",
+                        "F_C_call": "c_get_char_ptr3_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "output",
+                        "F_arguments": "output",
+                        "F_subprogram": "subroutine",
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
                         "c_type": "char",
@@ -1485,6 +1497,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const char * SHCXX_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -1543,25 +1556,17 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr4",
                     "C_name_api": "getCharPtr4",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr4",
                     "F_C_name": "get_char_ptr4",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr4",
                     "F_name_function": "get_char_ptr4",
                     "F_name_generic": "get_char_ptr4",
                     "F_name_impl": "get_char_ptr4",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr4"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1570,6 +1575,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1577,6 +1583,15 @@
                         "stmtc": "c_function_char_*"
                     },
                     "fmtf": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_call": "c_get_char_ptr4",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1585,6 +1600,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -1643,18 +1659,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr5",
                     "C_name_api": "getCharPtr5",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_char_ptr5",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_char_ptr5",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr5"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1663,6 +1675,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1670,6 +1683,9 @@
                         "stmtc": "c_function_char_*"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1729,27 +1745,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getCharPtr5_CFI",
                     "C_name_api": "getCharPtr5",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_char_ptr5_CFI",
                     "F_C_name": "c_get_char_ptr5_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_char_ptr5",
                     "F_name_function": "get_char_ptr5",
                     "F_name_generic": "get_char_ptr5",
                     "F_name_impl": "get_char_ptr5",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const char * SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getCharPtr5"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_char_ptr5_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_local_cdesc": "SHC_rv_cdesc",
                         "c_local_cptr": "SHC_rv_cptr",
@@ -1763,6 +1778,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -1859,27 +1875,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringResult_CFI",
                     "C_name_api": "getConstStringResult",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_result_CFI",
                     "F_C_name": "c_get_const_string_result_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_result",
                     "F_name_function": "get_const_string_result",
                     "F_name_generic": "get_const_string_result",
                     "F_name_impl": "get_const_string_result",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringResult"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_result_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -1888,6 +1903,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -1995,27 +2011,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringLen_CFI",
                     "C_name_api": "getConstStringLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_len_CFI",
                     "F_C_name": "c_get_const_string_len_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_len",
                     "F_name_function": "get_const_string_len",
                     "F_name_generic": "get_const_string_len",
                     "F_name_impl": "get_const_string_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_len_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
@@ -2026,6 +2041,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_char_len": "len=30",
@@ -2134,27 +2150,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringAsArg_CFI",
                     "C_name_api": "getConstStringAsArg",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "output",
-                    "F_C_call": "c_get_const_string_as_arg_CFI",
                     "F_C_name": "c_get_const_string_as_arg_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "output",
-                    "F_arguments": "output",
                     "F_name_api": "get_const_string_as_arg",
                     "F_name_function": "get_const_string_as_arg",
                     "F_name_generic": "get_const_string_as_arg",
                     "F_name_impl": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "output",
+                        "F_C_call": "c_get_const_string_as_arg_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "output",
+                        "F_arguments": "output",
+                        "F_subprogram": "subroutine",
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
                         "c_type": "char",
@@ -2164,6 +2179,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -2246,27 +2262,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringAlloc_CFI",
                     "C_name_api": "getConstStringAlloc",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_alloc_CFI",
                     "F_C_name": "c_get_const_string_alloc_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_alloc",
                     "F_name_function": "get_const_string_alloc",
                     "F_name_generic": "get_const_string_alloc",
                     "F_name_impl": "get_const_string_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_alloc_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -2275,6 +2290,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -2331,18 +2347,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefPure",
                     "C_name_api": "getConstStringRefPure",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_pure",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ref_pure",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -2352,6 +2364,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -2359,6 +2372,9 @@
                         "stmtc": "c_function_string_&"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2415,27 +2431,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefPure_CFI",
                     "C_name_api": "getConstStringRefPure",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ref_pure_CFI",
                     "F_C_name": "c_get_const_string_ref_pure_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_pure",
                     "F_name_function": "get_const_string_ref_pure",
                     "F_name_generic": "get_const_string_ref_pure",
                     "F_name_impl": "get_const_string_ref_pure",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefPure"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ref_pure_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -2444,6 +2459,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -2508,18 +2524,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLen",
                     "C_name_api": "getConstStringRefLen",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_len",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ref_len",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -2530,6 +2542,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -2537,6 +2550,9 @@
                         "stmtc": "c_function_string_&"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2602,27 +2618,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLen_CFI",
                     "C_name_api": "getConstStringRefLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ref_len_CFI",
                     "F_C_name": "c_get_const_string_ref_len_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len",
                     "F_name_function": "get_const_string_ref_len",
                     "F_name_generic": "get_const_string_ref_len",
                     "F_name_impl": "get_const_string_ref_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ref_len_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
@@ -2633,6 +2648,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_char_len": "len=30",
@@ -2697,19 +2713,15 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAsArg",
                     "C_name_api": "getConstStringRefAsArg",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_as_arg",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -2719,6 +2731,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -2726,6 +2739,9 @@
                         "stmtc": "c_function_string_&"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2790,27 +2806,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAsArg_CFI",
                     "C_name_api": "getConstStringRefAsArg",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "output",
-                    "F_C_call": "c_get_const_string_ref_as_arg_CFI",
                     "F_C_name": "c_get_const_string_ref_as_arg_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "output",
-                    "F_arguments": "output",
                     "F_name_api": "get_const_string_ref_as_arg",
                     "F_name_function": "get_const_string_ref_as_arg",
                     "F_name_generic": "get_const_string_ref_as_arg",
                     "F_name_impl": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
-                    "F_subprogram": "subroutine",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "output",
+                        "F_C_call": "c_get_const_string_ref_as_arg_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "output",
+                        "F_arguments": "output",
+                        "F_subprogram": "subroutine",
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
                         "c_type": "char",
@@ -2820,6 +2835,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -2882,18 +2898,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLenEmpty",
                     "C_name_api": "getConstStringRefLenEmpty",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_len_empty",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ref_len_empty",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -2904,6 +2916,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -2911,6 +2924,9 @@
                         "stmtc": "c_function_string_&"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2975,27 +2991,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefLenEmpty_CFI",
                     "C_name_api": "getConstStringRefLenEmpty",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ref_len_empty_CFI",
                     "F_C_name": "c_get_const_string_ref_len_empty_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_len_empty",
                     "F_name_function": "get_const_string_ref_len_empty",
                     "F_name_generic": "get_const_string_ref_len_empty",
                     "F_name_impl": "get_const_string_ref_len_empty",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefLenEmpty"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ref_len_empty_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
@@ -3006,6 +3021,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_char_len": "len=30",
@@ -3058,18 +3074,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAlloc",
                     "C_name_api": "getConstStringRefAlloc",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ref_alloc",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3079,6 +3091,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -3086,6 +3099,9 @@
                         "stmtc": "c_function_string_&"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3137,27 +3153,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringRefAlloc_CFI",
                     "C_name_api": "getConstStringRefAlloc",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ref_alloc_CFI",
                     "F_C_name": "c_get_const_string_ref_alloc_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ref_alloc",
                     "F_name_function": "get_const_string_ref_alloc",
                     "F_name_generic": "get_const_string_ref_alloc",
                     "F_name_impl": "get_const_string_ref_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringRefAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ref_alloc_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3166,6 +3181,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -3236,18 +3252,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrLen",
                     "C_name_api": "getConstStringPtrLen",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ptr_len",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ptr_len",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -3258,6 +3270,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -3265,6 +3278,9 @@
                         "stmtc": "c_function_string_*"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3336,27 +3352,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrLen_CFI",
                     "C_name_api": "getConstStringPtrLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ptr_len_CFI",
                     "F_C_name": "c_get_const_string_ptr_len_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_len",
                     "F_name_function": "get_const_string_ptr_len",
                     "F_name_generic": "get_const_string_ptr_len",
                     "F_name_impl": "get_const_string_ptr_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringPtrLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ptr_len_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_helper_char_copy": "ShroudCharCopy",
@@ -3367,6 +3382,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_char_len": "len=30",
@@ -3422,18 +3438,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrAlloc",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ptr_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ptr_alloc",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3443,6 +3455,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -3450,6 +3463,9 @@
                         "stmtc": "c_function_string_*_library"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3504,27 +3520,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrAlloc_CFI",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ptr_alloc_CFI",
                     "F_C_name": "c_get_const_string_ptr_alloc_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
                     "F_name_impl": "get_const_string_ptr_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ptr_alloc_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3533,6 +3548,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -3590,18 +3606,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAlloc",
                     "C_name_api": "getConstStringPtrOwnsAlloc",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3611,6 +3623,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
@@ -3618,6 +3631,9 @@
                         "stmtc": "c_function_string_*_caller"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3675,27 +3691,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAlloc_CFI",
                     "C_name_api": "getConstStringPtrOwnsAlloc",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_CFI",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
                     "F_name_function": "get_const_string_ptr_owns_alloc",
                     "F_name_generic": "get_const_string_ptr_owns_alloc",
                     "F_name_impl": "get_const_string_ptr_owns_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringPtrOwnsAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ptr_owns_alloc_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3704,6 +3719,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -3762,18 +3778,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAllocPattern",
                     "C_name_api": "getConstStringPtrOwnsAllocPattern",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3783,6 +3795,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "2",
@@ -3790,6 +3803,9 @@
                         "stmtc": "c_function_string_*_caller"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3848,27 +3864,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrOwnsAllocPattern_CFI",
                     "C_name_api": "getConstStringPtrOwnsAllocPattern",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_CFI",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -3877,6 +3892,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -3934,18 +3950,14 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrPointer",
                     "C_name_api": "getConstStringPtrPointer",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ptr_pointer",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_const_string_ptr_pointer",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "const char *",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3955,6 +3967,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -3962,6 +3975,9 @@
                         "stmtc": "c_function_string_*_library"
                     },
                     "fmtf": {
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -4019,27 +4035,26 @@
                 "zz_fmtdict": {
                     "C_name": "STR_getConstStringPtrPointer_CFI",
                     "C_name_api": "getConstStringPtrPointer",
-                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_const_string_ptr_pointer_CFI",
                     "F_C_name": "c_get_const_string_ptr_pointer_CFI",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "get_const_string_ptr_pointer",
                     "F_name_function": "get_const_string_ptr_pointer",
                     "F_name_generic": "get_const_string_ptr_pointer",
                     "F_name_impl": "get_const_string_ptr_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "getConstStringPtrPointer"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_get_const_string_ptr_pointer_CFI",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "const ",
                         "c_local_cdesc": "SHC_rv_cdesc",
                         "c_local_cptr": "SHC_rv_cptr",
@@ -4053,6 +4068,7 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "f_intent": "OUT",
@@ -4159,22 +4175,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringConstReference",
                     "C_name_api": "acceptStringConstReference",
-                    "C_prototype": "const char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_const_reference",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_const_reference",
                     "function_name": "acceptStringConstReference"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "const char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -4272,27 +4289,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringConstReference_CFI",
                     "C_name_api": "acceptStringConstReference",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_const_reference_CFI",
                     "F_C_name": "accept_string_const_reference",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_const_reference",
                     "F_name_function": "accept_string_const_reference",
                     "F_name_generic": "accept_string_const_reference",
                     "F_name_impl": "accept_string_const_reference",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringConstReference"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_const_reference_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -4384,22 +4401,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringReferenceOut",
                     "C_name_api": "acceptStringReferenceOut",
-                    "C_prototype": "char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_reference_out",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference_out",
                     "function_name": "acceptStringReferenceOut"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -4497,27 +4515,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringReferenceOut_CFI",
                     "C_name_api": "acceptStringReferenceOut",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_reference_out_CFI",
                     "F_C_name": "accept_string_reference_out",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference_out",
                     "F_name_function": "accept_string_reference_out",
                     "F_name_generic": "accept_string_reference_out",
                     "F_name_impl": "accept_string_reference_out",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringReferenceOut"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_reference_out_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -4609,22 +4627,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringReference",
                     "C_name_api": "acceptStringReference",
-                    "C_prototype": "char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_reference",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_reference",
                     "function_name": "acceptStringReference"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -4725,27 +4744,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringReference_CFI",
                     "C_name_api": "acceptStringReference",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_reference_CFI",
                     "F_C_name": "accept_string_reference",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_reference",
                     "F_name_function": "accept_string_reference",
                     "F_name_generic": "accept_string_reference",
                     "F_name_impl": "accept_string_reference",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringReference"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_reference_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -4834,22 +4853,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_acceptStringPointerConst",
                     "C_name_api": "acceptStringPointerConst",
-                    "C_prototype": "const char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_pointer_const",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_const",
                     "function_name": "acceptStringPointerConst"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "const char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -4946,27 +4966,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_acceptStringPointerConst_CFI",
                     "C_name_api": "acceptStringPointerConst",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_pointer_const_CFI",
                     "F_C_name": "accept_string_pointer_const",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer_const",
                     "F_name_function": "accept_string_pointer_const",
                     "F_name_generic": "accept_string_pointer_const",
                     "F_name_impl": "accept_string_pointer_const",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointerConst"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_pointer_const_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -5055,22 +5075,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_acceptStringPointer",
                     "C_name_api": "acceptStringPointer",
-                    "C_prototype": "char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_pointer",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer",
                     "function_name": "acceptStringPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -5168,27 +5189,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_acceptStringPointer_CFI",
                     "C_name_api": "acceptStringPointer",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_pointer_CFI",
                     "F_C_name": "accept_string_pointer",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_pointer",
                     "F_name_function": "accept_string_pointer",
                     "F_name_generic": "accept_string_pointer",
                     "F_name_impl": "accept_string_pointer",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointer"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_pointer_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -5280,22 +5301,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_fetchStringPointer",
                     "C_name_api": "fetchStringPointer",
-                    "C_prototype": "char * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_fetch_string_pointer",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer",
                     "function_name": "fetchStringPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "char * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -5393,27 +5415,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_fetchStringPointer_CFI",
                     "C_name_api": "fetchStringPointer",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_fetch_string_pointer_CFI",
                     "F_C_name": "fetch_string_pointer",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "fetch_string_pointer",
                     "F_name_function": "fetch_string_pointer",
                     "F_name_generic": "fetch_string_pointer",
                     "F_name_impl": "fetch_string_pointer",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fetchStringPointer"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_fetch_string_pointer_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -5552,22 +5574,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_acceptStringPointerLen",
                     "C_name_api": "acceptStringPointerLen",
-                    "C_prototype": "char * arg1,\t int * nlen",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t nlen",
                     "F_C_name": "c_accept_string_pointer_len",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "accept_string_pointer_len",
                     "function_name": "acceptStringPointerLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "&SHCXX_arg1,\t nlen",
+                        "C_prototype": "char * arg1,\t int * nlen",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1,\t nlen",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -5714,27 +5737,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_acceptStringPointerLen_CFI",
                     "C_name_api": "acceptStringPointerLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t nlen",
-                    "F_C_call": "c_accept_string_pointer_len_CFI",
                     "F_C_name": "accept_string_pointer_len",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t nlen",
-                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "accept_string_pointer_len",
                     "F_name_function": "accept_string_pointer_len",
                     "F_name_generic": "accept_string_pointer_len",
                     "F_name_impl": "accept_string_pointer_len",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringPointerLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHCXX_arg1,\t nlen",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1,\t nlen",
+                        "F_C_call": "c_accept_string_pointer_len_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1,\t nlen",
+                        "F_arguments": "arg1,\t nlen",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -5875,22 +5898,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_fetchStringPointerLen",
                     "C_name_api": "fetchStringPointerLen",
-                    "C_prototype": "char * arg1,\t int * nlen",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t nlen",
                     "F_C_name": "c_fetch_string_pointer_len",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_string_pointer_len",
                     "function_name": "fetchStringPointerLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "&SHCXX_arg1,\t nlen",
+                        "C_prototype": "char * arg1,\t int * nlen",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "arg1,\t nlen",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -6036,27 +6060,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_fetchStringPointerLen_CFI",
                     "C_name_api": "fetchStringPointerLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t nlen",
-                    "F_C_call": "c_fetch_string_pointer_len_CFI",
                     "F_C_name": "fetch_string_pointer_len",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t nlen",
-                    "F_arguments": "arg1,\t nlen",
                     "F_name_api": "fetch_string_pointer_len",
                     "F_name_function": "fetch_string_pointer_len",
                     "F_name_generic": "fetch_string_pointer_len",
                     "F_name_impl": "fetch_string_pointer_len",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fetchStringPointerLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHCXX_arg1,\t nlen",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1,\t nlen",
+                        "F_C_call": "c_fetch_string_pointer_len_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1,\t nlen",
+                        "F_arguments": "arg1,\t nlen",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -6142,21 +6166,17 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1",
                     "C_name": "STR_acceptStringInstance",
                     "C_name_api": "acceptStringInstance",
-                    "C_prototype": "char *arg1",
-                    "C_return_type": "int",
-                    "F_C_arguments": "arg1",
                     "F_C_name": "c_accept_string_instance",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "accept_string_instance",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "char *arg1",
+                        "C_return_type": "int",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -6165,6 +6185,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -6172,6 +6193,9 @@
                         "stmtc": "c_function_native_scalar"
                     },
                     "fmtf": {
+                        "F_C_arguments": "arg1",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -6273,30 +6297,29 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_acceptStringInstance_CFI",
                     "C_name_api": "acceptStringInstance",
-                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
-                    "C_return_type": "int",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_string_instance_CFI",
                     "F_C_name": "accept_string_instance",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_string_instance",
                     "F_name_function": "accept_string_instance",
                     "F_name_generic": "accept_string_instance",
                     "F_name_impl": "accept_string_instance",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "acceptStringInstance"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_arg1",
+                        "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                        "C_return_type": "int",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_string_instance_CFI",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -6305,6 +6328,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -6544,22 +6568,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t nstrs",
                     "C_name": "STR_fetchArrayStringArg",
                     "C_name_api": "fetchArrayStringArg",
-                    "C_prototype": "char * * strs,\t int * nstrs",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs,\t nstrs",
                     "F_C_name": "c_fetch_array_string_arg",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_arg",
                     "function_name": "fetchArrayStringArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "strs,\t nstrs",
+                        "C_prototype": "char * * strs,\t int * nstrs",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "strs,\t nstrs",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -6716,27 +6741,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringArg_CFI",
                     "C_name_api": "fetchArrayStringArg",
-                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs",
-                    "F_C_call": "c_fetch_array_string_arg_CFI",
                     "F_C_name": "fetch_array_string_arg",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "strs",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_arg",
                     "F_name_function": "fetch_array_string_arg",
                     "F_name_generic": "fetch_array_string_arg",
                     "F_name_impl": "fetch_array_string_arg",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringArg"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                        "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "strs",
+                        "F_C_call": "c_fetch_array_string_arg_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "strs",
+                        "F_arguments": "strs",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -6890,22 +6915,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t nstrs",
                     "C_name": "STR_fetchArrayStringAlloc",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "C_prototype": "char * * strs,\t int * nstrs",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs,\t nstrs",
                     "F_C_name": "c_fetch_array_string_alloc",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc",
                     "function_name": "fetchArrayStringAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "strs,\t nstrs",
+                        "C_prototype": "char * * strs,\t int * nstrs",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "strs,\t nstrs",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -7063,27 +7089,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringAlloc_CFI",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs",
-                    "F_C_call": "c_fetch_array_string_alloc_CFI",
                     "F_C_name": "fetch_array_string_alloc",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "strs",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc",
                     "F_name_function": "fetch_array_string_alloc",
                     "F_name_generic": "fetch_array_string_alloc",
                     "F_name_impl": "fetch_array_string_alloc",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                        "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "strs",
+                        "F_C_call": "c_fetch_array_string_alloc_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "strs",
+                        "F_arguments": "strs",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -7240,22 +7266,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "strs,\t nstrs",
                     "C_name": "STR_fetchArrayStringAllocLen",
                     "C_name_api": "fetchArrayStringAllocLen",
-                    "C_prototype": "char * * strs,\t int * nstrs",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs,\t nstrs",
                     "F_C_name": "c_fetch_array_string_alloc_len",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "fetch_array_string_alloc_len",
                     "function_name": "fetchArrayStringAllocLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "strs,\t nstrs",
+                        "C_prototype": "char * * strs,\t int * nstrs",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "strs,\t nstrs",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -7416,27 +7443,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                     "C_name": "STR_fetchArrayStringAllocLen_CFI",
                     "C_name_api": "fetchArrayStringAllocLen",
-                    "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "strs",
-                    "F_C_call": "c_fetch_array_string_alloc_len_CFI",
                     "F_C_name": "fetch_array_string_alloc_len",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "strs",
-                    "F_arguments": "strs",
                     "F_name_api": "fetch_array_string_alloc_len",
                     "F_name_function": "fetch_array_string_alloc_len",
                     "F_name_generic": "fetch_array_string_alloc_len",
                     "F_name_impl": "fetch_array_string_alloc_len",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "fetchArrayStringAllocLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                        "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "strs",
+                        "F_C_call": "c_fetch_array_string_alloc_len_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "strs",
+                        "F_arguments": "strs",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -7586,22 +7613,23 @@
                 },
                 "zz_fmtdict": {
                     "C_bufferify_suffix": "_BUFFER",
-                    "C_call_list": "name",
                     "C_name": "STR_explicit1",
                     "C_name_api": "explicit1",
-                    "C_prototype": "char * name",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name",
                     "F_C_name": "c_explicit1",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "explicit1",
                     "function_name": "explicit1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "name",
+                        "C_prototype": "char * name",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "name",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -7702,27 +7730,27 @@
                 },
                 "zz_fmtdict": {
                     "C_bufferify_suffix": "_BUFFER",
-                    "C_call_list": "SHCXX_name",
                     "C_name": "STR_explicit1_CFI",
                     "C_name_api": "explicit1",
-                    "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name",
-                    "F_C_call": "c_explicit1_CFI",
                     "F_C_name": "explicit1",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name",
-                    "F_arguments": "name",
                     "F_name_api": "explicit1",
                     "F_name_function": "explicit1",
                     "F_name_generic": "explicit1",
                     "F_name_impl": "explicit1",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "explicit1"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_name",
+                        "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "name",
+                        "F_C_call": "c_explicit1_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "name",
+                        "F_arguments": "name",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -7816,22 +7844,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "name",
                     "C_name": "STR_explicit2",
                     "C_name_api": "explicit2",
-                    "C_prototype": "char * name",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name",
                     "F_C_name": "c_explicit2",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "explicit2",
                     "function_name": "explicit2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "name",
+                        "C_prototype": "char * name",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "name",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -7931,27 +7960,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name",
                     "C_name": "STR_explicit2_CFI",
                     "C_name_api": "explicit2",
-                    "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name",
-                    "F_C_call": "c_explicit2_CFI",
                     "F_C_name": "explicit2",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name",
-                    "F_arguments": "name",
                     "F_name_api": "explicit2",
                     "F_name_function": "explicit2",
                     "F_name_generic": "explicit2",
                     "F_name_impl": "explicit2",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "explicit2"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_name",
+                        "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "name",
+                        "F_C_call": "c_explicit2_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "name",
+                        "F_arguments": "name",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -8050,29 +8079,32 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "status",
                     "C_name": "CpassChar",
                     "C_name_api": "CpassChar",
-                    "C_prototype": "char status",
-                    "C_return_type": "void",
-                    "F_C_arguments": "status",
-                    "F_C_call": "c_cpass_char",
                     "F_C_name": "cpass_char",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "status",
-                    "F_arguments": "status",
                     "F_name_api": "cpass_char",
                     "F_name_function": "cpass_char",
                     "F_name_generic": "cpass_char",
                     "F_name_impl": "cpass_char",
-                    "F_subprogram": "subroutine",
                     "function_name": "CpassChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "status",
+                        "C_prototype": "char status",
+                        "C_return_type": "void",
+                        "F_C_arguments": "status",
+                        "F_C_call": "c_cpass_char",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "status",
+                        "F_arguments": "status",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -8110,32 +8142,24 @@
                 "zz_fmtdict": {
                     "C_name": "STR_CreturnChar",
                     "C_name_api": "CreturnChar",
-                    "C_prototype": "char *SHC_rv",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_creturn_char",
                     "F_C_name": "c_creturn_char",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv",
-                    "F_arguments": "",
                     "F_name_api": "creturn_char",
                     "F_name_function": "creturn_char",
                     "F_name_generic": "creturn_char",
                     "F_name_impl": "creturn_char",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "char SHC_rv",
                     "function_name": "CreturnChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "char *SHC_rv",
+                        "C_return_type": "void",
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_rv_decl": "char SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -8143,12 +8167,23 @@
                         "stmtc": "c_function_char_scalar"
                     },
                     "fmtf": {
+                        "C_prototype": "char *SHC_rv",
+                        "C_return_type": "void",
+                        "F_C_arguments": "SHT_rv",
+                        "F_C_call": "c_creturn_char",
+                        "F_C_result_clause": "",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "SHT_rv",
+                        "F_arguments": "",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_rv_decl": "char SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -8309,22 +8344,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "dest,\t src",
                     "C_name": "CpassCharPtr",
                     "C_name_api": "CpassCharPtr",
-                    "C_prototype": "char * dest,\t const char * src",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
                     "F_C_name": "c_cpass_char_ptr",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr",
                     "function_name": "CpassCharPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "dest,\t src",
+                        "C_prototype": "char * dest,\t const char * src",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -8484,27 +8520,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_dest,\t SHCXX_src",
                     "C_name": "STR_CpassCharPtr_CFI",
                     "C_name_api": "CpassCharPtr",
-                    "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_cpass_char_ptr_CFI",
                     "F_C_name": "cpass_char_ptr",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t src",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr",
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
                     "F_name_impl": "cpass_char_ptr",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtr"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_dest,\t SHCXX_src",
+                        "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_call": "c_cpass_char_ptr_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "dest,\t src",
+                        "F_arguments": "dest,\t src",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -8650,22 +8686,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "dest,\t src",
                     "C_name": "STR_CpassCharPtrBlank",
                     "C_name_api": "CpassCharPtrBlank",
-                    "C_prototype": "char * dest,\t const char * src",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
                     "F_C_name": "c_cpass_char_ptr_blank",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "cpass_char_ptr_blank",
                     "function_name": "CpassCharPtrBlank"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "dest,\t src",
+                        "C_prototype": "char * dest,\t const char * src",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -8821,27 +8858,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_dest,\t SHCXX_src",
                     "C_name": "STR_CpassCharPtrBlank_CFI",
                     "C_name_api": "CpassCharPtrBlank",
-                    "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_cpass_char_ptr_blank_CFI",
                     "F_C_name": "cpass_char_ptr_blank",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t src",
-                    "F_arguments": "dest,\t src",
                     "F_name_api": "cpass_char_ptr_blank",
                     "F_name_function": "cpass_char_ptr_blank",
                     "F_name_generic": "cpass_char_ptr_blank",
                     "F_name_impl": "cpass_char_ptr_blank",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtrBlank"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_dest,\t SHCXX_src",
+                        "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "dest,\t src",
+                        "F_C_call": "c_cpass_char_ptr_blank_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "dest,\t src",
+                        "F_arguments": "dest,\t src",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -8986,22 +9023,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "count,\t SHCXX_name",
                     "C_name": "STR_PostDeclare",
                     "C_name_api": "PostDeclare",
-                    "C_prototype": "int * count,\t char * name",
-                    "C_return_type": "void",
-                    "F_C_arguments": "count,\t name",
                     "F_C_name": "c_post_declare",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "post_declare",
                     "function_name": "PostDeclare"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "count,\t SHCXX_name",
+                        "C_prototype": "int * count,\t char * name",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
-                    "fmtf": {}
+                    "fmtf": {
+                        "F_C_arguments": "count,\t name",
+                        "F_C_subprogram": "subroutine"
+                    }
                 }
             },
             {
@@ -9157,27 +9195,27 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_count,\t SHCXX_name",
                     "C_name": "STR_PostDeclare_CFI",
                     "C_name_api": "PostDeclare",
-                    "C_prototype": "CFI_cdesc_t *SHT_count_cfi,\t CFI_cdesc_t *SHT_name_cfi",
-                    "C_return_type": "void",
-                    "F_C_arguments": "count,\t name",
-                    "F_C_call": "c_post_declare_CFI",
                     "F_C_name": "post_declare",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "count,\t name",
-                    "F_arguments": "count,\t name",
                     "F_name_api": "post_declare",
                     "F_name_function": "post_declare",
                     "F_name_generic": "post_declare",
                     "F_name_impl": "post_declare",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_CFI",
                     "function_name": "PostDeclare"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_count,\t SHCXX_name",
+                        "C_prototype": "CFI_cdesc_t *SHT_count_cfi,\t CFI_cdesc_t *SHT_name_cfi",
+                        "C_return_type": "void",
+                        "F_C_arguments": "count,\t name",
+                        "F_C_call": "c_post_declare_CFI",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "count,\t name",
+                        "F_arguments": "count,\t name",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -9270,21 +9308,17 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "src",
                     "C_name": "STR_CpassCharPtrNotrim",
                     "C_name_api": "CpassCharPtrNotrim",
-                    "C_prototype": "const char * src",
-                    "C_return_type": "int",
-                    "F_C_arguments": "src",
                     "F_C_name": "c_cpass_char_ptr_notrim",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "cpass_char_ptr_notrim",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "CpassCharPtrNotrim"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "src",
+                        "C_prototype": "const char * src",
+                        "C_return_type": "int",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9293,6 +9327,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -9300,6 +9335,9 @@
                         "stmtc": "c_function_native_scalar"
                     },
                     "fmtf": {
+                        "F_C_arguments": "src",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -9407,30 +9445,29 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_src",
                     "C_name": "STR_CpassCharPtrNotrim_CFI",
                     "C_name_api": "CpassCharPtrNotrim",
-                    "C_prototype": "CFI_cdesc_t *SHT_src_cfi",
-                    "C_return_type": "int",
-                    "F_C_arguments": "src",
-                    "F_C_call": "c_cpass_char_ptr_notrim_CFI",
                     "F_C_name": "cpass_char_ptr_notrim",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "src",
-                    "F_arguments": "src",
                     "F_name_api": "cpass_char_ptr_notrim",
                     "F_name_function": "cpass_char_ptr_notrim",
                     "F_name_generic": "cpass_char_ptr_notrim",
                     "F_name_impl": "cpass_char_ptr_notrim",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtrNotrim"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_src",
+                        "C_prototype": "CFI_cdesc_t *SHT_src_cfi",
+                        "C_return_type": "int",
+                        "F_C_arguments": "src",
+                        "F_C_call": "c_cpass_char_ptr_notrim_CFI",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arg_c_call": "src",
+                        "F_arguments": "src",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9439,6 +9476,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -9620,29 +9658,20 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "addr,\t src",
                     "C_name": "STR_CpassCharPtrCAPI",
                     "C_name_api": "CpassCharPtrCAPI",
-                    "C_prototype": "void * addr,\t const char * src",
-                    "C_return_type": "int",
-                    "F_C_arguments": "addr,\t src",
-                    "F_C_call": "c_cpass_char_ptr_capi",
                     "F_C_name": "cpass_char_ptr_capi",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "addr,\t src",
-                    "F_arguments": "addr,\t src",
                     "F_name_api": "cpass_char_ptr_capi",
                     "F_name_function": "cpass_char_ptr_capi",
                     "F_name_generic": "cpass_char_ptr_capi",
                     "F_name_impl": "cpass_char_ptr_capi",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "CpassCharPtrCAPI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "addr,\t src",
+                        "C_prototype": "void * addr,\t const char * src",
+                        "C_return_type": "int",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9651,6 +9680,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -9658,6 +9688,17 @@
                         "stmtc": "c_function_native_scalar"
                     },
                     "fmtf": {
+                        "C_call_list": "addr,\t src",
+                        "C_prototype": "void * addr,\t const char * src",
+                        "C_return_type": "int",
+                        "F_C_arguments": "addr,\t src",
+                        "F_C_call": "c_cpass_char_ptr_capi",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arg_c_call": "addr,\t src",
+                        "F_arguments": "addr,\t src",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9666,6 +9707,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",
@@ -9819,21 +9861,17 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "in,\t src",
                     "C_name": "STR_CpassCharPtrCAPI2",
                     "C_name_api": "CpassCharPtrCAPI2",
-                    "C_prototype": "const char * in,\t const char * src",
-                    "C_return_type": "int",
-                    "F_C_arguments": "in,\t src",
                     "F_C_name": "c_cpass_char_ptr_capi2",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "cpass_char_ptr_capi2",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "CpassCharPtrCAPI2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "in,\t src",
+                        "C_prototype": "const char * in,\t const char * src",
+                        "C_return_type": "int",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9842,6 +9880,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -9849,6 +9888,9 @@
                         "stmtc": "c_function_native_scalar"
                     },
                     "fmtf": {
+                        "F_C_arguments": "in,\t src",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -10005,30 +10047,29 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_in,\t src",
                     "C_name": "STR_CpassCharPtrCAPI2_CFI",
                     "C_name_api": "CpassCharPtrCAPI2",
-                    "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t const char * src",
-                    "C_return_type": "int",
-                    "F_C_arguments": "in,\t src",
-                    "F_C_call": "c_cpass_char_ptr_capi2_CFI",
                     "F_C_name": "cpass_char_ptr_capi2",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "in,\t src",
-                    "F_arguments": "in,\t src",
                     "F_name_api": "cpass_char_ptr_capi2",
                     "F_name_function": "cpass_char_ptr_capi2",
                     "F_name_generic": "cpass_char_ptr_capi2",
                     "F_name_impl": "cpass_char_ptr_capi2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "f_c_suffix": "_CFI",
                     "function_name": "CpassCharPtrCAPI2"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "C_call_list": "SHCXX_in,\t src",
+                        "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t const char * src",
+                        "C_return_type": "int",
+                        "F_C_arguments": "in,\t src",
+                        "F_C_call": "c_cpass_char_ptr_capi2_CFI",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arg_c_call": "in,\t src",
+                        "F_arguments": "in,\t src",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -10037,6 +10078,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",

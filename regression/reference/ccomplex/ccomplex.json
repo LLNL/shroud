@@ -106,29 +106,32 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1",
                     "C_name": "acceptFloatComplexInoutPtr",
                     "C_name_api": "acceptFloatComplexInoutPtr",
-                    "C_prototype": "float complex * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_float_complex_inout_ptr",
                     "F_C_name": "accept_float_complex_inout_ptr",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_float_complex_inout_ptr",
                     "F_name_function": "accept_float_complex_inout_ptr",
                     "F_name_generic": "accept_float_complex_inout_ptr",
                     "F_name_impl": "accept_float_complex_inout_ptr",
-                    "F_subprogram": "subroutine",
                     "function_name": "acceptFloatComplexInoutPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "float complex * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "float complex * arg1",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_float_complex_inout_ptr",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -248,30 +251,33 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexInoutPtr",
                     "C_name_api": "acceptDoubleComplexInoutPtr",
-                    "C_prototype": "double complex * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_double_complex_inout_ptr",
                     "F_C_name": "accept_double_complex_inout_ptr",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_double_complex_inout_ptr",
                     "F_name_function": "accept_double_complex_inout_ptr",
                     "F_name_generic": "accept_double_complex_inout_ptr",
                     "F_name_impl": "accept_double_complex_inout_ptr",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
                     "function_name": "acceptDoubleComplexInoutPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "double complex * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "double complex * arg1",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_double_complex_inout_ptr",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -393,30 +399,33 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexOutPtr",
                     "C_name_api": "acceptDoubleComplexOutPtr",
-                    "C_prototype": "double complex * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_accept_double_complex_out_ptr",
                     "F_C_name": "accept_double_complex_out_ptr",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "accept_double_complex_out_ptr",
                     "F_name_function": "accept_double_complex_out_ptr",
                     "F_name_generic": "accept_double_complex_out_ptr",
                     "F_name_impl": "accept_double_complex_out_ptr",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtr",
                     "function_name": "acceptDoubleComplexOutPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "double complex * arg1",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "arg1",
+                        "C_prototype": "double complex * arg1",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1",
+                        "F_C_call": "c_accept_double_complex_out_ptr",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1",
+                        "F_arguments": "arg1",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -749,30 +758,33 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1,\t flag",
                     "C_name": "acceptDoubleComplexOutPtrFlag",
                     "C_name_api": "acceptDoubleComplexOutPtrFlag",
-                    "C_prototype": "double complex * arg1,\t int * flag",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t flag",
-                    "F_C_call": "c_accept_double_complex_out_ptr_flag",
                     "F_C_name": "accept_double_complex_out_ptr_flag",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1,\t flag",
-                    "F_arguments": "arg1,\t flag",
                     "F_name_api": "accept_double_complex_out_ptr_flag",
                     "F_name_function": "accept_double_complex_out_ptr_flag",
                     "F_name_generic": "accept_double_complex_out_ptr_flag",
                     "F_name_impl": "accept_double_complex_out_ptr_flag",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtrFlag",
                     "function_name": "acceptDoubleComplexOutPtrFlag"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1,\t flag",
+                        "C_prototype": "double complex * arg1,\t int * flag",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_call_list": "arg1,\t flag",
+                        "C_prototype": "double complex * arg1,\t int * flag",
+                        "C_return_type": "void",
+                        "F_C_arguments": "arg1,\t flag",
+                        "F_C_call": "c_accept_double_complex_out_ptr_flag",
+                        "F_C_subprogram": "subroutine",
+                        "F_arg_c_call": "arg1,\t flag",
+                        "F_arguments": "arg1,\t flag",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }

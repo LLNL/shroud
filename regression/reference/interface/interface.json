@@ -40,25 +40,27 @@
                 "zz_fmtdict": {
                     "C_name": "Function1",
                     "C_name_api": "Function1",
-                    "C_prototype": "void",
-                    "C_return_type": "void",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_function1",
                     "F_C_name": "function1",
-                    "F_C_subprogram": "subroutine",
-                    "F_arguments": "",
                     "F_name_api": "function1",
                     "F_name_function": "function1",
                     "F_name_generic": "function1",
                     "F_name_impl": "function1",
-                    "F_subprogram": "subroutine",
                     "function_name": "Function1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
+                        "F_C_arguments": "",
+                        "F_C_call": "c_function1",
+                        "F_C_subprogram": "subroutine",
+                        "F_arguments": "",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -212,29 +214,20 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1,\t arg2",
                     "C_name": "Function2",
                     "C_name_api": "Function2",
-                    "C_prototype": "double arg1,\t int arg2",
-                    "C_return_type": "double",
-                    "F_C_arguments": "arg1,\t arg2",
-                    "F_C_call": "c_function2",
                     "F_C_name": "function2",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg1,\t arg2",
-                    "F_arguments": "arg1,\t arg2",
                     "F_name_api": "function2",
                     "F_name_function": "function2",
                     "F_name_generic": "function2",
                     "F_name_impl": "function2",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "double SHC_rv",
                     "function_name": "Function2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_call_list": "arg1,\t arg2",
+                        "C_prototype": "double arg1,\t int arg2",
+                        "C_return_type": "double",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
@@ -243,6 +236,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "double SHC_rv",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -250,6 +244,17 @@
                         "stmtc": "c_function_native_scalar"
                     },
                     "fmtf": {
+                        "C_call_list": "arg1,\t arg2",
+                        "C_prototype": "double arg1,\t int arg2",
+                        "C_return_type": "double",
+                        "F_C_arguments": "arg1,\t arg2",
+                        "F_C_call": "c_function2",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
+                        "F_arg_c_call": "arg1,\t arg2",
+                        "F_arguments": "arg1,\t arg2",
+                        "F_result_clause": "\fresult(SHT_rv)",
+                        "F_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
@@ -258,6 +263,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_rv_decl": "double SHC_rv",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "f_intent": "OUT",

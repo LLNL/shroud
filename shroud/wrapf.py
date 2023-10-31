@@ -1143,34 +1143,34 @@ rv = .false.
         func_cursor.stmt = result_stmt
             
         if subprogram == "subroutine":
-            fmt_func.F_C_subprogram = "subroutine"
+            fmt_result.F_C_subprogram = "subroutine"
         else:
-            fmt_func.F_C_subprogram = "function"
-            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-            fmt_result.i_var = fmt_func.F_result
-            fmt_result.f_var = fmt_func.F_result
+            fmt_result.F_C_subprogram = "function"
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.i_var = fmt_result.F_result
+            fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
-                                      fmt_func.F_result, result_typemap,
+                                      fmt_result.F_result, result_typemap,
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
         if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
-            fmt_func.F_C_subprogram = "subroutine"
-            fmt_func.F_C_result_clause = ""
+            fmt_result.F_C_subprogram = "subroutine"
+            fmt_result.F_C_result_clause = ""
             subprogram = "subroutine"
         elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
-            fmt_func.F_C_subprogram = "function"
-            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+            fmt_result.F_C_subprogram = "function"
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
         if result_stmt.i_result_var:
-            fmt_func.F_result = wformat(
-                result_stmt.i_result_var, fmt_func)
-            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "c", "i")
+            fmt_result.F_result = wformat(
+                result_stmt.i_result_var, fmt_result)
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c", "i")
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
             
         stmts_comments = []
@@ -1198,14 +1198,14 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
-                arg_c_names.append(fmt_func.C_this)
+                arg_c_names.append(fmt_result.C_this)
                 if sintent == "dtor":
                     # dtor will modify C_this to set addr to nullptr.
                     line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
                 else:
                     line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
-                append_format(arg_c_decl, line, fmt_func)
-                imports[fmt_func.F_capsule_data_type] = True
+                append_format(arg_c_decl, line, fmt_result)
+                imports[fmt_result.F_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.declarator.params:
@@ -1274,9 +1274,9 @@ rv = .false.
         elif subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
-            fmt_func.F_C_pure_clause = "pure "
+            fmt_result.F_C_pure_clause = "pure "
 
-        fmt_func.F_C_arguments = options.get(
+        fmt_result.F_C_arguments = options.get(
             "F_C_arguments", ",\t ".join(arg_c_names)
         )
 
@@ -1464,7 +1464,6 @@ rv = .false.
 
         C_node = node.C_node  # C wrapper to call.
 
-        fmt_func.F_C_call = C_node.fmtdict.F_C_name
         fmtargs = C_node._fmtargs
 
         # Fortran return type
@@ -1475,6 +1474,7 @@ rv = .false.
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+        fmt_result.F_C_call = C_node.fmtdict.F_C_name
         result_stmt = statements.lookup_f_function_stmt(node)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         fmt_result.stmtf = result_stmt.name
@@ -1491,14 +1491,14 @@ rv = .false.
             subprogram = "subroutine"
         elif result_stmt.f_result is not None:
             subprogram = "function"
-            fmt_func.F_result = result_stmt.f_result
+            fmt_result.F_result = result_stmt.f_result
         if subprogram == "function":
-            fmt_result.f_var = fmt_func.F_result
-            fmt_result.fc_var = fmt_func.F_result
-            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-        fmt_func.F_subprogram = subprogram
+            fmt_result.f_var = fmt_result.F_result
+            fmt_result.fc_var = fmt_result.F_result
+            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
+        fmt_result.F_subprogram = subprogram
         
-        self.name_temp_vars(fmt_func.C_result, result_stmt, fmt_result, "f")
+        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
@@ -1542,13 +1542,13 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
-                arg_f_names.append(fmt_func.F_this)
+                arg_f_names.append(fmt_result.F_this)
                 arg_f_decl.append(
-                    wformat("class({F_derived_name}) :: {F_this}", fmt_func)
+                    wformat("class({F_derived_name}) :: {F_this}", fmt_result)
                 )
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(
-                    wformat("{F_this}%{F_derived_member}", fmt_func)
+                    wformat("{F_this}%{F_derived_member}", fmt_result)
                 )
         else:
             is_ctor = False
@@ -1745,7 +1745,7 @@ rv = .false.
         # Unless explicitly set by FStmts.f_arg_decl
         if subprogram == "function":
             # if func_is_const:
-            #     fmt_func.F_pure_clause = 'pure '
+            #     fmt_result.F_pure_clause = 'pure '
             if not found_arg_decl_ret:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1763,9 +1763,9 @@ rv = .false.
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
             clsnode = node.lookup_class(node.options.class_ctor)
-            fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
+            fmt_result.F_name_generic = clsnode.fmtdict.F_derived_name
             fileinfo.f_function_generic.setdefault(
-                fmt_func.F_name_generic, GenericFunction(True, cls, [])
+                fmt_result.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
         elif options.F_create_generic:
             # if return type is templated in C++,
@@ -1775,12 +1775,12 @@ rv = .false.
                 # ctor generic do not get added as derived type generic.
                 # Always create a generic, even if only one function.
                 fileinfo.f_function_generic.setdefault(
-                    fmt_func.F_name_generic, GenericFunction(True, cls, [])
+                    fmt_result.F_name_generic, GenericFunction(True, cls, [])
                 ).functions.append(node)
             else:
                 if cls:
                     fileinfo.f_type_generic.setdefault(
-                        fmt_func.F_name_generic, GenericFunction(False, cls, [])
+                        fmt_result.F_name_generic, GenericFunction(False, cls, [])
                     ).functions.append(node)
                 # If from a fortran_generic list, create generic interface.
                 if node._generated == "fortran_generic":
@@ -1788,7 +1788,7 @@ rv = .false.
                 else:
                     force = False
                 fileinfo.f_function_generic.setdefault(
-                    fmt_func.F_name_scope + fmt_func.F_name_generic,
+                    fmt_result.F_name_scope + fmt_result.F_name_generic,
                     GenericFunction(force, cls, [])).functions.append(node)
         if cls:
             # Add procedure to derived type
@@ -1798,24 +1798,24 @@ rv = .false.
             if is_static:
                 append_format(type_bound_part,
                               "procedure, nopass :: {F_name_function} => {F_name_impl}",
-                              fmt_func)
+                              fmt_result)
             elif not is_ctor:
                 append_format(type_bound_part,
                               "procedure :: {F_name_function} => {F_name_impl}",
-                              fmt_func)
+                              fmt_result)
             if node.cpp_if:
                 type_bound_part.append("#endif")
 
         # use tabs to insert continuations
         if arg_c_call:
-            fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
-        fmt_func.F_arguments = options.get(
+            fmt_result.F_arg_c_call = ",\t ".join(arg_c_call)
+        fmt_result.F_arguments = options.get(
             "F_arguments", ",\t ".join(arg_f_names)
         )
 
         # body of function
-        # XXX sname = fmt_func.F_name_impl
-        sname = fmt_func.F_name_function
+        # XXX sname = fmt_result.F_name_impl
+        sname = fmt_result.F_name_function
         F_force = None
         F_code = None
         call_list = []
@@ -1864,7 +1864,7 @@ rv = .false.
                 post_call,
             )
             
-        arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
+        arg_f_use = self.sort_module_info(modules, fmt_result.F_module_name)
 
         if need_wrapper or options.debug:
             impl = []
@@ -1899,7 +1899,7 @@ rv = .false.
             fileinfo.impl.extend(impl)
         else:            
             # Call the C function directly via bind(C).
-            C_node.fmtdict.F_C_name = fmt_func.F_name_impl
+            C_node.fmtdict.F_C_name = fmt_result.F_name_impl
             if options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")

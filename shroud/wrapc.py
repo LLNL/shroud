@@ -997,7 +997,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             else:
                 fmt_result.c_const = ""
 
-            fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+            fmt_result.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
             )
 
@@ -1007,10 +1007,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         if result_stmt.c_return_type:
             # Override return type.
-            fmt_func.C_return_type = wformat(
+            fmt_result.C_return_type = wformat(
                 result_stmt.c_return_type, fmt_result)
         else:
-            fmt_func.C_return_type = ast.gen_arg_as_c(
+            fmt_result.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True
             )
             
@@ -1214,11 +1214,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         )
         
         if call_list:
-            fmt_func.C_call_list = ",\t ".join(call_list)
+            fmt_result.C_call_list = ",\t ".join(call_list)
 
         if len(proto_list) + len(proto_tail) == 0:
             proto_list.append("void")
-        fmt_func.C_prototype = options.get(
+        fmt_result.C_prototype = options.get(
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
@@ -1253,7 +1253,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 # A C++ var is created by pre_call.
                 # Assign to it directly. ex c_function_shadow_scalar
                 fmt_result.cxx_addr = ""
-                fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
+                fmt_result.cxx_rv_decl = "*" + fmt_result.cxx_var
             
             raw_call_code = [
                 "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"

@@ -38,26 +38,28 @@
                 "zz_fmtdict": {
                     "C_name": "WWW_inner3_worker3",
                     "C_name_api": "worker3",
-                    "C_prototype": "void",
-                    "C_return_type": "void",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_inner3_worker3",
                     "F_C_name": "inner3_worker3",
-                    "F_C_subprogram": "subroutine",
-                    "F_arguments": "",
                     "F_name_api": "worker3",
                     "F_name_function": "worker3",
                     "F_name_generic": "worker3",
                     "F_name_impl": "inner3_worker3",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_worker3",
                     "function_name": "worker3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
+                        "F_C_arguments": "",
+                        "F_C_call": "c_inner3_worker3",
+                        "F_C_subprogram": "subroutine",
+                        "F_arguments": "",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -91,26 +93,28 @@
                 "zz_fmtdict": {
                     "C_name": "WWW_worker",
                     "C_name_api": "worker",
-                    "C_prototype": "void",
-                    "C_return_type": "void",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_worker",
                     "F_C_name": "worker",
-                    "F_C_subprogram": "subroutine",
-                    "F_arguments": "",
                     "F_name_api": "worker",
                     "F_name_function": "worker",
                     "F_name_generic": "worker",
                     "F_name_impl": "worker",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_worker",
                     "function_name": "worker"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
                         "stmtc": "c_subroutine"
                     },
                     "fmtf": {
+                        "C_prototype": "void",
+                        "C_return_type": "void",
+                        "F_C_arguments": "",
+                        "F_C_call": "c_worker",
+                        "F_C_subprogram": "subroutine",
+                        "F_arguments": "",
+                        "F_subprogram": "subroutine",
                         "stmtc": "f_subroutine",
                         "stmtf": "f_subroutine"
                     }
@@ -150,26 +154,28 @@
                         "zz_fmtdict": {
                             "C_name": "WWW_inner1_worker",
                             "C_name_api": "worker",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_worker",
                             "F_C_name": "worker",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
                             "F_name_api": "worker",
                             "F_name_function": "worker",
                             "F_name_generic": "worker",
                             "F_name_impl": "worker",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
                                 "stmtc": "c_subroutine"
                             },
                             "fmtf": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_worker",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
                             }
@@ -239,26 +245,28 @@
                         "zz_fmtdict": {
                             "C_name": "WWW_inner2_worker",
                             "C_name_api": "worker",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_worker",
                             "F_C_name": "worker",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
                             "F_name_api": "worker",
                             "F_name_function": "worker",
                             "F_name_generic": "worker",
                             "F_name_impl": "worker",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
                                 "stmtc": "c_subroutine"
                             },
                             "fmtf": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_worker",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
                             }
@@ -328,26 +336,28 @@
                         "zz_fmtdict": {
                             "C_name": "WWW_inner4_worker4",
                             "C_name_api": "worker4",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_inner4_worker4",
                             "F_C_name": "inner4_worker4",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
                             "F_name_api": "worker4",
                             "F_name_function": "worker4",
                             "F_name_generic": "worker4",
                             "F_name_impl": "inner4_worker4",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_worker4",
                             "function_name": "worker4"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
                                 "stmtc": "c_subroutine"
                             },
                             "fmtf": {
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_inner4_worker4",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
                                 "stmtc": "f_subroutine",
                                 "stmtf": "f_subroutine"
                             }
