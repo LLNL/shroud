@@ -1005,7 +1005,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 CXX_ast, result_stmt.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
 
-        return_deref_attr = ast.declarator.metaattrs["deref"]
         if result_stmt.c_return_type:
             # Override return type.
             fmt_func.C_return_type = wformat(
@@ -1305,8 +1304,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             raw_return_code = []
         elif result_stmt.c_return:
             raw_return_code = result_stmt.c_return
-        elif return_deref_attr == "copy":
-            raw_return_code = ["return {cxx_var};"]
         elif C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.

@@ -1333,6 +1333,7 @@
                     "fmtc": {
                         "c_char_len": "30",
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_other",
