@@ -1579,15 +1579,6 @@ rv = .false.
             fmt_arg.f_var = arg_name
             fmt_arg.fc_var = arg_name
 
-            c_declarator = c_arg.declarator
-            c_attrs = c_declarator.attrs
-            c_meta = c_declarator.metaattrs
-            if c_attrs["hidden"]:
-                # Argument is not passed into Fortran.
-                # hidden value is only in the C wrapper.
-                continue
-            optattr = False
-
             # An argument to the C and Fortran function
             f_index += 1
             f_arg = f_args[f_index]
@@ -1595,7 +1586,13 @@ rv = .false.
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
 
-            arg_stmt = statements.lookup_f_arg_stmt(node, c_arg)
+            if f_attrs["hidden"]:
+                # Argument is not passed into Fortran.
+                # hidden value is only in the C wrapper.
+                continue
+            optattr = False
+            
+            arg_stmt = statements.lookup_f_arg_stmt(node, f_arg)
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
@@ -1608,7 +1605,7 @@ rv = .false.
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
 
-            if c_arg.ftrim_char_in:
+            if f_arg.ftrim_char_in:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
                     "character(len=*), intent(IN) :: {}".format(f_name)
@@ -1618,7 +1615,7 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
                 continue
-            elif c_attrs["assumedtype"]:
+            elif f_attrs["assumedtype"]:
                 # Passed directly to C as a 'void *'
                 arg_f_decl.append(
                     "type(*) :: {}".format(f_name)
@@ -1628,7 +1625,7 @@ rv = .false.
                 continue
             elif f_declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                if c_attrs["external"]:
+                if f_attrs["external"]:
                     # external is similar to assumed type, in that it will
                     # accept any function.  But external is not allowed
                     # in bind(C), so make sure a wrapper is generated.
@@ -1668,8 +1665,8 @@ rv = .false.
                 self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
-                if options.F_default_args == "optional" and c_arg.declarator.init is not None:
-                    fmt_arg.default_value = c_arg.declarator.init
+                if options.F_default_args == "optional" and f_arg.declarator.init is not None:
+                    fmt_arg.default_value = f_arg.declarator.init
                     optattr = True
                 arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
