@@ -1541,32 +1541,6 @@ class Declaration(Node):
     def get_full_type(self):
         return ' '.join(self.specifier)
 
-    def _as_arg(self, name):
-        """Create an argument to hold the function result.
-        This is intended for pointer arguments, char, string or vector.
-        Move template_arguments from function to argument.
-        """
-        new = Declaration()
-        new.specifier = self.specifier[:]
-        new.storage = self.storage[:]
-        new.const = self.const
-        new.volatile = self.volatile
-        new.typemap = self.typemap
-        new.template_arguments = self.template_arguments
-
-        new.declarator = copy.deepcopy(self.declarator)
-        new.declarator.name = name
-        if not new.declarator.pointer:
-            # make sure the return type is a pointer
-            new.declarator.pointer = [Ptr("*")]
-        # new.array = None
-        new.declarator.attrs = copy.deepcopy(self.declarator.attrs) # XXX no need for deepcopy in future
-        new.declarator.metaattrs = copy.deepcopy(self.declarator.metaattrs)
-        new.declarator.metaattrs["intent"] = "out"
-        new.declarator.params= None
-        new.declarator.typemap = new.declarator.typemap
-        return new
-
     def instantiate(self, node):
         """Instantiate a template argument.
         node - Declaration node of template argument.
