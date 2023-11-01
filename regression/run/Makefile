@@ -128,6 +128,7 @@ c-test-list = \
   test-c-typedefs-cxx \
   test-c-namespace \
   test-c-pointers-cxx \
+  test-c-pointers-cxx-c \
   test-c-struct-cxx \
   test-c-statement \
   test-c-templates

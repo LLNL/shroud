@@ -10,12 +10,14 @@
 #
 include $(top)/regression/run/defaults.mk
 
+testdir = pointers-c
+
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-c \
+    -I$(top)/regression/reference/$(testdir) \
     -I$(top)/regression/run/pointers
 
 VPATH = \
-    $(top)/regression/reference/pointers-c \
+    $(top)/regression/reference/$(testdir) \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
@@ -27,10 +29,10 @@ OBJS = \
     wrappointers.o \
     utilpointers.o
 
-pointers-c : $(OBJS)
+$(testdir) : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod pointers
+	rm -f $(OBJS) *.mod $(testdir)
 
 main.o : fruit.o wrapfpointers.o
