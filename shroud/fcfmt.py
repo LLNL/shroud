@@ -10,6 +10,7 @@ Fill the fmtdict for C and Fortran wrappers.
 
 from . import error
 from . import todict
+from . import statements
 from . import util
 from . import whelpers
 from .util import wformat, append_format
@@ -77,17 +78,39 @@ class FillFormat(object):
             node.eval_template("F_name_function")
             node.eval_template("F_name_generic")
 
-#        node.eval_template("C_name", fmt=fmt_result)
-#        node.eval_template("F_C_name", fmt=fmt_result)
+        ast = node.ast
 
-#        if wlang == "f":
-#            node.eval_template("F_name_impl", fmt=fmt_result)
-#            node.eval_template("F_name_function", fmt=fmt_result)
-#            node.eval_template("F_name_generic", fmt=fmt_result)
+        if wlang == "c":
+            result_stmt = statements.lookup_c_function_stmt(node)
+        else:
+            result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
+        func_cursor.stmt = result_stmt
+#        fmt_result.stmt_name = result_stmt.name
+        stmt_indexes = [result_stmt.index]
 
-        cursor.pop_node(node)
-        return  # <--- work in progress
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
 
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            if wlang == "c":
+                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
+            else:
+                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            func_cursor.stmt = arg_stmt
+            stmt_indexes.append(arg_stmt.index)
+#            fmt_arg.stmt_name = arg_stmt.name
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+        func_cursor.stmt = result_stmt
+        signature = ":".join(stmt_indexes)
+#        fmt_result.signature = signature
+            
         cursor.pop_node(node)
 
     def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):

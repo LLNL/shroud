@@ -954,7 +954,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         header_typedef_nodes = OrderedDict()
 
         stmt_indexes = []
-        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        fmt_result = node._fmtresult[fmtlang]
         if wlang == "c":
             result_stmt = statements.lookup_c_function_stmt(node)
         else:
@@ -1099,8 +1099,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            fmt_arg = fmtargs[arg_name][fmtlang]
             c_attrs = declarator.attrs
             c_meta = declarator.metaattrs
 

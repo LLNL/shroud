@@ -1138,7 +1138,7 @@ rv = .false.
         
         # find subprogram type
         # compute first to get order of arguments correct.
-        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        fmt_result = node._fmtresult[fmtlang]
         if wlang == "c":
             result_stmt = statements.lookup_c_function_stmt(node)
         else:
@@ -1218,8 +1218,7 @@ rv = .false.
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            fmt_arg = fmtargs[arg_name][fmtlang]
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.i_var = arg_name
             fmt_arg.f_var = arg_name
@@ -1479,7 +1478,7 @@ rv = .false.
 
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
-        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
+        fmt_result = node._fmtresult["fmtf"]
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
         result_stmt = statements.lookup_f_function_stmt(node)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
@@ -1570,8 +1569,7 @@ rv = .false.
         for f_arg in ast.declarator.params:
             func_cursor.arg = f_arg
             arg_name = f_arg.declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
+            fmt_arg = fmtargs[arg_name]["fmtf"]
             fmt_arg.f_var = arg_name
             fmt_arg.fc_var = arg_name
 
