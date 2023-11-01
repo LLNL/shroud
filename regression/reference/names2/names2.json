@@ -34,6 +34,25 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_prototype": "void",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_prototype": "void",
+                            "C_return_type": "void",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_a_function",
+                            "F_C_subprogram": "subroutine",
+                            "F_arguments": "",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name": "NAM_AFunction",
                     "C_name_api": "AFunction",
@@ -43,23 +62,6 @@
                     "F_name_generic": "a_function",
                     "F_name_impl": "a_function",
                     "function_name": "AFunction"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_prototype": "void",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_prototype": "void",
-                        "C_return_type": "void",
-                        "F_C_arguments": "",
-                        "F_C_call": "c_a_function",
-                        "F_C_subprogram": "subroutine",
-                        "F_arguments": "",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             }
         ],

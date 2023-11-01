@@ -394,7 +394,6 @@ class ToDict(visitor.Visitor):
                 "_PTR_C_CXX_index",
                 "_PTR_F_C_index",
                 "_fmtargs",
-                "_fmtresult",
                 "user_fmt",
                 "fmtdict",
                 "options",
@@ -549,7 +548,6 @@ class ToDict(visitor.Visitor):
     # Rename some attributes so they sort to the bottom of the JSON dictionary.
     rename_fields = dict(
         _fmtargs="zz_fmtargs",
-        _fmtresult="zz_fmtresult",
         fmtdict="zz_fmtdict",
     )
     def add_visit_fields(self, node, d, fields):
@@ -792,7 +790,6 @@ class PrintFmt(Helpers, visitor.Visitor):
             d,
             [
                 "_fmtargs",
-                "_fmtresult",
 #                "user_fmt",
                 "fmtdict",
             ],

@@ -34,6 +34,19 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_func_in_class",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "WRA_Class1_FuncInClass",
                             "C_name_api": "FuncInClass",
@@ -43,17 +56,6 @@
                             "F_name_generic": "func_in_class",
                             "F_name_impl": "class1_func_in_class",
                             "function_name": "FuncInClass"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_class1_func_in_class",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     }
                 ],

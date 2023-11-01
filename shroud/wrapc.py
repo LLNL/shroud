@@ -954,7 +954,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         header_typedef_nodes = OrderedDict()
 
         stmt_indexes = []
-        fmt_result = node._fmtresult[fmtlang]
+        fmt_result= fmtargs["+result"][fmtlang]
         result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt

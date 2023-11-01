@@ -42,6 +42,84 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                                    "C_return_type": "ARR_ArrayWrapper *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "ARR_ArrayWrapper",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
+                                    "cxx_type": "ArrayWrapper",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                                    "C_return_type": "ARR_ArrayWrapper *",
+                                    "F_C_arguments": "SHT_rv",
+                                    "F_C_call": "c_ArrayWrapper_ctor",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "SHT_rv%cxxmem",
+                                    "F_arguments": "",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "ARR_ArrayWrapper",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
+                                    "cxx_type": "ArrayWrapper",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "ARR_SHROUD_capsule_data",
+                                    "f_derived_type": "ArrayWrapper",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(ArrayWrapper)",
+                                    "f_type_module": "arrayclass_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtpy": {
+                                    "PY_build_format": "O",
+                                    "PY_to_object_idtor_func": "PP_ArrayWrapper_to_Object_idtor",
+                                    "PyObject": "PY_ArrayWrapper",
+                                    "PyTypeObject": "PY_ArrayWrapper_Type",
+                                    "c_deref": "",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "SHCXX_rv",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_type": "ArrayWrapper",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "numpy_type": null,
+                                    "py_var": "SHTPy_rv",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_default",
+                                    "value_var": "SHValue_rv",
+                                    "vargs": "SHCXX_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_ctor",
                             "C_name_api": "ctor",
@@ -54,82 +132,6 @@
                             "PY_type_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "ctor"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "ARR_ArrayWrapper * SHC_rv",
-                                "C_return_type": "ARR_ArrayWrapper *",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "ARR_ArrayWrapper",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
-                                "cxx_type": "ArrayWrapper",
-                                "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "C_prototype": "ARR_ArrayWrapper * SHC_rv",
-                                "C_return_type": "ARR_ArrayWrapper *",
-                                "F_C_arguments": "SHT_rv",
-                                "F_C_call": "c_ArrayWrapper_ctor",
-                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "SHT_rv%cxxmem",
-                                "F_arguments": "",
-                                "F_result": "SHT_prv",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "ARR_ArrayWrapper",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
-                                "cxx_type": "ArrayWrapper",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "ARR_SHROUD_capsule_data",
-                                "f_derived_type": "ArrayWrapper",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(ArrayWrapper)",
-                                "f_type_module": "arrayclass_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "f_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtpy": {
-                                "PY_build_format": "O",
-                                "PY_to_object_idtor_func": "PP_ArrayWrapper_to_Object_idtor",
-                                "PyObject": "PY_ArrayWrapper",
-                                "PyTypeObject": "PY_ArrayWrapper_Type",
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "ArrayWrapper",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": null,
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_default",
-                                "value_var": "SHValue_rv",
-                                "vargs": "SHCXX_rv"
-                            }
                         }
                     },
                     {
@@ -175,6 +177,26 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "size",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t int size",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "size",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t int size",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t size",
+                                    "F_C_call": "c_ArrayWrapper_setSize",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t size",
+                                    "F_arguments": "obj,\t size",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "size": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -251,26 +273,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "setSize"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "size",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t int size",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "size",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t int size",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t size",
-                                "F_C_call": "c_ArrayWrapper_setSize",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t size",
-                                "F_arguments": "obj,\t size",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -299,6 +301,78 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self",
+                                    "C_return_type": "int",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_function_native_scalar"
+                                },
+                                "fmtf": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_ArrayWrapper_getSize",
+                                    "F_C_pure_clause": "pure ",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_function_native_scalar"
+                                },
+                                "fmtpy": {
+                                    "c_deref": "",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "SHCXX_rv",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHTPy_rv",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_scalar",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getSize",
                             "C_name_api": "getSize",
@@ -313,76 +387,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getSize"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "const ARR_ArrayWrapper * self",
-                                "C_return_type": "int",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "c_function_native_scalar"
-                            },
-                            "fmtf": {
-                                "C_prototype": "const ARR_ArrayWrapper * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_ArrayWrapper_getSize",
-                                "F_C_pure_clause": "pure ",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_function_native_scalar"
-                            },
-                            "fmtpy": {
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": "NPY_INT",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_scalar",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -433,6 +437,26 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "*size",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "*size",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t size",
+                                    "F_C_call": "c_ArrayWrapper_fillSize",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t size",
+                                    "F_arguments": "obj,\t size",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "size": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -510,26 +534,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fillSize"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "*size",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "*size",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t size",
-                                "F_C_call": "c_ArrayWrapper_fillSize",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t size",
-                                "F_arguments": "obj,\t size",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -557,6 +561,26 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_ArrayWrapper_allocate",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_allocate",
                             "C_name_api": "allocate",
@@ -571,24 +595,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "allocate"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_ArrayWrapper_allocate",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -639,6 +645,63 @@
                             "c": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "double *",
+                                    "F_C_arguments": "self",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHC_rv",
+                                    "cxx_rv_decl": "double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(obj->getSize())",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_function_native_*"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArray",
                             "C_name_api": "getArray",
@@ -650,61 +713,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getArray"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "double *",
-                                "F_C_arguments": "self",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHC_rv",
-                                "cxx_rv_decl": "double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(obj->getSize())",
-                                "f_assumed_shape": "(:)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "c_function_native_*"
-                            },
-                            "fmtpy": {
-                                "array_size": "self->obj->getSize()",
-                                "c_deref": "*",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "*SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHCXX_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "npy_dims_var": "SHD_rv",
-                                "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                "npy_rank": "1",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "rank": "1",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_*_pointer_numpy",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -761,6 +769,55 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_getArray_bufferify",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "c_var_cdesc": "SHT_rv_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHC_rv",
+                                    "cxx_rv_decl": "double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "f_var_cdesc": "SHT_rv_cdesc",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "i_var_cdesc": "SHT_rv_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArray_bufferify",
                             "C_name_api": "getArray",
@@ -775,53 +832,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "getArray"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                "F_C_call": "c_ArrayWrapper_getArray_bufferify",
-                                "F_C_result_clause": "",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "",
-                                "c_helper_array_context": "ARR_SHROUD_array",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHC_rv",
-                                "cxx_rv_decl": "double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_helper_array_context": "ARR_SHROUD_array",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "f_var_cdesc": "SHT_rv_cdesc",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "f_function_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
@@ -873,6 +883,64 @@
                             "c": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self",
+                                    "C_return_type": "double *",
+                                    "F_C_arguments": "self",
+                                    "F_C_pure_clause": "pure ",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHC_rv",
+                                    "cxx_rv_decl": "double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(obj->getSize())",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_function_native_*"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConst",
                             "C_name_api": "getArrayConst",
@@ -884,62 +952,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getArrayConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "const ARR_ArrayWrapper * self",
-                                "C_return_type": "double *",
-                                "F_C_arguments": "self",
-                                "F_C_pure_clause": "pure ",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHC_rv",
-                                "cxx_rv_decl": "double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(obj->getSize())",
-                                "f_assumed_shape": "(:)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "c_function_native_*"
-                            },
-                            "fmtpy": {
-                                "array_size": "self->obj->getSize()",
-                                "c_deref": "*",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "*SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHCXX_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "npy_dims_var": "SHD_rv",
-                                "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                "npy_rank": "1",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "rank": "1",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_*_pointer_numpy",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -997,6 +1009,55 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_getArrayConst_bufferify",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "c_var_cdesc": "SHT_rv_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHC_rv",
+                                    "cxx_rv_decl": "double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "f_var_cdesc": "SHT_rv_cdesc",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "i_var_cdesc": "SHT_rv_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConst_bufferify",
                             "C_name_api": "getArrayConst",
@@ -1011,53 +1072,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "getArrayConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                "F_C_call": "c_ArrayWrapper_getArrayConst_bufferify",
-                                "F_C_result_clause": "",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "",
-                                "c_helper_array_context": "ARR_SHROUD_array",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHC_rv",
-                                "cxx_rv_decl": "double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_helper_array_context": "ARR_SHROUD_array",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "f_var_cdesc": "SHT_rv_cdesc",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "f_function_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
@@ -1109,6 +1123,63 @@
                             "c": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "const double *",
+                                    "F_C_arguments": "self",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "const ",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
+                                    "cxx_rv_decl": "const double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(obj->getSize())",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_function_native_*"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayC",
                             "C_name_api": "getArrayC",
@@ -1120,61 +1191,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getArrayC"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "const double *",
-                                "F_C_arguments": "self",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                "cxx_rv_decl": "const double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(obj->getSize())",
-                                "f_assumed_shape": "(:)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "c_function_native_*"
-                            },
-                            "fmtpy": {
-                                "array_size": "self->obj->getSize()",
-                                "c_deref": "*",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "*SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
-                                "cxx_type": "double",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "npy_dims_var": "SHD_rv",
-                                "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                "npy_rank": "1",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "rank": "1",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_*_pointer_numpy",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -1232,6 +1248,55 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_getArrayC_bufferify",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "const ",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "c_var_cdesc": "SHT_rv_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
+                                    "cxx_rv_decl": "const double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "f_var_cdesc": "SHT_rv_cdesc",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "i_var_cdesc": "SHT_rv_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayC_bufferify",
                             "C_name_api": "getArrayC",
@@ -1246,53 +1311,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "getArrayC"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                "F_C_call": "c_ArrayWrapper_getArrayC_bufferify",
-                                "F_C_result_clause": "",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "const ",
-                                "c_helper_array_context": "ARR_SHROUD_array",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                "cxx_rv_decl": "const double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_helper_array_context": "ARR_SHROUD_array",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "f_var_cdesc": "SHT_rv_cdesc",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "f_function_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
@@ -1345,6 +1363,64 @@
                             "c": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self",
+                                    "C_return_type": "const double *",
+                                    "F_C_arguments": "self",
+                                    "F_C_pure_clause": "pure ",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "const ",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
+                                    "cxx_rv_decl": "const double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(obj->getSize())",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_function_native_*"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConstC",
                             "C_name_api": "getArrayConstC",
@@ -1356,62 +1432,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getArrayConstC"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "const ARR_ArrayWrapper * self",
-                                "C_return_type": "const double *",
-                                "F_C_arguments": "self",
-                                "F_C_pure_clause": "pure ",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                "cxx_rv_decl": "const double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(obj->getSize())",
-                                "f_assumed_shape": "(:)",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "c_function_native_*"
-                            },
-                            "fmtpy": {
-                                "array_size": "self->obj->getSize()",
-                                "c_deref": "*",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "*SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
-                                "cxx_type": "double",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "npy_dims_var": "SHD_rv",
-                                "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                "npy_rank": "1",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "rank": "1",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_*_pointer_numpy",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -1470,6 +1490,55 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_getArrayConstC_bufferify",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                    "c_array_size2": "SH_this->getSize()",
+                                    "c_const": "const ",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "c_var_cdesc": "SHT_rv_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
+                                    "cxx_rv_decl": "const double * SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "f_var_cdesc": "SHT_rv_cdesc",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "i_var_cdesc": "SHT_rv_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_getArrayConstC_bufferify",
                             "C_name_api": "getArrayConstC",
@@ -1484,53 +1553,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "getArrayConstC"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                "F_C_call": "c_ArrayWrapper_getArrayConstC_bufferify",
-                                "F_C_result_clause": "",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->getSize()",
-                                "c_const": "const ",
-                                "c_helper_array_context": "ARR_SHROUD_array",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "c_var_cdesc": "SHT_rv_cdesc",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                "cxx_rv_decl": "const double * SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_helper_array_context": "ARR_SHROUD_array",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "f_var_cdesc": "SHT_rv_cdesc",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "f_function_native_*_cdesc_pointer"
-                            }
                         }
                     },
                     {
@@ -1620,6 +1642,16 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "array,\t isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array,\t isize",
+                                    "F_C_subprogram": "subroutine",
+                                    "stmt_name": "c_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -1729,16 +1761,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtr"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "array,\t isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine"
-                            }
                         }
                     },
                     {
@@ -1834,6 +1856,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "&array,\t &isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtr_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtf": {
                                     "c_addr": "",
@@ -1914,20 +1950,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtr"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "&array,\t &isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_array_cdesc",
-                                "F_C_call": "c_ArrayWrapper_fetchArrayPtr_bufferify",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -2017,6 +2039,16 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "*array,\t *isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array,\t isize",
+                                    "F_C_subprogram": "subroutine",
+                                    "stmt_name": "c_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -2126,16 +2158,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRef"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "*array,\t *isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine"
-                            }
                         }
                     },
                     {
@@ -2231,6 +2253,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "array,\t isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtf": {
                                     "c_addr": "",
@@ -2311,20 +2347,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRef"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "array,\t isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_array_cdesc",
-                                "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -2415,6 +2437,16 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "array,\t isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array,\t isize",
+                                    "F_C_subprogram": "subroutine",
+                                    "stmt_name": "c_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -2524,16 +2556,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtrConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "array,\t isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine"
-                            }
                         }
                     },
                     {
@@ -2630,6 +2652,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "&array,\t &isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtf": {
                                     "c_addr": "",
@@ -2710,20 +2746,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtrConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "&array,\t &isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_array_cdesc",
-                                "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -2814,6 +2836,16 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "*array,\t *isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array,\t isize",
+                                    "F_C_subprogram": "subroutine",
+                                    "stmt_name": "c_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -2923,16 +2955,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRefConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "*array,\t *isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine"
-                            }
                         }
                     },
                     {
@@ -3029,6 +3051,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "array,\t isize",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtf": {
                                     "c_addr": "",
@@ -3109,20 +3145,6 @@
                             "c_var": "self",
                             "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRefConst"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "array,\t isize",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t SHT_array_cdesc",
-                                "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -3176,6 +3198,26 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array",
+                                    "F_C_call": "c_ArrayWrapper_fetchVoidPtr",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t array",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -3252,26 +3294,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchVoidPtr"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array",
-                                "F_C_call": "c_ArrayWrapper_fetchVoidPtr",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t array",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -3325,6 +3347,26 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "*array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "*array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array",
+                                    "F_C_call": "c_ArrayWrapper_fetchVoidRef",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t array",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -3401,26 +3443,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchVoidRef"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "*array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "*array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t array",
-                                "F_C_call": "c_ArrayWrapper_fetchVoidRef",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t array",
-                                "F_arguments": "obj,\t array",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -3471,6 +3493,78 @@
                             "python": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
+                                    "C_return_type": "bool",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "bool",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_Bool",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "bool SHC_rv",
+                                    "cxx_type": "bool",
+                                    "cxx_var": "SHC_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
+                                    "stmt_name": "c_function_bool_scalar"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "array",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
+                                    "C_return_type": "bool",
+                                    "F_C_arguments": "self,\t array",
+                                    "F_C_call": "c_ArrayWrapper_checkPtr",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem,\t array",
+                                    "F_arguments": "obj,\t array",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "bool",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_Bool",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "bool SHC_rv",
+                                    "cxx_type": "bool",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_BOOL",
+                                    "f_type": "logical",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
+                                    "stmt_name": "f_function_bool_scalar"
+                                },
+                                "fmtpy": {
+                                    "PyTypeObject": "PyBool_Type",
+                                    "c_deref": "",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "SHCXX_rv",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_type": "bool",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "numpy_type": "NPY_BOOL",
+                                    "py_var": "SHTPy_rv",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_bool_scalar",
+                                    "value_var": "SHValue_rv"
+                                }
+                            },
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -3548,78 +3642,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "checkPtr"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
-                                "C_return_type": "bool",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "bool",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_Bool",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "bool SHC_rv",
-                                "cxx_type": "bool",
-                                "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_BOOL",
-                                "stmt_name": "c_function_bool_scalar"
-                            },
-                            "fmtf": {
-                                "C_call_list": "array",
-                                "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
-                                "C_return_type": "bool",
-                                "F_C_arguments": "self,\t array",
-                                "F_C_call": "c_ArrayWrapper_checkPtr",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem,\t array",
-                                "F_arguments": "obj,\t array",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "bool",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_Bool",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "bool SHC_rv",
-                                "cxx_type": "bool",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_BOOL",
-                                "f_type": "logical",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_BOOL",
-                                "stmt_name": "f_function_bool_scalar"
-                            },
-                            "fmtpy": {
-                                "PyTypeObject": "PyBool_Type",
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "bool",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": "NPY_BOOL",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_bool_scalar",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     },
                     {
@@ -3647,6 +3669,77 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "double",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "double SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_function_native_scalar"
+                                },
+                                "fmtf": {
+                                    "C_prototype": "ARR_ArrayWrapper * self",
+                                    "C_return_type": "double",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_ArrayWrapper_sumArray",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "double",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHC_rv",
+                                    "cxx_rv_decl": "double SHC_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_function_native_scalar"
+                                },
+                                "fmtpy": {
+                                    "c_deref": "",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "SHCXX_rv",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_scalar",
+                                    "value_var": "SHValue_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_sumArray",
                             "C_name_api": "sumArray",
@@ -3661,75 +3754,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "sumArray"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "double",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "double SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "c_function_native_scalar"
-                            },
-                            "fmtf": {
-                                "C_prototype": "ARR_ArrayWrapper * self",
-                                "C_return_type": "double",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_ArrayWrapper_sumArray",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "double",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "double SHC_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_DOUBLE",
-                                "f_type": "real(C_DOUBLE)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt_name": "f_function_native_scalar"
-                            },
-                            "fmtpy": {
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "double",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native_scalar",
-                                "value_var": "SHValue_rv"
-                            }
                         }
                     }
                 ],

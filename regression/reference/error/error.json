@@ -41,6 +41,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_cstruct_as_subclass_get_x1",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ERR_Cstruct_as_subclass_get_x1",
                             "C_name_api": "get_x1",
@@ -57,39 +92,6 @@
                             "function_name": "get_x1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "x1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "ERR_Cstruct_as_subclass * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_cstruct_as_subclass_get_x1",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -143,6 +145,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "val",
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t val",
+                                    "F_C_call": "c_cstruct_as_subclass_set_x1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t val",
+                                    "F_arguments": "obj,\t val",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_setter"
+                                }
+                            },
                             "val": {
                                 "fmtf": {
                                     "c_addr": "&",
@@ -186,20 +202,6 @@
                             "function_name": "set_x1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "x1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "val",
-                                "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t val",
-                                "F_C_call": "c_cstruct_as_subclass_set_x1",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t val",
-                                "F_arguments": "obj,\t val",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_setter"
-                            }
                         }
                     },
                     {
@@ -234,6 +236,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_cstruct_as_subclass_get_y1",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ERR_Cstruct_as_subclass_get_y1",
                             "C_name_api": "get_y1",
@@ -250,39 +287,6 @@
                             "function_name": "get_y1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "y1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "ERR_Cstruct_as_subclass * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_cstruct_as_subclass_get_y1",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -336,6 +340,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "val",
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t val",
+                                    "F_C_call": "c_cstruct_as_subclass_set_y1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t val",
+                                    "F_arguments": "obj,\t val",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_setter"
+                                }
+                            },
                             "val": {
                                 "fmtf": {
                                     "c_addr": "&",
@@ -379,20 +397,6 @@
                             "function_name": "set_y1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "y1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "val",
-                                "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t val",
-                                "F_C_call": "c_cstruct_as_subclass_set_y1",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t val",
-                                "F_arguments": "obj,\t val",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_setter"
-                            }
                         }
                     },
                     {
@@ -427,6 +431,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_cstruct_as_subclass_get_z1",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "ERR_Cstruct_as_subclass_get_z1",
                             "C_name_api": "get_z1",
@@ -443,39 +482,6 @@
                             "function_name": "get_z1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "z1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "ERR_Cstruct_as_subclass * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_cstruct_as_subclass_get_z1",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -529,6 +535,20 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_list": "val",
+                                    "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t val",
+                                    "F_C_call": "c_cstruct_as_subclass_set_z1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t val",
+                                    "F_arguments": "obj,\t val",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_setter"
+                                }
+                            },
                             "val": {
                                 "fmtf": {
                                     "c_addr": "&",
@@ -572,20 +592,6 @@
                             "function_name": "set_z1",
                             "struct_name": "Cstruct_as_subclass",
                             "wrapped_name": "z1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_call_list": "val",
-                                "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t val",
-                                "F_C_call": "c_cstruct_as_subclass_set_z1",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t val",
-                                "F_arguments": "obj,\t val",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_setter"
-                            }
                         }
                     }
                 ],
@@ -777,6 +783,26 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_prototype": "void",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_prototype": "void",
+                            "C_return_type": "no-such-type",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_bad_fstatements",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name": "ERR_BadFstatements",
                     "C_name_api": "BadFstatements",
@@ -787,24 +813,6 @@
                     "F_name_impl": "bad_fstatements",
                     "PY_name_impl": "PY_BadFstatements",
                     "function_name": "BadFstatements"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_prototype": "void",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_prototype": "void",
-                        "C_return_type": "no-such-type",
-                        "F_C_arguments": "",
-                        "F_C_call": "c_bad_fstatements",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
-                        "F_arguments": "",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -948,6 +956,16 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "data",
+                            "C_prototype": "int * data",
+                            "C_return_type": "void",
+                            "F_C_arguments": "data",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        }
+                    },
                     "data": {
                         "fmtc": {
                             "c_addr": "",
@@ -1006,16 +1024,6 @@
                     "F_name_api": "assumed_rank",
                     "PY_name_impl": "PY_AssumedRank",
                     "function_name": "AssumedRank"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "data",
-                        "C_prototype": "int * data",
-                        "C_return_type": "void",
-                        "F_C_arguments": "data",
-                        "F_C_subprogram": "subroutine",
-                        "stmt_name": "c_subroutine"
-                    }
                 }
             },
             {
@@ -1076,6 +1084,20 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_list": "data",
+                            "C_prototype": "int * data",
+                            "C_return_type": "void",
+                            "F_C_arguments": "data",
+                            "F_C_call": "c_assumed_rank_0d",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "data",
+                            "F_arguments": "data",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "data": {
                         "fmtf": {
                             "c_addr": "",
@@ -1115,20 +1137,6 @@
                     "F_name_impl": "assumed_rank_0d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_0d"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "C_call_list": "data",
-                        "C_prototype": "int * data",
-                        "C_return_type": "void",
-                        "F_C_arguments": "data",
-                        "F_C_call": "c_assumed_rank_0d",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "data",
-                        "F_arguments": "data",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -1189,6 +1197,20 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_list": "data",
+                            "C_prototype": "int * data",
+                            "C_return_type": "void",
+                            "F_C_arguments": "data",
+                            "F_C_call": "c_assumed_rank_1d",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "data",
+                            "F_arguments": "data",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "data": {
                         "fmtf": {
                             "c_addr": "",
@@ -1230,20 +1252,6 @@
                     "F_name_impl": "assumed_rank_1d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_1d"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "C_call_list": "data",
-                        "C_prototype": "int * data",
-                        "C_return_type": "void",
-                        "F_C_arguments": "data",
-                        "F_C_call": "c_assumed_rank_1d",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "data",
-                        "F_arguments": "data",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -1304,6 +1312,20 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_list": "data",
+                            "C_prototype": "int * data",
+                            "C_return_type": "void",
+                            "F_C_arguments": "data",
+                            "F_C_call": "c_assumed_rank_2d",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "data",
+                            "F_arguments": "data",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "data": {
                         "fmtf": {
                             "c_addr": "",
@@ -1345,20 +1367,6 @@
                     "F_name_impl": "assumed_rank_2d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_2d"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "C_call_list": "data",
-                        "C_prototype": "int * data",
-                        "C_return_type": "void",
-                        "F_C_arguments": "data",
-                        "F_C_call": "c_assumed_rank_2d",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "data",
-                        "F_arguments": "data",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             }
         ],

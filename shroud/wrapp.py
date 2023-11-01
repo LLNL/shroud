@@ -1994,9 +1994,9 @@ return 1;""",
 
         result_blk = default_scope
 
-        fmt_result = node._fmtresult.setdefault(
-            "fmtpy", util.Scope(fmt)
-        )  # fmt_func
+        fmtargs = node._fmtargs
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))  # fmt_func
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.

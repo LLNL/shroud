@@ -68,6 +68,63 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_0",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -122,63 +179,6 @@
                             "F_name_impl": "class1_new_0",
                             "function_name": "new",
                             "function_suffix": "_0"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1",
-                                "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1",
-                                "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "F_C_arguments": "arg1,\t SHT_rv",
-                                "F_C_call": "c_class1_new_0",
-                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "arg1,\t SHT_rv%cxxmem",
-                                "F_arguments": "arg1",
-                                "F_result": "SHT_prv",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -257,6 +257,63 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t arg2,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_1",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t arg2,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1,\t arg2",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -354,63 +411,6 @@
                             "F_name_impl": "class1_new_1",
                             "function_name": "new",
                             "function_suffix": "_1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1,\t arg2",
-                                "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1,\t arg2",
-                                "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "F_C_arguments": "arg1,\t arg2,\t SHT_rv",
-                                "F_C_call": "c_class1_new_1",
-                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "arg1,\t arg2,\t SHT_rv%cxxmem",
-                                "F_arguments": "arg1,\t arg2",
-                                "F_result": "SHT_prv",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -510,6 +510,63 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t arg2,\t arg3,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_2",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t arg2,\t arg3,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1,\t arg2,\t arg3",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -650,63 +707,6 @@
                             "F_name_impl": "class1_new_2",
                             "function_name": "new",
                             "function_suffix": "_2"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1,\t arg2,\t arg3",
-                                "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_local_ptr": "SHT_prv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1,\t arg2,\t arg3",
-                                "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
-                                "C_return_type": "DEF_Class1 *",
-                                "F_C_arguments": "arg1,\t arg2,\t arg3,\t SHT_rv",
-                                "F_C_call": "c_class1_new_2",
-                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "arg1,\t arg2,\t arg3,\t SHT_rv%cxxmem",
-                                "F_arguments": "arg1,\t arg2,\t arg3",
-                                "F_result": "SHT_prv",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "Class1 SHCXX_rv",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -738,6 +738,27 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_dtor"
+                                },
+                                "fmtf": {
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_delete",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_dtor"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_delete",
                             "C_name_api": "delete",
@@ -751,25 +772,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "delete"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_prototype": "DEF_Class1 * self",
-                                "C_return_type": "void",
-                                "stmt_name": "c_dtor"
-                            },
-                            "fmtf": {
-                                "C_prototype": "DEF_Class1 * self",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_class1_delete",
-                                "F_C_result_clause": "",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_dtor"
-                            }
                         }
                     },
                     {
@@ -823,6 +825,26 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1",
+                                    "F_C_call": "c_class1_default_arguments_0",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1",
+                                    "F_arguments": "obj,\t arg1",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -881,26 +903,6 @@
                             "c_var": "self",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_0"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t arg1",
-                                "F_C_call": "c_class1_default_arguments_0",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t arg1",
-                                "F_arguments": "obj,\t arg1",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -971,6 +973,26 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1,\t arg2",
+                                    "F_C_call": "c_class1_default_arguments_1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
+                                    "F_arguments": "obj,\t arg1,\t arg2",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -1072,26 +1094,6 @@
                             "c_var": "self",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1,\t arg2",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1,\t arg2",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t arg1,\t arg2",
-                                "F_C_call": "c_class1_default_arguments_1",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
-                                "F_arguments": "obj,\t arg1,\t arg2",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -1183,6 +1185,26 @@
                             "fortran": true
                         },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1,\t arg2,\t arg3",
+                                    "F_C_call": "c_class1_default_arguments_2",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2,\t arg3",
+                                    "F_arguments": "obj,\t arg1,\t arg2,\t arg3",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
                                 "fmtc": {
                                     "c_addr": "&",
@@ -1327,26 +1349,6 @@
                             "c_var": "self",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_2"
-                        },
-                        "zz_fmtresult": {
-                            "fmtc": {
-                                "C_call_list": "arg1,\t arg2,\t arg3",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
-                                "C_return_type": "void",
-                                "stmt_name": "c_subroutine"
-                            },
-                            "fmtf": {
-                                "C_call_list": "arg1,\t arg2,\t arg3",
-                                "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
-                                "C_return_type": "void",
-                                "F_C_arguments": "self,\t arg1,\t arg2,\t arg3",
-                                "F_C_call": "c_class1_default_arguments_2",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2,\t arg3",
-                                "F_arguments": "obj,\t arg1,\t arg2,\t arg3",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine"
-                            }
                         }
                     },
                     {
@@ -1381,6 +1383,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field1",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field1",
                             "C_name_api": "get_field1",
@@ -1397,39 +1434,6 @@
                             "function_name": "get_field1",
                             "struct_name": "Class1",
                             "wrapped_name": "field1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "DEF_Class1 * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_class1_get_field1",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -1464,6 +1468,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field2",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field2",
                             "C_name_api": "get_field2",
@@ -1480,39 +1519,6 @@
                             "function_name": "get_field2",
                             "struct_name": "Class1",
                             "wrapped_name": "field2"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "DEF_Class1 * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_class1_get_field2",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -1547,6 +1553,41 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field3",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field3",
                             "C_name_api": "get_field3",
@@ -1563,39 +1604,6 @@
                             "function_name": "get_field3",
                             "struct_name": "Class1",
                             "wrapped_name": "field3"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "C_prototype": "DEF_Class1 * self",
-                                "C_return_type": "int",
-                                "F_C_arguments": "self",
-                                "F_C_call": "c_class1_get_field3",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
-                                "F_arg_c_call": "obj%cxxmem",
-                                "F_arguments": "obj",
-                                "F_result_clause": "\fresult(SHT_rv)",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_getter_native_scalar"
-                            }
                         }
                     }
                 ],
@@ -1789,6 +1797,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "num_elems",
+                            "C_prototype": "IndexType num_elems",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "num_elems",
+                            "C_prototype": "IndexType num_elems",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems",
+                            "F_C_call": "c_apply_generic_nelems",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems",
+                            "F_arguments": "num_elems",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -1843,26 +1871,6 @@
                     "F_name_impl": "apply_generic_nelems",
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "num_elems",
-                        "C_prototype": "IndexType num_elems",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "num_elems",
-                        "C_prototype": "IndexType num_elems",
-                        "C_return_type": "void",
-                        "F_C_arguments": "num_elems",
-                        "F_C_call": "c_apply_generic_nelems",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "num_elems",
-                        "F_arguments": "num_elems",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -1937,6 +1945,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "num_elems,\t offset",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "num_elems,\t offset",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset",
+                            "F_C_call": "c_apply_generic_nelems_offset",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset",
+                            "F_arguments": "num_elems,\t offset",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2034,26 +2062,6 @@
                     "F_name_impl": "apply_generic_nelems_offset",
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems_offset"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "num_elems,\t offset",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "num_elems,\t offset",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset",
-                        "C_return_type": "void",
-                        "F_C_arguments": "num_elems,\t offset",
-                        "F_C_call": "c_apply_generic_nelems_offset",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "num_elems,\t offset",
-                        "F_arguments": "num_elems,\t offset",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -2149,6 +2157,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_generic_nelems_offset_stride",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset,\t stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2289,26 +2317,6 @@
                     "F_name_impl": "apply_generic_nelems_offset_stride",
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems_offset_stride"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_generic_nelems_offset_stride",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "num_elems,\t offset,\t stride",
-                        "F_arguments": "num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -2382,6 +2390,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems",
+                            "F_C_call": "c_apply_generic_type_nelems",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems",
+                            "F_arguments": "type,\t num_elems",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2483,26 +2511,6 @@
                     "F_name_impl": "apply_generic_type_nelems",
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "SHCXX_type,\t num_elems",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "SHCXX_type,\t num_elems",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
-                        "C_return_type": "void",
-                        "F_C_arguments": "type,\t num_elems",
-                        "F_C_call": "c_apply_generic_type_nelems",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "type,\t num_elems",
-                        "F_arguments": "type,\t num_elems",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -2593,6 +2601,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset",
+                            "F_C_call": "c_apply_generic_type_nelems_offset",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset",
+                            "F_arguments": "type,\t num_elems,\t offset",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2737,26 +2765,6 @@
                     "F_name_impl": "apply_generic_type_nelems_offset",
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems_offset"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
-                        "C_return_type": "void",
-                        "F_C_arguments": "type,\t num_elems,\t offset",
-                        "F_C_call": "c_apply_generic_type_nelems_offset",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "type,\t num_elems,\t offset",
-                        "F_arguments": "type,\t num_elems,\t offset",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -2868,6 +2876,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_generic_type_nelems_offset_stride",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3055,26 +3083,6 @@
                     "F_name_impl": "apply_generic_type_nelems_offset_stride",
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems_offset_stride"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_generic_type_nelems_offset_stride",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
-                        "F_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -3160,6 +3168,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_require_0",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset,\t stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3300,26 +3328,6 @@
                     "F_name_impl": "apply_require_0",
                     "function_name": "apply_require",
                     "function_suffix": "_0"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_require_0",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "num_elems,\t offset,\t stride",
-                        "F_arguments": "num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -3421,6 +3429,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_require_1",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3608,26 +3636,6 @@
                     "F_name_impl": "apply_require_1",
                     "function_name": "apply_require",
                     "function_suffix": "_1"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_require_1",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
-                        "F_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -3713,6 +3721,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_optional_0",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3855,26 +3883,6 @@
                     "F_name_impl": "apply_optional_0",
                     "function_name": "apply_optional",
                     "function_suffix": "_0"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "num_elems,\t offset,\t stride",
-                        "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_optional_0",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
-                        "F_arguments": "num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             },
             {
@@ -3976,6 +3984,26 @@
                     "fortran": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_optional_1",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
                         "fmtc": {
                             "c_addr": "&",
@@ -4165,26 +4193,6 @@
                     "F_name_impl": "apply_optional_1",
                     "function_name": "apply_optional",
                     "function_suffix": "_1"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "stmt_name": "c_subroutine"
-                    },
-                    "fmtf": {
-                        "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
-                        "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                        "C_return_type": "void",
-                        "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_C_call": "c_apply_optional_1",
-                        "F_C_subprogram": "subroutine",
-                        "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
-                        "F_arguments": "type,\t num_elems,\t offset,\t stride",
-                        "F_subprogram": "subroutine",
-                        "stmt_name": "f_subroutine"
-                    }
                 }
             }
         ],

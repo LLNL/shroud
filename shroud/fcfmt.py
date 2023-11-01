@@ -68,7 +68,8 @@ class FillFormat(object):
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
         
         node.eval_template("C_name")
         node.eval_template("F_C_name")

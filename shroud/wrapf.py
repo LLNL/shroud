@@ -1138,7 +1138,7 @@ rv = .false.
         
         # find subprogram type
         # compute first to get order of arguments correct.
-        fmt_result = node._fmtresult[fmtlang]
+        fmt_result= fmtargs["+result"][fmtlang]
         result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
@@ -1472,7 +1472,7 @@ rv = .false.
 
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
-        fmt_result = node._fmtresult["fmtf"]
+        fmt_result= fmtargs["+result"]["fmtf"]
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
         result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
