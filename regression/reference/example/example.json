@@ -4156,16 +4156,6 @@
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmtc": "c_in_native_scalar"
                                                 },
-                                                "fmtf": {
-                                                    "f_intent": "IN",
-                                                    "f_kind": "C_LONG",
-                                                    "f_type": "integer(C_LONG)",
-                                                    "f_type_module": "iso_c_binding",
-                                                    "f_var": "len",
-                                                    "fc_var": "len",
-                                                    "sh_type": "SH_TYPE_LONG",
-                                                    "stmtf": "f_in_native_scalar"
-                                                },
                                                 "fmtl": {
                                                     "LUA_index": 2,
                                                     "c_deref": "",
@@ -4223,16 +4213,6 @@
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtc": "c_in_native_scalar"
-                                                },
-                                                "fmtf": {
-                                                    "f_intent": "IN",
-                                                    "f_kind": "type_id",
-                                                    "f_type": "integer(type_id)",
-                                                    "f_type_module": "userlibrary_mod",
-                                                    "f_var": "type",
-                                                    "fc_var": "type",
-                                                    "sh_type": "SH_TYPE_INT",
-                                                    "stmtf": "f_in_native_scalar"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -4439,9 +4419,16 @@
                                                     "cxx_nonconst_ptr": "&len",
                                                     "cxx_type": "int",
                                                     "cxx_var": "len",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_type_module": "iso_c_binding",
+                                                    "f_var": "len",
+                                                    "fc_var": "len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmtc": "f_in_native_scalar"
+                                                    "stmtc": "f_in_native_scalar",
+                                                    "stmtf": "f_in_native_scalar"
                                                 }
                                             },
                                             "type": {
@@ -4460,9 +4447,16 @@
                                                     "cxx_type": "TypeID",
                                                     "cxx_val": "getTypeID(type)",
                                                     "cxx_var": "SHCXX_type",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "type_id",
+                                                    "f_type": "integer(type_id)",
+                                                    "f_type_module": "userlibrary_mod",
+                                                    "f_var": "type",
+                                                    "fc_var": "type",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmtc": "f_in_native_scalar"
+                                                    "stmtc": "f_in_native_scalar",
+                                                    "stmtf": "f_in_native_scalar"
                                                 }
                                             }
                                         },
@@ -4600,9 +4594,16 @@
                                                     "cxx_nonconst_ptr": "&len",
                                                     "cxx_type": "long",
                                                     "cxx_var": "len",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_LONG",
+                                                    "f_type": "integer(C_LONG)",
+                                                    "f_type_module": "iso_c_binding",
+                                                    "f_var": "len",
+                                                    "fc_var": "len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "stmtc": "f_in_native_scalar"
+                                                    "stmtc": "f_in_native_scalar",
+                                                    "stmtf": "f_in_native_scalar"
                                                 }
                                             },
                                             "type": {
@@ -4621,9 +4622,16 @@
                                                     "cxx_type": "TypeID",
                                                     "cxx_val": "getTypeID(type)",
                                                     "cxx_var": "SHCXX_type",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "type_id",
+                                                    "f_type": "integer(type_id)",
+                                                    "f_type_module": "userlibrary_mod",
+                                                    "f_var": "type",
+                                                    "fc_var": "type",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmtc": "f_in_native_scalar"
+                                                    "stmtc": "f_in_native_scalar",
+                                                    "stmtf": "f_in_native_scalar"
                                                 }
                                             }
                                         },

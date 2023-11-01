@@ -1461,6 +1461,7 @@ rv = .false.
         func_cursor = cursor.push_node(node)
         options = node.options
         fmt_func = node.fmtdict
+        fmtargs = node._fmtargs
 
         # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
@@ -1470,8 +1471,6 @@ rv = .false.
             need_wrapper = True
 
         C_node = node.C_node  # C wrapper to call.
-
-        fmtargs = C_node._fmtargs
 
         # Fortran return type
         ast = node.ast
