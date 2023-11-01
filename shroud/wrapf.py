@@ -1566,25 +1566,21 @@ rv = .false.
         # f_var - argument to Fortran function (wrapper function)
         # fc_var - argument to C function (wrapped function)
         #
-        # May be one more argument to C function than Fortran function
-        # (the result)
-        #
-        f_args = ast.declarator.params
-        f_index = -1  # index into f_args
-        for c_arg in C_node.ast.declarator.params:
-            func_cursor.arg = c_arg
-            arg_name = c_arg.declarator.user_name
+        c_args = C_node.ast.declarator.params
+        c_index = -1  # index into c_args
+        for f_arg in ast.declarator.params:
+            func_cursor.arg = f_arg
+            arg_name = f_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.fc_var = arg_name
 
-            # An argument to the C and Fortran function
-            f_index += 1
-            f_arg = f_args[f_index]
             f_declarator = f_arg.declarator
             f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
+            c_index += 1
+            c_arg = c_args[c_index]
 
             if f_attrs["hidden"]:
                 # Argument is not passed into Fortran.
