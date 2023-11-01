@@ -1139,10 +1139,7 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = node._fmtresult[fmtlang]
-        if wlang == "c":
-            result_stmt = statements.lookup_c_function_stmt(node)
-        else:
-            result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
             
@@ -1233,10 +1230,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            if wlang == "c":
-                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
-            else:
-                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
             func_cursor.stmt = arg_stmt
 
             if options.debug:
@@ -1480,9 +1474,8 @@ rv = .false.
         sintent = r_meta["intent"]
         fmt_result = node._fmtresult["fmtf"]
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
-        result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
-        fmt_result.stmtf = result_stmt.name
         func_cursor.stmt = result_stmt
 
         subprogram = declarator.get_subprogram()
@@ -1585,7 +1578,7 @@ rv = .false.
                 continue
             optattr = False
             
-            arg_stmt = statements.lookup_f_arg_stmt(node, f_arg)
+            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
@@ -1664,7 +1657,6 @@ rv = .false.
                 arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
-            fmt_arg.stmtf = arg_stmt.name
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")

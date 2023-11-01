@@ -52,7 +52,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }

@@ -955,13 +955,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_indexes = []
         fmt_result = node._fmtresult[fmtlang]
-        if wlang == "c":
-            result_stmt = statements.lookup_c_function_stmt(node)
-        else:
-            result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
-        fmt_result.stmtc = result_stmt.name
         stmt_indexes.append(result_stmt.index)
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
@@ -1112,10 +1108,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             cxx_local_var = ""
             hidden = c_attrs["hidden"] and node._generated
 
-            if wlang == "c":
-                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
-            else:
-                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             fmt_arg.c_var = arg_name
@@ -1152,7 +1145,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             self.c_helper.update(node.helpers.get("c", {}))
 
-            fmt_arg.stmtc = arg_stmt.name
             notimplemented = notimplemented or arg_stmt.notimplemented
             if options.debug:
                 stmts_comments.append(

@@ -90,7 +90,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_library"
+                        "stmt_name": "c_function_string_*_library"
                     }
                 }
             },
@@ -200,8 +200,7 @@
                         "i_var_cdesc": "SHT_rv_cdesc",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cdesc_allocatable_library",
-                        "stmtf": "f_function_string_*_cdesc_allocatable_library"
+                        "stmt_name": "f_function_string_*_cdesc_allocatable_library"
                     }
                 }
             }

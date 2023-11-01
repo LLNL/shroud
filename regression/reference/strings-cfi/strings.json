@@ -55,7 +55,7 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_prototype": "void",
@@ -65,8 +65,7 @@
                         "F_C_subprogram": "subroutine",
                         "F_arguments": "",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -131,7 +130,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_scalar"
+                            "stmt_name": "c_in_char_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -155,8 +154,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_scalar",
-                            "stmtf": "f_in_char_scalar"
+                            "stmt_name": "f_in_char_scalar"
                         }
                     }
                 },
@@ -175,7 +173,7 @@
                         "C_call_list": "status",
                         "C_prototype": "char status",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "status",
@@ -187,8 +185,7 @@
                         "F_arg_c_call": "status",
                         "F_arguments": "status",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -256,7 +253,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_scalar"
+                            "stmt_name": "c_in_char_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -280,8 +277,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_scalar",
-                            "stmtf": "f_in_char_scalar"
+                            "stmt_name": "f_in_char_scalar"
                         }
                     }
                 },
@@ -300,7 +296,7 @@
                         "C_call_list": "status",
                         "C_prototype": "char status",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "status",
@@ -312,8 +308,7 @@
                         "F_arg_c_call": "status",
                         "F_arguments": "status",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -369,7 +364,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_scalar"
+                        "stmt_name": "c_function_char_scalar"
                     },
                     "fmtf": {
                         "C_prototype": "char *SHC_rv",
@@ -400,8 +395,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_scalar",
-                        "stmtf": "f_function_char_scalar"
+                        "stmt_name": "f_function_char_scalar"
                     }
                 }
             },
@@ -508,7 +502,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
+                            "stmt_name": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -533,7 +527,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     }
                 },
@@ -551,7 +545,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "dest,\t src",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -670,8 +664,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_char_*_cfi",
-                            "stmtf": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char_*_cfi"
                         }
                     },
                     "src": {
@@ -701,8 +694,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     }
                 },
@@ -728,8 +720,7 @@
                         "F_arg_c_call": "dest,\t src",
                         "F_arguments": "dest,\t src",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -813,7 +804,7 @@
                             "i_var": "s",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_char_*"
+                            "stmt_name": "c_inout_char_*"
                         }
                     }
                 },
@@ -831,7 +822,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "s",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -928,8 +919,7 @@
                             "i_var_cfi": "SHT_s_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_inout_char_*_cfi",
-                            "stmtf": "f_inout_char_*_cfi"
+                            "stmt_name": "f_inout_char_*_cfi"
                         }
                     }
                 },
@@ -955,8 +945,7 @@
                         "F_arg_c_call": "s",
                         "F_arguments": "s",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -1029,7 +1018,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
+                        "stmt_name": "c_function_char_*"
                     }
                 }
             },
@@ -1120,8 +1109,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_*_cfi_allocatable",
-                        "stmtf": "f_function_char_*_cfi_allocatable"
+                        "stmt_name": "f_function_char_*_cfi_allocatable"
                     }
                 }
             },
@@ -1204,7 +1192,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
+                        "stmt_name": "c_function_char_*"
                     }
                 }
             },
@@ -1306,8 +1294,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_*_cfi_copy",
-                        "stmtf": "f_function_char_*_cfi_copy"
+                        "stmt_name": "f_function_char_*_cfi_copy"
                     }
                 }
             },
@@ -1388,7 +1375,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
+                        "stmt_name": "c_function_char_*"
                     }
                 }
             },
@@ -1487,8 +1474,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_*_cfi_arg",
-                        "stmtf": "f_function_char_*_cfi_arg"
+                        "stmt_name": "f_function_char_*_cfi_arg"
                     }
                 }
             },
@@ -1558,7 +1544,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
+                        "stmt_name": "c_function_char_*"
                     },
                     "fmtf": {
                         "C_prototype": "void",
@@ -1590,8 +1576,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_*_raw",
-                        "stmtf": "f_function_char_*_raw"
+                        "stmt_name": "f_function_char_*_raw"
                     }
                 }
             },
@@ -1667,7 +1652,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
+                        "stmt_name": "c_function_char_*"
                     }
                 }
             },
@@ -1771,8 +1756,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_*_cfi_pointer",
-                        "stmtf": "f_function_char_*_cfi_pointer"
+                        "stmt_name": "f_function_char_*_cfi_pointer"
                     }
                 }
             },
@@ -1891,8 +1875,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_scalar_cfi_allocatable",
-                        "stmtf": "f_function_string_scalar_cfi_allocatable"
+                        "stmt_name": "f_function_string_scalar_cfi_allocatable"
                     }
                 }
             },
@@ -2030,8 +2013,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_scalar_cfi_copy",
-                        "stmtf": "f_function_string_scalar_cfi_copy"
+                        "stmt_name": "f_function_string_scalar_cfi_copy"
                     }
                 }
             },
@@ -2166,8 +2148,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_scalar_cfi_arg",
-                        "stmtf": "f_function_string_scalar_cfi_arg"
+                        "stmt_name": "f_function_string_scalar_cfi_arg"
                     }
                 }
             },
@@ -2278,8 +2259,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_scalar_cfi_allocatable",
-                        "stmtf": "f_function_string_scalar_cfi_allocatable"
+                        "stmt_name": "f_function_string_scalar_cfi_allocatable"
                     }
                 }
             },
@@ -2353,7 +2333,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     }
                 }
             },
@@ -2444,8 +2424,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cfi_allocatable",
-                        "stmtf": "f_function_string_&_cfi_allocatable"
+                        "stmt_name": "f_function_string_&_cfi_allocatable"
                     }
                 }
             },
@@ -2529,7 +2508,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     }
                 }
             },
@@ -2631,8 +2610,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cfi_copy",
-                        "stmtf": "f_function_string_&_cfi_copy"
+                        "stmt_name": "f_function_string_&_cfi_copy"
                     }
                 }
             },
@@ -2714,7 +2692,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     }
                 }
             },
@@ -2813,8 +2791,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cfi_arg",
-                        "stmtf": "f_function_string_&_cfi_arg"
+                        "stmt_name": "f_function_string_&_cfi_arg"
                     }
                 }
             },
@@ -2897,7 +2874,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     }
                 }
             },
@@ -2998,8 +2975,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cfi_copy",
-                        "stmtf": "f_function_string_&_cfi_copy"
+                        "stmt_name": "f_function_string_&_cfi_copy"
                     }
                 }
             },
@@ -3068,7 +3044,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     }
                 }
             },
@@ -3154,8 +3130,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cfi_allocatable",
-                        "stmtf": "f_function_string_&_cfi_allocatable"
+                        "stmt_name": "f_function_string_&_cfi_allocatable"
                     }
                 }
             },
@@ -3245,7 +3220,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*"
+                        "stmt_name": "c_function_string_*"
                     }
                 }
             },
@@ -3353,8 +3328,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cfi_copy",
-                        "stmtf": "f_function_string_*_cfi_copy"
+                        "stmt_name": "f_function_string_*_cfi_copy"
                     }
                 }
             },
@@ -3426,7 +3400,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_library"
+                        "stmt_name": "c_function_string_*_library"
                     }
                 }
             },
@@ -3515,8 +3489,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cfi_allocatable_library",
-                        "stmtf": "f_function_string_*_cfi_allocatable_library"
+                        "stmt_name": "f_function_string_*_cfi_allocatable_library"
                     }
                 }
             },
@@ -3591,7 +3564,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_caller"
+                        "stmt_name": "c_function_string_*_caller"
                     }
                 }
             },
@@ -3683,8 +3656,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cfi_allocatable_caller",
-                        "stmtf": "f_function_string_*_cfi_allocatable_caller"
+                        "stmt_name": "f_function_string_*_cfi_allocatable_caller"
                     }
                 }
             },
@@ -3760,7 +3732,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_caller"
+                        "stmt_name": "c_function_string_*_caller"
                     }
                 }
             },
@@ -3853,8 +3825,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cfi_allocatable_caller",
-                        "stmtf": "f_function_string_*_cfi_allocatable_caller"
+                        "stmt_name": "f_function_string_*_cfi_allocatable_caller"
                     }
                 }
             },
@@ -3929,7 +3900,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_library"
+                        "stmt_name": "c_function_string_*_library"
                     }
                 }
             },
@@ -4031,8 +4002,7 @@
                         "i_var_cfi": "SHT_rv_cfi",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_*_cfi_pointer_library",
-                        "stmtf": "f_function_string_*_cfi_pointer_library"
+                        "stmt_name": "f_function_string_*_cfi_pointer_library"
                     }
                 }
             },
@@ -4112,7 +4082,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
+                            "stmt_name": "c_in_string_&"
                         }
                     }
                 },
@@ -4130,7 +4100,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -4223,8 +4193,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&_cfi",
-                            "stmtf": "f_in_string_&_cfi"
+                            "stmt_name": "f_in_string_&_cfi"
                         }
                     }
                 },
@@ -4250,8 +4219,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -4333,7 +4301,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_&"
+                            "stmt_name": "c_out_string_&"
                         }
                     }
                 },
@@ -4351,7 +4319,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -4444,8 +4412,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_&_cfi",
-                            "stmtf": "f_out_string_&_cfi"
+                            "stmt_name": "f_out_string_&_cfi"
                         }
                     }
                 },
@@ -4471,8 +4438,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -4554,7 +4520,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_&"
+                            "stmt_name": "c_inout_string_&"
                         }
                     }
                 },
@@ -4572,7 +4538,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -4668,8 +4634,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_inout_string_&_cfi",
-                            "stmtf": "f_inout_string_&_cfi"
+                            "stmt_name": "f_inout_string_&_cfi"
                         }
                     }
                 },
@@ -4695,8 +4660,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -4775,7 +4739,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_*"
+                            "stmt_name": "c_in_string_*"
                         }
                     }
                 },
@@ -4793,7 +4757,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -4885,8 +4849,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_*_cfi",
-                            "stmtf": "f_in_string_*_cfi"
+                            "stmt_name": "f_in_string_*_cfi"
                         }
                     }
                 },
@@ -4912,8 +4875,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -4992,7 +4954,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_*"
+                            "stmt_name": "c_inout_string_*"
                         }
                     }
                 },
@@ -5010,7 +4972,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -5103,8 +5065,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_inout_string_*_cfi",
-                            "stmtf": "f_inout_string_*_cfi"
+                            "stmt_name": "f_inout_string_*_cfi"
                         }
                     }
                 },
@@ -5130,8 +5091,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -5213,7 +5173,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_*"
+                            "stmt_name": "c_out_string_*"
                         }
                     }
                 },
@@ -5231,7 +5191,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -5324,8 +5284,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_*_cfi",
-                            "stmtf": "f_out_string_*_cfi"
+                            "stmt_name": "f_out_string_*_cfi"
                         }
                     }
                 },
@@ -5351,8 +5310,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -5453,7 +5411,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_*"
+                            "stmt_name": "c_inout_string_*"
                         }
                     },
                     "nlen": {
@@ -5478,7 +5436,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     }
                 },
@@ -5496,7 +5454,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1,\t nlen",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -5611,8 +5569,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_inout_string_*_cfi",
-                            "stmtf": "f_inout_string_*_cfi"
+                            "stmt_name": "f_inout_string_*_cfi"
                         }
                     },
                     "nlen": {
@@ -5638,8 +5595,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
@@ -5665,8 +5621,7 @@
                         "F_arg_c_call": "arg1,\t nlen",
                         "F_arguments": "arg1,\t nlen",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -5769,7 +5724,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_*"
+                            "stmt_name": "c_out_string_*"
                         }
                     },
                     "nlen": {
@@ -5794,7 +5749,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     }
                 },
@@ -5812,7 +5767,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "arg1,\t nlen",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -5926,8 +5881,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_*_cfi",
-                            "stmtf": "f_out_string_*_cfi"
+                            "stmt_name": "f_out_string_*_cfi"
                         }
                     },
                     "nlen": {
@@ -5953,8 +5907,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
@@ -5980,8 +5933,7 @@
                         "F_arg_c_call": "arg1,\t nlen",
                         "F_arguments": "arg1,\t nlen",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -6057,7 +6009,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_scalar"
+                            "stmt_name": "c_in_string_scalar"
                         }
                     }
                 },
@@ -6095,7 +6047,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     }
                 }
             },
@@ -6184,8 +6136,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_scalar_cfi",
-                            "stmtf": "f_in_string_scalar_cfi"
+                            "stmt_name": "f_in_string_scalar_cfi"
                         }
                     }
                 },
@@ -6233,8 +6184,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     }
                 }
             },
@@ -6420,7 +6370,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -6449,7 +6399,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
+                            "stmt_name": "c_out_string_**"
                         }
                     }
                 },
@@ -6467,7 +6417,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "strs,\t nstrs",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -6585,7 +6535,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     },
                     "strs": {
@@ -6619,8 +6569,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_**_cfi_copy",
-                            "stmtf": "f_out_string_**_cfi_copy"
+                            "stmt_name": "f_out_string_**_cfi_copy"
                         }
                     }
                 },
@@ -6646,8 +6595,7 @@
                         "F_arg_c_call": "strs",
                         "F_arguments": "strs",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -6758,7 +6706,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -6787,7 +6735,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
+                            "stmt_name": "c_out_string_**"
                         }
                     }
                 },
@@ -6805,7 +6753,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "strs,\t nstrs",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -6924,7 +6872,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     },
                     "strs": {
@@ -6958,8 +6906,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_**_cfi_allocatable",
-                            "stmtf": "f_out_string_**_cfi_allocatable"
+                            "stmt_name": "f_out_string_**_cfi_allocatable"
                         }
                     }
                 },
@@ -6985,8 +6932,7 @@
                         "F_arg_c_call": "strs",
                         "F_arguments": "strs",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -7098,7 +7044,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -7129,7 +7075,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
+                            "stmt_name": "c_out_string_**"
                         }
                     }
                 },
@@ -7147,7 +7093,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "strs,\t nstrs",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -7267,7 +7213,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     },
                     "strs": {
@@ -7303,8 +7249,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_string_**_cfi_allocatable",
-                            "stmtf": "f_out_string_**_cfi_allocatable"
+                            "stmt_name": "f_out_string_**_cfi_allocatable"
                         }
                     }
                 },
@@ -7330,8 +7275,7 @@
                         "F_arg_c_call": "strs",
                         "F_arguments": "strs",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -7470,7 +7414,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     }
                 },
@@ -7489,7 +7433,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "name",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -7584,8 +7528,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     }
                 },
@@ -7612,8 +7555,7 @@
                         "F_arg_c_call": "name",
                         "F_arguments": "name",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -7697,7 +7639,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
+                            "stmt_name": "c_out_char_*"
                         }
                     }
                 },
@@ -7715,7 +7657,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "name",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -7810,8 +7752,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_char_*_cfi",
-                            "stmtf": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char_*_cfi"
                         }
                     }
                 },
@@ -7837,8 +7778,7 @@
                         "F_arg_c_call": "name",
                         "F_arguments": "name",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -7905,7 +7845,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_scalar"
+                            "stmt_name": "c_in_char_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7929,8 +7869,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_scalar",
-                            "stmtf": "f_in_char_scalar"
+                            "stmt_name": "f_in_char_scalar"
                         }
                     }
                 },
@@ -7949,7 +7888,7 @@
                         "C_call_list": "status",
                         "C_prototype": "char status",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "status",
@@ -7961,8 +7900,7 @@
                         "F_arg_c_call": "status",
                         "F_arguments": "status",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -8020,7 +7958,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_scalar"
+                        "stmt_name": "c_function_char_scalar"
                     },
                     "fmtf": {
                         "C_prototype": "char *SHC_rv",
@@ -8051,8 +7989,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_char_scalar",
-                        "stmtf": "f_function_char_scalar"
+                        "stmt_name": "f_function_char_scalar"
                     }
                 }
             },
@@ -8163,7 +8100,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
+                            "stmt_name": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -8189,7 +8126,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     }
                 },
@@ -8207,7 +8144,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "dest,\t src",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -8330,8 +8267,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_char_*_cfi",
-                            "stmtf": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char_*_cfi"
                         }
                     },
                     "src": {
@@ -8362,8 +8298,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     }
                 },
@@ -8389,8 +8324,7 @@
                         "F_arg_c_call": "dest,\t src",
                         "F_arguments": "dest,\t src",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -8497,7 +8431,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
+                            "stmt_name": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -8523,7 +8457,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     }
                 },
@@ -8541,7 +8475,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "dest,\t src",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -8660,8 +8594,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_char_*_cfi",
-                            "stmtf": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char_*_cfi"
                         }
                     },
                     "src": {
@@ -8692,8 +8625,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     }
                 },
@@ -8719,8 +8651,7 @@
                         "F_arg_c_call": "dest,\t src",
                         "F_arguments": "dest,\t src",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -8827,7 +8758,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmtc": "c_in_native_*"
+                            "stmt_name": "c_in_native_*"
                         }
                     },
                     "name": {
@@ -8852,7 +8783,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_&"
+                            "stmt_name": "c_inout_string_&"
                         }
                     }
                 },
@@ -8870,7 +8801,7 @@
                         "C_return_type": "void",
                         "F_C_arguments": "count,\t name",
                         "F_C_subprogram": "subroutine",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     }
                 }
             },
@@ -8988,8 +8919,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmtc": "f_in_native_*_cfi",
-                            "stmtf": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native_*_cfi"
                         }
                     },
                     "name": {
@@ -9021,8 +8951,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_inout_string_&_cfi",
-                            "stmtf": "f_inout_string_&_cfi"
+                            "stmt_name": "f_inout_string_&_cfi"
                         }
                     }
                 },
@@ -9048,8 +8977,7 @@
                         "F_arg_c_call": "count,\t name",
                         "F_arguments": "count,\t name",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -9132,7 +9060,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     }
                 },
@@ -9170,7 +9098,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     }
                 }
             },
@@ -9265,8 +9193,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     }
                 },
@@ -9314,8 +9241,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     }
                 }
             },
@@ -9411,7 +9337,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmtc": "c_in_void_*"
+                            "stmt_name": "c_in_void_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9434,8 +9360,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmtc": "f_in_void_*",
-                            "stmtf": "f_in_void_*"
+                            "stmt_name": "f_in_void_*"
                         }
                     },
                     "src": {
@@ -9454,7 +9379,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*_capi"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9478,8 +9403,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_capi",
-                            "stmtf": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char_*_capi"
                         }
                     }
                 },
@@ -9511,7 +9435,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "C_call_list": "addr,\t src",
@@ -9545,8 +9469,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     }
                 }
             },
@@ -9651,7 +9574,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
+                            "stmt_name": "c_in_char_*"
                         }
                     },
                     "src": {
@@ -9676,7 +9599,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*_capi"
                         }
                     }
                 },
@@ -9714,7 +9637,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     }
                 }
             },
@@ -9831,8 +9754,7 @@
                             "i_var_cfi": "SHT_in_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_cfi",
-                            "stmtf": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char_*_cfi"
                         }
                     },
                     "src": {
@@ -9858,8 +9780,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_char_*_capi",
-                            "stmtf": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char_*_capi"
                         }
                     }
                 },
@@ -9907,8 +9828,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     }
                 }
             }

@@ -271,7 +271,7 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_in_native_scalar"
+                            "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -295,8 +295,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -349,7 +348,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "C_call_list": "in",
@@ -383,8 +382,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     },
                     "fmtpy": {
                         "c_deref": "",

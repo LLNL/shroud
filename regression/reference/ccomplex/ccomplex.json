@@ -76,7 +76,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmtc": "c_inout_native_*"
+                            "stmt_name": "c_inout_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -100,8 +100,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmtc": "f_inout_native_*",
-                            "stmtf": "f_inout_native_*"
+                            "stmt_name": "f_inout_native_*"
                         }
                     }
                 },
@@ -120,7 +119,7 @@
                         "C_call_list": "arg1",
                         "C_prototype": "float complex * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "arg1",
@@ -132,8 +131,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -199,7 +197,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "c_inout_native_*"
+                            "stmt_name": "c_inout_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -223,8 +221,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_inout_native_*",
-                            "stmtf": "f_inout_native_*"
+                            "stmt_name": "f_inout_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -266,7 +263,7 @@
                         "C_call_list": "arg1",
                         "C_prototype": "double complex * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "arg1",
@@ -278,8 +275,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -348,7 +344,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -372,8 +368,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -414,7 +409,7 @@
                         "C_call_list": "arg1",
                         "C_prototype": "double complex * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "arg1",
@@ -426,8 +421,7 @@
                         "F_arg_c_call": "arg1",
                         "F_arguments": "arg1",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             },
@@ -644,7 +638,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -668,8 +662,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -709,7 +702,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -733,8 +726,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -773,7 +765,7 @@
                         "C_call_list": "arg1,\t flag",
                         "C_prototype": "double complex * arg1,\t int * flag",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_call_list": "arg1,\t flag",
@@ -785,8 +777,7 @@
                         "F_arg_c_call": "arg1,\t flag",
                         "F_arguments": "arg1,\t flag",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             }

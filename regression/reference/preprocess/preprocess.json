@@ -54,7 +54,7 @@
                             "fmtc": {
                                 "C_prototype": "PRE_User1 * self",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "PRE_User1 * self",
@@ -65,8 +65,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     },
@@ -114,7 +113,7 @@
                             "fmtc": {
                                 "C_prototype": "PRE_User1 * self",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "PRE_User1 * self",
@@ -125,8 +124,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     },
@@ -179,7 +177,7 @@
                             "fmtc": {
                                 "C_prototype": "PRE_User1 * self",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "PRE_User1 * self",
@@ -190,8 +188,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     },
@@ -264,7 +261,7 @@
                                     "cxx_var": "i",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -288,8 +285,7 @@
                                     "i_var": "i",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -333,7 +329,7 @@
                                 "C_call_list": "i",
                                 "C_prototype": "PRE_User1 * self,\t int i",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "i",
@@ -345,8 +341,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t i",
                                 "F_arguments": "obj,\t i",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }
@@ -439,7 +434,7 @@
                             "fmtc": {
                                 "C_prototype": "PRE_User2 * self",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "PRE_User2 * self",
@@ -450,8 +445,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     },
@@ -515,7 +509,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native_scalar"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -539,8 +533,7 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -583,7 +576,7 @@
                                 "C_call_list": "flag",
                                 "C_prototype": "PRE_User2 * self,\t int flag",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "flag",
@@ -595,8 +588,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t flag",
                                 "F_arguments": "obj,\t flag",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }

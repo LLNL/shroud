@@ -129,7 +129,7 @@
                                 "f_local_ptr": "SHT_prv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "c_ctor_shadow_scalar_capptr"
+                                "stmt_name": "c_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
                                 "C_prototype": "FOR_Class2 * SHC_rv",
@@ -164,8 +164,7 @@
                                 "i_var": "SHT_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr",
-                                "stmtf": "f_ctor_shadow_scalar_capptr"
+                                "stmt_name": "f_ctor_shadow_scalar_capptr"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -248,7 +247,7 @@
                             "fmtc": {
                                 "C_prototype": "FOR_Class2 * self",
                                 "C_return_type": "void",
-                                "stmtc": "c_dtor"
+                                "stmt_name": "c_dtor"
                             },
                             "fmtf": {
                                 "C_prototype": "FOR_Class2 * self",
@@ -260,8 +259,7 @@
                                 "F_arg_c_call": "obj%cxxmem",
                                 "F_arguments": "obj",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_dtor",
-                                "stmtf": "f_dtor"
+                                "stmt_name": "f_dtor"
                             },
                             "fmtl": {
                                 "stmt": "lua_dtor_scalar"
@@ -333,7 +331,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -358,8 +356,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*",
-                                    "stmtf": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -420,7 +417,7 @@
                                 "C_call_list": "SHCXX_arg",
                                 "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "SHCXX_arg",
@@ -432,8 +429,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
                                 "F_arguments": "obj,\t arg",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             },
                             "fmtl": {
                                 "stmt": "lua_subroutine"
@@ -505,7 +501,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -530,8 +526,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*",
-                                    "stmtf": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -594,7 +589,7 @@
                                 "C_call_list": "SHCXX_arg",
                                 "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "SHCXX_arg",
@@ -606,8 +601,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
                                 "F_arguments": "obj,\t arg",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             },
                             "fmtl": {
                                 "stmt": "lua_subroutine"
@@ -737,7 +731,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_struct_*"
+                            "stmt_name": "c_in_struct_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -762,8 +756,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_struct_*",
-                            "stmtf": "f_in_struct_*"
+                            "stmt_name": "f_in_struct_*"
                         }
                     }
                 },
@@ -795,7 +788,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
+                        "stmt_name": "c_function_native_scalar"
                     },
                     "fmtf": {
                         "C_call_list": "arg",
@@ -829,8 +822,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
+                        "stmt_name": "f_function_native_scalar"
                     }
                 }
             }

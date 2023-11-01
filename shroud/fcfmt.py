@@ -86,7 +86,7 @@ class FillFormat(object):
             result_stmt = statements.lookup_f_function_stmt(node)
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
-#        fmt_result.stmt_name = result_stmt.name
+        fmt_result.stmt_name = result_stmt.name
         stmt_indexes = [result_stmt.index]
 
         # --- Loop over function parameters
@@ -103,7 +103,7 @@ class FillFormat(object):
                 arg_stmt = statements.lookup_f_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
-#            fmt_arg.stmt_name = arg_stmt.name
+            fmt_arg.stmt_name = arg_stmt.name
 
         # --- End loop over function parameters
         func_cursor.arg = None

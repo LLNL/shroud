@@ -72,7 +72,7 @@
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "c_in_unknown_scalar"
+                                    "stmt_name": "c_in_unknown_scalar"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -98,8 +98,7 @@
                                     "i_var": "comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_unknown_scalar",
-                                    "stmtf": "f_in_unknown_scalar"
+                                    "stmt_name": "f_in_unknown_scalar"
                                 }
                             }
                         },
@@ -122,7 +121,7 @@
                                 "C_call_list": "SHCXX_comm",
                                 "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "SHCXX_comm",
@@ -134,8 +133,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t comm",
                                 "F_arguments": "obj,\t comm",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     },
@@ -199,7 +197,7 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "c_inout_shadow_*"
+                                    "stmt_name": "c_inout_shadow_*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -224,8 +222,7 @@
                                     "i_var": "c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_inout_shadow_*",
-                                    "stmtf": "f_inout_shadow_*"
+                                    "stmt_name": "f_inout_shadow_*"
                                 }
                             }
                         },
@@ -248,7 +245,7 @@
                                 "C_call_list": "SHCXX_c2",
                                 "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_call_list": "SHCXX_c2",
@@ -260,8 +257,7 @@
                                 "F_arg_c_call": "obj%cxxmem,\t c2%cxxmem",
                                 "F_arguments": "obj,\t c2",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }
@@ -353,7 +349,7 @@
                                     "fmtc": {
                                         "C_prototype": "void",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
+                                        "stmt_name": "c_subroutine"
                                     },
                                     "fmtf": {
                                         "C_prototype": "void",
@@ -363,8 +359,7 @@
                                         "F_C_subprogram": "subroutine",
                                         "F_arguments": "",
                                         "F_subprogram": "subroutine",
-                                        "stmtc": "f_subroutine",
-                                        "stmtf": "f_subroutine"
+                                        "stmt_name": "f_subroutine"
                                     }
                                 }
                             }
@@ -495,7 +490,7 @@
                                             "cxx_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmtc": "c_in_native_scalar"
+                                            "stmt_name": "c_in_native_scalar"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -519,8 +514,7 @@
                                             "i_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmtc": "f_in_native_scalar",
-                                            "stmtf": "f_in_native_scalar"
+                                            "stmt_name": "f_in_native_scalar"
                                         }
                                     }
                                 },
@@ -543,7 +537,7 @@
                                         "C_call_list": "arg1",
                                         "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
+                                        "stmt_name": "c_subroutine"
                                     },
                                     "fmtf": {
                                         "C_call_list": "arg1",
@@ -555,8 +549,7 @@
                                         "F_arg_c_call": "obj%cxxmem,\t arg1",
                                         "F_arguments": "obj,\t arg1",
                                         "F_subprogram": "subroutine",
-                                        "stmtc": "f_subroutine",
-                                        "stmtf": "f_subroutine"
+                                        "stmt_name": "f_subroutine"
                                     }
                                 }
                             }
@@ -667,7 +660,7 @@
                                     "fmtc": {
                                         "C_prototype": "LIB_outer1_class0 * self",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
+                                        "stmt_name": "c_subroutine"
                                     },
                                     "fmtf": {
                                         "C_prototype": "LIB_outer1_class0 * self",
@@ -678,8 +671,7 @@
                                         "F_arg_c_call": "obj%cxxmem",
                                         "F_arguments": "obj",
                                         "F_subprogram": "subroutine",
-                                        "stmtc": "f_subroutine",
-                                        "stmtf": "f_subroutine"
+                                        "stmt_name": "f_subroutine"
                                     }
                                 }
                             }
@@ -751,7 +743,7 @@
                             "fmtc": {
                                 "C_prototype": "void",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "void",
@@ -761,8 +753,7 @@
                                 "F_C_subprogram": "subroutine",
                                 "F_arguments": "",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }
@@ -848,7 +839,7 @@
                                     "fmtc": {
                                         "C_prototype": "LIB_outer2_class0 * self",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
+                                        "stmt_name": "c_subroutine"
                                     },
                                     "fmtf": {
                                         "C_prototype": "LIB_outer2_class0 * self",
@@ -859,8 +850,7 @@
                                         "F_arg_c_call": "obj%cxxmem",
                                         "F_arguments": "obj",
                                         "F_subprogram": "subroutine",
-                                        "stmtc": "f_subroutine",
-                                        "stmtf": "f_subroutine"
+                                        "stmt_name": "f_subroutine"
                                     }
                                 }
                             }
@@ -932,7 +922,7 @@
                             "fmtc": {
                                 "C_prototype": "void",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "void",
@@ -942,8 +932,7 @@
                                 "F_C_subprogram": "subroutine",
                                 "F_arguments": "",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }

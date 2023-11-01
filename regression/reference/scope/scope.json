@@ -681,8 +681,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "f_in_struct_*",
-                            "stmtf": "f_in_struct_*"
+                            "stmt_name": "f_in_struct_*"
                         }
                     }
                 },
@@ -744,8 +743,7 @@
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_getter_native_*_cdesc_pointer",
-                        "stmtf": "f_getter_native_*_cdesc_pointer"
+                        "stmt_name": "f_getter_native_*_cdesc_pointer"
                     }
                 }
             },
@@ -852,8 +850,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "f_inout_struct_*",
-                            "stmtf": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct_*"
                         }
                     },
                     "val": {
@@ -884,8 +881,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmtc": "f_setter_native_*",
-                            "stmtf": "f_setter_native_*"
+                            "stmt_name": "f_setter_native_*"
                         }
                     }
                 },
@@ -913,8 +909,7 @@
                         "F_arg_c_call": "SH_this,\t val",
                         "F_arguments": "SH_this,\t val",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_setter",
-                        "stmtf": "f_setter"
+                        "stmt_name": "f_setter"
                     }
                 }
             }
@@ -1272,8 +1267,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_in_struct_*",
-                                    "stmtf": "f_in_struct_*"
+                                    "stmt_name": "f_in_struct_*"
                                 }
                             }
                         },
@@ -1335,8 +1329,7 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_*_cdesc_pointer",
-                                "stmtf": "f_getter_native_*_cdesc_pointer"
+                                "stmt_name": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -1443,8 +1436,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_inout_struct_*",
-                                    "stmtf": "f_inout_struct_*"
+                                    "stmt_name": "f_inout_struct_*"
                                 }
                             },
                             "val": {
@@ -1475,8 +1467,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmtc": "f_setter_native_*",
-                                    "stmtf": "f_setter_native_*"
+                                    "stmt_name": "f_setter_native_*"
                                 }
                             }
                         },
@@ -1504,8 +1495,7 @@
                                 "F_arg_c_call": "SH_this,\t val",
                                 "F_arguments": "SH_this,\t val",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_setter",
-                                "stmtf": "f_setter"
+                                "stmt_name": "f_setter"
                             }
                         }
                     }
@@ -1890,8 +1880,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_in_struct_*",
-                                    "stmtf": "f_in_struct_*"
+                                    "stmt_name": "f_in_struct_*"
                                 }
                             }
                         },
@@ -1953,8 +1942,7 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_*_cdesc_pointer",
-                                "stmtf": "f_getter_native_*_cdesc_pointer"
+                                "stmt_name": "f_getter_native_*_cdesc_pointer"
                             }
                         }
                     },
@@ -2061,8 +2049,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmtc": "f_inout_struct_*",
-                                    "stmtf": "f_inout_struct_*"
+                                    "stmt_name": "f_inout_struct_*"
                                 }
                             },
                             "val": {
@@ -2093,8 +2080,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmtc": "f_setter_native_*",
-                                    "stmtf": "f_setter_native_*"
+                                    "stmt_name": "f_setter_native_*"
                                 }
                             }
                         },
@@ -2122,8 +2108,7 @@
                                 "F_arg_c_call": "SH_this,\t val",
                                 "F_arguments": "SH_this,\t val",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_setter",
-                                "stmtf": "f_setter"
+                                "stmt_name": "f_setter"
                             }
                         }
                     }

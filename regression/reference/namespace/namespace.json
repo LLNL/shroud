@@ -96,7 +96,7 @@
                         "i_var": "SHT_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
+                        "stmt_name": "c_function_string_&"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -221,8 +221,7 @@
                         "i_var_cdesc": "SHT_rv_cdesc",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_cdesc_allocatable",
-                        "stmtf": "f_function_string_&_cdesc_allocatable"
+                        "stmt_name": "f_function_string_&_cdesc_allocatable"
                     }
                 }
             },
@@ -266,7 +265,7 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
+                        "stmt_name": "c_subroutine"
                     },
                     "fmtf": {
                         "C_prototype": "void",
@@ -276,8 +275,7 @@
                         "F_C_subprogram": "subroutine",
                         "F_arguments": "",
                         "F_subprogram": "subroutine",
-                        "stmtc": "f_subroutine",
-                        "stmtf": "f_subroutine"
+                        "stmt_name": "f_subroutine"
                     }
                 }
             }
@@ -660,7 +658,7 @@
                             "fmtc": {
                                 "C_prototype": "void",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
+                                "stmt_name": "c_subroutine"
                             },
                             "fmtf": {
                                 "C_prototype": "void",
@@ -670,8 +668,7 @@
                                 "F_C_subprogram": "subroutine",
                                 "F_arguments": "",
                                 "F_subprogram": "subroutine",
-                                "stmtc": "f_subroutine",
-                                "stmtf": "f_subroutine"
+                                "stmt_name": "f_subroutine"
                             }
                         }
                     }
