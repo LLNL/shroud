@@ -2881,11 +2881,6 @@
                             "cxx_nonconst_ptr": "names",
                             "cxx_type": "char",
                             "cxx_var": "names",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_**"
-                        },
-                        "fmtf": {
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -2894,9 +2889,11 @@
                             "f_var": "names",
                             "i_dimension": "(*)",
                             "i_var": "names",
+                            "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "size": "size(names)"
+                            "size": "size(names)",
+                            "stmtc": "c_in_char_**"
                         }
                     }
                 },
@@ -2912,6 +2909,9 @@
                         "C_call_list": "names",
                         "C_prototype": "char **names",
                         "C_return_type": "int",
+                        "F_C_arguments": "names",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2923,21 +2923,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "names",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     }
                 }
             },
@@ -3380,18 +3374,15 @@
                             "cxx_nonconst_ptr": "nitems",
                             "cxx_type": "int",
                             "cxx_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nitems",
                             "i_var": "nitems",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -3407,11 +3398,9 @@
                         "C_call_list": "nitems",
                         "C_prototype": "int * * nitems",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "nitems",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -3626,12 +3615,6 @@
                             "cxx_nonconst_ptr": "count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3640,8 +3623,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -3657,11 +3642,9 @@
                         "C_call_list": "count",
                         "C_prototype": "int * * count",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -3913,12 +3896,6 @@
                             "cxx_nonconst_ptr": "count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3927,8 +3904,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     },
                     "ncount": {
@@ -3945,18 +3924,15 @@
                             "cxx_nonconst_ptr": "ncount",
                             "cxx_type": "int",
                             "cxx_var": "ncount",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "ncount",
                             "i_var": "ncount",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     }
                 },
@@ -3972,11 +3948,9 @@
                         "C_call_list": "count,\t ncount",
                         "C_prototype": "int * * count,\t int * ncount",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count,\t ncount",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4255,12 +4229,6 @@
                             "cxx_nonconst_ptr": "count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(getLen())",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4269,8 +4237,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -4286,11 +4256,9 @@
                         "C_call_list": "count",
                         "C_prototype": "int * * count",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4514,18 +4482,15 @@
                             "cxx_nonconst_ptr": "(int *) nitems",
                             "cxx_type": "int",
                             "cxx_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nitems",
                             "i_var": "nitems",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -4541,11 +4506,9 @@
                         "C_call_list": "nitems",
                         "C_prototype": "const int * * nitems",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "nitems",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4759,12 +4722,6 @@
                             "cxx_nonconst_ptr": "(int *) count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4773,8 +4730,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -4790,11 +4749,9 @@
                         "C_call_list": "count",
                         "C_prototype": "const int * * count",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -5042,12 +4999,6 @@
                             "cxx_nonconst_ptr": "(int *) count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(ncount)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -5056,8 +5007,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     },
                     "ncount": {
@@ -5074,18 +5027,15 @@
                             "cxx_nonconst_ptr": "ncount",
                             "cxx_type": "int",
                             "cxx_var": "ncount",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "ncount",
                             "i_var": "ncount",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     }
                 },
@@ -5101,11 +5051,9 @@
                         "C_call_list": "count,\t ncount",
                         "C_prototype": "const int * * count,\t int * ncount",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count,\t ncount",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -6368,12 +6316,6 @@
                             "cxx_nonconst_ptr": "count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6382,8 +6324,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "count",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_**"
                         }
                     }
                 },
@@ -6399,11 +6343,9 @@
                         "C_call_list": "count",
                         "C_prototype": "int * * count",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -7456,6 +7398,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "int *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
@@ -7468,15 +7413,6 @@
                         "cxx_rv_decl": "int * SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -7485,8 +7421,10 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_*"
                     }
                 }
             },
@@ -7757,6 +7695,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const int *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_array_size2": "10",
                         "c_const": "const ",
                         "c_get_value": "",
@@ -7769,15 +7710,6 @@
                         "cxx_rv_decl": "const int * SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -7786,8 +7718,10 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_*"
                     }
                 }
             },
@@ -8440,6 +8374,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "int *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_array_size2": "10",
                         "c_const": "",
                         "c_get_value": "",
@@ -8452,15 +8389,6 @@
                         "cxx_rv_decl": "int * SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -8469,8 +8397,10 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
+                        "idtor": "0",
                         "rank": "1",
-                        "sh_type": "SH_TYPE_INT"
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_*"
                     }
                 }
             },

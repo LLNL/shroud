@@ -154,11 +154,11 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GenericReal
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! start c_generic_real
     interface
         subroutine c_generic_real(arg) &
@@ -173,15 +173,15 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &
@@ -197,15 +197,15 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_*
+    ! Statement: c_in_native_*
     ! ----------------------------------------
     ! Argument:  int nvalues +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         function c_sum_values(values, nvalues) &
                 result(SHT_rv) &
@@ -296,23 +296,23 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_*
+    ! Statement: c_in_native_*
     ! ----------------------------------------
     ! Argument:  int nfrom +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Attrs:     +intent(inout)
-    ! Statement: f_inout_native_*
+    ! Statement: c_inout_native_*
     ! ----------------------------------------
     ! Argument:  int nto +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         subroutine c_assign_values(from, nfrom, to, nto) &
                 bind(C, name="AssignValues")
@@ -428,19 +428,19 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_void_*
+    ! Statement: c_in_void_*
     ! ----------------------------------------
     ! Argument:  int type +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         subroutine c_save_pointer(addr, type, size) &
                 bind(C, name="SavePointer")
@@ -516,19 +516,19 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void SavePointer2
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_void_*
+    ! Statement: c_in_void_*
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))+value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         subroutine c_save_pointer2(addr, type, size) &
                 bind(C, name="GEN_SavePointer2")
@@ -627,19 +627,19 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_void_**
+    ! Statement: c_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     ! ----------------------------------------
     ! Argument:  size_t * size +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     interface
         subroutine c_get_pointer_as_pointer(addr, type, size) &
                 bind(C, name="GetPointerAsPointer")
@@ -713,15 +713,15 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  long UpdateStructAsClass
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Statement: f_inout_shadow_*
+    ! Statement: c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         function c_update_struct_as_class(arg, inew) &
                 result(SHT_rv) &

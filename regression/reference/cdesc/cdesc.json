@@ -387,18 +387,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_name",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_&"
                         }
                     },
                     "value": {
@@ -417,20 +414,17 @@
                             "cxx_nonconst_ptr": "value",
                             "cxx_type": "void",
                             "cxx_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmtc": "c_in_void_*_cdesc"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
                             "i_var_cdesc": "SHT_value_cdesc",
+                            "idtor": "0",
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "size": "1"
+                            "size": "1",
+                            "stmtc": "c_in_void_*_cdesc"
                         }
                     }
                 },
@@ -446,11 +440,9 @@
                         "C_call_list": "SHCXX_name,\t value",
                         "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name,\t SHT_value_cdesc",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },

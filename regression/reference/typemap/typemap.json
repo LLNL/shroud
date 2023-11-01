@@ -178,18 +178,15 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "IndexType",
                             "cxx_var": "i1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
                             "i_var": "i1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_native_scalar"
                         }
                     },
                     "i2": {
@@ -206,18 +203,15 @@
                             "cxx_nonconst_ptr": "i2",
                             "cxx_type": "IndexType",
                             "cxx_var": "i2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i2",
                             "i_var": "i2",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_native_*"
                         }
                     }
                 },
@@ -233,6 +227,9 @@
                         "C_call_list": "i1,\t i2",
                         "C_prototype": "IndexType i1,\t IndexType * i2",
                         "C_return_type": "bool",
+                        "F_C_arguments": "i1,\t i2",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
@@ -244,21 +241,15 @@
                         "cxx_rv_decl": "bool SHC_rv",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "c_function_bool_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "i1,\t i2",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_BOOL"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmtc": "c_function_bool_scalar"
                     }
                 }
             },
@@ -710,19 +701,24 @@
                             "cxx_nonconst_ptr": "&i1",
                             "cxx_type": "IndexType",
                             "cxx_var": "i1",
+                            "f_intent": "IN",
+                            "f_kind": "INDEXTYPE",
+                            "f_type": "integer(INDEXTYPE)",
+                            "f_type_module": "typemap_mod",
+                            "f_var": "i1",
+                            "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",
-                            "f_kind": "INDEXTYPE",
-                            "f_type": "integer(INDEXTYPE)",
-                            "f_type_module": "typemap_mod",
+                            "f_kind": "C_INT64_T",
+                            "f_type": "integer(C_INT64_T)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "i1",
                             "fc_var": "i1",
-                            "i_var": "i1",
-                            "sh_type": "SH_TYPE_OTHER",
+                            "sh_type": "SH_TYPE_INT64_T",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -739,11 +735,9 @@
                         "C_call_list": "i1",
                         "C_prototype": "IndexType i1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "i1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -1035,19 +1029,24 @@
                             "cxx_nonconst_ptr": "&f1",
                             "cxx_type": "FloatType",
                             "cxx_var": "f1",
+                            "f_intent": "IN",
+                            "f_kind": "FLOATTYPE",
+                            "f_type": "real(FLOATTYPE)",
+                            "f_type_module": "typemap_mod",
+                            "f_var": "f1",
+                            "i_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmtc": "c_in_native_scalar"
                         },
                         "fmtf": {
                             "f_intent": "IN",
-                            "f_kind": "FLOATTYPE",
-                            "f_type": "real(FLOATTYPE)",
-                            "f_type_module": "typemap_mod",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
                             "f_var": "f1",
                             "fc_var": "f1",
-                            "i_var": "f1",
-                            "sh_type": "SH_TYPE_OTHER",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmtf": "f_in_native_scalar"
                         }
                     }
@@ -1064,11 +1063,9 @@
                         "C_call_list": "f1",
                         "C_prototype": "FloatType f1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "f1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },

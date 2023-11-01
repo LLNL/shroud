@@ -2324,18 +2324,15 @@
                             "cxx_nonconst_ptr": "outbuf",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "i_var": "outbuf",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     },
                     "s1": {
@@ -2352,11 +2349,6 @@
                             "cxx_nonconst_ptr": "(Cstruct1 *) s1",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "c_in_struct_*"
-                        },
-                        "fmtf": {
                             "f_derived_type": "cstruct1",
                             "f_intent": "IN",
                             "f_kind": "cstruct1",
@@ -2364,7 +2356,9 @@
                             "f_type_module": "struct_mod",
                             "f_var": "s1",
                             "i_var": "s1",
-                            "sh_type": "SH_TYPE_STRUCT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmtc": "c_in_struct_*"
                         }
                     }
                 },
@@ -2380,6 +2374,9 @@
                         "C_call_list": "s1,\t outbuf",
                         "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
                         "C_return_type": "int",
+                        "F_C_arguments": "s1,\t outbuf",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -2391,21 +2388,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "s1,\t outbuf",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     }
                 }
             },
@@ -3681,18 +3672,15 @@
                             "cxx_nonconst_ptr": "&d",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "c_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "d",
                             "i_var": "d",
-                            "sh_type": "SH_TYPE_DOUBLE"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmtc": "c_in_native_scalar"
                         }
                     },
                     "i": {
@@ -3709,18 +3697,15 @@
                             "cxx_nonconst_ptr": "&i",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "i",
                             "i_var": "i",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_in_native_scalar"
                         }
                     },
                     "outbuf": {
@@ -3737,18 +3722,15 @@
                             "cxx_nonconst_ptr": "outbuf",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "outbuf",
                             "i_var": "outbuf",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     }
                 },
@@ -3764,6 +3746,9 @@
                         "C_call_list": "i,\t d,\t outbuf",
                         "C_prototype": "int i,\t double d,\t char * outbuf",
                         "C_return_type": "Cstruct1 *",
+                        "F_C_arguments": "i,\t d,\t outbuf",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
@@ -3775,14 +3760,6 @@
                         "cxx_rv_decl": "Cstruct1 * SHC_rv",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_STRUCT",
-                        "stmtc": "c_function_struct_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "i,\t d,\t outbuf",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_derived_type": "cstruct1",
                         "f_intent": "OUT",
                         "f_kind": "cstruct1",
@@ -3790,7 +3767,9 @@
                         "f_type_module": "struct_mod",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_STRUCT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "stmtc": "c_function_struct_*"
                     }
                 }
             },

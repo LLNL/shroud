@@ -104,7 +104,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="NS_LastFunctionCalled")

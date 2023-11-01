@@ -309,15 +309,15 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +api(capptr)+intent(function)
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Statement: f_in_string_&
+    ! Statement: c_in_string_&
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_bool_scalar
+    ! Statement: c_in_bool_scalar
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
@@ -389,7 +389,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_&_allocatable
+    ! Statement: c_function_string_&
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -549,7 +549,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_string_&_allocatable
+    ! Statement: c_function_string_&
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -995,7 +995,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Statement: f_function_string_&_copy
+    ! Statement: c_function_string_&
     interface
         function c_last_function_called() &
                 result(SHT_rv) &

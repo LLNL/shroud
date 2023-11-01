@@ -420,11 +420,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Statement: f_in_char_**
+    ! Statement: c_in_char_**
     ! start c_accept_char_array_in
     interface
         function c_accept_char_array_in(names) &
@@ -501,11 +501,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_scalar
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
@@ -540,11 +540,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_fixed_array
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
@@ -579,15 +579,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     ! start c_get_ptr_to_dynamic_array
     interface
         subroutine c_get_ptr_to_dynamic_array(count, ncount) &
@@ -623,11 +623,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_func_array
     interface
         subroutine c_get_ptr_to_func_array(count) &
@@ -662,11 +662,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_const_scalar
     interface
         subroutine c_get_ptr_to_const_scalar(nitems) &
@@ -701,11 +701,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_fixed_const_array
     interface
         subroutine c_get_ptr_to_fixed_const_array(count) &
@@ -741,15 +741,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     ! start c_get_ptr_to_dynamic_const_array
     interface
         subroutine c_get_ptr_to_dynamic_const_array(count, ncount) &
@@ -921,11 +921,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Statement: f_out_native_**_allocatable
+    ! Statement: c_out_native_**
     ! start c_get_alloc_to_fixed_array
     interface
         subroutine c_get_alloc_to_fixed_array(count) &
@@ -1079,7 +1079,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_native_*_pointer
+    ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -1128,7 +1128,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_native_*_pointer
+    ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1230,7 +1230,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_native_*_allocatable
+    ! Statement: c_function_native_*
     ! start c_return_int_alloc_to_fixed_array
     interface
         function c_return_int_alloc_to_fixed_array() &

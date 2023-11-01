@@ -972,20 +972,16 @@
                             "cxx_nonconst_ptr": "data",
                             "cxx_type": "int",
                             "cxx_var": "data",
-                            "idtor": "0",
-                            "rank": "assumed",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_inout_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "i_var": "data",
+                            "idtor": "0",
                             "rank": "assumed",
-                            "sh_type": "SH_TYPE_INT"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_inout_native_*"
                         },
                         "fmtpy": {
                             "array_size": "===assumed-rank===",
@@ -1026,11 +1022,9 @@
                         "C_call_list": "data",
                         "C_prototype": "int * data",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "data",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },

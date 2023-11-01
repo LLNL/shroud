@@ -1525,18 +1525,15 @@
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1589,11 +1586,9 @@
                         "C_call_list": "SHCXX_name",
                         "C_prototype": "const char * name",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     },
                     "fmtl": {
                         "stmt": "lua_subroutine"
@@ -2907,18 +2902,15 @@
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "double",
                             "cxx_var": "arg2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "c_in_native_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg2",
                             "i_var": "arg2",
-                            "sh_type": "SH_TYPE_DOUBLE"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmtc": "c_in_native_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2966,18 +2958,15 @@
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3027,11 +3016,9 @@
                         "C_call_list": "SHCXX_name,\t arg2",
                         "C_prototype": "const char * name,\t double arg2",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name,\t arg2",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     },
                     "fmtl": {
                         "stmt": "lua_subroutine"
@@ -6543,6 +6530,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": "30",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -6556,14 +6546,6 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -6571,7 +6553,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",

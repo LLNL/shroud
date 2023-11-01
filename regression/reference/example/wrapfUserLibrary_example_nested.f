@@ -207,11 +207,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: c_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_*
+        ! Statement: c_in_string_*
         function c_ex_class1_ctor_1(name, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
@@ -278,7 +278,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
@@ -307,7 +307,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameArg
         ! Attrs:     +intent(function)
-        ! Statement: f_function_string_&
+        ! Statement: c_function_string_&
         pure function c_ex_class1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg")
@@ -404,11 +404,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capptr)+intent(ctor)
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: c_ctor_shadow_scalar_capptr
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_*
+        ! Statement: c_in_string_*
         function c_ex_class2_ctor(name, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
@@ -455,7 +455,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +deref(copy)+intent(function)
-        ! Statement: f_function_string_&_copy
+        ! Statement: c_function_string_&
         pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName")
@@ -485,7 +485,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2")
@@ -514,7 +514,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3")
@@ -543,7 +543,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4")
@@ -624,15 +624,15 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2 * declare
         ! Attrs:     +api(this)+intent(function)
-        ! Statement: f_function_shadow_*_this
+        ! Statement: c_function_shadow_*_this
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  SidreLength len=1 +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
             use userlibrary_mod, only : sidre_length, type_id
@@ -782,11 +782,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Statement: f_function_bool_scalar
+        ! Statement: c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         function c_is_name_valid(name) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_isNameValid")
@@ -830,11 +830,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
             use iso_c_binding, only : C_CHAR
@@ -862,15 +862,15 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         subroutine c_test_names_flag(name, flag) &
                 bind(C, name="AA_example_nested_test_names_flag")
             use iso_c_binding, only : C_CHAR, C_INT

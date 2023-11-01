@@ -465,11 +465,6 @@
                             "cxx_nonconst_ptr": "name",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_char_*"
-                        },
-                        "fmtf": {
                             "f_char_len": "len=worklen",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
@@ -477,7 +472,9 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_char_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -513,11 +510,9 @@
                         "C_call_list": "name",
                         "C_prototype": "char * name",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -1118,18 +1113,15 @@
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&ARG_rv)",
                             "cxx_type": "std::string",
                             "cxx_var": "ARG_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "rv",
                             "i_var": "rv",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_&"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1165,6 +1157,9 @@
                         "C_call_list": "ARG_rv",
                         "C_prototype": "const char * rv",
                         "C_return_type": "int",
+                        "F_C_arguments": "rv",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -1176,21 +1171,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "rv",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1513,18 +1502,15 @@
                             "cxx_nonconst_ptr": "&ARG_name",
                             "cxx_type": "std::string",
                             "cxx_var": "ARG_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_string_&"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1560,18 +1546,15 @@
                             "cxx_nonconst_ptr": "value",
                             "cxx_type": "int",
                             "cxx_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1607,11 +1590,9 @@
                         "C_call_list": "ARG_name,\t value",
                         "C_prototype": "char * name,\t int * value",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name,\t value",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },

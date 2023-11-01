@@ -500,18 +500,15 @@
                             "cxx_nonconst_ptr": "dest",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "i_var": "dest",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -528,18 +525,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "i_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     }
                 },
@@ -555,11 +549,9 @@
                         "C_call_list": "dest,\t src",
                         "C_prototype": "char * dest,\t const char * src",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "dest,\t src",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -813,18 +805,15 @@
                             "cxx_nonconst_ptr": "s",
                             "cxx_type": "char",
                             "cxx_var": "s",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "s",
                             "i_var": "s",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_char_*"
                         }
                     }
                 },
@@ -840,11 +829,9 @@
                         "C_call_list": "s",
                         "C_prototype": "char * s",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "s",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -1020,6 +1007,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1031,21 +1021,15 @@
                         "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_char_*"
                     }
                 }
             },
@@ -1196,6 +1180,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": "30",
                         "c_const": "const ",
                         "c_get_value": "",
@@ -1208,14 +1195,6 @@
                         "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1223,7 +1202,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_char_*"
                     }
                 }
             },
@@ -1385,6 +1366,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1396,21 +1380,15 @@
                         "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_char_*"
                     }
                 }
             },
@@ -1667,6 +1645,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "char",
@@ -1678,21 +1659,15 @@
                         "cxx_rv_decl": "const char * SHC_rv",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_char_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_char_*"
                     }
                 }
             },
@@ -2355,6 +2330,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -2367,21 +2345,15 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },
@@ -2532,6 +2504,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -2545,14 +2520,6 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2560,7 +2527,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },
@@ -2722,6 +2691,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -2734,21 +2706,15 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },
@@ -2906,6 +2872,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -2919,14 +2888,6 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2934,7 +2895,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },
@@ -3082,6 +3045,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3094,21 +3060,15 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },
@@ -3260,6 +3220,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": 30,
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -3273,14 +3236,6 @@
                         "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=30",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3288,7 +3243,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*"
                     }
                 }
             },
@@ -3446,6 +3403,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3458,21 +3418,15 @@
                         "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_library"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*_library"
                     }
                 }
             },
@@ -3614,6 +3568,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3626,21 +3583,15 @@
                         "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "1",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_caller"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "1",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*_caller"
                     }
                 }
             },
@@ -3786,6 +3737,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3798,21 +3752,15 @@
                         "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "2",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_caller"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "2",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*_caller"
                     }
                 }
             },
@@ -3958,6 +3906,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
@@ -3970,21 +3921,15 @@
                         "cxx_rv_decl": "const std::string * SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_*_library"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_*_library"
                     }
                 }
             },
@@ -4159,18 +4104,15 @@
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_&"
                         }
                     }
                 },
@@ -4186,11 +4128,9 @@
                         "C_call_list": "SHCXX_arg1",
                         "C_prototype": "const char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4385,18 +4325,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_&"
                         }
                     }
                 },
@@ -4412,11 +4349,9 @@
                         "C_call_list": "SHCXX_arg1",
                         "C_prototype": "char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4611,18 +4546,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_string_&"
                         }
                     }
                 },
@@ -4638,11 +4570,9 @@
                         "C_call_list": "SHCXX_arg1",
                         "C_prototype": "char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -4837,18 +4767,15 @@
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_*"
                         }
                     }
                 },
@@ -4864,11 +4791,9 @@
                         "C_call_list": "&SHCXX_arg1",
                         "C_prototype": "const char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -5059,18 +4984,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_string_*"
                         }
                     }
                 },
@@ -5086,11 +5008,9 @@
                         "C_call_list": "&SHCXX_arg1",
                         "C_prototype": "char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -5285,18 +5205,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_*"
                         }
                     }
                 },
@@ -5312,11 +5229,9 @@
                         "C_call_list": "&SHCXX_arg1",
                         "C_prototype": "char * arg1",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -5530,18 +5445,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_*"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_string_*"
                         }
                     },
                     "nlen": {
@@ -5558,18 +5470,15 @@
                             "cxx_nonconst_ptr": "nlen",
                             "cxx_type": "int",
                             "cxx_var": "nlen",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "i_var": "nlen",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     }
                 },
@@ -5585,11 +5494,9 @@
                         "C_call_list": "&SHCXX_arg1,\t nlen",
                         "C_prototype": "char * arg1,\t int * nlen",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1,\t nlen",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -5854,18 +5761,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_*"
                         }
                     },
                     "nlen": {
@@ -5882,18 +5786,15 @@
                             "cxx_nonconst_ptr": "nlen",
                             "cxx_type": "int",
                             "cxx_var": "nlen",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nlen",
                             "i_var": "nlen",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     }
                 },
@@ -5909,11 +5810,9 @@
                         "C_call_list": "&SHCXX_arg1,\t nlen",
                         "C_prototype": "char * arg1,\t int * nlen",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "arg1,\t nlen",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -6150,18 +6049,15 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "std::string",
                             "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_string_scalar"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg1",
                             "i_var": "arg1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_string_scalar"
                         }
                     }
                 },
@@ -6177,6 +6073,9 @@
                         "C_call_list": "arg1",
                         "C_prototype": "char *arg1",
                         "C_return_type": "int",
+                        "F_C_arguments": "arg1",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -6188,21 +6087,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "arg1",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     }
                 }
             },
@@ -6519,18 +6412,15 @@
                             "cxx_nonconst_ptr": "nstrs",
                             "cxx_type": "int",
                             "cxx_var": "nstrs",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "i_var": "nstrs",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -6548,12 +6438,6 @@
                             "cxx_nonconst_ptr": "strs",
                             "cxx_type": "std::string",
                             "cxx_var": "strs",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6562,8 +6446,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "i_var": "strs",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_**"
                         }
                     }
                 },
@@ -6579,11 +6465,9 @@
                         "C_call_list": "strs,\t nstrs",
                         "C_prototype": "char * * strs,\t int * nstrs",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "strs,\t nstrs",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -6866,18 +6750,15 @@
                             "cxx_nonconst_ptr": "nstrs",
                             "cxx_type": "int",
                             "cxx_var": "nstrs",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "i_var": "nstrs",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -6895,12 +6776,6 @@
                             "cxx_nonconst_ptr": "strs",
                             "cxx_type": "std::string",
                             "cxx_var": "strs",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -6909,8 +6784,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "i_var": "strs",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_**"
                         }
                     }
                 },
@@ -6926,11 +6803,9 @@
                         "C_call_list": "strs,\t nstrs",
                         "C_prototype": "char * * strs,\t int * nstrs",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "strs,\t nstrs",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -7215,18 +7090,15 @@
                             "cxx_nonconst_ptr": "nstrs",
                             "cxx_type": "int",
                             "cxx_var": "nstrs",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_out_native_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "nstrs",
                             "i_var": "nstrs",
-                            "sh_type": "SH_TYPE_INT"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmtc": "c_out_native_*"
                         }
                     },
                     "strs": {
@@ -7245,12 +7117,6 @@
                             "cxx_nonconst_ptr": "strs",
                             "cxx_type": "std::string",
                             "cxx_var": "strs",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_string_**"
-                        },
-                        "fmtf": {
                             "f_array_allocate": "(nstrs)",
                             "f_assumed_shape": "(:)",
                             "f_char_len": "len=20",
@@ -7260,8 +7126,10 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "strs",
                             "i_var": "strs",
+                            "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_string_**"
                         }
                     }
                 },
@@ -7277,11 +7145,9 @@
                         "C_call_list": "strs,\t nstrs",
                         "C_prototype": "char * * strs,\t int * nstrs",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "strs,\t nstrs",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -7596,18 +7462,15 @@
                             "cxx_nonconst_ptr": "name",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     }
                 },
@@ -7624,11 +7487,9 @@
                         "C_call_list": "name",
                         "C_prototype": "char * name",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -7827,11 +7688,6 @@
                             "cxx_nonconst_ptr": "name",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_char_len": "len=AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -7839,7 +7695,9 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     }
                 },
@@ -7855,11 +7713,9 @@
                         "C_call_list": "name",
                         "C_prototype": "char * name",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "name",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -8299,18 +8155,15 @@
                             "cxx_nonconst_ptr": "dest",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "i_var": "dest",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -8328,18 +8181,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "i_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     }
                 },
@@ -8355,11 +8205,9 @@
                         "C_call_list": "dest,\t src",
                         "C_prototype": "char * dest,\t const char * src",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "dest,\t src",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -8641,18 +8489,15 @@
                             "cxx_nonconst_ptr": "dest",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_out_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "dest",
                             "i_var": "dest",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_out_char_*"
                         }
                     },
                     "src": {
@@ -8670,18 +8515,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "i_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     }
                 },
@@ -8697,11 +8539,9 @@
                         "C_call_list": "dest,\t src",
                         "C_prototype": "char * dest,\t const char * src",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "dest,\t src",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -8975,11 +8815,6 @@
                             "cxx_nonconst_ptr": "count",
                             "cxx_type": "int",
                             "cxx_var": "count",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmtc": "c_in_native_*"
-                        },
-                        "fmtf": {
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -8988,9 +8823,11 @@
                             "f_var": "count",
                             "i_dimension": "(*)",
                             "i_var": "count",
+                            "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "size": "size(count)"
+                            "size": "size(count)",
+                            "stmtc": "c_in_native_*"
                         }
                     },
                     "name": {
@@ -9007,18 +8844,15 @@
                             "cxx_nonconst_ptr": "&SHCXX_name",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_inout_string_&"
-                        },
-                        "fmtf": {
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_inout_string_&"
                         }
                     }
                 },
@@ -9034,11 +8868,9 @@
                         "C_call_list": "count,\t SHCXX_name",
                         "C_prototype": "int * count,\t char * name",
                         "C_return_type": "void",
-                        "stmtc": "c_subroutine"
-                    },
-                    "fmtf": {
                         "F_C_arguments": "count,\t name",
-                        "F_C_subprogram": "subroutine"
+                        "F_C_subprogram": "subroutine",
+                        "stmtc": "c_subroutine"
                     }
                 }
             },
@@ -9292,18 +9124,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "i_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     }
                 },
@@ -9319,6 +9148,9 @@
                         "C_call_list": "src",
                         "C_prototype": "const char * src",
                         "C_return_type": "int",
+                        "F_C_arguments": "src",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9330,21 +9162,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "src",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     }
                 }
             },
@@ -9817,18 +9643,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(in)",
                             "cxx_type": "char",
                             "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "i_var": "in",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*"
                         }
                     },
                     "src": {
@@ -9845,18 +9668,15 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "c_in_char_*_capi"
-                        },
-                        "fmtf": {
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "src",
                             "i_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmtc": "c_in_char_*_capi"
                         }
                     }
                 },
@@ -9872,6 +9692,9 @@
                         "C_call_list": "in,\t src",
                         "C_prototype": "const char * in,\t const char * src",
                         "C_return_type": "int",
+                        "F_C_arguments": "in,\t src",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
@@ -9883,21 +9706,15 @@
                         "cxx_rv_decl": "int SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "c_function_native_scalar"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "in,\t src",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmtc": "c_function_native_scalar"
                     }
                 }
             },

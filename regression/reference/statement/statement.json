@@ -165,6 +165,9 @@
                     "fmtc": {
                         "C_prototype": "void",
                         "C_return_type": "const char *",
+                        "F_C_arguments": "",
+                        "F_C_result_clause": "\fresult(SHT_rv)",
+                        "F_C_subprogram": "function",
                         "c_char_len": "get_name_length()",
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -178,14 +181,6 @@
                         "cxx_rv_decl": "const std::string & SHCXX_rv",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_arguments": "",
-                        "F_C_result_clause": "\fresult(SHT_rv)",
-                        "F_C_subprogram": "function",
                         "f_char_len": "len=get_name_length()",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -193,7 +188,9 @@
                         "f_type_module": "iso_c_binding",
                         "f_var": "SHT_rv",
                         "i_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmtc": "c_function_string_&"
                     }
                 }
             },

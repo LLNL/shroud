@@ -137,11 +137,11 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
-        ! Statement: f_inout_char_*
+        ! Statement: c_inout_char_*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
@@ -217,11 +217,11 @@ module top_module
         ! ----------------------------------------
         ! Function:  int function4
         ! Attrs:     +intent(function)
-        ! Statement: f_function_native_scalar
+        ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         function YYY_TES_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -262,15 +262,15 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +intent(inout)
-        ! Statement: f_inout_string_&
+        ! Statement: c_inout_string_&
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT

@@ -193,15 +193,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Statement: f_function_char_*_copy
+    ! Statement: c_function_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
-    ! Statement: f_in_char_*
+    ! Statement: c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * arg2
     ! Attrs:     +intent(in)
-    ! Statement: f_in_char_*
+    ! Statement: c_in_char_*
     interface
         function c_function4a(arg1, arg2) &
                 result(SHT_rv) &
@@ -262,11 +262,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Statement: f_inout_char_*
+    ! Statement: c_inout_char_*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="passCharPtrInOut")
@@ -298,11 +298,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnOneName
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     ! start c_return_one_name
     interface
         subroutine c_return_one_name(name1) &
@@ -338,15 +338,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void returnTwoNames
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     interface
         subroutine c_return_two_names(name1, name2) &
                 bind(C, name="returnTwoNames")
@@ -386,15 +386,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     ! start c_implied_text_len
     interface
         subroutine c_implied_text_len(text, ltext) &
@@ -544,11 +544,11 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void bindC2
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     interface
         subroutine c_bind_c2(outbuf) &
                 bind(C, name="bindC2")
@@ -643,15 +643,15 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
-    ! Statement: f_in_void_*
+    ! Statement: c_in_void_*
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     interface
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
@@ -772,23 +772,23 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  void callback3
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const char * type
     ! Attrs:     +intent(in)
-    ! Statement: f_in_char_*
+    ! Statement: c_in_char_*
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
-    ! Statement: f_in_void_*
+    ! Statement: c_in_void_*
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_void_scalar
+    ! Statement: c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_char_*
+    ! Statement: c_out_char_*
     interface
         subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")

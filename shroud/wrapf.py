@@ -713,11 +713,11 @@ rv = .false.
             if node.wrap.fortran:
                 self.log.write("C-interface f {0.declgen} {1}\n".format(
                     node, self.get_metaattrs(node.ast)))
-                self.wrap_function_interface(cls, node, fileinfo)
+                self.wrap_function_interface("f", cls, node, fileinfo)
             elif node.wrap.c:
                 self.log.write("C-interface c {0.declgen} {1}\n".format(
                     node, self.get_metaattrs(node.ast)))
-                self.wrap_function_interface(cls, node, fileinfo)
+                self.wrap_function_interface("c", cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
@@ -1102,7 +1102,7 @@ rv = .false.
                     fmt
                 )
 
-    def wrap_function_interface(self, cls, node, fileinfo):
+    def wrap_function_interface(self, wlang, cls, node, fileinfo):
         """Write Fortran interface for C function.
 
         Args:
@@ -1120,6 +1120,7 @@ rv = .false.
 
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
+        fmtlang = "fmt" + wlang
         options = node.options
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
@@ -1137,9 +1138,12 @@ rv = .false.
         
         # find subprogram type
         # compute first to get order of arguments correct.
-        fmt_result = node._fmtresult.setdefault("fmtf", util.Scope(fmt_func))
-        result_stmt = statements.lookup_f_function_stmt(node)
-        result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
+        fmt_result = node._fmtresult.setdefault(fmtlang, util.Scope(fmt_func))
+        if wlang == "c":
+            result_stmt = statements.lookup_c_function_stmt(node)
+        else:
+            result_stmt = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
             
         if subprogram == "subroutine":
@@ -1215,7 +1219,7 @@ rv = .false.
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
+            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.i_var = arg_name
             fmt_arg.f_var = arg_name
@@ -1230,7 +1234,10 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            if wlang == "c":
+                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
+            else:
+                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
 
             if options.debug:

@@ -388,15 +388,15 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
-        ! Statement: f_function_native_scalar
+        ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: c_in_struct_*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_char_*
+        ! Statement: c_out_char_*
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2")
@@ -539,19 +539,19 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_struct_*_pointer
+        ! Statement: c_function_struct_*
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_char_*
+        ! Statement: c_out_char_*
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr2")

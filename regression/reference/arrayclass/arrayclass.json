@@ -662,6 +662,9 @@
                             "fmtc": {
                                 "C_prototype": "ARR_ArrayWrapper * self",
                                 "C_return_type": "double *",
+                                "F_C_arguments": "self",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
                                 "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_get_value": "",
@@ -674,15 +677,6 @@
                                 "cxx_rv_decl": "double * SHC_rv",
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmtc": "c_function_native_*"
-                            },
-                            "fmtf": {
-                                "F_C_arguments": "self",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -691,8 +685,10 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmtc": "c_function_native_*"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -901,6 +897,10 @@
                             "fmtc": {
                                 "C_prototype": "const ARR_ArrayWrapper * self",
                                 "C_return_type": "double *",
+                                "F_C_arguments": "self",
+                                "F_C_pure_clause": "pure ",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
                                 "c_array_size2": "SH_this->getSize()",
                                 "c_const": "",
                                 "c_get_value": "",
@@ -913,16 +913,6 @@
                                 "cxx_rv_decl": "double * SHC_rv",
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmtc": "c_function_native_*"
-                            },
-                            "fmtf": {
-                                "F_C_arguments": "self",
-                                "F_C_pure_clause": "pure ",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -931,8 +921,10 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmtc": "c_function_native_*"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1142,6 +1134,9 @@
                             "fmtc": {
                                 "C_prototype": "ARR_ArrayWrapper * self",
                                 "C_return_type": "const double *",
+                                "F_C_arguments": "self",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
                                 "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_get_value": "",
@@ -1154,15 +1149,6 @@
                                 "cxx_rv_decl": "const double * SHC_rv",
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmtc": "c_function_native_*"
-                            },
-                            "fmtf": {
-                                "F_C_arguments": "self",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -1171,8 +1157,10 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmtc": "c_function_native_*"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1383,6 +1371,10 @@
                             "fmtc": {
                                 "C_prototype": "const ARR_ArrayWrapper * self",
                                 "C_return_type": "const double *",
+                                "F_C_arguments": "self",
+                                "F_C_pure_clause": "pure ",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
                                 "c_array_size2": "SH_this->getSize()",
                                 "c_const": "const ",
                                 "c_get_value": "",
@@ -1395,16 +1387,6 @@
                                 "cxx_rv_decl": "const double * SHC_rv",
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE",
-                                "stmtc": "c_function_native_*"
-                            },
-                            "fmtf": {
-                                "F_C_arguments": "self",
-                                "F_C_pure_clause": "pure ",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
@@ -1413,8 +1395,10 @@
                                 "f_type_module": "iso_c_binding",
                                 "f_var": "SHT_rv",
                                 "i_var": "SHT_rv",
+                                "idtor": "0",
                                 "rank": "1",
-                                "sh_type": "SH_TYPE_DOUBLE"
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmtc": "c_function_native_*"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1662,12 +1646,6 @@
                                     "cxx_nonconst_ptr": "array",
                                     "cxx_type": "double",
                                     "cxx_var": "array",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmtc": "c_out_native_**"
-                                },
-                                "fmtf": {
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -1676,8 +1654,10 @@
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "array",
                                     "i_var": "array",
+                                    "idtor": "0",
                                     "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "c_out_native_**"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1718,18 +1698,15 @@
                                     "cxx_nonconst_ptr": "isize",
                                     "cxx_type": "int",
                                     "cxx_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_inout_native_*"
-                                },
-                                "fmtf": {
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "isize",
                                     "i_var": "isize",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "c_inout_native_*"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1769,11 +1746,9 @@
                                 "C_call_list": "array,\t isize",
                                 "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
-                            },
-                            "fmtf": {
                                 "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine"
+                                "F_C_subprogram": "subroutine",
+                                "stmtc": "c_subroutine"
                             }
                         }
                     },
@@ -2070,12 +2045,6 @@
                                     "cxx_nonconst_ptr": "array",
                                     "cxx_type": "double",
                                     "cxx_var": "array",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmtc": "c_out_native_*&"
-                                },
-                                "fmtf": {
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -2084,8 +2053,10 @@
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "array",
                                     "i_var": "array",
+                                    "idtor": "0",
                                     "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "c_out_native_*&"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2126,18 +2097,15 @@
                                     "cxx_nonconst_ptr": "&isize",
                                     "cxx_type": "int",
                                     "cxx_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_inout_native_&"
-                                },
-                                "fmtf": {
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "isize",
                                     "i_var": "isize",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "c_inout_native_&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2177,11 +2145,9 @@
                                 "C_call_list": "*array,\t *isize",
                                 "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
-                            },
-                            "fmtf": {
                                 "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine"
+                                "F_C_subprogram": "subroutine",
+                                "stmtc": "c_subroutine"
                             }
                         }
                     },
@@ -2479,12 +2445,6 @@
                                     "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                     "cxx_type": "double",
                                     "cxx_var": "array",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmtc": "c_out_native_**"
-                                },
-                                "fmtf": {
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -2493,8 +2453,10 @@
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "array",
                                     "i_var": "array",
+                                    "idtor": "0",
                                     "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "c_out_native_**"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2535,18 +2497,15 @@
                                     "cxx_nonconst_ptr": "isize",
                                     "cxx_type": "int",
                                     "cxx_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_inout_native_*"
-                                },
-                                "fmtf": {
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "isize",
                                     "i_var": "isize",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "c_inout_native_*"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2586,11 +2545,9 @@
                                 "C_call_list": "array,\t isize",
                                 "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
-                            },
-                            "fmtf": {
                                 "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine"
+                                "F_C_subprogram": "subroutine",
+                                "stmtc": "c_subroutine"
                             }
                         }
                     },
@@ -2889,12 +2846,6 @@
                                     "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                     "cxx_type": "double",
                                     "cxx_var": "array",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmtc": "c_out_native_*&"
-                                },
-                                "fmtf": {
                                     "f_array_allocate": "(isize)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
@@ -2903,8 +2854,10 @@
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "array",
                                     "i_var": "array",
+                                    "idtor": "0",
                                     "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmtc": "c_out_native_*&"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2945,18 +2898,15 @@
                                     "cxx_nonconst_ptr": "&isize",
                                     "cxx_type": "int",
                                     "cxx_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "c_inout_native_&"
-                                },
-                                "fmtf": {
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "isize",
                                     "i_var": "isize",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmtc": "c_inout_native_&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2996,11 +2946,9 @@
                                 "C_call_list": "*array,\t *isize",
                                 "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                                 "C_return_type": "void",
-                                "stmtc": "c_subroutine"
-                            },
-                            "fmtf": {
                                 "F_C_arguments": "self,\t array,\t isize",
-                                "F_C_subprogram": "subroutine"
+                                "F_C_subprogram": "subroutine",
+                                "stmtc": "c_subroutine"
                             }
                         }
                     },

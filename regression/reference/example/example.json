@@ -244,18 +244,15 @@
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_name",
-                                                    "idtor": "0",
-                                                    "sh_type": "SH_TYPE_OTHER",
-                                                    "stmtc": "c_in_string_*"
-                                                },
-                                                "fmtf": {
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
                                                     "f_type_module": "iso_c_binding",
                                                     "f_var": "name",
                                                     "i_var": "name",
-                                                    "sh_type": "SH_TYPE_OTHER"
+                                                    "idtor": "0",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmtc": "c_in_string_*"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -308,6 +305,10 @@
                                                 "C_call_list": "&SHCXX_name",
                                                 "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                                 "C_return_type": "AA_example_nested_ExClass1 *",
+                                                "F_C_arguments": "name,\t SHT_rv",
+                                                "F_C_result_clause": "\fresult(SHT_prv)",
+                                                "F_C_subprogram": "function",
+                                                "F_result": "SHT_prv",
                                                 "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "AA_example_nested_ExClass1",
@@ -318,16 +319,6 @@
                                                 "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
-                                                "f_local_ptr": "SHT_prv",
-                                                "idtor": "1",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_ctor_shadow_scalar_capptr"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "name,\t SHT_rv",
-                                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                                "F_C_subprogram": "function",
-                                                "F_result": "SHT_prv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class1",
                                                 "f_intent": "OUT",
@@ -336,7 +327,9 @@
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "1",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -885,6 +878,10 @@
                                             "fmtc": {
                                                 "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                 "C_return_type": "const char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_pure_clause": "pure ",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
@@ -897,22 +894,15 @@
                                                 "cxx_rv_decl": "const std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_pure_clause": "pure ",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -1117,6 +1107,10 @@
                                             "fmtc": {
                                                 "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                 "C_return_type": "const char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_pure_clause": "pure ",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
@@ -1129,22 +1123,15 @@
                                                 "cxx_rv_decl": "const std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_pure_clause": "pure ",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2183,18 +2170,15 @@
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_name",
-                                                    "idtor": "0",
-                                                    "sh_type": "SH_TYPE_OTHER",
-                                                    "stmtc": "c_in_string_*"
-                                                },
-                                                "fmtf": {
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
                                                     "f_type_module": "iso_c_binding",
                                                     "f_var": "name",
                                                     "i_var": "name",
-                                                    "sh_type": "SH_TYPE_OTHER"
+                                                    "idtor": "0",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmtc": "c_in_string_*"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -2249,6 +2233,10 @@
                                                 "C_call_list": "&SHCXX_name",
                                                 "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                                 "C_return_type": "AA_example_nested_ExClass2 *",
+                                                "F_C_arguments": "name,\t SHT_rv",
+                                                "F_C_result_clause": "\fresult(SHT_prv)",
+                                                "F_C_subprogram": "function",
+                                                "F_result": "SHT_prv",
                                                 "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "AA_example_nested_ExClass2",
@@ -2259,16 +2247,6 @@
                                                 "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
-                                                "f_local_ptr": "SHT_prv",
-                                                "idtor": "2",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_ctor_shadow_scalar_capptr"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "name,\t SHT_rv",
-                                                "F_C_result_clause": "\fresult(SHT_prv)",
-                                                "F_C_subprogram": "function",
-                                                "F_result": "SHT_prv",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class2",
                                                 "f_intent": "OUT",
@@ -2277,7 +2255,9 @@
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "2",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -2601,6 +2581,10 @@
                                             "fmtc": {
                                                 "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                 "C_return_type": "const char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_pure_clause": "pure ",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_char_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
@@ -2614,15 +2598,6 @@
                                                 "cxx_rv_decl": "const std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_pure_clause": "pure ",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -2630,7 +2605,9 @@
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2828,6 +2805,9 @@
                                             "fmtc": {
                                                 "C_prototype": "AA_example_nested_ExClass2 * self",
                                                 "C_return_type": "const char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
@@ -2840,21 +2820,15 @@
                                                 "cxx_rv_decl": "const std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3061,6 +3035,10 @@
                                             "fmtc": {
                                                 "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                 "C_return_type": "char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_pure_clause": "pure ",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_const": "",
                                                 "c_rv_decl": "char * SHC_rv",
                                                 "c_type": "char",
@@ -3073,22 +3051,15 @@
                                                 "cxx_rv_decl": "std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_pure_clause": "pure ",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3294,6 +3265,9 @@
                                             "fmtc": {
                                                 "C_prototype": "AA_example_nested_ExClass2 * self",
                                                 "C_return_type": "char *",
+                                                "F_C_arguments": "self",
+                                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                                "F_C_subprogram": "function",
                                                 "c_const": "",
                                                 "c_rv_decl": "char * SHC_rv",
                                                 "c_type": "char",
@@ -3306,21 +3280,15 @@
                                                 "cxx_rv_decl": "std::string & SHCXX_rv",
                                                 "cxx_type": "std::string",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_string_&"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self",
-                                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                                "F_C_subprogram": "function",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_type_module": "iso_c_binding",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_string_&"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -4178,18 +4146,23 @@
                                                     "cxx_nonconst_ptr": "&len",
                                                     "cxx_type": "SidreLength",
                                                     "cxx_var": "len",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "sidre_length",
+                                                    "f_type": "integer(sidre_length)",
+                                                    "f_type_module": "userlibrary_mod",
+                                                    "f_var": "len",
+                                                    "i_var": "len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmtc": "c_in_native_scalar"
                                                 },
                                                 "fmtf": {
                                                     "f_intent": "IN",
-                                                    "f_kind": "sidre_length",
-                                                    "f_type": "integer(sidre_length)",
-                                                    "f_type_module": "userlibrary_mod",
+                                                    "f_kind": "C_LONG",
+                                                    "f_type": "integer(C_LONG)",
+                                                    "f_type_module": "iso_c_binding",
                                                     "f_var": "len",
                                                     "fc_var": "len",
-                                                    "i_var": "len",
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmtf": "f_in_native_scalar"
                                                 },
@@ -4241,6 +4214,12 @@
                                                     "cxx_type": "TypeID",
                                                     "cxx_val": "getTypeID(type)",
                                                     "cxx_var": "SHCXX_type",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "type_id",
+                                                    "f_type": "integer(type_id)",
+                                                    "f_type_module": "userlibrary_mod",
+                                                    "f_var": "type",
+                                                    "i_var": "type",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtc": "c_in_native_scalar"
@@ -4252,7 +4231,6 @@
                                                     "f_type_module": "userlibrary_mod",
                                                     "f_var": "type",
                                                     "fc_var": "type",
-                                                    "i_var": "type",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmtf": "f_in_native_scalar"
                                                 },
@@ -4313,6 +4291,9 @@
                                                 "C_call_list": "SHCXX_type,\t len",
                                                 "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t SIDRE_SidreLength len",
                                                 "C_return_type": "void",
+                                                "F_C_arguments": "self,\t type,\t len",
+                                                "F_C_result_clause": "",
+                                                "F_C_subprogram": "subroutine",
                                                 "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
@@ -4322,14 +4303,6 @@
                                                 "cxx_rv_decl": "example::nested::ExClass2 * SHCXX_rv",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_OTHER",
-                                                "stmtc": "c_function_shadow_*_this"
-                                            },
-                                            "fmtf": {
-                                                "F_C_arguments": "self,\t type,\t len",
-                                                "F_C_result_clause": "",
-                                                "F_C_subprogram": "subroutine",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_derived_type": "ex_class2",
                                                 "f_intent": "OUT",
@@ -4337,7 +4310,9 @@
                                                 "f_type_module": "userlibrary_example_nested_mod",
                                                 "f_var": "SHT_rv",
                                                 "i_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_OTHER"
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_OTHER",
+                                                "stmtc": "c_function_shadow_*_this"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -6465,18 +6440,15 @@
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                                             "cxx_type": "std::string",
                                             "cxx_var": "SHCXX_name",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_OTHER",
-                                            "stmtc": "c_in_string_&"
-                                        },
-                                        "fmtf": {
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_type_module": "iso_c_binding",
                                             "f_var": "name",
                                             "i_var": "name",
-                                            "sh_type": "SH_TYPE_OTHER"
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_OTHER",
+                                            "stmtc": "c_in_string_&"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6528,6 +6500,9 @@
                                         "C_call_list": "SHCXX_name",
                                         "C_prototype": "const char * name",
                                         "C_return_type": "bool",
+                                        "F_C_arguments": "name",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
                                         "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "bool",
@@ -6539,21 +6514,15 @@
                                         "cxx_rv_decl": "bool SHC_rv",
                                         "cxx_type": "bool",
                                         "cxx_var": "SHC_rv",
-                                        "idtor": "0",
-                                        "sh_type": "SH_TYPE_BOOL",
-                                        "stmtc": "c_function_bool_scalar"
-                                    },
-                                    "fmtf": {
-                                        "F_C_arguments": "name",
-                                        "F_C_result_clause": "\fresult(SHT_rv)",
-                                        "F_C_subprogram": "function",
                                         "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
                                         "f_type_module": "iso_c_binding",
                                         "f_var": "SHT_rv",
                                         "i_var": "SHT_rv",
-                                        "sh_type": "SH_TYPE_BOOL"
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_BOOL",
+                                        "stmtc": "c_function_bool_scalar"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -6922,18 +6891,15 @@
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                                             "cxx_type": "std::string",
                                             "cxx_var": "SHCXX_name",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_OTHER",
-                                            "stmtc": "c_in_string_&"
-                                        },
-                                        "fmtf": {
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_type_module": "iso_c_binding",
                                             "f_var": "name",
                                             "i_var": "name",
-                                            "sh_type": "SH_TYPE_OTHER"
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_OTHER",
+                                            "stmtc": "c_in_string_&"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6986,11 +6952,9 @@
                                         "C_call_list": "SHCXX_name",
                                         "C_prototype": "const char * name",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
-                                    },
-                                    "fmtf": {
                                         "F_C_arguments": "name",
-                                        "F_C_subprogram": "subroutine"
+                                        "F_C_subprogram": "subroutine",
+                                        "stmtc": "c_subroutine"
                                     },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
@@ -7204,18 +7168,15 @@
                                             "cxx_nonconst_ptr": "&flag",
                                             "cxx_type": "int",
                                             "cxx_var": "flag",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_INT",
-                                            "stmtc": "c_in_native_scalar"
-                                        },
-                                        "fmtf": {
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",
                                             "f_type_module": "iso_c_binding",
                                             "f_var": "flag",
                                             "i_var": "flag",
-                                            "sh_type": "SH_TYPE_INT"
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_INT",
+                                            "stmtc": "c_in_native_scalar"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -7263,18 +7224,15 @@
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
                                             "cxx_type": "std::string",
                                             "cxx_var": "SHCXX_name",
-                                            "idtor": "0",
-                                            "sh_type": "SH_TYPE_OTHER",
-                                            "stmtc": "c_in_string_&"
-                                        },
-                                        "fmtf": {
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_type_module": "iso_c_binding",
                                             "f_var": "name",
                                             "i_var": "name",
-                                            "sh_type": "SH_TYPE_OTHER"
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_OTHER",
+                                            "stmtc": "c_in_string_&"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7324,11 +7282,9 @@
                                         "C_call_list": "SHCXX_name,\t flag",
                                         "C_prototype": "const char * name,\t int flag",
                                         "C_return_type": "void",
-                                        "stmtc": "c_subroutine"
-                                    },
-                                    "fmtf": {
                                         "F_C_arguments": "name,\t flag",
-                                        "F_C_subprogram": "subroutine"
+                                        "F_C_subprogram": "subroutine",
+                                        "stmtc": "c_subroutine"
                                     },
                                     "fmtl": {
                                         "stmt": "lua_subroutine"
