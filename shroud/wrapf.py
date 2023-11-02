@@ -1141,7 +1141,6 @@ rv = .false.
         # compute first to get order of arguments correct.
         fmt_result= fmtargs["+result"][fmtlang]
         result_stmt = bind["+result"].stmt
-        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
             
         if subprogram == "subroutine":
@@ -1477,7 +1476,6 @@ rv = .false.
         fmt_result= fmtargs["+result"]["fmtf"]
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
         result_stmt = bind["+result"].stmt
-        result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         func_cursor.stmt = result_stmt
 
         subprogram = declarator.get_subprogram()

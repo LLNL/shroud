@@ -957,7 +957,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
         result_stmt = bind["+result"].stmt
-        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
 
